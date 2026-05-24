@@ -13,3 +13,4 @@ Doc, commit, and naming conventions. The "how you say it" rules.
 | [S7](S7-alternative-paths-separate-blocks.md) | Alternative paths in separate code blocks under subsections | active |
 | [S8](S8-code-block-comments-not-prose.md) | Code-block comments are for what-the-line-does, not prose substitutes | active |
 | [S9](S9-action-first-readme-structure.md) | Action-first README structure | active |
+| [S10](S10-horizontal-rule-between-h2-sections.md) | Horizontal rule between top-level sections in long-form docs | active |
