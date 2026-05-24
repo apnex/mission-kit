@@ -13,9 +13,10 @@ related: [S2, S6, S8]
 ## Rule
 
 When a sentence **introduces** a code block (typically ending with `:`
-and immediately followed by a fenced code block), separate it from any
-**preceding prose** with a blank line. The introducer becomes its own
-one-sentence paragraph, visually paired with the code block it
+and followed by a fenced code block), separate it from any **preceding
+prose** with a blank line, and place it **directly above the code
+block with no blank line between them**. The introducer becomes its
+own one-sentence paragraph, visually paired with the code block it
 introduces.
 
 Resulting source pattern:
@@ -26,15 +27,22 @@ Description sentence.\
 Description sentence.
 
 Introducer sentence:
-
 ```bash
 command
 ```
 ````
 
-The blank line between the description prose and the introducer is the
-visual cue: everything above is context; the sentence immediately above
-the code block is the "do this" bridge.
+Two visual cues:
+
+- **Blank line above the introducer** — separates context (above)
+  from action (below).
+- **No blank line between introducer and code** — the introducer
+  literally touches the block; reader's eye doesn't have to cross a
+  visual gap to know which sentence "owns" the code.
+
+CommonMark explicitly allows a fenced code block to immediately follow
+a paragraph (no blank line required); GitHub and other major renderers
+handle this correctly. Don't worry about parser compatibility.
 
 ## Doesn't apply when
 
@@ -84,7 +92,7 @@ sudo ./scripts/apply.sh
 description paragraph. Reader has to read all four lines to find the
 fix.)
 
-**Good (introducer is its own paragraph, paired with the block):**
+**Also bad (blank line between introducer and code block):**
 
 ````markdown
 The container exits at the BAR1-verify step with `BAR1 too small`.\
@@ -98,9 +106,26 @@ sudo ./scripts/apply.sh
 ```
 ````
 
-(Description = problem context. Blank line. Introducer = action.
-Block = the action. Reader's eye jumps straight from the code block
-back to the action sentence right above it.)
+(Description well-separated from introducer ✓, but the introducer is
+visually floating between two blank lines — half-orphaned from the
+code block it's supposed to introduce.)
+
+**Good (introducer is its own paragraph, directly above the block):**
+
+````markdown
+The container exits at the BAR1-verify step with `BAR1 too small`.\
+The kernel cmdline is missing the required boot params.\
+BAR1 sizing happens once at boot and cannot be changed at runtime.
+
+Re-run `Layer 1` host bring-up, then reboot:
+```bash
+sudo ./scripts/apply.sh
+```
+````
+
+(Description = problem context. Blank line. Introducer touches the
+block. Reader's eye jumps from code → action sentence with zero
+visual hop.)
 
 ## When to apply
 
