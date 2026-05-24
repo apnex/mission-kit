@@ -1,0 +1,76 @@
+# <Substrate Name> — Code Trace
+
+**Substrate:** <name>
+**Pinned SHA:** `<short-sha>`
+**Probe date:** YYYY-MM-DD
+
+Narrative walk-through of 3-5 core code paths that anchor the substrate's
+advertised behaviour. Each path is a story: where it starts, what it does,
+where it ends.
+
+This file is for **onboarding a future operator** to the substrate's code
+architecture. It is NOT a feature spec — feature-level evidence lives in
+`features/<name>.md`. Cross-reference but don't duplicate.
+
+---
+
+## Path 1: <Name of advertised behaviour>
+
+**Entry point:** `<file:line>` — <what triggers it>
+
+**Narrative:**
+
+When a <thing> happens, `<entry-fn>` at `[code: <file:line>]` is called. It
+<does X>, then dispatches to `<next-fn>` at `[code: <file:line>]`.
+
+`<next-fn>` <does Y>. Of note: <surprise or design decision>.
+
+Eventually the path ends at <terminal step>, which <produces what>.
+
+**Files touched:**
+- `<file>` — <role>
+- `<file>` — <role>
+
+**Related features:**
+- [<feature-1>](features/<feature-1>.md) — <which part of this path>
+
+---
+
+## Path 2: <Name of advertised behaviour>
+
+(same structure)
+
+---
+
+## Path 3: <Name of advertised behaviour>
+
+(same structure)
+
+---
+
+## Architectural observations
+
+Cross-cutting things the path traces revealed that aren't captured in any
+single feature spec:
+
+- <e.g. "all derivation workers share a queue at `src/queue.py`">
+- <e.g. "auth is enforced at the API layer, not the storage layer">
+
+## Configuration surface (cross-cutting)
+
+Config knobs that affect multiple paths. (Feature-scoped knobs go in the
+feature spec's Configuration surface section.)
+
+| Knob | Default | Source | Affects paths |
+|---|---|---|---|
+| `<knob>` | `<default>` | `<file:line>` | 1, 2 |
+
+## Build / runtime topology
+
+How the substrate actually runs:
+
+- <process model — e.g. single-process / API + worker / multi-replica>
+- <required infra — e.g. Postgres + Redis>
+- <observability surfaces — e.g. Prometheus at /metrics>
+
+Cite `[code: <file:line>]` for each.

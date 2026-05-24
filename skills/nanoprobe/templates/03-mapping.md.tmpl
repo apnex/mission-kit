@@ -1,0 +1,61 @@
+# <Substrate Name> — Goal Mapping
+
+**Substrate:** <name>
+**Pinned SHA:** `<short-sha>`
+**Probe date:** YYYY-MM-DD
+**Goals doc:** `<path-to-goals-doc>` (read at this version: <date or commit>)
+
+How this substrate addresses (or fails to address) each goal in the domain's
+goals doc. One paragraph per goal. Cite feature specs.
+
+This is the ONLY artefact in a nanoprobe that references the goals doc.
+Feature specs are substrate-scoped and do not mention goals.
+
+---
+
+## G1 — <Goal name from goals doc>
+
+**Status:** ✓ addressed / ⚠ partial / ✗ not addressed
+
+<Paragraph: how this substrate addresses or fails to address G1. Cite
+feature specs as evidence.>
+
+**Evidence:**
+- [<feature-1>](features/<feature-1>.md) — <how it contributes>
+- [<feature-2>](features/<feature-2>.md) — <how it contributes>
+
+**Gaps:** <what's missing for full G1 coverage, if anything>
+
+---
+
+## G2 — <Goal name>
+
+(same structure)
+
+---
+
+## G3 — <Goal name>
+
+(same structure)
+
+---
+
+(repeat for every goal in the goals doc)
+
+---
+
+## Cross-goal observations
+
+Things that affect multiple goals:
+
+- <e.g. "the lack of per-peer isolation impacts both G6 (continuity) and G8
+  (subagent isolation)">
+
+## Goals NOT addressable by this substrate
+
+Some goals are out-of-scope for some substrates by design (e.g. "Honcho
+doesn't do this because it's not a vector DB"). Record those here explicitly
+so a future reader doesn't interpret silence as oversight.
+
+- **G<N>:** <goal>. Not addressable because <reason>. Not a defect of this
+  substrate — wrong layer of the stack.

@@ -1,0 +1,91 @@
+# <Substrate Name> — Summary
+
+**Substrate:** <name>
+**Canonical repo:** <github-url>
+**Pinned SHA:** <full-sha> (short: `<short-sha>`)
+**Pinned version/tag:** <tag-or-release>
+**Probe date:** YYYY-MM-DD
+**Probe rung:** L3 (nanoprobe)
+**Probed by:** <author>
+**Domain:** <domain-name> (output lives in `<domain-path>/<substrate>/`)
+**Goals doc:** `<path-to-goals-doc>`
+
+---
+
+## What it is
+
+One paragraph describing the substrate in its own terms. No comparisons.
+
+## Scope of probe
+
+What was probed:
+
+- Canonical repo at SHA `<short-sha>` — all source under `<paths-traced>`
+- Documentation at <url> as of probe date
+- README + linked blog posts (see `sources.md` for full list)
+
+What was NOT probed:
+
+- Satellite repos (client SDKs, examples) — cited in `sources.md` only
+- <other-out-of-scope items>
+
+## Top-level layout
+
+```
+<paste output of `find . -maxdepth 2 -type d` or similar, edited for relevance>
+```
+
+LOC by language (from `codebase-inspection` or equivalent):
+
+| Language | Files | LOC |
+|---|---|---|
+| <lang> | <n> | <n> |
+
+## Feature index
+
+| Feature | Category | Triangulation |
+|---|---|---|
+| [<feature-1>](features/<feature-1>.md) | <category> | ✓ / ⚠ / ✗ |
+| [<feature-2>](features/<feature-2>.md) | <category> | ✓ / ⚠ / ✗ |
+
+## Findings
+
+Things worth surfacing that don't fit in any single feature spec.
+
+### Notable behaviours
+- <surprise discovered in source>
+
+### Notable absences
+- <thing the docs imply but isn't in source>
+- <thing one would expect for this category of substrate but isn't there>
+
+### Doc lag / drift
+- <documented behaviour that doesn't match source>
+
+### Claimed but not found in source
+- <claim from README/blog with no source-side implementation>
+
+### Vapourware flags
+- <claim with no doc or source backing>
+
+## Cull status
+
+**Current rung:** L3
+**Next rung decision:** advance to L4 / cull / re-probe at later SHA
+**Reason:** <brief>
+**Re-evaluation trigger:** <when to revisit>
+
+## TODOs for crossprobe (downstream)
+
+Things noticed during this probe that look comparison-relevant but were
+deliberately NOT pursued (because nanoprobe doesn't compare):
+
+- <e.g. "this substrate's 'dialectic' may map to mem0's 'fact extraction' —
+  let crossprobe investigate">
+
+## Probe metadata
+
+- Probe duration: <hours>
+- Tools used: <e.g. search_files, terminal, codebase-inspection>
+- Subagent delegated: yes/no (if yes, link to subagent prompt)
+- SHA updated mid-probe: no / yes (if yes, document)

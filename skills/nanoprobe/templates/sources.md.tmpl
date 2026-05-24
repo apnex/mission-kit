@@ -1,0 +1,72 @@
+# <Substrate Name> — Sources
+
+**Substrate:** <name>
+**Pinned SHA:** `<full-sha>` (short: `<short-sha>`)
+**Pinned version/tag:** <tag>
+**Probe date:** YYYY-MM-DD
+
+Complete index of every URL, repo, file path, and external source touched
+during this probe. A future operator must be able to reproduce the probe
+from this index alone.
+
+---
+
+## Canonical repository
+
+- **URL:** https://github.com/<org>/<repo>
+- **Pinned SHA:** `<full-sha>`
+- **Tag/release:** `<tag>`
+- **License:** <e.g. Apache-2>
+- **Default branch:** `<branch>`
+
+## Satellite repositories (referenced, NOT probed)
+
+| Repo | Purpose | Pinned SHA (if cited) |
+|---|---|---|
+| <org/repo> | <e.g. Python client SDK> | <sha-if-cited-else-n/a> |
+| <org/repo> | <e.g. docs site source> | <sha-if-cited-else-n/a> |
+
+## Documentation URLs
+
+| URL | Section / page | Retrieved |
+|---|---|---|
+| <url> | <section> | YYYY-MM-DD |
+| <url> | <section> | YYYY-MM-DD |
+
+## Source files cited
+
+| Path | Purpose in this probe |
+|---|---|
+| `src/<path>.py` | <role — e.g. derivation entry point> |
+| `src/<path>.py` | <role> |
+
+## GitHub issues / PRs cited
+
+- `<org>/<repo>#<NNN>` — <one-line summary>, retrieved YYYY-MM-DD
+- `<org>/<repo>#<NNN>` — <one-line summary>, retrieved YYYY-MM-DD
+
+## Academic papers
+
+- <Author> et al., "<Title>", <Venue> YYYY — <url>
+
+## Blog posts / external sources
+
+| URL | Author | Type | Retrieved |
+|---|---|---|---|
+| <url> | <maintainer-or-third-party> | claim / supplementary | YYYY-MM-DD |
+
+## Snapshots
+
+For volatile sources (blogs, social, etc.) archived for durability:
+
+- <url> → archive.org/web/<timestamp>/<url>
+
+## Reproducibility checklist
+
+A future operator probing the same SHA should be able to:
+
+- [ ] Clone the canonical repo and `git checkout <sha>`
+- [ ] Open every cited `file:line` and see the same code
+- [ ] Resolve every documentation URL (or its archived snapshot)
+- [ ] Find every cited issue/PR
+- [ ] Distinguish in-probe sources from satellite supporting evidence

@@ -1,0 +1,87 @@
+# <Substrate Name> — Architecture Map
+
+**Substrate:** <name>
+**Pinned SHA:** `<short-sha>` (tag <tag>, <yyyy-mm-dd>)
+**Probe date:** YYYY-MM-DD
+**Scope:** <which-paths-of-the-repo> of `<org/repo>` (canonical repo only — satellites listed in `sources.md`)
+
+This document maps <name>'s structure as <name> organises itself: subsystems, primitives, data flow, runtime topology, and pluggable surfaces. It is **descriptive only** — every claim is either cited to <name>'s own documentation (Tier 1) or to source at the pinned SHA (Tier 2). Probe analysis, trade-off interpretation, and gotchas live in `04-assessment.md`.
+
+---
+
+## 1. Runtime topology
+
+<Diagram or prose: what processes run, how they connect, what shared state they use. ASCII diagrams are fine and renderable everywhere.>
+
+**Startup invariants** [code: <file:line> citations]:
+- <invariant 1>
+- <invariant 2>
+
+**Storage layer notes** [code: <file:line> citations]:
+- <fact about what's stored where>
+
+---
+
+## 2. Subsystems
+
+For each named subsystem (call it what the substrate calls it):
+
+### 2.N <Subsystem Name> (`<path/in/repo/>`)
+<One-paragraph description in substrate-native terms. Cite Tier 1 framing.>
+
+| File | Lines | Role |
+|---|---|---|
+| `<file>` | <count> | <role> |
+
+[claim: <Tier 1 source>; code: <Tier 2 anchor>]
+
+---
+
+## 3. Data primitives
+
+| Primitive | Code symbol | API path (if any) | Role |
+|---|---|---|---|
+| <name> | `<symbol>` | `<path>` | <substrate-native description> |
+
+<Any vocabulary duals, naming historical context (renames, deprecated
+terms), or pair-keying conventions — describe in substrate-native terms,
+no interpretation.>
+
+---
+
+## 4. Configuration
+
+<Canonical config class/file, citation. Settings groups. Cascade rules
+(if applicable) — cited to docs.>
+
+---
+
+## 5. Storage tiers
+
+### 5.1 <Tier 1: e.g. PostgreSQL>
+- <fact + citation>
+
+### 5.2 <Tier 2: e.g. Redis, cache layer>
+- <fact + citation>
+
+### 5.3 <Tier 3: e.g. vector store>
+- <fact + citation>
+
+---
+
+## 6. Pluggable surfaces
+
+| Surface | Where | What's pluggable |
+|---|---|---|
+| <name> | <path> | <description> |
+
+---
+
+## 7. What this map does NOT cover
+
+Deferred to per-feature specs in `features/*.md`:
+- <list of specific behaviours / knobs / mechanisms that live in feature
+  specs rather than the architecture map>
+
+Probe analysis, trade-off interpretation, and operator gotchas: see `04-assessment.md`.
+Substrate fitness against domain goals: see `03-mapping.md`.

@@ -24,3 +24,4 @@ Flat ledger of every entry across categories. Sort by ID prefix.
 | [P2](patterns/P2-node-label-gate-cross-component-contracts.md) | pattern | Node-label gate for cross-component contracts | active | 2026-05-24 |
 | [K1](skills/K1-ai-attribution-scrub.md) | skill | AI-attribution scrub | active | 2026-05-24 |
 | [K2](skills/K2-force-push-carve-out.md) | skill | Force-push carve-out for fork branches | active | 2026-05-24 |
+| [K3](skills/K3-nanoprobe.md) | skill | nanoprobe — code-grounded substrate audit | active | 2026-05-24 |

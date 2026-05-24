@@ -1,0 +1,79 @@
+# Feature: <substrate-native-name>
+
+**Substrate:** <substrate> <version-or-sha>
+**Category:** <Storage | Derivation | Retrieval | Lifecycle | Surface | Identity | Ops | Extensibility | Other>
+**Triangulation:** ✓ Triangulated | ⚠ Partial | ✗ Single-source
+**Last probed:** YYYY-MM-DD
+
+---
+
+## What it is
+
+One paragraph in the substrate's own terms. Use the project's own vocabulary
+(e.g. if the project calls it "dialectic", use "dialectic" — don't translate
+to "background derivation"). NO comparisons to other substrates.
+
+## Requirement
+
+The system SHALL <observable behaviour, present-tense, single sentence>.
+
+(Requirement is the contract this feature implements. State it as a single
+SHALL clause. Sub-requirements get sub-bullets if needed:)
+
+- The system SHALL <sub-behaviour>.
+- The system SHALL <sub-behaviour>.
+
+## Scenarios
+
+### Scenario: <descriptive name of a specific behavioural branch>
+- GIVEN <precondition>
+- WHEN <trigger>
+- THEN <observable outcome>
+- AND <additional outcome>
+
+### Scenario: <name of another branch — e.g. error path>
+- GIVEN <precondition>
+- WHEN <trigger>
+- THEN <observable outcome>
+
+(One scenario per distinct behavioural branch. Most features have 1-3.
+Edge cases and error paths deserve their own scenarios.)
+
+## Evidence
+
+| Type | Reference |
+|---|---|
+| Claim | "<quoted text>" — <url>, retrieved YYYY-MM-DD |
+| Doc | <section path or field name> — <url-or-repo-path> |
+| Source | `<file>:<line-range>` @ commit `<short-sha>` |
+
+(Triangulated = all three present and consistent. If any row is missing,
+triangulation status is ⚠ or ✗.)
+
+## Behaviour notes
+
+Bullet points capturing what the code actually does that the docs don't say,
+or surprises encountered while tracing:
+
+- Default value: `<value>` (source: `<file:line>`)
+- Edge case: <what happens when X> (source: `<file:line>`)
+- Undocumented limit: <what limit, observed at> (source: `<file:line>`)
+- Gap between claim and source: <description>
+
+## Configuration surface
+
+Config knobs that affect this feature.
+
+| Knob | Default | Type | Source | Notes |
+|---|---|---|---|---|
+| `<knob-name>` | `<default>` | `<type>` | `<file:line>` | <notes> |
+
+(Omit this section entirely if the feature has no configuration surface.)
+
+## Related code paths
+
+Cross-reference to `02-code-trace.md`:
+
+- Path <N>: <name> — this feature is part of step <step>
+
+(Omit if the feature is self-contained / not part of any traced path.)
