@@ -89,6 +89,29 @@ Applied entries: S1, S2, S3, S4.
 [1]: https://github.com/<your-org>/mission-kit
 ```
 
+
+## Bundles
+
+The `bundles/` directory composes skills into operator-facing roles.
+A bundle is a small YAML file listing the skills required to perform
+a particular kind of work (e.g. `nanoprobe.yaml` composes the skills
+needed for code-grounded substrate research).
+
+Bundles are deliberately separate from the entry taxonomy:
+
+- **Entries** (S/M/P/K) are units of *knowledge*. They are authored,
+  reviewed, and curated.
+- **Bundles** are units of *deployment composition*. They tell a
+  consumer system (e.g. a GitOps skill loader like `skill-sync`)
+  which skill subdirectories to pull when assembling a given role.
+
+Bundles MUST stay agent-agnostic — no harness-specific fields, no
+tool names. Any agent that consumes SKILL.md trees from a directory
+should be able to resolve a bundle by reading its `skills:` list.
+
+Bundles do not get IDs in `INDEX.md`. They are convention-managed by
+filename (`bundles/<role>.yaml`).
+
 ## Status
 
 Bootstrap commit seeded with 12 entries from the

@@ -1,0 +1,30 @@
+# nanoprobe — code-grounded substrate research role
+#
+# Bundles compose skills into operator-facing roles. A bundle is the
+# unit a deployment system (e.g. skill-sync) consumes when resolving
+# which SKILL.md trees to pull from this repo.
+#
+# Bundles MUST stay agent-agnostic: no Hermes-specific fields, no
+# tool names, no harness assumptions. Any agent that consumes
+# SKILL.md trees from a directory should be able to load this bundle
+# by resolving its `skills:` list.
+
+name: nanoprobe
+description: |
+  Code-grounded substrate audit role — five-pass methodology
+  (Sweep, Triangulation, Promotion Audit, Synthesis, Reconciliation)
+  for evidence-triangulated analysis of a single OSS project.
+  Produces a self-contained per-substrate folder ready for later
+  cross-substrate comparison.
+
+  Use when evaluating a substrate (memory layer, framework, runtime,
+  queue, etc.) for adoption or comparison, or when building a
+  reusable knowledge artefact about how a substrate actually works.
+
+skills:
+  - substrate-audit
+  # Supporting skills will be added as they are promoted to mission-kit.
+  # Candidates from operator's catalog (not yet promoted):
+  #   - research-artefacts
+  #   - brief-driven-research
+  #   - codebase-inspection

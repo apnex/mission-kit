@@ -1,5 +1,5 @@
 ---
-name: nanoprobe
+name: substrate-audit
 description: "Use when you need a deep, code-grounded, evidence-triangulated audit of a single open-source repository — the per-repo descriptive pass that feeds later cross-substrate analysis. Produces a self-contained per-substrate folder with summary, architecture map, goal mapping, prober assessment, sources, and one file per feature, each feature triangulated across claim, doc, and source. Enforces a three-tier knowledge discipline (Tier 1 claim / Tier 2 source / Tier 3 analysis) so future readers can reuse the output without re-probing."
 when_to_use:
   - User asks for a deep evaluation of a single OSS project (substrate, library, framework, service)

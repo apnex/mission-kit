@@ -1,22 +1,23 @@
 ---
 id: K3
 category: skill
-title: nanoprobe — code-grounded substrate audit
+title: substrate-audit — code-grounded substrate audit
 added: 2026-05-24
 status: active
 supersedes: []
 related: [M1, M3]
 ---
 
-# K3 — nanoprobe
+# K3 — substrate-audit
 
 ## Rule
 
 When evaluating an OSS substrate (memory layer, framework, runtime,
-queue, etc.) for adoption or comparison, run a **nanoprobe** instead
-of a survey. A nanoprobe is a code-grounded, evidence-triangulated
-audit pinned to a specific upstream tag, structured around a fixed
-artefact layout and executed as a **five-pass meta-process**:
+queue, etc.) for adoption or comparison, run a **substrate audit**
+(colloquially: a *nanoprobe*) instead of a survey. A substrate audit
+is a code-grounded, evidence-triangulated analysis pinned to a
+specific upstream tag, structured around a fixed artefact layout
+and executed as a **five-pass meta-process**:
 
 1. **Sweep** — exhaustively enumerate features from source, configs,
    migrations, and docs. Cite every claim with `path:line` or
@@ -44,8 +45,7 @@ them contaminates the descriptive pass with comparison bias.
 
 ## Artefacts
 
-Each probe lives under `docs/<domain>/<substrate>/` with this
-layout:
+Each audit lives under `docs/<domain>/<substrate>/` with this layout:
 
 ```
 00-summary.md         — abstract + companion counts + methodology
@@ -63,8 +63,8 @@ sources.md            — pinned upstream tag + commit SHA + repo URL
 
 Surveys collapse under their own abstraction — "supports X" hides
 whether X is a working code path, a stub, or a doc-only claim.
-A nanoprobe forces every claim back to source, which is the only
-honest answer to "is this substrate viable for our use case?".
+A substrate audit forces every claim back to source, which is the
+only honest answer to "is this substrate viable for our use case?".
 The five-pass structure exists because earlier three-pass runs
 repeatedly missed (a) promotion candidates buried in passing
 mentions and (b) cross-feature invariants only visible after
@@ -80,7 +80,7 @@ the spec set is complete.
 - Any time "supports X" / "has Y" claims need to be verified
   against actual source before commitment.
 
-Skip the nanoprobe and use a lightweight survey when:
+Skip the substrate-audit and use a lightweight survey when:
 
 - The decision is reversible and low-stakes (e.g. dev tooling).
 - The substrate is already deeply familiar to the operator.
@@ -98,10 +98,15 @@ cross-feature invariants.
 ## Tooling
 
 Full procedure, templates, references, and analysis lenses live in
-the Hermes-format skill tree at [`nanoprobe/`](nanoprobe/). The
+the skill tree at [`substrate-audit/`](substrate-audit/). The
 SKILL.md entrypoint, eight reference documents (rung definitions,
 evidence triangulation, feature taxonomy, source citation, tier
 discipline, execution strategy, closing-pass exemplars, substrate
-analysis lenses), and seven artefact templates ship together.
-That tree is the canonical source; this entry is the mission-kit
-index handle.
+analysis lenses), and seven artefact templates ship together. That
+tree is the canonical source; this entry is the mission-kit index
+handle.
+
+This skill is also the centrepiece of the `nanoprobe` bundle
+(see [`bundles/nanoprobe.yaml`](../bundles/nanoprobe.yaml)) — a
+role composition for operators performing code-grounded substrate
+research.
