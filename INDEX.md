@@ -25,3 +25,4 @@ Flat ledger of every entry across categories. Sort by ID prefix.
 | [K1](skills/K1-ai-attribution-scrub.md) | skill | AI-attribution scrub | active | 2026-05-24 |
 | [K2](skills/K2-force-push-carve-out.md) | skill | Force-push carve-out for fork branches | active | 2026-05-24 |
 | [K3](skills/K3-substrate-audit.md) | skill | substrate-audit — code-grounded substrate audit | active | 2026-05-24 |
+| [K4](skills/K4-research-artefacts.md) | skill | research-artefacts — discipline for producing persistent research outputs | active | 2026-05-26 |
