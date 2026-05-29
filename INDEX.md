@@ -26,3 +26,4 @@ Flat ledger of every entry across categories. Sort by ID prefix.
 | [K2](skills/K2-force-push-carve-out.md) | skill | Force-push carve-out for fork branches | active | 2026-05-24 |
 | [K3](skills/K3-substrate-audit.md) | skill | substrate-audit — code-grounded substrate audit | active | 2026-05-24 |
 | [K4](skills/K4-research-artefacts.md) | skill | research-artefacts — discipline for producing persistent research outputs | active | 2026-05-26 |
+| [K5](skills/K5-survey.md) | skill | survey — stakeholder-intent capture before design commitment | active | 2026-05-29 |

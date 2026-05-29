@@ -1,0 +1,209 @@
+---
+# Survey envelope — captures stakeholder intent BEFORE a design is committed.
+# Scaffolded by survey-init.sh. Placeholders in <angle-brackets> are unfilled;
+# validate-envelope.sh rejects any pick/required-field still left as <...>.
+survey-title: <TITLE>
+work-item: <ITEM-ID>
+methodology-source: <methodology reference; e.g. a local SURVEY.md or this skill>
+stakeholder-picks:
+  round-1:
+    Q1: <a|b|c|d>
+    Q1-rationale: <optional brief rationale>
+    Q2: <a|b|c|d>
+    Q2-rationale: <optional>
+    Q3: <a|b|c|d>
+    Q3-rationale: <optional>
+  round-2:
+    Q4: <a|b|c|d>
+    Q4-rationale: <optional>
+    Q5: <a|b|c|d>
+    Q5-rationale: <optional>
+    Q6: <a|b|c|d>
+    Q6-rationale: <optional>
+# classification is OPTIONAL. Delete this key if your project has no work-item
+# taxonomy. If you keep it and set SURVEY_CLASSES (env) or --classes, the value
+# must be one of that pipe-separated set; otherwise any non-placeholder string passes.
+classification: <optional; e.g. feature | refactor | spike | migration — your taxonomy>
+outcome-axis:
+  # The consumer-supplied set of goals / objectives this work serves. Generic
+  # replacement for any project-specific outcome framework. Free-form labels.
+  primary: [<goal-A>, <goal-B>]
+  secondary: [<goal-C>]
+  round-1:
+    primary: [<goal-A>]
+    secondary: [<goal-C>]
+  round-2:
+    primary: [<goal-A>]
+    secondary: [<goal-C>]
+anti-goals-count: <N>
+flags-count: <N>
+calibration-data:
+  stakeholder-time-cost-minutes: <integer>
+  comparison-baseline: <ref to a prior survey or prior process, or "none">
+  notes: <free text observation; novel constraints; questions that worked or didn't>
+contradictory-constraints:
+  # Optional; fill ONLY when a multi-pick (e.g. Q2: ac) signals a both-at-once
+  # constraint the stakeholder is asking the design to satisfy.
+  # - round: 1
+  #   questions: [Q2]
+  #   picks: [a, c]
+  #   constraint-envelope: <description of the common-satisfiable constraint>
+---
+
+# <TITLE> — Survey envelope
+
+**Methodology:** <methodology reference> (2-round, 3-orthogonal-questions-per-round pick-list)
+**Work item:** <ITEM-ID>
+**Classification candidate:** <optional>
+
+---
+
+## §0 Context
+
+<1-2 paragraphs: where this work item came from + surrounding context + which
+methodology anchor governs this survey. Cite the work item and any related items.>
+
+---
+
+## §1 Round 1 picks
+
+| Q | Pick | Intent reading (1-line summary) |
+|---|---|---|
+| Q1 — <axis title> | **<letter>** <option label> | <brief reading> |
+| Q2 — <axis title> | **<letter>** <option label> | <brief reading> |
+| Q3 — <axis title> | **<letter>** <option label> | <brief reading> |
+
+### §1.Q1 — Per-question interpretation
+
+<1-2 paragraphs: cite the work-item text + the outcome-axis (round-1 mapping) +
+the aggregate of the round's picks. State the hypothesis: "given the picks + the
+work item + the goals, here is what Q1 most likely means.">
+
+### §1.Q2 — Per-question interpretation
+
+<1-2 paragraphs, same shape as §1.Q1.>
+
+### §1.Q3 — Per-question interpretation
+
+<1-2 paragraphs, same shape as §1.Q1.>
+
+**Round-1 composite read** (1-2 sentences): <aggregate read of all 3 picks;
+cross-question coherence check; flag any tension as a Round-2 clarification candidate.>
+
+---
+
+## §2 Round 2 picks
+
+| Q | Pick | Intent reading (1-line summary) |
+|---|---|---|
+| Q4 — <axis title> | **<letter>** <option label> | <brief reading> |
+| Q5 — <axis title> | **<letter>** <option label> | <brief reading> |
+| Q6 — <axis title> | **<letter>** <option label> | <brief reading> |
+
+### §2.Q4 — Per-question interpretation
+
+<1-2 paragraphs: work item + Round-1 responses + interpretations + Round-2 outcome
+mapping + aggregate Round-2 surface.>
+
+### §2.Q5 — Per-question interpretation
+
+<1-2 paragraphs, same shape as §2.Q4.>
+
+### §2.Q6 — Per-question interpretation
+
+<1-2 paragraphs, same shape as §2.Q4.>
+
+**Round-2 composite read** (1-2 sentences): <same shape as Round-1 composite.>
+
+---
+
+## §3 Composite intent envelope
+
+<1-3 paragraphs: the solved matrix — aggregate read across both rounds. State the
+primary outcome + secondary outcomes + key design constraints surfaced. This is the
+load-bearing envelope the design phase concretizes.>
+
+---
+
+## §4 Scope summary
+
+| Axis | Bound |
+|---|---|
+| Title | <TITLE> |
+| Classification | <optional> |
+| Location / scope | <path or scope reference> |
+| Primary outcome | <1-line summary> |
+| Secondary outcomes | <1-line summary> |
+| Outcome-axis (primary) | <goal-A, goal-B, ...> |
+| Outcome-axis (secondary) | <goal-C, ...> |
+| Outcome-axis (Round-1) | primary: <goal-A>; secondary: <goal-C> |
+| Outcome-axis (Round-2) | primary: <goal-A>; secondary: <goal-C> |
+
+---
+
+## §5 Anti-goals (out-of-scope; deferred)
+
+| AG | Description | Composes-with target |
+|---|---|---|
+| AG-1 | <description> | <future item / follow-on work> |
+| AG-2 | <description> | <target> |
+
+---
+
+## §6 Flags / open questions for the design phase
+
+Open questions and risks surfaced during interpretation, each with a recommendation
+to challenge during design review.
+
+| # | Flag | Recommendation |
+|---|---|---|
+| F1 | <flag description> | <recommendation> |
+| F2 | <flag description> | <recommendation> |
+
+---
+
+## §7 Sequencing / cross-work considerations
+
+### §7.1 Branch + review strategy
+
+<branch handle + review cadence if applicable>
+
+### §7.2 Composability with concurrent / pending work
+
+<related items and how they compose with this work>
+
+### §7.3 Compressed-timeline candidate?
+
+<assessment of whether this can collapse phases; risk-flag if scope warrants stakeholder awareness>
+
+---
+
+## §calibration — Calibration data point
+
+Captures an empirical baseline for the methodology-evolution loop.
+
+- **Stakeholder time-cost (minutes):** <integer> (across both rounds)
+- **Comparison baseline:** <prior survey reference OR prior process reference OR "none">
+- **Notes:** <free text — what worked, what didn't, novel constraints, multi-pick observations>
+
+---
+
+## §contradictory — Contradictory multi-pick carry-forward
+
+(Fill ONLY when a multi-pick signals a both-at-once constraint. Otherwise omit this section entirely.)
+
+| Round | Question(s) | Picks | Constraint envelope description |
+|---|---|---|---|
+| <1\|2> | <Q-N, Q-M> | <letter, letter> | <description of the common-satisfiable constraint> |
+
+---
+
+## §8 Cross-references
+
+- **<methodology reference>** — the survey methodology this followed
+- **<ITEM-ID>** — source work item
+- **<related items / follow-on work>**
+
+---
+
+— Proposer: <name> / <YYYY-MM-DD> (Survey envelope; <N> picks ratified across 2 rounds)
