@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Claude Code statusline.
-# Format: cwd | model | ctx: used/total (pct) | 5h: X% [time-left: burn×]  7d: Y% [time-left: burn×]
+# Format: cwd | model | ctx: pct [used/total] | 5h: X% [time-left: burn×]  7d: Y% [time-left: burn×]
 # Burn ratio = used% / elapsed%; colored yellow when >= 1.0× (on-pace or ahead).
 
 input=$(cat)
@@ -74,7 +74,7 @@ jq -r --arg home "$HOME" '
   | burn_ratio($rl5; $rl5_remaining; 18000) as $rl5_burn
   | burn_ratio($rl7; $rl7_remaining; 604800) as $rl7_burn
 
-  | "\($cwd) | \($model) | ctx: \($ctx_used | k)/\($ctx_total | k) (\($ctx_pct | pct))"
+  | "\($cwd) | \($model) | ctx: \($ctx_pct | pct) [\($ctx_used | k)/\($ctx_total | k)]"
     + section("5h"; " | "; $rl5; $rl5_remaining; $rl5_burn)
     + section("7d"; "  "; $rl7; $rl7_remaining; $rl7_burn)
 ' <<<"$input"

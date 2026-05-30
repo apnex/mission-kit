@@ -7,7 +7,7 @@ A Claude Code status line: working directory, model, context usage, and rate-lim
 The line renders as:
 
 ```text
-~/path | Model | ctx: 42k/200k (21%) | 5h: 30% [2h15m: 0.8×]  7d: 12% [5d3h: 0.4×]
+~/path | Model | ctx: 21% [42k/200k] | 5h: 30% [2h15m: 0.8×]  7d: 12% [5d3h: 0.4×]
 ```
 
 Each rate-limit window shows `used% [time-to-reset: burn×]`.
