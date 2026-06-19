@@ -22,12 +22,20 @@ Every entry has the same frontmatter + body skeleton — see
 body sticks to *rule + rationale + good/bad examples + when to apply +
 origin*.
 
+Axiom entries (prefix `A`, folder [`axioms/`](axioms/)) are the
+exception: they carry a tele-native body shape — *Mandate / Mechanics /
+Rationale / Faults / Success signals / Provenance* — rather than the
+standard skeleton, and add an `applies-to` frontmatter field declaring
+the axiom's domain of validity (the architectural assumptions under
+which it is load-bearing). See [`axioms/README.md`](axioms/README.md).
+
 ## ID scheme
 
 Each entry has a stable ID, prefixed by category:
 
 | Prefix | Category | Folder |
 |---|---|---|
+| `A` | **Axiom** — foundational always-in-force principles | [`axioms/`](axioms/) |
 | `S` | **Style** — doc + commit + naming conventions | [`style/`](style/) |
 | `M` | **Methodology** — ways of working | [`methodology/`](methodology/) |
 | `P` | **Pattern** — recurring designs | [`patterns/`](patterns/) |

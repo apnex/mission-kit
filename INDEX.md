@@ -4,6 +4,19 @@ Flat ledger of every entry across categories. Sort by ID prefix.
 
 | ID | Category | Title | Status | Added |
 |---|---|---|---|---|
+| [A0](axioms/A0-sovereign-intelligence-engine.md) | axiom | Sovereign Intelligence Engine | active | 2026-06-19 |
+| [A1](axioms/A1-sovereign-state-transparency.md) | axiom | Sovereign State Transparency | active | 2026-06-19 |
+| [A2](axioms/A2-isomorphic-specification.md) | axiom | Isomorphic Specification | active | 2026-06-19 |
+| [A3](axioms/A3-sovereign-composition.md) | axiom | Sovereign Composition | active | 2026-06-19 |
+| [A4](axioms/A4-zero-loss-knowledge.md) | axiom | Zero-Loss Knowledge | active | 2026-06-19 |
+| [A5](axioms/A5-perceptual-parity.md) | axiom | Perceptual Parity | active | 2026-06-19 |
+| [A6](axioms/A6-frictionless-agentic-collaboration.md) | axiom | Frictionless Agentic Collaboration | active | 2026-06-19 |
+| [A7](axioms/A7-resilient-agentic-operations.md) | axiom | Resilient Agentic Operations | active | 2026-06-19 |
+| [A8](axioms/A8-gated-recursive-integrity.md) | axiom | Gated Recursive Integrity | active | 2026-06-19 |
+| [A9](axioms/A9-chaos-validated-deployment.md) | axiom | Chaos-Validated Deployment | active | 2026-06-19 |
+| [A10](axioms/A10-autopoietic-evolution.md) | axiom | Autopoietic Evolution | active | 2026-06-19 |
+| [A11](axioms/A11-cognitive-minimalism.md) | axiom | Cognitive Minimalism | active | 2026-06-19 |
+| [A12](axioms/A12-precision-context-engineering.md) | axiom | Precision Context Engineering | active | 2026-06-19 |
 | [S1](style/S1-prereqs-explicit-cluster-agnostic.md) | style | Prerequisites explicit + cluster-agnostic + assumes authenticated tooling | active | 2026-05-24 |
 | [S2](style/S2-runnable-commands-in-code-blocks.md) | style | Runnable workflow steps belong in code blocks | active | 2026-05-24 |
 | [S3](style/S3-producer-consumer-doc-split.md) | style | Producer / consumer doc split | active | 2026-05-24 |
