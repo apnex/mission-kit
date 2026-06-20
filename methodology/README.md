@@ -8,3 +8,4 @@ Ways of working. The "how you operate" rules.
 | [M2](M2-test-drive-docs-by-execution.md) | Test-drive docs by execution, not by reading | active |
 | [M3](M3-default-reject-honest-yield.md) | Default-reject discipline + honest yield reporting | active |
 | [M4](M4-frozen-history-rule.md) | Frozen-history rule — don't rewrite design records on policy change | active |
+| [M5](M5-anti-amnesia-deferral.md) | Anti-amnesia deferral — every parked or cut item carries a revival trigger | active |

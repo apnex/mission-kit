@@ -33,8 +33,12 @@ Flat ledger of every entry across categories. Sort by ID prefix.
 | [M2](methodology/M2-test-drive-docs-by-execution.md) | methodology | Test-drive docs by execution | active | 2026-05-24 |
 | [M3](methodology/M3-default-reject-honest-yield.md) | methodology | Default-reject discipline + honest yield reporting | active | 2026-05-24 |
 | [M4](methodology/M4-frozen-history-rule.md) | methodology | Frozen-history rule | active | 2026-05-24 |
+| [M5](methodology/M5-anti-amnesia-deferral.md) | methodology | Anti-amnesia deferral — every parked or cut item carries a revival trigger | active | 2026-06-20 |
 | [P1](patterns/P1-path-a-path-b-dual-substrate.md) | pattern | Path A / Path B labeling for dual-substrate workflows | active | 2026-05-24 |
 | [P2](patterns/P2-node-label-gate-cross-component-contracts.md) | pattern | Node-label gate for cross-component contracts | active | 2026-05-24 |
+| [P3](patterns/P3-twin-parity-by-generation.md) | pattern | Twin-parity by generation — one master, generate the other, gate the round-trip | active | 2026-06-20 |
+| [P4](patterns/P4-neutral-core-tenant-composition.md) | pattern | Neutral core + tenant composition — shared mechanism, injected semantics, promote down by evidence | active | 2026-06-20 |
+| [P5](patterns/P5-verbs-as-data-surface.md) | pattern | Verbs-as-data surface — one manifest drives dispatch, docs, and validation | active | 2026-06-20 |
 | [K1](skills/K1-ai-attribution-scrub.md) | skill | AI-attribution scrub | active | 2026-05-24 |
 | [K2](skills/K2-force-push-carve-out.md) | skill | Force-push carve-out for fork branches | active | 2026-05-24 |
 | [K3](skills/K3-substrate-audit.md) | skill | substrate-audit — code-grounded substrate audit | active | 2026-05-24 |
