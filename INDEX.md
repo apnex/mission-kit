@@ -44,3 +44,4 @@ Flat ledger of every entry across categories. Sort by ID prefix.
 | [K3](skills/K3-substrate-audit.md) | skill | substrate-audit — code-grounded substrate audit | active | 2026-05-24 |
 | [K4](skills/K4-research-artefacts.md) | skill | research-artefacts — discipline for producing persistent research outputs | active | 2026-05-26 |
 | [K5](skills/K5-survey.md) | skill | survey — stakeholder-intent capture before design commitment | active | 2026-05-29 |
+| [K6](skills/K6-arc-lifecycle.md) | skill | arc-lifecycle — operate staged work as a sovereign FSM-gated state engine | active | 2026-06-20 |

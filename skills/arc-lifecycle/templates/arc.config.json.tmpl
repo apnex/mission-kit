@@ -1,0 +1,9 @@
+{
+  "_doc": "Tenant config for a runnable arc-lifecycle engine. The domain-neutral core bakes NO vocabulary; this file is THIS project's single source for its step classification (`tiers`) + the path to its instance store. The generic schema + FSM ship with the engine; only `catalog` is yours. Keep `tiers` in parity with any spec-profile enum you layer on (see P3).",
+
+  "tiers": ["<tier-1>", "<tier-2>", "<tier-3>"],
+
+  "paths": {
+    "catalog": "<relative/path/to/your-catalog.json>"
+  }
+}

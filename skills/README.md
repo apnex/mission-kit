@@ -9,3 +9,4 @@ Operator-level capabilities + reusable tooling. The "how you do it" entries.
 | [K3](K3-substrate-audit.md) | substrate-audit — code-grounded substrate audit | active |
 | [K4](K4-research-artefacts.md) | research-artefacts — discipline for producing persistent research outputs | active |
 | [K5](K5-survey.md) | survey — stakeholder-intent capture before design commitment | active |
+| [K6](K6-arc-lifecycle.md) | arc-lifecycle — operate staged work as a sovereign FSM-gated state engine | active |
