@@ -1,20 +1,23 @@
 ---
 name: arc-lifecycle
 description: "Use to manage a multi-step initiative as a sovereign state engine an agent operates by VERBS, instead of a prose backlog it hand-edits. The model is a fixed summit (global-max goal) + an arc (tree of rungs/steps) climbing it, each carrying a lifecycle state. Operate it through an FSM-gated API: reads (query / traverse / describe / project) answer questions without loading the whole store; writes (transition / author) are FSM-gated, delta-logged, and validate the whole store before touching disk. Terminals are reopenable, deferrals carry a revival trigger (anti-amnesia), and human/spec views are GENERATED from the one store. The agent derives understanding from the system itself, not from prose it must parse and trust."
-when_to_use:
-  - Managing a multi-step initiative whose steps are deferrable, terminable, and interdependent over a long horizon
-  - An agent (not only a human) will operate the tracker — it needs a verb API + queryable state, not a markdown file
-  - You are designing a roadmap / backlog / migration plan and want the transition rules to be enforced physics, not convention
-  - A prose backlog has already produced a lost-parked-item, a stale status header, or an inconsistent dependency
-  - You want every deferred item to carry the condition that would revive it, and every "done" to stay reopenable
-when_not_to_use:
-  - A short, flat, throwaway task list with no deferral, no dependencies, and a single human reader
-  - Capturing open-ended stakeholder intent before a design exists → use the survey skill first; arc-lifecycle manages the work once it is staged
-  - A one-off mechanical change with one obvious outcome and no lifecycle
-related_skills: [survey, substrate-audit]
+metadata:
+  related-skills: survey, substrate-audit
 ---
 
 # arc-lifecycle — operate staged work as a sovereign state engine
+
+## When to use
+
+- Managing a multi-step initiative whose steps are deferrable, terminable, and interdependent over a long horizon.
+- An agent (not only a human) will operate the tracker — it needs a verb API + queryable state, not a markdown file.
+- Designing a roadmap / backlog / migration plan and you want the transition rules to be enforced physics, not convention.
+- A prose backlog has already produced a lost-parked-item, a stale status header, or an inconsistent dependency.
+- You want every deferred item to carry the condition that would revive it, and every "done" to stay reopenable.
+
+**Not** for: a short, flat, throwaway task list (no deferral/dependencies, single human reader); capturing
+open-ended stakeholder intent before a design exists (use the `survey` skill first — arc-lifecycle manages the
+work once it is staged); a one-off mechanical change with one obvious outcome and no lifecycle.
 
 ## Overview
 
