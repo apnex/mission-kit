@@ -30,8 +30,7 @@ skills:
   - model-a-classification    # AUTHOR orthogonal enum axes — independent classification dimensions (the two-axes discipline)
 
   # --- composed systems (declare `composes:` over the primitives they are built from) ---
-  #   model-an-arc            composes {state-machine, dependency-graph, constraint, classification, workflow}
-  #                           — read/author the arc MODEL; the operate facet is the arc-lifecycle skill (K6).
+  - model-an-arc              # MODEL an arc as a composed L2 system — composes all six primitives (the worked L2); operate facet = arc-lifecycle (K6)
 
   # --- meta: build + verify catalogue skills (for catalogue AUTHORS; adjacent to the spine) ---
   - sysml-skill-builder       # BUILD a modelling skill (the artifact grammar); composes component + workflow -> L2

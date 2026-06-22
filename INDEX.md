@@ -54,3 +54,4 @@ Flat ledger of every entry across categories. Sort by ID prefix.
 | [K13](skills/model-a-dependency-graph/SKILL.md) | skill | model-a-dependency-graph — author a DAG of typed nodes (ref edges) in SysML v2 | active | 2026-06-22 |
 | [K14](skills/model-a-constraint/SKILL.md) | skill | model-a-constraint — author a reusable boolean rule (constraint def) in SysML v2 | active | 2026-06-22 |
 | [K15](skills/model-a-classification/SKILL.md) | skill | model-a-classification — author orthogonal enum classification axes in SysML v2 | active | 2026-06-22 |
+| [K16](skills/model-an-arc/SKILL.md) | skill | model-an-arc — model an arc as a composed L2 system (composes the six primitives) | active | 2026-06-22 |

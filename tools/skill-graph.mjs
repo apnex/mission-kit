@@ -7,6 +7,7 @@
 //   - every prerequisite / composes target resolves to a real skill;
 //   - the graph is acyclic;
 //   - "level" is DERIVED (longest path from a root), never stored in a name;
+//   - composes-vs-MODEL: each composed primitive's construct family actually appears in the skill's assets;
 //   - every bundle's `skills:` entry resolves.
 // Exit non-zero on any broken edge or cycle. Dependency-free (no YAML lib); lenient frontmatter parse.
 //
@@ -37,7 +38,14 @@ function parseSkill(file) {
 			// keep bare skill-name tokens only (drop prose like "sysml-modelling skills (model-a-…, …)")
 			.filter((s) => /^[a-z0-9-]+$/.test(s));
 	};
-	return { name, prerequisite: edges('prerequisite'), composes: edges('composes') };
+	// model-asset: names the .sysml file(s) that ARE the composition (so the composes-vs-model check reads the
+	// MODEL, not the dogfood scaffolding — well-formedness.sysml/procedure assets are always constraint/action defs).
+	const files = (key) => {
+		const v = (fm.match(new RegExp(`^\\s*${key}:\\s*(.+)$`, 'm')) || [])[1];
+		if (!v) return [];
+		return v.replace(/[\[\]]/g, '').split(',').map((s) => s.trim()).filter((s) => /^[\w.\-]+\.sysml$/.test(s));
+	};
+	return { name, prerequisite: edges('prerequisite'), composes: edges('composes'), modelAsset: files('model-asset') };
 }
 
 // --- collect every canonical skill (a folder containing SKILL.md with a name) ---
@@ -50,7 +58,7 @@ for (const ent of readdirSync(SKILLS)) {
 	const parsed = parseSkill(sk);
 	if (!parsed) continue;
 	if (parsed.name !== ent) console.warn(`WARN  ${ent}/SKILL.md declares name '${parsed.name}' (should match folder)`);
-	skills.set(parsed.name, parsed);
+	skills.set(parsed.name, { ...parsed, dir });
 }
 
 const errors = [];
@@ -77,6 +85,40 @@ function depth(name, trail = []) {
 }
 for (const name of skills.keys()) depth(name);
 
+// --- 5. composes-vs-MODEL: each composed primitive's construct family must appear in the skill's assets ---
+// Turns a `composes:` claim into a tested invariant (twin-parity — a declared edge + the model it claims must
+// agree): a composed skill must
+// actually use the construct of each primitive it claims to compose, or the composition is a paper claim.
+const COMPOSES_CONSTRUCT = {
+	'model-a-state-machine':    { re: /\bstate\s+def\b/,            what: 'a state def' },
+	'model-a-workflow':         { re: /\baction\s+def\b/,           what: 'an action def' },
+	'model-a-component':        { re: /\bpart\s+def\b/,             what: 'a part def' },
+	'model-a-dependency-graph': { re: /\bref\s+\w+\s*:\s*\w+\s*\[/, what: 'a ref-edge with multiplicity' },
+	'model-a-constraint':       { re: /\bconstraint\s+def\b/,       what: 'a constraint def' },
+	'model-a-classification':   { re: /\benum\s+def\b/,             what: 'an enum def' },
+};
+for (const s of skills.values()) {
+	if (!s.composes.length) continue;
+	if (!s.modelAsset.length) {
+		errors.push(`composes-vs-model: ${s.name} composes but declares no \`model-asset:\` (which asset(s) ARE the composition?)`);
+		continue;
+	}
+	let blob = '';
+	for (const fn of s.modelAsset) {
+		const p = path.join(s.dir, 'assets', fn);
+		if (existsSync(p)) blob += readFileSync(p, 'utf8') + '\n';
+		else errors.push(`composes-vs-model: ${s.name} model-asset '${fn}' not found`);
+	}
+	// strip comments (block `/* */` incl. `doc`, and line `//`) so a construct merely NAMED in prose
+	// doesn't satisfy the check — only a real declaration in code counts.
+	blob = blob.replace(/\/\*[\s\S]*?\*\//g, ' ').replace(/\/\/[^\n]*/g, ' ');
+	for (const c of s.composes) {
+		const sig = COMPOSES_CONSTRUCT[c];
+		if (sig && !sig.re.test(blob))
+			errors.push(`composes-vs-model: ${s.name} composes '${c}' but no ${sig.what} appears in its model-asset(s)`);
+	}
+}
+
 // --- 4. every bundle's skills: entry resolves ---
 if (existsSync(BUNDLES)) {
 	for (const f of readdirSync(BUNDLES).filter((f) => f.endsWith('.yaml') || f.endsWith('.yml'))) {
@@ -99,4 +141,4 @@ for (const name of byLevel) {
 }
 console.log();
 if (errors.length) { for (const e of errors) console.log(`FAIL  ${e}`); console.log(`\n${errors.length} error(s).`); process.exit(1); }
-console.log(`PASS — ${skills.size} skills, graph acyclic, all edges + bundle entries resolve.`);
+console.log(`PASS — ${skills.size} skills, graph acyclic, all edges + bundle entries resolve, composes-vs-model holds.`);

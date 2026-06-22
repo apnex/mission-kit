@@ -4,6 +4,7 @@ description: "Build a SysML-anchored modelling skill WITH SysML — assemble the
 metadata:
   prerequisite: sysml-literacy
   composes: model-a-component, model-a-workflow
+  model-asset: skill-anatomy.sysml, build-procedure.sysml
   role: meta-authoring
 ---
 
