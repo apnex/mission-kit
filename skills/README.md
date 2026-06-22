@@ -12,3 +12,4 @@ Operator-level capabilities + reusable tooling. The "how you do it" entries.
 | [K6](K6-arc-lifecycle.md) | arc-lifecycle — operate staged work as a sovereign FSM-gated state engine | active |
 | [K7](sysml-literacy/SKILL.md) | sysml-literacy — read + understand SysML v2 (literacy base for SysML-anchored skills) | active |
 | [K8](model-a-state-machine/SKILL.md) | model-a-state-machine — author an FSM/lifecycle in SysML v2 | active |
+| [K9](model-a-workflow/SKILL.md) | model-a-workflow — author an ordered activity / workflow in SysML v2 | active |

@@ -62,3 +62,12 @@ when an OMG-normative parser is the gate:
 
 Semantic notes are **workspace-wide**: a warning from one file can surface while validating another in the same
 batch. When attributing a warning, validate the file in isolation.
+
+## Authoring a skill: gate-verify every parse claim
+
+If you are *writing* a SysML-anchored skill, treat any prose of the form "X parses" / "X won't parse" as a
+claim to **check against the validator before you commit it** — intuition is unreliable here. This gate
+*accepts* some non-idiomatic forms silently (e.g. a stray `else` in a `decide`) and *rejects* some you'd expect
+to work (e.g. `do action` inside an `action def` body, or bound-`accept` before `then`). Run the probe, paste
+the real result, and phrase the rule by what the gate actually does. Every claim in these skills was caught
+this way at least once.
