@@ -79,7 +79,7 @@ The five-asset scaffold is for **primitives**. A composed **system** skill (an L
    is unreliable (the gate accepts non-idiomatic forms and rejects expected ones). **Reserved words that can't be
    feature names** — the catalogue GATE's set, every one verified to fail: `state` `from` `accept` `to` `then`
    `entry` `subject` `fork` `render` `typed` `in` `out` `doc` `verify` `decide` `for` `part` `ref` `attribute`
-   `item`. This set is *validator-specific* (e.g. `render`/`decide` may not be reserved in every conformant SysML
+   `item` `disjoint`. This set is *validator-specific* (e.g. `render`/`decide` may not be reserved in every conformant SysML
    v2 parser) and *not exhaustive* for new constructs — so **probe, don't trust the list**; the gate is the authority.
 3. **Write the assets** — the five-asset scaffold + the SKILL.md sections.
 4. **Dogfood** — model the skill's own *procedure* as an `action def` and its *well-formedness* rules as

@@ -25,9 +25,9 @@ skills:
   - model-a-state-machine     # AUTHOR a lifecycle / FSM (state def) — the template for the rest
   - model-a-workflow          # AUTHOR an ordered activity (action def) — successions, decisions, recursion/cascade
   - model-a-component         # AUTHOR a structural breakdown (part def / item def) — attributes, refs vs parts, :> /:>>
-  #   model-a-dependency-graph ref edges forming a DAG over typed nodes
-  #   model-a-constraint       constraint def — invariants, asserted + reused
-  #   model-a-classification   enum axes + the orthogonality discipline
+  - model-a-dependency-graph  # AUTHOR a DAG of typed nodes via ref edges — acyclicity + topology (orthogonal to FSM/ownership)
+  - model-a-constraint        # AUTHOR a reusable boolean rule (constraint def) asserted on attributes — the spec substrate
+  - model-a-classification    # AUTHOR orthogonal enum axes — independent classification dimensions (the two-axes discipline)
 
   # --- composed systems (declare `composes:` over the primitives they are built from) ---
   #   model-an-arc            composes {state-machine, dependency-graph, constraint, classification, workflow}

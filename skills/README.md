@@ -16,3 +16,6 @@ Operator-level capabilities + reusable tooling. The "how you do it" entries.
 | [K10](model-a-component/SKILL.md) | model-a-component — author a structural breakdown in SysML v2 | active |
 | [K11](sysml-skill-builder/SKILL.md) | sysml-skill-builder — build a SysML-anchored modelling skill (meta) | active |
 | [K12](sysml-skill-tester/SKILL.md) | sysml-skill-tester — verify a SysML-anchored modelling skill (meta) | active |
+| [K13](model-a-dependency-graph/SKILL.md) | model-a-dependency-graph — author a DAG of typed nodes (ref edges) in SysML v2 | active |
+| [K14](model-a-constraint/SKILL.md) | model-a-constraint — author a reusable boolean rule (constraint def) in SysML v2 | active |
+| [K15](model-a-classification/SKILL.md) | model-a-classification — author orthogonal enum classification axes in SysML v2 | active |
