@@ -3,6 +3,8 @@ name: arc-lifecycle
 description: "Use to manage a multi-step initiative as a sovereign state engine an agent operates by VERBS, instead of a prose backlog it hand-edits. The model is a fixed summit (global-max goal) + an arc (tree of rungs/steps) climbing it, each carrying a lifecycle state. Operate it through an FSM-gated API: reads (query / traverse / describe / project) answer questions without loading the whole store; writes (transition / author) are FSM-gated, delta-logged, and validate the whole store before touching disk. Terminals are reopenable, deferrals carry a revival trigger (anti-amnesia), and human/spec views are GENERATED from the one store. The agent derives understanding from the system itself, not from prose it must parse and trust."
 metadata:
   related-skills: survey, substrate-audit
+  facet: operate — runs an arc as a live FSM-gated engine (the operate facet of the arc model)
+  see-also: sysml-literacy, model-a-state-machine
 ---
 
 # arc-lifecycle — operate staged work as a sovereign state engine
@@ -45,6 +47,23 @@ This skill is **engine-agnostic**: it describes the model + the operating
 discipline. A reference implementation is a domain-neutral JSON core a
 consumer programs with its own vocabulary; see "Installing a runnable
 engine."
+
+## Where this sits — operating vs modelling an arc
+
+An arc is a **specialist composed model**: an FSM (the lifecycle) + a dependency
+DAG (`dependsOn`) + invariants (anti-amnesia, banked-substrate) + classification
+axes (payoff, tier). Two facets, two skills, two substrates:
+
+- **Operate (this skill).** Run a *live instance* through the verb API — the
+  runtime engine, not the model text. This is what you need to drive real work.
+- **Model / author.** Read or author the arc *model itself* with the SysML
+  modelling primitives: `model-a-state-machine` (the FSM), and — as the catalogue
+  fans out — `model-a-dependency-graph`, `model-a-constraint`, `model-a-classification`,
+  composed into a `model-an-arc` skill, all read with `sysml-literacy`.
+
+You can operate an arc without reading the model (so `sysml-literacy` is a
+*see-also*, not a prerequisite, here); reach for the modelling skills when you
+want to understand, extend, or re-author the structure the engine enforces.
 
 ## The model — summit / arc / rung
 

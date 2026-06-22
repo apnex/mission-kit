@@ -2,18 +2,34 @@
 #
 # Bundles compose skills into operator-facing roles. Agent-agnostic: no harness-specific
 # fields, no tool names. Any agent that consumes SKILL.md trees can resolve this by its `skills:` list.
+#
+# The catalogue is a HIERARCHY expressed as edges, not numbered names. Each skill declares
+# `prerequisite:` (what to read first) and, for a composed system, `composes:` (the primitives it is
+# built from). "Level" is DERIVED from those edges (root -> primitives -> composed systems), never
+# stored in a name. Order below follows that derived depth.
 
 name: sysml-modelling
 description: |
   Read and author SysML v2 models. Start with sysml-literacy (read + understand any model), then use the
-  model-a-X skills to author specific things. The base for digital-twinning designs in a dense, unambiguous,
-  queryable format: model the structure, keep prose for judgment.
+  model-a-X primitives to author specific constructs, then compose them into specialist systems. The base for
+  digital-twinning designs in an unambiguous, queryable format: model the structure, keep prose for judgment.
 
-  Use when reading, reasoning over, or authoring SysML v2 — components, state machines, workflows, and
-  (as the catalogue grows) requirements, connections, and composite systems.
+  Use when reading, reasoning over, or authoring SysML v2 — components, state machines, workflows, dependency
+  graphs, constraints, and (as the catalogue grows) composite systems like an arc.
 
 skills:
-  - sysml-literacy          # READ any model — the literacy base (prerequisite for the rest)
-  - model-a-state-machine   # AUTHOR a lifecycle / FSM
-  # model-a-workflow, model-a-component — added as the catalogue fans out (MDL3); the engine-backed
-  # safe-authoring + projection tooling arrives with prism integration (MDL4).
+  # --- root: literacy (read any model) ---
+  - sysml-literacy            # READ + understand any model — prerequisite for everything below
+
+  # --- primitives: author one SysML construct family each (copy the model-a-state-machine shape) ---
+  - model-a-state-machine     # AUTHOR a lifecycle / FSM (state def) — the template for the rest
+  # planned primitives (one construct family each), authored to the same template:
+  #   model-a-workflow         action def — ordered/guarded/recursive steps (also: transition effects, cascades)
+  #   model-a-component        part def / item def — structure, attributes, refs
+  #   model-a-dependency-graph ref edges forming a DAG over typed nodes
+  #   model-a-constraint       constraint def — invariants, asserted + reused
+  #   model-a-classification   enum axes + the orthogonality discipline
+
+  # --- composed systems (declare `composes:` over the primitives they are built from) ---
+  #   model-an-arc            composes {state-machine, dependency-graph, constraint, classification, workflow}
+  #                           — read/author the arc MODEL; the operate facet is the arc-lifecycle skill (K6).

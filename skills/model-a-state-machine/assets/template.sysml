@@ -7,12 +7,14 @@ package MachineTemplate {
 	item def EventOne;
 	item def EventTwo;
 
-	// 2. the machine — an INITIAL state, the states, and the transitions
+	// 2. the machine — an INITIAL transition, the states, and the transitions
 	state def Machine {
-		entry; then stateA;                                        // the initial state
+		entry; then stateA;                                        // the initial transition: starts in stateA
 		state stateA;
 		state stateB;
 		transition t1 first stateA accept EventOne then stateB;    // from stateA, on EventOne -> stateB
 		transition t2 first stateB accept EventTwo then stateA;    // a way back
+		// a GUARD splits one event two ways (reads an attribute in scope); see assets/guarded.sysml:
+		// transition t3 first stateA accept EventOne if someCond then stateC;
 	}
 }

@@ -72,3 +72,12 @@ This is the literacy floor. A SysML-anchored skill should: (1) declare `sysml-li
 in its `metadata`; (2) keep its SysML spine (the workflow/state-machine/component it teaches or operates)
 in `references/` or `assets/`, loaded on demand; (3) keep prose for judgment + rationale, model the
 structure. With the decode-tax paid here once, later skills can be expressed largely in SysML.
+
+- **Validate discipline lives here, once:** **[`references/validating-sysml.md`](references/validating-sysml.md)**
+  — how to run a parser, why `syntaxErrors==0` is necessary-not-sufficient, the ignorable advisory classes,
+  and the normative-vs-this-validator idioms (events as `item def` vs `signal def`; bare vs bound `accept`).
+  Every authoring skill links it instead of repeating it.
+- **The catalogue is a hierarchy of edges, not numbered names.** A skill declares `prerequisite:` (vertical:
+  what you must read first) and, for a specialist system built from primitives, `composes:` (the primitives it
+  is built from). "Level" is *derived* from those edges (literacy = root; a primitive = depth 1; a system that
+  composes primitives = deeper), never written into a name. Keep the levels in the DAG, not the labels.
