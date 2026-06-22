@@ -32,6 +32,7 @@ skills:
   # --- composed systems (declare `composes:` over the primitives they are built from) ---
   - model-an-arc              # MODEL an arc as a composed L2 system — composes all six primitives (the worked L2); operate facet = arc-lifecycle (K6)
 
-  # --- meta: build + verify catalogue skills (for catalogue AUTHORS; adjacent to the spine) ---
+  # --- meta: build / verify / evaluate catalogue skills (for catalogue AUTHORS; adjacent to the spine) ---
   - sysml-skill-builder       # BUILD a modelling skill (the artifact grammar); composes component + workflow -> L2
-  - sysml-skill-tester        # VERIFY a modelling skill (the acceptance bar)
+  - sysml-skill-tester        # VERIFY a modelling skill is correct (the acceptance bar)
+  - sysml-skill-evaluator     # MEASURE a modelling skill's leverage vs the base model (the gate: does it convey doctrine?)

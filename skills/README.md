@@ -20,3 +20,4 @@ Operator-level capabilities + reusable tooling. The "how you do it" entries.
 | [K14](model-a-constraint/SKILL.md) | model-a-constraint — author a reusable boolean rule (constraint def) in SysML v2 | active |
 | [K15](model-a-classification/SKILL.md) | model-a-classification — author orthogonal enum classification axes in SysML v2 | active |
 | [K16](model-an-arc/SKILL.md) | model-an-arc — model an arc as a composed L2 system (composes the six primitives) | active |
+| [K17](sysml-skill-evaluator/SKILL.md) | sysml-skill-evaluator — measure a SysML skill's leverage vs the base model (meta) | active |

@@ -68,9 +68,12 @@ The five-asset scaffold is for **primitives**. A composed **system** skill (an L
   dogfood models the skill is *about* (this skill's `skill-anatomy.sysml` `part def` + `build-procedure.sysml`
   `action def`). A composed skill's central asset is the **composition** itself.
 - **Frontmatter:** a primitive declares `metadata.models: <construct>`; a meta/L2 skill uses `role:` /
-  `composes:` / `see-also:` and may **omit** the "Note for skill authors" section (it is not a template for
-  others). `composes:` makes it a derived L2 in the skill-graph (this skill composes `model-a-component` +
-  `model-a-workflow`).
+  `see-also:` and may **omit** the "Note for skill authors" section (it is not a template for others). Declare
+  **`composes:` only when the skill's assets genuinely build a model FROM primitives** — `sysml-skill-builder`
+  does (it models a skill *as a component* + its procedure *as a workflow*), so it is a derived L2. A meta
+  **verification/evaluation** skill (`sysml-skill-tester`, `sysml-skill-evaluator`) whose assets are a
+  *procedure + a spec* (not a composed model) declares only `role:` + `see-also:` — no `composes:`. (Consistent
+  across the quartet: builder composes; tester + evaluator do not.)
 
 ## The build procedure (see `assets/build-procedure.sysml`)
 
