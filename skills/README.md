@@ -14,3 +14,5 @@ Operator-level capabilities + reusable tooling. The "how you do it" entries.
 | [K8](model-a-state-machine/SKILL.md) | model-a-state-machine — author an FSM/lifecycle in SysML v2 | active |
 | [K9](model-a-workflow/SKILL.md) | model-a-workflow — author an ordered activity / workflow in SysML v2 | active |
 | [K10](model-a-component/SKILL.md) | model-a-component — author a structural breakdown in SysML v2 | active |
+| [K11](sysml-skill-builder/SKILL.md) | sysml-skill-builder — build a SysML-anchored modelling skill (meta) | active |
+| [K12](sysml-skill-tester/SKILL.md) | sysml-skill-tester — verify a SysML-anchored modelling skill (meta) | active |

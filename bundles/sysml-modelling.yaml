@@ -32,3 +32,7 @@ skills:
   # --- composed systems (declare `composes:` over the primitives they are built from) ---
   #   model-an-arc            composes {state-machine, dependency-graph, constraint, classification, workflow}
   #                           — read/author the arc MODEL; the operate facet is the arc-lifecycle skill (K6).
+
+  # --- meta: build + verify catalogue skills (for catalogue AUTHORS; adjacent to the spine) ---
+  - sysml-skill-builder       # BUILD a modelling skill (the artifact grammar); composes component + workflow -> L2
+  - sysml-skill-tester        # VERIFY a modelling skill (the acceptance bar)

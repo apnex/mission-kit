@@ -49,3 +49,5 @@ Flat ledger of every entry across categories. Sort by ID prefix.
 | [K8](skills/model-a-state-machine/SKILL.md) | skill | model-a-state-machine — author an FSM/lifecycle in SysML v2 | active | 2026-06-22 |
 | [K9](skills/model-a-workflow/SKILL.md) | skill | model-a-workflow — author an ordered activity / workflow in SysML v2 | active | 2026-06-22 |
 | [K10](skills/model-a-component/SKILL.md) | skill | model-a-component — author a structural breakdown in SysML v2 | active | 2026-06-22 |
+| [K11](skills/sysml-skill-builder/SKILL.md) | skill | sysml-skill-builder — build a SysML-anchored modelling skill (the artifact grammar) | active | 2026-06-22 |
+| [K12](skills/sysml-skill-tester/SKILL.md) | skill | sysml-skill-tester — verify a SysML-anchored modelling skill (the acceptance bar) | active | 2026-06-22 |
