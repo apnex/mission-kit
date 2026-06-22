@@ -48,3 +48,4 @@ Flat ledger of every entry across categories. Sort by ID prefix.
 | [K7](skills/sysml-literacy/SKILL.md) | skill | sysml-literacy — read + understand SysML v2 (the literacy base for SysML-anchored skills) | active | 2026-06-22 |
 | [K8](skills/model-a-state-machine/SKILL.md) | skill | model-a-state-machine — author an FSM/lifecycle in SysML v2 | active | 2026-06-22 |
 | [K9](skills/model-a-workflow/SKILL.md) | skill | model-a-workflow — author an ordered activity / workflow in SysML v2 | active | 2026-06-22 |
+| [K10](skills/model-a-component/SKILL.md) | skill | model-a-component — author a structural breakdown in SysML v2 | active | 2026-06-22 |

@@ -66,14 +66,17 @@ The decidable FSM rules are also written as a checkable spec in **[`assets/well-
 
 ## Note for skill authors (the model-X template)
 
-This skill is the **template for the rest of the L1 modelling-primitive catalogue** (`model-a-workflow`,
-`model-a-component`, `model-a-dependency-graph`, …). Copy this shape per construct:
+This skill is the **template for the rest of the L1 modelling-primitive catalogue** — the fixed scaffold a
+future `sysml-skill-builder` will codify. Copy this shape per construct:
 
-- thin `SKILL.md` (prerequisite `sysml-literacy` · when · author-it · watch-out · validate);
-- `assets/template.sysml` (skeleton) + `assets/example.sysml` (worked) + the construct's `references/<x>.md`;
-- dogfood the doctrine: model the skill's own *procedure* as an `action def` asset, and its *well-formedness*
-  rules as `constraint def`s — prose for judgment, SysML for structure/logic;
-- link the shared **`validating-sysml`** reference; don't repeat the validate discipline.
+- a thin `SKILL.md` (frontmatter `prerequisite: sysml-literacy` + `models: <construct>` · when · author-it ·
+  watch-out · validate · this note);
+- **five assets**: `template.sysml`, `example.sysml`, one focused *advanced* example (the construct's most
+  valuable extension — here `guarded.sysml`), `authoring-procedure.sysml` (the procedure as an `action def`),
+  `well-formedness.sysml` (the decidable rules as `constraint def`s) — dogfood the doctrine: prose for judgment,
+  SysML for structure/logic;
+- one `references/<construct>.md`, linking the shared **`validating-sysml`** reference (don't repeat the
+  validate discipline); and **gate-verify every "X parses" claim** before you write it.
 
 A primitive declares `prerequisite: sysml-literacy` and composes nothing; a specialist (L2) system skill
 declares a `composes:` edge over the primitives it is built from. "Level" is *derived* from those edges, never

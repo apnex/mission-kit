@@ -24,8 +24,7 @@ skills:
   # --- primitives: author one SysML construct family each (copy the model-a-state-machine shape) ---
   - model-a-state-machine     # AUTHOR a lifecycle / FSM (state def) — the template for the rest
   - model-a-workflow          # AUTHOR an ordered activity (action def) — successions, decisions, recursion/cascade
-  # planned primitives (one construct family each), authored to the same template:
-  #   model-a-component        part def / item def — structure, attributes, refs
+  - model-a-component         # AUTHOR a structural breakdown (part def / item def) — attributes, refs vs parts, :> /:>>
   #   model-a-dependency-graph ref edges forming a DAG over typed nodes
   #   model-a-constraint       constraint def — invariants, asserted + reused
   #   model-a-classification   enum axes + the orthogonality discipline

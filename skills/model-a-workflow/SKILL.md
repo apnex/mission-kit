@@ -64,8 +64,10 @@ workflow rules are written as a checkable spec in **[`assets/well-formedness.sys
 
 ## Note for skill authors
 
-This skill follows the **model-X template** (see `model-a-state-machine`'s note, and — once it exists — the
-`sysml-skill-builder` meta-skill): thin `SKILL.md` (prerequisite `sysml-literacy` · when · author-it ·
-watch-out · validate) + `assets/{template,example}.sysml` + the dogfood assets (`authoring-procedure.sysml`,
-`well-formedness.sysml`) + `references/workflows.md`, linking the shared `validating-sysml` reference. A
-primitive declares `prerequisite: sysml-literacy` and composes nothing; "level" is derived from the edges.
+This skill follows the **model-X template** — the fixed scaffold a future `sysml-skill-builder` will codify: a
+thin `SKILL.md` (frontmatter `prerequisite: sysml-literacy` + `models: <construct>` · when · author-it ·
+watch-out · validate · this note) + **five assets** — `template.sysml`, `example.sysml`, one focused *advanced*
+example (the construct's most valuable extension — here `cascade.sysml`), `authoring-procedure.sysml` (the
+procedure as an `action def`), `well-formedness.sysml` (the decidable rules as `constraint def`s) — + one
+`references/<construct>.md`, all linking the shared `validating-sysml` reference. A primitive declares
+`prerequisite: sysml-literacy` and composes nothing; "level" is derived from the edges.
