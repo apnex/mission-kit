@@ -61,7 +61,8 @@ part def Subject {
   expression) parses clean but asserts nothing; the silent bug. Scan for a missing body.
 - **Reserved/contextual keywords can't be names** — not `in`, `attribute`, `subject`, `state`, `from`,
   `accept`, `to`, `then`, `entry`, `fork`, `render`, `typed`, `out`, `doc`, `verify`, `decide`, `for`,
-  `part`, `ref`, `item`. (`in`/`attribute` parse-fail as parameter names; `subject` parse-fails as a pin.)
+  `part`, `ref`, `item`. (`in`/`attribute` parse-fail as parameter names; **lowercase** `subject` parse-fails
+  as a pin — the capitalized type name `Subject` in the examples is a distinct token and is fine.)
 - **Prefer a named `constraint def` over an inline anonymous assert** — both parse, but only the named def
   is reusable + composable. Compose atoms into invariants (`assets/composition.sysml`).
 

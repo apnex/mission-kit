@@ -111,8 +111,9 @@ expressions. (Gate-verified to parse.)
 - **Reserved / contextual keywords can't be names** — not `in`, `attribute`, `subject`, `state`, `from`,
   `accept`, `to`, `then`, `entry`, `fork`, `render`, `typed`, `out`, `doc`, `verify`, `decide`, `for`, `part`,
   `ref`, `item`. `in` and `attribute` as parameter names **parse-FAIL** (verified: `no viable alternative`);
-  `subject` parse-FAILS as an action pin name (caught authoring this skill's own procedure). The list is
-  gate-derived and NOT exhaustive vs a normative parser — probe, don't trust the list.
+  lowercase `subject` parse-FAILS as an action pin name (caught authoring this skill's own procedure) — the
+  capitalized `Subject` used as a type in the examples is a distinct token and is fine (keywords are lowercase).
+  The list is gate-derived and NOT exhaustive vs a normative parser — probe, don't trust the list.
 - **The gate accepts a body-less constraint.** `constraint def Empty { in x : Integer; }` (parameters, no
   boolean expression) **parses clean** — but it asserts nothing. A rule with no boolean body is the silent
   bug; the gate is blind to it. Scan for it (`HasBooleanBody` in `assets/well-formedness.sysml`).

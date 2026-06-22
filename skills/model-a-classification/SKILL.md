@@ -51,7 +51,7 @@ part def WorkItem {
 ## Watch out (see references for the full list)
 
 - **The one distinction that matters: ORTHOGONALITY — one enum = one axis; a thing carries several.**
-  Conflating two dimensions into one enum (`{ lowOpen; highClosed; }`) is the classic classification bug.
+  Conflating two dimensions into one enum (`{ lowOpen; lowClosed; highOpen; highClosed; }`) is the classic bug.
   It **parses clean** (`syntaxErrors == 0`, gate-verified) — the parser is silent, so only you catch it.
 - **A typo'd default literal is NOT flagged** — `= Priority::middle` (no such value) parses clean
   (probed). Scan defaults by hand.

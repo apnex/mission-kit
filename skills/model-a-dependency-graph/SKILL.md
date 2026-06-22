@@ -59,9 +59,11 @@ part c : Node { ref dependsOn :>> dependsOn = (a, b); }   // c after a and b
   error-severity but NOT gated. Verified: the self-ref alone is clean; the part-owning container trips it.
   Prefer peer instances; if you must own the nodes it's a known false positive. Documented inline in
   `assets/example.sysml` (mirrors `model-a-component/assets/example.sysml`).
-- **Reserved/contextual keywords can't be edge names** — not `to`, `from`, `in`, `out`, `for`, `then`,
-  `part`, `ref`, `attribute`, `item`, `state`, `accept`, `subject`, `fork`, `render`, `typed`. (`ref to :
-  Node;` parse-fails.) Gate-clean edge names: `dependsOn`, `requires`, `needs`, `before`, `hardDeps`/`softDeps`.
+- **Reserved/contextual keywords can't be edge names — two gate-verified cases.** `to`, `from`, `in`, `out`,
+  `for`, `then`, `ref`, `accept`, `subject`, `fork`, `render`, `typed` fail even as a bare `ref` decl (`ref to
+  : Node;` → syntax error); `part`, `attribute`, `item`, `state` parse as a bare `ref` decl but break the
+  `:>>` wiring idiom (`ref part :>> part = (a)` → `mismatched input`), so they're unusable as edges too.
+  Gate-clean edge names: `dependsOn`, `requires`, `needs`, `before`, `hardDeps`/`softDeps`.
 - **`import ScalarValues::*;` before `String`**; **`:>>`** redefines an instance's edge set, **`:>`**
   specializes the node kind (layered subtypes) — don't swap them.
 

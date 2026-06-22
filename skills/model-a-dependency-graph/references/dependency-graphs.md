@@ -95,9 +95,12 @@ because it adds a *checkable invariant*, not just a label.)
   peer-instance form** (node instances, no owning container); it is advisory-clean. If you must own the
   nodes, the advisory is a known false positive — do not distort the model. Documented inline in
   `assets/example.sysml`; see `model-a-component/assets/example.sysml` for the same note.
-- **Reserved / contextual keywords can't be edge names** — not `to`, `from`, `in`, `out`, `for`, `then`,
-  `part`, `ref`, `attribute`, `item`, `state`, `accept`, `subject`, `fork`, `render`, `typed`. Verified:
-  `ref to : Node;` is a **syntax error** (`no viable alternative at input 'refto'`). Safe domain edge names
+- **Reserved / contextual keywords can't be edge names — but in two distinct ways (both gate-verified).**
+  (a) `to`, `from`, `in`, `out`, `for`, `then`, `ref`, `accept`, `subject`, `fork`, `render`, `typed` fail
+  **even as a bare `ref` decl** — `ref to : Node;` is a syntax error (`no viable alternative at input 'refto'`).
+  (b) `part`, `attribute`, `item`, `state` **parse as a bare `ref` decl** (`ref part : Node[0..*];` is
+  `syntaxErrors=0`) but **break the `:>>` wiring idiom** this skill uses — `ref part :>> part = (a)` →
+  `mismatched input 'part'` — so you still cannot use them as edge names in practice. Safe domain edge names
   that gate-verify clean: `dependsOn`, `requires`, `needs`, `before`, `hardDeps`, `softDeps`. The list is
   gate-derived and NOT exhaustive vs a normative parser — **probe, don't trust the list**.
 - **The gate does NOT check acyclicity.** A cycle (`a dependsOn b; b dependsOn a;`) parses with
