@@ -46,3 +46,4 @@ Flat ledger of every entry across categories. Sort by ID prefix.
 | [K5](skills/K5-survey.md) | skill | survey — stakeholder-intent capture before design commitment | active | 2026-05-29 |
 | [K6](skills/K6-arc-lifecycle.md) | skill | arc-lifecycle — operate staged work as a sovereign FSM-gated state engine | active | 2026-06-20 |
 | [K7](skills/sysml-literacy/SKILL.md) | skill | sysml-literacy — read + understand SysML v2 (the literacy base for SysML-anchored skills) | active | 2026-06-22 |
+| [K8](skills/model-a-state-machine/SKILL.md) | skill | model-a-state-machine — author an FSM/lifecycle in SysML v2 | active | 2026-06-22 |

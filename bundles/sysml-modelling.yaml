@@ -1,0 +1,19 @@
+# sysml-modelling — read + author SysML v2 models as an agent
+#
+# Bundles compose skills into operator-facing roles. Agent-agnostic: no harness-specific
+# fields, no tool names. Any agent that consumes SKILL.md trees can resolve this by its `skills:` list.
+
+name: sysml-modelling
+description: |
+  Read and author SysML v2 models. Start with sysml-literacy (read + understand any model), then use the
+  model-a-X skills to author specific things. The base for digital-twinning designs in a dense, unambiguous,
+  queryable format: model the structure, keep prose for judgment.
+
+  Use when reading, reasoning over, or authoring SysML v2 — components, state machines, workflows, and
+  (as the catalogue grows) requirements, connections, and composite systems.
+
+skills:
+  - sysml-literacy          # READ any model — the literacy base (prerequisite for the rest)
+  - model-a-state-machine   # AUTHOR a lifecycle / FSM
+  # model-a-workflow, model-a-component — added as the catalogue fans out (MDL3); the engine-backed
+  # safe-authoring + projection tooling arrives with prism integration (MDL4).
