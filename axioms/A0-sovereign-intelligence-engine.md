@@ -5,7 +5,7 @@ title: Sovereign Intelligence Engine
 added: 2026-06-19
 status: active
 applies-to: [umbrella]
-related: [A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12]
+related: [A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13]
 source-tele: tele-0
 ---
 
@@ -37,4 +37,4 @@ You'll know it holds when:
 3. The strategic authority never provides low-level how-to; strategic intent alone is sufficient to drive the network.
 
 ## Provenance
-Derived from OIS `tele-0` (Sovereign Intelligence Engine), the umbrella vision — Director-ratified 2026-04-21 (idea-149). This is the composing axiom: siblings A1–A12 are its necessary sub-conditions, and it is satisfied only when all of them hold simultaneously. It is the sole axiom scoped `umbrella`, presupposing the full stack rather than a single architectural assumption. No prior external AX lineage.
+Derived from OIS `tele-0` (Sovereign Intelligence Engine), the umbrella vision — Director-ratified 2026-04-21 (idea-149). This is the composing axiom: siblings A1–A13 are its necessary sub-conditions, and it is satisfied only when all of them hold simultaneously. It is the sole axiom scoped `umbrella`, presupposing the full stack rather than a single architectural assumption. No prior external AX lineage.

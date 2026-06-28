@@ -55,7 +55,7 @@ The vocabulary:
 - **`multi-agent`** — holds for systems where two or more autonomous actors coordinate over shared substrate. In force as soon as collaboration crosses an agent boundary.
 - **`autonomous`** — holds for systems that operate and recover without a human in the synchronous loop. In force when the system is expected to keep running unattended.
 - **`llm-in-the-loop`** — holds for systems where a language model participates in perception, reasoning, or action. In force whenever model cognition is on the critical path.
-- **`umbrella`** — the top-level synthesis axiom. It does not add an independent architectural precondition; it binds the other twelve into a single coherent intent and is in force whenever any of them are.
+- **`umbrella`** — the top-level synthesis axiom. It does not add an independent architectural precondition; it binds the other thirteen into a single coherent intent and is in force whenever any of them are.
 
 ---
 
@@ -69,8 +69,8 @@ An axiom with multiple tags appears under each tag it carries.
 | `any-system` | A3 Sovereign Composition · A4 Zero-Loss Knowledge · A8 Gated Recursive Integrity · A9 Chaos-Validated Deployment |
 | `stateful` | A1 Sovereign State Transparency |
 | `declarative` | A2 Isomorphic Specification |
-| `multi-agent` | A5 Perceptual Parity · A6 Frictionless Agentic Collaboration · A7 Resilient Agentic Operations · A10 Autopoietic Evolution |
-| `autonomous` | A7 Resilient Agentic Operations · A10 Autopoietic Evolution |
+| `multi-agent` | A5 Perceptual Parity · A6 Frictionless Agentic Collaboration · A7 Resilient Agentic Operations · A10 Autopoietic Evolution · A13 Director Intent Amplification |
+| `autonomous` | A7 Resilient Agentic Operations · A10 Autopoietic Evolution · A13 Director Intent Amplification |
 | `llm-in-the-loop` | A5 Perceptual Parity · A11 Cognitive Minimalism · A12 Precision Context Engineering |
 | `umbrella` | A0 Sovereign Intelligence Engine |
 
@@ -99,3 +99,4 @@ Adopt the rows your architecture satisfies: a plain library takes `any-system`; 
 | [A10](A10-autopoietic-evolution.md) | Autopoietic Evolution | active |
 | [A11](A11-cognitive-minimalism.md) | Cognitive Minimalism | active |
 | [A12](A12-precision-context-engineering.md) | Precision Context Engineering | active |
+| [A13](A13-director-intent-amplification.md) | Director Intent Amplification | active |
