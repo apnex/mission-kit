@@ -2,6 +2,8 @@
 
 Flat ledger of every entry across categories. Sort by ID prefix.
 
+**Reference artifacts** (not ID-prefixed): [`statusline/`](statusline/README.md) — Claude Code single-session bash statusline (runnable). [`statusline-pi/`](statusline-pi/README.md) — pi swarm-aware 2-line footer, the multi-agent evolution (design-of-record; canonical A5 instance).
+
 | ID | Category | Title | Status | Added |
 |---|---|---|---|---|
 | [A0](axioms/A0-sovereign-intelligence-engine.md) | axiom | Sovereign Intelligence Engine | active | 2026-06-19 |
