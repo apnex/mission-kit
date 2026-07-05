@@ -66,7 +66,7 @@ An axiom with multiple tags appears under each tag it carries.
 
 | Tag | Axioms in force |
 |---|---|
-| `any-system` | A3 Sovereign Composition · A4 Zero-Loss Knowledge · A8 Gated Recursive Integrity · A9 Chaos-Validated Deployment |
+| `any-system` | A3 Sovereign Composition · A4 Zero-Loss Knowledge · A8 Gated Recursive Integrity · A9 Chaos-Validated Deployment · A14 Compounding Learning |
 | `stateful` | A1 Sovereign State Transparency |
 | `declarative` | A2 Isomorphic Specification |
 | `multi-agent` | A5 Perceptual Parity · A6 Frictionless Agentic Collaboration · A7 Resilient Agentic Operations · A10 Autopoietic Evolution · A13 Director Intent Amplification |
@@ -100,3 +100,4 @@ Adopt the rows your architecture satisfies: a plain library takes `any-system`; 
 | [A11](A11-cognitive-minimalism.md) | Cognitive Minimalism | active |
 | [A12](A12-precision-context-engineering.md) | Precision Context Engineering | active |
 | [A13](A13-director-intent-amplification.md) | Director Intent Amplification | active |
+| [A14](A14-compounding-learning.md) | Compounding Learning | active |
