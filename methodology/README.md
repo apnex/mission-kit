@@ -9,3 +9,4 @@ Ways of working. The "how you operate" rules.
 | [M3](M3-default-reject-honest-yield.md) | Default-reject discipline + honest yield reporting | active |
 | [M4](M4-frozen-history-rule.md) | Frozen-history rule — don't rewrite design records on policy change | active |
 | [M5](M5-anti-amnesia-deferral.md) | Anti-amnesia deferral — every parked or cut item carries a revival trigger | active |
+| [M6](M6-author-from-exemplar.md) | Author from exemplar — read a peer instance before adding to a collection | active |
