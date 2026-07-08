@@ -21,3 +21,10 @@ Operator-level capabilities + reusable tooling. The "how you do it" entries.
 | [K15](model-a-classification/SKILL.md) | model-a-classification — author orthogonal enum classification axes in SysML v2 | active |
 | [K16](model-an-arc/SKILL.md) | model-an-arc — model an arc as a composed L2 system (composes the six primitives) | active |
 | [K17](sysml-skill-evaluator/SKILL.md) | sysml-skill-evaluator — measure a SysML skill's leverage vs the base model (meta) | active |
+| [K18](workgraph-arc-operator/SKILL.md) | workgraph-arc-operator — execute and manage a Hub WorkGraph arc | active |
+| [K19](workgraph-blueprint-author/SKILL.md) | workgraph-blueprint-author — author valid Hub WorkGraph blueprints | stub |
+| [K20](workgraph-lease-discipline/SKILL.md) | workgraph-lease-discipline — operate WorkGraph leases and liveness | stub |
+| [K21](workgraph-verification-gates/SKILL.md) | workgraph-verification-gates — design and operate verifier gates | stub |
+| [K22](workgraph-pr-delivery/SKILL.md) | workgraph-pr-delivery — deliver code arcs through PRs under WorkGraph control | stub |
+| [K23](workgraph-arc-closout/SKILL.md) | workgraph-arc-closout — terminal proof reconciliation for WorkGraph arc closeout | active |
+| [K24](workgraph-recovery/SKILL.md) | workgraph-recovery — recover stuck WorkGraph arcs | stub |
