@@ -36,6 +36,8 @@ Flat ledger of every entry across categories. Sort by ID prefix.
 | [M3](methodology/M3-default-reject-honest-yield.md) | methodology | Default-reject discipline + honest yield reporting | active | 2026-05-24 |
 | [M4](methodology/M4-frozen-history-rule.md) | methodology | Frozen-history rule | active | 2026-05-24 |
 | [M5](methodology/M5-anti-amnesia-deferral.md) | methodology | Anti-amnesia deferral — every parked or cut item carries a revival trigger | active | 2026-06-20 |
+| [M6](methodology/M6-author-from-exemplar.md) | methodology | Author from exemplar — read a peer instance before adding to a collection | active | 2026-07-08 |
+| [M7](methodology/M7-axiom-alignment-audit.md) | methodology | Axiom alignment audit — required gate for extensive planning/design | active | 2026-07-08 |
 | [P1](patterns/P1-path-a-path-b-dual-substrate.md) | pattern | Path A / Path B labeling for dual-substrate workflows | active | 2026-05-24 |
 | [P2](patterns/P2-node-label-gate-cross-component-contracts.md) | pattern | Node-label gate for cross-component contracts | active | 2026-05-24 |
 | [P3](patterns/P3-twin-parity-by-generation.md) | pattern | Twin-parity by generation — one master, generate the other, gate the round-trip | active | 2026-06-20 |
@@ -65,4 +67,4 @@ Flat ledger of every entry across categories. Sort by ID prefix.
 | [K22](skills/workgraph-pr-delivery/SKILL.md) | skill | workgraph-pr-delivery — deliver code arcs through PRs under WorkGraph control | stub | 2026-07-08 |
 | [K23](skills/workgraph-arc-closout/SKILL.md) | skill | workgraph-arc-closout — terminal proof reconciliation for WorkGraph arc closeout | active | 2026-07-08 |
 | [K24](skills/workgraph-recovery/SKILL.md) | skill | workgraph-recovery — recover stuck WorkGraph arcs | stub | 2026-07-08 |
-| [MREQ-1](backlog/mreq-1-axiom-application-methodology.md) | mission-required | Axiom-application methodology for non-code missions | deferred | 2026-07-01 |
+| [MREQ-1](backlog/mreq-1-axiom-application-methodology.md) | mission-required | Axiom-application methodology for non-code missions | partially-fulfilled | 2026-07-01 |

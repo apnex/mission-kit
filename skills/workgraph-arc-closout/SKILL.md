@@ -39,7 +39,8 @@ Before closing, identify:
 - relevant PRs, checks, reviews, merge commits, releases, deploys, and live observations;
 - verifier gate WorkItems or attestations;
 - linked ideas, bugs, decisions, and follow-up items;
-- active docs/skills/indexes/prompts/templates affected by the arc.
+- active docs/skills/indexes/prompts/templates affected by the arc;
+- axiom alignment audit ref or explicit not-required rationale for extensive planning/design arcs.
 
 If the driver id is unknown, stop.
 A WorkGraph arc cannot be honestly closed from a transcript alone.
@@ -57,6 +58,9 @@ Stop if any required child is non-terminal and there is no explicit authority ac
 
 Read `get_work` for children whose evidence affects close truth.
 Check that evidence belongs to the current WorkItem/PR/branch and is fresh enough for the evidence requirement.
+
+For extensive planning/design arcs, verify the `M7` axiom alignment audit exists before implementation approval, or record the explicit not-required rationale.
+If the audit produced guardrails, confirm validation and closeout re-check them.
 
 A failed verifier gate remains part of history.
 A later pass must have repair/rerun evidence; it does not erase the earlier fail.
@@ -145,6 +149,7 @@ Do not complete the closeout WorkItem or driver if any are true:
 - an unmerged/red/unknown PR is claimed as delivered;
 - CI/build/package proof is claimed as live observation;
 - a failed verifier gate is hidden or unresolved;
+- an extensive planning/design arc lacks an axiom alignment audit or explicit not-required rationale;
 - active future-facing guidance still points to stale behavior or a retired scaffold;
 - residual work exists only in prose;
 - stakeholder or Director/operator obligations are skipped without rationale;

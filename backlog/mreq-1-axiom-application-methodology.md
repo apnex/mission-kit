@@ -3,13 +3,15 @@ id: MREQ-1
 category: mission-required
 title: Axiom-application methodology for non-code missions
 added: 2026-07-01
-status: deferred
+status: partially-fulfilled
 revival-trigger: >
-  Pick up when EITHER (a) a third non-code mission (design/governance/planning)
-  is about to start and would benefit from disciplined axiom use, OR (b) a second
-  observed instance of "axiom-laundered wrong conclusion" occurs (an axiom-decorated
-  decision that later proved factually unfounded). Re-triage on revival — do not
-  resume assumptions below; re-check them against the missions observed by then.
+  Pick up the remaining guide layers when EITHER (a) a third non-code mission
+  (design/governance/planning) is about to start and would benefit from disciplined
+  axiom use beyond the M7 audit gate, OR (b) a second observed instance of
+  "axiom-laundered wrong conclusion" occurs (an axiom-decorated decision that later
+  proved factually unfounded). Re-triage on revival — do not resume assumptions below;
+  re-check them against the missions observed by then.
+promoted-slice: M7
 related-axioms: [A3, A4, A11]
 related: [M5]
 ---
@@ -24,7 +26,8 @@ the axioms are applied to missions whose deliverable is NOT code (design docs,
 governance decisions, distribution/architecture planning), WITHOUT diluting or
 damaging their code-mission applicability.
 
-**Do NOT do this now.** It is parked deliberately. This file is the armed condition.
+**Partially picked up.** `M7` now codifies the first reusable slice: axioms are applied as a required alignment audit gate for extensive planning/design before implementation approval.
+The broader layered interpretation guide remains parked here until the revival trigger fires again.
 
 ## The observed problem (the reality that motivates it)
 

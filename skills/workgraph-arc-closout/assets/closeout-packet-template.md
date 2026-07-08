@@ -14,6 +14,7 @@ Every material claim needs a ref or an explicit `not observed` / `not applicable
 | Controller | `TBD` |
 | Authorizing idea/decision/Director instruction | `TBD` |
 | Scope fence ref | `TBD` |
+| Axiom alignment audit ref or not-required rationale | `TBD` |
 
 ## Final verdict
 
@@ -63,6 +64,18 @@ Latest `get_current_stint(driver)` observed at: `TBD`
 | Non-terminal child | State | Authority accepting limitation | Follow-up id |
 |---|---|---|---|
 | `TBD` | `TBD` | `TBD` | `TBD` |
+
+## Axiom alignment audit
+
+Required for extensive planning/design? `yes/no`
+
+| Field | Value |
+|---|---|
+| Audit ref | `TBD / not required` |
+| Verdict | `pass/pass-with-guardrails/revise-before-implementation/blocked/not-required` |
+| Implementation started after audit? | `yes/no/n-a` |
+| Guardrails carried into validation/closeout | `TBD` |
+| Follow-up methodology/work ids | `TBD` |
 
 ## Delivered artifacts and proof strength
 
@@ -161,6 +174,7 @@ Limitations: <none or accepted limitations>
 | Delivery claimed without PR/CI/merge/release/live truth | `yes/no` | `TBD` |
 | Live behavior claimed from CI/build only | `yes/no` | `TBD` |
 | Failed verifier gate hidden or unresolved | `yes/no` | `TBD` |
+| Extensive planning/design lacks axiom alignment audit or not-required rationale | `yes/no` | `TBD` |
 | Active future-facing surface still stale | `yes/no` | `TBD` |
 | Residual exists only in prose | `yes/no` | `TBD` |
 | Stakeholder/Director obligation skipped | `yes/no` | `TBD` |

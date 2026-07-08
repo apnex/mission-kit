@@ -77,12 +77,13 @@ Commence in this order:
 1. **Confirm authority.** Identify the Director/operator approval, decision, mission, or backlog item that authorizes the arc.
 2. **State the scope fence.** Name what is in scope, what is out of scope, and which broad temptations are explicitly deferred.
 3. **Write the plan.** Persist the arc plan in a Hub document or repo doc with goal, slices, risks, evidence, and close criteria.
-4. **Write or select the blueprint.** Use a deterministic `runId`; include one controller driver and one or more child nodes.
-5. **Validate before mutation.** Run `seed_blueprint(..., dryRun:true)` when available for the whole graph.
-6. **Seed the graph.** Run `seed_blueprint` with the final `runId` and blueprint.
-7. **Claim/start the driver.** The controller claims and starts the driver before delegating child work.
-8. **Capture the lease token.** Renew with that token throughout the arc.
-9. **Project the arc.** Read `get_current_stint(driverId)` and `get_next_action(driverId)` immediately after start.
+4. **Run an axiom alignment audit when the plan/design is extensive.** Use `M7` before implementation approval for arcs that create or change reusable methodology, workflow, skill, template, substrate behavior, governance, coordination, lifecycle, delivery, verification, or authority patterns.
+5. **Write or select the blueprint.** Use a deterministic `runId`; include one controller driver and one or more child nodes. If the axiom audit is required, represent it as a WorkItem dependency before implementation nodes can start.
+6. **Validate before mutation.** Run `seed_blueprint(..., dryRun:true)` when available for the whole graph.
+7. **Seed the graph.** Run `seed_blueprint` with the final `runId` and blueprint.
+8. **Claim/start the driver.** The controller claims and starts the driver before delegating child work.
+9. **Capture the lease token.** Renew with that token throughout the arc.
+10. **Project the arc.** Read `get_current_stint(driverId)` and `get_next_action(driverId)` immediately after start.
 
 A commenced arc with no claimed driver is already partially uncontrolled.
 Fix that before adding more child work.
@@ -98,6 +99,7 @@ A healthy WorkGraph arc blueprint has these features:
 - **Verifier lane.** Backplane, deploy-gating, substrate, security, or high-risk arcs include explicit verifier-gate/review nodes.
 - **Closeout child or driver evidence.** The arc has a documented close packet, retrospective, or delivery note as a required artifact.
 - **No dangling dependencies.** Start-gates and completion-gates must resolve at seed time.
+- **Axiom alignment gate for extensive planning/design.** If the arc changes reusable procedure, substrate behavior, or coordination policy, include an axiom-audit node before implementation approval.
 - **No hidden manual step.** If a step is required to close, it is a WorkItem, evidence requirement, or explicit reference.
 
 The graph should be understandable from `get_current_stint(driverId)` plus child `get_work` reads without relying on the controller's memory.

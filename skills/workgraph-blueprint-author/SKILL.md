@@ -21,6 +21,7 @@ metadata:
 - `dependsOn` versus `completionDependsOn` usage.
 - Required `runbook`, `references`, and evidence contracts.
 - Dry-run validation and idempotent `runId` discipline.
+- **Axiom alignment audit gate:** extensive planning/design arcs must include a dedicated audit node before implementation approval, per `M7`.
 - **Template-before-instance discipline:** when a graph shape is likely to recur, name the reusable operational pattern and express the current arc as a narrow parameterized instance.
 - Pattern parameters: surface/domain name, candidate set, scope fence, authority/decision point, evidence requirements, registry/proof checks, and closeout/follow-up routing.
 - Template provenance: instance blueprints should carry enough payload/reference metadata that a later operator can extract or refine the generic pattern without reverse-engineering one-off node prose.
@@ -43,3 +44,6 @@ The concrete `proptool0` blueprint should be treated as an instance of that patt
 
 This will specialize `workgraph-arc-operator` for the authoring step: turning an approved arc plan into a cold-start-legible WorkGraph blueprint.
 It should preserve reusable graph shapes as invested workflow templates while still instantiating them narrowly for the current arc.
+
+When authoring an extensive arc, do not leave axiom alignment as prose in the plan.
+Model it explicitly as a review/audit WorkItem, make implementation nodes depend on it, and have the arc-driver `completionDependsOn` include it.

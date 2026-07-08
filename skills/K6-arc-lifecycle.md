@@ -5,7 +5,7 @@ title: arc-lifecycle — operate staged work as a sovereign FSM-gated state engi
 added: 2026-06-20
 status: active
 supersedes: []
-related: [M5, P3, P4, P5]
+related: [M5, M7, P3, P4, P5]
 ---
 
 # K6 — arc-lifecycle
@@ -100,7 +100,8 @@ the whole surface from the system itself.
   an agent will operate the tracker.
 - Designing a roadmap / backlog / migration plan as a state machine
   rather than a document: bake the FSM, the validate-on-write gate, and
-  the anti-amnesia constraint into the store.
+  the anti-amnesia constraint into the store. If the design is extensive,
+  gate implementation with an `M7` axiom alignment audit.
 - Replacing a prose backlog that has already produced a lost-parked-item,
   a stale-status, or an inconsistent-dependency failure.
 
