@@ -41,7 +41,8 @@ Before closing, identify:
 - linked ideas, bugs, decisions, and follow-up items;
 - active docs/skills/indexes/prompts/templates affected by the arc;
 - axiom alignment audit ref or explicit not-required rationale for extensive planning/design arcs;
-- Director qualitative walkthrough trigger/tier: whether it is required, why, and the expected decision state.
+- Director qualitative walkthrough trigger/tier: whether it is required, why, and the expected decision state;
+- live Director walkthrough mode: `not applicable`, `required`, `performed`, or `waived`, with the trigger/waiver ref when applicable.
 
 If the driver id is unknown, stop.
 A WorkGraph arc cannot be honestly closed from a transcript alone.
@@ -118,6 +119,7 @@ Use tiers to avoid ceremony bloat:
 
 For Tier 1–3 arcs, write a Director/operator-readable projection that translates proof into meaning without replacing proof.
 It must be structured, bounded, and decision-shaped.
+This durable content is necessary but not sufficient for a live Director closeout: if the Director requested or clearly expects a live walkthrough, run the live protocol in step 7 or record the explicit waiver.
 
 Required elements for a full walkthrough:
 
@@ -134,13 +136,45 @@ It is a post-evidence translation of delivered work into constitutional meaning.
 Full M7 remains a pre-implementation gate when the arc creates or changes reusable methodology, workflow, skill, template, substrate behavior, governance, coordination, lifecycle, delivery, verification, or authority patterns.
 If M7 produced guardrails, the walkthrough must state how closeout re-checked them.
 
-### 7. Handle stale FYIs without loops
+### 7. Deliver the live Director walkthrough when requested
+
+Use this protocol when the Director asks to be walked through the closeout, when the closeout is being delivered live in terminal/chat for the Director, or when a Director-facing interactive closeout is clearly implied.
+Do not satisfy this requirement by dumping the full packet or a long markdown wall.
+The live surface is an intent interface; deliver progressive disclosure.
+
+Default live sequence:
+
+1. Trigger/tier and what will be covered.
+2. WorkGraph/substrate truth.
+3. What shipped / changed.
+4. Why it matters and target-state delta.
+5. Axiom/principle mapping.
+6. Caveats / non-claims.
+7. Residuals / revival triggers.
+8. Decision state and final verdict.
+
+Protocol rules:
+
+- Announce the step count and current step.
+- Present exactly one step at a time.
+- Keep each step short enough for the Director to interrogate it immediately.
+- End each step with an explicit pause, e.g. `Questions, or proceed to Step N?`.
+- Do not continue until the Director answers, unless the Director has explicitly waived step-by-step mode.
+- If the Director asks a question, answer it, then ask whether to proceed.
+- Do not provide the whole closeout packet unless the Director asks for the full dump or waives progressive mode.
+- Record the live status in the packet: `performed`, `waived`, or `not applicable`, with transcript/message refs when available.
+- A waiver is acceptable only when explicit: e.g. `send the whole thing`, `skip the walkthrough`, or equivalent.
+
+The live protocol may summarize the durable packet, but it does not replace the packet.
+The packet preserves zero-loss closeout evidence; the live protocol preserves Director attention and shared sensemaking.
+
+### 8. Handle stale FYIs without loops
 
 Messages and FYIs are signals.
 When a message conflicts with WorkGraph/GitHub/Hub entity truth, trust the substrate and ack or ignore the stale signal.
 Do not reopen or double-close work because a crossed FYI arrived late.
 
-### 8. Write the closeout packet
+### 9. Write the closeout packet
 
 Use `assets/closeout-packet-template.md` or a stricter project template.
 The packet must exist before completing the closeout WorkItem or driver.
@@ -150,6 +184,7 @@ At minimum it records:
 - identity and authority;
 - final verdict and honesty statement;
 - Director qualitative walkthrough when triggered;
+- live Director walkthrough status (`performed`, `waived`, or `not applicable`) and refs when live delivery was requested/triggered;
 - scope delivered and not delivered;
 - WorkGraph final state and child dispositions;
 - delivered artifacts;
@@ -162,13 +197,13 @@ At minimum it records:
 - residuals and revival triggers;
 - final close action and driver-complete-last evidence.
 
-### 9. Complete closeout, then driver last
+### 10. Complete closeout, then driver last
 
 Complete the closeout WorkItem with the packet as evidence.
 Then re-read `get_current_stint(driverId)`.
 Complete the driver only when the completion gate is open and the packet remains current.
 
-Driver evidence should include the closeout packet path, final child progress, delivery truth summary, verification refs, entity updates, Director walkthrough status, and accepted limitations.
+Driver evidence should include the closeout packet path, final child progress, delivery truth summary, verification refs, entity updates, Director qualitative walkthrough status, live Director walkthrough performed/waived/not-applicable status, and accepted limitations.
 
 ## Hard stop conditions
 
@@ -185,6 +220,8 @@ Do not complete the closeout WorkItem or driver if any are true:
 - residual work exists only in prose;
 - stakeholder or Director/operator obligations are skipped without rationale;
 - a required Director qualitative walkthrough is absent, lacks decision state, or omits material caveats/non-claims;
+- a live Director walkthrough was requested/triggered but was not performed, explicitly waived, or recorded;
+- a full closeout dump is used as a substitute for the progressive live walkthrough without Director waiver;
 - mission/idea/bug state contradicts the closeout claim;
 - stale chat/FYI is treated as stronger than WorkGraph/GitHub/Hub entity truth;
 - scope expands during closeout without authority;
@@ -196,6 +233,7 @@ A successful closeout leaves:
 
 - a durable closeout packet;
 - a Director-readable qualitative walkthrough when triggered, including decision state;
+- a progressive live Director walkthrough performed or explicitly waived when live delivery was requested/triggered;
 - updated Hub entities and backlog follow-ups;
 - active surfaces updated or dispositioned;
 - verifier and delivery truth recorded without overclaiming;

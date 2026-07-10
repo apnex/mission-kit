@@ -29,8 +29,14 @@ Honesty statement:
 Required? `<yes/no>`
 Trigger/rationale: `<Director-requested | procedure/tooling/skill/template/methodology change | material residual/caveat | operating-guidance artifact | not-required rationale>`
 Tier: `<0 evidence-only | 1 sensemaking capsule | 2 full walkthrough | 3 M7 + full walkthrough>`
+Live Director walkthrough status: `<not applicable | required-not-yet-performed | performed | waived>`
+Live trigger/ref: `<Director requested live walkthrough | live terminal/chat closeout | interactive closeout implied | not applicable>`
+Waiver/ref if any: `<explicit Director waiver or n-a>`
+Transcript/message refs: `<refs or n-a>`
 
 Use this section when the Director/operator requested or authorized the arc, the arc changes org operating procedure/tooling/skill/template/methodology/governance/coordination/lifecycle/delivery/verification/authority patterns, future agents/operators will treat the result as operating guidance, material limitations or residuals remain, or this packet is the organizational memory artifact.
+
+If the closeout is delivered live to the Director, do **not** dump this whole section unless the Director requests it or explicitly waives progressive mode. Walk the Director one step at a time and pause after each step for `Questions, or proceed?`.
 
 ### What shipped / changed
 
@@ -75,6 +81,25 @@ If yes:
 | `TBD` | `TBD` | `TBD` |
 
 If no or awareness-only: `TBD — why no Director action is required, or why awareness alone is sufficient.`
+
+### Live walkthrough protocol record
+
+Fill this when live Director delivery was requested/triggered. If not applicable, write `n-a` in the table.
+
+| Step | Delivered? (`yes/no/waived/n-a`) | Pause prompt issued? | Director response/ref | Notes |
+|---|---|---|---|---|
+| 1. Trigger/tier and agenda | `TBD` | `TBD` | `TBD` | `TBD` |
+| 2. WorkGraph/substrate truth | `TBD` | `TBD` | `TBD` | `TBD` |
+| 3. What shipped / changed | `TBD` | `TBD` | `TBD` | `TBD` |
+| 4. Why it matters and target-state delta | `TBD` | `TBD` | `TBD` | `TBD` |
+| 5. Axiom/principle mapping | `TBD` | `TBD` | `TBD` | `TBD` |
+| 6. Caveats / non-claims | `TBD` | `TBD` | `TBD` | `TBD` |
+| 7. Residuals / revival triggers | `TBD` | `TBD` | `TBD` | `TBD` |
+| 8. Decision state and final verdict | `TBD` | `TBD` | `TBD` | `TBD` |
+
+Live walkthrough satisfied? `<yes/no/not-applicable>`
+
+If `no`, do not complete closeout/driver unless the Director explicitly accepts the limitation.
 
 ## Scope fence
 
@@ -189,6 +214,10 @@ Director qualitative walkthrough required? `yes/no`
 
 Rationale/ref: `TBD — if yes, the dedicated walkthrough section above is complete; if no, explain why the trigger did not apply.`
 
+Live Director walkthrough required/performed/waived? `<not-required | performed | waived | blocked>`
+
+Live rationale/ref: `TBD — when live Director delivery was requested/triggered, cite the progressive walkthrough record above or the explicit waiver.`
+
 ## Stale FYIs / messages
 
 Were stale or crossed messages observed? `yes/no`
@@ -206,6 +235,7 @@ Were stale or crossed messages observed? `yes/no`
 | Final `get_current_stint(driver)` checked | `TBD` | `yes/no` |
 | Driver completed last | `TBD` | `yes/no` |
 | Mission/entity status updated | `TBD` | `yes/no` |
+| Live Director walkthrough performed or waived when triggered | `TBD` | `yes/no/n-a` |
 
 Driver completion evidence:
 
@@ -215,6 +245,7 @@ Final child progress: <N/N>, pending: <none or explicit dispositions>
 Delivery truth: <merged/published/live/not-applicable/not-observed summary>
 Verification: <verifier refs and final verdict>
 Director walkthrough: <not-required | capsule | full; decision-state summary>
+Live Director walkthrough: <not-required | performed stepwise | waived; ref/summary>
 Entity updates: <mission/ideas/bugs/follow-ups>
 Limitations: <none or accepted limitations>
 ```
@@ -232,5 +263,7 @@ Limitations: <none or accepted limitations>
 | Residual exists only in prose | `yes/no` | `TBD` |
 | Stakeholder/Director obligation skipped | `yes/no` | `TBD` |
 | Required Director qualitative walkthrough absent/incomplete | `yes/no` | `TBD` |
+| Live Director walkthrough requested/triggered but not performed, waived, or recorded | `yes/no` | `TBD` |
+| Full closeout dump substituted for progressive live walkthrough without Director waiver | `yes/no` | `TBD` |
 | Stale FYI/chat treated as authority | `yes/no` | `TBD` |
 | Driver would complete before closeout evidence | `yes/no` | `TBD` |
