@@ -24,6 +24,58 @@ Honesty statement:
 
 > `TBD — what is proved, what is not proved, and what limitation remains.`
 
+## Director qualitative walkthrough
+
+Required? `<yes/no>`
+Trigger/rationale: `<Director-requested | procedure/tooling/skill/template/methodology change | material residual/caveat | operating-guidance artifact | not-required rationale>`
+Tier: `<0 evidence-only | 1 sensemaking capsule | 2 full walkthrough | 3 M7 + full walkthrough>`
+
+Use this section when the Director/operator requested or authorized the arc, the arc changes org operating procedure/tooling/skill/template/methodology/governance/coordination/lifecycle/delivery/verification/authority patterns, future agents/operators will treat the result as operating guidance, material limitations or residuals remain, or this packet is the organizational memory artifact.
+
+### What shipped / changed
+
+- `TBD — concrete delivered artifact, behavior, process, or decision, with evidence refs.`
+
+### Why it matters
+
+- `TBD — rationale and consequence in strategic/operator terms.`
+
+### Target-state delta
+
+| Before | After | Delta |
+|---|---|---|
+| `TBD` | `TBD` | `TBD` |
+
+### Axiom / principle mapping
+
+Closeout-level axiom mapping is not a full M7 audit. It translates delivered work into constitutional meaning and records material tensions. Full M7 remains required before implementation for extensive methodology/design arcs.
+
+| Axiom/principle | Load (`load-bearing/supporting/tension`) | How the arc served or strained it |
+|---|---|---|
+| `TBD` | `TBD` | `TBD` |
+
+### Caveats / non-claims
+
+- `TBD — proof boundary, live-not-observed, scope not delivered, authority downgrade, or other material caveat.`
+
+### Residuals / revival triggers
+
+| Residual/trigger | Durable id or no-file rationale | Owner/next surface |
+|---|---|---|
+| `TBD` | `TBD` | `TBD` |
+
+### Decision state
+
+Decision required? `<no | awareness-only | yes>`
+
+If yes:
+
+| Decision topic | Options / authority boundary | Target ref |
+|---|---|---|
+| `TBD` | `TBD` | `TBD` |
+
+If no or awareness-only: `TBD — why no Director action is required, or why awareness alone is sufficient.`
+
 ## Scope fence
 
 Delivered:
@@ -133,9 +185,9 @@ Revival/reopen triggers:
 | Verifier | `yes/no` | `TBD` | `TBD` |
 | Director/operator | `yes/no` | `TBD` | `TBD` |
 
-Director/operator-facing summary required? `yes/no`
+Director qualitative walkthrough required? `yes/no`
 
-Rationale or ref: `TBD`
+Rationale/ref: `TBD — if yes, the dedicated walkthrough section above is complete; if no, explain why the trigger did not apply.`
 
 ## Stale FYIs / messages
 
@@ -162,6 +214,7 @@ Closeout packet: <path>
 Final child progress: <N/N>, pending: <none or explicit dispositions>
 Delivery truth: <merged/published/live/not-applicable/not-observed summary>
 Verification: <verifier refs and final verdict>
+Director walkthrough: <not-required | capsule | full; decision-state summary>
 Entity updates: <mission/ideas/bugs/follow-ups>
 Limitations: <none or accepted limitations>
 ```
@@ -178,5 +231,6 @@ Limitations: <none or accepted limitations>
 | Active future-facing surface still stale | `yes/no` | `TBD` |
 | Residual exists only in prose | `yes/no` | `TBD` |
 | Stakeholder/Director obligation skipped | `yes/no` | `TBD` |
+| Required Director qualitative walkthrough absent/incomplete | `yes/no` | `TBD` |
 | Stale FYI/chat treated as authority | `yes/no` | `TBD` |
 | Driver would complete before closeout evidence | `yes/no` | `TBD` |

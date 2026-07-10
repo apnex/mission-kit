@@ -40,7 +40,8 @@ Before closing, identify:
 - verifier gate WorkItems or attestations;
 - linked ideas, bugs, decisions, and follow-up items;
 - active docs/skills/indexes/prompts/templates affected by the arc;
-- axiom alignment audit ref or explicit not-required rationale for extensive planning/design arcs.
+- axiom alignment audit ref or explicit not-required rationale for extensive planning/design arcs;
+- Director qualitative walkthrough trigger/tier: whether it is required, why, and the expected decision state.
 
 If the driver id is unknown, stop.
 A WorkGraph arc cannot be honestly closed from a transcript alone.
@@ -102,15 +103,44 @@ A residual paragraph without an Idea/Bug/WorkItem/Decision id is context, not ro
 
 For stakeholder lanes, record `satisfied`, `not required`, `deferred with follow-up`, or `blocked`.
 Consider architect/controller, engineer/operator, verifier, and Director/operator lanes.
-Director/operator-facing summary is required when the Director/operator requested the arc, the arc changes org operating procedure/tooling, or material limitations remain.
+Director/operator-facing sensemaking is required when the Director/operator requested or authorized the arc, the arc changes org operating procedure/tooling/skill/template/methodology/governance/coordination/lifecycle/delivery/verification/authority patterns, future agents/operators will treat the result as operating guidance, material limitations or residuals remain, or the closeout packet is the organizational memory artifact.
 
-### 6. Handle stale FYIs without loops
+Use tiers to avoid ceremony bloat:
+
+| Tier | Use when | Director-facing output |
+|---|---|---|
+| 0 — evidence-only local close | small local work with no Director/material procedure impact | normal evidence and close note; no qualitative walkthrough required |
+| 1 — sensemaking capsule | stakeholder relevance but no broad operating change | short bullets: shipped, why, caveat, decision state |
+| 2 — full Director walkthrough | Director-requested/authorized arc, WorkGraph arc with closeout burden, procedure/tooling/skill/template/org-operating change, or material residual/caveat | dedicated walkthrough covering all required elements |
+| 3 — M7 + full walkthrough | extensive planning/design or reusable methodology/substrate/governance change | pre-implementation M7 audit plus closeout walkthrough re-checking guardrails |
+
+### 6. Write the Director qualitative walkthrough when triggered
+
+For Tier 1–3 arcs, write a Director/operator-readable projection that translates proof into meaning without replacing proof.
+It must be structured, bounded, and decision-shaped.
+
+Required elements for a full walkthrough:
+
+- **what shipped / changed** — concrete delivered artifact, behavior, process, or decision, with refs;
+- **why it matters** — rationale and consequence in strategic/operator terms;
+- **target-state delta** — before/after movement toward the desired org/system state;
+- **axiom / principle mapping** — only load-bearing or supporting axioms/tensions; no decorative filler;
+- **caveats / non-claims** — proof boundaries, live-not-observed, scope not delivered, or authority downgrade;
+- **residuals / revival triggers** — durable ids or explicit no-file rationale;
+- **decision state** — one of `no Director decision required`, `Director awareness only`, or `Director decision required` with the single decision topic and authority boundary.
+
+Closeout-level axiom mapping is not a full M7 audit.
+It is a post-evidence translation of delivered work into constitutional meaning.
+Full M7 remains a pre-implementation gate when the arc creates or changes reusable methodology, workflow, skill, template, substrate behavior, governance, coordination, lifecycle, delivery, verification, or authority patterns.
+If M7 produced guardrails, the walkthrough must state how closeout re-checked them.
+
+### 7. Handle stale FYIs without loops
 
 Messages and FYIs are signals.
 When a message conflicts with WorkGraph/GitHub/Hub entity truth, trust the substrate and ack or ignore the stale signal.
 Do not reopen or double-close work because a crossed FYI arrived late.
 
-### 7. Write the closeout packet
+### 8. Write the closeout packet
 
 Use `assets/closeout-packet-template.md` or a stricter project template.
 The packet must exist before completing the closeout WorkItem or driver.
@@ -119,6 +149,7 @@ At minimum it records:
 
 - identity and authority;
 - final verdict and honesty statement;
+- Director qualitative walkthrough when triggered;
 - scope delivered and not delivered;
 - WorkGraph final state and child dispositions;
 - delivered artifacts;
@@ -131,13 +162,13 @@ At minimum it records:
 - residuals and revival triggers;
 - final close action and driver-complete-last evidence.
 
-### 8. Complete closeout, then driver last
+### 9. Complete closeout, then driver last
 
 Complete the closeout WorkItem with the packet as evidence.
 Then re-read `get_current_stint(driverId)`.
 Complete the driver only when the completion gate is open and the packet remains current.
 
-Driver evidence should include the closeout packet path, final child progress, delivery truth summary, verification refs, entity updates, and accepted limitations.
+Driver evidence should include the closeout packet path, final child progress, delivery truth summary, verification refs, entity updates, Director walkthrough status, and accepted limitations.
 
 ## Hard stop conditions
 
@@ -153,6 +184,7 @@ Do not complete the closeout WorkItem or driver if any are true:
 - active future-facing guidance still points to stale behavior or a retired scaffold;
 - residual work exists only in prose;
 - stakeholder or Director/operator obligations are skipped without rationale;
+- a required Director qualitative walkthrough is absent, lacks decision state, or omits material caveats/non-claims;
 - mission/idea/bug state contradicts the closeout claim;
 - stale chat/FYI is treated as stronger than WorkGraph/GitHub/Hub entity truth;
 - scope expands during closeout without authority;
@@ -163,6 +195,7 @@ Do not complete the closeout WorkItem or driver if any are true:
 A successful closeout leaves:
 
 - a durable closeout packet;
+- a Director-readable qualitative walkthrough when triggered, including decision state;
 - updated Hub entities and backlog follow-ups;
 - active surfaces updated or dispositioned;
 - verifier and delivery truth recorded without overclaiming;
