@@ -1,0 +1,46 @@
+---
+id: R0
+category: role
+title: Roles — the M axis (pure essence + type-determined authority)
+added: 2026-07-13
+status: active
+related: [WT0, D0, A0, A6, A13]
+source: worktax0 (docs/design/worktax-ratified-design.md v2 §3)
+---
+
+# Roles — the M axis
+
+Four roles, each defined as **essence + engagement-mode**, independent of domain
+and work-type so composability determines the aggregate. Read
+`work-types/README.md` for the composition rule that combines these with the
+domain and work-type axes.
+
+- **R1 architect** · **R2 engineer** · **R3 verifier** · **R4 director**
+
+## Purity is on ESSENCE only
+
+A role's **essence** (lens / stance / authority) is invariant across every
+instance — that is the purity test. But the **authority component** of its
+engagement-mode is a function of the *work-type*, not the role: `engineer ×
+build-a-slice` produces `executor-evidence`, while `engineer × code-owner-approve`
+produces non-author independence-evidence. That is why each role frontmatter
+carries `evidenceAuthorities` as a **set**. Do NOT treat "engineer ⇒
+executor-evidence" as a generation invariant — the authority is composed from
+`(role × work-type)`.
+
+## Director is charter-mandated but non-composing
+
+`architect / engineer / verifier` share the substrate engagement-mode "claim →
+execute work-nodes" and participate symmetrically in `roleEligibility` unions.
+**Director does not** (`composing: false`): it steers/ratifies/gates/curates
+*outside* the claim→execute loop, is never idle-poolable, and is the sole
+`director-ratification` authority. It is retained as a first-class role (charter
++ A13) but marked non-composing so readers never expect symmetric unions.
+Director-ratification cannot be satisfied by architect narrative — it requires a
+`DirectorSignal` / `Decision` / `Confirmation` or explicitly documented ratified
+delegation.
+
+## Backstop is not a role
+
+Backstop is a **work-type** (`backstop-a-prod-window`) with a `backstop:true`
+flag, not a role and not a separate overlay layer. See `work-types/README.md`.

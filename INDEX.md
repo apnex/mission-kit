@@ -68,3 +68,42 @@ Flat ledger of every entry across categories. Sort by ID prefix.
 | [K23](skills/workgraph-arc-closout/SKILL.md) | skill | workgraph-arc-closout — terminal proof reconciliation for WorkGraph arc closeout | active | 2026-07-08 |
 | [K24](skills/workgraph-recovery/SKILL.md) | skill | workgraph-recovery — recover stuck WorkGraph arcs | stub | 2026-07-08 |
 | [MREQ-1](backlog/mreq-1-axiom-application-methodology.md) | mission-required | Axiom-application methodology for non-code missions | partially-fulfilled | 2026-07-01 |
+| [R0](roles/README.md) | role | Roles — the M axis (pure essence + type-determined authority) | active | 2026-07-13 |
+| [R1](roles/R1-architect.md) | role | architect — authority over system shape | active | 2026-07-13 |
+| [R2](roles/R2-engineer.md) | role | engineer — make it real | active | 2026-07-13 |
+| [R3](roles/R3-verifier.md) | role | verifier — independent adversarial assurance | active | 2026-07-13 |
+| [R4](roles/R4-director.md) | role | director — intent source and ratification authority | active | 2026-07-13 |
+| [D0](domains/README.md) | domain | Domains — the N axis (subject-surfaces, bimodal freedom) | active | 2026-07-13 |
+| [D1](domains/D1-delivery-code.md) | domain | delivery-code — the product/service codebase | active | 2026-07-13 |
+| [D2](domains/D2-distribution.md) | domain | distribution — release channels and the rollout plane | active | 2026-07-13 |
+| [D3](domains/D3-tooling-harness.md) | domain | tooling-harness — the launch/runtime harness | active | 2026-07-13 |
+| [D4](domains/D4-authority-governance.md) | domain | authority-governance — the governance/authority substrate | active | 2026-07-13 |
+| [D5](domains/D5-coordination-substrate.md) | domain | coordination-substrate — the WorkGraph/lifecycle/messaging machinery | active | 2026-07-13 |
+| [D6](domains/D6-knowledge-methodology.md) | domain | knowledge-methodology — the durable knowledge capital | active | 2026-07-13 |
+| [WT0](work-types/README.md) | work-type | Work-types — composition, closeability, and schema | active | 2026-07-13 |
+| [W1](work-types/W1-build-a-slice.md) | work-type | build-a-slice — implement a scoped increment | active | 2026-07-13 |
+| [W2](work-types/W2-fix-a-bug-or-repair.md) | work-type | fix-a-bug-or-repair — resolve a filed defect | active | 2026-07-13 |
+| [W3](work-types/W3-retire-or-hard-cut.md) | work-type | retire-or-hard-cut — delete a surface with disposition | active | 2026-07-13 |
+| [W4](work-types/W4-validate-locally.md) | work-type | validate-locally — self-check a fresh artifact | active | 2026-07-13 |
+| [W5](work-types/W5-author-guard-or-falsifier-tests.md) | work-type | author-guard-or-falsifier-tests — add a test that can fail | active | 2026-07-13 |
+| [W6](work-types/W6-merge-and-land.md) | work-type | merge-and-land — land an approved change on canonical main | active | 2026-07-13 |
+| [W7](work-types/W7-publish-deploy-or-canonicalize.md) | work-type | publish-deploy-or-canonicalize — ship to the estate/channel | active | 2026-07-13 |
+| [W8](work-types/W8-verify-gate-reactive.md) | work-type | verify-gate-reactive — independently gate a build/change | active | 2026-07-13 |
+| [W9](work-types/W9-audit-a-surface.md) | work-type | audit-a-surface — bounded adversarial sweep of a surface | active | 2026-07-13 |
+| [W10](work-types/W10-adversarial-design-review-upstream.md) | work-type | adversarial-design-review-upstream — critique a design before build/merge | active | 2026-07-13 |
+| [W11](work-types/W11-run-a-live-probe-or-smoke.md) | work-type | run-a-live-probe-or-smoke — observe live behavior at a revision | active | 2026-07-13 |
+| [W12](work-types/W12-meta-validate-dogfood.md) | work-type | meta-validate-dogfood — use the deliverable as its own test | active | 2026-07-13 |
+| [W13](work-types/W13-code-owner-approve.md) | work-type | code-owner-approve — non-author independence approval | active | 2026-07-13 |
+| [W14](work-types/W14-design-a-contract-or-invariant.md) | work-type | design-a-contract-or-invariant — author a design-of-record | active | 2026-07-13 |
+| [W15](work-types/W15-convene-a-council.md) | work-type | convene-a-council — multi-lens deliberation + synthesis | active | 2026-07-13 |
+| [W16](work-types/W16-bank-idea-or-knowledge-capital.md) | work-type | bank-idea-or-knowledge-capital — capture reusable capital | active | 2026-07-13 |
+| [W17](work-types/W17-author-closeout-packet.md) | work-type | author-closeout-packet — proof-level arc closeout | active | 2026-07-13 |
+| [W18](work-types/W18-seed-a-blueprint-arc.md) | work-type | seed-a-blueprint-arc — instantiate a WorkGraph arc | active | 2026-07-13 |
+| [W19](work-types/W19-drive-an-arc.md) | work-type | drive-an-arc — operate an arc over its lifetime | active | 2026-07-13 |
+| [W20](work-types/W20-reconcile-ledger.md) | work-type | reconcile-ledger — reconcile entity/backlog state vs truth | active | 2026-07-13 |
+| [W21](work-types/W21-arc-repair.md) | work-type | arc-repair — repair a WorkGraph arc topology | active | 2026-07-13 |
+| [W22](work-types/W22-axiom-alignment-gate.md) | work-type | axiom-alignment-gate — per-item axiom-alignment check | active | 2026-07-13 |
+| [W23](work-types/W23-capture-decision-and-ratify.md) | work-type | capture-decision-and-ratify — record + ratify a decision | active | 2026-07-13 |
+| [W24](work-types/W24-director-walkthrough.md) | work-type | director-walkthrough — live Director sensemaking walkthrough | active | 2026-07-13 |
+| [W25](work-types/W25-backstop-a-prod-window.md) | work-type | backstop-a-prod-window — hold abort/rollback over a risk window | active | 2026-07-13 |
+| [W26](work-types/W26-reset-or-converge-the-fleet.md) | work-type | reset-or-converge-the-fleet — restore fleet to a healthy state | active | 2026-07-13 |

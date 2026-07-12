@@ -1,0 +1,42 @@
+---
+id: R1
+category: role
+title: architect — authority over system shape
+added: 2026-07-13
+status: active
+essence: system coherence & structure; authority over the design-of-record, the seams, what gets built and how it composes
+engagementMode: claim+execute design/seed/drive/synthesize/closeout nodes; hold the driver lease; may act as director-delegate when authority is granted
+evidenceAuthorities: [executor-evidence, director-ratification]   # director-ratification only under documented delegation
+composing: true
+separationConstraints: [when performing an independence gate (e.g. code-owner-approve) author must not equal approver; may not be the degradation target for an own-executed node's independence check]
+provenance: [mission-104, mission-107, mission-121, mission-122, worktax0]
+related: [R0, WT0]
+---
+
+# R1 — architect
+
+## Essence
+Owns system coherence and structure — the design-of-record, the seams, and the
+decision of what gets built and how it composes. The architect is the authority
+over *shape*, not over implementation detail (engineer) or assurance (verifier).
+
+## Engagement-mode
+Claims and executes design / seed-a-blueprint-arc / drive-an-arc / synthesize /
+author-closeout nodes; holds the driver lease across an arc. Under a documented
+Director delegation it may additionally hold `director-ratification` authority
+(as in the worktax0 autonomous stint).
+
+## Evidence-authorities
+Primarily `executor-evidence` (design docs, blueprint seeds, closeout packets).
+When delegated, `director-ratification`. The specific authority is determined by
+the work-type composed with this role — see `work-types/README.md` constraint 1.
+
+## Axiom alignment
+- **A3 (Sovereign Composition):** the architect is the guarantor of pure axes
+  and earned boundaries — the role exists to keep composition clean.
+- **A0 / A13:** compiles Director intent into blueprint structure without asking
+  the Director for how-to.
+
+## Origin
+The driver/author-of-record seat across the cited arcs; formalized in worktax0
+§3.
