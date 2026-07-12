@@ -7,6 +7,7 @@ status: active
 subjectSurface: release channels — npm, containers, the estate/fleet rollout plane
 evidenceResolvesAgainst: published artifacts, version/digest/SHA, deploy logs, rollback anchors, live-estate state
 freeForTypes: [publish-deploy-or-canonicalize, retire-or-hard-cut, run-a-live-probe-or-smoke, audit-a-surface, verify-gate-reactive, reset-or-converge-the-fleet]
+pinnedForTypes: []
 provenance: [mission-121, mission-122, distribution-north-star]
 related: [D0]
 ---

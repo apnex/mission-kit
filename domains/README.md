@@ -50,3 +50,11 @@ composition deterministic for two independent generators (A1).
 
 The domain of an incident is the surface it *hit* — an incident is not itself a
 subject-surface. See `work-types/README.md` (recover-incident posture note).
+
+## Axiom alignment
+
+- **A1 (Sovereign State Transparency):** a domain names what a node's evidence
+  resolves against, keeping work-truth queryable rather than trapped in prose.
+- **A3 (Sovereign Composition):** `domainFreedom: free|pinned` states
+  orthogonality honestly (partial for meta-types) instead of manufacturing false
+  symmetry — an honest boundary, not a hidden coupling.

@@ -44,3 +44,12 @@ delegation.
 
 Backstop is a **work-type** (`backstop-a-prod-window`) with a `backstop:true`
 flag, not a role and not a separate overlay layer. See `work-types/README.md`.
+
+## Axiom alignment
+
+- **A6 (Frictionless Agentic Collaboration):** the role axis is what lets `role ×
+  work-type × domain` compile to a claimable WorkItem, removing manual routing.
+- **A13 (Director Intent Amplification):** the axis carries the Director as a
+  first-class but non-composing authority, protecting non-delegable intent.
+- **A3 (Sovereign Composition):** roles are pure on essence, so composability —
+  not enumeration — determines the aggregate.

@@ -171,3 +171,12 @@ surfaces is harvested via `bank-idea-or-knowledge-capital`. (worktax0 §10-L.)
 `backstop:true` flag, a `roleEligibility` union, final-disposition evidence, and
 a "stands-down-last" `compositionHook` (`completionDependsOn` on the bracketed
 nodes). There is **no `overlays/` directory** (worktax0 §10-F).
+
+## Axiom alignment
+
+- **A2 (Isomorphic Specification):** the frontmatter schema is the
+  machine-parseable contract the generation engine (idea-425/451) consumes.
+- **A11 (Cognitive Minimalism):** the canonical constraint set moves pool-safety
+  and evidence contracts into schema fields so LLMs do not re-derive them.
+- **A8 (Gated Recursive Integrity):** the closeability preflight is the
+  lower-layer gate a generated node must pass before it bears weight.

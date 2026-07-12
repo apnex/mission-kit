@@ -7,6 +7,7 @@ status: active
 subjectSurface: the launch/runtime harness — ois/pi/claude launchers, prompt-handlers, dev tooling
 evidenceResolvesAgainst: harness source/config, launcher behavior, prompt-handler tables, live seat/session state
 freeForTypes: [build-a-slice, fix-a-bug-or-repair, retire-or-hard-cut, validate-locally, run-a-live-probe-or-smoke, audit-a-surface, verify-gate-reactive]
+pinnedForTypes: []
 provenance: [bug-247, idea-494, resfix0, mission-122]
 related: [D0]
 ---
