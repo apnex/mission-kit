@@ -15,7 +15,7 @@ parameters:
 generationMode: externally-triggered
 falsifier: Director authority inferred from architect prose only
 compositionHooks: none
-provenance: [workgraph-arc-closout skill, mission-113 era]
+provenance: [workgraph-arc-closeout skill, mission-113 era]
 ---
 
 # W24 — director-walkthrough
@@ -59,5 +59,5 @@ FAIL, not done.
 
 ## Origin
 
-Earned by the `workgraph-arc-closout` skill in the mission-113 era, where live
+Earned by the `workgraph-arc-closeout` skill in the mission-113 era, where live
 Director walkthroughs closed arcs on ratified disposition.
