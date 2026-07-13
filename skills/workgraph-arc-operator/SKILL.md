@@ -2,7 +2,7 @@
 name: workgraph-arc-operator
 description: "Use to commence, execute, recover, and close a Hub WorkGraph-based arc. This is the substrate-specific companion to arc-lifecycle: arc-lifecycle reasons about value chains, payoff, deferral, and revival; workgraph-arc-operator runs the actual control loop through WorkItems, blueprints, leases, evidence, verification, PRs, and closeout. Use when an agent is driving a multi-node initiative on the Hub WorkGraph and must keep liveness, authority, evidence, and scope under control."
 metadata:
-  related-skills: arc-lifecycle, survey, substrate-audit, research-artefacts, workgraph-arc-closout
+  related-skills: arc-lifecycle, survey, substrate-audit, research-artefacts, workgraph-arc-closeout
   series: workgraph
   series-role: root
   facet: operate — concrete Hub/WorkGraph arc execution
@@ -211,8 +211,8 @@ If it is valuable but outside the fence, file an idea/bug/follow-up and keep the
 
 ## Closeout procedure
 
-For terminal closeout, use the specialist skill `workgraph-arc-closout`.
-This root skill owns the full arc control loop; `workgraph-arc-closout` owns the terminal proof reconciliation.
+For terminal closeout, use the specialist skill `workgraph-arc-closeout`.
+This root skill owns the full arc control loop; `workgraph-arc-closeout` owns the terminal proof reconciliation.
 
 Minimum closeout invariant:
 

@@ -1,5 +1,5 @@
 ---
-name: workgraph-arc-closout
+name: workgraph-arc-closeout
 description: "Use at the terminal phase of a Hub WorkGraph arc to reconcile graph state, delivery truth, verifier evidence, active surfaces, backlog/stakeholder obligations, stale FYIs, and complete the arc-driver last."
 metadata:
   prerequisite: workgraph-arc-operator
@@ -11,7 +11,7 @@ metadata:
   primary-verbs: get_current_stint, get_work, legal_moves, complete_work, update_idea, update_bug, update_mission
 ---
 
-# workgraph-arc-closout — terminal proof reconciliation
+# workgraph-arc-closeout — terminal proof reconciliation
 
 ## When to use
 
@@ -92,7 +92,7 @@ List future-facing surfaces affected by the arc and mark each `updated`, `unaffe
 For procedure or skill arcs, this is load-bearing.
 Update indexes/root pointers and retire, remove, or clearly historical-mark stale scaffolds.
 
-For this skill family, `workgraph-arc-closout` is the canonical terminal-phase skill name.
+For this skill family, `workgraph-arc-closeout` is the canonical terminal-phase skill name.
 Do not leave active guidance pointing to the old `workgraph-closeout` scaffold.
 
 ### 5. Reconcile backlog and stakeholders

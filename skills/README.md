@@ -26,5 +26,5 @@ Operator-level capabilities + reusable tooling. The "how you do it" entries.
 | [K20](workgraph-lease-discipline/SKILL.md) | workgraph-lease-discipline — operate WorkGraph leases and liveness | stub |
 | [K21](workgraph-verification-gates/SKILL.md) | workgraph-verification-gates — design and operate verifier gates | stub |
 | [K22](workgraph-pr-delivery/SKILL.md) | workgraph-pr-delivery — deliver code arcs through PRs under WorkGraph control | stub |
-| [K23](workgraph-arc-closout/SKILL.md) | workgraph-arc-closout — terminal proof reconciliation for WorkGraph arc closeout | active |
+| [K23](workgraph-arc-closeout/SKILL.md) | workgraph-arc-closeout — terminal proof reconciliation for WorkGraph arc closeout | active |
 | [K24](workgraph-recovery/SKILL.md) | workgraph-recovery — recover stuck WorkGraph arcs | stub |

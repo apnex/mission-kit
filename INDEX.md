@@ -65,7 +65,7 @@ Flat ledger of every entry across categories. Sort by ID prefix.
 | [K20](skills/workgraph-lease-discipline/SKILL.md) | skill | workgraph-lease-discipline — operate WorkGraph leases and liveness | stub | 2026-07-08 |
 | [K21](skills/workgraph-verification-gates/SKILL.md) | skill | workgraph-verification-gates — design and operate verifier gates | stub | 2026-07-08 |
 | [K22](skills/workgraph-pr-delivery/SKILL.md) | skill | workgraph-pr-delivery — deliver code arcs through PRs under WorkGraph control | stub | 2026-07-08 |
-| [K23](skills/workgraph-arc-closout/SKILL.md) | skill | workgraph-arc-closout — terminal proof reconciliation for WorkGraph arc closeout | active | 2026-07-08 |
+| [K23](skills/workgraph-arc-closeout/SKILL.md) | skill | workgraph-arc-closeout — terminal proof reconciliation for WorkGraph arc closeout | active | 2026-07-08 |
 | [K24](skills/workgraph-recovery/SKILL.md) | skill | workgraph-recovery — recover stuck WorkGraph arcs | stub | 2026-07-08 |
 | [MREQ-1](backlog/mreq-1-axiom-application-methodology.md) | mission-required | Axiom-application methodology for non-code missions | partially-fulfilled | 2026-07-01 |
 | [R0](roles/README.md) | role | Roles — the M axis (pure essence + type-determined authority) | active | 2026-07-13 |
