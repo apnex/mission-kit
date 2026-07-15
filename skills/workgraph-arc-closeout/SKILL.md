@@ -3,7 +3,7 @@ name: workgraph-arc-closeout
 description: "Use at the terminal phase of a Hub WorkGraph arc to reconcile graph state, delivery truth, verifier evidence, active surfaces, backlog/stakeholder obligations, stale FYIs, and complete the arc-driver last."
 metadata:
   prerequisite: workgraph-arc-operator
-  related-skills: workgraph-arc-operator, workgraph-pr-delivery, workgraph-verification-gates, workgraph-recovery
+  related-skills: workgraph-arc-operator, workgraph-arc-participant, workgraph-pr-delivery, workgraph-verification-gates, workgraph-recovery
   series: workgraph
   parent-skill: workgraph-arc-operator
   series-role: specialist
@@ -42,7 +42,8 @@ Before closing, identify:
 - active docs/skills/indexes/prompts/templates affected by the arc;
 - axiom alignment audit ref or explicit not-required rationale for extensive planning/design arcs;
 - Director qualitative walkthrough trigger/tier: whether it is required, why, and the expected decision state;
-- live Director walkthrough mode: `not applicable`, `required`, `performed`, or `waived`, with the trigger/waiver ref when applicable.
+- live Director walkthrough mode: `not applicable`, `required`, `performed`, or `waived`, with the trigger/waiver ref when applicable;
+- friction rollup source: `get_current_stint` rollup and any child `frictionReflections`, including whether zero friction is credible or a dogfood caveat.
 
 If the driver id is unknown, stop.
 A WorkGraph arc cannot be honestly closed from a transcript alone.
@@ -55,6 +56,8 @@ Read `get_current_stint(driverId)`.
 Record driver status, `done/total`, pending children, in-flight children, blocked children, and failed/repair/verifier nodes.
 
 Stop if any required child is non-terminal and there is no explicit authority accepting a limitation.
+
+If the arc is already terminal and the current task is an audit, packet refresh, or historical verification, switch to **post-terminal audit mode**: do not attempt to re-complete terminal WorkItems; read substrate truth, record the audit scope, and make clear that evidence refresh is not a new close claim.
 
 ### 2. Inspect load-bearing evidence
 
@@ -95,7 +98,22 @@ Update indexes/root pointers and retire, remove, or clearly historical-mark stal
 For this skill family, `workgraph-arc-closeout` is the canonical terminal-phase skill name.
 Do not leave active guidance pointing to the old `workgraph-closeout` scaffold.
 
-### 5. Reconcile backlog and stakeholders
+### 5. Reconcile friction and A10 learning
+
+Inspect the arc friction rollup and child `frictionReflections`.
+For each reflection, preserve the summary, category, producer, source WorkItem, and suggested follow-up.
+Route concrete follow-ups to ideas, bugs, WorkItems, skill updates, or doc updates.
+
+If `friction.total=0` or no child records friction, do not silently celebrate.
+Record one of:
+
+- `credible zero friction` — the arc had few/no completions or every completion explicitly used `observed:false`;
+- `dogfood caveat` — the arc should have exercised friction capture but produced no records;
+- `exempt` — explain why A10 friction capture did not apply.
+
+A zero-friction arc with missing reflections is a learning failure, not proof that the process was frictionless.
+
+### 6. Reconcile backlog and stakeholders
 
 Update or disposition linked missions, ideas, bugs, decisions, and follow-up WorkItems.
 
@@ -115,7 +133,7 @@ Use tiers to avoid ceremony bloat:
 | 2 — full Director walkthrough | Director-requested/authorized arc, WorkGraph arc with closeout burden, procedure/tooling/skill/template/org-operating change, or material residual/caveat | dedicated walkthrough covering all required elements |
 | 3 — M7 + full walkthrough | extensive planning/design or reusable methodology/substrate/governance change | pre-implementation M7 audit plus closeout walkthrough re-checking guardrails |
 
-### 6. Write the Director qualitative walkthrough when triggered
+### 7. Write the Director qualitative walkthrough when triggered
 
 For Tier 1–3 arcs, write a Director/operator-readable projection that translates proof into meaning without replacing proof.
 It must be structured, bounded, and decision-shaped.
@@ -136,7 +154,7 @@ It is a post-evidence translation of delivered work into constitutional meaning.
 Full M7 remains a pre-implementation gate when the arc creates or changes reusable methodology, workflow, skill, template, substrate behavior, governance, coordination, lifecycle, delivery, verification, or authority patterns.
 If M7 produced guardrails, the walkthrough must state how closeout re-checked them.
 
-### 7. Deliver the live Director walkthrough when requested
+### 8. Deliver the live Director walkthrough when requested
 
 Use this protocol when the Director asks to be walked through the closeout, when the closeout is being delivered live in terminal/chat for the Director, or when a Director-facing interactive closeout is clearly implied.
 Do not satisfy this requirement by dumping the full packet or a long markdown wall.
@@ -168,13 +186,13 @@ Protocol rules:
 The live protocol may summarize the durable packet, but it does not replace the packet.
 The packet preserves zero-loss closeout evidence; the live protocol preserves Director attention and shared sensemaking.
 
-### 8. Handle stale FYIs without loops
+### 9. Handle stale FYIs without loops
 
 Messages and FYIs are signals.
 When a message conflicts with WorkGraph/GitHub/Hub entity truth, trust the substrate and ack or ignore the stale signal.
 Do not reopen or double-close work because a crossed FYI arrived late.
 
-### 9. Write the closeout packet
+### 10. Write the closeout packet
 
 Use `assets/closeout-packet-template.md` or a stricter project template.
 The packet must exist before completing the closeout WorkItem or driver.
@@ -194,10 +212,11 @@ At minimum it records:
 - backlog/entity updates and follow-up ids;
 - stakeholder/Director obligations;
 - stale FYI handling;
+- friction rollup, categories, follow-up routing, and zero-friction caveat/exemption if applicable;
 - residuals and revival triggers;
 - final close action and driver-complete-last evidence.
 
-### 10. Complete closeout, then driver last
+### 11. Complete closeout, then driver last
 
 Complete the closeout WorkItem with the packet as evidence.
 Then re-read `get_current_stint(driverId)`.
@@ -217,6 +236,7 @@ Do not complete the closeout WorkItem or driver if any are true:
 - a failed verifier gate is hidden or unresolved;
 - an extensive planning/design arc lacks an axiom alignment audit or explicit not-required rationale;
 - active future-facing guidance still points to stale behavior or a retired scaffold;
+- friction rollup is not inspected, or zero-friction is treated as success without explicit no-friction records, exemption, or dogfood caveat;
 - residual work exists only in prose;
 - stakeholder or Director/operator obligations are skipped without rationale;
 - a required Director qualitative walkthrough is absent, lacks decision state, or omits material caveats/non-claims;
@@ -238,6 +258,7 @@ A successful closeout leaves:
 - active surfaces updated or dispositioned;
 - verifier and delivery truth recorded without overclaiming;
 - stale FYIs acked without loops;
+- friction records summarized and routed, with zero-friction honestly classified;
 - closeout WorkItem done;
 - driver completed last.
 
