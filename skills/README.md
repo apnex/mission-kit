@@ -28,3 +28,4 @@ Operator-level capabilities + reusable tooling. The "how you do it" entries.
 | [K22](workgraph-pr-delivery/SKILL.md) | workgraph-pr-delivery — deliver code arcs through PRs under WorkGraph control | stub |
 | [K23](workgraph-arc-closeout/SKILL.md) | workgraph-arc-closeout — terminal proof reconciliation for WorkGraph arc closeout | active |
 | [K24](workgraph-recovery/SKILL.md) | workgraph-recovery — recover stuck WorkGraph arcs | stub |
+| [K25](workgraph-arc-participant/SKILL.md) | workgraph-arc-participant — act inside a Hub WorkGraph arc | active |

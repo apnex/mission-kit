@@ -2,7 +2,7 @@
 name: workgraph-arc-operator
 description: "Use to commence, execute, recover, and close a Hub WorkGraph-based arc. This is the substrate-specific companion to arc-lifecycle: arc-lifecycle reasons about value chains, payoff, deferral, and revival; workgraph-arc-operator runs the actual control loop through WorkItems, blueprints, leases, evidence, verification, PRs, and closeout. Use when an agent is driving a multi-node initiative on the Hub WorkGraph and must keep liveness, authority, evidence, and scope under control."
 metadata:
-  related-skills: arc-lifecycle, survey, substrate-audit, research-artefacts, workgraph-arc-closeout
+  related-skills: arc-lifecycle, survey, substrate-audit, research-artefacts, workgraph-arc-participant, workgraph-arc-closeout
   series: workgraph
   series-role: root
   facet: operate — concrete Hub/WorkGraph arc execution
@@ -94,6 +94,7 @@ A healthy WorkGraph arc blueprint has these features:
 
 - **One controller driver.** `roleEligibility` restricted to the controller role, usually `architect`; `completionDependsOn` lists every required child.
 - **Cold-start child runbooks.** Every child says what to do, where to look, what to produce, and how to prove it.
+- **Participant expectations.** Child runbooks tell claimants to read `workgraph-arc-participant` when acting inside the arc and to include `frictionReflection` on completion (`observed:false` is an explicit valid no-friction answer).
 - **Typed references.** Required docs/entities/git refs are listed as `references[]`, not hidden in prose.
 - **Evidence contracts.** Each node names the artifacts needed to complete it; verifier gates use verifier authority where appropriate.
 - **Verifier lane.** Backplane, deploy-gating, substrate, security, or high-risk arcs include explicit verifier-gate/review nodes.
@@ -101,6 +102,10 @@ A healthy WorkGraph arc blueprint has these features:
 - **No dangling dependencies.** Start-gates and completion-gates must resolve at seed time.
 - **Axiom alignment gate for extensive planning/design.** If the arc changes reusable procedure, substrate behavior, or coordination policy, include an axiom-audit node before implementation approval.
 - **No hidden manual step.** If a step is required to close, it is a WorkItem, evidence requirement, or explicit reference.
+
+Suggested child-runbook sentence for ordinary participant nodes:
+
+> On completion, include `frictionReflection`: `observed:false` if no friction was observed; otherwise include a concise summary, category, and suggested follow-up. Use `workgraph-arc-participant` for node-level WorkGraph behavior.
 
 The graph should be understandable from `get_current_stint(driverId)` plus child `get_work` reads without relying on the controller's memory.
 
@@ -133,6 +138,8 @@ An engineer's completion note is not a substitute for CI, PR, or evidence refs.
 When an agent is idle while the arc has ready work for that role, seed or expose the next node through the graph rather than manually pinging the agent.
 When there is no legal ready work, the projection should say why: dependency blocked, WIP-capped, quarantined, paused, review-gated, or genuinely complete.
 
+Repeated participant confusion is an orchestration-design failure, not merely a participant failure. If engineers or verifiers repeatedly miss evidence shape, friction reporting, stale-notification handling, or authority boundaries, improve the blueprint/runbooks/skill bundle or seed follow-up substrate work rather than relying on memory.
+
 ## PR, review, and merge discipline
 
 For code arcs:
@@ -159,10 +166,12 @@ Good evidence includes:
 - review or verifier-attestation ID for independent assessment;
 - Hub document path for plans, audits, closeouts, and traces;
 - bug/idea/mission IDs for backlog changes;
-- explicit note separating code/CI proof from live production proof.
+- explicit note separating code/CI proof from live production proof;
+- explicit `frictionReflection` on completion, either `observed:false` or a concise observed-friction summary with category and follow-up routing.
 
 Do not fabricate live evidence.
 If the code path is merged but no production event has been observed, say exactly that.
+If no friction was observed, say so explicitly with `observed:false`; a missing reflection is ambiguous and weakens A10 learning.
 
 ## Recovery playbook
 
