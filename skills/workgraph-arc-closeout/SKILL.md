@@ -28,6 +28,17 @@ Use it for:
 Do not use chat, FYIs, or memory as close authority.
 WorkGraph state, GitHub/CI state, Hub entities, and durable docs are the truth surfaces.
 
+## Closeout mode disambiguation
+
+This skill covers two related but distinct modes:
+
+- **Substrate closeout** — terminal proof reconciliation: write/update the durable packet, complete closeout WorkItem, complete driver last.
+- **Director live closeout** — the Director/operator-facing progressive walkthrough of the packet or terminal state.
+
+If the Director/operator says `commence closeout`, `initiate closeout`, `walk me through closeout`, or equivalent, default to **Director live closeout**. Do not respond only that the WorkGraph is already closed. A live walkthrough can be requested at the end of any arc, before or after the substrate driver is done. If substrate closeout is incomplete, say what is missing and offer Step 1 only when enough truth exists; if the packet exists, start the live protocol from it.
+
+A `not applicable` live-walkthrough row is point-in-time, not permanent. It is valid only when no live Director delivery has been requested, triggered, or implied **as of that packet version**. If the Director later requests live closeout, update or append to the closeout record and perform/waive the walkthrough; do not cite the old `not applicable` row as a reason not to proceed.
+
 ## Required inputs
 
 Before closing, identify:
@@ -47,7 +58,7 @@ Before closing, identify:
 - live Director walkthrough proof gate (`bug-281`): exactly one of `performed`, `waived`, or `not applicable` must be valid before closeout/driver completion when live walkthrough discipline is in scope:
   - `performed` requires transcript/message refs proving the progressive sequence, pause prompts, and Director responses;
   - `waived` requires an explicit Director waiver/ref and cannot be inferred from silence or a compact summary;
-  - `not applicable` requires a rationale showing no live Director delivery was requested, triggered, or implied;
+  - `not applicable` requires a point-in-time rationale showing no live Director delivery was requested, triggered, or implied as of that packet version; it must be revised/appended if the Director later requests live closeout;
 - minimal `bug-281` live walkthrough row when live walkthrough discipline is in scope: `performed`, `waived`, or `not applicable`, with proof/waiver/ref;
 - friction rollup source: `get_current_stint` rollup and any child `frictionReflections`, including whether zero friction is credible or a dogfood caveat;
 - dedicated friction section source: observed friction themes, disposition/follow-up/no-action rationale, accepted residual friction, and by-construction opportunities for both the durable packet and any live Director walkthrough;
@@ -191,8 +202,9 @@ If M7 produced guardrails, the walkthrough must state how closeout re-checked th
 
 ### 8. Deliver the live Director walkthrough when requested
 
-Use this protocol when the Director asks to be walked through the closeout, when the closeout is being delivered live in terminal/chat for the Director, or when a Director-facing interactive closeout is clearly implied.
-Do not satisfy this requirement by dumping the full packet or a long markdown wall.
+Use this protocol when the Director asks to be walked through the closeout, when the closeout is being delivered live in terminal/chat for the Director, or when a Director-facing interactive closeout is clearly implied. Phrases like `commence closeout`, `initiate closeout procedure`, `start closeout`, or `walk me through the closeout` from the Director are live-walkthrough triggers unless they explicitly ask only for substrate status.
+
+Do not satisfy this requirement by dumping the full packet or a long markdown wall. Do not answer `already done` just because the WorkGraph driver is terminal; substrate closeout and live closeout are different modes.
 The live surface is an intent interface; deliver progressive disclosure.
 
 Default live sequence:
@@ -218,6 +230,7 @@ Protocol rules:
 - Do not provide the whole closeout packet unless the Director asks for the full dump or waives progressive mode.
 - Record the live status in the packet: `performed`, `waived`, or `not applicable`, with transcript/message refs when available.
 - Do not mark live status `performed` unless the packet cites transcript/message refs showing the progressive steps, pause prompts, and Director responses.
+- Do not mark live status `not applicable` merely because the packet was written before a live request arrived; if the Director later requests live closeout, append/revise the row and perform or explicitly waive the walkthrough.
 - A compact summary, full packet dump, or non-progressive closeout note is **not** `performed`; it is valid only if the Director explicitly waived progressive mode, in which case record `waived` with the waiver ref.
 - A waiver is acceptable only when explicit: e.g. `send the whole thing`, `skip the walkthrough`, or equivalent.
 
