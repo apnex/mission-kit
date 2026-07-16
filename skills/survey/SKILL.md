@@ -138,20 +138,32 @@ The decision-authority answers. For each question, record into envelope §1:
 
 Close the round with a 1-2 sentence **composite read** of all three picks
 together, flagging any tension as a Round-2 clarification candidate.
+Then write a short **Round-1 axiom / principle anchoring** note: name the
+load-bearing axiom, principle, goal, or operating constraint the round appears
+to advance or tension. This is not decorative citation; it explains why the
+round's aggregate intent matters for the eventual design.
 
 ### Phase 4 — Round 2 question design (interactive)
 
 Load `round-2-template.md`. Design three Round-2 questions informed by Round 1.
 Round 2 is the proposer's **choice of question type**: refine deeper, clarify an
 ambiguous Round-1 pick, anchor a newly-surfaced dimension, or mix. Carry the
-Round-1 picks + interpretations forward as context. Synthesize for the
+Round-1 picks + interpretations + Round-1 composite read forward as context.
+For each Round-2 question, state whether it **refines**, **challenges**,
+**disambiguates**, or **deepens** the Round-1 aggregate interpretation; this
+prevents Round 2 from becoming a fresh, disconnected survey. Synthesize for the
 decision-authority.
 
 ### Phase 5 — Round 2 capture + interpretation + calibration (interactive)
 
 Same capture pattern as Phase 3, applied to the Round-2 questions, into envelope
-§2. Then assemble the **composite intent envelope** (§3) — the aggregate read
-across both rounds — and capture the **calibration data point** (§calibration):
+§2. Close Round 2 with its own aggregate read and axiom / principle anchoring.
+Then assemble the **composite intent envelope** (§3) — the aggregate read
+across both rounds — by composing the Round-1 aggregate and Round-2 aggregate
+into a final intent interpretation. The final intent must include explicit
+axiom / principle anchoring: name which axiom, principle, goal, or operating
+constraint the derived intent advances or tensions, and how that should shape
+the design. Finally capture the **calibration data point** (§calibration):
 
 - **stakeholder-time-cost-minutes** — how long (in whole minutes, as an integer)
   the decision-authority spent across both rounds (the bounded-cost metric this
@@ -167,10 +179,14 @@ across both rounds — and capture the **calibration data point** (§calibration
 Validate the envelope against the schema (see "Envelope schema" below). Check
 that every required section is present and non-empty, every question has a pick
 and an interpretation, the outcome-axis carries both a whole-survey roll-up and a
-per-round mapping, and the calibration fields are filled. By hand: eyeball the
-schema. With automation: run `scripts/validate-envelope.sh
---envelope-path=<path>` — exit 0 means it conforms. Fix any gap and re-check.
-When the envelope passes, publish it where the design phase will pick it up.
+per-round mapping, Round 1 and Round 2 each have aggregate interpretation and
+axiom/principle anchoring, the final composed intent has axiom/principle
+anchoring, and the calibration fields are filled. By hand: eyeball the schema.
+With automation: run `scripts/validate-envelope.sh --envelope-path=<path>` —
+exit 0 means the mechanical baseline conforms; still check any project-specific
+axiom/principle anchoring discipline if your validator version does not enforce
+it. Fix any gap and re-check. When the envelope passes, publish it where the
+design phase will pick it up.
 
 ## Multi-pick semantics
 
@@ -206,6 +222,7 @@ the validator passes.
 | `methodology-source` | Where the survey methodology came from (free text; e.g. a local `SURVEY.md`, or this skill) |
 | `stakeholder-picks` | The decision-authority's picks, grouped `round-1` / `round-2`, one entry per question (`Q1`..`Q6`), each with an optional `<Q>-rationale`. Each pick is one or more letters `a`-`d` (multi-pick supported). |
 | `outcome-axis` | The goal/objective axes the picks advance. A **whole-survey roll-up** (top-level `primary` / `secondary`) **and** a **per-round** mapping (`round-1` / `round-2`, each with `primary` / `secondary`). Axis labels are free text, consistent within the file. |
+| `axiom-principle-anchors` | The axiom, principle, goal, or operating-constraint anchors used by the survey. Include a whole-survey roll-up and per-round anchors. Free-form labels are acceptable; the load-bearing requirement is that the prose sections explain how the anchors affect intent and design. |
 | `calibration-data` | `stakeholder-time-cost-minutes` (integer), `comparison-baseline`, `notes` |
 
 **Frontmatter — optional keys:**
@@ -220,11 +237,11 @@ the validator passes.
 
 - `## §0 Context` — work-item provenance + the methodology/axis-framework reference
 - `## §1 Round 1 picks` — picks table + `### §1.Q1`/`§1.Q2`/`§1.Q3`
-  per-question interpretations (each present + non-empty) + a Round-1 composite read
+  per-question interpretations (each present + non-empty) + a Round-1 composite read + Round-1 axiom/principle anchoring
 - `## §2 Round 2 picks` — picks table + `### §2.Q4`/`§2.Q5`/`§2.Q6`
-  per-question interpretations (each present + non-empty) + a Round-2 composite read
+  per-question interpretations (each present + non-empty) + a Round-2 composite read + Round-2 axiom/principle anchoring; each Round-2 question states whether it refines/challenges/disambiguates/deepens the Round-1 aggregate
 - `## §3 Composite intent envelope` — the aggregate read across both rounds; the
-  load-bearing input the design concretizes
+  load-bearing input the design concretizes, including final axiom/principle anchoring
 - `## §4 Scope summary` — title, optional classification, primary/secondary
   outcomes, and the outcome-axis alignment (whole-survey + per-round)
 - `## §5 Anti-goals` — explicitly out-of-scope items, each with what they compose
