@@ -39,15 +39,22 @@ The minimum successful output is:
 
 ## Canonical blueprint asset
 
-This skill ships a reusable template at:
+This skill ships a reusable template and structural proof assets:
 
 ```text
 skills/workgraph-arc-planning/assets/planning-blueprint-template.json
+skills/workgraph-arc-planning/assets/dependency-matrix.md
+skills/workgraph-arc-planning/assets/validate-planning-blueprint.mjs
 ```
 
 The mission-kit asset is the canonical source.
 For live use, copy the JSON into a Hub Document or pass its `nodes` inline to `seed_blueprint` after replacing placeholders such as the run id, target entity, charter text, and evidence paths.
 When copying into Hub storage, cite the mission-kit source ref and this path so the Hub document does not become anonymous forked truth.
+Before promoting or reusing a changed template, run the validation fixture from the mission-kit root:
+
+```bash
+node skills/workgraph-arc-planning/assets/validate-planning-blueprint.mjs
+```
 
 ## Planning sequence
 
@@ -89,6 +96,7 @@ Minimum structural assertions:
 - `driver.completionDependsOn` covers every child and the driver completes last.
 
 If a planning graph violates these assertions, fix the graph before implementation authority is requested.
+The canonical dependency matrix records how each runbook-required input is represented by `dependsOn`, required references, or an explicit compensating gate check; the validation fixture asserts the structural edges and includes negative checks for the prior early-gate/runbook mismatch class.
 
 ## Value and friction triage
 
