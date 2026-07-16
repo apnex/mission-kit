@@ -44,8 +44,13 @@ Before closing, identify:
 - axiom alignment audit ref or explicit not-required rationale for extensive planning/design arcs;
 - Director qualitative walkthrough trigger/tier: whether it is required, why, and the expected decision state;
 - live Director walkthrough mode: `not applicable`, `required`, `performed`, or `waived`, with the trigger/waiver ref when applicable;
+- live Director walkthrough proof gate (`bug-281`): exactly one of `performed`, `waived`, or `not applicable` must be valid before closeout/driver completion when live walkthrough discipline is in scope:
+  - `performed` requires transcript/message refs proving the progressive sequence, pause prompts, and Director responses;
+  - `waived` requires an explicit Director waiver/ref and cannot be inferred from silence or a compact summary;
+  - `not applicable` requires a rationale showing no live Director delivery was requested, triggered, or implied;
 - minimal `bug-281` live walkthrough row when live walkthrough discipline is in scope: `performed`, `waived`, or `not applicable`, with proof/waiver/ref;
 - friction rollup source: `get_current_stint` rollup and any child `frictionReflections`, including whether zero friction is credible or a dogfood caveat;
+- dedicated friction section source: observed friction themes, disposition/follow-up/no-action rationale, accepted residual friction, and by-construction opportunities for both the durable packet and any live Director walkthrough;
 - minimal `bug-283` / `idea-550` qualitative friction-assessment row when friction/triage discipline is in scope: dominant themes, triaged vs untriaged status, and follow-up id or no-file rationale.
 
 If the driver id is unknown, stop.
@@ -175,6 +180,7 @@ Required elements for a full walkthrough:
 - **target-state delta** — before/after movement toward the desired org/system state;
 - **axiom / principle mapping** — only load-bearing or supporting axioms/tensions; no decorative filler;
 - **caveats / non-claims** — proof boundaries, live-not-observed, scope not delivered, or authority downgrade;
+- **friction assessment** — observed friction, disposition/follow-up/no-action rationale, accepted residual friction, and by-construction opportunities;
 - **residuals / revival triggers** — durable ids or explicit no-file rationale;
 - **decision state** — one of `no Director decision required`, `Director awareness only`, or `Director decision required` with the single decision topic and authority boundary.
 
@@ -197,8 +203,9 @@ Default live sequence:
 4. Why it matters and target-state delta.
 5. Axiom/principle mapping.
 6. Caveats / non-claims.
-7. Residuals / revival triggers.
-8. Decision state and final verdict.
+7. Friction assessment.
+8. Residuals / revival triggers.
+9. Decision state and final verdict.
 
 Protocol rules:
 
@@ -210,6 +217,8 @@ Protocol rules:
 - If the Director asks a question, answer it, then ask whether to proceed.
 - Do not provide the whole closeout packet unless the Director asks for the full dump or waives progressive mode.
 - Record the live status in the packet: `performed`, `waived`, or `not applicable`, with transcript/message refs when available.
+- Do not mark live status `performed` unless the packet cites transcript/message refs showing the progressive steps, pause prompts, and Director responses.
+- A compact summary, full packet dump, or non-progressive closeout note is **not** `performed`; it is valid only if the Director explicitly waived progressive mode, in which case record `waived` with the waiver ref.
 - A waiver is acceptable only when explicit: e.g. `send the whole thing`, `skip the walkthrough`, or equivalent.
 
 The live protocol may summarize the durable packet, but it does not replace the packet.
@@ -231,7 +240,7 @@ At minimum it records:
 - identity and authority;
 - final verdict and honesty statement;
 - Director qualitative walkthrough when triggered;
-- live Director walkthrough status (`performed`, `waived`, or `not applicable`) and refs when live delivery was requested/triggered;
+- live Director walkthrough proof gate (`performed` with transcript/message ref, `waived` with explicit waiver ref, or `not applicable` with rationale) when live delivery was requested/triggered or live walkthrough discipline is in scope;
 - scope delivered and not delivered;
 - WorkGraph final state and child dispositions;
 - delivered artifacts;
@@ -271,6 +280,9 @@ Do not complete the closeout WorkItem or driver if any are true:
 - active skill availability is claimed from upstream/repo/deployed proof without consumer sync/restart provenance and live active-seat proof or explicit exemption;
 - friction rollup is not inspected, or zero-friction is treated as success without explicit no-friction records, exemption, or dogfood caveat;
 - `bug-281` live walkthrough proof/waiver/not-applicable row is missing when live walkthrough discipline is in scope;
+- `bug-281` row marks `performed` without transcript/message refs proving progressive delivery, pause prompts, and Director responses;
+- compact summary or packet dump is treated as performed live walkthrough without an explicit Director waiver;
+- dedicated friction section is absent from the durable walkthrough/packet, or from the live sequence when live Director delivery is triggered;
 - `bug-283` / `idea-550` qualitative friction-assessment row is missing when friction/triage discipline is in scope;
 - residual work exists only in prose;
 - stakeholder or Director/operator obligations are skipped without rationale;
