@@ -88,6 +88,22 @@ Commence in this order:
 A commenced arc with no claimed driver is already partially uncontrolled.
 Fix that before adding more child work.
 
+### Approved-for-go handoff from a planning arc
+
+When a planning/design arc ends with the Director/operator saying the next implementation arc is **approved for go**, treat that as authority to commence the implementation arc, not as permission to improvise beyond the final design.
+
+Bounded handoff sequence:
+
+1. **Consume the final design and closeout addenda.** Read the final design packet, implementation arc plan, verifier/design-gate notes, and any live closeout addendum that changed the handoff conditions.
+2. **Restate scope and anti-scope in the implementation plan.** Copy the selected spine, acceptance criteria, verifier gates, active-surface proof boundaries, and explicit deferred items into the implementation arc plan.
+3. **Translate the design into a blueprint.** Seed only the nodes authorized by the final design. If new questions appear, route them as planning/clarification work rather than silently expanding the implementation graph.
+4. **Validate then seed.** Dry-run or otherwise inspect the graph before mutation; ensure the guardrail/verifier node gates implementation nodes when the design requires it.
+5. **Claim/start the driver immediately.** The architect/controller claims and starts the driver before waking lanes. A seeded but uncontrolled implementation arc is a partial failure.
+6. **Notify lanes from WorkGraph truth.** Tell engineers/verifiers the driver id, source design refs, and anti-scope. Do not rely on chat alone; the runbooks and references must carry the cold-start contract.
+7. **Preserve anti-scope throughout execution.** If participants try to pull deferred platform work into scope, stop at the WorkGraph boundary and create/link a future idea or blocker rather than broadening the arc.
+
+This handoff guidance is deliberately narrow. It does not replace the commence checklist, blueprint-shape rules, or closeout procedure; it only bridges an approved planning result into a controlled implementation arc.
+
 ## Blueprint shape
 
 A healthy WorkGraph arc blueprint has these features:

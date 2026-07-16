@@ -32,7 +32,8 @@ Tier: `<0 evidence-only | 1 sensemaking capsule | 2 full walkthrough | 3 M7 + fu
 Live Director walkthrough status: `<not applicable | required-not-yet-performed | performed | waived>`
 Live trigger/ref: `<Director requested live walkthrough | live terminal/chat closeout | interactive closeout implied | not applicable>`
 Waiver/ref if any: `<explicit Director waiver or n-a>`
-Transcript/message refs: `<refs or n-a>`
+Transcript/message refs: `<required when performed; refs or n-a>`
+Live proof gate valid? `<yes/no/not-applicable>`
 
 Use this section when the Director/operator requested or authorized the arc, the arc changes org operating procedure/tooling/skill/template/methodology/governance/coordination/lifecycle/delivery/verification/authority patterns, future agents/operators will treat the result as operating guidance, material limitations or residuals remain, or this packet is the organizational memory artifact.
 
@@ -64,6 +65,14 @@ Closeout-level axiom mapping is not a full M7 audit. It translates delivered wor
 
 - `TBD — proof boundary, live-not-observed, scope not delivered, authority downgrade, or other material caveat.`
 
+### Friction assessment
+
+This is a dedicated section, not a residual footnote. Summarize observed friction, no-friction credibility, accepted residual friction, and by-construction opportunities.
+
+| Theme | Source/ref | Disposition (`follow-up/no-action/accepted-residual/by-construction`) | Follow-up id or no-file rationale |
+|---|---|---|---|
+| `TBD` | `TBD` | `TBD` | `TBD` |
+
 ### Residuals / revival triggers
 
 | Residual/trigger | Durable id or no-file rationale | Owner/next surface |
@@ -94,12 +103,23 @@ Fill this when live Director delivery was requested/triggered. If not applicable
 | 4. Why it matters and target-state delta | `TBD` | `TBD` | `TBD` | `TBD` |
 | 5. Axiom/principle mapping | `TBD` | `TBD` | `TBD` | `TBD` |
 | 6. Caveats / non-claims | `TBD` | `TBD` | `TBD` | `TBD` |
-| 7. Residuals / revival triggers | `TBD` | `TBD` | `TBD` | `TBD` |
-| 8. Decision state and final verdict | `TBD` | `TBD` | `TBD` | `TBD` |
+| 7. Friction assessment | `TBD` | `TBD` | `TBD` | `TBD` |
+| 8. Residuals / revival triggers | `TBD` | `TBD` | `TBD` | `TBD` |
+| 9. Decision state and final verdict | `TBD` | `TBD` | `TBD` | `TBD` |
 
 Live walkthrough satisfied? `<yes/no/not-applicable>`
 
 If `no`, do not complete closeout/driver unless the Director explicitly accepts the limitation.
+
+### Live walkthrough proof gate (`bug-281`)
+
+Exactly one row must be valid when live walkthrough discipline is in scope. A compact summary or full packet dump cannot be marked `performed`; use `waived` only with an explicit Director waiver/ref.
+
+| Status | Required proof | Ref/rationale | Gate valid? | Notes |
+|---|---|---|---|---|
+| `performed` | Transcript/message refs showing progressive steps, pause prompts, and Director responses | `TBD` | `yes/no/n-a` | `TBD` |
+| `waived` | Explicit Director waiver/ref for progressive mode | `TBD` | `yes/no/n-a` | `TBD` |
+| `not applicable` | Rationale that no live Director delivery was requested, triggered, or implied | `TBD` | `yes/no/n-a` | `TBD` |
 
 ## Scope fence
 
@@ -213,7 +233,7 @@ Stale surfaces intentionally left historical:
 
 | Adjacent concern | Required closeout row | Status/ref |
 |---|---|---|
-| `bug-281` live walkthrough proof | `performed`, `waived`, or `not applicable`, with transcript/waiver/ref | `TBD` |
+| `bug-281` live walkthrough proof | `performed` with progressive transcript/message ref, `waived` with explicit waiver ref, or `not applicable` with rationale | `TBD` |
 | `bug-283` / `idea-550` friction assessment | dominant themes, triaged vs untriaged, and follow-up id or no-file rationale | `TBD` |
 
 Every material residual has an id or explicit no-file rationale: `yes/no`.
@@ -292,6 +312,8 @@ Limitations: <none or accepted limitations>
 | Stakeholder/Director obligation skipped | `yes/no` | `TBD` |
 | Required Director qualitative walkthrough absent/incomplete | `yes/no` | `TBD` |
 | Live Director walkthrough requested/triggered but not performed, waived, or recorded | `yes/no` | `TBD` |
+| Live walkthrough marked performed without progressive transcript/message ref | `yes/no` | `TBD` |
+| Dedicated friction section absent when friction/live-walkthrough discipline is in scope | `yes/no` | `TBD` |
 | Full closeout dump substituted for progressive live walkthrough without Director waiver | `yes/no` | `TBD` |
 | Stale FYI/chat treated as authority | `yes/no` | `TBD` |
 | Driver would complete before closeout evidence | `yes/no` | `TBD` |
