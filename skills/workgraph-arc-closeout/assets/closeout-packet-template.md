@@ -175,6 +175,24 @@ Required for extensive planning/design? `yes/no`
 | Prompt/runtime guidance | `TBD` | `TBD` | `TBD` |
 | Template/blueprint | `TBD` | `TBD` | `TBD` |
 
+### Active skill availability proof chain
+
+Fill this table before claiming any active skill/fleet-seat availability. If a layer is out of scope, write `not applicable`; if it was not observed, write the exact non-claim.
+
+| Layer | Ref/path/command | Observed state | Proof strength | Limits / exemptions |
+|---|---|---|---|---|
+| Upstream source (`source_repo` / `source_ref`) | `TBD` | `present/missing/n-a` | `source` | `TBD` |
+| Repo manifest intent (`source_repo`, `source_ref`, `bundles`, `extra_skills`) | `TBD` | `matches/drifts/n-a` | `repo-manifest` | `TBD` |
+| Deployed manifest | `TBD` | `matches/drifts/not-observed/n-a` | `deployed-manifest` | `TBD` |
+| Consumer sync/restart provenance | `TBD` | `ran/not-run/not-observed/n-a` | `sync-provenance` | `TBD` |
+| Live active-seat availability | `TBD` | `all-present/missing/exempt/not-observed/n-a` | `live-observed` | `TBD` |
+
+Per live seat when applicable:
+
+| Seat/agent | Harness/config root | Active skill dir | Expected skills | Present/missing | Hash/provenance | Exemption/ref |
+|---|---|---|---|---|---|---|
+| `TBD` | `TBD` | `TBD` | `TBD` | `TBD` | `TBD` | `TBD` |
+
 Stale surfaces intentionally left historical:
 
 | Surface | Reason safe | Follow-up id if needed |
@@ -190,6 +208,13 @@ Stale surfaces intentionally left historical:
 | Bug | `TBD` | `TBD` |
 | Decision/grant | `TBD` | `TBD` |
 | Follow-up WorkItem | `TBD` | `TBD` |
+
+### Adjacent minimums when in scope
+
+| Adjacent concern | Required closeout row | Status/ref |
+|---|---|---|
+| `bug-281` live walkthrough proof | `performed`, `waived`, or `not applicable`, with transcript/waiver/ref | `TBD` |
+| `bug-283` / `idea-550` friction assessment | dominant themes, triaged vs untriaged, and follow-up id or no-file rationale | `TBD` |
 
 Every material residual has an id or explicit no-file rationale: `yes/no`.
 
@@ -257,9 +282,12 @@ Limitations: <none or accepted limitations>
 | Required child non-terminal without accepted limitation | `yes/no` | `TBD` |
 | Delivery claimed without PR/CI/merge/release/live truth | `yes/no` | `TBD` |
 | Live behavior claimed from CI/build only | `yes/no` | `TBD` |
+| Active skill availability claimed without deployed manifest, sync/restart provenance, and live active-seat proof/exemption | `yes/no` | `TBD` |
 | Failed verifier gate hidden or unresolved | `yes/no` | `TBD` |
 | Extensive planning/design lacks axiom alignment audit or not-required rationale | `yes/no` | `TBD` |
 | Active future-facing surface still stale | `yes/no` | `TBD` |
+| `bug-281` live walkthrough proof/waiver/not-applicable row missing when in scope | `yes/no` | `TBD` |
+| `bug-283` / `idea-550` friction assessment row missing when in scope | `yes/no` | `TBD` |
 | Residual exists only in prose | `yes/no` | `TBD` |
 | Stakeholder/Director obligation skipped | `yes/no` | `TBD` |
 | Required Director qualitative walkthrough absent/incomplete | `yes/no` | `TBD` |

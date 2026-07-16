@@ -40,10 +40,13 @@ Before closing, identify:
 - verifier gate WorkItems or attestations;
 - linked ideas, bugs, decisions, and follow-up items;
 - active docs/skills/indexes/prompts/templates affected by the arc;
+- for skill/procedure active-surface claims: upstream source ref/path, repo manifest ref, deployed manifest ref, consumer sync/restart provenance, and live active-seat availability proof or explicit exemptions;
 - axiom alignment audit ref or explicit not-required rationale for extensive planning/design arcs;
 - Director qualitative walkthrough trigger/tier: whether it is required, why, and the expected decision state;
 - live Director walkthrough mode: `not applicable`, `required`, `performed`, or `waived`, with the trigger/waiver ref when applicable;
-- friction rollup source: `get_current_stint` rollup and any child `frictionReflections`, including whether zero friction is credible or a dogfood caveat.
+- minimal `bug-281` live walkthrough row when live walkthrough discipline is in scope: `performed`, `waived`, or `not applicable`, with proof/waiver/ref;
+- friction rollup source: `get_current_stint` rollup and any child `frictionReflections`, including whether zero friction is credible or a dogfood caveat;
+- minimal `bug-283` / `idea-550` qualitative friction-assessment row when friction/triage discipline is in scope: dominant themes, triaged vs untriaged status, and follow-up id or no-file rationale.
 
 If the driver id is unknown, stop.
 A WorkGraph arc cannot be honestly closed from a transcript alone.
@@ -88,12 +91,36 @@ Separate proof levels:
 Use the strongest true label only.
 If live behavior was not observed, write `live not observed` rather than implying it.
 
+For active skill availability, treat proof as a ladder, not a synonym set:
+
+| Active-surface layer | What it proves | What it does not prove |
+|---|---|---|
+| upstream source | the skill/bundle exists at `source_repo` / `source_ref` | repo manifest intent, deployed manifest, sync, active seat availability |
+| repo manifest | intended fleet configuration in the repository/ref | deployed fleet config, consumer execution, live active skill dirs |
+| deployed manifest | the fleet manifest on the target host/config root matches intended fields | that the consumer ran/restarted or that seats loaded the skills |
+| consumer sync/restart | the sync/seed/launcher path consumed the deployed manifest at a time/ref | every relevant live seat has the expected active files |
+| live active-seat availability | each relevant live prod seat's active skill directory contains the expected skills/hashes, or has an explicit exemption | unrelated seats or future restarts |
+
+Do not claim active skill availability from upstream source, repo manifest, or deployed manifest proof alone. A closeout may claim only the strongest observed layer; otherwise record `live not observed`, `not deployed`, `sync not proven`, or the explicit seat exemption.
+
 ### 4. Reconcile active surfaces
 
 List future-facing surfaces affected by the arc and mark each `updated`, `unaffected`, `historical`, or `residual`.
 
 For procedure or skill arcs, this is load-bearing.
 Update indexes/root pointers and retire, remove, or clearly historical-mark stale scaffolds.
+
+For skill availability or fleet-skill arcs, complete an active-surface proof chain before claiming availability:
+
+| Layer | Required closeout evidence |
+|---|---|
+| Upstream source | `source_repo`, `source_ref`, bundle/skill path, and hash or commit proof. |
+| Repo manifest intent | repository/ref manifest path and fields (`source_repo`, `source_ref`, `bundles`, `extra_skills`) that intend the delivery. |
+| Deployed manifest | deployed config path/root and comparison showing those fields match the intended repo/ref. |
+| Consumer sync/restart | command/log/provenance showing the skill-sync/seed/launch consumer read the deployed manifest after the intended change. |
+| Live active-seat availability | per relevant live prod seat: agent/seat id, harness/config root, active skill dir, expected skills present/missing, hashes where practical, and exemption rationale if not checked. |
+
+If any layer is missing, mark the surface `residual` or write the exact non-claim; do not collapse lower-layer proof into a higher-layer claim.
 
 For this skill family, `workgraph-arc-closeout` is the canonical terminal-phase skill name.
 Do not leave active guidance pointing to the old `workgraph-closeout` scaffold.
@@ -112,6 +139,8 @@ Record one of:
 - `exempt` — explain why A10 friction capture did not apply.
 
 A zero-friction arc with missing reflections is a learning failure, not proof that the process was frictionless.
+
+When `bug-283` / `idea-550` friction-assessment discipline is in scope, add a qualitative row even if no new substrate exists yet: dominant themes, whether each theme is triaged or untriaged, and the follow-up id or explicit no-file rationale. Keep this minimum qualitative assessment separate from broad friction-platform work.
 
 ### 6. Reconcile backlog and stakeholders
 
@@ -209,10 +238,13 @@ At minimum it records:
 - delivery/merge/release/live truth;
 - verifier evidence and failed-gate repair lineage;
 - active surface updates;
+- for active skill availability claims: upstream source, repo manifest, deployed manifest, consumer sync/restart, and live active-seat proof/exemptions as separate rows;
 - backlog/entity updates and follow-up ids;
 - stakeholder/Director obligations;
 - stale FYI handling;
 - friction rollup, categories, follow-up routing, and zero-friction caveat/exemption if applicable;
+- `bug-281` live walkthrough proof/waiver/not-applicable row when in scope;
+- `bug-283` / `idea-550` qualitative friction-assessment row when in scope;
 - residuals and revival triggers;
 - final close action and driver-complete-last evidence.
 
@@ -236,7 +268,10 @@ Do not complete the closeout WorkItem or driver if any are true:
 - a failed verifier gate is hidden or unresolved;
 - an extensive planning/design arc lacks an axiom alignment audit or explicit not-required rationale;
 - active future-facing guidance still points to stale behavior or a retired scaffold;
+- active skill availability is claimed from upstream/repo/deployed proof without consumer sync/restart provenance and live active-seat proof or explicit exemption;
 - friction rollup is not inspected, or zero-friction is treated as success without explicit no-friction records, exemption, or dogfood caveat;
+- `bug-281` live walkthrough proof/waiver/not-applicable row is missing when live walkthrough discipline is in scope;
+- `bug-283` / `idea-550` qualitative friction-assessment row is missing when friction/triage discipline is in scope;
 - residual work exists only in prose;
 - stakeholder or Director/operator obligations are skipped without rationale;
 - a required Director qualitative walkthrough is absent, lacks decision state, or omits material caveats/non-claims;
@@ -255,8 +290,9 @@ A successful closeout leaves:
 - a Director-readable qualitative walkthrough when triggered, including decision state;
 - a progressive live Director walkthrough performed or explicitly waived when live delivery was requested/triggered;
 - updated Hub entities and backlog follow-ups;
-- active surfaces updated or dispositioned;
+- active surfaces updated or dispositioned, with active skill availability separated into upstream source, repo manifest, deployed manifest, consumer sync/restart, and live active-seat proof where claimed;
 - verifier and delivery truth recorded without overclaiming;
+- `bug-281` live walkthrough and `bug-283` / `idea-550` friction minimums recorded when in scope;
 - stale FYIs acked without loops;
 - friction records summarized and routed, with zero-friction honestly classified;
 - closeout WorkItem done;
