@@ -1,0 +1,19 @@
+# workgraph-arc — WorkGraph arc operation baseline
+#
+# First-class bundle for agents participating in Hub WorkGraph arcs.
+# Agent-agnostic: no harness-specific fields, no tool names, no local path assumptions.
+# Deployment systems resolve this bundle by reading the `skills:` list and copying each
+# referenced SKILL.md tree from the pinned mission-kit source ref.
+
+name: workgraph-arc
+description: |
+  Baseline skill set for operating, participating in, and closing Hub WorkGraph arcs.
+  Includes arc-level sensemaking plus the WorkGraph execution, participant, and terminal
+  closeout skills required by active OIS fleet seats.
+
+skills:
+  - arc-lifecycle
+  - survey
+  - workgraph-arc-operator
+  - workgraph-arc-participant
+  - workgraph-arc-closeout
