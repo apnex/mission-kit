@@ -239,6 +239,13 @@ If it is valuable but outside the fence, file an idea/bug/follow-up and keep the
 For terminal closeout, use the specialist skill `workgraph-arc-closeout`.
 This root skill owns the full arc control loop; `workgraph-arc-closeout` owns the terminal proof reconciliation.
 
+Disambiguate two closeout modes:
+
+- **Substrate closeout** — reconcile evidence, write the packet, complete the closeout WorkItem, then complete the driver last.
+- **Director live closeout** — a progressive Director/operator walkthrough of the completed or nearly-completed packet, with pauses and decision-state. This can be requested before or after substrate closeout.
+
+If the Director/operator says `commence closeout`, `initiate closeout`, `walk me through the closeout`, or equivalent, do **not** answer only with WorkGraph status or "already done". Treat it as a request for Director live closeout unless they explicitly ask only for substrate state. If a packet already exists, start the live walkthrough from that packet; if no packet exists, say the substrate closeout is not ready and name the missing gates. If a packet previously marked live walkthrough `not applicable`, and the Director later requests it, correct the record with a follow-up note/doc revision rather than insisting the earlier row is final.
+
 Minimum closeout invariant:
 
 1. Read `get_current_stint(driverId)` and confirm all required children are done or explicitly dispositioned.

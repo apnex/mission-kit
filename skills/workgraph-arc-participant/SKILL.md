@@ -34,6 +34,16 @@ You use this skill to act correctly at the node level so the driver can orchestr
 - Terminal closeout reconciliation — use `workgraph-arc-closeout`.
 - GitHub-only work that is not represented by a WorkItem.
 
+## Director closeout requests while participating
+
+If the Director/operator asks to `commence closeout`, `initiate closeout`, `walk through closeout`, or similar while you are a participant, do not answer as if this is merely a stale WorkItem notification or a generic status query.
+
+Fresh-read the arc if you know the driver id, then route by role:
+
+- If you are the arc driver/controller, switch to `workgraph-arc-closeout` and begin or resume the Director live closeout protocol.
+- If you are not the driver, do not improvise the official closeout. State the current substrate truth you can verify and notify/handoff to the driver/controller that the Director requested live closeout.
+- If the substrate closeout packet already exists, the Director request still matters: it means the live walkthrough is requested now. A prior `not applicable` packet row is not a permanent refusal; it should be corrected by the driver in closeout records.
+
 ## Core rule — fresh WorkGraph truth beats memory
 
 Treat messages, FYIs, and chat context as signals, not authority.
