@@ -77,9 +77,11 @@ This is a dedicated section, not a residual footnote. Summarize observed frictio
 
 Record both positive closure and non-completion boundaries. Do not list only residuals.
 
-| Entity / obligation | Disposition (`definitively-complete/partially-satisfied/deferred/deliberately-not-complete/superseded-no-action/not-claimed`) | Evidence/ref | What would close it if not closed |
-|---|---|---|---|
-| `TBD` | `TBD` | `TBD` | `TBD` |
+For every Bug/Idea marked `fully-in-scope` by the planning packet or scope fence, choose exactly one explicit closeout disposition: `closed/resolved/incorporated`, `accepted-deferred`, `blocked`, or `reclassified`. A fully-in-scope item left open because realization gates were omitted is a closeout failure, not a normal residual.
+
+| Entity / obligation | Scope role (`fully-in-scope/partial/deferred/related-only`) | Disposition (`closed-or-incorporated/partially-satisfied/accepted-deferred/blocked/reclassified/superseded-no-action/not-claimed`) | Evidence/ref | What would close it if not closed |
+|---|---|---|---|---|
+| `TBD` | `TBD` | `TBD` | `TBD` | `TBD` |
 
 ### Residuals / revival triggers
 

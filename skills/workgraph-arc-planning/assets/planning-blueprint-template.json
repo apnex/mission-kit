@@ -36,7 +36,7 @@
       "priority": "high",
       "roleEligibility": ["architect"],
       "dependsOn": ["value_unlock_triage"],
-      "runbook": "Create the planning scope fence after mapping and value triage. Define recommended primary candidate scope for deeper design, supporting items, deferred items, anti-scope, and open questions. Keep implementation arc bounded while maximizing learning/capital/unlock.",
+      "runbook": "Create the planning scope fence after mapping and value triage. Define recommended primary candidate scope for deeper design, supporting items, deferred items, anti-scope, and open questions. Mark each linked Bug/Idea with scopeRole: fully-in-scope, partial, deferred, or related-only. Keep implementation arc bounded while maximizing learning/capital/unlock.",
       "targetRef": { "kind": "Idea", "id": "REPLACE_WITH_PRIMARY_TARGET_ID" },
       "evidenceRequirements": [
         { "id": "scope_fence", "kind": "doc", "description": "Scope fence for implementation arc design phase.", "refResolvable": true }
@@ -101,7 +101,7 @@
       "priority": "high",
       "roleEligibility": ["verifier"],
       "dependsOn": ["design_options", "feasibility_sketch", "failure_mode_audit"],
-      "runbook": "Use workgraph-arc-participant. Gate the design before implementation. Verify that the proposed arc has concrete artifacts, encoded dependencies, validation including structural/negative checks, closeout and survey proof requirements, active-surface truth boundaries, and explicit anti-scope. Pass or fail with required repairs.",
+      "runbook": "Use workgraph-arc-participant. Gate the design before implementation. Verify that the proposed arc has concrete artifacts, encoded dependencies, validation including structural/negative checks, closeout and survey proof requirements, active-surface truth boundaries, explicit anti-scope, and entityRealizationPlan/disposition gates for every fully-in-scope Bug/Idea. Pass or fail with required repairs.",
       "targetRef": { "kind": "Idea", "id": "REPLACE_WITH_PRIMARY_TARGET_ID" },
       "evidenceRequirements": [
         { "id": "design_gate", "kind": "doc", "description": "Verifier design gate report for implementation arc readiness.", "refResolvable": true }
@@ -114,7 +114,7 @@
       "priority": "critical",
       "roleEligibility": ["architect"],
       "dependsOn": ["design_gate", "design_options", "feasibility_sketch"],
-      "runbook": "Write the final implementation-arc design packet after the design gate. Include selected arc spine, supporting/deferred items, acceptance criteria, verifier gates, anti-scope, implementation blueprint outline, entity disposition expectations, and lessons for planning methodology.",
+      "runbook": "Write the final implementation-arc design packet after the design gate. Include selected arc spine, supporting/deferred items, acceptance criteria, verifier gates, anti-scope, implementation blueprint outline, entityRealizationPlan for every fully-in-scope Bug/Idea, disposition gates, allowed non-closure conditions, and lessons for planning methodology.",
       "targetRef": { "kind": "Idea", "id": "REPLACE_WITH_PRIMARY_TARGET_ID" },
       "evidenceRequirements": [
         { "id": "final_design", "kind": "doc", "description": "Final design packet for selected implementation arc.", "refResolvable": true }
@@ -127,7 +127,7 @@
       "priority": "high",
       "roleEligibility": ["architect"],
       "dependsOn": ["final_design_packet"],
-      "runbook": "Use workgraph-arc-closeout. Close the planning arc with WorkGraph state, selected implementation arc, rejected alternatives, anti-scope, live walkthrough status, friction assessment, entity disposition, residuals, and final non-claims. Complete before the driver.",
+      "runbook": "Use workgraph-arc-closeout. Close the planning arc with WorkGraph state, selected implementation arc, rejected alternatives, anti-scope, live walkthrough status, friction assessment, entity disposition, residuals, final non-claims, and an entityDispositionLedger covering every fully-in-scope Bug/Idea as closed/incorporated, accepted-deferred, blocked, reclassified, or explicitly non-claimed. Complete before the driver.",
       "targetRef": { "kind": "Idea", "id": "REPLACE_WITH_PRIMARY_TARGET_ID" },
       "evidenceRequirements": [
         { "id": "planning_closeout", "kind": "doc", "description": "Planning closeout packet.", "refResolvable": true }

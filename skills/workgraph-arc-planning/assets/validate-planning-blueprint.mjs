@@ -83,6 +83,32 @@ function validate(parsed) {
     errors.push(`driver completionDependsOn missing ${DRIVER_CHILDREN.filter((id) => !gated.includes(id)).join(', ')}`);
   }
 
+  const scopeFenceRunbook = byId.get('scope_fence')?.runbook || '';
+  if (!scopeFenceRunbook.includes('scopeRole')) {
+    errors.push('scope_fence runbook missing scopeRole classification for linked Bugs/Ideas');
+  }
+
+  const finalDesignRunbook = byId.get('final_design_packet')?.runbook || '';
+  if (!finalDesignRunbook.includes('entityRealizationPlan')) {
+    errors.push('final_design_packet runbook missing entityRealizationPlan');
+  }
+  if (!finalDesignRunbook.includes('disposition gates')) {
+    errors.push('final_design_packet runbook missing disposition gates');
+  }
+
+  const designGateRunbook = byId.get('design_gate')?.runbook || '';
+  if (!designGateRunbook.includes('entityRealizationPlan/disposition gates')) {
+    errors.push('design_gate runbook missing entityRealizationPlan/disposition gates check');
+  }
+
+  const closeoutRunbook = byId.get('planning_closeout')?.runbook || '';
+  if (!closeoutRunbook.includes('entityDispositionLedger')) {
+    errors.push('planning_closeout runbook missing entityDispositionLedger');
+  }
+  if (!closeoutRunbook.includes('fully-in-scope')) {
+    errors.push('planning_closeout runbook missing fully-in-scope entity disposition coverage');
+  }
+
   for (const node of nodes) {
     for (const dep of node.dependsOn || []) {
       if (!byId.has(dep)) errors.push(`${node.localId} has dangling dependsOn ${dep}`);
@@ -133,6 +159,16 @@ requireNegativeCheck(
   (byId) => { byId.get('driver').completionDependsOn = byId.get('driver').completionDependsOn.filter((id) => id !== 'planning_closeout'); },
   'driver completionDependsOn missing planning_closeout',
 );
+requireNegativeCheck(
+  'final_design_missing_entity_realization_plan',
+  (byId) => { byId.get('final_design_packet').runbook = byId.get('final_design_packet').runbook.replace('entityRealizationPlan', 'entity plan'); },
+  'final_design_packet runbook missing entityRealizationPlan',
+);
+requireNegativeCheck(
+  'planning_closeout_missing_entity_disposition_ledger',
+  (byId) => { byId.get('planning_closeout').runbook = byId.get('planning_closeout').runbook.replace('entityDispositionLedger', 'entity ledger'); },
+  'planning_closeout runbook missing entityDispositionLedger',
+);
 
 const dependencyAssertionCount = Object.values(REQUIRED_DEPENDS_ON).length;
-console.log(`PASS planning blueprint validation: ${REQUIRED_NODES.length} nodes, ${dependencyAssertionCount} dependency assertions, driver gates ${DRIVER_CHILDREN.length} children, negative checks caught 3 broken variants.`);
+console.log(`PASS planning blueprint validation: ${REQUIRED_NODES.length} nodes, ${dependencyAssertionCount} dependency assertions, driver gates ${DRIVER_CHILDREN.length} children, negative checks caught 5 broken variants.`);

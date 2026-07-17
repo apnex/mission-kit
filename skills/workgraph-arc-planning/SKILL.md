@@ -141,6 +141,22 @@ The design must consume:
 
 If those fields are missing, record the gap and either repair the survey artifact or make the limitation explicit in the design packet.
 
+## Fully-in-scope entity realization contract
+
+When a planning arc marks a Bug or Idea `fully-in-scope`, the implementation arc must be accountable for one explicit disposition for that entity: resolved/incorporated with proof, accepted-deferred with authority, blocked with a durable blocker/revival trigger, or reclassified with a replacement ref.
+
+Planning artifacts must include an `entityRealizationPlan` for every fully-in-scope Bug/Idea:
+
+- canonical entity ref;
+- scope role (`fully-in-scope`, `partial`, `deferred`, or `related-only`);
+- closure/incorporation standard;
+- required proof layers;
+- realization gates in the implementation blueprint;
+- disposition gate that updates the entity or records the accepted limitation;
+- allowed non-closure condition.
+
+A planning output that leaves a fully-in-scope entity to prose closeout, or lets the implementation driver complete while the entity remains open only because realization gates were omitted, is invalid.
+
 ## Design gate posture
 
 The verifier design gate must not be claimable until the artifacts it evaluates exist.
@@ -151,6 +167,7 @@ The gate should check:
 - validation includes a structural/negative check, not only a happy-path dry-run;
 - closeout and survey proof requirements are load-bearing;
 - active-surface claims are bounded to the strongest proven layer;
+- every fully-in-scope Bug/Idea has an entityRealizationPlan row, realization gates, a disposition gate, and an allowed non-closure condition;
 - anti-scope remains out of the implementation blueprint.
 
 ## Closeout requirements
@@ -163,6 +180,7 @@ A planning closeout packet should include:
 - rejected alternatives and deferred items;
 - final design refs;
 - implementation blueprint outline;
+- entityRealizationPlan and disposition gates for every fully-in-scope Bug/Idea;
 - verifier gate result;
 - live Director walkthrough status: `performed`, `waived`, or `not applicable`, with ref/rationale;
 - explicit friction section and follow-up routing/no-file rationale, including which related friction was included in this or the next arc and why;

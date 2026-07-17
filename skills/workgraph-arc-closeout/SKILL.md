@@ -173,6 +173,8 @@ Update or disposition linked missions, ideas, bugs, decisions, and follow-up Wor
 
 Write an entity disposition ledger, not only residual prose. Include every material entity or obligation and classify it as `definitively complete/closed`, `partially satisfied`, `deferred`, `deliberately not complete/remains open`, `superseded/no-action`, or `not claimed/not proven`. Each row needs evidence and, if not closed, the condition that would close it.
 
+For any Bug/Idea marked `fully-in-scope` by the planning packet or scope fence, closeout must record one explicit terminal disposition: resolved/incorporated with proof, accepted-deferred with authority, blocked with durable blocker/revival trigger, or reclassified with a replacement ref. A fully-in-scope entity left open because realization/promotion/materialization gates were omitted is a closeout failure, not a normal residual.
+
 Every residual expected to matter later needs an id.
 A residual paragraph without an Idea/Bug/WorkItem/Decision id is context, not routed work.
 
@@ -309,6 +311,8 @@ Do not complete the closeout WorkItem or driver if any are true:
 - dedicated friction section is absent from the durable walkthrough/packet, lacks related-friction triage/included-vs-deferred rationale, or is absent from the live sequence when live Director delivery is triggered;
 - `bug-283` / `idea-550` qualitative friction-assessment row is missing when friction/triage discipline is in scope;
 - residual work exists only in prose;
+- any fully-in-scope Bug/Idea lacks an explicit disposition of closed/incorporated, accepted-deferred, blocked, or reclassified;
+- a fully-in-scope Bug/Idea remains open solely because the implementation graph omitted realization, promotion/materialization, verification, or disposition gates;
 - stakeholder or Director/operator obligations are skipped without rationale;
 - a required Director qualitative walkthrough is absent, lacks decision state, or omits material caveats/non-claims;
 - a live Director walkthrough was requested/triggered but was not performed, explicitly waived, or recorded;
