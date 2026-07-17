@@ -65,13 +65,23 @@ Closeout-level axiom mapping is not a full M7 audit. It translates delivered wor
 
 - `TBD — proof boundary, live-not-observed, scope not delivered, authority downgrade, or other material caveat.`
 
-### Friction assessment
+### Friction assessment and related-friction triage
 
-This is a dedicated section, not a residual footnote. Summarize observed friction, no-friction credibility, accepted residual friction, and by-construction opportunities.
+This is a dedicated section, not a residual footnote. Summarize observed friction, no-friction credibility, accepted residual friction, by-construction opportunities, and which related friction was included in this arc or the next arc and why.
 
-| Theme | Source/ref | Disposition (`follow-up/no-action/accepted-residual/by-construction`) | Follow-up id or no-file rationale |
+| Theme | Source/ref | Disposition (`included/companion/deferred/separate-arc/no-action/accepted-residual/by-construction`) | Follow-up id or no-file rationale |
 |---|---|---|---|
 | `TBD` | `TBD` | `TBD` | `TBD` |
+
+### Entity disposition ledger
+
+Record both positive closure and non-completion boundaries. Do not list only residuals.
+
+For every Bug/Idea marked `fully-in-scope` by the planning packet or scope fence, choose exactly one explicit closeout disposition: `closed/resolved/incorporated`, `accepted-deferred`, `blocked`, or `reclassified`. A fully-in-scope item left open because realization gates were omitted is a closeout failure, not a normal residual.
+
+| Entity / obligation | Scope role (`fully-in-scope/partial/deferred/related-only`) | Disposition (`closed-or-incorporated/partially-satisfied/accepted-deferred/blocked/reclassified/superseded-no-action/not-claimed`) | Evidence/ref | What would close it if not closed |
+|---|---|---|---|---|
+| `TBD` | `TBD` | `TBD` | `TBD` | `TBD` |
 
 ### Residuals / revival triggers
 
@@ -221,13 +231,13 @@ Stale surfaces intentionally left historical:
 
 ## Hub entities, backlog, and residuals
 
-| Entity | Action taken | Final state/ref |
-|---|---|---|
-| Mission | `TBD` | `TBD` |
-| Idea | `TBD` | `TBD` |
-| Bug | `TBD` | `TBD` |
-| Decision/grant | `TBD` | `TBD` |
-| Follow-up WorkItem | `TBD` | `TBD` |
+| Entity | Action taken | Disposition | Final state/ref |
+|---|---|---|---|
+| Mission | `TBD` | `TBD` | `TBD` |
+| Idea | `TBD` | `TBD` | `TBD` |
+| Bug | `TBD` | `TBD` | `TBD` |
+| Decision/grant | `TBD` | `TBD` | `TBD` |
+| Follow-up WorkItem | `TBD` | `TBD` | `TBD` |
 
 ### Adjacent minimums when in scope
 

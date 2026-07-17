@@ -57,6 +57,8 @@ A different holder is valid only when the Director or the arc charter explicitly
 The driver is not busywork.
 It is the anti-stall mechanism, the cold-start handle, and the proof that the arc is governed rather than a set of loose tasks.
 
+A controller turn is not successful merely because the driver lease was renewed, a message was acknowledged, or state was read. Those are support actions only. Every controller turn must end in one of: graph state advanced, a legal lane dispatched, a child/arc completed, a concrete blocker/gate recorded, or a fresh graph-local proof that no legal next action exists.
+
 ## Source-of-truth hierarchy
 
 Prefer substrate truth in this order:
@@ -136,6 +138,7 @@ At the start of every controller turn:
 5. Check in-flight and blocked children by targeted `get_work`, not by broad guesswork.
 6. Act on the next legal move: claim/start a child, update work, review PR state, route a blocker, or close completed evidence.
 7. Record durable facts in WorkItems, Hub entities, docs, or git; do not rely on chat memory.
+8. Before ending the turn, classify the outcome: `advanced`, `lane-dispatched`, `completed`, `blocked`, or `no-legal-action-proven`. If the only actions were renew/ack/read/stale-FYI handling, the controller has not made progress; continue the loop or record the real gate.
 
 Do not use blind sleeps or poll loops as the primary control mechanism.
 Let leases, WorkGraph projections, queue events, and GitHub/CI state drive the next action.

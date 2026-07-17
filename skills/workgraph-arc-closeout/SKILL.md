@@ -49,7 +49,7 @@ Before closing, identify:
 - scope fence and authorizing idea/decision/Director instruction;
 - relevant PRs, checks, reviews, merge commits, releases, deploys, and live observations;
 - verifier gate WorkItems or attestations;
-- linked ideas, bugs, decisions, and follow-up items;
+- linked ideas, bugs, decisions, follow-up items, and entity/obligation disposition candidates;
 - active docs/skills/indexes/prompts/templates affected by the arc;
 - for skill/procedure active-surface claims: upstream source ref/path, repo manifest ref, deployed manifest ref, consumer sync/restart provenance, and live active-seat availability proof or explicit exemptions;
 - axiom alignment audit ref or explicit not-required rationale for extensive planning/design arcs;
@@ -61,7 +61,7 @@ Before closing, identify:
   - `not applicable` requires a point-in-time rationale showing no live Director delivery was requested, triggered, or implied as of that packet version; it must be revised/appended if the Director later requests live closeout;
 - minimal `bug-281` live walkthrough row when live walkthrough discipline is in scope: `performed`, `waived`, or `not applicable`, with proof/waiver/ref;
 - friction rollup source: `get_current_stint` rollup and any child `frictionReflections`, including whether zero friction is credible or a dogfood caveat;
-- dedicated friction section source: observed friction themes, disposition/follow-up/no-action rationale, accepted residual friction, and by-construction opportunities for both the durable packet and any live Director walkthrough;
+- dedicated friction section source: observed friction themes, disposition/follow-up/no-action rationale, accepted residual friction, by-construction opportunities, and which related friction was included/deferred/no-actioned in this or the next arc for both the durable packet and any live Director walkthrough;
 - minimal `bug-283` / `idea-550` qualitative friction-assessment row when friction/triage discipline is in scope: dominant themes, triaged vs untriaged status, and follow-up id or no-file rationale.
 
 If the driver id is unknown, stop.
@@ -158,9 +158,22 @@ A zero-friction arc with missing reflections is a learning failure, not proof th
 
 When `bug-283` / `idea-550` friction-assessment discipline is in scope, add a qualitative row even if no new substrate exists yet: dominant themes, whether each theme is triaged or untriaged, and the follow-up id or explicit no-file rationale. Keep this minimum qualitative assessment separate from broad friction-platform work.
 
-### 6. Reconcile backlog and stakeholders
+Also record a related-friction triage row for Director/operator sensemaking:
+
+- friction reviewed from prior closeouts, in-arc reflections, Director live-closeout comments, and linked ideas/bugs;
+- which friction was included in this arc or the next arc and why;
+- which friction was deferred, no-actioned, or split to a separate arc;
+- whether any friction should become a Bug, Idea, WorkItem, skill/doc update, or remain only an observation.
+
+This is required even when the arc's primary target is itself a friction defect, because future non-friction arcs still need a repeatable friction-intake habit.
+
+### 6. Reconcile backlog, entities, and stakeholders
 
 Update or disposition linked missions, ideas, bugs, decisions, and follow-up WorkItems.
+
+Write an entity disposition ledger, not only residual prose. Include every material entity or obligation and classify it as `definitively complete/closed`, `partially satisfied`, `deferred`, `deliberately not complete/remains open`, `superseded/no-action`, or `not claimed/not proven`. Each row needs evidence and, if not closed, the condition that would close it.
+
+For any Bug/Idea marked `fully-in-scope` by the planning packet or scope fence, closeout must record one explicit terminal disposition: resolved/incorporated with proof, accepted-deferred with authority, blocked with durable blocker/revival trigger, or reclassified with a replacement ref. A fully-in-scope entity left open because realization/promotion/materialization gates were omitted is a closeout failure, not a normal residual.
 
 Every residual expected to matter later needs an id.
 A residual paragraph without an Idea/Bug/WorkItem/Decision id is context, not routed work.
@@ -191,7 +204,7 @@ Required elements for a full walkthrough:
 - **target-state delta** — before/after movement toward the desired org/system state;
 - **axiom / principle mapping** — only load-bearing or supporting axioms/tensions; no decorative filler;
 - **caveats / non-claims** — proof boundaries, live-not-observed, scope not delivered, or authority downgrade;
-- **friction assessment** — observed friction, disposition/follow-up/no-action rationale, accepted residual friction, and by-construction opportunities;
+- **friction assessment** — observed friction, disposition/follow-up/no-action rationale, accepted residual friction, by-construction opportunities, and related friction triaged/included/deferred with rationale;
 - **residuals / revival triggers** — durable ids or explicit no-file rationale;
 - **decision state** — one of `no Director decision required`, `Director awareness only`, or `Director decision required` with the single decision topic and authority boundary.
 
@@ -216,7 +229,7 @@ Default live sequence:
 5. Axiom/principle mapping.
 6. Caveats / non-claims.
 7. Friction assessment.
-8. Residuals / revival triggers.
+8. Entity disposition, residuals, and revival triggers.
 9. Decision state and final verdict.
 
 Protocol rules:
@@ -261,13 +274,13 @@ At minimum it records:
 - verifier evidence and failed-gate repair lineage;
 - active surface updates;
 - for active skill availability claims: upstream source, repo manifest, deployed manifest, consumer sync/restart, and live active-seat proof/exemptions as separate rows;
-- backlog/entity updates and follow-up ids;
+- backlog/entity disposition ledger and follow-up ids;
 - stakeholder/Director obligations;
 - stale FYI handling;
 - friction rollup, categories, follow-up routing, and zero-friction caveat/exemption if applicable;
 - `bug-281` live walkthrough proof/waiver/not-applicable row when in scope;
 - `bug-283` / `idea-550` qualitative friction-assessment row when in scope;
-- residuals and revival triggers;
+- entity disposition ledger, residuals, and revival triggers;
 - final close action and driver-complete-last evidence.
 
 ### 11. Complete closeout, then driver last
@@ -295,9 +308,11 @@ Do not complete the closeout WorkItem or driver if any are true:
 - `bug-281` live walkthrough proof/waiver/not-applicable row is missing when live walkthrough discipline is in scope;
 - `bug-281` row marks `performed` without transcript/message refs proving progressive delivery, pause prompts, and Director responses;
 - compact summary or packet dump is treated as performed live walkthrough without an explicit Director waiver;
-- dedicated friction section is absent from the durable walkthrough/packet, or from the live sequence when live Director delivery is triggered;
+- dedicated friction section is absent from the durable walkthrough/packet, lacks related-friction triage/included-vs-deferred rationale, or is absent from the live sequence when live Director delivery is triggered;
 - `bug-283` / `idea-550` qualitative friction-assessment row is missing when friction/triage discipline is in scope;
 - residual work exists only in prose;
+- any fully-in-scope Bug/Idea lacks an explicit disposition of closed/incorporated, accepted-deferred, blocked, or reclassified;
+- a fully-in-scope Bug/Idea remains open solely because the implementation graph omitted realization, promotion/materialization, verification, or disposition gates;
 - stakeholder or Director/operator obligations are skipped without rationale;
 - a required Director qualitative walkthrough is absent, lacks decision state, or omits material caveats/non-claims;
 - a live Director walkthrough was requested/triggered but was not performed, explicitly waived, or recorded;
@@ -314,7 +329,7 @@ A successful closeout leaves:
 - a durable closeout packet;
 - a Director-readable qualitative walkthrough when triggered, including decision state;
 - a progressive live Director walkthrough performed or explicitly waived when live delivery was requested/triggered;
-- updated Hub entities and backlog follow-ups;
+- updated Hub entities, an explicit entity disposition ledger, and backlog follow-ups;
 - active surfaces updated or dispositioned, with active skill availability separated into upstream source, repo manifest, deployed manifest, consumer sync/restart, and live active-seat proof where claimed;
 - verifier and delivery truth recorded without overclaiming;
 - `bug-281` live walkthrough and `bug-283` / `idea-550` friction minimums recorded when in scope;

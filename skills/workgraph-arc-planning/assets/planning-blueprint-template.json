@@ -6,14 +6,30 @@
       "label": "Target-space mapping",
       "type": "review",
       "priority": "critical",
-      "roleEligibility": ["architect"],
+      "roleEligibility": [
+        "architect"
+      ],
       "runbook": "Use workgraph-arc-planning. Map the related backlog/target space before scope fencing. Classify primary spine candidates, supporting items, adjacent/deferred items, dependencies, blockers, and anti-scope. Do not choose final scope yet.",
-      "targetRef": { "kind": "Idea", "id": "REPLACE_WITH_PRIMARY_TARGET_ID" },
+      "targetRef": {
+        "kind": "Idea",
+        "id": "REPLACE_WITH_PRIMARY_TARGET_ID"
+      },
       "references": [
-        { "kind": "charter", "ref": "REPLACE_WITH_CHARTER_TEXT_OR_DOC_REF", "storage": "inline", "mode": "read", "required": true }
+        {
+          "kind": "charter",
+          "ref": "REPLACE_WITH_CHARTER_TEXT_OR_DOC_REF",
+          "storage": "inline",
+          "mode": "read",
+          "required": true
+        }
       ],
       "evidenceRequirements": [
-        { "id": "target_map", "kind": "doc", "description": "Related backlog target-space map for planning arc.", "refResolvable": true }
+        {
+          "id": "target_map",
+          "kind": "doc",
+          "description": "Related backlog target-space map for planning arc.",
+          "refResolvable": true
+        }
       ]
     },
     {
@@ -21,12 +37,24 @@
       "label": "Value / learning / unlock triage",
       "type": "review",
       "priority": "critical",
-      "roleEligibility": ["architect"],
-      "dependsOn": ["target_space_mapping"],
+      "roleEligibility": [
+        "architect"
+      ],
+      "dependsOn": [
+        "target_space_mapping"
+      ],
       "runbook": "Use the target-space map to rank candidate clusters by banked durable value, staked learning, bootstrap capital, downstream unlock, recurring friction removed, risk retired, effort/complexity, sequencing leverage, and scope containment. Recommend candidate spines for scope fencing. Do not implement.",
-      "targetRef": { "kind": "Idea", "id": "REPLACE_WITH_PRIMARY_TARGET_ID" },
+      "targetRef": {
+        "kind": "Idea",
+        "id": "REPLACE_WITH_PRIMARY_TARGET_ID"
+      },
       "evidenceRequirements": [
-        { "id": "triage", "kind": "doc", "description": "Value/learning/unlock triage and ranked candidate clusters.", "refResolvable": true }
+        {
+          "id": "triage",
+          "kind": "doc",
+          "description": "Value/learning/unlock triage and ranked candidate clusters.",
+          "refResolvable": true
+        }
       ]
     },
     {
@@ -34,12 +62,49 @@
       "label": "Scope fence",
       "type": "review",
       "priority": "high",
-      "roleEligibility": ["architect"],
-      "dependsOn": ["value_unlock_triage"],
-      "runbook": "Create the planning scope fence after mapping and value triage. Define recommended primary candidate scope for deeper design, supporting items, deferred items, anti-scope, and open questions. Keep implementation arc bounded while maximizing learning/capital/unlock.",
-      "targetRef": { "kind": "Idea", "id": "REPLACE_WITH_PRIMARY_TARGET_ID" },
+      "roleEligibility": [
+        "architect"
+      ],
+      "dependsOn": [
+        "value_unlock_triage"
+      ],
+      "runbook": "Create the planning scope fence after mapping and value triage. Define recommended primary candidate scope for deeper design, supporting items, deferred items, anti-scope, and open questions. Mark each linked Bug/Idea with scopeRole: fully-in-scope, partial, deferred, or related-only. Keep implementation arc bounded while maximizing learning/capital/unlock.",
+      "targetRef": {
+        "kind": "Idea",
+        "id": "REPLACE_WITH_PRIMARY_TARGET_ID"
+      },
       "evidenceRequirements": [
-        { "id": "scope_fence", "kind": "doc", "description": "Scope fence for implementation arc design phase.", "refResolvable": true }
+        {
+          "id": "scope_fence",
+          "kind": "doc",
+          "description": "Scope fence for implementation arc design phase.",
+          "refResolvable": true
+        }
+      ]
+    },
+    {
+      "localId": "axiom_alignment_audit",
+      "label": "Direct axiom alignment audit",
+      "type": "review",
+      "priority": "high",
+      "roleEligibility": [
+        "architect"
+      ],
+      "dependsOn": [
+        "scope_fence"
+      ],
+      "runbook": "Use workgraph-arc-planning. For planning arcs affecting operating guidance, methodology, skills, authority, proof discipline, lifecycle, delivery, verification, governance, coordination, or reusable organizational process, map the selected scope directly against the current constitutional corpus using get_constitution/get_axiom provenance (A0-A14 as applicable). Include sourceRepo, sha, syncedAt, manifestHash, stale flag, load-bearing axiom content, implementation invariants, tensions, and verifier checks. If not required, provide an explicit not-required rationale before implementation authority.",
+      "targetRef": {
+        "kind": "Idea",
+        "id": "REPLACE_WITH_PRIMARY_TARGET_ID"
+      },
+      "evidenceRequirements": [
+        {
+          "id": "axiom_alignment",
+          "kind": "doc",
+          "description": "Direct axiom alignment audit with constitution provenance, or explicit not-required rationale.",
+          "refResolvable": true
+        }
       ]
     },
     {
@@ -47,12 +112,24 @@
       "label": "Engineer current-state inventory",
       "type": "task",
       "priority": "high",
-      "roleEligibility": ["engineer"],
-      "dependsOn": ["scope_fence"],
+      "roleEligibility": [
+        "engineer"
+      ],
+      "dependsOn": [
+        "scope_fence"
+      ],
       "runbook": "Use workgraph-arc-participant. Inventory current implementation surfaces relevant to the selected candidate scope. Facts only; no design.",
-      "targetRef": { "kind": "Idea", "id": "REPLACE_WITH_PRIMARY_TARGET_ID" },
+      "targetRef": {
+        "kind": "Idea",
+        "id": "REPLACE_WITH_PRIMARY_TARGET_ID"
+      },
       "evidenceRequirements": [
-        { "id": "inventory", "kind": "doc", "description": "Engineer current-state inventory for selected candidate scope.", "refResolvable": true }
+        {
+          "id": "inventory",
+          "kind": "doc",
+          "description": "Engineer current-state inventory for selected candidate scope.",
+          "refResolvable": true
+        }
       ]
     },
     {
@@ -60,12 +137,24 @@
       "label": "Verifier failure-mode audit",
       "type": "review",
       "priority": "high",
-      "roleEligibility": ["verifier"],
-      "dependsOn": ["scope_fence"],
+      "roleEligibility": [
+        "verifier"
+      ],
+      "dependsOn": [
+        "scope_fence"
+      ],
       "runbook": "Use workgraph-arc-participant. Audit failure modes for selected candidate scope. Identify proof needed, gates, scope-creep risks, closeout verification requirements, acceptance criteria, and red lines. Do not implement.",
-      "targetRef": { "kind": "Idea", "id": "REPLACE_WITH_PRIMARY_TARGET_ID" },
+      "targetRef": {
+        "kind": "Idea",
+        "id": "REPLACE_WITH_PRIMARY_TARGET_ID"
+      },
       "evidenceRequirements": [
-        { "id": "audit", "kind": "doc", "description": "Verifier failure-mode audit for selected candidate scope.", "refResolvable": true }
+        {
+          "id": "audit",
+          "kind": "doc",
+          "description": "Verifier failure-mode audit for selected candidate scope.",
+          "refResolvable": true
+        }
       ]
     },
     {
@@ -73,12 +162,27 @@
       "label": "Architect design options",
       "type": "task",
       "priority": "high",
-      "roleEligibility": ["architect"],
-      "dependsOn": ["scope_fence", "current_state_inventory", "failure_mode_audit"],
-      "runbook": "Synthesize design options using scope fence, inventory, and verifier audit. Compare candidate arc shapes and sequencing. Include rejected alternatives and anti-scope. Do not implement.",
-      "targetRef": { "kind": "Idea", "id": "REPLACE_WITH_PRIMARY_TARGET_ID" },
+      "roleEligibility": [
+        "architect"
+      ],
+      "dependsOn": [
+        "scope_fence",
+        "axiom_alignment_audit",
+        "current_state_inventory",
+        "failure_mode_audit"
+      ],
+      "runbook": "Synthesize design options using scope fence, direct axiom alignment, inventory, and verifier audit. Compare candidate arc shapes and sequencing. Include rejected alternatives and anti-scope. Do not implement.",
+      "targetRef": {
+        "kind": "Idea",
+        "id": "REPLACE_WITH_PRIMARY_TARGET_ID"
+      },
       "evidenceRequirements": [
-        { "id": "options", "kind": "doc", "description": "Architect design options packet for implementation arc.", "refResolvable": true }
+        {
+          "id": "options",
+          "kind": "doc",
+          "description": "Architect design options packet for implementation arc.",
+          "refResolvable": true
+        }
       ]
     },
     {
@@ -86,12 +190,25 @@
       "label": "Engineer feasibility sketch",
       "type": "review",
       "priority": "normal",
-      "roleEligibility": ["engineer"],
-      "dependsOn": ["design_options", "current_state_inventory"],
+      "roleEligibility": [
+        "engineer"
+      ],
+      "dependsOn": [
+        "design_options",
+        "current_state_inventory"
+      ],
       "runbook": "Use workgraph-arc-participant. Review architect design options for implementation feasibility. Identify files/surfaces, small vs large cuts, operational risk, sequencing, and whether scope remains bounded. Do not implement.",
-      "targetRef": { "kind": "Idea", "id": "REPLACE_WITH_PRIMARY_TARGET_ID" },
+      "targetRef": {
+        "kind": "Idea",
+        "id": "REPLACE_WITH_PRIMARY_TARGET_ID"
+      },
       "evidenceRequirements": [
-        { "id": "feasibility", "kind": "doc", "description": "Engineer feasibility sketch for design options.", "refResolvable": true }
+        {
+          "id": "feasibility",
+          "kind": "doc",
+          "description": "Engineer feasibility sketch for design options.",
+          "refResolvable": true
+        }
       ]
     },
     {
@@ -99,12 +216,27 @@
       "label": "Verifier design gate",
       "type": "verifier-gate",
       "priority": "high",
-      "roleEligibility": ["verifier"],
-      "dependsOn": ["design_options", "feasibility_sketch", "failure_mode_audit"],
-      "runbook": "Use workgraph-arc-participant. Gate the design before implementation. Verify that the proposed arc has concrete artifacts, encoded dependencies, validation including structural/negative checks, closeout and survey proof requirements, active-surface truth boundaries, and explicit anti-scope. Pass or fail with required repairs.",
-      "targetRef": { "kind": "Idea", "id": "REPLACE_WITH_PRIMARY_TARGET_ID" },
+      "roleEligibility": [
+        "verifier"
+      ],
+      "dependsOn": [
+        "design_options",
+        "feasibility_sketch",
+        "failure_mode_audit",
+        "axiom_alignment_audit"
+      ],
+      "runbook": "Use workgraph-arc-participant. Gate the design before implementation. Verify that the proposed arc has concrete artifacts, encoded dependencies, validation including structural/negative checks, closeout and survey proof requirements, active-surface truth boundaries, direct axiom mapping or explicit not-required rationale, explicit anti-scope, and entityRealizationPlan/disposition gates for every fully-in-scope Bug/Idea. Pass or fail with required repairs.",
+      "targetRef": {
+        "kind": "Idea",
+        "id": "REPLACE_WITH_PRIMARY_TARGET_ID"
+      },
       "evidenceRequirements": [
-        { "id": "design_gate", "kind": "doc", "description": "Verifier design gate report for implementation arc readiness.", "refResolvable": true }
+        {
+          "id": "design_gate",
+          "kind": "doc",
+          "description": "Verifier design gate report for implementation arc readiness.",
+          "refResolvable": true
+        }
       ]
     },
     {
@@ -112,12 +244,27 @@
       "label": "Final design packet",
       "type": "task",
       "priority": "critical",
-      "roleEligibility": ["architect"],
-      "dependsOn": ["design_gate", "design_options", "feasibility_sketch"],
-      "runbook": "Write the final implementation-arc design packet after the design gate. Include selected arc spine, supporting/deferred items, acceptance criteria, verifier gates, anti-scope, implementation blueprint outline, entity disposition expectations, and lessons for planning methodology.",
-      "targetRef": { "kind": "Idea", "id": "REPLACE_WITH_PRIMARY_TARGET_ID" },
+      "roleEligibility": [
+        "architect"
+      ],
+      "dependsOn": [
+        "design_gate",
+        "design_options",
+        "feasibility_sketch",
+        "axiom_alignment_audit"
+      ],
+      "runbook": "Write the final implementation-arc design packet after the design gate. Include selected arc spine, supporting/deferred items, acceptance criteria, verifier gates, anti-scope, implementation blueprint outline, direct axiom alignment summary and invariants (or explicit not-required rationale), entityRealizationPlan for every fully-in-scope Bug/Idea, disposition gates, allowed non-closure conditions, and lessons for planning methodology.",
+      "targetRef": {
+        "kind": "Idea",
+        "id": "REPLACE_WITH_PRIMARY_TARGET_ID"
+      },
       "evidenceRequirements": [
-        { "id": "final_design", "kind": "doc", "description": "Final design packet for selected implementation arc.", "refResolvable": true }
+        {
+          "id": "final_design",
+          "kind": "doc",
+          "description": "Final design packet for selected implementation arc.",
+          "refResolvable": true
+        }
       ]
     },
     {
@@ -125,12 +272,24 @@
       "label": "Planning closeout",
       "type": "task",
       "priority": "high",
-      "roleEligibility": ["architect"],
-      "dependsOn": ["final_design_packet"],
-      "runbook": "Use workgraph-arc-closeout. Close the planning arc with WorkGraph state, selected implementation arc, rejected alternatives, anti-scope, live walkthrough status, friction assessment, entity disposition, residuals, and final non-claims. Complete before the driver.",
-      "targetRef": { "kind": "Idea", "id": "REPLACE_WITH_PRIMARY_TARGET_ID" },
+      "roleEligibility": [
+        "architect"
+      ],
+      "dependsOn": [
+        "final_design_packet"
+      ],
+      "runbook": "Use workgraph-arc-closeout. Close the planning arc with WorkGraph state, selected implementation arc, rejected alternatives, anti-scope, live walkthrough status, friction assessment, direct axiom alignment/provenance, entity disposition, residuals, final non-claims, and an entityDispositionLedger covering every fully-in-scope Bug/Idea as closed/incorporated, accepted-deferred, blocked, reclassified, or explicitly non-claimed. Complete before the driver.",
+      "targetRef": {
+        "kind": "Idea",
+        "id": "REPLACE_WITH_PRIMARY_TARGET_ID"
+      },
       "evidenceRequirements": [
-        { "id": "planning_closeout", "kind": "doc", "description": "Planning closeout packet.", "refResolvable": true }
+        {
+          "id": "planning_closeout",
+          "kind": "doc",
+          "description": "Planning closeout packet.",
+          "refResolvable": true
+        }
       ]
     },
     {
@@ -138,11 +297,14 @@
       "label": "Planning arc driver",
       "type": "task",
       "priority": "critical",
-      "roleEligibility": ["architect"],
+      "roleEligibility": [
+        "architect"
+      ],
       "completionDependsOn": [
         "target_space_mapping",
         "value_unlock_triage",
         "scope_fence",
+        "axiom_alignment_audit",
         "current_state_inventory",
         "failure_mode_audit",
         "design_options",
@@ -152,12 +314,26 @@
         "planning_closeout"
       ],
       "runbook": "Use workgraph-arc-operator. Controller driver for a planning/design WorkGraph. Do not implement the selected arc. Complete last only after every planning child and closeout is done.",
-      "targetRef": { "kind": "Idea", "id": "REPLACE_WITH_PRIMARY_TARGET_ID" },
+      "targetRef": {
+        "kind": "Idea",
+        "id": "REPLACE_WITH_PRIMARY_TARGET_ID"
+      },
       "references": [
-        { "kind": "charter", "ref": "REPLACE_WITH_CHARTER_TEXT_OR_DOC_REF", "storage": "inline", "mode": "read", "required": true }
+        {
+          "kind": "charter",
+          "ref": "REPLACE_WITH_CHARTER_TEXT_OR_DOC_REF",
+          "storage": "inline",
+          "mode": "read",
+          "required": true
+        }
       ],
       "evidenceRequirements": [
-        { "id": "final_closeout", "kind": "doc", "description": "Planning closeout packet including final design, target selection rationale, friction assessment, and lessons.", "refResolvable": true }
+        {
+          "id": "final_closeout",
+          "kind": "doc",
+          "description": "Planning closeout packet including final design, target selection rationale, friction assessment, and lessons.",
+          "refResolvable": true
+        }
       ]
     }
   ]

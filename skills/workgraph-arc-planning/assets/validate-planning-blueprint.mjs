@@ -14,6 +14,7 @@ const REQUIRED_NODES = [
   'target_space_mapping',
   'value_unlock_triage',
   'scope_fence',
+  'axiom_alignment_audit',
   'current_state_inventory',
   'failure_mode_audit',
   'design_options',
@@ -27,12 +28,13 @@ const REQUIRED_NODES = [
 const REQUIRED_DEPENDS_ON = {
   value_unlock_triage: ['target_space_mapping'],
   scope_fence: ['value_unlock_triage'],
+  axiom_alignment_audit: ['scope_fence'],
   current_state_inventory: ['scope_fence'],
   failure_mode_audit: ['scope_fence'],
-  design_options: ['scope_fence', 'current_state_inventory', 'failure_mode_audit'],
+  design_options: ['scope_fence', 'axiom_alignment_audit', 'current_state_inventory', 'failure_mode_audit'],
   feasibility_sketch: ['design_options', 'current_state_inventory'],
-  design_gate: ['design_options', 'feasibility_sketch', 'failure_mode_audit'],
-  final_design_packet: ['design_gate', 'design_options', 'feasibility_sketch'],
+  design_gate: ['design_options', 'feasibility_sketch', 'failure_mode_audit', 'axiom_alignment_audit'],
+  final_design_packet: ['design_gate', 'design_options', 'feasibility_sketch', 'axiom_alignment_audit'],
   planning_closeout: ['final_design_packet'],
 };
 
@@ -83,6 +85,52 @@ function validate(parsed) {
     errors.push(`driver completionDependsOn missing ${DRIVER_CHILDREN.filter((id) => !gated.includes(id)).join(', ')}`);
   }
 
+  const scopeFenceRunbook = byId.get('scope_fence')?.runbook || '';
+  if (!scopeFenceRunbook.includes('scopeRole')) {
+    errors.push('scope_fence runbook missing scopeRole classification for linked Bugs/Ideas');
+  }
+
+  const axiomRunbook = byId.get('axiom_alignment_audit')?.runbook || '';
+  if (!axiomRunbook.includes('get_constitution/get_axiom')) {
+    errors.push('axiom_alignment_audit runbook missing get_constitution/get_axiom provenance');
+  }
+  if (!axiomRunbook.includes('A0-A14')) {
+    errors.push('axiom_alignment_audit runbook missing A0-A14 direct mapping scope');
+  }
+  if (!axiomRunbook.includes('not-required rationale')) {
+    errors.push('axiom_alignment_audit runbook missing explicit not-required rationale fallback');
+  }
+
+  const finalDesignRunbook = byId.get('final_design_packet')?.runbook || '';
+  if (!finalDesignRunbook.includes('direct axiom alignment')) {
+    errors.push('final_design_packet runbook missing direct axiom alignment');
+  }
+  if (!finalDesignRunbook.includes('entityRealizationPlan')) {
+    errors.push('final_design_packet runbook missing entityRealizationPlan');
+  }
+  if (!finalDesignRunbook.includes('disposition gates')) {
+    errors.push('final_design_packet runbook missing disposition gates');
+  }
+
+  const designGateRunbook = byId.get('design_gate')?.runbook || '';
+  if (!designGateRunbook.includes('direct axiom mapping')) {
+    errors.push('design_gate runbook missing direct axiom mapping check');
+  }
+  if (!designGateRunbook.includes('entityRealizationPlan/disposition gates')) {
+    errors.push('design_gate runbook missing entityRealizationPlan/disposition gates check');
+  }
+
+  const closeoutRunbook = byId.get('planning_closeout')?.runbook || '';
+  if (!closeoutRunbook.includes('direct axiom alignment')) {
+    errors.push('planning_closeout runbook missing direct axiom alignment');
+  }
+  if (!closeoutRunbook.includes('entityDispositionLedger')) {
+    errors.push('planning_closeout runbook missing entityDispositionLedger');
+  }
+  if (!closeoutRunbook.includes('fully-in-scope')) {
+    errors.push('planning_closeout runbook missing fully-in-scope entity disposition coverage');
+  }
+
   for (const node of nodes) {
     for (const dep of node.dependsOn || []) {
       if (!byId.has(dep)) errors.push(`${node.localId} has dangling dependsOn ${dep}`);
@@ -129,10 +177,30 @@ requireNegativeCheck(
   'final_design_packet dependsOn missing design_gate',
 );
 requireNegativeCheck(
+  'design_options_missing_axiom_alignment',
+  (byId) => { byId.get('design_options').dependsOn = byId.get('design_options').dependsOn.filter((id) => id !== 'axiom_alignment_audit'); },
+  'design_options dependsOn missing axiom_alignment_audit',
+);
+requireNegativeCheck(
   'driver_missing_closeout_gate',
   (byId) => { byId.get('driver').completionDependsOn = byId.get('driver').completionDependsOn.filter((id) => id !== 'planning_closeout'); },
   'driver completionDependsOn missing planning_closeout',
 );
+requireNegativeCheck(
+  'axiom_audit_missing_direct_corpus',
+  (byId) => { byId.get('axiom_alignment_audit').runbook = byId.get('axiom_alignment_audit').runbook.replace('A0-A14', 'principles'); },
+  'axiom_alignment_audit runbook missing A0-A14 direct mapping scope',
+);
+requireNegativeCheck(
+  'final_design_missing_entity_realization_plan',
+  (byId) => { byId.get('final_design_packet').runbook = byId.get('final_design_packet').runbook.replace('entityRealizationPlan', 'entity plan'); },
+  'final_design_packet runbook missing entityRealizationPlan',
+);
+requireNegativeCheck(
+  'planning_closeout_missing_entity_disposition_ledger',
+  (byId) => { byId.get('planning_closeout').runbook = byId.get('planning_closeout').runbook.replace('entityDispositionLedger', 'entity ledger'); },
+  'planning_closeout runbook missing entityDispositionLedger',
+);
 
 const dependencyAssertionCount = Object.values(REQUIRED_DEPENDS_ON).length;
-console.log(`PASS planning blueprint validation: ${REQUIRED_NODES.length} nodes, ${dependencyAssertionCount} dependency assertions, driver gates ${DRIVER_CHILDREN.length} children, negative checks caught 3 broken variants.`);
+console.log(`PASS planning blueprint validation: ${REQUIRED_NODES.length} nodes, ${dependencyAssertionCount} dependency assertions, driver gates ${DRIVER_CHILDREN.length} children, negative checks caught 7 broken variants.`);
