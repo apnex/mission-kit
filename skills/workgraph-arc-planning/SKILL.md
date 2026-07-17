@@ -36,7 +36,8 @@ The minimum successful output is:
 2. an implementation blueprint outline with roles, dependencies, evidence, verifier gates, and anti-scope;
 3. a closeout packet recording decisions, caveats, deferred items, friction, and entity disposition;
 4. enough WorkGraph evidence that a cold-start architect, engineer, or verifier can reconstruct why this implementation arc is next;
-5. an explicit past-friction intake/triage record showing which friction learnings were included, deferred, no-actioned, or split into separate arcs.
+5. an explicit past-friction intake/triage record showing which friction learnings were included, deferred, no-actioned, or split into separate arcs;
+6. for arcs that affect operating guidance, methodology, skills, authority, proof discipline, lifecycle, delivery, verification, governance, coordination, or reusable organizational process: a direct axiom alignment audit against the current constitutional corpus (`get_constitution` / `get_axiom` provenance, A0-A14 as applicable), or an explicit not-required rationale before implementation authority is requested.
 
 ## Canonical blueprint asset
 
@@ -68,6 +69,7 @@ A standard planning arc uses these nodes:
 | `friction_intake` or explicit friction section | architect | target map or charter | prior/recent friction candidates, ranking, and included/deferred/no-action/separate-arc dispositions |
 | `value_unlock_triage` | architect | target map + friction intake/section | value, learning, bootstrap capital, friction, risk, sequence ranking |
 | `scope_fence` | architect | triage | selected candidate, in-scope, deferred, anti-scope, open design questions |
+| `axiom_alignment_audit` | architect | scope fence | direct A0-A14 constitutional mapping with provenance, implementation invariants, or explicit not-required rationale |
 | `current_state_inventory` | engineer | scope fence | factual implementation-surface inventory |
 | `failure_mode_audit` | verifier | scope fence | proof needs, red lines, failure modes, gate criteria |
 | `design_options` | architect | scope fence + inventory + audit | compared options and recommended shape |
@@ -89,11 +91,12 @@ Minimum structural assertions:
 
 - `value_unlock_triage` depends on `target_space_mapping`.
 - `scope_fence` depends on `value_unlock_triage`.
+- `axiom_alignment_audit` depends on `scope_fence`.
 - `current_state_inventory` and `failure_mode_audit` depend on `scope_fence`.
-- `design_options` depends on `scope_fence`, `current_state_inventory`, and `failure_mode_audit`.
+- `design_options` depends on `scope_fence`, `axiom_alignment_audit`, `current_state_inventory`, and `failure_mode_audit`.
 - `feasibility_sketch` depends on `design_options` and `current_state_inventory`.
-- `design_gate` depends on `design_options`, `feasibility_sketch`, and `failure_mode_audit`.
-- `final_design_packet` depends on `design_gate`, `design_options`, and `feasibility_sketch`.
+- `design_gate` depends on `design_options`, `feasibility_sketch`, `failure_mode_audit`, and `axiom_alignment_audit`.
+- `final_design_packet` depends on `design_gate`, `design_options`, `feasibility_sketch`, and `axiom_alignment_audit`.
 - `planning_closeout` depends on `final_design_packet`.
 - `driver.completionDependsOn` covers every child and the driver completes last.
 
@@ -126,6 +129,21 @@ Every implementation arc should explicitly consider prior friction points.
 This does not mean every arc becomes a platform project.
 It means friction candidates are ranked beside capability work, then the smallest bounded arc that maximizes learning/capital/unlock is chosen.
 If no friction is included, the planning packet must say why and record whether the candidates were deferred, no-actioned, or split into separate arcs.
+
+
+## Direct axiom alignment
+
+Planning arcs that affect operating guidance, methodology, skills, authority, proof discipline, lifecycle, delivery, verification, governance, coordination, or reusable organizational process must include direct constitutional alignment before implementation authority. Do not satisfy this with a vague principle summary.
+
+The axiom alignment record must include:
+
+- constitution provenance from `get_constitution` and/or `get_axiom` (`sourceRepo`, `sha`, `syncedAt`, `manifestHash`, and `stale` flag);
+- direct mapping against A0-A14 as applicable, citing the load-bearing content of each relevant axiom;
+- implementation invariants derived from the mapping;
+- explicit tensions, risks, or non-applicability rationale;
+- verifier/design-gate checks that the final design consumes the alignment.
+
+For small/local planning arcs where this is not required, the planning packet must say why the arc does not affect reusable guidance, authority, proof discipline, or operating methodology.
 
 ## Survey inputs
 
@@ -165,6 +183,7 @@ The gate should check:
 - the recommended arc ships concrete artifacts, not prose-only methodology;
 - dependencies and references match runbook-required inputs;
 - validation includes a structural/negative check, not only a happy-path dry-run;
+- direct axiom alignment is present for qualifying arcs, or a clear not-required rationale exists;
 - closeout and survey proof requirements are load-bearing;
 - active-surface claims are bounded to the strongest proven layer;
 - every fully-in-scope Bug/Idea has an entityRealizationPlan row, realization gates, a disposition gate, and an allowed non-closure condition;
@@ -180,6 +199,7 @@ A planning closeout packet should include:
 - rejected alternatives and deferred items;
 - final design refs;
 - implementation blueprint outline;
+- direct axiom alignment audit/provenance and implementation invariants, or explicit not-required rationale;
 - entityRealizationPlan and disposition gates for every fully-in-scope Bug/Idea;
 - verifier gate result;
 - live Director walkthrough status: `performed`, `waived`, or `not applicable`, with ref/rationale;
