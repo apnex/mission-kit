@@ -127,6 +127,18 @@ Suggested child-runbook sentence for ordinary participant nodes:
 
 The graph should be understandable from `get_current_stint(driverId)` plus child `get_work` reads without relying on the controller's memory.
 
+## Blueprint references & evidence contracts
+
+Blueprint authoring is where most re-seed churn originates. Five rules keep it clean:
+
+- **References to owned upstream are LIVING pointers — never SHA-pinned.** A node's `references[]` to our OWN upstream (design docs, mission-kit) are living Hub/repo *paths*. The whole value of a reference is that the upstream can improve without re-authoring every blueprint that points at it (skills-sync points to mission-kit, not a commit). Pinning a SHA turns a living pointer into a frozen copy and throws that away. Reserve content-addressing / immutable git pins (`SHA:path` + blob hash) for **irreversible external artifacts** — npm publishes, releases, deploy artifacts — where a later mutation is genuinely dangerous. Do NOT tamper-evidence-freeze owned design/spec docs.
+- **Design gates are point-in-time.** A verifier design gate attests the design *as read* at attestation — directional, not immutable bytes. Material upstream changes get a fresh verifier review before implementation continues past the affected gate; delivery-truth never claims an attestation binds later bytes.
+- **Evidence contracts are IMMUTABLE — pick satisfiable kinds.** `evidenceRequirements` can never be edited; a mis-seed forces a re-seed, not a fix. Verifier gates use `evidenceAuthority: verifier-attestation` on a NON-verifier-executed node (architect drives to `review`; the verifier attests, never claims/executes) — NEVER `kind:review + refResolvable:true` (unsatisfiable: a verifier can't create the WorkItem that contract demands).
+- **A node's contract must match what it actually produces.** A "merged PR" requirement can't be satisfied by a node that completes *before* the merge. Split fix-work: candidate-source (exact head + green CI, pre-merge-provable, `allowPreClaim`) → verifier gate → a **distinct** post-PASS merge node.
+- **Fail-forward is a distinct successor graph.** `dependsOn` edges are append-only, so a terminal FAIL retires the attempt/tail and seeds a NEW attempt with new downstream nodes and a new `runId` — never reuse the frozen row or a sibling behind the failed edge.
+
+And right-size the verifier's bar: keep **substance** verification (is the design/code correct?) — that is the verifier's core value — but question **immutability/tamper-evidence** demands on owned upstream. Over-complying with an escalating tamper-evidence bar gold-plates artifacts that should stay living, and is itself a failure mode. Distinguish the two before building.
+
 ## Drive loop
 
 At the start of every controller turn:
