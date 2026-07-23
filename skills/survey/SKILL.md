@@ -12,7 +12,7 @@ when_not_to_use:
   - The work is a trivial bug fix or a mechanical change with one obvious correct outcome
   - You need a deep technical evaluation of an existing system → use a code-grounded audit skill instead
   - The decision-authority is unavailable and cannot answer two short rounds of questions — the survey is interactive by design and degrades to a guess without them
-related_skills: [substrate-audit, research-artefacts]
+related_skills: [arc-lifecycle, workgraph-arc-planning, substrate-audit, research-artefacts]
 ---
 
 # survey — stakeholder-intent capture before design
@@ -65,6 +65,29 @@ The survey is **proposer-driven**: the proposer initiates it as a normal part of
 moving a work item from "accepted" to "designed." The decision-authority should
 not have to ask for it.
 
+## Lifecycle boundary and handoff
+
+The canonical WorkGraph lifecycle is `../arc-lifecycle/assets/workgraph-lifecycle-v1.json`.
+Survey owns only `intent-open -> intent-captured`.
+It does not design, approve implementation, seed a graph, or authorize an effect.
+
+Every completed survey envelope carries a `lifecycle-handoff` block:
+
+```yaml
+lifecycle-handoff:
+  from: intent-open
+  to: intent-captured
+  authority-ref: <Director/stakeholder decision or message ref>
+  planning-input-ref: self
+```
+
+When direction is already fully specified, do not fabricate a survey.
+The architect records an explicit bypass outside the survey artifact with the fixed-intent authority ref and rationale; the lifecycle transition still requires `survey-envelope-or-explicit-bypass`.
+A missing decision-authority is not a bypass: it is a hard stop because answering on their behalf would launder intent.
+
+The output feeds `workgraph-arc-planning` as load-bearing intent evidence.
+Planning must preserve interpretations, tensions, anti-goals, axiom anchors, and calibration rather than reducing the envelope to a summary sentence.
+
 ## Outcome axes (the goals framework)
 
 A survey is run against a **set of outcome axes** — the standing goals or
@@ -108,6 +131,8 @@ Establish the inputs and scaffold the envelope:
 - **Artifact name + output path** — pick a stable name for the work item and a
   directory for the envelope. Default: `surveys/<slug>-survey.md` under the repo
   root. The slug and directory are consumer-configurable.
+- **Lifecycle authority ref** — capture the Director/stakeholder authority whose
+  answers may move `intent-open` to `intent-captured`; do not infer it from role text.
 
 Scaffold the envelope from `templates/envelope.md.tmpl` to the output path
 (either copy it by hand, or run `scripts/survey-init.sh` — see "Optional
@@ -181,7 +206,8 @@ that every required section is present and non-empty, every question has a pick
 and an interpretation, the outcome-axis carries both a whole-survey roll-up and a
 per-round mapping, Round 1 and Round 2 each have aggregate interpretation and
 axiom/principle anchoring, the final composed intent has axiom/principle
-anchoring, and the calibration fields are filled. By hand: eyeball the schema.
+anchoring, the lifecycle handoff is exactly `intent-open -> intent-captured` with
+an authority ref, and the calibration fields are filled. By hand: eyeball the schema.
 With automation: run `scripts/validate-envelope.sh --envelope-path=<path>` —
 exit 0 means the mechanical baseline conforms; still check any project-specific
 axiom/principle anchoring discipline if your validator version does not enforce
@@ -223,6 +249,7 @@ the validator passes.
 | `stakeholder-picks` | The decision-authority's picks, grouped `round-1` / `round-2`, one entry per question (`Q1`..`Q6`), each with an optional `<Q>-rationale`. Each pick is one or more letters `a`-`d` (multi-pick supported). |
 | `outcome-axis` | The goal/objective axes the picks advance. A **whole-survey roll-up** (top-level `primary` / `secondary`) **and** a **per-round** mapping (`round-1` / `round-2`, each with `primary` / `secondary`). Axis labels are free text, consistent within the file. |
 | `axiom-principle-anchors` | The axiom, principle, goal, or operating-constraint anchors used by the survey. Include a whole-survey roll-up and per-round anchors. Free-form labels are acceptable; the load-bearing requirement is that the prose sections explain how the anchors affect intent and design. |
+| `lifecycle-handoff` | Exact `from: intent-open`, `to: intent-captured`, non-placeholder `authority-ref`, and `planning-input-ref` (normally `self`). This is a planning handoff, not implementation authority. |
 | `calibration-data` | `stakeholder-time-cost-minutes` (integer), `comparison-baseline`, `notes` |
 
 **Frontmatter — optional keys:**

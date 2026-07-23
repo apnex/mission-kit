@@ -5,6 +5,11 @@
 survey-title: <TITLE>
 work-item: <ITEM-ID>
 methodology-source: <methodology reference; e.g. a local SURVEY.md or this skill>
+lifecycle-handoff:
+  from: intent-open
+  to: intent-captured
+  authority-ref: <Director/stakeholder decision or message ref>
+  planning-input-ref: self
 stakeholder-picks:
   round-1:
     Q1: <a|b|c|d>
@@ -62,6 +67,7 @@ contradictory-constraints:
 **Methodology:** <methodology reference> (2-round, 3-orthogonal-questions-per-round pick-list)
 **Work item:** <ITEM-ID>
 **Classification candidate:** <optional>
+**Lifecycle handoff:** `intent-open -> intent-captured` only; this envelope grants no design, seed, implementation, or delivery effect.
 
 ---
 

@@ -65,6 +65,12 @@ was meant to serve?).
 | Q2 | <axis-label> | <axis-label> |
 | Q3 | <axis-label> | <axis-label> |
 
+## Lifecycle/authority check
+
+Before presenting Round 1, identify the decision-authority ref that may move the canonical lifecycle from `intent-open` to `intent-captured`.
+If no authorized stakeholder can answer, stop; do not infer picks from a profile, prior chat, or proposer preference.
+Survey completion grants only a planning input, never design or implementation authority.
+
 ## Capture target
 
 Synthesize the three questions for the decision-authority. When the picks come

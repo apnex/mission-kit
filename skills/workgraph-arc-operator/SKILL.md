@@ -2,7 +2,7 @@
 name: workgraph-arc-operator
 description: "Use to commence, execute, recover, and close a Hub WorkGraph-based arc. This is the substrate-specific companion to arc-lifecycle: arc-lifecycle reasons about value chains, payoff, deferral, and revival; workgraph-arc-operator runs the actual control loop through WorkItems, blueprints, leases, evidence, verification, PRs, and closeout. Use when an agent is driving a multi-node initiative on the Hub WorkGraph and must keep liveness, authority, evidence, and scope under control."
 metadata:
-  related-skills: arc-lifecycle, survey, substrate-audit, research-artefacts, workgraph-arc-participant, workgraph-arc-closeout
+  related-skills: arc-lifecycle, survey, workgraph-arc-planning, workgraph-arc-participant, workgraph-verification-gates, workgraph-pr-delivery, workgraph-recovery, workgraph-arc-closeout
   series: workgraph
   series-role: root
   facet: operate — concrete Hub/WorkGraph arc execution
@@ -39,6 +39,16 @@ Use this skill when you need to decide **what to do next on the WorkGraph**.
 
 If the work is important enough to delegate, verify, merge, or close later, it is important enough to have a WorkGraph arc.
 
+## Lifecycle position and controller authority
+
+The canonical lifecycle is `../arc-lifecycle/assets/workgraph-lifecycle-v1.json` and skill routing is `../arc-lifecycle/assets/workgraph-skill-selection-v1.json`.
+This skill owns admission coordination, `approved-for-go`, exact commencement, the controller loop, repair orchestration, and substrate handoff to closeout.
+It does not independently judge gates, implement participant work, or collapse delivery/live proof.
+
+Treat lifecycle stage as an evidence-derived projection, not a mutable status field.
+A control hard stop freezes prohibited effects while preserving the proven stage.
+Use `workgraph-verification-gates` for exact PASS/FAIL, `workgraph-pr-delivery` for source-to-live layers, `workgraph-recovery` for stopped/failed/revision paths, and `workgraph-arc-closeout` for terminal truth.
+
 ## Core invariant — the live arc-driver
 
 Every autonomous or semi-autonomous WorkGraph arc has a **controller-held arc-driver WorkItem**.
@@ -71,28 +81,32 @@ Prefer substrate truth in this order:
 Messages are useful signals, not authority.
 A PASS note, merge FYI, or thread reply does not close an arc unless the bound WorkItem evidence and state close it.
 
-## Commence checklist
+## Commence checklist — admission before effect
 
 Do not seed first and reason later.
+A planning design PASS is not approved-for-go.
 Commence in this order:
 
-1. **Confirm authority.** Identify the Director/operator approval, decision, mission, or backlog item that authorizes the arc.
-2. **State the scope fence.** Name what is in scope, what is out of scope, and which broad temptations are explicitly deferred.
-3. **Write the plan.** Persist the arc plan in a Hub document or repo doc with goal, slices, risks, evidence, and close criteria.
-4. **Run an axiom alignment audit when the plan/design is extensive.** Use `M7` before implementation approval for arcs that create or change reusable methodology, workflow, skill, template, substrate behavior, governance, coordination, lifecycle, delivery, verification, or authority patterns.
-5. **Write or select the blueprint.** Use a deterministic `runId`; include one controller driver and one or more child nodes. If the axiom audit is required, represent it as a WorkItem dependency before implementation nodes can start.
-6. **Validate before mutation.** Run `seed_blueprint(..., dryRun:true)` when available for the whole graph.
-7. **Seed the graph.** Run `seed_blueprint` with the final `runId` and blueprint.
-8. **Claim/start the driver.** The controller claims and starts the driver before delegating child work.
-9. **Capture the lease token.** Renew with that token throughout the arc.
-10. **Project the arc.** Read `get_current_stint(driverId)` and `get_next_action(driverId)` immediately after start.
+1. **Fresh constitution.** Read authenticated constitution/charter/axiom provenance. If required content is unavailable, `stale=true`, or M7 delta invalidates the design, hard-stop with no effect.
+2. **Exact intent/design authority.** Bind the survey or fixed-intent bypass, scope fence, M7 audit/not-required rationale, exact design candidate, and fresh `verify_attestation(valid=true)` result for the independent design PASS.
+3. **Exact blueprint candidate.** Freeze path/resourceVersion/UTF-8 bytes/SHA-256/runId, roles, references, evidence contracts, effect nodes, repair policy, and controller driver.
+4. **Independent blueprint pre-seed gate.** Require a distinct active-valid PASS over exact blueprint bytes, SHA-bound `dryRun:true`, all deterministic IDs absent before/after, and zero create. A dry-run or dependency is not authority.
+5. **Exact authority envelope.** Bind actor, repository, environment, effect classes, credential names only, anti-scope, negative lineage, retry/idempotency, and prohibitions. The envelope grants no effect by itself.
+6. **Independent final admission.** Require a distinct active-valid final PASS exact-binding design, blueprint, blueprint PASS, envelope, constitution, full graph/effect coverage, and every preserved FAIL. Fresh-run `verify_attestation`.
+7. **Approved-for-go receipt.** Record the one strategic approval transition and its exact effect scope. PASS/approval performs no seed or source effect.
+8. **Participant-local pre-effect rehash.** Before seed, fetch and independently rehash every frozen manifest/authority input required by the controller contract. Mismatch or unreadability means no effect.
+9. **Exact-once seed.** Seed only the independently passed blueprint/runId/SHA once. Ambiguous result requires fresh ID/state reads, never blind replay.
+10. **Claim/start the driver immediately.** Capture the token, project `get_current_stint` and `get_next_action`, then wake lanes from graph truth.
 
-A commenced arc with no claimed driver is already partially uncontrolled.
-Fix that before adding more child work.
+Use `../arc-lifecycle/templates/implementation-admission-envelope.md.tmpl` for the admission record.
+A commenced arc with no claimed driver is partially uncontrolled.
+Fix that before adding or dispatching child work.
 
 ### Approved-for-go handoff from a planning arc
 
-When a planning/design arc ends with the Director/operator saying the next implementation arc is **approved for go**, treat that as authority to commence the implementation arc, not as permission to improvise beyond the final design.
+When a planning/design arc ends with the Director/operator saying the next implementation arc is **approved for go**, first prove that the exact design, blueprint, authority envelope, blueprint gate, final admission gate, and commencement receipt satisfy the admission fence.
+A phrase in chat cannot replace those predicates.
+Once the exact receipt exists, treat it as authority to commence only the frozen implementation arc, not permission to improvise beyond the final design.
 
 Bounded handoff sequence:
 
@@ -129,15 +143,31 @@ The graph should be understandable from `get_current_stint(driverId)` plus child
 
 ## Blueprint references & evidence contracts
 
-Blueprint authoring is where most re-seed churn originates. Five rules keep it clean:
+Blueprint authoring is where authority and re-seed failures originate.
+Use these rules:
 
-- **References to owned upstream are LIVING pointers — never SHA-pinned.** A node's `references[]` to our OWN upstream (design docs, mission-kit) are living Hub/repo *paths*. The whole value of a reference is that the upstream can improve without re-authoring every blueprint that points at it (skills-sync points to mission-kit, not a commit). Pinning a SHA turns a living pointer into a frozen copy and throws that away. Reserve content-addressing / immutable git pins (`SHA:path` + blob hash) for **irreversible external artifacts** — npm publishes, releases, deploy artifacts — where a later mutation is genuinely dangerous. Do NOT tamper-evidence-freeze owned design/spec docs.
-- **Design gates are point-in-time.** A verifier design gate attests the design *as read* at attestation — directional, not immutable bytes. Material upstream changes get a fresh verifier review before implementation continues past the affected gate; delivery-truth never claims an attestation binds later bytes.
-- **Evidence contracts are IMMUTABLE — pick satisfiable kinds.** `evidenceRequirements` can never be edited; a mis-seed forces a re-seed, not a fix. Verifier gates use `evidenceAuthority: verifier-attestation` on a NON-verifier-executed node (architect drives to `review`; the verifier attests, never claims/executes) — NEVER `kind:review + refResolvable:true` (unsatisfiable: a verifier can't create the WorkItem that contract demands).
-- **A node's contract must match what it actually produces.** A "merged PR" requirement can't be satisfied by a node that completes *before* the merge. Split fix-work: candidate-source (exact head + green CI, pre-merge-provable, `allowPreClaim`) → verifier gate → a **distinct** post-PASS merge node.
-- **Fail-forward is a distinct successor graph.** `dependsOn` edges are append-only, so a terminal FAIL retires the attempt/tail and seeds a NEW attempt with new downstream nodes and a new `runId` — never reuse the frozen row or a sibling behind the failed edge.
+- **Planning pointers may be living; effect inputs are exact.** A mutable owned path can inform target mapping and planning, but any design/blueprint/manifest/reference that bears implementation, seed, merge, publish, deploy, live, entity, or closeout authority must freeze the storage-specific current identity. Hub docs bind `{path, resourceVersion, utf8Bytes, sha256}`; Git binds repository + full commit + path/tree/blob; entities bind kind/id/resourceVersion/state hash; inline binds exact UTF-8 bytes/hash. Never silently refresh a WorkItem contract after overwrite.
+- **Exact gates are non-circular.** The candidate does not approve itself. A gate exact-binds candidate bytes and prior authority; an authority envelope cannot widen them; dependencies and instructions are not proof. Every consumer fresh-runs `verify_attestation` and participant-local rehash before effect.
+- **Evidence contracts are immutable and satisfiable.** Pick kinds the node can actually produce. A Model-B gate is mechanically driven by a non-verifier to `review`; its `review` requirement uses `evidenceAuthority: verifier-attestation`; the verifier never claims/executes. Do not use executor review prose as verdict.
+- **A node contract matches one proof layer/effect.** Candidate source proves commit/head/tests, not merge. Merge, publication applicability, preflight, publication, qualification, deployment, live, postproduction, entity disposition, closeout, and driver-last are distinct claimant nodes when applicable.
+- **Every claimant is cold-start complete.** Directly carry required runbook, exact references, target, authority/manifest binding, effect gate, evidence requirements, exclusions, and pre-effect rehash instruction. Dependency ancestry and controller memory do not transmit scope or authority.
+- **Fail-forward uses distinct lineage.** An active FAIL remains immutable and effectively terminal. Retain its lease/history as required; never replay, re-attest, release for convenience, or reinterpret. A repair gets a new candidate, WorkItems, gate, runId/downstream tail, and independent PASS.
+- **Driver-last is structural.** The driver directly completion-gates every required child or an explicitly validated complete closure. No hidden tail, generic closeout wording, or manually remembered obligation may sit outside its completion gate.
 
-And right-size the verifier's bar: keep **substance** verification (is the design/code correct?) — that is the verifier's core value — but question **immutability/tamper-evidence** demands on owned upstream. Over-complying with an escalating tamper-evidence bar gold-plates artifacts that should stay living, and is itself a failure mode. Distinguish the two before building.
+Substantive verification and exact identity serve different purposes and both are required at effect boundaries: exact identity proves *what* was judged; adversarial review proves *whether it is sufficient*.
+
+## Pause → revise → unpause
+
+When a live WorkItem contract/topology must change, do not edit semantic fields in place or patch prose around the graph:
+
+1. pause/recall affected work under authorized control; invalidate old lease tokens and durably notify the exact holder;
+2. invoke semantic revision so the server derives the full affected reverse closure, creates immutable successor physical revisions, validates exact refs/contracts, and publishes one complete topology generation by CAS;
+3. atomically unpause/recommit the exact successor set to `ready`; start gates remain claim-time predicates;
+4. collect fresh evidence and independent attestations on successors; never migrate evidence/verdicts;
+5. preserve old physical rows, attempts, and FAIL polarity.
+
+If revision verbs are unavailable, hard-stop and author a distinct blueprint/repair graph.
+Never roll back a topology head or mutate a terminal/failed/evidence-bearing row into new meaning.
 
 ## Drive loop
 
@@ -173,6 +203,7 @@ Repeated participant confusion is an orchestration-design failure, not merely a 
 
 ## PR, review, and merge discipline
 
+Use `workgraph-pr-delivery` for the complete exact source-to-live ladder and `workgraph-verification-gates` for independent source/effect gates.
 For code arcs:
 
 - Branch before editing.
@@ -203,6 +234,24 @@ Good evidence includes:
 Do not fabricate live evidence.
 If the code path is merged but no production event has been observed, say exactly that.
 If no friction was observed, say so explicitly with `observed:false`; a missing reflection is ambiguous and weakens A10 learning.
+
+## Typed hard stops and constitution-guided recovery
+
+Evaluate canonical hard stops before every effect.
+Stop the affected lane with no effect when constitution is stale/unavailable, authority or exact binding mismatches, an active FAIL exists, an effect gate is missing/invalid, scope conflicts, verifier independence fails, protected delivery is denied, live proof uses forbidden fallback, driver would complete early, or Director walkthrough proof is unresolved.
+
+A hard stop changes control state, not historical stage truth.
+Persist the reason, blocked effects, and no-effect receipt.
+Then use `workgraph-recovery`:
+
+- routine implementation, CI, verifier, capacity, or reversible infrastructure failure stays autonomous;
+- preserve every candidate/attempt/gate polarity and failed-gate lease containment;
+- author a distinct bounded repair and independently gate it;
+- resume only after current authority and active-valid repair proof;
+- escalate only constitutional/authority/destructive/irreducible external conflicts.
+
+Never "clean up" WIP by releasing or terminalizing a mandatory failed-gate lease.
+Capacity is solved by another explicitly assigned seat or by deployed failed-seal mechanics, not by deleting negative authority.
 
 ## Recovery playbook
 
@@ -271,6 +320,8 @@ Minimum closeout invariant:
 6. Update linked ideas, bugs, missions, decisions, and follow-ups.
 7. Write a closeout packet before completing closeout/driver work.
 8. Complete the closeout WorkItem, then complete the driver last.
+9. Evaluate and deliver progressive Director closeout (or capture explicit waiver/valid point-in-time not-applicable) as a distinct terminal interface.
+10. After terminal state, correct later-discovered claim drift only through an append-only correction linked to the original record; never re-complete or rewrite terminal WorkItems.
 
 Do not call a future observation done.
 If code is merged but live behavior was not observed, record `live not observed` and file follow-up if the live claim matters.

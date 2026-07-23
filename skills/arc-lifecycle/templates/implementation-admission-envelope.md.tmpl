@@ -1,0 +1,64 @@
+# Implementation admission envelope — `<arc>`
+
+This artifact is evidence, not authority by declaration.
+No implementation, seed, source, entity, publication, deployment, live, or closeout effect is allowed until every applicable row is fresh and independently proven.
+
+## Identity
+
+| Field | Exact value |
+|---|---|
+| Mission / arc | `<id>` |
+| Candidate runId | `<run-id>` |
+| Lifecycle transition | `design-sealed -> admission -> approved-for-go` |
+| Requested actor / effect class | `<actor / effect>` |
+| Scope fence | `<ref>` |
+| Anti-scope | `<explicit exclusions>` |
+
+## Exact positive authority
+
+| Input | Path / entity | Resource version | UTF-8 bytes | SHA-256 / state hash | Fresh verification |
+|---|---|---:|---:|---|---|
+| Intent / survey or bypass | `<ref>` | `<rv>` | `<bytes-or-n/a>` | `<hash>` | `<result>` |
+| M7 audit or not-required rationale | `<ref>` | `<rv>` | `<bytes>` | `<hash>` | `<result>` |
+| Design candidate | `<ref>` | `<rv>` | `<bytes>` | `<hash>` | `<result>` |
+| Design PASS gate | `<work-id / requirement>` | `n/a` | `n/a` | `<attestation hashes>` | `verify_attestation valid=<true/false>` |
+| Blueprint candidate | `<ref>` | `<rv>` | `<bytes>` | `<hash>` | `<dry-run binding>` |
+| Blueprint PASS gate | `<work-id / requirement>` | `n/a` | `n/a` | `<attestation hashes>` | `verify_attestation valid=<true/false>` |
+| Authority manifest | `<ref>` | `<rv>` | `<bytes>` | `<hash>` | `<participant rehash contract>` |
+| Final admission PASS | `<work-id / requirement>` | `n/a` | `n/a` | `<attestation hashes>` | `verify_attestation valid=<true/false>` |
+
+## Constitution and authority
+
+| Check | Required result | Observed result / ref |
+|---|---|---|
+| Authenticated constitution | `stale=false` and expected source/manifest/charter identity | `<result>` |
+| Authority envelope exactness | actor, repository, environment, effect, exclusions, repair policy exact | `<result>` |
+| Dependency truth | start gates satisfied; explicitly not treated as verdict authority | `<result>` |
+| Current negative truth | no active FAIL/pause/recall/currentness/P0 prohibition | `<result>` |
+
+## Preserved negative lineage
+
+| Failed/superseded identity | Original polarity | Retention / distinct-repair ref | Why non-authorizing |
+|---|---|---|---|
+| `<id>` | `<FAIL/superseded>` | `<ref>` | `<reason>` |
+
+## Effect matrix
+
+| Effect | In scope now? | Required independent gate | Exact target / idempotency bound | Stop condition |
+|---|---|---|---|---|
+| Blueprint seed | `<yes/no>` | `<gate>` | `<run-id + SHA>` | `<condition>` |
+| Source mutation | `<yes/no>` | `<gate>` | `<repo/worktree/branch>` | `<condition>` |
+| PR / merge | `<yes/no>` | `<gate>` | `<PR/head/base>` | `<condition>` |
+| Publish / deploy | `<yes/no>` | `<gate>` | `<artifact/environment>` | `<condition>` |
+| Live / entity / closeout | `<yes/no>` | `<gate>` | `<target>` | `<condition>` |
+
+## Approved-for-go receipt
+
+Verdict: `<APPROVED FOR GRAPH EXECUTION | HARD STOP>`
+
+- Exact approved scope: `<scope>`
+- Explicit non-effects: `<non-effects>`
+- Participant-local pre-effect rehash required: `<path@rv bytes sha256>`
+- Controller-held driver: `<work-id>`
+- Exact-once seed, if authorized: `<run-id / expected SHA>`
+- Repair rule: `preserve original polarity; use a distinct identity and independent gate`

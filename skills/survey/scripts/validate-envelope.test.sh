@@ -33,6 +33,11 @@ make_valid_envelope() {
 survey-title: My Survey
 work-item: TICKET-42
 methodology-source: skills/survey/SKILL.md
+lifecycle-handoff:
+  from: intent-open
+  to: intent-captured
+  authority-ref: decision-42
+  planning-input-ref: self
 stakeholder-picks:
   round-1:
     Q1: a
@@ -52,6 +57,11 @@ outcome-axis:
   round-2:
     primary: [speed]
     secondary: [cost]
+axiom-principle-anchors:
+  primary: [A0]
+  secondary: [A8]
+  round-1: [A0]
+  round-2: [A8]
 anti-goals-count: 2
 flags-count: 1
 calibration-data:
@@ -78,9 +88,16 @@ Real interpretation text for Q2.
 ### §1.Q3 — Per-question interpretation
 Real interpretation text for Q3.
 
+**Round-1 composite read**: The picks establish one coherent intent envelope.
+
+**Round-1 axiom / principle anchoring**: A0 makes intent-to-execution delegation load-bearing.
+
 ## §2 Round 2 picks
-| Q | Pick | Reading |
-|---|---|---|
+| Q | Pick | Round-1 aggregate relation | Reading |
+|---|---|---|---|
+| Q4 | d | refines | reading |
+| Q5 | a | challenges | reading |
+| Q6 | bc | deepens | reading |
 
 ### §2.Q4 — Per-question interpretation
 Real interpretation text for Q4.
@@ -91,8 +108,14 @@ Real interpretation text for Q5.
 ### §2.Q6 — Per-question interpretation
 Real interpretation text for Q6.
 
+**Round-2 composite read**: Round 2 disambiguates and sharpens the Round-1 aggregate.
+
+**Round-2 axiom / principle anchoring**: A8 requires the sharpened intent to be independently gated.
+
 ## §3 Composite intent envelope
 The solved matrix.
+
+**Final axiom / principle anchoring:** A0 and A8 require autonomous execution behind independent gates.
 
 ## §4 Scope summary
 | Axis | Bound |
@@ -186,6 +209,31 @@ echo "[validate-envelope.test] Missing prose section → exit 1"
 E10="$TMPDIR/no-section.md"; make_valid_envelope "$E10"
 sed -i '/^## §3 Composite intent envelope$/d' "$E10"
 assert_exit 1 "$(run --envelope-path="$E10")" "missing §3 section fails"
+
+echo "[validate-envelope.test] Lifecycle handoff wrong transition → exit 1"
+E11="$TMPDIR/bad-lifecycle.md"; make_valid_envelope "$E11"
+sed -i 's/^  to: intent-captured$/  to: executing/' "$E11"
+assert_exit 1 "$(run --envelope-path="$E11")" "survey cannot bypass planning/admission lifecycle stages"
+
+echo "[validate-envelope.test] Lifecycle authority missing → exit 1"
+E12="$TMPDIR/no-lifecycle-authority.md"; make_valid_envelope "$E12"
+sed -i 's/^  authority-ref: decision-42$/  authority-ref: <authority>/' "$E12"
+assert_exit 1 "$(run --envelope-path="$E12")" "intent capture requires authority ref"
+
+echo "[validate-envelope.test] Missing axiom anchors → exit 1"
+E13="$TMPDIR/no-anchors.md"; make_valid_envelope "$E13"
+sed -i '/^axiom-principle-anchors:$/,/^  round-2: \[A8\]$/d' "$E13"
+assert_exit 1 "$(run --envelope-path="$E13")" "axiom/principle anchors are load-bearing"
+
+echo "[validate-envelope.test] Missing Round-2 aggregate relation markers → exit 1"
+E14="$TMPDIR/no-r2-relations.md"; make_valid_envelope "$E14"
+sed -i 's/refines/relates/g; s/challenges/relates/g; s/disambiguates/relates/g; s/deepens/relates/g' "$E14"
+assert_exit 1 "$(run --envelope-path="$E14")" "Round 2 must relate back to Round-1 aggregate"
+
+echo "[validate-envelope.test] Missing final axiom anchor → exit 1"
+E15="$TMPDIR/no-final-anchor.md"; make_valid_envelope "$E15"
+sed -i '/^\*\*Final axiom \/ principle anchoring:/d' "$E15"
+assert_exit 1 "$(run --envelope-path="$E15")" "final intent requires axiom/principle anchor"
 
 echo "[validate-envelope.test] Missing --envelope-path → EX_USAGE 64"
 assert_exit 64 "$(run)" "missing --envelope-path → EX_USAGE"

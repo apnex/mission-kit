@@ -12,6 +12,7 @@ const BLUEPRINT = path.join(HERE, 'planning-blueprint-template.json');
 
 const REQUIRED_NODES = [
   'target_space_mapping',
+  'friction_intake',
   'value_unlock_triage',
   'scope_fence',
   'axiom_alignment_audit',
@@ -26,7 +27,8 @@ const REQUIRED_NODES = [
 ];
 
 const REQUIRED_DEPENDS_ON = {
-  value_unlock_triage: ['target_space_mapping'],
+  friction_intake: ['target_space_mapping'],
+  value_unlock_triage: ['target_space_mapping', 'friction_intake'],
   scope_fence: ['value_unlock_triage'],
   axiom_alignment_audit: ['scope_fence'],
   current_state_inventory: ['scope_fence'],
@@ -112,12 +114,36 @@ function validate(parsed) {
     errors.push('final_design_packet runbook missing disposition gates');
   }
 
-  const designGateRunbook = byId.get('design_gate')?.runbook || '';
-  if (!designGateRunbook.includes('direct axiom mapping')) {
-    errors.push('design_gate runbook missing direct axiom mapping check');
+  const frictionRunbook = byId.get('friction_intake')?.runbook || '';
+  if (!frictionRunbook.includes('included, companion, deferred, no-action, or separate-arc')) {
+    errors.push('friction_intake runbook missing explicit disposition taxonomy');
+  }
+
+  const designGate = byId.get('design_gate');
+  const designGateRunbook = designGate?.runbook || '';
+  if (!designGateRunbook.includes('M7')) {
+    errors.push('design_gate runbook missing direct M7/axiom evidence check');
   }
   if (!designGateRunbook.includes('entityRealizationPlan/disposition gates')) {
     errors.push('design_gate runbook missing entityRealizationPlan/disposition gates check');
+  }
+  if (!designGateRunbook.includes('VERIFIER must not claim')) {
+    errors.push('design_gate runbook missing non-claiming verifier rule');
+  }
+  if (!designGateRunbook.includes('FAIL is immutable') || !designGateRunbook.includes('distinct repair')) {
+    errors.push('design_gate runbook missing immutable FAIL/distinct repair rule');
+  }
+  if (JSON.stringify(designGate?.roleEligibility || []) !== JSON.stringify(['architect'])) {
+    errors.push('design_gate must be mechanically driven by architect, not claimed by verifier');
+  }
+  const seal = (designGate?.evidenceRequirements || []).find((req) => req.id === 'design_seal');
+  if (!seal || seal.kind !== 'review' || seal.evidenceAuthority !== 'verifier-attestation') {
+    errors.push('design_gate missing design_seal verifier-attestation requirement');
+  }
+  for (const id of ['design_candidate', 'design_binding', 'planning_evidence_matrix']) {
+    if (!(designGate?.evidenceRequirements || []).some((req) => req.id === id)) {
+      errors.push(`design_gate missing staged evidence requirement ${id}`);
+    }
   }
 
   const closeoutRunbook = byId.get('planning_closeout')?.runbook || '';
@@ -167,6 +193,11 @@ if (errors.length) {
 
 // Negative/structural checks — not just happy path.
 requireNegativeCheck(
+  'triage_missing_friction_intake',
+  (byId) => { byId.get('value_unlock_triage').dependsOn = byId.get('value_unlock_triage').dependsOn.filter((id) => id !== 'friction_intake'); },
+  'value_unlock_triage dependsOn missing friction_intake',
+);
+requireNegativeCheck(
   'design_gate_before_feasibility',
   (byId) => { byId.get('design_gate').dependsOn = byId.get('design_gate').dependsOn.filter((id) => id !== 'feasibility_sketch'); },
   'design_gate dependsOn missing feasibility_sketch',
@@ -201,6 +232,16 @@ requireNegativeCheck(
   (byId) => { byId.get('planning_closeout').runbook = byId.get('planning_closeout').runbook.replace('entityDispositionLedger', 'entity ledger'); },
   'planning_closeout runbook missing entityDispositionLedger',
 );
+requireNegativeCheck(
+  'design_gate_claimable_by_verifier',
+  (byId) => { byId.get('design_gate').roleEligibility = ['verifier']; },
+  'design_gate must be mechanically driven by architect',
+);
+requireNegativeCheck(
+  'design_gate_missing_verifier_attestation',
+  (byId) => { byId.get('design_gate').evidenceRequirements.find((req) => req.id === 'design_seal').evidenceAuthority = 'executor-evidence'; },
+  'design_gate missing design_seal verifier-attestation requirement',
+);
 
 const dependencyAssertionCount = Object.values(REQUIRED_DEPENDS_ON).length;
-console.log(`PASS planning blueprint validation: ${REQUIRED_NODES.length} nodes, ${dependencyAssertionCount} dependency assertions, driver gates ${DRIVER_CHILDREN.length} children, negative checks caught 7 broken variants.`);
+console.log(`PASS planning blueprint validation: ${REQUIRED_NODES.length} nodes, ${dependencyAssertionCount} dependency assertions, driver gates ${DRIVER_CHILDREN.length} children, negative checks caught 10 broken variants.`);

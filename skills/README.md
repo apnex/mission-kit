@@ -24,8 +24,9 @@ Operator-level capabilities + reusable tooling. The "how you do it" entries.
 | [K18](workgraph-arc-operator/SKILL.md) | workgraph-arc-operator — execute and manage a Hub WorkGraph arc | active |
 | [K19](workgraph-blueprint-author/SKILL.md) | workgraph-blueprint-author — author valid Hub WorkGraph blueprints | stub |
 | [K20](workgraph-lease-discipline/SKILL.md) | workgraph-lease-discipline — operate WorkGraph leases and liveness | stub |
-| [K21](workgraph-verification-gates/SKILL.md) | workgraph-verification-gates — design and operate verifier gates | stub |
-| [K22](workgraph-pr-delivery/SKILL.md) | workgraph-pr-delivery — deliver code arcs through PRs under WorkGraph control | stub |
+| [K21](workgraph-verification-gates/SKILL.md) | workgraph-verification-gates — exact independent WorkGraph PASS/FAIL gates | active |
+| [K22](workgraph-pr-delivery/SKILL.md) | workgraph-pr-delivery — exact source-to-live proof under WorkGraph control | active |
 | [K23](workgraph-arc-closeout/SKILL.md) | workgraph-arc-closeout — terminal proof reconciliation for WorkGraph arc closeout | active |
-| [K24](workgraph-recovery/SKILL.md) | workgraph-recovery — recover stuck WorkGraph arcs | stub |
+| [K24](workgraph-recovery/SKILL.md) | workgraph-recovery — immutable-lineage recovery for stopped/failed/revised arcs | active |
 | [K25](workgraph-arc-participant/SKILL.md) | workgraph-arc-participant — act inside a Hub WorkGraph arc | active |
+| [K26](workgraph-arc-planning/SKILL.md) | workgraph-arc-planning — bounded intent-to-design-seal planning arc | active |

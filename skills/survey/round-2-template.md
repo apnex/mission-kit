@@ -64,6 +64,12 @@ weight axes differently.
 | Q5 | <axis-label> | <axis-label> | <new / shifted / stable> |
 | Q6 | <axis-label> | <axis-label> | <new / shifted / stable> |
 
+## Lifecycle handoff check
+
+Round 2 must sharpen the same authorized intent, not introduce a new authority source.
+At finalize, bind the same authority ref in `lifecycle-handoff` and state explicitly that the envelope advances only `intent-open -> intent-captured`.
+Planning must independently design/gate everything downstream.
+
 ## Capture target
 
 Synthesize the three questions for the decision-authority. Record returned picks

@@ -15,6 +15,17 @@ Every material claim needs a ref or an explicit `not observed` / `not applicable
 | Authorizing idea/decision/Director instruction | `TBD` |
 | Scope fence ref | `TBD` |
 | Axiom alignment audit ref or not-required rationale | `TBD` |
+| Exact authority/admission envelope | `TBD` |
+| Canonical lifecycle manifest | `skills/arc-lifecycle/assets/workgraph-lifecycle-v1.json` |
+| Evidence-derived stage / control state | `substrate-closing / running` |
+
+## Lifecycle transition proof
+
+| Transition | Required exact proof | Observed ref/result | Valid? |
+|---|---|---|---|
+| `live-qualified -> substrate-closing` | live/postproduction PASS or independent exemption; closeout/entity/friction/stakeholder/active-surface ledgers | `TBD` | `yes/no` |
+| `substrate-closing -> substrate-closed` | all required children dispositioned, active-valid closeout PASS, closeout WorkItem done, driver completed last | `TBD` | `yes/no` |
+| `substrate-closed -> director-closing -> closed` | trigger evaluation plus progressive transcript, explicit waiver, or valid point-in-time not-applicable; decision state | `TBD` | `yes/no` |
 
 ## Final verdict
 
@@ -168,6 +179,14 @@ Latest `get_current_stint(driver)` observed at: `TBD`
 |---|---|---|---|
 | `TBD` | `PASS/FAIL/CHANGES_REQUESTED` | `TBD` | `TBD` |
 
+### Exact verifier-gate register
+
+Every PASS is consumed only after fresh `verify_attestation`; every FAIL remains immutable and separately listed.
+
+| Gate / requirement | Target + exact candidate/attempt | Verdict / verifier / time | Fresh `verify_attestation` | Unlock scope | Preserved FAIL / distinct repair lineage |
+|---|---|---|---|---|---|
+| `TBD` | `TBD` | `TBD` | `valid=<true/false>; invalidReasons=<...>` | `TBD` | `TBD` |
+
 | Non-terminal child | State | Authority accepting limitation | Follow-up id |
 |---|---|---|---|
 | `TBD` | `TBD` | `TBD` | `TBD` |
@@ -281,6 +300,15 @@ Were stale or crossed messages observed? `yes/no`
 |---|---|---|
 | `TBD` | `acked/ignored/replied/routed` | `TBD` |
 
+## Post-terminal audit / correction ledger
+
+Leave this section empty at first close except for `none as of <time>`.
+If later evidence corrects a terminal claim, append a row and a `post-terminal-correction.md.tmpl` artifact; never edit the original claim as though it was always correct.
+
+| Correction id/time | Original terminal record | Corrected claim + fresh evidence | Original preserved? | Distinct follow-up/entity effect | Director walkthrough reopened? |
+|---|---|---|---|---|---|
+| `none as of TBD` | `n-a` | `n-a` | `yes` | `none` | `no` |
+
 ## Final close actions
 
 | Action | Ref | Status |
@@ -288,7 +316,7 @@ Were stale or crossed messages observed? `yes/no`
 | Packet exists before closeout WorkItem completion | this doc | `yes/no` |
 | Closeout WorkItem completed with packet evidence | `TBD` | `yes/no` |
 | Final `get_current_stint(driver)` checked | `TBD` | `yes/no` |
-| Driver completed last | `TBD` | `yes/no` |
+| Driver completed last (closeout completion timestamp < driver completion timestamp) | `TBD` | `yes/no` |
 | Mission/entity status updated | `TBD` | `yes/no` |
 | Live Director walkthrough performed or waived when triggered | `TBD` | `yes/no/n-a` |
 
@@ -313,7 +341,9 @@ Limitations: <none or accepted limitations>
 | Delivery claimed without PR/CI/merge/release/live truth | `yes/no` | `TBD` |
 | Live behavior claimed from CI/build only | `yes/no` | `TBD` |
 | Active skill availability claimed without deployed manifest, sync/restart provenance, and live active-seat proof/exemption | `yes/no` | `TBD` |
-| Failed verifier gate hidden or unresolved | `yes/no` | `TBD` |
+| Failed verifier gate hidden/replayed/reinterpreted or lacks distinct repair lineage | `yes/no` | `TBD` |
+| Current load-bearing PASS lacks fresh `verify_attestation` and exact candidate/target binding | `yes/no` | `TBD` |
+| Authority/manifest/constitution/currentness binding stale or mismatched | `yes/no` | `TBD` |
 | Extensive planning/design lacks axiom alignment audit or not-required rationale | `yes/no` | `TBD` |
 | Active future-facing surface still stale | `yes/no` | `TBD` |
 | `bug-281` live walkthrough proof/waiver/not-applicable row missing when in scope | `yes/no` | `TBD` |
@@ -326,4 +356,5 @@ Limitations: <none or accepted limitations>
 | Dedicated friction section absent when friction/live-walkthrough discipline is in scope | `yes/no` | `TBD` |
 | Full closeout dump substituted for progressive live walkthrough without Director waiver | `yes/no` | `TBD` |
 | Stale FYI/chat treated as authority | `yes/no` | `TBD` |
-| Driver would complete before closeout evidence | `yes/no` | `TBD` |
+| Driver would complete before closeout evidence or required independent closeout PASS | `yes/no` | `TBD` |
+| Post-terminal correction overwrites rather than appends to original truth | `yes/no` | `TBD` |

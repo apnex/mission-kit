@@ -2,7 +2,7 @@
 name: workgraph-arc-participant
 description: "Use when you are a participant in a Hub WorkGraph arc rather than the arc driver: arriving at assigned work, reading runbooks/references, claiming/starting/completing safely, reporting frictionReflection, handling stale notifications, and respecting verifier/SEAL boundaries."
 metadata:
-  related-skills: workgraph-arc-operator, workgraph-arc-closeout, workgraph-verification-gates, workgraph-recovery
+  related-skills: arc-lifecycle, workgraph-arc-operator, workgraph-verification-gates, workgraph-pr-delivery, workgraph-recovery, workgraph-arc-closeout
   series: workgraph
   series-role: participant
   facet: participate — execute or verify a WorkGraph node correctly
@@ -33,6 +33,17 @@ You use this skill to act correctly at the node level so the driver can orchestr
 - Seeding blueprints or changing the arc graph — use `workgraph-arc-operator` / blueprint guidance unless your runbook explicitly asks you to author the graph.
 - Terminal closeout reconciliation — use `workgraph-arc-closeout`.
 - GitHub-only work that is not represented by a WorkItem.
+
+## Lifecycle position and assignment boundary
+
+The canonical lifecycle is `../arc-lifecycle/assets/workgraph-lifecycle-v1.json`.
+This skill governs node execution at any stage; it does not own the arc-level stage transition.
+Readiness is not assignment.
+Claim only the explicit WorkItem/role/scope assigned to you, and do not claim another ready node absent controller assignment.
+
+A participant may perform only the effect classes frozen in the node contract.
+A code node that says commit/PR evidence does not authorize merge, publication, distribution, deploy, restart, live exercise, entity disposition, or closeout.
+A verifier seat uses `workgraph-verification-gates` and never claims the WorkItem whose verifier-attestation it supplies.
 
 ## Director closeout requests while participating
 
@@ -87,18 +98,32 @@ A WorkItem node-contract has three load-bearing legs:
 Read `references` before improvising.
 A `mode: triangulate-against` reference is not background color; it is an explicit cross-check input.
 
+Before **every effect**, satisfy the node's authority fence locally:
+
+1. fetch every frozen authority/manifest reference;
+2. independently compute exact UTF-8 bytes/hash or storage-specific identity;
+3. match path/resourceVersion/bytes/hash to the inline binding and fresh listing/currentness evidence;
+4. fresh-verify required design/blueprint/final/effect gates with `verify_attestation`;
+5. require constitution `stale=false` when the fence says so;
+6. confirm actor, repository, environment, effect class, scope, and assignment are explicitly authorized;
+7. require no active FAIL, pause, recall, currentness mismatch, protected-delivery denial, or P0/readiness prohibition.
+
+Dependencies, instructions, a controller message, and a completed commencement node are not proof substitutes.
+Unreadable or mismatched authority means block with **no effect**.
+
 If a required reference is inaccessible, stale, ambiguous, or points at a missing artifact, do not paper over it.
 Block or ask through the WorkGraph, and report `runbook_confusion` or `stale_context` friction if it affected the work.
 
 ## Claim/start/lease discipline
 
-- Claim only ready, dependency-met, role-eligible work.
+- Claim only the explicitly assigned, ready, dependency-met, role-eligible WorkItem.
 - Start the claimed work before doing it; a long `claimed` gap is limbo.
 - Renew while you are actively working.
 - If blocked, use `block_work` with a concrete blocker reference and reason.
 - If you cannot continue and the work should be picked up by another eligible agent, use `release_work`.
 - If the work is invalid or superseded and you have authority, use the legal terminal path; otherwise surface it.
-- Never keep a lease just to avoid admitting uncertainty.
+- Never release, abandon, expire, prune, or migrate a mandatory failed-gate lease to free WIP; retain it until deployed failed-seal mechanics lawfully clear live authority while preserving before-state.
+- Never keep an ordinary lease just to avoid admitting uncertainty.
 
 A paused WorkItem is dormant, not an instruction to act.
 Only act on it after an explicit unpause/update and a fresh legal move.
@@ -120,6 +145,8 @@ Bind every evidence item to the correct `evidenceRequirements[].id`.
 Do not double-count one artifact for two requirements unless the evidence contract permits it.
 Do not claim live behavior if you only observed local/CI/merge truth.
 Write `live not observed` when that is the truth.
+For source work, report repository, clean worktree, branch, base SHA, commit/tree, changed paths, tests, PR/head/base, and explicit non-effects.
+Use `workgraph-pr-delivery` before opening a PR or claiming any delivery layer.
 
 ## Friction reflection is part of completion
 
@@ -229,6 +256,19 @@ Common stale cases:
 - old paused residual work becomes visible after a cleanup wave.
 
 Substrate truth wins.
+
+## Hard stops and repair behavior
+
+Stop the affected effect when authority/bytes/currentness mismatch, constitution is stale/unavailable, a required attestation is absent/invalid/FAIL, scope expands, verifier independence fails, protected delivery is denied, a live proof fallback is forbidden, or completion would overclaim a proof layer.
+
+Use `block_work` with the exact blocker when you hold the node.
+Preserve local artifacts and attempt polarity.
+Do not edit/replay a failed gate or self-author a PASS.
+The controller uses `workgraph-recovery` to create a distinct repair node/gate/runId.
+Routine technical failure is not a reason to abandon the arc or escalate to the Director.
+
+For contract/topology drift, do not work around the frozen node.
+The authorized controller must `pause -> revise -> unpause/recommit`; successors require fresh evidence and attestations.
 
 ## When to ask or block
 

@@ -7,7 +7,8 @@
 #
 # Checks:
 #   1. Frontmatter required keys present (survey-title, work-item, methodology-source,
-#      stakeholder-picks, outcome-axis, calibration-data)
+#      lifecycle-handoff, stakeholder-picks, outcome-axis, axiom-principle-anchors,
+#      calibration-data)
 #   2. All 6 picks (Q1..Q6) present, non-placeholder, one-or-more letters a-d
 #      (multi-pick supported)
 #   3. classification — OPTIONAL. Validated against an enum ONLY when both the key is
@@ -17,11 +18,14 @@
 #   4. Outcome-axis present: a whole-survey roll-up (top-level primary + secondary)
 #      AND a per-round mapping (round-1 + round-2 each need primary + secondary).
 #      This is the generic outcome/goal-axis mapping — the kernel's drift-check surface.
-#   5. Calibration-data fields (stakeholder-time-cost-minutes numeric; comparison-baseline
+#   5. Lifecycle handoff is exactly intent-open -> intent-captured and carries authority/planning refs.
+#   6. Axiom/principle anchors carry whole-survey and per-round mappings.
+#   7. Calibration-data fields (stakeholder-time-cost-minutes numeric; comparison-baseline
 #      + notes non-empty)
-#   6. Contradictory-constraints frontmatter ↔ §contradictory prose consistency
-#   7. Per-question interpretation sub-sections (§1.Q1..§1.Q3, §2.Q4..§2.Q6) present + non-empty
-#   8. Required prose sections present (§0/§1/§2/§3/§4/§5/§6/§7/§calibration/§8)
+#   8. Contradictory-constraints frontmatter ↔ §contradictory prose consistency
+#   9. Per-question interpretation sub-sections (§1.Q1..§1.Q3, §2.Q4..§2.Q6) present + non-empty
+#  10. Round composite/anchor prose, Round-2 relation markers, and final anchor are present.
+#  11. Required prose sections present (§0/§1/§2/§3/§4/§5/§6/§7/§calibration/§8)
 #
 # Usage:
 #   validate-envelope.sh --envelope-path=<path> [--classes="a|b|c"]
@@ -97,7 +101,7 @@ fail() {
 }
 
 # (1) Frontmatter required keys.
-for key in survey-title work-item methodology-source stakeholder-picks outcome-axis calibration-data; do
+for key in survey-title work-item methodology-source lifecycle-handoff stakeholder-picks outcome-axis axiom-principle-anchors calibration-data; do
   if ! grep -qE "^${key}:" <<<"$FRONTMATTER"; then
     fail "frontmatter missing required key: $key"
   fi
@@ -168,7 +172,42 @@ for round in round-1 round-2; do
   fi
 done
 
-# (5) Calibration-data fields.
+# (5) Lifecycle handoff — survey owns only intent-open -> intent-captured.
+LIFECYCLE_BLOCK=$(awk '
+  BEGIN { in_lh = 0 }
+  /^lifecycle-handoff:/ { in_lh = 1; next }
+  /^[a-zA-Z]/ && in_lh { in_lh = 0 }
+  in_lh { print }
+' <<<"$FRONTMATTER")
+for pair in "from:intent-open" "to:intent-captured"; do
+  key=${pair%%:*}; expected=${pair#*:}
+  actual=$(grep -E "^[[:space:]]+${key}:" <<<"$LIFECYCLE_BLOCK" | head -1 | sed 's/.*: *//;s/^"//;s/"$//' || true)
+  [[ "$actual" == "$expected" ]] || fail "lifecycle-handoff.$key must be '$expected' (got: '${actual:-<missing>}')"
+done
+for key in authority-ref planning-input-ref; do
+  actual=$(grep -E "^[[:space:]]+${key}:" <<<"$LIFECYCLE_BLOCK" | head -1 | sed 's/.*: *//;s/^"//;s/"$//' || true)
+  if [[ -z "$actual" || "$actual" =~ ^\<.*\>$ ]]; then
+    fail "lifecycle-handoff.$key is missing, empty, or placeholder"
+  fi
+done
+
+# (6) Axiom/principle anchors — whole-survey + per-round mappings.
+ANCHOR_BLOCK=$(awk '
+  BEGIN { in_ap = 0 }
+  /^axiom-principle-anchors:/ { in_ap = 1; next }
+  /^[a-zA-Z]/ && in_ap { in_ap = 0 }
+  in_ap { print }
+' <<<"$FRONTMATTER")
+for key in primary secondary round-1 round-2; do
+  line=$(grep -E "^[[:space:]]+${key}:" <<<"$ANCHOR_BLOCK" | head -1 || true)
+  [[ -n "$line" ]] || fail "axiom-principle-anchors missing $key"
+  value=${line#*:}; value=${value// /}
+  if [[ -z "$value" || "$value" == *"<"* || "$value" == "[]" ]]; then
+    fail "axiom-principle-anchors.$key is empty or placeholder"
+  fi
+done
+
+# (7) Calibration-data fields.
 CALIB_BLOCK=$(awk '
   BEGIN { in_cd = 0 }
   /^calibration-data:/ { in_cd = 1; next }
@@ -196,7 +235,7 @@ for f in comparison-baseline notes; do
   fi
 done
 
-# (6) Contradictory-constraints frontmatter ↔ prose consistency.
+# (8) Contradictory-constraints frontmatter ↔ prose consistency.
 if grep -qE "^contradictory-constraints:" <<<"$FRONTMATTER"; then
   CC_BLOCK=$(awk '
     BEGIN { in_cc = 0 }
@@ -212,7 +251,7 @@ if grep -qE "^contradictory-constraints:" <<<"$FRONTMATTER"; then
   fi
 fi
 
-# (7) Per-question interpretation sub-sections present + non-empty.
+# (9) Per-question interpretation sub-sections present + non-empty.
 for q in Q1 Q2 Q3 Q4 Q5 Q6; do
   if ! grep -qE "^### §[12]\.${q}" "$ENVELOPE_PATH"; then
     fail "missing §[1|2].${q} per-question interpretation sub-section"
@@ -224,6 +263,7 @@ for q in Q1 Q2 Q3 Q4 Q5 Q6; do
       else if (found_header) { exit !non_empty }
     }
     /^## §/ { if (found_header) exit !non_empty }
+    /^\*\*Round-[12] composite read/ { if (found_header) exit !non_empty }
     found_header && NF > 0 && !/^<[^>]+>$/ { non_empty = 1 }
     END { exit !(found_header && non_empty) }
   ' "$ENVELOPE_PATH"; then
@@ -231,7 +271,16 @@ for q in Q1 Q2 Q3 Q4 Q5 Q6; do
   fi
 done
 
-# (8) Required prose sections.
+# (10) Aggregate intent/anchor handoff and Round-2 relation discipline.
+for marker in "Round-1 composite read" "Round-1 axiom / principle anchoring" "Round-2 composite read" "Round-2 axiom / principle anchoring" "Final axiom / principle anchoring"; do
+  line=$(grep -E "^\\*\\*${marker}" "$ENVELOPE_PATH" | head -1 || true)
+  [[ -n "$line" ]] || fail "required aggregate/anchor marker missing: $marker"
+  if [[ "$line" == *"<"* ]]; then fail "aggregate/anchor marker remains placeholder: $marker"; fi
+done
+RELATION_COUNT=$(grep -Eio 'refines|challenges|disambiguates|deepens' "$ENVELOPE_PATH" | wc -l | tr -d ' ')
+[[ "$RELATION_COUNT" -ge 3 ]] || fail "Round 2 must state at least three refine/challenge/disambiguate/deepen relations to the Round-1 aggregate"
+
+# (11) Required prose sections.
 REQUIRED_SECTIONS=("## §0 Context" "## §1 Round 1 picks" "## §2 Round 2 picks" "## §3 Composite intent envelope" "## §4 Scope summary" "## §5 Anti-goals" "## §6 Flags" "## §7 Sequencing" "## §calibration" "## §8 Cross-references")
 for section in "${REQUIRED_SECTIONS[@]}"; do
   if ! grep -qE "^${section}" "$ENVELOPE_PATH"; then

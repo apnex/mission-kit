@@ -1,0 +1,26 @@
+# Post-terminal correction — `<arc>` / `<correction-id>`
+
+This is an append-only correction.
+It does not rewrite the original closeout, WorkItem history, evidence, attestation, delivery attempt, or verdict.
+
+| Field | Value |
+|---|---|
+| Original terminal record | `<immutable ref>` |
+| Original terminal time / verdict | `<time / verdict>` |
+| Audit trigger | `<ref>` |
+| Authorized corrector | `<server-derived actor/ref>` |
+| Correction created at | `<time>` |
+
+## Claim delta
+
+| Original claim | Fresh evidence | Corrected claim | Consequence |
+|---|---|---|---|
+| `<claim>` | `<ref>` | `<correction>` | `<entity/follow-up/reopen effect or no effect>` |
+
+## Lifecycle effect
+
+- Lifecycle stage remains: `closed`.
+- Event: `append-terminal-correction`.
+- Original terminal record preserved: `<yes/no>`.
+- New graph/entity effect required: `<none or distinct authorized ref>`.
+- Stakeholders notified / walkthrough reopened if material: `<ref or rationale>`.

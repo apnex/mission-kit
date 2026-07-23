@@ -26,6 +26,27 @@ Use it for:
 Do not use it to implement the selected arc.
 The planning arc chooses and specifies an implementation arc; the implementation arc is separately seeded after authority approves the final design.
 
+## Lifecycle position and authority boundary
+
+The canonical lifecycle is `../arc-lifecycle/assets/workgraph-lifecycle-v1.json`.
+This skill owns `intent-captured -> planning -> design-sealed`.
+It produces exact admission inputs but performs no implementation seed, source, PR, merge, publication, deployment, live, entity, or closeout effect for the later implementation arc.
+
+The forward handoff is evidence-gated:
+
+```text
+intent envelope
+  -> bounded planning driver
+  -> friction intake + scope fence + M7
+  -> exact design candidate
+  -> independent design_seal PASS
+  -> design-sealed admission packet
+```
+
+A design memo, completed dependency, architect instruction, or planning driver completion is not an independent design PASS.
+The design gate is mechanically staged by the architect and judged by a non-claiming independent verifier through `attest_evidence` plus `verify_attestation`.
+An immutable FAIL requires a distinct repair candidate/gate/runId and remains negative evidence forever.
+
 ## Core invariant
 
 A planning arc must produce executable structure and durable evidence, not merely a persuasive design memo.
@@ -37,7 +58,9 @@ The minimum successful output is:
 3. a closeout packet recording decisions, caveats, deferred items, friction, and entity disposition;
 4. enough WorkGraph evidence that a cold-start architect, engineer, or verifier can reconstruct why this implementation arc is next;
 5. an explicit past-friction intake/triage record showing which friction learnings were included, deferred, no-actioned, or split into separate arcs;
-6. for arcs that affect operating guidance, methodology, skills, authority, proof discipline, lifecycle, delivery, verification, governance, coordination, or reusable organizational process: a direct axiom alignment audit against the current constitutional corpus (`get_constitution` / `get_axiom` provenance, A0-A14 as applicable), or an explicit not-required rationale before implementation authority is requested.
+6. for arcs that affect operating guidance, methodology, skills, authority, proof discipline, lifecycle, delivery, verification, governance, coordination, or reusable organizational process: a direct axiom alignment audit against the current constitutional corpus (`get_constitution` / `get_axiom` provenance, A0-A14 as applicable), or an explicit not-required rationale before implementation authority is requested;
+7. exact design candidate identity and an active-valid independent design PASS, with all prior FAILs preserved;
+8. an admission-ready handoff naming exact blueprint requirements, authority envelope fields, effect classes, repositories/environments, anti-scope, repair policy, and non-effects without claiming approved-for-go.
 
 ## Canonical blueprint asset
 
@@ -66,7 +89,7 @@ A standard planning arc uses these nodes:
 |---|---|---|---|
 | `driver` | architect | none | final closeout; completion-gated on all children |
 | `target_space_mapping` | architect | none | related backlog / target-space map |
-| `friction_intake` or explicit friction section | architect | target map or charter | prior/recent friction candidates, ranking, and included/deferred/no-action/separate-arc dispositions |
+| `friction_intake` | architect | target map | prior/recent friction candidates, ranking, and included/companion/deferred/no-action/separate-arc dispositions |
 | `value_unlock_triage` | architect | target map + friction intake/section | value, learning, bootstrap capital, friction, risk, sequence ranking |
 | `scope_fence` | architect | triage | selected candidate, in-scope, deferred, anti-scope, open design questions |
 | `axiom_alignment_audit` | architect | scope fence | direct A0-A14 constitutional mapping with provenance, implementation invariants, or explicit not-required rationale |
@@ -74,7 +97,7 @@ A standard planning arc uses these nodes:
 | `failure_mode_audit` | verifier | scope fence | proof needs, red lines, failure modes, gate criteria |
 | `design_options` | architect | scope fence + inventory + audit | compared options and recommended shape |
 | `feasibility_sketch` | engineer | design options + inventory | feasibility, surfaces, small/large cuts, operational risk |
-| `design_gate` | verifier | options + feasibility + audit | pass/fail design gate |
+| `design_gate` | architect stages; independent verifier attests without claiming | options + feasibility + audit + M7 | exact pass/fail `design_seal` |
 | `final_design_packet` | architect | gate + options + feasibility | implementation arc design packet |
 | `planning_closeout` | architect | final design packet | planning closeout and entity disposition |
 
@@ -178,6 +201,15 @@ A planning output that leaves a fully-in-scope entity to prose closeout, or lets
 ## Design gate posture
 
 The verifier design gate must not be claimable until the artifacts it evaluates exist.
+Use the Model-B gate shape from `workgraph-verification-gates`:
+
+- `roleEligibility: [architect]` for mechanical staging;
+- exact candidate/binding/evidence-matrix executor requirements;
+- a `review` requirement with `evidenceAuthority: verifier-attestation`;
+- architect completes to `review` without judgment and retains the lease;
+- verifier never claims or executes the WorkItem;
+- verifier rehashes/reproduces checks, attests PASS/FAIL, then runs `verify_attestation`.
+
 The gate should check:
 
 - the recommended arc ships concrete artifacts, not prose-only methodology;
@@ -187,7 +219,28 @@ The gate should check:
 - closeout and survey proof requirements are load-bearing;
 - active-surface claims are bounded to the strongest proven layer;
 - every fully-in-scope Bug/Idea has an entityRealizationPlan row, realization gates, a disposition gate, and an allowed non-closure condition;
-- anti-scope remains out of the implementation blueprint.
+- anti-scope remains out of the implementation blueprint;
+- exact candidate path/resourceVersion/UTF-8 bytes/SHA-256 is bound when admission requires byte-exact authority;
+- the later blueprint must receive a distinct exact pre-seed PASS and final admission PASS before any seed/effect;
+- a FAIL retains original candidate, evidence, lease before-state, verdict, and downstream prohibition; repair is a distinct graph.
+
+A planning design PASS unlocks only exact blueprint/admission authoring.
+It does not approve implementation.
+
+## Planning hard stops
+
+Stop with no implementation-authority claim when any is true:
+
+- constitution is unavailable or `stale=true` for an M7-required arc;
+- intent authority/survey handoff is missing or contradictory;
+- scope fence or fully-in-scope entity realization is incomplete;
+- candidate bytes/state cannot be frozen and re-read;
+- design gate is absent, vacuous, self-attested, stale, or FAIL;
+- blueprint/delivery/live/entity/closeout obligations are left as implicit prose;
+- anti-scope is pulled into the candidate without authority.
+
+A routine design FAIL is not a Director escalation.
+Preserve it, author a distinct bounded repair, independently re-gate, and continue.
 
 ## Closeout requirements
 
@@ -205,7 +258,9 @@ A planning closeout packet should include:
 - live Director walkthrough status: `performed`, `waived`, or `not applicable`, with ref/rationale;
 - explicit friction section and follow-up routing/no-file rationale, including which related friction was included in this or the next arc and why;
 - linked idea/bug/entity disposition ledger covering definitively complete, partially satisfied, deferred, deliberately not-complete/remains-open, superseded/no-action, and not-claimed items;
-- final non-claims and revival triggers.
+- final non-claims and revival triggers;
+- evidence-derived lifecycle stage `design-sealed` only when the independent design PASS is fresh-valid;
+- admission-ready but explicitly non-authorizing exact candidate/blueprint/authority requirements.
 
 Do not mark a live walkthrough as `performed` unless there is a transcript/message ref for progressive walkthrough, or the Director explicitly waived progressive mode.
 

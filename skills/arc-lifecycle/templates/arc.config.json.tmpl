@@ -1,9 +1,14 @@
 {
-  "_doc": "Tenant config for a runnable arc-lifecycle engine. The domain-neutral core bakes NO vocabulary; this file is THIS project's single source for its step classification (`tiers`) + the path to its instance store. The generic schema + FSM ship with the engine; only `catalog` is yours. Keep `tiers` in parity with any spec-profile enum you layer on (see P3).",
-
+  "_doc": "Tenant config for a runnable arc-lifecycle engine. The domain-neutral summit/rung core owns value, payoff, deferral, and revival. The WorkGraph lifecycle and skill-selection manifests are read-only canonical projections for authority/effect stages; WorkItems, GitHub, delivery, live, and entity state remain sovereign truth.",
   "tiers": ["<tier-1>", "<tier-2>", "<tier-3>"],
-
   "paths": {
-    "catalog": "<relative/path/to/your-catalog.json>"
+    "catalog": "<relative/path/to/your-catalog.json>",
+    "workgraphLifecycle": "skills/arc-lifecycle/assets/workgraph-lifecycle-v1.json",
+    "workgraphSkillSelection": "skills/arc-lifecycle/assets/workgraph-skill-selection-v1.json"
+  },
+  "projection": {
+    "stageIsEvidenceDerived": true,
+    "messagesAreAuthority": false,
+    "closedCorrectionsAreAppendOnly": true
   }
 }
