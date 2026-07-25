@@ -16,6 +16,7 @@
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+import { loadCanonical as loadWorkGraphLifecycle, validateLifecycle as validateWorkGraphLifecycle } from '../skills/arc-lifecycle/assets/validate-workgraph-lifecycle.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SKILLS = path.join(ROOT, 'skills');
@@ -131,6 +132,15 @@ if (existsSync(BUNDLES)) {
 	}
 }
 
+// --- 6. canonical WorkGraph lifecycle + skill-selection routes stay aligned with this catalogue/bundle ---
+try {
+	const { lifecycle, selection } = loadWorkGraphLifecycle();
+	for (const error of validateWorkGraphLifecycle(lifecycle, selection, { root: ROOT }))
+		errors.push(`workgraph-lifecycle: ${error}`);
+} catch (error) {
+	errors.push(`workgraph-lifecycle: validator threw: ${error.message}`);
+}
+
 // --- report ---
 const byLevel = [...skills.keys()].sort((a, b) => level.get(a) - level.get(b) || a.localeCompare(b));
 console.log('skill graph — derived levels (L = longest prerequisite/composes path from a root):\n');
@@ -141,4 +151,4 @@ for (const name of byLevel) {
 }
 console.log();
 if (errors.length) { for (const e of errors) console.log(`FAIL  ${e}`); console.log(`\n${errors.length} error(s).`); process.exit(1); }
-console.log(`PASS — ${skills.size} skills, graph acyclic, all edges + bundle entries resolve, composes-vs-model holds.`);
+console.log(`PASS — ${skills.size} skills, graph acyclic, all edges + bundle entries resolve, composes-vs-model holds, WorkGraph lifecycle/selection conforms.`);

@@ -10,6 +10,10 @@ related: [M5, M7, P3, P4, P5]
 
 # K6 — arc-lifecycle
 
+Canonical operational body: [`arc-lifecycle/SKILL.md`](arc-lifecycle/SKILL.md).
+Its machine-checked WorkGraph lifecycle and selection manifests are `arc-lifecycle/assets/workgraph-lifecycle-v1.json` and `arc-lifecycle/assets/workgraph-skill-selection-v1.json`.
+This ledger entry summarizes the value/deferral engine; it must not be used to bypass exact WorkGraph admission, delivery, recovery, driver-last, progressive Director closeout, or append-only correction rules in the canonical body.
+
 ## Rule
 
 Manage a multi-step initiative as a **sovereign state engine an agent

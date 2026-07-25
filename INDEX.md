@@ -63,10 +63,12 @@ Flat ledger of every entry across categories. Sort by ID prefix.
 | [K18](skills/workgraph-arc-operator/SKILL.md) | skill | workgraph-arc-operator — execute and manage a Hub WorkGraph arc | active | 2026-07-08 |
 | [K19](skills/workgraph-blueprint-author/SKILL.md) | skill | workgraph-blueprint-author — author valid Hub WorkGraph blueprints | stub | 2026-07-08 |
 | [K20](skills/workgraph-lease-discipline/SKILL.md) | skill | workgraph-lease-discipline — operate WorkGraph leases and liveness | stub | 2026-07-08 |
-| [K21](skills/workgraph-verification-gates/SKILL.md) | skill | workgraph-verification-gates — design and operate verifier gates | stub | 2026-07-08 |
-| [K22](skills/workgraph-pr-delivery/SKILL.md) | skill | workgraph-pr-delivery — deliver code arcs through PRs under WorkGraph control | stub | 2026-07-08 |
+| [K21](skills/workgraph-verification-gates/SKILL.md) | skill | workgraph-verification-gates — exact independent WorkGraph PASS/FAIL gates | active | 2026-07-08 |
+| [K22](skills/workgraph-pr-delivery/SKILL.md) | skill | workgraph-pr-delivery — exact source-to-live proof under WorkGraph control | active | 2026-07-08 |
 | [K23](skills/workgraph-arc-closeout/SKILL.md) | skill | workgraph-arc-closeout — terminal proof reconciliation for WorkGraph arc closeout | active | 2026-07-08 |
-| [K24](skills/workgraph-recovery/SKILL.md) | skill | workgraph-recovery — recover stuck WorkGraph arcs | stub | 2026-07-08 |
+| [K24](skills/workgraph-recovery/SKILL.md) | skill | workgraph-recovery — immutable-lineage recovery for stopped/failed/revised arcs | active | 2026-07-08 |
+| [K25](skills/workgraph-arc-participant/SKILL.md) | skill | workgraph-arc-participant — act inside a Hub WorkGraph arc | active | 2026-07-23 |
+| [K26](skills/workgraph-arc-planning/SKILL.md) | skill | workgraph-arc-planning — bounded intent-to-design-seal planning arc | active | 2026-07-23 |
 | [MREQ-1](backlog/mreq-1-axiom-application-methodology.md) | mission-required | Axiom-application methodology for non-code missions | partially-fulfilled | 2026-07-01 |
 | [R0](roles/README.md) | role | Roles — the M axis (pure essence + type-determined authority) | active | 2026-07-13 |
 | [R1](roles/R1-architect.md) | role | architect — authority over system shape | active | 2026-07-13 |

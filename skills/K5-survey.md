@@ -10,6 +10,9 @@ related: [M1, M3]
 
 # K5 — survey
 
+Canonical operational body: [`survey/SKILL.md`](survey/SKILL.md).
+A valid envelope advances only the evidence-derived lifecycle transition `intent-open -> intent-captured`, carries a decision-authority ref, and grants no design, seed, implementation, or delivery effect.
+
 ## Rule
 
 Before committing to a design for any non-trivial work item, run a

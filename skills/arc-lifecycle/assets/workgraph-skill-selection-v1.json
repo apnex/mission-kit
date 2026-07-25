@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "workgraph-skill-selection-v1",
+  "lifecycleRef": "skills/arc-lifecycle/assets/workgraph-lifecycle-v1.json",
+  "stageRoutes": [
+    {"stage": "intent-open", "primary": "survey", "supporting": ["arc-lifecycle"]},
+    {"stage": "intent-captured", "primary": "workgraph-arc-planning", "supporting": ["survey", "arc-lifecycle"]},
+    {"stage": "planning", "primary": "workgraph-arc-planning", "supporting": ["survey", "arc-lifecycle", "workgraph-verification-gates"]},
+    {"stage": "design-sealed", "primary": "workgraph-arc-operator", "supporting": ["workgraph-arc-planning", "workgraph-verification-gates"]},
+    {"stage": "admission", "primary": "workgraph-verification-gates", "supporting": ["workgraph-arc-operator"]},
+    {"stage": "approved-for-go", "primary": "workgraph-arc-operator", "supporting": ["workgraph-verification-gates"]},
+    {"stage": "executing", "primary": "workgraph-arc-operator", "supporting": ["workgraph-arc-participant", "workgraph-recovery", "workgraph-verification-gates"]},
+    {"stage": "implementation-sealed", "primary": "workgraph-pr-delivery", "supporting": ["workgraph-verification-gates", "workgraph-arc-operator"]},
+    {"stage": "source-delivered", "primary": "workgraph-pr-delivery", "supporting": ["workgraph-verification-gates", "workgraph-arc-operator"]},
+    {"stage": "publication-qualified", "primary": "workgraph-pr-delivery", "supporting": ["workgraph-verification-gates", "workgraph-arc-operator"]},
+    {"stage": "deployment-qualified", "primary": "workgraph-pr-delivery", "supporting": ["workgraph-verification-gates", "workgraph-arc-operator"]},
+    {"stage": "live-qualified", "primary": "workgraph-arc-closeout", "supporting": ["workgraph-verification-gates", "workgraph-arc-operator"]},
+    {"stage": "substrate-closing", "primary": "workgraph-arc-closeout", "supporting": ["workgraph-arc-operator", "workgraph-verification-gates"]},
+    {"stage": "substrate-closed", "primary": "workgraph-arc-closeout", "supporting": ["workgraph-arc-operator"]},
+    {"stage": "director-closing", "primary": "workgraph-arc-closeout", "supporting": ["workgraph-arc-operator"]},
+    {"stage": "closed", "primary": "workgraph-arc-closeout", "supporting": ["arc-lifecycle"]}
+  ],
+  "situationRoutes": [
+    {"id": "open-intent-needs-stakeholder-shaping", "primary": "survey"},
+    {"id": "value-deferral-or-revival-question", "primary": "arc-lifecycle"},
+    {"id": "bounded-design-or-m7-question", "primary": "workgraph-arc-planning"},
+    {"id": "controller-or-commencement-question", "primary": "workgraph-arc-operator"},
+    {"id": "assigned-node-or-lease-question", "primary": "workgraph-arc-participant"},
+    {"id": "independent-pass-fail-gate-question", "primary": "workgraph-verification-gates"},
+    {"id": "branch-pr-merge-publish-deploy-question", "primary": "workgraph-pr-delivery"},
+    {"id": "stuck-failed-paused-or-drifted-arc-question", "primary": "workgraph-recovery"},
+    {"id": "terminal-reconciliation-or-director-walkthrough-question", "primary": "workgraph-arc-closeout"}
+  ],
+  "hardStopRoute": {
+    "primary": "workgraph-recovery",
+    "supporting": ["workgraph-verification-gates", "workgraph-arc-operator"],
+    "rule": "Perform no blocked effect; preserve polarity and authority; author a distinct bounded repair or escalate only a constitutional, authority, destructive, or irreducible external conflict."
+  },
+  "participantRule": "A participant uses workgraph-arc-participant even when the stage owner is another skill; stage ownership selects the arc-level playbook, not permission to act outside the assigned node."
+}

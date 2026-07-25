@@ -1,0 +1,30 @@
+# WorkGraph lifecycle checkpoint — `<arc>`
+
+| Field | Value |
+|---|---|
+| Canonical lifecycle manifest | `skills/arc-lifecycle/assets/workgraph-lifecycle-v1.json` |
+| Evidence-derived stage | `<stage>` |
+| Control state | `<running | hard-stopped | repairing | closed>` |
+| Controller driver | `<work-id / holder / lease state>` |
+| Fresh observed at | `<timestamp>` |
+| Primary skill selected | `<skill>` |
+| Authority envelope / scope | `<ref>` |
+
+## Entry and exit evidence
+
+| Predicate | Evidence/ref | Fresh? | Result |
+|---|---|---|---|
+| `<predicate>` | `<ref>` | `<yes/no>` | `<pass/fail/missing>` |
+
+## Hard-stop evaluation
+
+| Stop | Active? | Blocked effects | No-effect / repair receipt |
+|---|---|---|---|
+| `<hard-stop-id>` | `<yes/no>` | `<effects>` | `<ref>` |
+
+## Next legal transition
+
+- Event: `<event or none>`
+- Required authority: `<authority>`
+- Missing proof: `<none or exact list>`
+- Next graph-projected action: `<work-id or emptyReason>`

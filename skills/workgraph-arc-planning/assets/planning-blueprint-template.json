@@ -33,6 +33,31 @@
       ]
     },
     {
+      "localId": "friction_intake",
+      "label": "Past-friction intake and disposition",
+      "type": "review",
+      "priority": "high",
+      "roleEligibility": [
+        "architect"
+      ],
+      "dependsOn": [
+        "target_space_mapping"
+      ],
+      "runbook": "Use workgraph-arc-planning. Read recent closeout friction reflections, Director walkthrough notes, linked friction Bugs/Ideas/WorkItems, stale-FYI noise, tool/evidence/coordination/lease/authority friction, and by-construction opportunities relevant to the target. Classify every candidate included, companion, deferred, no-action, or separate-arc with rationale and revival trigger where deferred. Do not broaden scope or implement.",
+      "targetRef": {
+        "kind": "Idea",
+        "id": "REPLACE_WITH_PRIMARY_TARGET_ID"
+      },
+      "evidenceRequirements": [
+        {
+          "id": "friction_intake",
+          "kind": "doc",
+          "description": "Past-friction intake, ranking, and disposition ledger.",
+          "refResolvable": true
+        }
+      ]
+    },
+    {
       "localId": "value_unlock_triage",
       "label": "Value / learning / unlock triage",
       "type": "review",
@@ -41,9 +66,10 @@
         "architect"
       ],
       "dependsOn": [
-        "target_space_mapping"
+        "target_space_mapping",
+        "friction_intake"
       ],
-      "runbook": "Use the target-space map to rank candidate clusters by banked durable value, staked learning, bootstrap capital, downstream unlock, recurring friction removed, risk retired, effort/complexity, sequencing leverage, and scope containment. Recommend candidate spines for scope fencing. Do not implement.",
+      "runbook": "Use the target-space map and friction-intake ledger to rank candidate clusters by banked durable value, staked learning, bootstrap capital, downstream unlock, recurring friction removed, risk retired, effort/complexity, sequencing leverage, and scope containment. Recommend candidate spines for scope fencing. Do not implement.",
       "targetRef": {
         "kind": "Idea",
         "id": "REPLACE_WITH_PRIMARY_TARGET_ID"
@@ -213,11 +239,11 @@
     },
     {
       "localId": "design_gate",
-      "label": "Verifier design gate",
+      "label": "Independent exact design gate",
       "type": "verifier-gate",
       "priority": "high",
       "roleEligibility": [
-        "verifier"
+        "architect"
       ],
       "dependsOn": [
         "design_options",
@@ -225,17 +251,36 @@
         "failure_mode_audit",
         "axiom_alignment_audit"
       ],
-      "runbook": "Use workgraph-arc-participant. Gate the design before implementation. Verify that the proposed arc has concrete artifacts, encoded dependencies, validation including structural/negative checks, closeout and survey proof requirements, active-surface truth boundaries, direct axiom mapping or explicit not-required rationale, explicit anti-scope, and entityRealizationPlan/disposition gates for every fully-in-scope Bug/Idea. Pass or fail with required repairs.",
+      "runbook": "Use workgraph-verification-gates and workgraph-arc-participant. ARCHITECT mechanically stages the exact design candidate plus feasibility, failure-mode, M7, scope, survey, entity-realization, validation, closeout, active-surface, and anti-scope bindings, then completes to review without judgment and retains the lease. VERIFIER must not claim or execute this WorkItem. The independent verifier rehashes/re-resolves all evidence, checks concrete artifacts, structural/negative tests, entityRealizationPlan/disposition gates, and preserved FAIL lineage, then attests design_seal PASS or FAIL and runs verify_attestation. FAIL is immutable and requires a distinct repair gate/runId; PASS authorizes only exact blueprint/admission authoring, never implementation.",
       "targetRef": {
         "kind": "Idea",
         "id": "REPLACE_WITH_PRIMARY_TARGET_ID"
       },
       "evidenceRequirements": [
         {
-          "id": "design_gate",
+          "id": "design_candidate",
           "kind": "doc",
-          "description": "Verifier design gate report for implementation arc readiness.",
-          "refResolvable": true
+          "description": "Exact design candidate staged mechanically by the architect.",
+          "refResolvable": true,
+          "allowPreClaim": true
+        },
+        {
+          "id": "design_binding",
+          "kind": "freeform",
+          "description": "Exact path/resourceVersion/UTF-8 bytes/SHA-256 binding for the design candidate."
+        },
+        {
+          "id": "planning_evidence_matrix",
+          "kind": "doc",
+          "description": "Scope, survey, M7, feasibility, failure-mode, entity-realization, validation, closeout, and anti-scope evidence matrix.",
+          "refResolvable": true,
+          "allowPreClaim": true
+        },
+        {
+          "id": "design_seal",
+          "kind": "review",
+          "description": "Independent exact design PASS/FAIL.",
+          "evidenceAuthority": "verifier-attestation"
         }
       ]
     },
@@ -302,6 +347,7 @@
       ],
       "completionDependsOn": [
         "target_space_mapping",
+        "friction_intake",
         "value_unlock_triage",
         "scope_fence",
         "axiom_alignment_audit",

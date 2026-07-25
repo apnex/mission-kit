@@ -2,9 +2,11 @@
 name: arc-lifecycle
 description: "Use to manage a multi-step initiative as a sovereign state engine an agent operates by VERBS, instead of a prose backlog it hand-edits. The model is a fixed summit (global-max goal) + an arc (tree of rungs/steps) climbing it, each carrying a lifecycle state. Operate it through an FSM-gated API: reads (query / traverse / describe / project) answer questions without loading the whole store; writes (transition / author) are FSM-gated, delta-logged, and validate the whole store before touching disk. Terminals are reopenable, deferrals carry a revival trigger (anti-amnesia), and human/spec views are GENERATED from the one store. The agent derives understanding from the system itself, not from prose it must parse and trust."
 metadata:
-  related-skills: survey, substrate-audit
-  facet: operate — runs an arc as a live FSM-gated engine (the operate facet of the arc model)
+  related-skills: survey, workgraph-arc-planning, workgraph-arc-operator, workgraph-arc-participant, workgraph-verification-gates, workgraph-pr-delivery, workgraph-recovery, workgraph-arc-closeout
+  facet: operate — owns value/deferral/revival semantics plus the canonical evidence-derived WorkGraph lifecycle projection
   see-also: sysml-literacy, model-a-state-machine
+  canonical-lifecycle: assets/workgraph-lifecycle-v1.json
+  skill-selection: assets/workgraph-skill-selection-v1.json
 ---
 
 # arc-lifecycle — operate staged work as a sovereign state engine
@@ -43,10 +45,102 @@ Three properties distinguish it from a prose backlog:
   view are *generated* from the store, so they are always exactly what
   the store says.
 
-This skill is **engine-agnostic**: it describes the model + the operating
-discipline. A reference implementation is a domain-neutral JSON core a
-consumer programs with its own vocabulary; see "Installing a runnable
-engine."
+This skill is **engine-agnostic** for summit/rung value semantics: it describes the model + the operating discipline.
+A reference implementation is a domain-neutral JSON core a consumer programs with its own vocabulary; see "Installing a runnable engine."
+
+For a Hub WorkGraph initiative, this skill also owns the canonical **evidence-derived lifecycle projection** at `assets/workgraph-lifecycle-v1.json` and its skill router at `assets/workgraph-skill-selection-v1.json`.
+Those manifests do not create a second truth store.
+They derive the current lifecycle stage and legal authority transition from fresh WorkGraph, exact artifact, GitHub, delivery, live, constitution, and entity evidence.
+
+## Two nested state machines — never conflate them
+
+A serious WorkGraph arc has two distinct state concerns:
+
+| Concern | Canonical owner | What changes it |
+|---|---|---|
+| Value lifecycle | this skill's summit/arc/rung FSM | value commitment, payoff, deferral, retirement, revival |
+| Operational lifecycle | `assets/workgraph-lifecycle-v1.json` | fresh evidence satisfying an authority/effect transition |
+| Node execution state | Hub WorkItem FSM | legal WorkGraph verbs such as claim/start/block/complete/pause/unpause |
+
+Do not use a WorkItem phase as proof that an arc is design-sealed, approved-for-go, delivered, live-qualified, or closed.
+Do not hand-edit an operational lifecycle stage.
+Project it from the required evidence, and keep control state (`running`, `hard-stopped`, `repairing`, `closed`) orthogonal to the stage.
+A hard stop freezes prohibited effects without erasing completed stages; a distinct repair can restore `running` only after independent admission while the original FAIL remains immutable.
+
+## Canonical end-to-end WorkGraph lifecycle
+
+The canonical forward path is:
+
+```text
+intent-open
+  -> intent-captured
+  -> planning
+  -> design-sealed
+  -> admission
+  -> approved-for-go
+  -> executing
+  -> implementation-sealed
+  -> source-delivered
+  -> publication-qualified
+  -> deployment-qualified
+  -> live-qualified
+  -> substrate-closing
+  -> substrate-closed
+  -> director-closing
+  -> closed
+```
+
+Optional delivery layers are never silently skipped.
+A non-code, non-publication, non-deployment, or non-live arc advances through the same stage only with an independently gated `not applicable` receipt or exemption.
+This keeps "not required" distinct from "forgotten".
+
+The stage boundaries are authority boundaries:
+
+- **Intent capture:** use a survey envelope when direction is open, or an explicit existing-intent bypass with authority and rationale when it is already fixed.
+- **Planning/design:** map the target, run M7 when applicable, author an exact candidate, and obtain an independent design PASS.
+- **Admission:** exact-bind the design, blueprint, authority envelope, negative lineage, constitution, effect scope, and final independent admission PASS.
+- **Approved-for-go:** one strategic authority action authorizes only the frozen graph/effects; it is not a seed or source mutation.
+- **Execution/repair:** the controller holds the driver, participants act only on assigned nodes, and FAIL repairs use distinct identities.
+- **Delivery/live:** commit, PR, review, CI, merge, publication, deployment, live observation, and postproduction attestation remain separate proof layers.
+- **Closeout:** reconcile substrate truth and complete the driver last, then deliver the progressive Director walkthrough or capture an explicit waiver/valid point-in-time not-applicable result.
+- **Post-terminal audit:** append a correction linked to the original terminal record; never rewrite history or pretend the original claim was always correct.
+
+## Skill selection — one cold-start mental model
+
+Read `assets/workgraph-skill-selection-v1.json` rather than choosing from memory.
+The short form is:
+
+| Question | Primary skill |
+|---|---|
+| Is stakeholder intent still open? | `survey` |
+| What is the summit, payoff, deferral, or revival trigger? | `arc-lifecycle` |
+| Are we mapping/fencing/designing/M7-gating? | `workgraph-arc-planning` |
+| Am I the controller commencing or driving? | `workgraph-arc-operator` |
+| Am I executing an assigned node? | `workgraph-arc-participant` |
+| Am I independently judging a PASS/FAIL gate? | `workgraph-verification-gates` |
+| Am I moving exact source through PR/merge/publish/deploy? | `workgraph-pr-delivery` |
+| Is the arc stopped, failed, paused, or drifted? | `workgraph-recovery` |
+| Am I reconciling terminal truth or walking the Director through it? | `workgraph-arc-closeout` |
+
+Stage ownership selects the arc-level playbook.
+It never authorizes a participant to claim outside an explicit assignment.
+
+## Hard stops and no-give-up recovery
+
+Before an effect, evaluate the typed hard stops in the lifecycle manifest.
+Stale/unavailable constitution, missing or mismatched authority, exact-byte drift, active verifier FAIL, invalid effect gate, scope conflict, verifier self-attestation, protected-delivery denial, forbidden live fallback, early driver completion, and unresolved Director walkthrough proof all stop the affected effect.
+
+A hard stop is not permission to give up or improvise:
+
+1. persist a typed no-effect receipt;
+2. preserve the exact failed attempt, lease, evidence, attestation, and polarity;
+3. consult current constitution and scope authority;
+4. author a distinct bounded repair identity when allowed;
+5. obtain fresh independent proof;
+6. resume from the same evidence-derived stage only after the repair is admitted.
+
+Escalate only a constitutional contradiction, authority/scope conflict, destructive out-of-envelope action, unavailable reserved authority, or irreducible external blocker.
+Routine implementation difficulty, red CI, verifier FAIL, rate limiting, and reversible infrastructure recovery stay autonomous.
 
 ## Where this sits — operating vs modelling an arc
 
@@ -193,9 +287,20 @@ mutate → validate → atomic save, or reject writing nothing).
 
 ## References
 
-- `templates/arc.config.json.tmpl` — the tenant config seam (vocabulary +
-  store path) a consumer fills to wire a runnable engine.
+- `assets/workgraph-lifecycle-v1.json` — canonical evidence-derived lifecycle stages, transitions, hard stops, control-state repair FSM, invariants, and proof ladder.
+- `assets/workgraph-skill-selection-v1.json` — stage/situation-to-skill routing rules.
+- `assets/validate-workgraph-lifecycle.mjs` — lifecycle, selection, template, and bundle validator.
+- `assets/workgraph-lifecycle.conformance.test.mjs` — executable negative conformance scenarios for exact gates, repair, driver-last, stale FYIs, walkthroughs, corrections, and proof layers.
+- `templates/arc.config.json.tmpl` — the tenant config seam for value vocabulary, store path, and canonical lifecycle projection paths.
+- `templates/lifecycle-checkpoint.md.tmpl` — evidence-derived stage/control-state checkpoint.
+- `templates/implementation-admission-envelope.md.tmpl` — exact design/blueprint/authority/admission fence.
+- `templates/post-terminal-correction.md.tmpl` — append-only terminal correction.
 
-This SKILL.md is self-contained: the model, the FSM, the two axes, the
-anti-amnesia rule, the verb surface, and the install seams are all
-described above with no dependency on any external document.
+Run the lifecycle checks from the mission-kit root:
+
+```bash
+node skills/arc-lifecycle/assets/validate-workgraph-lifecycle.mjs
+node skills/arc-lifecycle/assets/workgraph-lifecycle.conformance.test.mjs
+```
+
+This SKILL.md is self-contained for the value model and points to executable canonical assets for the operational lifecycle so skill prose, selection, templates, bundles, and conformance cannot drift independently.

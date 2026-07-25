@@ -1,0 +1,363 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "workgraph-arc-lifecycle-v1",
+  "description": "Canonical evidence-derived lifecycle for an authority-gated Hub WorkGraph arc. This projection never replaces WorkItem, GitHub, delivery, or entity truth.",
+  "initialStage": "intent-open",
+  "terminalStage": "closed",
+  "initialControlState": "running",
+  "stages": [
+    {
+      "id": "intent-open",
+      "ownerSkill": "survey",
+      "entryEvidence": ["strategic-intent-ref"],
+      "exitEvidence": ["survey-envelope-or-explicit-bypass"]
+    },
+    {
+      "id": "intent-captured",
+      "ownerSkill": "workgraph-arc-planning",
+      "entryEvidence": ["intent-envelope", "scope-authority"],
+      "exitEvidence": ["planning-arc-authority"]
+    },
+    {
+      "id": "planning",
+      "ownerSkill": "workgraph-arc-planning",
+      "entryEvidence": ["planning-driver", "scope-fence"],
+      "exitEvidence": ["exact-design-candidate", "m7-audit-or-not-required", "independent-design-pass"]
+    },
+    {
+      "id": "design-sealed",
+      "ownerSkill": "workgraph-arc-operator",
+      "entryEvidence": ["exact-design-candidate", "active-valid-independent-design-pass"],
+      "exitEvidence": ["exact-blueprint-candidate", "authority-envelope-candidate"]
+    },
+    {
+      "id": "admission",
+      "ownerSkill": "workgraph-verification-gates",
+      "entryEvidence": ["exact-blueprint-candidate", "authority-envelope-candidate"],
+      "exitEvidence": ["active-valid-independent-blueprint-pass", "active-valid-independent-final-admission-pass", "fresh-constitution", "approved-for-go-receipt"]
+    },
+    {
+      "id": "approved-for-go",
+      "ownerSkill": "workgraph-arc-operator",
+      "entryEvidence": ["approved-for-go-receipt", "exact-effect-scope"],
+      "exitEvidence": ["exact-once-blueprint-seed", "controller-held-driver"]
+    },
+    {
+      "id": "executing",
+      "ownerSkill": "workgraph-arc-operator",
+      "entryEvidence": ["seed-receipt", "controller-held-driver"],
+      "exitEvidence": ["implementation-evidence", "tests", "active-valid-independent-implementation-pass"]
+    },
+    {
+      "id": "implementation-sealed",
+      "ownerSkill": "workgraph-pr-delivery",
+      "entryEvidence": ["exact-commit", "test-run", "active-valid-independent-implementation-pass"],
+      "exitEvidence": ["protected-source-delivery-or-gated-not-applicable"]
+    },
+    {
+      "id": "source-delivered",
+      "ownerSkill": "workgraph-pr-delivery",
+      "entryEvidence": ["exact-pr-review-merge-or-gated-not-applicable"],
+      "exitEvidence": ["publication-applicability-and-qualification"]
+    },
+    {
+      "id": "publication-qualified",
+      "ownerSkill": "workgraph-pr-delivery",
+      "entryEvidence": ["publication-receipt-or-independent-not-applicable"],
+      "exitEvidence": ["deployment-receipt-or-independent-not-applicable"]
+    },
+    {
+      "id": "deployment-qualified",
+      "ownerSkill": "workgraph-pr-delivery",
+      "entryEvidence": ["exact-runtime-revision-or-independent-not-applicable"],
+      "exitEvidence": ["live-observation-or-independent-exemption"]
+    },
+    {
+      "id": "live-qualified",
+      "ownerSkill": "workgraph-arc-closeout",
+      "entryEvidence": ["live-proof-and-postproduction-pass-or-independent-exemption"],
+      "exitEvidence": ["closeout-packet-candidate"]
+    },
+    {
+      "id": "substrate-closing",
+      "ownerSkill": "workgraph-arc-closeout",
+      "entryEvidence": ["closeout-packet-candidate", "entity-ledger", "friction-ledger", "stakeholder-ledger"],
+      "exitEvidence": ["all-required-children-dispositioned", "active-valid-closeout-pass", "driver-last-ready"]
+    },
+    {
+      "id": "substrate-closed",
+      "ownerSkill": "workgraph-arc-closeout",
+      "entryEvidence": ["closeout-workitem-done", "driver-completed-last"],
+      "exitEvidence": ["director-walkthrough-trigger-evaluation"]
+    },
+    {
+      "id": "director-closing",
+      "ownerSkill": "workgraph-arc-closeout",
+      "entryEvidence": ["walkthrough-required-or-explicit-waiver-or-point-in-time-not-applicable"],
+      "exitEvidence": ["progressive-transcript-or-explicit-waiver-or-valid-not-applicable", "decision-state"]
+    },
+    {
+      "id": "closed",
+      "ownerSkill": "workgraph-arc-closeout",
+      "terminal": true,
+      "entryEvidence": ["terminal-closeout-record", "director-closeout-proof"],
+      "exitEvidence": ["append-only-correction-only"]
+    }
+  ],
+  "transitions": [
+    {
+      "event": "capture-intent",
+      "from": "intent-open",
+      "to": "intent-captured",
+      "authority": ["director", "architect-with-existing-delegation"],
+      "requires": ["survey-envelope-or-explicit-bypass", "intent-authority-ref"]
+    },
+    {
+      "event": "begin-planning",
+      "from": "intent-captured",
+      "to": "planning",
+      "authority": ["architect"],
+      "requires": ["planning-driver", "scope-fence", "anti-scope"]
+    },
+    {
+      "event": "seal-design",
+      "from": "planning",
+      "to": "design-sealed",
+      "authority": ["verifier-attestation"],
+      "requires": ["exact-design-candidate", "m7-audit-or-not-required", "active-valid-independent-design-pass"]
+    },
+    {
+      "event": "open-admission",
+      "from": "design-sealed",
+      "to": "admission",
+      "authority": ["architect"],
+      "requires": ["exact-blueprint-candidate", "authority-envelope-candidate", "preserved-negative-lineage"]
+    },
+    {
+      "event": "approve-for-go",
+      "from": "admission",
+      "to": "approved-for-go",
+      "authority": ["independent-verifier", "architect-with-delegated-effect-scope"],
+      "requires": ["active-valid-independent-blueprint-pass", "active-valid-independent-final-admission-pass", "fresh-constitution", "exact-authority-envelope", "approved-for-go-receipt"]
+    },
+    {
+      "event": "commence",
+      "from": "approved-for-go",
+      "to": "executing",
+      "authority": ["architect-controller"],
+      "requires": ["participant-local-exact-manifest-rehash", "exact-once-blueprint-seed", "controller-held-driver"]
+    },
+    {
+      "event": "seal-implementation",
+      "from": "executing",
+      "to": "implementation-sealed",
+      "authority": ["verifier-attestation"],
+      "requires": ["exact-commit", "test-run", "active-valid-independent-implementation-pass"]
+    },
+    {
+      "event": "deliver-source",
+      "from": "implementation-sealed",
+      "to": "source-delivered",
+      "authority": ["protected-delivery-actor"],
+      "requires": ["active-valid-source-pass", "exact-pr-review-merge-or-gated-not-applicable"]
+    },
+    {
+      "event": "qualify-publication",
+      "from": "source-delivered",
+      "to": "publication-qualified",
+      "authority": ["publication-actor", "independent-verifier"],
+      "requires": ["publication-applicability", "publication-preflight", "publication-receipt-or-independent-not-applicable", "independent-publication-qualification"]
+    },
+    {
+      "event": "qualify-deployment",
+      "from": "publication-qualified",
+      "to": "deployment-qualified",
+      "authority": ["deployment-actor"],
+      "requires": ["protected-merge", "independent-publication-qualification", "deployment-receipt-or-independent-not-applicable"]
+    },
+    {
+      "event": "qualify-live",
+      "from": "deployment-qualified",
+      "to": "live-qualified",
+      "authority": ["independent-verifier"],
+      "requires": ["live-observation-or-independent-exemption", "active-valid-postproduction-pass-or-independent-exemption"]
+    },
+    {
+      "event": "begin-substrate-closeout",
+      "from": "live-qualified",
+      "to": "substrate-closing",
+      "authority": ["architect-controller"],
+      "requires": ["closeout-packet-candidate", "entity-ledger", "friction-ledger", "stakeholder-ledger", "active-surface-ledger"]
+    },
+    {
+      "event": "close-substrate",
+      "from": "substrate-closing",
+      "to": "substrate-closed",
+      "authority": ["architect-controller"],
+      "requires": ["all-required-children-dispositioned", "active-valid-closeout-pass", "closeout-workitem-done", "driver-completed-last"]
+    },
+    {
+      "event": "begin-director-closeout",
+      "from": "substrate-closed",
+      "to": "director-closing",
+      "authority": ["architect-presenter", "director"],
+      "requires": ["director-walkthrough-trigger-evaluation"]
+    },
+    {
+      "event": "close-arc",
+      "from": "director-closing",
+      "to": "closed",
+      "authority": ["director-or-valid-waiver-policy"],
+      "requires": ["progressive-transcript-or-explicit-waiver-or-valid-not-applicable", "decision-state", "terminal-closeout-record"]
+    },
+    {
+      "event": "append-terminal-correction",
+      "from": "closed",
+      "to": "closed",
+      "authority": ["authorized-auditor"],
+      "requires": ["append-only-correction-record", "original-terminal-record-preserved", "corrected-claim-and-evidence"]
+    }
+  ],
+  "controlStates": ["running", "hard-stopped", "repairing", "closed"],
+  "controlTransitions": [
+    {
+      "event": "hard-stop",
+      "from": "running",
+      "to": "hard-stopped",
+      "requires": ["typed-stop-reason", "no-effect-receipt"]
+    },
+    {
+      "event": "author-distinct-repair",
+      "from": "hard-stopped",
+      "to": "repairing",
+      "requires": ["distinct-repair-id", "original-polarity-preserved", "scope-and-authority-recheck"]
+    },
+    {
+      "event": "admit-distinct-repair",
+      "from": "repairing",
+      "to": "running",
+      "requires": ["active-valid-independent-repair-pass", "original-polarity-preserved", "current-authority"]
+    },
+    {
+      "event": "terminalize-control",
+      "from": "running",
+      "to": "closed",
+      "requires": ["lifecycle-stage-closed"]
+    }
+  ],
+  "hardStops": [
+    {
+      "id": "constitution-unavailable-or-stale",
+      "blocks": ["planning-approval", "admission", "implementation-effect", "delivery-effect", "closeout-claim"],
+      "recovery": "refresh-authenticated-constitution-and-re-run-m7-or-author-distinct-repair"
+    },
+    {
+      "id": "authority-missing-or-mismatched",
+      "blocks": ["blueprint-seed", "implementation-effect", "delivery-effect", "entity-effect", "closeout-claim"],
+      "recovery": "obtain-exact-authority-or-author-distinct-scope-repair"
+    },
+    {
+      "id": "exact-binding-mismatch",
+      "blocks": ["blueprint-seed", "implementation-effect", "delivery-effect", "live-effect"],
+      "recovery": "no-effect-and-distinct-byte-bound-candidate-plus-independent-gate"
+    },
+    {
+      "id": "active-verifier-fail",
+      "blocks": ["reclaim", "replay", "re-attest-same-gate", "dependent-effect", "driver-completion"],
+      "recovery": "retain-fail-and-create-distinct-repair-gate"
+    },
+    {
+      "id": "effect-gate-missing-or-invalid",
+      "blocks": ["merge", "publish", "deploy", "live-claim", "entity-disposition"],
+      "recovery": "stage-evidence-and-obtain-active-valid-independent-pass"
+    },
+    {
+      "id": "scope-or-constitutional-conflict",
+      "blocks": ["implementation-effect", "delivery-effect", "destructive-effect"],
+      "recovery": "stop-loud-and-seek-authority-resolution"
+    },
+    {
+      "id": "protected-delivery-denied",
+      "blocks": ["merge", "publish", "deploy"],
+      "recovery": "repair-on-distinct-attempt-without-bypass"
+    },
+    {
+      "id": "verifier-independence-invalid",
+      "blocks": ["gate-pass", "merge", "deploy", "closeout-claim"],
+      "recovery": "route-to-independent-verifier-and-re-run-verification"
+    },
+    {
+      "id": "live-proof-used-forbidden-fallback",
+      "blocks": ["live-qualified", "postproduction-pass", "entity-disposition"],
+      "recovery": "repeat-from-authorized-live-surface-or-record-independent-exemption"
+    },
+    {
+      "id": "driver-would-complete-before-child-or-closeout",
+      "blocks": ["driver-completion", "terminal-claim"],
+      "recovery": "finish-or-authoritatively-disposition-all-children-and-closeout-first"
+    },
+    {
+      "id": "director-walkthrough-proof-unresolved",
+      "blocks": ["director-closeout", "terminal-claim"],
+      "recovery": "perform-progressively-or-capture-explicit-waiver-or-valid-point-in-time-not-applicable"
+    }
+  ],
+  "invariants": [
+    {
+      "id": "evidence-derived-stage",
+      "rule": "Lifecycle stage is a projection from fresh substrate evidence; it is never stronger than WorkGraph, GitHub, delivery, live, or entity truth."
+    },
+    {
+      "id": "dependencies-are-not-authority",
+      "rule": "Dependency completion and instructions do not substitute for an active-valid independent gate or exact authority envelope."
+    },
+    {
+      "id": "exact-pre-effect-rehash",
+      "rule": "Every effect-bearing claimant re-fetches and hashes frozen authority bytes before effect; mismatch stops with no effect."
+    },
+    {
+      "id": "immutable-fail-distinct-repair",
+      "rule": "A FAIL and failed attempt retain their original polarity; repair uses distinct identities and never replays or overwrites the failed gate."
+    },
+    {
+      "id": "pause-revise-unpause",
+      "rule": "Contract/topology correction uses pause, immutable successor revision, and atomic recommit/unpause; no prose or in-place semantic mutation."
+    },
+    {
+      "id": "no-give-up-recovery",
+      "rule": "Routine engineering, CI, verifier, or reversible infrastructure failure triggers constitution-guided bounded recovery, not silent abandonment or Director escalation."
+    },
+    {
+      "id": "proof-layers-do-not-collapse",
+      "rule": "Commit, PR, review, merge, publication, deployment, live observation, and independent postproduction proof remain distinct."
+    },
+    {
+      "id": "stale-fyi-no-effect",
+      "rule": "Messages and FYIs are signals only; stale signals are acked or ignored after a fresh substrate read and never reopen or double-act."
+    },
+    {
+      "id": "driver-last",
+      "rule": "The controller-held driver completes after all required children, closeout evidence, gates, ledgers, active surfaces, and accepted limitations."
+    },
+    {
+      "id": "progressive-director-closeout",
+      "rule": "A triggered Director walkthrough is delivered one step at a time with pauses, or has an explicit waiver; a packet dump is not performed proof."
+    },
+    {
+      "id": "append-only-terminal-correction",
+      "rule": "Post-terminal audit corrects claims by appending a linked correction while preserving the original terminal record and WorkItem history."
+    }
+  ],
+  "proofLadder": [
+    {"id": "local", "doesNotProve": ["ci", "review", "merge", "publish", "deploy", "live"]},
+    {"id": "commit", "doesNotProve": ["pr", "review", "merge", "publish", "deploy", "live"]},
+    {"id": "pr-open", "doesNotProve": ["review", "merge", "publish", "deploy", "live"]},
+    {"id": "reviewed", "doesNotProve": ["merge", "publish", "deploy", "live"]},
+    {"id": "ci-green", "doesNotProve": ["merge", "publish", "deploy", "live"]},
+    {"id": "merged", "doesNotProve": ["publish", "deploy", "live"]},
+    {"id": "published", "doesNotProve": ["deploy", "live"]},
+    {"id": "deployed", "doesNotProve": ["live"]},
+    {"id": "live-observed", "doesNotProve": ["broader-scope-than-observed"]},
+    {"id": "verifier-attested", "orthogonal": true, "doesNotProve": ["scope-outside-the-attested-gate"]}
+  ]
+}
