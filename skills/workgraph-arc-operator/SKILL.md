@@ -160,7 +160,7 @@ The graph should be understandable from `get_current_stint(driverId)` plus child
 Blueprint authoring is where authority and re-seed failures originate.
 Use these rules:
 
-- **Planning pointers may be living; effect inputs are exact.** A mutable owned path can inform target mapping and planning, but any design/blueprint/manifest/reference that bears implementation, seed, merge, publish, deploy, live, entity, or closeout authority must freeze the storage-specific current identity. Hub docs bind `{path, resourceVersion, utf8Bytes, sha256}`; Git binds repository + full commit + path/tree/blob; entities bind kind/id/resourceVersion/state hash; inline binds exact UTF-8 bytes/hash. Never silently refresh a WorkItem contract after overwrite.
+- **References to OWNED upstream are LIVING pointers — never SHA-pinned.** A node's `references[]` to our own upstream (design docs, mission-kit) are living Hub/repo *paths*. The whole value of a reference is that the upstream can improve without re-authoring every blueprint that points at it — **skills-sync tracks `apnex/mission-kit` main, not a commit**. Pinning a SHA turns a living pointer into a frozen copy and throws that away. Reserve content-addressing and immutable git pins (`SHA:path` + blob hash) for **irreversible EXTERNAL artifacts** — npm publishes, releases, deploy artifacts — where a later mutation is genuinely dangerous. Do **not** tamper-evidence-freeze owned design/spec docs, and do not pin a fleet-wide guidance source: a pin with no owner and no trigger silently ages into fleet-wide drift, which is exactly how this rule was lost for six days. Exact identity still binds *what a gate judged* at attestation time; that is a point-in-time record, not a frozen dependency.
 - **Exact gates are non-circular.** The candidate does not approve itself. A gate exact-binds candidate bytes and prior authority; an authority envelope cannot widen them; dependencies and instructions are not proof. Every consumer fresh-runs `verify_attestation` and participant-local rehash before effect.
 - **Evidence contracts are immutable and satisfiable.** Pick kinds the node can actually produce. A Model-B gate is mechanically driven by a non-verifier to `review`; its `review` requirement uses `evidenceAuthority: verifier-attestation`; the verifier never claims/executes. Do not use executor review prose as verdict.
 - **A node contract matches one proof layer/effect.** Candidate source proves commit/head/tests, not merge. Merge, publication applicability, preflight, publication, qualification, deployment, live, postproduction, entity disposition, closeout, and driver-last are distinct claimant nodes when applicable.
@@ -185,7 +185,9 @@ Never roll back a topology head or mutate a terminal/failed/evidence-bearing row
 
 ## Correcting a seeded node — what `update_work` can actually change
 
-A seeded node is **not frozen**. Most correction does not need a re-seed, an abandon, or a semantic revision. Know the real surface before routing a fix through chat or destroying a row.
+**This does not weaken the section above it.** Semantic/topology change to a *live* node still goes through pause → revise → unpause, and the substrate enforces that: the claimant-significant fields below reject with `workgraph.currentness.revision_required` while paused or under an active topology generation. What follows is the **pre-claim, legacy-mode** correction surface — a different situation, not a shortcut around the protocol.
+
+Within that situation, a seeded node is **not frozen**. Most correction does not need a re-seed, an abandon, or a semantic revision. Know the real surface before routing a fix through chat or destroying a row.
 
 **`update_work` mutates an existing node.** Authority is the item's **author or the architect** — not the lease-holder.
 
