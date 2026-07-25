@@ -102,6 +102,20 @@ Use `../arc-lifecycle/templates/implementation-admission-envelope.md.tmpl` for t
 A commenced arc with no claimed driver is partially uncontrolled.
 Fix that before adding or dispatching child work.
 
+### Authority continuity — do not re-ask inside the envelope
+
+At commence, read the arc-start authority as a bounded **outcome envelope**: outcome, scope/anti-scope, mutation classes, risk ceiling, mandatory safeguards, and any authorized successor-selection rule.
+
+During execution, classify every repair or identity change before seeking more authority:
+
+- **Within envelope:** ordinary refinement or a reviewed corrective successor required to satisfy an existing gate, with unchanged outcome, mutation class, risk ceiling, safeguards, and anti-scope. Continue without asking the Director/operator again. Bind the new exact commit/tree/PR at the fresh admission and mutation gates.
+- **Material expansion:** changed outcome/audience, broader or new irreversible mutation, higher risk, relaxed safeguards, new external side effects, anti-scope breach, or expired/revoked authority. Stop and obtain new authority.
+- **Ambiguous boundary:** ask one focused clarification; do not replay already-settled choices.
+
+Exact artifact binding and stakeholder consent are separate axes. Fail closed if the mutation gate lacks exact identity proof, but do not turn every corrective commit or successor PR into a new consent ceremony. Conversely, never stretch an approval that explicitly named one artifact unless its original authority record also contains a bounded successor-selection rule covering the replacement.
+
+Record the classification and supporting authority ref in the WorkItem/closeout so a verifier can distinguish continuity from scope expansion.
+
 ### Approved-for-go handoff from a planning arc
 
 When a planning/design arc ends with the Director/operator saying the next implementation arc is **approved for go**, first prove that the exact design, blueprint, authority envelope, blueprint gate, final admission gate, and commencement receipt satisfy the admission fence.

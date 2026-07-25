@@ -62,6 +62,25 @@ The minimum successful output is:
 7. exact design candidate identity and an active-valid independent design PASS, with all prior FAILs preserved;
 8. an admission-ready handoff naming exact blueprint requirements, authority envelope fields, effect classes, repositories/environments, anti-scope, repair policy, and non-effects without claiming approved-for-go.
 
+## Arc-start authority envelope
+
+A planning arc must shape implementation authority around the **bounded outcome**, not accidentally around the first provisional artifact identity.
+
+Before requesting approval, the final design should state an authority envelope containing:
+
+- the intended outcome and target audience;
+- scope and anti-scope;
+- allowed mutation classes and the irreversibility/risk ceiling;
+- required safety, review, admission, rollback/disposition, and observation gates;
+- which ordinary refinements are expected inside the arc, including reviewed corrective commits, replacement heads, or successor PRs produced to satisfy those gates;
+- the concrete conditions that would count as material scope expansion and require new authority.
+
+Once the Director/operator authorizes that envelope, do **not** ask again merely because implementation, review, or a failed gate produces a new exact commit, tree, branch, or successor PR within it. Bind the final exact identity at the WorkGraph admission/mutation gate and preserve fresh independent verification; exact artifact binding is proof of what will execute, not automatically a new consent ceremony.
+
+Re-authorization is required only when the proposed successor exceeds the envelope: a different outcome or audience, a broader mutation class, higher irreversibility or risk, relaxed safeguards, new external side effects, explicit expiry/revocation, or another material anti-scope breach. If the boundary is ambiguous, request one focused clarification rather than replaying the whole approval.
+
+When exact identity is not knowable at planning time, write a machine-checkable successor-selection rule into the design and authority request (for example: reviewed descendants of an admitted source head that only repair named gate failures and must pass fresh exact-head admission). Never reinterpret an artifact-specific approval as a standing envelope after the fact.
+
 ## Canonical blueprint asset
 
 This skill ships a reusable template and structural proof assets:
