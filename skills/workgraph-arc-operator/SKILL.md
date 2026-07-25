@@ -310,6 +310,24 @@ If it returned to `ready`, reclaim and restart it.
 If another legitimate controller holds it, do not steal it; coordinate through the WorkGraph or Director.
 If the token is lost but you still hold the lease, recover it from the WorkItem lease projection when exposed.
 
+### 🔴 Destroyed or unclosable driver — this is a STOP, not a degraded mode
+
+Distinct from a lost lease. The lease case is recoverable by reclaiming; **this one is not recoverable at all**, and the arc will keep looking normal while it runs.
+
+A driver is destroyed or unclosable when it has been abandoned, or when children its `completionDependsOn` names have been terminalised — including by an authorised cleanup sweep. **Sweeping a superseded scope can destroy the driver's own close path**, because closeout/disposition children look exactly like stale scaffolding from outside.
+
+**On discovering it:**
+
+1. **STOP DISPATCHING.** Do not seed, claim, or route further child work. An arc with no driver has no completion contract, no `k/N`, and no definition of done — every node after this point is ungoverned regardless of how well it is executed.
+2. **Re-seed a driver before anything else**, carrying the surviving scope fence and close criteria. Note in its runbook that it succeeds a destroyed driver and why, so the gap is legible at closeout rather than inferred.
+3. **If the arc genuinely cannot be re-driven, close it and re-cut.** That is a real outcome, not a failure to persevere.
+
+**Do not continue in "executor mode with authority."** Driving nodes competently is not governing an arc, and the difference is invisible from inside — the work still ships, the gates still pass, and nothing reports that the contract is gone.
+
+**Detection is the hard part, so check it explicitly rather than waiting to notice.** A query scoped to `status=ready` cannot see an `in_progress` driver; a sweep of dead scaffolding will report a clean, confident, complete-looking result while the driver sits outside its scope. **Before any cleanup sweep, enumerate the drivers you intend to keep, and re-read them after.**
+
+> **A query's scope is part of its result. A finding from `status=ready` is a finding ABOUT `status=ready`, never about the graph — and the author of a sweep is the worst-placed person to notice which rows the sweep cannot see.**
+
 ### Stale FYI or crossed message
 
 Do not reply-loop.
