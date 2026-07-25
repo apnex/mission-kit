@@ -183,6 +183,38 @@ When a live WorkItem contract/topology must change, do not edit semantic fields 
 If revision verbs are unavailable, hard-stop and author a distinct blueprint/repair graph.
 Never roll back a topology head or mutate a terminal/failed/evidence-bearing row into new meaning.
 
+## Correcting a seeded node — what `update_work` can actually change
+
+A seeded node is **not frozen**. Most correction does not need a re-seed, an abandon, or a semantic revision. Know the real surface before routing a fix through chat or destroying a row.
+
+**`update_work` mutates an existing node.** Authority is the item's **author or the architect** — not the lease-holder.
+
+| Path | Fields | When |
+|---|---|---|
+| `set{}` (replace) | `runbook` · `payload` · `priority` · `roleEligibility` · `targetRef` | pre-claim in legacy ready state; `priority` is scalar pre-terminal metadata |
+| `appendDependsOn` | claim-gate deps | while `ready`; existence + cycle checked |
+| `appendCompletionDependsOn` | completion-gate children | legacy non-paused, until `done` |
+| `appendReferences` | node-contract inputs | pre-claim; required refs must resolve |
+
+**Immutable forever: `type` and `evidenceRequirements`.** Those are the genuine invariant — a mis-seeded evidence contract still forces a re-seed. Everything else in the table is reachable.
+
+**Edges are append-only, in both directions.** You can *extend* a contract; you cannot *retract* one. A driver whose `completionDependsOn` names a superseded scope can have the new nodes appended — the stale entries stay. Plan for that when re-scoping mid-arc: appending is cheap, removing is a new graph.
+
+### 🔴 The failure mode that makes this look impossible
+
+**Passing a settable field at the top level instead of inside `set{}` returns `empty mutation (no set fields, no appends)`.** That message describes a *different* problem than the one you have, and it reads as *"this field cannot be changed."*
+
+```
+update_work { workId, runbook: "..." }          -> empty mutation   (field ignored)
+update_work { workId, set: { runbook: "..." } } -> changed: ["runbook"]
+```
+
+**A rejection that answers a question you did not ask is how an operator builds a wrong model of the substrate and keeps it.** If a mutation is refused, **probe it on a disposable node before concluding the capability is absent** — create, mutate, read `changed[]`, abandon. It costs thirty seconds and it is the difference between a defect report and a usage error.
+
+**Claimant-significant fields** (`targetRef` / `runbook` / `payload` / `roleEligibility` and all appends) reject with `workgraph.currentness.revision_required` **while paused, or whenever a topology generation is active** — that is when the semantic revision protocol is required, and only then.
+
+**Do not route contract corrections through chat.** A runbook amendment sent as a message is invisible to a cold-start claimant, to the closeout, and to every later reader of the node. If the field is reachable, change the node.
+
 ## Drive loop
 
 At the start of every controller turn:
