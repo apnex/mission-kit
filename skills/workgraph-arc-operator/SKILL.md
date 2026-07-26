@@ -148,6 +148,52 @@ A healthy WorkGraph arc blueprint has these features:
 - **No dangling dependencies.** Start-gates and completion-gates must resolve at seed time.
 - **Axiom alignment gate for extensive planning/design.** If the arc changes reusable procedure, substrate behavior, or coordination policy, include an axiom-audit node before implementation approval.
 - **No hidden manual step.** If a step is required to close, it is a WorkItem, evidence requirement, or explicit reference.
+- **Claims carry their derivation.** Every factual assertion in a runbook says where it came from, or is re-derived before it is written. See below.
+
+### Claims in runbooks carry their derivation
+
+A runbook is an instruction document, and a factual claim inside one is read as established.
+It is not. It arrived from somewhere — a source read, a probe, an inference, a recollection — and
+the runbook is usually the last place that origin is still visible.
+
+**Copying launders an inference into a premise.** A claim gains apparent authority at every hop
+while acquiring no new evidence. By the third document it reads as fact, and nobody is positioned
+to check it, because nothing in the text says there is anything to check.
+
+So: **a claim entering a runbook carries its derivation, or is re-derived at the boundary.**
+
+Cheap, and it costs a clause:
+
+> `create_work` stores payload as a JSON string, so that path is defended.
+
+becomes
+
+> `create_work` appears to store payload as a JSON string — VERIFIER INFERENCE FROM OBSERVED ROWS,
+> NOT READ FROM THE SCHEMA. Verify before relying on it.
+
+The annotation is the whole mechanism. A claim carrying its origin catches itself for a *normally*
+skeptical reader; requiring an unusually skeptical one is not a control, it is a staffing assumption.
+
+Annotate at minimum: **anything asserting what a verb, guard, or schema does**; **any claim about a
+defence existing**; **any characterisation of scope written from memory rather than from source**;
+and **any count or enumeration** (say what was searched and how).
+
+Corollaries, all of which have cost real arc time:
+
+- **A constraint must be read from the enforcing path** — not from the declaration, and not from the
+  values that happen to have gone through it. Observed data cannot establish a control; the values
+  may have been produced by the very habit that is the confound.
+- **A reader list is a claim about a tree, and the tree changes.** Re-run enumerations against the
+  current sha before relying on them.
+- **A scope characterisation written from a summary is recollection, not evidence.** Say so, and tell
+  the claimant to establish current behaviour from source and print the operand before building. If
+  the item turns out smaller, larger, already fixed, or not a defect, **that finding is the deliverable.**
+
+**Runbooks freeze at claim.** `update_work` refuses `runbook` once a node is `in_progress` — the
+claimant's contract froze when they claimed it. A false claim discovered mid-node cannot be withdrawn
+from the document the claimant is building to; the correction has to travel by message and hope it
+arrives first. That asymmetry is why the annotation must be there at authoring time. The freeze is
+defensible; **its cost is paid by whoever happens not to already know.**
 
 Suggested child-runbook sentence for ordinary participant nodes:
 
