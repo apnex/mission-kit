@@ -178,6 +178,28 @@ Annotate at minimum: **anything asserting what a verb, guard, or schema does**; 
 defence existing**; **any characterisation of scope written from memory rather than from source**;
 and **any count or enumeration** (say what was searched and how).
 
+**Carrying the derivation is necessary and NOT sufficient. A derivation expires.**
+
+> **A first-party measurement of a mutable source becomes recollection the moment the tree can move
+> under it. The date-stamp is an EXPIRY, not a provenance badge.**
+
+An engineer recorded a config value from disk, correctly, with the sha and the timestamp. A ruling
+changed that file **the same afternoon**. Hours later the note read as authoritative — it had a
+first-party derivation and a date — and it was wrong. The architect then "corrected" it as
+recollection **without checking either**, and was wrong in the same way, one turn later, in the
+opposite direction. Nobody was careless. **A correctly-derived, correctly-stamped fact still rots,
+and the stamp is exactly what makes it look like it hasn't.**
+
+So the annotation must say **what could change it**, not only where it came from:
+
+> skills-sync pins to `bd4117d` — READ FROM `manifests/skill-sync/wanted-bundles.yaml` 2026-07-25T11:37Z.
+> **MUTABLE CONFIG: re-read before relying on it.**
+
+Rule of thumb: **immutable sources** (a merge commit, a released artifact, a closed PR's diff) keep
+their derivation indefinitely. **Mutable ones** (config files, `main`, a live registry, another
+agent's node state) carry an expiry, and the older the stamp the *less* the citation is worth —
+the opposite of how a dated measurement reads.
+
 Corollaries, all of which have cost real arc time:
 
 - **A constraint must be read from the enforcing path** — not from the declaration, and not from the
