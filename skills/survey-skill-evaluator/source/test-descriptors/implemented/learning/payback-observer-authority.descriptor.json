@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "learning.payback-observer-authority",
+  "oneSentenceBehavior": "ordinary producers cannot claim registered payback-observer authority.",
+  "obligationId": "TE27",
+  "mechanismId": "EM17",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/learning/payback-observer-authority.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E5",
+  "groupId": "learning",
+  "status": "implemented"
+}

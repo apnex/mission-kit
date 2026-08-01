@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "obligation.te12-fresh-role-boundary",
+  "oneSentenceBehavior": "TE12 role invocations receive fresh workspaces and denied sibling capabilities remain evidence",
+  "obligationId": "TE12",
+  "mechanismId": "EM04",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/isolation/te12-fresh-role-boundary.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/helpers/runtime-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E3",
+  "groupId": "isolation",
+  "status": "implemented"
+}

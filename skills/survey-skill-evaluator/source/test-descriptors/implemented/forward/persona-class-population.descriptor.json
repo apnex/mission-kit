@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "forward.persona-class-population",
+  "oneSentenceBehavior": "scenario admission covers every canonical and adversarial legitimate persona class and rejects unknown classes",
+  "obligationId": "TE10",
+  "mechanismId": "EM03",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/forward/persona-class-population.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/helpers/campaign-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E1",
+  "groupId": "forward",
+  "status": "implemented"
+}

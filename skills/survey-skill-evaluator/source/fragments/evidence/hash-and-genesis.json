@@ -1,0 +1,13 @@
+{
+  "schemaVersion":"1.0.0",
+  "hashProfileId":"survey-evaluator-sha256-jcs-v1",
+  "fragmentId":"evidence.experimental-identity",
+  "purpose":"Fix canonical hashing, raw-file identity, package folds, genesis, and derivation order.",
+  "rules":[
+    "Use RFC 8785 JCS UTF-8, uint64be framing, SHA-256, and domain-separated tags.",
+    "Keep semantic hashes distinct from raw-file SHA-256.",
+    "Candidate inventories have no exclusions; evaluator payload excludes only package.manifest.json.",
+    "Parent-staged genesis has revision zero and empty event and outbox ledgers.",
+    "Seal an output before its immutable derivation sidecar; prohibit self and mutual references."
+  ]
+}

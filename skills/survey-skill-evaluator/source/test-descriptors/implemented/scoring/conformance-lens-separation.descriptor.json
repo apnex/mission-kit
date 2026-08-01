@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "scoring.conformance-lens-separation",
+  "oneSentenceBehavior": "conformance registry measures one objective observation per typed rule without semantic judgment.",
+  "obligationId": "TE18",
+  "mechanismId": "EM09",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/scoring/conformance-lens-separation.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E4",
+  "groupId": "scoring",
+  "status": "implemented"
+}

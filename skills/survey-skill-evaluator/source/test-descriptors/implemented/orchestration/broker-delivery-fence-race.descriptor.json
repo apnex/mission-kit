@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "orchestration.broker-delivery-fence-race",
+  "oneSentenceBehavior": "broker delivery and pre-delivery fence linearize on one claim.",
+  "obligationId": "EI10",
+  "mechanismId": "EM20",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/orchestration/broker-delivery-fence-race.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/helpers/runtime-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E3",
+  "groupId": "orchestration",
+  "status": "implemented"
+}

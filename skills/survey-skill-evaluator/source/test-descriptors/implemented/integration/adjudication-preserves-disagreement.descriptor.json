@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "integration.adjudication-preserves-disagreement",
+  "oneSentenceBehavior": "adjudication selects only sealed ballot values and retains the dissent set.",
+  "obligationId": "TE23",
+  "mechanismId": "EM11",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/integration/adjudication-preserves-disagreement.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/fixtures/candidate.package.json",
+    "tests/fixtures/control.package.json",
+    "tests/helpers/campaign-fixture.mjs",
+    "tests/helpers/full-role-campaign-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E4",
+  "groupId": "integration",
+  "status": "implemented"
+}

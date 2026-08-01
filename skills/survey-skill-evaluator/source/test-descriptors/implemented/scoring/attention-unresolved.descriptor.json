@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "scoring.attention-unresolved",
+  "oneSentenceBehavior": "unresolved attention remains typed missingness and cannot enter a composite.",
+  "obligationId": "EI17",
+  "mechanismId": "EM10",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/scoring/attention-unresolved.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E4",
+  "groupId": "scoring",
+  "status": "implemented"
+}

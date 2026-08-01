@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "statistics.blocked-stratum-weighting",
+  "oneSentenceBehavior": "blocked contrast preserves target stratum weights and resampled block multiplicity.",
+  "obligationId": "TE14",
+  "mechanismId": "EM07",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/statistics/blocked-stratum-weighting.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E4",
+  "groupId": "statistics",
+  "status": "implemented"
+}

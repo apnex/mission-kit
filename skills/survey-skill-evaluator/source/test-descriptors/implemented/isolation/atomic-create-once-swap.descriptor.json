@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "isolation.atomic-create-once-swap",
+  "oneSentenceBehavior": "create-once rejects an identical file swapped after its no-follow open.",
+  "obligationId": "TE32",
+  "mechanismId": "EM08",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/isolation/atomic-create-once-swap.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E3",
+  "groupId": "isolation",
+  "status": "implemented"
+}

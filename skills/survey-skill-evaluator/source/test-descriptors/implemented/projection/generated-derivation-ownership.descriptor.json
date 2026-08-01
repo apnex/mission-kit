@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "projection.generated-derivation-ownership",
+  "oneSentenceBehavior": "every generated target has one owned recipe and complete source/compiler derivation digests.",
+  "obligationId": "TE29",
+  "mechanismId": "EM16",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/projection/generated-derivation-ownership.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/composition/package-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E2",
+  "groupId": "projection",
+  "status": "implemented"
+}

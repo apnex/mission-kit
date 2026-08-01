@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "scoring.native-normalized-separation",
+  "oneSentenceBehavior": "rubric scoring preserves native and normalized measurements as separate fields.",
+  "obligationId": "TE20",
+  "mechanismId": "EM10",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/scoring/native-normalized-separation.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E4",
+  "groupId": "scoring",
+  "status": "implemented"
+}

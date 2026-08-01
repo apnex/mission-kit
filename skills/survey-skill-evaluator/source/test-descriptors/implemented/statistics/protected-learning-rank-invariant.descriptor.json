@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "statistics.protected-learning-rank-invariant",
+  "oneSentenceBehavior": "changing only protected learning or Director-judgment attention cannot worsen rank.",
+  "obligationId": "EI17",
+  "mechanismId": "EM10",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/statistics/protected-learning-rank-invariant.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E4",
+  "groupId": "statistics",
+  "status": "implemented"
+}

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "integration.full-role-diagnostic-metric-projection",
+  "oneSentenceBehavior": "The full role campaign projects registered conformance, attention, and telemetry diagnostics while unresolved toil remains typed unavailable and protected learning remains non-adverse.",
+  "obligationId": "TE24",
+  "mechanismId": "EM12",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/integration/full-role-diagnostic-metric-projection.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/helpers/campaign-fixture.mjs",
+    "tests/helpers/full-role-campaign-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E4",
+  "groupId": "integration",
+  "status": "implemented"
+}

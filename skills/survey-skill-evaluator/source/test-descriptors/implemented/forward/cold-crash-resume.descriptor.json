@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "forward.cold-crash-resume",
+  "oneSentenceBehavior": "cold resume continues after an injected post-commit crash without duplicate events.",
+  "obligationId": "TE28",
+  "mechanismId": "EM05",
+  "evidenceClass": "known-answer-recovery-evidence",
+  "executable": "tests/forward/cold-crash-resume.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/fixtures/candidate.package.json",
+    "tests/fixtures/control.package.json",
+    "tests/helpers/campaign-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E3",
+  "groupId": "forward",
+  "status": "implemented"
+}

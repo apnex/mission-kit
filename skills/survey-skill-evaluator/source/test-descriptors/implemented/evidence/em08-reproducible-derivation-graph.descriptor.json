@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "evidence.em08-reproducible-derivation-graph",
+  "oneSentenceBehavior": "EM08 freezes reproducible observable evidence before its immutable derivation sidecar.",
+  "obligationId": "EM08",
+  "mechanismId": "EM08",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/evidence/em08-reproducible-derivation-graph.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": ["tests/helpers/runtime-fixture.mjs"],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E4",
+  "groupId": "evidence",
+  "status": "implemented"
+}

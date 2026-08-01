@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "composition.requirement-test-trace-gap",
+  "oneSentenceBehavior": "compiler rejects a test mechanism that is not traced by its requirement.",
+  "obligationId": "TE31",
+  "mechanismId": "EM15",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/composition/requirement-test-trace-gap.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/composition/package-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E1",
+  "groupId": "composition",
+  "status": "implemented"
+}

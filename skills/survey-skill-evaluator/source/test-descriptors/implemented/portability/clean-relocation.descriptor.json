@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "portability.clean-relocation",
+  "oneSentenceBehavior": "clean non-Git relocation installs, builds, checks, tests, and reproduces package identities.",
+  "obligationId": "TE29",
+  "mechanismId": "EM16",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/portability/clean-relocation.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/composition/package-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E2",
+  "groupId": "portability",
+  "status": "implemented"
+}

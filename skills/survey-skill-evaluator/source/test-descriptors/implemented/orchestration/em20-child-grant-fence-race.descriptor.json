@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "obligation.em20-child-grant-fence-race",
+  "oneSentenceBehavior": "EM20 child-grant and failure-fence races produce one cut then require its exact drain before closure",
+  "obligationId": "EM20",
+  "mechanismId": "EM20",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/orchestration/em20-child-grant-fence-race.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/helpers/canonical-lifecycle-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E3",
+  "groupId": "orchestration",
+  "status": "implemented"
+}

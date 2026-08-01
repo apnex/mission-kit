@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "orchestration.scenario-material-authority-complete-admission",
+  "oneSentenceBehavior": "external scenario-material authority covers every sealed scenario with schema-valid cross-bound materials.",
+  "obligationId": "TE10",
+  "mechanismId": "EM03",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/orchestration/scenario-material-authority-complete-admission.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/helpers/campaign-fixture.mjs",
+    "tests/helpers/scenario-material-authority-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E5",
+  "groupId": "orchestration",
+  "status": "implemented"
+}

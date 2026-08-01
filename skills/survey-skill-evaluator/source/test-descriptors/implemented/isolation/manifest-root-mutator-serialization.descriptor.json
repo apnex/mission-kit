@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "isolation.manifest-root-mutator-serialization",
+  "oneSentenceBehavior": "manifest scheduling never overlaps a package-root mutator with another test and preserves descriptor order.",
+  "obligationId": "TE31",
+  "mechanismId": "EM15",
+  "evidenceClass": "manifest-runner-assurance",
+  "executable": "tests/isolation/manifest-root-mutator-serialization.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/run-manifest.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E3",
+  "groupId": "isolation",
+  "status": "implemented"
+}

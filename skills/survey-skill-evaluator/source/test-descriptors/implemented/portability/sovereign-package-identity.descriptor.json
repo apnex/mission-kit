@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "portability.sovereign-package-identity",
+  "oneSentenceBehavior": "package manifest and generated lock self-exclude recursive identity while binding source, runtime, compiler, and tests",
+  "obligationId": "EM16",
+  "mechanismId": "EM16",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/portability/sovereign-package-identity.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/helpers/campaign-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E2",
+  "groupId": "portability",
+  "status": "implemented"
+}

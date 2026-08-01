@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "statistics.adjudication-threshold",
+  "oneSentenceBehavior": "adjudication starts only from preregistered disagreement thresholds and preserves raw ballots.",
+  "obligationId": "TE23",
+  "mechanismId": "EM11",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/statistics/adjudication-threshold.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E4",
+  "groupId": "statistics",
+  "status": "implemented"
+}

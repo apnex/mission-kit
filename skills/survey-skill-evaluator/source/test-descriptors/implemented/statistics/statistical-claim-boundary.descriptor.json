@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "statistics.statistical-claim-boundary",
+  "oneSentenceBehavior": "statistical claim binds the exact contrast, population, analysis unit, and uncertainty interval.",
+  "obligationId": "EI12",
+  "mechanismId": "EM12",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/statistics/statistical-claim-boundary.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/composition/analytical-fixtures.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E4",
+  "groupId": "statistics",
+  "status": "implemented"
+}
