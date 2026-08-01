@@ -1,0 +1,29 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:fragment:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:fragment:dependencies:typed-resolution",
+  "revision": 1,
+  "purpose": "Resolve typed external knowledge by logical identity and seal stable observed bytes.",
+  "role": "procedure",
+  "normativity": "normative",
+  "audiences": ["agent", "maintainer"],
+  "representation": {
+    "format": "markdown",
+    "payloadPath": "source/fragments/dependencies/typed-resolution.md",
+    "mediaType": "text/markdown"
+  },
+  "rationale": "Repository-name identity and per-session snapshots preserve sovereignty without stale configured pins.",
+  "absenceConsequence": "Runtime could import sibling paths, follow unsafe selectors, or consume changing external content.",
+  "composition": {
+    "provides": ["mechanism.m07@1"],
+    "requires": ["mechanism.m09@1"],
+    "dependencies": ["urn:mission-kit:survey-v2:reference:mission-kit-axioms"]
+  },
+  "requirements": ["R17", "R28"],
+  "contribution": {
+    "mode": "unique",
+    "proofClass": "negative-case-coverage",
+    "obligations": ["O-R17-01", "O-R28-01"]
+  },
+  "exposure": "internal"
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:fragment:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:fragment:identity:sovereign-root",
+  "revision": 1,
+  "purpose": "Define the complete relocatable package and its singular compiler boundary.",
+  "role": "constraint",
+  "normativity": "normative",
+  "audiences": ["agent", "maintainer"],
+  "representation": {
+    "format": "markdown",
+    "payloadPath": "source/fragments/identity/sovereign-root.md",
+    "mediaType": "text/markdown"
+  },
+  "rationale": "A copied skill must retain source, runtime, tests, locks and checked projections without repository geometry.",
+  "absenceConsequence": "Build and runtime behavior could depend on governance, parent packages or canonical v1.",
+  "composition": {
+    "provides": ["mechanism.m15@1"],
+    "requires": [],
+    "dependencies": []
+  },
+  "requirements": ["R27"],
+  "contribution": {
+    "mode": "unique",
+    "proofClass": "sole-required-provider",
+    "obligations": ["O-R27-01"]
+  },
+  "exposure": "internal"
+}

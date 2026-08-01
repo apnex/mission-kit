@@ -1,0 +1,29 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:fragment:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:executable:runtime:envelope",
+  "revision": 1,
+  "purpose": "Finalize or byte-check the immutable intent envelope bound to a ratified run.",
+  "role": "executable",
+  "normativity": "normative",
+  "audiences": ["agent", "maintainer", "downstream-designer"],
+  "representation": {
+    "format": "javascript",
+    "payloadPath": "source/executables/runtime/survey-envelope.mjs",
+    "mediaType": "text/javascript"
+  },
+  "rationale": "A terminal command must couple semantic closure to exact derived bytes and support crash-safe rematerialization.",
+  "absenceConsequence": "Planning could consume a hand-edited or unratified envelope that differs from durable session evidence.",
+  "composition": {
+    "provides": ["runtime.command.envelope@1"],
+    "requires": ["runtime.engine@1"],
+    "dependencies": []
+  },
+  "requirements": ["R08", "R13", "R26"],
+  "contribution": {
+    "mode": "supporting",
+    "proofClass": "required-coverage",
+    "obligations": ["O-R13-01"]
+  },
+  "exposure": "exported"
+}

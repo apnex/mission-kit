@@ -1,0 +1,29 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:fragment:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:fragment:assurance:verification-gates",
+  "revision": 1,
+  "purpose": "Order independent proof from baseline through forward evidence without compensating failures.",
+  "role": "decision-table",
+  "normativity": "normative",
+  "audiences": ["maintainer"],
+  "representation": {
+    "format": "markdown",
+    "payloadPath": "source/fragments/assurance/verification-gates.md",
+    "mediaType": "text/markdown"
+  },
+  "rationale": "Binary lower-layer gates keep transcript success from hiding schema, state or authority defects.",
+  "absenceConsequence": "Higher-level examples could be treated as compensation for failed foundations.",
+  "composition": {
+    "provides": ["mechanism.m13@1"],
+    "requires": ["mechanism.m12@1"],
+    "dependencies": []
+  },
+  "requirements": ["R21", "R22"],
+  "contribution": {
+    "mode": "unique",
+    "proofClass": "required-coverage",
+    "obligations": ["O-R21-01", "O-R22-01"]
+  },
+  "exposure": "internal"
+}

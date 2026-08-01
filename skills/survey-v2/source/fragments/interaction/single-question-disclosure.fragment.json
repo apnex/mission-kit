@@ -1,0 +1,29 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:fragment:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:fragment:interaction:single-question-disclosure",
+  "revision": 1,
+  "purpose": "Expose only one frozen question or final-review segment at a time.",
+  "role": "constraint",
+  "normativity": "normative",
+  "audiences": ["agent", "Director", "maintainer"],
+  "representation": {
+    "format": "markdown",
+    "payloadPath": "source/fragments/interaction/single-question-disclosure.md",
+    "mediaType": "text/markdown"
+  },
+  "rationale": "Progressive disclosure protects answer independence and bounds Director context.",
+  "absenceConsequence": "Future questions or interpretation could prime later picks and invalidate evidence.",
+  "composition": {
+    "provides": ["mechanism.m03@1"],
+    "requires": ["mechanism.m02@1"],
+    "dependencies": []
+  },
+  "requirements": ["R04", "R20"],
+  "contribution": {
+    "mode": "unique",
+    "proofClass": "context-budget",
+    "obligations": ["O-R04-01", "O-R20-01"]
+  },
+  "exposure": "internal"
+}

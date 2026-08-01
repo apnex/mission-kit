@@ -1,0 +1,29 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:fragment:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:executable:runtime:envelope-renderer",
+  "revision": 1,
+  "purpose": "Render one deterministic self-contained Markdown envelope from a validated model.",
+  "role": "executable",
+  "normativity": "normative",
+  "audiences": ["maintainer", "downstream-designer"],
+  "representation": {
+    "format": "javascript",
+    "payloadPath": "source/executables/runtime/lib/envelope.mjs",
+    "mediaType": "text/javascript"
+  },
+  "rationale": "Terminal bytes and walkthrough segments must derive from one exact semantic model.",
+  "absenceConsequence": "A final file could drift from the candidate reviewed and ratified by the Director.",
+  "composition": {
+    "provides": ["runtime.envelope@1"],
+    "requires": ["runtime.canonical@1"],
+    "dependencies": []
+  },
+  "requirements": ["R08", "R13", "R26"],
+  "contribution": {
+    "mode": "unique",
+    "proofClass": "required-coverage",
+    "obligations": ["O-R13-01"]
+  },
+  "exposure": "internal"
+}

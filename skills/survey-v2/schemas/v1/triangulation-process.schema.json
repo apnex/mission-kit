@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:survey-v2:schema:triangulation-process:v1",
+  "title": "Survey v2 triangulation process",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "schemaVersion", "id", "purpose", "inputs", "stages", "selection", "actorToolBoundary", "completeness", "resultSchema", "evidenceProduct"],
+  "properties": {
+    "$schema": {
+      "const": "urn:mission-kit:survey-v2:schema:triangulation-process:v1"
+    },
+    "schemaVersion": {
+      "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/schemaVersion"
+    },
+    "id": {
+      "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/semanticId"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 12
+    },
+    "inputs": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/semanticId"
+      }
+    },
+    "stages": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["hook", "ownerTransition", "operation", "output"],
+        "properties": {
+          "hook": {
+            "enum": ["init-resolve", "commit-r1", "commit-r2", "pre-candidate", "rehydrate"]
+          },
+          "ownerTransition": {
+            "enum": ["T41", "T12", "T23", "T25", "RT06"]
+          },
+          "operation": {
+            "type": "string",
+            "minLength": 8
+          },
+          "output": {
+            "type": "string",
+            "minLength": 3
+          }
+        }
+      }
+    },
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["include", "defer", "nonMaterial"],
+      "properties": {
+        "include": {
+          "type": "string",
+          "minLength": 8
+        },
+        "defer": {
+          "type": "string",
+          "minLength": 8
+        },
+        "nonMaterial": {
+          "type": "string",
+          "minLength": 8
+        }
+      }
+    },
+    "actorToolBoundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["resolve", "map", "ratify"],
+      "properties": {
+        "resolve": {
+          "const": "deterministic-runtime"
+        },
+        "map": {
+          "const": "proposer"
+        },
+        "ratify": {
+          "const": "director-only"
+        }
+      }
+    },
+    "completeness": {
+      "type": "string",
+      "minLength": 12
+    },
+    "resultSchema": {
+      "type": "string",
+      "minLength": 8
+    },
+    "evidenceProduct": {
+      "type": "string",
+      "minLength": 8
+    }
+  }
+}

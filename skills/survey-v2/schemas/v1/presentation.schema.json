@@ -1,0 +1,190 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:survey-v2:schema:presentation:v1",
+  "title": "Survey v2 Director presentation",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/question"
+    },
+    {
+      "$ref": "#/$defs/walkthrough"
+    },
+    {
+      "$ref": "#/$defs/ratification"
+    },
+    {
+      "$ref": "#/$defs/clarification"
+    }
+  ],
+  "$defs": {
+    "base": {
+      "type": "object",
+      "required": ["$schema", "kind", "payloadDigest", "candidateRevision"],
+      "properties": {
+        "$schema": {
+          "const": "urn:mission-kit:survey-v2:schema:presentation:v1"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "payloadDigest": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/digest"
+        },
+        "candidateRevision": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "question": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["$schema", "kind", "payloadDigest", "candidateRevision", "questionId", "prompt", "options", "responseSyntax"],
+          "properties": {
+            "$schema": {
+              "const": "urn:mission-kit:survey-v2:schema:presentation:v1"
+            },
+            "kind": {
+              "const": "question"
+            },
+            "payloadDigest": {
+              "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/digest"
+            },
+            "candidateRevision": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "questionId": {
+              "type": "string",
+              "pattern": "^Q[1-6]$"
+            },
+            "prompt": {
+              "type": "string",
+              "minLength": 1
+            },
+            "options": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 4
+            },
+            "responseSyntax": {
+              "const": "Pick one or more option letters."
+            }
+          }
+        }
+      ]
+    },
+    "walkthrough": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["$schema", "kind", "payloadDigest", "candidateRevision", "segment", "index", "total"],
+          "properties": {
+            "$schema": {
+              "const": "urn:mission-kit:survey-v2:schema:presentation:v1"
+            },
+            "kind": {
+              "const": "walkthrough"
+            },
+            "payloadDigest": {
+              "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/digest"
+            },
+            "candidateRevision": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "segment": {
+              "type": "string",
+              "minLength": 1
+            },
+            "index": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "total": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        }
+      ]
+    },
+    "ratification": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["$schema", "kind", "payloadDigest", "candidateRevision", "semanticDigest", "renderDigest", "prompt"],
+          "properties": {
+            "$schema": {
+              "const": "urn:mission-kit:survey-v2:schema:presentation:v1"
+            },
+            "kind": {
+              "const": "ratification"
+            },
+            "payloadDigest": {
+              "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/digest"
+            },
+            "candidateRevision": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "semanticDigest": {
+              "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/digest"
+            },
+            "renderDigest": {
+              "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/digest"
+            },
+            "prompt": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      ]
+    },
+    "clarification": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["$schema", "kind", "payloadDigest", "candidateRevision", "prompt"],
+          "properties": {
+            "$schema": {
+              "const": "urn:mission-kit:survey-v2:schema:presentation:v1"
+            },
+            "kind": {
+              "const": "clarification"
+            },
+            "payloadDigest": {
+              "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/digest"
+            },
+            "candidateRevision": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "prompt": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      ]
+    }
+  }
+}

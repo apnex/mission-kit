@@ -1,0 +1,2172 @@
+{
+  "aggregateDigest": "sha256:02d0bc3704d7530bfdad3c2ea05d5a422639050cbc44622475e9900319856c58",
+  "canonicalDigests": [
+    {
+      "digest": "sha256:f7c65af249baff28e5d9fe29a9ac4011f802e955f74829c14949e2cf23104254",
+      "path": ".gitignore"
+    },
+    {
+      "digest": "sha256:a1ce5066fa221b236dd0f650970e8eb3fd8f0f13fd352558d95228fe16aa91ac",
+      "path": "compile.sh"
+    },
+    {
+      "digest": "sha256:32e2fdc6c4b742f4d0ada2f7ee349a5cf2c57d58a7860265b74b30a0f963fc5d",
+      "path": "package-lock.json"
+    },
+    {
+      "digest": "sha256:c643cf59ba43f24608a252508dc39aed1e544e5e4b7e920a01a6344842459da3",
+      "path": "package.json"
+    },
+    {
+      "digest": "sha256:b5cab014b84be6f3e024e6f302d5613fd73384fb489c705aba689096d8a764ab",
+      "path": "schemas/v1/common.schema.json"
+    },
+    {
+      "digest": "sha256:61e7901b3dee2c58ff1cea89f2f1e10a2248089f8dfcab913edb3cc5786ab8d4",
+      "path": "schemas/v1/dependency.schema.json"
+    },
+    {
+      "digest": "sha256:13c393ca11db221459cb5c96927db76bae7c42b9a5478cfae8d78567ebd95533",
+      "path": "schemas/v1/envelope-model.schema.json"
+    },
+    {
+      "digest": "sha256:a51a15e92dabc785d5942712a3d33f0a8d3a4f5d4dda159d3e939f4031227d67",
+      "path": "schemas/v1/fragment.schema.json"
+    },
+    {
+      "digest": "sha256:9035ce71cd1d6450b1a34b3e42d0d5c1991a681fbad131abf94d108db0e09741",
+      "path": "schemas/v1/instrument.schema.json"
+    },
+    {
+      "digest": "sha256:dcafabe05cf629ad78170c26eeb029ada5d5c495cd1c686d8f48e2a73ccbdc58",
+      "path": "schemas/v1/package.schema.json"
+    },
+    {
+      "digest": "sha256:913634c967c2b700d5873e703c2b8646633f524976791ef1843e9603e74ce7a1",
+      "path": "schemas/v1/presentation.schema.json"
+    },
+    {
+      "digest": "sha256:da0f2f50d0aceacf91b01c8896a3f026d7818dd5f9279a68c66a2a6c18fc92ea",
+      "path": "schemas/v1/projection.schema.json"
+    },
+    {
+      "digest": "sha256:22eac6b00402edd2ad6eebb31815d3543fe8f2f0b84e84ce344ee70eaad28ea1",
+      "path": "schemas/v1/protocol.schema.json"
+    },
+    {
+      "digest": "sha256:e748de20aea0373fc74376ed02e9349a5ef46e7afc0568c8ac429f020653f008",
+      "path": "schemas/v1/quarantine.schema.json"
+    },
+    {
+      "digest": "sha256:77dc219de678a3f60cb66f6555d3679de026d1099aee9602bb3e3cb869557f86",
+      "path": "schemas/v1/requirement.schema.json"
+    },
+    {
+      "digest": "sha256:24a294c5aaa799883e1941d7d04a3dd63677ebba6dbaffb27d1550b5aa46457e",
+      "path": "schemas/v1/session-state.schema.json"
+    },
+    {
+      "digest": "sha256:ba7c9cf84c659911b7b13077c4fcd3893b5bcabd0e8aba651a0724573be70064",
+      "path": "schemas/v1/test-evidence.schema.json"
+    },
+    {
+      "digest": "sha256:e71095c146fb995df42c96321fb745d4b0cbfc5426aca6063fe1e6172112d594",
+      "path": "schemas/v1/triangulation-process.schema.json"
+    },
+    {
+      "digest": "sha256:522542091bf26530b9c0b1d6fb1df432518f21b83c325e75e15984ba4f2abec6",
+      "path": "source/dependencies/processes/axiom-applicability.process.json"
+    },
+    {
+      "digest": "sha256:7774daed8bdd17472c533e3c13bf218b0d2230bb5c21c5733d62a4f7b8ab70d4",
+      "path": "source/dependencies/references/mission-kit-axioms.reference.json"
+    },
+    {
+      "digest": "sha256:ee83b99e03c95b729ba44b733a952fc9abd64b482c6e10b3eac07bba319466da",
+      "path": "source/executables/compiler/build.fragment.json"
+    },
+    {
+      "digest": "sha256:35fbdb737aae18768314a3f02cc0c9b065801e49355a7ba4227dd6edd6c2b4b4",
+      "path": "source/executables/compiler/build.mjs"
+    },
+    {
+      "digest": "sha256:879da652dcbaa38b54ab9be1703851984650ba5d27cf6c4b216d5dca5d943cc8",
+      "path": "source/executables/runtime/lib/canonical.fragment.json"
+    },
+    {
+      "digest": "sha256:a467aa5b491c0b364a99f8aa2c3552872134e5bdbd4ba020c2a6102bddea5936",
+      "path": "source/executables/runtime/lib/canonical.mjs"
+    },
+    {
+      "digest": "sha256:748c0b41d5b0bb265e8bb1370a059d3535bb3dd92e0d6569d73e324d754f5c4b",
+      "path": "source/executables/runtime/lib/dependency-snapshot.fragment.json"
+    },
+    {
+      "digest": "sha256:82516e858bb4e93c88a104ab350a98ac41b8cc4aa733c8b6ba431e6027e1fd02",
+      "path": "source/executables/runtime/lib/dependency-snapshot.mjs"
+    },
+    {
+      "digest": "sha256:f6dc871a32e839744c3358d5cad15268d143da9d895159cc77a96de013a1fc69",
+      "path": "source/executables/runtime/lib/engine.fragment.json"
+    },
+    {
+      "digest": "sha256:bdb4462a32b1b1e3c6b78db7512e687816c51618851dd809b7681ab7de91ff47",
+      "path": "source/executables/runtime/lib/engine.mjs"
+    },
+    {
+      "digest": "sha256:dcbd4daf4b6988291808210014bb048c1f676ae3bf0c496e94d3131dc58323ac",
+      "path": "source/executables/runtime/lib/envelope.fragment.json"
+    },
+    {
+      "digest": "sha256:fbf53f2f60333bd647bf3bc18cffac002f6d65a98db39733bc6da206f198c641",
+      "path": "source/executables/runtime/lib/envelope.mjs"
+    },
+    {
+      "digest": "sha256:97485f14ffe8ad910f9e37aea2ab2904e4eeddbafee5fd388d8fbdabc63c3b59",
+      "path": "source/executables/runtime/lib/handler-surface.fragment.json"
+    },
+    {
+      "digest": "sha256:d193c33aabd3685134bfe362cfc858945db316d17963aa204126134427efa87b",
+      "path": "source/executables/runtime/lib/handler-surface.mjs"
+    },
+    {
+      "digest": "sha256:a79f21aa3465df1f35bdbf88325f0894c03d26794a24f8418597c7dac781f581",
+      "path": "source/executables/runtime/lib/storage.fragment.json"
+    },
+    {
+      "digest": "sha256:169e76f63596761322d9f1cb328e1e532921977a568cfe8a876af397ff3267f5",
+      "path": "source/executables/runtime/lib/storage.mjs"
+    },
+    {
+      "digest": "sha256:ee6ec5ceeb3158eda30633627c1395e5ed3031fa779e1fff27fb1e1ba0a49b64",
+      "path": "source/executables/runtime/survey-envelope.fragment.json"
+    },
+    {
+      "digest": "sha256:31b16dc5597b691cff4edeab341ffbcdbe8d7b478391beca75c690b8bd4a84b1",
+      "path": "source/executables/runtime/survey-envelope.mjs"
+    },
+    {
+      "digest": "sha256:b89c65104237601a166723b9558820c0f0a3b49f3e334872095641c60fb44a2c",
+      "path": "source/executables/runtime/survey-init.fragment.json"
+    },
+    {
+      "digest": "sha256:d2ed78079b618b33c25c84a5486d67c40a86144cbbefdefee94cd7bd886b995b",
+      "path": "source/executables/runtime/survey-init.mjs"
+    },
+    {
+      "digest": "sha256:3d3a7b8af6cd505804f3cfb74614b427d8adde3bd910d0fe46e1b1af542cc4f5",
+      "path": "source/executables/runtime/survey-present.fragment.json"
+    },
+    {
+      "digest": "sha256:21c954ed5df15571f281bc66fa4dd01935a3ea4c95f354466b36e902eed34de4",
+      "path": "source/executables/runtime/survey-present.mjs"
+    },
+    {
+      "digest": "sha256:70c533f224667a31d065d12a10a422066b32ddf1c8e59a980e34e65c97a29c2f",
+      "path": "source/executables/runtime/survey-status.fragment.json"
+    },
+    {
+      "digest": "sha256:d21ba346d152caacf12a34306bd5b58f8a40ddae02c38970af894f72764b46d9",
+      "path": "source/executables/runtime/survey-status.mjs"
+    },
+    {
+      "digest": "sha256:dc7865fa5a1032c54cecdc50eb8d4c60ad756795a2161c7843116ae675453c11",
+      "path": "source/executables/runtime/survey-transition.fragment.json"
+    },
+    {
+      "digest": "sha256:3f99f520ba2c93c40c7fd86022619ded355453a74ac51c6e1918e69e8e487e21",
+      "path": "source/executables/runtime/survey-transition.mjs"
+    },
+    {
+      "digest": "sha256:f9b6d47fd37dc67c31ef626f9c1640139e0b0a50526590b4d13d9d5aed2b2081",
+      "path": "source/fragments/artifact/envelope-and-ratification.fragment.json"
+    },
+    {
+      "digest": "sha256:6fd7caf6202f51d034fa90ed407a8e520f25e026a081539b3e889e2fbd0d4fee",
+      "path": "source/fragments/artifact/envelope-and-ratification.md"
+    },
+    {
+      "digest": "sha256:63bb50d4656002d86a5d7069e43d5909202829d7d7c5a8f0ab08ebbc945ce1d4",
+      "path": "source/fragments/assurance/promotion-boundary.fragment.json"
+    },
+    {
+      "digest": "sha256:d3f5560f2e36428410df351773eb39b358228d549204ffafe83c639ebfbbe3ab",
+      "path": "source/fragments/assurance/promotion-boundary.md"
+    },
+    {
+      "digest": "sha256:a59d054b818c6b6b805fd8cb3f796f1121469f7f731fb52a1cb4e639bfed023a",
+      "path": "source/fragments/assurance/verification-gates.fragment.json"
+    },
+    {
+      "digest": "sha256:690245cbf4de7e6e4f52e272dc4db68b2e02e47efc574ae953895913c3931a1c",
+      "path": "source/fragments/assurance/verification-gates.md"
+    },
+    {
+      "digest": "sha256:2074669ed792a4c1b768b6bfc8bd63261ec7040d6c369225e1ea2079a309b1e7",
+      "path": "source/fragments/authority/semantic-boundaries.fragment.json"
+    },
+    {
+      "digest": "sha256:cfcece7d60abf8eacc89523d55c5aeec50327da1d6f1d2647becdc18796d1954",
+      "path": "source/fragments/authority/semantic-boundaries.md"
+    },
+    {
+      "digest": "sha256:636acaed21c1d98be3553325cd4bfcce7297c0fef59a049a8991b1cd18ef35d6",
+      "path": "source/fragments/dependencies/axiom-triangulation.fragment.json"
+    },
+    {
+      "digest": "sha256:caa74d9897b9bb1242dc3c7c086d4080a25f748966c0fa62fbb05de14525de40",
+      "path": "source/fragments/dependencies/axiom-triangulation.md"
+    },
+    {
+      "digest": "sha256:eea69b794494b42eba00d7d7856c3f69375efc416dcef018fa903bccc2d9d6bb",
+      "path": "source/fragments/dependencies/typed-resolution.fragment.json"
+    },
+    {
+      "digest": "sha256:ae889b73a12d73b8d6b2aeba1ece8bbe979b0d42bc71eb99abfe39292408ad4d",
+      "path": "source/fragments/dependencies/typed-resolution.md"
+    },
+    {
+      "digest": "sha256:5ab381172901e28ca8b6864852d024691169271dbeb74e4e1c810949b278b561",
+      "path": "source/fragments/identity/sovereign-root.fragment.json"
+    },
+    {
+      "digest": "sha256:4f319adf27a0ff30a0e5fe2362ca7fad1af2ae8d8c8dcfb1a85f0e3d03e5fdac",
+      "path": "source/fragments/identity/sovereign-root.md"
+    },
+    {
+      "digest": "sha256:cc28319ebffcf922a171387cde982ea44095e2e013b204714e7f31c98989c147",
+      "path": "source/fragments/instrument/round-freeze.fragment.json"
+    },
+    {
+      "digest": "sha256:5cb3ad260dda1b73a3e7a4cd441dc96372eba5f0b773bf31179f9b79caf70575",
+      "path": "source/fragments/instrument/round-freeze.md"
+    },
+    {
+      "digest": "sha256:3ce471059d5801fac66b25e50fc8ee5fafc07ba16a239987db6b24aa60b204f1",
+      "path": "source/fragments/interaction/pick-capture.fragment.json"
+    },
+    {
+      "digest": "sha256:817fbd53968ce5420e9ac30551312cfc1a9b0899b723b36de724dba9ae86b815",
+      "path": "source/fragments/interaction/pick-capture.md"
+    },
+    {
+      "digest": "sha256:7d8a589e1b77ab0ccaf33ad2b31cc3979456e6f72b77025a3662c9f3a85e42aa",
+      "path": "source/fragments/interaction/single-question-disclosure.fragment.json"
+    },
+    {
+      "digest": "sha256:c9a8d8343fa707756b6e51323c10830b93dcfa80a4fa8bbd6679384db5ed7f8d",
+      "path": "source/fragments/interaction/single-question-disclosure.md"
+    },
+    {
+      "digest": "sha256:a5a99d6f890d9c9fcd2f50f1124d341892a6d1724ff9fb714cc726a39e3130e4",
+      "path": "source/fragments/interpretation/round-ordering.fragment.json"
+    },
+    {
+      "digest": "sha256:2bbfb53eb73d4d5e63e2d8ea1530d5c41ea5b1e1ec205a5dcea15223d9b83822",
+      "path": "source/fragments/interpretation/round-ordering.md"
+    },
+    {
+      "digest": "sha256:90e8345a6a7840b8c0050a61d8ff5c78e9f3497b60d3bacda644eb7bc30d25a0",
+      "path": "source/fragments/interpretation/round-two-anchoring.fragment.json"
+    },
+    {
+      "digest": "sha256:05d7c34b590ce524da3fee40707beb76baa30d43531141230ca4ca2b7678d89c",
+      "path": "source/fragments/interpretation/round-two-anchoring.md"
+    },
+    {
+      "digest": "sha256:34f2c79e56ec8d51dbfaf18a036a9553d537c40cf8e596036eebe17502759b6e",
+      "path": "source/fragments/navigation/fragment-contract.fragment.json"
+    },
+    {
+      "digest": "sha256:121f21611a731697ba73c48be9d8f95950eb09707177587ebddd2c3bc01158ba",
+      "path": "source/fragments/navigation/fragment-contract.md"
+    },
+    {
+      "digest": "sha256:fb909ab10681cdbeeb6653c1af6975e7ca2f66fdee80c68b40dd9b113a484c24",
+      "path": "source/fragments/navigation/isomorphic-projections.fragment.json"
+    },
+    {
+      "digest": "sha256:8b20ab03bb92f0f2576b938f184868295d38dd54192e08f0dc5da242e32f723f",
+      "path": "source/fragments/navigation/isomorphic-projections.md"
+    },
+    {
+      "digest": "sha256:e8f69a252ce07ec8b3229636e74281e28d66f3d4b21c7d25e4b61966cc7d4696",
+      "path": "source/fragments/state/session-and-resume.fragment.json"
+    },
+    {
+      "digest": "sha256:7c2a74b0e92d893a6f088bc21cba662c5f3a44702608dd830616153b6b166c08",
+      "path": "source/fragments/state/session-and-resume.md"
+    },
+    {
+      "digest": "sha256:ece4541e18da132c6510ad19a88cf5a0124353c77757635ddb73545e542eb971",
+      "path": "source/projections/agent-metadata.projection.json"
+    },
+    {
+      "digest": "sha256:59a0d0a0ee29a0b84babc5989083381eab0969a1ae5cca1a5a6647c0a2db1e63",
+      "path": "source/projections/assets.projection.json"
+    },
+    {
+      "digest": "sha256:42f7f446e8f501d0acc451fe59a00b131d183e21c87278486e3937bced429a95",
+      "path": "source/projections/build-metadata.projection.json"
+    },
+    {
+      "digest": "sha256:b9801716ab5cf87e6826af57084ac699ad124e428c8c639c68240ebff3166ac9",
+      "path": "source/projections/diagrams.projection.json"
+    },
+    {
+      "digest": "sha256:f4f22bd4df7aa2be66e89887a4b03a3797f01e0e79d6c05206e18bb856597122",
+      "path": "source/projections/executables.projection.json"
+    },
+    {
+      "digest": "sha256:7538bd8ad1365538c7f00b6ab68786300626c8d28816b33d7eab9a43b9cf281f",
+      "path": "source/projections/indexes.projection.json"
+    },
+    {
+      "digest": "sha256:14d100d1d772ced863f14f13d1933940505d835ca6dd234f95d96f653120c196",
+      "path": "source/projections/references.projection.json"
+    },
+    {
+      "digest": "sha256:f3541d25e4b1b26479a652547d8144d7999fb41cb3331d41f0cdf81532cfbdaf",
+      "path": "source/projections/skill-md.projection.json"
+    },
+    {
+      "digest": "sha256:fa844ee9ce7fcc4bd025c08ef3d75cd995c07344b07727efce0b5144d750c44b",
+      "path": "source/projections/validators.projection.json"
+    },
+    {
+      "digest": "sha256:9ec2c0e5a4d01d712fe9df310079137f375a9b63ee0c5fb252c27f33acd92b55",
+      "path": "source/protocol/survey.protocol.json"
+    },
+    {
+      "digest": "sha256:f0cdff2d291bdc41c832a07642372c3091e1435c3f0488c898f4095f2192d790",
+      "path": "source/requirements/survey-v2.requirements.json"
+    },
+    {
+      "digest": "sha256:7dec2b03ca4aac3430a22528f0e3981c795d3626035499c3b56993873be58982",
+      "path": "source/templates/envelope.md.tmpl"
+    },
+    {
+      "digest": "sha256:6c9433fd3c830af41a203e7a1358d7c86bcb3b682805ed53819aa41ede2f3fd9",
+      "path": "survey-v2.package.json"
+    },
+    {
+      "digest": "sha256:87d48295a9d11d53e9436f78a8d3adef55ca364830be4b24ae4381d552c7154f",
+      "path": "tests/baseline-v1/characterization.json"
+    },
+    {
+      "digest": "sha256:8ca044baa0a7223eb3a2198a157d5e631a9657da63e0eafc12505ebfb2785574",
+      "path": "tests/baseline-v1/v1-characterization.test.json"
+    },
+    {
+      "digest": "sha256:a7d5bda2b86cd05f771f91233fdbb989b998732493c6c93a6a74ba30d56f6f98",
+      "path": "tests/baseline-v1/v1-characterization.test.mjs"
+    },
+    {
+      "digest": "sha256:9147ad41d58f892aa383c9c4823ece81d86b2e5be0e7cfb98120988cd852f4fa",
+      "path": "tests/dependencies/candidate-dependency-evidence.test.json"
+    },
+    {
+      "digest": "sha256:2ddf30c0698969424a0aeb02f1c4e26e4be8cb7733c3e08f25c870ce19ab315b",
+      "path": "tests/dependencies/candidate-dependency-evidence.test.mjs"
+    },
+    {
+      "digest": "sha256:0b4ce55ee4fc3d25c1dc7aa3f70bf50339cac0443383baf2aaff66b0b1abe786",
+      "path": "tests/dependencies/snapshot-instability.test.json"
+    },
+    {
+      "digest": "sha256:6d633db16784ce7d7edfd3f1b78cc815eb92e70a8308aa55cd8cd9bde55f7027",
+      "path": "tests/dependencies/snapshot-instability.test.mjs"
+    },
+    {
+      "digest": "sha256:20de7860ee41567bd314e98a8af72561416e36db6cbc820c3ddcbffce35fa7f0",
+      "path": "tests/dependencies/snapshot-symlink.test.json"
+    },
+    {
+      "digest": "sha256:c30bb1c5e1b6fbd43ce3340ff7986233cc37ef7c789678dc6597343a8f494aaf",
+      "path": "tests/dependencies/snapshot-symlink.test.mjs"
+    },
+    {
+      "digest": "sha256:270ab38d6409e9485ae6c1ead86b73867c679a4ef888ba49e1ed7008f2c40de6",
+      "path": "tests/dependencies/stable-snapshot.test.json"
+    },
+    {
+      "digest": "sha256:558e31fd54e29c1efe2a5bcd617cacdd7d8ee89b61c1d4349844154730bf40d6",
+      "path": "tests/dependencies/stable-snapshot.test.mjs"
+    },
+    {
+      "digest": "sha256:43d11c52623eff1e81d4d0fe4708acf8636c9f712058014fed95230ac4da99e0",
+      "path": "tests/dependencies/stage-binding.test.json"
+    },
+    {
+      "digest": "sha256:db0d25095178f39951bb8f0858459dbf84738d3998f194cda70dde100cd8c09d",
+      "path": "tests/dependencies/stage-binding.test.mjs"
+    },
+    {
+      "digest": "sha256:60004d5b0ecbcb8d772d43df961f14f2974fa78d29637cc8ebc421473ae56e95",
+      "path": "tests/dependencies/typed-retry.test.json"
+    },
+    {
+      "digest": "sha256:d93d53ae976b876b84753b66cdff9da40e161ed452a88b79748ffdd4ae96fd8f",
+      "path": "tests/dependencies/typed-retry.test.mjs"
+    },
+    {
+      "digest": "sha256:b918bbe1da7c8e22bef4b78f37a811bf525de0ede2a6ed6fc2ecfdf2524517a9",
+      "path": "tests/envelope/candidate-session-ancestry.test.json"
+    },
+    {
+      "digest": "sha256:e14bd256e7855d90c5e60e576a2dc7c5cf108d15424e74dd3615189e36d51ad3",
+      "path": "tests/envelope/candidate-session-ancestry.test.mjs"
+    },
+    {
+      "digest": "sha256:a2c71d2cf2003c5d85032305aa1017591a2d0b330c4f9d948c5216cbb3e2f9f6",
+      "path": "tests/envelope/envelope-render-determinism.test.json"
+    },
+    {
+      "digest": "sha256:48c36177df6ba249c6be16b0d0bc9da51148096694e9ea000da94382260b22a3",
+      "path": "tests/envelope/envelope-render-determinism.test.mjs"
+    },
+    {
+      "digest": "sha256:85383de7f5c206d1c24c025f242aff1ddb1826b7873ca8ba4dc4536f6f34d78b",
+      "path": "tests/envelope/ratified-regeneration.test.json"
+    },
+    {
+      "digest": "sha256:ae793c4a2bcd4fe0da4458d6f47e84b49bae086fba4470c887317311a3096b7a",
+      "path": "tests/envelope/ratified-regeneration.test.mjs"
+    },
+    {
+      "digest": "sha256:db0e1d1747b76017e46ca3f11267a2b8e8b2d356e9b2fd791bf3bc22de627b65",
+      "path": "tests/envelope/terminal-ratification-evidence.test.json"
+    },
+    {
+      "digest": "sha256:64a1e643ce50a66394b5f29eb58f924ee4b0d8a711b38f86cf8211c7cf70ff01",
+      "path": "tests/envelope/terminal-ratification-evidence.test.mjs"
+    },
+    {
+      "digest": "sha256:57004b4e537875577e7e291530239956e5c089f7c1d5cdcd32a440366e1509dd",
+      "path": "tests/envelope/walkthrough-full-candidate.test.json"
+    },
+    {
+      "digest": "sha256:ace3f4cc6d1a90645270a9964dcfb55468bdd3744f759da3da79ec9ae0745b60",
+      "path": "tests/envelope/walkthrough-full-candidate.test.mjs"
+    },
+    {
+      "digest": "sha256:8318edb8c14d3adbc86e81cbde7a11902cdfa10e22521414075cd3942b2770f7",
+      "path": "tests/fixtures/dependency-fixture.mjs"
+    },
+    {
+      "digest": "sha256:f0b1ee795cc203cd9fe6803a5126b2a2af9417279e6eec1ddd3bbbbee0c036ed",
+      "path": "tests/fixtures/root.mjs"
+    },
+    {
+      "digest": "sha256:0938718f89a884d182af1956a2ab760dc04fa7cfb1c8582c258480de0ffd24b4",
+      "path": "tests/fixtures/runtime-fixture.mjs"
+    },
+    {
+      "digest": "sha256:9c4bde6a61ec6b89d337cb3de6543de9fc8d3fe4df1e77678a29350afec555ce",
+      "path": "tests/fixtures/session-fixture.mjs"
+    },
+    {
+      "digest": "sha256:2fc8c3ea104897ce0c5e1e8cf2aa7193e0bd4b0f493f8256667caf244cc151a9",
+      "path": "tests/fragments/contribution-removal.test.json"
+    },
+    {
+      "digest": "sha256:bb4ce41aa7ea33e4eade4a651b5055632f87609fdb7fe051943c2e75328a8a73",
+      "path": "tests/fragments/contribution-removal.test.mjs"
+    },
+    {
+      "digest": "sha256:baac4dc1e57be62193143d7e1b4af8d99a0ad8d15214d9722bde87c6c8c3cf68",
+      "path": "tests/fragments/fragment-contract.test.json"
+    },
+    {
+      "digest": "sha256:55d2f67ad408c806ad72f3bd4ab2639d2d417976d552803bd593362c09cb7291",
+      "path": "tests/fragments/fragment-contract.test.mjs"
+    },
+    {
+      "digest": "sha256:25768976c048ad161d8cc067f8961be5321657c360d81c2b7a1a19acf9f77e63",
+      "path": "tests/portability/relocation.test.json"
+    },
+    {
+      "digest": "sha256:85d39195e0920f59892e8607ea6e8f6db56f9eb52be9a3a8225cc5e25cffba0a",
+      "path": "tests/portability/relocation.test.mjs"
+    },
+    {
+      "digest": "sha256:6a7aefcc1df1f6bdec8f863aa3ec31c52270e64a9d37f2257c5d6d8c53b8ff13",
+      "path": "tests/portability/runtime-no-install.test.json"
+    },
+    {
+      "digest": "sha256:bdc7a93b2ae8fb5bbf17dfaacb208fbf337c4b74ae5a8f6ff13b51e7590d7d51",
+      "path": "tests/portability/runtime-no-install.test.mjs"
+    },
+    {
+      "digest": "sha256:c4fce6b9dfc82fc71f8bae2c7f5b50479145bc2a78d38c8e2b6974663bbe7232",
+      "path": "tests/projection/repeated-build.test.json"
+    },
+    {
+      "digest": "sha256:fb1ce257b2b8ebda9b16ac1c61e75176c53833691d220ab7edd813bc7f39abf9",
+      "path": "tests/projection/repeated-build.test.mjs"
+    },
+    {
+      "digest": "sha256:2e71c67f1d2636c4ff2d48db4b328f5949898c7ed6f2cca021965c92631fab21",
+      "path": "tests/projection/surface-budgets.test.json"
+    },
+    {
+      "digest": "sha256:830e91e63919985f641bd7368178cad64aaa33657aecfeb767b8c0cbf3ff3e54",
+      "path": "tests/projection/surface-budgets.test.mjs"
+    },
+    {
+      "digest": "sha256:546a05713eaa2fedbd2b7b54757da978293ae6d301be9fa6193c7caa5961c67c",
+      "path": "tests/promotion/forward-canary-boundary.test.json"
+    },
+    {
+      "digest": "sha256:d1bad6a85998d821ea909c6df34fdae2fd92eb3036e85fae65277ecc3891014d",
+      "path": "tests/promotion/forward-canary-boundary.test.mjs"
+    },
+    {
+      "digest": "sha256:5f4aa2291a74673a10cb37ec8092d9459d707de1144a07616125659c3fe581a4",
+      "path": "tests/promotion/promotion-boundary.test.json"
+    },
+    {
+      "digest": "sha256:ff05d546a0afa717c0b9cbf643be09c431785b0e70d3a8459f1c5980653a5738",
+      "path": "tests/promotion/promotion-boundary.test.mjs"
+    },
+    {
+      "digest": "sha256:4c006502e837f618415854ed96ec38e61f32db1efb224046a5a0d57b9d9fe1b6",
+      "path": "tests/protocol/correction-ancestry.test.json"
+    },
+    {
+      "digest": "sha256:bc2dea83c2b6fdcbd420c87738d6e358b597460b2486cbeb3a91885dc3d1d99d",
+      "path": "tests/protocol/correction-ancestry.test.mjs"
+    },
+    {
+      "digest": "sha256:41cb439987ebd9587c61a6ca142ea1cd3bbd7c63e554974fb2a89943473adc70",
+      "path": "tests/protocol/director-flow-coverage.test.json"
+    },
+    {
+      "digest": "sha256:fae4fa05703870aeba9973a04f493ff22b092572d0de1aa21e2fa883aaa45541",
+      "path": "tests/protocol/director-flow-coverage.test.mjs"
+    },
+    {
+      "digest": "sha256:bd1a38ef36040487b05681110f5d71916b5c6d0b5a146227798dfe45ab98035b",
+      "path": "tests/protocol/explicit-rehydration.test.json"
+    },
+    {
+      "digest": "sha256:c0ac6a1ddc707f727ca0ebfa5c2cd839f1b10223f3f6951dbfca90d3e4963d1f",
+      "path": "tests/protocol/explicit-rehydration.test.mjs"
+    },
+    {
+      "digest": "sha256:75100a56b12a61f19071ebb35bd9bcbe5ef5b4bad3b96f4f7612ecaded0be177",
+      "path": "tests/protocol/fsm-parseback.test.json"
+    },
+    {
+      "digest": "sha256:0a54af82b120906abf43e7a22a7f75d088ce81e8714700a185f232df78c81511",
+      "path": "tests/protocol/fsm-parseback.test.mjs"
+    },
+    {
+      "digest": "sha256:d8e5fd4145ec3a3c655997520ea5b9f46ccf79e301bee2a2d61f98c8fd9c8c16",
+      "path": "tests/protocol/handler-parity.test.json"
+    },
+    {
+      "digest": "sha256:e442089a511af7aca22121c83edc013788824640b9bef4fc0da6c75a939ab7b1",
+      "path": "tests/protocol/handler-parity.test.mjs"
+    },
+    {
+      "digest": "sha256:2a30e457bfddbff5a0ae83d296e0a5f9db05d031185f55db6ac25f861efc5c7d",
+      "path": "tests/protocol/instrument-freeze-immutability.test.json"
+    },
+    {
+      "digest": "sha256:2c20e5b8cc219425702adf1561285ee88f0567b571553a5a7b66765e97b6a27f",
+      "path": "tests/protocol/instrument-freeze-immutability.test.mjs"
+    },
+    {
+      "digest": "sha256:52fd61006570af57e53d1cacc88e907a9cbd67c56f3f5ea8646440aae8817e6b",
+      "path": "tests/protocol/ratification-ancestry.test.json"
+    },
+    {
+      "digest": "sha256:1ddd524c9d78ff61e68b4aa63b587c3509582c7a2690c4c3546efadf9f6cf42a",
+      "path": "tests/protocol/ratification-ancestry.test.mjs"
+    },
+    {
+      "digest": "sha256:0e4d9c403c9c71a57f6e60b38ad31c0160d6165f99539fc0b8788f2cddd8d75d",
+      "path": "tests/protocol/ratification-preclaim.test.json"
+    },
+    {
+      "digest": "sha256:45c8ccdca1d90cdbef02f2693f98771f803ea52320d60a748fddb6adf0268e4e",
+      "path": "tests/protocol/ratification-preclaim.test.mjs"
+    },
+    {
+      "digest": "sha256:b5b7e52ac4f160d912bd6a222056a2647bc15d697a2d488127f7f1166b702140",
+      "path": "tests/protocol/raw-pick-roundtrip.test.json"
+    },
+    {
+      "digest": "sha256:3c5b4db1df50490b775f0a0182717264d0406bb782f805580392f9d1f016f93f",
+      "path": "tests/protocol/raw-pick-roundtrip.test.mjs"
+    },
+    {
+      "digest": "sha256:e5cb6f866a7477489e05fd652404cf704058505c026ae6d0a5f4abfba7fa6918",
+      "path": "tests/protocol/rejection-non-fsm.test.json"
+    },
+    {
+      "digest": "sha256:df4ffdb4359b4f46045d81652af65eeac3d0f164ce3df370faff52bd8def0d2a",
+      "path": "tests/protocol/rejection-non-fsm.test.mjs"
+    },
+    {
+      "digest": "sha256:eece60880818d77e66ce5d42e3b16c1359059149054458fb2800ada5d6eddb19",
+      "path": "tests/protocol/round-ordering.test.json"
+    },
+    {
+      "digest": "sha256:2199e09e145e6e4982d9672131c79d12db0afcd0d44eceeec16b14e1d2c477dc",
+      "path": "tests/protocol/round-ordering.test.mjs"
+    },
+    {
+      "digest": "sha256:fd5ca0e41cfbb2b757624a4e4ee49a8f328a1db356414f47ba797f20891406ce",
+      "path": "tests/protocol/self-authorization.test.json"
+    },
+    {
+      "digest": "sha256:31635bfac6ef638cfeca39762e420f3693cb81e26c3563c50298fb2bdc546d85",
+      "path": "tests/protocol/self-authorization.test.mjs"
+    },
+    {
+      "digest": "sha256:40350f88e676cfac77f68300ca8d9ed54048c77eaa60f6a5f80350e836a6e181",
+      "path": "tests/protocol/single-question-view.test.json"
+    },
+    {
+      "digest": "sha256:22df02cf9d7c19a5468f972a1e5cb6404c18bf9a552694636469aa5b846f40c3",
+      "path": "tests/protocol/single-question-view.test.mjs"
+    },
+    {
+      "digest": "sha256:f2accbab094ff2be0660c16596767d1fc4b8fe4733fe361702c6ba7c7c13260e",
+      "path": "tests/protocol/strict-pick-syntax.test.json"
+    },
+    {
+      "digest": "sha256:d2c1a3fbb230556daaf14a4c90cea162688f67802751c0d1889be9b7a0895c77",
+      "path": "tests/protocol/strict-pick-syntax.test.mjs"
+    },
+    {
+      "digest": "sha256:c7baa3c41cb1dc0bf64808a0d00fad2f18fe0b5bf8cc6a628cd9521ada974493",
+      "path": "tests/protocol/wrong-authority.test.json"
+    },
+    {
+      "digest": "sha256:3c7cd843079bb7e1d6cac7221cfee17e32ebedc5ab5a7a2e3abb5d5b4fc8df17",
+      "path": "tests/protocol/wrong-authority.test.mjs"
+    },
+    {
+      "digest": "sha256:45b5a859c65a79ef75f1ae8414363ff558517c8fd7697c718566368278564295",
+      "path": "tests/registry/modular-discovery.test.json"
+    },
+    {
+      "digest": "sha256:d10b7445b3a27e32d55e2d87ef4ef67efe0b02bd4ffe331dd8be9b84b3bd8346",
+      "path": "tests/registry/modular-discovery.test.mjs"
+    },
+    {
+      "digest": "sha256:67e9d989ddd3b36d885c3be94fdcb5764b5d4a42e3e0449e7b5c74577fb5402d",
+      "path": "tests/run-tests.mjs"
+    },
+    {
+      "digest": "sha256:ffd5ad5fb5c2e4de145573cb25467afd28185b86afd8e6e09a7cdd4a961c6f61",
+      "path": "tests/schemas/canonical-array-accessor.test.json"
+    },
+    {
+      "digest": "sha256:7caa0a768cacb51b5454ceeecd9b0e6c26e4074e07ebdcbae89a3e7d9799812e",
+      "path": "tests/schemas/canonical-array-accessor.test.mjs"
+    },
+    {
+      "digest": "sha256:40486686cf13b53a51f142b115f58e0292237c25339ec381c97e61e30ff46abb",
+      "path": "tests/schemas/canonical-cycle.test.json"
+    },
+    {
+      "digest": "sha256:f8ef522a67ce5fc6af774db6785be3e79cbe65dabf368f17bb50404aec659aff",
+      "path": "tests/schemas/canonical-cycle.test.mjs"
+    },
+    {
+      "digest": "sha256:828dfa7bd15b318408ace176834ec60abb34a583d2a24046472b708ba509366b",
+      "path": "tests/schemas/canonical-getter.test.json"
+    },
+    {
+      "digest": "sha256:e26ce1e915f0d76e493d630bc6e504a8174d8d5d4034ce843f88aab0ff988add",
+      "path": "tests/schemas/canonical-getter.test.mjs"
+    },
+    {
+      "digest": "sha256:8386815834762c7f16e8ce44fc192a3facdfe8fa52c0153f418ef3391b6a21ad",
+      "path": "tests/schemas/canonical-hidden-property.test.json"
+    },
+    {
+      "digest": "sha256:83bac5834fe0dc6dc5fcaa27eb197ad2bf0c12bf410a19aeccc751715800e80f",
+      "path": "tests/schemas/canonical-hidden-property.test.mjs"
+    },
+    {
+      "digest": "sha256:b7a1b9f69ea989d29375da6b1bb3d17b59a3050e4404b064fe7bb10a668794e1",
+      "path": "tests/schemas/canonical-non-plain.test.json"
+    },
+    {
+      "digest": "sha256:8b9a627ef0be6f20aabe2e4d201f94c67ad1d6cb7940c90f5be58a3c60ef783d",
+      "path": "tests/schemas/canonical-non-plain.test.mjs"
+    },
+    {
+      "digest": "sha256:3cf884fac84ccd8da21a162316d8082bd6abdafbaa75a56f0dc08e7e663f01a0",
+      "path": "tests/schemas/canonical-order-and-negative-zero.test.json"
+    },
+    {
+      "digest": "sha256:3935ec35c87ae7ac45f8af7eb762c1a2fe8ee55d811e53c3127ac7f798a6fad2",
+      "path": "tests/schemas/canonical-order-and-negative-zero.test.mjs"
+    },
+    {
+      "digest": "sha256:16327889a9651e1559c6eeeb118136f6c9244aeb0bcc4469d087898194e9fd08",
+      "path": "tests/schemas/canonical-proxy.test.json"
+    },
+    {
+      "digest": "sha256:157184a9627ca5fa1f58bb3adeab58957e5669f8496a52f99072b2b4505139c2",
+      "path": "tests/schemas/canonical-proxy.test.mjs"
+    },
+    {
+      "digest": "sha256:00bba13712ae483aad12e44044be53ba5f600e32257e896cbd13da6fac4ac097",
+      "path": "tests/schemas/canonical-sparse-array.test.json"
+    },
+    {
+      "digest": "sha256:83cdaa565cdc98accab73f86f6882a153c8fc06c89ae3d6c08fbdf45bf6a88e8",
+      "path": "tests/schemas/canonical-sparse-array.test.mjs"
+    },
+    {
+      "digest": "sha256:a6def49b09be328037bc3f3fba345712ed1fab6f9a17b8e9b3392f1ee22ad844",
+      "path": "tests/schemas/canonical-unpaired-key.test.json"
+    },
+    {
+      "digest": "sha256:2072b61ff93634fd19fa90b55f0f796be5c6095007b3d684bc66c3964181025f",
+      "path": "tests/schemas/canonical-unpaired-key.test.mjs"
+    },
+    {
+      "digest": "sha256:ea3577e1ea622c3b30ff63ffb187f7ac2aa6cfeae0975d0a709cedbbddf30020",
+      "path": "tests/schemas/canonical-unpaired-string.test.json"
+    },
+    {
+      "digest": "sha256:9e3ed6797397fe1b15347f37959d028bd88c75a09f7923fca5efe4fef946ba78",
+      "path": "tests/schemas/canonical-unpaired-string.test.mjs"
+    },
+    {
+      "digest": "sha256:66924d925fba3e6c4a2f06eaa03b8d4682c599d28f91e2ad667f35c644ea45f3",
+      "path": "tests/schemas/envelope-planning-fields.test.json"
+    },
+    {
+      "digest": "sha256:d201bd1e47af3ee23305e5a0e549b9acf4d33cac3b935760e31acc5bce5c5d7d",
+      "path": "tests/schemas/envelope-planning-fields.test.mjs"
+    },
+    {
+      "digest": "sha256:c6cc30899a6bd0c101b6ff4b7b7b711da14e6419dff5b2e81d421757b59668fe",
+      "path": "tests/schemas/instrument-geometry.test.json"
+    },
+    {
+      "digest": "sha256:4acbb9bd2094d9d8ef9f8525ee926aaeaab670f400a30bbc3740532bcff7adb0",
+      "path": "tests/schemas/instrument-geometry.test.mjs"
+    },
+    {
+      "digest": "sha256:8bc47e381c25f6f87a1365765ad078236f0c5449ffcac279db2ae01bcb7ba9b7",
+      "path": "tests/schemas/recursive-closure.test.json"
+    },
+    {
+      "digest": "sha256:3dce088d0b0cce955d34c2a18724accb8da1cedd6cfecafd8b26ad27da696f2d",
+      "path": "tests/schemas/recursive-closure.test.mjs"
+    },
+    {
+      "digest": "sha256:d80738f3774abe3186ff752880b07d72dc10c8a737872b5f34c366b44484f71a",
+      "path": "tests/schemas/session-phase-sensitivity.test.json"
+    },
+    {
+      "digest": "sha256:a67968eb17d1daaf9bc8efa0bc5f1967ef0231604a15c275b9523e4b8af90bb7",
+      "path": "tests/schemas/session-phase-sensitivity.test.mjs"
+    },
+    {
+      "digest": "sha256:eed6695c2b268970b8289cee7d5e1c7aef6fa41da0d69c6e9d952d7a2b577f9a",
+      "path": "tests/state/cold-resume-current-view.test.json"
+    },
+    {
+      "digest": "sha256:b638121722a1db061abb578f63dae59b9fd090c68ba274c3832e01efeec07d72",
+      "path": "tests/state/cold-resume-current-view.test.mjs"
+    },
+    {
+      "digest": "sha256:29fec7804e736ee43f8fd013562727850201e4507df549e0ddc976159d2845c9",
+      "path": "tests/state/event-id-prototype.test.json"
+    },
+    {
+      "digest": "sha256:0a1fb4671286f28c383fabe546f3081a88089a94d1406fb9c6f0ac528d64996e",
+      "path": "tests/state/event-id-prototype.test.mjs"
+    },
+    {
+      "digest": "sha256:ca3d042cf23a5256321df4eb08c442a630c90fe2ef16161aaef140c3804c77ff",
+      "path": "tests/state/reached-artifacts.test.json"
+    },
+    {
+      "digest": "sha256:bae561770eb85801306b681f75e2d213d5a2edd8a4678e989ba8068721aa195e",
+      "path": "tests/state/reached-artifacts.test.mjs"
+    },
+    {
+      "digest": "sha256:8da3aa93f4d0d1000d02908276fb8eee64a12a7255eca76c23c7286ed9fa737f",
+      "path": "tests/state/replay-before-stale.test.json"
+    },
+    {
+      "digest": "sha256:d1df5530802fb6d5b833a1e3855d57bf892339f7aac5454538a4f8f0b092a947",
+      "path": "tests/state/replay-before-stale.test.mjs"
+    },
+    {
+      "digest": "sha256:81504d50e169b7a211eb7239f39d819eaa7d21fae8b1c3bd2e8c1e8ee62cfec2",
+      "path": "tests/state/replay-changed-actor.test.json"
+    },
+    {
+      "digest": "sha256:5081524c9e88f2bd461a8d9a7045e47d76b793e8c2394043e08c80ea52f708b4",
+      "path": "tests/state/replay-changed-actor.test.mjs"
+    },
+    {
+      "digest": "sha256:b48cca47f34982b70909caabfe462739e0d15312bec7dbb8aad165cb009d56dd",
+      "path": "tests/state/replay-changed-event.test.json"
+    },
+    {
+      "digest": "sha256:5ea9c337a772e7ecbb51772a90196e333ecc11ff95514570c987bba3ccbb5643",
+      "path": "tests/state/replay-changed-event.test.mjs"
+    },
+    {
+      "digest": "sha256:b68534523d091ebe9c006c793317865b84fb97fadffc5f306983a556eb58d603",
+      "path": "tests/state/replay-changed-payload.test.json"
+    },
+    {
+      "digest": "sha256:419ba912032be685f3bab46e111e827cc81f618171991cbf2d5d4e734d42ff8a",
+      "path": "tests/state/replay-changed-payload.test.mjs"
+    },
+    {
+      "digest": "sha256:d083d35ac081d7c1789f84ed568aa2fa1388be8f8da3c5af694f9f77d79121f6",
+      "path": "tests/state/schema-invalid-quarantine.test.json"
+    },
+    {
+      "digest": "sha256:b39e6d32adba98d1b96985a38335b85f2848ac8b5f2102747cad57dbc2afb596",
+      "path": "tests/state/schema-invalid-quarantine.test.mjs"
+    },
+    {
+      "digest": "sha256:d6968ad34e6ab45010d8e9ba1ccc8738eb96e85669e1429d1cd3ec00414d9d36",
+      "path": "tests/state/semantic-product-replay.test.json"
+    },
+    {
+      "digest": "sha256:848ea00b5649a60c49e22a510e4894cf77f585496d89667f26735a8c1a3674bd",
+      "path": "tests/state/semantic-product-replay.test.mjs"
+    },
+    {
+      "digest": "sha256:8c455c04bdc3cb00040aef5f514b8edc7c0285170720cf3b3dd3529e7cd268de",
+      "path": "tests/state/writer-lock-initialization-cleanup.test.json"
+    },
+    {
+      "digest": "sha256:7dc465a1630bc83e402b594c8e8198b477d02b6fab19ebb9263edb64e893e393",
+      "path": "tests/state/writer-lock-initialization-cleanup.test.mjs"
+    },
+    {
+      "digest": "sha256:53ce5ae7dbf004d729205111c0b86bd2ab7408908c3c5fb77fd18244d386de84",
+      "path": "tests/test-evidence.manifest.json"
+    }
+  ],
+  "id": "urn:mission-kit:survey-v2:projection-lock:survey-v2",
+  "packageDigest": "sha256:02d0bc3704d7530bfdad3c2ea05d5a422639050cbc44622475e9900319856c58",
+  "parentDesignSha256": "6467fff1c74c6dc857bcb06722d19dfa04381ae3e6f242eccb36581f87560f74",
+  "portableExclusions": [
+    {
+      "class": "root-local-build-dependencies",
+      "path": "node_modules",
+      "rule": "excluded-from-owned-inventory-and-package-fold"
+    },
+    {
+      "class": "mutable-runtime-sessions",
+      "path": "surveys",
+      "rule": "excluded-from-owned-inventory-and-package-fold"
+    },
+    {
+      "class": "source-control-metadata",
+      "path": ".git",
+      "rule": "excluded-from-owned-inventory-and-package-fold"
+    }
+  ],
+  "projectedDigests": [
+    {
+      "digest": "sha256:c896208d6432fcd8025fb7311a98bc6d33806d78a8741bb00386fb48fdd622ff",
+      "path": "SKILL.md",
+      "projectionId": "urn:mission-kit:survey-v2:projection:skill-md"
+    },
+    {
+      "digest": "sha256:a3a9ca09b4b6e40d8a89d861b29d5910b4a35b8ca2aca35e1c5925e98a64f593",
+      "path": "agents/openai.yaml",
+      "projectionId": "urn:mission-kit:survey-v2:projection:agent-metadata"
+    },
+    {
+      "digest": "sha256:7dec2b03ca4aac3430a22528f0e3981c795d3626035499c3b56993873be58982",
+      "path": "assets/envelope.md.tmpl",
+      "projectionId": "urn:mission-kit:survey-v2:projection:assets"
+    },
+    {
+      "digest": "sha256:6b69a04ce1462a107ab703849d2ba2b7137d58cee34d4c472d8b0aa77e74d86b",
+      "path": "generated/dependency-index.json",
+      "projectionId": "urn:mission-kit:survey-v2:projection:indexes"
+    },
+    {
+      "digest": "sha256:f5d029c57637c9305c09b098c4036d186d337ffd9266bfea9ccd7e0429ff9676",
+      "path": "generated/mechanism-index.json",
+      "projectionId": "urn:mission-kit:survey-v2:projection:indexes"
+    },
+    {
+      "digest": "sha256:325f98d0b2da57d0ef3b4b18849408b5ca5e9c0073b34b19d0f3d511d20b7ba8",
+      "path": "generated/validators.mjs",
+      "projectionId": "urn:mission-kit:survey-v2:projection:validators"
+    },
+    {
+      "digest": "sha256:9bf6c8287fd53f59ee10ccd03442023054390036b7b3c5b1326a97ee6da677e0",
+      "path": "references/dependency-resolution.md",
+      "projectionId": "urn:mission-kit:survey-v2:projection:references"
+    },
+    {
+      "digest": "sha256:54d50c593bbe312728cba70647c3e16f51e381a7d82f5b1cb01e2b3d5cce8dbd",
+      "path": "references/director-flow.md",
+      "projectionId": "urn:mission-kit:survey-v2:projection:diagrams"
+    },
+    {
+      "digest": "sha256:bafb5ca0b9e6aade2d7014b1307e21b53a2a8d3d6af26a074dfdec0c2d517888",
+      "path": "references/envelope-contract.md",
+      "projectionId": "urn:mission-kit:survey-v2:projection:references"
+    },
+    {
+      "digest": "sha256:226892644b3cb9976bdea1d88dd19673272e9448146a288cde217f44dc0acb05",
+      "path": "references/interaction-protocol.md",
+      "projectionId": "urn:mission-kit:survey-v2:projection:references"
+    },
+    {
+      "digest": "sha256:eadfab19829a1c6f1f30137f1773f7385a12d3bed58e30209f3abdbee7f4a22b",
+      "path": "references/interpretation.md",
+      "projectionId": "urn:mission-kit:survey-v2:projection:references"
+    },
+    {
+      "digest": "sha256:454ea6f05d14a91eaf48678c01ad56799b4f75f3af0e0e47e4587c92555155f9",
+      "path": "references/mechanism-index.md",
+      "projectionId": "urn:mission-kit:survey-v2:projection:references"
+    },
+    {
+      "digest": "sha256:63452b727b0e1acda4f1487b375fc0aa6d5f7ef354c33cf109f8527570c474cb",
+      "path": "references/protocol-fsm.md",
+      "projectionId": "urn:mission-kit:survey-v2:projection:diagrams"
+    },
+    {
+      "digest": "sha256:be55807b768a9c36b8d20670d4bee6af8a2f0a209f57d35b69944927bf45bda4",
+      "path": "references/question-design.md",
+      "projectionId": "urn:mission-kit:survey-v2:projection:references"
+    },
+    {
+      "digest": "sha256:5c3519caa554cbf2220e57f33c745573337dc44ff4c604b933be01770dd4e07d",
+      "path": "references/state-and-resume.md",
+      "projectionId": "urn:mission-kit:survey-v2:projection:references"
+    },
+    {
+      "digest": "sha256:e2a5e88e4569577b9023efdf1ba2fb2b80e15079a294f98e4a758943bdc3811a",
+      "path": "references/validation.md",
+      "projectionId": "urn:mission-kit:survey-v2:projection:references"
+    },
+    {
+      "digest": "sha256:31b16dc5597b691cff4edeab341ffbcdbe8d7b478391beca75c690b8bd4a84b1",
+      "path": "scripts/survey-envelope.mjs",
+      "projectionId": "urn:mission-kit:survey-v2:projection:executables"
+    },
+    {
+      "digest": "sha256:d2ed78079b618b33c25c84a5486d67c40a86144cbbefdefee94cd7bd886b995b",
+      "path": "scripts/survey-init.mjs",
+      "projectionId": "urn:mission-kit:survey-v2:projection:executables"
+    },
+    {
+      "digest": "sha256:21c954ed5df15571f281bc66fa4dd01935a3ea4c95f354466b36e902eed34de4",
+      "path": "scripts/survey-present.mjs",
+      "projectionId": "urn:mission-kit:survey-v2:projection:executables"
+    },
+    {
+      "digest": "sha256:d21ba346d152caacf12a34306bd5b58f8a40ddae02c38970af894f72764b46d9",
+      "path": "scripts/survey-status.mjs",
+      "projectionId": "urn:mission-kit:survey-v2:projection:executables"
+    },
+    {
+      "digest": "sha256:3f99f520ba2c93c40c7fd86022619ded355453a74ac51c6e1918e69e8e487e21",
+      "path": "scripts/survey-transition.mjs",
+      "projectionId": "urn:mission-kit:survey-v2:projection:executables"
+    }
+  ],
+  "registeredInventory": [
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": ".gitignore"
+    },
+    {
+      "expectedId": null,
+      "kind": "generated",
+      "path": "SKILL.md"
+    },
+    {
+      "expectedId": null,
+      "kind": "generated",
+      "path": "agents/openai.yaml"
+    },
+    {
+      "expectedId": null,
+      "kind": "generated",
+      "path": "assets/envelope.md.tmpl"
+    },
+    {
+      "expectedId": null,
+      "kind": "bootstrap",
+      "path": "compile.sh"
+    },
+    {
+      "expectedId": null,
+      "kind": "generated",
+      "path": "generated/dependency-index.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "generated",
+      "path": "generated/mechanism-index.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "generated",
+      "path": "generated/projection-lock.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "generated",
+      "path": "generated/validators.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "supply-lock",
+      "path": "package-lock.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "package.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "generated",
+      "path": "references/dependency-resolution.md"
+    },
+    {
+      "expectedId": null,
+      "kind": "generated",
+      "path": "references/director-flow.md"
+    },
+    {
+      "expectedId": null,
+      "kind": "generated",
+      "path": "references/envelope-contract.md"
+    },
+    {
+      "expectedId": null,
+      "kind": "generated",
+      "path": "references/interaction-protocol.md"
+    },
+    {
+      "expectedId": null,
+      "kind": "generated",
+      "path": "references/interpretation.md"
+    },
+    {
+      "expectedId": null,
+      "kind": "generated",
+      "path": "references/mechanism-index.md"
+    },
+    {
+      "expectedId": null,
+      "kind": "generated",
+      "path": "references/protocol-fsm.md"
+    },
+    {
+      "expectedId": null,
+      "kind": "generated",
+      "path": "references/question-design.md"
+    },
+    {
+      "expectedId": null,
+      "kind": "generated",
+      "path": "references/state-and-resume.md"
+    },
+    {
+      "expectedId": null,
+      "kind": "generated",
+      "path": "references/validation.md"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "schemas/v1/common.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "schemas/v1/dependency.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "schemas/v1/envelope-model.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "schemas/v1/fragment.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "schemas/v1/instrument.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "schemas/v1/package.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "schemas/v1/presentation.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "schemas/v1/projection.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "schemas/v1/protocol.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "schemas/v1/quarantine.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "schemas/v1/requirement.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "schemas/v1/session-state.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "schemas/v1/test-evidence.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "schemas/v1/triangulation-process.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "generated",
+      "path": "scripts/survey-envelope.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "generated",
+      "path": "scripts/survey-init.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "generated",
+      "path": "scripts/survey-present.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "generated",
+      "path": "scripts/survey-status.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "generated",
+      "path": "scripts/survey-transition.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/dependencies/processes/axiom-applicability.process.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/dependencies/references/mission-kit-axioms.reference.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/executables/compiler/build.fragment.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/executables/compiler/build.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/executables/runtime/lib/canonical.fragment.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/executables/runtime/lib/canonical.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/executables/runtime/lib/dependency-snapshot.fragment.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/executables/runtime/lib/dependency-snapshot.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/executables/runtime/lib/engine.fragment.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/executables/runtime/lib/engine.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/executables/runtime/lib/envelope.fragment.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/executables/runtime/lib/envelope.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/executables/runtime/lib/handler-surface.fragment.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/executables/runtime/lib/handler-surface.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/executables/runtime/lib/storage.fragment.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/executables/runtime/lib/storage.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/executables/runtime/survey-envelope.fragment.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/executables/runtime/survey-envelope.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/executables/runtime/survey-init.fragment.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/executables/runtime/survey-init.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/executables/runtime/survey-present.fragment.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/executables/runtime/survey-present.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/executables/runtime/survey-status.fragment.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/executables/runtime/survey-status.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/executables/runtime/survey-transition.fragment.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/executables/runtime/survey-transition.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/artifact/envelope-and-ratification.fragment.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/artifact/envelope-and-ratification.md"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/assurance/promotion-boundary.fragment.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/assurance/promotion-boundary.md"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/assurance/verification-gates.fragment.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/assurance/verification-gates.md"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/authority/semantic-boundaries.fragment.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/authority/semantic-boundaries.md"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/dependencies/axiom-triangulation.fragment.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/dependencies/axiom-triangulation.md"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/dependencies/typed-resolution.fragment.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/dependencies/typed-resolution.md"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/identity/sovereign-root.fragment.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/identity/sovereign-root.md"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/instrument/round-freeze.fragment.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/instrument/round-freeze.md"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/interaction/pick-capture.fragment.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/interaction/pick-capture.md"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/interaction/single-question-disclosure.fragment.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/interaction/single-question-disclosure.md"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/interpretation/round-ordering.fragment.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/interpretation/round-ordering.md"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/interpretation/round-two-anchoring.fragment.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/interpretation/round-two-anchoring.md"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/navigation/fragment-contract.fragment.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/navigation/fragment-contract.md"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/navigation/isomorphic-projections.fragment.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/navigation/isomorphic-projections.md"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/state/session-and-resume.fragment.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/fragments/state/session-and-resume.md"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/projections/agent-metadata.projection.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/projections/assets.projection.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/projections/build-metadata.projection.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/projections/diagrams.projection.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/projections/executables.projection.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/projections/indexes.projection.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/projections/references.projection.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/projections/skill-md.projection.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/projections/validators.projection.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/protocol/survey.protocol.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/requirements/survey-v2.requirements.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/templates/envelope.md.tmpl"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "survey-v2.package.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/baseline-v1/characterization.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/baseline-v1/v1-characterization.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/baseline-v1/v1-characterization.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/dependencies/candidate-dependency-evidence.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/dependencies/candidate-dependency-evidence.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/dependencies/snapshot-instability.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/dependencies/snapshot-instability.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/dependencies/snapshot-symlink.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/dependencies/snapshot-symlink.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/dependencies/stable-snapshot.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/dependencies/stable-snapshot.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/dependencies/stage-binding.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/dependencies/stage-binding.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/dependencies/typed-retry.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/dependencies/typed-retry.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/envelope/candidate-session-ancestry.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/envelope/candidate-session-ancestry.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/envelope/envelope-render-determinism.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/envelope/envelope-render-determinism.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/envelope/ratified-regeneration.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/envelope/ratified-regeneration.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/envelope/terminal-ratification-evidence.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/envelope/terminal-ratification-evidence.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/envelope/walkthrough-full-candidate.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/envelope/walkthrough-full-candidate.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/dependency-fixture.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/root.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/runtime-fixture.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/session-fixture.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fragments/contribution-removal.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fragments/contribution-removal.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fragments/fragment-contract.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fragments/fragment-contract.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/portability/relocation.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/portability/relocation.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/portability/runtime-no-install.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/portability/runtime-no-install.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/projection/repeated-build.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/projection/repeated-build.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/projection/surface-budgets.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/projection/surface-budgets.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/promotion/forward-canary-boundary.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/promotion/forward-canary-boundary.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/promotion/promotion-boundary.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/promotion/promotion-boundary.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/correction-ancestry.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/correction-ancestry.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/director-flow-coverage.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/director-flow-coverage.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/explicit-rehydration.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/explicit-rehydration.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/fsm-parseback.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/fsm-parseback.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/handler-parity.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/handler-parity.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/instrument-freeze-immutability.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/instrument-freeze-immutability.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/ratification-ancestry.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/ratification-ancestry.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/ratification-preclaim.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/ratification-preclaim.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/raw-pick-roundtrip.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/raw-pick-roundtrip.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/rejection-non-fsm.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/rejection-non-fsm.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/round-ordering.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/round-ordering.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/self-authorization.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/self-authorization.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/single-question-view.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/single-question-view.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/strict-pick-syntax.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/strict-pick-syntax.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/wrong-authority.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/protocol/wrong-authority.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/registry/modular-discovery.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/registry/modular-discovery.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/run-tests.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/schemas/canonical-array-accessor.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/schemas/canonical-array-accessor.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/schemas/canonical-cycle.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/schemas/canonical-cycle.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/schemas/canonical-getter.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/schemas/canonical-getter.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/schemas/canonical-hidden-property.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/schemas/canonical-hidden-property.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/schemas/canonical-non-plain.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/schemas/canonical-non-plain.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/schemas/canonical-order-and-negative-zero.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/schemas/canonical-order-and-negative-zero.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/schemas/canonical-proxy.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/schemas/canonical-proxy.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/schemas/canonical-sparse-array.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/schemas/canonical-sparse-array.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/schemas/canonical-unpaired-key.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/schemas/canonical-unpaired-key.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/schemas/canonical-unpaired-string.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/schemas/canonical-unpaired-string.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/schemas/envelope-planning-fields.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/schemas/envelope-planning-fields.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/schemas/instrument-geometry.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/schemas/instrument-geometry.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/schemas/recursive-closure.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/schemas/recursive-closure.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/schemas/session-phase-sensitivity.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/schemas/session-phase-sensitivity.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/state/cold-resume-current-view.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/state/cold-resume-current-view.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/state/event-id-prototype.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/state/event-id-prototype.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/state/reached-artifacts.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/state/reached-artifacts.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/state/replay-before-stale.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/state/replay-before-stale.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/state/replay-changed-actor.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/state/replay-changed-actor.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/state/replay-changed-event.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/state/replay-changed-event.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/state/replay-changed-payload.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/state/replay-changed-payload.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/state/schema-invalid-quarantine.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/state/schema-invalid-quarantine.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/state/semantic-product-replay.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/state/semantic-product-replay.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/state/writer-lock-initialization-cleanup.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/state/writer-lock-initialization-cleanup.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/test-evidence.manifest.json"
+    }
+  ],
+  "schemaVersion": "1.0.0",
+  "selfExcludedTarget": "generated/projection-lock.json"
+}

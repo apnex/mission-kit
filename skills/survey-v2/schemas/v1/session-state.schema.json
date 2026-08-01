@@ -1,0 +1,1770 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:survey-v2:schema:session-state:v1",
+  "title": "Survey v2 atomic phase-sensitive session state",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "sessionId",
+    "slug",
+    "package",
+    "protocol",
+    "revision",
+    "phase",
+    "runtimeStatus",
+    "blockReason",
+    "lineage",
+    "inputs",
+    "authority",
+    "events",
+    "rejections",
+    "idempotency",
+    "outbox",
+    "attempts",
+    "responses",
+    "drafts",
+    "interpretations",
+    "dependencies",
+    "candidates",
+    "feedback",
+    "ratification",
+    "finalization",
+    "snapshotDigest"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:mission-kit:survey-v2:schema:session-state:v1"
+    },
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "sessionId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+    },
+    "package": {
+      "$ref": "#/$defs/packagePin"
+    },
+    "protocol": {
+      "$ref": "#/$defs/protocolPin"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "phase": {
+      "$ref": "#/$defs/phase"
+    },
+    "runtimeStatus": {
+      "$ref": "#/$defs/runtimeStatus"
+    },
+    "blockReason": {
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "#/$defs/blockReason"}
+      ]
+    },
+    "lineage": {
+      "$ref": "#/$defs/lineage"
+    },
+    "inputs": {
+      "$ref": "#/$defs/inputs"
+    },
+    "authority": {
+      "$ref": "#/$defs/authority"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/acceptedEvent"
+      }
+    },
+    "rejections": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/rejection"
+      }
+    },
+    "idempotency": {
+      "type": "object",
+      "patternProperties": {
+        "^[A-Za-z0-9][A-Za-z0-9._:-]{0,191}$": {
+          "$ref": "#/$defs/idempotencyRecord"
+        }
+      },
+      "additionalProperties": false
+    },
+    "outbox": {
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "#/$defs/outbox"}
+      ]
+    },
+    "attempts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/presentationAttempt"
+      }
+    },
+    "responses": {
+      "$ref": "#/$defs/responses"
+    },
+    "drafts": {
+      "$ref": "#/$defs/drafts"
+    },
+    "interpretations": {
+      "$ref": "#/$defs/interpretations"
+    },
+    "dependencies": {
+      "$ref": "#/$defs/dependencies"
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/candidate"
+      }
+    },
+    "feedback": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/feedback"
+      }
+    },
+    "ratification": {
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "#/$defs/ratification"}
+      ]
+    },
+    "finalization": {
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "#/$defs/finalization"}
+      ]
+    },
+    "snapshotDigest": {
+      "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/digest"
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "phase": {"const": "new"},
+        "responses": {"type": "object", "maxProperties": 0},
+        "candidates": {"type": "array", "maxItems": 0},
+        "ratification": {"type": "null"},
+        "finalization": {"type": "null"}
+      },
+      "required": ["phase"]
+    },
+    {
+      "properties": {
+        "phase": {"const": "initializing"},
+        "responses": {"type": "object", "maxProperties": 0},
+        "candidates": {"type": "array", "maxItems": 0},
+        "ratification": {"type": "null"},
+        "finalization": {"type": "null"}
+      },
+      "required": ["phase"]
+    },
+    {
+      "properties": {
+        "phase": {"const": "initialized"},
+        "responses": {"type": "object", "maxProperties": 0},
+        "dependencies": {
+          "type": "object",
+          "properties": {
+            "outputs": {
+              "type": "object",
+              "required": ["initResolve"],
+              "properties": {"initResolve": true}
+            }
+          }
+        },
+        "candidates": {"type": "array", "maxItems": 0},
+        "ratification": {"type": "null"},
+        "finalization": {"type": "null"}
+      },
+      "required": ["phase"]
+    },
+    {
+      "properties": {
+        "phase": {
+          "enum": [
+            "round_1_drafting",
+            "round_1_q1_ready",
+            "round_1_q1_awaiting"
+          ]
+        },
+        "responses": {"type": "object", "maxProperties": 0},
+        "drafts": {
+          "type": "object",
+          "properties": {
+            "round1Interpretations": {"type": "array", "maxItems": 0},
+            "round2Instruments": {"type": "array", "maxItems": 0},
+            "round2Interpretations": {"type": "array", "maxItems": 0},
+            "composites": {"type": "array", "maxItems": 0}
+          }
+        },
+        "candidates": {"type": "array", "maxItems": 0},
+        "ratification": {"type": "null"},
+        "finalization": {"type": "null"}
+      },
+      "required": ["phase"]
+    },
+    {
+      "properties": {
+        "phase": {
+          "enum": ["round_1_q2_ready", "round_1_q2_awaiting"]
+        },
+        "responses": {
+          "type": "object",
+          "required": ["Q1"],
+          "properties": {"Q1": true},
+          "maxProperties": 1
+        },
+        "candidates": {"type": "array", "maxItems": 0},
+        "ratification": {"type": "null"},
+        "finalization": {"type": "null"}
+      },
+      "required": ["phase"]
+    },
+    {
+      "properties": {
+        "phase": {
+          "enum": ["round_1_q3_ready", "round_1_q3_awaiting"]
+        },
+        "responses": {
+          "type": "object",
+          "required": ["Q1", "Q2"],
+          "properties": {"Q1": true, "Q2": true},
+          "maxProperties": 2
+        },
+        "candidates": {"type": "array", "maxItems": 0},
+        "ratification": {"type": "null"},
+        "finalization": {"type": "null"}
+      },
+      "required": ["phase"]
+    },
+    {
+      "properties": {
+        "phase": {
+          "enum": [
+            "round_1_responses_complete",
+            "round_1_interpreting"
+          ]
+        },
+        "responses": {
+          "type": "object",
+          "required": ["Q1", "Q2", "Q3"],
+          "properties": {"Q1": true, "Q2": true, "Q3": true},
+          "maxProperties": 3
+        },
+        "interpretations": {
+          "type": "object",
+          "required": ["round1Instrument", "round1ResponseDigest"],
+          "properties": {
+            "round1Instrument": true,
+            "round1ResponseDigest": true
+          }
+        },
+        "candidates": {"type": "array", "maxItems": 0},
+        "ratification": {"type": "null"},
+        "finalization": {"type": "null"}
+      },
+      "required": ["phase"]
+    },
+    {
+      "properties": {
+        "phase": {
+          "enum": [
+            "round_1_interpreted",
+            "round_2_drafting",
+            "round_2_q4_ready",
+            "round_2_q4_awaiting"
+          ]
+        },
+        "responses": {
+          "type": "object",
+          "required": ["Q1", "Q2", "Q3"],
+          "properties": {"Q1": true, "Q2": true, "Q3": true},
+          "maxProperties": 3
+        },
+        "interpretations": {
+          "type": "object",
+          "required": [
+            "round1Instrument",
+            "round1ResponseDigest",
+            "round1",
+            "round1Digest"
+          ],
+          "properties": {
+            "round1Instrument": true,
+            "round1ResponseDigest": true,
+            "round1": true,
+            "round1Digest": true
+          }
+        },
+        "candidates": {"type": "array", "maxItems": 0},
+        "ratification": {"type": "null"},
+        "finalization": {"type": "null"}
+      },
+      "required": ["phase"]
+    },
+    {
+      "properties": {
+        "phase": {
+          "enum": ["round_2_q5_ready", "round_2_q5_awaiting"]
+        },
+        "responses": {
+          "type": "object",
+          "required": ["Q1", "Q2", "Q3", "Q4"],
+          "properties": {
+            "Q1": true,
+            "Q2": true,
+            "Q3": true,
+            "Q4": true
+          },
+          "maxProperties": 4
+        },
+        "candidates": {"type": "array", "maxItems": 0},
+        "ratification": {"type": "null"},
+        "finalization": {"type": "null"}
+      },
+      "required": ["phase"]
+    },
+    {
+      "properties": {
+        "phase": {
+          "enum": ["round_2_q6_ready", "round_2_q6_awaiting"]
+        },
+        "responses": {
+          "type": "object",
+          "required": ["Q1", "Q2", "Q3", "Q4", "Q5"],
+          "properties": {
+            "Q1": true,
+            "Q2": true,
+            "Q3": true,
+            "Q4": true,
+            "Q5": true
+          },
+          "maxProperties": 5
+        },
+        "candidates": {"type": "array", "maxItems": 0},
+        "ratification": {"type": "null"},
+        "finalization": {"type": "null"}
+      },
+      "required": ["phase"]
+    },
+    {
+      "properties": {
+        "phase": {
+          "enum": [
+            "round_2_responses_complete",
+            "round_2_interpreting"
+          ]
+        },
+        "responses": {
+          "type": "object",
+          "required": ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6"],
+          "properties": {
+            "Q1": true,
+            "Q2": true,
+            "Q3": true,
+            "Q4": true,
+            "Q5": true,
+            "Q6": true
+          },
+          "maxProperties": 6
+        },
+        "interpretations": {
+          "type": "object",
+          "required": [
+            "round1Instrument",
+            "round2Instrument",
+            "round1ResponseDigest",
+            "round2ResponseDigest",
+            "round1",
+            "round1Digest"
+          ],
+          "properties": {
+            "round1Instrument": true,
+            "round2Instrument": true,
+            "round1ResponseDigest": true,
+            "round2ResponseDigest": true,
+            "round1": true,
+            "round1Digest": true
+          }
+        },
+        "ratification": {"type": "null"},
+        "finalization": {"type": "null"}
+      },
+      "required": ["phase"]
+    },
+    {
+      "properties": {
+        "phase": {"const": "round_2_interpreted"},
+        "responses": {
+          "type": "object",
+          "required": ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6"],
+          "properties": {
+            "Q1": true,
+            "Q2": true,
+            "Q3": true,
+            "Q4": true,
+            "Q5": true,
+            "Q6": true
+          },
+          "maxProperties": 6
+        },
+        "interpretations": {
+          "type": "object",
+          "required": [
+            "round1Instrument",
+            "round2Instrument",
+            "round1ResponseDigest",
+            "round2ResponseDigest",
+            "round1",
+            "round2",
+            "round1Digest",
+            "round2Digest"
+          ],
+          "properties": {
+            "round1Instrument": true,
+            "round2Instrument": true,
+            "round1ResponseDigest": true,
+            "round2ResponseDigest": true,
+            "round1": true,
+            "round2": true,
+            "round1Digest": true,
+            "round2Digest": true
+          }
+        },
+        "candidates": {"type": "array", "maxItems": 0},
+        "ratification": {"type": "null"},
+        "finalization": {"type": "null"}
+      },
+      "required": ["phase"]
+    },
+    {
+      "properties": {
+        "phase": {"const": "composite_drafting"},
+        "responses": {
+          "type": "object",
+          "required": ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6"],
+          "properties": {
+            "Q1": true,
+            "Q2": true,
+            "Q3": true,
+            "Q4": true,
+            "Q5": true,
+            "Q6": true
+          },
+          "maxProperties": 6
+        },
+        "interpretations": {
+          "type": "object",
+          "required": [
+            "round1Instrument",
+            "round2Instrument",
+            "round1ResponseDigest",
+            "round2ResponseDigest",
+            "round1",
+            "round2",
+            "round1Digest",
+            "round2Digest"
+          ],
+          "properties": {
+            "round1Instrument": true,
+            "round2Instrument": true,
+            "round1ResponseDigest": true,
+            "round2ResponseDigest": true,
+            "round1": true,
+            "round2": true,
+            "round1Digest": true,
+            "round2Digest": true
+          }
+        },
+        "ratification": {"type": "null"},
+        "finalization": {"type": "null"}
+      },
+      "required": ["phase"]
+    },
+    {
+      "properties": {
+        "phase": {"const": "composite_candidate"},
+        "responses": {
+          "type": "object",
+          "required": ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6"],
+          "properties": {
+            "Q1": true,
+            "Q2": true,
+            "Q3": true,
+            "Q4": true,
+            "Q5": true,
+            "Q6": true
+          },
+          "maxProperties": 6
+        },
+        "candidates": {"type": "array", "minItems": 1},
+        "ratification": {"type": "null"},
+        "finalization": {"type": "null"}
+      },
+      "required": ["phase"]
+    },
+    {
+      "properties": {
+        "phase": {
+          "enum": [
+            "walkthrough_ready",
+            "walkthrough_in_progress",
+            "awaiting_ratification"
+          ]
+        },
+        "responses": {
+          "type": "object",
+          "required": ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6"],
+          "properties": {
+            "Q1": true,
+            "Q2": true,
+            "Q3": true,
+            "Q4": true,
+            "Q5": true,
+            "Q6": true
+          },
+          "maxProperties": 6
+        },
+        "interpretations": {
+          "type": "object",
+          "required": ["candidateValidation", "walkthrough"],
+          "properties": {
+            "candidateValidation": true,
+            "walkthrough": true
+          }
+        },
+        "candidates": {"type": "array", "minItems": 1},
+        "ratification": {"type": "null"},
+        "finalization": {"type": "null"}
+      },
+      "required": ["phase"]
+    },
+    {
+      "properties": {
+        "phase": {"const": "revision_requested"},
+        "responses": {
+          "type": "object",
+          "required": ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6"],
+          "properties": {
+            "Q1": true,
+            "Q2": true,
+            "Q3": true,
+            "Q4": true,
+            "Q5": true,
+            "Q6": true
+          },
+          "maxProperties": 6
+        },
+        "candidates": {"type": "array", "minItems": 1},
+        "feedback": {"type": "array", "minItems": 1},
+        "ratification": {"type": "null"},
+        "finalization": {"type": "null"}
+      },
+      "required": ["phase"]
+    },
+    {
+      "properties": {
+        "phase": {"const": "ratified"},
+        "candidates": {"type": "array", "minItems": 1},
+        "ratification": {"$ref": "#/$defs/ratification"},
+        "finalization": {"type": "null"}
+      },
+      "required": ["phase"]
+    },
+    {
+      "properties": {
+        "phase": {"const": "finalizing"},
+        "candidates": {"type": "array", "minItems": 1},
+        "ratification": {"$ref": "#/$defs/ratification"},
+        "finalization": {"$ref": "#/$defs/finalization"}
+      },
+      "required": ["phase"]
+    },
+    {
+      "properties": {
+        "phase": {"const": "intent_captured"},
+        "candidates": {"type": "array", "minItems": 1},
+        "ratification": {"$ref": "#/$defs/ratification"},
+        "finalization": {
+          "allOf": [
+            {"$ref": "#/$defs/finalization"},
+            {
+              "type": "object",
+              "required": ["handoff"],
+              "properties": {
+                "handoff": true,
+                "validation": {"const": "passed"}
+              }
+            }
+          ]
+        }
+      },
+      "required": ["phase"]
+    },
+    {
+      "properties": {
+        "phase": {"const": "aborted"},
+        "outbox": {"type": "null"}
+      },
+      "required": ["phase"]
+    }
+  ],
+  "allOf": [
+    {
+      "if": {
+        "type": "object",
+        "properties": {
+          "phase": {
+            "enum": ["intent_captured", "aborted"]
+          }
+        },
+        "required": ["phase"]
+      },
+      "then": {
+        "type": "object",
+        "properties": {
+          "runtimeStatus": {
+            "const": "closed"
+          },
+          "outbox": {
+            "type": "null"
+          }
+        }
+      },
+      "else": {
+        "type": "object",
+        "properties": {
+          "runtimeStatus": {
+            "not": {
+              "const": "closed"
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "type": "object",
+        "properties": {
+          "phase": {
+            "not": {
+              "enum": ["new", "initializing", "aborted"]
+            }
+          }
+        },
+        "required": ["phase"]
+      },
+      "then": {
+        "type": "object",
+        "properties": {
+          "dependencies": {
+            "type": "object",
+            "required": ["outputs"],
+            "properties": {
+              "outputs": {
+                "type": "object",
+                "properties": {
+                  "initResolve": true
+                },
+                "required": ["initResolve"]
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "digest": {
+      "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/digest"
+    },
+    "phase": {
+      "enum": [
+        "new",
+        "initializing",
+        "initialized",
+        "round_1_drafting",
+        "round_1_q1_ready",
+        "round_1_q1_awaiting",
+        "round_1_q2_ready",
+        "round_1_q2_awaiting",
+        "round_1_q3_ready",
+        "round_1_q3_awaiting",
+        "round_1_responses_complete",
+        "round_1_interpreting",
+        "round_1_interpreted",
+        "round_2_drafting",
+        "round_2_q4_ready",
+        "round_2_q4_awaiting",
+        "round_2_q5_ready",
+        "round_2_q5_awaiting",
+        "round_2_q6_ready",
+        "round_2_q6_awaiting",
+        "round_2_responses_complete",
+        "round_2_interpreting",
+        "round_2_interpreted",
+        "composite_drafting",
+        "composite_candidate",
+        "walkthrough_ready",
+        "walkthrough_in_progress",
+        "awaiting_ratification",
+        "revision_requested",
+        "ratified",
+        "finalizing",
+        "intent_captured",
+        "aborted"
+      ]
+    },
+    "runtimeStatus": {
+      "enum": [
+        "rehydrating",
+        "active",
+        "suspended",
+        "blocked_recoverable",
+        "blocked_terminal",
+        "closed"
+      ]
+    },
+    "jsonValue": {
+      "oneOf": [
+        {"type": "null"},
+        {"type": "boolean"},
+        {"type": "number"},
+        {"type": "string"},
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/jsonValue"
+          }
+        },
+        {"$ref": "#/$defs/semanticRecord"}
+      ]
+    },
+    "semanticRecord": {
+      "type": "object",
+      "patternProperties": {
+        "^.*$": {
+          "$ref": "#/$defs/jsonValue"
+        }
+      },
+      "additionalProperties": false
+    },
+    "packagePin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version", "projectionDigest"],
+      "properties": {
+        "id": {
+          "const": "urn:mission-kit:survey-v2:package:survey-v2"
+        },
+        "version": {
+          "const": "1.0.0"
+        },
+        "projectionDigest": {
+          "$ref": "#/$defs/digest"
+        }
+      }
+    },
+    "protocolPin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version", "digest", "snapshot"],
+      "properties": {
+        "id": {
+          "const": "urn:mission-kit:survey-v2:protocol:survey"
+        },
+        "version": {
+          "const": "1.0.0"
+        },
+        "digest": {
+          "$ref": "#/$defs/digest"
+        },
+        "snapshot": {
+          "$ref": "urn:mission-kit:survey-v2:schema:protocol:v1"
+        }
+      }
+    },
+    "blockReason": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["transitionId", "code", "evidence"],
+      "properties": {
+        "transitionId": {
+          "pattern": "^(?:RT|RF)[0-9]{2}$",
+          "type": "string"
+        },
+        "code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/jsonValue"
+          }
+        }
+      }
+    },
+    "lineage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["parentSessionId", "restartReason", "parentEvidence"],
+      "properties": {
+        "parentSessionId": {
+          "type": ["string", "null"]
+        },
+        "restartReason": {
+          "type": ["string", "null"]
+        },
+        "parentEvidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/jsonValue"
+          }
+        }
+      }
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "workItem",
+        "outcomeAxes",
+        "requestedArtifactPath",
+        "axiomCorpus",
+        "pendingInputDigest"
+      ],
+      "properties": {
+        "workItem": {
+          "type": "string",
+          "minLength": 1
+        },
+        "outcomeAxes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "requestedArtifactPath": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/relativePath"
+        },
+        "axiomCorpus": {
+          "type": "boolean"
+        },
+        "pendingInputDigest": {
+          "$ref": "#/$defs/digest"
+        }
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["directorRef", "proposerRef", "bindingEvidence"],
+      "properties": {
+        "directorRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "proposerRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bindingEvidence": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "acceptedEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ordinal",
+        "id",
+        "eventId",
+        "transitionId",
+        "actor",
+        "payload",
+        "previousDigest",
+        "digest"
+      ],
+      "properties": {
+        "ordinal": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,255}$"
+        },
+        "eventId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "transitionId": {
+          "type": "string",
+          "pattern": "^(?:T(?:F)?[0-9]{2}|RT[0-9]{2}|RF[0-9]{2})$"
+        },
+        "actor": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/actor"
+        },
+        "payload": {
+          "$ref": "#/$defs/semanticRecord"
+        },
+        "previousDigest": {
+          "oneOf": [
+            {"type": "null"},
+            {"$ref": "#/$defs/digest"}
+          ]
+        },
+        "digest": {
+          "$ref": "#/$defs/digest"
+        }
+      }
+    },
+    "rejection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ordinal",
+        "ruleId",
+        "eventId",
+        "phase",
+        "revision",
+        "event",
+        "actor",
+        "payload",
+        "payloadDigest",
+        "commandDigest",
+        "selectedTransitionId",
+        "transitionBindingDigest",
+        "currentViewDigest",
+        "reason"
+      ],
+      "properties": {
+        "ordinal": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "ruleId": {
+          "const": "RJ01"
+        },
+        "eventId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,191}$"
+        },
+        "phase": {
+          "$ref": "#/$defs/phase"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "event": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actor": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/actor"
+        },
+        "payload": {
+          "$ref": "#/$defs/semanticRecord"
+        },
+        "payloadDigest": {
+          "$ref": "#/$defs/digest"
+        },
+        "commandDigest": {
+          "$ref": "#/$defs/digest"
+        },
+        "selectedTransitionId": {
+          "type": "string",
+          "pattern": "^(?:T(?:F)?[0-9]{2}|RT[0-9]{2}|RF[0-9]{2})$"
+        },
+        "transitionBindingDigest": {
+          "$ref": "#/$defs/digest"
+        },
+        "currentViewDigest": {
+          "oneOf": [
+            {"type": "null"},
+            {"$ref": "#/$defs/digest"}
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "idempotencyRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "payloadDigest",
+        "commandDigest",
+        "selectedTransitionId",
+        "transitionBindingDigest",
+        "transitionId",
+        "revision"
+      ],
+      "properties": {
+        "payloadDigest": {
+          "$ref": "#/$defs/digest"
+        },
+        "commandDigest": {
+          "$ref": "#/$defs/digest"
+        },
+        "selectedTransitionId": {
+          "type": "string",
+          "pattern": "^(?:T(?:F)?[0-9]{2}|RT[0-9]{2}|RF[0-9]{2})$"
+        },
+        "transitionBindingDigest": {
+          "$ref": "#/$defs/digest"
+        },
+        "transitionId": {
+          "type": "string",
+          "pattern": "^(?:(?:T(?:F)?[0-9]{2}|RT[0-9]{2}|RF[0-9]{2})|REJECTION:RJ01)$"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "outbox": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["transitionId", "digest", "payload"],
+      "properties": {
+        "transitionId": {
+          "type": "string",
+          "pattern": "^(?:T(?:F)?[0-9]{2}|RT[0-9]{2}|RF[0-9]{2})$"
+        },
+        "digest": {
+          "$ref": "#/$defs/digest"
+        },
+        "payload": {
+          "$ref": "urn:mission-kit:survey-v2:schema:presentation:v1"
+        }
+      }
+    },
+    "presentationAttempt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ordinal", "transitionId", "digest", "phase"],
+      "properties": {
+        "ordinal": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "transitionId": {
+          "type": "string"
+        },
+        "digest": {
+          "$ref": "#/$defs/digest"
+        },
+        "phase": {
+          "$ref": "#/$defs/phase"
+        }
+      }
+    },
+    "contradiction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "picks"],
+      "properties": {
+        "kind": {
+          "enum": ["exclusive-multi-pick", "declared-incompatibility"]
+        },
+        "picks": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "enum": ["a", "b", "c", "d"]
+          }
+        }
+      }
+    },
+    "response": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "questionId",
+        "raw",
+        "normalizedPicks",
+        "contradictions",
+        "rationale",
+        "eventId",
+        "acknowledgedViewDigest"
+      ],
+      "properties": {
+        "questionId": {
+          "pattern": "^Q[1-6]$",
+          "type": "string"
+        },
+        "raw": {
+          "type": "string",
+          "minLength": 1
+        },
+        "normalizedPicks": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": ["a", "b", "c", "d"]
+          }
+        },
+        "contradictions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/contradiction"
+          }
+        },
+        "rationale": {
+          "type": ["string", "null"]
+        },
+        "eventId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "acknowledgedViewDigest": {
+          "$ref": "#/$defs/digest"
+        }
+      }
+    },
+    "responses": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Q1": {"$ref": "#/$defs/response"},
+        "Q2": {"$ref": "#/$defs/response"},
+        "Q3": {"$ref": "#/$defs/response"},
+        "Q4": {"$ref": "#/$defs/response"},
+        "Q5": {"$ref": "#/$defs/response"},
+        "Q6": {"$ref": "#/$defs/response"}
+      }
+    },
+    "drafts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "round1Instruments",
+        "round1Interpretations",
+        "round2Instruments",
+        "round2Interpretations",
+        "composites",
+        "current"
+      ],
+      "properties": {
+        "round1Instruments": {
+          "type": "array",
+          "items": {
+            "$ref": "urn:mission-kit:survey-v2:schema:instrument:v1"
+          }
+        },
+        "round1Interpretations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/semanticRecord"
+          }
+        },
+        "round2Instruments": {
+          "type": "array",
+          "items": {
+            "$ref": "urn:mission-kit:survey-v2:schema:instrument:v1"
+          }
+        },
+        "round2Interpretations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/semanticRecord"
+          }
+        },
+        "composites": {
+          "type": "array",
+          "items": {
+            "$ref": "urn:mission-kit:survey-v2:schema:envelope-model:v1"
+          }
+        },
+        "current": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "round1Instrument": {"$ref": "#/$defs/digest"},
+            "round1Interpretation": {"$ref": "#/$defs/digest"},
+            "round2Instrument": {"$ref": "#/$defs/digest"},
+            "round2Interpretation": {"$ref": "#/$defs/digest"},
+            "composite": {"$ref": "#/$defs/digest"}
+          }
+        }
+      }
+    },
+    "acknowledgement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["index", "digest", "eventId"],
+      "properties": {
+        "index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "digest": {"$ref": "#/$defs/digest"},
+        "eventId": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "walkthroughSegment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "content"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "content": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "walkthrough": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidateRevision", "segments", "index", "acknowledgements"],
+      "properties": {
+        "candidateRevision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "segments": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/walkthroughSegment"}
+        },
+        "index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "acknowledgements": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/acknowledgement"}
+        }
+      }
+    },
+    "interpretations": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "round1Instrument": {
+          "oneOf": [
+            {"type": "null"},
+            {"$ref": "urn:mission-kit:survey-v2:schema:instrument:v1"}
+          ]
+        },
+        "round2Instrument": {
+          "oneOf": [
+            {"type": "null"},
+            {"$ref": "urn:mission-kit:survey-v2:schema:instrument:v1"}
+          ]
+        },
+        "round1ResponseDigest": {"$ref": "#/$defs/digest"},
+        "round2ResponseDigest": {"$ref": "#/$defs/digest"},
+        "round1": {
+          "oneOf": [{"type": "null"}, {"$ref": "#/$defs/semanticRecord"}]
+        },
+        "round2": {
+          "oneOf": [{"type": "null"}, {"$ref": "#/$defs/semanticRecord"}]
+        },
+        "round1Digest": {
+          "oneOf": [{"type": "null"}, {"$ref": "#/$defs/digest"}]
+        },
+        "round2Digest": {
+          "oneOf": [{"type": "null"}, {"$ref": "#/$defs/digest"}]
+        },
+        "candidateValidation": {"$ref": "#/$defs/semanticRecord"},
+        "walkthrough": {"$ref": "#/$defs/walkthrough"}
+      }
+    },
+    "snapshotItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "type",
+        "mode",
+        "mediaType",
+        "contentEncoding",
+        "content",
+        "byteLength",
+        "digest"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/relativePath"
+        },
+        "type": {"const": "regular-file"},
+        "mode": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 511
+        },
+        "mediaType": {
+          "enum": ["text/markdown", "application/octet-stream"]
+        },
+        "contentEncoding": {
+          "enum": ["utf8", "base64"]
+        },
+        "content": {"type": "string"},
+        "byteLength": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65536
+        },
+        "digest": {"$ref": "#/$defs/digest"}
+      }
+    },
+    "snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dependencyId",
+        "repository",
+        "selector",
+        "resolverEvidence",
+        "observationInterval",
+        "inventory",
+        "fileCount",
+        "totalBytes",
+        "inventoryDigest",
+        "aggregateDigest",
+        "captureTool"
+      ],
+      "properties": {
+        "dependencyId": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/semanticId"
+        },
+        "repository": {
+          "const": "apnex/mission-kit"
+        },
+        "selector": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "path"],
+          "properties": {
+            "kind": {"const": "subdirectory"},
+            "path": {
+              "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/relativePath"
+            }
+          }
+        },
+        "resolverEvidence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "bindingKey", "repositoryAssertion"],
+          "properties": {
+            "kind": {"const": "host-registry"},
+            "bindingKey": {"const": "mission-kit.axioms"},
+            "repositoryAssertion": {"const": "apnex/mission-kit"}
+          }
+        },
+        "observationInterval": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["startedAt", "completedAt"],
+          "properties": {
+            "startedAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "completedAt": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        },
+        "inventory": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 128,
+          "items": {"$ref": "#/$defs/snapshotItem"}
+        },
+        "fileCount": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 128
+        },
+        "totalBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 262144
+        },
+        "inventoryDigest": {"$ref": "#/$defs/digest"},
+        "aggregateDigest": {"$ref": "#/$defs/digest"},
+        "captureTool": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "profile"],
+          "properties": {
+            "id": {
+              "const": "urn:mission-kit:survey-v2:runtime:dependency-snapshot"
+            },
+            "profile": {"const": "two-full-byte-passes"}
+          }
+        }
+      }
+    },
+    "resolverAttempt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "attemptId",
+        "kind",
+        "bindingKey",
+        "repository",
+        "registryId",
+        "locatorEvidenceDigest",
+        "actorToolEvidence"
+      ],
+      "properties": {
+        "attemptId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,191}$"
+        },
+        "kind": {"const": "host-registry"},
+        "bindingKey": {"const": "mission-kit.axioms"},
+        "repository": {"const": "apnex/mission-kit"},
+        "registryId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locatorEvidenceDigest": {"$ref": "#/$defs/digest"},
+        "actorToolEvidence": {"const": "deterministic-runtime"}
+      }
+    },
+    "initializationReceiptApplicable": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receiptId",
+        "dependencyId",
+        "hook",
+        "applicability",
+        "evaluatedFactsDigest",
+        "pendingInputDigest",
+        "resolverAttemptId",
+        "remainingStages",
+        "producedBy",
+        "snapshot",
+        "resultDigest"
+      ],
+      "properties": {
+        "receiptId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,191}$"
+        },
+        "dependencyId": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/semanticId"
+        },
+        "hook": {"const": "init-resolve"},
+        "applicability": {"const": "applicable"},
+        "evaluatedFactsDigest": {"$ref": "#/$defs/digest"},
+        "pendingInputDigest": {"$ref": "#/$defs/digest"},
+        "resolverAttemptId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "remainingStages": {
+          "const": ["commit-r1", "commit-r2", "pre-candidate", "rehydrate"]
+        },
+        "producedBy": {"const": "deterministic-runtime"},
+        "snapshot": {"$ref": "#/$defs/snapshot"},
+        "resultDigest": {"$ref": "#/$defs/digest"}
+      }
+    },
+    "initializationReceiptNotApplicable": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receiptId",
+        "dependencyId",
+        "hook",
+        "applicability",
+        "evaluatedFactsDigest",
+        "pendingInputDigest",
+        "resolverAttemptId",
+        "remainingStages",
+        "producedBy",
+        "resultDigest"
+      ],
+      "properties": {
+        "receiptId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,191}$"
+        },
+        "dependencyId": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/semanticId"
+        },
+        "hook": {"const": "init-resolve"},
+        "applicability": {"const": "not-applicable"},
+        "evaluatedFactsDigest": {"$ref": "#/$defs/digest"},
+        "pendingInputDigest": {"$ref": "#/$defs/digest"},
+        "resolverAttemptId": {"type": "null"},
+        "remainingStages": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "producedBy": {"const": "deterministic-runtime"},
+        "resultDigest": {"$ref": "#/$defs/digest"}
+      }
+    },
+    "initializationReceipt": {
+      "oneOf": [
+        {"$ref": "#/$defs/initializationReceiptApplicable"},
+        {"$ref": "#/$defs/initializationReceiptNotApplicable"}
+      ]
+    },
+    "rehydrationOutput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "hook",
+        "phase",
+        "pendingInputDigest",
+        "initializationResultDigest",
+        "frozenSnapshotDigest",
+        "previousEventDigest",
+        "complete",
+        "producedBy",
+        "resultDigest"
+      ],
+      "properties": {
+        "hook": {"const": "rehydrate"},
+        "phase": {"$ref": "#/$defs/phase"},
+        "pendingInputDigest": {"$ref": "#/$defs/digest"},
+        "initializationResultDigest": {
+          "oneOf": [{"type": "null"}, {"$ref": "#/$defs/digest"}]
+        },
+        "frozenSnapshotDigest": {
+          "oneOf": [{"type": "null"}, {"$ref": "#/$defs/digest"}]
+        },
+        "previousEventDigest": {
+          "oneOf": [{"type": "null"}, {"$ref": "#/$defs/digest"}]
+        },
+        "complete": {"const": true},
+        "producedBy": {"const": "deterministic-runtime"},
+        "resultDigest": {"$ref": "#/$defs/digest"}
+      }
+    },
+    "hookOutput": {
+      "type": "object",
+      "patternProperties": {
+        "^(?!(?:hook|complete|bindingDigest|resultDigest)$).+$": {
+          "$ref": "#/$defs/jsonValue"
+        }
+      },
+      "additionalProperties": false,
+      "required": ["hook", "complete", "bindingDigest", "resultDigest"],
+      "properties": {
+        "hook": {
+          "enum": ["commit-r1", "commit-r2", "pre-candidate"]
+        },
+        "complete": {"const": true},
+        "bindingDigest": {"$ref": "#/$defs/digest"},
+        "resultDigest": {"$ref": "#/$defs/digest"}
+      }
+    },
+    "dependencyOutputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "initResolve": {"$ref": "#/$defs/initializationReceipt"},
+        "commitR1": {"$ref": "#/$defs/hookOutput"},
+        "commitR2": {"$ref": "#/$defs/hookOutput"},
+        "preCandidate": {"$ref": "#/$defs/hookOutput"}
+      }
+    },
+    "dependencies": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "plan",
+        "resolverAttempts",
+        "resolverReceipts",
+        "rehydrationOutputs",
+        "outputs"
+      ],
+      "properties": {
+        "plan": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/semanticId"
+          }
+        },
+        "resolverAttempts": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/resolverAttempt"}
+        },
+        "resolverReceipts": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/initializationReceipt"}
+        },
+        "rehydrationOutputs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/rehydrationOutput"}
+        },
+        "outputs": {"$ref": "#/$defs/dependencyOutputs"}
+      }
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "revision",
+        "model",
+        "semanticDigest",
+        "renderDigest",
+        "renderedBytes",
+        "superseded"
+      ],
+      "properties": {
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "model": {
+          "$ref": "urn:mission-kit:survey-v2:schema:envelope-model:v1"
+        },
+        "semanticDigest": {"$ref": "#/$defs/digest"},
+        "renderDigest": {"$ref": "#/$defs/digest"},
+        "renderedBytes": {
+          "type": "string",
+          "minLength": 1
+        },
+        "superseded": {"type": "boolean"}
+      }
+    },
+    "feedback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind"],
+      "properties": {
+        "kind": {
+          "enum": [
+            "candidate-validation",
+            "correction",
+            "withholding",
+            "clarification",
+            "finalization-retryable"
+          ]
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "eventId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "diagnostics": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/jsonValue"}
+        }
+      }
+    },
+    "ratification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidateRevision",
+        "semanticDigest",
+        "renderDigest",
+        "eventId",
+        "directorRef"
+      ],
+      "properties": {
+        "candidateRevision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "semanticDigest": {"$ref": "#/$defs/digest"},
+        "renderDigest": {"$ref": "#/$defs/digest"},
+        "eventId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "directorRef": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "handoff": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "digest", "terminalEventId"],
+      "properties": {
+        "path": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/relativePath"
+        },
+        "digest": {"$ref": "#/$defs/digest"},
+        "terminalEventId": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "finalization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidateRevision",
+        "bytes",
+        "digest",
+        "targetPath",
+        "validation"
+      ],
+      "properties": {
+        "candidateRevision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "bytes": {
+          "type": "string",
+          "minLength": 1
+        },
+        "digest": {"$ref": "#/$defs/digest"},
+        "targetPath": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/relativePath"
+        },
+        "validation": {
+          "enum": ["pending", "passed"]
+        },
+        "handoff": {"$ref": "#/$defs/handoff"}
+      }
+    }
+  }
+}

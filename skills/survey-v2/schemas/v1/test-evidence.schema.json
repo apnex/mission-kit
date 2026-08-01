@@ -1,0 +1,275 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:survey-v2:schema:test-evidence:v1",
+  "title": "Survey v2 test evidence",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/manifest"
+    },
+    {
+      "$ref": "#/$defs/descriptor"
+    },
+    {
+      "$ref": "#/$defs/result"
+    }
+  ],
+  "$defs": {
+    "manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["$schema", "schemaVersion", "id", "tests"],
+      "properties": {
+        "$schema": {
+          "const": "urn:mission-kit:survey-v2:schema:test-evidence:v1"
+        },
+        "schemaVersion": {
+          "const": "1.0.0"
+        },
+        "id": {
+          "const": "urn:mission-kit:survey-v2:test-manifest:all"
+        },
+        "tests": {
+          "type": "array",
+          "minItems": 28,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "descriptorPath"],
+            "properties": {
+              "id": {
+                "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/semanticId"
+              },
+              "descriptorPath": {
+                "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/relativePath"
+              }
+            }
+          }
+        }
+      }
+    },
+    "descriptor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["$schema", "schemaVersion", "id", "obligationId", "behavior", "evidenceClass", "runner", "executable", "fixtures", "prerequisites", "resultSchema"],
+      "properties": {
+        "$schema": {
+          "const": "urn:mission-kit:survey-v2:schema:test-evidence:v1"
+        },
+        "schemaVersion": {
+          "const": "1.0.0"
+        },
+        "id": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/semanticId"
+        },
+        "obligationId": {
+          "type": "string",
+          "pattern": "^O-R(?:0[1-9]|1[0-9]|2[0-8])-[0-9]{2}$"
+        },
+        "behavior": {
+          "type": "string",
+          "minLength": 12
+        },
+        "evidenceClass": {
+          "enum": ["positive", "negative", "conformance", "resume", "failure-injection", "comparison", "forward"]
+        },
+        "runner": {
+          "const": "node:test"
+        },
+        "executable": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/relativePath"
+        },
+        "fixtures": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/relativePath"
+          }
+        },
+        "prerequisites": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "resultSchema": {
+          "const": "urn:mission-kit:survey-v2:test-result:v1"
+        }
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "$schema",
+        "schemaVersion",
+        "id",
+        "kind",
+        "descriptor",
+        "source",
+        "fixtures",
+        "package",
+        "environment",
+        "runner",
+        "output",
+        "status",
+        "resultDigest"
+      ],
+      "properties": {
+        "$schema": {
+          "const": "urn:mission-kit:survey-v2:schema:test-evidence:v1"
+        },
+        "schemaVersion": {
+          "const": "1.0.0"
+        },
+        "id": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/semanticId"
+        },
+        "kind": {
+          "const": "test-result"
+        },
+        "descriptor": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "path", "digest", "obligationId"],
+          "properties": {
+            "id": {
+              "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/semanticId"
+            },
+            "path": {
+              "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/relativePath"
+            },
+            "digest": {
+              "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/digest"
+            },
+            "obligationId": {
+              "type": "string",
+              "pattern": "^O-R(?:0[1-9]|1[0-9]|2[0-8])-[0-9]{2}$"
+            }
+          }
+        },
+        "source": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["path", "digest"],
+          "properties": {
+            "path": {
+              "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/relativePath"
+            },
+            "digest": {
+              "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/digest"
+            }
+          }
+        },
+        "fixtures": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "digest"],
+            "properties": {
+              "path": {
+                "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/relativePath"
+              },
+              "digest": {
+                "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/digest"
+              }
+            }
+          }
+        },
+        "package": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "version", "projectionDigest", "packageDigest"],
+          "properties": {
+            "id": {
+              "const": "urn:mission-kit:survey-v2:package:survey-v2"
+            },
+            "version": {
+              "const": "1.0.0"
+            },
+            "projectionDigest": {
+              "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/digest"
+            },
+            "packageDigest": {
+              "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/digest"
+            }
+          }
+        },
+        "environment": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["nodeVersion", "platform", "architecture"],
+          "properties": {
+            "nodeVersion": {
+              "type": "string",
+              "pattern": "^v[0-9]+\\."
+            },
+            "platform": {
+              "type": "string",
+              "minLength": 1
+            },
+            "architecture": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "runner": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "invocation", "exitCode", "signal"],
+          "properties": {
+            "id": {
+              "const": "node:test"
+            },
+            "invocation": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "exitCode": {
+              "type": ["integer", "null"],
+              "minimum": 0
+            },
+            "signal": {
+              "type": ["string", "null"]
+            }
+          }
+        },
+        "output": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["stdoutDigest", "stderrDigest", "stdoutBytes", "stderrBytes"],
+          "properties": {
+            "stdoutDigest": {
+              "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/digest"
+            },
+            "stderrDigest": {
+              "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/digest"
+            },
+            "stdoutBytes": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "stderrBytes": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "status": {
+          "enum": ["pass", "fail"]
+        },
+        "resultDigest": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/digest"
+        }
+      }
+    }
+  }
+}

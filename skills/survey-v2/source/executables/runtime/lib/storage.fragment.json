@@ -1,0 +1,29 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:fragment:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:executable:runtime:storage",
+  "revision": 1,
+  "purpose": "Persist hash-chained sessions atomically and publish create-once quarantine latches.",
+  "role": "executable",
+  "normativity": "normative",
+  "audiences": ["maintainer"],
+  "representation": {
+    "format": "javascript",
+    "payloadPath": "source/executables/runtime/lib/storage.mjs",
+    "mediaType": "text/javascript"
+  },
+  "rationale": "One writer and durable replacement order prevent event, snapshot and outbox disagreement.",
+  "absenceConsequence": "Crashes could create torn semantic state or overwrite forensic evidence.",
+  "composition": {
+    "provides": ["runtime.storage@1"],
+    "requires": ["runtime.canonical@1", "runtime.envelope@1"],
+    "dependencies": []
+  },
+  "requirements": ["R11", "R12"],
+  "contribution": {
+    "mode": "unique",
+    "proofClass": "cold-resume-coverage",
+    "obligations": ["O-R11-01", "O-R12-01"]
+  },
+  "exposure": "internal"
+}

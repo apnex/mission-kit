@@ -1,0 +1,29 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:fragment:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:executable:runtime:present",
+  "revision": 1,
+  "purpose": "Commit and emit only the exact Director view legal at the current cursor.",
+  "role": "executable",
+  "normativity": "normative",
+  "audiences": ["agent", "Director", "maintainer"],
+  "representation": {
+    "format": "javascript",
+    "payloadPath": "source/executables/runtime/survey-present.mjs",
+    "mediaType": "text/javascript"
+  },
+  "rationale": "Presentation attempts must be durable before output and may reveal only one frozen current payload.",
+  "absenceConsequence": "A crash or eager renderer could leak a future question or claim delivery before commit.",
+  "composition": {
+    "provides": ["runtime.command.present@1"],
+    "requires": ["runtime.engine@1"],
+    "dependencies": []
+  },
+  "requirements": ["R04", "R12", "R20"],
+  "contribution": {
+    "mode": "supporting",
+    "proofClass": "negative-case-coverage",
+    "obligations": ["O-R04-01"]
+  },
+  "exposure": "exported"
+}

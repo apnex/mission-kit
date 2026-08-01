@@ -1,0 +1,16 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:projection:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:projection:agent-metadata",
+  "renderer": "agent-metadata",
+  "targets": ["agents/openai.yaml"],
+  "selection": {
+    "fragmentIds": [
+      "urn:mission-kit:survey-v2:fragment:authority:semantic-boundaries"
+    ]
+  },
+  "budget": {
+    "maxLines": 20,
+    "maxWords": 120
+  }
+}
