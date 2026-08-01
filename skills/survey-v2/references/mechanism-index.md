@@ -13,7 +13,7 @@
 | R07 | M01 | `urn:mission-kit:survey-v2:fragment:authority:semantic-boundaries` | O-R07-01 | negative |
 | R08 | M10 | `urn:mission-kit:survey-v2:fragment:artifact:envelope-and-ratification` | O-R08-01 | positive, negative |
 | R09 | M12 | `urn:mission-kit:survey-v2:fragment:projection:isomorphic-projections` | O-R09-01 | conformance |
-| R10 | M12 | `urn:mission-kit:survey-v2:fragment:projection:isomorphic-projections` | O-R10-01 | conformance |
+| R10 | M12 | `urn:mission-kit:survey-v2:fragment:projection:isomorphic-projections` | O-R10-01, O-R10-02, O-R10-03, O-R10-04 | conformance, negative |
 | R11 | M09 | `urn:mission-kit:survey-v2:fragment:state:session-and-resume` | O-R11-01 | positive, resume |
 | R12 | M09 | `urn:mission-kit:survey-v2:fragment:state:session-and-resume` | O-R12-01 | resume, failure-injection |
 | R13 | M10 | `urn:mission-kit:survey-v2:fragment:artifact:envelope-and-ratification` | O-R13-01 | positive, negative, resume |

@@ -266,6 +266,7 @@
       "selectors": [
         {
           "id": "SG01",
+          "label": "Any nonterminal phase",
           "members": [
             "new", "initializing", "initialized", "round_1_drafting",
             "round_1_q1_ready", "round_1_q1_awaiting", "round_1_q2_ready",
@@ -282,6 +283,7 @@
         },
         {
           "id": "SG02",
+          "label": "Current attempted presentation phases",
           "members": [
             "round_1_q1_awaiting", "round_1_q2_awaiting",
             "round_1_q3_awaiting", "round_2_q4_awaiting",
@@ -430,6 +432,7 @@
       "selectors": [
         {
           "id": "SR01",
+          "label": "Any nonclosed runtime status",
           "members": ["rehydrating", "active", "suspended", "blocked_recoverable", "blocked_terminal"]
         }
       ],

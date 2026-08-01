@@ -9,6 +9,9 @@ base64url canonical JSON records. Parse generated Mermaid independently,
 expand TF/RF selectors, and compare the full transition tuple multiset with the
 manifest.
 
-Generate the Director FLOW from the same transitions plus typed annotation and
-rejoin records. Prove all six question lanes and every Director-facing
-transition without making FLOW a third state authority.
+Generate the Director lifecycle from one typed authored view and the same
+protocol. Render a primary three-lane journey separately from its continuity
+and fail-safe inset, then keep exact full-tuple coverage, question, rejoin and
+fail-safe records outside Mermaid parser input. Prove all six question handoffs,
+active-state legal rejoin, and every protocol transition without drawing a
+second FSM or making FLOW a state or authority source.

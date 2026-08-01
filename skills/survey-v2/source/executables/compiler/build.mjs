@@ -461,7 +461,7 @@ function mermaidMachine(machine) {
   for (const family of machine.families) {
     const selector = machine.selectors.find((item) => item.id === family.fromSelector);
     lines.push(`    %% @family|${base64urlCanonical(family)}`);
-    lines.push(`    state "${selector.description}" as ${selector.id}`);
+    lines.push(`    state "${selector.id}: ${selector.label}" as ${selector.id}`);
     const to = family.to === "same" ? selector.id : aliases.get(family.to);
     lines.push(
       `    ${selector.id} --> ${to}: ${family.id}|${family.event}|${family.guard}|${family.action}|${family.mutation}|${family.authority}`
@@ -495,7 +495,14 @@ function renderProtocolFsm(protocol) {
       "",
       mermaidMachine(machine),
       ""
-    ])
+    ]),
+    "## Reading the projection",
+    "",
+    "- Phase and runtime-status are orthogonal machines; neither diagram is a sequence into the other.",
+    "- SG/SR nodes are selectors over the encoded member set, not additional machine states.",
+    "- Edge labels are `transition|event|guard|action|mutation|authority`; encoded records remain normative.",
+    "- T35/RT12 and TF01/RF01 are the coupled successful and aborted closures respectively.",
+    ""
   ].join("\n");
 }
 
@@ -560,78 +567,485 @@ function assertProtocolFsmParseback(markdown, protocol) {
   }
 }
 
-function renderDirectorFlow(protocol) {
+function protocolSurface(protocol) {
+  return protocol.machines.flatMap((machine) => (
+    [...machine.transitions, ...machine.families].map((transition) => ({
+      machine: machine.id,
+      transition
+    }))
+  ));
+}
+
+function validateDirectorLifecycle(view, protocol) {
+  if (view.protocolId !== protocol.id) fail("Director lifecycle binds the wrong protocol");
+  const panelIds = unique(view.panels.map((panel) => panel.id), "Director lifecycle panel ID");
+  assertExactValues(panelIds, ["lifecycle", "continuity"], "Director lifecycle panels");
+  if (canonicalize(view.panels.map((panel) => panel.order)) !== canonicalize([1, 2])) {
+    fail("Director lifecycle panel order must be 1, 2");
+  }
+  const laneIds = unique(view.lanes.map((lane) => lane.id), "Director lifecycle lane ID");
+  assertExactValues(laneIds, ["director", "proposer", "runtime"], "Director lifecycle lanes");
+  if (canonicalize(view.lanes.map((lane) => lane.order)) !== canonicalize([1, 2, 3])) {
+    fail("Director lifecycle lane order must be 1, 2, 3");
+  }
+
+  const nodeById = new Map(view.nodes.map((node) => [node.id, node]));
+  unique(view.nodes.map((node) => node.id), "Director lifecycle node ID");
+  for (const node of view.nodes) {
+    if (!panelIds.has(node.panel)) fail(`${node.id} names unknown lifecycle panel ${node.panel}`);
+    if (!laneIds.has(node.lane)) fail(`${node.id} names unknown lifecycle lane ${node.lane}`);
+    if (node.ownerNodeId) {
+      if (!nodeById.has(node.ownerNodeId)) fail(`${node.id} has unknown owner node ${node.ownerNodeId}`);
+      if (node.ownerNodeId === node.id) fail(`${node.id} cannot own itself`);
+      if (node.phaseIds || node.runtimeStatusIds || node.selectorRefs) {
+        fail(`${node.id} cannot combine ownerNodeId with direct semantic references`);
+      }
+      const visited = new Set([node.id]);
+      let owner = nodeById.get(node.ownerNodeId);
+      while (owner?.ownerNodeId) {
+        if (visited.has(owner.id)) fail(`Director lifecycle owner cycle reaches ${owner.id}`);
+        visited.add(owner.id);
+        owner = nodeById.get(owner.ownerNodeId);
+      }
+    } else if (
+      !node.phaseIds &&
+      !node.runtimeStatusIds &&
+      !node.selectorRefs &&
+      node.kind !== "fail-safe"
+    ) {
+      fail(`${node.id} has no semantic owner`);
+    }
+  }
+
   const phase = protocol.machines.find((machine) => machine.id === "phase");
   const runtime = protocol.machines.find((machine) => machine.id === "runtime");
-  const lines = [
-    "<!-- GENERATED FILE. Machine edges resolve to the canonical protocol manifest. -->",
-    "",
-    "# Director FLOW",
-    "",
-    "```mermaid",
-    "flowchart TB"
+  const phaseAssignments = view.nodes.flatMap((node) => (
+    (node.phaseIds ?? []).map((phaseId) => ({ phaseId, nodeId: node.id }))
+  ));
+  unique(phaseAssignments.map((item) => item.phaseId), "Director lifecycle phase assignment");
+  assertExactValues(
+    phaseAssignments.map((item) => item.phaseId),
+    phase.states.map((state) => state.id),
+    "Director lifecycle phase coverage"
+  );
+  const phaseNodeById = new Map(phaseAssignments.map((item) => [item.phaseId, item.nodeId]));
+
+  const runtimeAssignments = view.nodes.flatMap((node) => (
+    (node.runtimeStatusIds ?? []).map((statusId) => ({ statusId, nodeId: node.id }))
+  ));
+  assertExactValues(
+    new Set(runtimeAssignments.map((item) => item.statusId)),
+    runtime.states.map((state) => state.id),
+    "Director lifecycle runtime-status coverage"
+  );
+  const runtimeCounts = new Map();
+  for (const assignment of runtimeAssignments) {
+    runtimeCounts.set(assignment.statusId, (runtimeCounts.get(assignment.statusId) ?? 0) + 1);
+  }
+  for (const [statusId, count] of runtimeCounts) {
+    const expected = statusId === "closed" ? 2 : 1;
+    if (count !== expected) fail(`Director lifecycle runtime status ${statusId} has ${count} owners, expected ${expected}`);
+  }
+
+  const expectedSelectorRefs = [
+    ...protocol.machines.flatMap((machine) => machine.selectors.map((selector) => `${machine.id}/${selector.id}`)),
+    "runtime/start"
   ];
-  for (const machine of protocol.machines) {
-    for (const state of machine.states) {
-      const nodeId = `${machine.id}_${state.id}`.replace(/[^A-Za-z0-9_]/g, "_");
-      lines.push(`    %% @flow-node|${nodeId}|${machine.id}-state|${state.id}`);
-      lines.push(`    ${nodeId}[${state.label}]`);
+  const selectorRefs = view.nodes.flatMap((node) => node.selectorRefs ?? []);
+  unique(selectorRefs, "Director lifecycle selector reference");
+  assertExactValues(selectorRefs, expectedSelectorRefs, "Director lifecycle selector coverage");
+
+  const annotationIds = unique(view.annotations.map((annotation) => annotation.id), "Director lifecycle annotation ID");
+  const rejectionIds = new Set(protocol.rejectionRules.map((rule) => rule.id));
+  const edgeIds = unique(view.edges.map((edge) => edge.id), "Director lifecycle edge ID");
+  const surface = protocolSurface(protocol);
+  const transitionById = new Map(surface.map((entry) => [entry.transition.id, entry]));
+  const traceIds = [];
+  for (const edge of view.edges) {
+    if (!nodeById.has(edge.from) || !nodeById.has(edge.to)) {
+      fail(`${edge.id} has an unknown lifecycle endpoint`);
     }
-    for (const selector of machine.selectors) {
-      const nodeId = `${machine.id}_${selector.id}`;
-      lines.push(`    %% @flow-node|${nodeId}|${machine.id}-selector|${selector.id}`);
-      lines.push(`    ${nodeId}{${selector.description}}`);
+    if (nodeById.get(edge.from).panel !== nodeById.get(edge.to).panel) {
+      fail(`${edge.id} crosses lifecycle panels`);
     }
-  }
-  for (const machine of protocol.machines) {
-    for (const transition of [...machine.transitions, ...machine.families]) {
-      const sourceId = transition.from === "start"
-        ? `${machine.id}_start`
-        : `${machine.id}_${transition.from ?? transition.fromSelector}`.replace(/[^A-Za-z0-9_]/g, "_");
-      const targetState = transition.to === "same" ? transition.fromSelector : transition.to;
-      const targetId = `${machine.id}_${targetState}`.replace(/[^A-Za-z0-9_]/g, "_");
-      if (transition.from === "start") {
-        lines.push(`    %% @flow-node|${sourceId}|machine-pseudostate|${machine.id}|start`);
-        lines.push(`    ${sourceId}((start))`);
+    if (edge.kind === "lifecycle") {
+      traceIds.push(...edge.transitionIds);
+      for (const transitionId of edge.transitionIds) {
+        if (!transitionById.has(transitionId)) fail(`${edge.id} covers unknown transition ${transitionId}`);
       }
-      lines.push(`    %% @flow-edge|${machine.id}|${base64urlCanonical(transition)}`);
-      lines.push(`    ${sourceId} -->|${transition.id}| ${targetId}`);
+    } else if (edge.kind === "annotation") {
+      if (!annotationIds.has(edge.annotationId)) fail(`${edge.id} names unknown annotation ${edge.annotationId}`);
+    } else if (edge.kind === "rejection") {
+      if (!rejectionIds.has(edge.rejectionId)) fail(`${edge.id} names unknown rejection ${edge.rejectionId}`);
+    } else if (edge.kind === "fail-safe") {
+      if (edge.operationId !== protocol.quarantineOperation.id) fail(`${edge.id} names unknown fail-safe operation`);
+      if (nodeById.get(edge.from).kind !== "fail-safe" || nodeById.get(edge.to).kind !== "fail-safe") {
+        fail(`${edge.id} must connect only fail-safe nodes`);
+      }
     }
   }
-  const questionEvents = ["PRESENT_Q1", "PRESENT_Q2", "PRESENT_Q3", "PRESENT_Q4", "PRESENT_Q5", "PRESENT_Q6"];
-  for (const event of questionEvents) {
-    const transition = phase.transitions.find((item) => item.event === event);
-    lines.push(`    %% @flow-question|${event.slice(-2)}|${transition.id}|${transition.from}|${transition.to}`);
+  unique(traceIds, "Director lifecycle transition coverage");
+  assertExactValues(traceIds, transitionById.keys(), "Director lifecycle transition coverage");
+  if (view.edges.filter((edge) => edge.kind === "lifecycle").length >= surface.length) {
+    fail("Director lifecycle is not visibly compressed relative to the protocol FSM");
   }
-  lines.push("```", "", "The six `@flow-question` records prove distinct Q1–Q6 lanes. Runtime edges remain visible so a Director-facing view cannot imply progress while the process is suspended, blocked, rehydrating, or closed.", "");
+  const primaryLifecycleEdges = view.edges.filter((edge) => (
+    edge.kind === "lifecycle" && nodeById.get(edge.from).panel === "lifecycle"
+  ));
+  if (primaryLifecycleEdges.length >= Math.ceil(surface.length / 2)) {
+    fail("Primary Director lifecycle is not a strict macro projection");
+  }
+  for (const laneId of laneIds) {
+    if (!view.nodes.some((node) => node.panel === "lifecycle" && node.lane === laneId)) {
+      fail(`Primary Director lifecycle has no visible ${laneId} lane`);
+    }
+  }
+  if (!view.edges.some((edge) => edge.kind === "lifecycle" && edge.transitionIds.length >= 3)) {
+    fail("Director lifecycle has no meaningful macro edge");
+  }
+  const referencedAnnotations = view.edges
+    .filter((edge) => edge.kind === "annotation")
+    .map((edge) => edge.annotationId);
+  assertExactValues(referencedAnnotations, annotationIds, "Director lifecycle annotation use");
+
+  const edgeByTransitionId = new Map();
+  for (const edge of view.edges.filter((item) => item.kind === "lifecycle")) {
+    for (const transitionId of edge.transitionIds) edgeByTransitionId.set(transitionId, edge);
+  }
+  for (const [left, right] of [["T35", "RT12"], ["TF01", "RF01"]]) {
+    if (edgeByTransitionId.get(left)?.id !== edgeByTransitionId.get(right)?.id) {
+      fail(`coupled transitions ${left}/${right} must share one lifecycle macro`);
+    }
+  }
+
+  const questions = view.nodes.filter((node) => node.kind === "question");
+  assertExactValues(questions.map((node) => node.questionId), ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6"], "Director lifecycle question nodes");
+  if (view.nodes.filter((node) => node.checkpoint === "walkthrough").length !== 1) {
+    fail("Director lifecycle must have exactly one walkthrough checkpoint");
+  }
+  if (view.nodes.filter((node) => node.checkpoint === "ratification").length !== 1) {
+    fail("Director lifecycle must have exactly one ratification checkpoint");
+  }
+  const questionRecords = questions
+    .map((node) => {
+      const present = phase.transitions.find((transition) => transition.event === `PRESENT_${node.questionId}`);
+      const respond = phase.transitions.find((transition) => transition.event === `RESPOND_${node.questionId}`);
+      const presentEdge = edgeByTransitionId.get(present.id);
+      const responseEdge = edgeByTransitionId.get(respond.id);
+      if (presentEdge?.to !== node.id) fail(`${node.questionId} presentation does not enter its visible question node`);
+      if (responseEdge?.from !== node.id) fail(`${node.questionId} response does not leave its visible question node`);
+      const rejection = view.edges.filter((edge) => (
+        edge.kind === "rejection" &&
+        edge.from === node.id &&
+        edge.to === node.id &&
+        edge.rejectionId === "RJ01"
+      ));
+      if (rejection.length !== 1) fail(`${node.questionId} must have one same-question RJ01 loop`);
+      return {
+        questionId: node.questionId,
+        nodeId: node.id,
+        presentTransitionId: present.id,
+        responseTransitionId: respond.id,
+        rejectionId: "RJ01"
+      };
+    })
+    .sort((left, right) => compareUtf8(left.questionId, right.questionId));
+
+  const rejoinRecords = phase.states
+    .filter((state) => !state.terminal)
+    .map((state) => {
+      const nextTransitionIds = [
+        ...phase.transitions.filter((transition) => transition.from === state.id).map((transition) => transition.id),
+        ...phase.families
+          .filter((family) => phase.selectors.find((selector) => selector.id === family.fromSelector)?.members.includes(state.id))
+          .map((family) => family.id)
+      ].sort(compareUtf8);
+      return {
+        runtimeStatusId: "active",
+        phaseId: state.id,
+        nodeId: phaseNodeById.get(state.id),
+        nextTransitionIds,
+        continuationEdgeIds: [...new Set(
+          nextTransitionIds.map((transitionId) => edgeByTransitionId.get(transitionId)?.id)
+        )].sort(compareUtf8)
+      };
+    })
+    .sort((left, right) => compareUtf8(left.phaseId, right.phaseId));
+  if (rejoinRecords.some((record) => !record.nodeId)) fail("Director lifecycle rejoin map has an unowned phase");
+
+  const coverage = [];
+  for (const edge of view.edges.filter((item) => item.kind === "lifecycle")) {
+    for (const transitionId of edge.transitionIds) {
+      const entry = transitionById.get(transitionId);
+      coverage.push({
+        edgeId: edge.id,
+        machine: entry.machine,
+        transition: entry.transition
+      });
+    }
+  }
+  coverage.sort((left, right) => (
+    compareUtf8(left.machine, right.machine) ||
+    compareUtf8(left.transition.id, right.transition.id)
+  ));
+
+  for (const node of view.nodes.filter((item) => (
+    item.kind === "terminal" || (item.kind === "fail-safe" && item.shape === "terminal")
+  ))) {
+    if (view.edges.some((edge) => edge.from === node.id)) {
+      fail(`${node.id} is terminal but has an outgoing lifecycle edge`);
+    }
+  }
+
+  return { coverage, questionRecords, rejoinRecords };
+}
+
+function escapeMermaid(value) {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("\"", "&quot;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;");
+}
+
+function renderLifecycleNode(node) {
+  const label = escapeMermaid(node.label);
+  if (node.shape === "decision") return `${node.id}{"${label}"}`;
+  if (node.shape === "question" || node.shape === "terminal") return `${node.id}(["${label}"])`;
+  return `${node.id}["${label}"]`;
+}
+
+function renderDirectorFlow(view, evidence) {
+  const metadata = {
+    $schema: view.$schema,
+    schemaVersion: view.schemaVersion,
+    id: view.id,
+    protocolId: view.protocolId,
+    title: view.title,
+    direction: view.direction,
+    rejoinMapId: view.rejoinMapId,
+    notes: view.notes
+  };
+  const lines = [
+    "<!-- GENERATED FILE. Visible lifecycle macros are human guidance; hidden coverage resolves to the normative protocol. -->",
+    "",
+    "# Director lifecycle"
+  ];
+  const orderedPanels = [...view.panels].sort((left, right) => left.order - right.order);
+  const orderedLanes = [...view.lanes].sort((left, right) => left.order - right.order);
+  const panelByNodeId = new Map(view.nodes.map((node) => [node.id, node.panel]));
+  for (const panel of orderedPanels) {
+    lines.push("", `## ${panel.label}`, "", "```mermaid", `flowchart ${view.direction}`);
+    for (const lane of orderedLanes) {
+      const laneNodes = view.nodes.filter((item) => item.panel === panel.id && item.lane === lane.id);
+      if (laneNodes.length === 0) continue;
+      lines.push(
+        `    subgraph ${panel.id.toUpperCase()}_${lane.id.toUpperCase()}["${escapeMermaid(lane.label)}"]`
+      );
+      lines.push("        direction TB");
+      for (const node of laneNodes) lines.push(`        ${renderLifecycleNode(node)}`);
+      lines.push("    end");
+    }
+    for (const edge of view.edges.filter((item) => panelByNodeId.get(item.from) === panel.id)) {
+      const arrow = edge.kind === "lifecycle" ? "-->" : "-.->";
+      lines.push(`    ${edge.from} ${arrow}|"${escapeMermaid(edge.label)}"| ${edge.to}`);
+    }
+    for (const lane of orderedLanes) {
+      const nodeIds = view.nodes
+        .filter((node) => node.panel === panel.id && node.lane === lane.id)
+        .map((node) => node.id);
+      if (nodeIds.length > 0) lines.push(`    class ${nodeIds.join(",")} ${lane.id}`);
+    }
+    lines.push(
+      "    classDef director fill:#eef4ff,stroke:#315a9b,color:#111",
+      "    classDef proposer fill:#eefaf2,stroke:#397a4a,color:#111",
+      "    classDef runtime fill:#fff7e8,stroke:#9a6b24,color:#111",
+      "```"
+    );
+  }
+  lines.push(
+    "",
+    "## Reading the projection",
+    "",
+    ...view.notes.map((note) => `- ${note}`),
+    ""
+  );
+  const encodedRecords = [
+    ["meta", metadata],
+    ["coverage", evidence.coverage],
+    ["questions", evidence.questionRecords],
+    ["rejoin", evidence.rejoinRecords],
+    ...orderedPanels.map((panel) => ["panel", panel]),
+    ...orderedLanes.map((lane) => ["lane", lane]),
+    ...view.nodes.map((node) => ["node", node]),
+    ...view.annotations.map((annotation) => ["annotation", annotation]),
+    ...view.edges.map((edge) => ["edge", edge])
+  ];
+  lines.push(
+    "<!-- Machine-readable lifecycle evidence; intentionally outside Mermaid parser input. -->",
+    ...encodedRecords.map(([kind, value]) => `<!-- @lifecycle-${kind}|${base64urlCanonical(value)} -->`),
+    ""
+  );
   return lines.join("\n");
 }
 
-function assertDirectorFlowParseback(markdown, protocol) {
-  const parsedByMachine = new Map(protocol.machines.map((machine) => [machine.id, []]));
-  const questionRecords = [];
+function assertDirectorFlowParseback(markdown, view, expectedEvidence) {
+  const records = {
+    meta: [],
+    panel: [],
+    lane: [],
+    node: [],
+    annotation: [],
+    edge: [],
+    coverage: [],
+    questions: [],
+    rejoin: []
+  };
+  const panelByLabel = new Map(view.panels.map((panel) => [panel.label, panel.id]));
+  const laneByRenderedSubgraph = new Map(
+    view.panels.flatMap((panel) => (
+      view.lanes.map((lane) => [
+        `${panel.id.toUpperCase()}_${lane.id.toUpperCase()}`,
+        { panelId: panel.id, laneId: lane.id, label: escapeMermaid(lane.label) }
+      ])
+    ))
+  );
+  const nodeByRenderedLine = new Map(
+    view.nodes.map((node) => [renderLifecycleNode(node), node])
+  );
+  const visiblePanels = [];
+  const visibleLanes = [];
+  const visibleNodes = [];
+  const visibleEdges = [];
+  let pendingPanelId = null;
+  let currentPanelId = null;
+  let currentLaneId = null;
   for (const line of markdown.split("\n")) {
-    const edge = line.trim().match(/^%% @flow-edge\|([^|]+)\|(.+)$/);
-    if (edge) {
-      if (!parsedByMachine.has(edge[1])) fail(`Director FLOW names unknown machine ${edge[1]}`);
-      parsedByMachine.get(edge[1]).push(decodeCanonical(edge[2], "Director FLOW edge"));
+    const trimmed = line.trim();
+    const headingMatch = trimmed.match(/^## (.+)$/);
+    if (headingMatch && panelByLabel.has(headingMatch[1])) pendingPanelId = panelByLabel.get(headingMatch[1]);
+    if (trimmed === "```mermaid") {
+      if (!pendingPanelId) fail("Director lifecycle Mermaid block has no typed panel heading");
+      currentPanelId = pendingPanelId;
+      pendingPanelId = null;
+    } else if (currentPanelId && trimmed === "```") {
+      currentPanelId = null;
+      currentLaneId = null;
+    } else if (currentPanelId) {
+      const directionMatch = trimmed.match(/^flowchart (LR|TB)$/);
+      if (directionMatch) visiblePanels.push({ panelId: currentPanelId, direction: directionMatch[1] });
+      const laneMatch = trimmed.match(/^subgraph ([A-Z_]+)\["([^"]+)"\]$/);
+      if (laneMatch) {
+        const expectedLane = laneByRenderedSubgraph.get(laneMatch[1]);
+        if (!expectedLane || expectedLane.panelId !== currentPanelId || expectedLane.label !== laneMatch[2]) {
+          fail(`Director lifecycle has malformed visible lane ${laneMatch[1]}`);
+        }
+        currentLaneId = expectedLane.laneId;
+        visibleLanes.push({ panelId: currentPanelId, laneId: currentLaneId, label: laneMatch[2] });
+      } else if (trimmed === "end") {
+        currentLaneId = null;
+      } else if (currentLaneId && nodeByRenderedLine.has(trimmed)) {
+        const node = nodeByRenderedLine.get(trimmed);
+        visibleNodes.push({
+          panelId: currentPanelId,
+          laneId: currentLaneId,
+          nodeId: node.id,
+          rendered: trimmed
+        });
+      }
+      const visibleMatch = trimmed.match(/^([A-Z][A-Z0-9_]*) (-->|-\.->)\|"([^"]*)"\| ([A-Z][A-Z0-9_]*)$/);
+      if (visibleMatch) {
+        visibleEdges.push({
+          panelId: currentPanelId,
+          from: visibleMatch[1],
+          arrow: visibleMatch[2],
+          label: visibleMatch[3],
+          to: visibleMatch[4]
+        });
+      }
     }
-    const question = line.trim().match(/^%% @flow-question\|(Q[1-6])\|(T[0-9]{2})\|([^|]+)\|([^|]+)$/);
-    if (question) questionRecords.push(question.slice(1));
+    const match = trimmed.match(/^<!-- @lifecycle-([a-z]+)\|(.+) -->$/);
+    if (!match) continue;
+    if (!hasOwn(records, match[1])) fail(`Director lifecycle has unknown encoded record ${match[1]}`);
+    records[match[1]].push(decodeCanonical(match[2], `Director lifecycle ${match[1]}`));
   }
-  for (const machine of protocol.machines) {
-    const expected = [...machine.transitions, ...machine.families];
-    if (canonicalize(parsedByMachine.get(machine.id)) !== canonicalize(expected)) {
-      fail(`Director FLOW parse-back differs from canonical ${machine.id} transition tuples`);
+  for (const singleton of ["meta", "coverage", "questions", "rejoin"]) {
+    if (records[singleton].length !== 1) fail(`Director lifecycle requires one ${singleton} record`);
+  }
+  if (markdown.indexOf("<!-- @lifecycle-") < markdown.lastIndexOf("```")) {
+    fail("Director lifecycle encoded evidence must remain outside Mermaid parser input");
+  }
+  const parsedView = {
+    ...records.meta[0],
+    panels: records.panel,
+    lanes: records.lane,
+    nodes: records.node,
+    annotations: records.annotation,
+    edges: records.edge
+  };
+  if (canonicalize(parsedView) !== canonicalize(view)) {
+    fail("Director lifecycle parse-back differs from its authored view");
+  }
+  const orderedPanels = [...view.panels].sort((left, right) => left.order - right.order);
+  const orderedLanes = [...view.lanes].sort((left, right) => left.order - right.order);
+  const expectedVisiblePanels = orderedPanels.map((panel) => ({
+    panelId: panel.id,
+    direction: view.direction
+  }));
+  const expectedVisibleLanes = orderedPanels.flatMap((panel) => (
+    orderedLanes
+      .filter((lane) => view.nodes.some((node) => node.panel === panel.id && node.lane === lane.id))
+      .map((lane) => ({
+        panelId: panel.id,
+        laneId: lane.id,
+        label: escapeMermaid(lane.label)
+      }))
+  ));
+  const expectedVisibleNodes = orderedPanels.flatMap((panel) => (
+    orderedLanes.flatMap((lane) => (
+      view.nodes
+        .filter((node) => node.panel === panel.id && node.lane === lane.id)
+        .map((node) => ({
+          panelId: panel.id,
+          laneId: lane.id,
+          nodeId: node.id,
+          rendered: renderLifecycleNode(node)
+        }))
+    ))
+  ));
+  const panelByNodeId = new Map(view.nodes.map((node) => [node.id, node.panel]));
+  const expectedVisibleEdges = orderedPanels.flatMap((panel) => (
+    view.edges
+      .filter((edge) => panelByNodeId.get(edge.from) === panel.id)
+      .map((edge) => ({
+        panelId: panel.id,
+        from: edge.from,
+        arrow: edge.kind === "lifecycle" ? "-->" : "-.->",
+        label: escapeMermaid(edge.label),
+        to: edge.to
+      }))
+  ));
+  for (const [name, actual, expected] of [
+    ["panels", visiblePanels, expectedVisiblePanels],
+    ["lanes", visibleLanes, expectedVisibleLanes],
+    ["nodes", visibleNodes, expectedVisibleNodes],
+    ["arrows", visibleEdges, expectedVisibleEdges]
+  ]) {
+    if (canonicalize(actual) !== canonicalize(expected)) {
+      fail(`Director lifecycle visible ${name} differ from encoded lifecycle view`);
     }
   }
-  const expectedQuestions = ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6"].map((questionId) => {
-    const transition = protocol.machines[0].transitions.find((item) => item.event === `PRESENT_${questionId}`);
-    return [questionId, transition.id, transition.from, transition.to];
-  });
-  if (canonicalize(questionRecords) !== canonicalize(expectedQuestions)) {
-    fail("Director FLOW question-lane parse-back differs from Q1-Q6 presentation transitions");
+  for (const key of ["coverage", "questions", "rejoin"]) {
+    const expectedKey = {
+      coverage: "coverage",
+      questions: "questionRecords",
+      rejoin: "rejoinRecords"
+    }[key];
+    if (canonicalize(records[key][0]) !== canonicalize(expectedEvidence[expectedKey])) {
+      fail(`Director lifecycle ${key} parse-back differs from canonical evidence`);
+    }
   }
+  if (/\bundefined\b/.test(markdown)) fail("Director lifecycle renders an undefined label");
 }
 
 function mechanismIndex(requirements, fragments) {
@@ -950,6 +1364,9 @@ async function main() {
   assertExactValues(requirementIds, Array.from({ length: 28 }, (_, index) => `R${String(index + 1).padStart(2, "0")}`), "requirement registry");
   const protocol = await readJson("source/protocol/survey.protocol.json");
   validateProtocol(protocol);
+  const directorLifecycle = canonicalJson.get("source/views/director-lifecycle.view.json");
+  if (!directorLifecycle) fail("Director lifecycle authored view is not registered");
+  const directorLifecycleEvidence = validateDirectorLifecycle(directorLifecycle, protocol);
 
   const fragmentMembers = packageManifest.members.filter((member) => {
     const value = canonicalJson.get(member.path);
@@ -1021,9 +1438,9 @@ async function main() {
       for (const [target, text] of rendered) outputs.set(target, Buffer.from(text, "utf8"));
     } else if (recipe.renderer === "diagrams") {
       const protocolFsm = renderProtocolFsm(protocol);
-      const directorFlow = renderDirectorFlow(protocol);
+      const directorFlow = renderDirectorFlow(directorLifecycle, directorLifecycleEvidence);
       assertProtocolFsmParseback(protocolFsm, protocol);
-      assertDirectorFlowParseback(directorFlow, protocol);
+      assertDirectorFlowParseback(directorFlow, directorLifecycle, directorLifecycleEvidence);
       outputs.set("references/protocol-fsm.md", Buffer.from(protocolFsm, "utf8"));
       outputs.set("references/director-flow.md", Buffer.from(directorFlow, "utf8"));
     } else if (recipe.renderer === "executables") {

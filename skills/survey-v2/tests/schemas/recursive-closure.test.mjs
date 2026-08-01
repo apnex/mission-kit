@@ -14,13 +14,14 @@ async function readJson(relativePath) {
   return JSON.parse(await readFile(path.join(surveyRoot, relativePath), "utf8"));
 }
 
-test("all fourteen schema classes validate offline and reject unknown fields", async () => {
+test("all fifteen schema classes validate offline and reject unknown fields", async () => {
   const run = await newRun();
   try {
     await reachAwaitingRatification(run);
     const values = new Map([
       ["common", {}],
       ["dependency", await readJson("source/dependencies/references/mission-kit-axioms.reference.json")],
+      ["director-lifecycle", await readJson("source/views/director-lifecycle.view.json")],
       ["envelope-model", envelopeModel(run.session)],
       ["fragment", await readJson("source/fragments/navigation/fragment-contract.fragment.json")],
       ["instrument", structuredClone(run.session.interpretations.round1Instrument)],
@@ -53,7 +54,7 @@ test("all fourteen schema classes validate offline and reject unknown fields", a
       ["triangulation-process", await readJson("source/dependencies/processes/axiom-applicability.process.json")]
     ]);
 
-    assert.equal(values.size, 14);
+    assert.equal(values.size, 15);
     for (const [schemaClass, value] of values) {
       const schemaId = `urn:mission-kit:survey-v2:schema:${schemaClass}:v1`;
       assert.equal(validateById(schemaId, value).valid, true, `${schemaClass} valid fixture`);
