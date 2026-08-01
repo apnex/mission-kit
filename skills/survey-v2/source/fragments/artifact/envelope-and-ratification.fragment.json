@@ -1,0 +1,29 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:fragment:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:fragment:artifact:envelope-and-ratification",
+  "revision": 1,
+  "purpose": "Walk through, ratify and seal one self-contained intent-only planning handoff.",
+  "role": "procedure",
+  "normativity": "normative",
+  "audiences": ["agent", "Director", "downstream-designer", "maintainer"],
+  "representation": {
+    "format": "markdown",
+    "payloadPath": "source/fragments/artifact/envelope-and-ratification.md",
+    "mediaType": "text/markdown"
+  },
+  "rationale": "The final artifact must preserve complete intent evidence and bind explicit Director authority to exact bytes.",
+  "absenceConsequence": "Planning could consume an unreviewed summary, stale candidate or implementation-owned commitments.",
+  "composition": {
+    "provides": ["mechanism.m10@1"],
+    "requires": ["mechanism.m05@1", "mechanism.m06@1"],
+    "dependencies": []
+  },
+  "requirements": ["R08", "R13", "R26"],
+  "contribution": {
+    "mode": "unique",
+    "proofClass": "required-coverage",
+    "obligations": ["O-R08-01", "O-R13-01", "O-R26-01"]
+  },
+  "exposure": "internal"
+}

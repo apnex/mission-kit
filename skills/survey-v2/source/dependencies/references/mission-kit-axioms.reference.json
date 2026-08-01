@@ -1,0 +1,71 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:dependency:v1",
+  "id": "urn:mission-kit:survey-v2:reference:mission-kit-axioms",
+  "kind": "reference",
+  "schemaVersion": "1.0.0",
+  "purpose": "Supply the Mission Kit axiom corpus to applicability triangulation.",
+  "applicability": {
+    "stability": "initialization-stable",
+    "anyOf": [
+      {"present": "hostPolicy.axiomCorpus"},
+      {"present": "surveyInput.axiomCorpus"}
+    ]
+  },
+  "requirement": "required",
+  "source": {
+    "kind": "git-repository",
+    "repository": "apnex/mission-kit"
+  },
+  "selector": {
+    "kind": "subdirectory",
+    "path": "axioms"
+  },
+  "snapshotPolicy": {
+    "captureAt": "init-resolve",
+    "stability": "two-full-byte-passes",
+    "storage": "session-event-bytes",
+    "maxFiles": 128,
+    "maxFileBytes": 65536,
+    "maxTotalBytes": 262144
+  },
+  "compatibility": {
+    "requiredIndex": "README.md",
+    "entryPattern": {
+      "syntax": "ecmascript-regexp",
+      "expression": "^A[0-9]+-[^/]+\\.md$"
+    },
+    "mediaType": "text/markdown"
+  },
+  "resolution": {
+    "bindingKey": "mission-kit.axioms",
+    "allowed": ["host-registry"]
+  },
+  "evaluateAt": ["init-resolve", "commit-r1", "commit-r2"],
+  "resolveBy": "init-resolve",
+  "executeAt": ["commit-r1", "commit-r2"],
+  "consumeBy": "pre-candidate",
+  "policy": {
+    "loadMode": "selected-documents-in-full",
+    "retry": "declared-failure-class",
+    "actorToolBoundary": {
+      "resolveAndObserve": "deterministic-runtime",
+      "selectAndMap": "proposer",
+      "ratify": "director-only"
+    }
+  },
+  "contribution": {
+    "requirements": ["R17", "R18", "R28"],
+    "capabilities": ["dependency.axiom-corpus"]
+  },
+  "failure": {
+    "unavailable": "block-recoverable",
+    "invalid": "block-recoverable-before-snapshot",
+    "incompatible": "block-recoverable-before-snapshot",
+    "incomplete": "block-recoverable-before-snapshot",
+    "sourceUnstable": "block-recoverable",
+    "trustBoundaryViolation": "block-terminal"
+  },
+  "outputContract": {
+    "schema": "urn:mission-kit:survey-v2:schema:dependency:v1#/$defs/reference-resolution-output"
+  }
+}

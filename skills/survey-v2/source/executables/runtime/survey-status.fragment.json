@@ -1,0 +1,29 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:fragment:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:executable:runtime:status",
+  "revision": 1,
+  "purpose": "Report one run's verified effective state without performing a semantic transition.",
+  "role": "executable",
+  "normativity": "normative",
+  "audiences": ["agent", "Director", "maintainer"],
+  "representation": {
+    "format": "javascript",
+    "payloadPath": "source/executables/runtime/survey-status.mjs",
+    "mediaType": "text/javascript"
+  },
+  "rationale": "Operators need a read-only cursor and quarantine view that never guesses from conversation state.",
+  "absenceConsequence": "A resumed actor could use a stale phase or miss a create-once quarantine latch.",
+  "composition": {
+    "provides": ["runtime.command.status@1"],
+    "requires": ["runtime.engine@1"],
+    "dependencies": []
+  },
+  "requirements": ["R11", "R12"],
+  "contribution": {
+    "mode": "supporting",
+    "proofClass": "cold-resume-coverage",
+    "obligations": ["O-R12-01"]
+  },
+  "exposure": "exported"
+}

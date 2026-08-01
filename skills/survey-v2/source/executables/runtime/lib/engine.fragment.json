@@ -1,0 +1,29 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:fragment:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:executable:runtime:engine",
+  "revision": 1,
+  "purpose": "Interpret the pinned protocol manifest and commit every legal Survey product-state transition.",
+  "role": "executable",
+  "normativity": "normative",
+  "audiences": ["maintainer"],
+  "representation": {
+    "format": "javascript",
+    "payloadPath": "source/executables/runtime/lib/engine.mjs",
+    "mediaType": "text/javascript"
+  },
+  "rationale": "One manifest-interpreted engine keeps phase, runtime, authority, evidence and views isomorphic.",
+  "absenceConsequence": "Individual commands could encode conflicting protocol physics or bypass atomic state guards.",
+  "composition": {
+    "provides": ["runtime.engine@1"],
+    "requires": ["runtime.canonical@1", "runtime.handler-surface@1", "runtime.storage@1", "runtime.dependency-snapshot@1", "runtime.envelope@1"],
+    "dependencies": []
+  },
+  "requirements": ["R01", "R02", "R04", "R05", "R07", "R08", "R11", "R12", "R13", "R17", "R18", "R25", "R28"],
+  "contribution": {
+    "mode": "unique",
+    "proofClass": "transition-coverage",
+    "obligations": ["O-R11-01"]
+  },
+  "exposure": "internal"
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:projection:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:projection:validators",
+  "renderer": "validators",
+  "targets": ["generated/validators.mjs"],
+  "selection": {
+    "fragmentIds": [
+      "urn:mission-kit:survey-v2:fragment:composition:fragment-contract"
+    ],
+    "sourcePaths": [
+      "schemas/v1/common.schema.json",
+      "schemas/v1/package.schema.json",
+      "schemas/v1/fragment.schema.json",
+      "schemas/v1/protocol.schema.json",
+      "schemas/v1/projection.schema.json",
+      "schemas/v1/requirement.schema.json",
+      "schemas/v1/dependency.schema.json",
+      "schemas/v1/triangulation-process.schema.json",
+      "schemas/v1/instrument.schema.json",
+      "schemas/v1/presentation.schema.json",
+      "schemas/v1/session-state.schema.json",
+      "schemas/v1/quarantine.schema.json",
+      "schemas/v1/test-evidence.schema.json",
+      "schemas/v1/envelope-model.schema.json"
+    ]
+  },
+  "budget": {
+    "maxLines": 20000,
+    "maxWords": 100000
+  }
+}

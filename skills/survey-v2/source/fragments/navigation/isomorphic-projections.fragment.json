@@ -1,0 +1,29 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:fragment:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:fragment:projection:isomorphic-projections",
+  "revision": 1,
+  "purpose": "Generate deterministic agent, human and runtime views from singular canonical owners.",
+  "role": "constraint",
+  "normativity": "normative",
+  "audiences": ["agent", "maintainer"],
+  "representation": {
+    "format": "markdown",
+    "payloadPath": "source/fragments/navigation/isomorphic-projections.md",
+    "mediaType": "text/markdown"
+  },
+  "rationale": "Checked projections remain trustworthy only when target ownership and machine parse-back are exact.",
+  "absenceConsequence": "SKILL, Mermaid, FLOW, references or validators could drift into independent authorities.",
+  "composition": {
+    "provides": ["mechanism.m12@1"],
+    "requires": ["mechanism.m11@1"],
+    "dependencies": []
+  },
+  "requirements": ["R09", "R10", "R16"],
+  "contribution": {
+    "mode": "unique",
+    "proofClass": "navigation-hop-budget",
+    "obligations": ["O-R09-01", "O-R10-01", "O-R16-01"]
+  },
+  "exposure": "internal"
+}

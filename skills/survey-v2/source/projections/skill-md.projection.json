@@ -1,0 +1,67 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:projection:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:projection:skill-md",
+  "renderer": "skill-md",
+  "targets": ["SKILL.md"],
+  "selection": {
+    "fragmentIds": [
+      "urn:mission-kit:survey-v2:fragment:authority:semantic-boundaries",
+      "urn:mission-kit:survey-v2:fragment:instrument:round-freeze",
+      "urn:mission-kit:survey-v2:fragment:interaction:single-question-disclosure",
+      "urn:mission-kit:survey-v2:fragment:interaction:pick-capture",
+      "urn:mission-kit:survey-v2:fragment:interpretation:round-ordering",
+      "urn:mission-kit:survey-v2:fragment:interpretation:round-two-anchoring",
+      "urn:mission-kit:survey-v2:fragment:artifact:envelope-and-ratification",
+      "urn:mission-kit:survey-v2:fragment:state:session-and-resume"
+    ],
+    "headings": [
+      "Authority",
+      "Instrument",
+      "Disclosure",
+      "Pick capture",
+      "Interpretation order",
+      "Round-2 anchoring",
+      "Ratification and handoff",
+      "State and resume"
+    ],
+    "sections": [
+      {
+        "heading": "Authority",
+        "fragmentIds": ["urn:mission-kit:survey-v2:fragment:authority:semantic-boundaries"]
+      },
+      {
+        "heading": "Instrument",
+        "fragmentIds": ["urn:mission-kit:survey-v2:fragment:instrument:round-freeze"]
+      },
+      {
+        "heading": "Disclosure",
+        "fragmentIds": ["urn:mission-kit:survey-v2:fragment:interaction:single-question-disclosure"]
+      },
+      {
+        "heading": "Pick capture",
+        "fragmentIds": ["urn:mission-kit:survey-v2:fragment:interaction:pick-capture"]
+      },
+      {
+        "heading": "Interpretation order",
+        "fragmentIds": ["urn:mission-kit:survey-v2:fragment:interpretation:round-ordering"]
+      },
+      {
+        "heading": "Round-2 anchoring",
+        "fragmentIds": ["urn:mission-kit:survey-v2:fragment:interpretation:round-two-anchoring"]
+      },
+      {
+        "heading": "Ratification and handoff",
+        "fragmentIds": ["urn:mission-kit:survey-v2:fragment:artifact:envelope-and-ratification"]
+      },
+      {
+        "heading": "State and resume",
+        "fragmentIds": ["urn:mission-kit:survey-v2:fragment:state:session-and-resume"]
+      }
+    ]
+  },
+  "budget": {
+    "maxLines": 350,
+    "maxWords": 5000
+  }
+}

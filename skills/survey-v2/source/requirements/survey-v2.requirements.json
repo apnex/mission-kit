@@ -1,0 +1,287 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:requirement:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:requirements:survey-v2",
+  "requirements": [
+    {
+      "id": "R01",
+      "statement": "Preserve the two-round, three-question-per-round Survey geometry.",
+      "status": "active",
+      "mechanisms": ["M02", "M05", "M06"],
+      "requiredCapabilities": ["mechanism.m02@1"],
+      "primaryOwner": "urn:mission-kit:survey-v2:fragment:instrument:round-freeze",
+      "acceptanceObligations": [{"id": "O-R01-01", "statement": "Exactly two rounds of three questions validate and freeze."}],
+      "evidenceClasses": ["positive", "negative"]
+    },
+    {
+      "id": "R02",
+      "statement": "Preserve multi-pick input and distinguish composable from contradictory selections.",
+      "status": "active",
+      "mechanisms": ["M04"],
+      "requiredCapabilities": ["mechanism.m04@1"],
+      "primaryOwner": "urn:mission-kit:survey-v2:fragment:interaction:pick-capture",
+      "acceptanceObligations": [{"id": "O-R02-01", "statement": "Pick normalization preserves composition and declared contradictions."}],
+      "evidenceClasses": ["positive", "negative"]
+    },
+    {
+      "id": "R03",
+      "statement": "Design, validate and freeze all three questions in a round before first disclosure.",
+      "status": "active",
+      "mechanisms": ["M02"],
+      "requiredCapabilities": ["mechanism.m02@1"],
+      "primaryOwner": "urn:mission-kit:survey-v2:fragment:instrument:round-freeze",
+      "acceptanceObligations": [{"id": "O-R03-01", "statement": "A disclosed round cannot mutate its frozen instrument."}],
+      "evidenceClasses": ["negative", "conformance"]
+    },
+    {
+      "id": "R04",
+      "statement": "Present and capture one question at a time without preview or inter-pick interpretation.",
+      "status": "active",
+      "mechanisms": ["M03"],
+      "requiredCapabilities": ["mechanism.m03@1"],
+      "primaryOwner": "urn:mission-kit:survey-v2:fragment:interaction:single-question-disclosure",
+      "acceptanceObligations": [{"id": "O-R04-01", "statement": "Every Director question view contains only the current question."}],
+      "evidenceClasses": ["positive", "negative"]
+    },
+    {
+      "id": "R05",
+      "statement": "Prevent Round 2 construction until Round-1 picks and aggregate interpretation are durable.",
+      "status": "active",
+      "mechanisms": ["M05", "M06"],
+      "requiredCapabilities": ["mechanism.m05@1"],
+      "primaryOwner": "urn:mission-kit:survey-v2:fragment:interpretation:round-ordering",
+      "acceptanceObligations": [{"id": "O-R05-01", "statement": "Round 2 begins only from sealed Round-1 semantic ancestry."}],
+      "evidenceClasses": ["conformance", "negative"]
+    },
+    {
+      "id": "R06",
+      "statement": "Preserve raw Director evidence separately from deterministic normalization.",
+      "status": "active",
+      "mechanisms": ["M04"],
+      "requiredCapabilities": ["mechanism.m04@1"],
+      "primaryOwner": "urn:mission-kit:survey-v2:fragment:interaction:pick-capture",
+      "acceptanceObligations": [{"id": "O-R06-01", "statement": "Raw responses and normalized picks survive a session round trip."}],
+      "evidenceClasses": ["positive", "resume"]
+    },
+    {
+      "id": "R07",
+      "statement": "Keep semantic authority with the Director and proposer while validators remain mechanical.",
+      "status": "active",
+      "mechanisms": ["M01"],
+      "requiredCapabilities": ["mechanism.m01@1"],
+      "primaryOwner": "urn:mission-kit:survey-v2:fragment:authority:semantic-boundaries",
+      "acceptanceObligations": [{"id": "O-R07-01", "statement": "Wrong-role semantic commands and validator ratification fail closed."}],
+      "evidenceClasses": ["negative"]
+    },
+    {
+      "id": "R08",
+      "statement": "Make final composite ratification the only mandatory Director checkpoint beyond six picks.",
+      "status": "active",
+      "mechanisms": ["M10"],
+      "requiredCapabilities": ["mechanism.m10@1"],
+      "primaryOwner": "urn:mission-kit:survey-v2:fragment:artifact:envelope-and-ratification",
+      "acceptanceObligations": [{"id": "O-R08-01", "statement": "Correction, withholding and ratification preserve exact candidate ancestry."}],
+      "evidenceClasses": ["positive", "negative"]
+    },
+    {
+      "id": "R09",
+      "statement": "Model legal protocol behavior in one manifest and an isomorphic normative Mermaid FSM.",
+      "status": "active",
+      "mechanisms": ["M12"],
+      "requiredCapabilities": ["mechanism.m12@1"],
+      "primaryOwner": "urn:mission-kit:survey-v2:fragment:projection:isomorphic-projections",
+      "acceptanceObligations": [{"id": "O-R09-01", "statement": "Mermaid parse-back exactly matches expanded manifest tuples."}],
+      "evidenceClasses": ["conformance"]
+    },
+    {
+      "id": "R10",
+      "statement": "Provide a complete Director-centred workflow view tied to protocol transition IDs.",
+      "status": "active",
+      "mechanisms": ["M12"],
+      "requiredCapabilities": ["mechanism.m12@1"],
+      "primaryOwner": "urn:mission-kit:survey-v2:fragment:projection:isomorphic-projections",
+      "acceptanceObligations": [{"id": "O-R10-01", "statement": "The Director FLOW resolves every machine edge and all six question lanes."}],
+      "evidenceClasses": ["conformance"]
+    },
+    {
+      "id": "R11",
+      "statement": "Persist frozen instruments, cursors, authority, picks, interpretations, mappings, dependencies and composites.",
+      "status": "active",
+      "mechanisms": ["M09"],
+      "requiredCapabilities": ["mechanism.m09@1"],
+      "primaryOwner": "urn:mission-kit:survey-v2:fragment:state:session-and-resume",
+      "acceptanceObligations": [{"id": "O-R11-01", "statement": "The atomic session contains every reached-state artifact and event."}],
+      "evidenceClasses": ["positive", "resume"]
+    },
+    {
+      "id": "R12",
+      "statement": "Resume cold at the exact legal state without regenerating or leaking undisclosed questions.",
+      "status": "active",
+      "mechanisms": ["M09"],
+      "requiredCapabilities": ["mechanism.m09@1"],
+      "primaryOwner": "urn:mission-kit:survey-v2:fragment:state:session-and-resume",
+      "acceptanceObligations": [{"id": "O-R12-01", "statement": "Cold takeover replays state and exposes only the current legal view."}],
+      "evidenceClasses": ["resume", "failure-injection"]
+    },
+    {
+      "id": "R13",
+      "statement": "Produce one self-contained generated intent envelope as downstream planning input.",
+      "status": "active",
+      "mechanisms": ["M10"],
+      "requiredCapabilities": ["mechanism.m10@1"],
+      "primaryOwner": "urn:mission-kit:survey-v2:fragment:artifact:envelope-and-ratification",
+      "acceptanceObligations": [{"id": "O-R13-01", "statement": "A ratified session regenerates one byte-identical self-contained envelope."}],
+      "evidenceClasses": ["positive", "negative", "resume"]
+    },
+    {
+      "id": "R14",
+      "statement": "Organize source knowledge into sovereign one-purpose fragments.",
+      "status": "active",
+      "mechanisms": ["M11"],
+      "requiredCapabilities": ["mechanism.m11@1"],
+      "primaryOwner": "urn:mission-kit:survey-v2:fragment:composition:fragment-contract",
+      "acceptanceObligations": [{"id": "O-R14-01", "statement": "Every fragment has one descriptor, payload and purpose."}],
+      "evidenceClasses": ["conformance"]
+    },
+    {
+      "id": "R15",
+      "statement": "Govern recurring structures with versioned strict schemas.",
+      "status": "active",
+      "mechanisms": ["M11", "M12"],
+      "requiredCapabilities": ["mechanism.m11@1"],
+      "primaryOwner": "urn:mission-kit:survey-v2:fragment:composition:fragment-contract",
+      "acceptanceObligations": [{"id": "O-R15-01", "statement": "All fourteen schema classes validate offline and reject unknown fields."}],
+      "evidenceClasses": ["positive", "negative"]
+    },
+    {
+      "id": "R16",
+      "statement": "Generate SKILL.md and every runtime projection deterministically from canonical source.",
+      "status": "active",
+      "mechanisms": ["M12"],
+      "requiredCapabilities": ["mechanism.m12@1"],
+      "primaryOwner": "urn:mission-kit:survey-v2:fragment:projection:isomorphic-projections",
+      "acceptanceObligations": [{"id": "O-R16-01", "statement": "Repeated build and check produce byte-identical registered targets."}],
+      "evidenceClasses": ["conformance"]
+    },
+    {
+      "id": "R17",
+      "statement": "Model external references, skills and triangulation processes as typed dependencies.",
+      "status": "active",
+      "mechanisms": ["M07"],
+      "requiredCapabilities": ["mechanism.m07@1"],
+      "primaryOwner": "urn:mission-kit:survey-v2:fragment:dependencies:typed-resolution",
+      "acceptanceObligations": [{"id": "O-R17-01", "statement": "Typed dependency hooks resolve, block and retry without semantic injection."}],
+      "evidenceClasses": ["positive", "negative"]
+    },
+    {
+      "id": "R18",
+      "statement": "Implement axiom applicability as the first concrete triangulation-process contract.",
+      "status": "active",
+      "mechanisms": ["M08"],
+      "requiredCapabilities": ["mechanism.m08@1"],
+      "primaryOwner": "urn:mission-kit:survey-v2:fragment:dependencies:axiom-triangulation",
+      "acceptanceObligations": [{"id": "O-R18-01", "statement": "Axiom stages bind complete interpretations to one frozen session snapshot."}],
+      "evidenceClasses": ["positive", "resume"]
+    },
+    {
+      "id": "R19",
+      "statement": "Require auditable unique or supporting contribution evidence for every fragment.",
+      "status": "active",
+      "mechanisms": ["M11"],
+      "requiredCapabilities": ["mechanism.m11@1"],
+      "primaryOwner": "urn:mission-kit:survey-v2:fragment:composition:fragment-contract",
+      "acceptanceObligations": [{"id": "O-R19-01", "statement": "Capability removal proves every included fragment contribution."}],
+      "evidenceClasses": ["conformance", "negative"]
+    },
+    {
+      "id": "R20",
+      "statement": "Enforce progressive disclosure and explicit context budgets in generated agent surfaces.",
+      "status": "active",
+      "mechanisms": ["M03", "M12"],
+      "requiredCapabilities": ["mechanism.m03@1"],
+      "primaryOwner": "urn:mission-kit:survey-v2:fragment:interaction:single-question-disclosure",
+      "acceptanceObligations": [{"id": "O-R20-01", "statement": "Generated surfaces meet line, word, hop and no-preview budgets."}],
+      "evidenceClasses": ["conformance", "negative"]
+    },
+    {
+      "id": "R21",
+      "statement": "Characterize v1 and compare v1/v2 behavior without requiring output compatibility.",
+      "status": "active",
+      "mechanisms": ["M13"],
+      "requiredCapabilities": ["mechanism.m13@1"],
+      "primaryOwner": "urn:mission-kit:survey-v2:fragment:assurance:verification-gates",
+      "acceptanceObligations": [{"id": "O-R21-01", "statement": "Root-owned v1 fixtures retain all 17, 12 and 24 baseline assertions."}],
+      "evidenceClasses": ["comparison"]
+    },
+    {
+      "id": "R22",
+      "statement": "Test schemas, composition, projection, protocol, state, dependencies and envelope generation independently.",
+      "status": "active",
+      "mechanisms": ["M13"],
+      "requiredCapabilities": ["mechanism.m13@1"],
+      "primaryOwner": "urn:mission-kit:survey-v2:fragment:assurance:verification-gates",
+      "acceptanceObligations": [{"id": "O-R22-01", "statement": "Registered tests are modular, orthogonal and one behavior each."}],
+      "evidenceClasses": ["conformance"]
+    },
+    {
+      "id": "R23",
+      "statement": "Forward-test with clean agents and require a Director canary before promotion.",
+      "status": "active",
+      "mechanisms": ["M13", "M14"],
+      "requiredCapabilities": ["mechanism.m14@1"],
+      "primaryOwner": "urn:mission-kit:survey-v2:fragment:assurance:promotion-boundary",
+      "acceptanceObligations": [{"id": "O-R23-01", "statement": "Forward fixtures cannot substitute for the separately authorized Director canary."}],
+      "evidenceClasses": ["forward", "negative"]
+    },
+    {
+      "id": "R24",
+      "statement": "Promote atomically under the canonical survey name and retain tested v1 rollback.",
+      "status": "active",
+      "mechanisms": ["M14"],
+      "requiredCapabilities": ["mechanism.m14@1"],
+      "primaryOwner": "urn:mission-kit:survey-v2:fragment:assurance:promotion-boundary",
+      "acceptanceObligations": [{"id": "O-R24-01", "statement": "Staging fixes name survey while promotion remains an external no-rewrite gate."}],
+      "evidenceClasses": ["negative", "conformance"]
+    },
+    {
+      "id": "R25",
+      "statement": "Prevent v2, a validator or a reviewer from supplying Director ratification or self-authorizing promotion.",
+      "status": "active",
+      "mechanisms": ["M01", "M14"],
+      "requiredCapabilities": ["mechanism.m01@1"],
+      "primaryOwner": "urn:mission-kit:survey-v2:fragment:authority:semantic-boundaries",
+      "acceptanceObligations": [{"id": "O-R25-01", "statement": "No package capability can ratify for the Director or promote itself."}],
+      "evidenceClasses": ["negative"]
+    },
+    {
+      "id": "R26",
+      "statement": "Remove mandatory planning-owned branch, review and compressed-timeline fields from the envelope.",
+      "status": "active",
+      "mechanisms": ["M10"],
+      "requiredCapabilities": ["mechanism.m10@1"],
+      "primaryOwner": "urn:mission-kit:survey-v2:fragment:artifact:envelope-and-ratification",
+      "acceptanceObligations": [{"id": "O-R26-01", "statement": "The envelope model has no mandatory planning-owned fields."}],
+      "evidenceClasses": ["negative", "conformance"]
+    },
+    {
+      "id": "R27",
+      "statement": "Make the staged skill a complete relocatable sovereign installable root.",
+      "status": "active",
+      "mechanisms": ["M15"],
+      "requiredCapabilities": ["mechanism.m15@1"],
+      "primaryOwner": "urn:mission-kit:survey-v2:fragment:identity:sovereign-root",
+      "acceptanceObligations": [{"id": "O-R27-01", "statement": "A clean non-Git root installs, builds, checks and tests without siblings."}],
+      "evidenceClasses": ["conformance", "failure-injection"]
+    },
+    {
+      "id": "R28",
+      "statement": "Represent external Git knowledge by repository name and safe selector with per-session observed bytes.",
+      "status": "active",
+      "mechanisms": ["M07"],
+      "requiredCapabilities": ["mechanism.m07@1"],
+      "primaryOwner": "urn:mission-kit:survey-v2:fragment:dependencies:typed-resolution",
+      "acceptanceObligations": [{"id": "O-R28-01", "statement": "T41 freezes a stable bounded snapshot without configured refs or content pins."}],
+      "evidenceClasses": ["positive", "negative", "resume"]
+    }
+  ]
+}

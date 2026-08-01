@@ -1,0 +1,29 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:fragment:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:fragment:dependencies:axiom-triangulation",
+  "revision": 1,
+  "purpose": "Map materially applicable axioms to captured intent in protocol-owned stages.",
+  "role": "procedure",
+  "normativity": "normative",
+  "audiences": ["agent", "maintainer", "downstream-designer"],
+  "representation": {
+    "format": "markdown",
+    "payloadPath": "source/fragments/dependencies/axiom-triangulation.md",
+    "mediaType": "text/markdown"
+  },
+  "rationale": "A staged process makes axiom use complete, reproducible and subordinate to Survey authority.",
+  "absenceConsequence": "Axiom references could become decorative, partial or silently read from mutable external state.",
+  "composition": {
+    "provides": ["mechanism.m08@1"],
+    "requires": ["mechanism.m07@1"],
+    "dependencies": ["urn:mission-kit:survey-v2:reference:mission-kit-axioms"]
+  },
+  "requirements": ["R18"],
+  "contribution": {
+    "mode": "unique",
+    "proofClass": "required-coverage",
+    "obligations": ["O-R18-01"]
+  },
+  "exposure": "internal"
+}
