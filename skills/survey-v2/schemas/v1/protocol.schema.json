@@ -93,11 +93,16 @@
     "selector": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "members"],
+      "required": ["id", "label", "members"],
       "properties": {
         "id": {
           "type": "string",
           "pattern": "^S[GR][0-9]{2}$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 8,
+          "maxLength": 80
         },
         "members": {
           "type": "array",

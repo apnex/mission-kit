@@ -1,0 +1,500 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:survey-v2:schema:director-lifecycle:v1",
+  "title": "Survey v2 Director lifecycle view",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "id",
+    "protocolId",
+    "title",
+    "direction",
+    "panels",
+    "lanes",
+    "nodes",
+    "annotations",
+    "edges",
+    "rejoinMapId",
+    "notes"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:mission-kit:survey-v2:schema:director-lifecycle:v1"
+    },
+    "schemaVersion": {
+      "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/schemaVersion"
+    },
+    "id": {
+      "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/semanticId"
+    },
+    "protocolId": {
+      "const": "urn:mission-kit:survey-v2:protocol:survey"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 80
+    },
+    "direction": {
+      "enum": ["LR", "TB"]
+    },
+    "panels": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "$ref": "#/$defs/panel"
+      },
+      "allOf": [
+        {
+          "contains": {
+            "type": "object",
+            "required": ["id"],
+            "properties": {
+              "id": {"const": "lifecycle"}
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "required": ["id"],
+            "properties": {
+              "id": {"const": "continuity"}
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "required": ["order"],
+            "properties": {
+              "order": {"const": 1}
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "required": ["order"],
+            "properties": {
+              "order": {"const": 2}
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      ]
+    },
+    "lanes": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "$ref": "#/$defs/lane"
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "minItems": 20,
+      "items": {
+        "$ref": "#/$defs/node"
+      }
+    },
+    "annotations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/annotation"
+      }
+    },
+    "edges": {
+      "type": "array",
+      "minItems": 20,
+      "items": {
+        "oneOf": [
+          {"$ref": "#/$defs/lifecycleEdge"},
+          {"$ref": "#/$defs/annotationEdge"},
+          {"$ref": "#/$defs/rejectionEdge"},
+          {"$ref": "#/$defs/failSafeEdge"}
+        ]
+      }
+    },
+    "rejoinMapId": {
+      "const": "RJM01"
+    },
+    "notes": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 12,
+        "maxLength": 240
+      }
+    }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_]*$"
+    },
+    "laneId": {
+      "enum": ["director", "proposer", "runtime"]
+    },
+    "panelId": {
+      "enum": ["lifecycle", "continuity"]
+    },
+    "panel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "order"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/panelId"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 48
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2
+        }
+      }
+    },
+    "lane": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "order"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/laneId"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 48
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3
+        }
+      }
+    },
+    "semanticRef": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^phase/SG[0-9]{2}$"
+        },
+        {
+          "type": "string",
+          "pattern": "^runtime/(?:SR[0-9]{2}|start)$"
+        }
+      ]
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "panel", "lane", "kind", "shape", "label"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "panel": {
+          "$ref": "#/$defs/panelId"
+        },
+        "lane": {
+          "$ref": "#/$defs/laneId"
+        },
+        "kind": {
+          "enum": [
+            "milestone",
+            "question",
+            "decision",
+            "runtime",
+            "scope",
+            "annotation",
+            "terminal",
+            "fail-safe"
+          ]
+        },
+        "shape": {
+          "enum": ["process", "question", "decision", "terminal", "note"]
+        },
+        "label": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 120
+        },
+        "questionId": {
+          "enum": ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6"]
+        },
+        "checkpoint": {
+          "enum": ["question", "walkthrough", "ratification"]
+        },
+        "phaseIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          }
+        },
+        "runtimeStatusIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          }
+        },
+        "selectorRefs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/semanticRef"
+          }
+        },
+        "ownerNodeId": {
+          "$ref": "#/$defs/identifier"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {"const": "question"}
+            },
+            "required": ["kind"]
+          },
+          "then": {
+            "required": ["questionId", "checkpoint"],
+            "properties": {
+              "lane": {"const": "director"},
+              "shape": {"const": "question"},
+              "questionId": {"enum": ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6"]},
+              "checkpoint": {"const": "question"}
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {"enum": ["milestone", "runtime"]}
+            },
+            "required": ["kind"]
+          },
+          "then": {
+            "properties": {
+              "shape": {"const": "process"}
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {"const": "decision"}
+            },
+            "required": ["kind"]
+          },
+          "then": {
+            "properties": {
+              "shape": {"const": "decision"}
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {"enum": ["scope", "annotation"]}
+            },
+            "required": ["kind"]
+          },
+          "then": {
+            "properties": {
+              "shape": {"const": "note"}
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {"const": "terminal"}
+            },
+            "required": ["kind"]
+          },
+          "then": {
+            "properties": {
+              "shape": {"const": "terminal"}
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {"const": "fail-safe"}
+            },
+            "required": ["kind"]
+          },
+          "then": {
+            "properties": {
+              "shape": {"enum": ["note", "terminal"]}
+            }
+          }
+        }
+      ]
+    },
+    "annotation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "description"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^(?:VIEW|CHECK|CLASS)[0-9]{2}$"
+        },
+        "kind": {
+          "enum": ["view", "check", "classification"]
+        },
+        "description": {
+          "type": "string",
+          "minLength": 12,
+          "maxLength": 200
+        }
+      }
+    },
+    "lifecycleEdge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "from", "to", "kind", "label", "transitionIds"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "from": {
+          "$ref": "#/$defs/identifier"
+        },
+        "to": {
+          "$ref": "#/$defs/identifier"
+        },
+        "kind": {
+          "const": "lifecycle"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 120
+        },
+        "transitionIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^(?:T|TF|RT|RF)[A-Z0-9]+$"
+          }
+        }
+      }
+    },
+    "annotationEdge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "from", "to", "kind", "label", "annotationId"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "from": {
+          "$ref": "#/$defs/identifier"
+        },
+        "to": {
+          "$ref": "#/$defs/identifier"
+        },
+        "kind": {
+          "const": "annotation"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 120
+        },
+        "annotationId": {
+          "type": "string",
+          "pattern": "^(?:VIEW|CHECK|CLASS)[0-9]{2}$"
+        }
+      }
+    },
+    "rejectionEdge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "from", "to", "kind", "label", "rejectionId"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "from": {
+          "$ref": "#/$defs/identifier"
+        },
+        "to": {
+          "$ref": "#/$defs/identifier"
+        },
+        "kind": {
+          "const": "rejection"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 120
+        },
+        "rejectionId": {
+          "type": "string",
+          "pattern": "^RJ[0-9]{2}$"
+        }
+      }
+    },
+    "failSafeEdge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "from", "to", "kind", "label", "operationId"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "from": {
+          "$ref": "#/$defs/identifier"
+        },
+        "to": {
+          "$ref": "#/$defs/identifier"
+        },
+        "kind": {
+          "const": "fail-safe"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 120
+        },
+        "operationId": {
+          "const": "OQ01"
+        }
+      }
+    }
+  }
+}

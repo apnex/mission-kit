@@ -95,13 +95,18 @@
     },
     {
       "id": "R10",
-      "statement": "Provide a complete Director-centred workflow view tied to protocol transition IDs.",
+      "statement": "Provide a compact Director-centred lifecycle projection with complete protocol traceability and a visible actor journey distinct from the normative FSM.",
       "status": "active",
       "mechanisms": ["M12"],
       "requiredCapabilities": ["mechanism.m12@1"],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:projection:isomorphic-projections",
-      "acceptanceObligations": [{"id": "O-R10-01", "statement": "The Director FLOW resolves every machine edge and all six question lanes."}],
-      "evidenceClasses": ["conformance"]
+      "acceptanceObligations": [
+        {"id": "O-R10-01", "statement": "The primary visible lifecycle has exactly three touchpoint lanes, six distinct question handoffs, and explicit ratification and revision paths."},
+        {"id": "O-R10-02", "statement": "Every protocol transition and family has exactly one full-tuple lifecycle macro owner."},
+        {"id": "O-R10-03", "statement": "Primary workflow and continuity render as separate bounded panels, remain strictly compressed, and keep encoded evidence outside Mermaid input."},
+        {"id": "O-R10-04", "statement": "Runtime recovery, active-state exact rejoin, legal continuation edges, abort, and quarantine remain visibly and totally represented."}
+      ],
+      "evidenceClasses": ["conformance", "negative"]
     },
     {
       "id": "R11",
@@ -150,7 +155,7 @@
       "mechanisms": ["M11", "M12"],
       "requiredCapabilities": ["mechanism.m11@1"],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:composition:fragment-contract",
-      "acceptanceObligations": [{"id": "O-R15-01", "statement": "All fourteen schema classes validate offline and reject unknown fields."}],
+      "acceptanceObligations": [{"id": "O-R15-01", "statement": "All fifteen schema classes validate offline and reject unknown fields."}],
       "evidenceClasses": ["positive", "negative"]
     },
     {

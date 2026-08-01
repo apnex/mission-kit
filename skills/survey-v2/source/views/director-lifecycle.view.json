@@ -1,0 +1,831 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:director-lifecycle:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:view:director-lifecycle",
+  "protocolId": "urn:mission-kit:survey-v2:protocol:survey",
+  "title": "Survey Director lifecycle",
+  "direction": "LR",
+  "panels": [
+    {"id": "lifecycle", "label": "Primary Director lifecycle", "order": 1},
+    {"id": "continuity", "label": "Continuity, abort, and fail-safe handling", "order": 2}
+  ],
+  "lanes": [
+    {"id": "director", "label": "Director", "order": 1},
+    {"id": "proposer", "label": "Proposer / Survey agent", "order": 2},
+    {"id": "runtime", "label": "Substrate / Runtime", "order": 3}
+  ],
+  "nodes": [
+    {
+      "id": "D_OPEN",
+      "panel": "lifecycle",
+      "lane": "director",
+      "kind": "milestone",
+      "shape": "process",
+      "label": "Open intent and bind Director",
+      "phaseIds": ["new"]
+    },
+    {
+      "id": "D_Q1",
+      "panel": "lifecycle",
+      "lane": "director",
+      "kind": "question",
+      "shape": "question",
+      "label": "Receive and answer Q1 only",
+      "questionId": "Q1",
+      "checkpoint": "question",
+      "phaseIds": ["round_1_q1_ready", "round_1_q1_awaiting"]
+    },
+    {
+      "id": "D_Q2",
+      "panel": "lifecycle",
+      "lane": "director",
+      "kind": "question",
+      "shape": "question",
+      "label": "Receive and answer Q2 only",
+      "questionId": "Q2",
+      "checkpoint": "question",
+      "phaseIds": ["round_1_q2_ready", "round_1_q2_awaiting"]
+    },
+    {
+      "id": "D_Q3",
+      "panel": "lifecycle",
+      "lane": "director",
+      "kind": "question",
+      "shape": "question",
+      "label": "Receive and answer Q3 only",
+      "questionId": "Q3",
+      "checkpoint": "question",
+      "phaseIds": ["round_1_q3_ready", "round_1_q3_awaiting"]
+    },
+    {
+      "id": "D_Q4",
+      "panel": "lifecycle",
+      "lane": "director",
+      "kind": "question",
+      "shape": "question",
+      "label": "Receive and answer Q4 only",
+      "questionId": "Q4",
+      "checkpoint": "question",
+      "phaseIds": ["round_2_q4_ready", "round_2_q4_awaiting"]
+    },
+    {
+      "id": "D_Q5",
+      "panel": "lifecycle",
+      "lane": "director",
+      "kind": "question",
+      "shape": "question",
+      "label": "Receive and answer Q5 only",
+      "questionId": "Q5",
+      "checkpoint": "question",
+      "phaseIds": ["round_2_q5_ready", "round_2_q5_awaiting"]
+    },
+    {
+      "id": "D_Q6",
+      "panel": "lifecycle",
+      "lane": "director",
+      "kind": "question",
+      "shape": "question",
+      "label": "Receive and answer Q6 only",
+      "questionId": "Q6",
+      "checkpoint": "question",
+      "phaseIds": ["round_2_q6_ready", "round_2_q6_awaiting"]
+    },
+    {
+      "id": "D_WALK",
+      "panel": "lifecycle",
+      "lane": "director",
+      "kind": "milestone",
+      "shape": "process",
+      "label": "Walk through the frozen candidate",
+      "checkpoint": "walkthrough",
+      "phaseIds": ["walkthrough_ready", "walkthrough_in_progress"]
+    },
+    {
+      "id": "D_DECIDE",
+      "panel": "lifecycle",
+      "lane": "director",
+      "kind": "decision",
+      "shape": "decision",
+      "label": "Ratify the exact candidate?",
+      "checkpoint": "ratification",
+      "phaseIds": ["awaiting_ratification"]
+    },
+    {
+      "id": "D_FEEDBACK",
+      "panel": "lifecycle",
+      "lane": "director",
+      "kind": "milestone",
+      "shape": "process",
+      "label": "Correction or withholding recorded",
+      "phaseIds": ["revision_requested"]
+    },
+    {
+      "id": "D_CURRENT",
+      "panel": "continuity",
+      "lane": "director",
+      "kind": "scope",
+      "shape": "note",
+      "label": "Current disclosed item only: exact re-emission",
+      "selectorRefs": ["phase/SG02"]
+    },
+    {
+      "id": "D_DONE",
+      "panel": "lifecycle",
+      "lane": "director",
+      "kind": "terminal",
+      "shape": "terminal",
+      "label": "Intent captured; planning handoff sealed",
+      "phaseIds": ["intent_captured"],
+      "runtimeStatusIds": ["closed"]
+    },
+    {
+      "id": "P_INIT",
+      "panel": "lifecycle",
+      "lane": "proposer",
+      "kind": "milestone",
+      "shape": "process",
+      "label": "Resolve dependencies and initialize",
+      "phaseIds": ["initializing", "initialized"]
+    },
+    {
+      "id": "P_R1",
+      "panel": "lifecycle",
+      "lane": "proposer",
+      "kind": "milestone",
+      "shape": "process",
+      "label": "Design, validate, and freeze Round 1",
+      "phaseIds": ["round_1_drafting"]
+    },
+    {
+      "id": "P_R1_INTERPRET",
+      "panel": "lifecycle",
+      "lane": "proposer",
+      "kind": "milestone",
+      "shape": "process",
+      "label": "Interpret and seal Round 1",
+      "phaseIds": [
+        "round_1_responses_complete",
+        "round_1_interpreting",
+        "round_1_interpreted"
+      ]
+    },
+    {
+      "id": "P_R2",
+      "panel": "lifecycle",
+      "lane": "proposer",
+      "kind": "milestone",
+      "shape": "process",
+      "label": "Design Round 2 from sealed Round 1",
+      "phaseIds": ["round_2_drafting"]
+    },
+    {
+      "id": "P_R2_INTERPRET",
+      "panel": "lifecycle",
+      "lane": "proposer",
+      "kind": "milestone",
+      "shape": "process",
+      "label": "Interpret and seal Round 2",
+      "phaseIds": [
+        "round_2_responses_complete",
+        "round_2_interpreting",
+        "round_2_interpreted"
+      ]
+    },
+    {
+      "id": "P_COMPOSE",
+      "panel": "lifecycle",
+      "lane": "proposer",
+      "kind": "milestone",
+      "shape": "process",
+      "label": "Compose the immutable candidate",
+      "phaseIds": ["composite_drafting", "composite_candidate"]
+    },
+    {
+      "id": "P_CLASSIFY",
+      "panel": "lifecycle",
+      "lane": "proposer",
+      "kind": "decision",
+      "shape": "decision",
+      "label": "Classify actionable feedback",
+      "ownerNodeId": "D_FEEDBACK"
+    },
+    {
+      "id": "P_SCOPE_LINK",
+      "panel": "lifecycle",
+      "lane": "proposer",
+      "kind": "annotation",
+      "shape": "note",
+      "label": "Earlier scope change: linked run required",
+      "ownerNodeId": "P_CLASSIFY"
+    },
+    {
+      "id": "R_VALIDATE",
+      "panel": "lifecycle",
+      "lane": "runtime",
+      "kind": "decision",
+      "shape": "decision",
+      "label": "Mechanically validate candidate",
+      "ownerNodeId": "P_COMPOSE"
+    },
+    {
+      "id": "R_FINALIZE",
+      "panel": "lifecycle",
+      "lane": "runtime",
+      "kind": "milestone",
+      "shape": "process",
+      "label": "Deterministically render terminal envelope",
+      "phaseIds": ["ratified", "finalizing"]
+    },
+    {
+      "id": "R_FINAL_CHECK",
+      "panel": "lifecycle",
+      "lane": "runtime",
+      "kind": "decision",
+      "shape": "decision",
+      "label": "Verify terminal projection result",
+      "ownerNodeId": "R_FINALIZE"
+    },
+    {
+      "id": "R_ANCESTRY_LINK",
+      "panel": "lifecycle",
+      "lane": "runtime",
+      "kind": "annotation",
+      "shape": "note",
+      "label": "Earlier invalid ancestor: linked run required",
+      "ownerNodeId": "R_FINAL_CHECK"
+    },
+    {
+      "id": "R_START",
+      "panel": "continuity",
+      "lane": "runtime",
+      "kind": "scope",
+      "shape": "note",
+      "label": "Open or restart a persisted run",
+      "selectorRefs": ["runtime/start"]
+    },
+    {
+      "id": "R_REHYDRATE",
+      "panel": "continuity",
+      "lane": "runtime",
+      "kind": "runtime",
+      "shape": "process",
+      "label": "Rehydrate and verify",
+      "runtimeStatusIds": ["rehydrating"]
+    },
+    {
+      "id": "R_ACTIVE",
+      "panel": "continuity",
+      "lane": "runtime",
+      "kind": "runtime",
+      "shape": "process",
+      "label": "Active at an exact committed cursor",
+      "runtimeStatusIds": ["active"]
+    },
+    {
+      "id": "R_PAUSED",
+      "panel": "continuity",
+      "lane": "runtime",
+      "kind": "runtime",
+      "shape": "process",
+      "label": "Suspended",
+      "runtimeStatusIds": ["suspended"]
+    },
+    {
+      "id": "R_RECOVERABLE",
+      "panel": "continuity",
+      "lane": "runtime",
+      "kind": "runtime",
+      "shape": "process",
+      "label": "Recoverable block",
+      "runtimeStatusIds": ["blocked_recoverable"]
+    },
+    {
+      "id": "R_TERMINAL",
+      "panel": "continuity",
+      "lane": "runtime",
+      "kind": "terminal",
+      "shape": "terminal",
+      "label": "Terminal block; linked run required",
+      "runtimeStatusIds": ["blocked_terminal"]
+    },
+    {
+      "id": "R_REJOIN",
+      "panel": "continuity",
+      "lane": "runtime",
+      "kind": "annotation",
+      "shape": "note",
+      "label": "RJM01 resolves exact node and legal continuation",
+      "ownerNodeId": "R_ACTIVE"
+    },
+    {
+      "id": "R_CONTINUE",
+      "panel": "continuity",
+      "lane": "runtime",
+      "kind": "annotation",
+      "shape": "note",
+      "label": "Continue at the mapped lifecycle step",
+      "ownerNodeId": "R_REJOIN"
+    },
+    {
+      "id": "R_ANY",
+      "panel": "continuity",
+      "lane": "runtime",
+      "kind": "scope",
+      "shape": "note",
+      "label": "Any verified nonterminal run",
+      "selectorRefs": ["phase/SG01", "runtime/SR01"]
+    },
+    {
+      "id": "R_ABORTED",
+      "panel": "continuity",
+      "lane": "runtime",
+      "kind": "terminal",
+      "shape": "terminal",
+      "label": "Aborted; no planning handoff",
+      "phaseIds": ["aborted"],
+      "runtimeStatusIds": ["closed"]
+    },
+    {
+      "id": "R_UNVERIFIABLE",
+      "panel": "continuity",
+      "lane": "runtime",
+      "kind": "fail-safe",
+      "shape": "note",
+      "label": "Session cannot be verified"
+    },
+    {
+      "id": "R_QUARANTINED",
+      "panel": "continuity",
+      "lane": "runtime",
+      "kind": "fail-safe",
+      "shape": "terminal",
+      "label": "Quarantined; linked run only"
+    }
+  ],
+  "annotations": [
+    {
+      "id": "CLASS00",
+      "kind": "classification",
+      "description": "The proposer classifies actionable Director feedback without inventing Director authority."
+    },
+    {
+      "id": "CLASS01",
+      "kind": "classification",
+      "description": "An R1, accepted-pick, or instrument change is outside the current run and terminally blocks it."
+    },
+    {
+      "id": "CHECK02",
+      "kind": "check",
+      "description": "The finalizer classifies the deterministic terminal projection result."
+    },
+    {
+      "id": "CHECK03",
+      "kind": "check",
+      "description": "A defect rooted before Round 2 terminally blocks the run rather than bypassing ancestry."
+    },
+    {
+      "id": "VIEW10",
+      "kind": "view",
+      "description": "Verified rehydration rejoins exactly the persisted phase without regenerating or previewing content."
+    },
+    {
+      "id": "VIEW11",
+      "kind": "view",
+      "description": "The rejoin map resolves the visible lifecycle node and every legal continuation edge."
+    }
+  ],
+  "edges": [
+    {
+      "id": "L01",
+      "from": "D_OPEN",
+      "to": "P_INIT",
+      "kind": "lifecycle",
+      "label": "Bind intent and complete initialization",
+      "transitionIds": ["T01", "T41"]
+    },
+    {
+      "id": "L02",
+      "from": "P_INIT",
+      "to": "P_R1",
+      "kind": "lifecycle",
+      "label": "Begin Round 1 design",
+      "transitionIds": ["T02"]
+    },
+    {
+      "id": "L03",
+      "from": "P_R1",
+      "to": "D_Q1",
+      "kind": "lifecycle",
+      "label": "Save, freeze, and present Q1",
+      "transitionIds": ["T03", "T04", "T05", "T42"]
+    },
+    {
+      "id": "L04",
+      "from": "D_Q1",
+      "to": "D_Q2",
+      "kind": "lifecycle",
+      "label": "Accept Q1; then present Q2",
+      "transitionIds": ["T06", "T07"]
+    },
+    {
+      "id": "L05",
+      "from": "D_Q2",
+      "to": "D_Q3",
+      "kind": "lifecycle",
+      "label": "Accept Q2; then present Q3",
+      "transitionIds": ["T08", "T09"]
+    },
+    {
+      "id": "L06",
+      "from": "D_Q3",
+      "to": "P_R1_INTERPRET",
+      "kind": "lifecycle",
+      "label": "Complete and begin interpreting Round 1",
+      "transitionIds": ["T10", "T11"]
+    },
+    {
+      "id": "L07",
+      "from": "P_R1_INTERPRET",
+      "to": "P_R2",
+      "kind": "lifecycle",
+      "label": "Save and seal Round 1; begin Round 2",
+      "transitionIds": ["T12", "T13", "T43"]
+    },
+    {
+      "id": "L08",
+      "from": "P_R2",
+      "to": "D_Q4",
+      "kind": "lifecycle",
+      "label": "Save, freeze, and present Q4",
+      "transitionIds": ["T14", "T15", "T16", "T44"]
+    },
+    {
+      "id": "L09",
+      "from": "D_Q4",
+      "to": "D_Q5",
+      "kind": "lifecycle",
+      "label": "Accept Q4; then present Q5",
+      "transitionIds": ["T17", "T18"]
+    },
+    {
+      "id": "L10",
+      "from": "D_Q5",
+      "to": "D_Q6",
+      "kind": "lifecycle",
+      "label": "Accept Q5; then present Q6",
+      "transitionIds": ["T19", "T20"]
+    },
+    {
+      "id": "L11",
+      "from": "D_Q6",
+      "to": "P_R2_INTERPRET",
+      "kind": "lifecycle",
+      "label": "Complete and begin interpreting Round 2",
+      "transitionIds": ["T21", "T22"]
+    },
+    {
+      "id": "L12",
+      "from": "P_R2_INTERPRET",
+      "to": "P_COMPOSE",
+      "kind": "lifecycle",
+      "label": "Save and seal Round 2; compose",
+      "transitionIds": ["T23", "T24", "T45"]
+    },
+    {
+      "id": "L13",
+      "from": "P_COMPOSE",
+      "to": "R_VALIDATE",
+      "kind": "lifecycle",
+      "label": "Save and seal candidate",
+      "transitionIds": ["T25", "T46"]
+    },
+    {
+      "id": "L14",
+      "from": "R_VALIDATE",
+      "to": "P_COMPOSE",
+      "kind": "lifecycle",
+      "label": "Validation failed; repair candidate",
+      "transitionIds": ["T27"]
+    },
+    {
+      "id": "L15",
+      "from": "R_VALIDATE",
+      "to": "D_WALK",
+      "kind": "lifecycle",
+      "label": "Validation passed; begin walkthrough",
+      "transitionIds": ["T26", "T28"]
+    },
+    {
+      "id": "L16",
+      "from": "D_WALK",
+      "to": "D_WALK",
+      "kind": "lifecycle",
+      "label": "Acknowledge and show next segment",
+      "transitionIds": ["T29"]
+    },
+    {
+      "id": "L17",
+      "from": "D_WALK",
+      "to": "D_DECIDE",
+      "kind": "lifecycle",
+      "label": "All segments acknowledged",
+      "transitionIds": ["T30"]
+    },
+    {
+      "id": "L18",
+      "from": "D_DECIDE",
+      "to": "R_FINALIZE",
+      "kind": "lifecycle",
+      "label": "Ratify exact candidate and finalize",
+      "transitionIds": ["T31", "T34"]
+    },
+    {
+      "id": "L19",
+      "from": "D_DECIDE",
+      "to": "D_FEEDBACK",
+      "kind": "lifecycle",
+      "label": "Return correction or withhold",
+      "transitionIds": ["T32"]
+    },
+    {
+      "id": "A01",
+      "from": "D_FEEDBACK",
+      "to": "P_CLASSIFY",
+      "kind": "annotation",
+      "label": "Classify actionable feedback",
+      "annotationId": "CLASS00"
+    },
+    {
+      "id": "L20",
+      "from": "P_CLASSIFY",
+      "to": "P_COMPOSE",
+      "kind": "lifecycle",
+      "label": "Composite-only revision",
+      "transitionIds": ["T33"]
+    },
+    {
+      "id": "L21",
+      "from": "P_CLASSIFY",
+      "to": "P_R2_INTERPRET",
+      "kind": "lifecycle",
+      "label": "Round 2 reinterpretation",
+      "transitionIds": ["T37"]
+    },
+    {
+      "id": "A02",
+      "from": "P_CLASSIFY",
+      "to": "P_SCOPE_LINK",
+      "kind": "annotation",
+      "label": "Earlier change requires a linked run",
+      "annotationId": "CLASS01"
+    },
+    {
+      "id": "L22",
+      "from": "D_FEEDBACK",
+      "to": "D_FEEDBACK",
+      "kind": "lifecycle",
+      "label": "Clarify while still unratified",
+      "transitionIds": ["T39"]
+    },
+    {
+      "id": "L23",
+      "from": "D_FEEDBACK",
+      "to": "D_DECIDE",
+      "kind": "lifecycle",
+      "label": "Withdraw withholding; decide again",
+      "transitionIds": ["T47"]
+    },
+    {
+      "id": "A03",
+      "from": "R_FINALIZE",
+      "to": "R_FINAL_CHECK",
+      "kind": "annotation",
+      "label": "Classify terminal projection",
+      "annotationId": "CHECK02"
+    },
+    {
+      "id": "L24",
+      "from": "R_FINAL_CHECK",
+      "to": "R_FINALIZE",
+      "kind": "lifecycle",
+      "label": "Transient retry",
+      "transitionIds": ["T36"]
+    },
+    {
+      "id": "L25",
+      "from": "R_FINAL_CHECK",
+      "to": "P_COMPOSE",
+      "kind": "lifecycle",
+      "label": "Candidate ancestry invalid",
+      "transitionIds": ["T38"]
+    },
+    {
+      "id": "L26",
+      "from": "R_FINAL_CHECK",
+      "to": "P_R2_INTERPRET",
+      "kind": "lifecycle",
+      "label": "Round 2 ancestry invalid",
+      "transitionIds": ["T40"]
+    },
+    {
+      "id": "A04",
+      "from": "R_FINAL_CHECK",
+      "to": "R_ANCESTRY_LINK",
+      "kind": "annotation",
+      "label": "Earlier invalid ancestor requires linked run",
+      "annotationId": "CHECK03"
+    },
+    {
+      "id": "L27",
+      "from": "R_FINAL_CHECK",
+      "to": "D_DONE",
+      "kind": "lifecycle",
+      "label": "Seal handoff and close runtime",
+      "transitionIds": ["T35", "RT12"]
+    },
+    {
+      "id": "L28",
+      "from": "R_ANY",
+      "to": "R_ABORTED",
+      "kind": "lifecycle",
+      "label": "Abort verified run; close without handoff",
+      "transitionIds": ["TF01", "RF01"]
+    },
+    {
+      "id": "L29",
+      "from": "D_CURRENT",
+      "to": "D_CURRENT",
+      "kind": "lifecycle",
+      "label": "Re-emit exact current item only",
+      "transitionIds": ["TF02"]
+    },
+    {
+      "id": "C01",
+      "from": "R_START",
+      "to": "R_REHYDRATE",
+      "kind": "lifecycle",
+      "label": "Open session and begin verification",
+      "transitionIds": ["RT01"]
+    },
+    {
+      "id": "C10",
+      "from": "R_ACTIVE",
+      "to": "R_REHYDRATE",
+      "kind": "lifecycle",
+      "label": "Process restart re-verifies persisted state",
+      "transitionIds": ["RT02"]
+    },
+    {
+      "id": "C11",
+      "from": "R_REHYDRATE",
+      "to": "R_REHYDRATE",
+      "kind": "lifecycle",
+      "label": "Restart verification after interruption",
+      "transitionIds": ["RT03"]
+    },
+    {
+      "id": "C02",
+      "from": "R_PAUSED",
+      "to": "R_REHYDRATE",
+      "kind": "lifecycle",
+      "label": "Resume explicitly",
+      "transitionIds": ["RT04"]
+    },
+    {
+      "id": "C03",
+      "from": "R_RECOVERABLE",
+      "to": "R_REHYDRATE",
+      "kind": "lifecycle",
+      "label": "Retry with resolution evidence",
+      "transitionIds": ["RT05"]
+    },
+    {
+      "id": "C04",
+      "from": "R_REHYDRATE",
+      "to": "R_ACTIVE",
+      "kind": "lifecycle",
+      "label": "Verification passed",
+      "transitionIds": ["RT06"]
+    },
+    {
+      "id": "A05",
+      "from": "R_ACTIVE",
+      "to": "R_REJOIN",
+      "kind": "annotation",
+      "label": "Resolve exact persisted lifecycle point",
+      "annotationId": "VIEW10"
+    },
+    {
+      "id": "A06",
+      "from": "R_REJOIN",
+      "to": "R_CONTINUE",
+      "kind": "annotation",
+      "label": "Resume mapped node and legal continuation",
+      "annotationId": "VIEW11"
+    },
+    {
+      "id": "C05",
+      "from": "R_REHYDRATE",
+      "to": "R_RECOVERABLE",
+      "kind": "lifecycle",
+      "label": "Recoverable verification failure",
+      "transitionIds": ["RT07"]
+    },
+    {
+      "id": "C06",
+      "from": "R_REHYDRATE",
+      "to": "R_TERMINAL",
+      "kind": "lifecycle",
+      "label": "Terminal verification failure",
+      "transitionIds": ["RT08"]
+    },
+    {
+      "id": "C07",
+      "from": "R_ACTIVE",
+      "to": "R_PAUSED",
+      "kind": "lifecycle",
+      "label": "Pause at committed boundary",
+      "transitionIds": ["RT09"]
+    },
+    {
+      "id": "C08",
+      "from": "R_ACTIVE",
+      "to": "R_RECOVERABLE",
+      "kind": "lifecycle",
+      "label": "Required dependency failed",
+      "transitionIds": ["RT10"]
+    },
+    {
+      "id": "C09",
+      "from": "R_ACTIVE",
+      "to": "R_TERMINAL",
+      "kind": "lifecycle",
+      "label": "Semantic-scope or integrity terminal",
+      "transitionIds": ["RT11", "RT13"]
+    },
+    {
+      "id": "J01",
+      "from": "D_Q1",
+      "to": "D_Q1",
+      "kind": "rejection",
+      "label": "Invalid response; repeat Q1 only",
+      "rejectionId": "RJ01"
+    },
+    {
+      "id": "J02",
+      "from": "D_Q2",
+      "to": "D_Q2",
+      "kind": "rejection",
+      "label": "Invalid response; repeat Q2 only",
+      "rejectionId": "RJ01"
+    },
+    {
+      "id": "J03",
+      "from": "D_Q3",
+      "to": "D_Q3",
+      "kind": "rejection",
+      "label": "Invalid response; repeat Q3 only",
+      "rejectionId": "RJ01"
+    },
+    {
+      "id": "J04",
+      "from": "D_Q4",
+      "to": "D_Q4",
+      "kind": "rejection",
+      "label": "Invalid response; repeat Q4 only",
+      "rejectionId": "RJ01"
+    },
+    {
+      "id": "J05",
+      "from": "D_Q5",
+      "to": "D_Q5",
+      "kind": "rejection",
+      "label": "Invalid response; repeat Q5 only",
+      "rejectionId": "RJ01"
+    },
+    {
+      "id": "J06",
+      "from": "D_Q6",
+      "to": "D_Q6",
+      "kind": "rejection",
+      "label": "Invalid response; repeat Q6 only",
+      "rejectionId": "RJ01"
+    },
+    {
+      "id": "F01",
+      "from": "R_UNVERIFIABLE",
+      "to": "R_QUARANTINED",
+      "kind": "fail-safe",
+      "label": "Quarantine without fabricating an event",
+      "operationId": "OQ01"
+    }
+  ],
+  "rejoinMapId": "RJM01",
+  "notes": [
+    "Solid arrows are lifecycle macros; their transition IDs are fully traced to the normative protocol FSM.",
+    "Dashed arrows are views, classifications, rejections, or fail-safe handling and never invent protocol state.",
+    "Lane placement names the visible touchpoint; exact transition authority remains in the normative protocol tuple.",
+    "Continuity surrounds any persisted primary-lifecycle point; RJM01 returns to its exact mapped node and legal continuation edge set.",
+    "The FSM remains the exhaustive legal-state authority; this FLOW is the Director-centred cognitive projection."
+  ]
+}
