@@ -5,7 +5,9 @@
 Run binary gates in order:
 
 1. G0 preserves the frozen v1 baseline and its 17, 12 and 24 assertions.
-2. G1 validates every schema with positive and negative instances.
+2. G1 validates every schema and closes shared structural and semantic
+   validator dependencies with positive, negative, parity, relocation and
+   failed-refresh rollback evidence.
 3. G2 proves fragment IDs, capability graph and contribution coverage.
 4. G3 proves deterministic projection, Mermaid/FLOW parse-back and relocation.
 5. G4 proves every legal and illegal protocol transition and authority guard.
@@ -35,6 +37,11 @@ The directory containing this package is the complete installable Survey
 system. Resolve every owned path from that directory. Never search for a Git
 root, governance document, sibling skill, parent package, or parent
 `node_modules`.
+
+Carry shared contracts as a checked-in dependency snapshot. Compilation,
+checking and runtime may consume only that snapshot; only an explicit refresh
+or authority-parity command may read the separately supplied shared-schema
+source root.
 
 Use `./compile.sh` as the sole build entry. It may only locate the physical
 root and execute `source/executables/compiler/build.mjs`. Treat `SKILL.md`,

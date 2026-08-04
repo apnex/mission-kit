@@ -305,19 +305,26 @@
       ],
       "evidenceClasses": [
         "positive",
-        "negative"
+        "negative",
+        "conformance",
+        "comparison"
       ],
       "mechanisms": [
         "M11",
         "M12"
       ],
       "obligations": [
-        "O-R15-01"
+        "O-R15-01",
+        "O-R15-02",
+        "O-R15-03",
+        "O-R15-04",
+        "O-R15-05"
       ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:composition:fragment-contract",
       "requirementId": "R15",
       "supportingOwners": [
-        "urn:mission-kit:survey-v2:executable:compiler:build"
+        "urn:mission-kit:survey-v2:executable:compiler:build",
+        "urn:mission-kit:survey-v2:executable:compiler:shared-schema-closure"
       ]
     },
     {
@@ -445,17 +452,21 @@
         "mechanism.m13@1"
       ],
       "evidenceClasses": [
-        "conformance"
+        "conformance",
+        "failure-injection"
       ],
       "mechanisms": [
         "M13"
       ],
       "obligations": [
-        "O-R22-01"
+        "O-R22-01",
+        "O-R22-02"
       ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:assurance:verification-gates",
       "requirementId": "R22",
-      "supportingOwners": []
+      "supportingOwners": [
+        "urn:mission-kit:survey-v2:executable:compiler:shared-schema-closure"
+      ]
     },
     {
       "capabilities": [
@@ -549,12 +560,14 @@
         "M15"
       ],
       "obligations": [
-        "O-R27-01"
+        "O-R27-01",
+        "O-R27-02"
       ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:identity:sovereign-root",
       "requirementId": "R27",
       "supportingOwners": [
         "urn:mission-kit:survey-v2:executable:compiler:build",
+        "urn:mission-kit:survey-v2:executable:compiler:shared-schema-closure",
         "urn:mission-kit:survey-v2:executable:runtime:handler-surface",
         "urn:mission-kit:survey-v2:executable:runtime:init"
       ]

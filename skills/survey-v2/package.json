@@ -9,9 +9,12 @@
   "scripts": {
     "build": "./compile.sh",
     "check": "./compile.sh --check",
+    "schemas:check": "./shared-schemas.sh check",
+    "schemas:refresh": "./shared-schemas.sh refresh",
     "test": "node tests/run-tests.mjs"
   },
   "devDependencies": {
+    "acorn": "8.15.0",
     "ajv": "8.20.0"
   }
 }

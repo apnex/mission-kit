@@ -15,6 +15,10 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import Ajv2020 from "ajv/dist/2020.js";
 import standaloneCode from "ajv/dist/standalone/index.js";
+import {
+  checkSharedSchemaSnapshot,
+  renderSharedSemanticValidatorRegistry
+} from "./shared-schema-closure.mjs";
 import { HANDLER_SURFACE } from "../runtime/lib/handler-surface.mjs";
 import {
   base64urlCanonical,
@@ -1377,22 +1381,52 @@ async function checkOutputs(outputs) {
 }
 
 async function main() {
+  const sharedSchemaSnapshot = await checkSharedSchemaSnapshot({ packageRoot: root });
   const packageManifest = await readJson("survey-v2.package.json");
   const schemaPaths = packageManifest.schemas.map((entry) => entry.path);
-  const schemaIds = unique(packageManifest.schemas.map((entry) => entry.id), "schema ID");
+  const localSchemaIds = unique(packageManifest.schemas.map((entry) => entry.id), "local schema ID");
   unique(schemaPaths, "schema path");
   const memberPaths = unique(packageManifest.members.map((entry) => entry.path), "package member path");
   if (!memberPaths.has("package-lock.json") || packageManifest.members.find((item) => item.path === "package-lock.json")?.kind !== "supply-lock") {
     fail("package-lock.json must be one registered supply-lock member");
   }
 
-  const schemas = [];
+  const localSchemas = [];
   for (const entry of packageManifest.schemas) {
     const schema = await readJson(entry.path);
     if (schema.$id !== entry.id) {
       fail(`schema manifest ID ${entry.id} differs from ${entry.path} document ID ${schema.$id}`);
     }
-    schemas.push(schema);
+    localSchemas.push(schema);
+  }
+  if (
+    !sharedSchemaSnapshot ||
+    typeof sharedSchemaSnapshot !== "object" ||
+    !sharedSchemaSnapshot.manifest ||
+    !Array.isArray(sharedSchemaSnapshot.manifest.schemas) ||
+    !Array.isArray(sharedSchemaSnapshot.schemas) ||
+    !Array.isArray(sharedSchemaSnapshot.resources)
+  ) {
+    fail("shared-schema closure checker returned an invalid result");
+  }
+  const sharedSchemaIds = unique(
+    sharedSchemaSnapshot.schemas.map((schema) => schema?.$id),
+    "shared-schema closure ID"
+  );
+  if (sharedSchemaIds.has(undefined)) fail("shared-schema closure contains a schema without $id");
+  const declaredSharedSchemaIds = unique(
+    sharedSchemaSnapshot.manifest.schemas.map((schema) => schema.id),
+    "shared-schema manifest ID"
+  );
+  assertExactValues(
+    sharedSchemaIds,
+    declaredSharedSchemaIds,
+    "checked shared-schema documents versus closure manifest"
+  );
+  const schemas = [...localSchemas, ...sharedSchemaSnapshot.schemas];
+  const schemaIds = unique(schemas.map((schema) => schema.$id), "global schema ID");
+  for (const schemaId of localSchemaIds) {
+    if (!schemaIds.has(schemaId)) fail(`local schema disappeared from combined registry: ${schemaId}`);
   }
   const predecessorSchemaIds = [
     "urn:mission-kit:survey-v2:schema:common:v1",
@@ -1428,6 +1462,23 @@ async function main() {
   const packageValidator = ajv.getSchema("urn:mission-kit:survey-v2:schema:package:v1");
   if (!packageValidator(packageManifest)) {
     fail(`package manifest invalid: ${ajv.errorsText(packageValidator.errors, { separator: "; " })}`);
+  }
+  const sharedRoots = await readJson(packageManifest.sharedSchemaClosure.roots);
+  const sharedRootsValidator = ajv.getSchema("urn:mission-kit:survey-v2:schema:shared-schema-roots:v1");
+  if (!sharedRootsValidator || !sharedRootsValidator(sharedRoots)) {
+    fail(
+      `shared-schema roots invalid: ${sharedRootsValidator
+        ? ajv.errorsText(sharedRootsValidator.errors, { separator: "; " })
+        : "validator unavailable"}`
+    );
+  }
+  const sharedClosureValidator = ajv.getSchema("urn:mission-kit:survey-v2:schema:shared-schema-closure:v1");
+  if (!sharedClosureValidator || !sharedClosureValidator(sharedSchemaSnapshot.manifest)) {
+    fail(
+      `shared-schema closure manifest invalid: ${sharedClosureValidator
+        ? ajv.errorsText(sharedClosureValidator.errors, { separator: "; " })
+        : "validator unavailable"}`
+    );
   }
 
   await validateInventory(packageManifest, { generatedMayBeMissing: mode === "build" });
@@ -1511,6 +1562,17 @@ async function main() {
       const sourceMember = packageManifest.members.find((member) => member.path === sourcePath);
       if (!sourceMember || sourceMember.kind !== "authored") fail(`${recipe.id} selects noncanonical source ${sourcePath}`);
     }
+    for (const dependencyPath of recipe.selection.dependencyPaths ?? []) {
+      const dependencyMember = packageManifest.members.find(
+        (member) => member.path === dependencyPath
+      );
+      if (
+        !dependencyMember ||
+        !["authored", "dependency-snapshot"].includes(dependencyMember.kind)
+      ) {
+        fail(`${recipe.id} selects noncanonical dependency ${dependencyPath}`);
+      }
+    }
     for (const target of recipe.targets) {
       ownedPath(target);
       if (targetOwners.has(target)) fail(`${target} has two projection owners`);
@@ -1568,7 +1630,28 @@ async function main() {
         ""
       ].join("\n"), "utf8"));
     } else if (recipe.renderer === "validators") {
+      assertExactValues(
+        new Set(recipe.selection.sourcePaths ?? []),
+        new Set(schemaPaths),
+        `${recipe.id} local schema authorities`
+      );
+      assertExactValues(
+        new Set(recipe.selection.dependencyPaths ?? []),
+        new Set(Object.values(packageManifest.sharedSchemaClosure)),
+        `${recipe.id} shared-schema dependency authorities`
+      );
+      if (
+        recipe.targets.length !== 2 ||
+        recipe.targets[0] !== "generated/validators.mjs" ||
+        recipe.targets[1] !== "generated/shared-semantic-validators.mjs"
+      ) {
+        fail(`${recipe.id} must own the structural and shared semantic validator targets`);
+      }
       outputs.set(recipe.targets[0], Buffer.from(standaloneValidators(ajv, schemas), "utf8"));
+      outputs.set(
+        recipe.targets[1],
+        Buffer.from(renderSharedSemanticValidatorRegistry(sharedSchemaSnapshot), "utf8")
+      );
     } else if (recipe.renderer === "indexes") {
       outputs.set("generated/dependency-index.json", Buffer.from(prettyJson(dependencyIndex(dependencies, fragments)), "utf8"));
       outputs.set("generated/mechanism-index.json", Buffer.from(prettyJson(mechanism), "utf8"));

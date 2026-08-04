@@ -22,5 +22,5 @@ test("every fragment has one descriptor, payload and purpose", async () => {
     assert.ok(packageManifest.members.some((item) => item.path === descriptor.representation.payloadPath));
     assert.equal((await stat(`${surveyRoot}/${descriptor.representation.payloadPath}`)).isFile(), true);
   }
-  assert.equal(descriptorMembers.length, 27);
+  assert.equal(descriptorMembers.length, 28);
 });

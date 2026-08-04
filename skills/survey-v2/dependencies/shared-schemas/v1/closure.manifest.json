@@ -1,0 +1,132 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:shared-schema-closure:v1",
+  "catalog": {
+    "bytes": 1204,
+    "exactDigest": "sha256:bb82aa7e087ce0d9dd08d28d45c324ff0f7f6a345268bb9e676ffc5650f0c946",
+    "mediaType": "application/json",
+    "semanticDigest": "sha256:30cf07e587748a681f14714ac4923a14248f0c151f6574d570372e95ca91a09e",
+    "snapshotPath": "dependencies/shared-schemas/v1/snapshot/catalog.json",
+    "sourcePath": "catalog.json"
+  },
+  "closureDigest": "sha256:9df3e72880bc59eeac3b5bf5bb34349d56cc9a4c842c8e2db0dd77d052f845a3",
+  "id": "urn:mission-kit:survey-v2:shared-schema-closure",
+  "resources": [
+    {
+      "apiVersion": "schemas.mission-kit/v1alpha1",
+      "kind": "ContextFrame",
+      "schemaId": "urn:mission-kit:schemas:context-frame:v1alpha1",
+      "semanticValidatorExport": "validateContextFrameSemantics",
+      "semanticValidatorPath": "context-frame/v1alpha1/context-frame.validator.mjs"
+    },
+    {
+      "apiVersion": "schemas.mission-kit/v1alpha1",
+      "kind": "Question",
+      "schemaId": "urn:mission-kit:schemas:question:v1alpha1",
+      "semanticValidatorExport": "validateQuestionSemantics",
+      "semanticValidatorPath": "question/v1alpha1/question.validator.mjs"
+    }
+  ],
+  "rootListDigest": "sha256:b975b99b20f86dc15feb4f38682f32edee401e0d2dff3c93b5bbbfbc3e5bb5a4",
+  "schemaVersion": "1.0.0",
+  "schemas": [
+    {
+      "bytes": 1448,
+      "exactDigest": "sha256:5597ba4034f4641ab4e157d9f51eb2295c648c669e8be6a3e6b65628086ee988",
+      "id": "urn:mission-kit:schemas:common:resource-metadata:v1alpha1",
+      "mediaType": "application/schema+json",
+      "memberRole": "fragment",
+      "refTargets": [],
+      "semanticDigest": "sha256:6b693b4cee7a36a7df0d072b0f1965cf14ce51f88c93efdef8f0b6a2039ec64a",
+      "snapshotPath": "dependencies/shared-schemas/v1/snapshot/common/v1alpha1/resource-metadata.schema.json",
+      "sourcePath": "common/v1alpha1/resource-metadata.schema.json"
+    },
+    {
+      "bytes": 3906,
+      "exactDigest": "sha256:b934987158806eb13fdf2e9aeb1d22c10d86d7cf92be322e66b1561e4d8ea040",
+      "id": "urn:mission-kit:schemas:context-frame:v1alpha1",
+      "mediaType": "application/schema+json",
+      "memberRole": "resource",
+      "refTargets": [
+        "urn:mission-kit:schemas:common:resource-metadata:v1alpha1"
+      ],
+      "semanticDigest": "sha256:aca673529b496c43320b834fa4567df5c538803e5088bdc798b331496a0037c1",
+      "snapshotPath": "dependencies/shared-schemas/v1/snapshot/context-frame/v1alpha1/context-frame.schema.json",
+      "sourcePath": "context-frame/v1alpha1/context-frame.schema.json"
+    },
+    {
+      "bytes": 2677,
+      "exactDigest": "sha256:ff50eef15b264cc86ecff8d1af6e8b069a66c8e6fd22dfc28f142ad9b1f6a7c1",
+      "id": "urn:mission-kit:schemas:question:choice-response:v1alpha1",
+      "mediaType": "application/schema+json",
+      "memberRole": "fragment",
+      "refTargets": [],
+      "semanticDigest": "sha256:504b4858ac15217d6df0e560bca4920de7667e49c630cebc1e7a57009872a632",
+      "snapshotPath": "dependencies/shared-schemas/v1/snapshot/question/v1alpha1/choice-response.schema.json",
+      "sourcePath": "question/v1alpha1/choice-response.schema.json"
+    },
+    {
+      "bytes": 1661,
+      "exactDigest": "sha256:4d091c923a32bb053d882bf2e99e1c8286df51c7cda1dfb53593ca289ddd3541",
+      "id": "urn:mission-kit:schemas:question:v1alpha1",
+      "mediaType": "application/schema+json",
+      "memberRole": "resource",
+      "refTargets": [
+        "urn:mission-kit:schemas:common:resource-metadata:v1alpha1",
+        "urn:mission-kit:schemas:question:choice-response:v1alpha1"
+      ],
+      "semanticDigest": "sha256:226ea872a1f246e43c1060ca0e52dc9f50ba702a13e673e55d9941234f7f31ae",
+      "snapshotPath": "dependencies/shared-schemas/v1/snapshot/question/v1alpha1/question.schema.json",
+      "sourcePath": "question/v1alpha1/question.schema.json"
+    }
+  ],
+  "source": {
+    "kind": "repository-selector",
+    "repository": "apnex/mission-kit",
+    "selector": "schemas"
+  },
+  "validators": [
+    {
+      "bytes": 2125,
+      "declaredExports": [
+        "validateContextFrameSemantics"
+      ],
+      "exactDigest": "sha256:9fa56949e332b028d33759eb0d88fec9d9bb6e8e1e144940049915f9665200f4",
+      "mediaType": "text/javascript",
+      "memberRole": "entry",
+      "resourceBindings": [
+        {
+          "apiVersion": "schemas.mission-kit/v1alpha1",
+          "kind": "ContextFrame",
+          "schemaId": "urn:mission-kit:schemas:context-frame:v1alpha1",
+          "semanticValidatorExport": "validateContextFrameSemantics",
+          "semanticValidatorPath": "context-frame/v1alpha1/context-frame.validator.mjs"
+        }
+      ],
+      "snapshotPath": "dependencies/shared-schemas/v1/snapshot/context-frame/v1alpha1/context-frame.validator.mjs",
+      "sourcePath": "context-frame/v1alpha1/context-frame.validator.mjs",
+      "staticImports": []
+    },
+    {
+      "bytes": 4893,
+      "declaredExports": [
+        "validateChoiceResponseSemantics",
+        "validateQuestionSemantics"
+      ],
+      "exactDigest": "sha256:4ea3d752f2b846448f131b9a8fc479dc39576bb3665816b354bcbc78491f2bc9",
+      "mediaType": "text/javascript",
+      "memberRole": "entry",
+      "resourceBindings": [
+        {
+          "apiVersion": "schemas.mission-kit/v1alpha1",
+          "kind": "Question",
+          "schemaId": "urn:mission-kit:schemas:question:v1alpha1",
+          "semanticValidatorExport": "validateQuestionSemantics",
+          "semanticValidatorPath": "question/v1alpha1/question.validator.mjs"
+        }
+      ],
+      "snapshotPath": "dependencies/shared-schemas/v1/snapshot/question/v1alpha1/question.validator.mjs",
+      "sourcePath": "question/v1alpha1/question.validator.mjs",
+      "staticImports": []
+    }
+  ]
+}

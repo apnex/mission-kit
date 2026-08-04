@@ -339,12 +339,30 @@
       "acceptanceObligations": [
         {
           "id": "O-R15-01",
-          "statement": "All fifteen schema classes validate offline and reject unknown fields."
+          "statement": "All fifteen predecessor schema classes validate offline and reject unknown fields."
+        },
+        {
+          "id": "O-R15-02",
+          "statement": "Selected shared-schema roots resolve to one exact recursive closure with closed cycles admitted."
+        },
+        {
+          "id": "O-R15-03",
+          "statement": "Unresolved, duplicate, remote, escaping, missing, extra, or dirty shared-schema state fails closed."
+        },
+        {
+          "id": "O-R15-04",
+          "statement": "Every selected semantic validator has an exact entry binding and a closed local static-module graph."
+        },
+        {
+          "id": "O-R15-05",
+          "statement": "Snapshotted Question and ContextFrame structural and semantic validation matches shared authority."
         }
       ],
       "evidenceClasses": [
         "positive",
-        "negative"
+        "negative",
+        "conformance",
+        "comparison"
       ]
     },
     {
@@ -493,10 +511,15 @@
         {
           "id": "O-R22-01",
           "statement": "Registered tests are modular, orthogonal and one behavior each."
+        },
+        {
+          "id": "O-R22-02",
+          "statement": "Shared-schema refresh and non-mutating check behaviors have independent deterministic evidence, and failed publication restores the prior closure."
         }
       ],
       "evidenceClasses": [
-        "conformance"
+        "conformance",
+        "failure-injection"
       ]
     },
     {
@@ -603,6 +626,10 @@
         {
           "id": "O-R27-01",
           "statement": "A clean non-Git root installs, builds, checks and tests without siblings."
+        },
+        {
+          "id": "O-R27-02",
+          "statement": "A relocated Survey-v2 root checks and consumes shared structural and semantic validators without parent access."
         }
       ],
       "evidenceClasses": [

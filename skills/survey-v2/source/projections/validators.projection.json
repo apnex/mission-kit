@@ -3,13 +3,18 @@
   "schemaVersion": "1.0.0",
   "id": "urn:mission-kit:survey-v2:projection:validators",
   "renderer": "validators",
-  "targets": ["generated/validators.mjs"],
+  "targets": [
+    "generated/validators.mjs",
+    "generated/shared-semantic-validators.mjs"
+  ],
   "selection": {
     "fragmentIds": [
+      "urn:mission-kit:survey-v2:executable:compiler:shared-schema-closure",
       "urn:mission-kit:survey-v2:fragment:composition:fragment-contract"
     ],
     "sourcePaths": [
       "schemas/v1/common.schema.json",
+      "schemas/v1/director-lifecycle.schema.json",
       "schemas/v1/package.schema.json",
       "schemas/v1/fragment.schema.json",
       "schemas/v1/protocol.schema.json",
@@ -23,6 +28,8 @@
       "schemas/v1/quarantine.schema.json",
       "schemas/v1/test-evidence.schema.json",
       "schemas/v1/envelope-model.schema.json",
+      "schemas/v1/shared-schema-closure.schema.json",
+      "schemas/v1/shared-schema-roots.schema.json",
       "schemas/authoring/v1alpha1/common.schema.json",
       "schemas/authoring/v1alpha1/authoring-protocol.schema.json",
       "schemas/authoring/v1alpha1/authoring-profile-manifest.schema.json",
@@ -39,6 +46,10 @@
       "schemas/authoring/v1alpha1/projection-artifact.schema.json",
       "schemas/authoring/v1alpha1/authoring-mutation.schema.json",
       "schemas/authoring/v1alpha1/authoring-journal-record.schema.json"
+    ],
+    "dependencyPaths": [
+      "dependencies/shared-schemas/v1/closure.manifest.json",
+      "dependencies/shared-schemas/v1/roots.json"
     ]
   },
   "budget": {

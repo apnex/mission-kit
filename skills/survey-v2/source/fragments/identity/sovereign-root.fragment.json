@@ -2,7 +2,7 @@
   "$schema": "urn:mission-kit:survey-v2:schema:fragment:v1",
   "schemaVersion": "1.0.0",
   "id": "urn:mission-kit:survey-v2:fragment:identity:sovereign-root",
-  "revision": 1,
+  "revision": 2,
   "purpose": "Define the complete relocatable package and its singular compiler boundary.",
   "role": "constraint",
   "normativity": "normative",
@@ -23,7 +23,10 @@
   "contribution": {
     "mode": "unique",
     "proofClass": "sole-required-provider",
-    "obligations": ["O-R27-01"]
+    "obligations": [
+      "O-R27-01",
+      "O-R27-02"
+    ]
   },
   "exposure": "internal"
 }

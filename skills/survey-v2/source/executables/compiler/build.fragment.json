@@ -2,7 +2,7 @@
   "$schema": "urn:mission-kit:survey-v2:schema:fragment:v1",
   "schemaVersion": "1.0.0",
   "id": "urn:mission-kit:survey-v2:executable:compiler:build",
-  "revision": 1,
+  "revision": 2,
   "purpose": "Validate canonical inputs and project every registered generated target deterministically.",
   "role": "executable",
   "normativity": "normative",
@@ -16,7 +16,11 @@
   "absenceConsequence": "The sovereign root could not prove canonical validity or deterministic projection.",
   "composition": {
     "provides": ["compiler.build@1"],
-    "requires": ["runtime.canonical@1", "runtime.handler-surface@1"],
+    "requires": [
+      "compiler.shared-schema-closure@1",
+      "runtime.canonical@1",
+      "runtime.handler-surface@1"
+    ],
     "dependencies": []
   },
   "requirements": ["R15", "R16", "R27"],

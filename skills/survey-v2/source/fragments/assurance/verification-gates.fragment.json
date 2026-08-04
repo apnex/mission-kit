@@ -2,7 +2,7 @@
   "$schema": "urn:mission-kit:survey-v2:schema:fragment:v1",
   "schemaVersion": "1.0.0",
   "id": "urn:mission-kit:survey-v2:fragment:assurance:verification-gates",
-  "revision": 1,
+  "revision": 3,
   "purpose": "Order independent proof from baseline through forward evidence without compensating failures.",
   "role": "decision-table",
   "normativity": "normative",
@@ -23,7 +23,11 @@
   "contribution": {
     "mode": "unique",
     "proofClass": "required-coverage",
-    "obligations": ["O-R21-01", "O-R22-01"]
+    "obligations": [
+      "O-R21-01",
+      "O-R22-01",
+      "O-R22-02"
+    ]
   },
   "exposure": "internal"
 }

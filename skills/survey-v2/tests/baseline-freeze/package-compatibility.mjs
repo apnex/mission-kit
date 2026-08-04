@@ -135,7 +135,13 @@ export async function verifyFrozenPackageRoot({ subjectRoot, requiredPackage }) 
       member === null ||
       typeof member !== "object" ||
       Array.isArray(member) ||
-      !["authored", "bootstrap", "generated", "supply-lock"].includes(member.kind)
+      ![
+        "authored",
+        "bootstrap",
+        "dependency-snapshot",
+        "generated",
+        "supply-lock"
+      ].includes(member.kind)
     ) {
       refuse("selected package has an invalid registered member");
     }

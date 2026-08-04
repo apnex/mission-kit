@@ -45,6 +45,13 @@
             "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/relativePath"
           }
         },
+        "dependencyPaths": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/relativePath"
+          }
+        },
         "headings": {
           "type": "array",
           "items": {

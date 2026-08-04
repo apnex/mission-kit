@@ -13,6 +13,7 @@
     "version",
     "parentDesignSha256",
     "schemas",
+    "sharedSchemaClosure",
     "members",
     "projections",
     "requirementsRegistry",
@@ -42,7 +43,7 @@
     },
     "schemas": {
       "type": "array",
-      "minItems": 15,
+      "minItems": 17,
       "uniqueItems": true,
       "items": {
         "type": "object",
@@ -67,6 +68,22 @@
         }
       }
     },
+    "sharedSchemaClosure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "roots",
+        "manifest"
+      ],
+      "properties": {
+        "roots": {
+          "const": "dependencies/shared-schemas/v1/roots.json"
+        },
+        "manifest": {
+          "const": "dependencies/shared-schemas/v1/closure.manifest.json"
+        }
+      }
+    },
     "members": {
       "type": "array",
       "minItems": 1,
@@ -79,7 +96,13 @@
             "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/relativePath"
           },
           "kind": {
-            "enum": ["authored", "generated", "bootstrap", "supply-lock"]
+            "enum": [
+              "authored",
+              "generated",
+              "bootstrap",
+              "supply-lock",
+              "dependency-snapshot"
+            ]
           },
           "expectedId": {
             "type": "string",

@@ -1,5 +1,5 @@
 {
-  "aggregateDigest": "sha256:f4030da68135ecaab8008bcb58e51a03def477081f24d96704dae7c5af2cb7bb",
+  "aggregateDigest": "sha256:4db619a8fbd7e075aa8ab1976618115881b3244175072ed884487b3059eda6e7",
   "canonicalDigests": [
     {
       "digest": "sha256:f7c65af249baff28e5d9fe29a9ac4011f802e955f74829c14949e2cf23104254",
@@ -10,11 +10,47 @@
       "path": "compile.sh"
     },
     {
-      "digest": "sha256:32e2fdc6c4b742f4d0ada2f7ee349a5cf2c57d58a7860265b74b30a0f963fc5d",
+      "digest": "sha256:76fb60b6b005f7690573cefab38d1e8de88f50fc1d9096d931612ea1eec6776d",
+      "path": "dependencies/shared-schemas/v1/closure.manifest.json"
+    },
+    {
+      "digest": "sha256:b2d29239b4d83e97e619d27b291086a57a4de638182abb04c9d372d9579ab239",
+      "path": "dependencies/shared-schemas/v1/roots.json"
+    },
+    {
+      "digest": "sha256:bb82aa7e087ce0d9dd08d28d45c324ff0f7f6a345268bb9e676ffc5650f0c946",
+      "path": "dependencies/shared-schemas/v1/snapshot/catalog.json"
+    },
+    {
+      "digest": "sha256:5597ba4034f4641ab4e157d9f51eb2295c648c669e8be6a3e6b65628086ee988",
+      "path": "dependencies/shared-schemas/v1/snapshot/common/v1alpha1/resource-metadata.schema.json"
+    },
+    {
+      "digest": "sha256:b934987158806eb13fdf2e9aeb1d22c10d86d7cf92be322e66b1561e4d8ea040",
+      "path": "dependencies/shared-schemas/v1/snapshot/context-frame/v1alpha1/context-frame.schema.json"
+    },
+    {
+      "digest": "sha256:9fa56949e332b028d33759eb0d88fec9d9bb6e8e1e144940049915f9665200f4",
+      "path": "dependencies/shared-schemas/v1/snapshot/context-frame/v1alpha1/context-frame.validator.mjs"
+    },
+    {
+      "digest": "sha256:ff50eef15b264cc86ecff8d1af6e8b069a66c8e6fd22dfc28f142ad9b1f6a7c1",
+      "path": "dependencies/shared-schemas/v1/snapshot/question/v1alpha1/choice-response.schema.json"
+    },
+    {
+      "digest": "sha256:4d091c923a32bb053d882bf2e99e1c8286df51c7cda1dfb53593ca289ddd3541",
+      "path": "dependencies/shared-schemas/v1/snapshot/question/v1alpha1/question.schema.json"
+    },
+    {
+      "digest": "sha256:4ea3d752f2b846448f131b9a8fc479dc39576bb3665816b354bcbc78491f2bc9",
+      "path": "dependencies/shared-schemas/v1/snapshot/question/v1alpha1/question.validator.mjs"
+    },
+    {
+      "digest": "sha256:a7ad133e962249e615b69ffea33a61998a6e0dd22d763a0e89da372c39c9ff5c",
       "path": "package-lock.json"
     },
     {
-      "digest": "sha256:c643cf59ba43f24608a252508dc39aed1e544e5e4b7e920a01a6344842459da3",
+      "digest": "sha256:2b45ecc30039a2d9e8080db8b24861d1623e653abcad0c6fe7276d0a0e22546b",
       "path": "package.json"
     },
     {
@@ -106,7 +142,7 @@
       "path": "schemas/v1/instrument.schema.json"
     },
     {
-      "digest": "sha256:03724f38fa397359d18c916161b541c91a1a91f8246b505f3704249b3ff10604",
+      "digest": "sha256:6bdbfecc12c601e188e4036ddf2cb05eab834b74bcb2fc2f26c914c153788a18",
       "path": "schemas/v1/package.schema.json"
     },
     {
@@ -114,7 +150,7 @@
       "path": "schemas/v1/presentation.schema.json"
     },
     {
-      "digest": "sha256:da0f2f50d0aceacf91b01c8896a3f026d7818dd5f9279a68c66a2a6c18fc92ea",
+      "digest": "sha256:0d8a32a4c23d0aaea31218addbfa8822dd41b1292c1f61288af925ae7ade1adc",
       "path": "schemas/v1/projection.schema.json"
     },
     {
@@ -134,12 +170,24 @@
       "path": "schemas/v1/session-state.schema.json"
     },
     {
+      "digest": "sha256:98949c1443bb9eb2063f96b2032157b4bd3cc6765065972a1b4ee1d8c2105d17",
+      "path": "schemas/v1/shared-schema-closure.schema.json"
+    },
+    {
+      "digest": "sha256:ff0df5605240f5a3c89effbcffd5d1af9a3a8ab4a1c52a456a942349a135fc3f",
+      "path": "schemas/v1/shared-schema-roots.schema.json"
+    },
+    {
       "digest": "sha256:6b6f6c978c2520ad1eaed52ce90e7f76bbba4aed913d08f77aa3b0a47b561567",
       "path": "schemas/v1/test-evidence.schema.json"
     },
     {
       "digest": "sha256:e71095c146fb995df42c96321fb745d4b0cbfc5426aca6063fe1e6172112d594",
       "path": "schemas/v1/triangulation-process.schema.json"
+    },
+    {
+      "digest": "sha256:b0b08e9f8365ae8ebe528ad42bf744e389188bfc54cebeda1e27d2684e2cca5f",
+      "path": "shared-schemas.sh"
     },
     {
       "digest": "sha256:a467aa5b491c0b364a99f8aa2c3552872134e5bdbd4ba020c2a6102bddea5936",
@@ -162,12 +210,20 @@
       "path": "source/dependencies/references/mission-kit-axioms.reference.json"
     },
     {
-      "digest": "sha256:ee83b99e03c95b729ba44b733a952fc9abd64b482c6e10b3eac07bba319466da",
+      "digest": "sha256:ec358ed019947c258cd22fe7419cb8ec93b340fb4c4307b73e0af104898962a1",
       "path": "source/executables/compiler/build.fragment.json"
     },
     {
-      "digest": "sha256:8ec355a80791ea81224ad041c953261578fd754d7574673161b40cb8838bc265",
+      "digest": "sha256:8599de4bc7bed4b0c5f192843252c25ae07d949a0a180f8b5cd6f15bf23fdb71",
       "path": "source/executables/compiler/build.mjs"
+    },
+    {
+      "digest": "sha256:5d6fa0481a59d83aec40b9adfadcaae31643935cd378d7717d3d612f942e1013",
+      "path": "source/executables/compiler/shared-schema-closure.fragment.json"
+    },
+    {
+      "digest": "sha256:4116b3085dbbfa3fcb166c581d7e151ef42b9e9e397c67f3a8b286a06043a035",
+      "path": "source/executables/compiler/shared-schema-closure.mjs"
     },
     {
       "digest": "sha256:879da652dcbaa38b54ab9be1703851984650ba5d27cf6c4b216d5dca5d943cc8",
@@ -274,11 +330,11 @@
       "path": "source/fragments/assurance/promotion-boundary.md"
     },
     {
-      "digest": "sha256:a59d054b818c6b6b805fd8cb3f796f1121469f7f731fb52a1cb4e639bfed023a",
+      "digest": "sha256:fe0613365997970507cfd0199a7add55285508a20b1aef24a2af7cb3cf5885cf",
       "path": "source/fragments/assurance/verification-gates.fragment.json"
     },
     {
-      "digest": "sha256:690245cbf4de7e6e4f52e272dc4db68b2e02e47efc574ae953895913c3931a1c",
+      "digest": "sha256:57c5d1fb1fd8d5c18e26160bb94bfd425d9d0ad6f74eefee7fc9a47c054bcf6a",
       "path": "source/fragments/assurance/verification-gates.md"
     },
     {
@@ -306,11 +362,11 @@
       "path": "source/fragments/dependencies/typed-resolution.md"
     },
     {
-      "digest": "sha256:5ab381172901e28ca8b6864852d024691169271dbeb74e4e1c810949b278b561",
+      "digest": "sha256:d1000b50e222dfe54cb59336a4b399f046b31e671afec6b76b67fa77dd7d4ea9",
       "path": "source/fragments/identity/sovereign-root.fragment.json"
     },
     {
-      "digest": "sha256:4f319adf27a0ff30a0e5fe2362ca7fad1af2ae8d8c8dcfb1a85f0e3d03e5fdac",
+      "digest": "sha256:91d99e2385e227acfae1330cb34783b9791e9ceaac4c890c857d1f3a39967921",
       "path": "source/fragments/identity/sovereign-root.md"
     },
     {
@@ -354,11 +410,11 @@
       "path": "source/fragments/interpretation/round-two-anchoring.md"
     },
     {
-      "digest": "sha256:34f2c79e56ec8d51dbfaf18a036a9553d537c40cf8e596036eebe17502759b6e",
+      "digest": "sha256:decb45a249f7eb0ab2eb7b7ae0679178ec5dc12f1d30a3e283c66ec41ff43801",
       "path": "source/fragments/navigation/fragment-contract.fragment.json"
     },
     {
-      "digest": "sha256:121f21611a731697ba73c48be9d8f95950eb09707177587ebddd2c3bc01158ba",
+      "digest": "sha256:7d43b02710e485b55aec827abc02502593defc5c11d688aa285c7f478e7c21c3",
       "path": "source/fragments/navigation/fragment-contract.md"
     },
     {
@@ -386,7 +442,7 @@
       "path": "source/projections/assets.projection.json"
     },
     {
-      "digest": "sha256:959a689f119685e2184787a8bc75e88e6d3736a7fc32c077303238fe17f4eb44",
+      "digest": "sha256:a3e32087656cdf2c2bf8d0a9a2413b75184c3462fccf7719d180bf0b09832ce0",
       "path": "source/projections/build-metadata.projection.json"
     },
     {
@@ -410,7 +466,7 @@
       "path": "source/projections/skill-md.projection.json"
     },
     {
-      "digest": "sha256:81d100997147be9f23f0de5404df0cf76123b255298676c326e7974ac4cf1b7c",
+      "digest": "sha256:5f921d3ce37557e90f3895c5d4c592c376661f510c1b0da7197421173a8f46e5",
       "path": "source/projections/validators.projection.json"
     },
     {
@@ -418,7 +474,7 @@
       "path": "source/protocol/survey.protocol.json"
     },
     {
-      "digest": "sha256:6498bafc07452b3f31a906b8e72e837957f77da81ef7d0bcf77346845c7b32a5",
+      "digest": "sha256:7e11973c6bc34fdeb2eefc5418f19a438b1e2d62ab535192f148659e596af8b9",
       "path": "source/requirements/survey-v2.requirements.json"
     },
     {
@@ -430,7 +486,7 @@
       "path": "source/views/director-lifecycle.view.json"
     },
     {
-      "digest": "sha256:a20090e42b741efb6d0730021cad850b568d00e10f756eaccc2bdccb7bd51884",
+      "digest": "sha256:71c99e6d9e3d08a282f253f15aac1c61558244347e113606200efb8e715e7115",
       "path": "survey-v2.package.json"
     },
     {
@@ -1590,7 +1646,7 @@
       "path": "tests/baseline-freeze/freeze-contract.mjs"
     },
     {
-      "digest": "sha256:34d3e2b258fa956b400f3b69186dfb0c8f30303cb25464898385a9a452809781",
+      "digest": "sha256:57028be10366d54844d5753e9c72419322c33e4597ba79eef30e919b906c0100",
       "path": "tests/baseline-freeze/package-compatibility.mjs"
     },
     {
@@ -1918,7 +1974,7 @@
       "path": "tests/fragments/fragment-contract.test.json"
     },
     {
-      "digest": "sha256:55d2f67ad408c806ad72f3bd4ab2639d2d417976d552803bd593362c09cb7291",
+      "digest": "sha256:1f8fc8d7e142cd9908e7fccbdc5fe65b593c909d49340d5efe2aba2820d6e5e3",
       "path": "tests/fragments/fragment-contract.test.mjs"
     },
     {
@@ -2238,6 +2294,434 @@
       "path": "tests/schemas/session-phase-sensitivity.test.mjs"
     },
     {
+      "digest": "sha256:2ec5f7d84b811bd977559b34e3ccb7e8bcce5c3c2577b66aab7c6f525120f2b8",
+      "path": "tests/shared-schema-closure/authority-byte-equality.test.json"
+    },
+    {
+      "digest": "sha256:708dcc774e3660a78600778a754ce904a33c1b3a7c09d81c2ea783147fe26f54",
+      "path": "tests/shared-schema-closure/authority-byte-equality.test.mjs"
+    },
+    {
+      "digest": "sha256:a16b6d7d625f2635c338f1652bffa8c3e4e52e498b43055a6291e86e6206a7ad",
+      "path": "tests/shared-schema-closure/authority-drift-rejection.test.json"
+    },
+    {
+      "digest": "sha256:f48ae4b2902a3ec8a75b093766e1c2a52fb69cad2aa73cc2f2eeffd41249f15f",
+      "path": "tests/shared-schema-closure/authority-drift-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:05513707a9a9a8d94ca774ce96d34cce040e2f67a6a92433420128317b5c49c7",
+      "path": "tests/shared-schema-closure/catalog-path-escape-rejection.test.json"
+    },
+    {
+      "digest": "sha256:75d98fbd6f0cbcdb40d6a51d725f695734a5c655af8af2a7836375592c767055",
+      "path": "tests/shared-schema-closure/catalog-path-escape-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:0afc1995465a08a4f523b0928b91abfd8c979cdaf5183563c7d3ab7c4a52355d",
+      "path": "tests/shared-schema-closure/check-nonmutation.test.json"
+    },
+    {
+      "digest": "sha256:5d3bdc2b98ddd9f6afe4aeaa3d58fd8f05816275237e06440e0fb25d37ceefbe",
+      "path": "tests/shared-schema-closure/check-nonmutation.test.mjs"
+    },
+    {
+      "digest": "sha256:d55803e7187bd00acd66a9c80f98d6980fb84765a9ebff09a880900b2c3df40d",
+      "path": "tests/shared-schema-closure/closed-cycle.test.json"
+    },
+    {
+      "digest": "sha256:8b8cf4f662737a2e415ac3b17831132bc4f3896421c2d0f3542090949d0c2c91",
+      "path": "tests/shared-schema-closure/closed-cycle.test.mjs"
+    },
+    {
+      "digest": "sha256:d864ee92737be4ebf7c6634cbc9550712d4f6a6d517efdefd001f3bc327a813b",
+      "path": "tests/shared-schema-closure/closure-contract-negative.test.json"
+    },
+    {
+      "digest": "sha256:362e6c52ea7da7c46732184806249b0f6b2692d89def5e10d559b7699d7d323c",
+      "path": "tests/shared-schema-closure/closure-contract-negative.test.mjs"
+    },
+    {
+      "digest": "sha256:57fb543cd69c53f72cfddb7abf9b15ea32b10ea05b53ef49efca5e6cc995d0f5",
+      "path": "tests/shared-schema-closure/closure-contract-positive.test.json"
+    },
+    {
+      "digest": "sha256:18b34d3e635b4f50ddec708f60c0f3d3712d51dbd34a538390ffbd3ea13ee947",
+      "path": "tests/shared-schema-closure/closure-contract-positive.test.mjs"
+    },
+    {
+      "digest": "sha256:e514eee03ff354a5013dd2a5c93c4ea3e1a60e80e963a3c7730d4dbe129eff94",
+      "path": "tests/shared-schema-closure/closure-path-normalization-rejection.test.json"
+    },
+    {
+      "digest": "sha256:dc4873830a9ed78a4770650cc52eaf06eebf1740795781f45f26b73cbdf58f18",
+      "path": "tests/shared-schema-closure/closure-path-normalization-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:ef308831306128ab2619030b15d00508413535ddc61ad9c236c4437bef279e89",
+      "path": "tests/shared-schema-closure/context-frame-semantic-parity.test.json"
+    },
+    {
+      "digest": "sha256:cff0b12d41f599ab0c4b4b4626d3ba565c47cabd4e91bd0e35543af7c699968f",
+      "path": "tests/shared-schema-closure/context-frame-semantic-parity.test.mjs"
+    },
+    {
+      "digest": "sha256:c1afc4bf2977f5543288c07c91a7305a17ac16bb45e87712a88b3d7837be11ff",
+      "path": "tests/shared-schema-closure/context-frame-structural-parity.test.json"
+    },
+    {
+      "digest": "sha256:e1d16cd63eee30a63fb51a5d54b3534107a51a312141794e5e815532631ef0d0",
+      "path": "tests/shared-schema-closure/context-frame-structural-parity.test.mjs"
+    },
+    {
+      "digest": "sha256:88b08cbf80e744e9f3c6eb3038684faa50cfd138b0246081d4b70018a64dc4f5",
+      "path": "tests/shared-schema-closure/dirty-catalog-rejection.test.json"
+    },
+    {
+      "digest": "sha256:1221794ca576512deca3b36c785bdb770d6c5fb98d5dda493757c61b889a3c2f",
+      "path": "tests/shared-schema-closure/dirty-catalog-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:2031a4eb025e9eda21eee0235f5d4697aea5034aa1db64129c665751cee6d32f",
+      "path": "tests/shared-schema-closure/dirty-schema-rejection.test.json"
+    },
+    {
+      "digest": "sha256:99067a8397232d12f31b97ddc6891aaecf60dd6fc51b3de9f2433021ef4565dd",
+      "path": "tests/shared-schema-closure/dirty-schema-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:d505858446c75ecd846011357658e9a86f1181bb74f5c9712694a8a2429158e1",
+      "path": "tests/shared-schema-closure/dirty-validator-rejection.test.json"
+    },
+    {
+      "digest": "sha256:34e3eb5830a8027bdcd9e9b80cd46e91079a54fc9c287fb15149a169fcb07fdc",
+      "path": "tests/shared-schema-closure/dirty-validator-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:9bcb19c4360be3dab2f28031fee6c95ae88a6879dff321e59196a5923b3a07fd",
+      "path": "tests/shared-schema-closure/duplicate-id-rejection.test.json"
+    },
+    {
+      "digest": "sha256:1fb7ab7ce309f8a1691c0a3e528d42e9ef1bcebf9914d8622ededdaa54ac46aa",
+      "path": "tests/shared-schema-closure/duplicate-id-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:1870df15c5eb36bbae59dab45b894c4de987877ac8521411c53ff4690c1ac878",
+      "path": "tests/shared-schema-closure/duplicate-resource-binding-rejection.test.json"
+    },
+    {
+      "digest": "sha256:c17fbebbefe8c50d3c368fd4824d83bec48d9a01ebdca1dc9bd4a551712bd4f4",
+      "path": "tests/shared-schema-closure/duplicate-resource-binding-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:83398c0f5c2584f950be77f8adc707ab73819546805587ee0b33e81686d5eb2d",
+      "path": "tests/shared-schema-closure/duplicate-schema-path-rejection.test.json"
+    },
+    {
+      "digest": "sha256:6860561e6b07bc05280b1261514b920539680c6397b62cf28783ebebc852d6e7",
+      "path": "tests/shared-schema-closure/duplicate-schema-path-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:fcaa251083b6f9b99259085283216c6b3fe375a42ed6e39eabfce49db170757f",
+      "path": "tests/shared-schema-closure/extra-snapshot-member-rejection.test.json"
+    },
+    {
+      "digest": "sha256:d5a35da4d2cdc80e3aba88c34606a202cd0b10441d1ee745ca7921106b14c3ed",
+      "path": "tests/shared-schema-closure/extra-snapshot-member-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:db6fa171081aaa263933f8ce1ef453a32c1156454e73bfe00faa3210ac4f6922",
+      "path": "tests/shared-schema-closure/generated-registry-parentless.test.json"
+    },
+    {
+      "digest": "sha256:c5cd5db117cb92b5c8cb67ea21f0eb0aa04bd9794ab8d434408acfb519eb1ddb",
+      "path": "tests/shared-schema-closure/generated-registry-parentless.test.mjs"
+    },
+    {
+      "digest": "sha256:29cfdd241cc6a332c96f353a8fd49eff7573e8e3ba7c616b6f2e81969a322537",
+      "path": "tests/shared-schema-closure/manifest-contract.test.json"
+    },
+    {
+      "digest": "sha256:2b5d5541e9fdc48b98bdc1b7ff2185ecbce14cfc3774d854f2bdd3ca6edf3255",
+      "path": "tests/shared-schema-closure/manifest-contract.test.mjs"
+    },
+    {
+      "digest": "sha256:fc8c9806bc3ec5f3915f0dd33d7afc9aa26d84277dc4979a8e8ced7a8251fa43",
+      "path": "tests/shared-schema-closure/missing-snapshot-member-rejection.test.json"
+    },
+    {
+      "digest": "sha256:f2d3ed881edd94a5e4b900eb4c0dee53ade226b62bf08ce5631594ca190a40e5",
+      "path": "tests/shared-schema-closure/missing-snapshot-member-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:8eaa0d19e8c59f04107713ddae0aadc84b677ee347ecbe14eac648c338c46144",
+      "path": "tests/shared-schema-closure/missing-validator-export-rejection.test.json"
+    },
+    {
+      "digest": "sha256:58e9547cdd05011225afb5e349843e18080dc4b7a59a94555d713192fb8501be",
+      "path": "tests/shared-schema-closure/missing-validator-export-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:6c742df57cb125d9df2e170d8ffbe7677915b4817ec2b00ec57bacc71197807f",
+      "path": "tests/shared-schema-closure/missing-validator-rejection.test.json"
+    },
+    {
+      "digest": "sha256:4dfc13c5e81379449d0b7a05442eca4b97c23a8c29d38b59752589044dd2660f",
+      "path": "tests/shared-schema-closure/missing-validator-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:5eb956a576e729228330830f2ff514e09ac92c86a8cb7436ed3a87343412a8a4",
+      "path": "tests/shared-schema-closure/no-parent-check.test.json"
+    },
+    {
+      "digest": "sha256:2a8d74bbf9c30b9d3f49b52f572370dab53f1416337d32f2cf5beb17107ecc2e",
+      "path": "tests/shared-schema-closure/no-parent-check.test.mjs"
+    },
+    {
+      "digest": "sha256:ed00f3c55a775563e18620a124d9b11ad371ec70ff92d5980be6310530e5b277",
+      "path": "tests/shared-schema-closure/portable-provenance.test.json"
+    },
+    {
+      "digest": "sha256:25ac1d84db0dddc9864a502562a2fe1a93355044ab191037c2261600c814dfa1",
+      "path": "tests/shared-schema-closure/portable-provenance.test.mjs"
+    },
+    {
+      "digest": "sha256:9461689d919bd23642b34fa27d5b8cda16854308aa5f9958a52d669175e1a359",
+      "path": "tests/shared-schema-closure/question-semantic-parity.test.json"
+    },
+    {
+      "digest": "sha256:ed59b6b8fd4e57497469d6b8087b9b612b5bedb42e39d798899921bf71ca744f",
+      "path": "tests/shared-schema-closure/question-semantic-parity.test.mjs"
+    },
+    {
+      "digest": "sha256:6ab00e8faf790bd5469a6f2810e381cfce8d043fa6b098c1cfe95988ef853107",
+      "path": "tests/shared-schema-closure/question-structural-parity.test.json"
+    },
+    {
+      "digest": "sha256:6fec0885216fdd79a8d1584224b0532ca9583be20e29ba433f95d00b5766a5ac",
+      "path": "tests/shared-schema-closure/question-structural-parity.test.mjs"
+    },
+    {
+      "digest": "sha256:fd3c3bba275ce6cf1750538c3d408ffeafdfef52778b1f50dce6d12e7a3f2866",
+      "path": "tests/shared-schema-closure/recursive-refresh.test.json"
+    },
+    {
+      "digest": "sha256:48287de467f7ed7afb762f0929785a12991f6eabbc2b7b41a192ca9219469b67",
+      "path": "tests/shared-schema-closure/recursive-refresh.test.mjs"
+    },
+    {
+      "digest": "sha256:5012675b0ecd22a28748c31853852322483ef64b2844d7b51145a1da40ed2046",
+      "path": "tests/shared-schema-closure/refresh-determinism.test.json"
+    },
+    {
+      "digest": "sha256:efec53f4a63293517f4015eab6ec5447e6f902f64cf2144edbda4b9402c90b07",
+      "path": "tests/shared-schema-closure/refresh-determinism.test.mjs"
+    },
+    {
+      "digest": "sha256:d875d76a084c24b4075c9edcd4dd5e6546b120e2a8177df302043e83017bd1a4",
+      "path": "tests/shared-schema-closure/refresh-failure-atomicity.test.json"
+    },
+    {
+      "digest": "sha256:107ad8208ea58cd4894123026130ecb1421a2a6064a3239290528c735a5eebea",
+      "path": "tests/shared-schema-closure/refresh-failure-atomicity.test.mjs"
+    },
+    {
+      "digest": "sha256:d948c764a63a0db18a909045e3cbcf291dbf4db83246675ce7a8c0c3f6bc50f9",
+      "path": "tests/shared-schema-closure/relative-schema-reference-recursive-refresh.test.json"
+    },
+    {
+      "digest": "sha256:0dad9ab2d5c2fcbfcbc111c08729228ab2e8f82299a8928f71fdd843f662d185",
+      "path": "tests/shared-schema-closure/relative-schema-reference-recursive-refresh.test.mjs"
+    },
+    {
+      "digest": "sha256:881f8353bba09130e0bc89f9180d4062eeac3ff2547e8527970fa6acb0daae4f",
+      "path": "tests/shared-schema-closure/remote-reference-rejection.test.json"
+    },
+    {
+      "digest": "sha256:ba574e5ec91c47edb113da16d8ddc8b9c3c46d5c42b654052dd217adfa262da9",
+      "path": "tests/shared-schema-closure/remote-reference-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:6700db6ae130fbfd29d10a407893462f13075de9f489831572c2db3a32d58444",
+      "path": "tests/shared-schema-closure/roots-contract-negative.test.json"
+    },
+    {
+      "digest": "sha256:a41b0fc978dd195c208715df186e50f4ffce56d5016b887cdb0929cb2308756d",
+      "path": "tests/shared-schema-closure/roots-contract-negative.test.mjs"
+    },
+    {
+      "digest": "sha256:225736ea8d3f115a579fb757e96f3a3c6152523c4370918263f0a43c687f23ac",
+      "path": "tests/shared-schema-closure/roots-contract-positive.test.json"
+    },
+    {
+      "digest": "sha256:748b8f2dc269b85b6a7b3220b6dc4db23f83c948bf69b1bfcb96f219a7159da1",
+      "path": "tests/shared-schema-closure/roots-contract-positive.test.mjs"
+    },
+    {
+      "digest": "sha256:2cf9d02650980a5e5454f535dc7d1f412bb543733700fe56757b7eb8be6735ff",
+      "path": "tests/shared-schema-closure/roots-unknown-field-rejection.test.json"
+    },
+    {
+      "digest": "sha256:547bbeceb62b224aeff42ca13ee45c0e57b86987dd64d059d2d7653b097368ca",
+      "path": "tests/shared-schema-closure/roots-unknown-field-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:ab84dfc5b949e2d9a96fc5ce0178d8840cd638b62a765d950fb330a64b2f7eb0",
+      "path": "tests/shared-schema-closure/roots-wrong-binding-rejection.test.json"
+    },
+    {
+      "digest": "sha256:48f2993fc253932dbc80ce17a9f1e41d1326e4f361ea512158300ef89b465156",
+      "path": "tests/shared-schema-closure/roots-wrong-binding-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:15760d65b04c4564ed8f5fe2409aea16140d1901f44204eb37b95929e77b8e19",
+      "path": "tests/shared-schema-closure/schema-id-mismatch-rejection.test.json"
+    },
+    {
+      "digest": "sha256:c23dd1906fe6c909197d63922e1c2c1567ca4902136b5ce4e3cc9c030ff6a9f6",
+      "path": "tests/shared-schema-closure/schema-id-mismatch-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:60089d1db3e16932c13c95f099497e94729b0bd2c3c0127db7f14c8232a32466",
+      "path": "tests/shared-schema-closure/schema-reference-path-escape-rejection.test.json"
+    },
+    {
+      "digest": "sha256:e5613448a0e9be6c5c89f8dacb2e2e54d17d962a70ed14396c22ae02a25d9d5c",
+      "path": "tests/shared-schema-closure/schema-reference-path-escape-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:7eff8043801034124e75caca7a20cf83db129b8281462798fc23cbfe67bdf021",
+      "path": "tests/shared-schema-closure/schema-symlink-rejection.test.json"
+    },
+    {
+      "digest": "sha256:4575e92b6f332a3f1708c1a94780a48083535d9da413a1eb5b28c254cee7e078",
+      "path": "tests/shared-schema-closure/schema-symlink-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:71578650cddc4946acadf0303bce050a69665e59c1ec290233d4446e46c9e28e",
+      "path": "tests/shared-schema-closure/support/contracts.mjs"
+    },
+    {
+      "digest": "sha256:b601a098c4edfeabd580752eb456b6b5e6d4041ceba21d46b0d60ef9a4f6b14c",
+      "path": "tests/shared-schema-closure/support/fixture.mjs"
+    },
+    {
+      "digest": "sha256:36bdcdec9edb08397b19670d3146ed21928fb84fda758a9e8fd049ceb97db1ce",
+      "path": "tests/shared-schema-closure/support/parity.mjs"
+    },
+    {
+      "digest": "sha256:ee75c01790339d0ede4cb8f42477ae0829771ba3ca32dfb5fe46bf2d9d8e3dde",
+      "path": "tests/shared-schema-closure/unbound-root-rejection.test.json"
+    },
+    {
+      "digest": "sha256:e9548a1204f86968002755c3538448d732a371e422b5467525857b8c84f6df3c",
+      "path": "tests/shared-schema-closure/unbound-root-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:7a0e5f44746d67991c1340c032151b12ce861dad5e0fdbd2a0b491f310fa6a07",
+      "path": "tests/shared-schema-closure/unresolved-fragment-rejection.test.json"
+    },
+    {
+      "digest": "sha256:0e9c9a574b51cf95a4aa95581501f6f3ee2277bace12653e7f4f6fcf4f9fd345",
+      "path": "tests/shared-schema-closure/unresolved-fragment-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:a31f277fdaa73d831bf1038a5b57ce7d4a58f9a73686552e4cd6e7cdf7d30f2f",
+      "path": "tests/shared-schema-closure/unresolved-reference-rejection.test.json"
+    },
+    {
+      "digest": "sha256:e1a0fe6f5a8dcc6e6c104748c2c3a8d42e087c4eb0d122c4371edb4a25edae79",
+      "path": "tests/shared-schema-closure/unresolved-reference-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:3171c6821cb22af8ad21978f1e7d3f5300941b84e290ce551514f67f074a7372",
+      "path": "tests/shared-schema-closure/validator-bare-import-rejection.test.json"
+    },
+    {
+      "digest": "sha256:e4075028747d93373a2efb54dfdcc5c888c7e757313a5c420fc4a507e7bfba50",
+      "path": "tests/shared-schema-closure/validator-bare-import-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:ff4a9208e4d4384256dc79aa034657ebae52d0ae4cd49159c1d52c97ddcbfe0d",
+      "path": "tests/shared-schema-closure/validator-commonjs-rejection.test.json"
+    },
+    {
+      "digest": "sha256:b633add9607b40cee3c49eefff1715cb317dca66b96706d012df8623a4b7019d",
+      "path": "tests/shared-schema-closure/validator-commonjs-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:8cce1f937751e46c94e02d8f0fafdf39a9a051cce4c730189b881fa1014290b8",
+      "path": "tests/shared-schema-closure/validator-dynamic-import-rejection.test.json"
+    },
+    {
+      "digest": "sha256:f70ad7318777e1b7132cc95b0577419a46f93bf8b15cdfb812a261d2e282c578",
+      "path": "tests/shared-schema-closure/validator-dynamic-import-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:b0ddfd4e2a73c9f42af4846de7040825fb3c349ff44aa4b9f053f8df5c076601",
+      "path": "tests/shared-schema-closure/validator-export-from-closure.test.json"
+    },
+    {
+      "digest": "sha256:e6a49bd041d27b30980e3c814180e3c0c64c2da0f4cbe01f3327ae2c0c4d5ce0",
+      "path": "tests/shared-schema-closure/validator-export-from-closure.test.mjs"
+    },
+    {
+      "digest": "sha256:b0e4383b306f02ee4634b962541604683f6b0f8d433f37cac16a65358325aaf1",
+      "path": "tests/shared-schema-closure/validator-path-escape-rejection.test.json"
+    },
+    {
+      "digest": "sha256:a1f2eb237b1d2b5a84bfdfa4cec904e83c7e2a5bfcfbe7cd61b6eb711d5262e8",
+      "path": "tests/shared-schema-closure/validator-path-escape-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:f64f9fbca06a0609a614dc18228cd3a0156c34f10c0a6024e62f4ddb7429fc79",
+      "path": "tests/shared-schema-closure/validator-side-effect-closure.test.json"
+    },
+    {
+      "digest": "sha256:5b1b6c98e22c9220a196650741ddd608e94f9296b378f87baef7c6ddf5f94135",
+      "path": "tests/shared-schema-closure/validator-side-effect-closure.test.mjs"
+    },
+    {
+      "digest": "sha256:1cff47c6f38c3e9ade5311d66e9f9b48c0eb9e57d75bb76ef1c3f54121c9f04c",
+      "path": "tests/shared-schema-closure/validator-static-closure.test.json"
+    },
+    {
+      "digest": "sha256:8695c4adf86f2bcd5b98c931a39f781445721bf4219020a7d7d49f3cc8146021",
+      "path": "tests/shared-schema-closure/validator-static-closure.test.mjs"
+    },
+    {
+      "digest": "sha256:b6c4940a908f6c63d8210492a50f2ecd8ca2a6cb31455de9917183fa203853b7",
+      "path": "tests/shared-schema-closure/validator-static-cycle.test.json"
+    },
+    {
+      "digest": "sha256:f0f1fac029de3b82e62e0ec0402df867875d2b5ed79839bbf60e2567f38a7fe7",
+      "path": "tests/shared-schema-closure/validator-static-cycle.test.mjs"
+    },
+    {
+      "digest": "sha256:8bbf5b69dce296cf9069afa80f375c0507f8c74ad4d22251254ea04bd1caa514",
+      "path": "tests/shared-schema-closure/validator-symlink-rejection.test.json"
+    },
+    {
+      "digest": "sha256:f7837365b9b7486a0c5f98b64772bcafa08712bdad0cd49fcf16d4093d890568",
+      "path": "tests/shared-schema-closure/validator-symlink-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:8d3ff8786f90451d763e9fcf56895fd661058143eaf0cec92b7e76e86a5ebe7f",
+      "path": "tests/shared-schema-closure/validator-unresolved-binding-rejection.test.json"
+    },
+    {
+      "digest": "sha256:3e1b17b9ca3fbb350b10060dc3d5380e75a523d182ff12a0d0b8cacd399c6415",
+      "path": "tests/shared-schema-closure/validator-unresolved-binding-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:a6af36f84374eb6703c690e605ccf26d7ee5644e2993108eadd0388bb78c04eb",
+      "path": "tests/shared-schema-closure/validator-unresolved-import-rejection.test.json"
+    },
+    {
+      "digest": "sha256:096aff652696c08d4f06f95526df753ebaf76b6f3d95ff81dafcd0c658ec13a8",
+      "path": "tests/shared-schema-closure/validator-unresolved-import-rejection.test.mjs"
+    },
+    {
       "digest": "sha256:eed6695c2b268970b8289cee7d5e1c7aef6fa41da0d69c6e9d952d7a2b577f9a",
       "path": "tests/state/cold-resume-current-view.test.json"
     },
@@ -2318,12 +2802,12 @@
       "path": "tests/state/writer-lock-initialization-cleanup.test.mjs"
     },
     {
-      "digest": "sha256:b00a541b60388cf8e06402ff7e9b3cd9212b643955b7dbca3461b3cabca6887d",
+      "digest": "sha256:4d2ed2cdbb65023bd6e4d2c8495ddc801dff29c3091359d71a9d4bee1a49db3c",
       "path": "tests/test-evidence.manifest.json"
     }
   ],
   "id": "urn:mission-kit:survey-v2:projection-lock:survey-v2",
-  "packageDigest": "sha256:f4030da68135ecaab8008bcb58e51a03def477081f24d96704dae7c5af2cb7bb",
+  "packageDigest": "sha256:4db619a8fbd7e075aa8ab1976618115881b3244175072ed884487b3059eda6e7",
   "parentDesignSha256": "6467fff1c74c6dc857bcb06722d19dfa04381ae3e6f242eccb36581f87560f74",
   "portableExclusions": [
     {
@@ -2364,12 +2848,17 @@
       "projectionId": "urn:mission-kit:survey-v2:projection:indexes"
     },
     {
-      "digest": "sha256:781c8c4db6acefdd83394ee9278c8b5f6cceb161a81a7622c8a9740985fc76c7",
+      "digest": "sha256:5e8fb4200b5205ec934b86fe9b948f06deef457b7f23567b0402e0c96f3d51ee",
       "path": "generated/mechanism-index.json",
       "projectionId": "urn:mission-kit:survey-v2:projection:indexes"
     },
     {
-      "digest": "sha256:26305647d41c834de5b595786a21b01cec89a08ded30d9bb42bac24d216f6657",
+      "digest": "sha256:9fea9e001be036dcb65f111fa4ef3219d9437f876c93bf6b9b894172d7e66e8a",
+      "path": "generated/shared-semantic-validators.mjs",
+      "projectionId": "urn:mission-kit:survey-v2:projection:validators"
+    },
+    {
+      "digest": "sha256:e177c24541db5dc188a28634a2669d7d97069c92b3c9498d4903e4204a802d51",
       "path": "generated/validators.mjs",
       "projectionId": "urn:mission-kit:survey-v2:projection:validators"
     },
@@ -2399,7 +2888,7 @@
       "projectionId": "urn:mission-kit:survey-v2:projection:references"
     },
     {
-      "digest": "sha256:8ab2669b56be3a0cdb2acb2150cb2f472a5faa053173138dc392b168bc012459",
+      "digest": "sha256:ece57f41882c2ec942cfc2fceeadf2d730ae5540f43344e4f32fa875b889ac7c",
       "path": "references/mechanism-index.md",
       "projectionId": "urn:mission-kit:survey-v2:projection:references"
     },
@@ -2419,7 +2908,7 @@
       "projectionId": "urn:mission-kit:survey-v2:projection:references"
     },
     {
-      "digest": "sha256:e2a5e88e4569577b9023efdf1ba2fb2b80e15079a294f98e4a758943bdc3811a",
+      "digest": "sha256:f7bfdc12688f25e04f311264bad715823881282f6c0c13f7a4f04d89ef926101",
       "path": "references/validation.md",
       "projectionId": "urn:mission-kit:survey-v2:projection:references"
     },
@@ -2477,6 +2966,51 @@
     },
     {
       "expectedId": null,
+      "kind": "dependency-snapshot",
+      "path": "dependencies/shared-schemas/v1/closure.manifest.json"
+    },
+    {
+      "expectedId": "urn:mission-kit:survey-v2:shared-schema-roots",
+      "kind": "authored",
+      "path": "dependencies/shared-schemas/v1/roots.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "dependency-snapshot",
+      "path": "dependencies/shared-schemas/v1/snapshot/catalog.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "dependency-snapshot",
+      "path": "dependencies/shared-schemas/v1/snapshot/common/v1alpha1/resource-metadata.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "dependency-snapshot",
+      "path": "dependencies/shared-schemas/v1/snapshot/context-frame/v1alpha1/context-frame.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "dependency-snapshot",
+      "path": "dependencies/shared-schemas/v1/snapshot/context-frame/v1alpha1/context-frame.validator.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "dependency-snapshot",
+      "path": "dependencies/shared-schemas/v1/snapshot/question/v1alpha1/choice-response.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "dependency-snapshot",
+      "path": "dependencies/shared-schemas/v1/snapshot/question/v1alpha1/question.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "dependency-snapshot",
+      "path": "dependencies/shared-schemas/v1/snapshot/question/v1alpha1/question.validator.mjs"
+    },
+    {
+      "expectedId": null,
       "kind": "generated",
       "path": "generated/dependency-index.json"
     },
@@ -2489,6 +3023,11 @@
       "expectedId": null,
       "kind": "generated",
       "path": "generated/projection-lock.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "generated",
+      "path": "generated/shared-semantic-validators.mjs"
     },
     {
       "expectedId": null,
@@ -2701,6 +3240,16 @@
       "path": "schemas/v1/session-state.schema.json"
     },
     {
+      "expectedId": "urn:mission-kit:survey-v2:schema:shared-schema-closure:v1",
+      "kind": "authored",
+      "path": "schemas/v1/shared-schema-closure.schema.json"
+    },
+    {
+      "expectedId": "urn:mission-kit:survey-v2:schema:shared-schema-roots:v1",
+      "kind": "authored",
+      "path": "schemas/v1/shared-schema-roots.schema.json"
+    },
+    {
       "expectedId": null,
       "kind": "authored",
       "path": "schemas/v1/test-evidence.schema.json"
@@ -2737,6 +3286,11 @@
     },
     {
       "expectedId": null,
+      "kind": "bootstrap",
+      "path": "shared-schemas.sh"
+    },
+    {
+      "expectedId": null,
       "kind": "authored",
       "path": "source/authoring/kernel/canonical.mjs"
     },
@@ -2769,6 +3323,16 @@
       "expectedId": null,
       "kind": "authored",
       "path": "source/executables/compiler/build.mjs"
+    },
+    {
+      "expectedId": "urn:mission-kit:survey-v2:executable:compiler:shared-schema-closure",
+      "kind": "authored",
+      "path": "source/executables/compiler/shared-schema-closure.fragment.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/executables/compiler/shared-schema-closure.mjs"
     },
     {
       "expectedId": null,
@@ -5354,6 +5918,541 @@
       "expectedId": null,
       "kind": "authored",
       "path": "tests/schemas/session-phase-sensitivity.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/authority-byte-equality.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/authority-byte-equality.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/authority-drift-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/authority-drift-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/catalog-path-escape-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/catalog-path-escape-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/check-nonmutation.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/check-nonmutation.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/closed-cycle.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/closed-cycle.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/closure-contract-negative.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/closure-contract-negative.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/closure-contract-positive.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/closure-contract-positive.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/closure-path-normalization-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/closure-path-normalization-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/context-frame-semantic-parity.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/context-frame-semantic-parity.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/context-frame-structural-parity.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/context-frame-structural-parity.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/dirty-catalog-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/dirty-catalog-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/dirty-schema-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/dirty-schema-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/dirty-validator-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/dirty-validator-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/duplicate-id-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/duplicate-id-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/duplicate-resource-binding-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/duplicate-resource-binding-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/duplicate-schema-path-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/duplicate-schema-path-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/extra-snapshot-member-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/extra-snapshot-member-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/generated-registry-parentless.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/generated-registry-parentless.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/manifest-contract.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/manifest-contract.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/missing-snapshot-member-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/missing-snapshot-member-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/missing-validator-export-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/missing-validator-export-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/missing-validator-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/missing-validator-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/no-parent-check.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/no-parent-check.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/portable-provenance.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/portable-provenance.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/question-semantic-parity.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/question-semantic-parity.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/question-structural-parity.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/question-structural-parity.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/recursive-refresh.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/recursive-refresh.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/refresh-determinism.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/refresh-determinism.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/refresh-failure-atomicity.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/refresh-failure-atomicity.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/relative-schema-reference-recursive-refresh.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/relative-schema-reference-recursive-refresh.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/remote-reference-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/remote-reference-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/roots-contract-negative.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/roots-contract-negative.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/roots-contract-positive.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/roots-contract-positive.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/roots-unknown-field-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/roots-unknown-field-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/roots-wrong-binding-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/roots-wrong-binding-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/schema-id-mismatch-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/schema-id-mismatch-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/schema-reference-path-escape-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/schema-reference-path-escape-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/schema-symlink-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/schema-symlink-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/support/contracts.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/support/fixture.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/support/parity.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/unbound-root-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/unbound-root-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/unresolved-fragment-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/unresolved-fragment-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/unresolved-reference-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/unresolved-reference-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/validator-bare-import-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/validator-bare-import-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/validator-commonjs-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/validator-commonjs-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/validator-dynamic-import-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/validator-dynamic-import-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/validator-export-from-closure.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/validator-export-from-closure.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/validator-path-escape-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/validator-path-escape-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/validator-side-effect-closure.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/validator-side-effect-closure.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/validator-static-closure.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/validator-static-closure.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/validator-static-cycle.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/validator-static-cycle.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/validator-symlink-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/validator-symlink-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/validator-unresolved-binding-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/validator-unresolved-binding-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/validator-unresolved-import-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/shared-schema-closure/validator-unresolved-import-rejection.test.mjs"
     },
     {
       "expectedId": null,

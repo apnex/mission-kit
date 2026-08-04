@@ -1,0 +1,25 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:shared-schema-roots:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:shared-schema-roots",
+  "source": {
+    "kind": "repository-selector",
+    "repository": "apnex/mission-kit",
+    "selector": "schemas"
+  },
+  "catalogPath": "catalog.json",
+  "roots": [
+    {
+      "apiVersion": "schemas.mission-kit/v1alpha1",
+      "kind": "ContextFrame",
+      "schemaId": "urn:mission-kit:schemas:context-frame:v1alpha1",
+      "semanticValidatorExport": "validateContextFrameSemantics"
+    },
+    {
+      "apiVersion": "schemas.mission-kit/v1alpha1",
+      "kind": "Question",
+      "schemaId": "urn:mission-kit:schemas:question:v1alpha1",
+      "semanticValidatorExport": "validateQuestionSemantics"
+    }
+  ]
+}

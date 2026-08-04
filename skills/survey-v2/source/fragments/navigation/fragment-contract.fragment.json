@@ -2,7 +2,7 @@
   "$schema": "urn:mission-kit:survey-v2:schema:fragment:v1",
   "schemaVersion": "1.0.0",
   "id": "urn:mission-kit:survey-v2:fragment:composition:fragment-contract",
-  "revision": 1,
+  "revision": 2,
   "purpose": "Keep authored Survey knowledge singular, acyclic and contribution-proven.",
   "role": "constraint",
   "normativity": "normative",
@@ -23,7 +23,15 @@
   "contribution": {
     "mode": "unique",
     "proofClass": "sole-required-provider",
-    "obligations": ["O-R14-01", "O-R15-01", "O-R19-01"]
+    "obligations": [
+      "O-R14-01",
+      "O-R15-01",
+      "O-R15-02",
+      "O-R15-03",
+      "O-R15-04",
+      "O-R15-05",
+      "O-R19-01"
+    ]
   },
   "exposure": "internal"
 }

@@ -68,6 +68,14 @@
       "path": "schemas/v1/envelope-model.schema.json"
     },
     {
+      "id": "urn:mission-kit:survey-v2:schema:shared-schema-closure:v1",
+      "path": "schemas/v1/shared-schema-closure.schema.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:schema:shared-schema-roots:v1",
+      "path": "schemas/v1/shared-schema-roots.schema.json"
+    },
+    {
       "id": "urn:mission-kit:authoring:schema:common:v1alpha1",
       "path": "schemas/authoring/v1alpha1/common.schema.json"
     },
@@ -132,6 +140,10 @@
       "path": "schemas/authoring/v1alpha1/authoring-journal-record.schema.json"
     }
   ],
+  "sharedSchemaClosure": {
+    "roots": "dependencies/shared-schemas/v1/roots.json",
+    "manifest": "dependencies/shared-schemas/v1/closure.manifest.json"
+  },
   "members": [
     {
       "path": ".gitignore",
@@ -154,6 +166,11 @@
       "kind": "bootstrap"
     },
     {
+      "path": "dependencies/shared-schemas/v1/roots.json",
+      "kind": "authored",
+      "expectedId": "urn:mission-kit:survey-v2:shared-schema-roots"
+    },
+    {
       "path": "generated/dependency-index.json",
       "kind": "generated"
     },
@@ -163,6 +180,10 @@
     },
     {
       "path": "generated/projection-lock.json",
+      "kind": "generated"
+    },
+    {
+      "path": "generated/shared-semantic-validators.mjs",
       "kind": "generated"
     },
     {
@@ -270,6 +291,16 @@
       "kind": "authored"
     },
     {
+      "path": "schemas/v1/shared-schema-closure.schema.json",
+      "kind": "authored",
+      "expectedId": "urn:mission-kit:survey-v2:schema:shared-schema-closure:v1"
+    },
+    {
+      "path": "schemas/v1/shared-schema-roots.schema.json",
+      "kind": "authored",
+      "expectedId": "urn:mission-kit:survey-v2:schema:shared-schema-roots:v1"
+    },
+    {
       "path": "schemas/v1/test-evidence.schema.json",
       "kind": "authored"
     },
@@ -311,6 +342,15 @@
     },
     {
       "path": "source/executables/compiler/build.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/executables/compiler/shared-schema-closure.fragment.json",
+      "kind": "authored",
+      "expectedId": "urn:mission-kit:survey-v2:executable:compiler:shared-schema-closure"
+    },
+    {
+      "path": "source/executables/compiler/shared-schema-closure.mjs",
       "kind": "authored"
     },
     {
@@ -576,6 +616,10 @@
     {
       "path": "survey-v2.package.json",
       "kind": "authored"
+    },
+    {
+      "path": "shared-schemas.sh",
+      "kind": "bootstrap"
     },
     {
       "path": "tests/baseline-v1/characterization.json",
@@ -2539,6 +2583,466 @@
     },
     {
       "path": "tests/fixtures/authoring/contracts/positive/validation-issue.json",
+      "kind": "authored"
+    },
+    {
+      "path": "dependencies/shared-schemas/v1/closure.manifest.json",
+      "kind": "dependency-snapshot"
+    },
+    {
+      "path": "dependencies/shared-schemas/v1/snapshot/catalog.json",
+      "kind": "dependency-snapshot"
+    },
+    {
+      "path": "dependencies/shared-schemas/v1/snapshot/common/v1alpha1/resource-metadata.schema.json",
+      "kind": "dependency-snapshot"
+    },
+    {
+      "path": "dependencies/shared-schemas/v1/snapshot/context-frame/v1alpha1/context-frame.schema.json",
+      "kind": "dependency-snapshot"
+    },
+    {
+      "path": "dependencies/shared-schemas/v1/snapshot/context-frame/v1alpha1/context-frame.validator.mjs",
+      "kind": "dependency-snapshot"
+    },
+    {
+      "path": "dependencies/shared-schemas/v1/snapshot/question/v1alpha1/choice-response.schema.json",
+      "kind": "dependency-snapshot"
+    },
+    {
+      "path": "dependencies/shared-schemas/v1/snapshot/question/v1alpha1/question.schema.json",
+      "kind": "dependency-snapshot"
+    },
+    {
+      "path": "dependencies/shared-schemas/v1/snapshot/question/v1alpha1/question.validator.mjs",
+      "kind": "dependency-snapshot"
+    },
+    {
+      "path": "tests/shared-schema-closure/authority-byte-equality.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/authority-byte-equality.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/authority-drift-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/authority-drift-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/catalog-path-escape-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/catalog-path-escape-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/check-nonmutation.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/check-nonmutation.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/closed-cycle.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/closed-cycle.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/closure-contract-negative.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/closure-contract-negative.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/closure-contract-positive.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/closure-contract-positive.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/closure-path-normalization-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/closure-path-normalization-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/context-frame-semantic-parity.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/context-frame-semantic-parity.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/context-frame-structural-parity.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/context-frame-structural-parity.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/dirty-catalog-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/dirty-catalog-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/dirty-schema-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/dirty-schema-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/dirty-validator-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/dirty-validator-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/duplicate-id-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/duplicate-id-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/duplicate-resource-binding-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/duplicate-resource-binding-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/duplicate-schema-path-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/duplicate-schema-path-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/extra-snapshot-member-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/extra-snapshot-member-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/generated-registry-parentless.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/generated-registry-parentless.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/manifest-contract.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/manifest-contract.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/missing-snapshot-member-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/missing-snapshot-member-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/missing-validator-export-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/missing-validator-export-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/missing-validator-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/missing-validator-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/no-parent-check.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/no-parent-check.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/portable-provenance.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/portable-provenance.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/question-semantic-parity.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/question-semantic-parity.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/question-structural-parity.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/question-structural-parity.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/recursive-refresh.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/recursive-refresh.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/refresh-determinism.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/refresh-determinism.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/remote-reference-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/remote-reference-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/roots-contract-negative.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/roots-contract-negative.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/roots-contract-positive.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/roots-contract-positive.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/roots-unknown-field-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/roots-unknown-field-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/roots-wrong-binding-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/roots-wrong-binding-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/schema-id-mismatch-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/schema-id-mismatch-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/schema-symlink-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/schema-symlink-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/support/contracts.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/support/fixture.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/support/parity.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/unbound-root-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/unbound-root-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/unresolved-fragment-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/unresolved-fragment-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/unresolved-reference-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/unresolved-reference-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/validator-bare-import-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/validator-bare-import-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/validator-commonjs-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/validator-commonjs-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/validator-dynamic-import-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/validator-dynamic-import-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/validator-export-from-closure.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/validator-export-from-closure.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/validator-path-escape-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/validator-path-escape-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/validator-side-effect-closure.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/validator-side-effect-closure.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/validator-static-closure.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/validator-static-closure.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/validator-static-cycle.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/validator-static-cycle.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/validator-symlink-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/validator-symlink-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/validator-unresolved-import-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/validator-unresolved-import-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/validator-unresolved-binding-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/validator-unresolved-binding-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/refresh-failure-atomicity.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/refresh-failure-atomicity.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/relative-schema-reference-recursive-refresh.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/relative-schema-reference-recursive-refresh.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/schema-reference-path-escape-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/schema-reference-path-escape-rejection.test.mjs",
       "kind": "authored"
     }
   ],
