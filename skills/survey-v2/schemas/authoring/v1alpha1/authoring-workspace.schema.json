@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:authoring:schema:authoring-workspace:v1alpha1",
+  "title": "Mission Kit AuthoringWorkspace resource v1alpha1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["apiVersion", "kind", "metadata", "spec"],
+  "properties": {
+    "apiVersion": {"const": "authoring.mission-kit/v1alpha1"},
+    "kind": {"const": "AuthoringWorkspace"},
+    "metadata": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/metadata"},
+    "spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile",
+        "protocol",
+        "authoringState",
+        "semanticRevision",
+        "evidenceRevision",
+        "resourceVersions",
+        "activeHeads",
+        "dependencyEdges",
+        "handoffProducts",
+        "history",
+        "openAssignment",
+        "integrity"
+      ],
+      "properties": {
+        "profile": {"$ref": "#/$defs/profileBinding"},
+        "protocol": {"$ref": "#/$defs/protocolBinding"},
+        "authoringState": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/stateId"},
+        "semanticRevision": {"type": "integer", "minimum": 0},
+        "evidenceRevision": {"type": "integer", "minimum": 0},
+        "resourceVersions": {
+          "type": "array",
+          "maxItems": 16384,
+          "items": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/StoredResourceVersion"}
+        },
+        "activeHeads": {
+          "type": "array",
+          "maxItems": 4096,
+          "items": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/SlotReference"}
+        },
+        "dependencyEdges": {
+          "type": "array",
+          "maxItems": 32768,
+          "items": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/DependencyEdge"}
+        },
+        "handoffProducts": {
+          "type": "array",
+          "maxItems": 4096,
+          "items": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/SlotReference"}
+        },
+        "history": {
+          "type": "array",
+          "maxItems": 32768,
+          "items": {"$ref": "urn:mission-kit:authoring:schema:resource-reference:v1alpha1"}
+        },
+        "openAssignment": {
+          "oneOf": [
+            {"type": "null"},
+            {"$ref": "#/$defs/openAssignment"}
+          ]
+        },
+        "integrity": {"$ref": "#/$defs/integrity"}
+      }
+    }
+  },
+  "$defs": {
+    "profileBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reference", "profileDigest"],
+      "properties": {
+        "reference": {"$ref": "urn:mission-kit:authoring:schema:resource-reference:v1alpha1"},
+        "profileDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"}
+      }
+    },
+    "protocolBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reference", "protocolDigest"],
+      "properties": {
+        "reference": {"$ref": "urn:mission-kit:authoring:schema:resource-reference:v1alpha1"},
+        "protocolDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"}
+      }
+    },
+    "openAssignment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reference", "assignmentDigest"],
+      "properties": {
+        "reference": {"$ref": "urn:mission-kit:authoring:schema:resource-reference:v1alpha1"},
+        "assignmentDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"}
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["semanticStateDigest", "workspaceIntegrityDigest"],
+      "properties": {
+        "semanticStateDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
+        "workspaceIntegrityDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"}
+      }
+    }
+  }
+}

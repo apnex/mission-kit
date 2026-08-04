@@ -1,0 +1,36 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:test:authoring:digests:exact-bytes-cwd-independence",
+  "obligationId": "O-AS07-09",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS07"
+  ],
+  "verification": {
+    "precondition": "The mapped authorities and fixtures exist as package-owned files.",
+    "stimulus": "Execute tests/authoring/digests/exact-bytes-cwd-independence.test.mjs with node:test.",
+    "expectedSemanticState": "No durable authoring runtime state transition is claimed by O-AS07-09.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: exact-byte digest results are independent of process working directory",
+    "forbiddenMutation": "Do not infer runtime dispatch, persistence, journaling, atomic commit, adapter parity, or cold-resume behavior beyond the literal assertion.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "source/authoring/kernel/canonical.mjs",
+      "source/authoring/kernel/digests.mjs"
+    ]
+  },
+  "behavior": "exact-byte digest results are independent of process working directory",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/authoring/digests/exact-bytes-cwd-independence.test.mjs",
+  "fixtures": [
+    "tests/authoring/digests/authoring-digests.v1.golden.json",
+    "tests/authoring/digests/golden-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v1"
+}

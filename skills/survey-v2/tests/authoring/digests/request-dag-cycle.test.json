@@ -1,0 +1,33 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:test:authoring:digests:request-dag-cycle",
+  "obligationId": "O-AS07-14",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS07"
+  ],
+  "verification": {
+    "precondition": "The mapped authorities and fixtures exist as package-owned files.",
+    "stimulus": "Execute tests/authoring/digests/request-dag-cycle.test.mjs with node:test.",
+    "expectedSemanticState": "No durable authoring runtime state transition is claimed by O-AS07-14.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: request core rejects fields produced later in the assignment digest DAG",
+    "forbiddenMutation": "Do not infer runtime dispatch, persistence, journaling, atomic commit, adapter parity, or cold-resume behavior beyond the literal assertion.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "source/authoring/kernel/canonical.mjs",
+      "source/authoring/kernel/digests.mjs"
+    ]
+  },
+  "behavior": "request core rejects fields produced later in the assignment digest DAG",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/authoring/digests/request-dag-cycle.test.mjs",
+  "fixtures": [],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v1"
+}

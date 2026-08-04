@@ -1,0 +1,35 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:test:authoring:digests:revision-unit-self-exclusion",
+  "obligationId": "O-AS11-10",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS11"
+  ],
+  "verification": {
+    "precondition": "The mapped authorities and fixtures exist as package-owned files.",
+    "stimulus": "Execute tests/authoring/digests/revision-unit-self-exclusion.test.mjs with node:test.",
+    "expectedSemanticState": "No durable authoring runtime state transition is claimed by O-AS11-10.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: revision-unit identity excludes only unitDigest",
+    "forbiddenMutation": "Do not infer runtime dispatch, persistence, journaling, atomic commit, adapter parity, or cold-resume behavior beyond the literal assertion.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "source/authoring/kernel/canonical.mjs",
+      "source/authoring/kernel/digests.mjs"
+    ]
+  },
+  "behavior": "revision-unit identity excludes only unitDigest",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/authoring/digests/revision-unit-self-exclusion.test.mjs",
+  "fixtures": [
+    "tests/fixtures/authoring/contracts/positive/authoring-profile-manifest.json"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v1"
+}

@@ -1192,8 +1192,11 @@ async function validateTestEvidence(packageManifest, ajv, requirements, memberPa
   if (!validator(manifest)) fail(`test evidence manifest invalid: ${ajv.errorsText(validator.errors, { separator: "; " })}`);
   unique(manifest.tests.map((item) => item.id), "test evidence ID");
   unique(manifest.tests.map((item) => item.descriptorPath), "test descriptor path");
-  const obligationIndex = new Map(
-    requirements.requirements.flatMap((requirement) => (
+  const evidenceAuthorities = [
+    ...requirements.requirements,
+    ...requirements.invariants
+  ];
+  const obligationEntries = evidenceAuthorities.flatMap((requirement) => (
       requirement.acceptanceObligations.map((obligation) => [
         obligation.id,
         {
@@ -1201,9 +1204,16 @@ async function validateTestEvidence(packageManifest, ajv, requirements, memberPa
           evidenceClasses: requirement.evidenceClasses
         }
       ])
-    ))
-  );
+    ));
+  unique(obligationEntries.map(([obligationId]) => obligationId), "acceptance obligation ID");
+  const obligationIndex = new Map(obligationEntries);
   const knownObligations = new Set(obligationIndex.keys());
+  const knownRequirementIds = new Set(
+    requirements.requirements.map((requirement) => requirement.id)
+  );
+  const knownInvariantIds = new Set(
+    requirements.invariants.map((invariant) => invariant.id)
+  );
   const claimedObligations = [];
   const executables = [];
   for (const entry of manifest.tests) {
@@ -1217,6 +1227,47 @@ async function validateTestEvidence(packageManifest, ajv, requirements, memberPa
       fail(`${descriptor.id} evidence class ${descriptor.evidenceClass} is not admitted by ${descriptor.obligationId}`);
     }
     if (!memberPaths.has(descriptor.executable)) fail(`${descriptor.id} executable is not an owned member`);
+    for (const fixture of descriptor.fixtures) {
+      if (!memberPaths.has(fixture)) {
+        fail(`${descriptor.id} fixture is not an owned member: ${fixture}`);
+      }
+    }
+    if (/^O-(?:AS|SV)/.test(descriptor.obligationId)) {
+      const owningInvariantId = descriptor.obligationId.split("-")[1];
+      for (const requirementId of descriptor.requirementIds) {
+        if (!knownRequirementIds.has(requirementId)) {
+          fail(`${descriptor.id} names unknown requirement ${requirementId}`);
+        }
+      }
+      for (const invariantId of descriptor.invariantIds) {
+        if (!knownInvariantIds.has(invariantId)) {
+          fail(`${descriptor.id} names unknown invariant ${invariantId}`);
+        }
+      }
+      if (
+        descriptor.invariantIds.length !== 1 ||
+        descriptor.invariantIds[0] !== owningInvariantId
+      ) {
+        fail(`${descriptor.id} must name exactly its owning invariant ${owningInvariantId}`);
+      }
+      for (const [field, values] of [
+        ["requirementIds", descriptor.requirementIds],
+        ["invariantIds", descriptor.invariantIds],
+        ["verification.inspectedAuthorities", descriptor.verification.inspectedAuthorities],
+        ["verification.applicability.transports", descriptor.verification.applicability.transports],
+        ["verification.applicability.adapters", descriptor.verification.applicability.adapters]
+      ]) {
+        const ordered = [...values].sort(compareUtf8);
+        if (canonicalize(values) !== canonicalize(ordered)) {
+          fail(`${descriptor.id} ${field} is not in canonical byte order`);
+        }
+      }
+      for (const authority of descriptor.verification.inspectedAuthorities) {
+        if (!memberPaths.has(authority)) {
+          fail(`${descriptor.id} inspects an unowned authority: ${authority}`);
+        }
+      }
+    }
     const source = await readText(descriptor.executable);
     const topLevelTests = [...source.matchAll(/(?:^|\n)test\s*\(\s*"([^"\n]+)"\s*,/g)];
     if (topLevelTests.length !== 1) {
@@ -1233,6 +1284,15 @@ async function validateTestEvidence(packageManifest, ajv, requirements, memberPa
   const missingObligations = [...knownObligations].filter((obligation) => !claimedSet.has(obligation));
   if (missingObligations.length > 0) {
     fail(`test obligation coverage is incomplete: ${missingObligations.sort(compareUtf8).join(", ")}`);
+  }
+  const claimCounts = new Map();
+  for (const obligationId of claimedObligations) {
+    claimCounts.set(obligationId, (claimCounts.get(obligationId) ?? 0) + 1);
+  }
+  for (const obligationId of knownObligations) {
+    if (/^O-(?:AS|SV)/.test(obligationId) && claimCounts.get(obligationId) !== 1) {
+      fail(`${obligationId} must have exactly one registered test descriptor`);
+    }
   }
 }
 
@@ -1319,7 +1379,7 @@ async function checkOutputs(outputs) {
 async function main() {
   const packageManifest = await readJson("survey-v2.package.json");
   const schemaPaths = packageManifest.schemas.map((entry) => entry.path);
-  unique(packageManifest.schemas.map((entry) => entry.id), "schema ID");
+  const schemaIds = unique(packageManifest.schemas.map((entry) => entry.id), "schema ID");
   unique(schemaPaths, "schema path");
   const memberPaths = unique(packageManifest.members.map((entry) => entry.path), "package member path");
   if (!memberPaths.has("package-lock.json") || packageManifest.members.find((item) => item.path === "package-lock.json")?.kind !== "supply-lock") {
@@ -1327,7 +1387,35 @@ async function main() {
   }
 
   const schemas = [];
-  for (const schemaPath of schemaPaths) schemas.push(await readJson(schemaPath));
+  for (const entry of packageManifest.schemas) {
+    const schema = await readJson(entry.path);
+    if (schema.$id !== entry.id) {
+      fail(`schema manifest ID ${entry.id} differs from ${entry.path} document ID ${schema.$id}`);
+    }
+    schemas.push(schema);
+  }
+  const predecessorSchemaIds = [
+    "urn:mission-kit:survey-v2:schema:common:v1",
+    "urn:mission-kit:survey-v2:schema:director-lifecycle:v1",
+    "urn:mission-kit:survey-v2:schema:package:v1",
+    "urn:mission-kit:survey-v2:schema:fragment:v1",
+    "urn:mission-kit:survey-v2:schema:protocol:v1",
+    "urn:mission-kit:survey-v2:schema:projection:v1",
+    "urn:mission-kit:survey-v2:schema:requirement:v1",
+    "urn:mission-kit:survey-v2:schema:dependency:v1",
+    "urn:mission-kit:survey-v2:schema:triangulation-process:v1",
+    "urn:mission-kit:survey-v2:schema:instrument:v1",
+    "urn:mission-kit:survey-v2:schema:presentation:v1",
+    "urn:mission-kit:survey-v2:schema:session-state:v1",
+    "urn:mission-kit:survey-v2:schema:quarantine:v1",
+    "urn:mission-kit:survey-v2:schema:test-evidence:v1",
+    "urn:mission-kit:survey-v2:schema:envelope-model:v1"
+  ];
+  const schemaIdSet = new Set(schemaIds);
+  const missingPredecessorSchemas = predecessorSchemaIds.filter((schemaId) => !schemaIdSet.has(schemaId));
+  if (missingPredecessorSchemas.length > 0) {
+    fail(`predecessor schema authority is incomplete: ${missingPredecessorSchemas.join(", ")}`);
+  }
   const ajv = new Ajv2020({
     allErrors: true,
     strict: true,
@@ -1362,6 +1450,29 @@ async function main() {
   const requirements = await readJson(packageManifest.requirementsRegistry);
   const requirementIds = requirements.requirements.map((item) => item.id);
   assertExactValues(requirementIds, Array.from({ length: 28 }, (_, index) => `R${String(index + 1).padStart(2, "0")}`), "requirement registry");
+  const invariantIds = requirements.invariants.map((item) => item.id);
+  const authoringInvariantIds = Array.from(
+    { length: 15 },
+    (_, index) => `AS${String(index + 1).padStart(2, "0")}`
+  );
+  const surveyInvariantIds = Array.from(
+    { length: 14 },
+    (_, index) => `SV${String(index + 1).padStart(2, "0")}`
+  );
+  const admittedInvariantIds = invariantIds.length === authoringInvariantIds.length
+    ? authoringInvariantIds
+    : [...authoringInvariantIds, ...surveyInvariantIds];
+  assertExactValues(invariantIds, admittedInvariantIds, "architecture invariant registry");
+  if (canonicalize(invariantIds) !== canonicalize(admittedInvariantIds)) {
+    fail("architecture invariant registry is not in canonical AS/SV order");
+  }
+  for (const invariant of requirements.invariants) {
+    for (const obligation of invariant.acceptanceObligations) {
+      if (!obligation.id.startsWith(`O-${invariant.id}-`)) {
+        fail(`${obligation.id} does not belong to invariant ${invariant.id}`);
+      }
+    }
+  }
   const protocol = await readJson("source/protocol/survey.protocol.json");
   validateProtocol(protocol);
   const directorLifecycle = canonicalJson.get("source/views/director-lifecycle.view.json");

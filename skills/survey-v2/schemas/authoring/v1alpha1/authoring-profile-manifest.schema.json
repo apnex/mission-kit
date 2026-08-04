@@ -1,0 +1,615 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:authoring:schema:authoring-profile-manifest:v1alpha1",
+  "title": "Mission Kit AuthoringProfileManifest resource v1alpha1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["apiVersion", "kind", "metadata", "spec"],
+  "properties": {
+    "apiVersion": {"const": "authoring.mission-kit/v1alpha1"},
+    "kind": {"const": "AuthoringProfileManifest"},
+    "metadata": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/metadata"},
+    "spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profileDigest",
+        "kernel",
+        "protocol",
+        "schemaBindings",
+        "formBindings",
+        "handlerBindings",
+        "guardBindings",
+        "projectionBindings",
+        "validatorSets",
+        "machineBindings",
+        "tasks",
+        "transitionBindings",
+        "revisionUnits"
+      ],
+      "properties": {
+        "profileDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
+        "kernel": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/DigestBinding"},
+        "protocol": {"$ref": "urn:mission-kit:authoring:schema:resource-reference:v1alpha1"},
+        "schemaBindings": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 256,
+          "items": {"$ref": "#/$defs/schemaBinding"}
+        },
+        "formBindings": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 256,
+          "items": {"$ref": "#/$defs/formBinding"}
+        },
+        "handlerBindings": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 256,
+          "items": {"$ref": "#/$defs/handlerBinding"}
+        },
+        "guardBindings": {
+          "type": "array",
+          "maxItems": 256,
+          "items": {"$ref": "#/$defs/guardBinding"}
+        },
+        "projectionBindings": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 256,
+          "items": {"$ref": "#/$defs/projectionBinding"}
+        },
+        "validatorSets": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 256,
+          "items": {"$ref": "#/$defs/validatorSet"}
+        },
+        "machineBindings": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {"$ref": "#/$defs/machineBinding"}
+        },
+        "tasks": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 256,
+          "items": {"$ref": "#/$defs/task"}
+        },
+        "transitionBindings": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1024,
+          "items": {"$ref": "#/$defs/transitionBinding"}
+        },
+        "revisionUnits": {
+          "type": "array",
+          "maxItems": 256,
+          "items": {"$ref": "#/$defs/revisionUnit"}
+        },
+        "handlerConfiguration": {"$ref": "#/$defs/handlerConfiguration"}
+      }
+    }
+  },
+  "$defs": {
+    "schemaBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "resourceType", "schema", "semanticValidator"],
+      "properties": {
+        "id": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "resourceType": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/ResourceType"},
+        "schema": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/DigestBinding"},
+        "semanticValidator": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/DigestBinding"}
+      }
+    },
+    "formBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "definition", "formDigest", "renderer", "parser"],
+      "properties": {
+        "id": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "definition": {"$ref": "urn:mission-kit:authoring:schema:resource-reference:v1alpha1"},
+        "formDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
+        "renderer": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/DigestBinding"},
+        "parser": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/DigestBinding"}
+      }
+    },
+    "handlerBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "handler"],
+      "properties": {
+        "id": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "handler": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/DigestBinding"}
+      }
+    },
+    "guardBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["guardId", "handler"],
+      "properties": {
+        "guardId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "handler": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/DigestBinding"}
+      }
+    },
+    "projectionBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "definitionDigest", "engine"],
+      "properties": {
+        "id": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "definitionDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
+        "engine": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/DigestBinding"}
+      }
+    },
+    "validatorSet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "digest", "members"],
+      "properties": {
+        "id": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "digest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
+        "members": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 64,
+          "items": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/DigestBinding"}
+        }
+      }
+    },
+    "machineBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["machineId", "protocol"],
+      "properties": {
+        "machineId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "protocol": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/DigestBinding"}
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slot", "resourceType", "cardinality"],
+      "properties": {
+        "slot": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/slotId"},
+        "resourceType": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/ResourceType"},
+        "cardinality": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/Cardinality"}
+      }
+    },
+    "singularContextCardinality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min", "max"],
+      "properties": {
+        "min": {"type": "integer", "minimum": 0, "maximum": 1},
+        "max": {"type": "integer", "minimum": 0, "maximum": 1}
+      }
+    },
+    "lifecycleRule": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["mode"],
+          "properties": {
+            "mode": {"const": "workspace-resource-version"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["mode", "path"],
+          "properties": {
+            "mode": {"const": "json-pointer-state"},
+            "path": {
+              "allOf": [
+                {
+                  "$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/fieldPath"
+                },
+                {"type": "string", "minLength": 1}
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "contextSelector": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "selectorDigest",
+        "ordinal",
+        "role",
+        "resourceType",
+        "cardinality",
+        "requiredLifecycleState",
+        "lifecycleRule",
+        "selection",
+        "projection"
+      ],
+      "properties": {
+        "id": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "selectorDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
+        "ordinal": {"type": "integer", "minimum": 1, "maximum": 256},
+        "role": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/roleId"},
+        "resourceType": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/ResourceType"},
+        "cardinality": {"$ref": "#/$defs/singularContextCardinality"},
+        "requiredLifecycleState": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/stateId"},
+        "lifecycleRule": {"$ref": "#/$defs/lifecycleRule"},
+        "selection": {
+          "oneOf": [
+            {"$ref": "#/$defs/activeHeadSelection"},
+            {"$ref": "#/$defs/requestReferenceSelection"}
+          ]
+        },
+        "projection": {"$ref": "#/$defs/contextProjection"}
+      }
+    },
+    "activeHeadSelection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "slot"],
+      "properties": {
+        "mode": {"const": "active-head"},
+        "slot": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/slotId"}
+      }
+    },
+    "requestReferenceSelection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "inputKey"],
+      "properties": {
+        "mode": {"const": "request-reference"},
+        "inputKey": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/fieldId"}
+      }
+    },
+    "contextProjection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "digest", "fields"],
+      "properties": {
+        "id": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "digest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
+        "fields": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 256,
+          "uniqueItems": true,
+          "items": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/fieldPath"}
+        }
+      }
+    },
+    "task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "stateId",
+        "target",
+        "contextSelectors",
+        "submissionSchemaBindingId",
+        "formBindingId",
+        "handlerBindingId",
+        "projectionBindingId",
+        "validatorSetId"
+      ],
+      "properties": {
+        "id": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "stateId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/stateId"},
+        "target": {"$ref": "#/$defs/target"},
+        "contextSelectors": {
+          "type": "array",
+          "maxItems": 32,
+          "items": {"$ref": "#/$defs/contextSelector"}
+        },
+        "submissionSchemaBindingId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "formBindingId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "handlerBindingId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "projectionBindingId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "validatorSetId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"}
+      }
+    },
+    "externalCoupling": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["machineId", "transitionId"],
+      "properties": {
+        "machineId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "transitionId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/transitionId"}
+      }
+    },
+    "mutationFootprint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "created",
+        "activeHeadSlots",
+        "supersededSlots",
+        "dependencyRelations",
+        "handoffSlots",
+        "nextState"
+      ],
+      "properties": {
+        "created": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {"$ref": "#/$defs/target"}
+        },
+        "activeHeadSlots": {
+          "type": "array",
+          "maxItems": 64,
+          "uniqueItems": true,
+          "items": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/slotId"}
+        },
+        "supersededSlots": {
+          "type": "array",
+          "maxItems": 64,
+          "uniqueItems": true,
+          "items": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/slotId"}
+        },
+        "dependencyRelations": {
+          "type": "array",
+          "maxItems": 64,
+          "uniqueItems": true,
+          "items": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"}
+        },
+        "handoffSlots": {
+          "type": "array",
+          "maxItems": 64,
+          "uniqueItems": true,
+          "items": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/slotId"}
+        },
+        "nextState": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/stateId"},
+        "externalCouplings": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 2,
+          "items": {"$ref": "#/$defs/externalCoupling"}
+        }
+      }
+    },
+    "transitionBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "transitionId",
+        "triggerClass",
+        "handlerBindingId",
+        "authority",
+        "mutationFootprint"
+      ],
+      "properties": {
+        "transitionId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/transitionId"},
+        "triggerClass": {"enum": ["task-submission", "event"]},
+        "taskId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "inputSelectors": {
+          "type": "array",
+          "maxItems": 32,
+          "items": {"$ref": "#/$defs/eventInputSelector"}
+        },
+        "handlerBindingId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "authority": {"$ref": "#/$defs/authority"},
+        "mutationFootprint": {"$ref": "#/$defs/mutationFootprint"}
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "triggerClass": {"const": "task-submission"}
+            },
+            "required": ["triggerClass"]
+          },
+          "then": {
+            "properties": {
+              "taskId": {
+                "$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"
+              },
+              "inputSelectors": false
+            },
+            "required": ["taskId"]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "triggerClass": {"const": "event"}
+            },
+            "required": ["triggerClass"]
+          },
+          "then": {
+            "required": ["inputSelectors"],
+            "not": {
+              "properties": {
+                "taskId": {
+                  "$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"
+                }
+              },
+              "required": ["taskId"]
+            }
+          }
+        }
+      ]
+    },
+    "eventInputSelector": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ordinal",
+        "role",
+        "resourceType",
+        "cardinality",
+        "requiredLifecycleState",
+        "lifecycleRule",
+        "selection"
+      ],
+      "properties": {
+        "ordinal": {"type": "integer", "minimum": 1, "maximum": 32},
+        "role": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/roleId"},
+        "resourceType": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/ResourceType"},
+        "cardinality": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/Cardinality"},
+        "requiredLifecycleState": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/stateId"},
+        "lifecycleRule": {"$ref": "#/$defs/lifecycleRule"},
+        "selection": {
+          "oneOf": [
+            {"$ref": "#/$defs/activeHeadSelection"},
+            {"$ref": "#/$defs/eventInputSelection"}
+          ]
+        }
+      }
+    },
+    "eventInputSelection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "inputKey"],
+      "properties": {
+        "mode": {"const": "event-input"},
+        "inputKey": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/fieldId"}
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["class", "id", "policy"],
+      "properties": {
+        "class": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "id": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "policy": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/DigestBinding"}
+      }
+    },
+    "descendantClosure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dependencyRelations",
+        "invalidatedSlots",
+        "invalidateOpenAssignments"
+      ],
+      "properties": {
+        "dependencyRelations": {
+          "type": "array",
+          "maxItems": 64,
+          "uniqueItems": true,
+          "items": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"}
+        },
+        "invalidatedSlots": {
+          "type": "array",
+          "maxItems": 256,
+          "uniqueItems": true,
+          "items": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/slotId"}
+        },
+        "invalidateOpenAssignments": {"const": true}
+      }
+    },
+    "disclosureControl": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cutoffId", "guardId"],
+      "properties": {
+        "cutoffId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "guardId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"}
+      }
+    },
+    "revisionPlan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "planDigest",
+        "transitionId",
+        "fromStates",
+        "eventId",
+        "selectionGuardId",
+        "authority",
+        "externalCouplings"
+      ],
+      "properties": {
+        "id": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "planDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
+        "transitionId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/transitionId"},
+        "fromStates": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 256,
+          "uniqueItems": true,
+          "items": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/stateId"}
+        },
+        "eventId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/eventId"},
+        "selectionGuardId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "authority": {"$ref": "#/$defs/authority"},
+        "externalCouplings": {
+          "type": "array",
+          "maxItems": 2,
+          "items": {"$ref": "#/$defs/externalCoupling"}
+        }
+      }
+    },
+    "revisionUnit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "unitDigest",
+        "normalTransitionId",
+        "replacementTargets",
+        "assignmentContract",
+        "descendantClosure",
+        "normalPostcondition",
+        "disclosureControl",
+        "revisionPlans"
+      ],
+      "properties": {
+        "id": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "unitDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
+        "normalTransitionId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/transitionId"},
+        "replacementTargets": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 64,
+          "items": {"$ref": "#/$defs/target"}
+        },
+        "assignmentContract": {"$ref": "#/$defs/revisionAssignmentContract"},
+        "descendantClosure": {"$ref": "#/$defs/descendantClosure"},
+        "normalPostcondition": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/stateId"},
+        "disclosureControl": {"$ref": "#/$defs/disclosureControl"},
+        "revisionPlans": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "items": {"$ref": "#/$defs/revisionPlan"}
+        }
+      }
+    },
+    "revisionAssignmentContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "submissionSchemaBindingId",
+        "formBindingId",
+        "handlerBindingId",
+        "projectionBindingId",
+        "validatorSetId",
+        "reasonFieldId"
+      ],
+      "properties": {
+        "submissionSchemaBindingId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "formBindingId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "handlerBindingId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "projectionBindingId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "validatorSetId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "reasonFieldId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/fieldId"}
+      }
+    },
+    "handlerConfiguration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "value"],
+      "properties": {
+        "schema": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/DigestBinding"},
+        "value": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/canonicalValue"}
+      }
+    }
+  }
+}

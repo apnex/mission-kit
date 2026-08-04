@@ -1,0 +1,63 @@
+{
+  "apiVersion": "authoring.mission-kit/v1alpha1",
+  "kind": "ContextClosure",
+  "metadata": {
+    "name": "brief-context"
+  },
+  "spec": {
+    "closureDigest": "sha256:3f375e5ea34e34c635764fd99b57dae108faf4550c4b7f4be6e14066c50633d7",
+    "layers": [
+      {
+        "ordinal": 1,
+        "role": "intake",
+        "selectorId": "brief-source",
+        "selectorDigest": "sha256:d4597f0c2f0dff42b973b6b0d984c524ebabb7b77ec3715275a594ed6fe604c0",
+        "requiredLifecycleState": "frozen",
+        "lifecycleProof": {
+          "ruleDigest": "sha256:0009bc2b24b3f331846684a3cb6f2d00c51ba88c9efd1576c1d42da2faea16c6",
+          "observedState": "frozen"
+        },
+        "sourceReference": {
+          "apiVersion": "authoring.mission-kit/v1alpha1",
+          "kind": "SourceSnapshot",
+          "name": "brief-intake",
+          "semanticDigest": "sha256:637c203e0ea0fc20ffa9f908fb891aeccc7200b21d65ba772404d886bef868dc"
+        },
+        "sourceIntegrityDigest": "sha256:1074283e32cd3342af2fa1c5e9f82ae82ef3b45e2ab77083fa1ca3fe52f32b30",
+        "sourceSnapshot": {
+          "apiVersion": "authoring.mission-kit/v1alpha1",
+          "kind": "SourceSnapshot",
+          "metadata": {
+            "name": "brief-intake"
+          },
+          "spec": {
+            "sourceDigest": "sha256:01d6a3994c4f72f2b7eed9766289862beb13743ee36a3bc2d8562e78a0f65552",
+            "provenance": {
+              "sourceClass": "local-input",
+              "sourceId": "brief-seed",
+              "revision": "1",
+              "evidenceDigest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+            },
+            "inventory": [
+              {
+                "ordinal": 1,
+                "logicalName": "brief.txt",
+                "content": {
+                  "mediaType": "text/plain;charset=utf-8",
+                  "encoding": "base64",
+                  "byteLength": 5,
+                  "data": "c2VlZAo="
+                },
+                "rawEvidenceDigest": "sha256:eb7ff3be690a9367f2127fe3a9689c6207fff884bcfafd8b2b6e3b0727e28ceb"
+              }
+            ]
+          }
+        },
+        "selectedValue": {
+          "topic": "brief"
+        },
+        "projectionDefinitionDigest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    ]
+  }
+}

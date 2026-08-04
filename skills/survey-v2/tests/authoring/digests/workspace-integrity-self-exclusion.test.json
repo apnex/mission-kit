@@ -1,0 +1,35 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:test:authoring:digests:workspace-integrity-self-exclusion",
+  "obligationId": "O-AS15-05",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS15"
+  ],
+  "verification": {
+    "precondition": "The mapped authorities and fixtures exist as package-owned files.",
+    "stimulus": "Execute tests/authoring/digests/workspace-integrity-self-exclusion.test.mjs with node:test.",
+    "expectedSemanticState": "No durable authoring runtime state transition is claimed by O-AS15-05.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: workspace integrity omits only its nested self digest and retains all evidence",
+    "forbiddenMutation": "Do not infer runtime dispatch, persistence, journaling, atomic commit, adapter parity, or cold-resume behavior beyond the literal assertion.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "source/authoring/kernel/canonical.mjs",
+      "source/authoring/kernel/digests.mjs"
+    ]
+  },
+  "behavior": "workspace integrity omits only its nested self digest and retains all evidence",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/authoring/digests/workspace-integrity-self-exclusion.test.mjs",
+  "fixtures": [
+    "tests/authoring/digests/resource-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v1"
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:authoring:schema:resource-reference:v1alpha1",
+  "title": "Mission Kit authoring ResourceReference v1alpha1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "apiVersion",
+    "kind",
+    "name",
+    "semanticDigest"
+  ],
+  "properties": {
+    "apiVersion": {
+      "$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/apiVersion"
+    },
+    "kind": {
+      "$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/kind"
+    },
+    "name": {
+      "$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/resourceName"
+    },
+    "semanticDigest": {
+      "$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"
+    }
+  }
+}

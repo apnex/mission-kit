@@ -1,0 +1,35 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:test:authoring:digests:assignment-self-exclusion",
+  "obligationId": "O-AS07-06",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS07"
+  ],
+  "verification": {
+    "precondition": "The mapped authorities and fixtures exist as package-owned files.",
+    "stimulus": "Execute tests/authoring/digests/assignment-self-exclusion.test.mjs with node:test.",
+    "expectedSemanticState": "No durable authoring runtime state transition is claimed by O-AS07-06.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: AuthoringAssignment digest omits only assignmentDigest from its semantic resource core",
+    "forbiddenMutation": "Do not infer runtime dispatch, persistence, journaling, atomic commit, adapter parity, or cold-resume behavior beyond the literal assertion.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "source/authoring/kernel/canonical.mjs",
+      "source/authoring/kernel/digests.mjs"
+    ]
+  },
+  "behavior": "AuthoringAssignment digest omits only assignmentDigest from its semantic resource core",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/authoring/digests/assignment-self-exclusion.test.mjs",
+  "fixtures": [
+    "tests/authoring/digests/resource-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v1"
+}

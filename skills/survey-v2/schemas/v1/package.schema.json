@@ -43,7 +43,6 @@
     "schemas": {
       "type": "array",
       "minItems": 15,
-      "maxItems": 15,
       "uniqueItems": true,
       "items": {
         "type": "object",
@@ -51,8 +50,16 @@
         "required": ["id", "path"],
         "properties": {
           "id": {
-            "type": "string",
-            "pattern": "^urn:mission-kit:survey-v2:schema:[a-z0-9-]+:v1$"
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^urn:mission-kit:survey-v2:schema:[a-z0-9-]+:v1$"
+              },
+              {
+                "type": "string",
+                "pattern": "^urn:mission-kit:authoring:schema:[a-z0-9-]+:v1alpha1$"
+              }
+            ]
           },
           "path": {
             "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/relativePath"

@@ -1,0 +1,36 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:test:authoring:digests:domain-separation",
+  "obligationId": "O-AS14-10",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS14"
+  ],
+  "verification": {
+    "precondition": "The mapped authorities and fixtures exist as package-owned files.",
+    "stimulus": "Execute tests/authoring/digests/domain-separation.test.mjs with node:test.",
+    "expectedSemanticState": "No durable authoring runtime state transition is claimed by O-AS14-10.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: the same canonical value has a distinct digest in every frozen domain",
+    "forbiddenMutation": "Do not infer runtime dispatch, persistence, journaling, atomic commit, adapter parity, or cold-resume behavior beyond the literal assertion.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "source/authoring/kernel/canonical.mjs",
+      "source/authoring/kernel/digests.mjs"
+    ]
+  },
+  "behavior": "the same canonical value has a distinct digest in every frozen domain",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/authoring/digests/domain-separation.test.mjs",
+  "fixtures": [
+    "tests/authoring/digests/authoring-digests.v1.golden.json",
+    "tests/authoring/digests/golden-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v1"
+}

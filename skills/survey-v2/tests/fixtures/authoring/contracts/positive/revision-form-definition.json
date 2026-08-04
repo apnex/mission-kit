@@ -1,0 +1,41 @@
+{
+  "apiVersion": "authoring.mission-kit/v1alpha1",
+  "kind": "AuthoringFormDefinition",
+  "metadata": {
+    "name": "brief-revision-form"
+  },
+  "spec": {
+    "formDigest": "sha256:d06b9a48933f5027ba9c99ab280e70bf0ab48219373282bd813af389b5dddd43",
+    "grammarVersion": "mission-kit-authoring-text/v1",
+    "title": "Revise a concise brief",
+    "introduction": "Complete both bounded fields.",
+    "fields": [
+      {
+        "id": "summary",
+        "ordinal": 1,
+        "heading": "Summary",
+        "instruction": "State the replacement intent.",
+        "type": "paragraph",
+        "required": true,
+        "placeholder": "Enter the replacement intent",
+        "constraints": {
+          "minLength": 1,
+          "maxLength": 4000
+        }
+      },
+      {
+        "id": "reason",
+        "ordinal": 2,
+        "heading": "Reason",
+        "instruction": "State why the replacement is needed.",
+        "type": "paragraph",
+        "required": true,
+        "placeholder": "Enter the reason",
+        "constraints": {
+          "minLength": 1,
+          "maxLength": 2000
+        }
+      }
+    ]
+  }
+}

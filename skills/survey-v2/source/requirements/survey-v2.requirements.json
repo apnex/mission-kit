@@ -7,286 +7,1337 @@
       "id": "R01",
       "statement": "Preserve the two-round, three-question-per-round Survey geometry.",
       "status": "active",
-      "mechanisms": ["M02", "M05", "M06"],
-      "requiredCapabilities": ["mechanism.m02@1"],
+      "mechanisms": [
+        "M02",
+        "M05",
+        "M06"
+      ],
+      "requiredCapabilities": [
+        "mechanism.m02@1"
+      ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:instrument:round-freeze",
-      "acceptanceObligations": [{"id": "O-R01-01", "statement": "Exactly two rounds of three questions validate and freeze."}],
-      "evidenceClasses": ["positive", "negative"]
+      "acceptanceObligations": [
+        {
+          "id": "O-R01-01",
+          "statement": "Exactly two rounds of three questions validate and freeze."
+        }
+      ],
+      "evidenceClasses": [
+        "positive",
+        "negative"
+      ]
     },
     {
       "id": "R02",
       "statement": "Preserve multi-pick input and distinguish composable from contradictory selections.",
       "status": "active",
-      "mechanisms": ["M04"],
-      "requiredCapabilities": ["mechanism.m04@1"],
+      "mechanisms": [
+        "M04"
+      ],
+      "requiredCapabilities": [
+        "mechanism.m04@1"
+      ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:interaction:pick-capture",
-      "acceptanceObligations": [{"id": "O-R02-01", "statement": "Pick normalization preserves composition and declared contradictions."}],
-      "evidenceClasses": ["positive", "negative"]
+      "acceptanceObligations": [
+        {
+          "id": "O-R02-01",
+          "statement": "Pick normalization preserves composition and declared contradictions."
+        }
+      ],
+      "evidenceClasses": [
+        "positive",
+        "negative"
+      ]
     },
     {
       "id": "R03",
       "statement": "Design, validate and freeze all three questions in a round before first disclosure.",
       "status": "active",
-      "mechanisms": ["M02"],
-      "requiredCapabilities": ["mechanism.m02@1"],
+      "mechanisms": [
+        "M02"
+      ],
+      "requiredCapabilities": [
+        "mechanism.m02@1"
+      ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:instrument:round-freeze",
-      "acceptanceObligations": [{"id": "O-R03-01", "statement": "A disclosed round cannot mutate its frozen instrument."}],
-      "evidenceClasses": ["negative", "conformance"]
+      "acceptanceObligations": [
+        {
+          "id": "O-R03-01",
+          "statement": "A disclosed round cannot mutate its frozen instrument."
+        }
+      ],
+      "evidenceClasses": [
+        "negative",
+        "conformance"
+      ]
     },
     {
       "id": "R04",
       "statement": "Present and capture one question at a time without preview or inter-pick interpretation.",
       "status": "active",
-      "mechanisms": ["M03"],
-      "requiredCapabilities": ["mechanism.m03@1"],
+      "mechanisms": [
+        "M03"
+      ],
+      "requiredCapabilities": [
+        "mechanism.m03@1"
+      ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:interaction:single-question-disclosure",
-      "acceptanceObligations": [{"id": "O-R04-01", "statement": "Every Director question view contains only the current question."}],
-      "evidenceClasses": ["positive", "negative"]
+      "acceptanceObligations": [
+        {
+          "id": "O-R04-01",
+          "statement": "Every Director question view contains only the current question."
+        }
+      ],
+      "evidenceClasses": [
+        "positive",
+        "negative"
+      ]
     },
     {
       "id": "R05",
       "statement": "Prevent Round 2 construction until Round-1 picks and aggregate interpretation are durable.",
       "status": "active",
-      "mechanisms": ["M05", "M06"],
-      "requiredCapabilities": ["mechanism.m05@1"],
+      "mechanisms": [
+        "M05",
+        "M06"
+      ],
+      "requiredCapabilities": [
+        "mechanism.m05@1"
+      ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:interpretation:round-ordering",
-      "acceptanceObligations": [{"id": "O-R05-01", "statement": "Round 2 begins only from sealed Round-1 semantic ancestry."}],
-      "evidenceClasses": ["conformance", "negative"]
+      "acceptanceObligations": [
+        {
+          "id": "O-R05-01",
+          "statement": "Round 2 begins only from sealed Round-1 semantic ancestry."
+        }
+      ],
+      "evidenceClasses": [
+        "conformance",
+        "negative"
+      ]
     },
     {
       "id": "R06",
       "statement": "Preserve raw Director evidence separately from deterministic normalization.",
       "status": "active",
-      "mechanisms": ["M04"],
-      "requiredCapabilities": ["mechanism.m04@1"],
+      "mechanisms": [
+        "M04"
+      ],
+      "requiredCapabilities": [
+        "mechanism.m04@1"
+      ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:interaction:pick-capture",
-      "acceptanceObligations": [{"id": "O-R06-01", "statement": "Raw responses and normalized picks survive a session round trip."}],
-      "evidenceClasses": ["positive", "resume"]
+      "acceptanceObligations": [
+        {
+          "id": "O-R06-01",
+          "statement": "Raw responses and normalized picks survive a session round trip."
+        }
+      ],
+      "evidenceClasses": [
+        "positive",
+        "resume"
+      ]
     },
     {
       "id": "R07",
       "statement": "Keep semantic authority with the Director and proposer while validators remain mechanical.",
       "status": "active",
-      "mechanisms": ["M01"],
-      "requiredCapabilities": ["mechanism.m01@1"],
+      "mechanisms": [
+        "M01"
+      ],
+      "requiredCapabilities": [
+        "mechanism.m01@1"
+      ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:authority:semantic-boundaries",
-      "acceptanceObligations": [{"id": "O-R07-01", "statement": "Wrong-role semantic commands and validator ratification fail closed."}],
-      "evidenceClasses": ["negative"]
+      "acceptanceObligations": [
+        {
+          "id": "O-R07-01",
+          "statement": "Wrong-role semantic commands and validator ratification fail closed."
+        }
+      ],
+      "evidenceClasses": [
+        "negative"
+      ]
     },
     {
       "id": "R08",
       "statement": "Make final composite ratification the only mandatory Director checkpoint beyond six picks.",
       "status": "active",
-      "mechanisms": ["M10"],
-      "requiredCapabilities": ["mechanism.m10@1"],
+      "mechanisms": [
+        "M10"
+      ],
+      "requiredCapabilities": [
+        "mechanism.m10@1"
+      ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:artifact:envelope-and-ratification",
-      "acceptanceObligations": [{"id": "O-R08-01", "statement": "Correction, withholding and ratification preserve exact candidate ancestry."}],
-      "evidenceClasses": ["positive", "negative"]
+      "acceptanceObligations": [
+        {
+          "id": "O-R08-01",
+          "statement": "Correction, withholding and ratification preserve exact candidate ancestry."
+        }
+      ],
+      "evidenceClasses": [
+        "positive",
+        "negative"
+      ]
     },
     {
       "id": "R09",
       "statement": "Model legal protocol behavior in one manifest and an isomorphic normative Mermaid FSM.",
       "status": "active",
-      "mechanisms": ["M12"],
-      "requiredCapabilities": ["mechanism.m12@1"],
+      "mechanisms": [
+        "M12"
+      ],
+      "requiredCapabilities": [
+        "mechanism.m12@1"
+      ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:projection:isomorphic-projections",
-      "acceptanceObligations": [{"id": "O-R09-01", "statement": "Mermaid parse-back exactly matches expanded manifest tuples."}],
-      "evidenceClasses": ["conformance"]
+      "acceptanceObligations": [
+        {
+          "id": "O-R09-01",
+          "statement": "Mermaid parse-back exactly matches expanded manifest tuples."
+        }
+      ],
+      "evidenceClasses": [
+        "conformance"
+      ]
     },
     {
       "id": "R10",
       "statement": "Provide a compact Director-centred lifecycle projection with complete protocol traceability and a visible actor journey distinct from the normative FSM.",
       "status": "active",
-      "mechanisms": ["M12"],
-      "requiredCapabilities": ["mechanism.m12@1"],
+      "mechanisms": [
+        "M12"
+      ],
+      "requiredCapabilities": [
+        "mechanism.m12@1"
+      ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:projection:isomorphic-projections",
       "acceptanceObligations": [
-        {"id": "O-R10-01", "statement": "The primary visible lifecycle has exactly three touchpoint lanes, six distinct question handoffs, and explicit ratification and revision paths."},
-        {"id": "O-R10-02", "statement": "Every protocol transition and family has exactly one full-tuple lifecycle macro owner."},
-        {"id": "O-R10-03", "statement": "Primary workflow and continuity render as separate bounded panels, remain strictly compressed, and keep encoded evidence outside Mermaid input."},
-        {"id": "O-R10-04", "statement": "Runtime recovery, active-state exact rejoin, legal continuation edges, abort, and quarantine remain visibly and totally represented."}
+        {
+          "id": "O-R10-01",
+          "statement": "The primary visible lifecycle has exactly three touchpoint lanes, six distinct question handoffs, and explicit ratification and revision paths."
+        },
+        {
+          "id": "O-R10-02",
+          "statement": "Every protocol transition and family has exactly one full-tuple lifecycle macro owner."
+        },
+        {
+          "id": "O-R10-03",
+          "statement": "Primary workflow and continuity render as separate bounded panels, remain strictly compressed, and keep encoded evidence outside Mermaid input."
+        },
+        {
+          "id": "O-R10-04",
+          "statement": "Runtime recovery, active-state exact rejoin, legal continuation edges, abort, and quarantine remain visibly and totally represented."
+        }
       ],
-      "evidenceClasses": ["conformance", "negative"]
+      "evidenceClasses": [
+        "conformance",
+        "negative"
+      ]
     },
     {
       "id": "R11",
       "statement": "Persist frozen instruments, cursors, authority, picks, interpretations, mappings, dependencies and composites.",
       "status": "active",
-      "mechanisms": ["M09"],
-      "requiredCapabilities": ["mechanism.m09@1"],
+      "mechanisms": [
+        "M09"
+      ],
+      "requiredCapabilities": [
+        "mechanism.m09@1"
+      ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:state:session-and-resume",
-      "acceptanceObligations": [{"id": "O-R11-01", "statement": "The atomic session contains every reached-state artifact and event."}],
-      "evidenceClasses": ["positive", "resume"]
+      "acceptanceObligations": [
+        {
+          "id": "O-R11-01",
+          "statement": "The atomic session contains every reached-state artifact and event."
+        }
+      ],
+      "evidenceClasses": [
+        "positive",
+        "resume"
+      ]
     },
     {
       "id": "R12",
       "statement": "Resume cold at the exact legal state without regenerating or leaking undisclosed questions.",
       "status": "active",
-      "mechanisms": ["M09"],
-      "requiredCapabilities": ["mechanism.m09@1"],
+      "mechanisms": [
+        "M09"
+      ],
+      "requiredCapabilities": [
+        "mechanism.m09@1"
+      ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:state:session-and-resume",
-      "acceptanceObligations": [{"id": "O-R12-01", "statement": "Cold takeover replays state and exposes only the current legal view."}],
-      "evidenceClasses": ["resume", "failure-injection"]
+      "acceptanceObligations": [
+        {
+          "id": "O-R12-01",
+          "statement": "Cold takeover replays state and exposes only the current legal view."
+        }
+      ],
+      "evidenceClasses": [
+        "resume",
+        "failure-injection"
+      ]
     },
     {
       "id": "R13",
       "statement": "Produce one self-contained generated intent envelope as downstream planning input.",
       "status": "active",
-      "mechanisms": ["M10"],
-      "requiredCapabilities": ["mechanism.m10@1"],
+      "mechanisms": [
+        "M10"
+      ],
+      "requiredCapabilities": [
+        "mechanism.m10@1"
+      ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:artifact:envelope-and-ratification",
-      "acceptanceObligations": [{"id": "O-R13-01", "statement": "A ratified session regenerates one byte-identical self-contained envelope."}],
-      "evidenceClasses": ["positive", "negative", "resume"]
+      "acceptanceObligations": [
+        {
+          "id": "O-R13-01",
+          "statement": "A ratified session regenerates one byte-identical self-contained envelope."
+        }
+      ],
+      "evidenceClasses": [
+        "positive",
+        "negative",
+        "resume"
+      ]
     },
     {
       "id": "R14",
       "statement": "Organize source knowledge into sovereign one-purpose fragments.",
       "status": "active",
-      "mechanisms": ["M11"],
-      "requiredCapabilities": ["mechanism.m11@1"],
+      "mechanisms": [
+        "M11"
+      ],
+      "requiredCapabilities": [
+        "mechanism.m11@1"
+      ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:composition:fragment-contract",
-      "acceptanceObligations": [{"id": "O-R14-01", "statement": "Every fragment has one descriptor, payload and purpose."}],
-      "evidenceClasses": ["conformance"]
+      "acceptanceObligations": [
+        {
+          "id": "O-R14-01",
+          "statement": "Every fragment has one descriptor, payload and purpose."
+        }
+      ],
+      "evidenceClasses": [
+        "conformance"
+      ]
     },
     {
       "id": "R15",
       "statement": "Govern recurring structures with versioned strict schemas.",
       "status": "active",
-      "mechanisms": ["M11", "M12"],
-      "requiredCapabilities": ["mechanism.m11@1"],
+      "mechanisms": [
+        "M11",
+        "M12"
+      ],
+      "requiredCapabilities": [
+        "mechanism.m11@1"
+      ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:composition:fragment-contract",
-      "acceptanceObligations": [{"id": "O-R15-01", "statement": "All fifteen schema classes validate offline and reject unknown fields."}],
-      "evidenceClasses": ["positive", "negative"]
+      "acceptanceObligations": [
+        {
+          "id": "O-R15-01",
+          "statement": "All fifteen schema classes validate offline and reject unknown fields."
+        }
+      ],
+      "evidenceClasses": [
+        "positive",
+        "negative"
+      ]
     },
     {
       "id": "R16",
       "statement": "Generate SKILL.md and every runtime projection deterministically from canonical source.",
       "status": "active",
-      "mechanisms": ["M12"],
-      "requiredCapabilities": ["mechanism.m12@1"],
+      "mechanisms": [
+        "M12"
+      ],
+      "requiredCapabilities": [
+        "mechanism.m12@1"
+      ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:projection:isomorphic-projections",
-      "acceptanceObligations": [{"id": "O-R16-01", "statement": "Repeated build and check produce byte-identical registered targets."}],
-      "evidenceClasses": ["conformance"]
+      "acceptanceObligations": [
+        {
+          "id": "O-R16-01",
+          "statement": "Repeated build and check produce byte-identical registered targets."
+        }
+      ],
+      "evidenceClasses": [
+        "conformance"
+      ]
     },
     {
       "id": "R17",
       "statement": "Model external references, skills and triangulation processes as typed dependencies.",
       "status": "active",
-      "mechanisms": ["M07"],
-      "requiredCapabilities": ["mechanism.m07@1"],
+      "mechanisms": [
+        "M07"
+      ],
+      "requiredCapabilities": [
+        "mechanism.m07@1"
+      ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:dependencies:typed-resolution",
-      "acceptanceObligations": [{"id": "O-R17-01", "statement": "Typed dependency hooks resolve, block and retry without semantic injection."}],
-      "evidenceClasses": ["positive", "negative"]
+      "acceptanceObligations": [
+        {
+          "id": "O-R17-01",
+          "statement": "Typed dependency hooks resolve, block and retry without semantic injection."
+        }
+      ],
+      "evidenceClasses": [
+        "positive",
+        "negative"
+      ]
     },
     {
       "id": "R18",
       "statement": "Implement axiom applicability as the first concrete triangulation-process contract.",
       "status": "active",
-      "mechanisms": ["M08"],
-      "requiredCapabilities": ["mechanism.m08@1"],
+      "mechanisms": [
+        "M08"
+      ],
+      "requiredCapabilities": [
+        "mechanism.m08@1"
+      ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:dependencies:axiom-triangulation",
-      "acceptanceObligations": [{"id": "O-R18-01", "statement": "Axiom stages bind complete interpretations to one frozen session snapshot."}],
-      "evidenceClasses": ["positive", "resume"]
+      "acceptanceObligations": [
+        {
+          "id": "O-R18-01",
+          "statement": "Axiom stages bind complete interpretations to one frozen session snapshot."
+        }
+      ],
+      "evidenceClasses": [
+        "positive",
+        "resume"
+      ]
     },
     {
       "id": "R19",
       "statement": "Require auditable unique or supporting contribution evidence for every fragment.",
       "status": "active",
-      "mechanisms": ["M11"],
-      "requiredCapabilities": ["mechanism.m11@1"],
+      "mechanisms": [
+        "M11"
+      ],
+      "requiredCapabilities": [
+        "mechanism.m11@1"
+      ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:composition:fragment-contract",
-      "acceptanceObligations": [{"id": "O-R19-01", "statement": "Capability removal proves every included fragment contribution."}],
-      "evidenceClasses": ["conformance", "negative"]
+      "acceptanceObligations": [
+        {
+          "id": "O-R19-01",
+          "statement": "Capability removal proves every included fragment contribution."
+        }
+      ],
+      "evidenceClasses": [
+        "conformance",
+        "negative"
+      ]
     },
     {
       "id": "R20",
       "statement": "Enforce progressive disclosure and explicit context budgets in generated agent surfaces.",
       "status": "active",
-      "mechanisms": ["M03", "M12"],
-      "requiredCapabilities": ["mechanism.m03@1"],
+      "mechanisms": [
+        "M03",
+        "M12"
+      ],
+      "requiredCapabilities": [
+        "mechanism.m03@1"
+      ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:interaction:single-question-disclosure",
-      "acceptanceObligations": [{"id": "O-R20-01", "statement": "Generated surfaces meet line, word, hop and no-preview budgets."}],
-      "evidenceClasses": ["conformance", "negative"]
+      "acceptanceObligations": [
+        {
+          "id": "O-R20-01",
+          "statement": "Generated surfaces meet line, word, hop and no-preview budgets."
+        }
+      ],
+      "evidenceClasses": [
+        "conformance",
+        "negative"
+      ]
     },
     {
       "id": "R21",
       "statement": "Characterize v1 and compare v1/v2 behavior without requiring output compatibility.",
       "status": "active",
-      "mechanisms": ["M13"],
-      "requiredCapabilities": ["mechanism.m13@1"],
+      "mechanisms": [
+        "M13"
+      ],
+      "requiredCapabilities": [
+        "mechanism.m13@1"
+      ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:assurance:verification-gates",
-      "acceptanceObligations": [{"id": "O-R21-01", "statement": "Root-owned v1 fixtures retain all 17, 12 and 24 baseline assertions."}],
-      "evidenceClasses": ["comparison"]
+      "acceptanceObligations": [
+        {
+          "id": "O-R21-01",
+          "statement": "Root-owned v1 fixtures retain all 17, 12 and 24 baseline assertions."
+        }
+      ],
+      "evidenceClasses": [
+        "comparison"
+      ]
     },
     {
       "id": "R22",
       "statement": "Test schemas, composition, projection, protocol, state, dependencies and envelope generation independently.",
       "status": "active",
-      "mechanisms": ["M13"],
-      "requiredCapabilities": ["mechanism.m13@1"],
+      "mechanisms": [
+        "M13"
+      ],
+      "requiredCapabilities": [
+        "mechanism.m13@1"
+      ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:assurance:verification-gates",
-      "acceptanceObligations": [{"id": "O-R22-01", "statement": "Registered tests are modular, orthogonal and one behavior each."}],
-      "evidenceClasses": ["conformance"]
+      "acceptanceObligations": [
+        {
+          "id": "O-R22-01",
+          "statement": "Registered tests are modular, orthogonal and one behavior each."
+        }
+      ],
+      "evidenceClasses": [
+        "conformance"
+      ]
     },
     {
       "id": "R23",
       "statement": "Forward-test with clean agents and require a Director canary before promotion.",
       "status": "active",
-      "mechanisms": ["M13", "M14"],
-      "requiredCapabilities": ["mechanism.m14@1"],
+      "mechanisms": [
+        "M13",
+        "M14"
+      ],
+      "requiredCapabilities": [
+        "mechanism.m14@1"
+      ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:assurance:promotion-boundary",
-      "acceptanceObligations": [{"id": "O-R23-01", "statement": "Forward fixtures cannot substitute for the separately authorized Director canary."}],
-      "evidenceClasses": ["forward", "negative"]
+      "acceptanceObligations": [
+        {
+          "id": "O-R23-01",
+          "statement": "Forward fixtures cannot substitute for the separately authorized Director canary."
+        }
+      ],
+      "evidenceClasses": [
+        "forward",
+        "negative"
+      ]
     },
     {
       "id": "R24",
       "statement": "Promote atomically under the canonical survey name and retain tested v1 rollback.",
       "status": "active",
-      "mechanisms": ["M14"],
-      "requiredCapabilities": ["mechanism.m14@1"],
+      "mechanisms": [
+        "M14"
+      ],
+      "requiredCapabilities": [
+        "mechanism.m14@1"
+      ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:assurance:promotion-boundary",
-      "acceptanceObligations": [{"id": "O-R24-01", "statement": "Staging fixes name survey while promotion remains an external no-rewrite gate."}],
-      "evidenceClasses": ["negative", "conformance"]
+      "acceptanceObligations": [
+        {
+          "id": "O-R24-01",
+          "statement": "Staging fixes name survey while promotion remains an external no-rewrite gate."
+        }
+      ],
+      "evidenceClasses": [
+        "negative",
+        "conformance"
+      ]
     },
     {
       "id": "R25",
       "statement": "Prevent v2, a validator or a reviewer from supplying Director ratification or self-authorizing promotion.",
       "status": "active",
-      "mechanisms": ["M01", "M14"],
-      "requiredCapabilities": ["mechanism.m01@1"],
+      "mechanisms": [
+        "M01",
+        "M14"
+      ],
+      "requiredCapabilities": [
+        "mechanism.m01@1"
+      ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:authority:semantic-boundaries",
-      "acceptanceObligations": [{"id": "O-R25-01", "statement": "No package capability can ratify for the Director or promote itself."}],
-      "evidenceClasses": ["negative"]
+      "acceptanceObligations": [
+        {
+          "id": "O-R25-01",
+          "statement": "No package capability can ratify for the Director or promote itself."
+        }
+      ],
+      "evidenceClasses": [
+        "negative"
+      ]
     },
     {
       "id": "R26",
       "statement": "Remove mandatory planning-owned branch, review and compressed-timeline fields from the envelope.",
       "status": "active",
-      "mechanisms": ["M10"],
-      "requiredCapabilities": ["mechanism.m10@1"],
+      "mechanisms": [
+        "M10"
+      ],
+      "requiredCapabilities": [
+        "mechanism.m10@1"
+      ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:artifact:envelope-and-ratification",
-      "acceptanceObligations": [{"id": "O-R26-01", "statement": "The envelope model has no mandatory planning-owned fields."}],
-      "evidenceClasses": ["negative", "conformance"]
+      "acceptanceObligations": [
+        {
+          "id": "O-R26-01",
+          "statement": "The envelope model has no mandatory planning-owned fields."
+        }
+      ],
+      "evidenceClasses": [
+        "negative",
+        "conformance"
+      ]
     },
     {
       "id": "R27",
       "statement": "Make the staged skill a complete relocatable sovereign installable root.",
       "status": "active",
-      "mechanisms": ["M15"],
-      "requiredCapabilities": ["mechanism.m15@1"],
+      "mechanisms": [
+        "M15"
+      ],
+      "requiredCapabilities": [
+        "mechanism.m15@1"
+      ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:identity:sovereign-root",
-      "acceptanceObligations": [{"id": "O-R27-01", "statement": "A clean non-Git root installs, builds, checks and tests without siblings."}],
-      "evidenceClasses": ["conformance", "failure-injection"]
+      "acceptanceObligations": [
+        {
+          "id": "O-R27-01",
+          "statement": "A clean non-Git root installs, builds, checks and tests without siblings."
+        }
+      ],
+      "evidenceClasses": [
+        "conformance",
+        "failure-injection"
+      ]
     },
     {
       "id": "R28",
       "statement": "Represent external Git knowledge by repository name and safe selector with per-session observed bytes.",
       "status": "active",
-      "mechanisms": ["M07"],
-      "requiredCapabilities": ["mechanism.m07@1"],
+      "mechanisms": [
+        "M07"
+      ],
+      "requiredCapabilities": [
+        "mechanism.m07@1"
+      ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:dependencies:typed-resolution",
-      "acceptanceObligations": [{"id": "O-R28-01", "statement": "T41 freezes a stable bounded snapshot without configured refs or content pins."}],
-      "evidenceClasses": ["positive", "negative", "resume"]
+      "acceptanceObligations": [
+        {
+          "id": "O-R28-01",
+          "statement": "T41 freezes a stable bounded snapshot without configured refs or content pins."
+        }
+      ],
+      "evidenceClasses": [
+        "positive",
+        "negative",
+        "resume"
+      ]
+    }
+  ],
+  "invariants": [
+    {
+      "id": "AS01",
+      "statement": "The kernel imports no Survey-domain module and requires no Survey, Round, Question, Director, or model-specific behavior.",
+      "acceptanceObligations": [
+        {
+          "id": "O-AS01-01",
+          "statement": "neutral authoring contracts and kernel contain no Survey-domain or producer-specific vocabulary"
+        },
+        {
+          "id": "O-AS01-02",
+          "statement": "neutral authoring kernel static imports remain inside its closure or use Node built-ins"
+        }
+      ],
+      "evidenceClasses": [
+        "conformance",
+        "negative"
+      ]
+    },
+    {
+      "id": "AS02",
+      "statement": "The declarative manifest is the sole source of legal authoring transitions.",
+      "acceptanceObligations": [
+        {
+          "id": "O-AS02-01",
+          "statement": "AuthoringProtocol accepts a closed, reachable neutral state machine"
+        }
+      ],
+      "evidenceClasses": [
+        "positive",
+        "negative",
+        "conformance"
+      ]
+    },
+    {
+      "id": "AS03",
+      "statement": "Exactly one FSM owns each durable state field.",
+      "acceptanceObligations": [
+        {
+          "id": "O-AS03-01",
+          "statement": "AuthoringProtocol rejects a task state without its task binding"
+        },
+        {
+          "id": "O-AS03-02",
+          "statement": "AuthoringWorkspace rejects duplicate active-head slots"
+        }
+      ],
+      "evidenceClasses": [
+        "conformance",
+        "negative"
+      ]
+    },
+    {
+      "id": "AS04",
+      "statement": "`next` is deterministic for a frozen workspace and has at most one legal result.",
+      "acceptanceObligations": [
+        {
+          "id": "O-AS04-01",
+          "statement": "ValidationIssue rejects an undeclared next action"
+        },
+        {
+          "id": "O-AS04-02",
+          "statement": "ValidationIssue accepts an actionable closed diagnostic"
+        },
+        {
+          "id": "O-AS04-03",
+          "statement": "two protocol transition families cannot claim one source-event edge"
+        },
+        {
+          "id": "O-AS04-04",
+          "statement": "a protocol transition source set must use canonical lexical order"
+        }
+      ],
+      "evidenceClasses": [
+        "conformance",
+        "negative"
+      ]
+    },
+    {
+      "id": "AS05",
+      "statement": "The agent supplies semantic values only.",
+      "acceptanceObligations": [
+        {
+          "id": "O-AS05-01",
+          "statement": "AuthoringFormDefinition rejects inverted field bounds"
+        },
+        {
+          "id": "O-AS05-02",
+          "statement": "AuthoringSubmission rejects a normalized value outside field-ID syntax"
+        },
+        {
+          "id": "O-AS05-03",
+          "statement": "AuthoringFormDefinition accepts the closed text grammar"
+        },
+        {
+          "id": "O-AS05-04",
+          "statement": "exact-byte encoding rejects text and filesystem paths"
+        }
+      ],
+      "evidenceClasses": [
+        "positive",
+        "negative",
+        "conformance"
+      ]
+    },
+    {
+      "id": "AS06",
+      "statement": "ContextClosure preserves ordered layers and provenance; it never silently merges them.",
+      "acceptanceObligations": [
+        {
+          "id": "O-AS06-01",
+          "statement": "ContextClosure rejects a layer ordinal that differs from array order"
+        },
+        {
+          "id": "O-AS06-02",
+          "statement": "SourceSnapshot rejects an absolute inventory name"
+        },
+        {
+          "id": "O-AS06-03",
+          "statement": "ContextClosure accepts ordered role-labelled immutable layers"
+        },
+        {
+          "id": "O-AS06-04",
+          "statement": "SourceSnapshot accepts bounded exact bytes under logical names"
+        },
+        {
+          "id": "O-AS06-05",
+          "statement": "ContextClosure layer order is identity-bearing"
+        },
+        {
+          "id": "O-AS06-06",
+          "statement": "ContextClosure layer roles are identity-bearing"
+        },
+        {
+          "id": "O-AS06-07",
+          "statement": "ContextClosure digest omits only closureDigest from its semantic resource core"
+        },
+        {
+          "id": "O-AS06-08",
+          "statement": "SourceSnapshot digest omits only sourceDigest from its semantic resource core"
+        },
+        {
+          "id": "O-AS06-09",
+          "statement": "a recomputed context closure cannot duplicate a selector layer"
+        },
+        {
+          "id": "O-AS06-10",
+          "statement": "a recomputed context closure cannot introduce a foreign selector"
+        },
+        {
+          "id": "O-AS06-11",
+          "statement": "a recomputed context closure cannot reorder two manifest selectors"
+        },
+        {
+          "id": "O-AS06-13",
+          "statement": "a recomputed context closure cannot alter its selector lifecycle requirement"
+        },
+        {
+          "id": "O-AS06-30",
+          "statement": "a recomputed context closure cannot alter its selector projection definition"
+        },
+        {
+          "id": "O-AS06-31",
+          "statement": "a context layer cannot differ from its declared request-reference input"
+        },
+        {
+          "id": "O-AS06-32",
+          "statement": "a request-reference context selector resolves only its declared typed request input"
+        },
+        {
+          "id": "O-AS06-33",
+          "statement": "a singular context selection mode rejects plural cardinality"
+        },
+        {
+          "id": "O-AS06-34",
+          "statement": "a recomputed context closure cannot bind the wrong source integrity"
+        },
+        {
+          "id": "O-AS06-35",
+          "statement": "a recomputed context closure cannot substitute a source of the wrong resource type"
+        },
+        {
+          "id": "O-AS06-37",
+          "statement": "context-selector identity excludes only selectorDigest"
+        },
+        {
+          "id": "O-AS06-12",
+          "statement": "an active-head context proves frozen state from exactly one stored resource version"
+        },
+        {
+          "id": "O-AS06-14",
+          "statement": "lifecycle proof validation is observationally deterministic"
+        },
+        {
+          "id": "O-AS06-15",
+          "statement": "source integrity failure is reported before lifecycle evaluation"
+        },
+        {
+          "id": "O-AS06-16",
+          "statement": "a recomputed closure rejects a false observed lifecycle state"
+        },
+        {
+          "id": "O-AS06-17",
+          "statement": "a JSON Pointer lifecycle rule accepts an exact string state"
+        },
+        {
+          "id": "O-AS06-18",
+          "statement": "a JSON Pointer lifecycle rule fails when its path is absent"
+        },
+        {
+          "id": "O-AS06-19",
+          "statement": "a context selector accepts an explicit non-root JSON Pointer lifecycle rule"
+        },
+        {
+          "id": "O-AS06-20",
+          "statement": "a JSON Pointer lifecycle rule fails when its target is not a string"
+        },
+        {
+          "id": "O-AS06-21",
+          "statement": "a lifecycle field excluded from projection still rejects the wrong source state"
+        },
+        {
+          "id": "O-AS06-22",
+          "statement": "a context lifecycle proof fails when its stored integrity differs"
+        },
+        {
+          "id": "O-AS06-23",
+          "statement": "a context lifecycle proof fails when its resource version is absent"
+        },
+        {
+          "id": "O-AS06-24",
+          "statement": "a context lifecycle proof rejects duplicate exact resource versions"
+        },
+        {
+          "id": "O-AS06-25",
+          "statement": "a request-reference context proves frozen state from its stored resource version"
+        },
+        {
+          "id": "O-AS06-26",
+          "statement": "a workspace-version lifecycle rule rejects fields from the pointer branch"
+        },
+        {
+          "id": "O-AS06-27",
+          "statement": "a recomputed closure rejects a lifecycle proof for another rule"
+        },
+        {
+          "id": "O-AS06-28",
+          "statement": "a context selector rejects missing lifecycle rule authority"
+        },
+        {
+          "id": "O-AS06-29",
+          "statement": "a workspace resource version can prove only the frozen lifecycle state"
+        },
+        {
+          "id": "O-AS06-36",
+          "statement": "changing lifecycle resolution authority changes selector identity without changing its source"
+        },
+        {
+          "id": "O-AS06-38",
+          "statement": "lifecycle-rule identity covers both expected state and evidence mechanism"
+        }
+      ],
+      "evidenceClasses": [
+        "positive",
+        "negative",
+        "conformance"
+      ]
+    },
+    {
+      "id": "AS07",
+      "statement": "Every request binds exact semantic state, context, profile, form, and executable digests; its Assignment separately binds the exact view digest without a cycle.",
+      "acceptanceObligations": [
+        {
+          "id": "O-AS07-01",
+          "statement": "AuthoringAssignment rejects an exact-byte length mismatch"
+        },
+        {
+          "id": "O-AS07-02",
+          "statement": "AuthoringRequest rejects later view identity"
+        },
+        {
+          "id": "O-AS07-03",
+          "statement": "ProjectionArtifact rejects non-canonical base64"
+        },
+        {
+          "id": "O-AS07-04",
+          "statement": "AuthoringAssignment accepts an immutable request and skeleton binding"
+        },
+        {
+          "id": "O-AS07-05",
+          "statement": "ProjectionArtifact accepts ordered sources and exact visible bytes"
+        },
+        {
+          "id": "O-AS07-06",
+          "statement": "AuthoringAssignment digest omits only assignmentDigest from its semantic resource core"
+        },
+        {
+          "id": "O-AS07-07",
+          "statement": "explicit core projections reject inclusion of their self-digest field"
+        },
+        {
+          "id": "O-AS07-08",
+          "statement": "exact-byte decoding rejects non-canonical and widened carriers"
+        },
+        {
+          "id": "O-AS07-09",
+          "statement": "exact-byte digest results are independent of process working directory"
+        },
+        {
+          "id": "O-AS07-10",
+          "statement": "blank-view and raw-evidence exact bytes match domain-separated golden hashes"
+        },
+        {
+          "id": "O-AS07-11",
+          "statement": "opaque bytes round-trip losslessly through the canonical base64 carrier"
+        },
+        {
+          "id": "O-AS07-12",
+          "statement": "projection-artifact identity omits its self field and retains output ancestry"
+        },
+        {
+          "id": "O-AS07-13",
+          "statement": "projection-output bytes use their own frozen domain-separated identity"
+        },
+        {
+          "id": "O-AS07-14",
+          "statement": "request core rejects fields produced later in the assignment digest DAG"
+        },
+        {
+          "id": "O-AS07-15",
+          "statement": "request core omits only its self digest and non-semantic metadata"
+        },
+        {
+          "id": "O-AS07-16",
+          "statement": "an operational request requires one selected workspace authority"
+        },
+        {
+          "id": "O-AS07-17",
+          "statement": "a recomputed task request cannot bind a stale workspace semantic revision"
+        }
+      ],
+      "evidenceClasses": [
+        "conformance",
+        "negative"
+      ]
+    },
+    {
+      "id": "AS08",
+      "statement": "Submission is atomic, idempotent for identical content, and stale-safe.",
+      "acceptanceObligations": [
+        {
+          "id": "O-AS08-01",
+          "statement": "AuthoringSubmission accepts raw evidence and normalized values with provenance"
+        },
+        {
+          "id": "O-AS08-02",
+          "statement": "normalized-submission projection requires all semantic fields"
+        },
+        {
+          "id": "O-AS08-03",
+          "statement": "normalized-submission projection requires its self-digest field"
+        },
+        {
+          "id": "O-AS08-04",
+          "statement": "a normalized semantic value change changes normalized-submission identity"
+        }
+      ],
+      "evidenceClasses": [
+        "positive",
+        "negative",
+        "conformance",
+        "resume",
+        "failure-injection"
+      ]
+    },
+    {
+      "id": "AS09",
+      "statement": "Text, JSON, and tool adapters that supply identical canonical field values produce the same semantic submission.",
+      "acceptanceObligations": [],
+      "evidenceClasses": [
+        "conformance",
+        "comparison"
+      ]
+    },
+    {
+      "id": "AS10",
+      "statement": "Producer identity and telemetry do not alter semantic identity.",
+      "acceptanceObligations": [
+        {
+          "id": "O-AS10-01",
+          "statement": "metadata and status alter integrity but do not alter resource semantic identity"
+        },
+        {
+          "id": "O-AS10-02",
+          "statement": "resource references bind metadata.name separately from semantic identity"
+        },
+        {
+          "id": "O-AS10-03",
+          "statement": "resource semantic projection is exactly apiVersion, kind, and spec"
+        },
+        {
+          "id": "O-AS10-04",
+          "statement": "a resource spec change alters both semantic and integrity identity"
+        },
+        {
+          "id": "O-AS10-05",
+          "statement": "submission semantic identities exclude raw evidence and producer telemetry"
+        },
+        {
+          "id": "O-AS10-06",
+          "statement": "workspace semantic-state identity is an explicit evidence-free whitelist"
+        }
+      ],
+      "evidenceClasses": [
+        "conformance",
+        "comparison"
+      ]
+    },
+    {
+      "id": "AS11",
+      "statement": "Revisions replace one complete manifest-declared atomic authoring unit, advance all of that unit's heads together, preserve history, and supersede rather than delete descendants.",
+      "acceptanceObligations": [
+        {
+          "id": "O-AS11-01",
+          "statement": "AuthoringCommitReceipt rejects revision regression"
+        },
+        {
+          "id": "O-AS11-02",
+          "statement": "AuthoringWorkspace accepts explicit revisions and closed resource state"
+        },
+        {
+          "id": "O-AS11-03",
+          "statement": "workspace history resolves a second transaction chain without current-kind ambiguity"
+        },
+        {
+          "id": "O-AS11-04",
+          "statement": "a revision request resolves its unit, plan, executable pins, and current heads"
+        },
+        {
+          "id": "O-AS11-07",
+          "statement": "a recomputed revision request cannot bind a foreign workspace state"
+        },
+        {
+          "id": "O-AS11-09",
+          "statement": "revision-plan identity excludes only planDigest"
+        },
+        {
+          "id": "O-AS11-10",
+          "statement": "revision-unit identity excludes only unitDigest"
+        },
+        {
+          "id": "O-AS11-05",
+          "statement": "a revision context rejects another exact request input"
+        },
+        {
+          "id": "O-AS11-06",
+          "statement": "a revision context resolves its declared request-reference input"
+        },
+        {
+          "id": "O-AS11-08",
+          "statement": "a workspace contract rejects duplicate exact stored resource versions"
+        }
+      ],
+      "evidenceClasses": [
+        "positive",
+        "negative",
+        "conformance",
+        "resume"
+      ]
+    },
+    {
+      "id": "AS12",
+      "statement": "Cold resume reproduces the exact pending Assignment and projection.",
+      "acceptanceObligations": [],
+      "evidenceClasses": [
+        "resume",
+        "conformance"
+      ]
+    },
+    {
+      "id": "AS13",
+      "statement": "A profile handler cannot widen the manifest-owned state target, mutation footprint, output kind, slot, or cardinality.",
+      "acceptanceObligations": [
+        {
+          "id": "O-AS13-01",
+          "statement": "AuthoringMutation rejects an empty active-head change"
+        },
+        {
+          "id": "O-AS13-02",
+          "statement": "AuthoringProfileManifest rejects inverted target cardinality"
+        },
+        {
+          "id": "O-AS13-03",
+          "statement": "AuthoringMutation accepts the canonical bounded state-change fixture"
+        },
+        {
+          "id": "O-AS13-04",
+          "statement": "a mutation active-head change must bind the exact workspace before-image"
+        },
+        {
+          "id": "O-AS13-05",
+          "statement": "recomputed mutation and receipt digests cannot exceed a created-resource cardinality"
+        },
+        {
+          "id": "O-AS13-06",
+          "statement": "recomputed mutation and receipt digests cannot authorize a created resource of the wrong kind"
+        },
+        {
+          "id": "O-AS13-07",
+          "statement": "recomputed mutation and receipt digests cannot authorize a created resource in an undeclared slot"
+        },
+        {
+          "id": "O-AS13-08",
+          "statement": "a recomputed mutation cannot create an undeclared dependency relation"
+        },
+        {
+          "id": "O-AS13-09",
+          "statement": "a recomputed mutation cannot patch a handoff slot outside its footprint"
+        },
+        {
+          "id": "O-AS13-10",
+          "statement": "a required created target cannot omit its declared active-head change"
+        },
+        {
+          "id": "O-AS13-11",
+          "statement": "a recomputed mutation cannot supersede a workspace head outside its footprint"
+        }
+      ],
+      "evidenceClasses": [
+        "negative",
+        "conformance"
+      ]
+    },
+    {
+      "id": "AS14",
+      "statement": "A request cannot execute under changed kernel, protocol, handler, parser, schema, form, or validator identities.",
+      "acceptanceObligations": [
+        {
+          "id": "O-AS14-01",
+          "statement": "the canonical positive fixture transaction has no contract or closure issue"
+        },
+        {
+          "id": "O-AS14-02",
+          "statement": "ResourceReference rejects a fifth identity field"
+        },
+        {
+          "id": "O-AS14-03",
+          "statement": "AuthoringProfileManifest accepts coherent pinned bindings"
+        },
+        {
+          "id": "O-AS14-04",
+          "statement": "AuthoringRequest accepts task, target, closure, contract, and executable pins"
+        },
+        {
+          "id": "O-AS14-05",
+          "statement": "ResourceReference accepts exactly four identity fields"
+        },
+        {
+          "id": "O-AS14-06",
+          "statement": "K10 authoring schema closure contains exactly sixteen package-bound neutral authorities"
+        },
+        {
+          "id": "O-AS14-07",
+          "statement": "the historical runtime path is an identity-preserving compatibility re-export"
+        },
+        {
+          "id": "O-AS14-08",
+          "statement": "all frozen authoring digest domains match immutable known-answer vectors"
+        },
+        {
+          "id": "O-AS14-09",
+          "statement": "domain prefixes are exact UTF-8 strings terminated by one NUL byte"
+        },
+        {
+          "id": "O-AS14-10",
+          "statement": "the same canonical value has a distinct digest in every frozen domain"
+        },
+        {
+          "id": "O-AS14-11",
+          "statement": "unregistered digest domains fail closed"
+        },
+        {
+          "id": "O-AS14-12",
+          "statement": "AuthoringFormDefinition digest omits only formDigest from its semantic resource core"
+        },
+        {
+          "id": "O-AS14-13",
+          "statement": "all authoring identity digests are independent of process working directory"
+        },
+        {
+          "id": "O-AS14-14",
+          "statement": "AuthoringProfileManifest digest omits only profileDigest from its semantic resource core"
+        },
+        {
+          "id": "O-AS14-15",
+          "statement": "resource semantic projection fails closed when spec is absent"
+        },
+        {
+          "id": "O-AS14-16",
+          "statement": "a resource cannot contain its own top-level integrity digest"
+        },
+        {
+          "id": "O-AS14-17",
+          "statement": "an exact four-field reference selects one immutable version among the same logical name"
+        },
+        {
+          "id": "O-AS14-18",
+          "statement": "recomputed projection and assignment digests cannot authorize a rogue projection definition"
+        },
+        {
+          "id": "O-AS14-19",
+          "statement": "recomputed projection and assignment digests cannot authorize a rogue projection engine"
+        },
+        {
+          "id": "O-AS14-20",
+          "statement": "semantic validation fails closed beyond its traversal depth bound"
+        }
+      ],
+      "evidenceClasses": [
+        "negative",
+        "conformance",
+        "resume"
+      ]
+    },
+    {
+      "id": "AS15",
+      "statement": "Every persisted mutation has exactly one global journal record; a coupled commit records every machine edge atomically.",
+      "acceptanceObligations": [
+        {
+          "id": "O-AS15-01",
+          "statement": "AuthoringCommitReceipt schema represents a monotonic commit result"
+        },
+        {
+          "id": "O-AS15-02",
+          "statement": "AuthoringCommitReceipt digest omits only receiptDigest from its semantic resource core"
+        },
+        {
+          "id": "O-AS15-03",
+          "statement": "AuthoringMutation digest omits only mutationDigest from its semantic resource core"
+        },
+        {
+          "id": "O-AS15-04",
+          "statement": "workspace-integrity projection requires its nested self-digest field"
+        },
+        {
+          "id": "O-AS15-05",
+          "statement": "workspace integrity omits only its nested self digest and retains all evidence"
+        },
+        {
+          "id": "O-AS15-11",
+          "statement": "an event-caused transaction closes without task-submission ancestry"
+        },
+        {
+          "id": "O-AS15-12",
+          "statement": "a recomputed external coupling must match its pinned concrete machine edge"
+        },
+        {
+          "id": "O-AS15-13",
+          "statement": "an external coupling rejects a protocol body outside its exact profile pin"
+        },
+        {
+          "id": "O-AS15-14",
+          "statement": "a used external coupling requires its exactly pinned inventory protocol"
+        },
+        {
+          "id": "O-AS15-15",
+          "statement": "AuthoringJournalRecord rejects a transition with no machine edge"
+        },
+        {
+          "id": "O-AS15-16",
+          "statement": "AuthoringJournalRecord represents a closed evidence commit value"
+        },
+        {
+          "id": "O-AS15-17",
+          "statement": "journal-record identity excludes only recordDigest"
+        },
+        {
+          "id": "O-AS15-06",
+          "statement": "an event input selector carries the same closed lifecycle rule authority"
+        },
+        {
+          "id": "O-AS15-07",
+          "statement": "an event-input pointer accepts the exact state on its durable resource body"
+        },
+        {
+          "id": "O-AS15-08",
+          "statement": "an event-input pointer rejects a different observed state"
+        },
+        {
+          "id": "O-AS15-09",
+          "statement": "an event active-head input proves frozen state from its stored resource version"
+        },
+        {
+          "id": "O-AS15-10",
+          "statement": "an event workspace-version rule fails when the exact pre-state record is absent"
+        }
+      ],
+      "evidenceClasses": [
+        "positive",
+        "negative",
+        "conformance",
+        "resume",
+        "failure-injection"
+      ]
     }
   ]
 }

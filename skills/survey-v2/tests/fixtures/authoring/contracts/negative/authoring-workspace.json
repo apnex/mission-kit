@@ -1,0 +1,26 @@
+{
+  "base": "authoring-workspace",
+  "operation": "replace",
+  "path": "/spec/activeHeads",
+  "value": [
+    {
+      "slot": "brief",
+      "reference": {
+        "apiVersion": "brief.example/v1alpha1",
+        "kind": "Brief",
+        "name": "launch-brief",
+        "semanticDigest": "sha256:24e484a501a22207d8c9ba31efdff321249e086d4b0a7d417a61e2225959ad0c"
+      }
+    },
+    {
+      "slot": "brief",
+      "reference": {
+        "apiVersion": "brief.example/v1alpha1",
+        "kind": "Brief",
+        "name": "launch-brief",
+        "semanticDigest": "sha256:24e484a501a22207d8c9ba31efdff321249e086d4b0a7d417a61e2225959ad0c"
+      }
+    }
+  ],
+  "expectedIssue": "ACTIVE_HEAD_SLOT_DUPLICATE"
+}

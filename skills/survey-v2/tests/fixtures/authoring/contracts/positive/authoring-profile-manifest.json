@@ -1,0 +1,354 @@
+{
+  "apiVersion": "authoring.mission-kit/v1alpha1",
+  "kind": "AuthoringProfileManifest",
+  "metadata": {
+    "name": "brief-profile"
+  },
+  "spec": {
+    "profileDigest": "sha256:df5ac847971be73edbde79d5ff516c708c13dbdaadf00144699bb494ed7b3c89",
+    "kernel": {
+      "id": "authoring-kernel",
+      "digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    },
+    "protocol": {
+      "apiVersion": "authoring.mission-kit/v1alpha1",
+      "kind": "AuthoringProtocol",
+      "name": "brief-flow",
+      "semanticDigest": "sha256:9d75a6689b087e5072ecc1c50d5e722ca3f3cdd70d77eb85ea2d1ab76cef9790"
+    },
+    "schemaBindings": [
+      {
+        "id": "brief-schema",
+        "resourceType": {
+          "apiVersion": "brief.example/v1alpha1",
+          "kind": "Brief"
+        },
+        "schema": {
+          "id": "brief-schema-module",
+          "digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        },
+        "semanticValidator": {
+          "id": "brief-validator",
+          "digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        }
+      }
+    ],
+    "formBindings": [
+      {
+        "id": "brief-form-binding",
+        "definition": {
+          "apiVersion": "authoring.mission-kit/v1alpha1",
+          "kind": "AuthoringFormDefinition",
+          "name": "brief-form",
+          "semanticDigest": "sha256:365b929f0ef2a665c565ae287cfe46fd812976be0b88c2b2c9b1b57e6cf0e3d1"
+        },
+        "formDigest": "sha256:a8e29b4f3674691d871418ff301d504bdc6d534a86cc0ce3929ed34697d93853",
+        "renderer": {
+          "id": "text-renderer",
+          "digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        },
+        "parser": {
+          "id": "text-parser",
+          "digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        }
+      },
+      {
+        "id": "brief-revision-form-binding",
+        "definition": {
+          "apiVersion": "authoring.mission-kit/v1alpha1",
+          "kind": "AuthoringFormDefinition",
+          "name": "brief-revision-form",
+          "semanticDigest": "sha256:9bba295364acfe26a1a8315a5dff1c93f185db6ff988dd7200b4357b9eea4574"
+        },
+        "formDigest": "sha256:d06b9a48933f5027ba9c99ab280e70bf0ab48219373282bd813af389b5dddd43",
+        "renderer": {
+          "id": "text-renderer",
+          "digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        },
+        "parser": {
+          "id": "text-parser",
+          "digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        }
+      }
+    ],
+    "handlerBindings": [
+      {
+        "id": "brief-handler-binding",
+        "handler": {
+          "id": "brief-handler",
+          "digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        }
+      },
+      {
+        "id": "system-handler-binding",
+        "handler": {
+          "id": "system-handler",
+          "digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        }
+      }
+    ],
+    "guardBindings": [
+      {
+        "guardId": "payload-valid",
+        "handler": {
+          "id": "payload-guard",
+          "digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        }
+      }
+    ],
+    "projectionBindings": [
+      {
+        "id": "brief-projection-binding",
+        "definitionDigest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "engine": {
+          "id": "text-projection-engine",
+          "digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        }
+      }
+    ],
+    "validatorSets": [
+      {
+        "id": "brief-validator-set",
+        "digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "members": [
+          {
+            "id": "brief-validator",
+            "digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+          }
+        ]
+      }
+    ],
+    "machineBindings": [
+      {
+        "machineId": "runtime-kernel",
+        "protocol": {
+          "id": "runtime-flow",
+          "digest": "sha256:dd8c49bb23379d8116329b627d897184222a3e1c077c5acc74f2a2b304aa1018"
+        }
+      }
+    ],
+    "tasks": [
+      {
+        "id": "draft-brief",
+        "stateId": "draft_task",
+        "target": {
+          "slot": "brief",
+          "resourceType": {
+            "apiVersion": "brief.example/v1alpha1",
+            "kind": "Brief"
+          },
+          "cardinality": {
+            "min": 1,
+            "max": 1
+          }
+        },
+        "contextSelectors": [
+          {
+            "id": "brief-source",
+            "selectorDigest": "sha256:d4597f0c2f0dff42b973b6b0d984c524ebabb7b77ec3715275a594ed6fe604c0",
+            "ordinal": 1,
+            "role": "intake",
+            "resourceType": {
+              "apiVersion": "authoring.mission-kit/v1alpha1",
+              "kind": "SourceSnapshot"
+            },
+            "cardinality": {
+              "min": 1,
+              "max": 1
+            },
+            "requiredLifecycleState": "frozen",
+            "lifecycleRule": {
+              "mode": "workspace-resource-version"
+            },
+            "selection": {
+              "mode": "active-head",
+              "slot": "intake"
+            },
+            "projection": {
+              "id": "brief-source-fields",
+              "digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "fields": [
+                "/spec/inventory"
+              ]
+            }
+          }
+        ],
+        "submissionSchemaBindingId": "brief-schema",
+        "formBindingId": "brief-form-binding",
+        "handlerBindingId": "brief-handler-binding",
+        "projectionBindingId": "brief-projection-binding",
+        "validatorSetId": "brief-validator-set"
+      }
+    ],
+    "transitionBindings": [
+      {
+        "transitionId": "AT01",
+        "triggerClass": "task-submission",
+        "taskId": "draft-brief",
+        "handlerBindingId": "brief-handler-binding",
+        "authority": {
+          "class": "profile-handler",
+          "id": "brief-authority",
+          "policy": {
+            "id": "brief-policy",
+            "digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+          }
+        },
+        "mutationFootprint": {
+          "created": [
+            {
+              "slot": "brief",
+              "resourceType": {
+                "apiVersion": "brief.example/v1alpha1",
+                "kind": "Brief"
+              },
+              "cardinality": {
+                "min": 1,
+                "max": 1
+              }
+            }
+          ],
+          "activeHeadSlots": [
+            "brief"
+          ],
+          "supersededSlots": [],
+          "dependencyRelations": [
+            "derived-from"
+          ],
+          "handoffSlots": [
+            "brief"
+          ],
+          "nextState": "awaiting_acceptance",
+          "externalCouplings": [
+            {
+              "machineId": "runtime-kernel",
+              "transitionId": "RT01"
+            },
+            {
+              "machineId": "runtime-kernel",
+              "transitionId": "RT02"
+            }
+          ]
+        }
+      },
+      {
+        "transitionId": "AT02",
+        "triggerClass": "event",
+        "inputSelectors": [],
+        "handlerBindingId": "system-handler-binding",
+        "authority": {
+          "class": "kernel",
+          "id": "system-authority",
+          "policy": {
+            "id": "system-policy",
+            "digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+          }
+        },
+        "mutationFootprint": {
+          "created": [],
+          "activeHeadSlots": [],
+          "supersededSlots": [],
+          "dependencyRelations": [],
+          "handoffSlots": [],
+          "nextState": "complete"
+        }
+      }
+    ],
+    "revisionUnits": [
+      {
+        "id": "brief-unit",
+        "unitDigest": "sha256:aa8f12d5715c2564098e652b15cb87412fc94ac7eb60bde573a3df30761e7aa2",
+        "normalTransitionId": "AT01",
+        "replacementTargets": [
+          {
+            "slot": "brief",
+            "resourceType": {
+              "apiVersion": "brief.example/v1alpha1",
+              "kind": "Brief"
+            },
+            "cardinality": {
+              "min": 1,
+              "max": 1
+            }
+          }
+        ],
+        "assignmentContract": {
+          "submissionSchemaBindingId": "brief-schema",
+          "formBindingId": "brief-revision-form-binding",
+          "handlerBindingId": "brief-handler-binding",
+          "projectionBindingId": "brief-projection-binding",
+          "validatorSetId": "brief-validator-set",
+          "reasonFieldId": "reason"
+        },
+        "descendantClosure": {
+          "dependencyRelations": [
+            "derived-from"
+          ],
+          "invalidatedSlots": [
+            "brief-derived"
+          ],
+          "invalidateOpenAssignments": true
+        },
+        "normalPostcondition": "awaiting_acceptance",
+        "disclosureControl": {
+          "cutoffId": "brief-published",
+          "guardId": "payload-valid"
+        },
+        "revisionPlans": [
+          {
+            "id": "before-freeze",
+            "planDigest": "sha256:8feae0f2c8201f692a78cbc7cd9b7363a4d3f36408537d2acafd203373a1b453",
+            "transitionId": "AR01",
+            "fromStates": [
+              "awaiting_acceptance"
+            ],
+            "eventId": "REVISE",
+            "selectionGuardId": "payload-valid",
+            "authority": {
+              "class": "profile-handler",
+              "id": "brief-revision-authority",
+              "policy": {
+                "id": "brief-revision-policy",
+                "digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+              }
+            },
+            "externalCouplings": []
+          },
+          {
+            "id": "after-freeze",
+            "planDigest": "sha256:689a66f6f23eecbb69085c3dfc037918580a5355d7331aa26ab4ca159247ce8f",
+            "transitionId": "AR02",
+            "fromStates": [
+              "complete"
+            ],
+            "eventId": "REVISE",
+            "selectionGuardId": "payload-valid",
+            "authority": {
+              "class": "profile-handler",
+              "id": "brief-revision-authority",
+              "policy": {
+                "id": "brief-revision-policy",
+                "digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+              }
+            },
+            "externalCouplings": [
+              {
+                "machineId": "runtime-kernel",
+                "transitionId": "RT01"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "handlerConfiguration": {
+      "schema": {
+        "id": "brief-handler-configuration",
+        "digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      },
+      "value": {
+        "format": "concise"
+      }
+    }
+  }
+}

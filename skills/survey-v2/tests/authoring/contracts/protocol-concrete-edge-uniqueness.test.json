@@ -1,0 +1,37 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:test:authoring:contracts:protocol-concrete-edge-uniqueness",
+  "obligationId": "O-AS04-03",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS04"
+  ],
+  "verification": {
+    "precondition": "The mapped authorities and fixtures exist as package-owned files.",
+    "stimulus": "Execute tests/authoring/contracts/protocol-concrete-edge-uniqueness.test.mjs with node:test.",
+    "expectedSemanticState": "No durable authoring runtime state transition is claimed by O-AS04-03.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: two protocol transition families cannot claim one source-event edge",
+    "forbiddenMutation": "Do not infer runtime dispatch, persistence, journaling, atomic commit, adapter parity, or cold-resume behavior beyond the literal assertion.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "source/authoring/kernel/canonical.mjs",
+      "source/authoring/kernel/contract-semantics.mjs",
+      "source/authoring/kernel/digests.mjs"
+    ]
+  },
+  "behavior": "two protocol transition families cannot claim one source-event edge",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/authoring/contracts/protocol-concrete-edge-uniqueness.test.mjs",
+  "fixtures": [
+    "tests/authoring/contracts/support/contract-validation.mjs",
+    "tests/fixtures/authoring/contracts/positive/authoring-protocol.json"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v1"
+}

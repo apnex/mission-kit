@@ -1,0 +1,35 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:test:authoring:digests:resource-spec-boundary",
+  "obligationId": "O-AS10-04",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS10"
+  ],
+  "verification": {
+    "precondition": "The mapped authorities and fixtures exist as package-owned files.",
+    "stimulus": "Execute tests/authoring/digests/resource-spec-boundary.test.mjs with node:test.",
+    "expectedSemanticState": "No durable authoring runtime state transition is claimed by O-AS10-04.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: a resource spec change alters both semantic and integrity identity",
+    "forbiddenMutation": "Do not infer runtime dispatch, persistence, journaling, atomic commit, adapter parity, or cold-resume behavior beyond the literal assertion.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "source/authoring/kernel/canonical.mjs",
+      "source/authoring/kernel/digests.mjs"
+    ]
+  },
+  "behavior": "a resource spec change alters both semantic and integrity identity",
+  "evidenceClass": "comparison",
+  "runner": "node:test",
+  "executable": "tests/authoring/digests/resource-spec-boundary.test.mjs",
+  "fixtures": [
+    "tests/authoring/digests/resource-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v1"
+}

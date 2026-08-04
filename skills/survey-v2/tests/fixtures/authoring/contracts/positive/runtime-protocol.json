@@ -1,0 +1,55 @@
+{
+  "apiVersion": "authoring.mission-kit/v1alpha1",
+  "kind": "AuthoringProtocol",
+  "metadata": {
+    "name": "runtime-flow"
+  },
+  "spec": {
+    "initialState": "execution_ready",
+    "states": [
+      {
+        "id": "execution_ready",
+        "label": "Execution ready",
+        "class": "wait"
+      },
+      {
+        "id": "refreeze_pending",
+        "label": "Refreeze pending",
+        "class": "wait"
+      }
+    ],
+    "events": [
+      {
+        "id": "BEGIN",
+        "description": "Begin the coupled refreeze"
+      },
+      {
+        "id": "COMPLETE",
+        "description": "Complete the coupled refreeze"
+      }
+    ],
+    "guards": [],
+    "transitions": [
+      {
+        "id": "RT01",
+        "source": {
+          "mode": "single",
+          "stateId": "execution_ready"
+        },
+        "eventId": "BEGIN",
+        "toState": "refreeze_pending",
+        "guardIds": []
+      },
+      {
+        "id": "RT02",
+        "source": {
+          "mode": "single",
+          "stateId": "refreeze_pending"
+        },
+        "eventId": "COMPLETE",
+        "toState": "execution_ready",
+        "guardIds": []
+      }
+    ]
+  }
+}

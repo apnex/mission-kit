@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:authoring:schema:projection-artifact:v1alpha1",
+  "title": "Mission Kit ProjectionArtifact resource v1alpha1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["apiVersion", "kind", "metadata", "spec"],
+  "properties": {
+    "apiVersion": {"const": "authoring.mission-kit/v1alpha1"},
+    "kind": {"const": "ProjectionArtifact"},
+    "metadata": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/metadata"},
+    "spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "projectionArtifactDigest",
+        "projectionId",
+        "projectionDefinitionDigest",
+        "sources",
+        "form",
+        "engine",
+        "output"
+      ],
+      "properties": {
+        "projectionArtifactDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
+        "projectionId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "projectionDefinitionDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
+        "sources": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 256,
+          "items": {"$ref": "#/$defs/source"}
+        },
+        "form": {"$ref": "#/$defs/formBinding"},
+        "engine": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/DigestBinding"},
+        "output": {"$ref": "#/$defs/output"}
+      }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "reference", "integrityDigest"],
+      "properties": {
+        "role": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/roleId"},
+        "reference": {"$ref": "urn:mission-kit:authoring:schema:resource-reference:v1alpha1"},
+        "integrityDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"}
+      }
+    },
+    "formBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reference", "formDigest"],
+      "properties": {
+        "reference": {"$ref": "urn:mission-kit:authoring:schema:resource-reference:v1alpha1"},
+        "formDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"}
+      }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["content", "outputDigest"],
+      "properties": {
+        "content": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/ExactBytes"},
+        "outputDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"}
+      }
+    }
+  }
+}

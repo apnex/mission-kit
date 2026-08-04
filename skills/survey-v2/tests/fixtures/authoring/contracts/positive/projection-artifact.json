@@ -1,0 +1,46 @@
+{
+  "apiVersion": "authoring.mission-kit/v1alpha1",
+  "kind": "ProjectionArtifact",
+  "metadata": {
+    "name": "brief-view"
+  },
+  "spec": {
+    "projectionArtifactDigest": "sha256:2304c8da09e83ec64ba4589a2c3706c96909219e2d9426f85f608cc1e57aa691",
+    "projectionId": "brief-projection",
+    "projectionDefinitionDigest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "sources": [
+      {
+        "role": "context",
+        "reference": {
+          "apiVersion": "authoring.mission-kit/v1alpha1",
+          "kind": "ContextClosure",
+          "name": "brief-context",
+          "semanticDigest": "sha256:7446ceafcea1ef7c7dc93376ae1843a9e1b66bae968105b71c6908f8c7ed5117"
+        },
+        "integrityDigest": "sha256:adcdeb0eb5befd41047da19ea7439a32c5abd2b9e0027f9e632fbab9edb7ec23"
+      }
+    ],
+    "form": {
+      "reference": {
+        "apiVersion": "authoring.mission-kit/v1alpha1",
+        "kind": "AuthoringFormDefinition",
+        "name": "brief-form",
+        "semanticDigest": "sha256:365b929f0ef2a665c565ae287cfe46fd812976be0b88c2b2c9b1b57e6cf0e3d1"
+      },
+      "formDigest": "sha256:a8e29b4f3674691d871418ff301d504bdc6d534a86cc0ce3929ed34697d93853"
+    },
+    "engine": {
+      "id": "text-projection-engine",
+      "digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    },
+    "output": {
+      "content": {
+        "mediaType": "text/plain;charset=utf-8",
+        "encoding": "base64",
+        "byteLength": 8,
+        "data": "U3VtbWFyeQo="
+      },
+      "outputDigest": "sha256:deb8468e7fae58a1ae9368bbffd40d37ee8a2a7bb8d8b348371f8e795a26d05f"
+    }
+  }
+}

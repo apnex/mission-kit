@@ -1,0 +1,40 @@
+{
+  "apiVersion": "authoring.mission-kit/v1alpha1",
+  "kind": "AuthoringAssignment",
+  "metadata": {
+    "name": "brief-assignment"
+  },
+  "spec": {
+    "assignmentDigest": "sha256:c054dc92defff94d94e00d06347f01a316c6d9511ce1d40c9f3389bacb0ddf31",
+    "request": {
+      "reference": {
+        "apiVersion": "authoring.mission-kit/v1alpha1",
+        "kind": "AuthoringRequest",
+        "name": "brief-request",
+        "semanticDigest": "sha256:d317b5acf2af92d7fb8d129d74fc0aadde788fdcbff14a9a3868def3276a1b58"
+      },
+      "requestDigest": "sha256:a7047ec6b0e2abca8d33128856829bcf21fbd4eaceea87368020b5721a208be3"
+    },
+    "projectionArtifact": {
+      "reference": {
+        "apiVersion": "authoring.mission-kit/v1alpha1",
+        "kind": "ProjectionArtifact",
+        "name": "brief-view",
+        "semanticDigest": "sha256:756a5157dacdc5392da2c0745f8d158f3894b56a6ce9646dce7bb53d4a9aca85"
+      },
+      "projectionArtifactDigest": "sha256:2304c8da09e83ec64ba4589a2c3706c96909219e2d9426f85f608cc1e57aa691"
+    },
+    "handle": "1a2b3c4d",
+    "baseSemanticRevision": 0,
+    "baseSemanticStateDigest": "sha256:46cbfe0c1a1753087d5b7fef9fe1055e291d54cc451cd680a68835819efb6a5e",
+    "uneditedSkeleton": {
+      "content": {
+        "mediaType": "text/plain;charset=utf-8",
+        "encoding": "base64",
+        "byteLength": 8,
+        "data": "U3VtbWFyeQo="
+      },
+      "blankViewDigest": "sha256:a26509b05aa9045d0ae8510974f2b05481123b4288e10ce6114af35f4616b357"
+    }
+  }
+}

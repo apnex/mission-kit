@@ -3,76 +3,833 @@
   "schemaVersion": "1.0.0",
   "id": "urn:mission-kit:survey-v2:test-manifest:all",
   "tests": [
-    {"id": "urn:mission-kit:survey-v2:test:baseline-v1-characterization", "descriptorPath": "tests/baseline-v1/v1-characterization.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:canonical-v1-freeze", "descriptorPath": "tests/baseline-freeze/canonical-v1-freeze.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:discovery-routing-freeze", "descriptorPath": "tests/baseline-freeze/discovery-routing-freeze.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:package-compatibility-preflight", "descriptorPath": "tests/baseline-freeze/package-compatibility.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:package-entry-boundary", "descriptorPath": "tests/baseline-freeze/package-entry-boundary.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:projection-lock-self-exclusion", "descriptorPath": "tests/baseline-freeze/projection-lock-self-exclusion.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:protocol-v1-freeze", "descriptorPath": "tests/baseline-freeze/protocol-v1-freeze.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:shared-schema-freeze", "descriptorPath": "tests/baseline-freeze/shared-schema-freeze.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:v1-test-disposition", "descriptorPath": "tests/baseline-freeze/v1-test-disposition.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:dependency-snapshot-instability", "descriptorPath": "tests/dependencies/snapshot-instability.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:dependency-snapshot-symlink", "descriptorPath": "tests/dependencies/snapshot-symlink.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:dependency-stable-snapshot", "descriptorPath": "tests/dependencies/stable-snapshot.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:candidate-dependency-evidence", "descriptorPath": "tests/dependencies/candidate-dependency-evidence.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:dependency-stage-binding", "descriptorPath": "tests/dependencies/stage-binding.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:dependency-typed-retry", "descriptorPath": "tests/dependencies/typed-retry.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:envelope-render-determinism", "descriptorPath": "tests/envelope/envelope-render-determinism.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:candidate-session-ancestry", "descriptorPath": "tests/envelope/candidate-session-ancestry.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:walkthrough-full-candidate", "descriptorPath": "tests/envelope/walkthrough-full-candidate.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:ratified-envelope-regeneration", "descriptorPath": "tests/envelope/ratified-regeneration.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:terminal-ratification-evidence", "descriptorPath": "tests/envelope/terminal-ratification-evidence.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:fragment-contribution-removal", "descriptorPath": "tests/fragments/contribution-removal.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:fragment-contract", "descriptorPath": "tests/fragments/fragment-contract.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:sovereign-relocation", "descriptorPath": "tests/portability/relocation.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:runtime-no-install", "descriptorPath": "tests/portability/runtime-no-install.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:repeated-build", "descriptorPath": "tests/projection/repeated-build.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:surface-budgets", "descriptorPath": "tests/projection/surface-budgets.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:forward-canary-boundary", "descriptorPath": "tests/promotion/forward-canary-boundary.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:promotion-boundary", "descriptorPath": "tests/promotion/promotion-boundary.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:correction-ancestry", "descriptorPath": "tests/protocol/correction-ancestry.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:director-flow-compression", "descriptorPath": "tests/protocol/director-flow-compression.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:director-flow-lifecycle", "descriptorPath": "tests/protocol/director-flow-lifecycle.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:director-flow-recovery", "descriptorPath": "tests/protocol/director-flow-recovery.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:director-flow-traceability", "descriptorPath": "tests/protocol/director-flow-traceability.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:explicit-rehydration", "descriptorPath": "tests/protocol/explicit-rehydration.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:fsm-parseback", "descriptorPath": "tests/protocol/fsm-parseback.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:handler-parity", "descriptorPath": "tests/protocol/handler-parity.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:instrument-freeze-immutability", "descriptorPath": "tests/protocol/instrument-freeze-immutability.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:ratification-ancestry", "descriptorPath": "tests/protocol/ratification-ancestry.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:ratification-preclaim", "descriptorPath": "tests/protocol/ratification-preclaim.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:raw-pick-roundtrip", "descriptorPath": "tests/protocol/raw-pick-roundtrip.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:rejection-non-fsm", "descriptorPath": "tests/protocol/rejection-non-fsm.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:round-ordering", "descriptorPath": "tests/protocol/round-ordering.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:self-authorization", "descriptorPath": "tests/protocol/self-authorization.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:single-question-view", "descriptorPath": "tests/protocol/single-question-view.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:strict-pick-syntax", "descriptorPath": "tests/protocol/strict-pick-syntax.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:wrong-authority", "descriptorPath": "tests/protocol/wrong-authority.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:modular-discovery", "descriptorPath": "tests/registry/modular-discovery.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:canonical-array-accessor", "descriptorPath": "tests/schemas/canonical-array-accessor.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:canonical-cycle", "descriptorPath": "tests/schemas/canonical-cycle.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:canonical-getter", "descriptorPath": "tests/schemas/canonical-getter.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:canonical-hidden-property", "descriptorPath": "tests/schemas/canonical-hidden-property.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:canonical-non-plain", "descriptorPath": "tests/schemas/canonical-non-plain.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:canonical-order-negative-zero", "descriptorPath": "tests/schemas/canonical-order-and-negative-zero.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:canonical-proxy", "descriptorPath": "tests/schemas/canonical-proxy.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:canonical-sparse-array", "descriptorPath": "tests/schemas/canonical-sparse-array.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:canonical-unpaired-key", "descriptorPath": "tests/schemas/canonical-unpaired-key.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:canonical-unpaired-string", "descriptorPath": "tests/schemas/canonical-unpaired-string.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:envelope-planning-fields", "descriptorPath": "tests/schemas/envelope-planning-fields.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:instrument-geometry", "descriptorPath": "tests/schemas/instrument-geometry.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:session-phase-sensitivity", "descriptorPath": "tests/schemas/session-phase-sensitivity.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:recursive-schema-closure", "descriptorPath": "tests/schemas/recursive-closure.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:cold-resume-current-view", "descriptorPath": "tests/state/cold-resume-current-view.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:event-id-prototype", "descriptorPath": "tests/state/event-id-prototype.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:reached-artifacts", "descriptorPath": "tests/state/reached-artifacts.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:schema-invalid-quarantine", "descriptorPath": "tests/state/schema-invalid-quarantine.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:semantic-product-replay", "descriptorPath": "tests/state/semantic-product-replay.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:replay-before-stale", "descriptorPath": "tests/state/replay-before-stale.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:replay-changed-actor", "descriptorPath": "tests/state/replay-changed-actor.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:replay-changed-event", "descriptorPath": "tests/state/replay-changed-event.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:replay-changed-payload", "descriptorPath": "tests/state/replay-changed-payload.test.json"},
-    {"id": "urn:mission-kit:survey-v2:test:writer-lock-initialization-cleanup", "descriptorPath": "tests/state/writer-lock-initialization-cleanup.test.json"}
+    {
+      "id": "urn:mission-kit:survey-v2:test:baseline-v1-characterization",
+      "descriptorPath": "tests/baseline-v1/v1-characterization.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:canonical-v1-freeze",
+      "descriptorPath": "tests/baseline-freeze/canonical-v1-freeze.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:discovery-routing-freeze",
+      "descriptorPath": "tests/baseline-freeze/discovery-routing-freeze.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:package-compatibility-preflight",
+      "descriptorPath": "tests/baseline-freeze/package-compatibility.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:package-entry-boundary",
+      "descriptorPath": "tests/baseline-freeze/package-entry-boundary.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:projection-lock-self-exclusion",
+      "descriptorPath": "tests/baseline-freeze/projection-lock-self-exclusion.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:protocol-v1-freeze",
+      "descriptorPath": "tests/baseline-freeze/protocol-v1-freeze.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:shared-schema-freeze",
+      "descriptorPath": "tests/baseline-freeze/shared-schema-freeze.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:v1-test-disposition",
+      "descriptorPath": "tests/baseline-freeze/v1-test-disposition.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:dependency-snapshot-instability",
+      "descriptorPath": "tests/dependencies/snapshot-instability.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:dependency-snapshot-symlink",
+      "descriptorPath": "tests/dependencies/snapshot-symlink.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:dependency-stable-snapshot",
+      "descriptorPath": "tests/dependencies/stable-snapshot.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:candidate-dependency-evidence",
+      "descriptorPath": "tests/dependencies/candidate-dependency-evidence.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:dependency-stage-binding",
+      "descriptorPath": "tests/dependencies/stage-binding.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:dependency-typed-retry",
+      "descriptorPath": "tests/dependencies/typed-retry.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:envelope-render-determinism",
+      "descriptorPath": "tests/envelope/envelope-render-determinism.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:candidate-session-ancestry",
+      "descriptorPath": "tests/envelope/candidate-session-ancestry.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:walkthrough-full-candidate",
+      "descriptorPath": "tests/envelope/walkthrough-full-candidate.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:ratified-envelope-regeneration",
+      "descriptorPath": "tests/envelope/ratified-regeneration.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:terminal-ratification-evidence",
+      "descriptorPath": "tests/envelope/terminal-ratification-evidence.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:fragment-contribution-removal",
+      "descriptorPath": "tests/fragments/contribution-removal.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:fragment-contract",
+      "descriptorPath": "tests/fragments/fragment-contract.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:sovereign-relocation",
+      "descriptorPath": "tests/portability/relocation.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:runtime-no-install",
+      "descriptorPath": "tests/portability/runtime-no-install.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:repeated-build",
+      "descriptorPath": "tests/projection/repeated-build.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:surface-budgets",
+      "descriptorPath": "tests/projection/surface-budgets.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:forward-canary-boundary",
+      "descriptorPath": "tests/promotion/forward-canary-boundary.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:promotion-boundary",
+      "descriptorPath": "tests/promotion/promotion-boundary.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:correction-ancestry",
+      "descriptorPath": "tests/protocol/correction-ancestry.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:director-flow-compression",
+      "descriptorPath": "tests/protocol/director-flow-compression.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:director-flow-lifecycle",
+      "descriptorPath": "tests/protocol/director-flow-lifecycle.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:director-flow-recovery",
+      "descriptorPath": "tests/protocol/director-flow-recovery.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:director-flow-traceability",
+      "descriptorPath": "tests/protocol/director-flow-traceability.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:explicit-rehydration",
+      "descriptorPath": "tests/protocol/explicit-rehydration.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:fsm-parseback",
+      "descriptorPath": "tests/protocol/fsm-parseback.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:handler-parity",
+      "descriptorPath": "tests/protocol/handler-parity.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:instrument-freeze-immutability",
+      "descriptorPath": "tests/protocol/instrument-freeze-immutability.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:ratification-ancestry",
+      "descriptorPath": "tests/protocol/ratification-ancestry.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:ratification-preclaim",
+      "descriptorPath": "tests/protocol/ratification-preclaim.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:raw-pick-roundtrip",
+      "descriptorPath": "tests/protocol/raw-pick-roundtrip.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:rejection-non-fsm",
+      "descriptorPath": "tests/protocol/rejection-non-fsm.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:round-ordering",
+      "descriptorPath": "tests/protocol/round-ordering.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:self-authorization",
+      "descriptorPath": "tests/protocol/self-authorization.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:single-question-view",
+      "descriptorPath": "tests/protocol/single-question-view.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:strict-pick-syntax",
+      "descriptorPath": "tests/protocol/strict-pick-syntax.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:wrong-authority",
+      "descriptorPath": "tests/protocol/wrong-authority.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:modular-discovery",
+      "descriptorPath": "tests/registry/modular-discovery.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:canonical-array-accessor",
+      "descriptorPath": "tests/schemas/canonical-array-accessor.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:canonical-cycle",
+      "descriptorPath": "tests/schemas/canonical-cycle.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:canonical-getter",
+      "descriptorPath": "tests/schemas/canonical-getter.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:canonical-hidden-property",
+      "descriptorPath": "tests/schemas/canonical-hidden-property.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:canonical-non-plain",
+      "descriptorPath": "tests/schemas/canonical-non-plain.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:canonical-order-negative-zero",
+      "descriptorPath": "tests/schemas/canonical-order-and-negative-zero.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:canonical-proxy",
+      "descriptorPath": "tests/schemas/canonical-proxy.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:canonical-sparse-array",
+      "descriptorPath": "tests/schemas/canonical-sparse-array.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:canonical-unpaired-key",
+      "descriptorPath": "tests/schemas/canonical-unpaired-key.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:canonical-unpaired-string",
+      "descriptorPath": "tests/schemas/canonical-unpaired-string.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:envelope-planning-fields",
+      "descriptorPath": "tests/schemas/envelope-planning-fields.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:instrument-geometry",
+      "descriptorPath": "tests/schemas/instrument-geometry.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:session-phase-sensitivity",
+      "descriptorPath": "tests/schemas/session-phase-sensitivity.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:recursive-schema-closure",
+      "descriptorPath": "tests/schemas/recursive-closure.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:cold-resume-current-view",
+      "descriptorPath": "tests/state/cold-resume-current-view.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:event-id-prototype",
+      "descriptorPath": "tests/state/event-id-prototype.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:reached-artifacts",
+      "descriptorPath": "tests/state/reached-artifacts.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:schema-invalid-quarantine",
+      "descriptorPath": "tests/state/schema-invalid-quarantine.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:semantic-product-replay",
+      "descriptorPath": "tests/state/semantic-product-replay.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:replay-before-stale",
+      "descriptorPath": "tests/state/replay-before-stale.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:replay-changed-actor",
+      "descriptorPath": "tests/state/replay-changed-actor.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:replay-changed-event",
+      "descriptorPath": "tests/state/replay-changed-event.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:replay-changed-payload",
+      "descriptorPath": "tests/state/replay-changed-payload.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:writer-lock-initialization-cleanup",
+      "descriptorPath": "tests/state/writer-lock-initialization-cleanup.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:cross-contract-graph",
+      "descriptorPath": "tests/authoring/contracts/cross-contract-graph.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:negative:authoring-assignment",
+      "descriptorPath": "tests/authoring/contracts/negative/authoring-assignment.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:negative:authoring-commit-receipt",
+      "descriptorPath": "tests/authoring/contracts/negative/authoring-commit-receipt.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:negative:authoring-form-definition",
+      "descriptorPath": "tests/authoring/contracts/negative/authoring-form-definition.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:negative:authoring-mutation",
+      "descriptorPath": "tests/authoring/contracts/negative/authoring-mutation.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:negative:authoring-profile-manifest",
+      "descriptorPath": "tests/authoring/contracts/negative/authoring-profile-manifest.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:negative:authoring-protocol",
+      "descriptorPath": "tests/authoring/contracts/negative/authoring-protocol.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:negative:authoring-request",
+      "descriptorPath": "tests/authoring/contracts/negative/authoring-request.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:negative:authoring-submission",
+      "descriptorPath": "tests/authoring/contracts/negative/authoring-submission.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:negative:authoring-workspace",
+      "descriptorPath": "tests/authoring/contracts/negative/authoring-workspace.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:negative:context-closure",
+      "descriptorPath": "tests/authoring/contracts/negative/context-closure.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:negative:projection-artifact",
+      "descriptorPath": "tests/authoring/contracts/negative/projection-artifact.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:negative:resource-reference",
+      "descriptorPath": "tests/authoring/contracts/negative/resource-reference.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:negative:source-snapshot",
+      "descriptorPath": "tests/authoring/contracts/negative/source-snapshot.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:negative:validation-issue",
+      "descriptorPath": "tests/authoring/contracts/negative/validation-issue.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:positive:authoring-assignment",
+      "descriptorPath": "tests/authoring/contracts/positive/authoring-assignment.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:positive:authoring-commit-receipt",
+      "descriptorPath": "tests/authoring/contracts/positive/authoring-commit-receipt.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:positive:authoring-form-definition",
+      "descriptorPath": "tests/authoring/contracts/positive/authoring-form-definition.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:positive:authoring-mutation",
+      "descriptorPath": "tests/authoring/contracts/positive/authoring-mutation.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:positive:authoring-profile-manifest",
+      "descriptorPath": "tests/authoring/contracts/positive/authoring-profile-manifest.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:positive:authoring-protocol",
+      "descriptorPath": "tests/authoring/contracts/positive/authoring-protocol.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:positive:authoring-request",
+      "descriptorPath": "tests/authoring/contracts/positive/authoring-request.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:positive:authoring-submission",
+      "descriptorPath": "tests/authoring/contracts/positive/authoring-submission.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:positive:authoring-workspace",
+      "descriptorPath": "tests/authoring/contracts/positive/authoring-workspace.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:positive:context-closure",
+      "descriptorPath": "tests/authoring/contracts/positive/context-closure.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:positive:projection-artifact",
+      "descriptorPath": "tests/authoring/contracts/positive/projection-artifact.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:positive:resource-reference",
+      "descriptorPath": "tests/authoring/contracts/positive/resource-reference.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:positive:source-snapshot",
+      "descriptorPath": "tests/authoring/contracts/positive/source-snapshot.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:positive:validation-issue",
+      "descriptorPath": "tests/authoring/contracts/positive/validation-issue.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:schema-closure",
+      "descriptorPath": "tests/authoring/contracts/schema-closure.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:assignment-self-exclusion",
+      "descriptorPath": "tests/authoring/digests/assignment-self-exclusion.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:canonical-legacy-reexport",
+      "descriptorPath": "tests/authoring/digests/canonical-legacy-reexport.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:commit-receipt-self-exclusion",
+      "descriptorPath": "tests/authoring/digests/commit-receipt-self-exclusion.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:context-closure-order",
+      "descriptorPath": "tests/authoring/digests/context-closure-order.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:context-closure-role",
+      "descriptorPath": "tests/authoring/digests/context-closure-role.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:context-closure-self-exclusion",
+      "descriptorPath": "tests/authoring/digests/context-closure-self-exclusion.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:core-self-field-rejection",
+      "descriptorPath": "tests/authoring/digests/core-self-field-rejection.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:domain-known-answer",
+      "descriptorPath": "tests/authoring/digests/domain-known-answer.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:domain-prefix",
+      "descriptorPath": "tests/authoring/digests/domain-prefix.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:domain-separation",
+      "descriptorPath": "tests/authoring/digests/domain-separation.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:domain-unknown",
+      "descriptorPath": "tests/authoring/digests/domain-unknown.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:exact-bytes-carrier-closure",
+      "descriptorPath": "tests/authoring/digests/exact-bytes-carrier-closure.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:exact-bytes-cwd-independence",
+      "descriptorPath": "tests/authoring/digests/exact-bytes-cwd-independence.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:exact-bytes-domain",
+      "descriptorPath": "tests/authoring/digests/exact-bytes-domain.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:exact-bytes-path-rejection",
+      "descriptorPath": "tests/authoring/digests/exact-bytes-path-rejection.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:exact-bytes-roundtrip",
+      "descriptorPath": "tests/authoring/digests/exact-bytes-roundtrip.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:form-definition-self-exclusion",
+      "descriptorPath": "tests/authoring/digests/form-definition-self-exclusion.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:mutation-self-exclusion",
+      "descriptorPath": "tests/authoring/digests/mutation-self-exclusion.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:persisted-identities-cwd-independence",
+      "descriptorPath": "tests/authoring/digests/persisted-identities-cwd-independence.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:profile-manifest-self-exclusion",
+      "descriptorPath": "tests/authoring/digests/profile-manifest-self-exclusion.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:projection-artifact-self-exclusion",
+      "descriptorPath": "tests/authoring/digests/projection-artifact-self-exclusion.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:projection-output-domain",
+      "descriptorPath": "tests/authoring/digests/projection-output-domain.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:request-dag-cycle",
+      "descriptorPath": "tests/authoring/digests/request-dag-cycle.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:request-self-exclusion",
+      "descriptorPath": "tests/authoring/digests/request-self-exclusion.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:resource-metadata-boundary",
+      "descriptorPath": "tests/authoring/digests/resource-metadata-boundary.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:resource-missing-spec",
+      "descriptorPath": "tests/authoring/digests/resource-missing-spec.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:resource-reference-name",
+      "descriptorPath": "tests/authoring/digests/resource-reference-name.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:resource-self-integrity",
+      "descriptorPath": "tests/authoring/digests/resource-self-integrity.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:resource-semantics-shape",
+      "descriptorPath": "tests/authoring/digests/resource-semantics-shape.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:resource-spec-boundary",
+      "descriptorPath": "tests/authoring/digests/resource-spec-boundary.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:source-snapshot-self-exclusion",
+      "descriptorPath": "tests/authoring/digests/source-snapshot-self-exclusion.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:submission-required-fields",
+      "descriptorPath": "tests/authoring/digests/submission-required-fields.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:submission-self-digest-required",
+      "descriptorPath": "tests/authoring/digests/submission-self-digest-required.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:submission-semantic-change",
+      "descriptorPath": "tests/authoring/digests/submission-semantic-change.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:submission-telemetry-independence",
+      "descriptorPath": "tests/authoring/digests/submission-telemetry-independence.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:workspace-integrity-required-self",
+      "descriptorPath": "tests/authoring/digests/workspace-integrity-required-self.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:workspace-integrity-self-exclusion",
+      "descriptorPath": "tests/authoring/digests/workspace-integrity-self-exclusion.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:workspace-semantic-whitelist",
+      "descriptorPath": "tests/authoring/digests/workspace-semantic-whitelist.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:neutrality:contract-vocabulary",
+      "descriptorPath": "tests/authoring/neutrality/contract-vocabulary.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:neutrality:kernel-import-boundary",
+      "descriptorPath": "tests/authoring/neutrality/kernel-import-boundary.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:context-duplicate-layer",
+      "descriptorPath": "tests/authoring/contracts/context-duplicate-layer.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:context-foreign-selector",
+      "descriptorPath": "tests/authoring/contracts/context-foreign-selector.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:context-layer-order-authority",
+      "descriptorPath": "tests/authoring/contracts/context-layer-order-authority.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:context-lifecycle-authority",
+      "descriptorPath": "tests/authoring/contracts/context-lifecycle-authority.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:context-projection-authority",
+      "descriptorPath": "tests/authoring/contracts/context-projection-authority.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:context-request-reference-authority",
+      "descriptorPath": "tests/authoring/contracts/context-request-reference-authority.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:context-request-reference-selection",
+      "descriptorPath": "tests/authoring/contracts/context-request-reference-selection.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:context-selector-cardinality",
+      "descriptorPath": "tests/authoring/contracts/context-selector-cardinality.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:context-source-integrity-authority",
+      "descriptorPath": "tests/authoring/contracts/context-source-integrity-authority.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:context-source-type-authority",
+      "descriptorPath": "tests/authoring/contracts/context-source-type-authority.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:event-operation-contract",
+      "descriptorPath": "tests/authoring/contracts/event-operation-contract.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:exact-immutable-version-selection",
+      "descriptorPath": "tests/authoring/contracts/exact-immutable-version-selection.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:external-machine-edge-authority",
+      "descriptorPath": "tests/authoring/contracts/external-machine-edge-authority.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:external-machine-protocol-pin",
+      "descriptorPath": "tests/authoring/contracts/external-machine-protocol-pin.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:external-machine-protocol-required",
+      "descriptorPath": "tests/authoring/contracts/external-machine-protocol-required.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:historical-transaction-operational-slice",
+      "descriptorPath": "tests/authoring/contracts/historical-transaction-operational-slice.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:mutation-active-head-before-image",
+      "descriptorPath": "tests/authoring/contracts/mutation-active-head-before-image.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:mutation-created-cardinality-confinement",
+      "descriptorPath": "tests/authoring/contracts/mutation-created-cardinality-confinement.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:mutation-created-kind-confinement",
+      "descriptorPath": "tests/authoring/contracts/mutation-created-kind-confinement.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:mutation-created-slot-confinement",
+      "descriptorPath": "tests/authoring/contracts/mutation-created-slot-confinement.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:mutation-dependency-confinement",
+      "descriptorPath": "tests/authoring/contracts/mutation-dependency-confinement.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:mutation-handoff-confinement",
+      "descriptorPath": "tests/authoring/contracts/mutation-handoff-confinement.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:mutation-required-active-head-change",
+      "descriptorPath": "tests/authoring/contracts/mutation-required-active-head-change.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:mutation-supersession-confinement",
+      "descriptorPath": "tests/authoring/contracts/mutation-supersession-confinement.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:negative:authoring-journal-record",
+      "descriptorPath": "tests/authoring/contracts/negative/authoring-journal-record.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:positive:authoring-journal-record",
+      "descriptorPath": "tests/authoring/contracts/positive/authoring-journal-record.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:projection-definition-authority",
+      "descriptorPath": "tests/authoring/contracts/projection-definition-authority.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:projection-engine-authority",
+      "descriptorPath": "tests/authoring/contracts/projection-engine-authority.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:protocol-concrete-edge-uniqueness",
+      "descriptorPath": "tests/authoring/contracts/protocol-concrete-edge-uniqueness.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:protocol-source-set-order",
+      "descriptorPath": "tests/authoring/contracts/protocol-source-set-order.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:request-workspace-required",
+      "descriptorPath": "tests/authoring/contracts/request-workspace-required.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:revision-authority-contract",
+      "descriptorPath": "tests/authoring/contracts/revision-authority-contract.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:revision-request-workspace-base",
+      "descriptorPath": "tests/authoring/contracts/revision-request-workspace-base.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:semantic-traversal-bound",
+      "descriptorPath": "tests/authoring/contracts/semantic-traversal-bound.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:task-request-workspace-base",
+      "descriptorPath": "tests/authoring/contracts/task-request-workspace-base.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:context-selector-self-exclusion",
+      "descriptorPath": "tests/authoring/digests/context-selector-self-exclusion.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:journal-record-self-exclusion",
+      "descriptorPath": "tests/authoring/digests/journal-record-self-exclusion.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:revision-plan-self-exclusion",
+      "descriptorPath": "tests/authoring/digests/revision-plan-self-exclusion.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:revision-unit-self-exclusion",
+      "descriptorPath": "tests/authoring/digests/revision-unit-self-exclusion.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:context-lifecycle-active-head",
+      "descriptorPath": "tests/authoring/contracts/context-lifecycle-active-head.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:context-lifecycle-determinism",
+      "descriptorPath": "tests/authoring/contracts/context-lifecycle-determinism.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:context-lifecycle-integrity-precedence",
+      "descriptorPath": "tests/authoring/contracts/context-lifecycle-integrity-precedence.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:context-lifecycle-observed-state-authority",
+      "descriptorPath": "tests/authoring/contracts/context-lifecycle-observed-state-authority.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:context-lifecycle-pointer-positive",
+      "descriptorPath": "tests/authoring/contracts/context-lifecycle-pointer-positive.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:context-lifecycle-pointer-required",
+      "descriptorPath": "tests/authoring/contracts/context-lifecycle-pointer-required.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:context-lifecycle-pointer-schema-positive",
+      "descriptorPath": "tests/authoring/contracts/context-lifecycle-pointer-schema-positive.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:context-lifecycle-pointer-string",
+      "descriptorPath": "tests/authoring/contracts/context-lifecycle-pointer-string.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:context-lifecycle-projection-independence",
+      "descriptorPath": "tests/authoring/contracts/context-lifecycle-projection-independence.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:context-lifecycle-record-integrity",
+      "descriptorPath": "tests/authoring/contracts/context-lifecycle-record-integrity.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:context-lifecycle-record-required",
+      "descriptorPath": "tests/authoring/contracts/context-lifecycle-record-required.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:context-lifecycle-record-unique",
+      "descriptorPath": "tests/authoring/contracts/context-lifecycle-record-unique.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:context-lifecycle-request-reference",
+      "descriptorPath": "tests/authoring/contracts/context-lifecycle-request-reference.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:context-lifecycle-rule-branch-closure",
+      "descriptorPath": "tests/authoring/contracts/context-lifecycle-rule-branch-closure.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:context-lifecycle-rule-digest-authority",
+      "descriptorPath": "tests/authoring/contracts/context-lifecycle-rule-digest-authority.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:context-lifecycle-rule-required",
+      "descriptorPath": "tests/authoring/contracts/context-lifecycle-rule-required.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:context-lifecycle-workspace-state",
+      "descriptorPath": "tests/authoring/contracts/context-lifecycle-workspace-state.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:context-lifecycle-selector-identity",
+      "descriptorPath": "tests/authoring/digests/context-lifecycle-selector-identity.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:digests:lifecycle-rule-identity",
+      "descriptorPath": "tests/authoring/digests/lifecycle-rule-identity.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:event-input-lifecycle-rule-schema",
+      "descriptorPath": "tests/authoring/contracts/event-input-lifecycle-rule-schema.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:event-input-pointer-lifecycle",
+      "descriptorPath": "tests/authoring/contracts/event-input-pointer-lifecycle.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:event-input-pointer-state",
+      "descriptorPath": "tests/authoring/contracts/event-input-pointer-state.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:event-input-workspace-lifecycle",
+      "descriptorPath": "tests/authoring/contracts/event-input-workspace-lifecycle.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:event-input-workspace-record-required",
+      "descriptorPath": "tests/authoring/contracts/event-input-workspace-record-required.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:revision-context-request-reference-negative",
+      "descriptorPath": "tests/authoring/contracts/revision-context-request-reference-negative.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:revision-context-request-reference-positive",
+      "descriptorPath": "tests/authoring/contracts/revision-context-request-reference-positive.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:workspace-resource-version-unique",
+      "descriptorPath": "tests/authoring/contracts/workspace-resource-version-unique.test.json"
+    }
   ]
 }

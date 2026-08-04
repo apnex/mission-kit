@@ -1,0 +1,42 @@
+{
+  "apiVersion": "authoring.mission-kit/v1alpha1",
+  "kind": "AuthoringSubmission",
+  "metadata": {
+    "name": "brief-submission"
+  },
+  "evidence": {
+    "rawEvidence": {
+      "content": {
+        "mediaType": "text/plain;charset=utf-8",
+        "encoding": "base64",
+        "byteLength": 6,
+        "data": "ZHJhZnQK"
+      },
+      "rawEvidenceDigest": "sha256:a8d72153235ad7065304ccadcfcaab0414673ef5b216098a859fc7d9c573c179"
+    },
+    "producerProvenance": {
+      "producerId": "author-one",
+      "producerClass": "automation",
+      "evidenceDigest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "adapter": {
+        "id": "text-adapter",
+        "digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    }
+  },
+  "spec": {
+    "normalizedSubmissionDigest": "sha256:60f266ae99a6a732293592c2d31d2707cb1f41e6579f159ac386d18d369dca87",
+    "assignment": {
+      "reference": {
+        "apiVersion": "authoring.mission-kit/v1alpha1",
+        "kind": "AuthoringAssignment",
+        "name": "brief-assignment",
+        "semanticDigest": "sha256:e3b3653525aaba9320de9195840d457f6348a269746a2ac791b6aec4e6861e72"
+      },
+      "assignmentDigest": "sha256:c054dc92defff94d94e00d06347f01a316c6d9511ce1d40c9f3389bacb0ddf31"
+    },
+    "normalizedValues": {
+      "summary": "A concise launch brief."
+    }
+  }
+}

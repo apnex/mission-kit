@@ -1,0 +1,37 @@
+{
+  "recordDigest": "sha256:fd4f3d82eb08903dd9a4d58ef88a0164e334ab953ec6dc02a1b47c0de20358fe",
+  "commitId": "commit-0001",
+  "ordinal": 1,
+  "commitKind": "evidence",
+  "actor": {
+    "class": "automation",
+    "id": "author-one"
+  },
+  "authority": {
+    "class": "kernel",
+    "id": "evidence-authority",
+    "policy": {
+      "id": "evidence-policy",
+      "digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    }
+  },
+  "idempotency": {
+    "machineId": "authoring-kernel",
+    "key": "evidence-commit-0001"
+  },
+  "commandDigest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+  "payloadDigest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+  "previousSealDigest": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+  "before": {
+    "semanticRevision": 2,
+    "evidenceRevision": 4,
+    "semanticStateDigest": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+  },
+  "after": {
+    "semanticRevision": 2,
+    "evidenceRevision": 5,
+    "semanticStateDigest": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+  },
+  "mutationDigest": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+  "machineEdges": []
+}

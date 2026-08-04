@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:authoring:schema:authoring-assignment:v1alpha1",
+  "title": "Mission Kit AuthoringAssignment resource v1alpha1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["apiVersion", "kind", "metadata", "spec"],
+  "properties": {
+    "apiVersion": {"const": "authoring.mission-kit/v1alpha1"},
+    "kind": {"const": "AuthoringAssignment"},
+    "metadata": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/metadata"},
+    "spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "assignmentDigest",
+        "request",
+        "projectionArtifact",
+        "handle",
+        "baseSemanticRevision",
+        "baseSemanticStateDigest",
+        "uneditedSkeleton"
+      ],
+      "properties": {
+        "assignmentDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
+        "request": {"$ref": "#/$defs/requestBinding"},
+        "projectionArtifact": {"$ref": "#/$defs/projectionArtifactBinding"},
+        "handle": {
+          "type": "string",
+          "minLength": 8,
+          "maxLength": 64,
+          "pattern": "^[0-9a-f]+$"
+        },
+        "baseSemanticRevision": {"type": "integer", "minimum": 0},
+        "baseSemanticStateDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
+        "uneditedSkeleton": {"$ref": "#/$defs/uneditedSkeleton"}
+      }
+    }
+  },
+  "$defs": {
+    "requestBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reference", "requestDigest"],
+      "properties": {
+        "reference": {"$ref": "urn:mission-kit:authoring:schema:resource-reference:v1alpha1"},
+        "requestDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"}
+      }
+    },
+    "projectionArtifactBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reference", "projectionArtifactDigest"],
+      "properties": {
+        "reference": {"$ref": "urn:mission-kit:authoring:schema:resource-reference:v1alpha1"},
+        "projectionArtifactDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"}
+      }
+    },
+    "uneditedSkeleton": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["content", "blankViewDigest"],
+      "properties": {
+        "content": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/ExactBytes"},
+        "blankViewDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"}
+      }
+    }
+  }
+}

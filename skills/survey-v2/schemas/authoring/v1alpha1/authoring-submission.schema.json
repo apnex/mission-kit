@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:authoring:schema:authoring-submission:v1alpha1",
+  "title": "Mission Kit AuthoringSubmission resource v1alpha1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["apiVersion", "kind", "metadata", "spec", "evidence"],
+  "properties": {
+    "apiVersion": {"const": "authoring.mission-kit/v1alpha1"},
+    "kind": {"const": "AuthoringSubmission"},
+    "metadata": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/metadata"},
+    "evidence": {"$ref": "#/$defs/evidence"},
+    "spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "normalizedSubmissionDigest",
+        "assignment",
+        "normalizedValues"
+      ],
+      "properties": {
+        "normalizedSubmissionDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
+        "assignment": {"$ref": "#/$defs/assignmentBinding"},
+        "normalizedValues": {
+          "type": "object",
+          "maxProperties": 128,
+          "propertyNames": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/fieldId"},
+          "additionalProperties": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/canonicalValue"}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rawEvidence", "producerProvenance"],
+      "properties": {
+        "rawEvidence": {"$ref": "#/$defs/rawEvidence"},
+        "producerProvenance": {"$ref": "#/$defs/producerProvenance"}
+      }
+    },
+    "assignmentBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reference", "assignmentDigest"],
+      "properties": {
+        "reference": {"$ref": "urn:mission-kit:authoring:schema:resource-reference:v1alpha1"},
+        "assignmentDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"}
+      }
+    },
+    "rawEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["content", "rawEvidenceDigest"],
+      "properties": {
+        "content": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/ExactBytes"},
+        "rawEvidenceDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"}
+      }
+    },
+    "producerProvenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["producerId", "producerClass", "evidenceDigest"],
+      "properties": {
+        "producerId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "producerClass": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "evidenceDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
+        "adapter": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/DigestBinding"}
+      }
+    }
+  }
+}

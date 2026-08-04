@@ -1,0 +1,228 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:authoring:schema:authoring-commit-receipt:v1alpha1",
+  "title": "Mission Kit AuthoringCommitReceipt resource v1alpha1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["apiVersion", "kind", "metadata", "spec"],
+  "properties": {
+    "apiVersion": {"const": "authoring.mission-kit/v1alpha1"},
+    "kind": {"const": "AuthoringCommitReceipt"},
+    "metadata": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/metadata"},
+    "spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receiptDigest",
+        "idempotencyKey",
+        "cause",
+        "mutation",
+        "before",
+        "after",
+        "createdResources",
+        "supersededDescendants",
+        "handoffProducts",
+        "externalCouplings"
+      ],
+      "properties": {
+        "receiptDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
+        "idempotencyKey": {
+          "type": "string",
+          "minLength": 8,
+          "maxLength": 160,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+        },
+        "cause": {
+          "oneOf": [
+            {"$ref": "#/$defs/taskSubmissionCause"},
+            {"$ref": "#/$defs/eventCause"}
+          ]
+        },
+        "mutation": {"$ref": "#/$defs/mutationBinding"},
+        "before": {"$ref": "#/$defs/revisionState"},
+        "after": {"$ref": "#/$defs/revisionState"},
+        "createdResources": {
+          "type": "array",
+          "maxItems": 256,
+          "items": {"$ref": "urn:mission-kit:authoring:schema:resource-reference:v1alpha1"}
+        },
+        "supersededDescendants": {
+          "type": "array",
+          "maxItems": 4096,
+          "items": {"$ref": "#/$defs/supersededDescendant"}
+        },
+        "handoffProducts": {
+          "type": "array",
+          "maxItems": 256,
+          "items": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/SlotReference"}
+        },
+        "externalCouplings": {
+          "type": "array",
+          "maxItems": 2,
+          "items": {"$ref": "#/$defs/externalCoupling"}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "taskSubmissionCause": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "class",
+        "edge",
+        "authority",
+        "execution",
+        "assignment",
+        "submission"
+      ],
+      "properties": {
+        "class": {"const": "task-submission"},
+        "edge": {"$ref": "#/$defs/edge"},
+        "authority": {"$ref": "#/$defs/authority"},
+        "execution": {"$ref": "#/$defs/execution"},
+        "assignment": {"$ref": "#/$defs/assignmentBinding"},
+        "submission": {"$ref": "#/$defs/submissionBinding"}
+      }
+    },
+    "eventCause": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "class",
+        "edge",
+        "authority",
+        "execution",
+        "commandDigest",
+        "payloadDigest",
+        "evidenceDigest",
+        "inputs"
+      ],
+      "properties": {
+        "class": {"const": "event"},
+        "edge": {"$ref": "#/$defs/edge"},
+        "authority": {"$ref": "#/$defs/authority"},
+        "execution": {"$ref": "#/$defs/execution"},
+        "commandDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
+        "payloadDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
+        "evidenceDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
+        "inputs": {
+          "type": "array",
+          "maxItems": 32,
+          "items": {"$ref": "#/$defs/eventInput"}
+        }
+      }
+    },
+    "edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["transitionId", "fromState", "eventId", "toState"],
+      "properties": {
+        "transitionId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/transitionId"},
+        "fromState": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/stateId"},
+        "eventId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/eventId"},
+        "toState": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/stateId"}
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["class", "id", "policy"],
+      "properties": {
+        "class": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "id": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "policy": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/DigestBinding"}
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["profile", "protocol", "handler"],
+      "properties": {
+        "profile": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/DigestBinding"},
+        "protocol": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/DigestBinding"},
+        "handler": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/DigestBinding"}
+      }
+    },
+    "eventInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ordinal", "role", "reference", "integrityDigest"],
+      "properties": {
+        "ordinal": {"type": "integer", "minimum": 1, "maximum": 32},
+        "role": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/roleId"},
+        "reference": {"$ref": "urn:mission-kit:authoring:schema:resource-reference:v1alpha1"},
+        "integrityDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"}
+      }
+    },
+    "assignmentBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reference", "assignmentDigest"],
+      "properties": {
+        "reference": {"$ref": "urn:mission-kit:authoring:schema:resource-reference:v1alpha1"},
+        "assignmentDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"}
+      }
+    },
+    "submissionBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reference", "normalizedSubmissionDigest"],
+      "properties": {
+        "reference": {"$ref": "urn:mission-kit:authoring:schema:resource-reference:v1alpha1"},
+        "normalizedSubmissionDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"}
+      }
+    },
+    "mutationBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reference", "mutationDigest"],
+      "properties": {
+        "reference": {"$ref": "urn:mission-kit:authoring:schema:resource-reference:v1alpha1"},
+        "mutationDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"}
+      }
+    },
+    "externalCoupling": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "machineId",
+        "transitionId",
+        "fromState",
+        "eventId",
+        "toState",
+        "beforeStateDigest",
+        "afterStateDigest"
+      ],
+      "properties": {
+        "machineId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "transitionId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/transitionId"},
+        "fromState": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/stateId"},
+        "eventId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/eventId"},
+        "toState": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/stateId"},
+        "beforeStateDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
+        "afterStateDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"}
+      }
+    },
+    "revisionState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["semanticRevision", "evidenceRevision", "semanticStateDigest"],
+      "properties": {
+        "semanticRevision": {"type": "integer", "minimum": 0},
+        "evidenceRevision": {"type": "integer", "minimum": 0},
+        "semanticStateDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"}
+      }
+    },
+    "supersededDescendant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reference", "disposition"],
+      "properties": {
+        "reference": {"$ref": "urn:mission-kit:authoring:schema:resource-reference:v1alpha1"},
+        "disposition": {"enum": ["superseded", "invalidated"]},
+        "supersededBy": {"$ref": "urn:mission-kit:authoring:schema:resource-reference:v1alpha1"}
+      }
+    }
+  }
+}

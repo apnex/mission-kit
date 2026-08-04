@@ -1,0 +1,38 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:test:authoring:contracts:context-lifecycle-workspace-state",
+  "obligationId": "O-AS06-29",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS06"
+  ],
+  "verification": {
+    "precondition": "The mapped authorities and fixtures exist as package-owned files.",
+    "stimulus": "Execute tests/authoring/contracts/context-lifecycle-workspace-state.test.mjs with node:test.",
+    "expectedSemanticState": "No durable authoring runtime state transition is claimed by O-AS06-29.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: a workspace resource version can prove only the frozen lifecycle state",
+    "forbiddenMutation": "Do not infer runtime dispatch, persistence, journaling, atomic commit, adapter parity, or cold-resume behavior beyond the literal assertion.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "source/authoring/kernel/canonical.mjs",
+      "source/authoring/kernel/contract-semantics.mjs",
+      "source/authoring/kernel/digests.mjs"
+    ]
+  },
+  "behavior": "a workspace resource version can prove only the frozen lifecycle state",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/authoring/contracts/context-lifecycle-workspace-state.test.mjs",
+  "fixtures": [
+    "tests/authoring/contracts/support/contract-validation.mjs",
+    "tests/authoring/contracts/support/lifecycle-profile-scenarios.mjs",
+    "tests/fixtures/authoring/contracts/positive/authoring-profile-manifest.json"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v1"
+}

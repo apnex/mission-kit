@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:authoring:schema:validation-issue:v1alpha1",
+  "title": "Mission Kit ValidationIssue resource v1alpha1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["apiVersion", "kind", "metadata", "spec"],
+  "properties": {
+    "apiVersion": {"const": "authoring.mission-kit/v1alpha1"},
+    "kind": {"const": "ValidationIssue"},
+    "metadata": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/metadata"},
+    "spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "field", "reason", "boundary", "nextAction", "correction"],
+      "properties": {
+        "code": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/eventId"},
+        "field": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/fieldPath"},
+        "reason": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/nonEmptyText"},
+        "boundary": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "nextAction": {
+          "enum": [
+            "edit-and-resubmit",
+            "restore-compatible-build",
+            "reissue-assignment",
+            "retry",
+            "start-linked-run",
+            "no-safe-remediation"
+          ]
+        },
+        "correction": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/nonEmptyText"}
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:authoring:schema:context-closure:v1alpha1",
+  "title": "Mission Kit ContextClosure resource v1alpha1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["apiVersion", "kind", "metadata", "spec"],
+  "properties": {
+    "apiVersion": {"const": "authoring.mission-kit/v1alpha1"},
+    "kind": {"const": "ContextClosure"},
+    "metadata": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/metadata"},
+    "spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["closureDigest", "layers"],
+      "properties": {
+        "closureDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
+        "layers": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {"$ref": "#/$defs/layer"}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "layer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ordinal",
+        "role",
+        "selectorId",
+        "selectorDigest",
+        "requiredLifecycleState",
+        "lifecycleProof",
+        "sourceReference",
+        "sourceIntegrityDigest",
+        "sourceSnapshot",
+        "selectedValue",
+        "projectionDefinitionDigest"
+      ],
+      "properties": {
+        "ordinal": {"type": "integer", "minimum": 1, "maximum": 64},
+        "role": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/roleId"},
+        "selectorId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "selectorDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
+        "requiredLifecycleState": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/stateId"},
+        "lifecycleProof": {"$ref": "#/$defs/lifecycleProof"},
+        "sourceReference": {"$ref": "urn:mission-kit:authoring:schema:resource-reference:v1alpha1"},
+        "sourceIntegrityDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
+        "sourceSnapshot": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/ResourceDocument"},
+        "selectedValue": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/canonicalValue"},
+        "projectionDefinitionDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"}
+      }
+    },
+    "lifecycleProof": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ruleDigest", "observedState"],
+      "properties": {
+        "ruleDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
+        "observedState": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/stateId"}
+      }
+    }
+  }
+}

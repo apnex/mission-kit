@@ -1,0 +1,119 @@
+{
+  "apiVersion": "authoring.mission-kit/v1alpha1",
+  "kind": "AuthoringCommitReceipt",
+  "metadata": {
+    "name": "brief-receipt"
+  },
+  "spec": {
+    "receiptDigest": "sha256:105a82722ff67e2630693e3060b52b5f6ce9f13c0307e37af12d2bf6355adee9",
+    "idempotencyKey": "brief-commit-0001",
+    "cause": {
+      "class": "task-submission",
+      "edge": {
+        "transitionId": "AT01",
+        "fromState": "draft_task",
+        "eventId": "SUBMIT",
+        "toState": "awaiting_acceptance"
+      },
+      "authority": {
+        "class": "profile-handler",
+        "id": "brief-authority",
+        "policy": {
+          "id": "brief-policy",
+          "digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        }
+      },
+      "execution": {
+        "profile": {
+          "id": "brief-profile",
+          "digest": "sha256:df5ac847971be73edbde79d5ff516c708c13dbdaadf00144699bb494ed7b3c89"
+        },
+        "protocol": {
+          "id": "brief-flow",
+          "digest": "sha256:9d75a6689b087e5072ecc1c50d5e722ca3f3cdd70d77eb85ea2d1ab76cef9790"
+        },
+        "handler": {
+          "id": "brief-handler",
+          "digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        }
+      },
+      "assignment": {
+        "reference": {
+          "apiVersion": "authoring.mission-kit/v1alpha1",
+          "kind": "AuthoringAssignment",
+          "name": "brief-assignment",
+          "semanticDigest": "sha256:e3b3653525aaba9320de9195840d457f6348a269746a2ac791b6aec4e6861e72"
+        },
+        "assignmentDigest": "sha256:c054dc92defff94d94e00d06347f01a316c6d9511ce1d40c9f3389bacb0ddf31"
+      },
+      "submission": {
+        "reference": {
+          "apiVersion": "authoring.mission-kit/v1alpha1",
+          "kind": "AuthoringSubmission",
+          "name": "brief-submission",
+          "semanticDigest": "sha256:6d2ee994b355d787e062e096d45e79faaceb39f0a299617697e72e29bdec9023"
+        },
+        "normalizedSubmissionDigest": "sha256:60f266ae99a6a732293592c2d31d2707cb1f41e6579f159ac386d18d369dca87"
+      }
+    },
+    "mutation": {
+      "reference": {
+        "apiVersion": "authoring.mission-kit/v1alpha1",
+        "kind": "AuthoringMutation",
+        "name": "brief-mutation",
+        "semanticDigest": "sha256:249101d5a732e4ccae0937d1137492991528ede565ac993982480b48a96d89b4"
+      },
+      "mutationDigest": "sha256:37416e4b6b55c5f89aaad00e3e5074da083c61acc960015c60d96c2bedc3d37d"
+    },
+    "before": {
+      "semanticRevision": 0,
+      "evidenceRevision": 0,
+      "semanticStateDigest": "sha256:46cbfe0c1a1753087d5b7fef9fe1055e291d54cc451cd680a68835819efb6a5e"
+    },
+    "after": {
+      "semanticRevision": 1,
+      "evidenceRevision": 1,
+      "semanticStateDigest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    },
+    "createdResources": [
+      {
+        "apiVersion": "brief.example/v1alpha1",
+        "kind": "Brief",
+        "name": "launch-brief",
+        "semanticDigest": "sha256:24e484a501a22207d8c9ba31efdff321249e086d4b0a7d417a61e2225959ad0c"
+      }
+    ],
+    "supersededDescendants": [],
+    "handoffProducts": [
+      {
+        "slot": "brief",
+        "reference": {
+          "apiVersion": "brief.example/v1alpha1",
+          "kind": "Brief",
+          "name": "launch-brief",
+          "semanticDigest": "sha256:24e484a501a22207d8c9ba31efdff321249e086d4b0a7d417a61e2225959ad0c"
+        }
+      }
+    ],
+    "externalCouplings": [
+      {
+        "machineId": "runtime-kernel",
+        "transitionId": "RT01",
+        "fromState": "execution_ready",
+        "eventId": "BEGIN",
+        "toState": "refreeze_pending",
+        "beforeStateDigest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "afterStateDigest": "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+      },
+      {
+        "machineId": "runtime-kernel",
+        "transitionId": "RT02",
+        "fromState": "refreeze_pending",
+        "eventId": "COMPLETE",
+        "toState": "execution_ready",
+        "beforeStateDigest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "afterStateDigest": "sha256:3333333333333333333333333333333333333333333333333333333333333333"
+      }
+    ]
+  }
+}
