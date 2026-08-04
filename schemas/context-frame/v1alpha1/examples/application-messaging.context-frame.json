@@ -1,0 +1,51 @@
+{
+  "apiVersion": "schemas.mission-kit/v1alpha1",
+  "kind": "ContextFrame",
+  "metadata": {
+    "name": "application-messaging",
+    "labels": {
+      "domain": "architecture"
+    },
+    "annotations": {}
+  },
+  "spec": {
+    "subject": "Application messaging substrate",
+    "purpose": "Bound the reusable communication mechanics that require architectural judgment.",
+    "scope": {
+      "included": [
+        "Connection lifecycle and named-endpoint routing",
+        "Transport-independent protocol behaviour",
+        "Generic JSON envelope delivery"
+      ],
+      "excluded": [
+        "Application-layer delivery guarantees",
+        "Persistent queue semantics"
+      ]
+    },
+    "givens": [
+      {
+        "classification": "fact",
+        "text": "Messages use a generic JSON envelope."
+      },
+      {
+        "classification": "assumption",
+        "text": "Configured transports provide reliable ordered byte streams."
+      },
+      {
+        "classification": "constraint",
+        "text": "Core routing behaviour must not depend on a particular transport."
+      }
+    ],
+    "synopsis": "A transport-independent substrate for connection lifecycle, named-endpoint routing, and JSON delivery.",
+    "terms": [
+      {
+        "term": "endpoint",
+        "meaning": "A stable name used as a message destination."
+      },
+      {
+        "term": "transport",
+        "meaning": "A configured carrier that exchanges protocol envelopes between peers."
+      }
+    ]
+  }
+}

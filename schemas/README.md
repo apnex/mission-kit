@@ -44,8 +44,21 @@ Labels and annotations must not carry text that a respondent needs in order to a
 Selection wording must be generated from `spec.response.cardinality`.
 `spec.prompt.instruction` is reserved for non-derivable guidance and must not paraphrase cardinality.
 
-Context fields are intentionally absent from `v1alpha1`.
-Question-level, round-level, and survey-level context frames require a separate design decision.
+Context fields are intentionally absent from `Question/v1alpha1`.
+A composing process associates a complete, separate `ContextFrame` resource
+without injecting context into the Question resource.
+
+## ContextFrame
+
+`ContextFrame` is a process-neutral semantic context definition.
+It carries an exact subject, purpose, included and excluded scope, classified
+givens, bounded authored synopsis, and term definitions.
+Its ordered arrays preserve authored order.
+
+The synopsis is semantic content authored before projection; it is not
+generated or summarized by a renderer.
+Process placement, ancestry, execution authority, generation provenance,
+answers, and observed state remain outside the resource.
 
 ## Composition
 
@@ -79,14 +92,25 @@ npm test
 ```
 
 JSON Schema validates structure.
-The versioned semantic validator checks ordered-array invariants that JSON Schema Draft 2020-12 cannot express:
+The Question semantic validator checks ordered-array invariants that JSON
+Schema Draft 2020-12 cannot express:
 
 - option IDs are unique;
 - minimum selections do not exceed maximum selections;
 - maximum selections do not exceed available options;
-- constraints reference existing option IDs; and
+- constraints reference existing option IDs;
 - equivalent constraint sets are not duplicated; and
 - at least one selection satisfies cardinality and every constraint.
+
+The ContextFrame semantic validator rejects:
+
+- duplicate included or excluded boundaries;
+- a statement present in both included and excluded scope;
+- duplicate given text, including text assigned different classifications; and
+- duplicate terms, including terms assigned different meanings.
+
+Duplicate comparison preserves exact authored string values; it does not
+case-fold, trim, or otherwise normalize semantic content.
 
 A consumer must run structural validation before semantic validation.
 Consumers can preload every schema listed in `catalog.json` to resolve absolute URN references without importing Survey.
@@ -100,6 +124,11 @@ schemas/
 ├── common/
 │   └── v1alpha1/
 │       └── resource-metadata.schema.json
+├── context-frame/
+│   └── v1alpha1/
+│       ├── context-frame.schema.json
+│       ├── context-frame.validator.mjs
+│       └── examples/
 ├── question/
 │   └── v1alpha1/
 │       ├── choice-response.schema.json
@@ -107,6 +136,7 @@ schemas/
 │       ├── question.validator.mjs
 │       └── examples/
 └── tests/
-    ├── support/
-    └── question/
+    ├── context-frame/
+    ├── question/
+    └── support/
 ```

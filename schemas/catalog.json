@@ -15,6 +15,11 @@
       "id": "urn:mission-kit:schemas:question:v1alpha1",
       "path": "question/v1alpha1/question.schema.json",
       "role": "resource"
+    },
+    {
+      "id": "urn:mission-kit:schemas:context-frame:v1alpha1",
+      "path": "context-frame/v1alpha1/context-frame.schema.json",
+      "role": "resource"
     }
   ],
   "resources": [
@@ -23,6 +28,12 @@
       "kind": "Question",
       "schemaId": "urn:mission-kit:schemas:question:v1alpha1",
       "semanticValidator": "question/v1alpha1/question.validator.mjs"
+    },
+    {
+      "apiVersion": "schemas.mission-kit/v1alpha1",
+      "kind": "ContextFrame",
+      "schemaId": "urn:mission-kit:schemas:context-frame:v1alpha1",
+      "semanticValidator": "context-frame/v1alpha1/context-frame.validator.mjs"
     }
   ]
 }

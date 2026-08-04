@@ -1,0 +1,20 @@
+{
+  "apiVersion": "schemas.mission-kit/v1alpha1",
+  "kind": "ContextFrame",
+  "metadata": {
+    "name": "minimal-decision"
+  },
+  "spec": {
+    "subject": "Deployment location",
+    "purpose": "Choose the operating boundary.",
+    "scope": {
+      "included": [
+        "Steady-state placement"
+      ],
+      "excluded": []
+    },
+    "givens": [],
+    "synopsis": "Placement within the declared operating boundary.",
+    "terms": []
+  }
+}
