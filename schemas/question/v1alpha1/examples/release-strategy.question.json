@@ -1,0 +1,41 @@
+{
+  "apiVersion": "schemas.mission-kit/v1alpha1",
+  "kind": "Question",
+  "metadata": {
+    "name": "release-strategy",
+    "labels": {
+      "domain": "delivery"
+    },
+    "annotations": {}
+  },
+  "spec": {
+    "prompt": {
+      "text": "Which release strategy should be the default?"
+    },
+    "response": {
+      "type": "Choice",
+      "cardinality": {
+        "minimum": 1,
+        "maximum": 1
+      },
+      "options": [
+        {
+          "id": "rolling",
+          "label": "Rolling",
+          "meaning": "Replace instances incrementally."
+        },
+        {
+          "id": "blue-green",
+          "label": "Blue-green",
+          "meaning": "Switch traffic between complete environments."
+        },
+        {
+          "id": "canary",
+          "label": "Canary",
+          "meaning": "Expose a growing traffic fraction to the candidate."
+        }
+      ],
+      "constraints": []
+    }
+  }
+}

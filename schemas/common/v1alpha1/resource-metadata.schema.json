@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:schemas:common:resource-metadata:v1alpha1",
+  "title": "Mission Kit resource metadata v1alpha1",
+  "description": "Portable identity and non-specification metadata for a Mission Kit resource.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "description": "Stable resource name within the scope chosen by its consumer.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 253,
+      "pattern": "^[a-z0-9](?:[-a-z0-9]*[a-z0-9])?(?:\\.[a-z0-9](?:[-a-z0-9]*[a-z0-9])?)*$"
+    },
+    "labels": {
+      "description": "Machine-selectable string attributes that are not respondent-visible specification.",
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/metadataKey"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "maxLength": 63
+      }
+    },
+    "annotations": {
+      "description": "Non-identifying string metadata that is not respondent-visible specification.",
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/metadataKey"
+      },
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "metadataKey": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 253,
+      "pattern": "^[A-Za-z0-9](?:[A-Za-z0-9._/-]*[A-Za-z0-9])?$"
+    }
+  }
+}

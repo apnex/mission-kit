@@ -120,6 +120,15 @@ should be able to resolve a bundle by reading its `skills:` list.
 Bundles do not get IDs in `INDEX.md`. They are convention-managed by
 filename (`bundles/<role>.yaml`).
 
+## Schemas
+
+The [`schemas/`](schemas/README.md) directory owns reusable, machine-verifiable
+entity contracts that are independent of any one skill or project.
+Schema resources use a small Kubernetes-like `apiVersion` / `kind` /
+`metadata` / `spec` envelope and carry their own examples and executable
+validation tests.
+Schemas do not receive knowledge-entry IDs in `INDEX.md`.
+
 ## Status
 
 Bootstrap commit seeded with 12 entries from the

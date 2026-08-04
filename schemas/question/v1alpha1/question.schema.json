@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:schemas:question:v1alpha1",
+  "title": "Mission Kit Question resource v1alpha1",
+  "description": "A process-neutral, declarative question resource.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "apiVersion",
+    "kind",
+    "metadata",
+    "spec"
+  ],
+  "properties": {
+    "apiVersion": {
+      "const": "schemas.mission-kit/v1alpha1"
+    },
+    "kind": {
+      "const": "Question"
+    },
+    "metadata": {
+      "$ref": "urn:mission-kit:schemas:common:resource-metadata:v1alpha1"
+    },
+    "spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "prompt",
+        "response"
+      ],
+      "properties": {
+        "prompt": {
+          "$ref": "#/$defs/prompt"
+        },
+        "response": {
+          "oneOf": [
+            {
+              "$ref": "urn:mission-kit:schemas:question:choice-response:v1alpha1"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "$defs": {
+    "prompt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text"
+      ],
+      "properties": {
+        "text": {
+          "description": "The exact question presented to the respondent.",
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "instruction": {
+          "description": "Optional non-derivable guidance presented with the question; selection cardinality is generated from the response contract.",
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      }
+    }
+  }
+}

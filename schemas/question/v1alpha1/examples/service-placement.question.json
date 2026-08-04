@@ -1,0 +1,50 @@
+{
+  "apiVersion": "schemas.mission-kit/v1alpha1",
+  "kind": "Question",
+  "metadata": {
+    "name": "service-placement",
+    "labels": {
+      "domain": "architecture"
+    },
+    "annotations": {}
+  },
+  "spec": {
+    "prompt": {
+      "text": "Which service-placement modes must be supported?",
+      "instruction": "Evaluate required steady-state modes rather than migration stages."
+    },
+    "response": {
+      "type": "Choice",
+      "cardinality": {
+        "minimum": 1,
+        "maximum": 2
+      },
+      "options": [
+        {
+          "id": "single-region-only",
+          "label": "Single region only",
+          "meaning": "The service remains within exactly one region."
+        },
+        {
+          "id": "multi-region-active",
+          "label": "Active multi-region",
+          "meaning": "The service actively handles traffic in multiple regions."
+        },
+        {
+          "id": "edge",
+          "label": "Edge placement",
+          "meaning": "Selected service components may execute at edge locations."
+        }
+      ],
+      "constraints": [
+        {
+          "type": "MutuallyExclusive",
+          "optionIds": [
+            "single-region-only",
+            "multi-region-active"
+          ]
+        }
+      ]
+    }
+  }
+}
