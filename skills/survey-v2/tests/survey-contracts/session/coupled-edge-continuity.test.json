@@ -1,0 +1,41 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey-contracts:session:coupled-edge-continuity",
+  "obligationId": "O-AS15-19",
+  "requirementIds": [
+    "R09",
+    "R11"
+  ],
+  "invariantIds": [
+    "AS15"
+  ],
+  "verification": {
+    "precondition": "A global journal reaches a legal authoring and phase pair through ordered coupled edges.",
+    "stimulus": "Reverse the coupled edge order and separately break filtered phase-edge continuity.",
+    "expectedSemanticState": "Only the continuous authoring-then-phase sequence reaches the persisted paired state.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: the v2 session admits only continuous ordered coupled-machine edges",
+    "forbiddenMutation": "No reordered or discontinuous edge set may be accepted as an atomic commit.",
+    "applicability": {
+      "mode": "agnostic",
+      "transports": [],
+      "adapters": [
+        "urn:mission-kit:survey-v2:adapter:session"
+      ]
+    },
+    "inspectedAuthorities": [
+      "schemas/authoring/v1alpha1/authoring-journal-record.schema.json",
+      "source/authoring/survey/session-semantics.mjs",
+      "source/protocol/paired-state-matrix.v2.json"
+    ]
+  },
+  "behavior": "the v2 session admits only continuous ordered coupled-machine edges",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/survey-contracts/session/coupled-edge-continuity.test.mjs",
+  "fixtures": [
+    "tests/fixtures/survey/session-v2/session-factory.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v1"
+}

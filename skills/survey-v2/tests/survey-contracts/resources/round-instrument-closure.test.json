@@ -1,0 +1,38 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey-contracts:round-instrument-closure",
+  "obligationId": "O-SV05-02",
+  "requirementIds": [],
+  "invariantIds": [
+    "SV05"
+  ],
+  "verification": {
+    "precondition": "The sovereign Survey schemas, semantic validator, and mapped fixtures exist as package-owned files.",
+    "stimulus": "Execute tests/survey-contracts/resources/round-instrument-closure.test.mjs with node:test.",
+    "expectedSemanticState": "The contract satisfies only O-SV05-02: RoundInstrument closes exactly three ordered Question, binding, and frame references.",
+    "expectedEvidenceState": "The runner reports the literal assertion: RoundInstrument closes exactly three ordered Question, binding, and frame references",
+    "forbiddenMutation": "Do not infer runtime persistence, Director judgment, adapter parity, transport behavior, or any obligation beyond the literal assertion.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "schemas/survey/v1alpha1/round-instrument.schema.json",
+      "source/authoring/survey/resource-semantics.mjs",
+      "tests/survey-contracts/support/obligation-scenarios.mjs"
+    ]
+  },
+  "behavior": "RoundInstrument closes exactly three ordered Question, binding, and frame references",
+  "evidenceClass": "positive",
+  "runner": "node:test",
+  "executable": "tests/survey-contracts/resources/round-instrument-closure.test.mjs",
+  "fixtures": [
+    "tests/survey-contracts/support/contract-validation.mjs",
+    "tests/survey-contracts/support/obligation-scenarios.mjs",
+    "tests/fixtures/survey/contracts/positive/round-instrument-1.json"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v1"
+}

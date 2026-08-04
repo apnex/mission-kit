@@ -1,0 +1,189 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:survey:schema:generation-record:v1alpha1",
+  "title": "Mission Kit GenerationRecord resource v1alpha1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "apiVersion",
+    "kind",
+    "metadata",
+    "spec",
+    "evidence"
+  ],
+  "properties": {
+    "apiVersion": {
+      "const": "survey.mission-kit/v1alpha1"
+    },
+    "kind": {
+      "const": "GenerationRecord"
+    },
+    "metadata": {
+      "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/metadata"
+    },
+    "spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requestRef",
+        "assignmentRef",
+        "submissionRef",
+        "contextClosureRef",
+        "result",
+        "ancestry",
+        "assessmentAncestryRefs"
+      ],
+      "properties": {
+        "requestRef": {
+          "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/AuthoringRequestReference"
+        },
+        "assignmentRef": {
+          "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/AuthoringAssignmentReference"
+        },
+        "submissionRef": {
+          "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/AuthoringSubmissionReference"
+        },
+        "contextClosureRef": {
+          "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/ContextClosureReference"
+        },
+        "result": {
+          "$ref": "#/$defs/result"
+        },
+        "ancestry": {
+          "$ref": "#/$defs/ancestry"
+        },
+        "assessmentAncestryRefs": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {
+            "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/resourceReference"
+          }
+        }
+      }
+    },
+    "evidence": {
+      "$ref": "#/$defs/evidence"
+    }
+  },
+  "$defs": {
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "commitReceiptRef",
+        "createdResourceRefs"
+      ],
+      "properties": {
+        "commitReceiptRef": {
+          "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/AuthoringCommitReceiptReference"
+        },
+        "createdResourceRefs": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 256,
+          "items": {
+            "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/resourceReference"
+          }
+        }
+      }
+    },
+    "ancestry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "inputResourceRefs",
+        "priorGenerationRecordRefs",
+        "revisionOfRefs"
+      ],
+      "properties": {
+        "inputResourceRefs": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 256,
+          "items": {
+            "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/resourceReference"
+          }
+        },
+        "priorGenerationRecordRefs": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {
+            "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/GenerationRecordReference"
+          }
+        },
+        "revisionOfRefs": {
+          "type": "array",
+          "maxItems": 256,
+          "items": {
+            "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/resourceReference"
+          }
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "producer"
+      ],
+      "properties": {
+        "producer": {
+          "$ref": "#/$defs/producer"
+        }
+      }
+    },
+    "producer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "attemptId",
+        "provider",
+        "model",
+        "adapter",
+        "configurationDigest"
+      ],
+      "properties": {
+        "attemptId": {
+          "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/semanticId"
+        },
+        "provider": {
+          "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/shortText"
+        },
+        "model": {
+          "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/shortText"
+        },
+        "adapter": {
+          "$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/DigestBinding"
+        },
+        "configurationDigest": {
+          "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/digest"
+        },
+        "telemetry": {
+          "$ref": "#/$defs/telemetry"
+        }
+      }
+    },
+    "telemetry": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "latencyMs": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "inputTokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "outputTokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "costMicrounits": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

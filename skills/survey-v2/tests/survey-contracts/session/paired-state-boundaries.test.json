@@ -1,0 +1,41 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey-contracts:session:paired-state-boundaries",
+  "obligationId": "O-SV14-06",
+  "requirementIds": [
+    "R09",
+    "R15"
+  ],
+  "invariantIds": [
+    "SV14"
+  ],
+  "verification": {
+    "precondition": "The canonical matrix classifies correction, abort, and terminal pairs.",
+    "stimulus": "Validate every classified boundary pair and one undeclared cross-product pair.",
+    "expectedSemanticState": "Declared boundary pairs validate and the undeclared pair returns SESSION_PAIRED_STATE_ILLEGAL.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: illegal pairs reject while declared correction, abort, and terminal pairs are admitted",
+    "forbiddenMutation": "No undeclared authoring and phase cross-product may become durable state.",
+    "applicability": {
+      "mode": "agnostic",
+      "transports": [],
+      "adapters": [
+        "urn:mission-kit:survey-v2:adapter:session"
+      ]
+    },
+    "inspectedAuthorities": [
+      "source/authoring/survey/session-semantics.mjs",
+      "source/protocol/paired-state-matrix.v2.json"
+    ]
+  },
+  "behavior": "illegal pairs reject while declared correction, abort, and terminal pairs are admitted",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/survey-contracts/session/paired-state-boundaries.test.mjs",
+  "fixtures": [
+    "source/protocol/paired-state-matrix.v2.json",
+    "tests/fixtures/survey/session-v2/session-factory.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v1"
+}

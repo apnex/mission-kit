@@ -1,0 +1,21 @@
+{
+  "apiVersion": "survey.mission-kit/v1alpha1",
+  "kind": "Survey",
+  "metadata": {
+    "name": "survey-example"
+  },
+  "spec": {
+    "policySnapshotRef": {
+      "apiVersion": "survey.mission-kit/v1alpha1",
+      "kind": "SurveyPolicySnapshot",
+      "name": "survey-policy",
+      "semanticDigest": "sha256:8888888888888888888888888888888888888888888888888888888888888888"
+    },
+    "surveyFrameRef": {
+      "apiVersion": "schemas.mission-kit/v1alpha1",
+      "kind": "ContextFrame",
+      "name": "survey-frame",
+      "semanticDigest": "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+    }
+  }
+}

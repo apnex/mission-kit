@@ -1,0 +1,42 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:protocol-selection:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:protocol-selection:survey",
+  "defaultSelection": {
+    "id": "frozen-v1",
+    "activation": "implicit",
+    "status": "frozen",
+    "package": {
+      "id": "urn:mission-kit:survey-v2:package:survey-v2",
+      "version": "1.0.0",
+      "projectionDigest": "sha256:6603b777b82783176fca6129bfecde7a6e253f5be86f9becf94703d818b9757c"
+    },
+    "protocol": {
+      "id": "urn:mission-kit:survey-v2:protocol:survey",
+      "version": "1.0.0",
+      "schema": "urn:mission-kit:survey-v2:schema:protocol:v1",
+      "sourcePath": "source/protocol/survey.protocol.json",
+      "sourceBytesDigest": "sha256:c6b34dac8390920d2c450fa117a13d27f362f6648fa0b5fcf7c0617a61819033"
+    },
+    "sessionSchema": "urn:mission-kit:survey-v2:schema:session-state:v1"
+  },
+  "candidateSelections": [
+    {
+      "id": "v2-authoring-candidate",
+      "activation": "explicit",
+      "status": "candidate",
+      "package": {
+        "id": "urn:mission-kit:survey-v2:package:survey-v2",
+        "version": "1.0.0"
+      },
+      "protocol": {
+        "id": "urn:mission-kit:survey-v2:protocol:survey",
+        "version": "2.0.0",
+        "schema": "urn:mission-kit:survey-v2:schema:protocol:v2",
+        "sourcePath": "source/protocol/survey-v2.protocol.json",
+        "sourceBytesDigest": "sha256:28b0696aa3bd9f8ca54e7f8affcf85e86cb6eda3ca6a38cf2c2e7d2bc49baf69"
+      },
+      "sessionSchema": "urn:mission-kit:survey-v2:schema:session-state:v2"
+    }
+  ]
+}

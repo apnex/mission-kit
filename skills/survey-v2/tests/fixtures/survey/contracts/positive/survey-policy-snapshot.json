@@ -1,0 +1,74 @@
+{
+  "apiVersion": "survey.mission-kit/v1alpha1",
+  "kind": "SurveyPolicySnapshot",
+  "metadata": {
+    "name": "survey-policy"
+  },
+  "spec": {
+    "profileRef": {
+      "apiVersion": "authoring.mission-kit/v1alpha1",
+      "kind": "AuthoringProfileManifest",
+      "name": "survey-profile",
+      "semanticDigest": "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+    },
+    "geometry": {
+      "rounds": 2,
+      "questionsPerRound": 3,
+      "totalQuestions": 6,
+      "choiceOptions": {
+        "minimum": 3,
+        "maximum": 4
+      }
+    },
+    "disclosure": {
+      "mode": "single-current-question",
+      "siblingQuestionFramesVisible": false,
+      "futureQuestionsVisible": false,
+      "interimInterpretationVisible": false
+    },
+    "generation": {
+      "questionFrameSetSize": 3,
+      "questionSetSize": 3,
+      "questionResourceType": {
+        "apiVersion": "schemas.mission-kit/v1alpha1",
+        "kind": "Question"
+      },
+      "contextFrameResourceType": {
+        "apiVersion": "schemas.mission-kit/v1alpha1",
+        "kind": "ContextFrame"
+      },
+      "roundTwoRelations": [
+        "refines",
+        "challenges",
+        "disambiguates",
+        "deepens"
+      ]
+    },
+    "validation": {
+      "rationaleRequired": true,
+      "authority": "mechanical-only",
+      "schemaBindings": [
+        {
+          "id": "survey-schemas",
+          "digest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        }
+      ],
+      "validatorBindings": [
+        {
+          "id": "survey-validators",
+          "digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+        }
+      ]
+    },
+    "contextSelection": {
+      "preserveLayerRoles": true,
+      "allowInlineRuntimeState": false,
+      "selectors": [
+        {
+          "id": "survey-context",
+          "digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        }
+      ]
+    }
+  }
+}

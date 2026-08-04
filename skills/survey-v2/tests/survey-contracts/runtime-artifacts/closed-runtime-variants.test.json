@@ -1,0 +1,42 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey-contracts:closed-runtime-variants",
+  "obligationId": "O-SV13-01",
+  "requirementIds": [],
+  "invariantIds": [
+    "SV13"
+  ],
+  "verification": {
+    "precondition": "The sovereign Survey schemas, semantic validator, and mapped fixtures exist as package-owned files.",
+    "stimulus": "Execute tests/survey-contracts/runtime-artifacts/closed-runtime-variants.test.mjs with node:test.",
+    "expectedSemanticState": "The contract satisfies only O-SV13-01: SurveyRuntimeArtifact admits exactly five closed variants.",
+    "expectedEvidenceState": "The runner reports the literal assertion: SurveyRuntimeArtifact admits exactly five closed variants",
+    "forbiddenMutation": "Do not infer runtime persistence, Director judgment, adapter parity, transport behavior, or any obligation beyond the literal assertion.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "schemas/survey/v1alpha1/survey-runtime-artifact.schema.json",
+      "source/authoring/survey/resource-semantics.mjs",
+      "tests/survey-contracts/support/obligation-scenarios.mjs"
+    ]
+  },
+  "behavior": "SurveyRuntimeArtifact admits exactly five closed variants",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/survey-contracts/runtime-artifacts/closed-runtime-variants.test.mjs",
+  "fixtures": [
+    "tests/survey-contracts/support/contract-validation.mjs",
+    "tests/survey-contracts/support/obligation-scenarios.mjs",
+    "tests/fixtures/survey/contracts/positive/runtime-round-response-set.json",
+    "tests/fixtures/survey/contracts/positive/runtime-revision-directive.json",
+    "tests/fixtures/survey/contracts/positive/runtime-candidate-validation-evidence.json",
+    "tests/fixtures/survey/contracts/positive/runtime-finalization-diagnostic.json",
+    "tests/fixtures/survey/contracts/positive/runtime-composite-runtime-evidence.json"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v1"
+}

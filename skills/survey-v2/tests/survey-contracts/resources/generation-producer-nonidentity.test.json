@@ -1,0 +1,38 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey-contracts:generation-producer-nonidentity",
+  "obligationId": "O-AS10-07",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS10"
+  ],
+  "verification": {
+    "precondition": "The sovereign Survey schemas, semantic validator, and mapped fixtures exist as package-owned files.",
+    "stimulus": "Execute tests/survey-contracts/resources/generation-producer-nonidentity.test.mjs with node:test.",
+    "expectedSemanticState": "The contract satisfies only O-AS10-07: GenerationRecord producer and evidence changes do not alter its created-resource references.",
+    "expectedEvidenceState": "The runner reports the literal assertion: GenerationRecord producer and evidence changes do not alter its created-resource references",
+    "forbiddenMutation": "Do not infer runtime persistence, Director judgment, adapter parity, transport behavior, or any obligation beyond the literal assertion.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "schemas/survey/v1alpha1/generation-record.schema.json",
+      "source/authoring/survey/resource-semantics.mjs",
+      "tests/survey-contracts/support/obligation-scenarios.mjs"
+    ]
+  },
+  "behavior": "GenerationRecord producer and evidence changes do not alter its created-resource references",
+  "evidenceClass": "comparison",
+  "runner": "node:test",
+  "executable": "tests/survey-contracts/resources/generation-producer-nonidentity.test.mjs",
+  "fixtures": [
+    "tests/survey-contracts/support/contract-validation.mjs",
+    "tests/survey-contracts/support/obligation-scenarios.mjs",
+    "tests/fixtures/survey/contracts/positive/generation-record.json"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v1"
+}

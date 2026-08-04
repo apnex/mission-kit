@@ -1,0 +1,45 @@
+{
+  "apiVersion": "survey.mission-kit/v1alpha1",
+  "kind": "SurveyRound",
+  "metadata": {
+    "name": "round-2"
+  },
+  "spec": {
+    "surveyRef": {
+      "apiVersion": "survey.mission-kit/v1alpha1",
+      "kind": "Survey",
+      "name": "survey-example",
+      "semanticDigest": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+    },
+    "ordinal": 2,
+    "role": "refinement",
+    "surveyFrameRef": {
+      "apiVersion": "schemas.mission-kit/v1alpha1",
+      "kind": "ContextFrame",
+      "name": "survey-frame",
+      "semanticDigest": "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+    },
+    "roundFrameRef": {
+      "apiVersion": "schemas.mission-kit/v1alpha1",
+      "kind": "ContextFrame",
+      "name": "round-2-frame",
+      "semanticDigest": "sha256:3333333333333333333333333333333333333333333333333333333333333333"
+    },
+    "parentBinding": {
+      "parentFrameRef": {
+        "apiVersion": "schemas.mission-kit/v1alpha1",
+        "kind": "ContextFrame",
+        "name": "survey-frame",
+        "semanticDigest": "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "scopeRelation": "qualifies",
+      "containmentRationale": "Round 2 qualifies the Survey intent using sealed Round-1 meaning."
+    },
+    "round1InterpretationRef": {
+      "apiVersion": "survey.mission-kit/v1alpha1",
+      "kind": "RoundInterpretation",
+      "name": "round-1-interpretation",
+      "semanticDigest": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+    }
+  }
+}

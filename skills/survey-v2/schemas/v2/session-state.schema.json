@@ -1,0 +1,1081 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:survey-v2:schema:session-state:v2",
+  "title": "Survey v2 authoring-enabled atomic session state",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "sessionId",
+    "slug",
+    "package",
+    "protocol",
+    "revision",
+    "commitRevision",
+    "phase",
+    "runtimeStatus",
+    "blockReason",
+    "lineage",
+    "inputs",
+    "authority",
+    "events",
+    "rejections",
+    "idempotency",
+    "outbox",
+    "attempts",
+    "responses",
+    "drafts",
+    "interpretations",
+    "dependencies",
+    "candidates",
+    "feedback",
+    "ratification",
+    "finalization",
+    "authoring",
+    "journal",
+    "snapshotDigest"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:mission-kit:survey-v2:schema:session-state:v2"
+    },
+    "schemaVersion": {
+      "const": "2.0.0"
+    },
+    "sessionId": {
+      "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/properties/sessionId"
+    },
+    "slug": {
+      "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/properties/slug"
+    },
+    "package": {
+      "$ref": "#/$defs/packagePin"
+    },
+    "protocol": {
+      "$ref": "#/$defs/protocolPin"
+    },
+    "revision": {
+      "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/properties/revision"
+    },
+    "commitRevision": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "phase": {
+      "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/phaseStateId"
+    },
+    "runtimeStatus": {
+      "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/properties/runtimeStatus"
+    },
+    "blockReason": {
+      "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/properties/blockReason"
+    },
+    "lineage": {
+      "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/properties/lineage"
+    },
+    "inputs": {
+      "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/properties/inputs"
+    },
+    "authority": {
+      "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/properties/authority"
+    },
+    "events": {
+      "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/properties/events"
+    },
+    "rejections": {
+      "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/properties/rejections"
+    },
+    "idempotency": {
+      "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/properties/idempotency"
+    },
+    "outbox": {
+      "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/properties/outbox"
+    },
+    "attempts": {
+      "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/properties/attempts"
+    },
+    "responses": {
+      "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/properties/responses"
+    },
+    "drafts": {
+      "allOf": [
+        {
+          "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/properties/drafts"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "round1Instruments": {
+              "type": "array",
+              "maxItems": 0
+            },
+            "round1Interpretations": {
+              "type": "array",
+              "maxItems": 0
+            },
+            "round2Instruments": {
+              "type": "array",
+              "maxItems": 0
+            },
+            "round2Interpretations": {
+              "type": "array",
+              "maxItems": 0
+            },
+            "composites": {
+              "type": "array",
+              "maxItems": 0
+            },
+            "current": {
+              "type": "object",
+              "maxProperties": 0
+            }
+          }
+        }
+      ]
+    },
+    "interpretations": {
+      "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/properties/interpretations"
+    },
+    "dependencies": {
+      "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/properties/dependencies"
+    },
+    "candidates": {
+      "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/properties/candidates"
+    },
+    "feedback": {
+      "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/properties/feedback"
+    },
+    "ratification": {
+      "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/properties/ratification"
+    },
+    "finalization": {
+      "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/properties/finalization"
+    },
+    "authoring": {
+      "$ref": "#/$defs/authoringBranch"
+    },
+    "journal": {
+      "type": "array",
+      "maxItems": 65536,
+      "items": {
+        "$ref": "urn:mission-kit:authoring:schema:authoring-journal-record:v1alpha1"
+      }
+    },
+    "snapshotDigest": {
+      "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/digest"
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "phase": {
+          "const": "new"
+        },
+        "responses": {
+          "type": "object",
+          "maxProperties": 0
+        },
+        "candidates": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "ratification": {
+          "type": "null"
+        },
+        "finalization": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "phase"
+      ],
+      "type": "object"
+    },
+    {
+      "properties": {
+        "phase": {
+          "const": "initializing"
+        },
+        "responses": {
+          "type": "object",
+          "maxProperties": 0
+        },
+        "candidates": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "ratification": {
+          "type": "null"
+        },
+        "finalization": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "phase"
+      ],
+      "type": "object"
+    },
+    {
+      "properties": {
+        "phase": {
+          "const": "initialized"
+        },
+        "responses": {
+          "type": "object",
+          "maxProperties": 0
+        },
+        "dependencies": {
+          "type": "object",
+          "properties": {
+            "outputs": {
+              "type": "object",
+              "required": [
+                "initResolve"
+              ],
+              "properties": {
+                "initResolve": true
+              }
+            }
+          }
+        },
+        "candidates": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "ratification": {
+          "type": "null"
+        },
+        "finalization": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "phase"
+      ],
+      "type": "object"
+    },
+    {
+      "properties": {
+        "phase": {
+          "enum": [
+            "round_1_drafting",
+            "round_1_q1_ready",
+            "round_1_q1_awaiting"
+          ]
+        },
+        "responses": {
+          "type": "object",
+          "maxProperties": 0
+        },
+        "drafts": {
+          "type": "object",
+          "properties": {
+            "round1Interpretations": {
+              "type": "array",
+              "maxItems": 0
+            },
+            "round2Instruments": {
+              "type": "array",
+              "maxItems": 0
+            },
+            "round2Interpretations": {
+              "type": "array",
+              "maxItems": 0
+            },
+            "composites": {
+              "type": "array",
+              "maxItems": 0
+            }
+          }
+        },
+        "candidates": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "ratification": {
+          "type": "null"
+        },
+        "finalization": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "phase"
+      ],
+      "type": "object"
+    },
+    {
+      "properties": {
+        "phase": {
+          "enum": [
+            "round_1_q2_ready",
+            "round_1_q2_awaiting"
+          ]
+        },
+        "responses": {
+          "type": "object",
+          "required": [
+            "Q1"
+          ],
+          "properties": {
+            "Q1": true
+          },
+          "maxProperties": 1
+        },
+        "candidates": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "ratification": {
+          "type": "null"
+        },
+        "finalization": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "phase"
+      ],
+      "type": "object"
+    },
+    {
+      "properties": {
+        "phase": {
+          "enum": [
+            "round_1_q3_ready",
+            "round_1_q3_awaiting"
+          ]
+        },
+        "responses": {
+          "type": "object",
+          "required": [
+            "Q1",
+            "Q2"
+          ],
+          "properties": {
+            "Q1": true,
+            "Q2": true
+          },
+          "maxProperties": 2
+        },
+        "candidates": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "ratification": {
+          "type": "null"
+        },
+        "finalization": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "phase"
+      ],
+      "type": "object"
+    },
+    {
+      "properties": {
+        "phase": {
+          "enum": [
+            "round_1_responses_complete",
+            "round_1_interpreting"
+          ]
+        },
+        "responses": {
+          "type": "object",
+          "required": [
+            "Q1",
+            "Q2",
+            "Q3"
+          ],
+          "properties": {
+            "Q1": true,
+            "Q2": true,
+            "Q3": true
+          },
+          "maxProperties": 3
+        },
+        "interpretations": {
+          "type": "object",
+          "required": [
+            "round1Instrument",
+            "round1ResponseDigest"
+          ],
+          "properties": {
+            "round1Instrument": true,
+            "round1ResponseDigest": true
+          }
+        },
+        "candidates": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "ratification": {
+          "type": "null"
+        },
+        "finalization": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "phase"
+      ],
+      "type": "object"
+    },
+    {
+      "properties": {
+        "phase": {
+          "enum": [
+            "round_1_interpreted",
+            "round_2_drafting",
+            "round_2_q4_ready",
+            "round_2_q4_awaiting"
+          ]
+        },
+        "responses": {
+          "type": "object",
+          "required": [
+            "Q1",
+            "Q2",
+            "Q3"
+          ],
+          "properties": {
+            "Q1": true,
+            "Q2": true,
+            "Q3": true
+          },
+          "maxProperties": 3
+        },
+        "interpretations": {
+          "type": "object",
+          "required": [
+            "round1Instrument",
+            "round1ResponseDigest",
+            "round1",
+            "round1Digest"
+          ],
+          "properties": {
+            "round1Instrument": true,
+            "round1ResponseDigest": true,
+            "round1": true,
+            "round1Digest": true
+          }
+        },
+        "candidates": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "ratification": {
+          "type": "null"
+        },
+        "finalization": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "phase"
+      ],
+      "type": "object"
+    },
+    {
+      "properties": {
+        "phase": {
+          "enum": [
+            "round_2_q5_ready",
+            "round_2_q5_awaiting"
+          ]
+        },
+        "responses": {
+          "type": "object",
+          "required": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4"
+          ],
+          "properties": {
+            "Q1": true,
+            "Q2": true,
+            "Q3": true,
+            "Q4": true
+          },
+          "maxProperties": 4
+        },
+        "candidates": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "ratification": {
+          "type": "null"
+        },
+        "finalization": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "phase"
+      ],
+      "type": "object"
+    },
+    {
+      "properties": {
+        "phase": {
+          "enum": [
+            "round_2_q6_ready",
+            "round_2_q6_awaiting"
+          ]
+        },
+        "responses": {
+          "type": "object",
+          "required": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5"
+          ],
+          "properties": {
+            "Q1": true,
+            "Q2": true,
+            "Q3": true,
+            "Q4": true,
+            "Q5": true
+          },
+          "maxProperties": 5
+        },
+        "candidates": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "ratification": {
+          "type": "null"
+        },
+        "finalization": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "phase"
+      ],
+      "type": "object"
+    },
+    {
+      "properties": {
+        "phase": {
+          "enum": [
+            "round_2_responses_complete",
+            "round_2_interpreting"
+          ]
+        },
+        "responses": {
+          "type": "object",
+          "required": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5",
+            "Q6"
+          ],
+          "properties": {
+            "Q1": true,
+            "Q2": true,
+            "Q3": true,
+            "Q4": true,
+            "Q5": true,
+            "Q6": true
+          },
+          "maxProperties": 6
+        },
+        "interpretations": {
+          "type": "object",
+          "required": [
+            "round1Instrument",
+            "round2Instrument",
+            "round1ResponseDigest",
+            "round2ResponseDigest",
+            "round1",
+            "round1Digest"
+          ],
+          "properties": {
+            "round1Instrument": true,
+            "round2Instrument": true,
+            "round1ResponseDigest": true,
+            "round2ResponseDigest": true,
+            "round1": true,
+            "round1Digest": true
+          }
+        },
+        "ratification": {
+          "type": "null"
+        },
+        "finalization": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "phase"
+      ],
+      "type": "object"
+    },
+    {
+      "properties": {
+        "phase": {
+          "const": "round_2_interpreted"
+        },
+        "responses": {
+          "type": "object",
+          "required": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5",
+            "Q6"
+          ],
+          "properties": {
+            "Q1": true,
+            "Q2": true,
+            "Q3": true,
+            "Q4": true,
+            "Q5": true,
+            "Q6": true
+          },
+          "maxProperties": 6
+        },
+        "interpretations": {
+          "type": "object",
+          "required": [
+            "round1Instrument",
+            "round2Instrument",
+            "round1ResponseDigest",
+            "round2ResponseDigest",
+            "round1",
+            "round2",
+            "round1Digest",
+            "round2Digest"
+          ],
+          "properties": {
+            "round1Instrument": true,
+            "round2Instrument": true,
+            "round1ResponseDigest": true,
+            "round2ResponseDigest": true,
+            "round1": true,
+            "round2": true,
+            "round1Digest": true,
+            "round2Digest": true
+          }
+        },
+        "candidates": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "ratification": {
+          "type": "null"
+        },
+        "finalization": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "phase"
+      ],
+      "type": "object"
+    },
+    {
+      "properties": {
+        "phase": {
+          "const": "composite_drafting"
+        },
+        "responses": {
+          "type": "object",
+          "required": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5",
+            "Q6"
+          ],
+          "properties": {
+            "Q1": true,
+            "Q2": true,
+            "Q3": true,
+            "Q4": true,
+            "Q5": true,
+            "Q6": true
+          },
+          "maxProperties": 6
+        },
+        "interpretations": {
+          "type": "object",
+          "required": [
+            "round1Instrument",
+            "round2Instrument",
+            "round1ResponseDigest",
+            "round2ResponseDigest",
+            "round1",
+            "round2",
+            "round1Digest",
+            "round2Digest"
+          ],
+          "properties": {
+            "round1Instrument": true,
+            "round2Instrument": true,
+            "round1ResponseDigest": true,
+            "round2ResponseDigest": true,
+            "round1": true,
+            "round2": true,
+            "round1Digest": true,
+            "round2Digest": true
+          }
+        },
+        "ratification": {
+          "type": "null"
+        },
+        "finalization": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "phase"
+      ],
+      "type": "object"
+    },
+    {
+      "properties": {
+        "phase": {
+          "const": "composite_candidate"
+        },
+        "responses": {
+          "type": "object",
+          "required": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5",
+            "Q6"
+          ],
+          "properties": {
+            "Q1": true,
+            "Q2": true,
+            "Q3": true,
+            "Q4": true,
+            "Q5": true,
+            "Q6": true
+          },
+          "maxProperties": 6
+        },
+        "candidates": {
+          "type": "array",
+          "minItems": 1
+        },
+        "ratification": {
+          "type": "null"
+        },
+        "finalization": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "phase"
+      ],
+      "type": "object"
+    },
+    {
+      "properties": {
+        "phase": {
+          "enum": [
+            "walkthrough_ready",
+            "walkthrough_in_progress",
+            "awaiting_ratification"
+          ]
+        },
+        "responses": {
+          "type": "object",
+          "required": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5",
+            "Q6"
+          ],
+          "properties": {
+            "Q1": true,
+            "Q2": true,
+            "Q3": true,
+            "Q4": true,
+            "Q5": true,
+            "Q6": true
+          },
+          "maxProperties": 6
+        },
+        "interpretations": {
+          "type": "object",
+          "required": [
+            "candidateValidation",
+            "walkthrough"
+          ],
+          "properties": {
+            "candidateValidation": true,
+            "walkthrough": true
+          }
+        },
+        "candidates": {
+          "type": "array",
+          "minItems": 1
+        },
+        "ratification": {
+          "type": "null"
+        },
+        "finalization": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "phase"
+      ],
+      "type": "object"
+    },
+    {
+      "properties": {
+        "phase": {
+          "const": "revision_requested"
+        },
+        "responses": {
+          "type": "object",
+          "required": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5",
+            "Q6"
+          ],
+          "properties": {
+            "Q1": true,
+            "Q2": true,
+            "Q3": true,
+            "Q4": true,
+            "Q5": true,
+            "Q6": true
+          },
+          "maxProperties": 6
+        },
+        "candidates": {
+          "type": "array",
+          "minItems": 1
+        },
+        "feedback": {
+          "type": "array",
+          "minItems": 1
+        },
+        "ratification": {
+          "type": "null"
+        },
+        "finalization": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "phase"
+      ],
+      "type": "object"
+    },
+    {
+      "properties": {
+        "phase": {
+          "const": "ratified"
+        },
+        "candidates": {
+          "type": "array",
+          "minItems": 1
+        },
+        "ratification": {
+          "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/$defs/ratification"
+        },
+        "finalization": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "phase"
+      ],
+      "type": "object"
+    },
+    {
+      "properties": {
+        "phase": {
+          "const": "finalizing"
+        },
+        "candidates": {
+          "type": "array",
+          "minItems": 1
+        },
+        "ratification": {
+          "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/$defs/ratification"
+        },
+        "finalization": {
+          "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/$defs/finalization"
+        }
+      },
+      "required": [
+        "phase"
+      ],
+      "type": "object"
+    },
+    {
+      "properties": {
+        "phase": {
+          "const": "intent_captured"
+        },
+        "candidates": {
+          "type": "array",
+          "minItems": 1
+        },
+        "ratification": {
+          "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/$defs/ratification"
+        },
+        "finalization": {
+          "allOf": [
+            {
+              "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/$defs/finalization"
+            },
+            {
+              "type": "object",
+              "required": [
+                "handoff"
+              ],
+              "properties": {
+                "handoff": true,
+                "validation": {
+                  "const": "passed"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "required": [
+        "phase"
+      ],
+      "type": "object"
+    },
+    {
+      "properties": {
+        "phase": {
+          "const": "aborted"
+        },
+        "outbox": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "phase"
+      ],
+      "type": "object"
+    }
+  ],
+  "allOf": [
+    {
+      "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/allOf/0"
+    },
+    {
+      "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/allOf/1"
+    }
+  ],
+  "$defs": {
+    "packagePin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "projectionDigest"
+      ],
+      "properties": {
+        "id": {
+          "const": "urn:mission-kit:survey-v2:package:survey-v2"
+        },
+        "version": {
+          "const": "1.0.0"
+        },
+        "projectionDigest": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/digest"
+        }
+      }
+    },
+    "protocolPin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "digest",
+        "snapshot"
+      ],
+      "properties": {
+        "id": {
+          "const": "urn:mission-kit:survey-v2:protocol:survey"
+        },
+        "version": {
+          "const": "2.0.0"
+        },
+        "digest": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/digest"
+        },
+        "snapshot": {
+          "$ref": "urn:mission-kit:survey-v2:schema:protocol:v2"
+        }
+      }
+    },
+    "surveyRuntimeArtifactReference": {
+      "allOf": [
+        {
+          "$ref": "urn:mission-kit:authoring:schema:resource-reference:v1alpha1"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "apiVersion": {
+              "const": "survey.mission-kit/v1alpha1"
+            },
+            "kind": {
+              "const": "SurveyRuntimeArtifact"
+            }
+          },
+          "required": [
+            "apiVersion",
+            "kind"
+          ]
+        }
+      ]
+    },
+    "authoringBranch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "workspace",
+        "runtimeArtifactReferences"
+      ],
+      "properties": {
+        "workspace": {
+          "$ref": "urn:mission-kit:authoring:schema:authoring-workspace:v1alpha1"
+        },
+        "runtimeArtifactReferences": {
+          "type": "array",
+          "maxItems": 4096,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/surveyRuntimeArtifactReference"
+          }
+        }
+      }
+    }
+  }
+}

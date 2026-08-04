@@ -1,0 +1,39 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:test:paired-state-rejection",
+  "obligationId": "O-SV14-03",
+  "requirementIds": [],
+  "invariantIds": [
+    "SV14"
+  ],
+  "verification": {
+    "precondition": "The canonical paired-state matrix validates and the bounded invalid-case fixture exists.",
+    "stimulus": "Independently replace one authoring state, replace one phase state, duplicate one pair, and construct one resolved but illegal combination.",
+    "expectedSemanticState": "Each invalid matrix is rejected with the specific unresolved, duplicate, or illegal paired-state issue and no state authority changes.",
+    "expectedEvidenceState": "node:test reports the literal assertion: paired-state validation rejects unresolved, duplicate, and illegal pairs",
+    "forbiddenMutation": "The negative cases must be isolated clones and must not alter canonical source bytes or persist session state.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "schemas/v2/paired-state-matrix.schema.json",
+      "source/authoring/survey/protocol-semantics.mjs",
+      "source/protocol/paired-state-matrix.v2.json",
+      "tests/fixtures/survey/protocol/paired-state-invalid-cases.json"
+    ]
+  },
+  "behavior": "paired-state validation rejects unresolved, duplicate, and illegal pairs",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/survey-contracts/paired-state/paired-state-rejection.test.mjs",
+  "fixtures": [
+    "tests/fixtures/survey/protocol/paired-state-invalid-cases.json",
+    "tests/survey-contracts/protocol/support.mjs",
+    "source/protocol/paired-state-matrix.v2.json"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v1"
+}

@@ -1,0 +1,51 @@
+{
+  "apiVersion": "survey.mission-kit/v1alpha1",
+  "kind": "SurveyRuntimeArtifact",
+  "metadata": {
+    "name": "composite-runtime-evidence"
+  },
+  "spec": {
+    "artifactType": "CompositeRuntimeEvidence",
+    "source": {
+      "surveyRunId": "survey-run-1",
+      "sourcePhaseTransitionId": "T24",
+      "sourceEventId": "BEGIN_COMPOSITE",
+      "sourceSemanticRevision": 7,
+      "sourceDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "payload": {
+      "methodologyRefs": [
+        {
+          "apiVersion": "authoring.mission-kit/v1alpha1",
+          "kind": "SourceSnapshot",
+          "name": "survey-intent",
+          "semanticDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      ],
+      "authorityRefs": [
+        {
+          "apiVersion": "schemas.mission-kit/v1alpha1",
+          "kind": "ContextFrame",
+          "name": "survey-frame",
+          "semanticDigest": "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+        }
+      ],
+      "dependencyRefs": [
+        {
+          "apiVersion": "survey.mission-kit/v1alpha1",
+          "kind": "RoundInterpretation",
+          "name": "round-1-interpretation",
+          "semanticDigest": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+        }
+      ],
+      "runtimeRefs": [
+        {
+          "apiVersion": "survey.mission-kit/v1alpha1",
+          "kind": "SurveyRuntimeArtifact",
+          "name": "round-1-responses",
+          "semanticDigest": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ]
+    }
+  }
+}

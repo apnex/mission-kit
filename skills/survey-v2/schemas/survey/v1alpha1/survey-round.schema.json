@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:survey:schema:survey-round:v1alpha1",
+  "title": "Mission Kit SurveyRound resource v1alpha1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "apiVersion",
+    "kind",
+    "metadata",
+    "spec"
+  ],
+  "properties": {
+    "apiVersion": {
+      "const": "survey.mission-kit/v1alpha1"
+    },
+    "kind": {
+      "const": "SurveyRound"
+    },
+    "metadata": {
+      "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/metadata"
+    },
+    "spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "surveyRef",
+        "ordinal",
+        "role",
+        "surveyFrameRef",
+        "roundFrameRef",
+        "parentBinding"
+      ],
+      "properties": {
+        "surveyRef": {
+          "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/SurveyReference"
+        },
+        "ordinal": {
+          "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/roundOrdinal"
+        },
+        "role": {
+          "enum": [
+            "foundation",
+            "refinement"
+          ]
+        },
+        "surveyFrameRef": {
+          "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/ContextFrameReference"
+        },
+        "roundFrameRef": {
+          "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/ContextFrameReference"
+        },
+        "parentBinding": {
+          "$ref": "#/$defs/parentBinding"
+        },
+        "round1InterpretationRef": {
+          "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/RoundInterpretationReference"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "parentBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "parentFrameRef",
+        "scopeRelation",
+        "containmentRationale"
+      ],
+      "properties": {
+        "parentFrameRef": {
+          "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/ContextFrameReference"
+        },
+        "scopeRelation": {
+          "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/scopeRelation"
+        },
+        "containmentRationale": {
+          "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/rationale"
+        }
+      }
+    }
+  }
+}

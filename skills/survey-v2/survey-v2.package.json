@@ -138,6 +138,66 @@
     {
       "id": "urn:mission-kit:authoring:schema:authoring-journal-record:v1alpha1",
       "path": "schemas/authoring/v1alpha1/authoring-journal-record.schema.json"
+    },
+    {
+      "id": "urn:mission-kit:survey:schema:common:v1alpha1",
+      "path": "schemas/survey/v1alpha1/common.schema.json"
+    },
+    {
+      "id": "urn:mission-kit:survey:schema:survey:v1alpha1",
+      "path": "schemas/survey/v1alpha1/survey.schema.json"
+    },
+    {
+      "id": "urn:mission-kit:survey:schema:survey-round:v1alpha1",
+      "path": "schemas/survey/v1alpha1/survey-round.schema.json"
+    },
+    {
+      "id": "urn:mission-kit:survey:schema:question-frame-set:v1alpha1",
+      "path": "schemas/survey/v1alpha1/question-frame-set.schema.json"
+    },
+    {
+      "id": "urn:mission-kit:survey:schema:survey-question-binding:v1alpha1",
+      "path": "schemas/survey/v1alpha1/survey-question-binding.schema.json"
+    },
+    {
+      "id": "urn:mission-kit:survey:schema:round-instrument:v1alpha1",
+      "path": "schemas/survey/v1alpha1/round-instrument.schema.json"
+    },
+    {
+      "id": "urn:mission-kit:survey:schema:round-interpretation:v1alpha1",
+      "path": "schemas/survey/v1alpha1/round-interpretation.schema.json"
+    },
+    {
+      "id": "urn:mission-kit:survey:schema:survey-policy-snapshot:v1alpha1",
+      "path": "schemas/survey/v1alpha1/survey-policy-snapshot.schema.json"
+    },
+    {
+      "id": "urn:mission-kit:survey:schema:survey-runtime-artifact:v1alpha1",
+      "path": "schemas/survey/v1alpha1/survey-runtime-artifact.schema.json"
+    },
+    {
+      "id": "urn:mission-kit:survey:schema:generation-record:v1alpha1",
+      "path": "schemas/survey/v1alpha1/generation-record.schema.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:schema:common:v2",
+      "path": "schemas/v2/common.schema.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:schema:protocol:v2",
+      "path": "schemas/v2/protocol.schema.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:schema:paired-state-matrix:v2",
+      "path": "schemas/v2/paired-state-matrix.schema.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:schema:protocol-selection:v2",
+      "path": "schemas/v2/protocol-selection.schema.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:schema:session-state:v2",
+      "path": "schemas/v2/session-state.schema.json"
     }
   ],
   "sharedSchemaClosure": {
@@ -3043,6 +3103,530 @@
     },
     {
       "path": "tests/shared-schema-closure/schema-reference-path-escape-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/survey/v1alpha1/common.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/survey/v1alpha1/generation-record.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/survey/v1alpha1/question-frame-set.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/survey/v1alpha1/round-instrument.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/survey/v1alpha1/round-interpretation.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/survey/v1alpha1/survey-policy-snapshot.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/survey/v1alpha1/survey-question-binding.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/survey/v1alpha1/survey-round.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/survey/v1alpha1/survey-runtime-artifact.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/survey/v1alpha1/survey.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/v2/common.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/v2/paired-state-matrix.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/v2/protocol-selection.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/v2/protocol.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/v2/session-state.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "source/authoring/survey/protocol-semantics.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/authoring/survey/resource-semantics.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/authoring/survey/session-semantics.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/authoring/survey/survey-authoring.protocol.json",
+      "kind": "authored"
+    },
+    {
+      "path": "source/protocol/paired-state-matrix.v2.json",
+      "kind": "authored"
+    },
+    {
+      "path": "source/protocol/protocol-selection.json",
+      "kind": "authored"
+    },
+    {
+      "path": "source/protocol/survey-v2.protocol.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/negative/binding-inline-survey-fields.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/negative/question-frame-parent-mismatch.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/negative/question-frame-set-fourth-altitude.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/negative/question-frame-slot-duplicate.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/negative/round-instrument-incomplete.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/negative/round-instrument-inline-question.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/negative/round-one-prior-interpretation.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/negative/round-two-missing-interpretation.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/negative/runtime-source-mismatch.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/generation-record.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/question-frame-set-1.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/question-frame-set-2.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/round-instrument-1.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/round-instrument-2.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/round-interpretation-1.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/round-interpretation-2.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/runtime-candidate-validation-evidence.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/runtime-composite-runtime-evidence.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/runtime-finalization-diagnostic.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/runtime-revision-directive.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/runtime-round-response-set.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/survey-policy-snapshot.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/survey-question-binding-1.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/survey-round-1.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/survey-round-2.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/survey.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/protocol/golden-bindings.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/protocol/paired-state-invalid-cases.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/protocol/selection-cases.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/session-v2/historical-v1-session.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/session-v2/session-factory.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/compatibility/v1-session-selection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/compatibility/v1-session-selection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/paired-state/canonical-paired-state-matrix.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/paired-state/canonical-paired-state-matrix.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/paired-state/paired-state-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/paired-state/paired-state-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/protocol/authoring-protocol-contract.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/protocol/authoring-protocol-contract.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/protocol/candidate-protocol-binding.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/protocol/candidate-protocol-binding.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/protocol/support.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/binding-neutrality.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/binding-neutrality.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/child-frame-bindings.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/child-frame-bindings.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/frame-set-coordination-container.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/frame-set-coordination-container.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/generation-exact-ancestry.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/generation-exact-ancestry.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/generation-producer-nonidentity.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/generation-producer-nonidentity.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/immutable-round-instrument.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/immutable-round-instrument.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/incomplete-round-instrument.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/incomplete-round-instrument.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/invalid-question-frame-slots.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/invalid-question-frame-slots.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/neutral-question-binding.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/neutral-question-binding.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/ordered-question-frame-slots.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/ordered-question-frame-slots.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/round-instrument-closure.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/round-instrument-closure.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/survey-geometry.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/survey-geometry.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/survey-policy-snapshot.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/survey-policy-snapshot.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/survey-round-ancestry.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/survey-round-ancestry.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/runtime-artifacts/closed-runtime-variants.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/runtime-artifacts/closed-runtime-variants.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/runtime-artifacts/runtime-source-bindings.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/runtime-artifacts/runtime-source-bindings.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/runtime-artifacts/typed-round-response-ingress.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/runtime-artifacts/typed-round-response-ingress.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/selection/protocol-selection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/selection/protocol-selection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/semantics/parent-ancestry-mismatch.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/semantics/parent-ancestry-mismatch.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/semantics/rationale-authority-boundary.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/semantics/rationale-authority-boundary.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/semantics/round-interpretation-ancestry.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/semantics/round-interpretation-ancestry.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/semantics/round-one-prior-forbidden.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/semantics/round-one-prior-forbidden.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/semantics/round-two-prior-required.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/semantics/round-two-prior-required.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/session/coupled-edge-continuity.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/session/coupled-edge-continuity.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/session/global-journal-closure.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/session/global-journal-closure.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/session/immutable-history-heads.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/session/immutable-history-heads.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/session/legacy-draft-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/session/legacy-draft-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/session/legal-paired-states.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/session/legal-paired-states.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/session/paired-state-boundaries.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/session/paired-state-boundaries.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/session/support/session-validation.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/session/typed-runtime-artifact-references.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/session/typed-runtime-artifact-references.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/support/contract-validation.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/support/fixture-factory.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/support/generate-fixtures.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/support/generate-suite.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/support/obligation-scenarios.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/support/suite-definition.mjs",
       "kind": "authored"
     }
   ],

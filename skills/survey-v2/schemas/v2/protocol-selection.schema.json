@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:survey-v2:schema:protocol-selection:v2",
+  "title": "Survey protocol candidate-selection contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "id",
+    "defaultSelection",
+    "candidateSelections"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:mission-kit:survey-v2:schema:protocol-selection:v2"
+    },
+    "schemaVersion": {
+      "const": "2.0.0"
+    },
+    "id": {
+      "const": "urn:mission-kit:survey-v2:protocol-selection:survey"
+    },
+    "defaultSelection": {
+      "$ref": "#/$defs/frozenDefault"
+    },
+    "candidateSelections": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {
+        "$ref": "#/$defs/explicitCandidate"
+      }
+    }
+  },
+  "$defs": {
+    "candidatePackageBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version"
+      ],
+      "properties": {
+        "id": {
+          "const": "urn:mission-kit:survey-v2:package:survey-v2"
+        },
+        "version": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/schemaVersion"
+        }
+      }
+    },
+    "frozenPackageBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "projectionDigest"
+      ],
+      "properties": {
+        "id": {
+          "const": "urn:mission-kit:survey-v2:package:survey-v2"
+        },
+        "version": {
+          "const": "1.0.0"
+        },
+        "projectionDigest": {
+          "const": "sha256:6603b777b82783176fca6129bfecde7a6e253f5be86f9becf94703d818b9757c"
+        }
+      }
+    },
+    "protocolBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "schema",
+        "sourcePath",
+        "sourceBytesDigest"
+      ],
+      "properties": {
+        "id": {
+          "const": "urn:mission-kit:survey-v2:protocol:survey"
+        },
+        "version": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/schemaVersion"
+        },
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourcePath": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/relativePath"
+        },
+        "sourceBytesDigest": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/digest"
+        }
+      }
+    },
+    "frozenDefault": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "activation",
+        "status",
+        "package",
+        "protocol",
+        "sessionSchema"
+      ],
+      "properties": {
+        "id": {
+          "const": "frozen-v1"
+        },
+        "activation": {
+          "const": "implicit"
+        },
+        "status": {
+          "const": "frozen"
+        },
+        "package": {
+          "$ref": "#/$defs/frozenPackageBinding"
+        },
+        "protocol": {
+          "$ref": "#/$defs/protocolBinding"
+        },
+        "sessionSchema": {
+          "const": "urn:mission-kit:survey-v2:schema:session-state:v1"
+        }
+      }
+    },
+    "explicitCandidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "activation",
+        "status",
+        "package",
+        "protocol",
+        "sessionSchema"
+      ],
+      "properties": {
+        "id": {
+          "const": "v2-authoring-candidate"
+        },
+        "activation": {
+          "const": "explicit"
+        },
+        "status": {
+          "const": "candidate"
+        },
+        "package": {
+          "$ref": "#/$defs/candidatePackageBinding"
+        },
+        "protocol": {
+          "$ref": "#/$defs/protocolBinding"
+        },
+        "sessionSchema": {
+          "const": "urn:mission-kit:survey-v2:schema:session-state:v2"
+        }
+      }
+    }
+  }
+}

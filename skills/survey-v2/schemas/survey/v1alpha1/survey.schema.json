@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:survey:schema:survey:v1alpha1",
+  "title": "Mission Kit Survey resource v1alpha1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "apiVersion",
+    "kind",
+    "metadata",
+    "spec"
+  ],
+  "properties": {
+    "apiVersion": {
+      "const": "survey.mission-kit/v1alpha1"
+    },
+    "kind": {
+      "const": "Survey"
+    },
+    "metadata": {
+      "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/metadata"
+    },
+    "spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policySnapshotRef",
+        "surveyFrameRef"
+      ],
+      "properties": {
+        "policySnapshotRef": {
+          "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/SurveyPolicySnapshotReference"
+        },
+        "surveyFrameRef": {
+          "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/ContextFrameReference"
+        }
+      }
+    }
+  }
+}

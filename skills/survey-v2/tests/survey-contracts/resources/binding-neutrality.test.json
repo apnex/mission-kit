@@ -1,0 +1,39 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey-contracts:binding-neutrality",
+  "obligationId": "O-SV06-01",
+  "requirementIds": [],
+  "invariantIds": [
+    "SV06"
+  ],
+  "verification": {
+    "precondition": "The sovereign Survey schemas, semantic validator, and mapped fixtures exist as package-owned files.",
+    "stimulus": "Execute tests/survey-contracts/resources/binding-neutrality.test.mjs with node:test.",
+    "expectedSemanticState": "The contract satisfies only O-SV06-01: SurveyQuestionBinding admits only a shared neutral Question reference and never inline Survey fields.",
+    "expectedEvidenceState": "The runner reports the literal assertion: SurveyQuestionBinding admits only a shared neutral Question reference and never inline Survey fields",
+    "forbiddenMutation": "Do not infer runtime persistence, Director judgment, adapter parity, transport behavior, or any obligation beyond the literal assertion.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "schemas/survey/v1alpha1/survey-question-binding.schema.json",
+      "source/authoring/survey/resource-semantics.mjs",
+      "tests/survey-contracts/support/obligation-scenarios.mjs"
+    ]
+  },
+  "behavior": "SurveyQuestionBinding admits only a shared neutral Question reference and never inline Survey fields",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/survey-contracts/resources/binding-neutrality.test.mjs",
+  "fixtures": [
+    "tests/survey-contracts/support/contract-validation.mjs",
+    "tests/survey-contracts/support/obligation-scenarios.mjs",
+    "tests/fixtures/survey/contracts/positive/survey-question-binding-1.json",
+    "tests/fixtures/survey/contracts/negative/binding-inline-survey-fields.json"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v1"
+}

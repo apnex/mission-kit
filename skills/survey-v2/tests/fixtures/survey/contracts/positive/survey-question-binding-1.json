@@ -1,0 +1,35 @@
+{
+  "apiVersion": "survey.mission-kit/v1alpha1",
+  "kind": "SurveyQuestionBinding",
+  "metadata": {
+    "name": "binding-1"
+  },
+  "spec": {
+    "frameSetRef": {
+      "apiVersion": "survey.mission-kit/v1alpha1",
+      "kind": "QuestionFrameSet",
+      "name": "round-1-frame-set",
+      "semanticDigest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    },
+    "roundRef": {
+      "apiVersion": "survey.mission-kit/v1alpha1",
+      "kind": "SurveyRound",
+      "name": "round-1",
+      "semanticDigest": "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+    },
+    "slot": 1,
+    "questionOrdinal": 1,
+    "questionFrameRef": {
+      "apiVersion": "schemas.mission-kit/v1alpha1",
+      "kind": "ContextFrame",
+      "name": "question-1-frame",
+      "semanticDigest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    },
+    "questionRef": {
+      "apiVersion": "schemas.mission-kit/v1alpha1",
+      "kind": "Question",
+      "name": "question-1",
+      "semanticDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    }
+  }
+}

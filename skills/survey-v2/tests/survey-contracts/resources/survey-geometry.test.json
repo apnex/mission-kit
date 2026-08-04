@@ -1,0 +1,39 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey-contracts:survey-geometry",
+  "obligationId": "O-SV01-01",
+  "requirementIds": [],
+  "invariantIds": [
+    "SV01"
+  ],
+  "verification": {
+    "precondition": "The sovereign Survey schemas, semantic validator, and mapped fixtures exist as package-owned files.",
+    "stimulus": "Execute tests/survey-contracts/resources/survey-geometry.test.mjs with node:test.",
+    "expectedSemanticState": "The contract satisfies only O-SV01-01: the Survey resource fixes the two-round three-question geometry and top frame.",
+    "expectedEvidenceState": "The runner reports the literal assertion: the Survey resource fixes the two-round three-question geometry and top frame",
+    "forbiddenMutation": "Do not infer runtime persistence, Director judgment, adapter parity, transport behavior, or any obligation beyond the literal assertion.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "schemas/survey/v1alpha1/survey.schema.json",
+      "source/authoring/survey/resource-semantics.mjs",
+      "tests/survey-contracts/support/obligation-scenarios.mjs"
+    ]
+  },
+  "behavior": "the Survey resource fixes the two-round three-question geometry and top frame",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/survey-contracts/resources/survey-geometry.test.mjs",
+  "fixtures": [
+    "tests/survey-contracts/support/contract-validation.mjs",
+    "tests/survey-contracts/support/obligation-scenarios.mjs",
+    "tests/fixtures/survey/contracts/positive/survey.json",
+    "tests/fixtures/survey/contracts/positive/survey-policy-snapshot.json"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v1"
+}

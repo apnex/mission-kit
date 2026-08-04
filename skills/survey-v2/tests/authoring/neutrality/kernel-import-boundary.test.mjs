@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 
 const kernelRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
-  "../../../source/authoring"
+  "../../../source/authoring/kernel"
 );
 
 async function modulesBelow(directory) {

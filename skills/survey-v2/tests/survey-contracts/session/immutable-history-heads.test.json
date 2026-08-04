@@ -1,0 +1,40 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey-contracts:session:immutable-history-heads",
+  "obligationId": "O-AS11-11",
+  "requirementIds": [
+    "R11"
+  ],
+  "invariantIds": [
+    "AS11"
+  ],
+  "verification": {
+    "precondition": "A v2 session workspace contains one current resource version and one exact superseded version.",
+    "stimulus": "Validate the complete session, then remove the immutable version selected by history.",
+    "expectedSemanticState": "The complete immutable history and active head validate without changing either reference.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: the v2 session closes immutable resource history and active heads without deleting prior versions",
+    "forbiddenMutation": "No prior resource version may be deleted or reinterpreted as the active head.",
+    "applicability": {
+      "mode": "agnostic",
+      "transports": [],
+      "adapters": [
+        "urn:mission-kit:survey-v2:adapter:session"
+      ]
+    },
+    "inspectedAuthorities": [
+      "schemas/authoring/v1alpha1/authoring-workspace.schema.json",
+      "schemas/v2/session-state.schema.json",
+      "source/authoring/survey/session-semantics.mjs"
+    ]
+  },
+  "behavior": "the v2 session closes immutable resource history and active heads without deleting prior versions",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/survey-contracts/session/immutable-history-heads.test.mjs",
+  "fixtures": [
+    "tests/fixtures/survey/session-v2/session-factory.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v1"
+}

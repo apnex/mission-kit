@@ -1,0 +1,26 @@
+{
+  "unresolvedAuthoring": {
+    "index": 0,
+    "authoringState": "missing_authoring_state",
+    "expectedIssue": "PAIRED_STATE_AUTHORING_UNRESOLVED"
+  },
+  "unresolvedPhase": {
+    "index": 0,
+    "phaseState": "missing_phase_state",
+    "expectedIssue": "PAIRED_STATE_PHASE_UNRESOLVED"
+  },
+  "duplicate": {
+    "index": 1,
+    "copyFromIndex": 0,
+    "expectedIssue": "PAIRED_STATE_DUPLICATE"
+  },
+  "illegal": {
+    "index": 3,
+    "authoringState": "survey_frame_required",
+    "phaseState": "initialized",
+    "pathClasses": [
+      "mainline"
+    ],
+    "expectedIssue": "PAIRED_STATE_ILLEGAL"
+  }
+}

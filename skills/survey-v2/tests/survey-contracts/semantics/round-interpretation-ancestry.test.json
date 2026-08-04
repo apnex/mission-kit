@@ -1,0 +1,39 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey-contracts:round-interpretation-ancestry",
+  "obligationId": "O-SV07-03",
+  "requirementIds": [],
+  "invariantIds": [
+    "SV07"
+  ],
+  "verification": {
+    "precondition": "The sovereign Survey schemas, semantic validator, and mapped fixtures exist as package-owned files.",
+    "stimulus": "Execute tests/survey-contracts/semantics/round-interpretation-ancestry.test.mjs with node:test.",
+    "expectedSemanticState": "The contract satisfies only O-SV07-03: RoundInterpretation preserves exact round-specific ancestry and ordinals.",
+    "expectedEvidenceState": "The runner reports the literal assertion: RoundInterpretation preserves exact round-specific ancestry and ordinals",
+    "forbiddenMutation": "Do not infer runtime persistence, Director judgment, adapter parity, transport behavior, or any obligation beyond the literal assertion.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "schemas/survey/v1alpha1/round-interpretation.schema.json",
+      "source/authoring/survey/resource-semantics.mjs",
+      "tests/survey-contracts/support/obligation-scenarios.mjs"
+    ]
+  },
+  "behavior": "RoundInterpretation preserves exact round-specific ancestry and ordinals",
+  "evidenceClass": "positive",
+  "runner": "node:test",
+  "executable": "tests/survey-contracts/semantics/round-interpretation-ancestry.test.mjs",
+  "fixtures": [
+    "tests/survey-contracts/support/contract-validation.mjs",
+    "tests/survey-contracts/support/obligation-scenarios.mjs",
+    "tests/fixtures/survey/contracts/positive/round-interpretation-1.json",
+    "tests/fixtures/survey/contracts/positive/round-interpretation-2.json"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v1"
+}

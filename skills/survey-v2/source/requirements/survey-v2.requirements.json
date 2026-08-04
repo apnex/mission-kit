@@ -687,6 +687,10 @@
         {
           "id": "O-AS02-01",
           "statement": "AuthoringProtocol accepts a closed, reachable neutral state machine"
+        },
+        {
+          "id": "O-AS02-02",
+          "statement": "the Survey AuthoringProtocol is closed and reachable with exactly eighteen states, its complete transition set, and exact task, wait, and terminal rules"
         }
       ],
       "evidenceClasses": [
@@ -1072,6 +1076,10 @@
         {
           "id": "O-AS10-06",
           "statement": "workspace semantic-state identity is an explicit evidence-free whitelist"
+        },
+        {
+          "id": "O-AS10-07",
+          "statement": "GenerationRecord producer and evidence changes do not alter its created-resource references"
         }
       ],
       "evidenceClasses": [
@@ -1122,6 +1130,10 @@
         {
           "id": "O-AS11-08",
           "statement": "a workspace contract rejects duplicate exact stored resource versions"
+        },
+        {
+          "id": "O-AS11-11",
+          "statement": "the v2 session closes immutable resource history and active heads without deleting prior versions"
         }
       ],
       "evidenceClasses": [
@@ -1277,6 +1289,10 @@
         {
           "id": "O-AS14-20",
           "statement": "semantic validation fails closed beyond its traversal depth bound"
+        },
+        {
+          "id": "O-AS14-21",
+          "statement": "GenerationRecord binds the exact Request, Assignment, Submission, created results, and ancestry"
         }
       ],
       "evidenceClasses": [
@@ -1356,6 +1372,14 @@
         {
           "id": "O-AS15-10",
           "statement": "an event workspace-version rule fails when the exact pre-state record is absent"
+        },
+        {
+          "id": "O-AS15-18",
+          "statement": "the v2 session journal closes its commit revision, length, ordinal sequence, and referenced records"
+        },
+        {
+          "id": "O-AS15-19",
+          "statement": "the v2 session admits only continuous ordered coupled-machine edges"
         }
       ],
       "evidenceClasses": [
@@ -1364,6 +1388,262 @@
         "conformance",
         "resume",
         "failure-injection"
+      ]
+    },
+    {
+      "id": "SV01",
+      "statement": "Survey, Round, and Question are exactly three ContextFrame altitudes.",
+      "acceptanceObligations": [
+        {
+          "id": "O-SV01-01",
+          "statement": "the Survey resource fixes the two-round three-question geometry and top frame"
+        },
+        {
+          "id": "O-SV01-02",
+          "statement": "SurveyRound encodes its round altitude and exact ancestry"
+        }
+      ],
+      "evidenceClasses": [
+        "negative",
+        "conformance"
+      ]
+    },
+    {
+      "id": "SV02",
+      "statement": "QuestionFrameSet is an atomic coordination container, not a fourth altitude.",
+      "acceptanceObligations": [
+        {
+          "id": "O-SV02-01",
+          "statement": "QuestionFrameSet is a coordination container and not a ContextFrame altitude"
+        }
+      ],
+      "evidenceClasses": [
+        "negative",
+        "conformance"
+      ]
+    },
+    {
+      "id": "SV03",
+      "statement": "A parent frame is frozen before any child frame is authored.",
+      "acceptanceObligations": [
+        {
+          "id": "O-SV03-01",
+          "statement": "child frame bindings carry the exact parent reference, scope relation, and rationale"
+        },
+        {
+          "id": "O-SV03-02",
+          "statement": "mismatched parent ancestry is rejected semantically"
+        }
+      ],
+      "evidenceClasses": [
+        "positive",
+        "negative"
+      ]
+    },
+    {
+      "id": "SV04",
+      "statement": "Three QuestionFrames are generated, judged, and frozen atomically.",
+      "acceptanceObligations": [
+        {
+          "id": "O-SV04-01",
+          "statement": "exactly three ordered QuestionFrame slots are accepted"
+        },
+        {
+          "id": "O-SV04-02",
+          "statement": "non-three or duplicate QuestionFrame slot geometry is rejected"
+        }
+      ],
+      "evidenceClasses": [
+        "positive",
+        "negative"
+      ]
+    },
+    {
+      "id": "SV05",
+      "statement": "Three Questions are generated from the complete frozen frame set.",
+      "acceptanceObligations": [
+        {
+          "id": "O-SV05-01",
+          "statement": "a binding associates one neutral Question with one frozen frame slot"
+        },
+        {
+          "id": "O-SV05-02",
+          "statement": "RoundInstrument closes exactly three ordered Question, binding, and frame references"
+        },
+        {
+          "id": "O-SV05-03",
+          "statement": "an incomplete or inconsistent RoundInstrument is rejected"
+        }
+      ],
+      "evidenceClasses": [
+        "positive",
+        "negative"
+      ]
+    },
+    {
+      "id": "SV06",
+      "statement": "A neutral Question contains no Survey context or binding fields.",
+      "acceptanceObligations": [
+        {
+          "id": "O-SV06-01",
+          "statement": "SurveyQuestionBinding admits only a shared neutral Question reference and never inline Survey fields"
+        }
+      ],
+      "evidenceClasses": [
+        "negative",
+        "conformance"
+      ]
+    },
+    {
+      "id": "SV07",
+      "statement": "Round 2 binds both SurveyFrame and sealed Round-1 interpretation ancestry.",
+      "acceptanceObligations": [
+        {
+          "id": "O-SV07-01",
+          "statement": "Round-1 ancestry forbids a prior-round interpretation"
+        },
+        {
+          "id": "O-SV07-02",
+          "statement": "Round-2 ancestry requires the exact sealed Round-1 interpretation"
+        },
+        {
+          "id": "O-SV07-03",
+          "statement": "RoundInterpretation preserves exact round-specific ancestry and ordinals"
+        }
+      ],
+      "evidenceClasses": [
+        "positive",
+        "negative"
+      ]
+    },
+    {
+      "id": "SV08",
+      "statement": "The Director sees only the current QuestionFrame projection.",
+      "acceptanceObligations": [],
+      "evidenceClasses": [
+        "negative",
+        "conformance"
+      ]
+    },
+    {
+      "id": "SV09",
+      "statement": "Validators never claim semantic coverage, orthogonality, interpretation, or ratification authority.",
+      "acceptanceObligations": [
+        {
+          "id": "O-SV09-01",
+          "statement": "semantic validators check structural ancestry and rationale presence without judging rationale truth"
+        }
+      ],
+      "evidenceClasses": [
+        "negative",
+        "conformance"
+      ]
+    },
+    {
+      "id": "SV10",
+      "statement": "The runtime consumes immutable authored products and does not reconstruct them.",
+      "acceptanceObligations": [
+        {
+          "id": "O-SV10-01",
+          "statement": "RoundInstrument is an immutable-reference-only runtime input"
+        },
+        {
+          "id": "O-SV10-02",
+          "statement": "SurveyPolicySnapshot freezes the exact geometry, disclosure, and context-selection policy"
+        },
+        {
+          "id": "O-SV10-03",
+          "statement": "the v2 session forbids legacy complex draft mirrors after authoring product handoff"
+        }
+      ],
+      "evidenceClasses": [
+        "positive",
+        "negative"
+      ]
+    },
+    {
+      "id": "SV11",
+      "statement": "An individual Question, Question ContextFrame, or binding cannot bypass its exactly-three atomic authoring unit.",
+      "acceptanceObligations": [],
+      "evidenceClasses": [
+        "negative",
+        "conformance"
+      ]
+    },
+    {
+      "id": "SV12",
+      "statement": "A revision that affects an already presented Question requires a linked new run.",
+      "acceptanceObligations": [],
+      "evidenceClasses": [
+        "negative",
+        "forward"
+      ]
+    },
+    {
+      "id": "SV13",
+      "statement": "Authoring context consumes runtime state only through typed immutable SurveyRuntimeArtifact references.",
+      "acceptanceObligations": [
+        {
+          "id": "O-SV13-01",
+          "statement": "SurveyRuntimeArtifact admits exactly five closed variants"
+        },
+        {
+          "id": "O-SV13-02",
+          "statement": "every SurveyRuntimeArtifact variant binds its run, event, phase, revision, and source digest"
+        },
+        {
+          "id": "O-SV13-03",
+          "statement": "RoundInterpretation runtime ingress resolves only a typed RoundResponseSet artifact"
+        },
+        {
+          "id": "O-SV13-04",
+          "statement": "the v2 session admits only typed immutable SurveyRuntimeArtifact references"
+        }
+      ],
+      "evidenceClasses": [
+        "negative",
+        "conformance"
+      ]
+    },
+    {
+      "id": "SV14",
+      "statement": "Every runtime correction, failure, and abort path leaves a schema-valid paired authoring and phase state.",
+      "acceptanceObligations": [
+        {
+          "id": "O-SV14-01",
+          "statement": "candidate protocol 2.x binds the exact canonical authoring-protocol digest and retires T42 through T46"
+        },
+        {
+          "id": "O-SV14-02",
+          "statement": "the canonical paired-state matrix contains the full legal mainline, correction, abort, and terminal set"
+        },
+        {
+          "id": "O-SV14-03",
+          "statement": "paired-state validation rejects unresolved, duplicate, and illegal pairs"
+        },
+        {
+          "id": "O-SV14-04",
+          "statement": "protocol selection defaults implicitly to frozen v1 and exposes v2 only through explicit candidate selection"
+        },
+        {
+          "id": "O-SV14-05",
+          "statement": "every paired authoring and phase state declared legal by the matrix validates"
+        },
+        {
+          "id": "O-SV14-06",
+          "statement": "illegal pairs reject while declared correction, abort, and terminal pairs are admitted"
+        },
+        {
+          "id": "O-SV14-07",
+          "statement": "historical v1 sessions preserve frozen package identification and cannot be reinterpreted by the candidate selector"
+        }
+      ],
+      "evidenceClasses": [
+        "positive",
+        "negative",
+        "conformance",
+        "failure-injection",
+        "comparison"
       ]
     }
   ]

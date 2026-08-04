@@ -1,0 +1,41 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey-contracts:session:global-journal-closure",
+  "obligationId": "O-AS15-18",
+  "requirementIds": [
+    "R11",
+    "R12"
+  ],
+  "invariantIds": [
+    "AS15"
+  ],
+  "verification": {
+    "precondition": "A v2 session has two digest-bound records in one global journal.",
+    "stimulus": "Validate the journal and independently break its length, ordinal, revision chain, and record digest.",
+    "expectedSemanticState": "The intact journal closes exactly to the persisted workspace revision state.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: the v2 session journal closes its commit revision, length, ordinal sequence, and referenced records",
+    "forbiddenMutation": "No missing, reordered, discontinuous, or changed journal record may validate.",
+    "applicability": {
+      "mode": "agnostic",
+      "transports": [],
+      "adapters": [
+        "urn:mission-kit:survey-v2:adapter:session"
+      ]
+    },
+    "inspectedAuthorities": [
+      "schemas/authoring/v1alpha1/authoring-journal-record.schema.json",
+      "schemas/v2/session-state.schema.json",
+      "source/authoring/survey/session-semantics.mjs"
+    ]
+  },
+  "behavior": "the v2 session journal closes its commit revision, length, ordinal sequence, and referenced records",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/survey-contracts/session/global-journal-closure.test.mjs",
+  "fixtures": [
+    "tests/fixtures/survey/session-v2/session-factory.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v1"
+}

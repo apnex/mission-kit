@@ -1,0 +1,93 @@
+{
+  "apiVersion": "survey.mission-kit/v1alpha1",
+  "kind": "GenerationRecord",
+  "metadata": {
+    "name": "round-1-frame-generation"
+  },
+  "spec": {
+    "requestRef": {
+      "apiVersion": "authoring.mission-kit/v1alpha1",
+      "kind": "AuthoringRequest",
+      "name": "frame-request",
+      "semanticDigest": "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+    },
+    "assignmentRef": {
+      "apiVersion": "authoring.mission-kit/v1alpha1",
+      "kind": "AuthoringAssignment",
+      "name": "frame-assignment",
+      "semanticDigest": "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+    },
+    "submissionRef": {
+      "apiVersion": "authoring.mission-kit/v1alpha1",
+      "kind": "AuthoringSubmission",
+      "name": "frame-submission",
+      "semanticDigest": "sha256:3333333333333333333333333333333333333333333333333333333333333333"
+    },
+    "contextClosureRef": {
+      "apiVersion": "authoring.mission-kit/v1alpha1",
+      "kind": "ContextClosure",
+      "name": "survey-context",
+      "semanticDigest": "sha256:9999999999999999999999999999999999999999999999999999999999999999"
+    },
+    "result": {
+      "commitReceiptRef": {
+        "apiVersion": "authoring.mission-kit/v1alpha1",
+        "kind": "AuthoringCommitReceipt",
+        "name": "frame-receipt",
+        "semanticDigest": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      },
+      "createdResourceRefs": [
+        {
+          "apiVersion": "survey.mission-kit/v1alpha1",
+          "kind": "QuestionFrameSet",
+          "name": "round-1-frame-set",
+          "semanticDigest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        }
+      ]
+    },
+    "ancestry": {
+      "inputResourceRefs": [
+        {
+          "apiVersion": "survey.mission-kit/v1alpha1",
+          "kind": "SurveyRound",
+          "name": "round-1",
+          "semanticDigest": "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+        },
+        {
+          "apiVersion": "schemas.mission-kit/v1alpha1",
+          "kind": "ContextFrame",
+          "name": "round-1-frame",
+          "semanticDigest": "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+        }
+      ],
+      "priorGenerationRecordRefs": [],
+      "revisionOfRefs": []
+    },
+    "assessmentAncestryRefs": [
+      {
+        "apiVersion": "authoring.mission-kit/v1alpha1",
+        "kind": "SourceSnapshot",
+        "name": "survey-intent",
+        "semanticDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    ]
+  },
+  "evidence": {
+    "producer": {
+      "attemptId": "attempt-1",
+      "provider": "example-provider",
+      "model": "example-model",
+      "adapter": {
+        "id": "example-adapter",
+        "digest": "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+      },
+      "configurationDigest": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+      "telemetry": {
+        "latencyMs": 10,
+        "inputTokens": 20,
+        "outputTokens": 30,
+        "costMicrounits": 40
+      }
+    }
+  }
+}

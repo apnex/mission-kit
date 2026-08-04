@@ -1,0 +1,39 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey-authoring-protocol-contract",
+  "obligationId": "O-AS02-02",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS02"
+  ],
+  "verification": {
+    "precondition": "The K10 AuthoringProtocol schema and canonical Survey authoring protocol source exist.",
+    "stimulus": "Structurally and semantically validate the canonical Survey AuthoringProtocol, then inspect its exact states, transitions, generic abort family, and state-class task bindings.",
+    "expectedSemanticState": "The canonical declarative manifest remains the sole exact authority for all twenty-two Survey authoring edges.",
+    "expectedEvidenceState": "node:test reports the literal assertion: the Survey AuthoringProtocol is closed and reachable with exactly eighteen states, its complete transition set, and exact task, wait, and terminal rules",
+    "forbiddenMutation": "The test must not dispatch a handler, create a workspace, mutate session state, or reinterpret the K10 contract shape.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "schemas/authoring/v1alpha1/authoring-protocol.schema.json",
+      "schemas/authoring/v1alpha1/common.schema.json",
+      "source/authoring/kernel/contract-semantics.mjs",
+      "source/authoring/survey/protocol-semantics.mjs",
+      "source/authoring/survey/survey-authoring.protocol.json"
+    ]
+  },
+  "behavior": "the Survey AuthoringProtocol is closed and reachable with exactly eighteen states, its complete transition set, and exact task, wait, and terminal rules",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/survey-contracts/protocol/authoring-protocol-contract.test.mjs",
+  "fixtures": [
+    "tests/survey-contracts/protocol/support.mjs",
+    "source/authoring/survey/survey-authoring.protocol.json"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v1"
+}

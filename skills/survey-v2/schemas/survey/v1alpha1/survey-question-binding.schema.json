@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:survey:schema:survey-question-binding:v1alpha1",
+  "title": "Mission Kit SurveyQuestionBinding resource v1alpha1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "apiVersion",
+    "kind",
+    "metadata",
+    "spec"
+  ],
+  "properties": {
+    "apiVersion": {
+      "const": "survey.mission-kit/v1alpha1"
+    },
+    "kind": {
+      "const": "SurveyQuestionBinding"
+    },
+    "metadata": {
+      "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/metadata"
+    },
+    "spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "frameSetRef",
+        "roundRef",
+        "slot",
+        "questionOrdinal",
+        "questionFrameRef",
+        "questionRef"
+      ],
+      "properties": {
+        "frameSetRef": {
+          "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/QuestionFrameSetReference"
+        },
+        "roundRef": {
+          "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/SurveyRoundReference"
+        },
+        "slot": {
+          "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/roundSlot"
+        },
+        "questionOrdinal": {
+          "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/questionOrdinal"
+        },
+        "questionFrameRef": {
+          "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/ContextFrameReference"
+        },
+        "questionRef": {
+          "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/QuestionReference"
+        }
+      }
+    }
+  }
+}

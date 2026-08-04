@@ -25,7 +25,7 @@ async function filesBelow(directory) {
 test("neutral authoring contracts and kernel contain no Survey-domain or producer-specific vocabulary", async () => {
   const authorities = [
     ...await filesBelow(path.join(packageRoot, "schemas/authoring")),
-    ...await filesBelow(path.join(packageRoot, "source/authoring"))
+    ...await filesBelow(path.join(packageRoot, "source/authoring/kernel"))
   ].sort();
   const forbidden = /\b(?:survey|round|question|director|openai|anthropic|claude|gemini|gpt)\b/iu;
   const violations = [];

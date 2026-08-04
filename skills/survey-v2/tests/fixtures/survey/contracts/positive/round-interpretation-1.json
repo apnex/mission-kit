@@ -1,0 +1,133 @@
+{
+  "apiVersion": "survey.mission-kit/v1alpha1",
+  "kind": "RoundInterpretation",
+  "metadata": {
+    "name": "round-1-interpretation"
+  },
+  "spec": {
+    "roundRef": {
+      "apiVersion": "survey.mission-kit/v1alpha1",
+      "kind": "SurveyRound",
+      "name": "round-1",
+      "semanticDigest": "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+    },
+    "roundOrdinal": 1,
+    "instrumentRef": {
+      "apiVersion": "survey.mission-kit/v1alpha1",
+      "kind": "RoundInstrument",
+      "name": "round-1-instrument",
+      "semanticDigest": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    },
+    "responseSetRef": {
+      "apiVersion": "survey.mission-kit/v1alpha1",
+      "kind": "SurveyRuntimeArtifact",
+      "name": "round-1-responses",
+      "semanticDigest": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "generationContextRef": {
+      "apiVersion": "authoring.mission-kit/v1alpha1",
+      "kind": "ContextClosure",
+      "name": "survey-context",
+      "semanticDigest": "sha256:9999999999999999999999999999999999999999999999999999999999999999"
+    },
+    "perQuestion": [
+      {
+        "questionOrdinal": 1,
+        "questionRef": {
+          "apiVersion": "schemas.mission-kit/v1alpha1",
+          "kind": "Question",
+          "name": "question-1",
+          "semanticDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        },
+        "meaning": "Interpreted meaning for question 1.",
+        "evidenceRefs": [
+          {
+            "apiVersion": "authoring.mission-kit/v1alpha1",
+            "kind": "SourceSnapshot",
+            "name": "survey-intent",
+            "semanticDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "axisMappings": [
+          {
+            "axis": "axis-1",
+            "meaning": "Meaning on axis 1.",
+            "evidenceQuestionOrdinals": [
+              1
+            ]
+          }
+        ],
+        "tensions": []
+      },
+      {
+        "questionOrdinal": 2,
+        "questionRef": {
+          "apiVersion": "schemas.mission-kit/v1alpha1",
+          "kind": "Question",
+          "name": "question-2",
+          "semanticDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        },
+        "meaning": "Interpreted meaning for question 2.",
+        "evidenceRefs": [
+          {
+            "apiVersion": "authoring.mission-kit/v1alpha1",
+            "kind": "SourceSnapshot",
+            "name": "survey-intent",
+            "semanticDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "axisMappings": [
+          {
+            "axis": "axis-2",
+            "meaning": "Meaning on axis 2.",
+            "evidenceQuestionOrdinals": [
+              2
+            ]
+          }
+        ],
+        "tensions": []
+      },
+      {
+        "questionOrdinal": 3,
+        "questionRef": {
+          "apiVersion": "schemas.mission-kit/v1alpha1",
+          "kind": "Question",
+          "name": "question-3",
+          "semanticDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        },
+        "meaning": "Interpreted meaning for question 3.",
+        "evidenceRefs": [
+          {
+            "apiVersion": "authoring.mission-kit/v1alpha1",
+            "kind": "SourceSnapshot",
+            "name": "survey-intent",
+            "semanticDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "axisMappings": [
+          {
+            "axis": "axis-3",
+            "meaning": "Meaning on axis 3.",
+            "evidenceQuestionOrdinals": [
+              3
+            ]
+          }
+        ],
+        "tensions": []
+      }
+    ],
+    "aggregateMeaning": "Aggregate meaning for Round 1.",
+    "tensions": [],
+    "axisMapping": [
+      {
+        "axis": "round-1-axis",
+        "meaning": "Aggregate Round 1 axis meaning.",
+        "evidenceQuestionOrdinals": [
+          1,
+          2,
+          3
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey-contracts:session:typed-runtime-artifact-references",
+  "obligationId": "O-SV13-04",
+  "requirementIds": [
+    "R11",
+    "R15"
+  ],
+  "invariantIds": [
+    "SV13"
+  ],
+  "verification": {
+    "precondition": "A v2 workspace stores one immutable SurveyRuntimeArtifact and exposes its exact typed reference.",
+    "stimulus": "Validate it, then substitute a variant kind, remove the stored target, and persist an inline variant.",
+    "expectedSemanticState": "Only the exact SurveyRuntimeArtifact reference resolving to its immutable stored resource validates.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: the v2 session admits only typed immutable SurveyRuntimeArtifact references",
+    "forbiddenMutation": "No inline runtime variant, wrong kind, or unresolved runtime reference may enter authoring state.",
+    "applicability": {
+      "mode": "agnostic",
+      "transports": [],
+      "adapters": [
+        "urn:mission-kit:survey-v2:adapter:session"
+      ]
+    },
+    "inspectedAuthorities": [
+      "schemas/authoring/v1alpha1/resource-reference.schema.json",
+      "schemas/v2/session-state.schema.json",
+      "source/authoring/survey/session-semantics.mjs"
+    ]
+  },
+  "behavior": "the v2 session admits only typed immutable SurveyRuntimeArtifact references",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/survey-contracts/session/typed-runtime-artifact-references.test.mjs",
+  "fixtures": [
+    "tests/fixtures/survey/session-v2/session-factory.mjs",
+    "tests/survey-contracts/session/support/session-validation.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v1"
+}

@@ -1,0 +1,28 @@
+{
+  "apiVersion": "survey.mission-kit/v1alpha1",
+  "kind": "SurveyRuntimeArtifact",
+  "metadata": {
+    "name": "revision-directive"
+  },
+  "spec": {
+    "artifactType": "RevisionDirective",
+    "source": {
+      "surveyRunId": "survey-run-1",
+      "sourcePhaseTransitionId": "T32",
+      "sourceEventId": "DIRECTOR_RETURN",
+      "sourceSemanticRevision": 7,
+      "sourceDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "payload": {
+      "target": "composite",
+      "targetRef": {
+        "apiVersion": "survey.mission-kit/v1alpha1",
+        "kind": "RoundInterpretation",
+        "name": "composite-candidate",
+        "semanticDigest": "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "directiveText": "Revise the composite while preserving ratified meaning.",
+      "directorEvidenceDigest": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    }
+  }
+}

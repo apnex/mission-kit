@@ -1,0 +1,42 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:test:candidate-protocol-binding",
+  "obligationId": "O-SV14-01",
+  "requirementIds": [],
+  "invariantIds": [
+    "SV14"
+  ],
+  "verification": {
+    "precondition": "The canonical AuthoringProtocol and candidate protocol 2.x sources exist with their closed schemas.",
+    "stimulus": "Validate the candidate protocol against its v2 schema and semantic closure, recompute the canonical authoring semantic digest, and inspect the phase definition surface.",
+    "expectedSemanticState": "Protocol 2.x contains only phase and runtime machines, binds the separate authoring authority by exact semantic digest, and contains no T42 through T46 definition.",
+    "expectedEvidenceState": "node:test reports the literal assertion: candidate protocol 2.x binds the exact canonical authoring-protocol digest and retires T42 through T46",
+    "forbiddenMutation": "The test must not change the frozen v1 protocol, select the candidate by default, or duplicate authoring states inside the phase/runtime protocol.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "schemas/v2/common.schema.json",
+      "schemas/v2/protocol.schema.json",
+      "source/authoring/kernel/digests.mjs",
+      "source/authoring/survey/protocol-semantics.mjs",
+      "source/authoring/survey/survey-authoring.protocol.json",
+      "source/protocol/survey-v2.protocol.json"
+    ]
+  },
+  "behavior": "candidate protocol 2.x binds the exact canonical authoring-protocol digest and retires T42 through T46",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/survey-contracts/protocol/candidate-protocol-binding.test.mjs",
+  "fixtures": [
+    "tests/fixtures/survey/protocol/golden-bindings.json",
+    "tests/survey-contracts/protocol/support.mjs",
+    "source/authoring/survey/survey-authoring.protocol.json",
+    "source/protocol/survey-v2.protocol.json"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v1"
+}

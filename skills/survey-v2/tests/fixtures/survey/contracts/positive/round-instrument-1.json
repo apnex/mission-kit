@@ -1,0 +1,108 @@
+{
+  "apiVersion": "survey.mission-kit/v1alpha1",
+  "kind": "RoundInstrument",
+  "metadata": {
+    "name": "round-1-instrument"
+  },
+  "spec": {
+    "roundRef": {
+      "apiVersion": "survey.mission-kit/v1alpha1",
+      "kind": "SurveyRound",
+      "name": "round-1",
+      "semanticDigest": "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+    },
+    "roundOrdinal": 1,
+    "frameSetRef": {
+      "apiVersion": "survey.mission-kit/v1alpha1",
+      "kind": "QuestionFrameSet",
+      "name": "round-1-frame-set",
+      "semanticDigest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    },
+    "policySnapshotRef": {
+      "apiVersion": "survey.mission-kit/v1alpha1",
+      "kind": "SurveyPolicySnapshot",
+      "name": "survey-policy",
+      "semanticDigest": "sha256:8888888888888888888888888888888888888888888888888888888888888888"
+    },
+    "generationContextRef": {
+      "apiVersion": "authoring.mission-kit/v1alpha1",
+      "kind": "ContextClosure",
+      "name": "survey-context",
+      "semanticDigest": "sha256:9999999999999999999999999999999999999999999999999999999999999999"
+    },
+    "units": [
+      {
+        "slot": 1,
+        "questionOrdinal": 1,
+        "questionFrameRef": {
+          "apiVersion": "schemas.mission-kit/v1alpha1",
+          "kind": "ContextFrame",
+          "name": "question-1-frame",
+          "semanticDigest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        },
+        "bindingRef": {
+          "apiVersion": "survey.mission-kit/v1alpha1",
+          "kind": "SurveyQuestionBinding",
+          "name": "binding-1",
+          "semanticDigest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+        },
+        "questionRef": {
+          "apiVersion": "schemas.mission-kit/v1alpha1",
+          "kind": "Question",
+          "name": "question-1",
+          "semanticDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      },
+      {
+        "slot": 2,
+        "questionOrdinal": 2,
+        "questionFrameRef": {
+          "apiVersion": "schemas.mission-kit/v1alpha1",
+          "kind": "ContextFrame",
+          "name": "question-2-frame",
+          "semanticDigest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        },
+        "bindingRef": {
+          "apiVersion": "survey.mission-kit/v1alpha1",
+          "kind": "SurveyQuestionBinding",
+          "name": "binding-2",
+          "semanticDigest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+        },
+        "questionRef": {
+          "apiVersion": "schemas.mission-kit/v1alpha1",
+          "kind": "Question",
+          "name": "question-2",
+          "semanticDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      },
+      {
+        "slot": 3,
+        "questionOrdinal": 3,
+        "questionFrameRef": {
+          "apiVersion": "schemas.mission-kit/v1alpha1",
+          "kind": "ContextFrame",
+          "name": "question-3-frame",
+          "semanticDigest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        },
+        "bindingRef": {
+          "apiVersion": "survey.mission-kit/v1alpha1",
+          "kind": "SurveyQuestionBinding",
+          "name": "binding-3",
+          "semanticDigest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+        },
+        "questionRef": {
+          "apiVersion": "schemas.mission-kit/v1alpha1",
+          "kind": "Question",
+          "name": "question-3",
+          "semanticDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      }
+    ],
+    "responsePolicy": {
+      "capture": "option-id-list",
+      "rawEvidence": "preserved",
+      "duplicateSubmission": "idempotent",
+      "invalidSelection": "reject-without-advance"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey-contracts:typed-round-response-ingress",
+  "obligationId": "O-SV13-03",
+  "requirementIds": [],
+  "invariantIds": [
+    "SV13"
+  ],
+  "verification": {
+    "precondition": "The sovereign Survey schemas, semantic validator, and mapped fixtures exist as package-owned files.",
+    "stimulus": "Execute tests/survey-contracts/runtime-artifacts/typed-round-response-ingress.test.mjs with node:test.",
+    "expectedSemanticState": "The contract satisfies only O-SV13-03: RoundInterpretation runtime ingress resolves only a typed RoundResponseSet artifact.",
+    "expectedEvidenceState": "The runner reports the literal assertion: RoundInterpretation runtime ingress resolves only a typed RoundResponseSet artifact",
+    "forbiddenMutation": "Do not infer runtime persistence, Director judgment, adapter parity, transport behavior, or any obligation beyond the literal assertion.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "schemas/survey/v1alpha1/round-interpretation.schema.json",
+      "source/authoring/survey/resource-semantics.mjs",
+      "tests/survey-contracts/support/obligation-scenarios.mjs"
+    ]
+  },
+  "behavior": "RoundInterpretation runtime ingress resolves only a typed RoundResponseSet artifact",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/survey-contracts/runtime-artifacts/typed-round-response-ingress.test.mjs",
+  "fixtures": [
+    "tests/survey-contracts/support/contract-validation.mjs",
+    "tests/survey-contracts/support/obligation-scenarios.mjs",
+    "tests/fixtures/survey/contracts/positive/round-interpretation-1.json",
+    "tests/fixtures/survey/contracts/positive/runtime-revision-directive.json"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v1"
+}

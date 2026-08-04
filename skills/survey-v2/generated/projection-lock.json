@@ -1,5 +1,5 @@
 {
-  "aggregateDigest": "sha256:4db619a8fbd7e075aa8ab1976618115881b3244175072ed884487b3059eda6e7",
+  "aggregateDigest": "sha256:2f1e6ecae0ea755ae9839ce74da9fd54c57ac9f1f538e864bd6070afb7c39432",
   "canonicalDigests": [
     {
       "digest": "sha256:f7c65af249baff28e5d9fe29a9ac4011f802e955f74829c14949e2cf23104254",
@@ -118,6 +118,46 @@
       "path": "schemas/authoring/v1alpha1/validation-issue.schema.json"
     },
     {
+      "digest": "sha256:d5eee768a0e2103248440236056fd307ccf8b903a0853488b6076072abd562b0",
+      "path": "schemas/survey/v1alpha1/common.schema.json"
+    },
+    {
+      "digest": "sha256:4aa2ada6165235e3860e9e7648ab5249d11ef372c16e35ba0b57cf2607f34eae",
+      "path": "schemas/survey/v1alpha1/generation-record.schema.json"
+    },
+    {
+      "digest": "sha256:1904d0e0b942c762fe7e280fc166dd795a398449c822ab9367162e6fd5bf491f",
+      "path": "schemas/survey/v1alpha1/question-frame-set.schema.json"
+    },
+    {
+      "digest": "sha256:fb0265b8fc6764241aac864737c619e5f663d0737ca19896e6d7293e0853807d",
+      "path": "schemas/survey/v1alpha1/round-instrument.schema.json"
+    },
+    {
+      "digest": "sha256:549c5721275a3e3c00bb051c080a8d686ebe904224dd502e63d8f427b1935306",
+      "path": "schemas/survey/v1alpha1/round-interpretation.schema.json"
+    },
+    {
+      "digest": "sha256:ac4a715eeab9bf692d1147d7f23b0a29f9e2040f8b5b87518e73885f84899855",
+      "path": "schemas/survey/v1alpha1/survey-policy-snapshot.schema.json"
+    },
+    {
+      "digest": "sha256:d3ab396cfc23f1e1be2c5d82131952f7def4a97e23feabff6b400f5f8f701a3c",
+      "path": "schemas/survey/v1alpha1/survey-question-binding.schema.json"
+    },
+    {
+      "digest": "sha256:fcd406089a21c4f0c4ca740184f15c3a9fb0228af04f2780c5dc0804b91c611a",
+      "path": "schemas/survey/v1alpha1/survey-round.schema.json"
+    },
+    {
+      "digest": "sha256:be4de6ecfeeaf4e27b6ba44aad8ed4b7760860242f00645a6c5646bc98fb8156",
+      "path": "schemas/survey/v1alpha1/survey-runtime-artifact.schema.json"
+    },
+    {
+      "digest": "sha256:97013f9bbc0d1fbf5357a30021f4e8d624aff4e5a82d6b2450ed1daf6123581b",
+      "path": "schemas/survey/v1alpha1/survey.schema.json"
+    },
+    {
       "digest": "sha256:b5cab014b84be6f3e024e6f302d5613fd73384fb489c705aba689096d8a764ab",
       "path": "schemas/v1/common.schema.json"
     },
@@ -142,7 +182,7 @@
       "path": "schemas/v1/instrument.schema.json"
     },
     {
-      "digest": "sha256:6bdbfecc12c601e188e4036ddf2cb05eab834b74bcb2fc2f26c914c153788a18",
+      "digest": "sha256:c6b00aeb5728bd67e1289e5395e66e3ef9c7cf3d46b35a82b2dc5fcb9c799fdf",
       "path": "schemas/v1/package.schema.json"
     },
     {
@@ -186,6 +226,26 @@
       "path": "schemas/v1/triangulation-process.schema.json"
     },
     {
+      "digest": "sha256:08b3866a0fac436793e22b8f1ba0135a15e8f71266dee84817d257b9af7ccff9",
+      "path": "schemas/v2/common.schema.json"
+    },
+    {
+      "digest": "sha256:af5efa41bfd7ff0e14a989da6b76b11cfa7ccab7edcc49ef7e7c9f998cb3ec91",
+      "path": "schemas/v2/paired-state-matrix.schema.json"
+    },
+    {
+      "digest": "sha256:8ee3faeb1995f4a93a06c7674f0dd66eb655207f4047f31688d12d3e0f546481",
+      "path": "schemas/v2/protocol-selection.schema.json"
+    },
+    {
+      "digest": "sha256:18069cd911de9854bb0eb80c08b74e1a10fdf8300a1ab2641adcce7c7039cc21",
+      "path": "schemas/v2/protocol.schema.json"
+    },
+    {
+      "digest": "sha256:108a911e4b79df96f7f6d260e4cdd76b7255a139b98e23691ac43da8f3cf3db0",
+      "path": "schemas/v2/session-state.schema.json"
+    },
+    {
       "digest": "sha256:b0b08e9f8365ae8ebe528ad42bf744e389188bfc54cebeda1e27d2684e2cca5f",
       "path": "shared-schemas.sh"
     },
@@ -200,6 +260,22 @@
     {
       "digest": "sha256:98ef901b14e2de29404a6c64a13c1e8bd3056afe970dc9cc9a4b2eb5c3a3a14f",
       "path": "source/authoring/kernel/digests.mjs"
+    },
+    {
+      "digest": "sha256:0f1997365cf940e02fda927b147b77b556568ef2285c67ace5092f444cec1286",
+      "path": "source/authoring/survey/protocol-semantics.mjs"
+    },
+    {
+      "digest": "sha256:cc913e5b4b0996e46c18445571718ed8d0c73a64609effef6679344b8e287214",
+      "path": "source/authoring/survey/resource-semantics.mjs"
+    },
+    {
+      "digest": "sha256:221c06c967417e2f5c1b6b6ef2f753d20fe03804e1d2fe6e17acca90c8fad193",
+      "path": "source/authoring/survey/session-semantics.mjs"
+    },
+    {
+      "digest": "sha256:c9b42d03e4fad8b3e85caefff0767b638e305179b88415af87a75ba167ae2292",
+      "path": "source/authoring/survey/survey-authoring.protocol.json"
     },
     {
       "digest": "sha256:522542091bf26530b9c0b1d6fb1df432518f21b83c325e75e15984ba4f2abec6",
@@ -466,15 +542,27 @@
       "path": "source/projections/skill-md.projection.json"
     },
     {
-      "digest": "sha256:5f921d3ce37557e90f3895c5d4c592c376661f510c1b0da7197421173a8f46e5",
+      "digest": "sha256:6329544584d7a64349a04130278dc6a5cec6a6530f1a94019a1fe363d7096f52",
       "path": "source/projections/validators.projection.json"
+    },
+    {
+      "digest": "sha256:770c6f9b0a49a1dafdc125aa9d8baba5e11b2dac77d04338e781abed8426fad6",
+      "path": "source/protocol/paired-state-matrix.v2.json"
+    },
+    {
+      "digest": "sha256:00a2d1da79286fcca9d5e8eb6ba54e0dfda27aad1f02634de9d01999d8b781c6",
+      "path": "source/protocol/protocol-selection.json"
+    },
+    {
+      "digest": "sha256:28b0696aa3bd9f8ca54e7f8affcf85e86cb6eda3ca6a38cf2c2e7d2bc49baf69",
+      "path": "source/protocol/survey-v2.protocol.json"
     },
     {
       "digest": "sha256:c6b34dac8390920d2c450fa117a13d27f362f6648fa0b5fcf7c0617a61819033",
       "path": "source/protocol/survey.protocol.json"
     },
     {
-      "digest": "sha256:7e11973c6bc34fdeb2eefc5418f19a438b1e2d62ab535192f148659e596af8b9",
+      "digest": "sha256:84614094ee13e114b0b2f06295f7650d3036088f7d718900922f35c13ef64715",
       "path": "source/requirements/survey-v2.requirements.json"
     },
     {
@@ -486,7 +574,7 @@
       "path": "source/views/director-lifecycle.view.json"
     },
     {
-      "digest": "sha256:71c99e6d9e3d08a282f253f15aac1c61558244347e113606200efb8e715e7115",
+      "digest": "sha256:e56895d36c8efaa0556c29da78c2fb6f3c911136e8787d5491785e0056435b69",
       "path": "survey-v2.package.json"
     },
     {
@@ -1602,7 +1690,7 @@
       "path": "tests/authoring/neutrality/contract-vocabulary.test.json"
     },
     {
-      "digest": "sha256:2e341f074d1537e63dc92680a687605c162e0279b702f3f2080693def69a9513",
+      "digest": "sha256:06ca99e8f5f8f0aa0d564476255d6c0ed141ab00ae2de8db2aa567a63cdceb95",
       "path": "tests/authoring/neutrality/contract-vocabulary.test.mjs"
     },
     {
@@ -1610,7 +1698,7 @@
       "path": "tests/authoring/neutrality/kernel-import-boundary.test.json"
     },
     {
-      "digest": "sha256:ed8878746b06995edb896bf0d5c9100be380634fdb91f4c025b7ce5ee05ec509",
+      "digest": "sha256:c7edb4d69d3bcbfb862acb7aff4919edac393653632723c91d3c9623c2dedf1a",
       "path": "tests/authoring/neutrality/kernel-import-boundary.test.mjs"
     },
     {
@@ -1960,6 +2048,130 @@
     {
       "digest": "sha256:9c4bde6a61ec6b89d337cb3de6543de9fc8d3fe4df1e77678a29350afec555ce",
       "path": "tests/fixtures/session-fixture.mjs"
+    },
+    {
+      "digest": "sha256:6f7f1058799f7e46db053d6e47d04e715d2c47398f2b25151c674a0fcf0e6f4b",
+      "path": "tests/fixtures/survey/contracts/negative/binding-inline-survey-fields.json"
+    },
+    {
+      "digest": "sha256:79e98fef780facd58e7bad06d9e8a366fc0b8bfeaca2a1d32687010437e4d64e",
+      "path": "tests/fixtures/survey/contracts/negative/question-frame-parent-mismatch.json"
+    },
+    {
+      "digest": "sha256:8d1b41aa83b617aad61424abdd1f3beecff35d8ed0a6b0e2b8ac912f32fb85f5",
+      "path": "tests/fixtures/survey/contracts/negative/question-frame-set-fourth-altitude.json"
+    },
+    {
+      "digest": "sha256:5f801907034e146c1ea4cfaa843085aa777c9fcbdcccc9c8f3ee383e6d8881a7",
+      "path": "tests/fixtures/survey/contracts/negative/question-frame-slot-duplicate.json"
+    },
+    {
+      "digest": "sha256:57d8839cdeaf1ba78b64de67ba500e2b39dbf594eec0c261bc97b2c887c64e0b",
+      "path": "tests/fixtures/survey/contracts/negative/round-instrument-incomplete.json"
+    },
+    {
+      "digest": "sha256:0edb433121aa83c75c662fe01e5b2c810e3c4aef2add20407e986130f52d0d12",
+      "path": "tests/fixtures/survey/contracts/negative/round-instrument-inline-question.json"
+    },
+    {
+      "digest": "sha256:997ba132b14bd11a0d1ce489aadb63bbc0c0855bf2f73bba4671e546fb3756b6",
+      "path": "tests/fixtures/survey/contracts/negative/round-one-prior-interpretation.json"
+    },
+    {
+      "digest": "sha256:5e43e9a5467e0329161808da3c61181d5a9ab6c225114441a5c8f312e40e74c0",
+      "path": "tests/fixtures/survey/contracts/negative/round-two-missing-interpretation.json"
+    },
+    {
+      "digest": "sha256:c0bd40a5301e3086bfcf503bf91b6466ad9d3469eaca6d5236f90578aef9478d",
+      "path": "tests/fixtures/survey/contracts/negative/runtime-source-mismatch.json"
+    },
+    {
+      "digest": "sha256:31d5b742fe69c23798aee532289b2892f859ad41a0cc35f3432f24dbd542b9d5",
+      "path": "tests/fixtures/survey/contracts/positive/generation-record.json"
+    },
+    {
+      "digest": "sha256:e6569a147f5c14448b09f5b964c66462dd8f792dd29bd9b1aec4ca54261dab33",
+      "path": "tests/fixtures/survey/contracts/positive/question-frame-set-1.json"
+    },
+    {
+      "digest": "sha256:5d421d03939f7addba48c5b926cf921366ecbc2531240a6f6b5e1102465de460",
+      "path": "tests/fixtures/survey/contracts/positive/question-frame-set-2.json"
+    },
+    {
+      "digest": "sha256:663d2f143c71aa34913c3ef6b2fa7d059a745ca60eddcf6e8d5d5de3640b25e1",
+      "path": "tests/fixtures/survey/contracts/positive/round-instrument-1.json"
+    },
+    {
+      "digest": "sha256:df5682a91bd5c64f6aa1970547b1c6f4aac1d018f97bace9ced7be7428869025",
+      "path": "tests/fixtures/survey/contracts/positive/round-instrument-2.json"
+    },
+    {
+      "digest": "sha256:d9a975bc183d2e116689336eac32a47560b42c327a27adc6045497699229284e",
+      "path": "tests/fixtures/survey/contracts/positive/round-interpretation-1.json"
+    },
+    {
+      "digest": "sha256:5e595a672734f67eb01ce255ce0b92f2c00c9fb12de1fbccc4322c00b71e1105",
+      "path": "tests/fixtures/survey/contracts/positive/round-interpretation-2.json"
+    },
+    {
+      "digest": "sha256:3102723b0866c73e674e874e9b8a97a1ecb549a320b9866cbb26ebc2c47ecbb2",
+      "path": "tests/fixtures/survey/contracts/positive/runtime-candidate-validation-evidence.json"
+    },
+    {
+      "digest": "sha256:c1582a6edf8c6d3515dcdf2407bc2fc5cc3d88df05a92cc1b7424429b3b280ad",
+      "path": "tests/fixtures/survey/contracts/positive/runtime-composite-runtime-evidence.json"
+    },
+    {
+      "digest": "sha256:6dd931c47f12d5219f195b07e38242c9fa10b4d8adcbe161b51780c62415b095",
+      "path": "tests/fixtures/survey/contracts/positive/runtime-finalization-diagnostic.json"
+    },
+    {
+      "digest": "sha256:879e5e74b25da01be2a35fc8352282e9ef1aabb3d9dfa4fb42f678c3240e0a95",
+      "path": "tests/fixtures/survey/contracts/positive/runtime-revision-directive.json"
+    },
+    {
+      "digest": "sha256:38763783202336e3edf59304efc073c42a24b39d6d02b9d83b96436970d33a84",
+      "path": "tests/fixtures/survey/contracts/positive/runtime-round-response-set.json"
+    },
+    {
+      "digest": "sha256:26b42de362b8092b50c55741e88a578049eea9652b50b830d11c34396f8b838a",
+      "path": "tests/fixtures/survey/contracts/positive/survey-policy-snapshot.json"
+    },
+    {
+      "digest": "sha256:44df25daf1927380db81a5da1bee9c40561c1efcdde2e7a9ab87d61826856861",
+      "path": "tests/fixtures/survey/contracts/positive/survey-question-binding-1.json"
+    },
+    {
+      "digest": "sha256:9a806df9900ed5bee4b0cabbd1649455855670c5a0b43100cbe03ff1a4606bc0",
+      "path": "tests/fixtures/survey/contracts/positive/survey-round-1.json"
+    },
+    {
+      "digest": "sha256:13b512fd17fc6e09b7fa4f887936979e98fcbda05bd1229dcab5ce541e5a40f3",
+      "path": "tests/fixtures/survey/contracts/positive/survey-round-2.json"
+    },
+    {
+      "digest": "sha256:f8848d86cd25ef34e3ef9b0b2cbed7d7716a6ff8cb845e43baa867f47c167961",
+      "path": "tests/fixtures/survey/contracts/positive/survey.json"
+    },
+    {
+      "digest": "sha256:92cab6c53a1341fceb564b54d3c63d481f0aa9a47ba7fcb06cb00753479d21a0",
+      "path": "tests/fixtures/survey/protocol/golden-bindings.json"
+    },
+    {
+      "digest": "sha256:6b4b42174fb98ede0ac7785779a15215a7627580aa4d29d1ff52302bd88d01e2",
+      "path": "tests/fixtures/survey/protocol/paired-state-invalid-cases.json"
+    },
+    {
+      "digest": "sha256:070f210329f0771f8ea098ce71a24056362ce5053d7ab19fd937fce579e46f76",
+      "path": "tests/fixtures/survey/protocol/selection-cases.json"
+    },
+    {
+      "digest": "sha256:6e527fc9fc5ec90476ecf172dd6229cac8b3977fc8482950695f73fca81983b9",
+      "path": "tests/fixtures/survey/session-v2/historical-v1-session.json"
+    },
+    {
+      "digest": "sha256:e37e873b21b6e7103afc475d7d7d7e9ff0bb2ddcf12b06273d8b331ecbec5b87",
+      "path": "tests/fixtures/survey/session-v2/session-factory.mjs"
     },
     {
       "digest": "sha256:2fc8c3ea104897ce0c5e1e8cf2aa7193e0bd4b0f493f8256667caf244cc151a9",
@@ -2802,12 +3014,324 @@
       "path": "tests/state/writer-lock-initialization-cleanup.test.mjs"
     },
     {
-      "digest": "sha256:4d2ed2cdbb65023bd6e4d2c8495ddc801dff29c3091359d71a9d4bee1a49db3c",
+      "digest": "sha256:336ca7f314f8f71d119209919d83463c9418a2c601f0af672d9c4be0e336dbe6",
+      "path": "tests/survey-contracts/compatibility/v1-session-selection.test.json"
+    },
+    {
+      "digest": "sha256:f274480a7f115125b83adbfb6e9405d8a6353e5d7bba4c661920e9ad249ce211",
+      "path": "tests/survey-contracts/compatibility/v1-session-selection.test.mjs"
+    },
+    {
+      "digest": "sha256:efbf2a290a745401a0999daaae7e39507ed53fdb8aa1ac10dbf40e90c30109f1",
+      "path": "tests/survey-contracts/paired-state/canonical-paired-state-matrix.test.json"
+    },
+    {
+      "digest": "sha256:f573ffcdf5605eb2394f2099fac81ae9c3b2a5aec890d73eae338ad9d6a7d6e1",
+      "path": "tests/survey-contracts/paired-state/canonical-paired-state-matrix.test.mjs"
+    },
+    {
+      "digest": "sha256:b16146a6139906d1e6970b109cac71e697fa9005f4c932cde909ad3e100a4207",
+      "path": "tests/survey-contracts/paired-state/paired-state-rejection.test.json"
+    },
+    {
+      "digest": "sha256:fc1970c7d62feb3ec7cf472c410249f388540ea8100c4c68c053015e8572ca4e",
+      "path": "tests/survey-contracts/paired-state/paired-state-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:3db68564ee90d1d79edf1f3a81f1294b4c7ea5499d6e030265e761c9de741e9b",
+      "path": "tests/survey-contracts/protocol/authoring-protocol-contract.test.json"
+    },
+    {
+      "digest": "sha256:e9fe51316298156c876e8055fb4e79fd716a93761390d944bce5018f76f10775",
+      "path": "tests/survey-contracts/protocol/authoring-protocol-contract.test.mjs"
+    },
+    {
+      "digest": "sha256:1d130358d4df5e6f70c16b9fe0342d56e33d311a76c3a0819b4134e996d93740",
+      "path": "tests/survey-contracts/protocol/candidate-protocol-binding.test.json"
+    },
+    {
+      "digest": "sha256:3eb48f595117f1a9c58345cf22d302913dec0030d0d9a7cbeda0e63ad13cac80",
+      "path": "tests/survey-contracts/protocol/candidate-protocol-binding.test.mjs"
+    },
+    {
+      "digest": "sha256:c01ea08eadeb7a2fdae6d4a3ec31011995f014a4796800f019b6d7f16e7b0208",
+      "path": "tests/survey-contracts/protocol/support.mjs"
+    },
+    {
+      "digest": "sha256:9ee1e8f6079bfbb64e946fa783bc2b2c4757dd376b7ef03176bf1dc237bd7f1d",
+      "path": "tests/survey-contracts/resources/binding-neutrality.test.json"
+    },
+    {
+      "digest": "sha256:2f7a5bf9e919c4b0420861d2cb3508a986a99a75e2cc71420de5577a70e9ec0b",
+      "path": "tests/survey-contracts/resources/binding-neutrality.test.mjs"
+    },
+    {
+      "digest": "sha256:e705384fab7e9f033c3cca3e07be9444b50bbd6363a9b8729821b9b8799f2811",
+      "path": "tests/survey-contracts/resources/child-frame-bindings.test.json"
+    },
+    {
+      "digest": "sha256:83eb71b325175ebb1ecc0a8feafd7b07bcbdc6ce0f90603505b1642b58c68413",
+      "path": "tests/survey-contracts/resources/child-frame-bindings.test.mjs"
+    },
+    {
+      "digest": "sha256:dcab4fdc3d2c64735929d10fcd88e86cffa950eca81bd3d1429c388c5a1dce77",
+      "path": "tests/survey-contracts/resources/frame-set-coordination-container.test.json"
+    },
+    {
+      "digest": "sha256:4ec9929fe9a79118d3470f3210e3c0788b2ebd1f8e9f6722ab01ba570f788776",
+      "path": "tests/survey-contracts/resources/frame-set-coordination-container.test.mjs"
+    },
+    {
+      "digest": "sha256:b6c653f19bfcb05cc4b2cc4da2e8f1f2499966cc686ce8ac9a6e6c8d00fd1745",
+      "path": "tests/survey-contracts/resources/generation-exact-ancestry.test.json"
+    },
+    {
+      "digest": "sha256:2f5cd11b9dcfd81078ce29f59102785f856935562be3b5ea9b2a6649d48f71fb",
+      "path": "tests/survey-contracts/resources/generation-exact-ancestry.test.mjs"
+    },
+    {
+      "digest": "sha256:76da74892878d5081ad448cfde617a91d072f8af161b5ab2484ef0b7f6c3318c",
+      "path": "tests/survey-contracts/resources/generation-producer-nonidentity.test.json"
+    },
+    {
+      "digest": "sha256:d57212eaee3c1c2664782dcdc78565b2a44ad2163beb37f9ca0d5e194396ad49",
+      "path": "tests/survey-contracts/resources/generation-producer-nonidentity.test.mjs"
+    },
+    {
+      "digest": "sha256:9f495599f0df3f12e36fd78307f2e51762ea88e1c9eff8e7a1e01e17d3a487e2",
+      "path": "tests/survey-contracts/resources/immutable-round-instrument.test.json"
+    },
+    {
+      "digest": "sha256:e474b57526025412fc8dee86afffd03ac1902cd81f8c37b9fbd4b5e813cf5d43",
+      "path": "tests/survey-contracts/resources/immutable-round-instrument.test.mjs"
+    },
+    {
+      "digest": "sha256:c5350076f17918d2d10ae5872d884df92aa358ff61bd3a656eec22770b816cd3",
+      "path": "tests/survey-contracts/resources/incomplete-round-instrument.test.json"
+    },
+    {
+      "digest": "sha256:1468b317a9077080572ac12daa9320adfd7c718aa927acb1ac32953fdd9515c8",
+      "path": "tests/survey-contracts/resources/incomplete-round-instrument.test.mjs"
+    },
+    {
+      "digest": "sha256:c0148898b792ef1dc05c7c252b98d0a9574062a8482aba143ef2dd30d87008d1",
+      "path": "tests/survey-contracts/resources/invalid-question-frame-slots.test.json"
+    },
+    {
+      "digest": "sha256:dc18b0b1dd3ebe3a3e8cbe9b7fca3fa08d4184cfd74b4883933a69a26184dca8",
+      "path": "tests/survey-contracts/resources/invalid-question-frame-slots.test.mjs"
+    },
+    {
+      "digest": "sha256:7dec77fcaac5494a0194fb68ea0995c6cd41a939cdaa421c41397e7bbd1af2c9",
+      "path": "tests/survey-contracts/resources/neutral-question-binding.test.json"
+    },
+    {
+      "digest": "sha256:0250ecc905980739c341423a882343825a2e49802f1cec16d2e03aefe05d093d",
+      "path": "tests/survey-contracts/resources/neutral-question-binding.test.mjs"
+    },
+    {
+      "digest": "sha256:9a4f3aefee49f2eb45081e28ba8924b12fc1de684baacb778976dcb22fbd47cd",
+      "path": "tests/survey-contracts/resources/ordered-question-frame-slots.test.json"
+    },
+    {
+      "digest": "sha256:41972159f6f648598c6d6e64d5014fcad1ef1c164f7f9bcdd6f8306f00b4104e",
+      "path": "tests/survey-contracts/resources/ordered-question-frame-slots.test.mjs"
+    },
+    {
+      "digest": "sha256:8f74bbcc922a15be00dec92cdfc762749eee5b842f0a50a40bb72ebb79d2d7ab",
+      "path": "tests/survey-contracts/resources/round-instrument-closure.test.json"
+    },
+    {
+      "digest": "sha256:b3904faf5194fe834b6f9d855ffb1652ed3797525ec0c1ced1fa3ea8a3e142a9",
+      "path": "tests/survey-contracts/resources/round-instrument-closure.test.mjs"
+    },
+    {
+      "digest": "sha256:10d5da2c2ad8d9ae789dc33f2dbe651fd5038c4d1705c20982ac6eb0eafaf59c",
+      "path": "tests/survey-contracts/resources/survey-geometry.test.json"
+    },
+    {
+      "digest": "sha256:c3d23f65ae3279965633c05cade78ff27abde1ba7328afb8db7e51a52c25f387",
+      "path": "tests/survey-contracts/resources/survey-geometry.test.mjs"
+    },
+    {
+      "digest": "sha256:e1f496acb069b10bfcb58c7851ae61f9879d19d19c35cdbebc3d48f58f56e95e",
+      "path": "tests/survey-contracts/resources/survey-policy-snapshot.test.json"
+    },
+    {
+      "digest": "sha256:0ef986b2193937ea6eafdd611373fb0926f234735efaf54abf34360eaa93a0fa",
+      "path": "tests/survey-contracts/resources/survey-policy-snapshot.test.mjs"
+    },
+    {
+      "digest": "sha256:3fce0e70867303558cc585da7637cbf4b005caf591a993b5bb3a5044b31a15b6",
+      "path": "tests/survey-contracts/resources/survey-round-ancestry.test.json"
+    },
+    {
+      "digest": "sha256:87666f15d4a907937b6fb5fef6ac1fa836e0f4fd1aa4d8c2dbc71e88c912dc7a",
+      "path": "tests/survey-contracts/resources/survey-round-ancestry.test.mjs"
+    },
+    {
+      "digest": "sha256:f9ea63c5f5910796760d0d7a31462629beba2122d7e03d44bfb08787000b652c",
+      "path": "tests/survey-contracts/runtime-artifacts/closed-runtime-variants.test.json"
+    },
+    {
+      "digest": "sha256:d4c2fa37f93ae159bd05f7dc1d7c651c215d70c215781cc63b2b2726ebb967bd",
+      "path": "tests/survey-contracts/runtime-artifacts/closed-runtime-variants.test.mjs"
+    },
+    {
+      "digest": "sha256:9ea9ddca3e7dd6a139e7047efb15aee7e5198c0299e65f5230b3d306102ceff1",
+      "path": "tests/survey-contracts/runtime-artifacts/runtime-source-bindings.test.json"
+    },
+    {
+      "digest": "sha256:2f5fada8efaecdf4a4677768ca906810248f49b83777a8b586ad08b680137861",
+      "path": "tests/survey-contracts/runtime-artifacts/runtime-source-bindings.test.mjs"
+    },
+    {
+      "digest": "sha256:fde19a5411ec1591bc7d0967aa7c4751341ca94c5d8f734bd92ebe7232109e95",
+      "path": "tests/survey-contracts/runtime-artifacts/typed-round-response-ingress.test.json"
+    },
+    {
+      "digest": "sha256:ae106cce23b61c1d51ddf63aca1b7ee79796b0af9de464b359cb186e0136a611",
+      "path": "tests/survey-contracts/runtime-artifacts/typed-round-response-ingress.test.mjs"
+    },
+    {
+      "digest": "sha256:4fce2fcc7fc2ac0408b2ec3012e0f5aef74865ecdd95ee57134bce32ceec6a49",
+      "path": "tests/survey-contracts/selection/protocol-selection.test.json"
+    },
+    {
+      "digest": "sha256:822fc4e9fce2d7fdf0072bf3e266a50294d1b6bf389fcbcec31983a704981007",
+      "path": "tests/survey-contracts/selection/protocol-selection.test.mjs"
+    },
+    {
+      "digest": "sha256:1be75d19fbaadec821c4fe98ff539f837c52df0d5fae4c183cd92067d3766e48",
+      "path": "tests/survey-contracts/semantics/parent-ancestry-mismatch.test.json"
+    },
+    {
+      "digest": "sha256:9c05a0b47161ddf7c54854d9ec5eec157559145bc2e536b5d15b5e9ad1e58972",
+      "path": "tests/survey-contracts/semantics/parent-ancestry-mismatch.test.mjs"
+    },
+    {
+      "digest": "sha256:42dae176baee047d7b16c9fb6b340feace9ea421a4ccf06ffe3c056dc3b74296",
+      "path": "tests/survey-contracts/semantics/rationale-authority-boundary.test.json"
+    },
+    {
+      "digest": "sha256:70a252e4b27216fa0c378b7d2ec40ccaf43fa9dfe7955ed3d793d115edb79923",
+      "path": "tests/survey-contracts/semantics/rationale-authority-boundary.test.mjs"
+    },
+    {
+      "digest": "sha256:f07be7065a039e07dcd215f3550384ad0950ca3513edf86d2ae3d4df44208c3e",
+      "path": "tests/survey-contracts/semantics/round-interpretation-ancestry.test.json"
+    },
+    {
+      "digest": "sha256:489a3340d45b063d54cfc76216137022afbde63bfb8662ddedccdfc9302e3e86",
+      "path": "tests/survey-contracts/semantics/round-interpretation-ancestry.test.mjs"
+    },
+    {
+      "digest": "sha256:2d446681cbe24db786f0526b318b3f5ff83553ff71d41b1a74db5b65f43574a7",
+      "path": "tests/survey-contracts/semantics/round-one-prior-forbidden.test.json"
+    },
+    {
+      "digest": "sha256:27d80118261a6853ac197dcccbfa8d2f0b7e49f24c13c77cdc6c3b4ac882e8e7",
+      "path": "tests/survey-contracts/semantics/round-one-prior-forbidden.test.mjs"
+    },
+    {
+      "digest": "sha256:1e360763fbaa9da3822b0919fecf76b9c7a9870652fa0718713ee9109766a0ec",
+      "path": "tests/survey-contracts/semantics/round-two-prior-required.test.json"
+    },
+    {
+      "digest": "sha256:3eccbcf2fc8437a398ad82b88d1070aa37023987dbacdeb4c7c937a57f158a5e",
+      "path": "tests/survey-contracts/semantics/round-two-prior-required.test.mjs"
+    },
+    {
+      "digest": "sha256:a37280a434866807fee995ca7f3ab240fb252df3eba4285894784cb2d318abec",
+      "path": "tests/survey-contracts/session/coupled-edge-continuity.test.json"
+    },
+    {
+      "digest": "sha256:3f34eacf623ade0262728c91d5880ea588a55443e4dfc041db0960880a7962b4",
+      "path": "tests/survey-contracts/session/coupled-edge-continuity.test.mjs"
+    },
+    {
+      "digest": "sha256:46f46e0777c68ec8248cac07dcf707b131b7e87362f8b8560153eea6322eb1a8",
+      "path": "tests/survey-contracts/session/global-journal-closure.test.json"
+    },
+    {
+      "digest": "sha256:ad5ed736396e78d5ed4e8d16b076ffded11872b1b912b848cf49369b61f62e7b",
+      "path": "tests/survey-contracts/session/global-journal-closure.test.mjs"
+    },
+    {
+      "digest": "sha256:6031e01624340ff3c87967a678ca81cc91dc193b28a4bd4ccc14fa56af880860",
+      "path": "tests/survey-contracts/session/immutable-history-heads.test.json"
+    },
+    {
+      "digest": "sha256:cbdc0f1ecb9458b9b7ac801237f1b65b6a1bc72efeac5769bfb747d177d4fb85",
+      "path": "tests/survey-contracts/session/immutable-history-heads.test.mjs"
+    },
+    {
+      "digest": "sha256:763b74aea7d78bf2775a60e4a3d70d4b46dcbdde37fe385a421c4643aa851608",
+      "path": "tests/survey-contracts/session/legacy-draft-rejection.test.json"
+    },
+    {
+      "digest": "sha256:4a58c565d49b45ae7a2ff2b50862155044b4c4dd3ca665eb5f84abf4a5c4f845",
+      "path": "tests/survey-contracts/session/legacy-draft-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:3f256c6d003d8814967940e19f1d7e0ed08d59a1a70f909b92e2fbd76d4e9da2",
+      "path": "tests/survey-contracts/session/legal-paired-states.test.json"
+    },
+    {
+      "digest": "sha256:3f0c578a2aa5144f75c5137dce5a04486cc2f4763288c1b31b084fc15ded0862",
+      "path": "tests/survey-contracts/session/legal-paired-states.test.mjs"
+    },
+    {
+      "digest": "sha256:84e07f06fbfb974f79f8ebf31be3f4b1232d63d6ce7bd75b116a71924613a2b5",
+      "path": "tests/survey-contracts/session/paired-state-boundaries.test.json"
+    },
+    {
+      "digest": "sha256:141ab063cdcb8df8b99f610a233254e02a6ee16afda520a1afc4c9e9b64441a6",
+      "path": "tests/survey-contracts/session/paired-state-boundaries.test.mjs"
+    },
+    {
+      "digest": "sha256:b489d65fc9630cec780abb5c1695cbe9fe41d2daacc4b74ef0ab8473537becfa",
+      "path": "tests/survey-contracts/session/support/session-validation.mjs"
+    },
+    {
+      "digest": "sha256:e391fd7082e44844a0c8b21b3b2e727d5ed2f3afb6893be4827fb0f153601578",
+      "path": "tests/survey-contracts/session/typed-runtime-artifact-references.test.json"
+    },
+    {
+      "digest": "sha256:19a429f42c76aa45c0b6ed2c97eb87d64ad533ddcdecccc0987747d281f8a541",
+      "path": "tests/survey-contracts/session/typed-runtime-artifact-references.test.mjs"
+    },
+    {
+      "digest": "sha256:2eb1a116de3ee3cb652505b4daa368da1d1a008f9e1162b4d847598c7016c429",
+      "path": "tests/survey-contracts/support/contract-validation.mjs"
+    },
+    {
+      "digest": "sha256:26b419b8eeff44ba0d205acb786455791ba7eae73c4c13e2153d209bb941d9b9",
+      "path": "tests/survey-contracts/support/fixture-factory.mjs"
+    },
+    {
+      "digest": "sha256:e6113b0e8459f61e5ef9b0f5b33a58234c8f5144d766cd707c824224a33b4ea3",
+      "path": "tests/survey-contracts/support/generate-fixtures.mjs"
+    },
+    {
+      "digest": "sha256:acd03eca0be911c0fb57f41613048598da44022cd595310a1c6f5ca71891d90c",
+      "path": "tests/survey-contracts/support/generate-suite.mjs"
+    },
+    {
+      "digest": "sha256:34c7502adde40e0a917e8fcb373dcdf7030d8cc29a25fd391f36d6e3aca5fcdf",
+      "path": "tests/survey-contracts/support/obligation-scenarios.mjs"
+    },
+    {
+      "digest": "sha256:4fd8f9a393c3a2bce2820709b6e644940ce6bf53acfdb363f4e59400386d61da",
+      "path": "tests/survey-contracts/support/suite-definition.mjs"
+    },
+    {
+      "digest": "sha256:62b257b6573ce812e234402b870a61dcf82c7d364e0dedba0fbbe83da209f988",
       "path": "tests/test-evidence.manifest.json"
     }
   ],
   "id": "urn:mission-kit:survey-v2:projection-lock:survey-v2",
-  "packageDigest": "sha256:4db619a8fbd7e075aa8ab1976618115881b3244175072ed884487b3059eda6e7",
+  "packageDigest": "sha256:2f1e6ecae0ea755ae9839ce74da9fd54c57ac9f1f538e864bd6070afb7c39432",
   "parentDesignSha256": "6467fff1c74c6dc857bcb06722d19dfa04381ae3e6f242eccb36581f87560f74",
   "portableExclusions": [
     {
@@ -2858,7 +3382,7 @@
       "projectionId": "urn:mission-kit:survey-v2:projection:validators"
     },
     {
-      "digest": "sha256:e177c24541db5dc188a28634a2669d7d97069c92b3c9498d4903e4204a802d51",
+      "digest": "sha256:3a45540d319ed0ea51ffe70697552017f17e05771ec01e1b73a3e6dedb8731ae",
       "path": "generated/validators.mjs",
       "projectionId": "urn:mission-kit:survey-v2:projection:validators"
     },
@@ -3177,6 +3701,56 @@
     {
       "expectedId": null,
       "kind": "authored",
+      "path": "schemas/survey/v1alpha1/common.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "schemas/survey/v1alpha1/generation-record.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "schemas/survey/v1alpha1/question-frame-set.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "schemas/survey/v1alpha1/round-instrument.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "schemas/survey/v1alpha1/round-interpretation.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "schemas/survey/v1alpha1/survey-policy-snapshot.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "schemas/survey/v1alpha1/survey-question-binding.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "schemas/survey/v1alpha1/survey-round.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "schemas/survey/v1alpha1/survey-runtime-artifact.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "schemas/survey/v1alpha1/survey.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
       "path": "schemas/v1/common.schema.json"
     },
     {
@@ -3261,6 +3835,31 @@
     },
     {
       "expectedId": null,
+      "kind": "authored",
+      "path": "schemas/v2/common.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "schemas/v2/paired-state-matrix.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "schemas/v2/protocol-selection.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "schemas/v2/protocol.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "schemas/v2/session-state.schema.json"
+    },
+    {
+      "expectedId": null,
       "kind": "generated",
       "path": "scripts/survey-envelope.mjs"
     },
@@ -3303,6 +3902,26 @@
       "expectedId": null,
       "kind": "authored",
       "path": "source/authoring/kernel/digests.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/authoring/survey/protocol-semantics.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/authoring/survey/resource-semantics.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/authoring/survey/session-semantics.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/authoring/survey/survey-authoring.protocol.json"
     },
     {
       "expectedId": null,
@@ -3638,6 +4257,21 @@
       "expectedId": null,
       "kind": "authored",
       "path": "source/projections/validators.projection.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/protocol/paired-state-matrix.v2.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/protocol/protocol-selection.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/protocol/survey-v2.protocol.json"
     },
     {
       "expectedId": null,
@@ -5507,6 +6141,161 @@
     {
       "expectedId": null,
       "kind": "authored",
+      "path": "tests/fixtures/survey/contracts/negative/binding-inline-survey-fields.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/contracts/negative/question-frame-parent-mismatch.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/contracts/negative/question-frame-set-fourth-altitude.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/contracts/negative/question-frame-slot-duplicate.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/contracts/negative/round-instrument-incomplete.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/contracts/negative/round-instrument-inline-question.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/contracts/negative/round-one-prior-interpretation.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/contracts/negative/round-two-missing-interpretation.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/contracts/negative/runtime-source-mismatch.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/contracts/positive/generation-record.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/contracts/positive/question-frame-set-1.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/contracts/positive/question-frame-set-2.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/contracts/positive/round-instrument-1.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/contracts/positive/round-instrument-2.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/contracts/positive/round-interpretation-1.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/contracts/positive/round-interpretation-2.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/contracts/positive/runtime-candidate-validation-evidence.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/contracts/positive/runtime-composite-runtime-evidence.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/contracts/positive/runtime-finalization-diagnostic.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/contracts/positive/runtime-revision-directive.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/contracts/positive/runtime-round-response-set.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/contracts/positive/survey-policy-snapshot.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/contracts/positive/survey-question-binding-1.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/contracts/positive/survey-round-1.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/contracts/positive/survey-round-2.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/contracts/positive/survey.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/protocol/golden-bindings.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/protocol/paired-state-invalid-cases.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/protocol/selection-cases.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/session-v2/historical-v1-session.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/survey/session-v2/session-factory.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
       "path": "tests/fragments/contribution-removal.test.json"
     },
     {
@@ -6553,6 +7342,396 @@
       "expectedId": null,
       "kind": "authored",
       "path": "tests/state/writer-lock-initialization-cleanup.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/compatibility/v1-session-selection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/compatibility/v1-session-selection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/paired-state/canonical-paired-state-matrix.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/paired-state/canonical-paired-state-matrix.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/paired-state/paired-state-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/paired-state/paired-state-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/protocol/authoring-protocol-contract.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/protocol/authoring-protocol-contract.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/protocol/candidate-protocol-binding.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/protocol/candidate-protocol-binding.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/protocol/support.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/resources/binding-neutrality.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/resources/binding-neutrality.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/resources/child-frame-bindings.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/resources/child-frame-bindings.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/resources/frame-set-coordination-container.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/resources/frame-set-coordination-container.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/resources/generation-exact-ancestry.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/resources/generation-exact-ancestry.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/resources/generation-producer-nonidentity.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/resources/generation-producer-nonidentity.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/resources/immutable-round-instrument.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/resources/immutable-round-instrument.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/resources/incomplete-round-instrument.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/resources/incomplete-round-instrument.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/resources/invalid-question-frame-slots.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/resources/invalid-question-frame-slots.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/resources/neutral-question-binding.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/resources/neutral-question-binding.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/resources/ordered-question-frame-slots.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/resources/ordered-question-frame-slots.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/resources/round-instrument-closure.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/resources/round-instrument-closure.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/resources/survey-geometry.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/resources/survey-geometry.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/resources/survey-policy-snapshot.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/resources/survey-policy-snapshot.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/resources/survey-round-ancestry.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/resources/survey-round-ancestry.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/runtime-artifacts/closed-runtime-variants.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/runtime-artifacts/closed-runtime-variants.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/runtime-artifacts/runtime-source-bindings.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/runtime-artifacts/runtime-source-bindings.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/runtime-artifacts/typed-round-response-ingress.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/runtime-artifacts/typed-round-response-ingress.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/selection/protocol-selection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/selection/protocol-selection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/semantics/parent-ancestry-mismatch.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/semantics/parent-ancestry-mismatch.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/semantics/rationale-authority-boundary.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/semantics/rationale-authority-boundary.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/semantics/round-interpretation-ancestry.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/semantics/round-interpretation-ancestry.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/semantics/round-one-prior-forbidden.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/semantics/round-one-prior-forbidden.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/semantics/round-two-prior-required.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/semantics/round-two-prior-required.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/session/coupled-edge-continuity.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/session/coupled-edge-continuity.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/session/global-journal-closure.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/session/global-journal-closure.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/session/immutable-history-heads.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/session/immutable-history-heads.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/session/legacy-draft-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/session/legacy-draft-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/session/legal-paired-states.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/session/legal-paired-states.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/session/paired-state-boundaries.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/session/paired-state-boundaries.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/session/support/session-validation.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/session/typed-runtime-artifact-references.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/session/typed-runtime-artifact-references.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/support/contract-validation.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/support/fixture-factory.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/support/generate-fixtures.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/support/generate-suite.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/support/obligation-scenarios.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey-contracts/support/suite-definition.mjs"
     },
     {
       "expectedId": null,

@@ -1,0 +1,39 @@
+{
+  "apiVersion": "survey.mission-kit/v1alpha1",
+  "kind": "SurveyRuntimeArtifact",
+  "metadata": {
+    "name": "candidate-validation"
+  },
+  "spec": {
+    "artifactType": "CandidateValidationEvidence",
+    "source": {
+      "surveyRunId": "survey-run-1",
+      "sourcePhaseTransitionId": "T27",
+      "sourceEventId": "CANDIDATE_VALIDATION_FAIL",
+      "sourceSemanticRevision": 7,
+      "sourceDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "payload": {
+      "candidateRef": {
+        "apiVersion": "survey.mission-kit/v1alpha1",
+        "kind": "RoundInterpretation",
+        "name": "composite-candidate",
+        "semanticDigest": "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "validatorBindings": [
+        {
+          "id": "candidate-validator",
+          "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      ],
+      "issues": [
+        {
+          "code": "CANDIDATE_INCOMPLETE",
+          "path": "/spec",
+          "reason": "The candidate is incomplete.",
+          "nextAction": "revise-candidate"
+        }
+      ]
+    }
+  }
+}
