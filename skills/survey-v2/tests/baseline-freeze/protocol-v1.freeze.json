@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "1.0.0",
+  "kind": "SurveyProtocolV1Freeze",
+  "source": {
+    "sourceCommit": "a9e569415d9bb07da097ea6b5e84821ed888279f",
+    "recoveredCommit": "294b565ce5684b90ca6a5a585483c6f2ad48b80a",
+    "path": "skills/survey-v2",
+    "gitTree": "3b81de74b9e2955638e5515d549e6af64a2b48b5",
+    "trackedPathCount": 244
+  },
+  "testManifest": {
+    "path": "tests/test-evidence.manifest.json",
+    "entryCount": 63,
+    "rawFileSha256": "b9f059f3509986f080d2b65d7c187cfd2a8b07a76485fdc2bf01e69b04a9cb74"
+  },
+  "packageManifest": {
+    "path": "survey-v2.package.json",
+    "entryCount": 244,
+    "rawFileSha256": "786f13f57b273938c09cabcc5693889b35bdae7585fc02d744869c9976e92efc"
+  },
+  "projectionLock": {
+    "path": "generated/projection-lock.json",
+    "rawFileSha256": "2067e9081b4b4047e357c6c6ba85ad257c8cea8676b452f342c0a6f743d09aad",
+    "aggregateDigest": "sha256:6603b777b82783176fca6129bfecde7a6e253f5be86f9becf94703d818b9757c"
+  },
+  "protocol": {
+    "path": "source/protocol/survey.protocol.json",
+    "rawFileSha256": "c6b34dac8390920d2c450fa117a13d27f362f6648fa0b5fcf7c0617a61819033",
+    "canonicalDigest": "sha256:d99054ceba9e72ad3787ef038b41184b70968e6e4e444b67178b7328542d515a"
+  },
+  "normalizedTestResult": {
+    "rawFileSha256": "fda7578050075bfe232369179d3f0bda4633802f34ecd8b4cdf0f43c3127f0d8",
+    "value": {
+      "schemaVersion": "1.0.0",
+      "candidateCommit": "a9e569415d9bb07da097ea6b5e84821ed888279f",
+      "command": "npm test",
+      "exitCode": 0,
+      "registeredTestCount": 63,
+      "passedTestCount": 63,
+      "failedTestCount": 0,
+      "rawOutputPassMarkers": 63,
+      "rawOutputFailureMarkers": 0,
+      "nodeVersion": "v24.12.0"
+    }
+  },
+  "representativeSessions": {
+    "states": [
+      "initialized",
+      "round_1_q1_awaiting",
+      "awaiting_ratification",
+      "intent_captured"
+    ],
+    "exporter": "tests/baseline-freeze/export-representative-sessions.mjs",
+    "requiredProjectionDigest": "sha256:6603b777b82783176fca6129bfecde7a6e253f5be86f9becf94703d818b9757c"
+  },
+  "compatibilityPolicy": {
+    "scope": "characterization-only-pre-runtime-selection",
+    "exactMatch": "admit-and-resume",
+    "mismatch": "refuse-before-runtime",
+    "productionRuntimeEnforcementClaimed": false,
+    "requiredPackage": {
+      "id": "urn:mission-kit:survey-v2:package:survey-v2",
+      "version": "1.0.0",
+      "projectionDigest": "sha256:6603b777b82783176fca6129bfecde7a6e253f5be86f9becf94703d818b9757c",
+      "protocolDigest": "sha256:d99054ceba9e72ad3787ef038b41184b70968e6e4e444b67178b7328542d515a"
+    }
+  }
+}

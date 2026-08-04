@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "1.0.0",
+  "kind": "CanonicalSurveyV1Freeze",
+  "source": {
+    "repository": "apnex/mission-kit",
+    "commit": "8c511bd01d2200e93ef33a44b85f277380b8f8ff",
+    "path": "skills/survey",
+    "gitTree": "5af20e397ae30bd2a744c348c99f2ba57ed2ad7e"
+  },
+  "assertions": {
+    "initialization": 17,
+    "format": 12,
+    "validation": 24,
+    "total": 53
+  },
+  "inventory": {
+    "algorithm": "sha256-canonical-json(entries)/v1",
+    "fileCount": 10,
+    "totalBytes": 75852,
+    "contentAggregate": "sha256:a219baf67d5195686936a014c55fe4f4aa71ab6505d8ff84d152b80139ef5edb",
+    "entries": [
+      {"path": "SKILL.md", "mode": "0644", "byteLength": 20013, "rawFileSha256": "3e0ce4576667f9d03371585556da1717c3e567d9b0fa289241f8ea0037050218"},
+      {"path": "round-1-template.md", "mode": "0644", "byteLength": 3640, "rawFileSha256": "e183f82e2a9b98d998a96b5feb1d89d3d2ced441b4d7efc6081e76477c668448"},
+      {"path": "round-2-template.md", "mode": "0644", "byteLength": 3746, "rawFileSha256": "d0739c735ded3cc8f88d8b435fcd2accfb300ba802f9d6be93178f3422d6bc10"},
+      {"path": "scripts/format-pick-presentation.sh", "mode": "0755", "byteLength": 3007, "rawFileSha256": "0dba2e70c4a3bf48967e191511df06d06ed947912ccbcc4a609e747dc2bef83a"},
+      {"path": "scripts/format-pick-presentation.test.sh", "mode": "0755", "byteLength": 4182, "rawFileSha256": "89523ee175993c331e078ae09a087d958cbb645d4fc6e2a59169bc14991e41b9"},
+      {"path": "scripts/survey-init.sh", "mode": "0755", "byteLength": 5506, "rawFileSha256": "9e6ec523fbd896566e1463108e405735602ccb2476f5dd3e63f687c347202dc3"},
+      {"path": "scripts/survey-init.test.sh", "mode": "0755", "byteLength": 5194, "rawFileSha256": "f5b260cf08a14fb17f655e91e6588ad1c8bce03673e503d763d1f401383df40c"},
+      {"path": "scripts/validate-envelope.sh", "mode": "0755", "byteLength": 12185, "rawFileSha256": "e77b8c572c6638b861dd6989c6a3661a9890774461356ace179f736cbd401f0c"},
+      {"path": "scripts/validate-envelope.test.sh", "mode": "0755", "byteLength": 9869, "rawFileSha256": "c3e47864bd1da4e9862d2ca8c3ef74090a87a9e8af020b1572ed4fc6f74a3d34"},
+      {"path": "templates/envelope.md.tmpl", "mode": "0644", "byteLength": 8510, "rawFileSha256": "8461e4c5dcae0e0bedc613ccb7b4d98bab5e8257774353c908507c67a81e8b07"}
+    ]
+  },
+  "ratifiedAggregate": {
+    "value": "sha256:943ab3f2e10cb96077ce1c225bab3b1850e40da58ba82ddfb65d64d28efe859c",
+    "authority": "build-graph.json#G0.expectedMetrics.canonicalV1Aggregate",
+    "algorithm": "sha256-canonical-json({domain,members})/v1",
+    "domain": "mission-kit-survey-v1-freeze/v1"
+  },
+  "installedCopy": {
+    "path": "/home/apnex/.codex/skills/survey",
+    "expectedRelationship": "byte-identical"
+  },
+  "discovery": {
+    "skillName": "survey",
+    "entrypoint": "SKILL.md",
+    "triggerSource": "frontmatter.description",
+    "routingClass": "pre-design-stakeholder-intent"
+  },
+  "recovery": {
+    "method": "git-archive-subtree",
+    "rehearsalGate": "G0"
+  }
+}
