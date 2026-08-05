@@ -1,3 +1,8 @@
+import {
+  exactTextContent,
+  renderBlankTextForm,
+} from "../../../../source/authoring/kernel/text-forms.mjs";
+
 function issue(code, field, reason, correction) {
   return { code, field, reason, correction };
 }
@@ -18,6 +23,17 @@ function selectedValue(layer, path) {
     (entry) => entry.path === path,
   ) ?? [];
   return matches.length === 1 ? matches[0].value : undefined;
+}
+
+function textProjector(input) {
+  return {
+    status: "accept",
+    content: exactTextContent(renderBlankTextForm({
+      formDefinition: input.formDefinition,
+      contextClosure: input.contextClosure,
+      requestHandle: input.requestHandle,
+    })),
+  };
 }
 
 function outlineHandler(input) {
@@ -150,6 +166,12 @@ export function createBriefExecutableRegistry({
   }
   return {
     guards: [],
+    projectors: [
+      {
+        ...bindings.projectionEngine,
+        invoke: textProjector,
+      },
+    ],
     handlers: [
       {
         ...bindings.outlineHandler,

@@ -1,0 +1,42 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:initialization:survey-policy-binding-authority",
+  "obligationId": "O-SV10-05",
+  "requirementIds": [],
+  "invariantIds": [
+    "SV10"
+  ],
+  "verification": {
+    "precondition": "The pure Survey policy builder accepts only one closed explicit trusted-input shape and validates every identity pin before constructing a policy.",
+    "stimulus": "Execute tests/survey/initialization/survey-policy-binding-authority.test.mjs with node:test.",
+    "expectedSemanticState": "Ambient configuration, invalid profile identity, missing binding classes, widened bindings, duplicate IDs, invalid digests, and ambient array fields are rejected without a policy result.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: Survey policy construction rejects ambient or invalid trusted binding authority",
+    "forbiddenMutation": "Rejected authority must not be repaired, reordered, deduplicated, defaulted from ambient profile content, or used to derive a SurveyPolicySnapshot identity.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "generated/validators.mjs",
+      "schemas/authoring/v1alpha1/authoring-profile-manifest.schema.json",
+      "schemas/survey/v1alpha1/survey-policy-snapshot.schema.json",
+      "source/authoring/kernel/canonical.mjs",
+      "source/authoring/kernel/contract-semantics.mjs",
+      "source/authoring/kernel/digests.mjs",
+      "source/authoring/survey/resource-semantics.mjs",
+      "source/authoring/survey/survey-policy-snapshot.mjs"
+    ]
+  },
+  "behavior": "Survey policy construction rejects ambient or invalid trusted binding authority",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/survey/initialization/survey-policy-binding-authority.test.mjs",
+  "fixtures": [
+    "tests/fixtures/authoring/contracts/positive/authoring-profile-manifest.json",
+    "tests/survey/initialization/support.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:initialization:survey-frame-record-encoding",
+  "obligationId": "O-AS05-40",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS05"
+  ],
+  "verification": {
+    "precondition": "The SurveyFrame semantic-value grammar and shared ContextFrame semantic validator exist.",
+    "stimulus": "Execute tests/survey/initialization/survey-frame-record-encoding.test.mjs with node:test.",
+    "expectedSemanticState": "Ambiguous record syntax, unsupported given classes, cross-class duplicate givens, duplicate terms, contradictory scope, and ambient values all reject before products exist.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: SurveyFrame record encoding rejects ambiguity and shared-schema semantic conflicts",
+    "forbiddenMutation": "Rejected semantic values must not be normalized into a different meaning or partially materialized as resources.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "dependencies/shared-schemas/v1/snapshot/context-frame/v1alpha1/context-frame.validator.mjs",
+      "source/authoring/survey/survey-frame-authority.mjs"
+    ]
+  },
+  "behavior": "SurveyFrame record encoding rejects ambiguity and shared-schema semantic conflicts",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/survey/initialization/survey-frame-record-encoding.test.mjs",
+  "fixtures": [],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

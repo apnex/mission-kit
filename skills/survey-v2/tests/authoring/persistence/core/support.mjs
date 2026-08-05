@@ -441,6 +441,7 @@ export function makeEvidenceJournalScenario() {
   const operation = deriveOperationIdentity({
     operationClass: "assignment-issuance",
     machineId: "authoring-kernel",
+    operationDigest: digest("9"),
     requestDigest: digest("b"),
     assignmentDigest: assignment.spec.assignmentDigest,
     priorEvidenceRevision: 0,
@@ -458,6 +459,7 @@ export function makeEvidenceJournalScenario() {
   const plan = createEvidenceCommitPlan({
     priorJournalHeadDigest: identity.identity.genesisChainDigest(),
     idempotency: operation.idempotency,
+    operationDigest: operation.operationDigest,
     commandDigest: operation.commandDigest,
     payloadDigest: operation.payloadDigest,
     before: genesisRevisionState,
@@ -488,6 +490,7 @@ export function makeEvidenceJournalScenario() {
       policy: { id: "fixture-policy", digest: digest("5") },
     },
     idempotency: operation.idempotency,
+    operationDigest: operation.operationDigest,
     commandDigest: operation.commandDigest,
     payloadDigest: operation.payloadDigest,
     before: genesisRevisionState,
@@ -646,6 +649,7 @@ export function appendTransitionScenario({
   const operation = deriveOperationIdentity({
     operationClass: "submission-attempt",
     machineId: "authoring-kernel",
+    operationDigest: digest("8"),
     assignmentDigest: evidence.assignment.spec.assignmentDigest,
     normalizedSubmissionDigest:
       submission.spec.normalizedSubmissionDigest,
@@ -685,6 +689,7 @@ export function appendTransitionScenario({
       policy: { id: "fixture-policy", digest: digest("5") },
     },
     idempotency: operation.idempotency,
+    operationDigest: operation.operationDigest,
     commandDigest: operation.commandDigest,
     payloadDigest: operation.payloadDigest,
     before: workspaceRevisionState(evidence.workspace),

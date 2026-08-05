@@ -9,7 +9,12 @@ import {
   resourceReferenceFrom,
 } from "../../../source/authoring/kernel/digests.mjs";
 import {
+  compileExecutableRegistry,
+  invokeProjector,
+} from "../../../source/authoring/kernel/executable-registry.mjs";
+import {
   renderPopulatedTextForm,
+  textContentBytes,
 } from "../../../source/authoring/kernel/text-forms.mjs";
 import {
   createInMemoryAuthoringStore,
@@ -67,6 +72,12 @@ function callbackCountingRegistry(registry, callbackCounts) {
       ...entry,
       invoke(input) {
         callbackCounts.guard += 1;
+        return entry.invoke(input);
+      },
+    })),
+    projectors: registry.projectors.map((entry) => ({
+      ...entry,
+      invoke(input) {
         return entry.invoke(input);
       },
     })),
@@ -216,6 +227,7 @@ export async function createBriefHarness({
   return {
     callbackCounts,
     coordinator,
+    executables,
     fixture,
     identity,
     initialSnapshot,
@@ -301,6 +313,19 @@ export function textSubmissionFor(
         name,
         bytes: submittedBytes.toString("base64"),
       }),
+    },
+    renderProjection(input) {
+      const projected = invokeProjector(
+        compileExecutableRegistry(harness.executables),
+        projectionBinding.engine,
+        input,
+      );
+      if (projected.status !== "accept") {
+        throw new Error(
+          `Brief projection rejected: ${projected.issues[0].code}`,
+        );
+      }
+      return textContentBytes(projected.content);
     },
   });
   return {

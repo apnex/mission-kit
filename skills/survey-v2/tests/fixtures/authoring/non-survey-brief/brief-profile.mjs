@@ -202,7 +202,12 @@ async function buildFixtureAuthority() {
     ),
     projectionEngine: executableBinding(
       "brief-text-projection-engine",
-      textFormsDigest,
+      sha256Value({
+        domain:
+          "mission-kit:fixture:non-survey-brief:projector-closure/v1",
+        executableModuleDigest,
+        textFormsDigest,
+      }),
     ),
   };
   const projectionDigest = sha256Value({

@@ -16,6 +16,7 @@ test("a fresh transaction reader reproduces exact pending Assignment resources a
     profile: scenario.profile,
     workspace,
     staticInventory: [scenario.formDefinition],
+    executables: scenario.executables,
   });
   assert.deepEqual(
     {

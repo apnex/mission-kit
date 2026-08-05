@@ -11,6 +11,7 @@ import {
   issueTextAssignment
 } from "../../../source/authoring/kernel/assignment-dag.mjs";
 import {
+  renderBlankTextForm,
   renderPopulatedTextForm
 } from "../../../source/authoring/kernel/text-forms.mjs";
 
@@ -21,6 +22,18 @@ const positiveFixtureRoot = new URL(
 
 export const evidenceDigest =
   `sha256:${"e".repeat(64)}`;
+
+export function deterministicTestRenderer({
+  contextClosure,
+  formDefinition,
+  requestHandle
+}) {
+  return renderBlankTextForm({
+    formDefinition,
+    contextClosure,
+    requestHandle
+  });
+}
 
 async function loadPositiveFixture(stem) {
   return JSON.parse(
@@ -78,16 +91,18 @@ export async function loadK10AssignmentScenario() {
 export async function issueK10TextAssignment({
   projectionName = "brief-projection",
   assignmentName = "brief-assignment",
-  occupiedHandles = []
+  occupiedHandles = [],
+  renderProjection = deterministicTestRenderer
 } = {}) {
   const scenario = await loadK10AssignmentScenario();
   const issued = issueTextAssignment({
     ...scenario,
     projectionName,
     assignmentName,
-    occupiedHandles
+    occupiedHandles,
+    renderProjection
   });
-  return { ...scenario, ...issued };
+  return { ...scenario, ...issued, renderProjection };
 }
 
 export function populatedTextBytes(

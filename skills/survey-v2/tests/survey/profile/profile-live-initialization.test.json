@@ -1,0 +1,44 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:profile:profile-live-initialization",
+  "obligationId": "O-AS15-68",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS15"
+  ],
+  "verification": {
+    "precondition": "A new Survey workspace contains exactly one frozen intake head, one frozen policy head, and matching authoring and phase genesis heads.",
+    "stimulus": "Execute tests/survey/profile/profile-live-initialization.test.mjs with node:test.",
+    "expectedSemanticState": "BEGIN_AUTHORING commits AT01 and phase T02 in one journal record, advances both machine heads, preserves intake and policy heads, and replays without an additional commit.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: the live Survey initialization event atomically commits AT01 with its exact phase T02 coupling",
+    "forbiddenMutation": "Initialization must not drop or replace frozen inputs, create cognitive products or sidecars, split the coupled machine edges, or duplicate an idempotent commit.",
+    "applicability": {
+      "mode": "specific",
+      "transports": [],
+      "adapters": [
+        "urn:mission-kit:survey-v2:adapter:in-memory"
+      ]
+    },
+    "inspectedAuthorities": [
+      "source/authoring/adapters/in-memory-store.mjs",
+      "source/authoring/kernel/context-resolver.mjs",
+      "source/authoring/kernel/manifest-reducer.mjs",
+      "source/authoring/runtime/transaction-coordinator.mjs",
+      "source/authoring/survey/profile-authority.mjs",
+      "source/authoring/survey/profile-executables.mjs",
+      "source/authoring/survey/source-snapshot.mjs",
+      "source/authoring/survey/survey-policy-snapshot.mjs"
+    ]
+  },
+  "behavior": "the live Survey initialization event atomically commits AT01 with its exact phase T02 coupling",
+  "evidenceClass": "positive",
+  "runner": "node:test",
+  "executable": "tests/survey/profile/profile-live-initialization.test.mjs",
+  "fixtures": [
+    "tests/survey/profile/live-support.mjs",
+    "tests/survey/profile/support.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:initialization:initialization-adapter-evidence-limit",
+  "obligationId": "O-AS04-17",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS04"
+  ],
+  "verification": {
+    "precondition": "A new adapter receives sixty-four distinct typed recoverable dependency observations without any coordinator capability invocation.",
+    "stimulus": "Supply a sixty-fifth distinct recoverable observation, then replay the exact sixty-fourth observation against the prior valid state.",
+    "expectedSemanticState": "The sixty-fifth observation fails with the typed evidence-limit error while exact replay returns the byte-identical sixty-four-entry state.",
+    "expectedEvidenceState": "No invalid sixty-fifth entry is emitted and every retained evidence ordinal remains closed and replayable.",
+    "forbiddenMutation": "Evidence overflow must not create an adapter state that its own normalizer rejects or invoke a coordinator or identity capability.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "source/authoring/survey/initialization-adapter.mjs"
+    ]
+  },
+  "behavior": "initialization evidence refuses a sixty-fifth distinct wait before producing an unreplayable state",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/survey/initialization/initialization-adapter-evidence-limit.test.mjs",
+  "fixtures": [
+    "tests/survey/initialization/initialization-adapter-support.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

@@ -13,6 +13,7 @@ import {
   compileExecutableRegistry,
   freezeExecutableInput,
   invokeHandler,
+  invokeProjector,
   invokeValidator,
   resolveExecutable,
 } from "./executable-registry.mjs";
@@ -29,6 +30,7 @@ import {
   preflightAuthoringProducts,
 } from "./mutation-planner.mjs";
 import {
+  assertRawTaskRequestInputs,
   buildRevisionRequestDraft,
   buildTaskRequestDraft,
 } from "./request-planner.mjs";
@@ -36,6 +38,7 @@ import {
   verifyTextAssignmentDag,
 } from "./assignment-dag.mjs";
 import {
+  textContentBytes,
   validateAuthoringFieldValues,
 } from "./text-forms.mjs";
 import {
@@ -339,6 +342,14 @@ function closedCommand(command) {
   return value;
 }
 
+/**
+ * Admit one complete domain-neutral reducer command before any coordinator
+ * replay or pending-work shortcut can observe it.
+ */
+export function normalizeAuthoringCommand(command) {
+  return closedCommand(command);
+}
+
 function trustedSurface(trustedInputs) {
   const required = ["validateContract", "kernel"];
   const optional = ["executables", "inventory"];
@@ -453,7 +464,7 @@ function assertHostKernel(profile, hostKernel) {
   }
 }
 
-function preflightProfileExecutables(profile, compiled) {
+export function preflightProfileExecutables(profile, compiled) {
   for (const binding of profile.spec.guardBindings) {
     resolveExecutable(compiled, "guards", binding.handler);
   }
@@ -472,6 +483,12 @@ function preflightProfileExecutables(profile, compiled) {
     for (const member of validatorSet.members) {
       resolveExecutable(compiled, "validators", member);
     }
+  }
+  for (const binding of profile.spec.projectionBindings) {
+    resolveExecutable(compiled, "projectors", binding.engine);
+  }
+  for (const binding of profile.spec.commitSidecarBindings ?? []) {
+    resolveExecutable(compiled, "sidecars", binding.executable);
   }
 }
 
@@ -515,6 +532,46 @@ function eventInputsFromClosure(contextClosure) {
     reference: layer.sourceReference,
     integrityDigest: layer.sourceIntegrityDigest,
   }));
+}
+
+function assertRawEventInputs(selectors, requestInputs) {
+  const allowedKeys = new Set(
+    selectors.flatMap((selector) =>
+      selector.selection.mode === "event-input"
+        ? [selector.selection.inputKey]
+        : []
+    ),
+  );
+  const ambientKeys = Object.keys(requestInputs)
+    .filter((inputKey) => !allowedKeys.has(inputKey))
+    .sort((left, right) =>
+      Buffer.compare(Buffer.from(left), Buffer.from(right)));
+  if (ambientKeys.length > 0) {
+    fail(
+      "EVENT_INPUT_UNDECLARED",
+      `/command/inputs/${ambientKeys[0]}`,
+      `Event input ${ambientKeys[0]} is not declared by an event-input selector.`,
+    );
+  }
+  const firstKeyByReference = new Map();
+  const inputKeys = Object.keys(requestInputs)
+    .filter((inputKey) => allowedKeys.has(inputKey))
+    .sort((left, right) =>
+      Buffer.compare(Buffer.from(left), Buffer.from(right)));
+  for (const inputKey of inputKeys) {
+    const referenceIdentity = canonicalize(
+      requestInputs[inputKey],
+    );
+    const firstKey = firstKeyByReference.get(referenceIdentity);
+    if (firstKey !== undefined) {
+      fail(
+        "EVENT_INPUT_REFERENCE_ALIAS",
+        `/command/inputs/${inputKey}`,
+        `Event inputs ${firstKey} and ${inputKey} alias one resource reference.`,
+      );
+    }
+    firstKeyByReference.set(referenceIdentity, inputKey);
+  }
 }
 
 function commandBaseFrom(workspace) {
@@ -739,6 +796,7 @@ function assertSubmissionDag({
   contextClosure,
   inventory,
   validateContract,
+  compiled,
 }) {
   const formBinding = one(
     profile.spec.formBindings,
@@ -777,6 +835,21 @@ function assertSubmissionDag({
     projectionBinding,
     projectionArtifact,
     assignment,
+    renderProjection(input) {
+      const projected = invokeProjector(
+        compiled,
+        projectionBinding.engine,
+        input,
+      );
+      if (projected.status === "reject") {
+        fail(
+          "SUBMISSION_PROJECTION_REJECTED",
+          "/profile/spec/projectionBindings",
+          `Projector ${projectionBinding.engine.id} rejected deterministic Assignment reproduction.`,
+        );
+      }
+      return textContentBytes(projected.content);
+    },
   });
   const normalizedValues = validateAuthoringFieldValues({
     formDefinition,
@@ -900,6 +973,10 @@ function nextOperation({
   const selected = selectNextAuthority({ profile, protocol, workspace });
   if (selected.kind === "wait") return waitResult(selected.state);
   if (selected.kind === "terminal") return terminalResult(selected.state);
+  assertRawTaskRequestInputs({
+    task: selected.task,
+    requestInputs: command.inputs,
+  });
   setPhase("context");
   const contextClosure = resolveContextClosure({
     workspace,
@@ -939,6 +1016,10 @@ function reviseOperation({
     workspace,
     unitId: command.unitId,
     eventId: command.eventId,
+  });
+  assertRawTaskRequestInputs({
+    task: selected.normalTask,
+    requestInputs: command.inputs,
   });
   setPhase("context");
   const contextClosure = resolveContextClosure({
@@ -1028,6 +1109,7 @@ function submitOperation({
     contextClosure: selected.contextClosure,
     inventory: trustedInputs.inventory,
     validateContract,
+    compiled,
   });
   const configuration = selected.authority.binding?.authority ??
     selected.authority.plan?.authority;
@@ -1143,6 +1225,7 @@ function eventOperation({
     eventId: command.eventId,
   });
   const selectors = selected.binding.inputSelectors ?? [];
+  assertRawEventInputs(selectors, command.inputs);
   setPhase("context");
   const contextClosure = resolveContextClosure({
     workspace,

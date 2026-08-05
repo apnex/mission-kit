@@ -39,7 +39,8 @@ test("a submission against the wrong projection artifact is rejected", async () 
       formDefinition: assigned.formDefinition,
       normalizedValues: { summary: "A useful brief." },
       rawEvidenceBytes: Buffer.from("canonical adapter evidence\n", "utf8"),
-      producerProvenance: producerProvenance("canonical-adapter")
+      producerProvenance: producerProvenance("canonical-adapter"),
+      renderProjection: assigned.renderProjection
     }),
     "DAG_ASSIGNMENT_ANCESTRY_MISMATCH"
   );

@@ -154,6 +154,7 @@ export function evidencePostImage(
   });
   const commandDigest = digest("1");
   const payloadDigest = digest("2");
+  const operationDigest = digest("3");
   const selectedOutcome = structuredClone(outcome ?? {
     class: "event-rejected",
     eventId: "EVENT_REJECTED",
@@ -173,6 +174,7 @@ export function evidencePostImage(
       machineId: "authoring-kernel",
       key,
     },
+    operationDigest,
     commandDigest,
     payloadDigest,
     before: revisionState(snapshot.workspace),
@@ -208,6 +210,7 @@ export function evidencePostImage(
       machineId: "authoring-kernel",
       key,
     },
+    operationDigest,
     commandDigest,
     payloadDigest,
     previousSealDigest,
@@ -229,6 +232,7 @@ export function evidencePostImage(
     machineId: record.idempotency.machineId,
     key: record.idempotency.key,
     recordDigest: record.recordDigest,
+    operationDigest,
     commandDigest,
     payloadDigest,
     outcome: selectedOutcome,

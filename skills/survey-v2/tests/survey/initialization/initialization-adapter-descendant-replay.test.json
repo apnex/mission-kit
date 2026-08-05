@@ -1,0 +1,39 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:initialization:initialization-adapter-descendant-replay",
+  "obligationId": "O-AS15-83",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS15"
+  ],
+  "verification": {
+    "precondition": "A live Survey adapter retains its accepted AT01 plus T02 state and the same store has subsequently committed the SurveyFrame Assignment and AT02 submission.",
+    "stimulus": "Replay the exact accepted ready dependency observation through the original active initialization adapter.",
+    "expectedSemanticState": "The adapter authenticates its immutable initialization journal ancestor and returns the exact active result while preserving the later round_1_frame_required state.",
+    "expectedEvidenceState": "The revision-three store is byte-identical before and after replay, and journal ordinal one still has the recordDigest sealed into initialization state.",
+    "forbiddenMutation": "Replay must not require the initialization postimage to remain the journal head, erase descendants, append a fourth record, or substitute another initialization ancestor.",
+    "applicability": {
+      "mode": "specific",
+      "transports": [],
+      "adapters": [
+        "urn:mission-kit:survey-v2:adapter:in-memory"
+      ]
+    },
+    "inspectedAuthorities": [
+      "source/authoring/runtime/journal-replay.mjs",
+      "source/authoring/runtime/transaction-coordinator.mjs",
+      "source/authoring/survey/initialization-adapter.mjs"
+    ]
+  },
+  "behavior": "active initialization replay authenticates its retained ancestor without rejecting legitimate AT02 descendants",
+  "evidenceClass": "resume",
+  "runner": "node:test",
+  "executable": "tests/survey/initialization/initialization-adapter-descendant-replay.test.mjs",
+  "fixtures": [
+    "tests/survey/profile/live-support.mjs",
+    "tests/survey/profile/support.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

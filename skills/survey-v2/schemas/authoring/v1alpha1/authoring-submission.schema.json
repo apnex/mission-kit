@@ -66,7 +66,47 @@
         "producerId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
         "producerClass": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
         "evidenceDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
-        "adapter": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/DigestBinding"}
+        "adapter": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/DigestBinding"},
+        "generation": {"$ref": "#/$defs/generationEvidence"}
+      }
+    },
+    "generationEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "attemptId",
+        "provider",
+        "model",
+        "adapter",
+        "configurationDigest"
+      ],
+      "properties": {
+        "attemptId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
+        "provider": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512,
+          "pattern": "\\S"
+        },
+        "model": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512,
+          "pattern": "\\S"
+        },
+        "adapter": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/DigestBinding"},
+        "configurationDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
+        "telemetry": {"$ref": "#/$defs/generationTelemetry"}
+      }
+    },
+    "generationTelemetry": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "latencyMs": {"type": "integer", "minimum": 0},
+        "inputTokens": {"type": "integer", "minimum": 0},
+        "outputTokens": {"type": "integer", "minimum": 0},
+        "costMicrounits": {"type": "integer", "minimum": 0}
       }
     }
   }

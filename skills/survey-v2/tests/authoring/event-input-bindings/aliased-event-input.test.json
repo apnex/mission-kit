@@ -1,0 +1,35 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:authoring:event-input-bindings:aliased-event-input",
+  "obligationId": "O-AS06-76",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS06"
+  ],
+  "verification": {
+    "precondition": "One event transition declares two closed event-input selectors with distinct keys and roles.",
+    "stimulus": "Supply the same exact ResourceReference under both declared input keys.",
+    "expectedSemanticState": "The reducer returns EVENT_INPUT_REFERENCE_ALIAS at the authority boundary before context resolution or callback dispatch.",
+    "expectedEvidenceState": "The executable observes zero handler calls and one deterministic typed rejection.",
+    "forbiddenMutation": "The aliased references must not enter ContextClosure, Mutation ancestry, callbacks, or persistence.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "source/authoring/kernel/manifest-reducer.mjs",
+      "tests/authoring/event-input-bindings/support.mjs"
+    ]
+  },
+  "behavior": "an event rejects two declared input keys that alias one resource reference before callbacks",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/authoring/event-input-bindings/aliased-event-input.test.mjs",
+  "fixtures": [
+    "tests/authoring/event-input-bindings/support.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

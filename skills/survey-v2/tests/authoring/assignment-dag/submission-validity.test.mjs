@@ -26,7 +26,8 @@ test("a completed text form produces one structurally and semantically valid sub
     projectionBinding: scenario.projectionBinding,
     formDefinition: scenario.formDefinition,
     submittedBytes: populatedTextBytes(scenario),
-    producerProvenance: producerProvenance()
+    producerProvenance: producerProvenance(),
+    renderProjection: scenario.renderProjection
   });
 
   assert.deepEqual(parsed.normalizedValues, {

@@ -11,6 +11,9 @@ import {
   sha256Value
 } from "../../../../source/executables/runtime/lib/canonical.mjs";
 import {
+  normalizeAuthoringCommand
+} from "../../../../source/authoring/kernel/manifest-reducer.mjs";
+import {
   sessionGenesisRevisionState,
   sessionGenesisSealDigest,
   sessionMachineStateDigest
@@ -279,6 +282,35 @@ export function makeJournalRecord({
     handoffSlots: []
   }
 }) {
+  const normalizedOperation = normalizeAuthoringCommand({
+    class: "event",
+    eventId: machineEdges[0]?.eventId ?? "FIXTURE_EVIDENCE",
+    base: {
+      authoringState:
+        machineEdges.find((edge) => edge.machineId === "authoring")
+          ?.fromState ?? "new",
+      semanticRevision: before.semanticRevision,
+      semanticStateDigest: before.semanticStateDigest,
+      activeHeads: structuredClone(workspaceEffect.activeHeads.before)
+    },
+    commandDigest,
+    payloadDigest,
+    evidenceDigest: sha256Value({
+      domain: "survey-v2/session-journal-fixture-evidence/v1",
+      commitId,
+      ordinal,
+      commitKind,
+      idempotency: {
+        machineId: idempotencyMachine,
+        key: idempotencyKey
+      },
+      before,
+      after,
+      machineEdges
+    }),
+    inputs: {},
+    externalCouplings: []
+  });
   const value = {
     recordDigest: digest("0"),
     authenticationDigest: digest("a"),
@@ -301,6 +333,10 @@ export function makeJournalRecord({
       machineId: idempotencyMachine,
       key: idempotencyKey
     },
+    operationDigest: sha256Value({
+      domain: "mission-kit:authoring:normalized-operation-envelope/v1",
+      command: normalizedOperation
+    }),
     commandDigest,
     payloadDigest,
     previousSealDigest,

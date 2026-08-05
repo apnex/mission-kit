@@ -1,0 +1,46 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:event-operation-envelope-idempotency",
+  "obligationId": "O-AS15-84",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS15"
+  ],
+  "verification": {
+    "precondition": "One accepted event outcome is durably bound to a machine-qualified idempotency key and its normalized operation envelope.",
+    "stimulus": "Retry that key while independently changing eventId, base, evidenceDigest, inputs, and externalCouplings but preserving the caller commandDigest and payloadDigest.",
+    "expectedSemanticState": "Every changed envelope is rejected as IDEMPOTENCY_KEY_REUSED and the accepted semantic post-image remains exact.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: event idempotency rejects every changed normalized operation-envelope field without mutation",
+    "forbiddenMutation": "No changed envelope may inherit the retained outcome, invoke reducer callbacks, append a journal record, or attempt publication.",
+    "applicability": {
+      "mode": "agnostic",
+      "transports": [],
+      "adapters": [
+        "urn:mission-kit:survey-v2:adapter:in-memory"
+      ]
+    },
+    "inspectedAuthorities": [
+      "schemas/authoring/v1alpha1/authoring-journal-record.schema.json",
+      "source/authoring/kernel/digests.mjs",
+      "source/authoring/kernel/manifest-reducer.mjs",
+      "source/authoring/runtime/commit-records.mjs",
+      "source/authoring/runtime/journal-replay.mjs",
+      "source/authoring/runtime/store-port.mjs",
+      "source/authoring/runtime/transaction-coordinator.mjs"
+    ]
+  },
+  "behavior": "event idempotency rejects every changed normalized operation-envelope field without mutation",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/authoring/transactions/coordinator/event-operation-envelope-idempotency.test.mjs",
+  "fixtures": [
+    "tests/authoring/reducer/support.mjs",
+    "tests/authoring/transactions/coordinator/driver-config.mjs",
+    "tests/authoring/transactions/coordinator/drivers/driver-contract.mjs",
+    "tests/authoring/transactions/coordinator/drivers/in-memory-driver.mjs",
+    "tests/authoring/transactions/coordinator/support.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

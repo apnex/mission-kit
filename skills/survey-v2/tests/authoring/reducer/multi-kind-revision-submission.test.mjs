@@ -13,6 +13,7 @@ import {
 } from "../../../source/authoring/kernel/manifest-reducer.mjs";
 import {
   createReducerSubmissionScenario,
+  deterministicTestProjectionRenderer,
   executableDigest,
   executeReducerSubmission,
   passRegistrySource,
@@ -243,6 +244,7 @@ test(
       projectionBinding,
       projectionName: "multi-kind-revision-projection-k12",
       assignmentName: "multi-kind-revision-assignment-k12",
+      renderProjection: deterministicTestProjectionRenderer,
     });
     const normalizedValues = {
       summary: "A revised concise launch brief.",
@@ -270,6 +272,7 @@ test(
         producerClass: "adapter",
         evidenceDigest: executableDigest(),
       },
+      renderProjection: deterministicTestProjectionRenderer,
     });
 
     const replacementProducts = [

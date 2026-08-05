@@ -266,7 +266,11 @@ function roundInterpretation(roundOrdinal) {
 export const positiveResources = Object.freeze({
   survey: resource("Survey", "survey-example", {
     policySnapshotRef: policyRef,
-    surveyFrameRef
+    surveyFrameRef,
+    outcomeAxes: [
+      "intent fidelity",
+      "decision usefulness"
+    ]
   }),
   "survey-round-1": resource("SurveyRound", "round-1", {
     surveyRef: surveyResourceRef,

@@ -132,6 +132,8 @@ export async function loadEventLifecycleTransaction({
     (candidate) => candidate.transitionId === "AT02"
   );
   const selector = {
+    id: "event-input",
+    selectorDigest: `sha256:${"0".repeat(64)}`,
     ordinal: 1,
     role: "event-input",
     resourceType: {
@@ -143,8 +145,16 @@ export async function loadEventLifecycleTransaction({
     lifecycleRule: structuredClone(lifecycleRule),
     selection: lifecycleRule.mode === "workspace-resource-version"
       ? { mode: "active-head", slot: "intake" }
-      : { mode: "event-input", inputKey: "runtime" }
+      : { mode: "event-input", inputKey: "runtime" },
+    projection: {
+      id: "event-input-projection",
+      digest: core.byKind
+        .get("AuthoringProfileManifest")
+        .spec.tasks[0].contextSelectors[0].projection.digest,
+      fields: ["/spec"]
+    }
   };
+  selector.selectorDigest = contextSelectorDigest(selector);
   binding.inputSelectors = [selector];
   transaction.profile.spec.profileDigest =
     profileManifestDigest(transaction.profile);

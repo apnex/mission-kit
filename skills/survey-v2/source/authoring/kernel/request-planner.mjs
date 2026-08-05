@@ -25,6 +25,31 @@ function exactValue(left, right) {
   return canonicalize(left) === canonicalize(right);
 }
 
+function assertDistinctRawReferences(
+  requestInputs,
+  allowedKeys,
+) {
+  const firstKeyByReference = new Map();
+  const inputKeys = Object.keys(requestInputs)
+    .filter((inputKey) => allowedKeys.has(inputKey))
+    .sort((left, right) =>
+      Buffer.compare(Buffer.from(left), Buffer.from(right)));
+  for (const inputKey of inputKeys) {
+    const referenceIdentity = canonicalize(
+      requestInputs[inputKey],
+    );
+    const firstKey = firstKeyByReference.get(referenceIdentity);
+    if (firstKey !== undefined) {
+      fail(
+        "REQUEST_INPUT_REFERENCE_ALIAS",
+        `request inputs ${firstKey} and ${inputKey} alias one resource reference`,
+        { firstInputKey: firstKey, inputKey },
+      );
+    }
+    firstKeyByReference.set(referenceIdentity, inputKey);
+  }
+}
+
 function assertResource(value, kind, label) {
   if (
     value === null ||
@@ -171,6 +196,61 @@ function assertExactContextClosure({
   return resolved;
 }
 
+/**
+ * A task with request-input bindings accepts caller-supplied references only
+ * for selectors whose authority explicitly names a request input. Active-head
+ * ancestry is always resolved from the workspace and is never caller input.
+ */
+export function assertRawTaskRequestInputs({
+  task,
+  requestInputs = {},
+}) {
+  const allowedKeys = new Set(
+    task.contextSelectors.flatMap((selector) =>
+      selector.selection.mode === "request-reference"
+        ? [selector.selection.inputKey]
+        : []
+    ),
+  );
+  const ambientKeys = Object.keys(requestInputs)
+    .filter((inputKey) => !allowedKeys.has(inputKey))
+    .sort((left, right) =>
+      Buffer.compare(Buffer.from(left), Buffer.from(right)));
+  if (ambientKeys.length > 0) {
+    fail(
+      "REQUEST_INPUT_UNDECLARED",
+      `request input ${ambientKeys[0]} is not declared by a request-reference selector`,
+      { inputKey: ambientKeys[0] },
+    );
+  }
+  assertDistinctRawReferences(requestInputs, allowedKeys);
+  return true;
+}
+
+function operationInputsFromClosure({
+  task,
+  contextClosure,
+  requestInputs,
+}) {
+  if (!Object.hasOwn(task, "requestInputBindings")) {
+    return {};
+  }
+  const layersBySelector = new Map(
+    contextClosure.spec.layers.map((layer) => [
+      layer.selectorId,
+      layer,
+    ]),
+  );
+  const inputs = {};
+  for (const binding of task.requestInputBindings) {
+    const layer = layersBySelector.get(binding.selectorId);
+    if (layer !== undefined) {
+      inputs[binding.inputKey] = stableValue(layer.sourceReference);
+    }
+  }
+  return stableValue(inputs);
+}
+
 function closeRequest({
   operation,
   profile,
@@ -300,6 +380,11 @@ export function buildTaskRequestDraft({
     requestInputs,
     contextClosure,
   });
+  const operationInputs = operationInputsFromClosure({
+    task: selectedTask,
+    contextClosure: selectedClosure,
+    requestInputs,
+  });
   return closeRequest({
     operation: {
       class: "task-submission",
@@ -310,7 +395,7 @@ export function buildTaskRequestDraft({
         eventId: selectedTransition.eventId,
       },
       target: stableValue(selectedTask.target),
-      inputs: stableValue(requestInputs),
+      inputs: operationInputs,
     },
     profile,
     protocol,
@@ -398,6 +483,11 @@ export function buildRevisionRequestDraft({
     requestInputs,
     contextClosure,
   });
+  const operationInputs = operationInputsFromClosure({
+    task: selectedNormalTask,
+    contextClosure: selectedClosure,
+    requestInputs,
+  });
   return closeRequest({
     operation: {
       class: "revision",
@@ -411,7 +501,7 @@ export function buildRevisionRequestDraft({
         digest: selectedPlan.planDigest,
       },
       expectedHeads,
-      inputs: stableValue(requestInputs),
+      inputs: operationInputs,
     },
     profile,
     protocol,

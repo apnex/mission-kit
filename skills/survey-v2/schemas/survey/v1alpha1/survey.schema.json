@@ -25,7 +25,8 @@
       "additionalProperties": false,
       "required": [
         "policySnapshotRef",
-        "surveyFrameRef"
+        "surveyFrameRef",
+        "outcomeAxes"
       ],
       "properties": {
         "policySnapshotRef": {
@@ -33,6 +34,15 @@
         },
         "surveyFrameRef": {
           "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/ContextFrameReference"
+        },
+        "outcomeAxes": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/shortText"
+          }
         }
       }
     }

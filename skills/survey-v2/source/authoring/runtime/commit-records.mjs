@@ -8,6 +8,9 @@ import {
   resourceIntegrityDigest,
   resourceReferenceFrom,
 } from "../kernel/digests.mjs";
+import {
+  COMMIT_SIDECAR_RESOURCE_LIMIT,
+} from "../kernel/limits.mjs";
 import { workspaceRevisionState } from "./workspace-application.mjs";
 
 const digestPattern = /^sha256:[0-9a-f]{64}$/u;
@@ -209,6 +212,31 @@ function assertIssueReferences(issues, label) {
   });
 }
 
+function assertSidecarReferences(sidecars, label) {
+  if (
+    !Array.isArray(sidecars) ||
+    sidecars.length === 0 ||
+    sidecars.length > COMMIT_SIDECAR_RESOURCE_LIMIT
+  ) {
+    fail(
+      "COMMIT_OUTCOME_INVALID",
+      `${label} must be a non-empty bounded ResourceReference array`,
+    );
+  }
+  const seen = new Set();
+  sidecars.forEach((reference, index) => {
+    assertReference(reference, `${label}[${index}]`);
+    const key = canonicalize(reference);
+    if (seen.has(key)) {
+      fail(
+        "COMMIT_OUTCOME_INVALID",
+        `${label}[${index}] duplicates an earlier sidecar reference`,
+      );
+    }
+    seen.add(key);
+  });
+}
+
 function rejectLaterDigestKeys(value, label) {
   const pending = [{ value, path: label }];
   while (pending.length > 0) {
@@ -292,13 +320,31 @@ export function assertCommitOutcome(outcome, { commitKind } = {}) {
       assertAssignmentBinding(stable.assignment, "outcome.assignment");
       break;
     case "transition-committed":
-      if (!exactKeys(stable, ["class", "receipt"])) {
+      if (
+        !exactKeys(stable, ["class", "receipt"]) &&
+        !exactKeys(stable, ["class", "receipt", "sidecars"])
+      ) {
         fail(
           "COMMIT_OUTCOME_INVALID",
           "transition-committed outcome has ambient or missing fields",
         );
       }
       assertReceiptBinding(stable.receipt, "outcome.receipt");
+      if (Object.hasOwn(stable, "sidecars")) {
+        assertSidecarReferences(stable.sidecars, "outcome.sidecars");
+        if (
+          stable.sidecars.some(
+            (reference) =>
+              canonicalize(reference) ===
+                canonicalize(stable.receipt.reference),
+          )
+        ) {
+          fail(
+            "COMMIT_OUTCOME_INVALID",
+            "transition sidecars cannot alias the commit Receipt",
+          );
+        }
+      }
       break;
     default:
       fail(
@@ -573,7 +619,11 @@ export function assertWorkspaceEffect(value) {
 
 export function deriveOperationIdentity(options) {
   const stable = detached(options, "operation identity");
-  const common = ["operationClass", "machineId"];
+  const common = [
+    "operationClass",
+    "machineId",
+    "operationDigest",
+  ];
   if (!isRecord(stable) || !common.every((key) => Object.hasOwn(stable, key))) {
     fail(
       "OPERATION_IDENTITY_INVALID",
@@ -581,6 +631,7 @@ export function deriveOperationIdentity(options) {
     );
   }
   assertSemanticId(stable.machineId, "machineId");
+  assertDigest(stable.operationDigest, "operationDigest");
   let key;
   let commandDigest;
   let payloadDigest;
@@ -628,6 +679,7 @@ export function deriveOperationIdentity(options) {
           ...common,
           "assignmentDigest",
           "cancellationEvidenceDigest",
+          "issuanceRecordDigest",
         ])
       ) {
         fail(
@@ -637,7 +689,13 @@ export function deriveOperationIdentity(options) {
       }
       commandDigest = stable.assignmentDigest;
       payloadDigest = stable.cancellationEvidenceDigest;
-      key = `cancel:${digestHex(stable.assignmentDigest, "assignmentDigest")}`;
+      assertDigest(
+        stable.issuanceRecordDigest,
+        "issuanceRecordDigest",
+      );
+      key =
+        `cancel:${digestHex(stable.assignmentDigest, "assignmentDigest")}` +
+        `:${digestHex(stable.issuanceRecordDigest, "issuanceRecordDigest")}`;
       break;
     case "event":
       if (
@@ -679,6 +737,7 @@ export function deriveOperationIdentity(options) {
       machineId: stable.machineId,
       key,
     },
+    operationDigest: stable.operationDigest,
     commandDigest,
     payloadDigest,
   }, "operation identity");
@@ -688,6 +747,7 @@ function evidenceMutationCore(plan) {
   const required = [
     "priorJournalHeadDigest",
     "idempotency",
+    "operationDigest",
     "commandDigest",
     "payloadDigest",
     "before",
@@ -723,6 +783,7 @@ export function createEvidenceCommitPlan(options) {
     !exactKeys(stable, [
       "priorJournalHeadDigest",
       "idempotency",
+      "operationDigest",
       "commandDigest",
       "payloadDigest",
       "before",
@@ -739,6 +800,7 @@ export function createEvidenceCommitPlan(options) {
   }
   assertDigest(stable.priorJournalHeadDigest, "priorJournalHeadDigest");
   assertIdempotency(stable.idempotency);
+  assertDigest(stable.operationDigest, "operationDigest");
   assertDigest(stable.commandDigest, "commandDigest");
   assertDigest(stable.payloadDigest, "payloadDigest");
   assertRevisionTransition(stable.before, stable.after, "evidence");
@@ -773,6 +835,7 @@ export function createEvidenceCommitPlan(options) {
   const plan = {
     priorJournalHeadDigest: stable.priorJournalHeadDigest,
     idempotency: stable.idempotency,
+    operationDigest: stable.operationDigest,
     commandDigest: stable.commandDigest,
     payloadDigest: stable.payloadDigest,
     before: stable.before,
@@ -792,6 +855,7 @@ export function assertEvidenceCommitPlan(plan) {
     !exactKeys(stable, [
       "priorJournalHeadDigest",
       "idempotency",
+      "operationDigest",
       "commandDigest",
       "payloadDigest",
       "before",
@@ -809,6 +873,7 @@ export function assertEvidenceCommitPlan(plan) {
   }
   assertDigest(stable.priorJournalHeadDigest, "priorJournalHeadDigest");
   assertIdempotency(stable.idempotency);
+  assertDigest(stable.operationDigest, "operationDigest");
   assertDigest(stable.commandDigest, "commandDigest");
   assertDigest(stable.payloadDigest, "payloadDigest");
   assertRevisionTransition(stable.before, stable.after, "evidence");
@@ -864,6 +929,7 @@ function assertEvidencePlanRecordAncestry(
   if (
     plan.priorJournalHeadDigest !== priorJournalHeadDigest ||
     !same(plan.idempotency, record.idempotency) ||
+    plan.operationDigest !== record.operationDigest ||
     plan.commandDigest !== record.commandDigest ||
     plan.payloadDigest !== record.payloadDigest ||
     !same(plan.before, record.before) ||
@@ -1374,6 +1440,7 @@ function assertJournalRecordShape(record, label) {
       "actor",
       "authority",
       "idempotency",
+      "operationDigest",
       "commandDigest",
       "payloadDigest",
       "previousSealDigest",
@@ -1413,6 +1480,7 @@ function assertJournalRecordShape(record, label) {
   assertAuthority(record.authority);
   assertIdempotency(record.idempotency);
   for (const field of [
+    "operationDigest",
     "commandDigest",
     "payloadDigest",
     "previousSealDigest",
@@ -1608,6 +1676,7 @@ export function assembleJournalRecord(options, identity) {
         "actor",
         "authority",
         "idempotency",
+        "operationDigest",
         "commandDigest",
         "payloadDigest",
         "before",
@@ -1716,6 +1785,7 @@ export function assembleJournalRecord(options, identity) {
     actor: stable.actor,
     authority: stable.authority,
     idempotency: stable.idempotency,
+    operationDigest: stable.operationDigest,
     commandDigest: stable.commandDigest,
     payloadDigest: stable.payloadDigest,
     previousSealDigest: prefix.previousDigest,
@@ -1730,6 +1800,7 @@ export function assembleJournalRecord(options, identity) {
     machineEdges: stable.machineEdges,
   };
   for (const field of [
+    "operationDigest",
     "commandDigest",
     "payloadDigest",
     "mutationDigest",
@@ -1805,13 +1876,14 @@ export function createIdempotencyOutcomeEntry(options) {
     machineId: stableRecord.idempotency.machineId,
     key: stableRecord.idempotency.key,
     recordDigest: stableRecord.recordDigest,
+    operationDigest: stableRecord.operationDigest,
     commandDigest: stableRecord.commandDigest,
     payloadDigest: stableRecord.payloadDigest,
     outcome: stableOutcome,
   }, "idempotency outcome entry");
 }
 
-export function receiptOutcome(receipt) {
+export function receiptOutcome(receipt, sidecars = []) {
   const stable = detached(receipt, "AuthoringCommitReceipt");
   if (
     stable?.kind !== "AuthoringCommitReceipt" ||
@@ -1822,11 +1894,24 @@ export function receiptOutcome(receipt) {
       "transition outcome requires one sealed AuthoringCommitReceipt",
     );
   }
+  if (!Array.isArray(sidecars)) {
+    fail(
+      "COMMIT_OUTCOME_INVALID",
+      "transition sidecars must be one ordered array",
+    );
+  }
   return assertCommitOutcome({
     class: "transition-committed",
     receipt: {
       reference: resourceReferenceFrom(stable),
       receiptDigest: stable.spec.receiptDigest,
     },
+    ...(sidecars.length === 0
+      ? {}
+      : {
+        sidecars: sidecars.map((resource) =>
+          resourceReferenceFrom(detached(resource, "commit sidecar"))
+        ),
+      }),
   }, { commitKind: "transition" });
 }

@@ -557,6 +557,7 @@ const journalRecordAuthenticationFields = Object.freeze([
   "actor",
   "authority",
   "idempotency",
+  "operationDigest",
   "commandDigest",
   "payloadDigest",
   "previousSealDigest",

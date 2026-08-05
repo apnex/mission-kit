@@ -20,7 +20,12 @@ test(
       0,
       harness.trustedInputs.inventory.length,
     );
-    for (const kind of ["guards", "handlers", "validators"]) {
+    for (const kind of [
+      "guards",
+      "handlers",
+      "validators",
+      "projectors",
+    ]) {
       for (const entry of harness.trustedInputs.executables[kind]) {
         entry.invoke = () => {
           throw new Error("hostile replacement capability invoked");

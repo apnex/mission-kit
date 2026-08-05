@@ -1,0 +1,41 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:initialization:initialization-adapter-exclusive-port",
+  "obligationId": "O-AS14-97",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS14"
+  ],
+  "verification": {
+    "precondition": "The Survey profile pins one event-command admission identity and the coordinator captures its matching one-shot verifier.",
+    "stimulus": "Submit an otherwise valid BEGIN_AUTHORING command directly to the raw private coordinator without the profile-bound adapter port.",
+    "expectedSemanticState": "The command is rejected with the typed admission-required error before acquiring a writer or evaluating Survey profile callbacks.",
+    "expectedEvidenceState": "The store remains at revision zero with no AT01, T02, receipt, rejection evidence, or Assignment.",
+    "forbiddenMutation": "Raw coordinator access must not bypass blocked or terminal initialization, consume arbitrary caller digests as authority, or produce any persisted evidence.",
+    "applicability": {
+      "mode": "specific",
+      "transports": [],
+      "adapters": [
+        "urn:mission-kit:survey-v2:adapter:in-memory"
+      ]
+    },
+    "inspectedAuthorities": [
+      "schemas/authoring/v1alpha1/authoring-profile-manifest.schema.json",
+      "source/authoring/runtime/command-admission.mjs",
+      "source/authoring/runtime/transaction-coordinator.mjs",
+      "source/authoring/survey/initialization-adapter.mjs",
+      "source/authoring/survey/profile-authority.mjs"
+    ]
+  },
+  "behavior": "Survey BEGIN_AUTHORING rejects raw coordinator access before a store operation",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/survey/initialization/initialization-adapter-exclusive-port.test.mjs",
+  "fixtures": [
+    "tests/survey/profile/live-support.mjs",
+    "tests/survey/profile/support.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

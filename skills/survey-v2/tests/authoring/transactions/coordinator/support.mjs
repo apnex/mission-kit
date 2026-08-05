@@ -4,6 +4,13 @@ import {
   resourceReferenceFrom,
 } from "../../../../source/authoring/kernel/digests.mjs";
 import {
+  compileExecutableRegistry,
+  invokeProjector,
+} from "../../../../source/authoring/kernel/executable-registry.mjs";
+import {
+  textContentBytes,
+} from "../../../../source/authoring/kernel/text-forms.mjs";
+import {
   compileJournalIdentityPort,
 } from "../../../../source/authoring/runtime/journal-replay.mjs";
 import {
@@ -14,6 +21,7 @@ import {
 } from "../../../../source/authoring/runtime/workspace-application.mjs";
 import {
   createReducerSubmissionScenario,
+  defaultProjectorInvoke,
   executableDigest,
   passRegistrySource,
   reducerCommandBase,
@@ -76,8 +84,10 @@ export async function createCoordinatorHarness({
   contractValidatorTransform = (validator) => validator,
   profileTransform = (profile) => profile,
   protocolTransform = (protocol) => protocol,
+  executablesTransform = (executables) => executables,
   guardInvoke = () => ({ status: "pass" }),
   handlerInvoke,
+  projectorInvoke = defaultProjectorInvoke,
   authenticationKey,
   callbackCounts = {
     guard: 0,
@@ -158,9 +168,16 @@ export async function createCoordinatorHarness({
       callbackCounts.validator += 1;
       return { status: "pass" };
     },
+    projectorInvoke,
   });
+  const selectedExecutables =
+    executablesTransform(executables);
+  const submissionExecutableRegistry =
+    selectedExecutables === undefined
+      ? undefined
+      : compileExecutableRegistry(selectedExecutables);
   const trustedInputs = await trustedReducerInputs({
-    executables,
+    executables: selectedExecutables,
     inventory: [
       scenario.formDefinition,
       scenario.revisionFormDefinition,
@@ -216,6 +233,7 @@ export async function createCoordinatorHarness({
     scenario,
     store,
     storeId,
+    submissionExecutableRegistry,
     trustedInputs,
   };
 }
@@ -243,6 +261,12 @@ export function submissionFor(
         binding.id ===
           issued.request.spec.bindings.projection.id,
     );
+  const compiled = harness.submissionExecutableRegistry;
+  if (compiled === undefined) {
+    throw new Error(
+      "submission support requires the construction-time executable registry",
+    );
+  }
   return createCanonicalSubmission({
     name,
     request: issued.request,
@@ -257,6 +281,19 @@ export function submissionFor(
       producerId,
       producerClass: "adapter",
       evidenceDigest: executableDigest(),
+    },
+    renderProjection(input) {
+      const projected = invokeProjector(
+        compiled,
+        projectionBinding.engine,
+        input,
+      );
+      if (projected.status !== "accept") {
+        throw new Error(
+          `test projector rejected: ${projected.issues[0].code}`,
+        );
+      }
+      return textContentBytes(projected.content);
     },
   });
 }

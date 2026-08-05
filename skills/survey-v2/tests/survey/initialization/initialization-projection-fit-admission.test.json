@@ -1,0 +1,42 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:initialization:initialization-projection-fit-admission",
+  "obligationId": "O-AS06-78",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS06"
+  ],
+  "verification": {
+    "precondition": "A new live Survey workspace retains a structurally valid generic SourceSnapshot within its one-MiB entry and 16-MiB aggregate authority, but the exact SurveyFrame form and complete readable context exceed the one-MiB Director-view bound.",
+    "stimulus": "Advance the Survey initialization adapter with a ready dependency result.",
+    "expectedSemanticState": "The sealed initialization authority runs the exact SurveyFrame projector/form admission and rejects the unfit Director view before AT01.",
+    "expectedEvidenceState": "The adapter observes one preimage read, zero execute calls, zero machine-state derivations, and a byte-identical revision-zero store with no AT01 or T02 edge.",
+    "forbiddenMutation": "The adapter must not truncate or omit source context, append a journal record, advance authoring or phase state, create an Assignment, or reduce the generic SourceSnapshot construction bound.",
+    "applicability": {
+      "mode": "specific",
+      "transports": [],
+      "adapters": [
+        "urn:mission-kit:survey-v2:adapter:in-memory"
+      ]
+    },
+    "inspectedAuthorities": [
+      "source/authoring/kernel/text-forms.mjs",
+      "source/authoring/survey/initialization-adapter.mjs",
+      "source/authoring/survey/profile-executables.mjs",
+      "source/authoring/survey/survey-frame-authority.mjs",
+      "source/authoring/survey/survey-frame-projection-admission.mjs",
+      "source/authoring/survey/survey-frame-projector.mjs"
+    ]
+  },
+  "behavior": "sealed initialization authority rejects a deterministic over-one-MiB Director projection before AT01",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/survey/initialization/initialization-projection-fit-admission.test.mjs",
+  "fixtures": [
+    "tests/survey/profile/live-support.mjs",
+    "tests/survey/profile/support.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

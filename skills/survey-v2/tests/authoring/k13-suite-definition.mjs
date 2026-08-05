@@ -66,6 +66,12 @@ const coordinatorAuthorities = paths(
   "source/authoring/runtime/transaction-coordinator.mjs",
 );
 
+const commitSidecarAuthorities = paths(
+  ...coordinatorAuthorities,
+  "source/authoring/kernel/limits.mjs",
+  "source/authoring/runtime/commit-sidecars.mjs",
+);
+
 const schemaClosureAuthorities = paths(
   "survey-v2.package.json",
   "schemas/authoring/v1alpha1/authoring-assignment.schema.json",
@@ -128,6 +134,11 @@ const coordinatorFixtures = paths(
   "tests/fixtures/authoring/contracts/positive/runtime-protocol.json",
 );
 
+const commitSidecarFixtures = paths(
+  ...coordinatorFixtures,
+  "tests/authoring/transactions/commit-sidecars/support.mjs",
+);
+
 const workspaceEffectContractFixtures = paths(
   "tests/authoring/contracts/support/contract-validation.mjs",
   "tests/fixtures/authoring/contracts/negative/authoring-workspace-effect.json",
@@ -184,6 +195,15 @@ function surface(executable) {
       authorities: inMemoryAuthorities,
       fixtures: inMemoryFixtures,
       applicability: applicability.inMemory,
+    };
+  }
+  if (executable.startsWith(
+    "tests/authoring/transactions/commit-sidecars/",
+  )) {
+    return {
+      authorities: commitSidecarAuthorities,
+      fixtures: commitSidecarFixtures,
+      applicability: applicability.neutral,
     };
   }
   if (executable.startsWith(
@@ -325,6 +345,12 @@ export const k13Suite = Object.freeze([
       "negative",
     ],
   ]),
+  ...group("AS07", 42, [
+    [
+      "tests/authoring/transactions/coordinator/projector-dispatch-exact-view.test.mjs",
+      "conformance",
+    ],
+  ]),
   ...group("AS08", 7, [
     [
       "tests/authoring/journal/evidence-plan-outcome-closure.test.mjs",
@@ -449,6 +475,12 @@ export const k13Suite = Object.freeze([
     ],
     [
       "tests/authoring/persistence/in-memory/authenticated-cold-rehydration.test.mjs",
+      "resume",
+    ],
+  ]),
+  ...group("AS12", 5, [
+    [
+      "tests/authoring/transactions/coordinator/projector-cold-divergence.test.mjs",
       "resume",
     ],
   ]),
@@ -638,6 +670,26 @@ export const k13Suite = Object.freeze([
       "negative",
     ],
   ]),
+  ...group("AS14", 90, [
+    [
+      "tests/authoring/transactions/coordinator/projector-digest-mismatch-before-retention.test.mjs",
+      "negative",
+    ],
+    [
+      "tests/authoring/transactions/coordinator/projector-missing-before-retention.test.mjs",
+      "negative",
+    ],
+  ]),
+  ...group("AS14", 94, [
+    [
+      "tests/authoring/transactions/coordinator/executable-registry-required-before-coordination.test.mjs",
+      "negative",
+    ],
+    [
+      "tests/authoring/transactions/coordinator/executable-closure-preflight.test.mjs",
+      "negative",
+    ],
+  ]),
   ...group("AS15", 22, [
     [
       "tests/authoring/journal/commit-id-uniqueness.test.mjs",
@@ -778,6 +830,90 @@ export const k13Suite = Object.freeze([
     [
       "tests/authoring/persistence/in-memory/logical-crash-during-assembly-old-root.test.mjs",
       "failure-injection",
+    ],
+  ]),
+  ...group("AS15", 58, [
+    [
+      "tests/authoring/transactions/commit-sidecars/dedicated-dispatch.test.mjs",
+      "conformance",
+    ],
+    [
+      "tests/authoring/transactions/commit-sidecars/extra-resource-rejection.test.mjs",
+      "negative",
+    ],
+    [
+      "tests/authoring/transactions/commit-sidecars/wrong-type-rejection.test.mjs",
+      "negative",
+    ],
+    [
+      "tests/authoring/transactions/commit-sidecars/duplicate-resource-rejection.test.mjs",
+      "negative",
+    ],
+    [
+      "tests/authoring/transactions/commit-sidecars/missing-executable-before-publish.test.mjs",
+      "negative",
+    ],
+    [
+      "tests/authoring/transactions/commit-sidecars/digest-mismatch-before-publish.test.mjs",
+      "negative",
+    ],
+    [
+      "tests/authoring/transactions/commit-sidecars/rejected-sidecar-atomicity.test.mjs",
+      "negative",
+    ],
+    [
+      "tests/authoring/transactions/commit-sidecars/throwing-sidecar-atomicity.test.mjs",
+      "failure-injection",
+    ],
+    [
+      "tests/authoring/transactions/commit-sidecars/async-sidecar-atomicity.test.mjs",
+      "conformance",
+    ],
+    [
+      "tests/authoring/transactions/commit-sidecars/same-commit-retention-replay.test.mjs",
+      "conformance",
+    ],
+  ]),
+  ...group("AS15", 70, [
+    [
+      "tests/authoring/transactions/commit-sidecars/event-sidecar-forbidden.test.mjs",
+      "negative",
+    ],
+    [
+      "tests/authoring/transactions/commit-sidecars/per-binding-256-boundary.test.mjs",
+      "conformance",
+    ],
+    [
+      "tests/authoring/transactions/commit-sidecars/aggregate-transition-limit.test.mjs",
+      "conformance",
+    ],
+    [
+      "tests/authoring/transactions/commit-sidecars/receipt-alias-rejection.test.mjs",
+      "negative",
+    ],
+    [
+      "tests/authoring/transactions/commit-sidecars/cold-replay-created-alias.test.mjs",
+      "negative",
+    ],
+    [
+      "tests/authoring/transactions/commit-sidecars/cold-replay-prior-alias.test.mjs",
+      "negative",
+    ],
+    [
+      "tests/authoring/transactions/commit-sidecars/outcome-sidecar-missing.test.mjs",
+      "negative",
+    ],
+    [
+      "tests/authoring/transactions/commit-sidecars/outcome-sidecar-added.test.mjs",
+      "negative",
+    ],
+    [
+      "tests/authoring/transactions/commit-sidecars/outcome-sidecar-reordered.test.mjs",
+      "negative",
+    ],
+    [
+      "tests/authoring/transactions/commit-sidecars/cold-coordinator-exact-replay.test.mjs",
+      "conformance",
     ],
   ]),
 ]);

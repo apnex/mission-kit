@@ -1,0 +1,37 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:initialization:initialization-adapter-blocked",
+  "obligationId": "O-AS04-14",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS04"
+  ],
+  "verification": {
+    "precondition": "A pure Survey initialization adapter has valid immutable authority and a new in-memory authoring store, while its typed dependency result is recoverably blocked.",
+    "stimulus": "Execute tests/survey/initialization/initialization-adapter-blocked.test.mjs with node:test.",
+    "expectedSemanticState": "The recoverable result returns the exact neutral new-state authoring wait nested in a blocked_recoverable derived runtime view that permits retry.",
+    "expectedEvidenceState": "The adapter state retains one immutable typed dependency result and exact authority evidence while every coordinator and identity capability call count remains zero.",
+    "forbiddenMutation": "A recoverable result must not inspect the store, derive a machine state, issue an Assignment, record AT01 or T02, append a journal record, or change authoring new.",
+    "applicability": {
+      "mode": "specific",
+      "transports": [],
+      "adapters": [
+        "urn:mission-kit:survey-v2:adapter:in-memory"
+      ]
+    },
+    "inspectedAuthorities": [
+      "source/authoring/kernel/reducer-results.mjs",
+      "source/authoring/survey/initialization-adapter.mjs"
+    ]
+  },
+  "behavior": "recoverable dependency returns an exact new-state wait without a capability call or store mutation",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/survey/initialization/initialization-adapter-blocked.test.mjs",
+  "fixtures": [
+    "tests/survey/initialization/initialization-adapter-support.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

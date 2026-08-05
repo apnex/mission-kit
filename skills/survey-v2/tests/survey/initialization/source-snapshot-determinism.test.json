@@ -1,0 +1,39 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:initialization:source-snapshot-determinism",
+  "obligationId": "O-AS06-70",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS06"
+  ],
+  "verification": {
+    "precondition": "The strict SourceSnapshot contract, canonical digest authorities, and pure Survey intake builder exist as package-owned files.",
+    "stimulus": "Execute tests/survey/initialization/source-snapshot-determinism.test.mjs with node:test.",
+    "expectedSemanticState": "The same ordered logical names and UTF-8 bytes produce one byte-identical immutable SourceSnapshot with derived ordinals, exact bytes, evidence digests, aggregate digest, and name.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: ordered UTF-8 intake deterministically builds one immutable SourceSnapshot",
+    "forbiddenMutation": "The builder must not retain mutable caller bytes, reorder entries, accept a caller-selected identity, read a filesystem path, or create runtime/profile state.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "generated/validators.mjs",
+      "schemas/authoring/v1alpha1/source-snapshot.schema.json",
+      "source/authoring/kernel/canonical.mjs",
+      "source/authoring/kernel/contract-semantics.mjs",
+      "source/authoring/kernel/digests.mjs",
+      "source/authoring/survey/source-snapshot.mjs"
+    ]
+  },
+  "behavior": "ordered UTF-8 intake deterministically builds one immutable SourceSnapshot",
+  "evidenceClass": "positive",
+  "runner": "node:test",
+  "executable": "tests/survey/initialization/source-snapshot-determinism.test.mjs",
+  "fixtures": [
+    "tests/survey/initialization/support.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

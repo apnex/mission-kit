@@ -448,6 +448,34 @@ export const k11Suite = Object.freeze([
     evidenceClass: "conformance"
   }),
   assignmentDagCase({
+    obligationId: "O-AS07-40",
+    name: "projector-deterministic-view",
+    statement:
+      "a supplied projector deterministically owns the exact Assignment view bytes",
+    evidenceClass: "conformance"
+  }),
+  assignmentDagCase({
+    obligationId: "O-AS07-41",
+    name: "projector-divergent-reproduction",
+    statement:
+      "cold reproduction rejects a projector that diverges from retained exact view bytes",
+    evidenceClass: "negative"
+  }),
+  assignmentDagCase({
+    obligationId: "O-AS07-43",
+    name: "projector-omission",
+    statement:
+      "assignment issuance fails closed when its pinned projector renderer is omitted",
+    evidenceClass: "negative"
+  }),
+  assignmentDagCase({
+    obligationId: "O-AS07-44",
+    name: "projector-async-result",
+    statement:
+      "assignment issuance consumes and rejects an asynchronous projector result",
+    evidenceClass: "negative"
+  }),
+  assignmentDagCase({
     obligationId: "O-AS08-05",
     invariantId: "AS08",
     name: "submission-validity",
@@ -464,5 +492,15 @@ export const k11Suite = Object.freeze([
     statement:
       "raw evidence preserves submitted bytes while parsing normalizes newlines",
     evidenceClass: "conformance"
+  }),
+  assignmentDagCase({
+    obligationId: "O-AS08-25",
+    invariantId: "AS08",
+    name: "generation-unicode-scalar-bound",
+    statement:
+      "generation provider and model bounds count Unicode scalars consistently with their schema",
+    evidenceClass: "conformance",
+    authorities: validatedAssignmentDagAuthorities,
+    fixtures: validatedAssignmentDagFixtures
   })
 ]);

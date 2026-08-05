@@ -1,0 +1,35 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:authoring:event-input-bindings:ambient-event-input",
+  "obligationId": "O-AS06-75",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS06"
+  ],
+  "verification": {
+    "precondition": "One event transition declares only the intake event-input key.",
+    "stimulus": "Execute tests/authoring/event-input-bindings/ambient-event-input.test.mjs with node:test.",
+    "expectedSemanticState": "An additional raw input key rejects at manifest authority before ContextClosure construction and every semantic callback.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: an undeclared event input rejects before ContextClosure construction and callbacks",
+    "forbiddenMutation": "Ambient event input must not be visible to callbacks or disappear from durable Mutation ancestry after influencing reduction.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "source/authoring/kernel/manifest-reducer.mjs"
+    ]
+  },
+  "behavior": "an undeclared event input rejects before ContextClosure construction and callbacks",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/authoring/event-input-bindings/ambient-event-input.test.mjs",
+  "fixtures": [
+    "tests/authoring/event-input-bindings/support.mjs",
+    "tests/authoring/reducer/support.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:initialization:initialization-source-text-admission",
+  "obligationId": "O-AS06-77",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS06"
+  ],
+  "verification": {
+    "precondition": "A new live Survey workspace retains an exact generic SourceSnapshot whose UTF-8 entry begins with a BOM or contains NUL, plus the exact Survey policy head.",
+    "stimulus": "Advance the Survey initialization adapter with a ready dependency result.",
+    "expectedSemanticState": "The sealed initialization authority returns SURVEY_INITIALIZATION_SOURCE_TEXT_UNSUITABLE before command derivation.",
+    "expectedEvidenceState": "The adapter observes one preimage read, zero execute calls, zero machine-state derivations, and a byte-identical revision-zero store with no AT01 or T02 edge.",
+    "forbiddenMutation": "The adapter must not append a journal record, advance authoring or phase state, create an Assignment, normalize the SourceSnapshot bytes, or weaken the generic 16 MiB SourceSnapshot authority.",
+    "applicability": {
+      "mode": "specific",
+      "transports": [],
+      "adapters": [
+        "urn:mission-kit:survey-v2:adapter:in-memory"
+      ]
+    },
+    "inspectedAuthorities": [
+      "source/authoring/kernel/text-forms.mjs",
+      "source/authoring/survey/initialization-adapter.mjs",
+      "source/authoring/survey/profile-authority.mjs",
+      "source/authoring/survey/profile-executables.mjs",
+      "source/authoring/survey/source-snapshot.mjs",
+      "source/authoring/survey/survey-frame-projection-admission.mjs"
+    ]
+  },
+  "behavior": "sealed initialization authority rejects BOM and NUL SurveyFrame source text before AT01",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/survey/initialization/initialization-source-text-admission.test.mjs",
+  "fixtures": [
+    "tests/survey/profile/live-support.mjs",
+    "tests/survey/profile/support.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

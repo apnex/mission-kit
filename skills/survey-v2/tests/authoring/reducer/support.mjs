@@ -21,6 +21,10 @@ import {
   sealAuthoringRequest,
 } from "../../../source/authoring/kernel/assignment-dag.mjs";
 import {
+  exactTextContent,
+  renderBlankTextForm,
+} from "../../../source/authoring/kernel/text-forms.mjs";
+import {
   reduceAuthoring,
 } from "../../../source/authoring/kernel/manifest-reducer.mjs";
 import {
@@ -84,10 +88,38 @@ export const trustedHostKernel = Object.freeze({
   digest: executableDigest(),
 });
 
+export function defaultProjectorInvoke({
+  contextClosure,
+  formDefinition,
+  requestHandle,
+}) {
+  return {
+    status: "accept",
+    content: exactTextContent(renderBlankTextForm({
+      formDefinition,
+      contextClosure,
+      requestHandle,
+    })),
+  };
+}
+
+export function deterministicTestProjectionRenderer({
+  contextClosure,
+  formDefinition,
+  requestHandle,
+}) {
+  return renderBlankTextForm({
+    formDefinition,
+    contextClosure,
+    requestHandle,
+  });
+}
+
 export function passRegistry({
   guardInvoke = () => ({ status: "pass" }),
   handlerInvoke = () => ({ status: "accept", products: [] }),
   validatorInvoke = () => ({ status: "pass" }),
+  projectorInvoke = defaultProjectorInvoke,
 } = {}) {
   return compileExecutableRegistry({
     guards: [
@@ -121,6 +153,13 @@ export function passRegistry({
         invoke: validatorInvoke,
       },
     ],
+    projectors: [
+      {
+        id: "text-projection-engine",
+        digest: executableDigest(),
+        invoke: projectorInvoke,
+      },
+    ],
   });
 }
 
@@ -128,6 +167,7 @@ export function passRegistrySource({
   guardInvoke = () => ({ status: "pass" }),
   handlerInvoke = () => ({ status: "accept", products: [] }),
   validatorInvoke = () => ({ status: "pass" }),
+  projectorInvoke = defaultProjectorInvoke,
 } = {}) {
   return {
     guards: [
@@ -159,6 +199,13 @@ export function passRegistrySource({
         id: "brief-validator",
         digest: executableDigest(),
         invoke: validatorInvoke,
+      },
+    ],
+    projectors: [
+      {
+        id: "text-projection-engine",
+        digest: executableDigest(),
+        invoke: projectorInvoke,
       },
     ],
   };
@@ -241,6 +288,7 @@ export async function createReducerSubmissionScenario({
     projectionBinding,
     projectionName: "brief-projection-k12",
     assignmentName: "brief-assignment-k12",
+    renderProjection: deterministicTestProjectionRenderer,
   });
   const normalizedValues = {
     summary: "A concise launch brief.",
@@ -263,6 +311,7 @@ export async function createReducerSubmissionScenario({
       producerClass: "adapter",
       evidenceDigest: executableDigest(),
     },
+    renderProjection: deterministicTestProjectionRenderer,
   });
   return {
     ...scenario,

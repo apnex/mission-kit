@@ -1,3 +1,4 @@
+import { types } from "node:util";
 import { canonicalize, stableValue } from "./canonical.mjs";
 import {
   assignmentDigest,
@@ -15,7 +16,6 @@ import {
 import {
   exactTextContent,
   parseTextForm,
-  renderBlankTextForm,
   requestDigestHex,
   requestHandleFromBlankView,
   textContentBytes,
@@ -24,6 +24,7 @@ import {
 
 const digestPattern = /^sha256:[0-9a-f]{64}$/;
 const handlePattern = /^[0-9a-f]{8,64}$/;
+const promiseThen = Promise.prototype.then;
 
 export class AuthoringAssignmentDagError extends Error {
   constructor(code, message, details = {}) {
@@ -48,6 +49,24 @@ function isRecord(value) {
 
 function exactValue(left, right) {
   return canonicalize(left) === canonicalize(right);
+}
+
+function unicodeScalarLength(value) {
+  return [...value].length;
+}
+
+function detachedFrozen(value) {
+  const detached = stableValue(value);
+  const pending = [detached];
+  while (pending.length > 0) {
+    const current = pending.pop();
+    if (current === null || typeof current !== "object") continue;
+    for (const item of Object.values(current)) {
+      if (item !== null && typeof item === "object") pending.push(item);
+    }
+    Object.freeze(current);
+  }
+  return detached;
 }
 
 function assertResource(value, kind, label) {
@@ -285,6 +304,52 @@ function assertProjectionBinding(request, projectionBinding) {
   return binding;
 }
 
+function renderProjectionBytes({
+  request,
+  contextClosure,
+  formDefinition,
+  requestHandle,
+  projectionBinding,
+  renderProjection
+}) {
+  if (renderProjection === undefined) {
+    fail(
+      "DAG_PROJECTOR_REQUIRED",
+      "projection rendering requires the exact pinned projector executable"
+    );
+  }
+  if (typeof renderProjection !== "function") {
+    fail(
+      "DAG_PROJECTOR_INVALID",
+      "projection renderer must be one synchronous function"
+    );
+  }
+  const rendered = renderProjection(detachedFrozen({
+    request,
+    contextClosure,
+    formDefinition,
+    requestHandle,
+    projectionBinding
+  }));
+  if (types.isPromise(rendered)) {
+    Reflect.apply(promiseThen, rendered, [
+      undefined,
+      () => {},
+    ]);
+    fail(
+      "DAG_PROJECTOR_ASYNC_FORBIDDEN",
+      "projection renderer must return exact bytes synchronously"
+    );
+  }
+  if (!(rendered instanceof Uint8Array)) {
+    fail(
+      "DAG_PROJECTOR_RESULT_INVALID",
+      "projection renderer must return exact bytes synchronously"
+    );
+  }
+  return Buffer.from(textContentBytes(exactTextContent(rendered)));
+}
+
 function createProjectionArtifact({
   name,
   request,
@@ -430,7 +495,8 @@ export function issueTextAssignment({
   projectionBinding,
   projectionName,
   assignmentName,
-  occupiedHandles = []
+  occupiedHandles = [],
+  renderProjection
 }) {
   assertRequestAuthority(request);
   assertContextAuthority(request, contextClosure);
@@ -442,10 +508,13 @@ export function issueTextAssignment({
     requestDigest: request.spec.requestDigest,
     occupied: occupiedHandles
   });
-  const blankViewBytes = renderBlankTextForm({
-    formDefinition,
+  const blankViewBytes = renderProjectionBytes({
+    request,
     contextClosure,
-    requestHandle: handle
+    formDefinition,
+    requestHandle: handle,
+    projectionBinding: binding,
+    renderProjection
   });
   const projectionArtifact = createProjectionArtifact({
     name: projectionName,
@@ -468,7 +537,8 @@ export function issueTextAssignment({
     formDefinition,
     projectionBinding: binding,
     projectionArtifact,
-    assignment
+    assignment,
+    renderProjection
   });
   return Object.freeze({
     handle,
@@ -497,7 +567,8 @@ export function verifyTextAssignmentDag({
   formDefinition,
   projectionBinding,
   projectionArtifact,
-  assignment
+  assignment,
+  renderProjection
 }) {
   assertRequestAuthority(request);
   assertContextAuthority(request, contextClosure);
@@ -572,10 +643,13 @@ export function verifyTextAssignmentDag({
       "assignment handle differs from its request-derived blank view"
     );
   }
-  const reproducedBytes = renderBlankTextForm({
-    formDefinition,
+  const reproducedBytes = renderProjectionBytes({
+    request,
     contextClosure,
-    requestHandle: handle
+    formDefinition,
+    requestHandle: handle,
+    projectionBinding: binding,
+    renderProjection
   });
   if (!reproducedBytes.equals(outputBytes)) {
     fail(
@@ -656,6 +730,88 @@ function assertSubmissionProjection(
   }
 }
 
+function validDigestBinding(value) {
+  return (
+    isRecord(value) &&
+    Object.keys(value).sort().join("\u0000") ===
+      ["digest", "id"].sort().join("\u0000") &&
+    typeof value.id === "string" &&
+    value.id.length <= 160 &&
+    /^[a-z][a-z0-9]*(?:[._:/-][a-z0-9]+)*$/.test(value.id) &&
+    digestPattern.test(value.digest ?? "")
+  );
+}
+
+function assertGenerationEvidence(value) {
+  if (!isRecord(value)) {
+    fail(
+      "DAG_PRODUCER_GENERATION_INVALID",
+      "producer generation evidence must be one closed object",
+    );
+  }
+  const keys = Object.keys(value).sort();
+  const expected = (
+    Object.hasOwn(value, "telemetry")
+      ? [
+        "adapter",
+        "attemptId",
+        "configurationDigest",
+        "model",
+        "provider",
+        "telemetry",
+      ]
+      : [
+        "adapter",
+        "attemptId",
+        "configurationDigest",
+        "model",
+        "provider",
+      ]
+  ).sort();
+  if (
+    !exactValue(keys, expected) ||
+    typeof value.attemptId !== "string" ||
+    value.attemptId.length > 160 ||
+    !/^[a-z][a-z0-9]*(?:[._:/-][a-z0-9]+)*$/.test(value.attemptId) ||
+    typeof value.provider !== "string" ||
+    unicodeScalarLength(value.provider) < 1 ||
+    unicodeScalarLength(value.provider) > 512 ||
+    !/\S/.test(value.provider) ||
+    typeof value.model !== "string" ||
+    unicodeScalarLength(value.model) < 1 ||
+    unicodeScalarLength(value.model) > 512 ||
+    !/\S/.test(value.model) ||
+    !validDigestBinding(value.adapter) ||
+    !digestPattern.test(value.configurationDigest ?? "")
+  ) {
+    fail(
+      "DAG_PRODUCER_GENERATION_INVALID",
+      "producer generation evidence lacks its exact bounded identity",
+    );
+  }
+  if (Object.hasOwn(value, "telemetry")) {
+    const telemetry = value.telemetry;
+    const admitted = new Set([
+      "costMicrounits",
+      "inputTokens",
+      "latencyMs",
+      "outputTokens",
+    ]);
+    if (
+      !isRecord(telemetry) ||
+      Object.keys(telemetry).some((key) => !admitted.has(key)) ||
+      Object.values(telemetry).some(
+        (item) => !Number.isInteger(item) || item < 0,
+      )
+    ) {
+      fail(
+        "DAG_PRODUCER_GENERATION_INVALID",
+        "producer generation telemetry must contain only non-negative integer counters",
+      );
+    }
+  }
+}
+
 export function createCanonicalSubmission({
   name,
   request,
@@ -666,7 +822,8 @@ export function createCanonicalSubmission({
   formDefinition,
   normalizedValues,
   rawEvidenceBytes,
-  producerProvenance
+  producerProvenance,
+  renderProjection
 }) {
   assertName(name, "submission name");
   verifyTextAssignmentDag({
@@ -675,7 +832,8 @@ export function createCanonicalSubmission({
     formDefinition,
     projectionBinding,
     projectionArtifact,
-    assignment
+    assignment,
+    renderProjection
   });
   assertSubmissionProjection(
     assignment,
@@ -689,11 +847,13 @@ export function createCanonicalSubmission({
   const rawContent = exactTextContent(rawEvidenceBytes);
   const provenance = copyRecord(producerProvenance, "producer provenance");
   const provenanceKeys = Object.keys(provenance).sort();
-  const expectedProvenanceKeys = (
-    Object.hasOwn(provenance, "adapter")
-      ? ["adapter", "evidenceDigest", "producerClass", "producerId"]
-      : ["evidenceDigest", "producerClass", "producerId"]
-  ).sort();
+  const expectedProvenanceKeys = [
+    "evidenceDigest",
+    "producerClass",
+    "producerId",
+    ...(Object.hasOwn(provenance, "adapter") ? ["adapter"] : []),
+    ...(Object.hasOwn(provenance, "generation") ? ["generation"] : []),
+  ].sort();
   if (
     !exactValue(provenanceKeys, expectedProvenanceKeys) ||
     typeof provenance.producerId !== "string" ||
@@ -707,23 +867,16 @@ export function createCanonicalSubmission({
     !digestPattern.test(provenance.evidenceDigest ?? "") ||
     (
       Object.hasOwn(provenance, "adapter") &&
-      (
-        !isRecord(provenance.adapter) ||
-        Object.keys(provenance.adapter).sort().join("\u0000") !==
-          ["digest", "id"].sort().join("\u0000") ||
-        typeof provenance.adapter.id !== "string" ||
-        provenance.adapter.id.length > 160 ||
-        !/^[a-z][a-z0-9]*(?:[._:/-][a-z0-9]+)*$/.test(
-          provenance.adapter.id
-        ) ||
-        !digestPattern.test(provenance.adapter.digest ?? "")
-      )
+      !validDigestBinding(provenance.adapter)
     )
   ) {
     fail(
       "DAG_PRODUCER_PROVENANCE_INVALID",
       "producer provenance lacks its closed required identity"
     );
+  }
+  if (Object.hasOwn(provenance, "generation")) {
+    assertGenerationEvidence(provenance.generation);
   }
   const submission = {
     apiVersion: "authoring.mission-kit/v1alpha1",
@@ -759,7 +912,8 @@ export function createTextSubmission({
   projectionBinding,
   formDefinition,
   submittedBytes,
-  producerProvenance
+  producerProvenance,
+  renderProjection
 }) {
   verifyTextAssignmentDag({
     request,
@@ -767,7 +921,8 @@ export function createTextSubmission({
     formDefinition,
     projectionBinding,
     projectionArtifact,
-    assignment
+    assignment,
+    renderProjection
   });
   const blankViewBytes = textContentBytes(
     assignment.spec.uneditedSkeleton.content
@@ -790,7 +945,8 @@ export function createTextSubmission({
       formDefinition,
       normalizedValues: parsed.normalizedValues,
       rawEvidenceBytes: submittedBytes,
-      producerProvenance
+      producerProvenance,
+      renderProjection
     })
   });
 }
@@ -801,7 +957,8 @@ export function reproduceAssignmentView({
   formDefinition,
   projectionBinding,
   projectionArtifact,
-  assignment
+  assignment,
+  renderProjection
 }) {
   verifyTextAssignmentDag({
     request,
@@ -809,7 +966,8 @@ export function reproduceAssignmentView({
     formDefinition,
     projectionBinding,
     projectionArtifact,
-    assignment
+    assignment,
+    renderProjection
   });
   return Buffer.from(
     textContentBytes(assignment.spec.uneditedSkeleton.content)

@@ -20,6 +20,10 @@
       "descriptorPath": "tests/authoring/assignment-dag/deterministic-view-reproduction.test.json"
     },
     {
+      "id": "urn:mission-kit:survey-v2:test:authoring:assignment-dag:generation-unicode-scalar-bound",
+      "descriptorPath": "tests/authoring/assignment-dag/generation-unicode-scalar-bound.test.json"
+    },
+    {
       "id": "urn:mission-kit:survey-v2:test:authoring:assignment-dag:initial-handle",
       "descriptorPath": "tests/authoring/assignment-dag/initial-handle.test.json"
     },
@@ -30,6 +34,22 @@
     {
       "id": "urn:mission-kit:survey-v2:test:authoring:assignment-dag:projection-id-authority",
       "descriptorPath": "tests/authoring/assignment-dag/projection-id-authority.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:assignment-dag:projector-async-result",
+      "descriptorPath": "tests/authoring/assignment-dag/projector-async-result.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:assignment-dag:projector-deterministic-view",
+      "descriptorPath": "tests/authoring/assignment-dag/projector-deterministic-view.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:assignment-dag:projector-divergent-reproduction",
+      "descriptorPath": "tests/authoring/assignment-dag/projector-divergent-reproduction.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:assignment-dag:projector-omission",
+      "descriptorPath": "tests/authoring/assignment-dag/projector-omission.test.json"
     },
     {
       "id": "urn:mission-kit:survey-v2:test:authoring:assignment-dag:raw-evidence-newlines",
@@ -720,6 +740,22 @@
       "descriptorPath": "tests/authoring/digests/workspace-semantic-whitelist.test.json"
     },
     {
+      "id": "urn:mission-kit:survey-v2:test:authoring:event-input-bindings:aliased-event-input",
+      "descriptorPath": "tests/authoring/event-input-bindings/aliased-event-input.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:event-input-bindings:ambient-event-input",
+      "descriptorPath": "tests/authoring/event-input-bindings/ambient-event-input.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:event-input-bindings:exact-event-input-closure",
+      "descriptorPath": "tests/authoring/event-input-bindings/exact-event-input-closure.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:event-input-bindings:missing-event-input",
+      "descriptorPath": "tests/authoring/event-input-bindings/missing-event-input.test.json"
+    },
+    {
       "id": "urn:mission-kit:survey-v2:test:authoring:journal:assignment-dag-retention",
       "descriptorPath": "tests/authoring/journal/assignment-dag-retention.test.json"
     },
@@ -1364,6 +1400,86 @@
       "descriptorPath": "tests/authoring/reducer/workspace-evidence-callback-isolation.test.json"
     },
     {
+      "id": "urn:mission-kit:survey-v2:test:authoring:request-input-bindings:active-head-input-derivation",
+      "descriptorPath": "tests/authoring/request-input-bindings/active-head-input-derivation.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:request-input-bindings:aliased-raw-input-rejection",
+      "descriptorPath": "tests/authoring/request-input-bindings/aliased-raw-input-rejection.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:request-input-bindings:ambient-raw-input-rejection",
+      "descriptorPath": "tests/authoring/request-input-bindings/ambient-raw-input-rejection.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:request-input-bindings:derived-input-replay",
+      "descriptorPath": "tests/authoring/request-input-bindings/derived-input-replay.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:request-input-bindings:legacy-raw-input-compatibility",
+      "descriptorPath": "tests/authoring/request-input-bindings/legacy-raw-input-compatibility.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:request-input-bindings:optional-request-reference-omission",
+      "descriptorPath": "tests/authoring/request-input-bindings/optional-request-reference-omission.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:request-input-bindings:request-input-binding-key-semantics",
+      "descriptorPath": "tests/authoring/request-input-bindings/request-input-binding-key-semantics.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:request-input-bindings:request-input-binding-schema-closure",
+      "descriptorPath": "tests/authoring/request-input-bindings/request-input-binding-schema-closure.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:request-input-bindings:request-reference-binding-totality",
+      "descriptorPath": "tests/authoring/request-input-bindings/request-reference-binding-totality.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:request-input-bindings:request-reference-input-derivation",
+      "descriptorPath": "tests/authoring/request-input-bindings/request-reference-input-derivation.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:request-input-bindings:required-request-reference-omission",
+      "descriptorPath": "tests/authoring/request-input-bindings/required-request-reference-omission.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:request-input-bindings:revision-input-derivation",
+      "descriptorPath": "tests/authoring/request-input-bindings/revision-input-derivation.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:staged-authority:event-transition-unavailable",
+      "descriptorPath": "tests/authoring/staged-authority/event-transition-unavailable.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:staged-authority:execution-closure-backward-compatibility",
+      "descriptorPath": "tests/authoring/staged-authority/execution-closure-backward-compatibility.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:staged-authority:execution-closure-reference-semantics",
+      "descriptorPath": "tests/authoring/staged-authority/execution-closure-reference-semantics.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:staged-authority:execution-closure-schema-closure",
+      "descriptorPath": "tests/authoring/staged-authority/execution-closure-schema-closure.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:staged-authority:next-transition-unavailable",
+      "descriptorPath": "tests/authoring/staged-authority/next-transition-unavailable.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:staged-authority:profile-options-schema",
+      "descriptorPath": "tests/authoring/staged-authority/profile-options-schema.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:staged-authority:protocol-binding-closure-preserved",
+      "descriptorPath": "tests/authoring/staged-authority/protocol-binding-closure-preserved.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:staged-authority:revision-plan-unavailable",
+      "descriptorPath": "tests/authoring/staged-authority/revision-plan-unavailable.test.json"
+    },
+    {
       "id": "urn:mission-kit:survey-v2:test:authoring:text-forms:all-types-roundtrip",
       "descriptorPath": "tests/authoring/text-forms/all-types-roundtrip.test.json"
     },
@@ -1492,12 +1608,100 @@
       "descriptorPath": "tests/authoring/transactions/assignment-issuance-dag.test.json"
     },
     {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:commit-sidecars:aggregate-transition-limit",
+      "descriptorPath": "tests/authoring/transactions/commit-sidecars/aggregate-transition-limit.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:commit-sidecars:async-sidecar-atomicity",
+      "descriptorPath": "tests/authoring/transactions/commit-sidecars/async-sidecar-atomicity.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:commit-sidecars:cold-coordinator-exact-replay",
+      "descriptorPath": "tests/authoring/transactions/commit-sidecars/cold-coordinator-exact-replay.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:commit-sidecars:cold-replay-created-alias",
+      "descriptorPath": "tests/authoring/transactions/commit-sidecars/cold-replay-created-alias.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:commit-sidecars:cold-replay-prior-alias",
+      "descriptorPath": "tests/authoring/transactions/commit-sidecars/cold-replay-prior-alias.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:commit-sidecars:dedicated-dispatch",
+      "descriptorPath": "tests/authoring/transactions/commit-sidecars/dedicated-dispatch.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:commit-sidecars:digest-mismatch-before-publish",
+      "descriptorPath": "tests/authoring/transactions/commit-sidecars/digest-mismatch-before-publish.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:commit-sidecars:duplicate-resource-rejection",
+      "descriptorPath": "tests/authoring/transactions/commit-sidecars/duplicate-resource-rejection.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:commit-sidecars:event-sidecar-forbidden",
+      "descriptorPath": "tests/authoring/transactions/commit-sidecars/event-sidecar-forbidden.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:commit-sidecars:extra-resource-rejection",
+      "descriptorPath": "tests/authoring/transactions/commit-sidecars/extra-resource-rejection.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:commit-sidecars:missing-executable-before-publish",
+      "descriptorPath": "tests/authoring/transactions/commit-sidecars/missing-executable-before-publish.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:commit-sidecars:outcome-sidecar-added",
+      "descriptorPath": "tests/authoring/transactions/commit-sidecars/outcome-sidecar-added.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:commit-sidecars:outcome-sidecar-missing",
+      "descriptorPath": "tests/authoring/transactions/commit-sidecars/outcome-sidecar-missing.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:commit-sidecars:outcome-sidecar-reordered",
+      "descriptorPath": "tests/authoring/transactions/commit-sidecars/outcome-sidecar-reordered.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:commit-sidecars:per-binding-256-boundary",
+      "descriptorPath": "tests/authoring/transactions/commit-sidecars/per-binding-256-boundary.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:commit-sidecars:receipt-alias-rejection",
+      "descriptorPath": "tests/authoring/transactions/commit-sidecars/receipt-alias-rejection.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:commit-sidecars:rejected-sidecar-atomicity",
+      "descriptorPath": "tests/authoring/transactions/commit-sidecars/rejected-sidecar-atomicity.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:commit-sidecars:same-commit-retention-replay",
+      "descriptorPath": "tests/authoring/transactions/commit-sidecars/same-commit-retention-replay.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:commit-sidecars:throwing-sidecar-atomicity",
+      "descriptorPath": "tests/authoring/transactions/commit-sidecars/throwing-sidecar-atomicity.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:commit-sidecars:wrong-type-rejection",
+      "descriptorPath": "tests/authoring/transactions/commit-sidecars/wrong-type-rejection.test.json"
+    },
+    {
       "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:accepted-submit-atomic",
       "descriptorPath": "tests/authoring/transactions/coordinator/accepted-submit-atomic.test.json"
     },
     {
       "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:authentication-key-boundary",
       "descriptorPath": "tests/authoring/transactions/coordinator/authentication-key-boundary.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:cancel-reference-operation-envelope-idempotency",
+      "descriptorPath": "tests/authoring/transactions/coordinator/cancel-reference-operation-envelope-idempotency.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:cancel-reissued-assignment-epoch",
+      "descriptorPath": "tests/authoring/transactions/coordinator/cancel-reissued-assignment-epoch.test.json"
     },
     {
       "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:cancel-replay-reissue",
@@ -1520,12 +1724,24 @@
       "descriptorPath": "tests/authoring/transactions/coordinator/contract-validator-thenable.test.json"
     },
     {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:event-operation-envelope-idempotency",
+      "descriptorPath": "tests/authoring/transactions/coordinator/event-operation-envelope-idempotency.test.json"
+    },
+    {
       "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:event-rejection-evidence-only",
       "descriptorPath": "tests/authoring/transactions/coordinator/event-rejection-evidence-only.test.json"
     },
     {
       "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:event-transition-replay",
       "descriptorPath": "tests/authoring/transactions/coordinator/event-transition-replay.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:executable-closure-preflight",
+      "descriptorPath": "tests/authoring/transactions/coordinator/executable-closure-preflight.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:executable-registry-required-before-coordination",
+      "descriptorPath": "tests/authoring/transactions/coordinator/executable-registry-required-before-coordination.test.json"
     },
     {
       "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:first-next-persistence",
@@ -1542,6 +1758,10 @@
     {
       "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:machine-qualified-idempotency-reuse-changed-payload-read-only",
       "descriptorPath": "tests/authoring/transactions/coordinator/machine-qualified-idempotency-reuse-changed-payload-read-only.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:operation-digest-persistence-tamper",
+      "descriptorPath": "tests/authoring/transactions/coordinator/operation-digest-persistence-tamper.test.json"
     },
     {
       "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:pending-next-read-only",
@@ -1562,6 +1782,22 @@
     {
       "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:profile-authority-read-boundary",
       "descriptorPath": "tests/authoring/transactions/coordinator/profile-authority-read-boundary.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:projector-cold-divergence",
+      "descriptorPath": "tests/authoring/transactions/coordinator/projector-cold-divergence.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:projector-digest-mismatch-before-retention",
+      "descriptorPath": "tests/authoring/transactions/coordinator/projector-digest-mismatch-before-retention.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:projector-dispatch-exact-view",
+      "descriptorPath": "tests/authoring/transactions/coordinator/projector-dispatch-exact-view.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:projector-missing-before-retention",
+      "descriptorPath": "tests/authoring/transactions/coordinator/projector-missing-before-retention.test.json"
     },
     {
       "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:protocol-authority-cancel-boundary",
@@ -1598,6 +1834,10 @@
     {
       "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:store-operation-single-read",
       "descriptorPath": "tests/authoring/transactions/coordinator/store-operation-single-read.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:submit-coupling-operation-envelope-idempotency",
+      "descriptorPath": "tests/authoring/transactions/coordinator/submit-coupling-operation-envelope-idempotency.test.json"
     },
     {
       "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:submit-idempotent-replay",
@@ -2290,6 +2530,126 @@
     {
       "id": "urn:mission-kit:survey-v2:test:survey-contracts:session:typed-runtime-artifact-references",
       "descriptorPath": "tests/survey-contracts/session/typed-runtime-artifact-references.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:initialization:generation-record-builder",
+      "descriptorPath": "tests/survey/initialization/generation-record-builder.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:initialization:generation-record-prior-input-subset",
+      "descriptorPath": "tests/survey/initialization/generation-record-prior-input-subset.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:initialization:initialization-adapter-ack-loss-recovery",
+      "descriptorPath": "tests/survey/initialization/initialization-adapter-ack-loss-recovery.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:initialization:initialization-adapter-authority-preservation",
+      "descriptorPath": "tests/survey/initialization/initialization-adapter-authority-preservation.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:initialization:initialization-adapter-authority",
+      "descriptorPath": "tests/survey/initialization/initialization-adapter-authority.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:initialization:initialization-adapter-blocked",
+      "descriptorPath": "tests/survey/initialization/initialization-adapter-blocked.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:initialization:initialization-adapter-descendant-replay",
+      "descriptorPath": "tests/survey/initialization/initialization-adapter-descendant-replay.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:initialization:initialization-adapter-evidence-limit",
+      "descriptorPath": "tests/survey/initialization/initialization-adapter-evidence-limit.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:initialization:initialization-adapter-exclusive-port",
+      "descriptorPath": "tests/survey/initialization/initialization-adapter-exclusive-port.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:initialization:initialization-adapter-recovery-authority-mismatch",
+      "descriptorPath": "tests/survey/initialization/initialization-adapter-recovery-authority-mismatch.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:initialization:initialization-adapter-recovery-dependency-mismatch",
+      "descriptorPath": "tests/survey/initialization/initialization-adapter-recovery-dependency-mismatch.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:initialization:initialization-adapter-retry",
+      "descriptorPath": "tests/survey/initialization/initialization-adapter-retry.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:initialization:initialization-adapter-terminal-change",
+      "descriptorPath": "tests/survey/initialization/initialization-adapter-terminal-change.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:initialization:initialization-adapter-terminal-irreversible",
+      "descriptorPath": "tests/survey/initialization/initialization-adapter-terminal-irreversible.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:initialization:initialization-adapter-terminal-wait",
+      "descriptorPath": "tests/survey/initialization/initialization-adapter-terminal-wait.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:initialization:initialization-projection-fit-admission",
+      "descriptorPath": "tests/survey/initialization/initialization-projection-fit-admission.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:initialization:initialization-source-text-admission",
+      "descriptorPath": "tests/survey/initialization/initialization-source-text-admission.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:initialization:source-snapshot-admission",
+      "descriptorPath": "tests/survey/initialization/source-snapshot-admission.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:initialization:source-snapshot-determinism",
+      "descriptorPath": "tests/survey/initialization/source-snapshot-determinism.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:initialization:survey-frame-authority",
+      "descriptorPath": "tests/survey/initialization/survey-frame-authority.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:initialization:survey-frame-projector",
+      "descriptorPath": "tests/survey/initialization/survey-frame-projector.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:initialization:survey-frame-record-encoding",
+      "descriptorPath": "tests/survey/initialization/survey-frame-record-encoding.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:initialization:survey-frame-unicode-boundary",
+      "descriptorPath": "tests/survey/initialization/survey-frame-unicode-boundary.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:initialization:survey-policy-binding-authority",
+      "descriptorPath": "tests/survey/initialization/survey-policy-binding-authority.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:initialization:survey-policy-determinism",
+      "descriptorPath": "tests/survey/initialization/survey-policy-determinism.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:profile:profile-authority-closure",
+      "descriptorPath": "tests/survey/profile/profile-authority-closure.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:profile:profile-concrete-executables",
+      "descriptorPath": "tests/survey/profile/profile-concrete-executables.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:profile:profile-future-fail-closed",
+      "descriptorPath": "tests/survey/profile/profile-future-fail-closed.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:profile:profile-live-initialization",
+      "descriptorPath": "tests/survey/profile/profile-live-initialization.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey:profile:profile-live-survey-frame",
+      "descriptorPath": "tests/survey/profile/profile-live-survey-frame.test.json"
     }
   ]
 }

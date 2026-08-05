@@ -1,0 +1,39 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:initialization:initialization-adapter-recovery-authority-mismatch",
+  "obligationId": "O-AS14-96",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS14"
+  ],
+  "verification": {
+    "precondition": "One exact AT01 plus T02 initialization is already published for a retained Director, proposer, and binding-evidence authority.",
+    "stimulus": "Create a fresh adapter with different opaque initialization authority and ask it to reconcile the same ready dependency result.",
+    "expectedSemanticState": "Reconciliation rejects because the reconstructed command digest cannot equal the journaled initialization command.",
+    "expectedEvidenceState": "The published receipt, journal, and adapter ownership remain attributable only to the original exact authority.",
+    "forbiddenMutation": "The mismatched adapter must not execute a replay, write a store revision, append a journal record, or report active.",
+    "applicability": {
+      "mode": "specific",
+      "transports": [],
+      "adapters": [
+        "urn:mission-kit:survey-v2:adapter:in-memory"
+      ]
+    },
+    "inspectedAuthorities": [
+      "source/authoring/runtime/transaction-coordinator.mjs",
+      "source/authoring/survey/initialization-adapter.mjs",
+      "tests/survey/profile/live-support.mjs"
+    ]
+  },
+  "behavior": "cold reconciliation rejects a published AT01 plus T02 owned by different initialization authority",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/survey/initialization/initialization-adapter-recovery-authority-mismatch.test.mjs",
+  "fixtures": [
+    "tests/survey/profile/live-support.mjs",
+    "tests/survey/profile/support.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

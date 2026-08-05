@@ -51,6 +51,7 @@ test("assignment issuance replay requires the retained Request ContextClosure an
   record.mutationDigest = evidenceMutationDigest({
     priorJournalHeadDigest: record.previousSealDigest,
     idempotency: record.idempotency,
+    operationDigest: record.operationDigest,
     commandDigest: record.commandDigest,
     payloadDigest: record.payloadDigest,
     before: record.before,

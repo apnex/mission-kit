@@ -15,6 +15,8 @@ import {
 } from "../kernel/executable-registry.mjs";
 import {
   reduceAuthoring,
+  normalizeAuthoringCommand,
+  preflightProfileExecutables,
 } from "../kernel/manifest-reducer.mjs";
 import {
   assertAuthoringAuthority,
@@ -55,6 +57,9 @@ import {
   storedResourceVersionFromResource,
   workspaceRevisionState,
 } from "./workspace-application.mjs";
+import {
+  deriveCommitSidecars,
+} from "./commit-sidecars.mjs";
 
 const digestPattern = /^sha256:[0-9a-f]{64}$/u;
 const semanticIdPattern =
@@ -204,10 +209,20 @@ function captureStore(store) {
 
 function assertTrustedInputs(trustedInputs) {
   if (
+    trustedInputs === null ||
+    typeof trustedInputs !== "object" ||
+    !Object.hasOwn(trustedInputs, "executables")
+  ) {
+    fail(
+      "TRANSACTION_EXECUTABLE_REGISTRY_REQUIRED",
+      "trusted inputs must carry one complete executable registry",
+    );
+  }
+  if (
     !exactKeys(
       trustedInputs,
-      ["validateContract", "kernel"],
-      ["executables", "inventory"],
+      ["validateContract", "kernel", "executables"],
+      ["inventory"],
     ) ||
     typeof trustedInputs.validateContract !== "function" ||
     types.isAsyncFunction(trustedInputs.validateContract)
@@ -234,7 +249,15 @@ function captureExecutableRegistry(executables) {
   // whose function values are the exact references validated here.
   compileExecutableRegistry(executables);
   const captured = {};
-  for (const kind of ["guards", "handlers", "validators"]) {
+  const kinds = [
+    "guards",
+    "handlers",
+    "validators",
+    ...["projectors", "sidecars"].filter(
+      (kind) => Object.hasOwn(executables, kind),
+    ),
+  ];
+  for (const kind of kinds) {
     captured[kind] = Object.freeze(
       executables[kind].map((entry) =>
         Object.freeze({
@@ -259,13 +282,71 @@ function captureTrustedInputs(trustedInputs) {
       trustedInputs.inventory ?? [],
       "trusted static inventory",
     ),
-  };
-  if (Object.hasOwn(trustedInputs, "executables")) {
-    captured.executables = captureExecutableRegistry(
+    executables: captureExecutableRegistry(
       trustedInputs.executables,
+    ),
+  };
+  return Object.freeze(captured);
+}
+
+function captureEventCommandAdmission(
+  profile,
+  input,
+) {
+  const expected = profile?.spec?.eventCommandAdmission;
+  if (expected === undefined) {
+    if (input !== undefined) {
+      fail(
+        "TRANSACTION_EVENT_ADMISSION_AMBIENT",
+        "coordinator received event command admission outside profile authority",
+      );
+    }
+    return null;
+  }
+  if (!isRecord(input)) {
+    fail(
+      "TRANSACTION_EVENT_ADMISSION_REQUIRED",
+      "profile requires one event command admission verifier",
     );
   }
-  return Object.freeze(captured);
+  const bindingDescriptor =
+    Object.getOwnPropertyDescriptor(input, "binding");
+  const consumeDescriptor =
+    Object.getOwnPropertyDescriptor(input, "consume");
+  if (
+    Reflect.ownKeys(input).length !== 2 ||
+    bindingDescriptor?.enumerable !== true ||
+    !Object.prototype.hasOwnProperty.call(
+      bindingDescriptor,
+      "value",
+    ) ||
+    consumeDescriptor?.enumerable !== true ||
+    !Object.prototype.hasOwnProperty.call(
+      consumeDescriptor,
+      "value",
+    ) ||
+    typeof consumeDescriptor.value !== "function" ||
+    types.isAsyncFunction(consumeDescriptor.value)
+  ) {
+    fail(
+      "TRANSACTION_EVENT_ADMISSION_INVALID",
+      "event command admission verifier must be exactly {binding,consume}",
+    );
+  }
+  const binding = frozen(
+    bindingDescriptor.value,
+    "event command admission binding",
+  );
+  if (!same(binding, expected)) {
+    fail(
+      "TRANSACTION_EVENT_ADMISSION_MISMATCH",
+      "event command admission verifier differs from profile authority",
+    );
+  }
+  return Object.freeze({
+    binding,
+    consume: consumeDescriptor.value.bind(input),
+  });
 }
 
 function assertActor(actor, label) {
@@ -298,18 +379,15 @@ function assertAuthority(authority, label) {
 }
 
 function lockedTrustedInputs(config, workspace) {
-  const trusted = {
+  return Object.freeze({
     validateContract: config.capabilities.validateContract,
     kernel: config.capabilities.kernel,
     inventory: transactionInventory({
       workspace,
       staticInventory: config.staticInventory,
     }),
-  };
-  if (Object.hasOwn(config.capabilities, "executables")) {
-    trusted.executables = config.capabilities.executables;
-  }
-  return Object.freeze(trusted);
+    executables: config.capabilities.executables,
+  });
 }
 
 function assertIdentityMatches(snapshot, identity) {
@@ -523,15 +601,24 @@ function idempotencyLookup(snapshot, operationIdentity) {
   if (matches.length === 0) return null;
   const entry = matches[0];
   if (
+    entry.operationDigest !== operationIdentity.operationDigest ||
     entry.commandDigest !== operationIdentity.commandDigest ||
     entry.payloadDigest !== operationIdentity.payloadDigest
   ) {
     fail(
       "IDEMPOTENCY_KEY_REUSED",
-      "an existing idempotency key carries different command or payload identity",
+      "an existing idempotency key carries a different normalized operation envelope",
     );
   }
   return entry;
+}
+
+function operationDigest(command) {
+  return sha256Value({
+    domain:
+      "mission-kit:authoring:normalized-operation-envelope/v1",
+    command,
+  });
 }
 
 function inventoryFor(config, workspace) {
@@ -592,6 +679,7 @@ function resolveOutcome(config, snapshot, outcome) {
         workspace: snapshot.workspace,
         assignmentBinding: outcome.assignment,
         staticInventory: config.staticInventory,
+        executables: config.capabilities.executables,
       });
     case "submission-rejected": {
       const assignment = resolveExactResource(
@@ -659,9 +747,18 @@ function resolveOutcome(config, snapshot, outcome) {
           label: "commit Receipt",
         },
       );
+      const sidecars = (outcome.sidecars ?? []).map(
+        (reference, index) =>
+          resolveExactResource(inventory, reference, {
+            label: `commit sidecar ${index}`,
+          }),
+      );
       return Object.freeze({
         kind: "committed",
         receipt,
+        ...(sidecars.length === 0
+          ? {}
+          : { sidecars: Object.freeze(sidecars) }),
       });
     }
     default:
@@ -734,6 +831,7 @@ function commitIdFor(snapshot, operationIdentity, identity) {
     ordinal: snapshot.commitRevision + 1,
     priorJournalHeadDigest,
     idempotency: operationIdentity.idempotency,
+    operationDigest: operationIdentity.operationDigest,
     commandDigest: operationIdentity.commandDigest,
     payloadDigest: operationIdentity.payloadDigest,
   });
@@ -789,11 +887,23 @@ function matchingRevisionAssignment(
     profile: config.profile,
     workspace: snapshot.workspace,
     staticInventory: config.staticInventory,
+    executables: config.capabilities.executables,
   });
   const operation = current.request.spec.operation;
+  const expectedBase = {
+    authoringState:
+      snapshot.workspace.spec.authoringState,
+    semanticRevision:
+      snapshot.workspace.spec.semanticRevision,
+    semanticStateDigest:
+      snapshot.workspace.spec.integrity.semanticStateDigest,
+    activeHeads:
+      snapshot.workspace.spec.activeHeads,
+  };
   if (
     operation.class !== "revision" ||
     operation.unit.id !== command.unitId ||
+    !same(command.base, expectedBase) ||
     !same(operation.inputs, command.inputs)
   ) {
     return null;
@@ -842,6 +952,7 @@ async function publish(config, writer, snapshot, {
     actor,
     authority,
     idempotency: operationIdentity.idempotency,
+    operationDigest: operationIdentity.operationDigest,
     commandDigest: operationIdentity.commandDigest,
     payloadDigest: operationIdentity.payloadDigest,
     before,
@@ -934,6 +1045,7 @@ async function commitEvidence(config, writer, snapshot, {
       ? config.identity.genesisChainDigest()
       : snapshot.journal[snapshot.journal.length - 1].recordDigest,
     idempotency: operationIdentity.idempotency,
+    operationDigest: operationIdentity.operationDigest,
     commandDigest: operationIdentity.commandDigest,
     payloadDigest: operationIdentity.payloadDigest,
     before: workspaceRevisionState(snapshot.workspace),
@@ -996,13 +1108,69 @@ async function commitTransition(config, writer, snapshot, {
     supersededDescendants:
       deriveSupersededDescendants(mutation),
   });
+  const transitionId = mutation.spec.cause.edge.transitionId;
+  const transitionBinding = config.profile.spec.transitionBindings.find(
+    (binding) => binding.transitionId === transitionId,
+  );
+  const sidecarIds =
+    transitionBinding?.commitSidecarBindingIds ?? [];
+  let sidecars = [];
+  if (sidecarIds.length > 0) {
+    if (submission === undefined) {
+      fail(
+        "TRANSACTION_SIDECAR_SUBMISSION_REQUIRED",
+        "a sidecar-bearing transition requires task-submission ancestry",
+      );
+    }
+    const inventory = transactionInventory({
+      workspace: semanticWorkspace,
+      staticInventory: config.staticInventory,
+    });
+    const retainedAssignment = resolveExactResource(
+      inventory,
+      mutation.spec.cause.assignment.reference,
+      {
+        kind: "AuthoringAssignment",
+        label: "sidecar Assignment",
+      },
+    );
+    const request = resolveExactResource(
+      inventory,
+      retainedAssignment.spec.request.reference,
+      {
+        kind: "AuthoringRequest",
+        label: "sidecar Request",
+      },
+    );
+    const contextClosure = resolveExactResource(
+      inventory,
+      request.spec.contextClosure.reference,
+      {
+        kind: "ContextClosure",
+        label: "sidecar ContextClosure",
+      },
+    );
+    sidecars = deriveCommitSidecars({
+      profile: config.profile,
+      transitionId,
+      executables: config.capabilities.executables,
+      request,
+      assignment: retainedAssignment,
+      submission,
+      contextClosure,
+      mutation,
+      receipt,
+      resources: [...inventory, receipt],
+      validateContract: config.capabilities.validateContract,
+    });
+  }
   const receiptVersions = retainedResourceDelta(
     semanticWorkspace,
-    [receipt],
+    [receipt, ...sidecars],
   );
   const receiptHistory = historyDelta(
     semanticWorkspace,
-    [resourceReferenceFrom(receipt)],
+    [receipt, ...sidecars].map(resourceReferenceFrom),
   );
   const workspace = retainWorkspaceEvidence({
     workspace: semanticWorkspace,
@@ -1016,7 +1184,7 @@ async function commitTransition(config, writer, snapshot, {
     journalOrdinal: snapshot.journal.length + 1,
     identity: config.identity,
   });
-  const outcome = receiptOutcome(receipt);
+  const outcome = receiptOutcome(receipt, sidecars);
   return publish(config, writer, snapshot, {
     workspace,
     machineHeads: edgeBundle.machineHeads,
@@ -1044,6 +1212,7 @@ async function executeNext(config, writer, snapshot, command) {
       profile: config.profile,
       workspace: snapshot.workspace,
       staticInventory: config.staticInventory,
+      executables: config.capabilities.executables,
     });
   }
   const result = reduceAuthoring(
@@ -1061,10 +1230,12 @@ async function executeNext(config, writer, snapshot, command) {
     staticInventory: config.staticInventory,
     validateRequestContract:
       config.capabilities.validateContract,
+    executables: config.capabilities.executables,
   });
   const operationIdentity = deriveOperationIdentity({
     operationClass: "assignment-issuance",
     machineId: config.authoringMachineId,
+    operationDigest: operationDigest(command),
     requestDigest: issued.request.spec.requestDigest,
     assignmentDigest:
       issued.assignment.spec.assignmentDigest,
@@ -1111,10 +1282,12 @@ async function executeRevise(config, writer, snapshot, command) {
     staticInventory: config.staticInventory,
     validateRequestContract:
       config.capabilities.validateContract,
+    executables: config.capabilities.executables,
   });
   const operationIdentity = deriveOperationIdentity({
     operationClass: "assignment-issuance",
     machineId: config.authoringMachineId,
+    operationDigest: operationDigest(command),
     requestDigest: issued.request.spec.requestDigest,
     assignmentDigest:
       issued.assignment.spec.assignmentDigest,
@@ -1165,6 +1338,7 @@ async function executeSubmit(config, writer, snapshot, command) {
   const operationIdentity = deriveOperationIdentity({
     operationClass: "submission-attempt",
     machineId: config.authoringMachineId,
+    operationDigest: operationDigest(command),
     assignmentDigest: assignment.assignmentDigest,
     normalizedSubmissionDigest:
       submission.normalizedSubmissionDigest,
@@ -1220,6 +1394,7 @@ async function executeEvent(config, writer, snapshot, command) {
   const operationIdentity = deriveOperationIdentity({
     operationClass: "event",
     machineId: config.authoringMachineId,
+    operationDigest: operationDigest(command),
     commandDigest: command.commandDigest,
     payloadDigest: command.payloadDigest,
   });
@@ -1282,20 +1457,6 @@ async function executeCancel(config, writer, snapshot, command) {
     command.cancellationEvidenceDigest,
     "cancellationEvidenceDigest",
   );
-  const operationIdentity = deriveOperationIdentity({
-    operationClass: "cancellation",
-    machineId: config.authoringMachineId,
-    assignmentDigest: binding.assignmentDigest,
-    cancellationEvidenceDigest:
-      command.cancellationEvidenceDigest,
-  });
-  const existing = idempotencyLookup(
-    snapshot,
-    operationIdentity,
-  );
-  if (existing) {
-    return resolveOutcome(config, snapshot, existing.outcome);
-  }
   const inventory = inventoryFor(config, snapshot.workspace);
   const retainedAssignment = resolveExactResource(
     inventory,
@@ -1313,6 +1474,69 @@ async function executeCancel(config, writer, snapshot, command) {
       "TRANSACTION_CANCEL_ASSIGNMENT_INVALID",
       "cancel Assignment binding differs from retained bytes",
     );
+  }
+  const envelopeDigest = operationDigest(command);
+  if (
+    !same(
+      snapshot.workspace.spec.openAssignment,
+      binding,
+    )
+  ) {
+    const exactReplays =
+      snapshot.idempotencyOutcomeView.filter(
+        (entry) =>
+          entry.operationDigest === envelopeDigest &&
+          entry.outcome?.class ===
+            "assignment-cancelled" &&
+          same(entry.outcome.assignment, binding),
+      );
+    if (exactReplays.length > 0) {
+      return resolveOutcome(
+        config,
+        snapshot,
+        exactReplays.at(-1).outcome,
+      );
+    }
+    assertOpenAssignment(config, snapshot, binding);
+  }
+  const issuanceCandidates =
+    snapshot.journal.filter(
+      (record, index) =>
+        record.commitKind === "evidence" &&
+        same(
+          record.workspaceEffect?.openAssignment?.after,
+          binding,
+        ) &&
+        snapshot.idempotencyOutcomeView[index]
+          ?.outcome?.class === "assignment-issued" &&
+        same(
+          snapshot.idempotencyOutcomeView[index]
+            .outcome.assignment,
+          binding,
+        ),
+    );
+  if (issuanceCandidates.length === 0) {
+    fail(
+      "TRANSACTION_CANCEL_ISSUANCE_INVALID",
+      "cancel cannot resolve the exact current Assignment issuance epoch",
+    );
+  }
+  const issuanceRecord = issuanceCandidates.at(-1);
+  const operationIdentity = deriveOperationIdentity({
+    operationClass: "cancellation",
+    machineId: config.authoringMachineId,
+    operationDigest: envelopeDigest,
+    assignmentDigest: binding.assignmentDigest,
+    cancellationEvidenceDigest:
+      command.cancellationEvidenceDigest,
+    issuanceRecordDigest: issuanceRecord.recordDigest,
+  });
+  const existing = idempotencyLookup(
+    snapshot,
+    operationIdentity,
+  );
+  if (existing) {
+    return resolveOutcome(config, snapshot, existing.outcome);
   }
   assertOpenAssignment(config, snapshot, binding);
   const outcome = frozen({
@@ -1388,7 +1612,9 @@ function normalizeCommand(command) {
       `unsupported transaction command ${String(value.class)}`,
     );
   }
-  return value;
+  return value.class === "cancel"
+    ? value
+    : normalizeAuthoringCommand(value);
 }
 
 /**
@@ -1404,9 +1630,13 @@ export function createAuthoringTransactionCoordinator({
   authoringMachineId,
   systemActor,
   evidenceAuthority,
+  eventCommandAdmission,
 }) {
   const capturedStore = captureStore(store);
   const capabilities = captureTrustedInputs(trustedInputs);
+  const compiledExecutables = compileExecutableRegistry(
+    capabilities.executables,
+  );
   if (!isCompiledJournalIdentityPort(identity)) {
     fail(
       "TRANSACTION_IDENTITY_UNCOMPILED",
@@ -1424,19 +1654,31 @@ export function createAuthoringTransactionCoordinator({
   );
   assertActor(actor, "systemActor");
   assertAuthority(authority, "evidenceAuthority");
+  const capturedEventCommandAdmission =
+    captureEventCommandAdmission(
+      profile,
+      eventCommandAdmission,
+    );
   const config = Object.freeze({
     store: capturedStore,
     profile: frozen(profile, "profile"),
     protocol: frozen(protocol, "protocol"),
     capabilities,
+    compiledExecutables,
     staticInventory: capabilities.inventory,
     identity,
     authoringMachineId,
     systemActor: actor,
     evidenceAuthority: authority,
+    eventCommandAdmission:
+      capturedEventCommandAdmission,
   });
   const coordinator = Object.freeze({
     async read(storeId) {
+      preflightProfileExecutables(
+        config.profile,
+        config.compiledExecutables,
+      );
       const current = await config.store.read(storeId);
       const { snapshot, replay } = replaySnapshot(
         current,
@@ -1448,12 +1690,60 @@ export function createAuthoringTransactionCoordinator({
           profile: config.profile,
           workspace: snapshot.workspace,
           staticInventory: config.staticInventory,
+          executables: config.capabilities.executables,
         });
       return Object.freeze({ snapshot, replay, pending });
     },
 
     async execute(storeId, commandInput) {
+      let eventAdmission = false;
+      if (config.eventCommandAdmission !== null) {
+        let consumed;
+        try {
+          consumed =
+            config.eventCommandAdmission.consume(commandInput);
+        } catch (error) {
+          fail(
+            "TRANSACTION_EVENT_ADMISSION_INVALID",
+            `event command admission verifier failed: ${
+              error instanceof Error
+                ? error.message
+                : String(error)
+            }`,
+          );
+        }
+        if (consumed !== true && consumed !== false) {
+          fail(
+            "TRANSACTION_EVENT_ADMISSION_INVALID",
+            "event command admission verifier must return Boolean synchronously",
+          );
+        }
+        eventAdmission = consumed;
+      }
+      preflightProfileExecutables(
+        config.profile,
+        config.compiledExecutables,
+      );
       const command = normalizeCommand(commandInput);
+      if (
+        command.class === "event" &&
+        config.eventCommandAdmission !== null &&
+        !eventAdmission
+      ) {
+        fail(
+          "TRANSACTION_EVENT_ADMISSION_REQUIRED",
+          "event command requires the profile-bound adapter admission port",
+        );
+      }
+      if (
+        command.class !== "event" &&
+        eventAdmission
+      ) {
+        fail(
+          "TRANSACTION_EVENT_ADMISSION_INVALID",
+          "event command admission cannot authorize a non-event command",
+        );
+      }
       return config.store.withWriter(
         storeId,
         async (writer) => {

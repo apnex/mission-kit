@@ -10,6 +10,7 @@ import {
 } from "../../../source/authoring/runtime/transaction-resources.mjs";
 import {
   loadReducerScenario,
+  passRegistrySource,
   trustedReducerInputs,
 } from "../reducer/support.mjs";
 
@@ -26,9 +27,10 @@ export async function transactionFixture(stem) {
 
 export async function createIssuedTransactionScenario() {
   const scenario = await loadReducerScenario();
+  const executables = passRegistrySource();
   const [formDefinition, trusted] = await Promise.all([
     transactionFixture("authoring-form-definition"),
-    trustedReducerInputs(),
+    trustedReducerInputs({ executables }),
   ]);
   const task = reduceAuthoring(
     scenario.profile,
@@ -46,10 +48,12 @@ export async function createIssuedTransactionScenario() {
     workspace: scenario.workspace,
     staticInventory: [formDefinition],
     validateRequestContract: trusted.validateContract,
+    executables,
   });
   return {
     ...scenario,
     formDefinition,
+    executables,
     trusted,
     task,
     issued,

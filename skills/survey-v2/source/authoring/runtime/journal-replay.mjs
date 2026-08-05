@@ -1435,6 +1435,7 @@ function validateOutcomeClosure(
     assertEvidenceCommitPlan({
       priorJournalHeadDigest: record.previousSealDigest,
       idempotency: record.idempotency,
+      operationDigest: record.operationDigest,
       commandDigest: record.commandDigest,
       payloadDigest: record.payloadDigest,
       before: record.before,
@@ -1576,6 +1577,35 @@ function validateOutcomeClosure(
             "outcome.transition.submission",
           )
           : undefined;
+        const sidecars = (stable.sidecars ?? []).map(
+          (reference, index) =>
+            resolveReference(
+              reference,
+              inventory,
+              `outcome.sidecars[${index}]`,
+            ),
+        );
+        const nonSidecarReferences = new Set([
+          ...beforeWorkspace.spec.resourceVersions.map(
+            (stored) => canonicalize(stored.reference),
+          ),
+          ...transition.mutation.spec.createdResources.map(
+            (created) => canonicalize(created.reference),
+          ),
+          ...(submission === undefined
+            ? []
+            : [canonicalize(resourceReferenceFrom(submission))]),
+          canonicalize(resourceReferenceFrom(transition.mutation)),
+          canonicalize(resourceReferenceFrom(transition.receipt)),
+        ]);
+        (stable.sidecars ?? []).forEach((reference, index) => {
+          if (nonSidecarReferences.has(canonicalize(reference))) {
+            fail(
+              "JOURNAL_OUTCOME_SIDECAR_ALIAS",
+              `outcome.sidecars[${index}] is not one additional new evidence resource`,
+            );
+          }
+        });
         effectResources = [
           ...transition.mutation.spec.createdResources.map(
             (created) => created.resource,
@@ -1583,6 +1613,7 @@ function validateOutcomeClosure(
           ...(submission === undefined ? [] : [submission]),
           transition.mutation,
           transition.receipt,
+          ...sidecars,
         ];
         effectHistory = [
           ...transition.mutation.spec.supersededResources,
@@ -1591,6 +1622,7 @@ function validateOutcomeClosure(
             : [resourceReferenceFrom(submission)]),
           resourceReferenceFrom(transition.mutation),
           resourceReferenceFrom(transition.receipt),
+          ...sidecars.map(resourceReferenceFrom),
         ];
       }
       break;
@@ -1627,6 +1659,7 @@ function validateOutcomeView(
         "machineId",
         "key",
         "recordDigest",
+        "operationDigest",
         "commandDigest",
         "payloadDigest",
         "outcome",
@@ -1642,6 +1675,7 @@ function validateOutcomeView(
       entry.machineId !== record.idempotency.machineId ||
       entry.key !== record.idempotency.key ||
       entry.recordDigest !== record.recordDigest ||
+      entry.operationDigest !== record.operationDigest ||
       entry.commandDigest !== record.commandDigest ||
       entry.payloadDigest !== record.payloadDigest
     ) {

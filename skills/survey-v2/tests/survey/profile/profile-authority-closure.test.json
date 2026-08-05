@@ -1,0 +1,43 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:profile:profile-authority-closure",
+  "obligationId": "O-AS02-22",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS02"
+  ],
+  "verification": {
+    "precondition": "The canonical Survey protocol, neutral authoring schemas, profile authority builder, and digest-pinned executable registry are available as package-owned inputs.",
+    "stimulus": "Execute tests/survey/profile/profile-authority-closure.test.mjs with node:test.",
+    "expectedSemanticState": "The generated profile is a complete canonical projection of all Survey tasks, guards, transitions, schemas, forms, external coupling authority, and cognitive sidecar declarations while execution remains closed to AT01 and AT02.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: the Survey S11 profile is total over canonical authority and executable only through AT01 and AT02",
+    "forbiddenMutation": "The profile must not omit canonical edges, widen execution closure, hand-author executable identities, attach cognitive sidecars to runtime events, or alter the canonical protocol.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "schemas/authoring/v1alpha1/authoring-profile-manifest.schema.json",
+      "schemas/authoring/v1alpha1/authoring-protocol.schema.json",
+      "source/authoring/kernel/contract-semantics.mjs",
+      "source/authoring/kernel/digests.mjs",
+      "source/authoring/kernel/executable-registry.mjs",
+      "source/authoring/survey/profile-authority.mjs",
+      "source/authoring/survey/profile-executables.mjs",
+      "source/authoring/survey/protocol-semantics.mjs",
+      "source/protocol/survey-v2.protocol.json"
+    ]
+  },
+  "behavior": "the Survey S11 profile is total over canonical authority and executable only through AT01 and AT02",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/survey/profile/profile-authority-closure.test.mjs",
+  "fixtures": [
+    "tests/authoring/contracts/support/contract-validation.mjs",
+    "tests/survey/profile/support.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

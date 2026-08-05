@@ -14,6 +14,7 @@ test("byte-identical Assignment reauthorization is keyed by locked prior evidenc
     deriveOperationIdentity({
       operationClass: "assignment-issuance",
       machineId: "authoring-kernel",
+      operationDigest: digest("9"),
       requestDigest: digest("b"),
       assignmentDigest: assignment.spec.assignmentDigest,
       priorEvidenceRevision,

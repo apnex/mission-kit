@@ -29,6 +29,7 @@ test("an evidence record cannot bind a plan from a foreign journal head", () => 
     actor: record.actor,
     authority: record.authority,
     idempotency: record.idempotency,
+    operationDigest: record.operationDigest,
     commandDigest: record.commandDigest,
     payloadDigest: record.payloadDigest,
     before: record.before,

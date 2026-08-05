@@ -473,19 +473,25 @@ function assertSelection(selection, field) {
     });
     return;
   }
-  if (selection.mode === "request-reference") {
+  if (
+    selection.mode === "request-reference" ||
+    selection.mode === "event-input"
+  ) {
+    const label = selection.mode === "event-input"
+      ? "Event-input selection"
+      : "Request-reference selection";
     assertExactKeys(
       selection,
       ["mode", "inputKey"],
       [],
       field,
       "CONTEXT_SELECTOR_SELECTION_INVALID",
-      "Request-reference selection"
+      label,
     );
     assertBoundedPattern(selection.inputKey, {
       code: "CONTEXT_SELECTOR_SELECTION_INVALID",
       field: `${field}/inputKey`,
-      label: "Request-reference selection inputKey",
+      label: `${label} inputKey`,
       maximum: 80,
       pattern: fieldIdPattern
     });

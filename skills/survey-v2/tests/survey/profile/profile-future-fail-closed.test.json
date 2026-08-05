@@ -1,0 +1,38 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:profile:profile-future-fail-closed",
+  "obligationId": "O-AS02-23",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS02"
+  ],
+  "verification": {
+    "precondition": "The complete Survey profile declares canonical future edges while its execution closure admits only AT01 and AT02.",
+    "stimulus": "Execute tests/survey/profile/profile-future-fail-closed.test.mjs with node:test.",
+    "expectedSemanticState": "Every guard, handler, and projection outside the implemented SurveyFrame slice resolves through an exact digest pin and rejects without products or mutation authority.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: every Survey profile edge beyond AT02 has a digest-pinned rejecting executable",
+    "forbiddenMutation": "A future transition must not execute, create a product, infer a placeholder result, or bypass the declared execution closure.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "source/authoring/kernel/executable-registry.mjs",
+      "source/authoring/kernel/manifest-selection.mjs",
+      "source/authoring/survey/profile-authority.mjs",
+      "source/authoring/survey/profile-executables.mjs",
+      "source/protocol/survey-v2.protocol.json"
+    ]
+  },
+  "behavior": "every Survey profile edge beyond AT02 has a digest-pinned rejecting executable",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/survey/profile/profile-future-fail-closed.test.mjs",
+  "fixtures": [
+    "tests/survey/profile/support.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

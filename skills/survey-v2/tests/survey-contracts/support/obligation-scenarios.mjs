@@ -41,10 +41,15 @@ async function surveyGeometry() {
     assertPositiveFixture("survey-policy-snapshot")
   ]);
   assert.deepEqual(Object.keys(survey.spec).sort(), [
+    "outcomeAxes",
     "policySnapshotRef",
     "surveyFrameRef"
   ]);
   assert.equal(survey.spec.surveyFrameRef.kind, "ContextFrame");
+  assert.deepEqual(survey.spec.outcomeAxes, [
+    "intent fidelity",
+    "decision usefulness"
+  ]);
   assert.deepEqual(policy.spec.geometry, {
     rounds: 2,
     questionsPerRound: 3,

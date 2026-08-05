@@ -66,6 +66,7 @@ const outcomeEntryFields = Object.freeze([
   "machineId",
   "key",
   "recordDigest",
+  "operationDigest",
   "commandDigest",
   "payloadDigest",
   "outcome",
@@ -522,6 +523,10 @@ function assertJournal(journal, commitRevision) {
     }
     assertText(record.commitId, `journal/${index}/commitId`, 160);
     assertDigest(record.recordDigest, `journal/${index}/recordDigest`);
+    assertDigest(
+      record.operationDigest,
+      `journal/${index}/operationDigest`,
+    );
     if (
       !isRecord(record.idempotency) ||
       typeof record.idempotency.machineId !== "string" ||
@@ -599,7 +604,7 @@ function assertOutcomeView(view, journal) {
     if (!exactKeys(entry, outcomeEntryFields)) {
       fail(
         "STORE_OUTCOME_ENTRY_INVALID",
-        `idempotencyOutcomeView/${index} must contain exactly the six outcome fields`,
+        `idempotencyOutcomeView/${index} must contain exactly the seven outcome fields`,
       );
     }
     assertText(
@@ -615,6 +620,10 @@ function assertOutcomeView(view, journal) {
     assertDigest(
       entry.recordDigest,
       `idempotencyOutcomeView/${index}/recordDigest`,
+    );
+    assertDigest(
+      entry.operationDigest,
+      `idempotencyOutcomeView/${index}/operationDigest`,
     );
     assertDigest(
       entry.commandDigest,
@@ -643,6 +652,7 @@ function assertOutcomeView(view, journal) {
       entry.machineId !== record.idempotency.machineId ||
       entry.key !== record.idempotency.key ||
       entry.recordDigest !== record.recordDigest ||
+      entry.operationDigest !== record.operationDigest ||
       entry.commandDigest !== record.commandDigest ||
       entry.payloadDigest !== record.payloadDigest
     ) {

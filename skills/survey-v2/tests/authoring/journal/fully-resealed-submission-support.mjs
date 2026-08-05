@@ -116,6 +116,7 @@ export function fullyResealRawSubmissionRewrite(
     evidencePlan = createEvidenceCommitPlan({
       priorJournalHeadDigest: record.previousSealDigest,
       idempotency: record.idempotency,
+      operationDigest: record.operationDigest,
       commandDigest: record.commandDigest,
       payloadDigest: record.payloadDigest,
       before: record.before,

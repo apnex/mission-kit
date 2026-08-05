@@ -21,6 +21,22 @@
       "adapter": {
         "id": "text-adapter",
         "digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      },
+      "generation": {
+        "attemptId": "attempt-1",
+        "provider": "example-provider",
+        "model": "example-model",
+        "adapter": {
+          "id": "example-adapter",
+          "digest": "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+        },
+        "configurationDigest": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "telemetry": {
+          "latencyMs": 10,
+          "inputTokens": 20,
+          "outputTokens": 30,
+          "costMicrounits": 40
+        }
       }
     }
   },

@@ -204,6 +204,40 @@ function stateAuthority({ profile, protocol, workspace }) {
   );
 }
 
+function assertTransitionExecutionAvailable(profile, transitionId) {
+  const closure = profile.spec.executionClosure;
+  if (
+    closure !== undefined &&
+    !closure.transitionIds.includes(transitionId)
+  ) {
+    fail(
+      "PROFILE_EXECUTION_TRANSITION_UNAVAILABLE",
+      `transition ${transitionId} is outside execution closure ${closure.id}`,
+      {
+        executionClosureId: closure.id,
+        transitionId,
+      },
+    );
+  }
+}
+
+function assertRevisionExecutionAvailable(profile, revisionPlanId) {
+  const closure = profile.spec.executionClosure;
+  if (
+    closure !== undefined &&
+    !closure.revisionPlanIds.includes(revisionPlanId)
+  ) {
+    fail(
+      "PROFILE_EXECUTION_REVISION_UNAVAILABLE",
+      `revision plan ${revisionPlanId} is outside execution closure ${closure.id}`,
+      {
+        executionClosureId: closure.id,
+        revisionPlanId,
+      },
+    );
+  }
+}
+
 export function selectNextAuthority({ profile, protocol, workspace }) {
   const state = stateAuthority({ profile, protocol, workspace });
   if (state.class === "wait") {
@@ -254,6 +288,10 @@ export function selectNextAuthority({ profile, protocol, workspace }) {
       "selected task edge conflicts with task or mutation authority",
     );
   }
+  assertTransitionExecutionAvailable(
+    profile,
+    selected.transition.id,
+  );
   return frozen({
     kind: "task",
     state,
@@ -299,6 +337,10 @@ export function selectEventAuthority({
       "selected event edge conflicts with mutation authority",
     );
   }
+  assertTransitionExecutionAvailable(
+    profile,
+    selected.transition.id,
+  );
   return frozen({
     kind: "event",
     state,
@@ -332,6 +374,7 @@ export function selectRevisionAuthority({
     "AUTHORING_REVISION_PLAN_AMBIGUOUS",
     "revision plan for current state and event",
   );
+  assertRevisionExecutionAvailable(profile, plan.id);
   const normalBinding = exactOne(
     profile.spec.transitionBindings.filter(
       (entry) => entry.transitionId === unit.normalTransitionId,

@@ -1,0 +1,36 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:initialization:initialization-adapter-authority",
+  "obligationId": "O-AS14-92",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS14"
+  ],
+  "verification": {
+    "precondition": "The Survey initialization adapter receives host-supplied Director, proposer, and binding-evidence strings before it receives any coordinator, store, or identity authority.",
+    "stimulus": "Execute tests/survey/initialization/initialization-adapter-authority.test.mjs with node:test.",
+    "expectedSemanticState": "Every missing, empty, non-string, or ambient Director, proposer, or binding-evidence authority object is rejected.",
+    "expectedEvidenceState": "Every invalid case rejects before even reading a poisoned capability object.",
+    "forbiddenMutation": "Invalid or ambient authority must not inspect a capability getter, read or write a store, derive identity, or produce partial adapter authority.",
+    "applicability": {
+      "mode": "specific",
+      "transports": [],
+      "adapters": [
+        "urn:mission-kit:survey-v2:adapter:in-memory"
+      ]
+    },
+    "inspectedAuthorities": [
+      "schemas/v1/session-state.schema.json",
+      "source/authoring/kernel/canonical.mjs",
+      "source/authoring/survey/initialization-adapter.mjs"
+    ]
+  },
+  "behavior": "invalid Director proposer or binding refs reject before capability inspection",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/survey/initialization/initialization-adapter-authority.test.mjs",
+  "fixtures": [],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

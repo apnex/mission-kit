@@ -1,5 +1,8 @@
 import { types } from "node:util";
 import { stableValue } from "./canonical.mjs";
+import {
+  COMMIT_SIDECAR_RESOURCE_LIMIT,
+} from "./limits.mjs";
 
 const digestPattern = /^sha256:[0-9a-f]{64}$/u;
 const semanticIdPattern =
@@ -7,11 +10,21 @@ const semanticIdPattern =
 const eventIdPattern = /^[A-Z][A-Z0-9]*(?:_[A-Z0-9]+)*$/u;
 const fieldPathPattern =
   /^(?:\/(?:[^~/]|~0|~1)*)*$/u;
-const registryKinds = Object.freeze([
+const requiredRegistryKinds = Object.freeze([
   "guards",
   "handlers",
   "validators",
 ]);
+const optionalRegistryKinds = Object.freeze([
+  "projectors",
+  "sidecars",
+]);
+const registryKinds = Object.freeze([
+  ...requiredRegistryKinds,
+  ...optionalRegistryKinds,
+]);
+const exactBytesMediaTypePattern =
+  /^[a-z0-9!#$&^_.+-]+\/[a-z0-9!#$&^_.+-]+(?:;[A-Za-z0-9!#$&^_.+ -]+=[A-Za-z0-9!#$&^_.+ -]+)*$/u;
 const promiseThen = Promise.prototype.then;
 const compiledRegistryStates = new WeakMap();
 
@@ -168,15 +181,64 @@ function assertIssueList(value, label) {
     assertDomainIssue(entry, `${label}/${index}`));
 }
 
+function assertExactBytes(value, label) {
+  if (
+    !exactKeys(value, ["mediaType", "encoding", "byteLength", "data"]) ||
+    typeof value.mediaType !== "string" ||
+    value.mediaType.length < 3 ||
+    value.mediaType.length > 128 ||
+    !exactBytesMediaTypePattern.test(value.mediaType) ||
+    value.encoding !== "base64" ||
+    !Number.isInteger(value.byteLength) ||
+    value.byteLength < 0 ||
+    value.byteLength > 1048576 ||
+    typeof value.data !== "string" ||
+    value.data.length > 1398104
+  ) {
+    fail(
+      "EXECUTABLE_RESULT_INVALID",
+      `${label} must be one closed bounded ExactBytes record`,
+    );
+  }
+  const bytes = Buffer.from(value.data, "base64");
+  if (
+    bytes.toString("base64") !== value.data ||
+    bytes.byteLength !== value.byteLength
+  ) {
+    fail(
+      "EXECUTABLE_RESULT_INVALID",
+      `${label} must contain canonical base64 with its exact decoded length`,
+    );
+  }
+}
+
 function assertRegistry(registry) {
-  if (!exactKeys(registry, registryKinds)) {
+  const keys = isRecord(registry)
+    ? Reflect.ownKeys(registry)
+    : [];
+  if (
+    !isRecord(registry) ||
+    requiredRegistryKinds.some((kind) => !keys.includes(kind)) ||
+    keys.some(
+      (key) =>
+        typeof key !== "string" ||
+        !registryKinds.includes(key),
+    ) ||
+    keys.some((key) => {
+      const descriptor = Object.getOwnPropertyDescriptor(registry, key);
+      return (
+        descriptor?.enumerable !== true ||
+        !Object.prototype.hasOwnProperty.call(descriptor, "value")
+      );
+    })
+  ) {
     fail(
       "EXECUTABLE_REGISTRY_INVALID",
-      "executable registry must contain exactly guards, handlers, and validators",
+      "executable registry must contain guards, handlers, validators, and only optional projectors or sidecars",
     );
   }
   for (const kind of registryKinds) {
-    const entries = registry[kind];
+    const entries = registry[kind] ?? [];
     if (!isClosedArray(entries, 512)) {
       fail(
         "EXECUTABLE_REGISTRY_INVALID",
@@ -230,7 +292,7 @@ export function compileExecutableRegistry(registry) {
   const indexes = {};
   for (const kind of registryKinds) {
     indexes[kind] = new Map(
-      registry[kind].map((entry) => [
+      (registry[kind] ?? []).map((entry) => [
         entry.id,
         Object.freeze({
           digest: entry.digest,
@@ -363,6 +425,67 @@ export function invokeHandler(compiled, binding, input) {
   fail(
     "EXECUTABLE_RESULT_INVALID",
     `handler ${binding.id} must return exactly accept with products or reject with DomainIssue records`,
+  );
+}
+
+export function invokeProjector(compiled, binding, input) {
+  const executable = resolveExecutable(compiled, "projectors", binding);
+  const result = invokeSync(
+    executable,
+    input,
+    `projector ${binding.id}`,
+  );
+  if (
+    exactKeys(result, ["status", "content"]) &&
+    result.status === "accept"
+  ) {
+    assertExactBytes(
+      result.content,
+      `projector ${binding.id} content`,
+    );
+    return result;
+  }
+  if (
+    exactKeys(result, ["status", "issues"]) &&
+    result.status === "reject"
+  ) {
+    assertIssueList(result.issues, `projector ${binding.id} issues`);
+    return result;
+  }
+  fail(
+    "EXECUTABLE_RESULT_INVALID",
+    `projector ${binding.id} must return exactly accept with ExactBytes or reject with DomainIssue records`,
+  );
+}
+
+export function invokeSidecar(compiled, binding, input) {
+  const executable = resolveExecutable(compiled, "sidecars", binding);
+  const result = invokeSync(
+    executable,
+    input,
+    `sidecar ${binding.id}`,
+  );
+  if (
+    exactKeys(result, ["status", "resources"]) &&
+    result.status === "accept" &&
+    isClosedArray(
+      result.resources,
+      COMMIT_SIDECAR_RESOURCE_LIMIT,
+    ) &&
+    result.resources.every((resource) => isRecord(resource))
+  ) {
+    return result;
+  }
+  if (
+    exactKeys(result, ["status", "issues"]) &&
+    result.status === "reject"
+  ) {
+    assertIssueList(result.issues, `sidecar ${binding.id} issues`);
+    return result;
+  }
+  fail(
+    "EXECUTABLE_RESULT_INVALID",
+    `sidecar ${binding.id} must return exactly accept with resources or reject with DomainIssue records`,
   );
 }
 

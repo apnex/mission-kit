@@ -1,0 +1,40 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:initialization:initialization-adapter-ack-loss-recovery",
+  "obligationId": "O-AS15-81",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS15"
+  ],
+  "verification": {
+    "precondition": "A live new Survey workspace has exact intake and policy heads, valid authority, a ready dependency result, and an in-memory store fault point after atomic publication but before acknowledgement.",
+    "stimulus": "Inject acknowledgement loss after AT01 plus T02 is published, discard the first adapter state, and retry through a fresh adapter using the same authority and ready dependency result.",
+    "expectedSemanticState": "The fresh adapter reconstructs the exact committed command from closed journal ancestry, resolves the retained receipt through idempotent coordinator replay, and reports active with commit revision one.",
+    "expectedEvidenceState": "One activation observation binds the original command, receipt, dependency result, authority, commit revision, and byte-identical published postimage.",
+    "forbiddenMutation": "Recovery must not append a second commit, alter the journal or workspace, accept a different authority or dependency result, or infer activation from an unrelated survey_frame_required state.",
+    "applicability": {
+      "mode": "specific",
+      "transports": [],
+      "adapters": [
+        "urn:mission-kit:survey-v2:adapter:in-memory"
+      ]
+    },
+    "inspectedAuthorities": [
+      "source/authoring/adapters/in-memory-store.mjs",
+      "source/authoring/runtime/transaction-coordinator.mjs",
+      "source/authoring/survey/initialization-adapter.mjs",
+      "tests/survey/profile/live-support.mjs"
+    ]
+  },
+  "behavior": "acknowledgement loss after atomic AT01 plus T02 publication is reconciled without a second commit",
+  "evidenceClass": "failure-injection",
+  "runner": "node:test",
+  "executable": "tests/survey/initialization/initialization-adapter-ack-loss-recovery.test.mjs",
+  "fixtures": [
+    "tests/survey/profile/live-support.mjs",
+    "tests/survey/profile/support.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

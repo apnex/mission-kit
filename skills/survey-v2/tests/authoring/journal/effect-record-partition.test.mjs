@@ -46,6 +46,7 @@ function refreshEvidenceRecord(
   const plan = createEvidenceCommitPlan({
     priorJournalHeadDigest,
     idempotency: record.idempotency,
+    operationDigest: record.operationDigest,
     commandDigest: record.commandDigest,
     payloadDigest: record.payloadDigest,
     before: record.before,

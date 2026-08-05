@@ -1,3 +1,4 @@
+import { canonicalize } from "../kernel/canonical.mjs";
 import { resourceSemanticDigest } from "../kernel/digests.mjs";
 import {
   validateContractSemantics
@@ -1139,6 +1140,21 @@ function validateGenerationRecord(resource, resolver) {
         "GenerationRecord input ancestry must equal the AuthoringRequest's exact inputs in canonical field-ID order."
       ));
     }
+    const expectedPriorGenerationRecords = expectedInputs.filter(
+      (reference) =>
+        reference?.apiVersion === SURVEY_API_VERSION &&
+        reference?.kind === "GenerationRecord"
+    );
+    if (!referenceArrayEqual(
+      spec.ancestry?.priorGenerationRecordRefs,
+      expectedPriorGenerationRecords
+    )) {
+      issues.push(issue(
+        "GENERATION_PRIOR_ANCESTRY_MISMATCH",
+        "/spec/ancestry/priorGenerationRecordRefs",
+        "GenerationRecord prior ancestry must equal the GenerationRecord-valued subset of the AuthoringRequest's exact inputs in canonical field-ID order."
+      ));
+    }
     if (
       operation.class === "task-submission" &&
       array(spec.ancestry?.revisionOfRefs).length !== 0
@@ -1188,6 +1204,22 @@ function validateGenerationRecord(resource, resolver) {
       submissionResolution.resource.spec?.assignment?.reference,
       spec.assignmentRef
     ));
+    const producer =
+      submissionResolution.resource.evidence
+        ?.producerProvenance?.generation;
+    const recordedProducer = resource.evidence?.producer;
+    if (
+      !producer ||
+      !recordedProducer ||
+      canonicalize(producer) !==
+        canonicalize(recordedProducer)
+    ) {
+      issues.push(issue(
+        "GENERATION_PRODUCER_EVIDENCE_MISMATCH",
+        "/evidence/producer",
+        "GenerationRecord producer evidence must equal its exact AuthoringSubmission generation evidence."
+      ));
+    }
   }
   if (receiptResolution.resource) {
     try {

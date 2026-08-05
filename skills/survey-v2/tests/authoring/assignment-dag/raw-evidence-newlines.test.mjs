@@ -31,7 +31,8 @@ test("raw evidence preserves submitted bytes while parsing normalizes newlines",
     projectionBinding: scenario.projectionBinding,
     formDefinition: scenario.formDefinition,
     submittedBytes,
-    producerProvenance: producerProvenance()
+    producerProvenance: producerProvenance(),
+    renderProjection: scenario.renderProjection
   });
 
   assert.equal(parsed.newlineNormalized, true);

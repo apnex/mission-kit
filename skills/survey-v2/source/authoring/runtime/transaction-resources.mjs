@@ -9,6 +9,13 @@ import {
   resourceReferenceFrom,
 } from "../kernel/digests.mjs";
 import {
+  compileExecutableRegistry,
+  invokeProjector,
+} from "../kernel/executable-registry.mjs";
+import {
+  textContentBytes,
+} from "../kernel/text-forms.mjs";
+import {
   storedResourceVersionFromResource,
 } from "./workspace-application.mjs";
 
@@ -280,6 +287,25 @@ function occupiedHandles(inventory) {
     }));
 }
 
+function projectionRenderer(executables, projectionBinding) {
+  if (executables === undefined) return undefined;
+  const compiled = compileExecutableRegistry(executables);
+  return (input) => {
+    const result = invokeProjector(
+      compiled,
+      projectionBinding.engine,
+      input,
+    );
+    if (result.status === "reject") {
+      fail(
+        "TRANSACTION_PROJECTION_REJECTED",
+        `projector ${projectionBinding.engine.id} rejected the Assignment view`,
+      );
+    }
+    return textContentBytes(result.content);
+  };
+}
+
 function requestHex(request) {
   const digest = request?.spec?.requestDigest;
   if (!digestPattern.test(digest ?? "")) {
@@ -301,6 +327,7 @@ export function issueAssignmentFromTask({
   workspace,
   staticInventory = [],
   validateRequestContract,
+  executables,
 }) {
   const task = detached(taskResult, "task result");
   const profileValue = detached(profile, "profile");
@@ -331,6 +358,10 @@ export function issueAssignmentFromTask({
     inventory,
   });
   const suffix = requestHex(request);
+  const renderProjection = projectionRenderer(
+    executables,
+    projectionBinding,
+  );
   const issued = issueTextAssignment({
     request,
     contextClosure: task.contextClosure,
@@ -339,6 +370,7 @@ export function issueAssignmentFromTask({
     projectionName: `projection-${suffix}`,
     assignmentName: `assignment-${suffix}`,
     occupiedHandles: occupiedHandles(inventory),
+    renderProjection,
   });
   const resources = [
     task.contextClosure,
@@ -380,6 +412,7 @@ export function reproduceAssignmentBinding({
   workspace,
   assignmentBinding,
   staticInventory = [],
+  executables,
 }) {
   const workspaceValue = detached(workspace, "workspace");
   const profileValue = detached(profile, "profile");
@@ -445,6 +478,10 @@ export function reproduceAssignmentBinding({
     projectionBinding,
     projectionArtifact,
     assignment,
+    renderProjection: projectionRenderer(
+      executables,
+      projectionBinding,
+    ),
   });
   return Object.freeze({
     kind: "assignment",
@@ -460,6 +497,7 @@ export function reproduceOpenAssignment({
   profile,
   workspace,
   staticInventory = [],
+  executables,
 }) {
   const workspaceValue = detached(workspace, "workspace");
   const open = workspaceValue?.spec?.openAssignment;
@@ -474,6 +512,7 @@ export function reproduceOpenAssignment({
     workspace: workspaceValue,
     assignmentBinding: open,
     staticInventory,
+    executables,
   });
 }
 

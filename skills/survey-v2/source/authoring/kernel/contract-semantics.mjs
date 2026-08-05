@@ -1,5 +1,8 @@
 import { canonicalize } from "./canonical.mjs";
 import {
+  COMMIT_SIDECAR_RESOURCE_LIMIT,
+} from "./limits.mjs";
+import {
   assignmentDigest,
   blankViewDigest,
   commitReceiptDigest,
@@ -368,7 +371,11 @@ function profileIssues(value) {
     ["handlerBindings", value.spec.handlerBindings],
     ["projectionBindings", value.spec.projectionBindings],
     ["validatorSets", value.spec.validatorSets],
-    ["tasks", value.spec.tasks]
+    ["tasks", value.spec.tasks],
+    [
+      "commitSidecarBindings",
+      value.spec.commitSidecarBindings ?? []
+    ]
   ];
   for (const [field, items] of collections) {
     issues.push(...duplicateIssues(
@@ -439,6 +446,61 @@ function profileIssues(value) {
       new Set(items.map((item) => item.id))
     ])
   );
+  if (Object.hasOwn(value.spec, "executionClosure")) {
+    const closure = value.spec.executionClosure;
+    const closureField = "/spec/executionClosure";
+    issues.push(
+      ...duplicateIssues(
+        closure.transitionIds,
+        `${closureField}/transitionIds`,
+        (transitionId) => transitionId,
+        "EXECUTION_CLOSURE_TRANSITION"
+      ),
+      ...duplicateIssues(
+        closure.revisionPlanIds,
+        `${closureField}/revisionPlanIds`,
+        (planId) => planId,
+        "EXECUTION_CLOSURE_REVISION_PLAN"
+      )
+    );
+    closure.transitionIds.forEach((transitionId, index) => {
+      const matches = value.spec.transitionBindings.filter(
+        (binding) => binding.transitionId === transitionId
+      );
+      if (matches.length === 0) {
+        issues.push(issue(
+          "EXECUTION_CLOSURE_TRANSITION_UNRESOLVED",
+          `${closureField}/transitionIds/${index}`,
+          "Execution-closure transition does not resolve within the manifest."
+        ));
+      } else if (matches.length !== 1) {
+        issues.push(issue(
+          "EXECUTION_CLOSURE_TRANSITION_AMBIGUOUS",
+          `${closureField}/transitionIds/${index}`,
+          "Execution-closure transition resolves more than once within the manifest."
+        ));
+      }
+    });
+    const revisionPlans = value.spec.revisionUnits.flatMap(
+      (unit) => unit.revisionPlans
+    );
+    closure.revisionPlanIds.forEach((planId, index) => {
+      const matches = revisionPlans.filter((plan) => plan.id === planId);
+      if (matches.length === 0) {
+        issues.push(issue(
+          "EXECUTION_CLOSURE_REVISION_PLAN_UNRESOLVED",
+          `${closureField}/revisionPlanIds/${index}`,
+          "Execution-closure revision plan does not resolve within the manifest."
+        ));
+      } else if (matches.length !== 1) {
+        issues.push(issue(
+          "EXECUTION_CLOSURE_REVISION_PLAN_AMBIGUOUS",
+          `${closureField}/revisionPlanIds/${index}`,
+          "Execution-closure revision plan resolves more than once within the manifest."
+        ));
+      }
+    });
+  }
   value.spec.tasks.forEach((task, index) => {
     const bindings = [
       ["submissionSchemaBindingId", "schemaBindings"],
@@ -467,6 +529,77 @@ function profileIssues(value) {
         `/spec/tasks/${index}/contextSelectors/${selectorIndex}`,
         "CONTEXT_LIFECYCLE_RULE_INVALID"
       ));
+    });
+    const hasRequestInputBindings =
+      Object.hasOwn(task, "requestInputBindings");
+    if (hasRequestInputBindings) {
+      const bindingField =
+        `/spec/tasks/${index}/requestInputBindings`;
+      issues.push(
+        ...duplicateIssues(
+          task.requestInputBindings,
+          bindingField,
+          (binding) => binding.inputKey,
+          "REQUEST_INPUT_BINDING_KEY"
+        ),
+        ...duplicateIssues(
+          task.requestInputBindings,
+          bindingField,
+          (binding) => binding.selectorId,
+          "REQUEST_INPUT_BINDING_SELECTOR"
+        )
+      );
+      task.requestInputBindings.forEach((binding, bindingIndex) => {
+        const selectorMatches = task.contextSelectors.filter(
+          (selector) => selector.id === binding.selectorId
+        );
+        if (selectorMatches.length === 0) {
+          issues.push(issue(
+            "REQUEST_INPUT_BINDING_SELECTOR_UNRESOLVED",
+            `${bindingField}/${bindingIndex}/selectorId`,
+            "Request-input binding selector does not resolve within its task."
+          ));
+          return;
+        }
+        if (selectorMatches.length !== 1) {
+          issues.push(issue(
+            "REQUEST_INPUT_BINDING_SELECTOR_AMBIGUOUS",
+            `${bindingField}/${bindingIndex}/selectorId`,
+            "Request-input binding selector resolves more than once within its task."
+          ));
+          return;
+        }
+        const selector = selectorMatches[0];
+        if (
+          selector.selection.mode === "request-reference" &&
+          binding.inputKey !== selector.selection.inputKey
+        ) {
+          issues.push(issue(
+            "REQUEST_INPUT_BINDING_KEY_MISMATCH",
+            `${bindingField}/${bindingIndex}/inputKey`,
+            "A request-reference binding key must equal its selector input key."
+          ));
+        }
+      });
+    }
+    const boundSelectorIds = new Set(
+      hasRequestInputBindings
+        ? task.requestInputBindings.map(
+          (binding) => binding.selectorId,
+        )
+        : [],
+    );
+    task.contextSelectors.forEach((selector, selectorIndex) => {
+      if (
+        selector.selection.mode === "request-reference" &&
+        !boundSelectorIds.has(selector.id)
+      ) {
+        issues.push(issue(
+          "REQUEST_INPUT_BINDING_MISSING",
+          `/spec/tasks/${index}/contextSelectors/${selectorIndex}`,
+          "Every request-reference selector requires exactly one request-input binding."
+        ));
+      }
     });
   });
   value.spec.transitionBindings.forEach((binding, index) => {
@@ -524,6 +657,95 @@ function profileIssues(value) {
           "EVENT_INPUT_LIFECYCLE_RULE_INVALID"
         ));
       });
+      if (Object.hasOwn(binding, "commitSidecarBindingIds")) {
+        issues.push(issue(
+          "EVENT_COMMIT_SIDECAR_FORBIDDEN",
+          `/spec/transitionBindings/${index}/commitSidecarBindingIds`,
+          "Event transitions cannot declare task-submission commit sidecars."
+        ));
+      }
+    }
+    const sidecarIds = new Set(
+      (value.spec.commitSidecarBindings ?? [])
+        .map((item) => item.id)
+    );
+    for (
+      const [sidecarIndex, sidecarId] of
+      (binding.commitSidecarBindingIds ?? []).entries()
+    ) {
+      if (!sidecarIds.has(sidecarId)) {
+        issues.push(issue(
+          "TRANSITION_SIDECAR_UNRESOLVED",
+          `/spec/transitionBindings/${index}/commitSidecarBindingIds/${sidecarIndex}`,
+          "Transition commit sidecar binding does not resolve."
+        ));
+      }
+    }
+    const selectedSidecarBindings = (
+      binding.commitSidecarBindingIds ?? []
+    ).flatMap((sidecarId) =>
+      (value.spec.commitSidecarBindings ?? [])
+        .filter((candidate) => candidate.id === sidecarId)
+    );
+    const declaredMaximum = selectedSidecarBindings.reduce(
+      (total, sidecarBinding) =>
+        total + sidecarBinding.targets.reduce(
+          (bindingTotal, target) =>
+            bindingTotal + target.cardinality.max,
+          0
+        ),
+      0
+    );
+    if (declaredMaximum > COMMIT_SIDECAR_RESOURCE_LIMIT) {
+      issues.push(issue(
+        "TRANSITION_SIDECAR_RESOURCE_LIMIT_EXCEEDED",
+        `/spec/transitionBindings/${index}/commitSidecarBindingIds`,
+        `Transition sidecar authority exceeds the ${COMMIT_SIDECAR_RESOURCE_LIMIT}-resource limit.`
+      ));
+    }
+  });
+  (value.spec.commitSidecarBindings ?? []).forEach((binding, index) => {
+    issues.push(...duplicateIssues(
+      binding.targets,
+      `/spec/commitSidecarBindings/${index}/targets`,
+      (target) =>
+        `${target.resourceType.apiVersion}\u0000${target.resourceType.kind}`,
+      "COMMIT_SIDECAR_TARGET_TYPE"
+    ));
+    binding.targets.forEach((target, targetIndex) => {
+      if (
+        target.cardinality.min > target.cardinality.max
+      ) {
+        issues.push(issue(
+          "COMMIT_SIDECAR_CARDINALITY_INVALID",
+          `/spec/commitSidecarBindings/${index}/targets/${targetIndex}/cardinality`,
+          "Commit sidecar target cardinality minimum exceeds maximum."
+        ));
+      }
+      const matches = value.spec.schemaBindings.filter(
+        (schemaBinding) =>
+          schemaBinding.resourceType.apiVersion ===
+            target.resourceType.apiVersion &&
+          schemaBinding.resourceType.kind === target.resourceType.kind
+      );
+      if (matches.length !== 1) {
+        issues.push(issue(
+          "COMMIT_SIDECAR_SCHEMA_BINDING_UNRESOLVED",
+          `/spec/commitSidecarBindings/${index}/targets/${targetIndex}/resourceType`,
+          "Commit sidecar target must resolve exactly one schema binding."
+        ));
+      }
+    });
+    const declaredMaximum = binding.targets.reduce(
+      (total, target) => total + target.cardinality.max,
+      0
+    );
+    if (declaredMaximum > COMMIT_SIDECAR_RESOURCE_LIMIT) {
+      issues.push(issue(
+        "COMMIT_SIDECAR_RESOURCE_LIMIT_EXCEEDED",
+        `/spec/commitSidecarBindings/${index}/targets`,
+        `Commit sidecar binding exceeds the ${COMMIT_SIDECAR_RESOURCE_LIMIT}-resource limit.`
+      ));
     }
   });
   const guardBindingIds = new Set(
@@ -1281,6 +1503,20 @@ function digestIssues(value) {
             ));
           });
         });
+        value.spec.transitionBindings.forEach(
+          (binding, bindingIndex) => {
+            if (binding.triggerClass !== "event") return;
+            binding.inputSelectors.forEach((selector, selectorIndex) => {
+              selectorIssues.push(...checkDigest(
+                selector.selectorDigest,
+                contextSelectorDigest(selector),
+                "CONTEXT_SELECTOR_DIGEST_MISMATCH",
+                `/spec/transitionBindings/${bindingIndex}/inputSelectors/${selectorIndex}/selectorDigest`,
+                "Event-input context-selector digest",
+              ));
+            });
+          },
+        );
         if (selectorIssues.length > 0) return selectorIssues;
         const unitIssues = [];
         value.spec.revisionUnits.forEach((unit, index) => {
