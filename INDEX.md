@@ -43,8 +43,8 @@ Flat ledger of every entry across categories. Sort by ID prefix.
 | [P3](patterns/P3-twin-parity-by-generation.md) | pattern | Twin-parity by generation — one master, generate the other, gate the round-trip | active | 2026-06-20 |
 | [P4](patterns/P4-neutral-core-tenant-composition.md) | pattern | Neutral core + tenant composition — shared mechanism, injected semantics, promote down by evidence | active | 2026-06-20 |
 | [P5](patterns/P5-verbs-as-data-surface.md) | pattern | Verbs-as-data surface — one manifest drives dispatch, docs, and validation | active | 2026-06-20 |
-| [K1](skills/K1-ai-attribution-scrub.md) | skill | AI-attribution scrub | active | 2026-05-24 |
-| [K2](skills/K2-force-push-carve-out.md) | skill | Force-push carve-out for fork branches | active | 2026-05-24 |
+| [K1](skills/K1-history-content-scrub.md) | skill | History content scrub | active | 2026-05-24 |
+| [K2](skills/K2-publishing-rewritten-history.md) | skill | Publishing rewritten history | active | 2026-05-24 |
 | [K3](skills/K3-substrate-audit.md) | skill | substrate-audit — code-grounded substrate audit | active | 2026-05-24 |
 | [K4](skills/K4-research-artefacts.md) | skill | research-artefacts — discipline for producing persistent research outputs | active | 2026-05-26 |
 | [K5](skills/K5-survey.md) | skill | survey — stakeholder-intent capture before design commitment | active | 2026-05-29 |
