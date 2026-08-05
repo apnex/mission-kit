@@ -32,6 +32,12 @@ command
 ```
 ````
 
+The trailing `\` on the description lines is a hard break, so each
+sentence renders on its own line instead of collapsing into one block
+— see [[S6]]. Without it the description reflows into a single
+rendered paragraph and the blank line below it is the only separation
+left, which weakens the pairing this rule creates.
+
 Two visual cues:
 
 - **Blank line above the introducer** — separates context (above)
