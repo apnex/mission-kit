@@ -63,6 +63,8 @@ const schemaByKind = Object.freeze({
     "urn:mission-kit:authoring:schema:source-snapshot:v1alpha1",
   Survey:
     "urn:mission-kit:survey:schema:survey:v1alpha1",
+  SurveyRound:
+    "urn:mission-kit:survey:schema:survey-round:v1alpha1",
   SurveyPolicySnapshot:
     "urn:mission-kit:survey:schema:survey-policy-snapshot:v1alpha1",
   ValidationIssue:

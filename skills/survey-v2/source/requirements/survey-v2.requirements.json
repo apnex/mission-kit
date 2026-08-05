@@ -830,11 +830,11 @@
         },
         {
           "id": "O-AS02-22",
-          "statement": "the Survey S11 profile is total over canonical authority and executable only through AT01 and AT02"
+          "statement": "the Survey R10 profile is total over canonical authority and executable only through AT03"
         },
         {
           "id": "O-AS02-23",
-          "statement": "every Survey profile edge beyond AT02 has a digest-pinned rejecting executable"
+          "statement": "every Survey profile edge beyond AT03 has a digest-pinned rejecting executable"
         }
       ],
       "evidenceClasses": [
@@ -1457,6 +1457,10 @@
         {
           "id": "O-AS06-77",
           "statement": "sealed initialization authority rejects BOM and NUL SurveyFrame source text before AT01"
+        },
+        {
+          "id": "O-AS06-79",
+          "statement": "Round 1 projector exposes only frozen Survey semantics and outcome axes without mutating its closure"
         }
       ],
       "evidenceClasses": [
@@ -2906,6 +2910,14 @@
         {
           "id": "O-AS15-96",
           "statement": "a cold Survey runtime preserves the pending assignment and reissues its exact view without a write"
+        },
+        {
+          "id": "O-AS15-97",
+          "statement": "the live Survey AT03 path commits its Round frame, SurveyRound, and one replay-stable GenerationRecord"
+        },
+        {
+          "id": "O-AS15-98",
+          "statement": "separate surveyctl processes commit and cold-validate the complete AT03 Round 1 frame slice"
         }
       ],
       "evidenceClasses": [
@@ -2935,6 +2947,10 @@
         {
           "id": "O-SV01-04",
           "statement": "SurveyFrame authority deterministically defines its form and exact two-resource product group"
+        },
+        {
+          "id": "O-SV01-05",
+          "statement": "Round 1 frame authority deterministically creates one ContextFrame and its exact foundation SurveyRound"
         }
       ],
       "evidenceClasses": [
@@ -2967,6 +2983,10 @@
         {
           "id": "O-SV03-02",
           "statement": "mismatched parent ancestry is rejected semantically"
+        },
+        {
+          "id": "O-SV03-03",
+          "statement": "Round 1 frame authority rejects a Survey bound to any ContextFrame other than its exact frozen parent"
         }
       ],
       "evidenceClasses": [
@@ -3066,6 +3086,22 @@
         {
           "id": "O-SV09-01",
           "statement": "semantic validators check structural ancestry and rationale presence without judging rationale truth"
+        },
+        {
+          "id": "O-SV09-02",
+          "statement": "Round 1 frame authority rejects an unknown scope relation without mutating its inputs"
+        },
+        {
+          "id": "O-SV09-03",
+          "statement": "Round 1 frame authority rejects a blank containment rationale without mutating its inputs"
+        },
+        {
+          "id": "O-SV09-04",
+          "statement": "Round 1 frame authority rejects an oversized containment rationale without mutating its inputs"
+        },
+        {
+          "id": "O-SV09-05",
+          "statement": "Round 1 frame authority rejects an ambient normalized field without mutating its inputs"
         }
       ],
       "evidenceClasses": [

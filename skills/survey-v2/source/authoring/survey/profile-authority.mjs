@@ -24,9 +24,12 @@ import {
 import {
   createSurveyFrameFormDefinition,
 } from "./survey-frame-authority.mjs";
+import {
+  createRoundOneFrameFormDefinition,
+} from "./round-one-frame-authority.mjs";
 
 export const SURVEY_PROFILE_NAME = "survey-v2-authoring-profile";
-export const SURVEY_EXECUTION_CLOSURE_ID = "s11-survey-frame";
+export const SURVEY_EXECUTION_CLOSURE_ID = "r10-round-one-frame";
 export const SURVEY_GENERATION_SIDECAR_BINDING_ID =
   "survey-generation-record-sidecar";
 export const SURVEY_EVENT_COMMAND_ADMISSION_ID =
@@ -65,6 +68,8 @@ const executableClosureMembers = Object.freeze([
   "./generation-record.mjs",
   "./profile-executables.mjs",
   "./resource-semantics.mjs",
+  "./round-one-frame-authority.mjs",
+  "./round-one-frame-projector.mjs",
   "./survey-frame-authority.mjs",
   "./survey-frame-projection-admission.mjs",
   "./survey-frame-projector.mjs",
@@ -80,6 +85,10 @@ const concreteTypes = Object.freeze({
     apiVersion: "survey.mission-kit/v1alpha1",
     kind: "Survey",
   }),
+  surveyRound: Object.freeze({
+    apiVersion: "survey.mission-kit/v1alpha1",
+    kind: "SurveyRound",
+  }),
   contextFrame: Object.freeze({
     apiVersion: "schemas.mission-kit/v1alpha1",
     kind: "ContextFrame",
@@ -94,6 +103,7 @@ const schemaSources = Object.freeze({
   authoringSubmission:
     "schemas/authoring/v1alpha1/authoring-submission.schema.json",
   survey: "schemas/survey/v1alpha1/survey.schema.json",
+  surveyRound: "schemas/survey/v1alpha1/survey-round.schema.json",
   contextFrame:
     "dependencies/shared-schemas/v1/snapshot/context-frame/v1alpha1/context-frame.schema.json",
   generationRecord:
@@ -101,7 +111,6 @@ const schemaSources = Object.freeze({
 });
 
 const futureTaskTargets = Object.freeze({
-  "author-round-1-frame": ["round-1-frame", "ContextFrame", "schemas.mission-kit/v1alpha1"],
   "author-round-1-frame-set": [
     "round-1-question-frame-set",
     "QuestionFrameSet",
@@ -296,6 +305,27 @@ function surveyFrameSelectors() {
   ];
 }
 
+function roundOneFrameSelectors() {
+  return [
+    selector({
+      id: "round-one-survey-frame",
+      ordinal: 1,
+      role: "survey-frame",
+      resourceType: concreteTypes.contextFrame,
+      slot: "survey-frame",
+      fields: ["/spec"],
+    }),
+    selector({
+      id: "round-one-survey",
+      ordinal: 2,
+      role: "survey",
+      resourceType: concreteTypes.survey,
+      slot: "survey",
+      fields: ["/spec/outcomeAxes"],
+    }),
+  ];
+}
+
 function initializationSelectors() {
   return [
     eventSelector({
@@ -453,6 +483,24 @@ function mutationFootprint(transition, coupling, implemented) {
       nextState: transition.toState,
     };
   }
+  if (transition.id === "AT03") {
+    return {
+      created: [
+        target("round-1-frame", concreteTypes.contextFrame),
+        target("round-1", concreteTypes.surveyRound),
+      ],
+      activeHeadSlots: ["round-1-frame", "round-1"],
+      supersededSlots: [],
+      dependencyRelations: [
+        "belongs-to",
+        "derived-from",
+        "frames",
+        "parent-frame",
+      ],
+      handoffSlots: [],
+      nextState: transition.toState,
+    };
+  }
   return {
     created: [],
     activeHeadSlots: [],
@@ -484,7 +532,8 @@ function transitionBindings({
       : undefined;
     const isTask = taskState?.class === "task";
     const implemented = transition.id === "AT01" ||
-      transition.id === "AT02";
+      transition.id === "AT02" ||
+      transition.id === "AT03";
     return {
       transitionId: transition.id,
       triggerClass: isTask ? "task-submission" : "event",
@@ -552,6 +601,15 @@ function buildBindings({
       "survey-semantic-validator",
       executableClosureDigest,
     ),
+    surveyRoundSchema: schemaExecutableBinding(
+      "survey-round-schema-validator",
+      schemaDigests.surveyRound,
+      executableClosureDigest,
+    ),
+    surveyRoundSemantics: executableBinding(
+      "survey-round-semantic-validator",
+      executableClosureDigest,
+    ),
     contextFrameSchema: schemaExecutableBinding(
       "context-frame-schema-validator",
       schemaDigests.contextFrame,
@@ -578,6 +636,10 @@ function buildBindings({
     projectors: {
       surveyFrame: executableBinding(
         "survey-frame-operational-projector",
+        executableClosureDigest,
+      ),
+      roundOneFrame: executableBinding(
+        "round-one-frame-operational-projector",
         executableClosureDigest,
       ),
       future: executableBinding(
@@ -662,19 +724,28 @@ function buildTasks({
   protocol,
   handlerBindingIds,
 }) {
-  const selectors = surveyFrameSelectors();
+  const surveySelectors = surveyFrameSelectors();
+  const roundOneSelectors = roundOneFrameSelectors();
   return protocol.spec.states
     .filter((state) => state.class === "task")
     .map((state) => {
-      const concrete = state.taskId === "author-survey-frame";
+      const surveyFrame = state.taskId === "author-survey-frame";
+      const roundOneFrame =
+        state.taskId === "author-round-1-frame";
       return {
         id: state.taskId,
         stateId: state.id,
-        target: concrete
+        target: surveyFrame
           ? target("survey-frame", concreteTypes.contextFrame)
-          : futureTarget(state.taskId),
-        contextSelectors: concrete ? selectors : [],
-        ...(concrete
+          : roundOneFrame
+            ? target("round-1-frame", concreteTypes.contextFrame)
+            : futureTarget(state.taskId),
+        contextSelectors: surveyFrame
+          ? surveySelectors
+          : roundOneFrame
+            ? roundOneSelectors
+            : [],
+        ...(surveyFrame
           ? {
             requestInputBindings: [
               {
@@ -685,14 +756,29 @@ function buildTasks({
                 inputKey: "policy",
                 selectorId: "survey-frame-policy",
               },
-            ],
-          }
-          : {}),
+              ],
+            }
+            : roundOneFrame
+            ? {
+              requestInputBindings: [
+                {
+                  inputKey: "survey-frame",
+                  selectorId: "round-one-survey-frame",
+                },
+                {
+                  inputKey: "survey",
+                  selectorId: "round-one-survey",
+                },
+              ],
+            }
+              : {}),
         submissionSchemaBindingId:
           "authoring-submission-schema-binding",
-        formBindingId: concrete
+        formBindingId: surveyFrame
           ? "survey-frame-form-binding"
-          : "survey-future-form-binding",
+          : roundOneFrame
+            ? "round-one-frame-form-binding"
+            : "survey-future-form-binding",
         handlerBindingId: handlerBindingIds.get(
           protocol.spec.transitions.find(
             (transition) =>
@@ -700,9 +786,11 @@ function buildTasks({
               transition.source.stateId === state.id,
           ).id,
         ),
-        projectionBindingId: concrete
+        projectionBindingId: surveyFrame
           ? "survey-frame-projection-binding"
-          : "survey-future-projection-binding",
+          : roundOneFrame
+            ? "round-one-frame-projection-binding"
+            : "survey-future-projection-binding",
         validatorSetId: "authoring-submission-validator-set",
       };
     });
@@ -772,8 +860,13 @@ async function buildAuthority() {
     textFormsDigest: sha256Bytes(textFormsBytes),
   });
   const surveyFrameForm = createSurveyFrameFormDefinition();
+  const roundOneFrameForm = createRoundOneFrameFormDefinition();
   const futureForm = form("survey-future-unavailable-form");
-  const forms = [surveyFrameForm, futureForm];
+  const forms = [
+    surveyFrameForm,
+    roundOneFrameForm,
+    futureForm,
+  ];
   const handlerBindings = protocol.spec.transitions.map(
     (transition) => ({
       id: `${transition.id.toLowerCase()}-handler-binding`,
@@ -794,6 +887,10 @@ async function buildAuthority() {
     validatorSet(
       "survey-validator-set",
       bindings.validators.surveySemantics,
+    ),
+    validatorSet(
+      "survey-round-validator-set",
+      bindings.validators.surveyRoundSemantics,
     ),
     validatorSet(
       "context-frame-validator-set",
@@ -833,6 +930,12 @@ async function buildAuthority() {
           bindings.validators.surveySemantics,
         ),
         schemaBinding(
+          "survey-round-schema-binding",
+          concreteTypes.surveyRound,
+          bindings.validators.surveyRoundSchema,
+          bindings.validators.surveyRoundSemantics,
+        ),
+        schemaBinding(
           "context-frame-schema-binding",
           concreteTypes.contextFrame,
           bindings.validators.contextFrameSchema,
@@ -850,6 +953,13 @@ async function buildAuthority() {
           id: "survey-frame-form-binding",
           definition: resourceReferenceFrom(surveyFrameForm),
           formDigest: surveyFrameForm.spec.formDigest,
+          renderer: bindings.renderer,
+          parser: bindings.parser,
+        },
+        {
+          id: "round-one-frame-form-binding",
+          definition: resourceReferenceFrom(roundOneFrameForm),
+          formDigest: roundOneFrameForm.spec.formDigest,
           renderer: bindings.renderer,
           parser: bindings.parser,
         },
@@ -874,6 +984,14 @@ async function buildAuthority() {
             format: "mission-kit-authoring-text/v1",
           }),
           engine: bindings.projectors.surveyFrame,
+        },
+        {
+          id: "round-one-frame-projection-binding",
+          definitionDigest: sha256Value({
+            domain: "mission-kit:survey-v2:round-one-frame-projection/v1",
+            format: "mission-kit-authoring-text/v1",
+          }),
+          engine: bindings.projectors.roundOneFrame,
         },
         {
           id: "survey-future-projection-binding",
@@ -918,7 +1036,7 @@ async function buildAuthority() {
       },
       executionClosure: {
         id: SURVEY_EXECUTION_CLOSURE_ID,
-        transitionIds: ["AT01", "AT02"],
+        transitionIds: ["AT01", "AT02", "AT03"],
         revisionPlanIds: [],
       },
     },
@@ -939,7 +1057,7 @@ async function buildAuthority() {
 
 /**
  * Load the exact canonical Survey AuthoringProtocol and its complete,
- * digest-pinned S11 profile. Every call returns a detached immutable value.
+ * digest-pinned R10 profile. Every call returns a detached immutable value.
  */
 export async function loadSurveyProfileAuthority() {
   authorityPromise ??= buildAuthority();

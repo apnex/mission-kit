@@ -46,6 +46,30 @@ export function surveyFrameValues() {
   };
 }
 
+export function roundOneFrameValues() {
+  return {
+    subject: "Foundation production boundary",
+    purpose:
+      "Establish initial Director priorities before refinement.",
+    "scope-included": [
+      "Primary intent dimensions",
+      "Initial trade-off preferences",
+    ],
+    "scope-excluded": ["Round 2 disambiguation"],
+    givens: [
+      "fact | Round 1 contains exactly three questions.",
+    ],
+    synopsis:
+      "Establish initial intent dimensions and priority trade-offs.",
+    terms: [
+      "priority | The relative importance of an outcome axis.",
+    ],
+    "scope-relation": "narrows",
+    "containment-rationale":
+      "The Round selects initial dimensions inside the authored Survey boundary.",
+  };
+}
+
 export async function createSurveyctlHarness(
   testContext,
   {
@@ -210,6 +234,50 @@ export async function writeSurveyFrameInput(
   await writeFile(
     input,
     await populatedSurveyFrameBytes(pending),
+    { flag: "wx" },
+  );
+  return input;
+}
+
+export async function populatedRoundOneFrameBytes(
+  pending,
+) {
+  const authority = await loadSurveyProfileAuthority();
+  const formBinding =
+    authority.profile.spec.formBindings.find(
+      (binding) =>
+        binding.id === pending.request.spec.bindings.form.id,
+    );
+  const formDefinition =
+    authority.forms.find(
+      (form) =>
+        form.metadata.name ===
+          formBinding?.definition?.name,
+    );
+  if (!formDefinition) {
+    throw new Error(
+      "test harness could not resolve the pending Round 1 form",
+    );
+  }
+  return renderPopulatedTextForm({
+    formDefinition,
+    contextClosure: pending.contextClosure,
+    requestHandle: pending.assignment.spec.handle,
+    values: roundOneFrameValues(),
+  });
+}
+
+export async function writeRoundOneFrameInput(
+  harness,
+  pending,
+) {
+  const input = path.join(
+    harness.temporaryRoot,
+    "round-one-frame.txt",
+  );
+  await writeFile(
+    input,
+    await populatedRoundOneFrameBytes(pending),
     { flag: "wx" },
   );
   return input;

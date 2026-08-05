@@ -1,5 +1,5 @@
 {
-  "aggregateDigest": "sha256:3abea3bf5119435370297ba79f534e896018fa5368e8d3f930a5cd298060db4c",
+  "aggregateDigest": "sha256:71f3f81123c401826c77b07de96baac3a18c3155a908c2686875d968d190f04c",
   "canonicalDigests": [
     {
       "digest": "sha256:f7c65af249baff28e5d9fe29a9ac4011f802e955f74829c14949e2cf23104254",
@@ -370,7 +370,7 @@
       "path": "source/authoring/runtime/workspace-application.mjs"
     },
     {
-      "digest": "sha256:938b4c3fb63affcd5570ca0055e6a5ad787fee6f1146b9d1ebae04aa7591a78f",
+      "digest": "sha256:123592844a06b37ad2861fb8a838a2e784cb6ebd271e99e7fdc2db97bd19601f",
       "path": "source/authoring/survey/authoring-runtime.mjs"
     },
     {
@@ -386,11 +386,11 @@
       "path": "source/authoring/survey/inspection.mjs"
     },
     {
-      "digest": "sha256:9b5f30a5268f3e1985efa5640bf7c897360c8261121c1dc885258587cd0b4080",
+      "digest": "sha256:92d2b94a18f350131938909df856e24b1347af4197ac1a4d07ccf37a94864a45",
       "path": "source/authoring/survey/profile-authority.mjs"
     },
     {
-      "digest": "sha256:8d9a72efac321e21be285ae204bb7ac4b7604548d8da833dafabf3aacb801b15",
+      "digest": "sha256:3a771c392c6a5c210527b7b2a18779fda0ea89cefb8514d128c6bc48ffee8cbd",
       "path": "source/authoring/survey/profile-executables.mjs"
     },
     {
@@ -400,6 +400,14 @@
     {
       "digest": "sha256:d9d77df5930b76c7b7f7fc65ba6214e9785913a15d0aaa85742bf13911bd8cea",
       "path": "source/authoring/survey/resource-semantics.mjs"
+    },
+    {
+      "digest": "sha256:252ae5c332c992d9266696ddb0a00960eea730372ffb542c64f75e630da54791",
+      "path": "source/authoring/survey/round-one-frame-authority.mjs"
+    },
+    {
+      "digest": "sha256:d7264b751da491f5bd8e63277f73d98e81a9a6d028b30e7347cdecbf8291bd1a",
+      "path": "source/authoring/survey/round-one-frame-projector.mjs"
     },
     {
       "digest": "sha256:4196d3dc4a7e64f4d99adab3a2f05ff4b661c186d6de3fb8c54dc7d81fccee4b",
@@ -522,11 +530,11 @@
       "path": "source/executables/runtime/lib/surveyctl-arguments.mjs"
     },
     {
-      "digest": "sha256:843856fff32b0672e6fb7c58cf38e1e40cd50d85c8f3697b145fcfe854268eba",
+      "digest": "sha256:69a4261324058f4c4bc1ea6baa560930cbf24280286963fc0ad335f8e4568514",
       "path": "source/executables/runtime/lib/surveyctl-engine.fragment.json"
     },
     {
-      "digest": "sha256:6bb07dec71b2d8d029c3f5525833bd922fe0fbfa7691e5514d61485cd954ba53",
+      "digest": "sha256:4fd05d39887e30eddb6bc73277d97705d298cdb557d65d4717fe58f850da98e7",
       "path": "source/executables/runtime/lib/surveyctl-engine.mjs"
     },
     {
@@ -758,7 +766,7 @@
       "path": "source/protocol/survey.protocol.json"
     },
     {
-      "digest": "sha256:b2306b907d3ce560953f26e229747f13980d178e679c060617c13a26c4827089",
+      "digest": "sha256:322f9f07987a9bf6e282033322ec41375dfca98a67f23001fbb3755d35bd642c",
       "path": "source/requirements/survey-v2.requirements.json"
     },
     {
@@ -770,7 +778,7 @@
       "path": "source/views/director-lifecycle.view.json"
     },
     {
-      "digest": "sha256:a656fc7fa8d3dc00301f9ef6b1d8760d377a4163aa9e29854b954ba3d6250bbc",
+      "digest": "sha256:2e14f0ba410d3879564bc604c38db90429e2dd3939f99f22953e4bd6164aca7d",
       "path": "survey-v2.package.json"
     },
     {
@@ -3274,6 +3282,10 @@
       "path": "tests/authoring/persistence/in-memory/writer-lifetime.test.mjs"
     },
     {
+      "digest": "sha256:8b355065093cd588746a987efb8dd682082f3ffee085d847058db24624cf4b67",
+      "path": "tests/authoring/r10-suite-definition.mjs"
+    },
+    {
       "digest": "sha256:a6dee9b924dfd3c2e878d77b8cf038fa0930fcf34d9529554c0d0824d3cb5b33",
       "path": "tests/authoring/reducer/callback-error-redaction.test.json"
     },
@@ -3696,6 +3708,10 @@
     {
       "digest": "sha256:727e7b905e692fa4be9379b1c985ad9b0d28a1f20714fa3e475a1c36343d1187",
       "path": "tests/authoring/register-k14-suite.mjs"
+    },
+    {
+      "digest": "sha256:acd1239947860f9b3d778655cedba938d4f8048851bec866d08c3d3ee8383730",
+      "path": "tests/authoring/register-r10-suite.mjs"
     },
     {
       "digest": "sha256:09985299ee4492830b58414fc13e7d514c7f79e8898966443a114914ae474a3c",
@@ -6630,31 +6646,31 @@
       "path": "tests/survey/initialization/survey-policy-determinism.test.mjs"
     },
     {
-      "digest": "sha256:86cf94c21ae9dc237763e7c7ea84c583b6fa811376732745aafe1276b9ee1823",
+      "digest": "sha256:7f72f2f266908efe74bc9a876377ce6010e0ea2ac415394eaa34ea84afdd25fa",
       "path": "tests/survey/profile/live-support.mjs"
     },
     {
-      "digest": "sha256:6d2b884ca16b8274444e1ac12eca2c0404fde5ac1feac1b9edbb446986b82ee9",
+      "digest": "sha256:16107181ad358ff3df5a676559ca46d0f2d44ab8336059d60e31db1f2da1ccba",
       "path": "tests/survey/profile/profile-authority-closure.test.json"
     },
     {
-      "digest": "sha256:90a36433e36ad0c557759aa6408e825dd8b17486df30675af0540638525486ff",
+      "digest": "sha256:748a1ef1ee8b0b2899d8b3d252221c3bd9bb38dace3a345e01d019a842c08aa5",
       "path": "tests/survey/profile/profile-authority-closure.test.mjs"
     },
     {
-      "digest": "sha256:c872c7b4fe08df203d87dc97db835fc0b39b9996a82d4c50ec1e075877ad649b",
+      "digest": "sha256:105b4649059f7f1c80588f09fe24358eba9119ba2473b6b733061afd9519b87a",
       "path": "tests/survey/profile/profile-concrete-executables.test.json"
     },
     {
-      "digest": "sha256:fc83806dc017ae3efea732b570f62df576542862493ccaa9ea9245203f243860",
+      "digest": "sha256:620118cffe2418fa4260a211bfe0d0bca4f8931c0330159ecf1172abe2a451d4",
       "path": "tests/survey/profile/profile-concrete-executables.test.mjs"
     },
     {
-      "digest": "sha256:8ecfaaa4d0b9cb2dc60bda7b9caa3d79430bb711c943041636a8add224726e65",
+      "digest": "sha256:36b616b33dc188faee139c3650afb3452dc842fb6c603b947e420b4f377f99da",
       "path": "tests/survey/profile/profile-future-fail-closed.test.json"
     },
     {
-      "digest": "sha256:e86f4561c08d4767d9758eeb785f6129df60b15c5107eaaea3100beba1585b45",
+      "digest": "sha256:8ff5c0cd7d44c51aa9a19f1a80d76d673bc24bcf381b174a15183cc5e86db6aa",
       "path": "tests/survey/profile/profile-future-fail-closed.test.mjs"
     },
     {
@@ -6664,6 +6680,14 @@
     {
       "digest": "sha256:3cb6c96d5762779ae5104e61c1c4af668d6a8de88309e4c2cba4fd309ee0d869",
       "path": "tests/survey/profile/profile-live-initialization.test.mjs"
+    },
+    {
+      "digest": "sha256:39716e46a09591554a4a6a21478bb7f4ed17a0e7c7e9da1bc154305a480d7a65",
+      "path": "tests/survey/profile/profile-live-round-one-frame.test.json"
+    },
+    {
+      "digest": "sha256:6d5c0b8c0908f2683f6ced00163cd6ac868b4413f59062164e5f441f2fcf1d17",
+      "path": "tests/survey/profile/profile-live-round-one-frame.test.mjs"
     },
     {
       "digest": "sha256:14c475bed6ac2bd62807ab15918582842374a951af613f54f4f71744cb376593",
@@ -6676,6 +6700,66 @@
     {
       "digest": "sha256:c799ff3ced1b135e9f31c24c76bef1ce2150179e887bec9454d21c2c78762973",
       "path": "tests/survey/profile/support.mjs"
+    },
+    {
+      "digest": "sha256:5f673bbcbcb34510a5c69fdf132c295e3f97e5d95474e3e2019ee9808118beb8",
+      "path": "tests/survey/round-one/ambient-normalized-field.test.json"
+    },
+    {
+      "digest": "sha256:36adf2559030e2ae5e290dfc0c47e1c71dc06e91db23a44ea2dbb2511f236057",
+      "path": "tests/survey/round-one/ambient-normalized-field.test.mjs"
+    },
+    {
+      "digest": "sha256:cc217c972b91a3b32f9300ac79204432656d504d91c8abe8112f0477a914b9fc",
+      "path": "tests/survey/round-one/blank-containment-rationale.test.json"
+    },
+    {
+      "digest": "sha256:7f94003252a35c66454dc416316aaf3726412f6af64f9f7ec794c7d6be08938c",
+      "path": "tests/survey/round-one/blank-containment-rationale.test.mjs"
+    },
+    {
+      "digest": "sha256:5dc3c5bee46fafa8de01438b8fd8761afe42f0a617998ffe0ffe7d11258dbc38",
+      "path": "tests/survey/round-one/oversized-containment-rationale.test.json"
+    },
+    {
+      "digest": "sha256:7ad365b83b0d1b2c9d2c6ce3ceb95821d49f36ee6e2666f49240c260204d31d6",
+      "path": "tests/survey/round-one/oversized-containment-rationale.test.mjs"
+    },
+    {
+      "digest": "sha256:faedac85a6709c35d778012618ecfb8be690bd9c6e438c419f5b6c586b319be5",
+      "path": "tests/survey/round-one/round-frame-authority.test.json"
+    },
+    {
+      "digest": "sha256:abc218527925f49d98a0d8952d17d35bc98e88c9f14e796f765584dc2f553e40",
+      "path": "tests/survey/round-one/round-frame-authority.test.mjs"
+    },
+    {
+      "digest": "sha256:fd88b9c2851cddc65d3db82018f6d03dec51aeb6c857d6a4db953c7224a3f4e9",
+      "path": "tests/survey/round-one/round-frame-parent-ancestry.test.json"
+    },
+    {
+      "digest": "sha256:b858b4da84bc9e2a297eb33932569d4598093034c6118103bac78d85336b55a8",
+      "path": "tests/survey/round-one/round-frame-parent-ancestry.test.mjs"
+    },
+    {
+      "digest": "sha256:c0cf1cbded6f969343535ac59fc101d0026060659dec0307e8c8132c3eea626d",
+      "path": "tests/survey/round-one/round-frame-projector.test.json"
+    },
+    {
+      "digest": "sha256:4320b9572dcc45483359b671bd32e46c0740509d27851b5c8d164ca4f7d05fee",
+      "path": "tests/survey/round-one/round-frame-projector.test.mjs"
+    },
+    {
+      "digest": "sha256:eda9e304507efbc7e1d017b3ab84dda66afb37a8c5a57f7b7c68177094054a14",
+      "path": "tests/survey/round-one/support.mjs"
+    },
+    {
+      "digest": "sha256:097ead1246853377384bcc64e29a831a92f67402fe723701d2faf196dd51baab",
+      "path": "tests/survey/round-one/unknown-scope-relation.test.json"
+    },
+    {
+      "digest": "sha256:7b233d8f02609976aa24f6d9c1e69402a988b9e1b4520e99474d8751619d54b3",
+      "path": "tests/survey/round-one/unknown-scope-relation.test.mjs"
     },
     {
       "digest": "sha256:f908851372518b481b077204cf92bc3d0604071f32aa2191e8a00b499fed0a0b",
@@ -6810,6 +6894,14 @@
       "path": "tests/survey/surveyctl-v2/output-format-contract.test.mjs"
     },
     {
+      "digest": "sha256:098bc9c266a3706a2e0691bdbbd8da5250f283567452d47eb8d7a62765a8a37c",
+      "path": "tests/survey/surveyctl-v2/round-one-process-lifecycle.test.json"
+    },
+    {
+      "digest": "sha256:b109fc18716577d8da1285d0cf14888f133a5f893ae673339fc8ee0c06be7a96",
+      "path": "tests/survey/surveyctl-v2/round-one-process-lifecycle.test.mjs"
+    },
+    {
       "digest": "sha256:2eba374bd55c5b859a348ef9a9c8ef2ed7835588d18b4b76f54000ea685333c5",
       "path": "tests/survey/surveyctl-v2/source-symlink-refusal.test.json"
     },
@@ -6826,7 +6918,7 @@
       "path": "tests/survey/surveyctl-v2/submit-validate-persistence.test.mjs"
     },
     {
-      "digest": "sha256:b60faa5af7ab3ef2c391502bd3216ce75204af6834731b75ba3a2d1bd3591c68",
+      "digest": "sha256:f006ddac046b9dc375c2a6711c542e281a70b38d9bad307877bd405b9c30e402",
       "path": "tests/survey/surveyctl-v2/support.mjs"
     },
     {
@@ -6846,12 +6938,12 @@
       "path": "tests/survey/surveyctl-v2/zero-journal-crash-recovery.test.mjs"
     },
     {
-      "digest": "sha256:5f2f35037a38cedc373be4f120308a106e803f425c205bc3789ac9c29aab3481",
+      "digest": "sha256:de51bf0e30c207c41775ef098d08d2927e1465c1b6a1b585a0ea3d6706416d4b",
       "path": "tests/test-evidence.manifest.json"
     }
   ],
   "id": "urn:mission-kit:survey-v2:projection-lock:survey-v2",
-  "packageDigest": "sha256:3abea3bf5119435370297ba79f534e896018fa5368e8d3f930a5cd298060db4c",
+  "packageDigest": "sha256:71f3f81123c401826c77b07de96baac3a18c3155a908c2686875d968d190f04c",
   "parentDesignSha256": "6467fff1c74c6dc857bcb06722d19dfa04381ae3e6f242eccb36581f87560f74",
   "portableExclusions": [
     {
@@ -7607,6 +7699,16 @@
       "expectedId": null,
       "kind": "authored",
       "path": "source/authoring/survey/resource-semantics.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/authoring/survey/round-one-frame-authority.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/authoring/survey/round-one-frame-projector.mjs"
     },
     {
       "expectedId": null,
@@ -11201,6 +11303,11 @@
     {
       "expectedId": null,
       "kind": "authored",
+      "path": "tests/authoring/r10-suite-definition.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
       "path": "tests/authoring/reducer/callback-error-redaction.test.json"
     },
     {
@@ -11727,6 +11834,11 @@
       "expectedId": null,
       "kind": "authored",
       "path": "tests/authoring/register-k14-suite.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/register-r10-suite.mjs"
     },
     {
       "expectedId": null,
@@ -15441,6 +15553,16 @@
     {
       "expectedId": null,
       "kind": "authored",
+      "path": "tests/survey/profile/profile-live-round-one-frame.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/profile/profile-live-round-one-frame.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
       "path": "tests/survey/profile/profile-live-survey-frame.test.json"
     },
     {
@@ -15452,6 +15574,81 @@
       "expectedId": null,
       "kind": "authored",
       "path": "tests/survey/profile/support.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one/ambient-normalized-field.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one/ambient-normalized-field.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one/blank-containment-rationale.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one/blank-containment-rationale.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one/oversized-containment-rationale.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one/oversized-containment-rationale.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one/round-frame-authority.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one/round-frame-authority.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one/round-frame-parent-ancestry.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one/round-frame-parent-ancestry.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one/round-frame-projector.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one/round-frame-projector.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one/support.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one/unknown-scope-relation.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one/unknown-scope-relation.test.mjs"
     },
     {
       "expectedId": null,
@@ -15617,6 +15814,16 @@
       "expectedId": null,
       "kind": "authored",
       "path": "tests/survey/surveyctl-v2/output-format-contract.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/surveyctl-v2/round-one-process-lifecycle.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/surveyctl-v2/round-one-process-lifecycle.test.mjs"
     },
     {
       "expectedId": null,

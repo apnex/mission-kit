@@ -10,17 +10,18 @@ import {
 } from "./support.mjs";
 
 test(
-  "every Survey profile edge beyond AT02 has a digest-pinned rejecting executable",
+  "every Survey profile edge beyond AT03 has a digest-pinned rejecting executable",
   async () => {
     const { profile, compiled } = await loadProfileScenario();
     const concreteGuards = new Set([
       "initialized-survey-inputs",
       "current-survey-frame-assignment",
+      "frozen-survey-frame",
     ]);
     const futureGuards = profile.spec.guardBindings.filter(
       (binding) => !concreteGuards.has(binding.guardId),
     );
-    assert.equal(futureGuards.length, 20);
+    assert.equal(futureGuards.length, 19);
     for (const binding of futureGuards) {
       const result = invokeGuard(compiled, binding.handler, {});
       assert.equal(result.status, "reject");
@@ -33,9 +34,10 @@ test(
     const futureTransitions = profile.spec.transitionBindings.filter(
       (binding) =>
         binding.transitionId !== "AT01" &&
-        binding.transitionId !== "AT02",
+        binding.transitionId !== "AT02" &&
+        binding.transitionId !== "AT03",
     );
-    assert.equal(futureTransitions.length, 20);
+    assert.equal(futureTransitions.length, 19);
     for (const transition of futureTransitions) {
       const handler = profile.spec.handlerBindings.find(
         (binding) =>
@@ -68,7 +70,7 @@ test(
     );
     assert.deepEqual(
       profile.spec.executionClosure.transitionIds,
-      ["AT01", "AT02"],
+      ["AT01", "AT02", "AT03"],
     );
   },
 );

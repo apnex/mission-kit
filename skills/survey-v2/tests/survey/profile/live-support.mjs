@@ -87,6 +87,8 @@ const schemaByKind = Object.freeze({
     "urn:mission-kit:authoring:schema:source-snapshot:v1alpha1",
   Survey:
     "urn:mission-kit:survey:schema:survey:v1alpha1",
+  SurveyRound:
+    "urn:mission-kit:survey:schema:survey-round:v1alpha1",
   SurveyPolicySnapshot:
     "urn:mission-kit:survey:schema:survey-policy-snapshot:v1alpha1",
   ValidationIssue:
@@ -390,6 +392,13 @@ export async function issueSurveyFrameAssignment(harness) {
   );
 }
 
+export async function issueRoundOneFrameAssignment(harness) {
+  return harness.coordinator.execute(
+    harness.storeId,
+    { class: "next", inputs: {} },
+  );
+}
+
 function projectionRenderer(harness, projectionBinding) {
   return (input) => {
     const result = invokeProjector(
@@ -464,7 +473,87 @@ export function createSurveyFrameSubmission(
   });
 }
 
+export function createRoundOneFrameSubmission(
+  harness,
+  issued,
+  normalizedValues,
+) {
+  const projectionBinding =
+    harness.profile.spec.projectionBindings.find(
+      (binding) =>
+        binding.id ===
+          issued.request.spec.bindings.projection.id,
+    );
+  const formBinding = harness.profile.spec.formBindings.find(
+    (binding) =>
+      binding.id === issued.request.spec.bindings.form.id,
+  );
+  const formDefinition = harness.forms.find(
+    (form) =>
+      form.metadata.name === formBinding.definition.name,
+  );
+  return createCanonicalSubmission({
+    name: "round-one-frame-live-submission",
+    request: issued.request,
+    contextClosure: issued.contextClosure,
+    assignment: issued.assignment,
+    projectionArtifact: issued.projectionArtifact,
+    projectionBinding,
+    formDefinition,
+    normalizedValues,
+    rawEvidenceBytes: Buffer.from(
+      "Round 1 frame values supplied by the live integration harness.\n",
+      "utf8",
+    ),
+    producerProvenance: {
+      producerId: "round-one-frame-test-agent",
+      producerClass: "agent",
+      evidenceDigest: digest("a"),
+      generation: {
+        attemptId: "round-one-frame-attempt-1",
+        provider: "mission-kit-test",
+        model: "deterministic-agent-fixture",
+        adapter: {
+          id: "round-one-frame-agent-adapter",
+          digest: digest("b"),
+        },
+        configurationDigest: digest("c"),
+        telemetry: {
+          inputTokens: 120,
+          outputTokens: 50,
+          latencyMs: 14,
+        },
+      },
+    },
+    renderProjection: projectionRenderer(
+      harness,
+      projectionBinding,
+    ),
+  });
+}
+
 export async function submitSurveyFrame(
+  harness,
+  issued,
+  submission,
+) {
+  const command = {
+    class: "submit",
+    request: issued.request,
+    assignment: issued.assignment,
+    submission,
+    externalCouplings: [],
+  };
+  return {
+    command,
+    result: await harness.coordinator.execute(
+      harness.storeId,
+      command,
+    ),
+  };
+}
+
+export async function submitRoundOneFrame(
   harness,
   issued,
   submission,

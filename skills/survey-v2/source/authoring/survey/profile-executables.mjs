@@ -5,6 +5,9 @@ import {
   validateContractSemantics,
 } from "../kernel/contract-semantics.mjs";
 import {
+  canonicalize,
+} from "../kernel/canonical.mjs";
+import {
   createSurveyGenerationRecord,
 } from "./generation-record.mjs";
 import {
@@ -22,6 +25,13 @@ import {
   validateSurveyResourceSemantics,
 } from "./resource-semantics.mjs";
 import {
+  buildRoundOneFrameProducts,
+  RoundOneFrameAuthorityError,
+} from "./round-one-frame-authority.mjs";
+import {
+  projectRoundOneFrameText,
+} from "./round-one-frame-projector.mjs";
+import {
   validateContextFrameSemantics,
 } from "../../../dependencies/shared-schemas/v1/snapshot/context-frame/v1alpha1/context-frame.validator.mjs";
 
@@ -29,6 +39,8 @@ const schemaIds = Object.freeze({
   authoringSubmission:
     "urn:mission-kit:authoring:schema:authoring-submission:v1alpha1",
   survey: "urn:mission-kit:survey:schema:survey:v1alpha1",
+  surveyRound:
+    "urn:mission-kit:survey:schema:survey-round:v1alpha1",
   contextFrame: "urn:mission-kit:schemas:context-frame:v1alpha1",
   generationRecord:
     "urn:mission-kit:survey:schema:generation-record:v1alpha1",
@@ -135,6 +147,81 @@ function currentSurveyFrameAssignmentGuard(input) {
     );
 }
 
+function exactRoundOneLayers(input) {
+  const layers = input?.contextClosure?.spec?.layers;
+  if (!Array.isArray(layers) || layers.length !== 2) return false;
+  return (
+    layers[0]?.ordinal === 1 &&
+    layers[0]?.role === "survey-frame" &&
+    layers[0]?.sourceReference?.apiVersion ===
+      "schemas.mission-kit/v1alpha1" &&
+    layers[0]?.sourceReference?.kind === "ContextFrame" &&
+    layers[1]?.ordinal === 2 &&
+    layers[1]?.role === "survey" &&
+    layers[1]?.sourceReference?.apiVersion ===
+      "survey.mission-kit/v1alpha1" &&
+    layers[1]?.sourceReference?.kind === "Survey" &&
+    layers[1]?.sourceSnapshot?.apiVersion ===
+      "survey.mission-kit/v1alpha1" &&
+    layers[1]?.sourceSnapshot?.kind === "Survey" &&
+    layers[1]?.sourceSnapshot?.spec?.surveyFrameRef !== null &&
+    typeof layers[1]?.sourceSnapshot?.spec?.surveyFrameRef ===
+      "object" &&
+    canonicalize(
+      layers[1]?.sourceSnapshot?.spec?.surveyFrameRef,
+    ) === canonicalize(layers[0]?.sourceReference)
+  );
+}
+
+function frozenSurveyFrameGuard(input) {
+  if (
+    input?.phase !== "submission" ||
+    input?.operation?.class !== "task-submission" ||
+    input?.operation?.task?.id !== "author-round-1-frame" ||
+    input?.workspace?.spec?.authoringState !==
+      "round_1_frame_required"
+  ) {
+    return reject(
+      "ROUND_ONE_FRAME_ASSIGNMENT_INVALID",
+      "/operation",
+      "Round 1 frame submission must use the current author-round-1-frame assignment.",
+      "Submit against the current kernel-issued Round 1 frame request.",
+    );
+  }
+  if (!exactRoundOneLayers(input)) {
+    return reject(
+      "ROUND_ONE_FRAME_CONTEXT_INVALID",
+      "/contextClosure/spec/layers",
+      "Round 1 frame authoring requires exactly the frozen SurveyFrame then Survey layers.",
+      "Restore the active SurveyFrame and Survey parent heads.",
+    );
+  }
+  const inputs = input.operation.inputs;
+  if (
+    inputs === null ||
+    typeof inputs !== "object" ||
+    Array.isArray(inputs) ||
+    Object.keys(inputs).sort().join("\0") !==
+      ["survey", "survey-frame"].sort().join("\0") ||
+    canonicalize(inputs["survey-frame"]) !==
+      canonicalize(
+        input.contextClosure.spec.layers[0].sourceReference,
+      ) ||
+    canonicalize(inputs.survey) !==
+      canonicalize(
+        input.contextClosure.spec.layers[1].sourceReference,
+      )
+  ) {
+    return reject(
+      "ROUND_ONE_FRAME_INPUT_BINDING_INVALID",
+      "/operation/inputs",
+      "Round 1 request inputs must bind the exact SurveyFrame and Survey context sources.",
+      "Restore the kernel-derived parent input bindings.",
+    );
+  }
+  return pass();
+}
+
 function beginAuthoringHandler() {
   return accept([]);
 }
@@ -163,11 +250,35 @@ function surveyFrameHandler(input) {
   }
 }
 
+function roundOneFrameHandler(input) {
+  try {
+    return accept(buildRoundOneFrameProducts({
+      normalizedValues: input?.normalizedValues,
+      contextClosure: input?.contextClosure,
+    }));
+  } catch (error) {
+    if (error instanceof RoundOneFrameAuthorityError) {
+      return reject(
+        error.code,
+        error.field,
+        error.message,
+        "Correct the Round 1 frame semantic fields and resubmit the same assignment.",
+      );
+    }
+    return reject(
+      "ROUND_ONE_FRAME_HANDLER_INVALID",
+      "",
+      "Round 1 frame construction rejected a non-canonical handler input.",
+      "Restore the exact kernel-issued submission and parent context closure.",
+    );
+  }
+}
+
 function futureReject(className, id) {
   return reject(
     "SURVEY_PROFILE_FEATURE_UNAVAILABLE",
     "",
-    `${className} ${id} is declared for canonical closure but is outside the active S11 implementation stage.`,
+    `${className} ${id} is declared for canonical closure but is outside the active R10 implementation stage.`,
     "Use only transitions admitted by the profile execution closure.",
   );
 }
@@ -286,6 +397,8 @@ export function createSurveyProfileExecutableRegistry({ bindings }) {
           ? initializedSurveyInputsGuard
           : guardId === "current-survey-frame-assignment"
             ? currentSurveyFrameAssignmentGuard
+            : guardId === "frozen-survey-frame"
+              ? frozenSurveyFrameGuard
             : () => futureReject("guard", guardId),
     })),
     handlers: Object.entries(bindings.handlers).map(
@@ -296,6 +409,8 @@ export function createSurveyProfileExecutableRegistry({ bindings }) {
             ? beginAuthoringHandler
             : transitionId === "AT02"
               ? surveyFrameHandler
+              : transitionId === "AT03"
+                ? roundOneFrameHandler
               : () => futureReject("handler", transitionId),
       }),
     ),
@@ -317,6 +432,17 @@ export function createSurveyProfileExecutableRegistry({ bindings }) {
       },
       {
         ...bindings.validators.surveySemantics,
+        invoke: surveySemantics,
+      },
+      {
+        ...bindings.validators.surveyRoundSchema,
+        invoke: structuralValidator(
+          schemaIds.surveyRound,
+          "SurveyRound",
+        ),
+      },
+      {
+        ...bindings.validators.surveyRoundSemantics,
         invoke: surveySemantics,
       },
       {
@@ -343,6 +469,10 @@ export function createSurveyProfileExecutableRegistry({ bindings }) {
       {
         ...bindings.projectors.surveyFrame,
         invoke: projectSurveyFrameText,
+      },
+      {
+        ...bindings.projectors.roundOneFrame,
+        invoke: projectRoundOneFrameText,
       },
       {
         ...bindings.projectors.future,

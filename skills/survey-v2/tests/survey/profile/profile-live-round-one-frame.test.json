@@ -1,0 +1,45 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:profile:profile-live-round-one-frame",
+  "obligationId": "O-AS15-97",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS15"
+  ],
+  "verification": {
+    "precondition": "The live Survey workspace has committed AT02 and can issue the exact request-bound Round 1 frame assignment from its frozen SurveyFrame and Survey heads.",
+    "stimulus": "Execute tests/survey/profile/profile-live-round-one-frame.test.mjs with node:test.",
+    "expectedSemanticState": "AT03 atomically commits exactly one Round ContextFrame and one SurveyRound as active heads, retains exactly one new GenerationRecord, advances only the authoring FSM to round_1_question_frames_required, and replays without divergence.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: the live Survey AT03 path commits its Round frame, SurveyRound, and one replay-stable GenerationRecord",
+    "forbiddenMutation": "AT03 must not omit either request-bound parent, disclose policy authority in its view, create partial products, advance the phase FSM, duplicate a sidecar on replay, or execute AT04.",
+    "applicability": {
+      "mode": "specific",
+      "transports": [],
+      "adapters": [
+        "urn:mission-kit:survey-v2:adapter:in-memory"
+      ]
+    },
+    "inspectedAuthorities": [
+      "source/authoring/adapters/in-memory-store.mjs",
+      "source/authoring/kernel/manifest-reducer.mjs",
+      "source/authoring/runtime/transaction-coordinator.mjs",
+      "source/authoring/survey/generation-record.mjs",
+      "source/authoring/survey/profile-authority.mjs",
+      "source/authoring/survey/profile-executables.mjs",
+      "source/authoring/survey/round-one-frame-authority.mjs",
+      "source/authoring/survey/round-one-frame-projector.mjs"
+    ]
+  },
+  "behavior": "the live Survey AT03 path commits its Round frame, SurveyRound, and one replay-stable GenerationRecord",
+  "evidenceClass": "positive",
+  "runner": "node:test",
+  "executable": "tests/survey/profile/profile-live-round-one-frame.test.mjs",
+  "fixtures": [
+    "tests/survey/profile/live-support.mjs",
+    "tests/survey/profile/support.mjs",
+    "tests/survey/round-one/support.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

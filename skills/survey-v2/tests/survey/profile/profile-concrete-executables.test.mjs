@@ -16,10 +16,20 @@ import {
   projectSurveyFrameText,
 } from "../../../source/authoring/survey/survey-frame-projector.mjs";
 import {
+  buildRoundOneFrameProducts,
+} from "../../../source/authoring/survey/round-one-frame-authority.mjs";
+import {
+  projectRoundOneFrameText,
+} from "../../../source/authoring/survey/round-one-frame-projector.mjs";
+import {
   exactInitializationClosure,
   loadProfileScenario,
   surveyFrameValues,
 } from "./support.mjs";
+import {
+  roundOneContextClosure,
+  roundOneFrameValues,
+} from "../round-one/support.mjs";
 
 test(
   "the concrete Survey guards, handlers, validators, and projector delegate through exact registry pins",
@@ -164,6 +174,133 @@ test(
     assert.match(
       textContentBytes(projected.content).toString("utf8"),
       /Survey framing intent\./u,
+    );
+
+    const roundContext = roundOneContextClosure();
+    const frozenSurveyFrame = profile.spec.guardBindings.find(
+      (binding) => binding.guardId === "frozen-survey-frame",
+    );
+    assert.deepEqual(
+      invokeGuard(compiled, frozenSurveyFrame.handler, {
+        phase: "submission",
+        operation: {
+          class: "task-submission",
+          task: { id: "author-round-1-frame" },
+          inputs: {
+            "survey-frame":
+              roundContext.spec.layers[0].sourceReference,
+            survey:
+              roundContext.spec.layers[1].sourceReference,
+          },
+        },
+        workspace: {
+          apiVersion: "authoring.mission-kit/v1alpha1",
+          kind: "AuthoringWorkspace",
+          spec: {
+            authoringState: "round_1_frame_required",
+          },
+        },
+        contextClosure: roundContext,
+      }),
+      { status: "pass" },
+    );
+    const mismatchedRoundContext =
+      structuredClone(roundContext);
+    mismatchedRoundContext.spec.layers[1]
+      .sourceSnapshot.spec.surveyFrameRef.name =
+        "different-survey-frame";
+    const mismatchedGuard = invokeGuard(
+      compiled,
+      frozenSurveyFrame.handler,
+      {
+        phase: "submission",
+        operation: {
+          class: "task-submission",
+          task: { id: "author-round-1-frame" },
+          inputs: {
+            "survey-frame":
+              roundContext.spec.layers[0].sourceReference,
+            survey:
+              roundContext.spec.layers[1].sourceReference,
+          },
+        },
+        workspace: {
+          apiVersion: "authoring.mission-kit/v1alpha1",
+          kind: "AuthoringWorkspace",
+          spec: {
+            authoringState: "round_1_frame_required",
+          },
+        },
+        contextClosure: mismatchedRoundContext,
+      },
+    );
+    assert.equal(mismatchedGuard.status, "reject");
+    assert.equal(
+      mismatchedGuard.issues[0].code,
+      "ROUND_ONE_FRAME_CONTEXT_INVALID",
+    );
+    const at03 = profile.spec.transitionBindings.find(
+      (binding) => binding.transitionId === "AT03",
+    );
+    const at03Handler = profile.spec.handlerBindings.find(
+      (binding) => binding.id === at03.handlerBindingId,
+    );
+    const roundValues = roundOneFrameValues();
+    const expectedRoundProducts = buildRoundOneFrameProducts({
+      normalizedValues: roundValues,
+      contextClosure: roundContext,
+    });
+    const roundHandled = invokeHandler(
+      compiled,
+      at03Handler.handler,
+      {
+        normalizedValues: roundValues,
+        contextClosure: roundContext,
+      },
+    );
+    assert.equal(roundHandled.status, "accept");
+    assert.deepEqual(
+      roundHandled.products,
+      expectedRoundProducts,
+    );
+    for (const product of roundHandled.products) {
+      const schemaBinding = profile.spec.schemaBindings.find(
+        (binding) =>
+          binding.resourceType.apiVersion ===
+            product.resource.apiVersion &&
+          binding.resourceType.kind === product.resource.kind,
+      );
+      assert.equal(
+        invokeValidator(
+          compiled,
+          schemaBinding.semanticValidator,
+          { resource: product.resource },
+        ).status,
+        "pass",
+      );
+    }
+    const roundProjectionBinding =
+      profile.spec.projectionBindings.find(
+        (binding) =>
+          binding.id === "round-one-frame-projection-binding",
+      );
+    const roundProjectionInput = {
+      contextClosure: roundContext,
+      formDefinition: scenario.forms.find(
+        (form) =>
+          form.metadata.name === "round-one-frame-form",
+      ),
+      projectionBinding: roundProjectionBinding,
+      request: {},
+      requestHandle: "00000000",
+    };
+    assert.deepEqual(
+      invokeProjector(
+        compiled,
+        roundProjectionBinding.engine,
+        roundProjectionInput,
+      ),
+      projectRoundOneFrameText(roundProjectionInput),
     );
   },
 );

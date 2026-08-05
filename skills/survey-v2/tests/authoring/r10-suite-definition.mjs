@@ -1,0 +1,104 @@
+function entry(
+  executable,
+  invariantId,
+  obligationId,
+) {
+  return Object.freeze({
+    executable,
+    descriptorPath: executable.replace(
+      /\.test\.mjs$/u,
+      ".test.json",
+    ),
+    invariantId,
+    obligationId,
+  });
+}
+
+export const r10Suite = Object.freeze([
+  entry(
+    "tests/survey/profile/profile-authority-closure.test.mjs",
+    "AS02",
+    "O-AS02-22",
+  ),
+  entry(
+    "tests/survey/profile/profile-concrete-executables.test.mjs",
+    "AS13",
+    "O-AS13-29",
+  ),
+  entry(
+    "tests/survey/profile/profile-future-fail-closed.test.mjs",
+    "AS02",
+    "O-AS02-23",
+  ),
+  entry(
+    "tests/survey/profile/profile-live-round-one-frame.test.mjs",
+    "AS15",
+    "O-AS15-97",
+  ),
+  entry(
+    "tests/survey/round-one/ambient-normalized-field.test.mjs",
+    "SV09",
+    "O-SV09-05",
+  ),
+  entry(
+    "tests/survey/round-one/blank-containment-rationale.test.mjs",
+    "SV09",
+    "O-SV09-03",
+  ),
+  entry(
+    "tests/survey/round-one/oversized-containment-rationale.test.mjs",
+    "SV09",
+    "O-SV09-04",
+  ),
+  entry(
+    "tests/survey/round-one/round-frame-authority.test.mjs",
+    "SV01",
+    "O-SV01-05",
+  ),
+  entry(
+    "tests/survey/round-one/round-frame-parent-ancestry.test.mjs",
+    "SV03",
+    "O-SV03-03",
+  ),
+  entry(
+    "tests/survey/round-one/round-frame-projector.test.mjs",
+    "AS06",
+    "O-AS06-79",
+  ),
+  entry(
+    "tests/survey/round-one/unknown-scope-relation.test.mjs",
+    "SV09",
+    "O-SV09-02",
+  ),
+  entry(
+    "tests/survey/surveyctl-v2/round-one-process-lifecycle.test.mjs",
+    "AS15",
+    "O-AS15-98",
+  ),
+]);
+
+export const r10OwnedMembers = Object.freeze([
+  "source/authoring/survey/round-one-frame-authority.mjs",
+  "source/authoring/survey/round-one-frame-projector.mjs",
+  "tests/authoring/r10-suite-definition.mjs",
+  "tests/authoring/register-r10-suite.mjs",
+  "tests/survey/profile/profile-live-round-one-frame.test.json",
+  "tests/survey/profile/profile-live-round-one-frame.test.mjs",
+  "tests/survey/round-one/ambient-normalized-field.test.json",
+  "tests/survey/round-one/ambient-normalized-field.test.mjs",
+  "tests/survey/round-one/blank-containment-rationale.test.json",
+  "tests/survey/round-one/blank-containment-rationale.test.mjs",
+  "tests/survey/round-one/oversized-containment-rationale.test.json",
+  "tests/survey/round-one/oversized-containment-rationale.test.mjs",
+  "tests/survey/round-one/round-frame-authority.test.json",
+  "tests/survey/round-one/round-frame-authority.test.mjs",
+  "tests/survey/round-one/round-frame-parent-ancestry.test.json",
+  "tests/survey/round-one/round-frame-parent-ancestry.test.mjs",
+  "tests/survey/round-one/round-frame-projector.test.json",
+  "tests/survey/round-one/round-frame-projector.test.mjs",
+  "tests/survey/round-one/support.mjs",
+  "tests/survey/round-one/unknown-scope-relation.test.json",
+  "tests/survey/round-one/unknown-scope-relation.test.mjs",
+  "tests/survey/surveyctl-v2/round-one-process-lifecycle.test.json",
+  "tests/survey/surveyctl-v2/round-one-process-lifecycle.test.mjs",
+]);

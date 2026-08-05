@@ -392,6 +392,18 @@ export async function openSurveyctlRun(options) {
 
 function pendingView(pending) {
   if (pending?.kind !== "assignment") {
+    const firstIssue = pending?.kind === "rejected" &&
+        Array.isArray(pending.issues)
+      ? pending.issues[0]
+      : undefined;
+    if (
+      typeof firstIssue?.spec?.code === "string" &&
+      firstIssue.spec.code.length > 0 &&
+      typeof firstIssue?.spec?.reason === "string" &&
+      firstIssue.spec.reason.length > 0
+    ) {
+      fail(firstIssue.spec.code, firstIssue.spec.reason);
+    }
     fail(
       "SURVEYCTL_ASSIGNMENT_REQUIRED",
       "the authoring runtime did not issue one Assignment",

@@ -2,8 +2,8 @@
   "$schema": "urn:mission-kit:survey-v2:schema:fragment:v1",
   "schemaVersion": "1.0.0",
   "id": "urn:mission-kit:survey-v2:executable:runtime:surveyctl-engine",
-  "revision": 1,
-  "purpose": "Bind the candidate Survey authoring runtime to one authenticated session.json and execute the seven V10 commands.",
+  "revision": 2,
+  "purpose": "Bind the candidate Survey authoring runtime to one authenticated session.json, execute the seven commands, and preserve typed kernel refusals at the CLI boundary.",
   "role": "executable",
   "normativity": "normative",
   "audiences": ["agent", "maintainer"],
@@ -12,7 +12,7 @@
     "payloadPath": "source/executables/runtime/lib/surveyctl-engine.mjs",
     "mediaType": "text/javascript"
   },
-  "rationale": "One production orchestrator must own initialization, authenticated cold replay, assignment byte projection, submission, and read-only inspection.",
+  "rationale": "One production orchestrator must own initialization, authenticated cold replay, assignment byte projection, submission, read-only inspection, and deterministic propagation of unavailable-transition evidence.",
   "absenceConsequence": "The authoring kernel would remain test-only and no production command could prove persistent cold resume.",
   "composition": {
     "provides": ["runtime.surveyctl-engine@1"],

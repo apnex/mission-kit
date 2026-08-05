@@ -1,0 +1,35 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:round-one:round-frame-projector",
+  "obligationId": "O-AS06-79",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS06"
+  ],
+  "verification": {
+    "precondition": "The Round 1 operational projector receives exactly one SurveyFrame spec and the Survey outcome axes from its immutable two-layer ContextClosure.",
+    "stimulus": "Execute tests/survey/round-one/round-frame-projector.test.mjs with node:test.",
+    "expectedSemanticState": "The deterministic Director view exposes only authored SurveyFrame semantics and outcome axes while excluding policy references, resource identities, prior evidence, and future Survey stages.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: Round 1 projector exposes only frozen Survey semantics and outcome axes without mutating its closure",
+    "forbiddenMutation": "Projection must not mutate its closure, disclose policy or reference authority, summarize content, admit reordered parents, or expose Question and interpretation state.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "source/authoring/kernel/text-forms.mjs",
+      "source/authoring/survey/round-one-frame-projector.mjs"
+    ]
+  },
+  "behavior": "Round 1 projector exposes only frozen Survey semantics and outcome axes without mutating its closure",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/survey/round-one/round-frame-projector.test.mjs",
+  "fixtures": [
+    "tests/survey/round-one/support.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}
