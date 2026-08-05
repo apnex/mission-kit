@@ -1,5 +1,5 @@
 {
-  "aggregateDigest": "sha256:ed6f8ec4206abacee8bddf2c84e2b2eaca3a57e89a6a5796639ea5c4cc3928fe",
+  "aggregateDigest": "sha256:aa4c72f90324eff77701532ebc362a008f33bae42706fcd79df63d2b97f28297",
   "canonicalDigests": [
     {
       "digest": "sha256:f7c65af249baff28e5d9fe29a9ac4011f802e955f74829c14949e2cf23104254",
@@ -66,7 +66,7 @@
       "path": "schemas/authoring/v1alpha1/authoring-form-definition.schema.json"
     },
     {
-      "digest": "sha256:0ff8c302802e2d44c33849ef15fbe3eb2d9ba660199e1c4a3f5f91e3425da896",
+      "digest": "sha256:2dc62170d3defd483f292b8c3d1ec4926fd0bb95b62ef7c6de130d46ce4d4fe0",
       "path": "schemas/authoring/v1alpha1/authoring-journal-record.schema.json"
     },
     {
@@ -88,6 +88,10 @@
     {
       "digest": "sha256:7f7b128ba83395a658df8b035fda95b8b1b556fc9af1e6be09bc9d8038b7d43e",
       "path": "schemas/authoring/v1alpha1/authoring-submission.schema.json"
+    },
+    {
+      "digest": "sha256:feead188aafbe8e6c4281455d8c55a02e164bbd009feeefd3e44043661e92b1b",
+      "path": "schemas/authoring/v1alpha1/authoring-workspace-effect.schema.json"
     },
     {
       "digest": "sha256:bb37e39cfce353752706b3c6d54dcfb758fd8fc98532daf39101bb073f26fd2a",
@@ -274,6 +278,10 @@
       "path": "shared-schemas.sh"
     },
     {
+      "digest": "sha256:0ffa32743eb6178f083e525c084ab89981ce1bc52753a8a8c1c63cf794f7e2ca",
+      "path": "source/authoring/adapters/in-memory-store.mjs"
+    },
+    {
       "digest": "sha256:4acc6b89610825893349538976214e352a5fbadd9083cad9b6d3c814c7ba6a4c",
       "path": "source/authoring/kernel/assignment-dag.mjs"
     },
@@ -286,11 +294,11 @@
       "path": "source/authoring/kernel/context-resolver.mjs"
     },
     {
-      "digest": "sha256:2ff17cc16cbc9c33fe4e4a9089db36427b3ea4ae6d46c8d458a51fb3dc6a43a4",
+      "digest": "sha256:6e929ae21365c8ac106ce3370d2baefa7edbc9892f93009fac112940101e624e",
       "path": "source/authoring/kernel/contract-semantics.mjs"
     },
     {
-      "digest": "sha256:98ef901b14e2de29404a6c64a13c1e8bd3056afe970dc9cc9a4b2eb5c3a3a14f",
+      "digest": "sha256:9daf2b1e6eb506bd2e8c43f631514ddbc59dbbffe09e747802d9622ddbdf4e1f",
       "path": "source/authoring/kernel/digests.mjs"
     },
     {
@@ -324,6 +332,30 @@
     {
       "digest": "sha256:cb3c5d6fc8affeaa96dc3de3250c7c428f6517bf95cefe235307285fe48bba6c",
       "path": "source/authoring/kernel/text-forms.mjs"
+    },
+    {
+      "digest": "sha256:3fb7618f37810f569a2c41fd93755bf592dd8582421cc142b60963f61b8c1861",
+      "path": "source/authoring/runtime/commit-records.mjs"
+    },
+    {
+      "digest": "sha256:ffbcb63c9a7cfbbbf999fc508ee98f3178c2bcb69d4fca1b128bc35fdc40824b",
+      "path": "source/authoring/runtime/journal-replay.mjs"
+    },
+    {
+      "digest": "sha256:7dfca68a8f2c51abb1de02070ccb76aaa475eba99c30cbaca0625d37d3f203b9",
+      "path": "source/authoring/runtime/store-port.mjs"
+    },
+    {
+      "digest": "sha256:889acfca198f3c03718b2653b47a6d6fb459e48deaed17def163623112791f6e",
+      "path": "source/authoring/runtime/transaction-coordinator.mjs"
+    },
+    {
+      "digest": "sha256:8af533c9f3208704d1b0db8fe93ad79c39f4a2d1ff2269a192673371229fa16c",
+      "path": "source/authoring/runtime/transaction-resources.mjs"
+    },
+    {
+      "digest": "sha256:e82dbc47a947fb4312d4d0c6f04872d13603dcc33d4f81528beead8de77b7ec3",
+      "path": "source/authoring/runtime/workspace-application.mjs"
     },
     {
       "digest": "sha256:8f9471caa090a71b80f9fe6010f559c72a60180bcfc5a19603e216c0b5b52a96",
@@ -582,7 +614,7 @@
       "path": "source/projections/assets.projection.json"
     },
     {
-      "digest": "sha256:82a134a95094424fa57add1bb22d7cb7db633bd96f999fe2103dc7e1a30c9dc3",
+      "digest": "sha256:4ec43da55ef67bd980834d55f05d1cab12da61ffeec4af5b22e85d615f1311ff",
       "path": "source/projections/build-metadata.projection.json"
     },
     {
@@ -606,7 +638,7 @@
       "path": "source/projections/skill-md.projection.json"
     },
     {
-      "digest": "sha256:bb0fa6018f49bb65d406da385f39a9956f09c60e714912bbe4f386171e2df3f1",
+      "digest": "sha256:1c597799686cd4f5177604d926d45cb0c485e157a5617bb76d6b9f1d9bf71604",
       "path": "source/projections/validators.projection.json"
     },
     {
@@ -626,7 +658,7 @@
       "path": "source/protocol/survey.protocol.json"
     },
     {
-      "digest": "sha256:b661b5cd47eaf0aadb026f15a11a20ccdf6b345fae85da6576d72ff9785d1864",
+      "digest": "sha256:2be2afcd1ee3bce436fb01106f0330d9e468bda3b30c22328b33fbaf8b5422da",
       "path": "source/requirements/survey-v2.requirements.json"
     },
     {
@@ -638,7 +670,7 @@
       "path": "source/views/director-lifecycle.view.json"
     },
     {
-      "digest": "sha256:b2b87ab6ca52ea4e0c4975dd361e7e6db5aab3db4f402bb236c0cb90663ad5c9",
+      "digest": "sha256:4e6e09ea027d5b261d34ce19e0dcc6a587f8cd131ea0f7362271fface97bab39",
       "path": "survey-v2.package.json"
     },
     {
@@ -1298,6 +1330,14 @@
       "path": "tests/authoring/contracts/historical-transaction-operational-slice.test.mjs"
     },
     {
+      "digest": "sha256:dd4d6e9adf9d8990add6d611d4167aa408e6f55e740d343fe22af459ddf07404",
+      "path": "tests/authoring/contracts/k13-schema-closure.test.json"
+    },
+    {
+      "digest": "sha256:eb09c41bce0c03f54d76693a74750a58262736bcce03f8113f90cd8a5e8f88b3",
+      "path": "tests/authoring/contracts/k13-schema-closure.test.mjs"
+    },
+    {
       "digest": "sha256:9ff138d46d6451dc4f463efbbe78e986e863d3fa9ed27be2552488fefce66006",
       "path": "tests/authoring/contracts/mutation-active-head-before-image.test.json"
     },
@@ -1434,6 +1474,14 @@
       "path": "tests/authoring/contracts/negative/authoring-submission.test.mjs"
     },
     {
+      "digest": "sha256:41a5adf90aad3296a1938bb3a5dad8f4a8dfee1d6d633e1b2207d5ffcd9fd40c",
+      "path": "tests/authoring/contracts/negative/authoring-workspace-effect.test.json"
+    },
+    {
+      "digest": "sha256:c35bbd08dcf1788363ea710885e3547e4cbeaa502e9497e507aa95c7c4976925",
+      "path": "tests/authoring/contracts/negative/authoring-workspace-effect.test.mjs"
+    },
+    {
       "digest": "sha256:75c797ad5c245f0839e120f2b6bef70920963317185fbcab3394b5bc78e8a583",
       "path": "tests/authoring/contracts/negative/authoring-workspace.test.json"
     },
@@ -1552,6 +1600,14 @@
     {
       "digest": "sha256:29fb61a34178d3d3d30edcfff23ef89be6afe6b543e5284f49babde7f967dec4",
       "path": "tests/authoring/contracts/positive/authoring-submission.test.mjs"
+    },
+    {
+      "digest": "sha256:060c0e7de5b6b3c8da9668b4c10cd5cbfe26f232d1796bed821ea24283986b6e",
+      "path": "tests/authoring/contracts/positive/authoring-workspace-effect.test.json"
+    },
+    {
+      "digest": "sha256:deb47e211d17f789ce282ef502e97ddd4e98ccdbb1c34ecec74c45fdb80db222",
+      "path": "tests/authoring/contracts/positive/authoring-workspace-effect.test.mjs"
     },
     {
       "digest": "sha256:5ba0e422a14e7c3f097ea2f5c0188ae1257dd56d70215ec81d08d61a80d664b9",
@@ -1674,11 +1730,11 @@
       "path": "tests/authoring/contracts/revision-request-workspace-base.test.mjs"
     },
     {
-      "digest": "sha256:cd578656a37fcc9002d4e67b81c688336e3d359cc4490aef184ef2e9e831f3a2",
+      "digest": "sha256:99ae499c068da89b018d519f188ad4014c9af2daebd07435b703d9471d8dab4e",
       "path": "tests/authoring/contracts/schema-closure.test.json"
     },
     {
-      "digest": "sha256:c25bf4b1c9f15d7926429d0bda32c8eadf446db076728dbd3caf898972baf900",
+      "digest": "sha256:5c1d08c0f8c0f95f2e5d627e6927cc756c66689a3ba4c438690f039ddf35ccf7",
       "path": "tests/authoring/contracts/schema-closure.test.mjs"
     },
     {
@@ -1694,7 +1750,7 @@
       "path": "tests/authoring/contracts/support/assert-transaction-issue.mjs"
     },
     {
-      "digest": "sha256:03cef4b44f22c22eb08fa22a3ecd174f7efd1a098b17ed0b98da4a4e71ed6370",
+      "digest": "sha256:09dbc0774b78b07096b844216670910303b6172e7e001bb1efd3d3af651ef849",
       "path": "tests/authoring/contracts/support/contract-validation.mjs"
     },
     {
@@ -1738,7 +1794,7 @@
       "path": "tests/authoring/digests/assignment-self-exclusion.test.mjs"
     },
     {
-      "digest": "sha256:0abe95374aebdcde6682d47c7cbc92de401fdec95ca75146be45782ccb03cf1a",
+      "digest": "sha256:35a4b2fb3eac32e3fbde93d942e90a0672265ca70831486f31fe6150c34debfe",
       "path": "tests/authoring/digests/authoring-digests.v1.golden.json"
     },
     {
@@ -1914,11 +1970,11 @@
       "path": "tests/authoring/digests/mutation-self-exclusion.test.mjs"
     },
     {
-      "digest": "sha256:118ffc84c9636adc1e78fa2aeccdead8fcce0b5395d7b1bd6f5acd852c6a1baf",
+      "digest": "sha256:c99b292f849b5227ab3f84412fb4d7d91db38e515ffa68e2df007485403a655c",
       "path": "tests/authoring/digests/persisted-identities-cwd-independence.test.json"
     },
     {
-      "digest": "sha256:5079a919cea62ff9c01cb342aa9b0197b65d52d61b77f58136c0e3b30c13e538",
+      "digest": "sha256:ac22bcd14344b048689836193f67be753fc1aef6a4d7318d1c78f03da6771703",
       "path": "tests/authoring/digests/persisted-identities-cwd-independence.test.mjs"
     },
     {
@@ -2102,12 +2158,332 @@
       "path": "tests/authoring/generate-k12-descriptors.mjs"
     },
     {
+      "digest": "sha256:ac8385f9619102fa62d78b767627b6494e9c518d6fcb6ab87287b92dca80cd95",
+      "path": "tests/authoring/generate-k13-descriptors.mjs"
+    },
+    {
+      "digest": "sha256:e7da4d4922a37fea3d738222f461a28b5031339a82efe118dc0fefc5ded55d0f",
+      "path": "tests/authoring/journal/assignment-dag-retention.test.json"
+    },
+    {
+      "digest": "sha256:98aec0a5ca0ce9fad4a0f18a02c7ff9590dc15474bbd22ccf3b4ff0b3feae40a",
+      "path": "tests/authoring/journal/assignment-dag-retention.test.mjs"
+    },
+    {
+      "digest": "sha256:927cabf101dc65dfdd3b704d969f72a73c910f948045ee49f82168c9f0443719",
+      "path": "tests/authoring/journal/authentication-key-ownership.test.json"
+    },
+    {
+      "digest": "sha256:6470f9f35422744740e34c53f050e940672fb9527a066004311805df38e54a57",
+      "path": "tests/authoring/journal/authentication-key-ownership.test.mjs"
+    },
+    {
+      "digest": "sha256:27330880201e069ba1ed240a8dfc3d840bef63e4feeb46b58633cd450f514f47",
+      "path": "tests/authoring/journal/commit-id-uniqueness.test.json"
+    },
+    {
+      "digest": "sha256:29352f8438b25ed2b960d3247e0d44baee02c1f7c96cbc712a5264401d1d58aa",
+      "path": "tests/authoring/journal/commit-id-uniqueness.test.mjs"
+    },
+    {
+      "digest": "sha256:2b475a06b94b1ba5e852d34eeed3aff2ea506c516ce54af34e2ccaa04d6da477",
+      "path": "tests/authoring/journal/coordinator-snapshot-support.mjs"
+    },
+    {
+      "digest": "sha256:1fa217f3cc7cf9003f531593f782f27e6be3bae9169706f4dd581caaaad4c3e7",
+      "path": "tests/authoring/journal/coupled-all-or-none.test.json"
+    },
+    {
+      "digest": "sha256:a57e3fa7bb169be1cc1029ffcc84dfb6d5af5f14a918f64e84dd64882c4e6311",
+      "path": "tests/authoring/journal/coupled-all-or-none.test.mjs"
+    },
+    {
+      "digest": "sha256:6ea8c0903f9b6c2d17ec0a33cd2d7af8dc42d4a381c5e231ba0539edf0164168",
+      "path": "tests/authoring/journal/effect-record-partition.test.json"
+    },
+    {
+      "digest": "sha256:5161383e5728e76a0bce6f959954aa1be0fb1da037cfab18fe46604e0e4fda2b",
+      "path": "tests/authoring/journal/effect-record-partition.test.mjs"
+    },
+    {
+      "digest": "sha256:b66b1c027762450754a8040d7cad2c030b384466750208f1c64da213d387e35a",
+      "path": "tests/authoring/journal/evidence-plan-outcome-closure.test.json"
+    },
+    {
+      "digest": "sha256:0c93041f99853942c00b877cee12e04b7a6e94190843877fc4da0ce0c7de7fe0",
+      "path": "tests/authoring/journal/evidence-plan-outcome-closure.test.mjs"
+    },
+    {
+      "digest": "sha256:fae3e9ebd75b4456446b90932b3d19fb2eeffba5bae4c5d56e9cc0737323031e",
+      "path": "tests/authoring/journal/evidence-plan-record-closure.test.json"
+    },
+    {
+      "digest": "sha256:30e6f7180827fdc88af21f13d271b2a3e7f7242aa2cd273dd9e626787cae83f9",
+      "path": "tests/authoring/journal/evidence-plan-record-closure.test.mjs"
+    },
+    {
+      "digest": "sha256:177b5223abb211e661bea115a2a424d545bf39f08343c6f47f6793c9261c09a0",
+      "path": "tests/authoring/journal/evidence-submission-integrity.test.json"
+    },
+    {
+      "digest": "sha256:ff8038d56db02567abb7abe4f40835c716a7495eb13e03a57f6f1b4c02d1ab93",
+      "path": "tests/authoring/journal/evidence-submission-integrity.test.mjs"
+    },
+    {
+      "digest": "sha256:753a96f74dd415808a83b5f3f28c9e3cf15071c0fd600e2e75156d7fee4db996",
+      "path": "tests/authoring/journal/evidence-zero-edges.test.json"
+    },
+    {
+      "digest": "sha256:b9d5354b6ea196dc3875abc755ad625d7be46df9d288b54d7aa551387b648391",
+      "path": "tests/authoring/journal/evidence-zero-edges.test.mjs"
+    },
+    {
+      "digest": "sha256:91ed8e5a48de7e0ac1ae07a3cf9aefeb0c39d730728983c87b64bba45ce7346b",
+      "path": "tests/authoring/journal/fully-resealed-submission-support.mjs"
+    },
+    {
+      "digest": "sha256:9dc5e44616feffd03eca4b1dc0f9d7c486c7fc62004b6a849415beb8f0abf02f",
+      "path": "tests/authoring/journal/genesis-open-assignment-boundary.test.json"
+    },
+    {
+      "digest": "sha256:c4bf1c01894375e5ce2d55488e3934f6e24fe543bedf72116572c12f6435832f",
+      "path": "tests/authoring/journal/genesis-open-assignment-boundary.test.mjs"
+    },
+    {
+      "digest": "sha256:cd80b470df3c41878ece468ee32ba42cdd358321a67d683955f1b0430d496212",
+      "path": "tests/authoring/journal/genesis-scope-authority.test.json"
+    },
+    {
+      "digest": "sha256:2b6af8a38277bf5628fbbc6567e158d54de6aea77ce3eefca495af461fa3dc07",
+      "path": "tests/authoring/journal/genesis-scope-authority.test.mjs"
+    },
+    {
+      "digest": "sha256:d665d5a3023aed85a3a84e4026e8389e7febef52a51789d97606aa38008f22b5",
+      "path": "tests/authoring/journal/genesis-workspace-integrity.test.json"
+    },
+    {
+      "digest": "sha256:2c9cdf5bf2da74e3913fc40dc6fa470d636ffabb3d101f0a6fdce007ccc9de8c",
+      "path": "tests/authoring/journal/genesis-workspace-integrity.test.mjs"
+    },
+    {
+      "digest": "sha256:d76b437b2c4cd6596b7242964beb5539792e728cc2f8b6932b4746616e8aa22f",
+      "path": "tests/authoring/journal/idempotency-uniqueness.test.json"
+    },
+    {
+      "digest": "sha256:02a75bb2999f70b4562519dcc421fce311624daf28cc026b201656c6fb8bf132",
+      "path": "tests/authoring/journal/idempotency-uniqueness.test.mjs"
+    },
+    {
+      "digest": "sha256:5992300e579ee864163c449f3203a56f64b42b1255d6a9f9c2e24544215b2967",
+      "path": "tests/authoring/journal/identity-async-refusal.test.json"
+    },
+    {
+      "digest": "sha256:cd5f9efa18f269eedd60e252c9dda873180996e599116e8548995c51558de7b9",
+      "path": "tests/authoring/journal/identity-async-refusal.test.mjs"
+    },
+    {
+      "digest": "sha256:81c2a2bef7c37e662682c2764690e063e590d0ecf2215e566cb3bc33ea77250a",
+      "path": "tests/authoring/journal/identity-binding.test.json"
+    },
+    {
+      "digest": "sha256:624911cc96b8c86cd8f259794ce580362c878cfdc5d8aaa61dcfa719432fcc9a",
+      "path": "tests/authoring/journal/identity-binding.test.mjs"
+    },
+    {
+      "digest": "sha256:10cd97b413ee47c5845c262a56685640c14b4f6989ac4a3d75c0a6c295650e2b",
+      "path": "tests/authoring/journal/identity-determinism.test.json"
+    },
+    {
+      "digest": "sha256:52a41926dfe92ba7e3e4bdd1b749852a9092902a86cdf33ce275450b561ca231",
+      "path": "tests/authoring/journal/identity-determinism.test.mjs"
+    },
+    {
+      "digest": "sha256:0a4b1066058c8b9d9d6b195ce2777cd6fd23f9193d094178b4c465213340c80c",
+      "path": "tests/authoring/journal/identity-longitudinal-determinism.test.json"
+    },
+    {
+      "digest": "sha256:3efec6a9a353612243c27576bb48613cf7c667bc26c60cbdfaa8051714656746",
+      "path": "tests/authoring/journal/identity-longitudinal-determinism.test.mjs"
+    },
+    {
+      "digest": "sha256:de738caac0e1599a733fd6d2522b32a89d4892aada9af11d77e33a0804f1890c",
+      "path": "tests/authoring/journal/identity-operation-capture.test.json"
+    },
+    {
+      "digest": "sha256:c672bd5179dc38515fab77fbf288c93741b8a862d9e79cc4d34bb91ace88bfd4",
+      "path": "tests/authoring/journal/identity-operation-capture.test.mjs"
+    },
+    {
+      "digest": "sha256:1718cf87b9ebccebb54cf5141dcdea2ef514a7d53b0956363dd115dee9054b31",
+      "path": "tests/authoring/journal/identity-throw-refusal.test.json"
+    },
+    {
+      "digest": "sha256:a9526cd10160c652ee1aa9849896d6de3366eef4c63158b7016c5ec1c2a8661f",
+      "path": "tests/authoring/journal/identity-throw-refusal.test.mjs"
+    },
+    {
+      "digest": "sha256:a3b6e54cf9b3084a8bb5c908adc069b0df9f8cfb57366a425eac846c4f4a8b73",
+      "path": "tests/authoring/journal/machine-edge-k10-closure.test.json"
+    },
+    {
+      "digest": "sha256:c9d5bb9a9a8b05ead08370d7e5a9fd27af239e770f14836e44ef29d1b1857711",
+      "path": "tests/authoring/journal/machine-edge-k10-closure.test.mjs"
+    },
+    {
+      "digest": "sha256:810be94de70b343c1e66df542cd0bc1bf07503c96c09d28c9d83838a44dc3352",
+      "path": "tests/authoring/journal/mutation-expected-boundary.test.json"
+    },
+    {
+      "digest": "sha256:d4873f925439e6a1a441f11619d3bdf9facb41ddb5080d389f13e98206b3ec64",
+      "path": "tests/authoring/journal/mutation-expected-boundary.test.mjs"
+    },
+    {
+      "digest": "sha256:1552423a425d6f36ac9614389cf6e1eed010a909ae87f613e0190da918b0e60c",
+      "path": "tests/authoring/journal/open-assignment-effect.test.json"
+    },
+    {
+      "digest": "sha256:1417b62ccb32040755726756fab2cfeca566cfa385e581cac2ea0bf44ba32c79",
+      "path": "tests/authoring/journal/open-assignment-effect.test.mjs"
+    },
+    {
+      "digest": "sha256:fee9fef366f203a40c5c8c4cd4ebe23190ee935cf0ba4c097d9101f3349376e9",
+      "path": "tests/authoring/journal/ordered-refreeze-replay.test.json"
+    },
+    {
+      "digest": "sha256:303ec84677bb2f5adfab5397cc0e9f6f983837f74fa1734970e713dcb4aeaa77",
+      "path": "tests/authoring/journal/ordered-refreeze-replay.test.mjs"
+    },
+    {
+      "digest": "sha256:3d11d288d597eaf361d141b5480051a231fb1313e36a05edd9f0db5eeae96adc",
+      "path": "tests/authoring/journal/outcome-closure.test.json"
+    },
+    {
+      "digest": "sha256:1412b813ed4bd1917a0d410ef0c8d0cc0ad050f3b2f496148f767583daa23376",
+      "path": "tests/authoring/journal/outcome-closure.test.mjs"
+    },
+    {
+      "digest": "sha256:2df29ec7e8a72b6d5e2f8e9d97b1a1dc18e64f5de7ee1def475ea4b2e9280617",
+      "path": "tests/authoring/journal/previous-chain-head.test.json"
+    },
+    {
+      "digest": "sha256:603624c6f5966d52a7f18dee0bdda3e3cf85e3ac6cb0eb3a5f5390740be29b47",
+      "path": "tests/authoring/journal/previous-chain-head.test.mjs"
+    },
+    {
+      "digest": "sha256:5ca516b4cd75dc9954bceaed6c1539e664af325e41442e90f10a0b3872b6c916",
+      "path": "tests/authoring/journal/receipt-mutation-closure.test.json"
+    },
+    {
+      "digest": "sha256:3444dc6dea903c7031020aa5e442d500ec07fe83b70ba4018724efbdb46d2409",
+      "path": "tests/authoring/journal/receipt-mutation-closure.test.mjs"
+    },
+    {
+      "digest": "sha256:45b7ffa4d095979400ac23e58553607588149fd040811e8020c3c538f6260f26",
+      "path": "tests/authoring/journal/receipt-supersession-replay.test.json"
+    },
+    {
+      "digest": "sha256:bfb8d39e960e48d6c6de94e352ae30db0c204e65771ad2d396d7c723b327e7f3",
+      "path": "tests/authoring/journal/receipt-supersession-replay.test.mjs"
+    },
+    {
+      "digest": "sha256:3a58a98c28f40af7a2a0984929eb8c215bae63a5bac48486587d2e90c585ecae",
+      "path": "tests/authoring/journal/record-authentication-capability.test.json"
+    },
+    {
+      "digest": "sha256:66c42b360e1cf118a444e78e929af09369fdc9c39002a6015817944090353617",
+      "path": "tests/authoring/journal/record-authentication-capability.test.mjs"
+    },
+    {
+      "digest": "sha256:8929e659a5556b54bbf327e6ce789f1829f5182975d3eedeb941093e0d325408",
+      "path": "tests/authoring/journal/resulting-root-seal-exclusion.test.json"
+    },
+    {
+      "digest": "sha256:72d4721ccb521291ed802eecec8b566186d1bbfef3974497f655a0610da14dee",
+      "path": "tests/authoring/journal/resulting-root-seal-exclusion.test.mjs"
+    },
+    {
+      "digest": "sha256:db2168eba88debb66dadb873d2838e1374f07c5951de21c498c11056a9672a8e",
+      "path": "tests/authoring/journal/revision-continuity.test.json"
+    },
+    {
+      "digest": "sha256:7d3185a1e84eb367ab4dbeb8e8c06f5da66d2a047601a2803f189f685d759ce4",
+      "path": "tests/authoring/journal/revision-continuity.test.mjs"
+    },
+    {
+      "digest": "sha256:26506b9ab382729af3dc62b45461448383298bcd09800bf712109f269e8650bd",
+      "path": "tests/authoring/journal/skipped-journal-record-ordinal-direct.test.json"
+    },
+    {
+      "digest": "sha256:903f89731b24d8a984b331d2c1a541eb4eb930301980fe8ae8feeef759eb0b4c",
+      "path": "tests/authoring/journal/skipped-journal-record-ordinal-direct.test.mjs"
+    },
+    {
+      "digest": "sha256:64f30e5afe45a4903f1fa6980d37f33c730e6982a8238c369d7d3824268efb19",
+      "path": "tests/authoring/journal/support.mjs"
+    },
+    {
+      "digest": "sha256:0501759e2128b97320efbb057af5992d4690fc3479cd2e622336d70a767488f2",
+      "path": "tests/authoring/journal/tamper-refusal.test.json"
+    },
+    {
+      "digest": "sha256:23b320279adf553597efdb4a0a1ecb58cf22eb1fc0789ee6ff08b59ecf628b3b",
+      "path": "tests/authoring/journal/tamper-refusal.test.mjs"
+    },
+    {
+      "digest": "sha256:e5ea3fe1ebd17c1fe8b93d38fea8bbc298a24d0c76fe2d115f9be1e02e673ad0",
+      "path": "tests/authoring/journal/terminal-workspace-closure.test.json"
+    },
+    {
+      "digest": "sha256:dc6178cc1c773373076d58ad497d26021d73b87cd33ff6ad4b0f4f4a1457082f",
+      "path": "tests/authoring/journal/terminal-workspace-closure.test.mjs"
+    },
+    {
+      "digest": "sha256:f287b86489cbc07ddd24cd91024b659e4b747f4439e123c068bfe0d3665ead3c",
+      "path": "tests/authoring/journal/transition-created-resource-retention.test.json"
+    },
+    {
+      "digest": "sha256:f5f241d1abb97fe4f93b4a3992bf31642f7331d44cdc1256735f16547ef67014",
+      "path": "tests/authoring/journal/transition-created-resource-retention.test.mjs"
+    },
+    {
+      "digest": "sha256:31cadce86fc215944339dd28d7b5987c424594327ff4b6c3c633d0b508f9e63f",
+      "path": "tests/authoring/journal/transition-edge-bundle.test.json"
+    },
+    {
+      "digest": "sha256:9ae9d1e3a73723f5cab928d912fdacaa8f3b1d62c440e14e02dce0213d29bb70",
+      "path": "tests/authoring/journal/transition-edge-bundle.test.mjs"
+    },
+    {
+      "digest": "sha256:2997bed3ce451c72298e2d19a6526a3e31f108fb3de1edd196e06bcd76a1b58c",
+      "path": "tests/authoring/journal/transition-submission-integrity.test.json"
+    },
+    {
+      "digest": "sha256:544d8e73c552986b196d7044148241981640e08f7845bf292dbbb4040bf7320d",
+      "path": "tests/authoring/journal/transition-submission-integrity.test.mjs"
+    },
+    {
+      "digest": "sha256:c0bdbd02a7abc32f88a0c3a21a57d26e1f7df084a94c4484a3c87025ffd68edc",
+      "path": "tests/authoring/journal/transition-tamper-support.mjs"
+    },
+    {
+      "digest": "sha256:80fd7bb259420dd27aac28d41a10587bd707828474ec7ec632f841d0b3947576",
+      "path": "tests/authoring/journal/workspace-effect-exhaustiveness.test.json"
+    },
+    {
+      "digest": "sha256:06a80d286b0c9dab66f78922b0e60dd86aaaf54a6ebd7bd81c99300047f1f0a9",
+      "path": "tests/authoring/journal/workspace-effect-exhaustiveness.test.mjs"
+    },
+    {
       "digest": "sha256:a9de419bdc6243631a8d8441490d9df229c40331ec433a44c4a287637c5ff8d2",
       "path": "tests/authoring/k11-suite-definition.mjs"
     },
     {
       "digest": "sha256:21e0f52c521892586e9033fd1bd5f9cac6a8ff341b784d63d9f1efd4ef1c8432",
       "path": "tests/authoring/k12-suite-definition.mjs"
+    },
+    {
+      "digest": "sha256:96ffbd3c7821b1ea1fc27ab996db16c59786898e130a385dab3a70921e632d9e",
+      "path": "tests/authoring/k13-suite-definition.mjs"
     },
     {
       "digest": "sha256:dda4f0f8f97ffc228805717251124fe39a3f7f7541213a6337807826651eb814",
@@ -2256,6 +2632,414 @@
     {
       "digest": "sha256:c7edb4d69d3bcbfb862acb7aff4919edac393653632723c91d3c9623c2dedf1a",
       "path": "tests/authoring/neutrality/kernel-import-boundary.test.mjs"
+    },
+    {
+      "digest": "sha256:536c5152b8e13178090d25bf816c160bc282c3a946555224df90d4d6f2588035",
+      "path": "tests/authoring/persistence/core/active-head-post-image.test.json"
+    },
+    {
+      "digest": "sha256:6f3a29eda180bc553a0b484ee766f154b9cf13f187bf4deda4853f90cb3063d3",
+      "path": "tests/authoring/persistence/core/active-head-post-image.test.mjs"
+    },
+    {
+      "digest": "sha256:247dd97fcf51b71d19b814ad22f2a4e19a4c74cbdeaed0a4c8fb879d63696a22",
+      "path": "tests/authoring/persistence/core/dependency-edge-post-image.test.json"
+    },
+    {
+      "digest": "sha256:a5ae0d13963b4890e69f27b2b03aaa3b17c14e9abcdde48545577c6be29b826e",
+      "path": "tests/authoring/persistence/core/dependency-edge-post-image.test.mjs"
+    },
+    {
+      "digest": "sha256:8277b7592de8e5b5650e18b41682798316834786db89571e77660db779bf60c9",
+      "path": "tests/authoring/persistence/core/evidence-mutation-plan.test.json"
+    },
+    {
+      "digest": "sha256:57627ba2930497873aae225b3b4e951f729f980c601df516f094a231d8132424",
+      "path": "tests/authoring/persistence/core/evidence-mutation-plan.test.mjs"
+    },
+    {
+      "digest": "sha256:bf55c4790d361bd13ba2159df3073ae4a89a7327cc28d0382e1a388cbdeb2e78",
+      "path": "tests/authoring/persistence/core/evidence-only-revision.test.json"
+    },
+    {
+      "digest": "sha256:3045a9f8bf61e9d57014ddf959e86926c41e396e3b7d6d23bb49e6e537216345",
+      "path": "tests/authoring/persistence/core/evidence-only-revision.test.mjs"
+    },
+    {
+      "digest": "sha256:8edcd4f61c4cf4a2467bba0c8707262c4d6c5fa7be6301711d7672557238808b",
+      "path": "tests/authoring/persistence/core/handoff-add.test.json"
+    },
+    {
+      "digest": "sha256:43e8aadce05ce3441b9eb037d2a1a7b9461b7ab60ce86f2270b3091e2f7cf3f9",
+      "path": "tests/authoring/persistence/core/handoff-add.test.mjs"
+    },
+    {
+      "digest": "sha256:e5ca1b220eb8a2f2961b9429f251e309a395690fe3d72f855e4157ada2be505b",
+      "path": "tests/authoring/persistence/core/handoff-remove.test.json"
+    },
+    {
+      "digest": "sha256:ebb2b386f520f8ddc37354314422bd1c2d098c88ae127529cdfa10adfd1a50f2",
+      "path": "tests/authoring/persistence/core/handoff-remove.test.mjs"
+    },
+    {
+      "digest": "sha256:23e766cdbd0c0080b3dac50c02af073eb6e2705644749df5c3806a3e4eb09e53",
+      "path": "tests/authoring/persistence/core/handoff-replace.test.json"
+    },
+    {
+      "digest": "sha256:bf87868abf54c9aeffbfba15b6978daab3495c233662054be5c37ddff0193ffd",
+      "path": "tests/authoring/persistence/core/handoff-replace.test.mjs"
+    },
+    {
+      "digest": "sha256:525f2a15a06bd683fa0e7af6e38274f7296477213b8488851e3677184957cf35",
+      "path": "tests/authoring/persistence/core/handoff-untouched-retention.test.json"
+    },
+    {
+      "digest": "sha256:2ff2dc3cbf756aa5b6dc6466f1f9fd3476d9a24dc8013d3d1e4a6543dafb6bb0",
+      "path": "tests/authoring/persistence/core/handoff-untouched-retention.test.mjs"
+    },
+    {
+      "digest": "sha256:6190d8a1c12cd5825964768d20a590b6a4919453ee285d246231bff461ae8217",
+      "path": "tests/authoring/persistence/core/history-append-post-image.test.json"
+    },
+    {
+      "digest": "sha256:472c3466da2be2481de12501216936c6253bd0d9aec09fe438795da85aa2fa08",
+      "path": "tests/authoring/persistence/core/history-append-post-image.test.mjs"
+    },
+    {
+      "digest": "sha256:5c5c8610ea49dd802b71300c49b6e9f75004c80142b104a65dddb90d4f51b5bc",
+      "path": "tests/authoring/persistence/core/issuance-reauthorization-idempotency.test.json"
+    },
+    {
+      "digest": "sha256:94dc7edf2448e996ae168f16b1028cd6a9a021cb829ab9062f396cc47dc85a3e",
+      "path": "tests/authoring/persistence/core/issuance-reauthorization-idempotency.test.mjs"
+    },
+    {
+      "digest": "sha256:96ac779c5855f264a7bd928ab82ef9554bd4c432df23378ea0f2c4f7db6f07ac",
+      "path": "tests/authoring/persistence/core/neutral-import-closure.test.json"
+    },
+    {
+      "digest": "sha256:22f86066919091256df733665896da9064e99dacf2f4ba004f0aee202d0d308f",
+      "path": "tests/authoring/persistence/core/neutral-import-closure.test.mjs"
+    },
+    {
+      "digest": "sha256:2334e8b8ad6ff47a724f468e2b56717f356044a8c52c3281280c9bd1b5a51574",
+      "path": "tests/authoring/persistence/core/open-assignment-post-image.test.json"
+    },
+    {
+      "digest": "sha256:fc5f17813b6e760d0b359cea98ed1cfeec27e830e1b8af3cddf1217f1e8de890",
+      "path": "tests/authoring/persistence/core/open-assignment-post-image.test.mjs"
+    },
+    {
+      "digest": "sha256:53fec851e910967a504457d135202684db3821c9779cd41b517bf92e05c9c017",
+      "path": "tests/authoring/persistence/core/ordered-duplicate-issues.test.json"
+    },
+    {
+      "digest": "sha256:990dcabcc9469ccadd3bc14b5167ae20754d662586ddf2571ba484ba4eb7e97d",
+      "path": "tests/authoring/persistence/core/ordered-duplicate-issues.test.mjs"
+    },
+    {
+      "digest": "sha256:ad7a626f8df1e9706b57d1dceca6d6d046d10aa589223b5540db2237fbf0201c",
+      "path": "tests/authoring/persistence/core/receipt-construction.test.json"
+    },
+    {
+      "digest": "sha256:cbace4590ede3d94836d1af8f02c688042f16b2dd4f9f4a5ac2bf3965cc97c17",
+      "path": "tests/authoring/persistence/core/receipt-construction.test.mjs"
+    },
+    {
+      "digest": "sha256:f624ad807169adcce4e202111645aa2c66b04a27c1d9f63880b99318388b0623",
+      "path": "tests/authoring/persistence/core/receipt-single-revision-retention.test.json"
+    },
+    {
+      "digest": "sha256:484ec6f41f98632119e9008acb622a1f179637ecd75bdacd245abdc9cd409a66",
+      "path": "tests/authoring/persistence/core/receipt-single-revision-retention.test.mjs"
+    },
+    {
+      "digest": "sha256:4315c0c0daacbf08bfaaa118f4871c049b84f439274d72b687231077dda5de3e",
+      "path": "tests/authoring/persistence/core/rejected-zero-semantic-mutation.test.json"
+    },
+    {
+      "digest": "sha256:0a073ebcc5cf17845141a086510bf5f8c45a3cd10a115a435cc9ecfcd801f8c1",
+      "path": "tests/authoring/persistence/core/rejected-zero-semantic-mutation.test.mjs"
+    },
+    {
+      "digest": "sha256:aa56999e9a951fd9f5f662bfe78759632c09f50ebfe54b759be1db75d56f73ca",
+      "path": "tests/authoring/persistence/core/resource-version-immutability.test.json"
+    },
+    {
+      "digest": "sha256:9d1941be163f642946533a88d58269a8aaa15ee1f2d9dd8b1881010c4d145e63",
+      "path": "tests/authoring/persistence/core/resource-version-immutability.test.mjs"
+    },
+    {
+      "digest": "sha256:744758cc7ebe9094ff53415cb231603727a2f35e159b9f45d0ed6b13387af46f",
+      "path": "tests/authoring/persistence/core/semantic-transition-revision.test.json"
+    },
+    {
+      "digest": "sha256:e130812fa967ddde03f292a55e1e2566019904f806c749a0349d7abebef61b75",
+      "path": "tests/authoring/persistence/core/semantic-transition-revision.test.mjs"
+    },
+    {
+      "digest": "sha256:2bf13bea19e81308adba568c58375796804ed924790d4374f6dd766f19911b3e",
+      "path": "tests/authoring/persistence/core/supersession-disposition-authority.test.json"
+    },
+    {
+      "digest": "sha256:3c3425bf77e037c9264543d1105e27205c77dc729dae204b552c2d689ab57b7b",
+      "path": "tests/authoring/persistence/core/supersession-disposition-authority.test.mjs"
+    },
+    {
+      "digest": "sha256:db9e85a4069baf8855e1690650be7067b9962fc6e528601c09a27dc1d34c724f",
+      "path": "tests/authoring/persistence/core/support.mjs"
+    },
+    {
+      "digest": "sha256:fef6cf3011702ad2cd88a81a36dccfae134d673b3097c31f4c6cd199409c7336",
+      "path": "tests/authoring/persistence/core/workspace-integrity-reseal.test.json"
+    },
+    {
+      "digest": "sha256:86864bbc5f59e22dba25b42d4af8f3999285ff1022d1b83bc9d8c30b74b2d67b",
+      "path": "tests/authoring/persistence/core/workspace-integrity-reseal.test.mjs"
+    },
+    {
+      "digest": "sha256:e031d11a35b30ff83ca38f938005c5dd0ec96379faa0a760b7a62b19a252e3f6",
+      "path": "tests/authoring/persistence/in-memory/accessor-rejection.test.json"
+    },
+    {
+      "digest": "sha256:5f6cb18d2db2f4dc58544aff318c208e647c990ce9b7f71cddf3a05ff1dc566a",
+      "path": "tests/authoring/persistence/in-memory/accessor-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:ff001db24ffbde61735c0a4ceccdf0d7c5b6ab4d56439a3865ba64bed95b5381",
+      "path": "tests/authoring/persistence/in-memory/alias-rejection.test.json"
+    },
+    {
+      "digest": "sha256:0be244694c4c8eb1fb9cf09e2c79c9a2812e996a68f279e8c6885c268a58e662",
+      "path": "tests/authoring/persistence/in-memory/alias-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:e1daa9762111f8ac5ad18c4e5c09f0700ee0783acd401594f25f280df10192d9",
+      "path": "tests/authoring/persistence/in-memory/atomic-visibility.test.json"
+    },
+    {
+      "digest": "sha256:a2100cdabe4df43c502ce0b9bd0b45a2eef26bcc57d91fae4cd2c466495212a2",
+      "path": "tests/authoring/persistence/in-memory/atomic-visibility.test.mjs"
+    },
+    {
+      "digest": "sha256:759f91b6802cea09e1a04bbbeb69b1da1030f0c84fcc2d8b0fcac709f237f43e",
+      "path": "tests/authoring/persistence/in-memory/authenticated-cold-rehydration.test.json"
+    },
+    {
+      "digest": "sha256:904be4f1dc55778daf91950d9b4fc839e0a6331497b1ff56860c4f2e49ac9344",
+      "path": "tests/authoring/persistence/in-memory/authenticated-cold-rehydration.test.mjs"
+    },
+    {
+      "digest": "sha256:5975e74402033666ff10757af3d7cb6e47a26c756fc0ac5e55765e3483e994f9",
+      "path": "tests/authoring/persistence/in-memory/authenticated-post-image-prepublish-refusal.test.json"
+    },
+    {
+      "digest": "sha256:120b6cd23fec8bd6874302b4413b9b8a24f252c02078e877294aa9f42a3740d7",
+      "path": "tests/authoring/persistence/in-memory/authenticated-post-image-prepublish-refusal.test.mjs"
+    },
+    {
+      "digest": "sha256:8f2056c847dfacdecedb1a2cccdbab53d566886ee984d6a14669b7e70432c9b3",
+      "path": "tests/authoring/persistence/in-memory/authenticated-root-reseal-refusal.test.json"
+    },
+    {
+      "digest": "sha256:d4d64648fde5427774f7c0c7ce788117582ab9572a1307123d74b107056384c5",
+      "path": "tests/authoring/persistence/in-memory/authenticated-root-reseal-refusal.test.mjs"
+    },
+    {
+      "digest": "sha256:3aca3542e8fe58f9f0f6b86d68cab5047b69806adacde3018840d730bb614e77",
+      "path": "tests/authoring/persistence/in-memory/authentication-key-ownership.test.json"
+    },
+    {
+      "digest": "sha256:14473e02c9029d8d05fe946f358428e4def6d56be0fd7d4fdd980b3c96ac14ec",
+      "path": "tests/authoring/persistence/in-memory/authentication-key-ownership.test.mjs"
+    },
+    {
+      "digest": "sha256:6bb983c63dd9f6f587dbf30e588c5a7812237c63ad9410cd9c8bb76001118ba7",
+      "path": "tests/authoring/persistence/in-memory/cas-conflict.test.json"
+    },
+    {
+      "digest": "sha256:6868c37ec5edfb1418c10166bfdcd281a3aaeaa87b71cf1b4c962ab01ab6ec0d",
+      "path": "tests/authoring/persistence/in-memory/cas-conflict.test.mjs"
+    },
+    {
+      "digest": "sha256:25f4ee59f7e050ae9d96c58c4a1fe8522c946213c02638100c4584a9c9ffa902",
+      "path": "tests/authoring/persistence/in-memory/cold-rehydration.test.json"
+    },
+    {
+      "digest": "sha256:e01f3254ade6c1d6d5843d1d805ca8d6053f58fbb598685b5e8d80016ed0b1f3",
+      "path": "tests/authoring/persistence/in-memory/cold-rehydration.test.mjs"
+    },
+    {
+      "digest": "sha256:92103e22009bdfe44d396f3e40e4c02ab91aac02cbe015c02f213c8f725cfd45",
+      "path": "tests/authoring/persistence/in-memory/crash-after-publish.test.json"
+    },
+    {
+      "digest": "sha256:b644737a4032a66a555cfc3050fc9979660ec58f088a87e88a1b9f5a88da9a1e",
+      "path": "tests/authoring/persistence/in-memory/crash-after-publish.test.mjs"
+    },
+    {
+      "digest": "sha256:78b05b3c30f8f631b05dd4ff54bdf7ffc0d325b82ee2095c212353eceea022d9",
+      "path": "tests/authoring/persistence/in-memory/crash-before-publish.test.json"
+    },
+    {
+      "digest": "sha256:e14e12627ef84b8e162f7b6c8bf3f35471bb4e293bce18336a49e25deeb99594",
+      "path": "tests/authoring/persistence/in-memory/crash-before-publish.test.mjs"
+    },
+    {
+      "digest": "sha256:4202bbf7a8d9a70ef03cd6f3763af290cb8c052d8f33fea30b9aa8491ab79e92",
+      "path": "tests/authoring/persistence/in-memory/detached-snapshot.test.json"
+    },
+    {
+      "digest": "sha256:8678a50d4fadadc0fa1337b7885f03d4bdd7f3248683f77abc44c88593933782",
+      "path": "tests/authoring/persistence/in-memory/detached-snapshot.test.mjs"
+    },
+    {
+      "digest": "sha256:b28aea40fa14c5edd71f5557f966d9dc18067d4ca181ea2181da56eb0de0bd89",
+      "path": "tests/authoring/persistence/in-memory/exact-token.test.json"
+    },
+    {
+      "digest": "sha256:c3be17f5a8a486fc2177d27eb19859f94c0e23d66ed8651cd1ae3cae8dabdb1d",
+      "path": "tests/authoring/persistence/in-memory/exact-token.test.mjs"
+    },
+    {
+      "digest": "sha256:79e4aff7589451c017d2e467714c2a405e352d8e869e5afa9f7b817eca628283",
+      "path": "tests/authoring/persistence/in-memory/failed-initial-authentication-no-residue.test.json"
+    },
+    {
+      "digest": "sha256:a5a02d3a5a9a4db4fef86a8ec037f7173349e50a93d286d11bfec61429aacd2e",
+      "path": "tests/authoring/persistence/in-memory/failed-initial-authentication-no-residue.test.mjs"
+    },
+    {
+      "digest": "sha256:6d720279688976d9a53e3a50af31c611e44cec552a4783fb6996e0f4423deb72",
+      "path": "tests/authoring/persistence/in-memory/immutable-input.test.json"
+    },
+    {
+      "digest": "sha256:cd4a2b2da772a4e11938c25bc58cd8aae26646db759bd1e0af18e8639f53f915",
+      "path": "tests/authoring/persistence/in-memory/immutable-input.test.mjs"
+    },
+    {
+      "digest": "sha256:135c3e04259c539df79bc95dc6d0a0a485b7d8c4db258f8460b8ddaa67d7fc96",
+      "path": "tests/authoring/persistence/in-memory/initial-store-identity.test.json"
+    },
+    {
+      "digest": "sha256:6fed662474254970fb250674f95d7cb3a427eaaf4b464c423775266e7f94e6d8",
+      "path": "tests/authoring/persistence/in-memory/initial-store-identity.test.mjs"
+    },
+    {
+      "digest": "sha256:5e92ecf73a5b15d6cff244a162fd959583806ed5bc2ec1fb6dbbb40a433b4961",
+      "path": "tests/authoring/persistence/in-memory/logical-crash-before-assembly-old-root.test.json"
+    },
+    {
+      "digest": "sha256:59bebd8357e5378df98f47842a13a5e12f706f03e0352fef308b262ec931af73",
+      "path": "tests/authoring/persistence/in-memory/logical-crash-before-assembly-old-root.test.mjs"
+    },
+    {
+      "digest": "sha256:cfcc3b251c4bf1c6515eb4ae82080d8b4847f2a885aff1de6936a9dec978384b",
+      "path": "tests/authoring/persistence/in-memory/logical-crash-during-assembly-old-root.test.json"
+    },
+    {
+      "digest": "sha256:a3df92451ea98c774d50b6df1a025913ae268ad0855114a4e8a36e28e2531595",
+      "path": "tests/authoring/persistence/in-memory/logical-crash-during-assembly-old-root.test.mjs"
+    },
+    {
+      "digest": "sha256:d7ab462614dd7809c54dca8f0f030b7d2751d57df21d586cb4f0cc3f6fc62591",
+      "path": "tests/authoring/persistence/in-memory/machine-head-order.test.json"
+    },
+    {
+      "digest": "sha256:ed2b1feaa7b35119d060f4845b9cb8563ee99362e696f7afc2bb855e7c2f749a",
+      "path": "tests/authoring/persistence/in-memory/machine-head-order.test.mjs"
+    },
+    {
+      "digest": "sha256:521a60af79944d48a997b8af3cf11a76825be4aae917dfa8494a83f7f27df9e0",
+      "path": "tests/authoring/persistence/in-memory/neutral-import-closure.test.json"
+    },
+    {
+      "digest": "sha256:4c0de1e2d69babe72a1b3ccb302187b0c721dd893b87edebcad0995d26190cec",
+      "path": "tests/authoring/persistence/in-memory/neutral-import-closure.test.mjs"
+    },
+    {
+      "digest": "sha256:eb6f8864ae32983f380e959d64469569c686dc8bfdc9c09dacf1a9be2f5481e3",
+      "path": "tests/authoring/persistence/in-memory/proxy-rejection.test.json"
+    },
+    {
+      "digest": "sha256:267df7c224f6ccb9a5eda597a8e1a168b5a35d2e08835172edc5d5bad016b80f",
+      "path": "tests/authoring/persistence/in-memory/proxy-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:65aed2338761d551372b2b104afe6a9c9e551d1e2bb2090610b689ca07d767d5",
+      "path": "tests/authoring/persistence/in-memory/replay-valid-post-image.test.json"
+    },
+    {
+      "digest": "sha256:d6ddea3cb933d9fab5174f638d0f0b9de8b65eedff030bec9653a8df256dadf6",
+      "path": "tests/authoring/persistence/in-memory/replay-valid-post-image.test.mjs"
+    },
+    {
+      "digest": "sha256:09f5230b322f3030fadb2faf7f2b2648a0f9eefdfd35a3a1808f7050551b9de4",
+      "path": "tests/authoring/persistence/in-memory/root-seal-tamper.test.json"
+    },
+    {
+      "digest": "sha256:00ff593b16306c9465dabb2e74c5a0f282b143b991684bde8e67980f662250d3",
+      "path": "tests/authoring/persistence/in-memory/root-seal-tamper.test.mjs"
+    },
+    {
+      "digest": "sha256:daa64668f385aeb53255235e9658fda78d2a74e7b6db16b59846c0c90b61f7a5",
+      "path": "tests/authoring/persistence/in-memory/single-use-writer.test.json"
+    },
+    {
+      "digest": "sha256:13bf5a6de44f273583304f4244175e7bc201cb0125d1eee07be28b90fa38dad5",
+      "path": "tests/authoring/persistence/in-memory/single-use-writer.test.mjs"
+    },
+    {
+      "digest": "sha256:3a98953252cc5afe2d5d4d0a1d61fd9250d5534faed792856b69d642735cf948",
+      "path": "tests/authoring/persistence/in-memory/sparse-array-rejection.test.json"
+    },
+    {
+      "digest": "sha256:2ae3737c5cb337674eb74325ac529440c5855f86803c66b54112bab17025bfc7",
+      "path": "tests/authoring/persistence/in-memory/sparse-array-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:0b96eeee0d5f88f729fe97b387183235d1bb244000198f01a7252d158eb48429",
+      "path": "tests/authoring/persistence/in-memory/stale-fence.test.json"
+    },
+    {
+      "digest": "sha256:a926472bba9be8dc10c79a1235df8c1e01072aa727f8eb14192b419273dd2a91",
+      "path": "tests/authoring/persistence/in-memory/stale-fence.test.mjs"
+    },
+    {
+      "digest": "sha256:ba3dc0c511ef3d14f38f851b7c2a108226979cee5b0dd4549bcdc8c3740d8c0d",
+      "path": "tests/authoring/persistence/in-memory/support.mjs"
+    },
+    {
+      "digest": "sha256:4f7790f298f31d2d574d9b79679b0b6eb0b03264a1cc114cdf35875ec8d352f1",
+      "path": "tests/authoring/persistence/in-memory/workspace-ambient-root.test.json"
+    },
+    {
+      "digest": "sha256:440a12b812ebc953ab682021f386b1dda03a2f690c7815f6a0bf32a78048aca7",
+      "path": "tests/authoring/persistence/in-memory/workspace-ambient-root.test.mjs"
+    },
+    {
+      "digest": "sha256:2af6dc9cb0cac07b2a650d3f1a5acd33f4284d45162a3642d1ce6682f3d4eb6c",
+      "path": "tests/authoring/persistence/in-memory/workspace-collection-shape.test.json"
+    },
+    {
+      "digest": "sha256:3f9333cf0ff9ea9ee0eec857e69b805fdd45a31c6a178f3dcd6ed400d3bb73ca",
+      "path": "tests/authoring/persistence/in-memory/workspace-collection-shape.test.mjs"
+    },
+    {
+      "digest": "sha256:4dbce834e0775007c59e45b38fa8c306d1629827cd7df69882c12a8d0dd068f1",
+      "path": "tests/authoring/persistence/in-memory/writer-exclusion.test.json"
+    },
+    {
+      "digest": "sha256:da07d232396dfb6423a5cfec3ceb536b69e2fd82bd53eab5bef99d3072305a88",
+      "path": "tests/authoring/persistence/in-memory/writer-exclusion.test.mjs"
+    },
+    {
+      "digest": "sha256:57e1d560a01cfcf128069c1f8812ab2235b2502e9069bc54eebbfa2818b306b4",
+      "path": "tests/authoring/persistence/in-memory/writer-lifetime.test.json"
+    },
+    {
+      "digest": "sha256:3ef8760a858c6f3219bb07083b262450c5ca146e8be267b624ba29a49dc7997f",
+      "path": "tests/authoring/persistence/in-memory/writer-lifetime.test.mjs"
     },
     {
       "digest": "sha256:a6dee9b924dfd3c2e878d77b8cf038fa0930fcf34d9529554c0d0824d3cb5b33",
@@ -2674,6 +3458,10 @@
       "path": "tests/authoring/register-k12-suite.mjs"
     },
     {
+      "digest": "sha256:0a3b89253c44ec83c6f58a63f04da9fb3c54832ef4b867c79dedd89827746a52",
+      "path": "tests/authoring/register-k13-suite.mjs"
+    },
+    {
       "digest": "sha256:d38e7bbdfe6bff15d756e8d986f3317f835987c1767544eb32c4f708b4b91db3",
       "path": "tests/authoring/text-forms/all-types-roundtrip.test.json"
     },
@@ -2926,6 +3714,290 @@
       "path": "tests/authoring/text-forms/unsafe-static-marker.test.mjs"
     },
     {
+      "digest": "sha256:34531e8fa19e97c96cc568b4a86b77fb98b358c87d602e9a3f02f97c5862987c",
+      "path": "tests/authoring/transactions/assignment-issuance-dag.test.json"
+    },
+    {
+      "digest": "sha256:1665b2102b064e69c73341d82c11bd7b62accd7a40c625d3c02d52c67fa2b231",
+      "path": "tests/authoring/transactions/assignment-issuance-dag.test.mjs"
+    },
+    {
+      "digest": "sha256:5d7b5adbed04eedc9a5588780f3f1af1952e729eb8c64ed38486e1e25861c2ed",
+      "path": "tests/authoring/transactions/coordinator/accepted-submit-atomic.test.json"
+    },
+    {
+      "digest": "sha256:673818cbb7d3ae912b1558e155b4008abad1a686c41b36ff189ec501ee6f660a",
+      "path": "tests/authoring/transactions/coordinator/accepted-submit-atomic.test.mjs"
+    },
+    {
+      "digest": "sha256:d40791639fafccda35fe7dcda52ae82a02de6f70481e97a68eff935e06eeb99e",
+      "path": "tests/authoring/transactions/coordinator/authentication-key-boundary.test.json"
+    },
+    {
+      "digest": "sha256:90cd205d7cdfcb13fa9ad79bece9ac6ec6a2b9b273761cd961678b467470240f",
+      "path": "tests/authoring/transactions/coordinator/authentication-key-boundary.test.mjs"
+    },
+    {
+      "digest": "sha256:783424326647b0cbe57720c29680e4b4574c5903bb3b5b543623388bf2c9c2eb",
+      "path": "tests/authoring/transactions/coordinator/cancel-replay-reissue.test.json"
+    },
+    {
+      "digest": "sha256:dc3664ef6a93ca2e721c94ec4f85d594fb3ed3f09b79d85d5c9d3ee561529667",
+      "path": "tests/authoring/transactions/coordinator/cancel-replay-reissue.test.mjs"
+    },
+    {
+      "digest": "sha256:043f78dc22d27f2eb3b9c7003fb26557668a58b9a114ea6ba58bce85bf41a6a4",
+      "path": "tests/authoring/transactions/coordinator/cold-coordinator-pending-reproduction.test.json"
+    },
+    {
+      "digest": "sha256:4c08cd66043e5bcaab10136b229b1fcdef734a1872ebc7f8ec9a1ebe4a37f82a",
+      "path": "tests/authoring/transactions/coordinator/cold-coordinator-pending-reproduction.test.mjs"
+    },
+    {
+      "digest": "sha256:dd37625200269b241b05f333f0edff702db7ea6f2d2b22eff1919c03033062e9",
+      "path": "tests/authoring/transactions/coordinator/concurrent-different-submit.test.json"
+    },
+    {
+      "digest": "sha256:66acaf860b6837d3b23a9d86682769ce5d255405adcb5faf368425a5def42752",
+      "path": "tests/authoring/transactions/coordinator/concurrent-different-submit.test.mjs"
+    },
+    {
+      "digest": "sha256:d0851c82df86165be5dfdd539370bc67e5b764e6b0f9ac3eab7cd963a0e04c8c",
+      "path": "tests/authoring/transactions/coordinator/concurrent-identical-submit.test.json"
+    },
+    {
+      "digest": "sha256:307622ba733485cd7bbc89217316020db3fbc65d28332a92f3997713756bcea6",
+      "path": "tests/authoring/transactions/coordinator/concurrent-identical-submit.test.mjs"
+    },
+    {
+      "digest": "sha256:c4a2c4a37a6d3b374565623a83b7f97a4e2058c286976222634464aad6153672",
+      "path": "tests/authoring/transactions/coordinator/contract-validator-thenable.test.json"
+    },
+    {
+      "digest": "sha256:ff4f399ab13acd57608a88324e3c97ef85530a21c52973e95b2c038e695d4e47",
+      "path": "tests/authoring/transactions/coordinator/contract-validator-thenable.test.mjs"
+    },
+    {
+      "digest": "sha256:fb3d20cea0ec6ab4f74a80dd4c75e9bceac63970c833da4c655df8cba076dfa9",
+      "path": "tests/authoring/transactions/coordinator/driver-config.mjs"
+    },
+    {
+      "digest": "sha256:dd9bbd077638a78ea801969f7fbb30b3f1c0a2f3e57da2923d08ceb2e3af99d3",
+      "path": "tests/authoring/transactions/coordinator/drivers/driver-contract.mjs"
+    },
+    {
+      "digest": "sha256:605d90eeae04f80dc50b44ef78db645d8688ba20837cda18b416fec11992ec1f",
+      "path": "tests/authoring/transactions/coordinator/drivers/in-memory-driver.mjs"
+    },
+    {
+      "digest": "sha256:c90c6c4e2d2eeaae73f8eb7f61463ee85f66e9f6dedde83478acb8a0f72b438e",
+      "path": "tests/authoring/transactions/coordinator/event-rejection-evidence-only.test.json"
+    },
+    {
+      "digest": "sha256:377d32b51f9267c7fe3a16e359426dcd292ab6094939438383bc0b3d3947f01e",
+      "path": "tests/authoring/transactions/coordinator/event-rejection-evidence-only.test.mjs"
+    },
+    {
+      "digest": "sha256:8ce9a6cd43ea60f7ce7ceb5ac5fb6c5537382e69fcf9ce2bb78e5c7c4207d4da",
+      "path": "tests/authoring/transactions/coordinator/event-transition-replay.test.json"
+    },
+    {
+      "digest": "sha256:a92e00670569a43e911ec1261b9e0fb1c25afc26dd5c5f9ef6ff302aa9d7c354",
+      "path": "tests/authoring/transactions/coordinator/event-transition-replay.test.mjs"
+    },
+    {
+      "digest": "sha256:377acd3e4b45d0f6d5e3b4985f2507af154cb687e0a79ec2fbe40766d771bc34",
+      "path": "tests/authoring/transactions/coordinator/first-next-persistence.test.json"
+    },
+    {
+      "digest": "sha256:ec39b364ca45db94032c71c00dded248f69eb815de7c782101a1d4e979008cfc",
+      "path": "tests/authoring/transactions/coordinator/first-next-persistence.test.mjs"
+    },
+    {
+      "digest": "sha256:6cdddbc35feb96ba2b6a452fbfbe0db0ea46679c03bbbcb9999abd222b4f1d19",
+      "path": "tests/authoring/transactions/coordinator/handoff-scope-replay.test.json"
+    },
+    {
+      "digest": "sha256:f25aceff5bc96efbe2c173612972e480498c61634069e240e308efe4bd2108c4",
+      "path": "tests/authoring/transactions/coordinator/handoff-scope-replay.test.mjs"
+    },
+    {
+      "digest": "sha256:dd35c9df478dc6c2e7663934e9ab21cde8a21a24207bfc67511c2355ecb03257",
+      "path": "tests/authoring/transactions/coordinator/idempotent-command-contract.test.json"
+    },
+    {
+      "digest": "sha256:c5f3243a84dc924bf976fcc2c31f9e0d89afcd3e81eebf3942ad2d42131b84fb",
+      "path": "tests/authoring/transactions/coordinator/idempotent-command-contract.test.mjs"
+    },
+    {
+      "digest": "sha256:cf6284383bef73d5be151002bcb19e03f1032e58ee6904d1d466f44f63a1fcbb",
+      "path": "tests/authoring/transactions/coordinator/machine-qualified-idempotency-reuse-changed-payload-read-only.test.json"
+    },
+    {
+      "digest": "sha256:4efaef9e8ed1b030465f2a5b8342a80bfa93edce54160ffb800790a2d5f573a0",
+      "path": "tests/authoring/transactions/coordinator/machine-qualified-idempotency-reuse-changed-payload-read-only.test.mjs"
+    },
+    {
+      "digest": "sha256:e436eb67ce3946673164f0fd992050810b5505194dfbd34091ace913b65dfda0",
+      "path": "tests/authoring/transactions/coordinator/pending-next-read-only.test.json"
+    },
+    {
+      "digest": "sha256:4f534f4b362d8440ae69143143818804163c359309abf80e42fcddf82544ea8c",
+      "path": "tests/authoring/transactions/coordinator/pending-next-read-only.test.mjs"
+    },
+    {
+      "digest": "sha256:3898e08bd1a200a2156cba74a76062a5cea4aff4b5ea88337d69c13188e2015b",
+      "path": "tests/authoring/transactions/coordinator/post-publish-ack-loss-replay.test.json"
+    },
+    {
+      "digest": "sha256:e049641e34316f0b4a2a8dc543af504728bdc4944f7ec8bfb2820374f805780a",
+      "path": "tests/authoring/transactions/coordinator/post-publish-ack-loss-replay.test.mjs"
+    },
+    {
+      "digest": "sha256:2466fec6f385801fdc6d886e8ad2bc302e5e556f06f9c50ef5f5a37f382051d7",
+      "path": "tests/authoring/transactions/coordinator/profile-authority-cancel-boundary.test.json"
+    },
+    {
+      "digest": "sha256:85a4c6803ad6367225dd6daf4ef11768e6f7a0b4fed57619fa5ce8e0def65873",
+      "path": "tests/authoring/transactions/coordinator/profile-authority-cancel-boundary.test.mjs"
+    },
+    {
+      "digest": "sha256:4db1fcb9a294e6e90d154d1d6a17ebcec201bd9d0b9d149cd87608637a532791",
+      "path": "tests/authoring/transactions/coordinator/profile-authority-pending-boundary.test.json"
+    },
+    {
+      "digest": "sha256:de5c54289fda0fb0e70491ed8ac754ca95e94953ac0dc2a7c11089ae014acf5a",
+      "path": "tests/authoring/transactions/coordinator/profile-authority-pending-boundary.test.mjs"
+    },
+    {
+      "digest": "sha256:f7bd803934ca3a8894d7723bbdaa3bf3a7805b162c2e5c84c420e68727076466",
+      "path": "tests/authoring/transactions/coordinator/profile-authority-read-boundary.test.json"
+    },
+    {
+      "digest": "sha256:9e3d83fe58767e816c40840cd75841fa2e573449b839d2d15b5763d86a3f831e",
+      "path": "tests/authoring/transactions/coordinator/profile-authority-read-boundary.test.mjs"
+    },
+    {
+      "digest": "sha256:61aee1d1a0646bc735b6d03c5db82e0a90b006d8f549af6fc01e3e622aeea084",
+      "path": "tests/authoring/transactions/coordinator/protocol-authority-cancel-boundary.test.json"
+    },
+    {
+      "digest": "sha256:3d09ab441c8ee9f3c904875e0fcf887b12c12113ab656dc881d0d624b6ff75ad",
+      "path": "tests/authoring/transactions/coordinator/protocol-authority-cancel-boundary.test.mjs"
+    },
+    {
+      "digest": "sha256:f26215a5c5e14d2416ab240da6ac43873620373b3bc2a7172a5fc0f87dc120b2",
+      "path": "tests/authoring/transactions/coordinator/protocol-authority-pending-boundary.test.json"
+    },
+    {
+      "digest": "sha256:aedcabdc07f71ca4bf107cba31ec8ff08544bd5ca78c30a702052926c71b9d14",
+      "path": "tests/authoring/transactions/coordinator/protocol-authority-pending-boundary.test.mjs"
+    },
+    {
+      "digest": "sha256:4b32926d7279552ca852616a03c33aca408902723d387ec9f4668c6c689446b8",
+      "path": "tests/authoring/transactions/coordinator/protocol-authority-read-boundary.test.json"
+    },
+    {
+      "digest": "sha256:8299f81ecc36106db4c45c68b9f335f826c31ef6e3d115361bf259264eaa5869",
+      "path": "tests/authoring/transactions/coordinator/protocol-authority-read-boundary.test.mjs"
+    },
+    {
+      "digest": "sha256:6ac24df48eb92ad0707330c8e6f274ab6870f7cc61425d56ecfda7e55ba267a6",
+      "path": "tests/authoring/transactions/coordinator/rejected-submission-evidence-only.test.json"
+    },
+    {
+      "digest": "sha256:9cfee5611f0159e6ee553eb09ae53dfc2c6512f72a1406385f7ec57010cf701b",
+      "path": "tests/authoring/transactions/coordinator/rejected-submission-evidence-only.test.mjs"
+    },
+    {
+      "digest": "sha256:ffdc244c535949791bae8e358a8e20261cfc655c1c25e8bb44c5a65ab4a062e8",
+      "path": "tests/authoring/transactions/coordinator/rejection-correction-transition.test.json"
+    },
+    {
+      "digest": "sha256:02329846fc04c3f50b1b116d090d81383abbe946b5515c2ae32174bc22e33342",
+      "path": "tests/authoring/transactions/coordinator/rejection-correction-transition.test.mjs"
+    },
+    {
+      "digest": "sha256:e0ef5cff16f22202a758b30797b21b4c63d3836bdfafc13a0608ed8678118518",
+      "path": "tests/authoring/transactions/coordinator/stale-event-read-only.test.json"
+    },
+    {
+      "digest": "sha256:75865fd69cab9ba12d1dd86d89283c21c3d8e92ca9927044701b45e9c086d373",
+      "path": "tests/authoring/transactions/coordinator/stale-event-read-only.test.mjs"
+    },
+    {
+      "digest": "sha256:489e0b86ee0a755a26e181ad673af0fd2edd4c61612c63c7c118434ed52527d1",
+      "path": "tests/authoring/transactions/coordinator/stale-submit-no-callback.test.json"
+    },
+    {
+      "digest": "sha256:b850b20d243e7ea184a3f0c6e2cf4ef930d72e5bffbe9646a88343712d8dab3c",
+      "path": "tests/authoring/transactions/coordinator/stale-submit-no-callback.test.mjs"
+    },
+    {
+      "digest": "sha256:e8169ab5254232ba23072c67d3cc3219134c41832ba7e38dbe0e02ffa7d97446",
+      "path": "tests/authoring/transactions/coordinator/store-operation-capture.test.json"
+    },
+    {
+      "digest": "sha256:a1733c11b17203437c9d7905887b65abc5dd0f993c9cb586e4852c87bd0c9cb5",
+      "path": "tests/authoring/transactions/coordinator/store-operation-capture.test.mjs"
+    },
+    {
+      "digest": "sha256:6a0d619a3301eadf4ed13a77bcff5e15c23e6b3f2fcfcfc6a41d74f867f0f3da",
+      "path": "tests/authoring/transactions/coordinator/store-operation-single-read.test.json"
+    },
+    {
+      "digest": "sha256:45287d910e311ac1a1e5e195a2c0cf30186e2a4bed8fe4c9d6830747f6bff50a",
+      "path": "tests/authoring/transactions/coordinator/store-operation-single-read.test.mjs"
+    },
+    {
+      "digest": "sha256:749d01c01ec0afadfcd304c1c2d19119f718fd0f2e1229382e793dea85232da1",
+      "path": "tests/authoring/transactions/coordinator/submit-idempotent-replay.test.json"
+    },
+    {
+      "digest": "sha256:8722bc9bffb6504d426b6cb438973b42c636f8a5ae8543bb9d8ad5467b8c3e1e",
+      "path": "tests/authoring/transactions/coordinator/submit-idempotent-replay.test.mjs"
+    },
+    {
+      "digest": "sha256:fc2e03ad232161282a776fc1258cb4b96da03947767997b721f0343a7e413e84",
+      "path": "tests/authoring/transactions/coordinator/support.mjs"
+    },
+    {
+      "digest": "sha256:71b6a25d5588e8ce79599c0c6a0734927566179f8941247de2aebfb08d4e59c5",
+      "path": "tests/authoring/transactions/coordinator/trusted-input-capability-snapshot.test.json"
+    },
+    {
+      "digest": "sha256:1ec94cb71a6c4ab1780abcaad21b7f3990f85b33e997240e6c5c5cd3aef28519",
+      "path": "tests/authoring/transactions/coordinator/trusted-input-capability-snapshot.test.mjs"
+    },
+    {
+      "digest": "sha256:50c619efe22f913fa8af0da38929552b7429047ce4b124aeecc301109ab617e3",
+      "path": "tests/authoring/transactions/handoff-authority-resolution.test.json"
+    },
+    {
+      "digest": "sha256:8be6ce7bf1a93cb8a120668e511fd3385e1fbb43b0a71580ad976ea6fadc4cd3",
+      "path": "tests/authoring/transactions/handoff-authority-resolution.test.mjs"
+    },
+    {
+      "digest": "sha256:319cc9d4589be9866b43632a07dea60cb35fe26f1cfb982c9b213ad41c25c58a",
+      "path": "tests/authoring/transactions/inventory-reference-conflict.test.json"
+    },
+    {
+      "digest": "sha256:6d2d01f08923d01729eaa24cec6a25fa27c9eb996d51c1d7df7461c9ceff46a7",
+      "path": "tests/authoring/transactions/inventory-reference-conflict.test.mjs"
+    },
+    {
+      "digest": "sha256:3eacb2ac38b241d01aff8ad95e84adc881321bceaf26565a37e7172cc73a272a",
+      "path": "tests/authoring/transactions/pending-assignment-reproduction.test.json"
+    },
+    {
+      "digest": "sha256:505ce29865f4827180971816a4d52dea8d08be09c8108f4c66b21641fb941d12",
+      "path": "tests/authoring/transactions/pending-assignment-reproduction.test.mjs"
+    },
+    {
+      "digest": "sha256:9f17c7edd3565e83bcda9b1726409958cde861cf1319e501547620406d41f4db",
+      "path": "tests/authoring/transactions/support.mjs"
+    },
+    {
       "digest": "sha256:d59fd247e2bad75183cf3d3f8a6383d7d9eca97f0906e634ca7d09a56b79a7a9",
       "path": "tests/baseline-freeze/canonical-v1-freeze.test.json"
     },
@@ -3142,6 +4214,10 @@
       "path": "tests/envelope/walkthrough-full-candidate.test.mjs"
     },
     {
+      "digest": "sha256:6723e453df94dafbccc660e43c37e377b0b8cae2ca012fc53eef75e9aaa25884",
+      "path": "tests/fixtures/authoring/contracts/k10-authoring-schema-closure.snapshot.json"
+    },
+    {
       "digest": "sha256:a9b260c7c462b8baa23ecf4c2a219841ff25dd3ccee59f23486d5595f12f8343",
       "path": "tests/fixtures/authoring/contracts/negative/authoring-assignment.json"
     },
@@ -3176,6 +4252,10 @@
     {
       "digest": "sha256:f94287b973479ce45ca17bcf3fba54b181eb1ae78bfe161561b7f6417e4c6d75",
       "path": "tests/fixtures/authoring/contracts/negative/authoring-submission.json"
+    },
+    {
+      "digest": "sha256:5b6996714d6e977ab0c8b5979e5a614d879f29063d4b52260e39549a288ce84c",
+      "path": "tests/fixtures/authoring/contracts/negative/authoring-workspace-effect.json"
     },
     {
       "digest": "sha256:9b23412690d28ba132843119c1bfa385f5644e8f0141312c2e60bb4dc196a227",
@@ -3214,7 +4294,7 @@
       "path": "tests/fixtures/authoring/contracts/positive/authoring-form-definition.json"
     },
     {
-      "digest": "sha256:bc536673ac7c391a9f6e059008e08458558ba1687f6d97b740e20795ad367446",
+      "digest": "sha256:d17a27f40fb7904b02a48255cddae83fb3f1fee4a98935d5901a0c52fa8ec44a",
       "path": "tests/fixtures/authoring/contracts/positive/authoring-journal-record.json"
     },
     {
@@ -3236,6 +4316,10 @@
     {
       "digest": "sha256:c3fb27cece9dff60e61c92dfda6be758a123efde1c149621ee6d193ece90bc30",
       "path": "tests/fixtures/authoring/contracts/positive/authoring-submission.json"
+    },
+    {
+      "digest": "sha256:f6407b2efdeb83822c2f4bc3a9ebc5a360d15e07ddc06896919801fb1dd322b2",
+      "path": "tests/fixtures/authoring/contracts/positive/authoring-workspace-effect.json"
     },
     {
       "digest": "sha256:395133e8a5f87afa9b38e58eb57a7dd71e8599fef0c0bc1c4c8e6d07d1e4db00",
@@ -3422,7 +4506,7 @@
       "path": "tests/fixtures/survey/session-v2/historical-v1-session.json"
     },
     {
-      "digest": "sha256:f4211c9dd81827b0dce2a3bab623180cb46c9ea9ac93efd9fd1163873d9c9970",
+      "digest": "sha256:1b76103cf15f35d69630b29593054b992ac7e0054d9dfe6f822b2e7e49536905",
       "path": "tests/fixtures/survey/session-v2/session-factory.mjs"
     },
     {
@@ -4626,7 +5710,7 @@
       "path": "tests/survey-contracts/session/typed-runtime-artifact-references.test.mjs"
     },
     {
-      "digest": "sha256:2eb1a116de3ee3cb652505b4daa368da1d1a008f9e1162b4d847598c7016c429",
+      "digest": "sha256:80a75525a666743e1529071325bfcbec1a0ae9c6d1b0a439dce6744c247583a3",
       "path": "tests/survey-contracts/support/contract-validation.mjs"
     },
     {
@@ -4650,12 +5734,12 @@
       "path": "tests/survey-contracts/support/suite-definition.mjs"
     },
     {
-      "digest": "sha256:4e15109ad171b73d89bc35aaacf7d0ec25706037e94b2196598cab21757cb908",
+      "digest": "sha256:354835eab0a8c384575ca517c9e2460011788e9c0afd489cab9a6e55820cd9ce",
       "path": "tests/test-evidence.manifest.json"
     }
   ],
   "id": "urn:mission-kit:survey-v2:projection-lock:survey-v2",
-  "packageDigest": "sha256:ed6f8ec4206abacee8bddf2c84e2b2eaca3a57e89a6a5796639ea5c4cc3928fe",
+  "packageDigest": "sha256:aa4c72f90324eff77701532ebc362a008f33bae42706fcd79df63d2b97f28297",
   "parentDesignSha256": "6467fff1c74c6dc857bcb06722d19dfa04381ae3e6f242eccb36581f87560f74",
   "portableExclusions": [
     {
@@ -4706,7 +5790,7 @@
       "projectionId": "urn:mission-kit:survey-v2:projection:validators"
     },
     {
-      "digest": "sha256:2b04070b9c60e2fa614f92439af3e023938cfa28c252e7defd55e6074fb37197",
+      "digest": "sha256:be2cd248dccc43b3d8149b84bbac20627c0d86c479722d957f3bee9d09d4d2cb",
       "path": "generated/validators.mjs",
       "projectionId": "urn:mission-kit:survey-v2:projection:validators"
     },
@@ -4990,6 +6074,11 @@
     {
       "expectedId": null,
       "kind": "authored",
+      "path": "schemas/authoring/v1alpha1/authoring-workspace-effect.schema.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
       "path": "schemas/authoring/v1alpha1/authoring-workspace.schema.json"
     },
     {
@@ -5245,6 +6334,11 @@
     {
       "expectedId": null,
       "kind": "authored",
+      "path": "source/authoring/adapters/in-memory-store.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
       "path": "source/authoring/kernel/assignment-dag.mjs"
     },
     {
@@ -5306,6 +6400,36 @@
       "expectedId": null,
       "kind": "authored",
       "path": "source/authoring/kernel/text-forms.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/authoring/runtime/commit-records.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/authoring/runtime/journal-replay.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/authoring/runtime/store-port.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/authoring/runtime/transaction-coordinator.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/authoring/runtime/transaction-resources.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/authoring/runtime/workspace-application.mjs"
     },
     {
       "expectedId": null,
@@ -6525,6 +7649,16 @@
     {
       "expectedId": null,
       "kind": "authored",
+      "path": "tests/authoring/contracts/k13-schema-closure.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/contracts/k13-schema-closure.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
       "path": "tests/authoring/contracts/mutation-active-head-before-image.test.json"
     },
     {
@@ -6695,6 +7829,16 @@
     {
       "expectedId": null,
       "kind": "authored",
+      "path": "tests/authoring/contracts/negative/authoring-workspace-effect.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/contracts/negative/authoring-workspace-effect.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
       "path": "tests/authoring/contracts/negative/authoring-workspace.test.json"
     },
     {
@@ -6841,6 +7985,16 @@
       "expectedId": null,
       "kind": "authored",
       "path": "tests/authoring/contracts/positive/authoring-submission.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/contracts/positive/authoring-workspace-effect.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/contracts/positive/authoring-workspace-effect.test.mjs"
     },
     {
       "expectedId": null,
@@ -7530,12 +8684,412 @@
     {
       "expectedId": null,
       "kind": "authored",
+      "path": "tests/authoring/generate-k13-descriptors.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/assignment-dag-retention.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/assignment-dag-retention.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/authentication-key-ownership.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/authentication-key-ownership.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/commit-id-uniqueness.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/commit-id-uniqueness.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/coordinator-snapshot-support.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/coupled-all-or-none.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/coupled-all-or-none.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/effect-record-partition.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/effect-record-partition.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/evidence-plan-outcome-closure.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/evidence-plan-outcome-closure.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/evidence-plan-record-closure.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/evidence-plan-record-closure.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/evidence-submission-integrity.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/evidence-submission-integrity.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/evidence-zero-edges.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/evidence-zero-edges.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/fully-resealed-submission-support.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/genesis-open-assignment-boundary.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/genesis-open-assignment-boundary.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/genesis-scope-authority.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/genesis-scope-authority.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/genesis-workspace-integrity.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/genesis-workspace-integrity.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/idempotency-uniqueness.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/idempotency-uniqueness.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/identity-async-refusal.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/identity-async-refusal.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/identity-binding.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/identity-binding.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/identity-determinism.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/identity-determinism.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/identity-longitudinal-determinism.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/identity-longitudinal-determinism.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/identity-operation-capture.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/identity-operation-capture.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/identity-throw-refusal.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/identity-throw-refusal.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/machine-edge-k10-closure.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/machine-edge-k10-closure.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/mutation-expected-boundary.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/mutation-expected-boundary.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/open-assignment-effect.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/open-assignment-effect.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/ordered-refreeze-replay.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/ordered-refreeze-replay.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/outcome-closure.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/outcome-closure.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/previous-chain-head.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/previous-chain-head.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/receipt-mutation-closure.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/receipt-mutation-closure.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/receipt-supersession-replay.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/receipt-supersession-replay.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/record-authentication-capability.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/record-authentication-capability.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/resulting-root-seal-exclusion.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/resulting-root-seal-exclusion.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/revision-continuity.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/revision-continuity.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/skipped-journal-record-ordinal-direct.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/skipped-journal-record-ordinal-direct.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/support.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/tamper-refusal.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/tamper-refusal.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/terminal-workspace-closure.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/terminal-workspace-closure.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/transition-created-resource-retention.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/transition-created-resource-retention.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/transition-edge-bundle.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/transition-edge-bundle.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/transition-submission-integrity.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/transition-submission-integrity.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/transition-tamper-support.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/workspace-effect-exhaustiveness.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/journal/workspace-effect-exhaustiveness.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
       "path": "tests/authoring/k11-suite-definition.mjs"
     },
     {
       "expectedId": null,
       "kind": "authored",
       "path": "tests/authoring/k12-suite-definition.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/k13-suite-definition.mjs"
     },
     {
       "expectedId": null,
@@ -7721,6 +9275,516 @@
       "expectedId": null,
       "kind": "authored",
       "path": "tests/authoring/neutrality/kernel-import-boundary.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/active-head-post-image.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/active-head-post-image.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/dependency-edge-post-image.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/dependency-edge-post-image.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/evidence-mutation-plan.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/evidence-mutation-plan.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/evidence-only-revision.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/evidence-only-revision.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/handoff-add.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/handoff-add.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/handoff-remove.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/handoff-remove.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/handoff-replace.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/handoff-replace.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/handoff-untouched-retention.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/handoff-untouched-retention.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/history-append-post-image.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/history-append-post-image.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/issuance-reauthorization-idempotency.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/issuance-reauthorization-idempotency.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/neutral-import-closure.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/neutral-import-closure.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/open-assignment-post-image.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/open-assignment-post-image.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/ordered-duplicate-issues.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/ordered-duplicate-issues.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/receipt-construction.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/receipt-construction.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/receipt-single-revision-retention.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/receipt-single-revision-retention.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/rejected-zero-semantic-mutation.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/rejected-zero-semantic-mutation.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/resource-version-immutability.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/resource-version-immutability.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/semantic-transition-revision.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/semantic-transition-revision.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/supersession-disposition-authority.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/supersession-disposition-authority.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/support.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/workspace-integrity-reseal.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/core/workspace-integrity-reseal.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/accessor-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/accessor-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/alias-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/alias-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/atomic-visibility.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/atomic-visibility.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/authenticated-cold-rehydration.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/authenticated-cold-rehydration.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/authenticated-post-image-prepublish-refusal.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/authenticated-post-image-prepublish-refusal.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/authenticated-root-reseal-refusal.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/authenticated-root-reseal-refusal.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/authentication-key-ownership.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/authentication-key-ownership.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/cas-conflict.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/cas-conflict.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/cold-rehydration.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/cold-rehydration.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/crash-after-publish.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/crash-after-publish.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/crash-before-publish.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/crash-before-publish.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/detached-snapshot.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/detached-snapshot.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/exact-token.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/exact-token.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/failed-initial-authentication-no-residue.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/failed-initial-authentication-no-residue.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/immutable-input.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/immutable-input.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/initial-store-identity.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/initial-store-identity.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/logical-crash-before-assembly-old-root.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/logical-crash-before-assembly-old-root.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/logical-crash-during-assembly-old-root.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/logical-crash-during-assembly-old-root.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/machine-head-order.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/machine-head-order.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/neutral-import-closure.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/neutral-import-closure.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/proxy-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/proxy-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/replay-valid-post-image.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/replay-valid-post-image.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/root-seal-tamper.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/root-seal-tamper.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/single-use-writer.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/single-use-writer.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/sparse-array-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/sparse-array-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/stale-fence.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/stale-fence.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/support.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/workspace-ambient-root.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/workspace-ambient-root.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/workspace-collection-shape.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/workspace-collection-shape.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/writer-exclusion.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/writer-exclusion.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/writer-lifetime.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/persistence/in-memory/writer-lifetime.test.mjs"
     },
     {
       "expectedId": null,
@@ -8245,6 +10309,11 @@
     {
       "expectedId": null,
       "kind": "authored",
+      "path": "tests/authoring/register-k13-suite.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
       "path": "tests/authoring/text-forms/all-types-roundtrip.test.json"
     },
     {
@@ -8560,6 +10629,361 @@
     {
       "expectedId": null,
       "kind": "authored",
+      "path": "tests/authoring/transactions/assignment-issuance-dag.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/assignment-issuance-dag.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/accepted-submit-atomic.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/accepted-submit-atomic.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/authentication-key-boundary.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/authentication-key-boundary.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/cancel-replay-reissue.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/cancel-replay-reissue.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/cold-coordinator-pending-reproduction.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/cold-coordinator-pending-reproduction.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/concurrent-different-submit.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/concurrent-different-submit.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/concurrent-identical-submit.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/concurrent-identical-submit.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/contract-validator-thenable.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/contract-validator-thenable.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/driver-config.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/drivers/driver-contract.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/drivers/in-memory-driver.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/event-rejection-evidence-only.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/event-rejection-evidence-only.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/event-transition-replay.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/event-transition-replay.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/first-next-persistence.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/first-next-persistence.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/handoff-scope-replay.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/handoff-scope-replay.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/idempotent-command-contract.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/idempotent-command-contract.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/machine-qualified-idempotency-reuse-changed-payload-read-only.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/machine-qualified-idempotency-reuse-changed-payload-read-only.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/pending-next-read-only.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/pending-next-read-only.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/post-publish-ack-loss-replay.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/post-publish-ack-loss-replay.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/profile-authority-cancel-boundary.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/profile-authority-cancel-boundary.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/profile-authority-pending-boundary.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/profile-authority-pending-boundary.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/profile-authority-read-boundary.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/profile-authority-read-boundary.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/protocol-authority-cancel-boundary.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/protocol-authority-cancel-boundary.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/protocol-authority-pending-boundary.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/protocol-authority-pending-boundary.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/protocol-authority-read-boundary.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/protocol-authority-read-boundary.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/rejected-submission-evidence-only.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/rejected-submission-evidence-only.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/rejection-correction-transition.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/rejection-correction-transition.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/stale-event-read-only.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/stale-event-read-only.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/stale-submit-no-callback.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/stale-submit-no-callback.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/store-operation-capture.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/store-operation-capture.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/store-operation-single-read.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/store-operation-single-read.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/submit-idempotent-replay.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/submit-idempotent-replay.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/support.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/trusted-input-capability-snapshot.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/coordinator/trusted-input-capability-snapshot.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/handoff-authority-resolution.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/handoff-authority-resolution.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/inventory-reference-conflict.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/inventory-reference-conflict.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/pending-assignment-reproduction.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/pending-assignment-reproduction.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/transactions/support.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
       "path": "tests/baseline-freeze/canonical-v1-freeze.test.json"
     },
     {
@@ -8830,6 +11254,11 @@
     {
       "expectedId": null,
       "kind": "authored",
+      "path": "tests/fixtures/authoring/contracts/k10-authoring-schema-closure.snapshot.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
       "path": "tests/fixtures/authoring/contracts/negative/authoring-assignment.json"
     },
     {
@@ -8871,6 +11300,11 @@
       "expectedId": null,
       "kind": "authored",
       "path": "tests/fixtures/authoring/contracts/negative/authoring-submission.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/authoring/contracts/negative/authoring-workspace-effect.json"
     },
     {
       "expectedId": null,
@@ -8946,6 +11380,11 @@
       "expectedId": null,
       "kind": "authored",
       "path": "tests/fixtures/authoring/contracts/positive/authoring-submission.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/authoring/contracts/positive/authoring-workspace-effect.json"
     },
     {
       "expectedId": null,

@@ -1,0 +1,57 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:proxy-rejection",
+  "obligationId": "O-AS14-63",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS14"
+  ],
+  "verification": {
+    "precondition": "The mapped K13 authorities, neutral runtime, and immutable fixtures exist as package-owned files.",
+    "stimulus": "Execute tests/authoring/persistence/in-memory/proxy-rejection.test.mjs with node:test under its declared adapter applicability.",
+    "expectedSemanticState": "Only the semantic-state effect asserted by O-AS14-63 may occur.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: snapshot validation rejects a proxy without consulting its traps",
+    "forbiddenMutation": "Do not infer filesystem durability, Survey-session integration, a future adapter implementation, public API stability, or behavior beyond the literal assertion.",
+    "applicability": {
+      "mode": "specific",
+      "transports": [],
+      "adapters": [
+        "urn:mission-kit:survey-v2:adapter:in-memory"
+      ]
+    },
+    "inspectedAuthorities": [
+      "schemas/authoring/v1alpha1/authoring-assignment.schema.json",
+      "schemas/authoring/v1alpha1/authoring-commit-receipt.schema.json",
+      "schemas/authoring/v1alpha1/authoring-journal-record.schema.json",
+      "schemas/authoring/v1alpha1/authoring-mutation.schema.json",
+      "schemas/authoring/v1alpha1/authoring-request.schema.json",
+      "schemas/authoring/v1alpha1/authoring-submission.schema.json",
+      "schemas/authoring/v1alpha1/authoring-workspace-effect.schema.json",
+      "schemas/authoring/v1alpha1/authoring-workspace.schema.json",
+      "schemas/authoring/v1alpha1/common.schema.json",
+      "schemas/authoring/v1alpha1/context-closure.schema.json",
+      "schemas/authoring/v1alpha1/projection-artifact.schema.json",
+      "schemas/authoring/v1alpha1/resource-reference.schema.json",
+      "schemas/authoring/v1alpha1/validation-issue.schema.json",
+      "source/authoring/adapters/in-memory-store.mjs",
+      "source/authoring/kernel/canonical.mjs",
+      "source/authoring/kernel/contract-semantics.mjs",
+      "source/authoring/kernel/digests.mjs",
+      "source/authoring/runtime/commit-records.mjs",
+      "source/authoring/runtime/journal-replay.mjs",
+      "source/authoring/runtime/store-port.mjs",
+      "source/authoring/runtime/workspace-application.mjs"
+    ]
+  },
+  "behavior": "snapshot validation rejects a proxy without consulting its traps",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/authoring/persistence/in-memory/proxy-rejection.test.mjs",
+  "fixtures": [
+    "tests/authoring/persistence/in-memory/support.mjs",
+    "tests/fixtures/authoring/contracts/positive/authoring-workspace.json"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

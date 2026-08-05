@@ -26,7 +26,8 @@ export const AUTHORING_DIGEST_DOMAINS = Object.freeze([
   "revision-plan",
   "assignment",
   "projection-artifact",
-  "mutation"
+  "mutation",
+  "evidence-mutation"
 ]);
 
 const authoringDigestDomainSet = new Set(AUTHORING_DIGEST_DOMAINS);
@@ -549,22 +550,38 @@ export function commitReceiptDigest(receipt) {
   );
 }
 
+const journalRecordAuthenticationFields = Object.freeze([
+  "commitId",
+  "ordinal",
+  "commitKind",
+  "actor",
+  "authority",
+  "idempotency",
+  "commandDigest",
+  "payloadDigest",
+  "previousSealDigest",
+  "before",
+  "after",
+  "beforeWorkspaceIntegrityDigest",
+  "afterWorkspaceIntegrityDigest",
+  "workspaceEffect",
+  "mutationDigest",
+  "machineEdges"
+]);
+
+export function projectJournalRecordAuthenticationCore(record) {
+  return projectSelfExcludedCore(record, {
+    include: journalRecordAuthenticationFields,
+    selfDigestField: "authenticationDigest",
+    label: "authoring journal record authentication"
+  });
+}
+
 export function projectJournalRecordCore(record) {
   return projectSelfExcludedCore(record, {
     include: [
-      "commitId",
-      "ordinal",
-      "commitKind",
-      "actor",
-      "authority",
-      "idempotency",
-      "commandDigest",
-      "payloadDigest",
-      "previousSealDigest",
-      "before",
-      "after",
-      "mutationDigest",
-      "machineEdges"
+      ...journalRecordAuthenticationFields,
+      "authenticationDigest"
     ],
     selfDigestField: "recordDigest",
     label: "authoring journal record"

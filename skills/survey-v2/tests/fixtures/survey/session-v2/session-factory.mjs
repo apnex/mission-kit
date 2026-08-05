@@ -254,10 +254,34 @@ export function makeJournalRecord({
   idempotencyKey = `journal-${ordinal}`,
   commandDigest = digest("1"),
   payloadDigest = digest("2"),
-  previousSealDigest = digest("3")
+  previousSealDigest = digest("3"),
+  beforeWorkspaceIntegrityDigest = digest("5"),
+  afterWorkspaceIntegrityDigest = digest("6"),
+  workspaceEffect = {
+    retainedResources: [],
+    historyReferences: [],
+    openAssignment: {
+      before: null,
+      after: null
+    },
+    activeHeads: {
+      before: [],
+      after: []
+    },
+    dependencyEdges: {
+      before: [],
+      after: []
+    },
+    handoffProducts: {
+      before: [],
+      after: []
+    },
+    handoffSlots: []
+  }
 }) {
   const value = {
     recordDigest: digest("0"),
+    authenticationDigest: digest("a"),
     commitId,
     ordinal,
     commitKind,
@@ -282,6 +306,9 @@ export function makeJournalRecord({
     previousSealDigest,
     before: structuredClone(before),
     after: structuredClone(after),
+    beforeWorkspaceIntegrityDigest,
+    afterWorkspaceIntegrityDigest,
+    workspaceEffect: structuredClone(workspaceEffect),
     mutationDigest: digest("4"),
     machineEdges: structuredClone(machineEdges)
   };
@@ -290,6 +317,9 @@ export function makeJournalRecord({
 }
 
 export function attachJournal(session, entries) {
+  const genesisWorkspaceIntegrityDigest =
+    session.authoring.workspace.spec.integrity
+      .workspaceIntegrityDigest;
   const finalState = entries.at(-1)?.after ?? {
     semanticRevision: 0,
     evidenceRevision: 0,
@@ -319,6 +349,13 @@ export function attachJournal(session, entries) {
     next.previousSealDigest = index === 0
       ? sessionGenesisSealDigest(session)
       : journal[index - 1].recordDigest;
+    next.beforeWorkspaceIntegrityDigest = index === 0
+      ? genesisWorkspaceIntegrityDigest
+      : journal[index - 1].afterWorkspaceIntegrityDigest;
+    if (index === entries.length - 1) {
+      next.afterWorkspaceIntegrityDigest =
+        workspace.spec.integrity.workspaceIntegrityDigest;
+    }
     next.recordDigest = journalRecordDigest(next);
     journal.push(next);
   });

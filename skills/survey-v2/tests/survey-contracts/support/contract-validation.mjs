@@ -48,6 +48,7 @@ const expectedAuthoringSchemaFiles = Object.freeze([
   "authoring-protocol.schema.json",
   "authoring-request.schema.json",
   "authoring-submission.schema.json",
+  "authoring-workspace-effect.schema.json",
   "authoring-workspace.schema.json",
   "common.schema.json",
   "context-closure.schema.json",

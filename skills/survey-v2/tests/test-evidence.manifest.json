@@ -328,6 +328,10 @@
       "descriptorPath": "tests/authoring/contracts/historical-transaction-operational-slice.test.json"
     },
     {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:k13-schema-closure",
+      "descriptorPath": "tests/authoring/contracts/k13-schema-closure.test.json"
+    },
+    {
       "id": "urn:mission-kit:survey-v2:test:authoring:contracts:mutation-active-head-before-image",
       "descriptorPath": "tests/authoring/contracts/mutation-active-head-before-image.test.json"
     },
@@ -396,6 +400,10 @@
       "descriptorPath": "tests/authoring/contracts/negative/authoring-submission.test.json"
     },
     {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:negative:authoring-workspace-effect",
+      "descriptorPath": "tests/authoring/contracts/negative/authoring-workspace-effect.test.json"
+    },
+    {
       "id": "urn:mission-kit:survey-v2:test:authoring:contracts:negative:authoring-workspace",
       "descriptorPath": "tests/authoring/contracts/negative/authoring-workspace.test.json"
     },
@@ -454,6 +462,10 @@
     {
       "id": "urn:mission-kit:survey-v2:test:authoring:contracts:positive:authoring-submission",
       "descriptorPath": "tests/authoring/contracts/positive/authoring-submission.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:contracts:positive:authoring-workspace-effect",
+      "descriptorPath": "tests/authoring/contracts/positive/authoring-workspace-effect.test.json"
     },
     {
       "id": "urn:mission-kit:survey-v2:test:authoring:contracts:positive:authoring-workspace",
@@ -708,6 +720,154 @@
       "descriptorPath": "tests/authoring/digests/workspace-semantic-whitelist.test.json"
     },
     {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:assignment-dag-retention",
+      "descriptorPath": "tests/authoring/journal/assignment-dag-retention.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:authentication-key-ownership",
+      "descriptorPath": "tests/authoring/journal/authentication-key-ownership.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:commit-id-uniqueness",
+      "descriptorPath": "tests/authoring/journal/commit-id-uniqueness.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:coupled-all-or-none",
+      "descriptorPath": "tests/authoring/journal/coupled-all-or-none.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:effect-record-partition",
+      "descriptorPath": "tests/authoring/journal/effect-record-partition.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:evidence-plan-outcome-closure",
+      "descriptorPath": "tests/authoring/journal/evidence-plan-outcome-closure.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:evidence-plan-record-closure",
+      "descriptorPath": "tests/authoring/journal/evidence-plan-record-closure.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:evidence-submission-integrity",
+      "descriptorPath": "tests/authoring/journal/evidence-submission-integrity.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:evidence-zero-edges",
+      "descriptorPath": "tests/authoring/journal/evidence-zero-edges.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:genesis-open-assignment-boundary",
+      "descriptorPath": "tests/authoring/journal/genesis-open-assignment-boundary.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:genesis-scope-authority",
+      "descriptorPath": "tests/authoring/journal/genesis-scope-authority.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:genesis-workspace-integrity",
+      "descriptorPath": "tests/authoring/journal/genesis-workspace-integrity.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:idempotency-uniqueness",
+      "descriptorPath": "tests/authoring/journal/idempotency-uniqueness.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:identity-async-refusal",
+      "descriptorPath": "tests/authoring/journal/identity-async-refusal.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:identity-binding",
+      "descriptorPath": "tests/authoring/journal/identity-binding.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:identity-determinism",
+      "descriptorPath": "tests/authoring/journal/identity-determinism.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:identity-longitudinal-determinism",
+      "descriptorPath": "tests/authoring/journal/identity-longitudinal-determinism.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:identity-operation-capture",
+      "descriptorPath": "tests/authoring/journal/identity-operation-capture.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:identity-throw-refusal",
+      "descriptorPath": "tests/authoring/journal/identity-throw-refusal.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:machine-edge-k10-closure",
+      "descriptorPath": "tests/authoring/journal/machine-edge-k10-closure.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:mutation-expected-boundary",
+      "descriptorPath": "tests/authoring/journal/mutation-expected-boundary.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:open-assignment-effect",
+      "descriptorPath": "tests/authoring/journal/open-assignment-effect.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:ordered-refreeze-replay",
+      "descriptorPath": "tests/authoring/journal/ordered-refreeze-replay.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:outcome-closure",
+      "descriptorPath": "tests/authoring/journal/outcome-closure.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:previous-chain-head",
+      "descriptorPath": "tests/authoring/journal/previous-chain-head.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:receipt-mutation-closure",
+      "descriptorPath": "tests/authoring/journal/receipt-mutation-closure.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:receipt-supersession-replay",
+      "descriptorPath": "tests/authoring/journal/receipt-supersession-replay.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:record-authentication-capability",
+      "descriptorPath": "tests/authoring/journal/record-authentication-capability.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:resulting-root-seal-exclusion",
+      "descriptorPath": "tests/authoring/journal/resulting-root-seal-exclusion.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:revision-continuity",
+      "descriptorPath": "tests/authoring/journal/revision-continuity.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:skipped-journal-record-ordinal-direct",
+      "descriptorPath": "tests/authoring/journal/skipped-journal-record-ordinal-direct.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:tamper-refusal",
+      "descriptorPath": "tests/authoring/journal/tamper-refusal.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:terminal-workspace-closure",
+      "descriptorPath": "tests/authoring/journal/terminal-workspace-closure.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:transition-created-resource-retention",
+      "descriptorPath": "tests/authoring/journal/transition-created-resource-retention.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:transition-edge-bundle",
+      "descriptorPath": "tests/authoring/journal/transition-edge-bundle.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:transition-submission-integrity",
+      "descriptorPath": "tests/authoring/journal/transition-submission-integrity.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:journal:workspace-effect-exhaustiveness",
+      "descriptorPath": "tests/authoring/journal/workspace-effect-exhaustiveness.test.json"
+    },
+    {
       "id": "urn:mission-kit:survey-v2:test:authoring:mutation-planning:async-contract-validator",
       "descriptorPath": "tests/authoring/mutation-planning/async-contract-validator.test.json"
     },
@@ -778,6 +938,206 @@
     {
       "id": "urn:mission-kit:survey-v2:test:authoring:neutrality:kernel-import-boundary",
       "descriptorPath": "tests/authoring/neutrality/kernel-import-boundary.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:core:active-head-post-image",
+      "descriptorPath": "tests/authoring/persistence/core/active-head-post-image.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:core:dependency-edge-post-image",
+      "descriptorPath": "tests/authoring/persistence/core/dependency-edge-post-image.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:core:evidence-mutation-plan",
+      "descriptorPath": "tests/authoring/persistence/core/evidence-mutation-plan.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:core:evidence-only-revision",
+      "descriptorPath": "tests/authoring/persistence/core/evidence-only-revision.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:core:handoff-add",
+      "descriptorPath": "tests/authoring/persistence/core/handoff-add.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:core:handoff-remove",
+      "descriptorPath": "tests/authoring/persistence/core/handoff-remove.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:core:handoff-replace",
+      "descriptorPath": "tests/authoring/persistence/core/handoff-replace.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:core:handoff-untouched-retention",
+      "descriptorPath": "tests/authoring/persistence/core/handoff-untouched-retention.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:core:history-append-post-image",
+      "descriptorPath": "tests/authoring/persistence/core/history-append-post-image.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:core:issuance-reauthorization-idempotency",
+      "descriptorPath": "tests/authoring/persistence/core/issuance-reauthorization-idempotency.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:core:neutral-import-closure",
+      "descriptorPath": "tests/authoring/persistence/core/neutral-import-closure.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:core:open-assignment-post-image",
+      "descriptorPath": "tests/authoring/persistence/core/open-assignment-post-image.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:core:ordered-duplicate-issues",
+      "descriptorPath": "tests/authoring/persistence/core/ordered-duplicate-issues.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:core:receipt-construction",
+      "descriptorPath": "tests/authoring/persistence/core/receipt-construction.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:core:receipt-single-revision-retention",
+      "descriptorPath": "tests/authoring/persistence/core/receipt-single-revision-retention.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:core:rejected-zero-semantic-mutation",
+      "descriptorPath": "tests/authoring/persistence/core/rejected-zero-semantic-mutation.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:core:resource-version-immutability",
+      "descriptorPath": "tests/authoring/persistence/core/resource-version-immutability.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:core:semantic-transition-revision",
+      "descriptorPath": "tests/authoring/persistence/core/semantic-transition-revision.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:core:supersession-disposition-authority",
+      "descriptorPath": "tests/authoring/persistence/core/supersession-disposition-authority.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:core:workspace-integrity-reseal",
+      "descriptorPath": "tests/authoring/persistence/core/workspace-integrity-reseal.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:accessor-rejection",
+      "descriptorPath": "tests/authoring/persistence/in-memory/accessor-rejection.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:alias-rejection",
+      "descriptorPath": "tests/authoring/persistence/in-memory/alias-rejection.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:atomic-visibility",
+      "descriptorPath": "tests/authoring/persistence/in-memory/atomic-visibility.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:authenticated-cold-rehydration",
+      "descriptorPath": "tests/authoring/persistence/in-memory/authenticated-cold-rehydration.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:authenticated-post-image-prepublish-refusal",
+      "descriptorPath": "tests/authoring/persistence/in-memory/authenticated-post-image-prepublish-refusal.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:authenticated-root-reseal-refusal",
+      "descriptorPath": "tests/authoring/persistence/in-memory/authenticated-root-reseal-refusal.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:authentication-key-ownership",
+      "descriptorPath": "tests/authoring/persistence/in-memory/authentication-key-ownership.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:cas-conflict",
+      "descriptorPath": "tests/authoring/persistence/in-memory/cas-conflict.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:cold-rehydration",
+      "descriptorPath": "tests/authoring/persistence/in-memory/cold-rehydration.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:crash-after-publish",
+      "descriptorPath": "tests/authoring/persistence/in-memory/crash-after-publish.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:crash-before-publish",
+      "descriptorPath": "tests/authoring/persistence/in-memory/crash-before-publish.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:detached-snapshot",
+      "descriptorPath": "tests/authoring/persistence/in-memory/detached-snapshot.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:exact-token",
+      "descriptorPath": "tests/authoring/persistence/in-memory/exact-token.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:failed-initial-authentication-no-residue",
+      "descriptorPath": "tests/authoring/persistence/in-memory/failed-initial-authentication-no-residue.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:immutable-input",
+      "descriptorPath": "tests/authoring/persistence/in-memory/immutable-input.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:initial-store-identity",
+      "descriptorPath": "tests/authoring/persistence/in-memory/initial-store-identity.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:logical-crash-before-assembly-old-root",
+      "descriptorPath": "tests/authoring/persistence/in-memory/logical-crash-before-assembly-old-root.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:logical-crash-during-assembly-old-root",
+      "descriptorPath": "tests/authoring/persistence/in-memory/logical-crash-during-assembly-old-root.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:machine-head-order",
+      "descriptorPath": "tests/authoring/persistence/in-memory/machine-head-order.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:neutral-import-closure",
+      "descriptorPath": "tests/authoring/persistence/in-memory/neutral-import-closure.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:proxy-rejection",
+      "descriptorPath": "tests/authoring/persistence/in-memory/proxy-rejection.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:replay-valid-post-image",
+      "descriptorPath": "tests/authoring/persistence/in-memory/replay-valid-post-image.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:root-seal-tamper",
+      "descriptorPath": "tests/authoring/persistence/in-memory/root-seal-tamper.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:single-use-writer",
+      "descriptorPath": "tests/authoring/persistence/in-memory/single-use-writer.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:sparse-array-rejection",
+      "descriptorPath": "tests/authoring/persistence/in-memory/sparse-array-rejection.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:stale-fence",
+      "descriptorPath": "tests/authoring/persistence/in-memory/stale-fence.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:workspace-ambient-root",
+      "descriptorPath": "tests/authoring/persistence/in-memory/workspace-ambient-root.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:workspace-collection-shape",
+      "descriptorPath": "tests/authoring/persistence/in-memory/workspace-collection-shape.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:writer-exclusion",
+      "descriptorPath": "tests/authoring/persistence/in-memory/writer-exclusion.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:persistence:in-memory:writer-lifetime",
+      "descriptorPath": "tests/authoring/persistence/in-memory/writer-lifetime.test.json"
     },
     {
       "id": "urn:mission-kit:survey-v2:test:authoring:reducer:callback-error-redaction",
@@ -1106,6 +1466,138 @@
     {
       "id": "urn:mission-kit:survey-v2:test:authoring:text-forms:unsafe-static-marker",
       "descriptorPath": "tests/authoring/text-forms/unsafe-static-marker.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:assignment-issuance-dag",
+      "descriptorPath": "tests/authoring/transactions/assignment-issuance-dag.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:accepted-submit-atomic",
+      "descriptorPath": "tests/authoring/transactions/coordinator/accepted-submit-atomic.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:authentication-key-boundary",
+      "descriptorPath": "tests/authoring/transactions/coordinator/authentication-key-boundary.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:cancel-replay-reissue",
+      "descriptorPath": "tests/authoring/transactions/coordinator/cancel-replay-reissue.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:cold-coordinator-pending-reproduction",
+      "descriptorPath": "tests/authoring/transactions/coordinator/cold-coordinator-pending-reproduction.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:concurrent-different-submit",
+      "descriptorPath": "tests/authoring/transactions/coordinator/concurrent-different-submit.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:concurrent-identical-submit",
+      "descriptorPath": "tests/authoring/transactions/coordinator/concurrent-identical-submit.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:contract-validator-thenable",
+      "descriptorPath": "tests/authoring/transactions/coordinator/contract-validator-thenable.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:event-rejection-evidence-only",
+      "descriptorPath": "tests/authoring/transactions/coordinator/event-rejection-evidence-only.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:event-transition-replay",
+      "descriptorPath": "tests/authoring/transactions/coordinator/event-transition-replay.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:first-next-persistence",
+      "descriptorPath": "tests/authoring/transactions/coordinator/first-next-persistence.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:handoff-scope-replay",
+      "descriptorPath": "tests/authoring/transactions/coordinator/handoff-scope-replay.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:idempotent-command-contract",
+      "descriptorPath": "tests/authoring/transactions/coordinator/idempotent-command-contract.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:machine-qualified-idempotency-reuse-changed-payload-read-only",
+      "descriptorPath": "tests/authoring/transactions/coordinator/machine-qualified-idempotency-reuse-changed-payload-read-only.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:pending-next-read-only",
+      "descriptorPath": "tests/authoring/transactions/coordinator/pending-next-read-only.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:post-publish-ack-loss-replay",
+      "descriptorPath": "tests/authoring/transactions/coordinator/post-publish-ack-loss-replay.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:profile-authority-cancel-boundary",
+      "descriptorPath": "tests/authoring/transactions/coordinator/profile-authority-cancel-boundary.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:profile-authority-pending-boundary",
+      "descriptorPath": "tests/authoring/transactions/coordinator/profile-authority-pending-boundary.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:profile-authority-read-boundary",
+      "descriptorPath": "tests/authoring/transactions/coordinator/profile-authority-read-boundary.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:protocol-authority-cancel-boundary",
+      "descriptorPath": "tests/authoring/transactions/coordinator/protocol-authority-cancel-boundary.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:protocol-authority-pending-boundary",
+      "descriptorPath": "tests/authoring/transactions/coordinator/protocol-authority-pending-boundary.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:protocol-authority-read-boundary",
+      "descriptorPath": "tests/authoring/transactions/coordinator/protocol-authority-read-boundary.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:rejected-submission-evidence-only",
+      "descriptorPath": "tests/authoring/transactions/coordinator/rejected-submission-evidence-only.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:rejection-correction-transition",
+      "descriptorPath": "tests/authoring/transactions/coordinator/rejection-correction-transition.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:stale-event-read-only",
+      "descriptorPath": "tests/authoring/transactions/coordinator/stale-event-read-only.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:stale-submit-no-callback",
+      "descriptorPath": "tests/authoring/transactions/coordinator/stale-submit-no-callback.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:store-operation-capture",
+      "descriptorPath": "tests/authoring/transactions/coordinator/store-operation-capture.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:store-operation-single-read",
+      "descriptorPath": "tests/authoring/transactions/coordinator/store-operation-single-read.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:submit-idempotent-replay",
+      "descriptorPath": "tests/authoring/transactions/coordinator/submit-idempotent-replay.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:coordinator:trusted-input-capability-snapshot",
+      "descriptorPath": "tests/authoring/transactions/coordinator/trusted-input-capability-snapshot.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:handoff-authority-resolution",
+      "descriptorPath": "tests/authoring/transactions/handoff-authority-resolution.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:inventory-reference-conflict",
+      "descriptorPath": "tests/authoring/transactions/inventory-reference-conflict.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:authoring:transactions:pending-assignment-reproduction",
+      "descriptorPath": "tests/authoring/transactions/pending-assignment-reproduction.test.json"
     },
     {
       "id": "urn:mission-kit:survey-v2:test:canonical-v1-freeze",

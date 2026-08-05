@@ -6,6 +6,7 @@
   "additionalProperties": false,
   "required": [
     "recordDigest",
+    "authenticationDigest",
     "commitId",
     "ordinal",
     "commitKind",
@@ -17,11 +18,15 @@
     "previousSealDigest",
     "before",
     "after",
+    "beforeWorkspaceIntegrityDigest",
+    "afterWorkspaceIntegrityDigest",
+    "workspaceEffect",
     "mutationDigest",
     "machineEdges"
   ],
   "properties": {
     "recordDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
+    "authenticationDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
     "commitId": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/semanticId"},
     "ordinal": {"type": "integer", "minimum": 1},
     "commitKind": {"enum": ["evidence", "transition"]},
@@ -33,6 +38,9 @@
     "previousSealDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
     "before": {"$ref": "#/$defs/revisionState"},
     "after": {"$ref": "#/$defs/revisionState"},
+    "beforeWorkspaceIntegrityDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
+    "afterWorkspaceIntegrityDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
+    "workspaceEffect": {"$ref": "urn:mission-kit:authoring:schema:authoring-workspace-effect:v1alpha1"},
     "mutationDigest": {"$ref": "urn:mission-kit:authoring:schema:common:v1alpha1#/$defs/digest"},
     "machineEdges": {
       "type": "array",

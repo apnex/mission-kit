@@ -1,0 +1,152 @@
+{
+  "apiVersion": "mission-kit.apnex.io/v1alpha1",
+  "kind": "AuthoringSchemaClosureSnapshot",
+  "metadata": {
+    "name": "survey-v2-k10-authoring-schema-closure"
+  },
+  "spec": {
+    "provenance": {
+      "repository": "github.com/apnex/mission-kit",
+      "commit": "7ac4174c2a4816512e22a4e0ae09250750b67fc2",
+      "tree": "e9ed4c7481f8c95eaa83cce0387e9d258e6056f1",
+      "packageManifest": {
+        "path": "skills/survey-v2/survey-v2.package.json",
+        "byteCount": 72234,
+        "byteDigest": "sha256:a20090e42b741efb6d0730021cad850b568d00e10f756eaccc2bdccb7bd51884",
+        "gitBlobOid": "sha1:231d7fd8d2cf90bbff94e69fa3dba0c9579b5f40"
+      },
+      "implementationReceipt": {
+        "name": "K10-receipt",
+        "path": "work-packages/K10/receipt.json",
+        "byteDigest": "sha256:3915bd29d45f5b8376d729fb9136d2a9f38fe20068cae7801ca8a686f8220a81",
+        "evidenceManifestPath": "work-packages/K10/evidence-manifest.json",
+        "evidenceManifestDigest": "sha256:8e7e580e0b325d5e8bd3acf3659b1e41ab0e7c31d5d1644b2ac80ceb936d0ce5"
+      }
+    },
+    "reconstruction": {
+      "authorityPrefix": "urn:mission-kit:authoring:schema:",
+      "schemaPathPrefix": "schemas/authoring/v1alpha1/",
+      "authoritySelection": "package manifest schemas whose id starts with authorityPrefix",
+      "entryBinding": "manifest id and path equal the exact Git blob JSON $id and package-relative path",
+      "entryOrder": "path ascending by Unicode code point",
+      "byteDigest": "sha256 over exact Git blob bytes",
+      "closureDigest": "sha256 over UTF-8 JSON.stringify(entries)"
+    },
+    "authorityCount": 16,
+    "entries": [
+      {
+        "id": "urn:mission-kit:authoring:schema:authoring-assignment:v1alpha1",
+        "path": "schemas/authoring/v1alpha1/authoring-assignment.schema.json",
+        "byteCount": 2654,
+        "byteDigest": "sha256:9d2138d8dc0d97990196d49072f29149f69ac4c963f07c11f35a6295998fad22",
+        "gitBlobOid": "sha1:eed1bffd4c165aef928123633d8ec8cda1d6cc3b"
+      },
+      {
+        "id": "urn:mission-kit:authoring:schema:authoring-commit-receipt:v1alpha1",
+        "path": "schemas/authoring/v1alpha1/authoring-commit-receipt.schema.json",
+        "byteCount": 8840,
+        "byteDigest": "sha256:18b9e4d85eabb588083acf67d4837470de8f9c3e345e8f81584ab89d11179682",
+        "gitBlobOid": "sha1:126f76ff959e56f42b7593fe9f1bd6ca28892bba"
+      },
+      {
+        "id": "urn:mission-kit:authoring:schema:authoring-form-definition:v1alpha1",
+        "path": "schemas/authoring/v1alpha1/authoring-form-definition.schema.json",
+        "byteCount": 4761,
+        "byteDigest": "sha256:3fe3ba74542b1f1a0bb0f1d7824540f88d3b073b02042a19e0909000a3f05cf8",
+        "gitBlobOid": "sha1:ee779b68f3816e63a0c93f272af784604fc8acc0"
+      },
+      {
+        "id": "urn:mission-kit:authoring:schema:authoring-journal-record:v1alpha1",
+        "path": "schemas/authoring/v1alpha1/authoring-journal-record.schema.json",
+        "byteCount": 4870,
+        "byteDigest": "sha256:0ff8c302802e2d44c33849ef15fbe3eb2d9ba660199e1c4a3f5f91e3425da896",
+        "gitBlobOid": "sha1:cb939e1dcea703725354c54d93b9e2893e4874fb"
+      },
+      {
+        "id": "urn:mission-kit:authoring:schema:authoring-mutation:v1alpha1",
+        "path": "schemas/authoring/v1alpha1/authoring-mutation.schema.json",
+        "byteCount": 9867,
+        "byteDigest": "sha256:1b409c2a5f2160e8cb9456494f1e6c0050908c2130b1719c93d9bb843fe2d074",
+        "gitBlobOid": "sha1:bedddf3ed227435619f0604bfc28001f90007eec"
+      },
+      {
+        "id": "urn:mission-kit:authoring:schema:authoring-profile-manifest:v1alpha1",
+        "path": "schemas/authoring/v1alpha1/authoring-profile-manifest.schema.json",
+        "byteCount": 22576,
+        "byteDigest": "sha256:9031202b62c07b21def3ac6f7761917aad0ff94391835d1acb2781f7e7400737",
+        "gitBlobOid": "sha1:10135fe3b49af59ae04e88fb022d829e6fbf3a69"
+      },
+      {
+        "id": "urn:mission-kit:authoring:schema:authoring-protocol:v1alpha1",
+        "path": "schemas/authoring/v1alpha1/authoring-protocol.schema.json",
+        "byteCount": 4212,
+        "byteDigest": "sha256:b07c1903d7ccb851a45b5b522e94596421e3ebf5fd1adf22a6773e98cce1166f",
+        "gitBlobOid": "sha1:a167133fe8eb8be0e702d75c4de24c2fb4de12ff"
+      },
+      {
+        "id": "urn:mission-kit:authoring:schema:authoring-request:v1alpha1",
+        "path": "schemas/authoring/v1alpha1/authoring-request.schema.json",
+        "byteCount": 7383,
+        "byteDigest": "sha256:caa141e1eadff948d03ed7c3b7f9b7fcc0b3a4975b9fbc42b79be9a2516e4f5e",
+        "gitBlobOid": "sha1:218331a5a772c94a4370efe952ae9b881a3662fa"
+      },
+      {
+        "id": "urn:mission-kit:authoring:schema:authoring-submission:v1alpha1",
+        "path": "schemas/authoring/v1alpha1/authoring-submission.schema.json",
+        "byteCount": 2991,
+        "byteDigest": "sha256:7f7b128ba83395a658df8b035fda95b8b1b556fc9af1e6be09bc9d8038b7d43e",
+        "gitBlobOid": "sha1:8bd8ff35a6a41f233ecfcf1bbf32eb4d99396534"
+      },
+      {
+        "id": "urn:mission-kit:authoring:schema:authoring-workspace:v1alpha1",
+        "path": "schemas/authoring/v1alpha1/authoring-workspace.schema.json",
+        "byteCount": 4014,
+        "byteDigest": "sha256:bb37e39cfce353752706b3c6d54dcfb758fd8fc98532daf39101bb073f26fd2a",
+        "gitBlobOid": "sha1:f019813c7c6d1539995eacadfa7bcbab18f6e7c4"
+      },
+      {
+        "id": "urn:mission-kit:authoring:schema:common:v1alpha1",
+        "path": "schemas/authoring/v1alpha1/common.schema.json",
+        "byteCount": 7555,
+        "byteDigest": "sha256:33bd2ad03ac95bbdd629c8e179eeb7f8d2d859188391472f75c7be8c0dcd9135",
+        "gitBlobOid": "sha1:d6d67733c92385eb38d4892083f991f2654ef4b7"
+      },
+      {
+        "id": "urn:mission-kit:authoring:schema:context-closure:v1alpha1",
+        "path": "schemas/authoring/v1alpha1/context-closure.schema.json",
+        "byteCount": 2816,
+        "byteDigest": "sha256:2a0b619c09ed93839c0029fd77a2aac87f716ac63a53e1a46cc03c2572680b8b",
+        "gitBlobOid": "sha1:98ed44c583034a8962f10284472ba3f7ce06bd9b"
+      },
+      {
+        "id": "urn:mission-kit:authoring:schema:projection-artifact:v1alpha1",
+        "path": "schemas/authoring/v1alpha1/projection-artifact.schema.json",
+        "byteCount": 2724,
+        "byteDigest": "sha256:94533260d28977613175ac82d3f3e3bfa10c8c14eba7c5981121bf219a98c541",
+        "gitBlobOid": "sha1:169a5f007fa409a73d44c4ab707f656fc596f6d8"
+      },
+      {
+        "id": "urn:mission-kit:authoring:schema:resource-reference:v1alpha1",
+        "path": "schemas/authoring/v1alpha1/resource-reference.schema.json",
+        "byteCount": 783,
+        "byteDigest": "sha256:afe7b11c99f84cda959432d9925e3951b13819dc9671e9bf4278472bbed757c0",
+        "gitBlobOid": "sha1:2215c9041011585dcf8d4a002e18ca4c5631432d"
+      },
+      {
+        "id": "urn:mission-kit:authoring:schema:source-snapshot:v1alpha1",
+        "path": "schemas/authoring/v1alpha1/source-snapshot.schema.json",
+        "byteCount": 2279,
+        "byteDigest": "sha256:3079620dec5d267959e410947ef22f26fbb08e7c1f3233378fc92ad5404175e8",
+        "gitBlobOid": "sha1:5c05f67330b55d2f7e1b48a00da9be30767deac7"
+      },
+      {
+        "id": "urn:mission-kit:authoring:schema:validation-issue:v1alpha1",
+        "path": "schemas/authoring/v1alpha1/validation-issue.schema.json",
+        "byteCount": 1479,
+        "byteDigest": "sha256:2a6ada81bca0aeac568cbe67f9a8b010f300c65be203a729a2ebca122c40fbaf",
+        "gitBlobOid": "sha1:cf6ff309c2243dc8bccfe59fa3e1a3af97fd9b26"
+      }
+    ],
+    "closureDigest": "sha256:02af90257b41ccddff13f1a288b21c49356036f8c363c12acc7472cefbb93cba"
+  }
+}

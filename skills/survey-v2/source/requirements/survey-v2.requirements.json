@@ -677,6 +677,14 @@
         {
           "id": "O-AS01-03",
           "statement": "the pure generic reducer derives results without importing or invoking storage, lock, journal, or commit adapters"
+        },
+        {
+          "id": "O-AS01-04",
+          "statement": "K13 workspace, commit, and replay core import no Survey-domain module"
+        },
+        {
+          "id": "O-AS01-05",
+          "statement": "the in-memory store static import closure has no domain or runtime-storage dependency"
         }
       ],
       "evidenceClasses": [
@@ -758,6 +766,30 @@
         {
           "id": "O-AS03-02",
           "statement": "AuthoringWorkspace rejects duplicate active-head slots"
+        },
+        {
+          "id": "O-AS03-03",
+          "statement": "the replayed authoring head closes the terminal Workspace state"
+        },
+        {
+          "id": "O-AS03-04",
+          "statement": "an evidence-only write increments only evidenceRevision"
+        },
+        {
+          "id": "O-AS03-05",
+          "statement": "evidence application sets the exact retained Assignment binding"
+        },
+        {
+          "id": "O-AS03-06",
+          "statement": "retaining the completed Receipt adds no second transition revision"
+        },
+        {
+          "id": "O-AS03-07",
+          "statement": "an accepted transition increments both revisions and changes semantic identity"
+        },
+        {
+          "id": "O-AS03-08",
+          "statement": "snapshot validation rejects non-UTF-8-ordered machine heads"
         }
       ],
       "evidenceClasses": [
@@ -812,6 +844,14 @@
         {
           "id": "O-AS04-11",
           "statement": "trusted inventory is snapshotted before executable dispatch"
+        },
+        {
+          "id": "O-AS04-12",
+          "statement": "first next persists one complete Assignment DAG in one evidence commit"
+        },
+        {
+          "id": "O-AS04-13",
+          "statement": "repeated next reproduces the pending Assignment byte-for-byte without a write"
         }
       ],
       "evidenceClasses": [
@@ -1376,6 +1416,22 @@
         {
           "id": "O-AS07-33",
           "statement": "a self-consistent submission with any broken K11 DAG edge rejects before semantic callbacks"
+        },
+        {
+          "id": "O-AS07-34",
+          "statement": "a journal outcome must resolve its exact retained result ancestry"
+        },
+        {
+          "id": "O-AS07-35",
+          "statement": "replay rejects a self-consistent Receipt that changes Mutation ancestry"
+        },
+        {
+          "id": "O-AS07-36",
+          "statement": "a K12 task becomes one complete deterministic K11 Assignment DAG"
+        },
+        {
+          "id": "O-AS07-37",
+          "statement": "assignment issuance replay requires the retained Request ContextClosure and ProjectionArtifact DAG"
         }
       ],
       "evidenceClasses": [
@@ -1410,6 +1466,78 @@
         {
           "id": "O-AS08-06",
           "statement": "raw evidence preserves submitted bytes while parsing normalizes newlines"
+        },
+        {
+          "id": "O-AS08-07",
+          "statement": "an evidence outcome must equal the outcome sealed by its plan"
+        },
+        {
+          "id": "O-AS08-08",
+          "statement": "a machine-qualified idempotency tuple identifies only one journal record"
+        },
+        {
+          "id": "O-AS08-09",
+          "statement": "byte-identical Assignment reauthorization is keyed by locked prior evidence revision"
+        },
+        {
+          "id": "O-AS08-10",
+          "statement": "an outcome preserves ordered byte-identical K12 ValidationIssues"
+        },
+        {
+          "id": "O-AS08-11",
+          "statement": "retaining a rejected attempt preserves semantic state and the open Assignment"
+        },
+        {
+          "id": "O-AS08-12",
+          "statement": "cancellation is replayable and a later next explicitly reauthorizes the byte-identical Assignment"
+        },
+        {
+          "id": "O-AS08-13",
+          "statement": "concurrent different submissions for one Assignment produce one winner and one consumed conflict"
+        },
+        {
+          "id": "O-AS08-14",
+          "statement": "concurrent identical submissions produce one commit and one deterministic replay"
+        },
+        {
+          "id": "O-AS08-15",
+          "statement": "current event rejection retains issues in one evidence-only commit"
+        },
+        {
+          "id": "O-AS08-16",
+          "statement": "accepted event commits one transition and exact replay wins before stale-state evaluation"
+        },
+        {
+          "id": "O-AS08-17",
+          "statement": "acknowledgement loss after publication resolves to the committed outcome on retry"
+        },
+        {
+          "id": "O-AS08-18",
+          "statement": "current semantic rejection retains exact Submission evidence and issues without changing semantic state"
+        },
+        {
+          "id": "O-AS08-19",
+          "statement": "a corrected submission may consume the Assignment after an earlier retained rejection"
+        },
+        {
+          "id": "O-AS08-20",
+          "statement": "a stale event is rejected before profile callbacks and remains read-only"
+        },
+        {
+          "id": "O-AS08-21",
+          "statement": "a cancelled Assignment is refused before any profile callback or write"
+        },
+        {
+          "id": "O-AS08-22",
+          "statement": "identical submission replay returns the retained Receipt and changes no revision or callback count"
+        },
+        {
+          "id": "O-AS08-23",
+          "statement": "idempotent submit replay validates complete command resource contracts before lookup"
+        },
+        {
+          "id": "O-AS08-24",
+          "statement": "machine-qualified idempotency reuse with a changed payload is read-only and invokes no callbacks"
         }
       ],
       "evidenceClasses": [
@@ -1542,6 +1670,38 @@
         {
           "id": "O-AS11-16",
           "statement": "one sealed revision submission atomically replaces an ordered Brief and Appendix group through each kind's exact validators"
+        },
+        {
+          "id": "O-AS11-17",
+          "statement": "declared active heads advance while every undeclared head is retained"
+        },
+        {
+          "id": "O-AS11-18",
+          "statement": "dependency post-image removes and adds only the declared exact edges"
+        },
+        {
+          "id": "O-AS11-19",
+          "statement": "a selected handoff slot can be added"
+        },
+        {
+          "id": "O-AS11-20",
+          "statement": "omitting a product for a selected handoff slot removes it"
+        },
+        {
+          "id": "O-AS11-21",
+          "statement": "a selected handoff slot is replaced by its exact new active head"
+        },
+        {
+          "id": "O-AS11-22",
+          "statement": "an undeclared handoff slot is retained byte-for-byte"
+        },
+        {
+          "id": "O-AS11-23",
+          "statement": "history retains its prior order and appends new evidence in transaction order"
+        },
+        {
+          "id": "O-AS11-24",
+          "statement": "Receipt supersession dispositions are derived from exact Mutation ancestry"
         }
       ],
       "evidenceClasses": [
@@ -1554,7 +1714,24 @@
     {
       "id": "AS12",
       "statement": "Cold resume reproduces the exact pending Assignment and projection.",
-      "acceptanceObligations": [],
+      "acceptanceObligations": [
+        {
+          "id": "O-AS12-01",
+          "statement": "exported backing cold-rehydrates the exact neutral snapshot"
+        },
+        {
+          "id": "O-AS12-02",
+          "statement": "a fresh coordinator over retained persistence reproduces the exact pending Assignment"
+        },
+        {
+          "id": "O-AS12-03",
+          "statement": "a fresh transaction reader reproduces exact pending Assignment resources and bytes"
+        },
+        {
+          "id": "O-AS12-04",
+          "statement": "cold reconstruction with the same external authentication key verifies the exact journal"
+        }
+      ],
       "evidenceClasses": [
         "resume",
         "conformance"
@@ -1667,6 +1844,14 @@
         {
           "id": "O-AS13-26",
           "statement": "the complete product group is shape-checked before any product validator runs"
+        },
+        {
+          "id": "O-AS13-27",
+          "statement": "transition handoff application receives only the manifest-selected slot set"
+        },
+        {
+          "id": "O-AS13-28",
+          "statement": "cold coordinator replay rejects a journal handoff scope outside the manifest-selected transition footprint"
         }
       ],
       "evidenceClasses": [
@@ -1865,6 +2050,174 @@
         {
           "id": "O-AS14-47",
           "statement": "executable identity rejection precedes stale command freshness without callback dispatch"
+        },
+        {
+          "id": "O-AS14-48",
+          "statement": "genesis authority comes from the immutable scope rather than terminal Workspace"
+        },
+        {
+          "id": "O-AS14-49",
+          "statement": "an asynchronous identity operation is rejected before replay"
+        },
+        {
+          "id": "O-AS14-50",
+          "statement": "changed runtime code identity is rejected before replay"
+        },
+        {
+          "id": "O-AS14-51",
+          "statement": "a nondeterministic identity operation is rejected during port compilation"
+        },
+        {
+          "id": "O-AS14-52",
+          "statement": "identity determinism remains pinned across later invocations"
+        },
+        {
+          "id": "O-AS14-53",
+          "statement": "a compiled identity capability pins its validated operation references"
+        },
+        {
+          "id": "O-AS14-54",
+          "statement": "a throwing identity operation is rejected before replay"
+        },
+        {
+          "id": "O-AS14-55",
+          "statement": "changed historical bytes are refused before terminal replay"
+        },
+        {
+          "id": "O-AS14-56",
+          "statement": "an exact resource version cannot be rebound to different bytes"
+        },
+        {
+          "id": "O-AS14-57",
+          "statement": "snapshot validation rejects an accessor without invoking it"
+        },
+        {
+          "id": "O-AS14-58",
+          "statement": "snapshot validation rejects an aliased canonical object graph"
+        },
+        {
+          "id": "O-AS14-59",
+          "statement": "store reads are detached deeply frozen canonical snapshots"
+        },
+        {
+          "id": "O-AS14-60",
+          "statement": "compare-and-commit rejects any expected token beyond the exact four fields"
+        },
+        {
+          "id": "O-AS14-61",
+          "statement": "compare-and-commit detaches caller input before asynchronous work"
+        },
+        {
+          "id": "O-AS14-62",
+          "statement": "initial store accepts its exact identity scope and rejects a resealed tamper"
+        },
+        {
+          "id": "O-AS14-63",
+          "statement": "snapshot validation rejects a proxy without consulting its traps"
+        },
+        {
+          "id": "O-AS14-64",
+          "statement": "cold backing import rejects a changed physical root seal"
+        },
+        {
+          "id": "O-AS14-65",
+          "statement": "snapshot validation rejects a sparse array"
+        },
+        {
+          "id": "O-AS14-66",
+          "statement": "a capability from an older private writer fence is rejected"
+        },
+        {
+          "id": "O-AS14-67",
+          "statement": "coordinator captures trusted capabilities and static inventory at construction"
+        },
+        {
+          "id": "O-AS14-68",
+          "statement": "an exact inventory reference cannot resolve to different retained bytes"
+        },
+        {
+          "id": "O-AS14-69",
+          "statement": "an empty journal rejects a resealed rewrite of the identity-bound genesis Workspace"
+        },
+        {
+          "id": "O-AS14-70",
+          "statement": "a resealed physical root rejects an ambient Workspace spec field"
+        },
+        {
+          "id": "O-AS14-71",
+          "statement": "coordinator captures bound store operations before caller-owned method replacement"
+        },
+        {
+          "id": "O-AS14-72",
+          "statement": "coordinator rejects a contract-validator thenable without leaking its rejection"
+        },
+        {
+          "id": "O-AS14-73",
+          "statement": "the first WorkspaceEffect open-assignment pre-image is anchored by the genesis Workspace digest"
+        },
+        {
+          "id": "O-AS14-74",
+          "statement": "a resealed Workspace rejects a non-array active-head collection"
+        },
+        {
+          "id": "O-AS14-75",
+          "statement": "coordinator reads each caller-owned store capability exactly once before retaining it"
+        },
+        {
+          "id": "O-AS14-76",
+          "statement": "K13 authoring schema closure contains exactly seventeen package-bound neutral authorities"
+        },
+        {
+          "id": "O-AS14-82",
+          "statement": "pending read rejects a configured profile outside the persisted Workspace authority before callbacks or writes"
+        },
+        {
+          "id": "O-AS14-83",
+          "statement": "pending read rejects a configured protocol outside the persisted Workspace authority before callbacks or writes"
+        },
+        {
+          "id": "O-AS14-84",
+          "statement": "cancellation rejects a configured profile outside the persisted Workspace authority before callbacks or writes"
+        },
+        {
+          "id": "O-AS14-85",
+          "statement": "cancellation rejects a configured protocol outside the persisted Workspace authority before callbacks or writes"
+        },
+        {
+          "id": "O-AS14-86",
+          "statement": "pending Assignment reproduction rejects a configured profile outside the persisted Workspace authority before callbacks or writes"
+        },
+        {
+          "id": "O-AS14-87",
+          "statement": "pending Assignment reproduction rejects a configured protocol outside the persisted Workspace authority before callbacks or writes"
+        },
+        {
+          "id": "O-AS14-77",
+          "statement": "record authentication is scope-bound deterministic and capability-pinned"
+        },
+        {
+          "id": "O-AS14-78",
+          "statement": "the adapter rejects a publicly rehashed journal rewrite after physical root resealing"
+        },
+        {
+          "id": "O-AS14-79",
+          "statement": "a changed authentication key refuses cold coordination before callbacks or writes"
+        },
+        {
+          "id": "O-AS14-80",
+          "statement": "the adapter refuses an unauthenticated post-image before publication and preserves the readable old root"
+        },
+        {
+          "id": "O-AS14-81",
+          "statement": "a neutral identity configuration owns its authentication key bytes"
+        },
+        {
+          "id": "O-AS14-88",
+          "statement": "an in-memory identity configuration owns a shared authentication key view"
+        },
+        {
+          "id": "O-AS14-89",
+          "statement": "failed initial authentication leaves the supplied backing byte-identical"
         }
       ],
       "evidenceClasses": [
@@ -1960,6 +2313,146 @@
         {
           "id": "O-AS15-21",
           "statement": "trusted coupling details cannot add, drop, or reorder the manifest sequence"
+        },
+        {
+          "id": "O-AS15-22",
+          "statement": "a commit ID is globally unique within one journal"
+        },
+        {
+          "id": "O-AS15-23",
+          "statement": "one invalid declared coupling refuses the complete edge bundle"
+        },
+        {
+          "id": "O-AS15-24",
+          "statement": "an evidence record cannot bind a plan from a foreign journal head"
+        },
+        {
+          "id": "O-AS15-25",
+          "statement": "an evidence journal record contains zero machine edges"
+        },
+        {
+          "id": "O-AS15-26",
+          "statement": "Journal machine edges enforce the sealed K10 identifiers"
+        },
+        {
+          "id": "O-AS15-27",
+          "statement": "ordered same-machine refreeze edges replay at one global ordinal"
+        },
+        {
+          "id": "O-AS15-28",
+          "statement": "a later record binds the exact previous record digest"
+        },
+        {
+          "id": "O-AS15-29",
+          "statement": "a resulting root seal cannot enter JournalRecord assembly"
+        },
+        {
+          "id": "O-AS15-30",
+          "statement": "a discontinuous before revision is refused even with a valid record digest"
+        },
+        {
+          "id": "O-AS15-31",
+          "statement": "a transition bundle is the authoring cause followed by every coupling"
+        },
+        {
+          "id": "O-AS15-32",
+          "statement": "EvidenceCommitPlan binds its complete closed pre-journal ancestry"
+        },
+        {
+          "id": "O-AS15-33",
+          "statement": "a Receipt binds the locked revisions and exact K12 Mutation result"
+        },
+        {
+          "id": "O-AS15-34",
+          "statement": "evidence retention reseals complete workspace integrity without a revision"
+        },
+        {
+          "id": "O-AS15-35",
+          "statement": "observers see one complete old or new root and no prepared partial state"
+        },
+        {
+          "id": "O-AS15-36",
+          "statement": "a mismatched exact compare token returns a read-only conflict"
+        },
+        {
+          "id": "O-AS15-37",
+          "statement": "a logical crash after publication leaves the exact complete new root visible"
+        },
+        {
+          "id": "O-AS15-38",
+          "statement": "a logical crash before publication leaves the exact old root visible"
+        },
+        {
+          "id": "O-AS15-39",
+          "statement": "the committed adapter fixture is a complete replay-valid neutral snapshot"
+        },
+        {
+          "id": "O-AS15-40",
+          "statement": "one writer capability can attempt compare-and-commit only once"
+        },
+        {
+          "id": "O-AS15-41",
+          "statement": "writers for one store execute with asynchronous mutual exclusion"
+        },
+        {
+          "id": "O-AS15-42",
+          "statement": "an unawaited writer operation finishes inside the lease lifetime"
+        },
+        {
+          "id": "O-AS15-43",
+          "statement": "accepted submission atomically stores semantic post-image, receipt, edges, journal, and outcome"
+        },
+        {
+          "id": "O-AS15-44",
+          "statement": "replay rejects a terminal open Assignment that differs from the journaled boundary"
+        },
+        {
+          "id": "O-AS15-45",
+          "statement": "evidence replay rejects rewritten raw Submission bytes under the same semantic reference"
+        },
+        {
+          "id": "O-AS15-46",
+          "statement": "accepted-transition replay requires every resource declared as created by its Mutation"
+        },
+        {
+          "id": "O-AS15-47",
+          "statement": "accepted-transition replay rejects rewritten raw Submission bytes under the same semantic reference"
+        },
+        {
+          "id": "O-AS15-48",
+          "statement": "WorkspaceEffect represents one closed journal-owned persistence value"
+        },
+        {
+          "id": "O-AS15-49",
+          "statement": "WorkspaceEffect rejects an ambient field outside its exact value contract"
+        },
+        {
+          "id": "O-AS15-50",
+          "statement": "one record cannot claim the leading resource and history effects owned by the next record"
+        },
+        {
+          "id": "O-AS15-51",
+          "statement": "replay rejects an undeclared Workspace metadata rewrite even after terminal and record digests are recomputed"
+        },
+        {
+          "id": "O-AS15-52",
+          "statement": "replay rejects a fully rederived Mutation whose expected state differs from the journal pre-image"
+        },
+        {
+          "id": "O-AS15-53",
+          "statement": "replay rejects a fully rederived Receipt whose supersession disposition differs from its Mutation"
+        },
+        {
+          "id": "O-AS15-54",
+          "statement": "replay directly rejects a skipped JournalRecord ordinal"
+        },
+        {
+          "id": "O-AS15-55",
+          "statement": "a logical crash at BEFORE_ASSEMBLY leaves the exact old root"
+        },
+        {
+          "id": "O-AS15-56",
+          "statement": "a logical crash at DURING_ASSEMBLY leaves the exact old root"
         }
       ],
       "evidenceClasses": [

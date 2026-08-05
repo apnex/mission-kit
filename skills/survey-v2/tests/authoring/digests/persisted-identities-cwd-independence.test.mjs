@@ -35,6 +35,10 @@ const fixtureRoot = path.join(
   packageRoot,
   "tests/fixtures/authoring/contracts/positive"
 );
+const nonResourceFixtures = new Set([
+  "authoring-journal-record",
+  "authoring-workspace-effect"
+]);
 
 async function loadResources() {
   const resources = {};
@@ -86,7 +90,7 @@ function identitySnapshot(resources) {
   };
   const resourceIdentities = Object.fromEntries(
     Object.entries(resources)
-      .filter(([name]) => name !== "authoring-journal-record")
+      .filter(([name]) => !nonResourceFixtures.has(name))
       .sort(([left], [right]) => left.localeCompare(right))
       .map(([name, resource]) => {
         const reference = resourceReferenceFrom(resource);

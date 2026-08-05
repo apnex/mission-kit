@@ -1522,7 +1522,7 @@ function collectReferences(
   value,
   field,
   found,
-  { omitWorkspaceHistory = false } = {}
+  { omitWorkspaceArchives = false } = {}
 ) {
   const pending = [{ field, value }];
   while (pending.length > 0) {
@@ -1551,10 +1551,10 @@ function collectReferences(
     for (let index = childEntries.length - 1; index >= 0; index -= 1) {
       const [key, item] = childEntries[index];
       if (
-        omitWorkspaceHistory &&
+        omitWorkspaceArchives &&
         value.kind === "AuthoringWorkspace" &&
         current.value === value.spec &&
-        key === "history"
+        ["history", "resourceVersions"].includes(key)
       ) {
         continue;
       }
@@ -1798,10 +1798,14 @@ export function validateTransactionClosureSemantics(
     }
   }
   /*
-   * Full selection above validates every exact reference, including historical
-   * chains. Operational selection below deliberately omits Workspace.history:
-   * immutable history remains resolvable evidence but cannot compete with the
-   * explicit Request/Receipt transaction and its direct ancestry.
+   * Full selection above validates every retained version and exact
+   * reference, including historical chains. Operational selection below
+   * deliberately omits Workspace.history and Workspace.resourceVersions:
+   * immutable archives remain resolvable evidence, while active heads,
+   * handoffs, dependencies, the open Assignment, and the explicit transaction
+   * roots select the current operational closure. Otherwise a second valid
+   * transaction would make every historical Submission, Mutation, or Receipt
+   * compete by kind with the new transaction.
    */
   const operational = new Map();
   const operationalPending = [...rootTargets];
@@ -1815,7 +1819,7 @@ export function validateTransactionClosureSemantics(
       resource,
       `/${resource.kind}/${resource.metadata.name}`,
       references,
-      { omitWorkspaceHistory: true }
+      { omitWorkspaceArchives: true }
     );
     for (const { reference } of references) {
       const target = resolve(reference, "", false);

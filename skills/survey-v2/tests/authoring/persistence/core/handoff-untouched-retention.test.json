@@ -1,0 +1,56 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:authoring:persistence:core:handoff-untouched-retention",
+  "obligationId": "O-AS11-22",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS11"
+  ],
+  "verification": {
+    "precondition": "The mapped K13 authorities, neutral runtime, and immutable fixtures exist as package-owned files.",
+    "stimulus": "Execute tests/authoring/persistence/core/handoff-untouched-retention.test.mjs with node:test under its declared adapter applicability.",
+    "expectedSemanticState": "Only the semantic-state effect asserted by O-AS11-22 may occur.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: an undeclared handoff slot is retained byte-for-byte",
+    "forbiddenMutation": "Do not infer filesystem durability, Survey-session integration, a future adapter implementation, public API stability, or behavior beyond the literal assertion.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "schemas/authoring/v1alpha1/authoring-assignment.schema.json",
+      "schemas/authoring/v1alpha1/authoring-commit-receipt.schema.json",
+      "schemas/authoring/v1alpha1/authoring-journal-record.schema.json",
+      "schemas/authoring/v1alpha1/authoring-mutation.schema.json",
+      "schemas/authoring/v1alpha1/authoring-request.schema.json",
+      "schemas/authoring/v1alpha1/authoring-submission.schema.json",
+      "schemas/authoring/v1alpha1/authoring-workspace-effect.schema.json",
+      "schemas/authoring/v1alpha1/authoring-workspace.schema.json",
+      "schemas/authoring/v1alpha1/common.schema.json",
+      "schemas/authoring/v1alpha1/context-closure.schema.json",
+      "schemas/authoring/v1alpha1/projection-artifact.schema.json",
+      "schemas/authoring/v1alpha1/resource-reference.schema.json",
+      "schemas/authoring/v1alpha1/validation-issue.schema.json",
+      "source/authoring/kernel/canonical.mjs",
+      "source/authoring/kernel/contract-semantics.mjs",
+      "source/authoring/kernel/digests.mjs",
+      "source/authoring/runtime/commit-records.mjs",
+      "source/authoring/runtime/journal-replay.mjs",
+      "source/authoring/runtime/store-port.mjs",
+      "source/authoring/runtime/workspace-application.mjs"
+    ]
+  },
+  "behavior": "an undeclared handoff slot is retained byte-for-byte",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/authoring/persistence/core/handoff-untouched-retention.test.mjs",
+  "fixtures": [
+    "tests/authoring/persistence/core/support.mjs",
+    "tests/fixtures/authoring/contracts/positive/authoring-assignment.json",
+    "tests/fixtures/authoring/contracts/positive/authoring-mutation.json",
+    "tests/fixtures/authoring/contracts/positive/authoring-workspace.json"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}
