@@ -1,6 +1,6 @@
 {
-  "$schema": "urn:mission-kit:survey-v2:schema:requirement:v1",
-  "schemaVersion": "1.0.0",
+  "$schema": "urn:mission-kit:survey-v2:schema:requirement:v2",
+  "schemaVersion": "2.0.0",
   "id": "urn:mission-kit:survey-v2:requirements:survey-v2",
   "requirements": [
     {
@@ -1293,6 +1293,22 @@
         {
           "id": "O-AS14-21",
           "statement": "GenerationRecord binds the exact Request, Assignment, Submission, created results, and ancestry"
+        },
+        {
+          "id": "O-AS14-22",
+          "statement": "a v2 session validates every locally bound shared resource against its frozen structural and semantic authorities"
+        },
+        {
+          "id": "O-AS14-23",
+          "statement": "a v2 session rejects malformed resources for every registered package-owned Authoring kind through sovereign validators"
+        },
+        {
+          "id": "O-AS14-24",
+          "statement": "a v2 session rejects unbound profile resources at every containment position and a stored manifest cannot self-authorize validation"
+        },
+        {
+          "id": "O-AS14-25",
+          "statement": "a v2 session rejects byte-distinct resource bodies that claim one exact four-field identity"
         }
       ],
       "evidenceClasses": [
@@ -1379,7 +1395,11 @@
         },
         {
           "id": "O-AS15-19",
-          "statement": "the v2 session admits only continuous ordered coupled-machine edges"
+          "statement": "the v2 session admits only canonical continuous declared coupled-machine edges"
+        },
+        {
+          "id": "O-AS15-20",
+          "statement": "a repeated-machine commit must equal one complete ordered atomic edge sequence declared by the canonical protocol manifest"
         }
       ],
       "evidenceClasses": [
@@ -1401,6 +1421,10 @@
         {
           "id": "O-SV01-02",
           "statement": "SurveyRound encodes its round altitude and exact ancestry"
+        },
+        {
+          "id": "O-SV01-03",
+          "statement": "same-ordinal resources cannot cross exact Round or Survey lineage"
         }
       ],
       "evidenceClasses": [
@@ -1611,7 +1635,7 @@
       "acceptanceObligations": [
         {
           "id": "O-SV14-01",
-          "statement": "candidate protocol 2.x binds the exact canonical authoring-protocol digest and retires T42 through T46"
+          "statement": "candidate protocol 2.x owns the exact embedded authoring machine and retires T42 through T46"
         },
         {
           "id": "O-SV14-02",
@@ -1623,11 +1647,11 @@
         },
         {
           "id": "O-SV14-04",
-          "statement": "protocol selection defaults implicitly to frozen v1 and exposes v2 only through explicit candidate selection"
+          "statement": "selection defaults to v1 on the active package, isolates frozen historical resume, and exposes v2 only explicitly"
         },
         {
           "id": "O-SV14-05",
-          "statement": "every paired authoring and phase state declared legal by the matrix validates"
+          "statement": "every paired authoring and phase state declared legal by the matrix passes structural and semantic validation"
         },
         {
           "id": "O-SV14-06",
@@ -1636,6 +1660,10 @@
         {
           "id": "O-SV14-07",
           "statement": "historical v1 sessions preserve frozen package identification and cannot be reinterpreted by the candidate selector"
+        },
+        {
+          "id": "O-SV14-08",
+          "statement": "candidate session selection pins the current package and canonical protocol identities"
         }
       ],
       "evidenceClasses": [

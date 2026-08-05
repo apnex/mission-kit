@@ -27,7 +27,10 @@ import {
   appendAcceptedEvent,
   atomicWriteBytes,
   atomicWriteJson,
+  CURRENT_EXECUTOR_SESSION_SCHEMA_ID,
   ensureDirectoryNoFollow,
+  MatchingFrozenPackageRequiredError,
+  preflightCurrentExecutorSession,
   readNoFollowBytes,
   readVerifiedSession,
   sealSession,
@@ -49,6 +52,8 @@ export class ProtocolError extends Error {
     this.code = code;
   }
 }
+
+export { MatchingFrozenPackageRequiredError };
 
 function fail(code, message) {
   throw new ProtocolError(code, message);
@@ -348,7 +353,8 @@ async function loadContext(root) {
   const protocol = await readJson(path.join(root, "source", "protocol", "survey.protocol.json"));
   const dependency = await readJson(path.join(root, "source", "dependencies", "references", "mission-kit-axioms.reference.json"));
   const projectionLock = await readJson(path.join(root, "generated", "projection-lock.json"));
-  return { protocol, dependency, projectionLock };
+  const packageManifest = await readJson(path.join(root, "survey-v2.package.json"));
+  return { protocol, dependency, projectionLock, packageManifest };
 }
 
 function resolverAttempt(session, descriptor, registry, remediation = {}) {
@@ -1169,7 +1175,13 @@ assertHandlerSurface(IMPLEMENTATION_SURFACE);
 export { IMPLEMENTATION_SURFACE };
 
 async function validateSession(root, session) {
-  await validateById(root, "urn:mission-kit:survey-v2:schema:session-state:v1", session);
+  if (session?.$schema !== CURRENT_EXECUTOR_SESSION_SCHEMA_ID) {
+    fail(
+      "SCHEMA_INVALID",
+      `session schema is not supported by the current executor: ${String(session?.$schema)}`
+    );
+  }
+  await validateById(root, session.$schema, session);
   verifySession(session);
 }
 
@@ -1264,13 +1276,13 @@ export async function createSurveySession(root, unsafeOptions) {
       dependency: context.dependency
     };
     const session = {
-      $schema: "urn:mission-kit:survey-v2:schema:session-state:v1",
+      $schema: CURRENT_EXECUTOR_SESSION_SCHEMA_ID,
       schemaVersion: "1.0.0",
       sessionId,
       slug,
       package: {
         id: "urn:mission-kit:survey-v2:package:survey-v2",
-        version: "1.0.0",
+        version: context.packageManifest.version,
         projectionDigest: context.projectionLock.aggregateDigest
       },
       protocol: {
@@ -1458,6 +1470,7 @@ export async function applySurveyCommand(
   unsafeHostContext,
   unsafeOperationalContext = {}
 ) {
+  await preflightCurrentExecutorSession(runDirectory);
   const semanticCommand = stableValue(unsafeCommand);
   if (Object.hasOwn(semanticCommand, "actor")) {
     fail("ACTOR_CONTEXT_FORBIDDEN", "semantic command payload may not self-assert actor authority");

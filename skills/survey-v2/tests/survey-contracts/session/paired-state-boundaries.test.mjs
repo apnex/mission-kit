@@ -37,4 +37,26 @@ test("illegal pairs reject while declared correction, abort, and terminal pairs 
     "field",
     "reason"
   ]);
+
+  const legalDrift = matrixSession(
+    pairedStateMatrix.pairs.find(
+      (pair) => (
+        pair.authoringState === "candidate_ready" &&
+        pair.phaseState === "composite_candidate"
+      )
+    )
+  );
+  legalDrift.phase = "walkthrough_ready";
+  const legalDriftCodes = validateSessionSemantics(legalDrift)
+    .map((item) => item.code);
+  assert.equal(
+    legalDriftCodes.includes("SESSION_PAIRED_STATE_ILLEGAL"),
+    false,
+    "a legal terminal pair must not be misclassified as an illegal pair"
+  );
+  assert.equal(
+    legalDriftCodes.includes("SESSION_MACHINE_EDGE_FINAL_STATE_MISMATCH"),
+    true,
+    "journal drift remains independently detectable when the terminal pair itself is legal"
+  );
 });

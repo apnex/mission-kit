@@ -1,4 +1,7 @@
 import { resourceSemanticDigest } from "../kernel/digests.mjs";
+import {
+  validateContractSemantics
+} from "../kernel/contract-semantics.mjs";
 
 export const SURVEY_API_VERSION = "survey.mission-kit/v1alpha1";
 
@@ -193,6 +196,17 @@ function resolveReference(reference, path, resolver, expectedKind) {
   return { issues, resource };
 }
 
+function resolveReferenceArray(items, path, resolver, expectedKind) {
+  return array(items).flatMap((reference, index) => (
+    resolveReference(
+      reference,
+      `${path}/${index}`,
+      resolver,
+      expectedKind
+    ).issues
+  ));
+}
+
 function validateSurvey(resource, resolver) {
   const issues = [];
   const spec = object(resource.spec);
@@ -292,6 +306,24 @@ function validateSurveyRound(resource, resolver) {
         "/spec/round1InterpretationRef",
         "Round 2 ancestry must resolve to a Round-1 interpretation."
       ));
+    }
+    if (prior.resource) {
+      const priorRound = resolveReference(
+        prior.resource.spec?.roundRef,
+        "/spec/round1InterpretationRef/roundRef",
+        resolver,
+        "SurveyRound"
+      );
+      issues.push(...priorRound.issues);
+      if (priorRound.resource) {
+        issues.push(...refMismatch(
+          "ROUND_TWO_PRIOR_SURVEY_MISMATCH",
+          "/spec/round1InterpretationRef",
+          "Round 2 and its sealed Round-1 interpretation must belong to the exact same Survey.",
+          priorRound.resource.spec?.surveyRef,
+          spec.surveyRef
+        ));
+      }
     }
   }
   return issues;
@@ -723,6 +755,13 @@ function validateRoundInterpretation(resource, resolver) {
   }
   if (instrumentResolution.resource) {
     const instrument = instrumentResolution.resource.spec;
+    issues.push(...refMismatch(
+      "INTERPRETATION_INSTRUMENT_ROUND_REFERENCE_MISMATCH",
+      "/spec/instrumentRef",
+      "RoundInterpretation instrument must bind the exact same SurveyRound reference.",
+      instrument.roundRef,
+      spec.roundRef
+    ));
     if (instrument.roundOrdinal !== spec.roundOrdinal) {
       issues.push(issue(
         "INTERPRETATION_INSTRUMENT_ROUND_MISMATCH",
@@ -789,6 +828,24 @@ function validateRoundInterpretation(resource, resolver) {
         spec.priorRoundInterpretationRef,
         roundResolution.resource.spec?.round1InterpretationRef
       ));
+      if (prior.resource) {
+        const priorRound = resolveReference(
+          prior.resource.spec?.roundRef,
+          "/spec/priorRoundInterpretationRef/roundRef",
+          resolver,
+          "SurveyRound"
+        );
+        issues.push(...priorRound.issues);
+        if (priorRound.resource) {
+          issues.push(...refMismatch(
+            "INTERPRETATION_PRIOR_SURVEY_MISMATCH",
+            "/spec/priorRoundInterpretationRef",
+            "Round-2 interpretation and its Round-1 interpretation ancestor must belong to the exact same Survey.",
+            priorRound.resource.spec?.surveyRef,
+            roundResolution.resource.spec?.surveyRef
+          ));
+        }
+      }
     }
   }
   issues.push(...resolveReference(
@@ -800,9 +857,15 @@ function validateRoundInterpretation(resource, resolver) {
   return issues;
 }
 
-function validateSurveyPolicySnapshot(resource) {
+function validateSurveyPolicySnapshot(resource, resolver) {
   const issues = [];
   const spec = object(resource.spec);
+  issues.push(...resolveReference(
+    spec.profileRef,
+    "/spec/profileRef",
+    resolver,
+    "AuthoringProfileManifest"
+  ).issues);
   for (const [collection, path] of [
     [spec.validation?.schemaBindings, "/spec/validation/schemaBindings"],
     [spec.validation?.validatorBindings, "/spec/validation/validatorBindings"],
@@ -891,6 +954,25 @@ function validateSurveyRuntimeArtifact(resource, resolver) {
       ));
     }
     if (instrumentResolution.resource) {
+      issues.push(
+        ...refMismatch(
+          "RESPONSE_SET_INSTRUMENT_ROUND_REFERENCE_MISMATCH",
+          "/spec/payload/instrumentRef",
+          "RoundResponseSet instrument must bind the exact same SurveyRound reference.",
+          instrumentResolution.resource.spec?.roundRef,
+          payload.roundRef
+        )
+      );
+      if (
+        instrumentResolution.resource.spec?.roundOrdinal !==
+        payload.roundOrdinal
+      ) {
+        issues.push(issue(
+          "RESPONSE_SET_INSTRUMENT_ROUND_ORDINAL_MISMATCH",
+          "/spec/payload/instrumentRef",
+          "RoundResponseSet instrument ordinal differs from its declared Round."
+        ));
+      }
       responses.forEach((response, index) => {
         const unit = instrumentResolution.resource.spec?.units?.[index];
         issues.push(
@@ -975,6 +1057,34 @@ function validateGenerationRecord(resource, resolver) {
   ]) {
     issues.push(...duplicateIssues(items, path, referenceIdentity, code, noun));
   }
+  issues.push(
+    ...resolveReferenceArray(
+      spec.result?.createdResourceRefs,
+      "/spec/result/createdResourceRefs",
+      resolver
+    ),
+    ...resolveReferenceArray(
+      spec.ancestry?.inputResourceRefs,
+      "/spec/ancestry/inputResourceRefs",
+      resolver
+    ),
+    ...resolveReferenceArray(
+      spec.ancestry?.priorGenerationRecordRefs,
+      "/spec/ancestry/priorGenerationRecordRefs",
+      resolver,
+      "GenerationRecord"
+    ),
+    ...resolveReferenceArray(
+      spec.ancestry?.revisionOfRefs,
+      "/spec/ancestry/revisionOfRefs",
+      resolver
+    ),
+    ...resolveReferenceArray(
+      spec.assessmentAncestryRefs,
+      "/spec/assessmentAncestryRefs",
+      resolver
+    )
+  );
 
   const requestResolution = resolveReference(
     spec.requestRef,
@@ -1014,6 +1124,45 @@ function validateGenerationRecord(resource, resolver) {
     ...receiptResolution.issues
   );
   if (requestResolution.resource) {
+    const operation = object(requestResolution.resource.spec?.operation);
+    const requestInputs = object(operation.inputs);
+    const expectedInputs = Object.keys(requestInputs)
+      .sort()
+      .map((key) => requestInputs[key]);
+    if (!referenceArrayEqual(
+      spec.ancestry?.inputResourceRefs,
+      expectedInputs
+    )) {
+      issues.push(issue(
+        "GENERATION_INPUT_ANCESTRY_MISMATCH",
+        "/spec/ancestry/inputResourceRefs",
+        "GenerationRecord input ancestry must equal the AuthoringRequest's exact inputs in canonical field-ID order."
+      ));
+    }
+    if (
+      operation.class === "task-submission" &&
+      array(spec.ancestry?.revisionOfRefs).length !== 0
+    ) {
+      issues.push(issue(
+        "GENERATION_TASK_REVISION_ANCESTRY_FORBIDDEN",
+        "/spec/ancestry/revisionOfRefs",
+        "A normal task submission cannot claim revision ancestry."
+      ));
+    }
+    if (operation.class === "revision") {
+      const expectedRevisions = array(operation.expectedHeads)
+        .map((head) => head?.reference);
+      if (!referenceArrayEqual(
+        spec.ancestry?.revisionOfRefs,
+        expectedRevisions
+      )) {
+        issues.push(issue(
+          "GENERATION_REVISION_ANCESTRY_MISMATCH",
+          "/spec/ancestry/revisionOfRefs",
+          "GenerationRecord revision ancestry must equal the AuthoringRequest's ordered expected heads."
+        ));
+      }
+    }
     issues.push(...refMismatch(
       "GENERATION_CONTEXT_CLOSURE_MISMATCH",
       "/spec/contextClosureRef",
@@ -1041,6 +1190,21 @@ function validateGenerationRecord(resource, resolver) {
     ));
   }
   if (receiptResolution.resource) {
+    try {
+      issues.push(...validateContractSemantics(
+        receiptResolution.resource
+      ).map((candidate) => issue(
+        candidate.code,
+        `/spec/result/commitReceiptRef${candidate.field ?? ""}`,
+        candidate.reason
+      )));
+    } catch (error) {
+      issues.push(issue(
+        "GENERATION_RECEIPT_CONTRACT_INVALID",
+        "/spec/result/commitReceiptRef",
+        `Resolved commit receipt is not safe for contract validation: ${error.message}`
+      ));
+    }
     const cause = receiptResolution.resource.spec?.cause;
     if (cause?.class !== "task-submission") {
       issues.push(issue(

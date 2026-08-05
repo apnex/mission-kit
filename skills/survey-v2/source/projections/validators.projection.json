@@ -1,6 +1,6 @@
 {
-  "$schema": "urn:mission-kit:survey-v2:schema:projection:v1",
-  "schemaVersion": "1.0.0",
+  "$schema": "urn:mission-kit:survey-v2:schema:projection:v2",
+  "schemaVersion": "2.0.0",
   "id": "urn:mission-kit:survey-v2:projection:validators",
   "renderer": "validators",
   "targets": [
@@ -57,10 +57,16 @@
       "schemas/survey/v1alpha1/survey-runtime-artifact.schema.json",
       "schemas/survey/v1alpha1/generation-record.schema.json",
       "schemas/v2/common.schema.json",
+      "schemas/v2/package.schema.json",
       "schemas/v2/protocol.schema.json",
       "schemas/v2/paired-state-matrix.schema.json",
       "schemas/v2/protocol-selection.schema.json",
-      "schemas/v2/session-state.schema.json"
+      "schemas/v2/projection.schema.json",
+      "schemas/v2/quarantine.schema.json",
+      "schemas/v2/requirement.schema.json",
+      "schemas/v2/session-state.schema.json",
+      "schemas/v2/session-state-active-v1.schema.json",
+      "schemas/v2/test-evidence.schema.json"
     ],
     "dependencyPaths": [
       "dependencies/shared-schemas/v1/closure.manifest.json",

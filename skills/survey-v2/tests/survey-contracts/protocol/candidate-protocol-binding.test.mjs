@@ -1,6 +1,9 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
+  resourceReferenceFrom
+} from "../../../source/authoring/kernel/digests.mjs";
+import {
   surveyAuthoringProtocolDigest,
   validateSurveyProtocolV2
 } from "../../../source/authoring/survey/protocol-semantics.mjs";
@@ -9,7 +12,7 @@ import {
   loadProtocolContractSet
 } from "./support.mjs";
 
-test("candidate protocol 2.x binds the exact canonical authoring-protocol digest and retires T42 through T46", async () => {
+test("candidate protocol 2.x owns the exact embedded authoring machine and retires T42 through T46", async () => {
   const {
     authoringProtocol,
     protocol,
@@ -28,14 +31,30 @@ test("candidate protocol 2.x binds the exact canonical authoring-protocol digest
     goldenBindings.authoringProtocolSemanticDigest
   );
   assert.equal(
-    protocol.authoringProtocol.semanticDigest,
+    protocol.machines[0].reference.semanticDigest,
     goldenBindings.authoringProtocolSemanticDigest
   );
   assert.deepEqual(
     protocol.machines.map((machine) => machine.id),
-    ["phase", "runtime"]
+    ["authoring", "phase", "runtime"]
   );
-  const phase = protocol.machines[0];
+  assert.deepEqual(protocol.machines[0].protocol, authoringProtocol);
+  assert.deepEqual(
+    protocol.machines[0].reference,
+    resourceReferenceFrom(protocol.machines[0].protocol)
+  );
+  const drifted = structuredClone(protocol);
+  drifted.machines[0].protocol.spec.transitions[0].eventId =
+    "BEGIN_SOMETHING_ELSE";
+  assert.equal(
+    validateSurveyProtocolV2(drifted, { authoringProtocol })
+      .some(({ code }) => (
+        code === "AUTHORING_MACHINE_AUTHORITY_MISMATCH" ||
+        code === "SURVEY_AUTHORING_TRANSITION_SET_MISMATCH"
+      )),
+    true
+  );
+  const phase = protocol.machines[1];
   const retired = new Set(["T42", "T43", "T44", "T45", "T46"]);
   assert.equal(
     phase.transitions.some((transition) => retired.has(transition.id)),

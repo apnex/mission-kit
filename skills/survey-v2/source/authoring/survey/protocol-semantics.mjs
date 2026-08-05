@@ -25,7 +25,7 @@ const AUTHORING_API_VERSION = "authoring.mission-kit/v1alpha1";
 const AUTHORING_KIND = "AuthoringProtocol";
 const V1_VERSION = "1.0.0";
 const V2_VERSION = "2.0.0";
-const PACKAGE_VERSION = "1.0.0";
+const ACTIVE_PACKAGE_VERSION = "2.0.0";
 const FROZEN_V1_PROJECTION_DIGEST =
   "sha256:6603b777b82783176fca6129bfecde7a6e253f5be86f9becf94703d818b9757c";
 const RETIRED_PHASE_TRANSITION_IDS = Object.freeze([
@@ -172,6 +172,28 @@ const EXPECTED_AUTHORING_COUPLINGS = Object.freeze([
   ["T38", "AC04"],
   ["T40", "AC05"],
   ["TF01", "AF01"]
+]);
+const EXPECTED_ATOMIC_SEQUENCES = Object.freeze([
+  Object.freeze({
+    id: "RFS01",
+    description:
+      "Replace and refreeze the complete Round 1 instrument without exposing the reopened intermediate state.",
+    edges: Object.freeze([
+      Object.freeze({ machineId: "phase", transitionId: "T04" }),
+      Object.freeze({ machineId: "phase", transitionId: "T03" })
+    ]),
+    atomic: true
+  }),
+  Object.freeze({
+    id: "RFS02",
+    description:
+      "Replace and refreeze the complete Round 2 instrument without exposing the reopened intermediate state.",
+    edges: Object.freeze([
+      Object.freeze({ machineId: "phase", transitionId: "T15" }),
+      Object.freeze({ machineId: "phase", transitionId: "T14" })
+    ]),
+    atomic: true
+  })
 ]);
 
 const EXPECTED_PHASE_TRANSITION_IDS = Object.freeze([
@@ -616,30 +638,70 @@ export function validateSurveyProtocolV2(
     ));
   }
   const machines = protocol.machines ?? [];
-  if (!same(machines.map((machine) => machine.id), ["phase", "runtime"])) {
+  if (!same(
+    machines.map((machine) => machine.id),
+    ["authoring", "phase", "runtime"]
+  )) {
     issues.push(issue(
       "CANDIDATE_MACHINE_SET_MISMATCH",
       "/machines",
-      "Candidate protocol must represent exactly phase then runtime and must not duplicate authoring states."
+      "Candidate protocol must own exactly authoring, phase, then runtime machines."
     ));
   }
-  machines.forEach((machine, index) => {
+  machines.slice(1).forEach((machine, offset) => {
+    const index = offset + 1;
     issues.push(...machineClosureIssues(machine, index));
   });
+  const authoring = machines.find((machine) => machine.id === "authoring");
   const phase = machines.find((machine) => machine.id === "phase");
   const runtime = machines.find((machine) => machine.id === "runtime");
+  const embeddedAuthoringProtocol = authoring?.protocol;
+  if (embeddedAuthoringProtocol) {
+    issues.push(...validateSurveyAuthoringProtocol(embeddedAuthoringProtocol)
+      .map((candidate) => issue(
+        candidate.code,
+        `/machines/0/protocol${candidate.field}`,
+        candidate.reason
+      )));
+    const expectedReference = expectedAuthoringReference(
+      embeddedAuthoringProtocol
+    );
+    if (!same(authoring.reference, expectedReference)) {
+      issues.push(issue(
+        "AUTHORING_MACHINE_REFERENCE_MISMATCH",
+        "/machines/0/reference",
+        "The embedded AuthoringProtocol machine reference must rederive from its exact protocol resource."
+      ));
+    }
+    if (
+      authoringProtocol &&
+      !same(authoringProtocol, embeddedAuthoringProtocol)
+    ) {
+      issues.push(issue(
+        "AUTHORING_MACHINE_AUTHORITY_MISMATCH",
+        "/machines/0/protocol",
+        "An adjacent AuthoringProtocol authority differs from the canonical embedded authoring machine."
+      ));
+    }
+  } else {
+    issues.push(issue(
+      "AUTHORING_MACHINE_PROTOCOL_MISSING",
+      "/machines/0/protocol",
+      "The canonical authoring machine must embed its complete AuthoringProtocol resource."
+    ));
+  }
   if (phase) {
     issues.push(
       ...exactIdsIssue(
         phase.transitions,
         EXPECTED_PHASE_TRANSITION_IDS,
-        "/machines/0/transitions",
+        "/machines/1/transitions",
         "CANDIDATE_PHASE_TRANSITION_SET_MISMATCH"
       ),
       ...exactIdsIssue(
         phase.families,
         EXPECTED_PHASE_FAMILY_IDS,
-        "/machines/0/families",
+        "/machines/1/families",
         "CANDIDATE_PHASE_FAMILY_SET_MISMATCH"
       )
     );
@@ -666,7 +728,7 @@ export function validateSurveyProtocolV2(
       ) {
         issues.push(issue(
           "RETIRED_PHASE_TRANSITION_PRESENT",
-          "/machines/0",
+          "/machines/1",
           `${retiredId} or one of its private definitions remains in candidate protocol 2.x.`
         ));
       }
@@ -677,13 +739,13 @@ export function validateSurveyProtocolV2(
       ...exactIdsIssue(
         runtime.transitions,
         EXPECTED_RUNTIME_TRANSITION_IDS,
-        "/machines/1/transitions",
+        "/machines/2/transitions",
         "CANDIDATE_RUNTIME_TRANSITION_SET_MISMATCH"
       ),
       ...exactIdsIssue(
         runtime.families,
         EXPECTED_RUNTIME_FAMILY_IDS,
-        "/machines/1/families",
+        "/machines/2/families",
         "CANDIDATE_RUNTIME_FAMILY_SET_MISMATCH"
       )
     );
@@ -718,17 +780,17 @@ export function validateSurveyProtocolV2(
       "Candidate protocol must declare the exact seventeen atomic authoring/phase couplings."
     ));
   }
-  if (authoringProtocol) {
-    const expected = expectedAuthoringReference(authoringProtocol);
-    if (!same(protocol.authoringProtocol, expected)) {
-      issues.push(issue(
-        "AUTHORING_PROTOCOL_DIGEST_MISMATCH",
-        "/authoringProtocol",
-        "Candidate protocol does not bind the exact canonical AuthoringProtocol semantic digest."
-      ));
-    }
+  if (!same(protocol.atomicSequences ?? [], EXPECTED_ATOMIC_SEQUENCES)) {
+    issues.push(issue(
+      "ATOMIC_SEQUENCE_SET_MISMATCH",
+      "/atomicSequences",
+      "Candidate protocol must declare exactly the ordered Round 1 and Round 2 refreeze edge sequences."
+    ));
+  }
+  if (embeddedAuthoringProtocol) {
     const authoringTransitionIds = new Set(
-      (authoringProtocol.spec?.transitions ?? []).map((transition) => transition.id)
+      (embeddedAuthoringProtocol.spec?.transitions ?? [])
+        .map((transition) => transition.id)
     );
     (protocol.authoringCouplings ?? []).forEach((coupling, index) => {
       if (!authoringTransitionIds.has(coupling.authoringTransitionId)) {
@@ -739,16 +801,6 @@ export function validateSurveyProtocolV2(
         ));
       }
     });
-  } else if (
-    protocol.authoringProtocol?.apiVersion !== AUTHORING_API_VERSION ||
-    protocol.authoringProtocol?.kind !== AUTHORING_KIND ||
-    protocol.authoringProtocol?.name !== SURVEY_AUTHORING_PROTOCOL_NAME
-  ) {
-    issues.push(issue(
-      "AUTHORING_PROTOCOL_REFERENCE_MISMATCH",
-      "/authoringProtocol",
-      "Candidate protocol authoring reference identity differs."
-    ));
   }
   const phaseTransitionIds = new Set([
     ...(phase?.transitions ?? []).map((transition) => transition.id),
@@ -762,6 +814,34 @@ export function validateSurveyProtocolV2(
         "Coupled phase transition does not resolve in candidate protocol."
       ));
     }
+  });
+  const transitionIdsByMachine = new Map([
+    [
+      "authoring",
+      new Set(
+        (embeddedAuthoringProtocol?.spec?.transitions ?? [])
+          .map((transition) => transition.id)
+      )
+    ],
+    ["phase", phaseTransitionIds],
+    [
+      "runtime",
+      new Set([
+        ...(runtime?.transitions ?? []).map((transition) => transition.id),
+        ...(runtime?.families ?? []).map((family) => family.id)
+      ])
+    ]
+  ]);
+  (protocol.atomicSequences ?? []).forEach((sequence, sequenceIndex) => {
+    (sequence.edges ?? []).forEach((edge, edgeIndex) => {
+      if (!transitionIdsByMachine.get(edge.machineId)?.has(edge.transitionId)) {
+        issues.push(issue(
+          "ATOMIC_SEQUENCE_EDGE_UNRESOLVED",
+          `/atomicSequences/${sequenceIndex}/edges/${edgeIndex}`,
+          "Every atomic-sequence edge must resolve in its declared canonical machine."
+        ));
+      }
+    });
   });
   return Object.freeze(issues);
 }
@@ -939,13 +1019,14 @@ export function validatePairedStateMatrix(
 }
 
 const EXPECTED_DEFAULT_SELECTION = Object.freeze({
-  id: "frozen-v1",
+  id: "active-v1-default",
   activation: "implicit",
-  status: "frozen",
+  status: "active",
   package: {
     id: SURVEY_PACKAGE_ID,
-    version: PACKAGE_VERSION,
-    projectionDigest: FROZEN_V1_PROJECTION_DIGEST
+    version: ACTIVE_PACKAGE_VERSION,
+    projectionLockPath: "generated/projection-lock.json",
+    rootClass: "active-package-root"
   },
   protocol: {
     id: SURVEY_PROTOCOL_ID,
@@ -953,7 +1034,13 @@ const EXPECTED_DEFAULT_SELECTION = Object.freeze({
     schema: SURVEY_PROTOCOL_V1_SCHEMA_ID,
     sourcePath: "source/protocol/survey.protocol.json"
   },
-  sessionSchema: "urn:mission-kit:survey-v2:schema:session-state:v1"
+  sessionSchema:
+    "urn:mission-kit:survey-v2:schema:session-state-active-v1:v2",
+  execution: {
+    executor: "current-package",
+    implementationStatus: "available",
+    quarantineSchema: "urn:mission-kit:survey-v2:schema:quarantine:v2"
+  }
 });
 
 const EXPECTED_CANDIDATE_SELECTION = Object.freeze({
@@ -962,7 +1049,9 @@ const EXPECTED_CANDIDATE_SELECTION = Object.freeze({
   status: "candidate",
   package: {
     id: SURVEY_PACKAGE_ID,
-    version: PACKAGE_VERSION
+    version: ACTIVE_PACKAGE_VERSION,
+    projectionLockPath: "generated/projection-lock.json",
+    rootClass: "active-package-root"
   },
   protocol: {
     id: SURVEY_PROTOCOL_ID,
@@ -970,7 +1059,35 @@ const EXPECTED_CANDIDATE_SELECTION = Object.freeze({
     schema: SURVEY_PROTOCOL_V2_SCHEMA_ID,
     sourcePath: "source/protocol/survey-v2.protocol.json"
   },
-  sessionSchema: "urn:mission-kit:survey-v2:schema:session-state:v2"
+  sessionSchema: "urn:mission-kit:survey-v2:schema:session-state:v2",
+  execution: {
+    executor: "current-package",
+    implementationStatus: "contract-only",
+    quarantineSchema: "urn:mission-kit:survey-v2:schema:quarantine:v2"
+  }
+});
+
+const EXPECTED_HISTORICAL_COMPATIBILITY = Object.freeze({
+  id: "historical-v1-resume",
+  activation: "resume-only",
+  status: "frozen",
+  package: {
+    id: SURVEY_PACKAGE_ID,
+    version: V1_VERSION,
+    projectionDigest: FROZEN_V1_PROJECTION_DIGEST
+  },
+  protocol: {
+    id: SURVEY_PROTOCOL_ID,
+    version: V1_VERSION,
+    schema: SURVEY_PROTOCOL_V1_SCHEMA_ID,
+    sourcePath: "source/protocol/survey.protocol.json"
+  },
+  sessionSchema: "urn:mission-kit:survey-v2:schema:session-state:v1",
+  execution: {
+    executor: "matching-frozen-package",
+    implementationStatus: "matching-package-required",
+    quarantineSchema: "urn:mission-kit:survey-v2:schema:quarantine:v1"
+  }
 });
 
 function withoutSourceDigest(selection) {
@@ -1017,7 +1134,7 @@ export function validateProtocolSelection(
     issues.push(issue(
       "PROTOCOL_DEFAULT_SELECTION_MISMATCH",
       "/defaultSelection",
-      "Implicit selection must resolve only to the frozen v1 protocol and session contract."
+      "Implicit selection must resolve to protocol v1 on the active candidate package."
     ));
   }
   const candidates = selection.candidateSelections ?? [];
@@ -1034,6 +1151,16 @@ export function validateProtocolSelection(
       "The only candidate must expose protocol 2.x through an explicit selection."
     ));
   }
+  if (!same(
+    withoutSourceDigest(selection.historicalCompatibility),
+    EXPECTED_HISTORICAL_COMPATIBILITY
+  )) {
+    issues.push(issue(
+      "PROTOCOL_HISTORICAL_COMPATIBILITY_MISMATCH",
+      "/historicalCompatibility",
+      "Historical resume must bind only the exact frozen v1 package, protocol, and session contract."
+    ));
+  }
   if (
     v1ProtocolSourceDigest &&
     selection.defaultSelection?.protocol?.sourceBytesDigest !==
@@ -1043,6 +1170,17 @@ export function validateProtocolSelection(
       "FROZEN_V1_PROTOCOL_DIGEST_MISMATCH",
       "/defaultSelection/protocol/sourceBytesDigest",
       "Default selection does not pin the exact frozen v1 protocol bytes."
+    ));
+  }
+  if (
+    v1ProtocolSourceDigest &&
+    selection.historicalCompatibility?.protocol?.sourceBytesDigest !==
+      v1ProtocolSourceDigest
+  ) {
+    issues.push(issue(
+      "HISTORICAL_V1_PROTOCOL_DIGEST_MISMATCH",
+      "/historicalCompatibility/protocol/sourceBytesDigest",
+      "Historical compatibility does not pin the exact frozen v1 protocol bytes."
     ));
   }
   if (
@@ -1059,12 +1197,12 @@ export function validateProtocolSelection(
   if (
     selectSurveyProtocol(selection) !== selection.defaultSelection ||
     selectSurveyProtocol(selection, "v2-authoring-candidate") !== candidates[0] ||
-    selectSurveyProtocol(selection, "frozen-v1") !== null
+    selectSurveyProtocol(selection, "historical-v1-resume") !== null
   ) {
     issues.push(issue(
       "PROTOCOL_SELECTION_RESOLUTION_MISMATCH",
       "",
-      "Implicit and explicit selector resolution differ from the frozen-v1/candidate boundary."
+      "New-session selection leaked across the active-default, explicit-candidate, and historical-resume boundary."
     ));
   }
   return Object.freeze(issues);
@@ -1078,11 +1216,18 @@ export function validateSurveyProtocolContractSet({
   v1ProtocolSourceDigest,
   candidateProtocolSourceDigest
 }) {
+  const embeddedAuthoringProtocol = protocol?.machines
+    ?.find((machine) => machine.id === "authoring")
+    ?.protocol;
+  const canonicalAuthoringProtocol =
+    embeddedAuthoringProtocol ?? authoringProtocol;
   return Object.freeze([
-    ...validateSurveyAuthoringProtocol(authoringProtocol),
-    ...validateSurveyProtocolV2(protocol, { authoringProtocol }),
+    ...validateSurveyAuthoringProtocol(canonicalAuthoringProtocol),
+    ...validateSurveyProtocolV2(protocol, {
+      authoringProtocol: canonicalAuthoringProtocol
+    }),
     ...validatePairedStateMatrix(pairedStateMatrix, {
-      authoringProtocol,
+      authoringProtocol: canonicalAuthoringProtocol,
       protocol,
       protocolSourceDigest: candidateProtocolSourceDigest
     }),

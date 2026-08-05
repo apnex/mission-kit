@@ -25,7 +25,7 @@ test("all fifteen schema classes validate offline and reject unknown fields", as
       ["envelope-model", envelopeModel(run.session)],
       ["fragment", await readJson("source/fragments/navigation/fragment-contract.fragment.json")],
       ["instrument", structuredClone(run.session.interpretations.round1Instrument)],
-      ["package", await readJson("survey-v2.package.json")],
+      ["package", await readJson("tests/fixtures/baseline-v1/package-manifest.json")],
       ["presentation", structuredClone(run.session.outbox.payload)],
       ["projection", await readJson("source/projections/skill-md.projection.json")],
       ["protocol", await readJson("source/protocol/survey.protocol.json")],
@@ -48,9 +48,24 @@ test("all fifteen schema classes validate offline and reject unknown fields", as
         evidence: ["deliberate fixture"],
         lastGoodRevision: run.session.revision
       }],
-      ["requirement", await readJson("source/requirements/survey-v2.requirements.json")],
-      ["session-state", structuredClone(run.session)],
-      ["test-evidence", await readJson("tests/test-evidence.manifest.json")],
+      [
+        "requirement",
+        await readJson(
+          "tests/fixtures/baseline-v1/requirements-registry.json"
+        )
+      ],
+      [
+        "session-state",
+        await readJson(
+          "tests/fixtures/survey/session-v2/historical-v1-session.json"
+        )
+      ],
+      [
+        "test-evidence",
+        await readJson(
+          "tests/fixtures/baseline-v1/test-evidence.manifest.json"
+        )
+      ],
       ["triangulation-process", await readJson("source/dependencies/processes/axiom-applicability.process.json")]
     ]);
 
@@ -64,6 +79,35 @@ test("all fifteen schema classes validate offline and reject unknown fields", as
         validateById(schemaId, unknownRoot).valid,
         false,
         `${schemaClass} rejects unknown root field`
+      );
+    }
+
+    for (const [schemaId, fixturePath] of [
+      [
+        "urn:mission-kit:survey-v2:schema:projection:v2",
+        "source/projections/validators.projection.json"
+      ],
+      [
+        "urn:mission-kit:survey-v2:schema:requirement:v2",
+        "source/requirements/survey-v2.requirements.json"
+      ],
+      [
+        "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+        "tests/test-evidence.manifest.json"
+      ]
+    ]) {
+      const value = await readJson(fixturePath);
+      assert.equal(
+        validateById(schemaId, value).valid,
+        true,
+        `${schemaId} validates its active fixture`
+      );
+      const unknownRoot = structuredClone(value);
+      unknownRoot.unknownSchemaField = true;
+      assert.equal(
+        validateById(schemaId, unknownRoot).valid,
+        false,
+        `${schemaId} rejects an unknown active-root field`
       );
     }
 

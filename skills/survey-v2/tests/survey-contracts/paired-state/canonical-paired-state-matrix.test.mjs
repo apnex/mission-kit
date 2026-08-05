@@ -34,6 +34,10 @@ test("the canonical paired-state matrix contains the full legal mainline, correc
     pairedStateMatrix.pairs.length,
     goldenBindings.legalPairCount
   );
+  assert.deepEqual(
+    pairedStateMatrix.authoringProtocol,
+    protocol.machines[0].reference
+  );
   assert.deepEqual(pairedStateMatrix.pairs, EXPECTED_PAIRED_STATES);
   assert.deepEqual(
     new Set(

@@ -30,6 +30,15 @@ test("the read boundary quarantines a schema-invalid but top-level-resealed sess
       await readFile(path.join(run.runDirectory, "quarantine.json"), "utf8")
     );
     assert.equal(quarantine.failureClass, "schema-invalid-session");
+    assert.equal(
+      quarantine.$schema,
+      "urn:mission-kit:survey-v2:schema:quarantine:v2"
+    );
+    assert.equal(quarantine.schemaVersion, "2.0.0");
+    assert.deepEqual(quarantine.package, {
+      id: "urn:mission-kit:survey-v2:package:survey-v2",
+      version: "2.0.0"
+    });
     assert.equal(quarantine.operation, "OQ01");
   } finally {
     await run.cleanup();

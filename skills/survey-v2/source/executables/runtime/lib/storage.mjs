@@ -24,8 +24,87 @@ import {
 import {
   validateById as validateGeneratedById
 } from "../../../../generated/validators.mjs";
+import protocolSelection from "../../../protocol/protocol-selection.json" with {
+  type: "json"
+};
 
-const SESSION_SCHEMA_ID = "urn:mission-kit:survey-v2:schema:session-state:v1";
+const protocolSelectionValidation = validateGeneratedById(
+  protocolSelection.$schema,
+  protocolSelection
+);
+if (!protocolSelectionValidation.valid) {
+  throw new TypeError(
+    `current executor protocol selection is invalid: ${
+      protocolSelectionValidation.errors.join("; ")
+    }`
+  );
+}
+const currentExecutorSelection = protocolSelection.defaultSelection;
+export const HISTORICAL_SESSION_SCHEMA_ID =
+  protocolSelection.historicalCompatibility.sessionSchema;
+export const CURRENT_EXECUTOR_SESSION_SCHEMA_ID =
+  currentExecutorSelection.sessionSchema;
+export const CURRENT_EXECUTOR_QUARANTINE_SCHEMA_ID =
+  currentExecutorSelection.execution.quarantineSchema;
+export const CURRENT_EXECUTOR_PACKAGE_ID =
+  currentExecutorSelection.package.id;
+export const CURRENT_EXECUTOR_PACKAGE_VERSION =
+  currentExecutorSelection.package.version;
+
+export class MatchingFrozenPackageRequiredError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "MatchingFrozenPackageRequiredError";
+    this.code = "MATCHING_FROZEN_PACKAGE_REQUIRED";
+  }
+}
+
+function assertCurrentExecutorSessionSchema(session) {
+  if (session?.$schema === HISTORICAL_SESSION_SCHEMA_ID) {
+    throw new MatchingFrozenPackageRequiredError(
+      "Historical protocol-v1 sessions require execution by their exact frozen package; the current package executor cannot resume them."
+    );
+  }
+}
+
+async function existingDirectoryNoFollow(directory) {
+  const absolute = path.resolve(directory);
+  const parsed = path.parse(absolute);
+  let current = parsed.root;
+  for (const segment of absolute.slice(parsed.root.length).split(path.sep).filter(Boolean)) {
+    current = path.join(current, segment);
+    let stat;
+    try {
+      stat = await lstat(current);
+    } catch (error) {
+      if (error.code === "ENOENT") return false;
+      throw error;
+    }
+    if (!stat.isDirectory() || stat.isSymbolicLink()) {
+      throw new SessionIntegrityError(
+        "schema-invalid-session",
+        `directory path contains non-directory or symlink: ${current}`
+      );
+    }
+  }
+  return true;
+}
+
+export async function preflightCurrentExecutorSession(runDirectory) {
+  if (!await existingDirectoryNoFollow(runDirectory)) return;
+  let parsed;
+  try {
+    parsed = JSON.parse(
+      (await readNoFollowFile(path.join(runDirectory, "session.json")))
+        .toString("utf8")
+    );
+  } catch {
+    // The normal locked read owns every failure except this read-only
+    // historical-schema routing decision.
+    return;
+  }
+  assertCurrentExecutorSessionSchema(parsed);
+}
 
 export class SessionIntegrityError extends Error {
   constructor(failureClass, message) {
@@ -852,7 +931,14 @@ export function verifySession(session) {
   if (!session || typeof session !== "object" || Array.isArray(session)) {
     throw new SessionIntegrityError("schema-invalid-session", "session root must be an object");
   }
-  const schemaResult = validateGeneratedById(SESSION_SCHEMA_ID, session);
+  assertCurrentExecutorSessionSchema(session);
+  if (session.$schema !== CURRENT_EXECUTOR_SESSION_SCHEMA_ID) {
+    throw new SessionIntegrityError(
+      "schema-invalid-session",
+      `session schema is not supported by the current executor: ${String(session.$schema)}`
+    );
+  }
+  const schemaResult = validateGeneratedById(session.$schema, session);
   if (!schemaResult.valid) {
     throw new SessionIntegrityError(
       "schema-invalid-session",
@@ -860,7 +946,6 @@ export function verifySession(session) {
     );
   }
   if (
-    session.$schema !== SESSION_SCHEMA_ID ||
     !Array.isArray(session.events) ||
     !Number.isInteger(session.revision)
   ) {
@@ -934,8 +1019,11 @@ export async function atomicWriteBytes(target, bytes, { noReplace = false } = {}
 function quarantineShape(value) {
   return Boolean(
     value &&
-    value.$schema === "urn:mission-kit:survey-v2:schema:quarantine:v1" &&
+    value.$schema === CURRENT_EXECUTOR_QUARANTINE_SCHEMA_ID &&
+    value.schemaVersion === "2.0.0" &&
     value.operation === "OQ01" &&
+    value.package?.id === CURRENT_EXECUTOR_PACKAGE_ID &&
+    value.package?.version === CURRENT_EXECUTOR_PACKAGE_VERSION &&
     typeof value.observedDigest === "string" &&
     typeof value.failureClass === "string"
   );
@@ -988,8 +1076,8 @@ export async function publishQuarantine(runDirectory, rawBytes, failureClass, ev
 
   const digest = sha256Bytes(rawBytes);
   const latch = {
-    $schema: "urn:mission-kit:survey-v2:schema:quarantine:v1",
-    schemaVersion: "1.0.0",
+    $schema: CURRENT_EXECUTOR_QUARANTINE_SCHEMA_ID,
+    schemaVersion: "2.0.0",
     operation: "OQ01",
     sessionMember: "session.json",
     runIdentity: {
@@ -999,8 +1087,8 @@ export async function publishQuarantine(runDirectory, rawBytes, failureClass, ev
     observedDigest: digest,
     failureClass,
     package: {
-      id: "urn:mission-kit:survey-v2:package:survey-v2",
-      version: "1.0.0"
+      id: CURRENT_EXECUTOR_PACKAGE_ID,
+      version: CURRENT_EXECUTOR_PACKAGE_VERSION
     },
     detectedBy: "urn:mission-kit:survey-v2:runtime:storage",
     evidence,
@@ -1063,6 +1151,7 @@ export async function readVerifiedSession(runDirectory, { quarantineOnFailure = 
     const parsed = JSON.parse(rawBytes.toString("utf8"));
     return verifySession(parsed);
   } catch (error) {
+    if (error instanceof MatchingFrozenPackageRequiredError) throw error;
     const integrity = error instanceof SessionIntegrityError
       ? error
       : new SessionIntegrityError("unparseable-session", error.message);

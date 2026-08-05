@@ -19,8 +19,6 @@ import {
 import { validateById } from "../generated/validators.mjs";
 import { surveyRoot } from "./fixtures/root.mjs";
 
-const schemaId = "urn:mission-kit:survey-v2:schema:test-evidence:v1";
-
 function safeOwnedPath(relativePath) {
   const target = path.resolve(surveyRoot, ...relativePath.split("/"));
   const relative = path.relative(surveyRoot, target);
@@ -80,6 +78,7 @@ const projectionLock = JSON.parse(await readFile(path.join(surveyRoot, "generate
 const evidenceManifest = JSON.parse(
   await readFile(safeOwnedPath(packageManifest.testEvidenceManifest), "utf8")
 );
+const schemaId = evidenceManifest.$schema;
 const manifestValidation = validateById(schemaId, evidenceManifest);
 if (!manifestValidation.valid) throw new Error(`invalid test manifest: ${manifestValidation.errors.join("; ")}`);
 
@@ -87,6 +86,9 @@ const entries = [];
 for (const entry of evidenceManifest.tests) {
   const descriptorBytes = await readFile(safeOwnedPath(entry.descriptorPath));
   const descriptor = JSON.parse(descriptorBytes);
+  if (descriptor.$schema !== schemaId) {
+    throw new Error(`test evidence schema mismatch: ${entry.descriptorPath}`);
+  }
   const validation = validateById(schemaId, descriptor);
   if (!validation.valid) throw new Error(`${entry.descriptorPath}: ${validation.errors.join("; ")}`);
   if (descriptor.id !== entry.id) throw new Error(`test descriptor identity mismatch: ${entry.descriptorPath}`);
@@ -129,7 +131,7 @@ try {
     process.stderr.write(execution.stderr);
     const result = {
       $schema: schemaId,
-      schemaVersion: "1.0.0",
+      schemaVersion: evidenceManifest.schemaVersion,
       id: `urn:mission-kit:survey-v2:test-result:${String(index + 1).padStart(3, "0")}`,
       kind: "test-result",
       descriptor: {

@@ -1,6 +1,6 @@
 {
-  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v1",
-  "schemaVersion": "1.0.0",
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
   "id": "urn:mission-kit:survey-v2:test-manifest:all",
   "tests": [
     {
@@ -34,6 +34,10 @@
     {
       "id": "urn:mission-kit:survey-v2:test:shared-schema-freeze",
       "descriptorPath": "tests/baseline-freeze/shared-schema-freeze.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:v1-schema-authority-freeze",
+      "descriptorPath": "tests/baseline-freeze/v1-schema-authority-freeze.test.json"
     },
     {
       "id": "urn:mission-kit:survey-v2:test:v1-test-disposition",
@@ -102,6 +106,10 @@
     {
       "id": "urn:mission-kit:survey-v2:test:repeated-build",
       "descriptorPath": "tests/projection/repeated-build.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:package-version-coherence",
+      "descriptorPath": "tests/projection/package-version-coherence.test.json"
     },
     {
       "id": "urn:mission-kit:survey-v2:test:surface-budgets",
@@ -254,6 +262,10 @@
     {
       "id": "urn:mission-kit:survey-v2:test:event-id-prototype",
       "descriptorPath": "tests/state/event-id-prototype.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:historical-package-executor-boundary",
+      "descriptorPath": "tests/state/historical-package-executor-boundary.test.json"
     },
     {
       "id": "urn:mission-kit:survey-v2:test:reached-artifacts",
@@ -1040,6 +1052,10 @@
       "descriptorPath": "tests/shared-schema-closure/schema-reference-path-escape-rejection.test.json"
     },
     {
+      "id": "urn:mission-kit:survey-v2:test:survey-contracts:compatibility:candidate-session-identity",
+      "descriptorPath": "tests/survey-contracts/compatibility/candidate-session-identity.test.json"
+    },
+    {
       "id": "urn:mission-kit:survey-v2:test:survey-contracts:compatibility:v1-session-selection",
       "descriptorPath": "tests/survey-contracts/compatibility/v1-session-selection.test.json"
     },
@@ -1066,6 +1082,10 @@
     {
       "id": "urn:mission-kit:survey-v2:test:survey-contracts:child-frame-bindings",
       "descriptorPath": "tests/survey-contracts/resources/child-frame-bindings.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey-contracts:exact-round-scoped-joins",
+      "descriptorPath": "tests/survey-contracts/resources/exact-round-scoped-joins.test.json"
     },
     {
       "id": "urn:mission-kit:survey-v2:test:survey-contracts:frame-set-coordination-container",
@@ -1152,6 +1172,10 @@
       "descriptorPath": "tests/survey-contracts/semantics/round-two-prior-required.test.json"
     },
     {
+      "id": "urn:mission-kit:survey-v2:test:survey-contracts:session:authoring-resource-validation",
+      "descriptorPath": "tests/survey-contracts/session/authoring-resource-validation.test.json"
+    },
+    {
       "id": "urn:mission-kit:survey-v2:test:survey-contracts:session:coupled-edge-continuity",
       "descriptorPath": "tests/survey-contracts/session/coupled-edge-continuity.test.json"
     },
@@ -1172,8 +1196,24 @@
       "descriptorPath": "tests/survey-contracts/session/legal-paired-states.test.json"
     },
     {
+      "id": "urn:mission-kit:survey-v2:test:survey-contracts:session:manifest-declared-atomic-sequences",
+      "descriptorPath": "tests/survey-contracts/session/manifest-declared-atomic-sequences.test.json"
+    },
+    {
       "id": "urn:mission-kit:survey-v2:test:survey-contracts:session:paired-state-boundaries",
       "descriptorPath": "tests/survey-contracts/session/paired-state-boundaries.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey-contracts:session:profile-resource-authority-boundary",
+      "descriptorPath": "tests/survey-contracts/session/profile-resource-authority-boundary.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey-contracts:session:resource-identity-body-conflict",
+      "descriptorPath": "tests/survey-contracts/session/resource-identity-body-conflict.test.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:test:survey-contracts:session:shared-resource-validation",
+      "descriptorPath": "tests/survey-contracts/session/shared-resource-validation.test.json"
     },
     {
       "id": "urn:mission-kit:survey-v2:test:survey-contracts:session:typed-runtime-artifact-references",

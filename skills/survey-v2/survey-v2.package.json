@@ -1,10 +1,10 @@
 {
-  "$schema": "urn:mission-kit:survey-v2:schema:package:v1",
-  "schemaVersion": "1.0.0",
+  "$schema": "urn:mission-kit:survey-v2:schema:package:v2",
+  "schemaVersion": "2.0.0",
   "id": "urn:mission-kit:survey-v2:package:survey-v2",
   "name": "survey-v2",
   "publicSkillName": "survey",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "parentDesignSha256": "6467fff1c74c6dc857bcb06722d19dfa04381ae3e6f242eccb36581f87560f74",
   "schemas": [
     {
@@ -184,6 +184,10 @@
       "path": "schemas/v2/common.schema.json"
     },
     {
+      "id": "urn:mission-kit:survey-v2:schema:package:v2",
+      "path": "schemas/v2/package.schema.json"
+    },
+    {
       "id": "urn:mission-kit:survey-v2:schema:protocol:v2",
       "path": "schemas/v2/protocol.schema.json"
     },
@@ -196,8 +200,28 @@
       "path": "schemas/v2/protocol-selection.schema.json"
     },
     {
+      "id": "urn:mission-kit:survey-v2:schema:projection:v2",
+      "path": "schemas/v2/projection.schema.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:schema:quarantine:v2",
+      "path": "schemas/v2/quarantine.schema.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:schema:requirement:v2",
+      "path": "schemas/v2/requirement.schema.json"
+    },
+    {
       "id": "urn:mission-kit:survey-v2:schema:session-state:v2",
       "path": "schemas/v2/session-state.schema.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:schema:session-state-active-v1:v2",
+      "path": "schemas/v2/session-state-active-v1.schema.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+      "path": "schemas/v2/test-evidence.schema.json"
     }
   ],
   "sharedSchemaClosure": {
@@ -402,6 +426,10 @@
     },
     {
       "path": "source/executables/compiler/build.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/executables/compiler/package-identity.mjs",
       "kind": "authored"
     },
     {
@@ -786,6 +814,18 @@
       "kind": "authored"
     },
     {
+      "path": "tests/baseline-freeze/v1-schema-authority-freeze.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/v1-schema-authority-freeze.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/v1-schema-authority.freeze.json",
+      "kind": "authored"
+    },
+    {
       "path": "tests/baseline-freeze/v1-test-disposition.json",
       "kind": "authored"
     },
@@ -939,6 +979,14 @@
     },
     {
       "path": "tests/projection/repeated-build.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/projection/package-version-coherence.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/projection/package-version-coherence.test.mjs",
       "kind": "authored"
     },
     {
@@ -1247,6 +1295,14 @@
     },
     {
       "path": "tests/state/event-id-prototype.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/state/historical-package-executor-boundary.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/state/historical-package-executor-boundary.test.mjs",
       "kind": "authored"
     },
     {
@@ -3150,6 +3206,10 @@
       "kind": "authored"
     },
     {
+      "path": "schemas/v2/package.schema.json",
+      "kind": "authored"
+    },
+    {
       "path": "schemas/v2/paired-state-matrix.schema.json",
       "kind": "authored"
     },
@@ -3162,7 +3222,27 @@
       "kind": "authored"
     },
     {
+      "path": "schemas/v2/projection.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/v2/quarantine.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/v2/requirement.schema.json",
+      "kind": "authored"
+    },
+    {
       "path": "schemas/v2/session-state.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/v2/session-state-active-v1.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/v2/test-evidence.schema.json",
       "kind": "authored"
     },
     {
@@ -3178,10 +3258,6 @@
       "kind": "authored"
     },
     {
-      "path": "source/authoring/survey/survey-authoring.protocol.json",
-      "kind": "authored"
-    },
-    {
       "path": "source/protocol/paired-state-matrix.v2.json",
       "kind": "authored"
     },
@@ -3191,6 +3267,18 @@
     },
     {
       "path": "source/protocol/survey-v2.protocol.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/baseline-v1/package-manifest.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/baseline-v1/requirements-registry.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/baseline-v1/test-evidence.manifest.json",
       "kind": "authored"
     },
     {
@@ -3318,6 +3406,14 @@
       "kind": "authored"
     },
     {
+      "path": "tests/survey-contracts/compatibility/candidate-session-identity.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/compatibility/candidate-session-identity.test.mjs",
+      "kind": "authored"
+    },
+    {
       "path": "tests/survey-contracts/compatibility/v1-session-selection.test.json",
       "kind": "authored"
     },
@@ -3375,6 +3471,14 @@
     },
     {
       "path": "tests/survey-contracts/resources/child-frame-bindings.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/exact-round-scoped-joins.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/resources/exact-round-scoped-joins.test.mjs",
       "kind": "authored"
     },
     {
@@ -3546,6 +3650,14 @@
       "kind": "authored"
     },
     {
+      "path": "tests/survey-contracts/session/authoring-resource-validation.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/session/authoring-resource-validation.test.mjs",
+      "kind": "authored"
+    },
+    {
       "path": "tests/survey-contracts/session/coupled-edge-continuity.test.json",
       "kind": "authored"
     },
@@ -3586,11 +3698,43 @@
       "kind": "authored"
     },
     {
+      "path": "tests/survey-contracts/session/manifest-declared-atomic-sequences.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/session/manifest-declared-atomic-sequences.test.mjs",
+      "kind": "authored"
+    },
+    {
       "path": "tests/survey-contracts/session/paired-state-boundaries.test.json",
       "kind": "authored"
     },
     {
       "path": "tests/survey-contracts/session/paired-state-boundaries.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/session/profile-resource-authority-boundary.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/session/profile-resource-authority-boundary.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/session/resource-identity-body-conflict.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/session/resource-identity-body-conflict.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/session/shared-resource-validation.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey-contracts/session/shared-resource-validation.test.mjs",
       "kind": "authored"
     },
     {

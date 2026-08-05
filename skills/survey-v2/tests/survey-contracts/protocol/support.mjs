@@ -62,7 +62,6 @@ export async function assertStructurallyValid(schemaId, value) {
 
 export async function loadProtocolContractSet() {
   const [
-    authoringProtocol,
     protocol,
     pairedStateMatrix,
     protocolSelection,
@@ -70,9 +69,6 @@ export async function loadProtocolContractSet() {
     v1ProtocolBytes,
     candidateProtocolBytes
   ] = await Promise.all([
-    readPackageJson(
-      "source/authoring/survey/survey-authoring.protocol.json"
-    ),
     readPackageJson("source/protocol/survey-v2.protocol.json"),
     readPackageJson("source/protocol/paired-state-matrix.v2.json"),
     readPackageJson("source/protocol/protocol-selection.json"),
@@ -80,6 +76,11 @@ export async function loadProtocolContractSet() {
     readPackageBytes("source/protocol/survey.protocol.json"),
     readPackageBytes("source/protocol/survey-v2.protocol.json")
   ]);
+  const authoringMachine = protocol.machines.find(
+    (machine) => machine.id === "authoring"
+  );
+  assert.ok(authoringMachine, "candidate protocol embeds authoring machine");
+  const authoringProtocol = authoringMachine.protocol;
   return {
     authoringProtocol,
     protocol,

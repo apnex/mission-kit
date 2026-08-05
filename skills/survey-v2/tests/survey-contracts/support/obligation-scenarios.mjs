@@ -4,6 +4,9 @@ import {
   surveyResourceSemanticDigest
 } from "../../../source/authoring/survey/resource-semantics.mjs";
 import {
+  commitReceiptDigest
+} from "../../../source/authoring/kernel/digests.mjs";
+import {
   assertNegativeFixture,
   assertPositiveFixture,
   loadAuthoringFixture,
@@ -68,6 +71,122 @@ async function surveyRoundAncestry() {
   sameReference(
     roundTwo.spec.parentBinding.parentFrameRef,
     roundTwo.spec.surveyFrameRef
+  );
+}
+
+async function exactRoundScopedJoins() {
+  const [
+    round,
+    instrumentTemplate,
+    responseTemplate,
+    interpretationTemplate,
+    closure
+  ] = await Promise.all([
+    loadPositiveFixture("survey-round-1"),
+    loadPositiveFixture("round-instrument-1"),
+    loadPositiveFixture("runtime-round-response-set"),
+    loadPositiveFixture("round-interpretation-1"),
+    loadAuthoringFixture("context-closure")
+  ]);
+
+  const instrument = structuredClone(instrumentTemplate);
+  instrument.spec.roundRef = exactReference(round);
+  const response = structuredClone(responseTemplate);
+  response.spec.payload.roundRef = exactReference(round);
+  response.spec.payload.instrumentRef = exactReference(instrument);
+  const interpretation = structuredClone(interpretationTemplate);
+  interpretation.spec.roundRef = exactReference(round);
+  interpretation.spec.instrumentRef = exactReference(instrument);
+  interpretation.spec.responseSetRef = exactReference(response);
+  interpretation.spec.generationContextRef = exactReference(closure);
+  const exactResolver = createSurveyResourceResolver([
+    round,
+    instrument,
+    response,
+    closure
+  ]);
+  for (const resource of [response, interpretation]) {
+    const result = await validateSurveyResource(resource, {
+      resolveReference: exactResolver
+    });
+    assert.equal(result.valid, true, JSON.stringify(result, null, 2));
+  }
+
+  const foreignRound = structuredClone(round);
+  foreignRound.metadata.name = "foreign-round-1";
+  foreignRound.spec.surveyRef = {
+    ...foreignRound.spec.surveyRef,
+    name: "foreign-survey"
+  };
+  const foreignInstrument = structuredClone(instrument);
+  foreignInstrument.metadata.name = "foreign-round-1-instrument";
+  foreignInstrument.spec.roundRef = exactReference(foreignRound);
+  const crossedResponse = structuredClone(response);
+  crossedResponse.spec.payload.instrumentRef =
+    exactReference(foreignInstrument);
+  const crossedResolver = createSurveyResourceResolver([
+    round,
+    foreignRound,
+    foreignInstrument
+  ]);
+  const responseResult = await validateSurveyResource(crossedResponse, {
+    resolveReference: crossedResolver
+  });
+  assert.equal(responseResult.valid, false);
+  assert.equal(
+    responseResult.semanticIssues.some(({ code }) => (
+      code === "RESPONSE_SET_INSTRUMENT_ROUND_REFERENCE_MISMATCH"
+    )),
+    true,
+    JSON.stringify(responseResult.semanticIssues, null, 2)
+  );
+
+  const crossedInterpretation = structuredClone(interpretation);
+  crossedInterpretation.spec.instrumentRef =
+    exactReference(foreignInstrument);
+  crossedInterpretation.spec.responseSetRef = exactReference(crossedResponse);
+  const interpretationResolver = createSurveyResourceResolver([
+    round,
+    foreignRound,
+    foreignInstrument,
+    crossedResponse,
+    closure
+  ]);
+  const interpretationResult = await validateSurveyResource(
+    crossedInterpretation,
+    { resolveReference: interpretationResolver }
+  );
+  assert.equal(interpretationResult.valid, false);
+  assert.equal(
+    interpretationResult.semanticIssues.some(({ code }) => (
+      code === "INTERPRETATION_INSTRUMENT_ROUND_REFERENCE_MISMATCH"
+    )),
+    true,
+    JSON.stringify(interpretationResult.semanticIssues, null, 2)
+  );
+
+  const [roundTwoTemplate, priorTemplate] = await Promise.all([
+    loadPositiveFixture("survey-round-2"),
+    loadPositiveFixture("round-interpretation-1")
+  ]);
+  const foreignPrior = structuredClone(priorTemplate);
+  foreignPrior.metadata.name = "foreign-round-1-interpretation";
+  foreignPrior.spec.roundRef = exactReference(foreignRound);
+  const roundTwo = structuredClone(roundTwoTemplate);
+  roundTwo.spec.round1InterpretationRef = exactReference(foreignPrior);
+  const priorResolver = createSurveyResourceResolver([
+    foreignPrior,
+    foreignRound
+  ]);
+  const priorResult = await validateSurveyResource(roundTwo, {
+    resolveReference: priorResolver
+  });
+  assert.equal(
+    priorResult.semanticIssues.some(({ code }) => (
+      code === "ROUND_TWO_PRIOR_SURVEY_MISMATCH"
+    )),
+    true,
+    JSON.stringify(priorResult.semanticIssues, null, 2)
   );
 }
 
@@ -317,10 +436,39 @@ async function exactGenerationAncestry() {
     "authoring-assignment",
     "authoring-submission",
     "context-closure",
-    "authoring-commit-receipt"
+    "authoring-commit-receipt",
+    "authoring-mutation"
   ];
-  const [request, assignment, submission, closure, receipt] =
-    await Promise.all(stems.map(loadAuthoringFixture));
+  const [
+    request,
+    assignment,
+    submission,
+    closure,
+    receipt,
+    mutation,
+    roundOne,
+    roundTwo,
+    sourceSnapshot
+  ] = await Promise.all([
+    ...stems.map(loadAuthoringFixture),
+    loadPositiveFixture("survey-round-1"),
+    loadPositiveFixture("survey-round-2"),
+    loadAuthoringFixture("source-snapshot")
+  ]);
+  const exactInputs = {
+    round: exactReference(roundOne),
+    source: exactReference(sourceSnapshot)
+  };
+  request.spec.operation.inputs = structuredClone(exactInputs);
+  assignment.spec.request.reference = exactReference(request);
+  submission.spec.assignment.reference = exactReference(assignment);
+  receipt.spec.cause.assignment.reference = exactReference(assignment);
+  receipt.spec.cause.submission.reference = exactReference(submission);
+  const createdResource = structuredClone(
+    mutation.spec.createdResources[0].resource
+  );
+  receipt.spec.createdResources = [exactReference(createdResource)];
+  receipt.spec.receiptDigest = commitReceiptDigest(receipt);
   const generation = await loadPositiveFixture("generation-record");
   generation.spec.requestRef = exactReference(request);
   generation.spec.assignmentRef = exactReference(assignment);
@@ -329,17 +477,139 @@ async function exactGenerationAncestry() {
   generation.spec.result.commitReceiptRef = exactReference(receipt);
   generation.spec.result.createdResourceRefs =
     structuredClone(receipt.spec.createdResources);
+  generation.spec.ancestry.inputResourceRefs = Object.keys(exactInputs)
+    .sort()
+    .map((key) => structuredClone(exactInputs[key]));
+  generation.spec.ancestry.priorGenerationRecordRefs = [];
+  generation.spec.ancestry.revisionOfRefs = [];
+  generation.spec.assessmentAncestryRefs = [
+    exactReference(sourceSnapshot)
+  ];
   const resolver = createSurveyResourceResolver([
     request,
     assignment,
     submission,
     closure,
-    receipt
+    receipt,
+    createdResource,
+    roundOne,
+    roundTwo,
+    sourceSnapshot
   ]);
   const result = await validateSurveyResource(generation, {
     resolveReference: resolver
   });
   assert.equal(result.valid, true, JSON.stringify(result, null, 2));
+
+  const missingCreatedResolver = createSurveyResourceResolver([
+    request,
+    assignment,
+    submission,
+    closure,
+    receipt,
+    roundOne,
+    roundTwo,
+    sourceSnapshot
+  ]);
+  const missingCreatedResult = await validateSurveyResource(generation, {
+    resolveReference: missingCreatedResolver
+  });
+  assert.equal(missingCreatedResult.valid, false);
+  assert.equal(
+    missingCreatedResult.semanticIssues.some(
+      ({ code, field }) =>
+        code === "REFERENCE_UNRESOLVED" &&
+        field === "/spec/result/createdResourceRefs/0"
+    ),
+    true,
+    JSON.stringify(missingCreatedResult.semanticIssues, null, 2)
+  );
+
+  const invalidReceipt = structuredClone(receipt);
+  invalidReceipt.spec.receiptDigest = `sha256:${"0".repeat(64)}`;
+  const invalidReceiptGeneration = structuredClone(generation);
+  invalidReceiptGeneration.spec.result.commitReceiptRef =
+    exactReference(invalidReceipt);
+  const invalidReceiptResolver = createSurveyResourceResolver([
+    request,
+    assignment,
+    submission,
+    closure,
+    invalidReceipt,
+    createdResource,
+    roundOne,
+    roundTwo,
+    sourceSnapshot
+  ]);
+  const invalidReceiptResult = await validateSurveyResource(
+    invalidReceiptGeneration,
+    { resolveReference: invalidReceiptResolver }
+  );
+  assert.equal(invalidReceiptResult.valid, false);
+  assert.equal(
+    invalidReceiptResult.semanticIssues.some(
+      ({ code }) => code === "COMMIT_RECEIPT_DIGEST_MISMATCH"
+    ),
+    true,
+    JSON.stringify(invalidReceiptResult.semanticIssues, null, 2)
+  );
+
+  const unrelated = structuredClone(generation);
+  unrelated.spec.ancestry.inputResourceRefs[0] = exactReference(roundTwo);
+  const unrelatedResult = await validateSurveyResource(unrelated, {
+    resolveReference: resolver
+  });
+  assert.equal(unrelatedResult.valid, false);
+  assert.equal(
+    unrelatedResult.semanticIssues.some(
+      ({ code }) => code === "GENERATION_INPUT_ANCESTRY_MISMATCH"
+    ),
+    true,
+    JSON.stringify(unrelatedResult.semanticIssues, null, 2)
+  );
+
+  const reordered = structuredClone(generation);
+  reordered.spec.ancestry.inputResourceRefs.reverse();
+  const reorderedResult = await validateSurveyResource(reordered, {
+    resolveReference: resolver
+  });
+  assert.equal(reorderedResult.valid, false);
+  assert.equal(
+    reorderedResult.semanticIssues.some(
+      ({ code }) => code === "GENERATION_INPUT_ANCESTRY_MISMATCH"
+    ),
+    true,
+    JSON.stringify(reorderedResult.semanticIssues, null, 2)
+  );
+
+  const unresolved = structuredClone(generation);
+  unresolved.spec.assessmentAncestryRefs[0].semanticDigest =
+    `sha256:${"0".repeat(64)}`;
+  const unresolvedResult = await validateSurveyResource(unresolved, {
+    resolveReference: resolver
+  });
+  assert.equal(unresolvedResult.valid, false);
+  assert.equal(
+    unresolvedResult.semanticIssues.some(
+      ({ code }) => code === "REFERENCE_UNRESOLVED"
+    ),
+    true,
+    JSON.stringify(unresolvedResult.semanticIssues, null, 2)
+  );
+
+  const falseRevision = structuredClone(generation);
+  falseRevision.spec.ancestry.revisionOfRefs = [exactReference(roundOne)];
+  const falseRevisionResult = await validateSurveyResource(falseRevision, {
+    resolveReference: resolver
+  });
+  assert.equal(falseRevisionResult.valid, false);
+  assert.equal(
+    falseRevisionResult.semanticIssues.some(
+      ({ code }) => code === "GENERATION_TASK_REVISION_ANCESTRY_FORBIDDEN"
+    ),
+    true,
+    JSON.stringify(falseRevisionResult.semanticIssues, null, 2)
+  );
 
   const versionOne = await loadPositiveFixture("survey");
   const versionTwo = structuredClone(versionOne);
@@ -366,6 +636,7 @@ async function exactGenerationAncestry() {
 const SCENARIOS = Object.freeze({
   "O-SV01-01": surveyGeometry,
   "O-SV01-02": surveyRoundAncestry,
+  "O-SV01-03": exactRoundScopedJoins,
   "O-SV02-01": frameSetCoordinationContainer,
   "O-SV03-01": childFrameBindings,
   "O-SV03-02": mismatchedParentRejected,

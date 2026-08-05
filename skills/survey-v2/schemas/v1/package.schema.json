@@ -13,7 +13,6 @@
     "version",
     "parentDesignSha256",
     "schemas",
-    "sharedSchemaClosure",
     "members",
     "projections",
     "requirementsRegistry",
@@ -43,7 +42,8 @@
     },
     "schemas": {
       "type": "array",
-      "minItems": 17,
+      "minItems": 15,
+      "maxItems": 15,
       "uniqueItems": true,
       "items": {
         "type": "object",
@@ -51,44 +51,12 @@
         "required": ["id", "path"],
         "properties": {
           "id": {
-            "oneOf": [
-              {
-                "type": "string",
-                "pattern": "^urn:mission-kit:survey-v2:schema:[a-z0-9-]+:v1$"
-              },
-              {
-                "type": "string",
-                "pattern": "^urn:mission-kit:authoring:schema:[a-z0-9-]+:v1alpha1$"
-              },
-              {
-                "type": "string",
-                "pattern": "^urn:mission-kit:survey:schema:[a-z0-9-]+:v1alpha1$"
-              },
-              {
-                "type": "string",
-                "pattern": "^urn:mission-kit:survey-v2:schema:[a-z0-9-]+:v2$"
-              }
-            ]
+            "type": "string",
+            "pattern": "^urn:mission-kit:survey-v2:schema:[a-z0-9-]+:v1$"
           },
           "path": {
             "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/relativePath"
           }
-        }
-      }
-    },
-    "sharedSchemaClosure": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "roots",
-        "manifest"
-      ],
-      "properties": {
-        "roots": {
-          "const": "dependencies/shared-schemas/v1/roots.json"
-        },
-        "manifest": {
-          "const": "dependencies/shared-schemas/v1/closure.manifest.json"
         }
       }
     },
@@ -104,13 +72,7 @@
             "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/relativePath"
           },
           "kind": {
-            "enum": [
-              "authored",
-              "generated",
-              "bootstrap",
-              "supply-lock",
-              "dependency-snapshot"
-            ]
+            "enum": ["authored", "generated", "bootstrap", "supply-lock"]
           },
           "expectedId": {
             "type": "string",

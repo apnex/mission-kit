@@ -24,7 +24,7 @@ test("a phase branch rejects future responses and candidates retained in an earl
     ]);
     assert.equal(mutant.candidates.length, 1);
     const result = validateById(
-      "urn:mission-kit:survey-v2:schema:session-state:v1",
+      mutant.$schema,
       mutant
     );
     assert.equal(result.valid, false);

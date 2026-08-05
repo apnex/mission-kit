@@ -1,0 +1,44 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:historical-package-executor-boundary",
+  "obligationId": "O-R21-01",
+  "requirementIds": [
+    "R21",
+    "R24"
+  ],
+  "invariantIds": [
+    "SV14"
+  ],
+  "verification": {
+    "precondition": "A historical protocol-v1 session identifies frozen package v1, while a newly created active protocol-v1 session identifies package v2.",
+    "stimulus": "Invoke the production applySurveyCommand and verified-storage boundaries for the historical session, then apply a valid proposer-owned transition to the active session.",
+    "expectedSemanticState": "The historical session yields typed MATCHING_FROZEN_PACKAGE_REQUIRED before lock acquisition, while active package-v2 protocol-v1 execution remains accepted.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: current applySurveyCommand requires a matching frozen package before writes while active package v1 remains executable",
+    "forbiddenMutation": "The current executor must not create a lock, quarantine, or changed session bytes for a historical package-v1 session.",
+    "applicability": {
+      "mode": "specific",
+      "transports": [],
+      "adapters": [
+        "urn:mission-kit:survey-v2:adapter:runtime-engine"
+      ]
+    },
+    "inspectedAuthorities": [
+      "schemas/v2/session-state-active-v1.schema.json",
+      "source/executables/runtime/lib/engine.mjs",
+      "source/executables/runtime/lib/storage.mjs",
+      "source/protocol/protocol-selection.json"
+    ]
+  },
+  "behavior": "current applySurveyCommand requires a matching frozen package before writes while active package v1 remains executable",
+  "evidenceClass": "comparison",
+  "runner": "node:test",
+  "executable": "tests/state/historical-package-executor-boundary.test.mjs",
+  "fixtures": [
+    "tests/fixtures/root.mjs",
+    "tests/fixtures/runtime-fixture.mjs",
+    "tests/fixtures/survey/session-v2/historical-v1-session.json"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

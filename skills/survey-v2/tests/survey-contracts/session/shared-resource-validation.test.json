@@ -1,0 +1,41 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey-contracts:session:shared-resource-validation",
+  "obligationId": "O-AS14-22",
+  "requirementIds": [
+    "R07",
+    "R11"
+  ],
+  "invariantIds": [
+    "AS14"
+  ],
+  "verification": {
+    "precondition": "A structurally valid v2 session stores a locally frozen shared Question or ContextFrame as an immutable workspace resource.",
+    "stimulus": "Validate valid shared resources, a structurally malformed Question, a duplicate-option Question, and a cross-boundary ContextFrame through whole-session semantics.",
+    "expectedSemanticState": "Every locally bound shared resource passes both its exact frozen schema and its generated semantic validator before Survey graph resolution.",
+    "expectedEvidenceState": "The runner reports the literal assertion: the v2 session validates every frozen shared resource before graph resolution",
+    "forbiddenMutation": "No generic ResourceDocument wrapper may allow a malformed or semantically invalid locally bound shared resource into a valid session.",
+    "applicability": {
+      "mode": "agnostic",
+      "transports": [],
+      "adapters": [
+        "urn:mission-kit:survey-v2:adapter:session"
+      ]
+    },
+    "inspectedAuthorities": [
+      "dependencies/shared-schemas/v1/roots.json",
+      "generated/shared-semantic-validators.mjs",
+      "source/authoring/survey/session-semantics.mjs"
+    ]
+  },
+  "behavior": "a v2 session validates every locally bound shared resource against its frozen structural and semantic authorities",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/survey-contracts/session/shared-resource-validation.test.mjs",
+  "fixtures": [
+    "tests/fixtures/survey/session-v2/session-factory.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

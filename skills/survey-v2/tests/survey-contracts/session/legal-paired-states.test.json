@@ -1,6 +1,6 @@
 {
-  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v1",
-  "schemaVersion": "1.0.0",
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
   "id": "urn:mission-kit:survey-v2:test:survey-contracts:session:legal-paired-states",
   "obligationId": "O-SV14-05",
   "requirementIds": [
@@ -12,10 +12,10 @@
   ],
   "verification": {
     "precondition": "The canonical v2 paired-state matrix contains its complete declared pair inventory.",
-    "stimulus": "Construct and semantically validate one session for every declared pair.",
-    "expectedSemanticState": "All 38 canonical authoring and phase pairs validate without an issue.",
-    "expectedEvidenceState": "The test runner reports the literal assertion: every paired authoring and phase state declared legal by the matrix validates",
-    "forbiddenMutation": "No declared legal pair may be dropped or substituted by an ambient session value.",
+    "stimulus": "Construct one session for every declared pair and validate both the closed session-state:v2 schema and cross-document semantics.",
+    "expectedSemanticState": "All 38 canonical authoring and phase pairs pass structural and semantic validation without an issue.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: every paired authoring and phase state declared legal by the matrix passes structural and semantic validation",
+    "forbiddenMutation": "No declared legal pair may be dropped, structurally invalid, or substituted by an ambient session value.",
     "applicability": {
       "mode": "agnostic",
       "transports": [],
@@ -28,7 +28,7 @@
       "source/protocol/paired-state-matrix.v2.json"
     ]
   },
-  "behavior": "every paired authoring and phase state declared legal by the matrix validates",
+  "behavior": "every paired authoring and phase state declared legal by the matrix passes structural and semantic validation",
   "evidenceClass": "positive",
   "runner": "node:test",
   "executable": "tests/survey-contracts/session/legal-paired-states.test.mjs",
@@ -37,5 +37,5 @@
     "tests/fixtures/survey/session-v2/session-factory.mjs"
   ],
   "prerequisites": [],
-  "resultSchema": "urn:mission-kit:survey-v2:test-result:v1"
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
 }

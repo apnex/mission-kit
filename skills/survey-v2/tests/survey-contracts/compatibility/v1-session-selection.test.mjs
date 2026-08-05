@@ -3,7 +3,10 @@ import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 import {
+  ACTIVE_SESSION_SCHEMA_V1,
+  ACTIVE_V1_SELECTOR,
   CANDIDATE_V2_SELECTOR,
+  HISTORICAL_V1_SELECTOR,
   SessionContractSelectionError,
   selectSessionContract
 } from "../../../source/authoring/survey/session-semantics.mjs";
@@ -29,7 +32,7 @@ test("historical v1 sessions preserve frozen package identification and cannot b
   const session = JSON.parse(historicalBytes);
   const before = structuredClone(session);
   const selected = selectSessionContract(session);
-  assert.equal(selected.selector, "frozen-v1");
+  assert.equal(selected.selector, HISTORICAL_V1_SELECTOR);
   assert.deepEqual(selected.package, session.package);
   assert.throws(
     () => selectSessionContract(session, CANDIDATE_V2_SELECTOR),
@@ -38,6 +41,25 @@ test("historical v1 sessions preserve frozen package identification and cannot b
       error.code === "CANDIDATE_SELECTOR_REFUSES_V1"
   );
   assert.deepEqual(session, before);
+
+  const active = structuredClone(session);
+  active.$schema = ACTIVE_SESSION_SCHEMA_V1;
+  const activeProjection = makeSession().package.projectionDigest;
+  active.package.version = "2.0.0";
+  active.package.projectionDigest = activeProjection;
+  assert.equal(
+    selectSessionContract(active).selector,
+    ACTIVE_V1_SELECTOR
+  );
+  const activeWithFrozenProjection = structuredClone(active);
+  activeWithFrozenProjection.package.projectionDigest =
+    session.package.projectionDigest;
+  assert.throws(
+    () => selectSessionContract(activeWithFrozenProjection),
+    (error) =>
+      error instanceof SessionContractSelectionError &&
+      error.code === "ACTIVE_V1_IDENTITY_REQUIRED"
+  );
 
   const changedFrozenPackage = structuredClone(session);
   changedFrozenPackage.package.projectionDigest = `sha256:${"0".repeat(64)}`;
@@ -78,5 +100,5 @@ test("historical v1 sessions preserve frozen package identification and cannot b
     selectSessionContract(candidate, CANDIDATE_V2_SELECTOR).schemaId,
     "urn:mission-kit:survey-v2:schema:session-state:v2"
   );
-  assert.equal(candidate.package.version, "1.0.0");
+  assert.equal(candidate.package.version, "2.0.0");
 });

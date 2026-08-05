@@ -32,6 +32,7 @@ export async function sessionStructureValidator() {
     const roots = [
       path.join(packageRoot, "schemas/v1"),
       path.join(packageRoot, "schemas/authoring/v1alpha1"),
+      path.join(packageRoot, "schemas/survey/v1alpha1"),
       path.join(packageRoot, "schemas/v2")
     ];
     const schemas = (

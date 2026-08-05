@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:survey-v2:schema:quarantine:v2",
+  "title": "Survey v2 active create-once quarantine latch",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "schemaVersion", "operation", "sessionMember", "runIdentity", "observedDigest", "failureClass", "package", "detectedBy", "evidence", "lastGoodRevision"],
+  "properties": {
+    "$schema": {
+      "const": "urn:mission-kit:survey-v2:schema:quarantine:v2"
+    },
+    "schemaVersion": {
+      "const": "2.0.0"
+    },
+    "operation": {
+      "const": "OQ01"
+    },
+    "sessionMember": {
+      "const": "session.json"
+    },
+    "runIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slug", "sessionId"],
+      "properties": {
+        "slug": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+        },
+        "sessionId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        }
+      }
+    },
+    "observedDigest": {
+      "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/digest"
+    },
+    "failureClass": {
+      "enum": ["unparseable-session", "schema-invalid-session", "event-chain-invalid", "snapshot-mismatch", "quarantine-latch-corrupt"]
+    },
+    "package": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version"],
+      "properties": {
+        "id": {
+          "const": "urn:mission-kit:survey-v2:package:survey-v2"
+        },
+        "version": {
+          "const": "2.0.0"
+        }
+      }
+    },
+    "detectedBy": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "lastGoodRevision": {
+      "type": ["integer", "null"],
+      "minimum": 0
+    }
+  }
+}

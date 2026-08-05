@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:survey-v2:schema:requirement:v2",
+  "title": "Survey v2 active requirement registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "schemaVersion", "id", "requirements", "invariants"],
+  "properties": {
+    "$schema": {
+      "const": "urn:mission-kit:survey-v2:schema:requirement:v2"
+    },
+    "schemaVersion": {
+      "const": "2.0.0"
+    },
+    "id": {
+      "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/semanticId"
+    },
+    "requirements": {
+      "type": "array",
+      "minItems": 28,
+      "maxItems": 28,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "statement", "status", "mechanisms", "requiredCapabilities", "primaryOwner", "acceptanceObligations", "evidenceClasses"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^R(?:0[1-9]|1[0-9]|2[0-8])$"
+          },
+          "statement": {
+            "type": "string",
+            "minLength": 12
+          },
+          "status": {
+            "const": "active"
+          },
+          "mechanisms": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^M(?:0[1-9]|1[0-5])$"
+            }
+          },
+          "requiredCapabilities": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9.-]+@1$"
+            }
+          },
+          "primaryOwner": {
+            "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/semanticId"
+          },
+          "acceptanceObligations": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["id", "statement"],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^O-R(?:0[1-9]|1[0-9]|2[0-8])-[0-9]{2}$"
+                },
+                "statement": {
+                  "type": "string",
+                  "minLength": 8
+                }
+              }
+            }
+          },
+          "evidenceClasses": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "enum": ["positive", "negative", "conformance", "resume", "failure-injection", "comparison", "forward"]
+            }
+          },
+          "v1Departure": {
+            "type": "string",
+            "minLength": 8
+          }
+        }
+      }
+    },
+    "invariants": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 29,
+      "items": {
+        "$ref": "#/$defs/invariant"
+      }
+    }
+  },
+  "$defs": {
+    "invariant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "statement",
+        "acceptanceObligations",
+        "evidenceClasses"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^(?:AS(?:0[1-9]|1[0-5])|SV(?:0[1-9]|1[0-4]))$"
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 12
+        },
+        "acceptanceObligations": {
+          "type": "array",
+          "maxItems": 99,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "statement"],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^O-(?:AS(?:0[1-9]|1[0-5])|SV(?:0[1-9]|1[0-4]))-[0-9]{2}$"
+              },
+              "statement": {
+                "type": "string",
+                "minLength": 8
+              }
+            }
+          }
+        },
+        "evidenceClasses": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "positive",
+              "negative",
+              "conformance",
+              "resume",
+              "failure-injection",
+              "comparison",
+              "forward"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

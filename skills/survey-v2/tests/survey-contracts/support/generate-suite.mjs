@@ -37,8 +37,8 @@ for (const item of surveyContractSuite) {
     ...item.fixtures.map(fixturePath)
   ];
   const descriptor = {
-    $schema: "urn:mission-kit:survey-v2:schema:test-evidence:v1",
-    schemaVersion: "1.0.0",
+    $schema: "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+    schemaVersion: "2.0.0",
     id:
       `urn:mission-kit:survey-v2:test:survey-contracts:${item.name}`,
     obligationId: item.obligationId,
@@ -71,7 +71,7 @@ for (const item of surveyContractSuite) {
     executable,
     fixtures: [...new Set(fixtures)],
     prerequisites: [],
-    resultSchema: "urn:mission-kit:survey-v2:test-result:v1"
+    resultSchema: "urn:mission-kit:survey-v2:test-result:v2"
   };
   await Promise.all([
     writeFile(

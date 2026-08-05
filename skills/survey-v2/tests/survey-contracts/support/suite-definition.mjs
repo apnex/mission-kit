@@ -21,6 +21,24 @@ export const surveyContractSuite = Object.freeze([
     fixtures: ["survey-round-1", "survey-round-2"]
   },
   {
+    obligationId: "O-SV01-03",
+    invariantId: "SV01",
+    statement:
+      "same-ordinal resources cannot cross exact Round or Survey lineage",
+    category: "resources",
+    name: "exact-round-scoped-joins",
+    evidenceClass: "negative",
+    schema: "survey-round.schema.json",
+    fixtures: [
+      "survey-round-1",
+      "survey-round-2",
+      "round-instrument-1",
+      "runtime-round-response-set",
+      "round-interpretation-1",
+      "authoring/context-closure"
+    ]
+  },
+  {
     obligationId: "O-SV02-01",
     invariantId: "SV02",
     statement:
@@ -279,7 +297,8 @@ export const surveyContractSuite = Object.freeze([
       "authoring/authoring-assignment",
       "authoring/authoring-submission",
       "authoring/context-closure",
-      "authoring/authoring-commit-receipt"
+      "authoring/authoring-commit-receipt",
+      "authoring/authoring-mutation"
     ]
   }
 ]);

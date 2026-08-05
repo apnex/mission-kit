@@ -1,0 +1,16 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:v1-schema-authority-freeze",
+  "obligationId": "O-R15-01",
+  "behavior": "all fifteen predecessor schema authorities retain their frozen Git bytes",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/baseline-freeze/v1-schema-authority-freeze.test.mjs",
+  "fixtures": [
+    "tests/baseline-freeze/v1-schema-authority.freeze.json",
+    "tests/fixtures/root.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

@@ -1,6 +1,6 @@
 {
-  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v1",
-  "schemaVersion": "1.0.0",
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
   "id": "urn:mission-kit:survey-v2:test:survey-contracts:session:global-journal-closure",
   "obligationId": "O-AS15-18",
   "requirementIds": [
@@ -12,10 +12,10 @@
   ],
   "verification": {
     "precondition": "A v2 session has two digest-bound records in one global journal.",
-    "stimulus": "Validate the journal and independently break its length, ordinal, revision chain, and record digest.",
-    "expectedSemanticState": "The intact journal closes exactly to the persisted workspace revision state.",
+    "stimulus": "Validate the journal and independently break its length, ordinal, genesis state, genesis seal, prior-record seal link, revision chain, splice boundary, truncation boundary, and record digest.",
+    "expectedSemanticState": "The intact journal starts from the derived session genesis, binds every prior record digest, and closes exactly to the persisted workspace revision state.",
     "expectedEvidenceState": "The test runner reports the literal assertion: the v2 session journal closes its commit revision, length, ordinal sequence, and referenced records",
-    "forbiddenMutation": "No missing, reordered, discontinuous, or changed journal record may validate.",
+    "forbiddenMutation": "No wrong-genesis, missing, truncated, spliced, reordered, discontinuous, or changed journal record may validate.",
     "applicability": {
       "mode": "agnostic",
       "transports": [],
@@ -37,5 +37,5 @@
     "tests/fixtures/survey/session-v2/session-factory.mjs"
   ],
   "prerequisites": [],
-  "resultSchema": "urn:mission-kit:survey-v2:test-result:v1"
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
 }

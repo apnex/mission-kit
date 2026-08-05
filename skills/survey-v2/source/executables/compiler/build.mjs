@@ -19,6 +19,9 @@ import {
   checkSharedSchemaSnapshot,
   renderSharedSemanticValidatorRegistry
 } from "./shared-schema-closure.mjs";
+import {
+  assertPackageIdentity
+} from "./package-identity.mjs";
 import { HANDLER_SURFACE } from "../runtime/lib/handler-surface.mjs";
 import {
   base64urlCanonical,
@@ -1192,7 +1195,9 @@ function enforceBudget(recipe, target, bytes) {
 
 async function validateTestEvidence(packageManifest, ajv, requirements, memberPaths) {
   const manifest = await readJson(packageManifest.testEvidenceManifest);
-  const validator = ajv.getSchema("urn:mission-kit:survey-v2:schema:test-evidence:v1");
+  const evidenceSchemaId = manifest?.$schema;
+  const validator = ajv.getSchema(evidenceSchemaId);
+  if (!validator) fail(`test evidence manifest names unknown schema ${String(evidenceSchemaId)}`);
   if (!validator(manifest)) fail(`test evidence manifest invalid: ${ajv.errorsText(validator.errors, { separator: "; " })}`);
   unique(manifest.tests.map((item) => item.id), "test evidence ID");
   unique(manifest.tests.map((item) => item.descriptorPath), "test descriptor path");
@@ -1223,6 +1228,9 @@ async function validateTestEvidence(packageManifest, ajv, requirements, memberPa
   for (const entry of manifest.tests) {
     if (!memberPaths.has(entry.descriptorPath)) fail(`test descriptor is not an owned member: ${entry.descriptorPath}`);
     const descriptor = await readJson(entry.descriptorPath);
+    if (descriptor.$schema !== evidenceSchemaId) {
+      fail(`${entry.descriptorPath} evidence schema differs from the active manifest`);
+    }
     if (!validator(descriptor)) fail(`${entry.descriptorPath} invalid: ${ajv.errorsText(validator.errors, { separator: "; " })}`);
     if (descriptor.id !== entry.id) fail(`${entry.descriptorPath} ID differs from manifest`);
     if (!knownObligations.has(descriptor.obligationId)) fail(`${descriptor.id} claims unknown obligation`);
@@ -1459,9 +1467,20 @@ async function main() {
   });
   for (const schema of schemas) ajv.addSchema(schema);
 
-  const packageValidator = ajv.getSchema("urn:mission-kit:survey-v2:schema:package:v1");
-  if (!packageValidator(packageManifest)) {
-    fail(`package manifest invalid: ${ajv.errorsText(packageValidator.errors, { separator: "; " })}`);
+  const packageValidator = ajv.getSchema(packageManifest.$schema);
+  if (!packageValidator || !packageValidator(packageManifest)) {
+    fail(
+      `package manifest invalid: ${packageValidator
+        ? ajv.errorsText(packageValidator.errors, { separator: "; " })
+        : `unknown package schema ${String(packageManifest.$schema)}`}`
+    );
+  }
+  const npmPackage = await readJson("package.json");
+  const npmLock = await readJson("package-lock.json");
+  try {
+    assertPackageIdentity({ packageManifest, npmPackage, npmLock });
+  } catch (error) {
+    fail(error.message);
   }
   const sharedRoots = await readJson(packageManifest.sharedSchemaClosure.roots);
   const sharedRootsValidator = ajv.getSchema("urn:mission-kit:survey-v2:schema:shared-schema-roots:v1");
@@ -1548,7 +1567,8 @@ async function main() {
   for (const projectionPath of packageManifest.projections) {
     if (!memberPaths.has(projectionPath)) fail(`projection recipe is not registered: ${projectionPath}`);
     const recipe = await readJson(projectionPath);
-    const validator = ajv.getSchema("urn:mission-kit:survey-v2:schema:projection:v1");
+    const validator = ajv.getSchema(recipe.$schema);
+    if (!validator) fail(`${projectionPath} names unknown schema ${String(recipe.$schema)}`);
     if (!validator(recipe)) fail(`${projectionPath} invalid: ${ajv.errorsText(validator.errors, { separator: "; " })}`);
     projectionRecipes.push({ path: projectionPath, recipe });
   }

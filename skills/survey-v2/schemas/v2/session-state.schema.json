@@ -1003,7 +1003,7 @@
           "const": "urn:mission-kit:survey-v2:package:survey-v2"
         },
         "version": {
-          "const": "1.0.0"
+          "const": "2.0.0"
         },
         "projectionDigest": {
           "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/digest"
@@ -1065,7 +1065,66 @@
       ],
       "properties": {
         "workspace": {
-          "$ref": "urn:mission-kit:authoring:schema:authoring-workspace:v1alpha1"
+          "allOf": [
+            {
+              "$ref": "urn:mission-kit:authoring:schema:authoring-workspace:v1alpha1"
+            },
+            {
+              "type": "object",
+              "required": [
+                "spec"
+              ],
+              "properties": {
+                "spec": {
+                  "type": "object",
+                  "required": [
+                    "resourceVersions"
+                  ],
+                  "properties": {
+                    "resourceVersions": {
+                      "type": "array",
+                      "items": {
+                        "if": {
+                          "type": "object",
+                          "required": [
+                            "resource"
+                          ],
+                          "properties": {
+                            "resource": {
+                              "type": "object",
+                              "required": [
+                                "apiVersion",
+                                "kind"
+                              ],
+                              "properties": {
+                                "apiVersion": {
+                                  "const": "survey.mission-kit/v1alpha1"
+                                },
+                                "kind": {
+                                  "const": "SurveyRuntimeArtifact"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "then": {
+                          "type": "object",
+                          "required": [
+                            "resource"
+                          ],
+                          "properties": {
+                            "resource": {
+                              "$ref": "urn:mission-kit:survey:schema:survey-runtime-artifact:v1alpha1"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
         },
         "runtimeArtifactReferences": {
           "type": "array",

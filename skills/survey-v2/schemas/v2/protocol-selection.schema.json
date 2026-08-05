@@ -9,7 +9,8 @@
     "schemaVersion",
     "id",
     "defaultSelection",
-    "candidateSelections"
+    "candidateSelections",
+    "historicalCompatibility"
   ],
   "properties": {
     "$schema": {
@@ -22,7 +23,7 @@
       "const": "urn:mission-kit:survey-v2:protocol-selection:survey"
     },
     "defaultSelection": {
-      "$ref": "#/$defs/frozenDefault"
+      "$ref": "#/$defs/activeDefault"
     },
     "candidateSelections": {
       "type": "array",
@@ -31,22 +32,33 @@
       "items": {
         "$ref": "#/$defs/explicitCandidate"
       }
+    },
+    "historicalCompatibility": {
+      "$ref": "#/$defs/historicalCompatibility"
     }
   },
   "$defs": {
-    "candidatePackageBinding": {
+    "activePackageBinding": {
       "type": "object",
       "additionalProperties": false,
       "required": [
         "id",
-        "version"
+        "version",
+        "projectionLockPath",
+        "rootClass"
       ],
       "properties": {
         "id": {
           "const": "urn:mission-kit:survey-v2:package:survey-v2"
         },
         "version": {
-          "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/schemaVersion"
+          "const": "2.0.0"
+        },
+        "projectionLockPath": {
+          "const": "generated/projection-lock.json"
+        },
+        "rootClass": {
+          "const": "active-package-root"
         }
       }
     },
@@ -99,7 +111,67 @@
         }
       }
     },
-    "frozenDefault": {
+    "activeExecutionBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "executor",
+        "implementationStatus",
+        "quarantineSchema"
+      ],
+      "properties": {
+        "executor": {
+          "const": "current-package"
+        },
+        "implementationStatus": {
+          "const": "available"
+        },
+        "quarantineSchema": {
+          "const": "urn:mission-kit:survey-v2:schema:quarantine:v2"
+        }
+      }
+    },
+    "candidateExecutionBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "executor",
+        "implementationStatus",
+        "quarantineSchema"
+      ],
+      "properties": {
+        "executor": {
+          "const": "current-package"
+        },
+        "implementationStatus": {
+          "const": "contract-only"
+        },
+        "quarantineSchema": {
+          "const": "urn:mission-kit:survey-v2:schema:quarantine:v2"
+        }
+      }
+    },
+    "historicalExecutionBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "executor",
+        "implementationStatus",
+        "quarantineSchema"
+      ],
+      "properties": {
+        "executor": {
+          "const": "matching-frozen-package"
+        },
+        "implementationStatus": {
+          "const": "matching-package-required"
+        },
+        "quarantineSchema": {
+          "const": "urn:mission-kit:survey-v2:schema:quarantine:v1"
+        }
+      }
+    },
+    "activeDefault": {
       "type": "object",
       "additionalProperties": false,
       "required": [
@@ -108,26 +180,30 @@
         "status",
         "package",
         "protocol",
-        "sessionSchema"
+        "sessionSchema",
+        "execution"
       ],
       "properties": {
         "id": {
-          "const": "frozen-v1"
+          "const": "active-v1-default"
         },
         "activation": {
           "const": "implicit"
         },
         "status": {
-          "const": "frozen"
+          "const": "active"
         },
         "package": {
-          "$ref": "#/$defs/frozenPackageBinding"
+          "$ref": "#/$defs/activePackageBinding"
         },
         "protocol": {
           "$ref": "#/$defs/protocolBinding"
         },
         "sessionSchema": {
-          "const": "urn:mission-kit:survey-v2:schema:session-state:v1"
+          "const": "urn:mission-kit:survey-v2:schema:session-state-active-v1:v2"
+        },
+        "execution": {
+          "$ref": "#/$defs/activeExecutionBinding"
         }
       }
     },
@@ -140,7 +216,8 @@
         "status",
         "package",
         "protocol",
-        "sessionSchema"
+        "sessionSchema",
+        "execution"
       ],
       "properties": {
         "id": {
@@ -153,13 +230,52 @@
           "const": "candidate"
         },
         "package": {
-          "$ref": "#/$defs/candidatePackageBinding"
+          "$ref": "#/$defs/activePackageBinding"
         },
         "protocol": {
           "$ref": "#/$defs/protocolBinding"
         },
         "sessionSchema": {
           "const": "urn:mission-kit:survey-v2:schema:session-state:v2"
+        },
+        "execution": {
+          "$ref": "#/$defs/candidateExecutionBinding"
+        }
+      }
+    },
+    "historicalCompatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "activation",
+        "status",
+        "package",
+        "protocol",
+        "sessionSchema",
+        "execution"
+      ],
+      "properties": {
+        "id": {
+          "const": "historical-v1-resume"
+        },
+        "activation": {
+          "const": "resume-only"
+        },
+        "status": {
+          "const": "frozen"
+        },
+        "package": {
+          "$ref": "#/$defs/frozenPackageBinding"
+        },
+        "protocol": {
+          "$ref": "#/$defs/protocolBinding"
+        },
+        "sessionSchema": {
+          "const": "urn:mission-kit:survey-v2:schema:session-state:v1"
+        },
+        "execution": {
+          "$ref": "#/$defs/historicalExecutionBinding"
         }
       }
     }
