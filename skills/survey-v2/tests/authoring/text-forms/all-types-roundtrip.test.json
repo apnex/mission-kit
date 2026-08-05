@@ -1,0 +1,37 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:authoring:text-forms:all-types-roundtrip",
+  "obligationId": "O-AS05-05",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS05"
+  ],
+  "verification": {
+    "precondition": "The mapped K11 authorities and fixtures exist as package-owned files.",
+    "stimulus": "Execute tests/authoring/text-forms/all-types-roundtrip.test.mjs with node:test.",
+    "expectedSemanticState": "No durable authoring runtime state transition is claimed by O-AS05-05.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: all four field types round-trip through populated canonical text",
+    "forbiddenMutation": "Do not infer runtime dispatch, persistence, journaling, atomic commit, adapter parity, transport behavior, or cold-resume behavior beyond the literal assertion.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "source/authoring/kernel/canonical.mjs",
+      "source/authoring/kernel/digests.mjs",
+      "source/authoring/kernel/text-forms.mjs"
+    ]
+  },
+  "behavior": "all four field types round-trip through populated canonical text",
+  "evidenceClass": "positive",
+  "runner": "node:test",
+  "executable": "tests/authoring/text-forms/all-types-roundtrip.test.mjs",
+  "fixtures": [
+    "tests/authoring/text-forms/support.mjs",
+    "tests/fixtures/authoring/text-forms/k11-golden-vectors.json"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

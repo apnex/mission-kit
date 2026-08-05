@@ -736,6 +736,10 @@
         {
           "id": "O-AS04-04",
           "statement": "a protocol transition source set must use canonical lexical order"
+        },
+        {
+          "id": "O-AS04-05",
+          "statement": "repeated text-form renders produce identical bytes"
         }
       ],
       "evidenceClasses": [
@@ -762,6 +766,122 @@
         {
           "id": "O-AS05-04",
           "statement": "exact-byte encoding rejects text and filesystem paths"
+        },
+        {
+          "id": "O-AS05-05",
+          "statement": "all four field types round-trip through populated canonical text"
+        },
+        {
+          "id": "O-AS05-06",
+          "statement": "authoring text rejects a UTF-8 BOM"
+        },
+        {
+          "id": "O-AS05-07",
+          "statement": "boolean fields map only exact yes and no literals"
+        },
+        {
+          "id": "O-AS05-08",
+          "statement": "enum fields accept exactly one declared case-sensitive member"
+        },
+        {
+          "id": "O-AS05-09",
+          "statement": "the sealed field-ID grammar admits underscores and rejects invalid separators"
+        },
+        {
+          "id": "O-AS05-10",
+          "statement": "the executable form contract rejects undeclared root, spec, and field keys"
+        },
+        {
+          "id": "O-AS05-11",
+          "statement": "rendering rejects a form whose semantic body differs from its sealed digest"
+        },
+        {
+          "id": "O-AS05-12",
+          "statement": "only declared field bodies are mutable"
+        },
+        {
+          "id": "O-AS05-13",
+          "statement": "authoring text rejects invalid UTF-8 bytes"
+        },
+        {
+          "id": "O-AS05-14",
+          "statement": "a submitted form cannot duplicate a field-marker region"
+        },
+        {
+          "id": "O-AS05-15",
+          "statement": "an opened field-marker region must have its matching close marker"
+        },
+        {
+          "id": "O-AS05-16",
+          "statement": "a submitted form cannot omit a declared field-marker region"
+        },
+        {
+          "id": "O-AS05-17",
+          "statement": "field-marker regions cannot nest"
+        },
+        {
+          "id": "O-AS05-18",
+          "statement": "field-marker regions must retain declared order"
+        },
+        {
+          "id": "O-AS05-19",
+          "statement": "CRLF and CR input normalize to canonical LF bytes"
+        },
+        {
+          "id": "O-AS05-20",
+          "statement": "authoring text rejects NUL"
+        },
+        {
+          "id": "O-AS05-21",
+          "statement": "optional values are represented by omission, not explicit empty values"
+        },
+        {
+          "id": "O-AS05-22",
+          "statement": "paragraphs normalize horizontal edges and enforce code-point bounds"
+        },
+        {
+          "id": "O-AS05-23",
+          "statement": "an exact generated placeholder sentinel cannot remain in a submitted field"
+        },
+        {
+          "id": "O-AS05-24",
+          "statement": "a submitted request marker must match the assigned request handle"
+        },
+        {
+          "id": "O-AS05-25",
+          "statement": "an empty required field is rejected for every field type"
+        },
+        {
+          "id": "O-AS05-26",
+          "statement": "editable bodies reject reserved marker injection"
+        },
+        {
+          "id": "O-AS05-27",
+          "statement": "string lists normalize items and enforce syntax, uniqueness, and bounds"
+        },
+        {
+          "id": "O-AS05-28",
+          "statement": "rendered text forms end in exactly one terminal LF"
+        },
+        {
+          "id": "O-AS05-29",
+          "statement": "Unicode scalars remain exact without compatibility normalization"
+        },
+        {
+          "id": "O-AS05-30",
+          "statement": "form-authored static text cannot materialize reserved protocol markers"
+        },
+        {
+          "id": "O-AS05-31",
+          "statement": "enum members with leading or trailing whitespace are rejected as non-canonical"
+        },
+        {
+          "id": "O-AS05-32",
+          "statement": "paragraph and string-list placeholder residue is rejected after normalization"
+        },
+        {
+          "id": "O-AS05-33",
+          "statement": "a submitted form cannot introduce an undeclared field-marker region"
         }
       ],
       "evidenceClasses": [
@@ -925,6 +1045,10 @@
         {
           "id": "O-AS06-38",
           "statement": "lifecycle-rule identity covers both expected state and evidence mechanism"
+        },
+        {
+          "id": "O-AS06-39",
+          "statement": "context projection preserves layer order and exposes only ordered role values"
         }
       ],
       "evidenceClasses": [
@@ -1004,6 +1128,58 @@
         {
           "id": "O-AS07-17",
           "statement": "a recomputed task request cannot bind a stale workspace semantic revision"
+        },
+        {
+          "id": "O-AS07-18",
+          "statement": "request sealing closes the semantic-state edge before later DAG identities exist"
+        },
+        {
+          "id": "O-AS07-19",
+          "statement": "an unoccupied request receives its initial 8-character digest handle"
+        },
+        {
+          "id": "O-AS07-20",
+          "statement": "request-handle collisions deterministically lengthen only the new handle"
+        },
+        {
+          "id": "O-AS07-21",
+          "statement": "the same request digest reuses its handle independently of registry order"
+        },
+        {
+          "id": "O-AS07-22",
+          "statement": "malformed occupied-handle registries are rejected as a closed input"
+        },
+        {
+          "id": "O-AS07-23",
+          "statement": "issuance forms an explicit acyclic request-to-projection-to-assignment chain"
+        },
+        {
+          "id": "O-AS07-24",
+          "statement": "projection sources are exactly ordered request then context"
+        },
+        {
+          "id": "O-AS07-25",
+          "statement": "the request projection ID and definition digest are authoritative"
+        },
+        {
+          "id": "O-AS07-26",
+          "statement": "an assignment binds the exact blank-view bytes and their domain digests"
+        },
+        {
+          "id": "O-AS07-27",
+          "statement": "tampering with any sealed assignment-DAG stage is rejected"
+        },
+        {
+          "id": "O-AS07-28",
+          "statement": "a submission against the wrong projection artifact is rejected"
+        },
+        {
+          "id": "O-AS07-29",
+          "statement": "request sealing requires one positive closed-contract validator result"
+        },
+        {
+          "id": "O-AS07-30",
+          "statement": "reproduction from supplied immutable DAG resources returns byte-identical blank views"
         }
       ],
       "evidenceClasses": [
@@ -1030,6 +1206,14 @@
         {
           "id": "O-AS08-04",
           "statement": "a normalized semantic value change changes normalized-submission identity"
+        },
+        {
+          "id": "O-AS08-05",
+          "statement": "a completed text form produces one structurally and semantically valid submission"
+        },
+        {
+          "id": "O-AS08-06",
+          "statement": "raw evidence preserves submitted bytes while parsing normalizes newlines"
         }
       ],
       "evidenceClasses": [

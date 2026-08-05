@@ -1,0 +1,37 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:authoring:assignment-dag:same-digest-reuse",
+  "obligationId": "O-AS07-21",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS07"
+  ],
+  "verification": {
+    "precondition": "The mapped K11 authorities and fixtures exist as package-owned files.",
+    "stimulus": "Execute tests/authoring/assignment-dag/same-digest-reuse.test.mjs with node:test.",
+    "expectedSemanticState": "No durable authoring runtime state transition is claimed by O-AS07-21.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: the same request digest reuses its handle independently of registry order",
+    "forbiddenMutation": "Do not infer runtime dispatch, persistence, journaling, atomic commit, adapter parity, transport behavior, or cold-resume behavior beyond the literal assertion.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "source/authoring/kernel/assignment-dag.mjs",
+      "source/authoring/kernel/canonical.mjs",
+      "source/authoring/kernel/digests.mjs",
+      "source/authoring/kernel/text-forms.mjs"
+    ]
+  },
+  "behavior": "the same request digest reuses its handle independently of registry order",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/authoring/assignment-dag/same-digest-reuse.test.mjs",
+  "fixtures": [
+    "tests/authoring/assignment-dag/support.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

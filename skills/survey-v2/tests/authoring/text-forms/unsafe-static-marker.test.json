@@ -1,0 +1,36 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:authoring:text-forms:unsafe-static-marker",
+  "obligationId": "O-AS05-30",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS05"
+  ],
+  "verification": {
+    "precondition": "The mapped K11 authorities and fixtures exist as package-owned files.",
+    "stimulus": "Execute tests/authoring/text-forms/unsafe-static-marker.test.mjs with node:test.",
+    "expectedSemanticState": "No durable authoring runtime state transition is claimed by O-AS05-30.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: form-authored static text cannot materialize reserved protocol markers",
+    "forbiddenMutation": "Do not infer runtime dispatch, persistence, journaling, atomic commit, adapter parity, transport behavior, or cold-resume behavior beyond the literal assertion.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "source/authoring/kernel/canonical.mjs",
+      "source/authoring/kernel/digests.mjs",
+      "source/authoring/kernel/text-forms.mjs"
+    ]
+  },
+  "behavior": "form-authored static text cannot materialize reserved protocol markers",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/authoring/text-forms/unsafe-static-marker.test.mjs",
+  "fixtures": [
+    "tests/authoring/text-forms/support.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

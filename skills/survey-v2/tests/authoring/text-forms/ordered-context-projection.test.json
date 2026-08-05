@@ -1,0 +1,36 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:authoring:text-forms:ordered-context-projection",
+  "obligationId": "O-AS06-39",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS06"
+  ],
+  "verification": {
+    "precondition": "The mapped K11 authorities and fixtures exist as package-owned files.",
+    "stimulus": "Execute tests/authoring/text-forms/ordered-context-projection.test.mjs with node:test.",
+    "expectedSemanticState": "No durable authoring runtime state transition is claimed by O-AS06-39.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: context projection preserves layer order and exposes only ordered role values",
+    "forbiddenMutation": "Do not infer runtime dispatch, persistence, journaling, atomic commit, adapter parity, transport behavior, or cold-resume behavior beyond the literal assertion.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "source/authoring/kernel/canonical.mjs",
+      "source/authoring/kernel/digests.mjs",
+      "source/authoring/kernel/text-forms.mjs"
+    ]
+  },
+  "behavior": "context projection preserves layer order and exposes only ordered role values",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/authoring/text-forms/ordered-context-projection.test.mjs",
+  "fixtures": [
+    "tests/authoring/text-forms/support.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

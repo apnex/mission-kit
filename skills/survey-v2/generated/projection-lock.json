@@ -1,5 +1,5 @@
 {
-  "aggregateDigest": "sha256:16024ce321f57c5749305de76ead5b12b47048aa6b433377a6705426df879a62",
+  "aggregateDigest": "sha256:fb840358725430162d1235ef740abb059ca1b6052f418c8b1a4852b02c124c90",
   "canonicalDigests": [
     {
       "digest": "sha256:f7c65af249baff28e5d9fe29a9ac4011f802e955f74829c14949e2cf23104254",
@@ -274,6 +274,10 @@
       "path": "shared-schemas.sh"
     },
     {
+      "digest": "sha256:4acc6b89610825893349538976214e352a5fbadd9083cad9b6d3c814c7ba6a4c",
+      "path": "source/authoring/kernel/assignment-dag.mjs"
+    },
+    {
       "digest": "sha256:a467aa5b491c0b364a99f8aa2c3552872134e5bdbd4ba020c2a6102bddea5936",
       "path": "source/authoring/kernel/canonical.mjs"
     },
@@ -284,6 +288,10 @@
     {
       "digest": "sha256:98ef901b14e2de29404a6c64a13c1e8bd3056afe970dc9cc9a4b2eb5c3a3a14f",
       "path": "source/authoring/kernel/digests.mjs"
+    },
+    {
+      "digest": "sha256:cb3c5d6fc8affeaa96dc3de3250c7c428f6517bf95cefe235307285fe48bba6c",
+      "path": "source/authoring/kernel/text-forms.mjs"
     },
     {
       "digest": "sha256:8f9471caa090a71b80f9fe6010f559c72a60180bcfc5a19603e216c0b5b52a96",
@@ -542,7 +550,7 @@
       "path": "source/projections/assets.projection.json"
     },
     {
-      "digest": "sha256:8c1274418f8c7c0a4dcd4a53448d8376bb169af91b571e79f2d44d3d42389d65",
+      "digest": "sha256:de951d756a5b488474ceac759c49fe0ac7e5192dba8583af32bb9ab7cc4ab50d",
       "path": "source/projections/build-metadata.projection.json"
     },
     {
@@ -586,7 +594,7 @@
       "path": "source/protocol/survey.protocol.json"
     },
     {
-      "digest": "sha256:21093cdba89d81d56f40e5079c580ab74930eeba944ab8e99a83de84a8c00473",
+      "digest": "sha256:41545341a2ff3d7831f6b46ffb7ece3a468218d5f96cc1c0cdc802b57d141bea",
       "path": "source/requirements/survey-v2.requirements.json"
     },
     {
@@ -598,8 +606,132 @@
       "path": "source/views/director-lifecycle.view.json"
     },
     {
-      "digest": "sha256:aae744ca0913b3f12fb7dd1d6ed494d945be44077e743012d00254975e79e8eb",
+      "digest": "sha256:4d6095f876fee1ab5b24bf9207d698e148bee283da7c41fcdcd8bb43370423cc",
       "path": "survey-v2.package.json"
+    },
+    {
+      "digest": "sha256:f17be6e81dd3e8385c9e56ac3aa90b7073f846502e9ea36900e730ed404ec672",
+      "path": "tests/authoring/assignment-dag/acyclic-chain.test.json"
+    },
+    {
+      "digest": "sha256:9020a2e70352c917a2fa657e9538f21a566d47949542b9d6aba1fc7402d613bb",
+      "path": "tests/authoring/assignment-dag/acyclic-chain.test.mjs"
+    },
+    {
+      "digest": "sha256:b67d1f4c97322cd00ac06dfb03b9b51f94b65d8ba37bc994392c3c91c98287ea",
+      "path": "tests/authoring/assignment-dag/assignment-byte-binding.test.json"
+    },
+    {
+      "digest": "sha256:aaf790b8b2734d87c15049355486e11a16332a1580b15d08de1d1d02de46ff94",
+      "path": "tests/authoring/assignment-dag/assignment-byte-binding.test.mjs"
+    },
+    {
+      "digest": "sha256:615a8d92a236bfda272d4a7d755716e1e91d21313154766f84cdae8d96efcd20",
+      "path": "tests/authoring/assignment-dag/collision-lengthening.test.json"
+    },
+    {
+      "digest": "sha256:3bafe8dbc857067109b3ec4cef133e402d080e4b5b3f0912bbad86c15de88d5e",
+      "path": "tests/authoring/assignment-dag/collision-lengthening.test.mjs"
+    },
+    {
+      "digest": "sha256:1be24deaa527813cefad5edd92ea8826b5363be5a12708ff211f479c6f47121b",
+      "path": "tests/authoring/assignment-dag/deterministic-view-reproduction.test.json"
+    },
+    {
+      "digest": "sha256:295cdbb983351a33ea7bbcc2360e6ad10bc54cbb4aed91841b4ef665cd9b2f67",
+      "path": "tests/authoring/assignment-dag/deterministic-view-reproduction.test.mjs"
+    },
+    {
+      "digest": "sha256:ffd78eb0966c964b10b32ce3e9050d4316073ad38d7328b46ce24be2bfbcd348",
+      "path": "tests/authoring/assignment-dag/initial-handle.test.json"
+    },
+    {
+      "digest": "sha256:b88914d8a81f4b0aceb13722f6dd8128d8f7c4247bac7f21cdd9f63c6c30c51f",
+      "path": "tests/authoring/assignment-dag/initial-handle.test.mjs"
+    },
+    {
+      "digest": "sha256:e2d86308f2715312db2bc9b2ba636829826b54b193f506e09df31db69b2de657",
+      "path": "tests/authoring/assignment-dag/invalid-handle-registry.test.json"
+    },
+    {
+      "digest": "sha256:c7a7756a08ee30d72f3a49941ba998e45efc7bfb2fadb2500a9eb615f27b2a9f",
+      "path": "tests/authoring/assignment-dag/invalid-handle-registry.test.mjs"
+    },
+    {
+      "digest": "sha256:28bc51e82bc76a44ee10877b1437cdd82c00e4b7cb07a7951ad3efcf0d00c343",
+      "path": "tests/authoring/assignment-dag/projection-id-authority.test.json"
+    },
+    {
+      "digest": "sha256:261087ef8d8ade9fd49e968c73e8c7e8a622cb2bea01c34a5cbf7ea9a09f77f4",
+      "path": "tests/authoring/assignment-dag/projection-id-authority.test.mjs"
+    },
+    {
+      "digest": "sha256:6c789b863edbffb80cfcc113a46e09b3dd64c79cc0042c3c46ff49366710bf52",
+      "path": "tests/authoring/assignment-dag/raw-evidence-newlines.test.json"
+    },
+    {
+      "digest": "sha256:9bf3b5ca40b51d2efe04589eae4f49954af0f46c02e631df71a55ae4d6872e85",
+      "path": "tests/authoring/assignment-dag/raw-evidence-newlines.test.mjs"
+    },
+    {
+      "digest": "sha256:1d17296eadaa952f07d9dc7b358db67d44de58de9d3d6c02f046bd98f42a7d7a",
+      "path": "tests/authoring/assignment-dag/request-sealing-validator.test.json"
+    },
+    {
+      "digest": "sha256:55589fb1210f1cd019f7b7597c1a9735d4d1718059ebc77ff980360cb0256123",
+      "path": "tests/authoring/assignment-dag/request-sealing-validator.test.mjs"
+    },
+    {
+      "digest": "sha256:5b82111382b16a2e0bcfc534bde33b071d3a1b796f064fb6e224b6ff05e77f14",
+      "path": "tests/authoring/assignment-dag/request-sealing.test.json"
+    },
+    {
+      "digest": "sha256:c9a5acda4c08b740784ddcc51363a107c778291a7a3903247d1b2ee12f3e22b4",
+      "path": "tests/authoring/assignment-dag/request-sealing.test.mjs"
+    },
+    {
+      "digest": "sha256:88e044cca25d9dbcbd88be5b3c8cb6666dac247265dd53cdcdb4feec4927fad1",
+      "path": "tests/authoring/assignment-dag/same-digest-reuse.test.json"
+    },
+    {
+      "digest": "sha256:d44055c76febfc609b5c9bf9435614c7aed684e8aad7722e4a29c5e8c1f1fb22",
+      "path": "tests/authoring/assignment-dag/same-digest-reuse.test.mjs"
+    },
+    {
+      "digest": "sha256:9eed7cf9c81bd8c834a4ec71b1e8a226e2a14493843eeda113a6aed410ddce75",
+      "path": "tests/authoring/assignment-dag/source-order.test.json"
+    },
+    {
+      "digest": "sha256:39a5fff759ddcf7b0a2f78dbac5dc00f759bfde85b9ceba7b9432d68fcb30f2c",
+      "path": "tests/authoring/assignment-dag/source-order.test.mjs"
+    },
+    {
+      "digest": "sha256:b1816835cdf52cd32c123e6b453b49cec42436c0f119bc0b1c1110b8cadfdccb",
+      "path": "tests/authoring/assignment-dag/submission-validity.test.json"
+    },
+    {
+      "digest": "sha256:e951b8dc83e64e80f4be4200a3d5a6604668fb1db5dd143d67f1ebfbef101c9f",
+      "path": "tests/authoring/assignment-dag/submission-validity.test.mjs"
+    },
+    {
+      "digest": "sha256:01520c0a5138f0d647f809079c27d03573f6c806f78c96e2a65073c33dac3b35",
+      "path": "tests/authoring/assignment-dag/support.mjs"
+    },
+    {
+      "digest": "sha256:0e4529532344389d04895c0fea612c392e1e8fbce611b476473c5489dffa6bc7",
+      "path": "tests/authoring/assignment-dag/tamper-rejection.test.json"
+    },
+    {
+      "digest": "sha256:bec2ccdb5b04b1dd9f6d66ba0213b97a0e4630bcd1d10531d4d21e28a5e67e43",
+      "path": "tests/authoring/assignment-dag/tamper-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:92b86db28867d79f331897797539f280033da4f850b62a28b5f3c7c6da4b6ec9",
+      "path": "tests/authoring/assignment-dag/wrong-projection-submission.test.json"
+    },
+    {
+      "digest": "sha256:4f8680f628409195f25d7fb9b88613103d42abd74389e58b25de9e1fba39fe66",
+      "path": "tests/authoring/assignment-dag/wrong-projection-submission.test.mjs"
     },
     {
       "digest": "sha256:76794f0d6f13318f2af745a0269666d4322c8f52e4efdf8e8dee323411fc6509",
@@ -1710,6 +1842,14 @@
       "path": "tests/authoring/digests/workspace-semantic-whitelist.test.mjs"
     },
     {
+      "digest": "sha256:5049a75905a76de32ee8fe484018178bfe0256e18f74626253331112a48a800a",
+      "path": "tests/authoring/generate-k11-descriptors.mjs"
+    },
+    {
+      "digest": "sha256:a9de419bdc6243631a8d8441490d9df229c40331ec433a44c4a287637c5ff8d2",
+      "path": "tests/authoring/k11-suite-definition.mjs"
+    },
+    {
       "digest": "sha256:2d219921828c7201ff9cf23cbfbc5e83fc8c498b9e12f9eb5eb9b511352c0f62",
       "path": "tests/authoring/neutrality/contract-vocabulary.test.json"
     },
@@ -1724,6 +1864,258 @@
     {
       "digest": "sha256:c7edb4d69d3bcbfb862acb7aff4919edac393653632723c91d3c9623c2dedf1a",
       "path": "tests/authoring/neutrality/kernel-import-boundary.test.mjs"
+    },
+    {
+      "digest": "sha256:d38e7bbdfe6bff15d756e8d986f3317f835987c1767544eb32c4f708b4b91db3",
+      "path": "tests/authoring/text-forms/all-types-roundtrip.test.json"
+    },
+    {
+      "digest": "sha256:3148cd9a715cf789dcd98aa3c160f7924e81033b51096e1cd8df4fd7109b1d48",
+      "path": "tests/authoring/text-forms/all-types-roundtrip.test.mjs"
+    },
+    {
+      "digest": "sha256:3c4d022a0d82b10367ed4468b0b6e796db19dbb27ad66a3b006b4915d86246b0",
+      "path": "tests/authoring/text-forms/bom.test.json"
+    },
+    {
+      "digest": "sha256:c6ddde15e53e5ecec6dadf825a696dbf37e5454a30379472fae4c4cf648da053",
+      "path": "tests/authoring/text-forms/bom.test.mjs"
+    },
+    {
+      "digest": "sha256:d13ab417da153718320ac1a2df2450f2058bc5e8da5d6832c83b18129f0dd838",
+      "path": "tests/authoring/text-forms/boolean-yes-no.test.json"
+    },
+    {
+      "digest": "sha256:b77eeb3ff4ebf73beeac082b23f89f8a817f0696d8b95caaf026753ae85b97e1",
+      "path": "tests/authoring/text-forms/boolean-yes-no.test.mjs"
+    },
+    {
+      "digest": "sha256:1d4c7a8820ffb6337545b894b2ccf5ae3e73280b36d3599ef105505df3015dd2",
+      "path": "tests/authoring/text-forms/enum-exactness.test.json"
+    },
+    {
+      "digest": "sha256:6dd518fc851e14e09d3a43275b2704cfe6ae17d61a2c7a774897c7fced93cda0",
+      "path": "tests/authoring/text-forms/enum-exactness.test.mjs"
+    },
+    {
+      "digest": "sha256:3037200c7b389962c3763f6d8e48169f49b5345f37e90058c905415467c15189",
+      "path": "tests/authoring/text-forms/enum-member-whitespace.test.json"
+    },
+    {
+      "digest": "sha256:3a33623d1a024dadb0fe9f634c54a50ed97cc9d61d37976b754e27528fe1078c",
+      "path": "tests/authoring/text-forms/enum-member-whitespace.test.mjs"
+    },
+    {
+      "digest": "sha256:cec07b977a146d705f5c32768bc05d1e01370dcfe47d47a1ab059ec8deb2df6e",
+      "path": "tests/authoring/text-forms/field-id-grammar.test.json"
+    },
+    {
+      "digest": "sha256:56f195399b85ecd61e0e67cb0415cbfe0b992907cfa4d79b4e5a6a4215b562cb",
+      "path": "tests/authoring/text-forms/field-id-grammar.test.mjs"
+    },
+    {
+      "digest": "sha256:d5ae1af661967888e79ae380d23775ae16c5e7ea1c620a0500be6d6e0c1ceeca",
+      "path": "tests/authoring/text-forms/form-closed-keys.test.json"
+    },
+    {
+      "digest": "sha256:3e266074681ffc69a981a74b972cbe93d98a8a434d58d94cf902502a5a96e4d0",
+      "path": "tests/authoring/text-forms/form-closed-keys.test.mjs"
+    },
+    {
+      "digest": "sha256:ce09d098999b2724b3515e567306d35a184ab9ed418e19a1fbc08674fee23273",
+      "path": "tests/authoring/text-forms/form-digest-authority.test.json"
+    },
+    {
+      "digest": "sha256:63c92ebd144ff5ceb03a1bbccf2a808f542a5db0b3e9a182a9b17ae9e94d2971",
+      "path": "tests/authoring/text-forms/form-digest-authority.test.mjs"
+    },
+    {
+      "digest": "sha256:31d1d1989b92c1ac99eb3997dc3adec2f52dcd0a0049bb4ae4172e272923fa67",
+      "path": "tests/authoring/text-forms/immutable-skeleton.test.json"
+    },
+    {
+      "digest": "sha256:f7532576d7dbc9f64524b949968a5ff6fae437ac21feca8c45cc8f3aa416e4fa",
+      "path": "tests/authoring/text-forms/immutable-skeleton.test.mjs"
+    },
+    {
+      "digest": "sha256:ba38cc20f7b2685a734ccb8265f719d04e7f9d1f5b105dab0b9b0539de03c8d8",
+      "path": "tests/authoring/text-forms/invalid-utf8.test.json"
+    },
+    {
+      "digest": "sha256:a7469846dfd61cbb1c69ee67983bac28be6795536c4b43020c4e34f01f3cf98e",
+      "path": "tests/authoring/text-forms/invalid-utf8.test.mjs"
+    },
+    {
+      "digest": "sha256:d8457929133fb75039b846e6031508b68f292abd22153407dac93c23a0c1ff97",
+      "path": "tests/authoring/text-forms/marker-duplicate.test.json"
+    },
+    {
+      "digest": "sha256:b5ac8293c195e75c03f5fcd6c868240759d81cf2c4028b3521657bc99466faf6",
+      "path": "tests/authoring/text-forms/marker-duplicate.test.mjs"
+    },
+    {
+      "digest": "sha256:38366ee78cf8d35b8cd3cd629d368abaa43ca91c5a07573cb7d1712a0638e88e",
+      "path": "tests/authoring/text-forms/marker-missing-close.test.json"
+    },
+    {
+      "digest": "sha256:88c4822c39ac3daaf16f0c3ea0cb8d518ee2815f0931fcfb803932b4123ea75f",
+      "path": "tests/authoring/text-forms/marker-missing-close.test.mjs"
+    },
+    {
+      "digest": "sha256:6705fe5f7afefe5842ba7ccf0319a4fd0273dc97b28fb312ea085445eb5b1d5b",
+      "path": "tests/authoring/text-forms/marker-missing.test.json"
+    },
+    {
+      "digest": "sha256:ef6eb416cffe5b4a68a63f355f291b4517153be9f9121424ba962474130da9ad",
+      "path": "tests/authoring/text-forms/marker-missing.test.mjs"
+    },
+    {
+      "digest": "sha256:bbe91cf13e97847cb9f8cbfa68dedbe5b8bd25dff76967ae4b23ce31867c32ea",
+      "path": "tests/authoring/text-forms/marker-nested.test.json"
+    },
+    {
+      "digest": "sha256:ad9c3cfadd7fedbabc7a975782b8a6b98136b636829171208a62bdd59c3628ed",
+      "path": "tests/authoring/text-forms/marker-nested.test.mjs"
+    },
+    {
+      "digest": "sha256:164337f27d7d2d8735db06692e665e963d66911ec16dbd1b010e6effa882459f",
+      "path": "tests/authoring/text-forms/marker-reordered.test.json"
+    },
+    {
+      "digest": "sha256:6f0a3f1099b7bcf732f5def5393429844b4a81be4bf16855f96efb3c10a5d853",
+      "path": "tests/authoring/text-forms/marker-reordered.test.mjs"
+    },
+    {
+      "digest": "sha256:dc40d694245b24ad06dbf18377f9992e5dfeb1db83043248dfd4042e14914ffb",
+      "path": "tests/authoring/text-forms/newline-normalization.test.json"
+    },
+    {
+      "digest": "sha256:754e66089b81e9983a519c42d4bfce7f03653bedef3546f9a7f72cb305c53080",
+      "path": "tests/authoring/text-forms/newline-normalization.test.mjs"
+    },
+    {
+      "digest": "sha256:6e31a7cc34e6418e804a5776536b565379fe0e6df22cdff5edab2aced7daf7c7",
+      "path": "tests/authoring/text-forms/normalized-placeholder-residue.test.json"
+    },
+    {
+      "digest": "sha256:e53eb61b46cc350b1c0e6697a50ab1125294874c45911c91818df3a8ff4d7830",
+      "path": "tests/authoring/text-forms/normalized-placeholder-residue.test.mjs"
+    },
+    {
+      "digest": "sha256:b5b2234ef827d39d377616a21154c875e84bf5200f6dbb2867741547a6bd729f",
+      "path": "tests/authoring/text-forms/nul.test.json"
+    },
+    {
+      "digest": "sha256:387416501d851227d0a86bb4c6fefc0123eec51b0356705b049236b9100c04b5",
+      "path": "tests/authoring/text-forms/nul.test.mjs"
+    },
+    {
+      "digest": "sha256:3b88f9b82c527a694892bf40b4eadf9e4d5991605645479e969976aadb2ad546",
+      "path": "tests/authoring/text-forms/optional-omission.test.json"
+    },
+    {
+      "digest": "sha256:1be270321d7f1d0dbf9c698ff65ad5deb34268e1c147f67c2609388f8b1e6f36",
+      "path": "tests/authoring/text-forms/optional-omission.test.mjs"
+    },
+    {
+      "digest": "sha256:a10cd0fcaaf598fde7b09d2c3ad43a30bf5f0faf2a44fcc6c594d8be58ea5b6b",
+      "path": "tests/authoring/text-forms/ordered-context-projection.test.json"
+    },
+    {
+      "digest": "sha256:ec6e5bdaeaecba2e3bfdfcc5b9d3933e5a5e4b8024a001cf95d725574bbe6b08",
+      "path": "tests/authoring/text-forms/ordered-context-projection.test.mjs"
+    },
+    {
+      "digest": "sha256:f8b82b76bed0930b232ce7ec97644b8544ebba244d03310d4f5fdcdcd6fb74c2",
+      "path": "tests/authoring/text-forms/paragraph-normalization.test.json"
+    },
+    {
+      "digest": "sha256:8e1dbe27e4497fd7b069076ea01f26e0cc076055844a1c70207e44e890207e57",
+      "path": "tests/authoring/text-forms/paragraph-normalization.test.mjs"
+    },
+    {
+      "digest": "sha256:7d04109b734a43e5acae93cc32a589343d1dbdc239d870d700244d005a50bfb5",
+      "path": "tests/authoring/text-forms/placeholder-residue.test.json"
+    },
+    {
+      "digest": "sha256:b22cc03fcd7ff0aa1dc6d45f3a86b9ccf0bf049df3e9c08670171ac9dd952aa4",
+      "path": "tests/authoring/text-forms/placeholder-residue.test.mjs"
+    },
+    {
+      "digest": "sha256:9d445e881d7f7861cbacab0d86be823eaefbb8f589ee39387a1314fd68398aaf",
+      "path": "tests/authoring/text-forms/repeated-render.test.json"
+    },
+    {
+      "digest": "sha256:c2b43020f6f934546ff99523d52e9aa66c7f6ca262f72d0ab8edf4327c536a40",
+      "path": "tests/authoring/text-forms/repeated-render.test.mjs"
+    },
+    {
+      "digest": "sha256:ca15072f81caeae6657581aed8659526078b0bead597918dbf269998ed311fcb",
+      "path": "tests/authoring/text-forms/request-marker-mismatch.test.json"
+    },
+    {
+      "digest": "sha256:548cc20c9d3c70fb849ea5e281a3f00b6cfb33c12df696090ee256e6aa1c48f3",
+      "path": "tests/authoring/text-forms/request-marker-mismatch.test.mjs"
+    },
+    {
+      "digest": "sha256:0df61d4ab360862bb2bcd9eb972e4a3cd1c98f0e7b3caba06e589de1cabdfdaa",
+      "path": "tests/authoring/text-forms/required-empty.test.json"
+    },
+    {
+      "digest": "sha256:8379e47d9b8d7ed81bbd8a9be029684730b894abc16de0ab1df361d069d0aad0",
+      "path": "tests/authoring/text-forms/required-empty.test.mjs"
+    },
+    {
+      "digest": "sha256:3039e5c6a0e0b4809430a00b8bed647d0233bc29b31dfda1f3a013a4201c39dd",
+      "path": "tests/authoring/text-forms/reserved-marker-injection.test.json"
+    },
+    {
+      "digest": "sha256:e851aa518c92dd844465ef0304abe95702df6a4e3310836b08575ede57e159b7",
+      "path": "tests/authoring/text-forms/reserved-marker-injection.test.mjs"
+    },
+    {
+      "digest": "sha256:91e7f25b4e7af9a0bed1a6005aeca69d7297a566785249ee5ca905a328eccb71",
+      "path": "tests/authoring/text-forms/string-list-normalization.test.json"
+    },
+    {
+      "digest": "sha256:0148e841869ef0ffaa27f7cc72da26f3b3276a5c51e7f6b74184f70ec4ac1e6a",
+      "path": "tests/authoring/text-forms/string-list-normalization.test.mjs"
+    },
+    {
+      "digest": "sha256:e036d0d68dac22c06251924c844b8821a8df224d135f9cfe799f573ba515a79f",
+      "path": "tests/authoring/text-forms/support.mjs"
+    },
+    {
+      "digest": "sha256:61b4fda6631f75a9fe6b8fedf8ccce30f61ae77801b08f4854096e863d98e103",
+      "path": "tests/authoring/text-forms/terminal-lf.test.json"
+    },
+    {
+      "digest": "sha256:a45493435ebf8084a958d9bc133974e417c2197f9e3e341b2e4ea48fe550675a",
+      "path": "tests/authoring/text-forms/terminal-lf.test.mjs"
+    },
+    {
+      "digest": "sha256:94e5cc81d7ae94c766524e41d92ab20fcf2ba3d9bd65b31aa26fc88473fafb86",
+      "path": "tests/authoring/text-forms/undeclared-field-marker.test.json"
+    },
+    {
+      "digest": "sha256:c96960fddbe3ece30d7c32c669ba9b0aafcdc02d53f491d96cedc0d0dc485bc8",
+      "path": "tests/authoring/text-forms/undeclared-field-marker.test.mjs"
+    },
+    {
+      "digest": "sha256:1b35ebe17880d308277a772d155963ba847699774aba7b20e96d68a0102c57ae",
+      "path": "tests/authoring/text-forms/unicode-preservation.test.json"
+    },
+    {
+      "digest": "sha256:23e0c4718f3290ec1f8e6eca336f85d490e98e889c093b6fcd20fd5f4dd87edb",
+      "path": "tests/authoring/text-forms/unicode-preservation.test.mjs"
+    },
+    {
+      "digest": "sha256:de5725540039fd810e4efa38827f32717527477a6fdb69c28e0f643076184179",
+      "path": "tests/authoring/text-forms/unsafe-static-marker.test.json"
+    },
+    {
+      "digest": "sha256:ef82b8199e5c3072c97a59dda2f427842e9357d92bda4a1a56a931a68584493a",
+      "path": "tests/authoring/text-forms/unsafe-static-marker.test.mjs"
     },
     {
       "digest": "sha256:d59fd247e2bad75183cf3d3f8a6383d7d9eca97f0906e634ca7d09a56b79a7a9",
@@ -2068,6 +2460,10 @@
     {
       "digest": "sha256:eceec4b1c69d16f47c67b009f3c547f25c0cc7814000e6ebe605abb8dfe1c2ef",
       "path": "tests/fixtures/authoring/contracts/positive/validation-issue.json"
+    },
+    {
+      "digest": "sha256:8d87d76f254bd8b6a033997a08b7a5eca253a78577e0f8d5ce1a7ad5393ad86b",
+      "path": "tests/fixtures/authoring/text-forms/k11-golden-vectors.json"
     },
     {
       "digest": "sha256:786f13f57b273938c09cabcc5693889b35bdae7585fc02d744869c9976e92efc",
@@ -3446,12 +3842,12 @@
       "path": "tests/survey-contracts/support/suite-definition.mjs"
     },
     {
-      "digest": "sha256:b8021273fd91aeff996626b7c03fa036f23202539f45876dbc2ce065a9b4cc2b",
+      "digest": "sha256:017339e621ca9f460871894109c1474c7e283d402774f57f42249737547196d4",
       "path": "tests/test-evidence.manifest.json"
     }
   ],
   "id": "urn:mission-kit:survey-v2:projection-lock:survey-v2",
-  "packageDigest": "sha256:16024ce321f57c5749305de76ead5b12b47048aa6b433377a6705426df879a62",
+  "packageDigest": "sha256:fb840358725430162d1235ef740abb059ca1b6052f418c8b1a4852b02c124c90",
   "parentDesignSha256": "6467fff1c74c6dc857bcb06722d19dfa04381ae3e6f242eccb36581f87560f74",
   "portableExclusions": [
     {
@@ -4041,6 +4437,11 @@
     {
       "expectedId": null,
       "kind": "authored",
+      "path": "source/authoring/kernel/assignment-dag.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
       "path": "source/authoring/kernel/canonical.mjs"
     },
     {
@@ -4052,6 +4453,11 @@
       "expectedId": null,
       "kind": "authored",
       "path": "source/authoring/kernel/digests.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/authoring/kernel/text-forms.mjs"
     },
     {
       "expectedId": null,
@@ -4447,6 +4853,161 @@
       "expectedId": null,
       "kind": "authored",
       "path": "survey-v2.package.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/acyclic-chain.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/acyclic-chain.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/assignment-byte-binding.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/assignment-byte-binding.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/collision-lengthening.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/collision-lengthening.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/deterministic-view-reproduction.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/deterministic-view-reproduction.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/initial-handle.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/initial-handle.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/invalid-handle-registry.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/invalid-handle-registry.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/projection-id-authority.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/projection-id-authority.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/raw-evidence-newlines.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/raw-evidence-newlines.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/request-sealing-validator.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/request-sealing-validator.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/request-sealing.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/request-sealing.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/same-digest-reuse.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/same-digest-reuse.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/source-order.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/source-order.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/submission-validity.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/submission-validity.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/support.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/tamper-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/tamper-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/wrong-projection-submission.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/assignment-dag/wrong-projection-submission.test.mjs"
     },
     {
       "expectedId": null,
@@ -5836,6 +6397,16 @@
     {
       "expectedId": null,
       "kind": "authored",
+      "path": "tests/authoring/generate-k11-descriptors.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/k11-suite-definition.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
       "path": "tests/authoring/neutrality/contract-vocabulary.test.json"
     },
     {
@@ -5852,6 +6423,321 @@
       "expectedId": null,
       "kind": "authored",
       "path": "tests/authoring/neutrality/kernel-import-boundary.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/all-types-roundtrip.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/all-types-roundtrip.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/bom.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/bom.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/boolean-yes-no.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/boolean-yes-no.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/enum-exactness.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/enum-exactness.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/enum-member-whitespace.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/enum-member-whitespace.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/field-id-grammar.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/field-id-grammar.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/form-closed-keys.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/form-closed-keys.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/form-digest-authority.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/form-digest-authority.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/immutable-skeleton.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/immutable-skeleton.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/invalid-utf8.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/invalid-utf8.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/marker-duplicate.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/marker-duplicate.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/marker-missing-close.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/marker-missing-close.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/marker-missing.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/marker-missing.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/marker-nested.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/marker-nested.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/marker-reordered.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/marker-reordered.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/newline-normalization.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/newline-normalization.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/normalized-placeholder-residue.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/normalized-placeholder-residue.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/nul.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/nul.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/optional-omission.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/optional-omission.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/ordered-context-projection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/ordered-context-projection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/paragraph-normalization.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/paragraph-normalization.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/placeholder-residue.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/placeholder-residue.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/repeated-render.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/repeated-render.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/request-marker-mismatch.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/request-marker-mismatch.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/required-empty.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/required-empty.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/reserved-marker-injection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/reserved-marker-injection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/string-list-normalization.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/string-list-normalization.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/support.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/terminal-lf.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/terminal-lf.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/undeclared-field-marker.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/undeclared-field-marker.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/unicode-preservation.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/unicode-preservation.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/unsafe-static-marker.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/text-forms/unsafe-static-marker.test.mjs"
     },
     {
       "expectedId": null,
@@ -6282,6 +7168,11 @@
       "expectedId": null,
       "kind": "authored",
       "path": "tests/fixtures/authoring/contracts/positive/validation-issue.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/fixtures/authoring/text-forms/k11-golden-vectors.json"
     },
     {
       "expectedId": null,
