@@ -46,6 +46,27 @@ A pitch followed by an inventory, collapsed into a single rendered block, is the
 
 This section is written the way it prescribes: the paired sentences above carry a trailing `\`, the shifts of subject are blank-line separated, and the four cases are a list rather than a run of prose.
 
+## Checking
+
+The rule has two halves and they fail independently, so check both.\
+A reader only ever sees the rendered result, and both failures look identical there: two sentences on one line.
+
+Source half - a line carrying more than one sentence:
+```bash
+awk '/^```|^````/{f=!f; next} f{next}
+     /[a-z)`][.!?] [A-Z`]/{printf "%s:%d\n", FILENAME, NR}' *.md
+```
+
+Render half - adjacent sentences that collapse for want of a trailing `\`:
+```bash
+awk '/^```|^````/{f=!f; p=""; next} f{next}
+     /^[[:space:]]*$/{p=""; next} /^(#|\||-|>|\*|[0-9]+\.)/{p=""; next}
+     { if (p != "" && p !~ /\\$/ && p ~ /[.!?]$/) printf "%s:%d\n", FILENAME, NR-1; p=$0 }' *.md
+```
+
+Checking only the source half is the trap.\
+It passes a file whose sentences each sit on their own line and then render as one block, which is the failure the "Making the break visible" section above exists to prevent.
+
 ## Rationale
 
 **Diffs.** Rewording one sentence becomes a one-line diff, not a re-wrap
