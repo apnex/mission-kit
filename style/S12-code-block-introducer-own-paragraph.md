@@ -8,7 +8,7 @@ supersedes: []
 related: [S2, S6, S8]
 ---
 
-# S12 — Code-block introducer is its own paragraph
+# S12 - Code-block introducer is its own paragraph
 
 ## Rule
 
@@ -33,16 +33,16 @@ command
 ````
 
 The trailing `\` on the description lines is a hard break, so each
-sentence renders on its own line instead of collapsing into one block
-— see [[S6]]. Without it the description reflows into a single
+sentence renders on its own line instead of collapsing into one
+block - see [[S6]]. Without it the description reflows into a single
 rendered paragraph and the blank line below it is the only separation
 left, which weakens the pairing this rule creates.
 
 Two visual cues:
 
-- **Blank line above the introducer** — separates context (above)
+- **Blank line above the introducer** - separates context (above)
   from action (below).
-- **No blank line between introducer and code** — the introducer
+- **No blank line between introducer and code** - the introducer
   literally touches the block; reader's eye doesn't have to cross a
   visual gap to know which sentence "owns" the code.
 
@@ -67,7 +67,7 @@ handle this correctly. Don't worry about parser compatibility.
 section or workflow are looking for "what do I type" markers. The code
 block is the unmissable visual anchor; the sentence directly above it
 is the action description. Without a blank line, that sentence is
-buried in the description paragraph above — the reader has to mentally
+buried in the description paragraph above - the reader has to mentally
 extract it.
 
 **Paragraph semantics match prose role.** Description sentences
@@ -112,8 +112,8 @@ sudo ./scripts/apply.sh
 ```
 ````
 
-(Description well-separated from introducer ✓, but the introducer is
-visually floating between two blank lines — half-orphaned from the
+(Description well-separated from introducer [x], but the introducer is
+visually floating between two blank lines - half-orphaned from the
 code block it's supposed to introduce.)
 
 **Good (introducer is its own paragraph, directly above the block):**
@@ -130,19 +130,19 @@ sudo ./scripts/apply.sh
 ````
 
 (Description = problem context. Blank line. Introducer touches the
-block. Reader's eye jumps from code → action sentence with zero
+block. Reader's eye jumps from code -> action sentence with zero
 visual hop.)
 
 ## When to apply
 
 - Authoring any new prose-and-code mixed content.
-- Reviewing a PR diff — scan for code blocks whose introducer is
+- Reviewing a PR diff - scan for code blocks whose introducer is
   jammed into a multi-sentence description paragraph above.
-- Doc-pass cleanups — opportunistic when editing existing content.
+- Doc-pass cleanups - opportunistic when editing existing content.
 
 ## Origin
 
-2026-05-24 README audit — the §Troubleshooting BAR1 entry packed three
+2026-05-24 README audit - the section Troubleshooting BAR1 entry packed three
 description sentences plus the action introducer into one paragraph,
 all running together with hard-break backslashes. Operator scanning the
 section had no visual cue for "this last sentence is the fix." Adding
