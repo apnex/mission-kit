@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:round-one-question-frames:question-frame-set-authority",
+  "obligationId": "O-SV01-06",
+  "requirementIds": [],
+  "invariantIds": ["SV01"],
+  "verification": {
+    "precondition": "The exact three-layer Round-1 QuestionFrame authority closure and authenticated R10 workspace ancestry are available.",
+    "stimulus": "Execute tests/survey/round-one-question-frames/question-frame-set-authority.test.mjs with node:test.",
+    "expectedSemanticState": "Exactly three immutable Question ContextFrames and one QuestionFrameSet are created with exact derived ancestry, evidence order, ordinals, and canonical dependency ordering.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: Round 1 QuestionFrame authority creates the exact immutable four-product unit with derived evidence and canonical edges",
+    "forbiddenMutation": "Inputs, parent resources, Questions, options, bindings, prior-Round semantics, or partial products must not be created or changed.",
+    "applicability": {"mode": "not-applicable", "transports": [], "adapters": []},
+    "inspectedAuthorities": ["source/authoring/survey/round-one-question-frames-authority.mjs"]
+  },
+  "behavior": "Round 1 QuestionFrame authority creates the exact immutable four-product unit with derived evidence and canonical edges",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/survey/round-one-question-frames/question-frame-set-authority.test.mjs",
+  "fixtures": ["tests/survey/round-one-question-frames/support.mjs"],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

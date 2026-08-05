@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:round-one-question-frames:oversized-orthogonality-rationale",
+  "obligationId": "O-SV09-08",
+  "requirementIds": [],
+  "invariantIds": ["SV09"],
+  "verification": {
+    "precondition": "Valid QuestionFrame values are available.",
+    "stimulus": "Supply an aggregate orthogonality rationale above its scalar bound.",
+    "expectedSemanticState": "The oversized rationale rejects without input mutation.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: QuestionFrameSet rejects an oversized aggregate orthogonality rationale",
+    "forbiddenMutation": "Authority must not truncate evidence or produce partial products.",
+    "applicability": {"mode": "not-applicable", "transports": [], "adapters": []},
+    "inspectedAuthorities": ["source/authoring/survey/round-one-question-frames-authority.mjs"]
+  },
+  "behavior": "QuestionFrameSet rejects an oversized aggregate orthogonality rationale",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/survey/round-one-question-frames/oversized-orthogonality-rationale.test.mjs",
+  "fixtures": ["tests/survey/round-one-question-frames/support.mjs"],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

@@ -209,20 +209,27 @@ test("separate surveyctl processes commit and cold-validate the complete AT03 Ro
   assert.equal(coldStatus.pending, null);
   assert.equal(coldStatus.nextDisposition, "issue-or-wait");
 
-  const beforeUnavailable = await readFile(
+  const beforeQuestionFrameIssue = await readFile(
     harness.sessionFile,
   );
-  const unavailable = await runSurveyctlProcess(
+  const questionFrameIssue = await runSurveyctlProcess(
     runArguments(harness, "next"),
   );
-  assert.equal(unavailable.code, 1);
-  assert.equal(unavailable.stdout.byteLength, 0);
-  assert.match(
-    unavailable.stderr.toString("utf8"),
-    /PROFILE_EXECUTION_TRANSITION_UNAVAILABLE/u,
+  parseJson(questionFrameIssue);
+  const afterQuestionFrameIssue = await readFile(
+    harness.sessionFile,
+  );
+  assert.notDeepEqual(afterQuestionFrameIssue, beforeQuestionFrameIssue);
+  const repeatedQuestionFrameIssue = await runSurveyctlProcess(
+    runArguments(harness, "next"),
+  );
+  parseJson(repeatedQuestionFrameIssue);
+  assert.deepEqual(
+    repeatedQuestionFrameIssue.stdout,
+    questionFrameIssue.stdout,
   );
   assert.deepEqual(
     await readFile(harness.sessionFile),
-    beforeUnavailable,
+    afterQuestionFrameIssue,
   );
 });

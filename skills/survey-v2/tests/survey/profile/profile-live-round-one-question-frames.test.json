@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:profile:profile-live-round-one-question-frames",
+  "obligationId": "O-AS15-99",
+  "requirementIds": [],
+  "invariantIds": ["AS15"],
+  "verification": {
+    "precondition": "The live in-memory Survey workspace has committed AT03.",
+    "stimulus": "Issue and submit the exact AT04 assignment, replay it, then request unavailable AT05.",
+    "expectedSemanticState": "AT04 atomically commits three QuestionFrames and one QuestionFrameSet with one GenerationRecord, preserves phase, replays, and refuses AT05 read-only.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: the live Survey AT04 path atomically commits three grounded QuestionFrames, their set, and one GenerationRecord",
+    "forbiddenMutation": "No partial commit, phase advance, duplicate sidecar, future-stage execution, or hidden context disclosure may occur.",
+    "applicability": {"mode": "specific", "transports": [], "adapters": ["urn:mission-kit:survey-v2:adapter:in-memory"]},
+    "inspectedAuthorities": ["source/authoring/survey/profile-authority.mjs", "source/authoring/survey/profile-executables.mjs", "source/authoring/survey/round-one-question-frames-authority.mjs"]
+  },
+  "behavior": "the live Survey AT04 path atomically commits three grounded QuestionFrames, their set, and one GenerationRecord",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/survey/profile/profile-live-round-one-question-frames.test.mjs",
+  "fixtures": ["tests/survey/profile/live-support.mjs", "tests/survey/round-one-question-frames/support.mjs"],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

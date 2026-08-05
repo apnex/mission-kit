@@ -57,6 +57,8 @@ const schemaByKind = Object.freeze({
     "urn:mission-kit:schemas:context-frame:v1alpha1",
   GenerationRecord:
     "urn:mission-kit:survey:schema:generation-record:v1alpha1",
+  QuestionFrameSet:
+    "urn:mission-kit:survey:schema:question-frame-set:v1alpha1",
   ProjectionArtifact:
     "urn:mission-kit:authoring:schema:projection-artifact:v1alpha1",
   SourceSnapshot:

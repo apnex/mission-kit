@@ -830,11 +830,11 @@
         },
         {
           "id": "O-AS02-22",
-          "statement": "the Survey R10 profile is total over canonical authority and executable only through AT03"
+          "statement": "the Survey R11 profile is total over canonical authority and executable only through AT04"
         },
         {
           "id": "O-AS02-23",
-          "statement": "every Survey profile edge beyond AT03 has a digest-pinned rejecting executable"
+          "statement": "every Survey profile edge beyond AT04 has a digest-pinned rejecting executable"
         }
       ],
       "evidenceClasses": [
@@ -1134,6 +1134,10 @@
         {
           "id": "O-AS05-41",
           "statement": "a bound next task rejects two raw input keys that alias one resource reference"
+        },
+        {
+          "id": "O-AS05-43",
+          "statement": "QuestionFrame pair grammar splits only the first delimiter and preserves later delimiters as semantic text"
         }
       ],
       "evidenceClasses": [
@@ -1461,6 +1465,34 @@
         {
           "id": "O-AS06-79",
           "statement": "Round 1 projector exposes only frozen Survey semantics and outcome axes without mutating its closure"
+        },
+        {
+          "id": "O-AS06-82",
+          "statement": "Round 1 QuestionFrame authority rejects a stale active parent head before producing anything"
+        },
+        {
+          "id": "O-AS06-83",
+          "statement": "Round 1 QuestionFrame authority rejects each missing authenticated R10 parent edge"
+        },
+        {
+          "id": "O-AS06-84",
+          "statement": "Round 1 QuestionFrame authority rejects each wrong active parent head without mutating input"
+        },
+        {
+          "id": "O-AS06-85",
+          "statement": "Round 1 QuestionFrame projector deterministically exposes only three frozen least-context layers"
+        },
+        {
+          "id": "O-AS06-86",
+          "statement": "Round 1 QuestionFrame projector rejects missing, wrong-path, or altered Survey outcome-axis authority"
+        },
+        {
+          "id": "O-AS06-87",
+          "statement": "Round 1 QuestionFrame authority rejects each misdirected authenticated R10 parent edge"
+        },
+        {
+          "id": "O-AS06-88",
+          "statement": "Round 1 QuestionFrame projector rejects ambient selected-value keys without disclosure or input mutation"
         }
       ],
       "evidenceClasses": [
@@ -1766,6 +1798,14 @@
         {
           "id": "O-AS08-27",
           "statement": "publicly recomputed bootstrap digests cannot replace the external keyed session binding"
+        },
+        {
+          "id": "O-AS08-29",
+          "statement": "the pure R11 reducer rejects a stale AT04 request base without mutating inputs or dispatching callbacks"
+        },
+        {
+          "id": "O-AS08-30",
+          "statement": "separate surveyctl processes cold-resume through AT04 and refuse AT05 without a write"
         }
       ],
       "evidenceClasses": [
@@ -2109,6 +2149,18 @@
         {
           "id": "O-AS13-29",
           "statement": "the concrete Survey guards, handlers, validators, and projector delegate through exact registry pins"
+        },
+        {
+          "id": "O-AS13-31",
+          "statement": "QuestionFrame authority rejects producer injection of derived references, ordinals, or Round-1 relation semantics"
+        },
+        {
+          "id": "O-AS13-32",
+          "statement": "the R11 profile declares the exact closed AT04 task, four-target footprint, and validator authority"
+        },
+        {
+          "id": "O-AS13-33",
+          "statement": "the AT04 guard rejects a non-SurveyRound active Round head without dispatching its handler"
         }
       ],
       "evidenceClasses": [
@@ -2918,6 +2970,10 @@
         {
           "id": "O-AS15-98",
           "statement": "separate surveyctl processes commit and cold-validate the complete AT03 Round 1 frame slice"
+        },
+        {
+          "id": "O-AS15-99",
+          "statement": "the live Survey AT04 path atomically commits three grounded QuestionFrames, their set, and one GenerationRecord"
         }
       ],
       "evidenceClasses": [
@@ -2951,6 +3007,10 @@
         {
           "id": "O-SV01-05",
           "statement": "Round 1 frame authority deterministically creates one ContextFrame and its exact foundation SurveyRound"
+        },
+        {
+          "id": "O-SV01-06",
+          "statement": "Round 1 QuestionFrame authority creates the exact immutable four-product unit with derived evidence and canonical edges"
         }
       ],
       "evidenceClasses": [
@@ -3102,6 +3162,18 @@
         {
           "id": "O-SV09-05",
           "statement": "Round 1 frame authority rejects an ambient normalized field without mutating its inputs"
+        },
+        {
+          "id": "O-SV09-06",
+          "statement": "Round 1 QuestionFrame authority rejects an anchor outside the frozen Survey outcome axes"
+        },
+        {
+          "id": "O-SV09-07",
+          "statement": "QuestionFrameSet rejects a blank aggregate coverage rationale"
+        },
+        {
+          "id": "O-SV09-08",
+          "statement": "QuestionFrameSet rejects an oversized aggregate orthogonality rationale"
         }
       ],
       "evidenceClasses": [

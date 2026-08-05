@@ -9,10 +9,10 @@
   ],
   "verification": {
     "precondition": "Only the generated surveyctl executable, one source file, one external key registry, and an empty sessions root exist; no process retains Survey runtime objects.",
-    "stimulus": "Use separate OS processes to complete AT01 through AT03, repeat the Round assignment read, validate cold replay, inspect the committed tree, and attempt unavailable AT04 issuance.",
-    "expectedSemanticState": "The exact Round 1 submission reaches round_1_question_frames_required at commit revision five, SurveyRound validates in the production store, repeated next is byte-identical and read-only, and unavailable AT04 rejects without changing session bytes.",
+    "stimulus": "Use separate OS processes to complete AT01 through AT03, repeat the Round assignment read, validate cold replay, inspect the committed tree, and issue then repeat the now-available AT04 assignment.",
+    "expectedSemanticState": "The exact Round 1 submission reaches round_1_question_frames_required at commit revision five, SurveyRound validates in the production store, and repeated AT04 assignment issuance is byte-identical and read-only.",
     "expectedEvidenceState": "The test runner reports the literal assertion: separate surveyctl processes commit and cold-validate the complete AT03 Round 1 frame slice",
-    "forbiddenMutation": "The process lifecycle must not depend on shared memory, rewrite a repeated pending assignment, omit SurveyRound structural validation, issue AT04, or mutate the store on an unavailable transition.",
+    "forbiddenMutation": "The process lifecycle must not depend on shared memory, rewrite a repeated pending assignment, omit SurveyRound structural validation, submit AT04, or execute AT05.",
     "applicability": {
       "mode": "specific",
       "transports": [],

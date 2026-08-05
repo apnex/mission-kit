@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:profile:profile-at04-footprint",
+  "obligationId": "O-AS13-32",
+  "requirementIds": [],
+  "invariantIds": ["AS13"],
+  "verification": {
+    "precondition": "The generated R11 Survey profile authority is available.",
+    "stimulus": "Deep-compare the AT04 task, exact four-target mutation footprint, and QuestionFrameSet schema and semantic validator bindings.",
+    "expectedSemanticState": "AT04 has exactly three ContextFrame slots, one QuestionFrameSet slot, no supersession or handoff, exact relations, and the declared next state.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: the R11 profile declares the exact closed AT04 task, four-target footprint, and validator authority",
+    "forbiddenMutation": "The profile must not widen cardinality, slots, types, relations, handoffs, supersession, next state, or validator authority.",
+    "applicability": {"mode": "not-applicable", "transports": [], "adapters": []},
+    "inspectedAuthorities": ["schemas/authoring/v1alpha1/authoring-profile-manifest.schema.json", "schemas/survey/v1alpha1/question-frame-set.schema.json", "source/authoring/survey/profile-authority.mjs"]
+  },
+  "behavior": "the R11 profile declares the exact closed AT04 task, four-target footprint, and validator authority",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/survey/profile/profile-at04-footprint.test.mjs",
+  "fixtures": ["tests/survey/profile/support.mjs"],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

@@ -27,7 +27,7 @@ import {
 } from "./support.mjs";
 
 test(
-  "the Survey R10 profile is total over canonical authority and executable only through AT03",
+  "the Survey R11 profile is total over canonical authority and executable only through AT04",
   async () => {
     const scenario = await loadProfileScenario();
     const {
@@ -87,8 +87,8 @@ test(
       protocol.spec.transitions.map((transition) => transition.id),
     );
     assert.deepEqual(profile.spec.executionClosure, {
-      id: "r10-round-one-frame",
-      transitionIds: ["AT01", "AT02", "AT03"],
+      id: "r11-round-one-question-frame-set",
+      transitionIds: ["AT01", "AT02", "AT03", "AT04"],
       revisionPlanIds: [],
     });
     assert.deepEqual(profile.spec.revisionUnits, []);
@@ -142,6 +142,34 @@ test(
         selectorId: "round-one-survey",
       },
     ]);
+    const questionFrameTask = profile.spec.tasks.find(
+      (task) => task.id === "author-round-1-frame-set",
+    );
+    assert.deepEqual(
+      questionFrameTask.contextSelectors.map((selector) => ({
+        role: selector.role,
+        slot: selector.selection.slot,
+        fields: selector.projection.fields,
+      })),
+      [
+        {role: "survey-frame", slot: "survey-frame", fields: ["/spec"]},
+        {role: "round-frame", slot: "round-1-frame", fields: ["/spec"]},
+        {role: "survey", slot: "survey", fields: ["/spec/outcomeAxes"]},
+      ],
+    );
+    assert.deepEqual(questionFrameTask.requestInputBindings, [
+      {inputKey: "survey-frame", selectorId: "round-one-question-survey-frame"},
+      {inputKey: "round-frame", selectorId: "round-one-question-round-frame"},
+      {inputKey: "survey", selectorId: "round-one-question-survey"},
+    ]);
+    assert.equal(
+      questionFrameTask.formBindingId,
+      "round-one-question-frames-form-binding",
+    );
+    assert.equal(
+      questionFrameTask.projectionBindingId,
+      "round-one-question-frames-projection-binding",
+    );
 
     const at01 = profile.spec.transitionBindings.find(
       (binding) => binding.transitionId === "AT01",
@@ -237,6 +265,38 @@ test(
     assert.deepEqual(at03.commitSidecarBindingIds, [
       SURVEY_GENERATION_SIDECAR_BINDING_ID,
     ]);
+    const at04 = profile.spec.transitionBindings.find(
+      (binding) => binding.transitionId === "AT04",
+    );
+    assert.deepEqual(
+      at04.mutationFootprint.created.map((item) => [
+        item.slot,
+        item.resourceType.kind,
+      ]),
+      [
+        ["round-1-question-frame-1", "ContextFrame"],
+        ["round-1-question-frame-2", "ContextFrame"],
+        ["round-1-question-frame-3", "ContextFrame"],
+        ["round-1-question-frame-set", "QuestionFrameSet"],
+      ],
+    );
+    assert.deepEqual(at04.mutationFootprint.activeHeadSlots, [
+      "round-1-question-frame-1",
+      "round-1-question-frame-2",
+      "round-1-question-frame-3",
+      "round-1-question-frame-set",
+    ]);
+    assert.deepEqual(at04.mutationFootprint.dependencyRelations, [
+      "belongs-to", "derived-from", "frames", "parent-frame",
+    ]);
+    assert.deepEqual(at04.commitSidecarBindingIds, [
+      SURVEY_GENERATION_SIDECAR_BINDING_ID,
+    ]);
+    assert.ok(
+      profile.spec.schemaBindings.some(
+        (binding) => binding.resourceType.kind === "QuestionFrameSet",
+      ),
+    );
     const cognitiveTransitions =
       profile.spec.transitionBindings.filter(
         (binding) => binding.triggerClass === "task-submission",

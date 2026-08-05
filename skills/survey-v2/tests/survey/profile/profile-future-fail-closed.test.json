@@ -8,10 +8,10 @@
     "AS02"
   ],
   "verification": {
-    "precondition": "The complete Survey profile declares canonical future edges while its R10 execution closure admits only AT01 through AT03.",
+    "precondition": "The complete Survey profile declares canonical future edges while its R11 execution closure admits only AT01 through AT04.",
     "stimulus": "Execute tests/survey/profile/profile-future-fail-closed.test.mjs with node:test.",
-    "expectedSemanticState": "Every guard, handler, and projection outside the implemented SurveyFrame and Round 1 frame slices resolves through an exact digest pin and rejects without products or mutation authority.",
-    "expectedEvidenceState": "The test runner reports the literal assertion: every Survey profile edge beyond AT03 has a digest-pinned rejecting executable",
+    "expectedSemanticState": "Every guard, handler, and projection outside the implemented SurveyFrame, Round frame, and Round-1 QuestionFrameSet slices resolves through an exact digest pin and rejects without products or mutation authority.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: every Survey profile edge beyond AT04 has a digest-pinned rejecting executable",
     "forbiddenMutation": "A future transition must not execute, create a product, infer a placeholder result, or bypass the declared execution closure.",
     "applicability": {
       "mode": "not-applicable",
@@ -26,7 +26,7 @@
       "source/protocol/survey-v2.protocol.json"
     ]
   },
-  "behavior": "every Survey profile edge beyond AT03 has a digest-pinned rejecting executable",
+  "behavior": "every Survey profile edge beyond AT04 has a digest-pinned rejecting executable",
   "evidenceClass": "negative",
   "runner": "node:test",
   "executable": "tests/survey/profile/profile-future-fail-closed.test.mjs",

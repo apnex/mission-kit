@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:round-one-question-frames:misdirected-parent-edge",
+  "obligationId": "O-AS06-87",
+  "requirementIds": [],
+  "invariantIds": ["AS06"],
+  "verification": {
+    "precondition": "Each required R10 parent edge is retained but redirected to a foreign active ancestor in turn.",
+    "stimulus": "Invoke the Round-1 QuestionFrame authority for each misdirected graph.",
+    "expectedSemanticState": "Every retained-but-wrong edge rejects before product construction without input mutation.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: Round 1 QuestionFrame authority rejects each misdirected authenticated R10 parent edge",
+    "forbiddenMutation": "Edge relation presence alone must not satisfy exact ancestry authority.",
+    "applicability": {"mode": "not-applicable", "transports": [], "adapters": []},
+    "inspectedAuthorities": ["source/authoring/survey/round-one-question-frames-authority.mjs"]
+  },
+  "behavior": "Round 1 QuestionFrame authority rejects each misdirected authenticated R10 parent edge",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/survey/round-one-question-frames/misdirected-parent-edge.test.mjs",
+  "fixtures": ["tests/survey/round-one-question-frames/support.mjs"],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

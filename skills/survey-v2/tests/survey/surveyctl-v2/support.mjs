@@ -26,6 +26,9 @@ import {
   executeSurveyctlCommand,
   initializeSurveyctlRun,
 } from "../../../source/executables/runtime/lib/surveyctl-engine.mjs";
+import {
+  roundOneQuestionFrameValues,
+} from "../round-one-question-frames/support.mjs";
 
 export const surveyctlSource = fileURLToPath(
   new URL(
@@ -278,6 +281,49 @@ export async function writeRoundOneFrameInput(
   await writeFile(
     input,
     await populatedRoundOneFrameBytes(pending),
+    { flag: "wx" },
+  );
+  return input;
+}
+
+export async function populatedRoundOneQuestionFramesBytes(
+  pending,
+) {
+  const authority = await loadSurveyProfileAuthority();
+  const formBinding =
+    authority.profile.spec.formBindings.find(
+      (binding) =>
+        binding.id === pending.request.spec.bindings.form.id,
+    );
+  const formDefinition =
+    authority.forms.find(
+      (form) =>
+        form.metadata.name === formBinding?.definition?.name,
+    );
+  if (!formDefinition) {
+    throw new Error(
+      "test harness could not resolve the pending QuestionFrame form",
+    );
+  }
+  return renderPopulatedTextForm({
+    formDefinition,
+    contextClosure: pending.contextClosure,
+    requestHandle: pending.assignment.spec.handle,
+    values: roundOneQuestionFrameValues(),
+  });
+}
+
+export async function writeRoundOneQuestionFramesInput(
+  harness,
+  pending,
+) {
+  const input = path.join(
+    harness.temporaryRoot,
+    "round-one-question-frames.txt",
+  );
+  await writeFile(
+    input,
+    await populatedRoundOneQuestionFramesBytes(pending),
     { flag: "wx" },
   );
   return input;

@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:round-one-question-frames:unknown-outcome-axis",
+  "obligationId": "O-SV09-06",
+  "requirementIds": [],
+  "invariantIds": ["SV09"],
+  "verification": {
+    "precondition": "A valid Round-1 QuestionFrame input is available.",
+    "stimulus": "Replace one anchor axis with a name absent from frozen Survey outcomeAxes.",
+    "expectedSemanticState": "Authority rejects the unknown axis before product construction.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: Round 1 QuestionFrame authority rejects an anchor outside the frozen Survey outcome axes",
+    "forbiddenMutation": "No inferred axis, product, or input mutation may occur.",
+    "applicability": {"mode": "not-applicable", "transports": [], "adapters": []},
+    "inspectedAuthorities": ["source/authoring/survey/round-one-question-frames-authority.mjs"]
+  },
+  "behavior": "Round 1 QuestionFrame authority rejects an anchor outside the frozen Survey outcome axes",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/survey/round-one-question-frames/unknown-outcome-axis.test.mjs",
+  "fixtures": ["tests/survey/round-one-question-frames/support.mjs"],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

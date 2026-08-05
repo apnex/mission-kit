@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:round-one-question-frames:question-frame-projector",
+  "obligationId": "O-AS06-85",
+  "requirementIds": [],
+  "invariantIds": ["AS06"],
+  "verification": {
+    "precondition": "The exact SurveyFrame, RoundFrame, and Survey outcome-axis closure is available.",
+    "stimulus": "Execute tests/survey/round-one-question-frames/question-frame-projector.test.mjs with node:test.",
+    "expectedSemanticState": "The projector emits a byte-stable least-context producer view with the exact ordered frozen outcome axes.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: Round 1 QuestionFrame projector deterministically exposes only three frozen least-context layers",
+    "forbiddenMutation": "The projector must not mutate closure input or disclose identities, policy, graph, evidence, runtime, or future semantics.",
+    "applicability": {"mode": "not-applicable", "transports": [], "adapters": []},
+    "inspectedAuthorities": ["source/authoring/survey/round-one-question-frames-projector.mjs"]
+  },
+  "behavior": "Round 1 QuestionFrame projector deterministically exposes only three frozen least-context layers",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/survey/round-one-question-frames/question-frame-projector.test.mjs",
+  "fixtures": ["tests/survey/round-one-question-frames/support.mjs"],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

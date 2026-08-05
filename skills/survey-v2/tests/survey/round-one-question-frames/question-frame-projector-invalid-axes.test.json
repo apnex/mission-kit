@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:round-one-question-frames:question-frame-projector-invalid-axes",
+  "obligationId": "O-AS06-86",
+  "requirementIds": [],
+  "invariantIds": ["AS06"],
+  "verification": {
+    "precondition": "The Survey outcome-axis projection layer is missing, selects a wrong path, or differs from its frozen snapshot.",
+    "stimulus": "Invoke the Round-1 QuestionFrame projector.",
+    "expectedSemanticState": "Every altered authority layer rejects without input mutation.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: Round 1 QuestionFrame projector rejects missing, wrong-path, or altered Survey outcome-axis authority",
+    "forbiddenMutation": "The projector must not infer or repair missing outcome-axis authority.",
+    "applicability": {"mode": "not-applicable", "transports": [], "adapters": []},
+    "inspectedAuthorities": ["source/authoring/survey/round-one-question-frames-projector.mjs"]
+  },
+  "behavior": "Round 1 QuestionFrame projector rejects missing, wrong-path, or altered Survey outcome-axis authority",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/survey/round-one-question-frames/question-frame-projector-invalid-axes.test.mjs",
+  "fixtures": ["tests/survey/round-one-question-frames/support.mjs"],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

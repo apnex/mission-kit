@@ -1,5 +1,5 @@
 {
-  "aggregateDigest": "sha256:71f3f81123c401826c77b07de96baac3a18c3155a908c2686875d968d190f04c",
+  "aggregateDigest": "sha256:7da7d9c7bac8374d96ca0d6205680eb0b58b97a004319ab6b7c920c76312625c",
   "canonicalDigests": [
     {
       "digest": "sha256:f7c65af249baff28e5d9fe29a9ac4011f802e955f74829c14949e2cf23104254",
@@ -370,7 +370,7 @@
       "path": "source/authoring/runtime/workspace-application.mjs"
     },
     {
-      "digest": "sha256:123592844a06b37ad2861fb8a838a2e784cb6ebd271e99e7fdc2db97bd19601f",
+      "digest": "sha256:94b8717880b16e4478cfd35866d9b2b50ad2bc27e1b6a92a6b60582454da5d9f",
       "path": "source/authoring/survey/authoring-runtime.mjs"
     },
     {
@@ -386,11 +386,11 @@
       "path": "source/authoring/survey/inspection.mjs"
     },
     {
-      "digest": "sha256:92d2b94a18f350131938909df856e24b1347af4197ac1a4d07ccf37a94864a45",
+      "digest": "sha256:c0aafdb2fca05f79676e618f100f39fe56a3bdb0504ab1d23024aba7efdd1330",
       "path": "source/authoring/survey/profile-authority.mjs"
     },
     {
-      "digest": "sha256:3a771c392c6a5c210527b7b2a18779fda0ea89cefb8514d128c6bc48ffee8cbd",
+      "digest": "sha256:50c4b578ee964a5ab49c772d305d988dc8c284cf1aaf7e80515a788d0486c9cf",
       "path": "source/authoring/survey/profile-executables.mjs"
     },
     {
@@ -408,6 +408,14 @@
     {
       "digest": "sha256:d7264b751da491f5bd8e63277f73d98e81a9a6d028b30e7347cdecbf8291bd1a",
       "path": "source/authoring/survey/round-one-frame-projector.mjs"
+    },
+    {
+      "digest": "sha256:3e6c6e2b9e6f66064de5b8be9a006306e5ae5c1c48fa7e07ea0b1bd8cdefd2ad",
+      "path": "source/authoring/survey/round-one-question-frames-authority.mjs"
+    },
+    {
+      "digest": "sha256:f3431414d7b4ab48f5afaf17faf8249fa44d1efd0f3065600a9cb903ca6302bb",
+      "path": "source/authoring/survey/round-one-question-frames-projector.mjs"
     },
     {
       "digest": "sha256:4196d3dc4a7e64f4d99adab3a2f05ff4b661c186d6de3fb8c54dc7d81fccee4b",
@@ -722,7 +730,7 @@
       "path": "source/projections/assets.projection.json"
     },
     {
-      "digest": "sha256:0dc6ec50c6b2c9731de49cb302de5b752a2071926782b059663ff646c43e372b",
+      "digest": "sha256:0fce8024c21f82852fa3226e74af8418e43e5b5576501cac9d9adac2cb5fe234",
       "path": "source/projections/build-metadata.projection.json"
     },
     {
@@ -766,7 +774,7 @@
       "path": "source/protocol/survey.protocol.json"
     },
     {
-      "digest": "sha256:322f9f07987a9bf6e282033322ec41375dfca98a67f23001fbb3755d35bd642c",
+      "digest": "sha256:9b223f72356098ee48e5902283d8deb1ae2adf935eba4c62c4bd89436cf0f1a6",
       "path": "source/requirements/survey-v2.requirements.json"
     },
     {
@@ -778,7 +786,7 @@
       "path": "source/views/director-lifecycle.view.json"
     },
     {
-      "digest": "sha256:2e14f0ba410d3879564bc604c38db90429e2dd3939f99f22953e4bd6164aca7d",
+      "digest": "sha256:7cb2aee5876a7a77b856b56678ffa6e54b12d1e95730efd0b2377affd80ac465",
       "path": "survey-v2.package.json"
     },
     {
@@ -6646,15 +6654,39 @@
       "path": "tests/survey/initialization/survey-policy-determinism.test.mjs"
     },
     {
-      "digest": "sha256:7f72f2f266908efe74bc9a876377ce6010e0ea2ac415394eaa34ea84afdd25fa",
+      "digest": "sha256:a9c8de0d77983cfe0584967446ac709cad8c7de160473a539a61cb2d1f38ab72",
       "path": "tests/survey/profile/live-support.mjs"
     },
     {
-      "digest": "sha256:16107181ad358ff3df5a676559ca46d0f2d44ab8336059d60e31db1f2da1ccba",
+      "digest": "sha256:a6e88841dc9163461398f9564e83790f2e91b131da43592f1ed9a22540bba8f8",
+      "path": "tests/survey/profile/profile-at04-footprint.test.json"
+    },
+    {
+      "digest": "sha256:23990ac0b61700500ed1287123e851f593a0d284d7cbe474444c0a1038e0063f",
+      "path": "tests/survey/profile/profile-at04-footprint.test.mjs"
+    },
+    {
+      "digest": "sha256:69e79035babe7863536731675501f3feff510b053c853df8ff15233d1a4f3c72",
+      "path": "tests/survey/profile/profile-at04-round-head-guard.test.json"
+    },
+    {
+      "digest": "sha256:321aef1349f6b4daeacf38c9c6991b9954baa37c561cf47a8d327a178c7dd0ca",
+      "path": "tests/survey/profile/profile-at04-round-head-guard.test.mjs"
+    },
+    {
+      "digest": "sha256:5d2bda97c321bd1ad37e6ff27fe822967e252e354ba4db376708f31023cdb257",
+      "path": "tests/survey/profile/profile-at04-stale-request-base.test.json"
+    },
+    {
+      "digest": "sha256:67c08823390aec5875d93916550fd5989db69d86fd2899a66a9ca0f5fbb023e4",
+      "path": "tests/survey/profile/profile-at04-stale-request-base.test.mjs"
+    },
+    {
+      "digest": "sha256:ffc2029b9898ccec450e1ceed144071c469c67172c6618add83789718dd76fc9",
       "path": "tests/survey/profile/profile-authority-closure.test.json"
     },
     {
-      "digest": "sha256:748a1ef1ee8b0b2899d8b3d252221c3bd9bb38dace3a345e01d019a842c08aa5",
+      "digest": "sha256:94cc530d9da89e365190739d66e2a482bdc824bdd6422f2b21eaec3c46ce1197",
       "path": "tests/survey/profile/profile-authority-closure.test.mjs"
     },
     {
@@ -6666,11 +6698,11 @@
       "path": "tests/survey/profile/profile-concrete-executables.test.mjs"
     },
     {
-      "digest": "sha256:36b616b33dc188faee139c3650afb3452dc842fb6c603b947e420b4f377f99da",
+      "digest": "sha256:d935386e690f41e8a37563a2ff82e72629f2c6a7084dee14ccdf58a03f97e723",
       "path": "tests/survey/profile/profile-future-fail-closed.test.json"
     },
     {
-      "digest": "sha256:8ff5c0cd7d44c51aa9a19f1a80d76d673bc24bcf381b174a15183cc5e86db6aa",
+      "digest": "sha256:f67dcf0a38ae774f7d979ba2679425c4c386b674342386757c8be8a4eb977ec4",
       "path": "tests/survey/profile/profile-future-fail-closed.test.mjs"
     },
     {
@@ -6690,6 +6722,14 @@
       "path": "tests/survey/profile/profile-live-round-one-frame.test.mjs"
     },
     {
+      "digest": "sha256:6c6e15660dea103a230f5af8f4b864d128f50299fcb99d3ddf3d8169bde043b8",
+      "path": "tests/survey/profile/profile-live-round-one-question-frames.test.json"
+    },
+    {
+      "digest": "sha256:2805b0313f686adf759927b48103a72dd65d8907b62517b623dfdff19879c80c",
+      "path": "tests/survey/profile/profile-live-round-one-question-frames.test.mjs"
+    },
+    {
       "digest": "sha256:14c475bed6ac2bd62807ab15918582842374a951af613f54f4f71744cb376593",
       "path": "tests/survey/profile/profile-live-survey-frame.test.json"
     },
@@ -6700,6 +6740,114 @@
     {
       "digest": "sha256:c799ff3ced1b135e9f31c24c76bef1ce2150179e887bec9454d21c2c78762973",
       "path": "tests/survey/profile/support.mjs"
+    },
+    {
+      "digest": "sha256:08ccd94093645f7c77f2b1f39acc0f90434860d404f54164a01f82ce946d3e73",
+      "path": "tests/survey/round-one-question-frames/aggregate-rationale-bounds.test.json"
+    },
+    {
+      "digest": "sha256:0b20a73b791f301462d8028aa2aeff09e897babf37c0fce18f8bb75f97e8a3fc",
+      "path": "tests/survey/round-one-question-frames/aggregate-rationale-bounds.test.mjs"
+    },
+    {
+      "digest": "sha256:454e55236b32f42bb08f07dcf2fcbbfd2f8dd987e1e356e2fd124448f6a5e4aa",
+      "path": "tests/survey/round-one-question-frames/ambient-derived-fields.test.json"
+    },
+    {
+      "digest": "sha256:e03946d5750eb73ccb1606d134b879a3abbf77ce7e070cb557065c098b989809",
+      "path": "tests/survey/round-one-question-frames/ambient-derived-fields.test.mjs"
+    },
+    {
+      "digest": "sha256:a36dca5055a4993187df96a0d86a2af94f813a405f34d112ba7b85dab69c14d2",
+      "path": "tests/survey/round-one-question-frames/misdirected-parent-edge.test.json"
+    },
+    {
+      "digest": "sha256:9fd9db7874e73bb81311ff606fc852f0b3681b0e104ba53abe1a380f933bff8a",
+      "path": "tests/survey/round-one-question-frames/misdirected-parent-edge.test.mjs"
+    },
+    {
+      "digest": "sha256:abbd93ad7c8de9dd32beefadd5b250d83bb167517cf9e28ecc981e44671703ce",
+      "path": "tests/survey/round-one-question-frames/missing-parent-edge.test.json"
+    },
+    {
+      "digest": "sha256:cc45ae171734613c1fc3bbea18bd92f30cdfccc0bdaf3272ac0f73333702b73a",
+      "path": "tests/survey/round-one-question-frames/missing-parent-edge.test.mjs"
+    },
+    {
+      "digest": "sha256:980e7a84b3a6de423cd38cafbddd58b59386b07474f91b7275a0508578a74a01",
+      "path": "tests/survey/round-one-question-frames/oversized-orthogonality-rationale.test.json"
+    },
+    {
+      "digest": "sha256:ed58099b2fee8a3c0bc29b7cbc3792a0f88f56127ab8bcc7780ceef603567e95",
+      "path": "tests/survey/round-one-question-frames/oversized-orthogonality-rationale.test.mjs"
+    },
+    {
+      "digest": "sha256:f5eb475bd479465b5fb7f76c62b25f9e114eda733533af413ef7b06e714f8e8d",
+      "path": "tests/survey/round-one-question-frames/pair-first-delimiter.test.json"
+    },
+    {
+      "digest": "sha256:a1a80c8b45859d2585c86d858b61dddd2b110b50b58c3a743a2ac1adfab0c0c5",
+      "path": "tests/survey/round-one-question-frames/pair-first-delimiter.test.mjs"
+    },
+    {
+      "digest": "sha256:99dc624a7d91fbc5d751b49ff86801328dcbb331ff561df3712e6412f0b96f19",
+      "path": "tests/survey/round-one-question-frames/projector-ambient-selected-value.test.json"
+    },
+    {
+      "digest": "sha256:24fdf082f9de73c20aed2e417a3899c9fb77d34a9bc50bae6f9ed7915df492f4",
+      "path": "tests/survey/round-one-question-frames/projector-ambient-selected-value.test.mjs"
+    },
+    {
+      "digest": "sha256:2423b93bfdb51786f91c9783767e2c130772f8a084fbdf4769b137a18d7a25ec",
+      "path": "tests/survey/round-one-question-frames/question-frame-projector-invalid-axes.test.json"
+    },
+    {
+      "digest": "sha256:f975817c849da40c996bc287549e194e22ff05e9f9bc8eca869932c7e0325293",
+      "path": "tests/survey/round-one-question-frames/question-frame-projector-invalid-axes.test.mjs"
+    },
+    {
+      "digest": "sha256:896890ed565f98edd3deb135b09b550bfb6c6fcbc458cc185c40e2ad88f6921d",
+      "path": "tests/survey/round-one-question-frames/question-frame-projector.test.json"
+    },
+    {
+      "digest": "sha256:649f777236600f784b80f53b24aadb9e5764530fbee6553d6acca80b2c543b8a",
+      "path": "tests/survey/round-one-question-frames/question-frame-projector.test.mjs"
+    },
+    {
+      "digest": "sha256:8254078853830cde70d54660a89e9b795429f60c0d120e4377058397f241af3a",
+      "path": "tests/survey/round-one-question-frames/question-frame-set-authority.test.json"
+    },
+    {
+      "digest": "sha256:2ed98e69b4e86d460e6152ae6f4ae4e840fb1714181047ee3a4d9d76e339f44f",
+      "path": "tests/survey/round-one-question-frames/question-frame-set-authority.test.mjs"
+    },
+    {
+      "digest": "sha256:2dbad34c6c9be0a40f403276d804586a73029e8ec47810f367965062506ab096",
+      "path": "tests/survey/round-one-question-frames/stale-parent-ancestry.test.json"
+    },
+    {
+      "digest": "sha256:d8af265d749a4bb83699fc20a76e3ee66212435f9ff814487f2f769372a773ff",
+      "path": "tests/survey/round-one-question-frames/stale-parent-ancestry.test.mjs"
+    },
+    {
+      "digest": "sha256:9de7aa519fde9dd9a23aae13178eba3eac5a0eb0b2eea505494c5074f5982f54",
+      "path": "tests/survey/round-one-question-frames/support.mjs"
+    },
+    {
+      "digest": "sha256:ea6401c42932584109a204724cfca6edb49457f723a4bb50d00e8bb3119a6a52",
+      "path": "tests/survey/round-one-question-frames/unknown-outcome-axis.test.json"
+    },
+    {
+      "digest": "sha256:d1c1c421938b6bf47eeffa3c1cce69acfc1debfcd5547aa3880b67f4d9e0ec9e",
+      "path": "tests/survey/round-one-question-frames/unknown-outcome-axis.test.mjs"
+    },
+    {
+      "digest": "sha256:7f325651e5db0b1a4e409597b24a4563be98b89ac16c666ad1366af4c21c9993",
+      "path": "tests/survey/round-one-question-frames/wrong-parent-head.test.json"
+    },
+    {
+      "digest": "sha256:df3581a0a8282964f0779bcd9238ac9eb3531d45084ec0f8d9a8fc8d1f7391d3",
+      "path": "tests/survey/round-one-question-frames/wrong-parent-head.test.mjs"
     },
     {
       "digest": "sha256:5f673bbcbcb34510a5c69fdf132c295e3f97e5d95474e3e2019ee9808118beb8",
@@ -6894,12 +7042,20 @@
       "path": "tests/survey/surveyctl-v2/output-format-contract.test.mjs"
     },
     {
-      "digest": "sha256:098bc9c266a3706a2e0691bdbbd8da5250f283567452d47eb8d7a62765a8a37c",
+      "digest": "sha256:150d4646c1ea6236ee596585c97e9f9bb2dca356d0c83cab2046931514fb385b",
       "path": "tests/survey/surveyctl-v2/round-one-process-lifecycle.test.json"
     },
     {
-      "digest": "sha256:b109fc18716577d8da1285d0cf14888f133a5f893ae673339fc8ee0c06be7a96",
+      "digest": "sha256:7d3014949dd3a21be49055603e208b180dc3c46ee497a58bcca7ed2d074e5113",
       "path": "tests/survey/surveyctl-v2/round-one-process-lifecycle.test.mjs"
+    },
+    {
+      "digest": "sha256:2753a3874254d1631b4f9515ff9ed7a275573ca61cc61ba0e4c0d5736befb531",
+      "path": "tests/survey/surveyctl-v2/round-one-question-frames-process-lifecycle.test.json"
+    },
+    {
+      "digest": "sha256:d94689bbbab1168f46a01c354c683da3d17ae1208199005248f01df05f30ab50",
+      "path": "tests/survey/surveyctl-v2/round-one-question-frames-process-lifecycle.test.mjs"
     },
     {
       "digest": "sha256:2eba374bd55c5b859a348ef9a9c8ef2ed7835588d18b4b76f54000ea685333c5",
@@ -6918,7 +7074,7 @@
       "path": "tests/survey/surveyctl-v2/submit-validate-persistence.test.mjs"
     },
     {
-      "digest": "sha256:f006ddac046b9dc375c2a6711c542e281a70b38d9bad307877bd405b9c30e402",
+      "digest": "sha256:ec8fd7b0082f72f222d08fad66d2563aff9f13d032febdf18363b9d5e3918b6b",
       "path": "tests/survey/surveyctl-v2/support.mjs"
     },
     {
@@ -6938,12 +7094,12 @@
       "path": "tests/survey/surveyctl-v2/zero-journal-crash-recovery.test.mjs"
     },
     {
-      "digest": "sha256:de51bf0e30c207c41775ef098d08d2927e1465c1b6a1b585a0ea3d6706416d4b",
+      "digest": "sha256:eaec1bd2d94dd1dd089cc5af4c9f4904e909c23e7550522135c2bbbe77384217",
       "path": "tests/test-evidence.manifest.json"
     }
   ],
   "id": "urn:mission-kit:survey-v2:projection-lock:survey-v2",
-  "packageDigest": "sha256:71f3f81123c401826c77b07de96baac3a18c3155a908c2686875d968d190f04c",
+  "packageDigest": "sha256:7da7d9c7bac8374d96ca0d6205680eb0b58b97a004319ab6b7c920c76312625c",
   "parentDesignSha256": "6467fff1c74c6dc857bcb06722d19dfa04381ae3e6f242eccb36581f87560f74",
   "portableExclusions": [
     {
@@ -7709,6 +7865,16 @@
       "expectedId": null,
       "kind": "authored",
       "path": "source/authoring/survey/round-one-frame-projector.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/authoring/survey/round-one-question-frames-authority.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/authoring/survey/round-one-question-frames-projector.mjs"
     },
     {
       "expectedId": null,
@@ -15513,6 +15679,36 @@
     {
       "expectedId": null,
       "kind": "authored",
+      "path": "tests/survey/profile/profile-at04-footprint.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/profile/profile-at04-footprint.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/profile/profile-at04-round-head-guard.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/profile/profile-at04-round-head-guard.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/profile/profile-at04-stale-request-base.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/profile/profile-at04-stale-request-base.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
       "path": "tests/survey/profile/profile-authority-closure.test.json"
     },
     {
@@ -15563,6 +15759,16 @@
     {
       "expectedId": null,
       "kind": "authored",
+      "path": "tests/survey/profile/profile-live-round-one-question-frames.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/profile/profile-live-round-one-question-frames.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
       "path": "tests/survey/profile/profile-live-survey-frame.test.json"
     },
     {
@@ -15574,6 +15780,141 @@
       "expectedId": null,
       "kind": "authored",
       "path": "tests/survey/profile/support.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one-question-frames/aggregate-rationale-bounds.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one-question-frames/aggregate-rationale-bounds.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one-question-frames/ambient-derived-fields.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one-question-frames/ambient-derived-fields.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one-question-frames/misdirected-parent-edge.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one-question-frames/misdirected-parent-edge.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one-question-frames/missing-parent-edge.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one-question-frames/missing-parent-edge.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one-question-frames/oversized-orthogonality-rationale.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one-question-frames/oversized-orthogonality-rationale.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one-question-frames/pair-first-delimiter.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one-question-frames/pair-first-delimiter.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one-question-frames/projector-ambient-selected-value.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one-question-frames/projector-ambient-selected-value.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one-question-frames/question-frame-projector-invalid-axes.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one-question-frames/question-frame-projector-invalid-axes.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one-question-frames/question-frame-projector.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one-question-frames/question-frame-projector.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one-question-frames/question-frame-set-authority.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one-question-frames/question-frame-set-authority.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one-question-frames/stale-parent-ancestry.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one-question-frames/stale-parent-ancestry.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one-question-frames/support.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one-question-frames/unknown-outcome-axis.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one-question-frames/unknown-outcome-axis.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one-question-frames/wrong-parent-head.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/round-one-question-frames/wrong-parent-head.test.mjs"
     },
     {
       "expectedId": null,
@@ -15824,6 +16165,16 @@
       "expectedId": null,
       "kind": "authored",
       "path": "tests/survey/surveyctl-v2/round-one-process-lifecycle.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/surveyctl-v2/round-one-question-frames-process-lifecycle.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/survey/surveyctl-v2/round-one-question-frames-process-lifecycle.test.mjs"
     },
     {
       "expectedId": null,

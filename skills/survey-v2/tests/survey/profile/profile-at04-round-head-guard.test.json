@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:profile:profile-at04-round-head-guard",
+  "obligationId": "O-AS13-33",
+  "requirementIds": [],
+  "invariantIds": ["AS13"],
+  "verification": {
+    "precondition": "The AT04 guard receives otherwise-valid input whose active round-1 head has a non-SurveyRound kind.",
+    "stimulus": "Dispatch the digest-pinned guard and condition handler dispatch on a pass result.",
+    "expectedSemanticState": "The guard emits ROUND_ONE_QUESTION_FRAMES_ROUND_HEAD_INVALID, leaves input unchanged, and the AT04 handler is never invoked.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: the AT04 guard rejects a non-SurveyRound active Round head without dispatching its handler",
+    "forbiddenMutation": "Wrong-kind Round authority must not reach product construction or mutate callback input.",
+    "applicability": {"mode": "not-applicable", "transports": [], "adapters": []},
+    "inspectedAuthorities": ["source/authoring/kernel/executable-registry.mjs", "source/authoring/survey/profile-executables.mjs"]
+  },
+  "behavior": "the AT04 guard rejects a non-SurveyRound active Round head without dispatching its handler",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/survey/profile/profile-at04-round-head-guard.test.mjs",
+  "fixtures": ["tests/survey/profile/support.mjs", "tests/survey/round-one-question-frames/support.mjs"],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

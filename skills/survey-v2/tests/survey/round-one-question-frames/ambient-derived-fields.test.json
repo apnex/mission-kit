@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:round-one-question-frames:ambient-derived-fields",
+  "obligationId": "O-AS13-31",
+  "requirementIds": [],
+  "invariantIds": ["AS13"],
+  "verification": {
+    "precondition": "Valid QuestionFrame values are available.",
+    "stimulus": "Inject roundRef, roundOrdinal, and round1Relation as producer-authored fields.",
+    "expectedSemanticState": "Each ambient derived field is rejected.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: QuestionFrame authority rejects producer injection of derived references, ordinals, or Round-1 relation semantics",
+    "forbiddenMutation": "Producer fields must not override kernel-derived identity or ancestry.",
+    "applicability": {"mode": "not-applicable", "transports": [], "adapters": []},
+    "inspectedAuthorities": ["source/authoring/survey/round-one-question-frames-authority.mjs"]
+  },
+  "behavior": "QuestionFrame authority rejects producer injection of derived references, ordinals, or Round-1 relation semantics",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/survey/round-one-question-frames/ambient-derived-fields.test.mjs",
+  "fixtures": ["tests/survey/round-one-question-frames/support.mjs"],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}
