@@ -250,9 +250,41 @@
       "kind": "bootstrap"
     },
     {
+      "path": "dependencies/shared-schemas/v1/closure.manifest.json",
+      "kind": "dependency-snapshot"
+    },
+    {
       "path": "dependencies/shared-schemas/v1/roots.json",
       "kind": "authored",
       "expectedId": "urn:mission-kit:survey-v2:shared-schema-roots"
+    },
+    {
+      "path": "dependencies/shared-schemas/v1/snapshot/catalog.json",
+      "kind": "dependency-snapshot"
+    },
+    {
+      "path": "dependencies/shared-schemas/v1/snapshot/common/v1alpha1/resource-metadata.schema.json",
+      "kind": "dependency-snapshot"
+    },
+    {
+      "path": "dependencies/shared-schemas/v1/snapshot/context-frame/v1alpha1/context-frame.schema.json",
+      "kind": "dependency-snapshot"
+    },
+    {
+      "path": "dependencies/shared-schemas/v1/snapshot/context-frame/v1alpha1/context-frame.validator.mjs",
+      "kind": "dependency-snapshot"
+    },
+    {
+      "path": "dependencies/shared-schemas/v1/snapshot/question/v1alpha1/choice-response.schema.json",
+      "kind": "dependency-snapshot"
+    },
+    {
+      "path": "dependencies/shared-schemas/v1/snapshot/question/v1alpha1/question.schema.json",
+      "kind": "dependency-snapshot"
+    },
+    {
+      "path": "dependencies/shared-schemas/v1/snapshot/question/v1alpha1/question.validator.mjs",
+      "kind": "dependency-snapshot"
     },
     {
       "path": "generated/dependency-index.json",
@@ -321,6 +353,110 @@
     {
       "path": "references/validation.md",
       "kind": "generated"
+    },
+    {
+      "path": "schemas/authoring/v1alpha1/authoring-assignment.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/authoring/v1alpha1/authoring-commit-receipt.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/authoring/v1alpha1/authoring-form-definition.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/authoring/v1alpha1/authoring-journal-record.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/authoring/v1alpha1/authoring-mutation.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/authoring/v1alpha1/authoring-profile-manifest.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/authoring/v1alpha1/authoring-protocol.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/authoring/v1alpha1/authoring-request.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/authoring/v1alpha1/authoring-submission.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/authoring/v1alpha1/authoring-workspace.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/authoring/v1alpha1/common.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/authoring/v1alpha1/context-closure.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/authoring/v1alpha1/projection-artifact.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/authoring/v1alpha1/resource-reference.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/authoring/v1alpha1/source-snapshot.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/authoring/v1alpha1/validation-issue.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/survey/v1alpha1/common.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/survey/v1alpha1/generation-record.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/survey/v1alpha1/question-frame-set.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/survey/v1alpha1/round-instrument.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/survey/v1alpha1/round-interpretation.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/survey/v1alpha1/survey-policy-snapshot.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/survey/v1alpha1/survey-question-binding.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/survey/v1alpha1/survey-round.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/survey/v1alpha1/survey-runtime-artifact.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/survey/v1alpha1/survey.schema.json",
+      "kind": "authored"
     },
     {
       "path": "schemas/v1/common.schema.json",
@@ -393,6 +529,50 @@
       "kind": "authored"
     },
     {
+      "path": "schemas/v2/common.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/v2/package.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/v2/paired-state-matrix.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/v2/projection.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/v2/protocol-selection.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/v2/protocol.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/v2/quarantine.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/v2/requirement.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/v2/session-state-active-v1.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/v2/session-state.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/v2/test-evidence.schema.json",
+      "kind": "authored"
+    },
+    {
       "path": "scripts/survey-envelope.mjs",
       "kind": "generated"
     },
@@ -411,6 +591,74 @@
     {
       "path": "scripts/survey-transition.mjs",
       "kind": "generated"
+    },
+    {
+      "path": "shared-schemas.sh",
+      "kind": "bootstrap"
+    },
+    {
+      "path": "source/authoring/kernel/assignment-dag.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/authoring/kernel/canonical.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/authoring/kernel/context-resolver.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/authoring/kernel/contract-semantics.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/authoring/kernel/digests.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/authoring/kernel/executable-registry.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/authoring/kernel/manifest-reducer.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/authoring/kernel/manifest-selection.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/authoring/kernel/mutation-planner.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/authoring/kernel/reducer-results.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/authoring/kernel/request-planner.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/authoring/kernel/resource-resolution.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/authoring/kernel/text-forms.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/authoring/survey/protocol-semantics.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/authoring/survey/resource-semantics.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/authoring/survey/session-semantics.mjs",
+      "kind": "authored"
     },
     {
       "path": "source/dependencies/processes/axiom-applicability.process.json",
@@ -686,6 +934,18 @@
       "kind": "authored"
     },
     {
+      "path": "source/protocol/paired-state-matrix.v2.json",
+      "kind": "authored"
+    },
+    {
+      "path": "source/protocol/protocol-selection.json",
+      "kind": "authored"
+    },
+    {
+      "path": "source/protocol/survey-v2.protocol.json",
+      "kind": "authored"
+    },
+    {
       "path": "source/protocol/survey.protocol.json",
       "kind": "authored"
     },
@@ -706,747 +966,347 @@
       "kind": "authored"
     },
     {
-      "path": "shared-schemas.sh",
-      "kind": "bootstrap"
-    },
-    {
-      "path": "tests/baseline-v1/characterization.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-v1/v1-characterization.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-v1/v1-characterization.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/canonical-v1-freeze.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/canonical-v1-freeze.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/canonical-v1.freeze.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/discovery-routing-freeze.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/discovery-routing-freeze.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/discovery-routing.freeze.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/export-representative-sessions.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/freeze-contract.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/package-compatibility.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/package-compatibility.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/package-compatibility.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/package-entry-boundary.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/package-entry-boundary.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/probe-discovery.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/projection-lock-self-exclusion.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/projection-lock-self-exclusion.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/protocol-v1-freeze.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/protocol-v1-freeze.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/protocol-v1.freeze.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/resume-preflight.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/shared-schema-freeze.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/shared-schema-freeze.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/shared-schema.freeze.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/v1-schema-authority-freeze.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/v1-schema-authority-freeze.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/v1-schema-authority.freeze.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/v1-test-disposition.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/v1-test-disposition.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/baseline-freeze/v1-test-disposition.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/dependencies/snapshot-instability.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/dependencies/snapshot-instability.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/dependencies/snapshot-symlink.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/dependencies/snapshot-symlink.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/dependencies/stable-snapshot.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/dependencies/stable-snapshot.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/dependencies/candidate-dependency-evidence.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/dependencies/candidate-dependency-evidence.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/dependencies/stage-binding.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/dependencies/stage-binding.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/dependencies/typed-retry.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/dependencies/typed-retry.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/envelope/envelope-render-determinism.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/envelope/envelope-render-determinism.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/envelope/candidate-session-ancestry.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/envelope/candidate-session-ancestry.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/envelope/walkthrough-full-candidate.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/envelope/walkthrough-full-candidate.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/envelope/ratified-regeneration.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/envelope/ratified-regeneration.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/envelope/terminal-ratification-evidence.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/envelope/terminal-ratification-evidence.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/dependency-fixture.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/root.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/runtime-fixture.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/session-fixture.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fragments/contribution-removal.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fragments/contribution-removal.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fragments/fragment-contract.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fragments/fragment-contract.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/portability/relocation.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/portability/relocation.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/portability/runtime-no-install.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/portability/runtime-no-install.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/projection/repeated-build.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/projection/repeated-build.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/projection/package-version-coherence.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/projection/package-version-coherence.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/projection/surface-budgets.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/projection/surface-budgets.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/promotion/forward-canary-boundary.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/promotion/forward-canary-boundary.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/promotion/promotion-boundary.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/promotion/promotion-boundary.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/protocol/correction-ancestry.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/protocol/correction-ancestry.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/protocol/director-flow-compression.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/protocol/director-flow-compression.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/protocol/director-flow-lifecycle.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/protocol/director-flow-lifecycle.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/protocol/director-flow-recovery.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/protocol/director-flow-recovery.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/protocol/director-flow-traceability.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/protocol/director-flow-traceability.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/protocol/explicit-rehydration.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/protocol/explicit-rehydration.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/protocol/fsm-parseback.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/protocol/fsm-parseback.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/protocol/handler-parity.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/protocol/handler-parity.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/protocol/instrument-freeze-immutability.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/protocol/instrument-freeze-immutability.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/protocol/ratification-ancestry.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/protocol/ratification-ancestry.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/protocol/ratification-preclaim.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/protocol/ratification-preclaim.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/protocol/raw-pick-roundtrip.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/protocol/raw-pick-roundtrip.test.mjs",
+      "path": "tests/authoring/assignment-dag/acyclic-chain.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/protocol/rejection-non-fsm.test.json",
+      "path": "tests/authoring/assignment-dag/acyclic-chain.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/protocol/rejection-non-fsm.test.mjs",
+      "path": "tests/authoring/assignment-dag/assignment-byte-binding.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/protocol/round-ordering.test.json",
+      "path": "tests/authoring/assignment-dag/assignment-byte-binding.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/protocol/round-ordering.test.mjs",
+      "path": "tests/authoring/assignment-dag/collision-lengthening.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/protocol/self-authorization.test.json",
+      "path": "tests/authoring/assignment-dag/collision-lengthening.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/protocol/self-authorization.test.mjs",
+      "path": "tests/authoring/assignment-dag/deterministic-view-reproduction.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/protocol/single-question-view.test.json",
+      "path": "tests/authoring/assignment-dag/deterministic-view-reproduction.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/protocol/single-question-view.test.mjs",
+      "path": "tests/authoring/assignment-dag/initial-handle.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/protocol/strict-pick-syntax.test.json",
+      "path": "tests/authoring/assignment-dag/initial-handle.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/protocol/strict-pick-syntax.test.mjs",
+      "path": "tests/authoring/assignment-dag/invalid-handle-registry.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/protocol/wrong-authority.test.json",
+      "path": "tests/authoring/assignment-dag/invalid-handle-registry.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/protocol/wrong-authority.test.mjs",
+      "path": "tests/authoring/assignment-dag/projection-id-authority.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/registry/modular-discovery.test.json",
+      "path": "tests/authoring/assignment-dag/projection-id-authority.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/registry/modular-discovery.test.mjs",
+      "path": "tests/authoring/assignment-dag/raw-evidence-newlines.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/run-tests.mjs",
+      "path": "tests/authoring/assignment-dag/raw-evidence-newlines.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/schemas/canonical-array-accessor.test.json",
+      "path": "tests/authoring/assignment-dag/request-sealing-validator.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/schemas/canonical-array-accessor.test.mjs",
+      "path": "tests/authoring/assignment-dag/request-sealing-validator.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/schemas/canonical-cycle.test.json",
+      "path": "tests/authoring/assignment-dag/request-sealing.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/schemas/canonical-cycle.test.mjs",
+      "path": "tests/authoring/assignment-dag/request-sealing.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/schemas/canonical-getter.test.json",
+      "path": "tests/authoring/assignment-dag/same-digest-reuse.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/schemas/canonical-getter.test.mjs",
+      "path": "tests/authoring/assignment-dag/same-digest-reuse.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/schemas/canonical-hidden-property.test.json",
+      "path": "tests/authoring/assignment-dag/source-order.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/schemas/canonical-hidden-property.test.mjs",
+      "path": "tests/authoring/assignment-dag/source-order.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/schemas/canonical-non-plain.test.json",
+      "path": "tests/authoring/assignment-dag/submission-validity.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/schemas/canonical-non-plain.test.mjs",
+      "path": "tests/authoring/assignment-dag/submission-validity.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/schemas/canonical-order-and-negative-zero.test.json",
+      "path": "tests/authoring/assignment-dag/support.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/schemas/canonical-order-and-negative-zero.test.mjs",
+      "path": "tests/authoring/assignment-dag/tamper-rejection.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/schemas/canonical-proxy.test.json",
+      "path": "tests/authoring/assignment-dag/tamper-rejection.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/schemas/canonical-proxy.test.mjs",
+      "path": "tests/authoring/assignment-dag/wrong-projection-submission.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/schemas/canonical-sparse-array.test.json",
+      "path": "tests/authoring/assignment-dag/wrong-projection-submission.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/schemas/canonical-sparse-array.test.mjs",
+      "path": "tests/authoring/context-resolution/active-head-closure.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/schemas/canonical-unpaired-key.test.json",
+      "path": "tests/authoring/context-resolution/active-head-closure.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/schemas/canonical-unpaired-key.test.mjs",
+      "path": "tests/authoring/context-resolution/active-head-duplicate-negative.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/schemas/canonical-unpaired-string.test.json",
+      "path": "tests/authoring/context-resolution/active-head-duplicate-negative.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/schemas/canonical-unpaired-string.test.mjs",
+      "path": "tests/authoring/context-resolution/ambient-key-utf8-order.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/schemas/envelope-planning-fields.test.json",
+      "path": "tests/authoring/context-resolution/ambient-key-utf8-order.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/schemas/envelope-planning-fields.test.mjs",
+      "path": "tests/authoring/context-resolution/bounded-scale-determinism.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/schemas/instrument-geometry.test.json",
+      "path": "tests/authoring/context-resolution/bounded-scale-determinism.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/schemas/instrument-geometry.test.mjs",
+      "path": "tests/authoring/context-resolution/duplicate-role-reference-negative.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/schemas/session-phase-sensitivity.test.json",
+      "path": "tests/authoring/context-resolution/duplicate-role-reference-negative.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/schemas/session-phase-sensitivity.test.mjs",
+      "path": "tests/authoring/context-resolution/duplicate-stored-version-negative.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/schemas/recursive-closure.test.json",
+      "path": "tests/authoring/context-resolution/duplicate-stored-version-negative.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/schemas/recursive-closure.test.mjs",
+      "path": "tests/authoring/context-resolution/e2e-k10-valid.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/state/cold-resume-current-view.test.json",
+      "path": "tests/authoring/context-resolution/e2e-k10-valid.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/state/cold-resume-current-view.test.mjs",
+      "path": "tests/authoring/context-resolution/exact-stored-version.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/state/event-id-prototype.test.json",
+      "path": "tests/authoring/context-resolution/exact-stored-version.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/state/event-id-prototype.test.mjs",
+      "path": "tests/authoring/context-resolution/inventory-order-determinism.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/state/historical-package-executor-boundary.test.json",
+      "path": "tests/authoring/context-resolution/inventory-order-determinism.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/state/historical-package-executor-boundary.test.mjs",
+      "path": "tests/authoring/context-resolution/invocation-context-injection-negative.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/state/reached-artifacts.test.json",
+      "path": "tests/authoring/context-resolution/invocation-context-injection-negative.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/state/reached-artifacts.test.mjs",
+      "path": "tests/authoring/context-resolution/json-pointer-array-index-negative.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/state/schema-invalid-quarantine.test.json",
+      "path": "tests/authoring/context-resolution/json-pointer-array-index-negative.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/state/schema-invalid-quarantine.test.mjs",
+      "path": "tests/authoring/context-resolution/json-pointer-escape-negative.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/state/semantic-product-replay.test.json",
+      "path": "tests/authoring/context-resolution/json-pointer-escape-negative.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/state/semantic-product-replay.test.mjs",
+      "path": "tests/authoring/context-resolution/json-pointer-own-property-negative.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/state/replay-before-stale.test.json",
+      "path": "tests/authoring/context-resolution/json-pointer-own-property-negative.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/state/replay-before-stale.test.mjs",
+      "path": "tests/authoring/context-resolution/json-pointer-positive.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/state/replay-changed-actor.test.json",
+      "path": "tests/authoring/context-resolution/json-pointer-positive.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/state/replay-changed-actor.test.mjs",
+      "path": "tests/authoring/context-resolution/lifecycle-mismatch-negative.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/state/replay-changed-event.test.json",
+      "path": "tests/authoring/context-resolution/lifecycle-mismatch-negative.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/state/replay-changed-event.test.mjs",
+      "path": "tests/authoring/context-resolution/lifecycle-pointer-positive.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/state/replay-changed-payload.test.json",
+      "path": "tests/authoring/context-resolution/lifecycle-pointer-positive.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/state/replay-changed-payload.test.mjs",
+      "path": "tests/authoring/context-resolution/optional-compact-ordinal.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/state/writer-lock-initialization-cleanup.test.json",
+      "path": "tests/authoring/context-resolution/optional-compact-ordinal.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/state/writer-lock-initialization-cleanup.test.mjs",
+      "path": "tests/authoring/context-resolution/projection-order.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/test-evidence.manifest.json",
+      "path": "tests/authoring/context-resolution/projection-order.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "schemas/authoring/v1alpha1/authoring-assignment.schema.json",
+      "path": "tests/authoring/context-resolution/projection-pointer-missing-negative.test.json",
       "kind": "authored"
     },
     {
-      "path": "schemas/authoring/v1alpha1/authoring-commit-receipt.schema.json",
+      "path": "tests/authoring/context-resolution/projection-pointer-missing-negative.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "schemas/authoring/v1alpha1/authoring-form-definition.schema.json",
+      "path": "tests/authoring/context-resolution/request-reference-selection.test.json",
       "kind": "authored"
     },
     {
-      "path": "schemas/authoring/v1alpha1/authoring-journal-record.schema.json",
+      "path": "tests/authoring/context-resolution/request-reference-selection.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "schemas/authoring/v1alpha1/authoring-mutation.schema.json",
+      "path": "tests/authoring/context-resolution/required-zero-cardinality-negative.test.json",
       "kind": "authored"
     },
     {
-      "path": "schemas/authoring/v1alpha1/authoring-profile-manifest.schema.json",
+      "path": "tests/authoring/context-resolution/required-zero-cardinality-negative.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "schemas/authoring/v1alpha1/authoring-protocol.schema.json",
+      "path": "tests/authoring/context-resolution/selector-ambient-negative.test.json",
       "kind": "authored"
     },
     {
-      "path": "schemas/authoring/v1alpha1/authoring-request.schema.json",
+      "path": "tests/authoring/context-resolution/selector-ambient-negative.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "schemas/authoring/v1alpha1/authoring-submission.schema.json",
+      "path": "tests/authoring/context-resolution/selector-order-negative.test.json",
       "kind": "authored"
     },
     {
-      "path": "schemas/authoring/v1alpha1/authoring-workspace.schema.json",
+      "path": "tests/authoring/context-resolution/selector-order-negative.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "schemas/authoring/v1alpha1/common.schema.json",
+      "path": "tests/authoring/context-resolution/selector-type-negative.test.json",
       "kind": "authored"
     },
     {
-      "path": "schemas/authoring/v1alpha1/context-closure.schema.json",
+      "path": "tests/authoring/context-resolution/selector-type-negative.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "schemas/authoring/v1alpha1/projection-artifact.schema.json",
+      "path": "tests/authoring/context-resolution/stored-integrity-negative.test.json",
       "kind": "authored"
     },
     {
-      "path": "schemas/authoring/v1alpha1/resource-reference.schema.json",
+      "path": "tests/authoring/context-resolution/stored-integrity-negative.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "schemas/authoring/v1alpha1/source-snapshot.schema.json",
+      "path": "tests/authoring/context-resolution/stored-semantic-negative.test.json",
       "kind": "authored"
     },
     {
-      "path": "schemas/authoring/v1alpha1/validation-issue.schema.json",
+      "path": "tests/authoring/context-resolution/stored-semantic-negative.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "source/authoring/kernel/canonical.mjs",
+      "path": "tests/authoring/context-resolution/support.mjs",
       "kind": "authored"
     },
     {
-      "path": "source/authoring/kernel/contract-semantics.mjs",
+      "path": "tests/authoring/context-resolution/two-layer-order-role.test.json",
       "kind": "authored"
     },
     {
-      "path": "source/authoring/kernel/digests.mjs",
+      "path": "tests/authoring/context-resolution/two-layer-order-role.test.mjs",
       "kind": "authored"
     },
     {
@@ -2558,6 +2418,154 @@
       "kind": "authored"
     },
     {
+      "path": "tests/authoring/generate-k11-descriptors.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/generate-k12-descriptors.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/k11-suite-definition.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/k12-suite-definition.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/async-contract-validator.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/async-contract-validator.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/candidate-order.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/candidate-order.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/cardinality.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/cardinality.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/coupling-widening.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/coupling-widening.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/created-slot-dependency.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/created-slot-dependency.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/dependency-relation.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/dependency-relation.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/dependency-selector.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/dependency-selector.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/duplicate-candidate.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/duplicate-candidate.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/event-mutation.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/event-mutation.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/exact-mutation.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/exact-mutation.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/forbidden-handler-output.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/forbidden-handler-output.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/head-ambiguity.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/head-ambiguity.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/partial-revision-group.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/partial-revision-group.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/revision-descendants.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/revision-descendants.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/support.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/wrong-kind.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/wrong-kind.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/wrong-slot.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/wrong-slot.test.mjs",
+      "kind": "authored"
+    },
+    {
       "path": "tests/authoring/neutrality/contract-vocabulary.test.json",
       "kind": "authored"
     },
@@ -2571,6 +2579,890 @@
     },
     {
       "path": "tests/authoring/neutrality/kernel-import-boundary.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/callback-error-redaction.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/callback-error-redaction.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/domain-issue-contract.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/domain-issue-contract.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/event-command-base-freshness.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/event-command-base-freshness.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/event-guard-configuration-authority.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/event-guard-configuration-authority.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/event-reduction.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/event-reduction.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/event-selection-missing.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/event-selection-missing.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/forged-transition-guard-authority.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/forged-transition-guard-authority.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/guard-blocks-dispatch.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/guard-blocks-dispatch.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/host-native-async-contract-validator.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/host-native-async-contract-validator.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/host-promise-contract-validator.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/host-promise-contract-validator.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/identity-before-freshness.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/identity-before-freshness.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/inventory-snapshot-immutability.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/inventory-snapshot-immutability.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/json-pointer-compatibility.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/json-pointer-compatibility.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/manifest-bounded-mutation.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/manifest-bounded-mutation.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/manifest-transition-authority.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/manifest-transition-authority.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/multi-kind-product-validation.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/multi-kind-product-validation.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/multi-kind-revision-submission.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/multi-kind-revision-submission.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/mutation-native-async-contract-validator.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/mutation-native-async-contract-validator.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/mutation-promise-contract-validator.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/mutation-promise-contract-validator.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/mutation-result-next-state-validation.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/mutation-result-next-state-validation.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/native-async-executable.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/native-async-executable.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/next-ambiguous.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/next-ambiguous.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/next-determinism.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/next-determinism.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/next-exactly-one.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/next-exactly-one.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/next-no-task.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/next-no-task.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/ordered-guard-short-circuit.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/ordered-guard-short-circuit.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/producer-evidence-callback-isolation.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/producer-evidence-callback-isolation.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/product-shape-before-validator.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/product-shape-before-validator.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/profile-executable-preflight.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/profile-executable-preflight.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/profile-self-authorization.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/profile-self-authorization.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/promise-returning-executable.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/promise-returning-executable.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/reducer-result-validation.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/reducer-result-validation.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/registry-opaque-capability.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/registry-opaque-capability.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/request-context-authority.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/request-context-authority.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/request-revision-authority.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/request-revision-authority.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/request-task-authority.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/request-task-authority.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/revise-guard-configuration-authority.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/revise-guard-configuration-authority.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/revision-request.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/revision-request.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/storage-independence.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/storage-independence.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/submission-dag-preflight.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/submission-dag-preflight.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/submit-guard-configuration-authority.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/submit-guard-configuration-authority.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/support.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/task-result-context-layer-validation.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/task-result-context-layer-validation.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/trusted-guard-dispatch.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/trusted-guard-dispatch.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/trusted-handler-dispatch.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/trusted-handler-dispatch.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/trusted-kernel-identity.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/trusted-kernel-identity.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/trusted-schema-dispatch.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/trusted-schema-dispatch.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/trusted-surface-accessor-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/trusted-surface-accessor-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/trusted-surface-proxy-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/trusted-surface-proxy-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/trusted-validator-dispatch.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/trusted-validator-dispatch.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/validation-issue-ordering.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/validation-issue-ordering.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/workspace-evidence-callback-isolation.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/reducer/workspace-evidence-callback-isolation.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/register-k12-suite.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/all-types-roundtrip.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/all-types-roundtrip.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/bom.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/bom.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/boolean-yes-no.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/boolean-yes-no.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/enum-exactness.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/enum-exactness.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/enum-member-whitespace.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/enum-member-whitespace.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/field-id-grammar.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/field-id-grammar.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/form-closed-keys.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/form-closed-keys.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/form-digest-authority.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/form-digest-authority.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/immutable-skeleton.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/immutable-skeleton.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/invalid-utf8.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/invalid-utf8.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/marker-duplicate.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/marker-duplicate.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/marker-missing-close.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/marker-missing-close.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/marker-missing.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/marker-missing.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/marker-nested.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/marker-nested.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/marker-reordered.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/marker-reordered.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/newline-normalization.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/newline-normalization.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/normalized-placeholder-residue.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/normalized-placeholder-residue.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/nul.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/nul.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/optional-omission.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/optional-omission.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/ordered-context-projection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/ordered-context-projection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/paragraph-normalization.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/paragraph-normalization.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/placeholder-residue.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/placeholder-residue.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/repeated-render.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/repeated-render.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/request-marker-mismatch.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/request-marker-mismatch.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/required-empty.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/required-empty.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/reserved-marker-injection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/reserved-marker-injection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/string-list-normalization.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/string-list-normalization.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/support.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/terminal-lf.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/terminal-lf.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/undeclared-field-marker.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/undeclared-field-marker.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/unicode-preservation.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/unicode-preservation.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/unsafe-static-marker.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/text-forms/unsafe-static-marker.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/canonical-v1-freeze.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/canonical-v1-freeze.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/canonical-v1.freeze.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/discovery-routing-freeze.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/discovery-routing-freeze.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/discovery-routing.freeze.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/export-representative-sessions.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/freeze-contract.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/package-compatibility.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/package-compatibility.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/package-compatibility.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/package-entry-boundary.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/package-entry-boundary.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/probe-discovery.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/projection-lock-self-exclusion.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/projection-lock-self-exclusion.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/protocol-v1-freeze.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/protocol-v1-freeze.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/protocol-v1.freeze.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/resume-preflight.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/shared-schema-freeze.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/shared-schema-freeze.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/shared-schema.freeze.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/v1-schema-authority-freeze.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/v1-schema-authority-freeze.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/v1-schema-authority.freeze.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/v1-test-disposition.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/v1-test-disposition.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-freeze/v1-test-disposition.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-v1/characterization.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-v1/v1-characterization.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/baseline-v1/v1-characterization.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/dependencies/candidate-dependency-evidence.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/dependencies/candidate-dependency-evidence.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/dependencies/snapshot-instability.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/dependencies/snapshot-instability.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/dependencies/snapshot-symlink.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/dependencies/snapshot-symlink.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/dependencies/stable-snapshot.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/dependencies/stable-snapshot.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/dependencies/stage-binding.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/dependencies/stage-binding.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/dependencies/typed-retry.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/dependencies/typed-retry.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/envelope/candidate-session-ancestry.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/envelope/candidate-session-ancestry.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/envelope/envelope-render-determinism.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/envelope/envelope-render-determinism.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/envelope/ratified-regeneration.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/envelope/ratified-regeneration.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/envelope/terminal-ratification-evidence.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/envelope/terminal-ratification-evidence.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/envelope/walkthrough-full-candidate.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/envelope/walkthrough-full-candidate.test.mjs",
       "kind": "authored"
     },
     {
@@ -2702,36 +3594,500 @@
       "kind": "authored"
     },
     {
-      "path": "dependencies/shared-schemas/v1/closure.manifest.json",
-      "kind": "dependency-snapshot"
+      "path": "tests/fixtures/authoring/text-forms/k11-golden-vectors.json",
+      "kind": "authored"
     },
     {
-      "path": "dependencies/shared-schemas/v1/snapshot/catalog.json",
-      "kind": "dependency-snapshot"
+      "path": "tests/fixtures/baseline-v1/package-manifest.json",
+      "kind": "authored"
     },
     {
-      "path": "dependencies/shared-schemas/v1/snapshot/common/v1alpha1/resource-metadata.schema.json",
-      "kind": "dependency-snapshot"
+      "path": "tests/fixtures/baseline-v1/requirements-registry.json",
+      "kind": "authored"
     },
     {
-      "path": "dependencies/shared-schemas/v1/snapshot/context-frame/v1alpha1/context-frame.schema.json",
-      "kind": "dependency-snapshot"
+      "path": "tests/fixtures/baseline-v1/test-evidence.manifest.json",
+      "kind": "authored"
     },
     {
-      "path": "dependencies/shared-schemas/v1/snapshot/context-frame/v1alpha1/context-frame.validator.mjs",
-      "kind": "dependency-snapshot"
+      "path": "tests/fixtures/dependency-fixture.mjs",
+      "kind": "authored"
     },
     {
-      "path": "dependencies/shared-schemas/v1/snapshot/question/v1alpha1/choice-response.schema.json",
-      "kind": "dependency-snapshot"
+      "path": "tests/fixtures/root.mjs",
+      "kind": "authored"
     },
     {
-      "path": "dependencies/shared-schemas/v1/snapshot/question/v1alpha1/question.schema.json",
-      "kind": "dependency-snapshot"
+      "path": "tests/fixtures/runtime-fixture.mjs",
+      "kind": "authored"
     },
     {
-      "path": "dependencies/shared-schemas/v1/snapshot/question/v1alpha1/question.validator.mjs",
-      "kind": "dependency-snapshot"
+      "path": "tests/fixtures/session-fixture.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/negative/binding-inline-survey-fields.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/negative/question-frame-parent-mismatch.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/negative/question-frame-set-fourth-altitude.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/negative/question-frame-slot-duplicate.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/negative/round-instrument-incomplete.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/negative/round-instrument-inline-question.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/negative/round-one-prior-interpretation.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/negative/round-two-missing-interpretation.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/negative/runtime-source-mismatch.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/generation-record.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/question-frame-set-1.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/question-frame-set-2.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/round-instrument-1.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/round-instrument-2.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/round-interpretation-1.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/round-interpretation-2.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/runtime-candidate-validation-evidence.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/runtime-composite-runtime-evidence.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/runtime-finalization-diagnostic.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/runtime-revision-directive.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/runtime-round-response-set.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/survey-policy-snapshot.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/survey-question-binding-1.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/survey-round-1.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/survey-round-2.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/contracts/positive/survey.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/protocol/golden-bindings.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/protocol/paired-state-invalid-cases.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/protocol/selection-cases.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/session-v2/historical-v1-session.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fixtures/survey/session-v2/session-factory.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fragments/contribution-removal.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fragments/contribution-removal.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fragments/fragment-contract.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/fragments/fragment-contract.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/portability/relocation.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/portability/relocation.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/portability/runtime-no-install.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/portability/runtime-no-install.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/projection/package-version-coherence.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/projection/package-version-coherence.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/projection/repeated-build.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/projection/repeated-build.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/projection/surface-budgets.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/projection/surface-budgets.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/promotion/forward-canary-boundary.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/promotion/forward-canary-boundary.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/promotion/promotion-boundary.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/promotion/promotion-boundary.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/correction-ancestry.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/correction-ancestry.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/director-flow-compression.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/director-flow-compression.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/director-flow-lifecycle.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/director-flow-lifecycle.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/director-flow-recovery.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/director-flow-recovery.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/director-flow-traceability.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/director-flow-traceability.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/explicit-rehydration.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/explicit-rehydration.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/fsm-parseback.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/fsm-parseback.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/handler-parity.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/handler-parity.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/instrument-freeze-immutability.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/instrument-freeze-immutability.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/ratification-ancestry.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/ratification-ancestry.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/ratification-preclaim.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/ratification-preclaim.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/raw-pick-roundtrip.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/raw-pick-roundtrip.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/rejection-non-fsm.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/rejection-non-fsm.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/round-ordering.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/round-ordering.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/self-authorization.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/self-authorization.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/single-question-view.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/single-question-view.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/strict-pick-syntax.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/strict-pick-syntax.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/wrong-authority.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/protocol/wrong-authority.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/registry/modular-discovery.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/registry/modular-discovery.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/run-tests.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/schemas/canonical-array-accessor.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/schemas/canonical-array-accessor.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/schemas/canonical-cycle.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/schemas/canonical-cycle.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/schemas/canonical-getter.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/schemas/canonical-getter.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/schemas/canonical-hidden-property.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/schemas/canonical-hidden-property.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/schemas/canonical-non-plain.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/schemas/canonical-non-plain.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/schemas/canonical-order-and-negative-zero.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/schemas/canonical-order-and-negative-zero.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/schemas/canonical-proxy.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/schemas/canonical-proxy.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/schemas/canonical-sparse-array.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/schemas/canonical-sparse-array.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/schemas/canonical-unpaired-key.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/schemas/canonical-unpaired-key.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/schemas/canonical-unpaired-string.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/schemas/canonical-unpaired-string.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/schemas/envelope-planning-fields.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/schemas/envelope-planning-fields.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/schemas/instrument-geometry.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/schemas/instrument-geometry.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/schemas/recursive-closure.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/schemas/recursive-closure.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/schemas/session-phase-sensitivity.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/schemas/session-phase-sensitivity.test.mjs",
+      "kind": "authored"
     },
     {
       "path": "tests/shared-schema-closure/authority-byte-equality.test.json",
@@ -2958,6 +4314,22 @@
       "kind": "authored"
     },
     {
+      "path": "tests/shared-schema-closure/refresh-failure-atomicity.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/refresh-failure-atomicity.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/relative-schema-reference-recursive-refresh.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/relative-schema-reference-recursive-refresh.test.mjs",
+      "kind": "authored"
+    },
+    {
       "path": "tests/shared-schema-closure/remote-reference-rejection.test.json",
       "kind": "authored"
     },
@@ -3003,6 +4375,14 @@
     },
     {
       "path": "tests/shared-schema-closure/schema-id-mismatch-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/schema-reference-path-escape-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/shared-schema-closure/schema-reference-path-escape-rejection.test.mjs",
       "kind": "authored"
     },
     {
@@ -3122,14 +4502,6 @@
       "kind": "authored"
     },
     {
-      "path": "tests/shared-schema-closure/validator-unresolved-import-rejection.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/shared-schema-closure/validator-unresolved-import-rejection.test.mjs",
-      "kind": "authored"
-    },
-    {
       "path": "tests/shared-schema-closure/validator-unresolved-binding-rejection.test.json",
       "kind": "authored"
     },
@@ -3138,271 +4510,99 @@
       "kind": "authored"
     },
     {
-      "path": "tests/shared-schema-closure/refresh-failure-atomicity.test.json",
+      "path": "tests/shared-schema-closure/validator-unresolved-import-rejection.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/shared-schema-closure/refresh-failure-atomicity.test.mjs",
+      "path": "tests/shared-schema-closure/validator-unresolved-import-rejection.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/shared-schema-closure/relative-schema-reference-recursive-refresh.test.json",
+      "path": "tests/state/cold-resume-current-view.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/shared-schema-closure/relative-schema-reference-recursive-refresh.test.mjs",
+      "path": "tests/state/cold-resume-current-view.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "tests/shared-schema-closure/schema-reference-path-escape-rejection.test.json",
+      "path": "tests/state/event-id-prototype.test.json",
       "kind": "authored"
     },
     {
-      "path": "tests/shared-schema-closure/schema-reference-path-escape-rejection.test.mjs",
+      "path": "tests/state/event-id-prototype.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "schemas/survey/v1alpha1/common.schema.json",
+      "path": "tests/state/historical-package-executor-boundary.test.json",
       "kind": "authored"
     },
     {
-      "path": "schemas/survey/v1alpha1/generation-record.schema.json",
+      "path": "tests/state/historical-package-executor-boundary.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "schemas/survey/v1alpha1/question-frame-set.schema.json",
+      "path": "tests/state/reached-artifacts.test.json",
       "kind": "authored"
     },
     {
-      "path": "schemas/survey/v1alpha1/round-instrument.schema.json",
+      "path": "tests/state/reached-artifacts.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "schemas/survey/v1alpha1/round-interpretation.schema.json",
+      "path": "tests/state/replay-before-stale.test.json",
       "kind": "authored"
     },
     {
-      "path": "schemas/survey/v1alpha1/survey-policy-snapshot.schema.json",
+      "path": "tests/state/replay-before-stale.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "schemas/survey/v1alpha1/survey-question-binding.schema.json",
+      "path": "tests/state/replay-changed-actor.test.json",
       "kind": "authored"
     },
     {
-      "path": "schemas/survey/v1alpha1/survey-round.schema.json",
+      "path": "tests/state/replay-changed-actor.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "schemas/survey/v1alpha1/survey-runtime-artifact.schema.json",
+      "path": "tests/state/replay-changed-event.test.json",
       "kind": "authored"
     },
     {
-      "path": "schemas/survey/v1alpha1/survey.schema.json",
+      "path": "tests/state/replay-changed-event.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "schemas/v2/common.schema.json",
+      "path": "tests/state/replay-changed-payload.test.json",
       "kind": "authored"
     },
     {
-      "path": "schemas/v2/package.schema.json",
+      "path": "tests/state/replay-changed-payload.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "schemas/v2/paired-state-matrix.schema.json",
+      "path": "tests/state/schema-invalid-quarantine.test.json",
       "kind": "authored"
     },
     {
-      "path": "schemas/v2/protocol-selection.schema.json",
+      "path": "tests/state/schema-invalid-quarantine.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "schemas/v2/protocol.schema.json",
+      "path": "tests/state/semantic-product-replay.test.json",
       "kind": "authored"
     },
     {
-      "path": "schemas/v2/projection.schema.json",
+      "path": "tests/state/semantic-product-replay.test.mjs",
       "kind": "authored"
     },
     {
-      "path": "schemas/v2/quarantine.schema.json",
+      "path": "tests/state/writer-lock-initialization-cleanup.test.json",
       "kind": "authored"
     },
     {
-      "path": "schemas/v2/requirement.schema.json",
-      "kind": "authored"
-    },
-    {
-      "path": "schemas/v2/session-state.schema.json",
-      "kind": "authored"
-    },
-    {
-      "path": "schemas/v2/session-state-active-v1.schema.json",
-      "kind": "authored"
-    },
-    {
-      "path": "schemas/v2/test-evidence.schema.json",
-      "kind": "authored"
-    },
-    {
-      "path": "source/authoring/survey/protocol-semantics.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "source/authoring/survey/resource-semantics.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "source/authoring/survey/session-semantics.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "source/protocol/paired-state-matrix.v2.json",
-      "kind": "authored"
-    },
-    {
-      "path": "source/protocol/protocol-selection.json",
-      "kind": "authored"
-    },
-    {
-      "path": "source/protocol/survey-v2.protocol.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/baseline-v1/package-manifest.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/baseline-v1/requirements-registry.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/baseline-v1/test-evidence.manifest.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/contracts/negative/binding-inline-survey-fields.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/contracts/negative/question-frame-parent-mismatch.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/contracts/negative/question-frame-set-fourth-altitude.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/contracts/negative/question-frame-slot-duplicate.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/contracts/negative/round-instrument-incomplete.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/contracts/negative/round-instrument-inline-question.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/contracts/negative/round-one-prior-interpretation.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/contracts/negative/round-two-missing-interpretation.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/contracts/negative/runtime-source-mismatch.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/contracts/positive/generation-record.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/contracts/positive/question-frame-set-1.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/contracts/positive/question-frame-set-2.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/contracts/positive/round-instrument-1.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/contracts/positive/round-instrument-2.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/contracts/positive/round-interpretation-1.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/contracts/positive/round-interpretation-2.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/contracts/positive/runtime-candidate-validation-evidence.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/contracts/positive/runtime-composite-runtime-evidence.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/contracts/positive/runtime-finalization-diagnostic.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/contracts/positive/runtime-revision-directive.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/contracts/positive/runtime-round-response-set.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/contracts/positive/survey-policy-snapshot.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/contracts/positive/survey-question-binding-1.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/contracts/positive/survey-round-1.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/contracts/positive/survey-round-2.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/contracts/positive/survey.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/protocol/golden-bindings.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/protocol/paired-state-invalid-cases.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/protocol/selection-cases.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/session-v2/historical-v1-session.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/survey/session-v2/session-factory.mjs",
+      "path": "tests/state/writer-lock-initialization-cleanup.test.mjs",
       "kind": "authored"
     },
     {
@@ -3774,399 +4974,7 @@
       "kind": "authored"
     },
     {
-      "path": "source/authoring/kernel/assignment-dag.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "source/authoring/kernel/text-forms.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/acyclic-chain.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/acyclic-chain.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/assignment-byte-binding.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/assignment-byte-binding.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/collision-lengthening.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/collision-lengthening.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/deterministic-view-reproduction.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/deterministic-view-reproduction.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/initial-handle.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/initial-handle.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/invalid-handle-registry.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/invalid-handle-registry.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/projection-id-authority.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/projection-id-authority.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/raw-evidence-newlines.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/raw-evidence-newlines.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/request-sealing-validator.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/request-sealing-validator.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/request-sealing.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/request-sealing.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/same-digest-reuse.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/same-digest-reuse.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/source-order.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/source-order.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/submission-validity.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/submission-validity.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/support.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/tamper-rejection.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/tamper-rejection.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/wrong-projection-submission.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/assignment-dag/wrong-projection-submission.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/generate-k11-descriptors.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/k11-suite-definition.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/all-types-roundtrip.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/all-types-roundtrip.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/bom.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/bom.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/boolean-yes-no.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/boolean-yes-no.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/enum-exactness.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/enum-exactness.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/enum-member-whitespace.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/enum-member-whitespace.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/field-id-grammar.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/field-id-grammar.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/form-closed-keys.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/form-closed-keys.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/form-digest-authority.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/form-digest-authority.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/immutable-skeleton.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/immutable-skeleton.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/invalid-utf8.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/invalid-utf8.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/marker-duplicate.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/marker-duplicate.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/marker-missing-close.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/marker-missing-close.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/marker-missing.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/marker-missing.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/marker-nested.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/marker-nested.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/marker-reordered.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/marker-reordered.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/newline-normalization.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/newline-normalization.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/normalized-placeholder-residue.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/normalized-placeholder-residue.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/nul.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/nul.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/optional-omission.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/optional-omission.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/ordered-context-projection.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/ordered-context-projection.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/paragraph-normalization.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/paragraph-normalization.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/placeholder-residue.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/placeholder-residue.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/repeated-render.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/repeated-render.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/request-marker-mismatch.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/request-marker-mismatch.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/required-empty.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/required-empty.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/reserved-marker-injection.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/reserved-marker-injection.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/string-list-normalization.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/string-list-normalization.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/support.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/terminal-lf.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/terminal-lf.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/undeclared-field-marker.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/undeclared-field-marker.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/unicode-preservation.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/unicode-preservation.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/unsafe-static-marker.test.json",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/authoring/text-forms/unsafe-static-marker.test.mjs",
-      "kind": "authored"
-    },
-    {
-      "path": "tests/fixtures/authoring/text-forms/k11-golden-vectors.json",
+      "path": "tests/test-evidence.manifest.json",
       "kind": "authored"
     }
   ],

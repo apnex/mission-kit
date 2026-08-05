@@ -1,5 +1,5 @@
 {
-  "aggregateDigest": "sha256:fb840358725430162d1235ef740abb059ca1b6052f418c8b1a4852b02c124c90",
+  "aggregateDigest": "sha256:ed6f8ec4206abacee8bddf2c84e2b2eaca3a57e89a6a5796639ea5c4cc3928fe",
   "canonicalDigests": [
     {
       "digest": "sha256:f7c65af249baff28e5d9fe29a9ac4011f802e955f74829c14949e2cf23104254",
@@ -282,12 +282,44 @@
       "path": "source/authoring/kernel/canonical.mjs"
     },
     {
+      "digest": "sha256:879ac33403a32c4c424b843185c5552b1481ae40e720946db5b6d9687a421cd8",
+      "path": "source/authoring/kernel/context-resolver.mjs"
+    },
+    {
       "digest": "sha256:2ff17cc16cbc9c33fe4e4a9089db36427b3ea4ae6d46c8d458a51fb3dc6a43a4",
       "path": "source/authoring/kernel/contract-semantics.mjs"
     },
     {
       "digest": "sha256:98ef901b14e2de29404a6c64a13c1e8bd3056afe970dc9cc9a4b2eb5c3a3a14f",
       "path": "source/authoring/kernel/digests.mjs"
+    },
+    {
+      "digest": "sha256:9fb91036daeb82b5e0482a510589152ea7345a84d018d9724b1f682b5716dc25",
+      "path": "source/authoring/kernel/executable-registry.mjs"
+    },
+    {
+      "digest": "sha256:22a2d0774df133b5273d228860d93c2a5a42c2f2adeecd503d5ccc2b3c4f8132",
+      "path": "source/authoring/kernel/manifest-reducer.mjs"
+    },
+    {
+      "digest": "sha256:42376869d0fce981dc8338b769085e2b350630b1e7afb3922914505fe960dbc9",
+      "path": "source/authoring/kernel/manifest-selection.mjs"
+    },
+    {
+      "digest": "sha256:8c66191adb70530e4e99bdfb29675b6d616ac50a73a598d02d42d283f6a94f51",
+      "path": "source/authoring/kernel/mutation-planner.mjs"
+    },
+    {
+      "digest": "sha256:ecfa837ba671ee0e4afba4c4f2c48fb1b934164a11116477b70413503377b315",
+      "path": "source/authoring/kernel/reducer-results.mjs"
+    },
+    {
+      "digest": "sha256:16a2292d09183abf35eb3abb4479d85e9aa701c3a048c35a566420613b4f60e0",
+      "path": "source/authoring/kernel/request-planner.mjs"
+    },
+    {
+      "digest": "sha256:87544d238d34f83b7e2531ae1d34b26e022265b7e089d381f6b2e866062bf8ca",
+      "path": "source/authoring/kernel/resource-resolution.mjs"
     },
     {
       "digest": "sha256:cb3c5d6fc8affeaa96dc3de3250c7c428f6517bf95cefe235307285fe48bba6c",
@@ -550,7 +582,7 @@
       "path": "source/projections/assets.projection.json"
     },
     {
-      "digest": "sha256:de951d756a5b488474ceac759c49fe0ac7e5192dba8583af32bb9ab7cc4ab50d",
+      "digest": "sha256:82a134a95094424fa57add1bb22d7cb7db633bd96f999fe2103dc7e1a30c9dc3",
       "path": "source/projections/build-metadata.projection.json"
     },
     {
@@ -594,7 +626,7 @@
       "path": "source/protocol/survey.protocol.json"
     },
     {
-      "digest": "sha256:41545341a2ff3d7831f6b46ffb7ece3a468218d5f96cc1c0cdc802b57d141bea",
+      "digest": "sha256:b661b5cd47eaf0aadb026f15a11a20ccdf6b345fae85da6576d72ff9785d1864",
       "path": "source/requirements/survey-v2.requirements.json"
     },
     {
@@ -606,7 +638,7 @@
       "path": "source/views/director-lifecycle.view.json"
     },
     {
-      "digest": "sha256:4d6095f876fee1ab5b24bf9207d698e148bee283da7c41fcdcd8bb43370423cc",
+      "digest": "sha256:b2b87ab6ca52ea4e0c4975dd361e7e6db5aab3db4f402bb236c0cb90663ad5c9",
       "path": "survey-v2.package.json"
     },
     {
@@ -732,6 +764,226 @@
     {
       "digest": "sha256:4f8680f628409195f25d7fb9b88613103d42abd74389e58b25de9e1fba39fe66",
       "path": "tests/authoring/assignment-dag/wrong-projection-submission.test.mjs"
+    },
+    {
+      "digest": "sha256:dabd4fd69a210e323a48f4b90b2b0266afcdb5ae8c36b0cc0fd56aa8087b5933",
+      "path": "tests/authoring/context-resolution/active-head-closure.test.json"
+    },
+    {
+      "digest": "sha256:4128b5faf2d5037886ef53aca1338814069113550f0024318a888b69323f4e07",
+      "path": "tests/authoring/context-resolution/active-head-closure.test.mjs"
+    },
+    {
+      "digest": "sha256:857b6ed9346e30586a7ffd0c9b9c5e8653a456dcfcacc30be106a6bed21a1b17",
+      "path": "tests/authoring/context-resolution/active-head-duplicate-negative.test.json"
+    },
+    {
+      "digest": "sha256:942841bb09a0f7cc8195bbac02e2dfb5dd95043144324af3c194732b2dc2dca6",
+      "path": "tests/authoring/context-resolution/active-head-duplicate-negative.test.mjs"
+    },
+    {
+      "digest": "sha256:088d3684164aa48f4521863ca655c1eaa4bd4dffef224f502ed98be0f351f5f0",
+      "path": "tests/authoring/context-resolution/ambient-key-utf8-order.test.json"
+    },
+    {
+      "digest": "sha256:7e96e22f53487ddbaa58a0769b0b61d7bb2d6ccac6d17c5e450794017eae0a73",
+      "path": "tests/authoring/context-resolution/ambient-key-utf8-order.test.mjs"
+    },
+    {
+      "digest": "sha256:7d0684b72e5794e8f37e647a3fdebb9f956443d7fd09c213cbdeb0da4c84f62d",
+      "path": "tests/authoring/context-resolution/bounded-scale-determinism.test.json"
+    },
+    {
+      "digest": "sha256:917e36276a5da757edf52466db4d519207be784861a9cfbd5f4b37f7193921a3",
+      "path": "tests/authoring/context-resolution/bounded-scale-determinism.test.mjs"
+    },
+    {
+      "digest": "sha256:2fe42fbe04596011bc0eab930b82f0b555ab85832c6bd092ede2e06227ea79b6",
+      "path": "tests/authoring/context-resolution/duplicate-role-reference-negative.test.json"
+    },
+    {
+      "digest": "sha256:8658ecb603eb5702e8bb20f6f3a73fd1908254bbf70ba7796fed73c83b470f01",
+      "path": "tests/authoring/context-resolution/duplicate-role-reference-negative.test.mjs"
+    },
+    {
+      "digest": "sha256:486305a9a79d211c19a2b62085373536e95e913fefbda3ecd39378d4cada19fc",
+      "path": "tests/authoring/context-resolution/duplicate-stored-version-negative.test.json"
+    },
+    {
+      "digest": "sha256:6cd1f80b0a1db6a8a56c93afc6a595a7401314614564befe463297f48caa7e17",
+      "path": "tests/authoring/context-resolution/duplicate-stored-version-negative.test.mjs"
+    },
+    {
+      "digest": "sha256:26b3bd91cca86d4f03b9622c83c6dc65cbe1b01934d18d6ef2511f1893c8a03f",
+      "path": "tests/authoring/context-resolution/e2e-k10-valid.test.json"
+    },
+    {
+      "digest": "sha256:fc252ca663ce82b62f1688f365fe3175d906080a7bf970583717f37afeb040f4",
+      "path": "tests/authoring/context-resolution/e2e-k10-valid.test.mjs"
+    },
+    {
+      "digest": "sha256:ebc84f312b3888c2146f6d669f07ceb66468eb6ea42bd33e7e0472893af1615d",
+      "path": "tests/authoring/context-resolution/exact-stored-version.test.json"
+    },
+    {
+      "digest": "sha256:520e4c3822b01f03bec7ee9e36de6d45a4ae37aebb5af06cb978ad88f24ae212",
+      "path": "tests/authoring/context-resolution/exact-stored-version.test.mjs"
+    },
+    {
+      "digest": "sha256:9786c59008dbdd471e3ea80a49ef22cc7336d81b471d934f2ec15c12d1372525",
+      "path": "tests/authoring/context-resolution/inventory-order-determinism.test.json"
+    },
+    {
+      "digest": "sha256:7953c1ff6a644ef623b846762ea06c0e62ea4ceae15af033e25a5cdd3860b746",
+      "path": "tests/authoring/context-resolution/inventory-order-determinism.test.mjs"
+    },
+    {
+      "digest": "sha256:b358c1563070de754eacfba67dd5a7a78c8bfd57aa681301387a6fa73a66a2f1",
+      "path": "tests/authoring/context-resolution/invocation-context-injection-negative.test.json"
+    },
+    {
+      "digest": "sha256:feb0a84bc1116b6259522e683f7b58ad3a8ca744ffd7e44b539899fccd3d8bc6",
+      "path": "tests/authoring/context-resolution/invocation-context-injection-negative.test.mjs"
+    },
+    {
+      "digest": "sha256:dfdb86d1c1093df898384497586a140638dbc475c9d13c5dc491e78ca21ec82d",
+      "path": "tests/authoring/context-resolution/json-pointer-array-index-negative.test.json"
+    },
+    {
+      "digest": "sha256:27de17daa5d7e760b71046977d3ec7dc585adb8fd471b8d214e7931a62561613",
+      "path": "tests/authoring/context-resolution/json-pointer-array-index-negative.test.mjs"
+    },
+    {
+      "digest": "sha256:4141cc4a4448072337a75371e89343bc7eec0462801632e4a3518f172cc09821",
+      "path": "tests/authoring/context-resolution/json-pointer-escape-negative.test.json"
+    },
+    {
+      "digest": "sha256:ef098d32701e2c6f044b547165327a50a6390a40a3b854285cb44a91f1f7c589",
+      "path": "tests/authoring/context-resolution/json-pointer-escape-negative.test.mjs"
+    },
+    {
+      "digest": "sha256:4abe4f46c4bd51821c6debf4397b9fd2dd7931ab9d8a28ba19d8f65aec610d32",
+      "path": "tests/authoring/context-resolution/json-pointer-own-property-negative.test.json"
+    },
+    {
+      "digest": "sha256:ca7eaafe7e7fbb35a0733b0053961469d8f3326a45d7da5fb6806cb606f3c65e",
+      "path": "tests/authoring/context-resolution/json-pointer-own-property-negative.test.mjs"
+    },
+    {
+      "digest": "sha256:4f5eba75a810d0ec002f087b07f9ef766788d4599709015fe0c3691aad6e8584",
+      "path": "tests/authoring/context-resolution/json-pointer-positive.test.json"
+    },
+    {
+      "digest": "sha256:f1ef7e31f00a4a75cf005f3bef099f37319d57e83b3cae33e2e138a1cf70d691",
+      "path": "tests/authoring/context-resolution/json-pointer-positive.test.mjs"
+    },
+    {
+      "digest": "sha256:1b491f76a015f18455cb1c5b4c186dcbf8aeb8e102a1a396c6ea8dc5be263c24",
+      "path": "tests/authoring/context-resolution/lifecycle-mismatch-negative.test.json"
+    },
+    {
+      "digest": "sha256:3eeffa48789bcfd86a4aa6d1eac381b79b55b5b6a1f6f82f1be795995332aca9",
+      "path": "tests/authoring/context-resolution/lifecycle-mismatch-negative.test.mjs"
+    },
+    {
+      "digest": "sha256:02c82427de824dd9dc3aefbe8bb0c829d53768300df5c7ad228f9e93e36c570f",
+      "path": "tests/authoring/context-resolution/lifecycle-pointer-positive.test.json"
+    },
+    {
+      "digest": "sha256:d7e8526fe448c6de4326afb18c05e2fb1d12567e6cf836c90d69bdb6844b8f97",
+      "path": "tests/authoring/context-resolution/lifecycle-pointer-positive.test.mjs"
+    },
+    {
+      "digest": "sha256:84c964c187d8073f5f05224b0a1072dc42ad36be54c1d86f71a759551f86a7d5",
+      "path": "tests/authoring/context-resolution/optional-compact-ordinal.test.json"
+    },
+    {
+      "digest": "sha256:6fceff2c304ddb5b1dedc2f079b53d887ed9b5198d63793d3a2e3e46e2ad1f57",
+      "path": "tests/authoring/context-resolution/optional-compact-ordinal.test.mjs"
+    },
+    {
+      "digest": "sha256:623af7be8380d812b07dfdacdc788945e5d99d94832ccd5bf9a4bb857f31483f",
+      "path": "tests/authoring/context-resolution/projection-order.test.json"
+    },
+    {
+      "digest": "sha256:dd671a35008faf32f5b29a200723d451fac76adf759947ccf855f24114a47be8",
+      "path": "tests/authoring/context-resolution/projection-order.test.mjs"
+    },
+    {
+      "digest": "sha256:f11815ee6da4ba08180603afbdba0c4c4dac751b5c632fc46d6e2c419fe63874",
+      "path": "tests/authoring/context-resolution/projection-pointer-missing-negative.test.json"
+    },
+    {
+      "digest": "sha256:8fdc821a2bce2a1b9ea37f7df715b725846dfc59de02bee04abd18a0bb38dd3e",
+      "path": "tests/authoring/context-resolution/projection-pointer-missing-negative.test.mjs"
+    },
+    {
+      "digest": "sha256:d8bedb8add2cff708caf80dc9af6566fa4d723afa8ad64bd49357675b92ccf8a",
+      "path": "tests/authoring/context-resolution/request-reference-selection.test.json"
+    },
+    {
+      "digest": "sha256:e155e70d1f87cd0ded8b9a40960db0adc1b0217e8424d0c79e0bc09f2e965b44",
+      "path": "tests/authoring/context-resolution/request-reference-selection.test.mjs"
+    },
+    {
+      "digest": "sha256:ba294eb5d47d8031c5efb7d6b1bd87f41f3b3efe02a8612fae3fbbcdf216ebd6",
+      "path": "tests/authoring/context-resolution/required-zero-cardinality-negative.test.json"
+    },
+    {
+      "digest": "sha256:e1b4e3ba81d43a5c80eabc71f43eade801c11b24694b77fe865c8a850ab84ad8",
+      "path": "tests/authoring/context-resolution/required-zero-cardinality-negative.test.mjs"
+    },
+    {
+      "digest": "sha256:4115ab0d9378775001960cde0cd09e9f90815a42c2507c139ea0f6650d3cd6f3",
+      "path": "tests/authoring/context-resolution/selector-ambient-negative.test.json"
+    },
+    {
+      "digest": "sha256:5056998d2c9ec300dc27a317635f76dfc27950fbffcfdf7c9a391577ea48bbf5",
+      "path": "tests/authoring/context-resolution/selector-ambient-negative.test.mjs"
+    },
+    {
+      "digest": "sha256:d66a54ec78a907bf513d90b6c135cee95fcc2022cd7c5608e8de24d49834e9d9",
+      "path": "tests/authoring/context-resolution/selector-order-negative.test.json"
+    },
+    {
+      "digest": "sha256:7790ce2b073125581fc612a6e75b04c3f9dd59a60cd9cbf24f21725deadf2ad5",
+      "path": "tests/authoring/context-resolution/selector-order-negative.test.mjs"
+    },
+    {
+      "digest": "sha256:39cb560242e8a6e0fe8ce234d4c0a0bad350525c722879d7bf931b329ac2b0e0",
+      "path": "tests/authoring/context-resolution/selector-type-negative.test.json"
+    },
+    {
+      "digest": "sha256:7fc4bf5bc730e55221767d98bae22eb9f4e91d1d655bd27fa8b5346720aaffe4",
+      "path": "tests/authoring/context-resolution/selector-type-negative.test.mjs"
+    },
+    {
+      "digest": "sha256:08935ecbe10fb51649795a9937cb53572baeeb5cd4741994828fd57998a6ff15",
+      "path": "tests/authoring/context-resolution/stored-integrity-negative.test.json"
+    },
+    {
+      "digest": "sha256:207d7fcac2d2af5ba97667b3c751936a9ee69a959e77b8b05489146ca172cd24",
+      "path": "tests/authoring/context-resolution/stored-integrity-negative.test.mjs"
+    },
+    {
+      "digest": "sha256:402e9fa6b0d14e0d3627e454c978d5b75a5c899ab11ad56c48915530a7a8f1dc",
+      "path": "tests/authoring/context-resolution/stored-semantic-negative.test.json"
+    },
+    {
+      "digest": "sha256:759f7f7f2f01c1e1647c8389b657492bbe13a4731a545b3d2dfac60e0836d8f0",
+      "path": "tests/authoring/context-resolution/stored-semantic-negative.test.mjs"
+    },
+    {
+      "digest": "sha256:d720db89da4091cb12569178342a033ac245a23512844c5262028beba847848e",
+      "path": "tests/authoring/context-resolution/support.mjs"
+    },
+    {
+      "digest": "sha256:d2540399682e0f780f4fe50fc383635e8752430705caae62aa5291ba320438ee",
+      "path": "tests/authoring/context-resolution/two-layer-order-role.test.json"
+    },
+    {
+      "digest": "sha256:4826d6c4cd8ebb69439c221359d73415928c70a45fb55e918fc3c406289dcaed",
+      "path": "tests/authoring/context-resolution/two-layer-order-role.test.mjs"
     },
     {
       "digest": "sha256:76794f0d6f13318f2af745a0269666d4322c8f52e4efdf8e8dee323411fc6509",
@@ -1846,8 +2098,148 @@
       "path": "tests/authoring/generate-k11-descriptors.mjs"
     },
     {
+      "digest": "sha256:dee56fff30b5b7f2f854af4e97fe22f3d9dea797c901a55c1e52559bb8b917b5",
+      "path": "tests/authoring/generate-k12-descriptors.mjs"
+    },
+    {
       "digest": "sha256:a9de419bdc6243631a8d8441490d9df229c40331ec433a44c4a287637c5ff8d2",
       "path": "tests/authoring/k11-suite-definition.mjs"
+    },
+    {
+      "digest": "sha256:21e0f52c521892586e9033fd1bd5f9cac6a8ff341b784d63d9f1efd4ef1c8432",
+      "path": "tests/authoring/k12-suite-definition.mjs"
+    },
+    {
+      "digest": "sha256:dda4f0f8f97ffc228805717251124fe39a3f7f7541213a6337807826651eb814",
+      "path": "tests/authoring/mutation-planning/async-contract-validator.test.json"
+    },
+    {
+      "digest": "sha256:5fb4c7f0b2daf5c178db6fd401aeba7f06471e28ea10c008a44c131999dfb6a0",
+      "path": "tests/authoring/mutation-planning/async-contract-validator.test.mjs"
+    },
+    {
+      "digest": "sha256:3a9e2be993abe96c0a15117c1b8eca4ffab95e47a14a8b6f8d9740018b1e05a0",
+      "path": "tests/authoring/mutation-planning/candidate-order.test.json"
+    },
+    {
+      "digest": "sha256:4a187c8b12ecf6dded62ffb6706820ab161fe1ea7fce037dab6f98a40af9fb11",
+      "path": "tests/authoring/mutation-planning/candidate-order.test.mjs"
+    },
+    {
+      "digest": "sha256:dcd90395750e81cf35350528de5fc5632b65521c9c13983ff7eccd7759b9c0eb",
+      "path": "tests/authoring/mutation-planning/cardinality.test.json"
+    },
+    {
+      "digest": "sha256:a7809c75b5f5bfb02483976d06d414277c3ac97254cd3cfb565dec3e45ce7104",
+      "path": "tests/authoring/mutation-planning/cardinality.test.mjs"
+    },
+    {
+      "digest": "sha256:6bbd588142497181f3fda6f91bb3c1c509670c4bb32b518efcbac28ad0aeb177",
+      "path": "tests/authoring/mutation-planning/coupling-widening.test.json"
+    },
+    {
+      "digest": "sha256:ae5a6b6f90b2389ec1271e8a2ec2a2a22dc5efa52e82925dbcd818f32a116905",
+      "path": "tests/authoring/mutation-planning/coupling-widening.test.mjs"
+    },
+    {
+      "digest": "sha256:95906469e6cb68dd4b136bce547e886b8dd0675e0cc62f2083f212f8a49af79a",
+      "path": "tests/authoring/mutation-planning/created-slot-dependency.test.json"
+    },
+    {
+      "digest": "sha256:962212f98a537bcb4ca2134c9581e7f23e0d5f3375b5a2b5b176e7c69a619fa6",
+      "path": "tests/authoring/mutation-planning/created-slot-dependency.test.mjs"
+    },
+    {
+      "digest": "sha256:459eb7dc49c924c6881aca322727fb380c45ba13371f3ff1cc6d7b24448726ba",
+      "path": "tests/authoring/mutation-planning/dependency-relation.test.json"
+    },
+    {
+      "digest": "sha256:86cf572bb9baed788b156ca0dc996c433ef860d338477f71f2f623bad78fd641",
+      "path": "tests/authoring/mutation-planning/dependency-relation.test.mjs"
+    },
+    {
+      "digest": "sha256:14e9ad4595458a7a311411adc278dfe6e4786cb8246dfc400df05639edebd080",
+      "path": "tests/authoring/mutation-planning/dependency-selector.test.json"
+    },
+    {
+      "digest": "sha256:1e6d736c70f6dfd780d3b401c90f29ec1c5149b5b6628a3cb8b5d80ee0e88bed",
+      "path": "tests/authoring/mutation-planning/dependency-selector.test.mjs"
+    },
+    {
+      "digest": "sha256:2d399f2701631fefb6edef39714e5fbecc796269733043d78aef1a41720495bb",
+      "path": "tests/authoring/mutation-planning/duplicate-candidate.test.json"
+    },
+    {
+      "digest": "sha256:1bb9caee7e3b5d4549a5e782db5e183b98d3988e953d892aceb6e4d6cde072e5",
+      "path": "tests/authoring/mutation-planning/duplicate-candidate.test.mjs"
+    },
+    {
+      "digest": "sha256:ae7c143daa226136e64ed96f5564961f2ecc88538d626f604501881e982a2765",
+      "path": "tests/authoring/mutation-planning/event-mutation.test.json"
+    },
+    {
+      "digest": "sha256:9926da6590a928d804f47a76557b139853d6c8d9de1b32645bf72d56d2c5f99c",
+      "path": "tests/authoring/mutation-planning/event-mutation.test.mjs"
+    },
+    {
+      "digest": "sha256:a9ad2b9f40c940f6b71a5334ecc68502fceb86b3c31c632a39f6709d257caa51",
+      "path": "tests/authoring/mutation-planning/exact-mutation.test.json"
+    },
+    {
+      "digest": "sha256:15274503c5b32eef70db661a8eda32e74e761860486913b11a06e2422b13f48b",
+      "path": "tests/authoring/mutation-planning/exact-mutation.test.mjs"
+    },
+    {
+      "digest": "sha256:ab34ea5538da6fc650e4ee68d9fde094e7dfa19def0ca062f516ec2cc3b1573f",
+      "path": "tests/authoring/mutation-planning/forbidden-handler-output.test.json"
+    },
+    {
+      "digest": "sha256:293dce356c01f2d69168054cd9208d9572fc9c9168b02d095bf4006d621f6d8a",
+      "path": "tests/authoring/mutation-planning/forbidden-handler-output.test.mjs"
+    },
+    {
+      "digest": "sha256:6731954f66ed40bc94f43c858b6c1dc71caf8021b1de56ab0b2a9b6c1ce61f39",
+      "path": "tests/authoring/mutation-planning/head-ambiguity.test.json"
+    },
+    {
+      "digest": "sha256:e5767a9666f463540f49311073bde67d435977dd916644db2e2510f9945d6c33",
+      "path": "tests/authoring/mutation-planning/head-ambiguity.test.mjs"
+    },
+    {
+      "digest": "sha256:9fcee10860bfe7614f388f8cd746cfa6b05e2c23d561f97e4e1ac2509105e69c",
+      "path": "tests/authoring/mutation-planning/partial-revision-group.test.json"
+    },
+    {
+      "digest": "sha256:7cf60dde930d09b38ed896af888478e2c95ebff1ab68dba524c3396045d693f7",
+      "path": "tests/authoring/mutation-planning/partial-revision-group.test.mjs"
+    },
+    {
+      "digest": "sha256:03f3c0aa53689e9bc6d4c43f7ab177962cc52d14caaf617e3734e944d61bf0cd",
+      "path": "tests/authoring/mutation-planning/revision-descendants.test.json"
+    },
+    {
+      "digest": "sha256:f1190fcf166ae5436536d6cec1cb9088b4cca196f1f8c78676762e4c6e87f1ad",
+      "path": "tests/authoring/mutation-planning/revision-descendants.test.mjs"
+    },
+    {
+      "digest": "sha256:1b9d6c659ad4e2c58b716d85e2ce38ccc8aaa20dad7371f25068e9c0dc140938",
+      "path": "tests/authoring/mutation-planning/support.mjs"
+    },
+    {
+      "digest": "sha256:822f53e6c9f7b0f63c913a25836da2afd6c2a7f0d60f623dcdb21594f9f05a56",
+      "path": "tests/authoring/mutation-planning/wrong-kind.test.json"
+    },
+    {
+      "digest": "sha256:cbb3b6f87a26cd18715c14739fcc9ab736930ee3aa1c71367cb29ccda51aa142",
+      "path": "tests/authoring/mutation-planning/wrong-kind.test.mjs"
+    },
+    {
+      "digest": "sha256:95412be9501d06ffe3e1aa135e44dd2a134409419f27748ab0090c1964766cef",
+      "path": "tests/authoring/mutation-planning/wrong-slot.test.json"
+    },
+    {
+      "digest": "sha256:9c734b0dcb07136c140d87229a6513f8a9a09f8e532378bd3a13c98d999c6e69",
+      "path": "tests/authoring/mutation-planning/wrong-slot.test.mjs"
     },
     {
       "digest": "sha256:2d219921828c7201ff9cf23cbfbc5e83fc8c498b9e12f9eb5eb9b511352c0f62",
@@ -1864,6 +2256,422 @@
     {
       "digest": "sha256:c7edb4d69d3bcbfb862acb7aff4919edac393653632723c91d3c9623c2dedf1a",
       "path": "tests/authoring/neutrality/kernel-import-boundary.test.mjs"
+    },
+    {
+      "digest": "sha256:a6dee9b924dfd3c2e878d77b8cf038fa0930fcf34d9529554c0d0824d3cb5b33",
+      "path": "tests/authoring/reducer/callback-error-redaction.test.json"
+    },
+    {
+      "digest": "sha256:8112fcc73c1571820e9510bb857873071537e6275e69bbc0c8c2ba03512e875d",
+      "path": "tests/authoring/reducer/callback-error-redaction.test.mjs"
+    },
+    {
+      "digest": "sha256:fd0bcdeaa7abbbad7da9a8215eb0a3ed2bb4996d7c75ad0f885de6c3405bdb6e",
+      "path": "tests/authoring/reducer/domain-issue-contract.test.json"
+    },
+    {
+      "digest": "sha256:934a24a2274e29fd50fcec60222fe4023b5054e6d358d3ad9221a63656782ea2",
+      "path": "tests/authoring/reducer/domain-issue-contract.test.mjs"
+    },
+    {
+      "digest": "sha256:9df5d84136602547bfa276cd2a002360a8029467545446e4d54986bdc1f5f056",
+      "path": "tests/authoring/reducer/event-command-base-freshness.test.json"
+    },
+    {
+      "digest": "sha256:9d89288425a94a1fc00629931f22880294fa53517816063eea81b88a00479891",
+      "path": "tests/authoring/reducer/event-command-base-freshness.test.mjs"
+    },
+    {
+      "digest": "sha256:f0f855caab5a7e3c5a2ad7c1d226e77fbccec4f49f229709682c130afef01717",
+      "path": "tests/authoring/reducer/event-guard-configuration-authority.test.json"
+    },
+    {
+      "digest": "sha256:705ca8e8ad67def98e22b2bb416422812897c1355cd238aea53f56b2d776be34",
+      "path": "tests/authoring/reducer/event-guard-configuration-authority.test.mjs"
+    },
+    {
+      "digest": "sha256:9844596e51146af68cb26362ae5ffcbbd7617af6b05677978f1e5d7bdccd6df9",
+      "path": "tests/authoring/reducer/event-reduction.test.json"
+    },
+    {
+      "digest": "sha256:f0ed38823ba2647f9ab4d4a02ae2b403d50b71db63ede0df966f985076161037",
+      "path": "tests/authoring/reducer/event-reduction.test.mjs"
+    },
+    {
+      "digest": "sha256:b1845b0efa0a38f5cc94061b48f264346656d936f57213b59c9894c485e991ef",
+      "path": "tests/authoring/reducer/event-selection-missing.test.json"
+    },
+    {
+      "digest": "sha256:8c4b0f7854af5e5266767ede081a64ccac689950b248d362c9b4098747edf79c",
+      "path": "tests/authoring/reducer/event-selection-missing.test.mjs"
+    },
+    {
+      "digest": "sha256:8992b431bcc6560aed9d9be2c7203a17193a812e809a78d9430fbf1d32d7285f",
+      "path": "tests/authoring/reducer/forged-transition-guard-authority.test.json"
+    },
+    {
+      "digest": "sha256:c274ff3b3eef115bb427ee270d4766f18b120056c979cbeeea63c97d318d43ac",
+      "path": "tests/authoring/reducer/forged-transition-guard-authority.test.mjs"
+    },
+    {
+      "digest": "sha256:73a84c115e8ba58932b54d7e4b3fc77e5a5123ced3a6396c3f844267619b6a44",
+      "path": "tests/authoring/reducer/guard-blocks-dispatch.test.json"
+    },
+    {
+      "digest": "sha256:3a2b199e418c7a60df3d8194abcebaf14968f331112f35d29e14d88fab1174a5",
+      "path": "tests/authoring/reducer/guard-blocks-dispatch.test.mjs"
+    },
+    {
+      "digest": "sha256:8eaca9d992f4bcef84e4516595638991fa51d054226b4d7706ff6596566bbc44",
+      "path": "tests/authoring/reducer/host-native-async-contract-validator.test.json"
+    },
+    {
+      "digest": "sha256:ba245ce4d6311f81a4f300faba58b62421410d3110402d5c41c9584679731458",
+      "path": "tests/authoring/reducer/host-native-async-contract-validator.test.mjs"
+    },
+    {
+      "digest": "sha256:9ca2492aca741a7722fd7a145fec43fefd6539eeb75732a4154798b51aa450f7",
+      "path": "tests/authoring/reducer/host-promise-contract-validator.test.json"
+    },
+    {
+      "digest": "sha256:8ed2274ddb59f046c62323a73edf2fd83620e9636c56cc6d15b2a507c61697ec",
+      "path": "tests/authoring/reducer/host-promise-contract-validator.test.mjs"
+    },
+    {
+      "digest": "sha256:51ba9f1222023c020a28883a3ca6381722856ffa5b2ebd06233f31173f7b985d",
+      "path": "tests/authoring/reducer/identity-before-freshness.test.json"
+    },
+    {
+      "digest": "sha256:73e617069b4a6e494898a07aef8001540b32f8a8e83416d22687efff69d96c15",
+      "path": "tests/authoring/reducer/identity-before-freshness.test.mjs"
+    },
+    {
+      "digest": "sha256:0c986e5d2f9a7fbb7b04aad2e54d4b00fc72924a6b946d83e7de718e99d5b75b",
+      "path": "tests/authoring/reducer/inventory-snapshot-immutability.test.json"
+    },
+    {
+      "digest": "sha256:2136a88b9f2d9dd58812697df295bed8c51566032f0dfd3cde4d2913db8c7116",
+      "path": "tests/authoring/reducer/inventory-snapshot-immutability.test.mjs"
+    },
+    {
+      "digest": "sha256:9e16d44ca69a44bff2fb7162b78eac7fdbb02ac17022e2c7b2799dd62c03bd5a",
+      "path": "tests/authoring/reducer/json-pointer-compatibility.test.json"
+    },
+    {
+      "digest": "sha256:0e5e0d3846229a8dd23a850c86ab11de6073ff023a3bdbcd47624078b0340c41",
+      "path": "tests/authoring/reducer/json-pointer-compatibility.test.mjs"
+    },
+    {
+      "digest": "sha256:eb3f7ade1b50290de773a0f81f0e02cfae46121dd23384189e638dec70e6d15a",
+      "path": "tests/authoring/reducer/manifest-bounded-mutation.test.json"
+    },
+    {
+      "digest": "sha256:e033a7d827b9f23e9748b27c3e3b09e051bf4771e01d50417f4745ec661e072a",
+      "path": "tests/authoring/reducer/manifest-bounded-mutation.test.mjs"
+    },
+    {
+      "digest": "sha256:97391a8e77808fb34def5962bf1869d17318dad2b6fd01be568f16e510bd5fe3",
+      "path": "tests/authoring/reducer/manifest-transition-authority.test.json"
+    },
+    {
+      "digest": "sha256:e29cccc80f4ea67ec0f5151db753dbcf0588b89330ca59ee58d8cfe2989855c9",
+      "path": "tests/authoring/reducer/manifest-transition-authority.test.mjs"
+    },
+    {
+      "digest": "sha256:64c0d065688bd085f91edeba77da504d21e005bac5e95e52a5a008cf2ab3777d",
+      "path": "tests/authoring/reducer/multi-kind-product-validation.test.json"
+    },
+    {
+      "digest": "sha256:8afd781343a81667930fe8d4197d2391af8cf9fb16423b13226fd898d8bf9e11",
+      "path": "tests/authoring/reducer/multi-kind-product-validation.test.mjs"
+    },
+    {
+      "digest": "sha256:c07d2bc7a642a53e85ffe1b9e8688eb0b06ef2abcc408908f02437233f74b8c2",
+      "path": "tests/authoring/reducer/multi-kind-revision-submission.test.json"
+    },
+    {
+      "digest": "sha256:6b40cb67147809caa2759bc2df10eac8f6b96be52212ffc44d5821ce4f87452e",
+      "path": "tests/authoring/reducer/multi-kind-revision-submission.test.mjs"
+    },
+    {
+      "digest": "sha256:4fe0b04ad60b298d7aa1ee3487ebcce3f5f8134263e1906b209e7b36fd74b781",
+      "path": "tests/authoring/reducer/mutation-native-async-contract-validator.test.json"
+    },
+    {
+      "digest": "sha256:0aae706c25a859f77643a927a0a3a15eacce5d6c0928da23c76da224c06713db",
+      "path": "tests/authoring/reducer/mutation-native-async-contract-validator.test.mjs"
+    },
+    {
+      "digest": "sha256:a219082c115d75e80e399354aebc3600cda4b2e3251d371427b6e2e1ba131af1",
+      "path": "tests/authoring/reducer/mutation-promise-contract-validator.test.json"
+    },
+    {
+      "digest": "sha256:b4dc70e1016e5c9bef4779096ac194d600f120ad8de39a8427b412aba0868925",
+      "path": "tests/authoring/reducer/mutation-promise-contract-validator.test.mjs"
+    },
+    {
+      "digest": "sha256:11979c8b6b23c092d5a97398bbcfcaf2cd3f0799f4013ced69f2f381de754024",
+      "path": "tests/authoring/reducer/mutation-result-next-state-validation.test.json"
+    },
+    {
+      "digest": "sha256:5439998eb72bc0607071053c6fbe7d2de37c292d74cb6a468c3bdce8fd0c878a",
+      "path": "tests/authoring/reducer/mutation-result-next-state-validation.test.mjs"
+    },
+    {
+      "digest": "sha256:9aeadfc4020921455d42f5f94cca6615388a5515b8e0d22cf38ad39ea70295ee",
+      "path": "tests/authoring/reducer/native-async-executable.test.json"
+    },
+    {
+      "digest": "sha256:66d8df94c94c6025d70ee615f4388abc72beba2b51b0ffc570e22f1195110303",
+      "path": "tests/authoring/reducer/native-async-executable.test.mjs"
+    },
+    {
+      "digest": "sha256:468d6c8b3356642bf6da8e951655b23bc60c46beb553678159c867aba9e7a129",
+      "path": "tests/authoring/reducer/next-ambiguous.test.json"
+    },
+    {
+      "digest": "sha256:1c2a145ca98ebad2577f859622bc3aa3d9a9310af1b5fb304ee1c424589bcfec",
+      "path": "tests/authoring/reducer/next-ambiguous.test.mjs"
+    },
+    {
+      "digest": "sha256:bbebffb88d65047ae911ace75a2a979ed41b27432b6b5278b049a5e52213d176",
+      "path": "tests/authoring/reducer/next-determinism.test.json"
+    },
+    {
+      "digest": "sha256:b7cf0eb07ae286bb1174fa9ea0aa4f7222b5de7c43ecb1b2da2894bd4788f4ba",
+      "path": "tests/authoring/reducer/next-determinism.test.mjs"
+    },
+    {
+      "digest": "sha256:5916331bdc0e5c6d30785c4a9f4143e0945bc1bfa7df63654886c6d5ae68400c",
+      "path": "tests/authoring/reducer/next-exactly-one.test.json"
+    },
+    {
+      "digest": "sha256:2d755631b2dcbe19fdd70d67cf4e20016d8a6156b93a89fbfc6705bd4ce6562a",
+      "path": "tests/authoring/reducer/next-exactly-one.test.mjs"
+    },
+    {
+      "digest": "sha256:2f18e043c7d7362a18fdbc6fece88da8c3dea32fd282fceee0283db982d439e9",
+      "path": "tests/authoring/reducer/next-no-task.test.json"
+    },
+    {
+      "digest": "sha256:3dd1f34cd48bc3c09b2efbe090cd4171753a6a23e478de94c6293338689af868",
+      "path": "tests/authoring/reducer/next-no-task.test.mjs"
+    },
+    {
+      "digest": "sha256:1222fa0fc7c7e72162c8231cdeb846df3d0cb2cd793408e25890a4fd7164a996",
+      "path": "tests/authoring/reducer/ordered-guard-short-circuit.test.json"
+    },
+    {
+      "digest": "sha256:96082f6b6cd7018e296c7896ba3ac6670a6240f33e9e342ade4bbd8232ce1c8a",
+      "path": "tests/authoring/reducer/ordered-guard-short-circuit.test.mjs"
+    },
+    {
+      "digest": "sha256:a23214bd84a70fe295a059be0c6cf4b29e2038eab2a825d6ab460e2231c41147",
+      "path": "tests/authoring/reducer/producer-evidence-callback-isolation.test.json"
+    },
+    {
+      "digest": "sha256:b047ef7a968d4a4dc3dd25649b19cfa8a2173076cd1e5755cfd669ca2e269eb1",
+      "path": "tests/authoring/reducer/producer-evidence-callback-isolation.test.mjs"
+    },
+    {
+      "digest": "sha256:9027f2781a4ad6e73ac4c798a634a42b7d8397c13e5c0c54c37f0f906c77be00",
+      "path": "tests/authoring/reducer/product-shape-before-validator.test.json"
+    },
+    {
+      "digest": "sha256:d9173dace597cc104d91af6c492ef19e1db83bf0fa564803775cf65ca64e2a35",
+      "path": "tests/authoring/reducer/product-shape-before-validator.test.mjs"
+    },
+    {
+      "digest": "sha256:5d836125817545391687b74d49b6fd1f736fcd74518f3060045f40c88397e2dc",
+      "path": "tests/authoring/reducer/profile-executable-preflight.test.json"
+    },
+    {
+      "digest": "sha256:7d87cc554ece024a5b04ef7893c4a2f591d729d49fa2c7831dde99ab058b1aae",
+      "path": "tests/authoring/reducer/profile-executable-preflight.test.mjs"
+    },
+    {
+      "digest": "sha256:88ca921488028687cfa46781d5352c364f2c91ec727956ee6bd282c3321ab9bf",
+      "path": "tests/authoring/reducer/profile-self-authorization.test.json"
+    },
+    {
+      "digest": "sha256:a68bd56d91c6e7b377b0753d0c2ea3c5293b9dd765c7c0705fbfb41d3a5e8eae",
+      "path": "tests/authoring/reducer/profile-self-authorization.test.mjs"
+    },
+    {
+      "digest": "sha256:ae0fcec76a68e2725efa161ec7e18fed068349bb70f8d2ae9ff1143a1eda835c",
+      "path": "tests/authoring/reducer/promise-returning-executable.test.json"
+    },
+    {
+      "digest": "sha256:be8e01e88e614af17fa0a82b41ad6910405007fa07e9d489d23fb1db2a23e8dc",
+      "path": "tests/authoring/reducer/promise-returning-executable.test.mjs"
+    },
+    {
+      "digest": "sha256:80873644721ab87c433324616b492f1389b61538dd1c92d77033a7a9d233c23a",
+      "path": "tests/authoring/reducer/reducer-result-validation.test.json"
+    },
+    {
+      "digest": "sha256:9f6bc56631d9749fc8952da06244e9f9f021251b7418070cbb88df83b4811d52",
+      "path": "tests/authoring/reducer/reducer-result-validation.test.mjs"
+    },
+    {
+      "digest": "sha256:3cd732f90f0cfe42de6903a41288c67f49d46689387009f53433fb4887b13e4f",
+      "path": "tests/authoring/reducer/registry-opaque-capability.test.json"
+    },
+    {
+      "digest": "sha256:d4a7895f34d1d64f680a392147dcc91d232d588fcb0f37cf1091e9b80e71866f",
+      "path": "tests/authoring/reducer/registry-opaque-capability.test.mjs"
+    },
+    {
+      "digest": "sha256:c0552d597b993267274d613483c651141a4f2909918399d6a5ba86b10b6257ae",
+      "path": "tests/authoring/reducer/request-context-authority.test.json"
+    },
+    {
+      "digest": "sha256:d9ebd2f16b1c7a3504480bc9e5c8f70d3463ad4df148282d331d371c340c4b4f",
+      "path": "tests/authoring/reducer/request-context-authority.test.mjs"
+    },
+    {
+      "digest": "sha256:e066c5121b6746d85410c884629b4734bf201cd479c149238e117aa53af6ab8b",
+      "path": "tests/authoring/reducer/request-revision-authority.test.json"
+    },
+    {
+      "digest": "sha256:baf8bb4c8f2064a7d0ac9787b65e33ce2f1ff25ebf534d4a9c4aecc213c201be",
+      "path": "tests/authoring/reducer/request-revision-authority.test.mjs"
+    },
+    {
+      "digest": "sha256:4f4305e03f7be6fe97a6cfdd4a6c9e06b21374be0a121be6b381d4cf6e7554eb",
+      "path": "tests/authoring/reducer/request-task-authority.test.json"
+    },
+    {
+      "digest": "sha256:68b60441df5ec1599d3b2e00b48f00e871e94cafaf1607fc64f4994909611b9e",
+      "path": "tests/authoring/reducer/request-task-authority.test.mjs"
+    },
+    {
+      "digest": "sha256:83344ef3af9ebfa997ca209f8c7d4953447dcc7d55694440dfeb15b561df1277",
+      "path": "tests/authoring/reducer/revise-guard-configuration-authority.test.json"
+    },
+    {
+      "digest": "sha256:2818d7feef095f8c441df850126e22dfdb39f53bb432823fc26afbd2660f988d",
+      "path": "tests/authoring/reducer/revise-guard-configuration-authority.test.mjs"
+    },
+    {
+      "digest": "sha256:09da25b871a07e9217a1e75b8573a3d3c27bd6ffae12ed853fa0fec58443e8ba",
+      "path": "tests/authoring/reducer/revision-request.test.json"
+    },
+    {
+      "digest": "sha256:540db72d9005f4d5f254b0d1f9ff2f34c0af51e8bf42032ad082da062a138cdd",
+      "path": "tests/authoring/reducer/revision-request.test.mjs"
+    },
+    {
+      "digest": "sha256:a0f053dd6b9961dbd87b572a07ca111deea13abe08d1d3da0f24a523948b39eb",
+      "path": "tests/authoring/reducer/storage-independence.test.json"
+    },
+    {
+      "digest": "sha256:65cb46462315f526482e7fcca80d852ebe822ce0b47cb84450e32fb1c2004d6f",
+      "path": "tests/authoring/reducer/storage-independence.test.mjs"
+    },
+    {
+      "digest": "sha256:8c39f2324f171c629aa90f6159c5e95959e8ccc75015694a61a7fe2602628674",
+      "path": "tests/authoring/reducer/submission-dag-preflight.test.json"
+    },
+    {
+      "digest": "sha256:2c4e4e669a9067e83ba68b566052d79293f390fb0ffb295528bb5595941b728e",
+      "path": "tests/authoring/reducer/submission-dag-preflight.test.mjs"
+    },
+    {
+      "digest": "sha256:633f5b8315343ec625d7b29c71a76c662680beb210ddd99dc15360c4102e44b8",
+      "path": "tests/authoring/reducer/submit-guard-configuration-authority.test.json"
+    },
+    {
+      "digest": "sha256:20b703382f7ea56c0e080a487026854096e28bd53c11c9ac76f2df1a8a9bc2e6",
+      "path": "tests/authoring/reducer/submit-guard-configuration-authority.test.mjs"
+    },
+    {
+      "digest": "sha256:7dd5f43f7d0e5207d5af6c5e93504c37c5fcea6c9edbf38abcd3e44451a60467",
+      "path": "tests/authoring/reducer/support.mjs"
+    },
+    {
+      "digest": "sha256:3c5f1a3e093ce473694513cbc774cf73c3f19b37c64df3fb55391f02e6b2471c",
+      "path": "tests/authoring/reducer/task-result-context-layer-validation.test.json"
+    },
+    {
+      "digest": "sha256:dbe42d5b27aa355cd612689a37f2b388eada4929c0423af7c0d5ba2aa32cb077",
+      "path": "tests/authoring/reducer/task-result-context-layer-validation.test.mjs"
+    },
+    {
+      "digest": "sha256:755e453c9f8a5a83d3d4f22d4a662dfd92f01310e4f81e82b31d20c5f05cac3b",
+      "path": "tests/authoring/reducer/trusted-guard-dispatch.test.json"
+    },
+    {
+      "digest": "sha256:6649639ad582b58248a72da8866c226e7126176936fae40e50083ffc90d1a0ff",
+      "path": "tests/authoring/reducer/trusted-guard-dispatch.test.mjs"
+    },
+    {
+      "digest": "sha256:a3a3c43a0b00a402ac624f6347e9b302b8bbe288de04152cd19b63d12732d682",
+      "path": "tests/authoring/reducer/trusted-handler-dispatch.test.json"
+    },
+    {
+      "digest": "sha256:e26545e3506f73dc1320cd2ccfe10fed082d3cea09fea5983150a413cf71250d",
+      "path": "tests/authoring/reducer/trusted-handler-dispatch.test.mjs"
+    },
+    {
+      "digest": "sha256:88eb1c3e161f46b0b1a53181af9611d7c7b21c0b1191ee432f259af4e25e9057",
+      "path": "tests/authoring/reducer/trusted-kernel-identity.test.json"
+    },
+    {
+      "digest": "sha256:768c42ea03fd8efb78379bc8c7163d941320f174a33643fb5638f3d09024da45",
+      "path": "tests/authoring/reducer/trusted-kernel-identity.test.mjs"
+    },
+    {
+      "digest": "sha256:51f3063c56bd17682dfeac32344246a54ceccadde810fc192934f51f7d6fa5e5",
+      "path": "tests/authoring/reducer/trusted-schema-dispatch.test.json"
+    },
+    {
+      "digest": "sha256:04be29eb4b5f461cb4513948dfb4c28efb740ac493bb25002638e2150c70274a",
+      "path": "tests/authoring/reducer/trusted-schema-dispatch.test.mjs"
+    },
+    {
+      "digest": "sha256:64d9c3ed7c290b8c291a2ecfb9eedebb3dd4c975f1fe72b9fc1ce68664c9024f",
+      "path": "tests/authoring/reducer/trusted-surface-accessor-rejection.test.json"
+    },
+    {
+      "digest": "sha256:affcbed0e6778713c7ba26138e27c0b071336ebc4f339e7d81dcb768f0c9489f",
+      "path": "tests/authoring/reducer/trusted-surface-accessor-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:b9837713aa334c148226deccd507d7d57286c4c9a7d0fd62f3f7ab2898121ce2",
+      "path": "tests/authoring/reducer/trusted-surface-proxy-rejection.test.json"
+    },
+    {
+      "digest": "sha256:1abe500e618d41e9c3c88f337795f37e1cb444dabcf84dfede2c4f5bbc7d6e23",
+      "path": "tests/authoring/reducer/trusted-surface-proxy-rejection.test.mjs"
+    },
+    {
+      "digest": "sha256:90782e2da24cd38fd73e2800ca58c0897eda269dbbbd1854075689c8921a5d81",
+      "path": "tests/authoring/reducer/trusted-validator-dispatch.test.json"
+    },
+    {
+      "digest": "sha256:08f096e43ce8576f4949c211ef3c21beb974fa20420498f8ca392d3ec509a1bc",
+      "path": "tests/authoring/reducer/trusted-validator-dispatch.test.mjs"
+    },
+    {
+      "digest": "sha256:ea3fc8b3bd257ee029acce7c4734095ce6f8991cfcedcd0697050b8572aa8f74",
+      "path": "tests/authoring/reducer/validation-issue-ordering.test.json"
+    },
+    {
+      "digest": "sha256:04890263c33dc7e3bf0c3ec6ca28b6e32e4e0fb8b309e23ada22aee8fdf2bd04",
+      "path": "tests/authoring/reducer/validation-issue-ordering.test.mjs"
+    },
+    {
+      "digest": "sha256:4652731b5a9a1059984862cdbbcf5b660b3bd0cbe529db3a02e21054a9a17e7d",
+      "path": "tests/authoring/reducer/workspace-evidence-callback-isolation.test.json"
+    },
+    {
+      "digest": "sha256:61b760ff884cad04e1e88831f2061e47f400ceb2e8c93ed2dd635a7cf5c3cd56",
+      "path": "tests/authoring/reducer/workspace-evidence-callback-isolation.test.mjs"
+    },
+    {
+      "digest": "sha256:e5910d995103bf40a4dc6a492716fd6c1f5abf2c56c25e5f707c9ed7b49d95fa",
+      "path": "tests/authoring/register-k12-suite.mjs"
     },
     {
       "digest": "sha256:d38e7bbdfe6bff15d756e8d986f3317f835987c1767544eb32c4f708b4b91db3",
@@ -3842,12 +4650,12 @@
       "path": "tests/survey-contracts/support/suite-definition.mjs"
     },
     {
-      "digest": "sha256:017339e621ca9f460871894109c1474c7e283d402774f57f42249737547196d4",
+      "digest": "sha256:4e15109ad171b73d89bc35aaacf7d0ec25706037e94b2196598cab21757cb908",
       "path": "tests/test-evidence.manifest.json"
     }
   ],
   "id": "urn:mission-kit:survey-v2:projection-lock:survey-v2",
-  "packageDigest": "sha256:fb840358725430162d1235ef740abb059ca1b6052f418c8b1a4852b02c124c90",
+  "packageDigest": "sha256:ed6f8ec4206abacee8bddf2c84e2b2eaca3a57e89a6a5796639ea5c4cc3928fe",
   "parentDesignSha256": "6467fff1c74c6dc857bcb06722d19dfa04381ae3e6f242eccb36581f87560f74",
   "portableExclusions": [
     {
@@ -3898,7 +4706,7 @@
       "projectionId": "urn:mission-kit:survey-v2:projection:validators"
     },
     {
-      "digest": "sha256:7a9df90057393da4047690d66b46dc59ba29f2396fc0bfcc4b09dba1b1060155",
+      "digest": "sha256:2b04070b9c60e2fa614f92439af3e023938cfa28c252e7defd55e6074fb37197",
       "path": "generated/validators.mjs",
       "projectionId": "urn:mission-kit:survey-v2:projection:validators"
     },
@@ -4447,12 +5255,52 @@
     {
       "expectedId": null,
       "kind": "authored",
+      "path": "source/authoring/kernel/context-resolver.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
       "path": "source/authoring/kernel/contract-semantics.mjs"
     },
     {
       "expectedId": null,
       "kind": "authored",
       "path": "source/authoring/kernel/digests.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/authoring/kernel/executable-registry.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/authoring/kernel/manifest-reducer.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/authoring/kernel/manifest-selection.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/authoring/kernel/mutation-planner.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/authoring/kernel/reducer-results.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/authoring/kernel/request-planner.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "source/authoring/kernel/resource-resolution.mjs"
     },
     {
       "expectedId": null,
@@ -5008,6 +5856,281 @@
       "expectedId": null,
       "kind": "authored",
       "path": "tests/authoring/assignment-dag/wrong-projection-submission.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/active-head-closure.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/active-head-closure.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/active-head-duplicate-negative.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/active-head-duplicate-negative.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/ambient-key-utf8-order.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/ambient-key-utf8-order.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/bounded-scale-determinism.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/bounded-scale-determinism.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/duplicate-role-reference-negative.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/duplicate-role-reference-negative.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/duplicate-stored-version-negative.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/duplicate-stored-version-negative.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/e2e-k10-valid.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/e2e-k10-valid.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/exact-stored-version.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/exact-stored-version.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/inventory-order-determinism.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/inventory-order-determinism.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/invocation-context-injection-negative.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/invocation-context-injection-negative.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/json-pointer-array-index-negative.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/json-pointer-array-index-negative.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/json-pointer-escape-negative.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/json-pointer-escape-negative.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/json-pointer-own-property-negative.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/json-pointer-own-property-negative.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/json-pointer-positive.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/json-pointer-positive.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/lifecycle-mismatch-negative.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/lifecycle-mismatch-negative.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/lifecycle-pointer-positive.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/lifecycle-pointer-positive.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/optional-compact-ordinal.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/optional-compact-ordinal.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/projection-order.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/projection-order.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/projection-pointer-missing-negative.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/projection-pointer-missing-negative.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/request-reference-selection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/request-reference-selection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/required-zero-cardinality-negative.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/required-zero-cardinality-negative.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/selector-ambient-negative.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/selector-ambient-negative.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/selector-order-negative.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/selector-order-negative.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/selector-type-negative.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/selector-type-negative.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/stored-integrity-negative.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/stored-integrity-negative.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/stored-semantic-negative.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/stored-semantic-negative.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/support.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/two-layer-order-role.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/context-resolution/two-layer-order-role.test.mjs"
     },
     {
       "expectedId": null,
@@ -6402,7 +7525,182 @@
     {
       "expectedId": null,
       "kind": "authored",
+      "path": "tests/authoring/generate-k12-descriptors.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
       "path": "tests/authoring/k11-suite-definition.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/k12-suite-definition.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/async-contract-validator.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/async-contract-validator.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/candidate-order.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/candidate-order.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/cardinality.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/cardinality.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/coupling-widening.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/coupling-widening.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/created-slot-dependency.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/created-slot-dependency.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/dependency-relation.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/dependency-relation.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/dependency-selector.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/dependency-selector.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/duplicate-candidate.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/duplicate-candidate.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/event-mutation.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/event-mutation.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/exact-mutation.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/exact-mutation.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/forbidden-handler-output.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/forbidden-handler-output.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/head-ambiguity.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/head-ambiguity.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/partial-revision-group.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/partial-revision-group.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/revision-descendants.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/revision-descendants.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/support.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/wrong-kind.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/wrong-kind.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/wrong-slot.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/mutation-planning/wrong-slot.test.mjs"
     },
     {
       "expectedId": null,
@@ -6423,6 +7721,526 @@
       "expectedId": null,
       "kind": "authored",
       "path": "tests/authoring/neutrality/kernel-import-boundary.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/callback-error-redaction.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/callback-error-redaction.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/domain-issue-contract.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/domain-issue-contract.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/event-command-base-freshness.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/event-command-base-freshness.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/event-guard-configuration-authority.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/event-guard-configuration-authority.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/event-reduction.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/event-reduction.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/event-selection-missing.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/event-selection-missing.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/forged-transition-guard-authority.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/forged-transition-guard-authority.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/guard-blocks-dispatch.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/guard-blocks-dispatch.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/host-native-async-contract-validator.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/host-native-async-contract-validator.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/host-promise-contract-validator.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/host-promise-contract-validator.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/identity-before-freshness.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/identity-before-freshness.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/inventory-snapshot-immutability.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/inventory-snapshot-immutability.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/json-pointer-compatibility.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/json-pointer-compatibility.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/manifest-bounded-mutation.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/manifest-bounded-mutation.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/manifest-transition-authority.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/manifest-transition-authority.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/multi-kind-product-validation.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/multi-kind-product-validation.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/multi-kind-revision-submission.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/multi-kind-revision-submission.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/mutation-native-async-contract-validator.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/mutation-native-async-contract-validator.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/mutation-promise-contract-validator.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/mutation-promise-contract-validator.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/mutation-result-next-state-validation.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/mutation-result-next-state-validation.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/native-async-executable.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/native-async-executable.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/next-ambiguous.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/next-ambiguous.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/next-determinism.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/next-determinism.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/next-exactly-one.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/next-exactly-one.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/next-no-task.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/next-no-task.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/ordered-guard-short-circuit.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/ordered-guard-short-circuit.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/producer-evidence-callback-isolation.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/producer-evidence-callback-isolation.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/product-shape-before-validator.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/product-shape-before-validator.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/profile-executable-preflight.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/profile-executable-preflight.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/profile-self-authorization.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/profile-self-authorization.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/promise-returning-executable.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/promise-returning-executable.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/reducer-result-validation.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/reducer-result-validation.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/registry-opaque-capability.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/registry-opaque-capability.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/request-context-authority.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/request-context-authority.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/request-revision-authority.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/request-revision-authority.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/request-task-authority.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/request-task-authority.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/revise-guard-configuration-authority.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/revise-guard-configuration-authority.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/revision-request.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/revision-request.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/storage-independence.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/storage-independence.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/submission-dag-preflight.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/submission-dag-preflight.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/submit-guard-configuration-authority.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/submit-guard-configuration-authority.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/support.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/task-result-context-layer-validation.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/task-result-context-layer-validation.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/trusted-guard-dispatch.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/trusted-guard-dispatch.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/trusted-handler-dispatch.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/trusted-handler-dispatch.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/trusted-kernel-identity.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/trusted-kernel-identity.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/trusted-schema-dispatch.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/trusted-schema-dispatch.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/trusted-surface-accessor-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/trusted-surface-accessor-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/trusted-surface-proxy-rejection.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/trusted-surface-proxy-rejection.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/trusted-validator-dispatch.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/trusted-validator-dispatch.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/validation-issue-ordering.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/validation-issue-ordering.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/workspace-evidence-callback-isolation.test.json"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/reducer/workspace-evidence-callback-isolation.test.mjs"
+    },
+    {
+      "expectedId": null,
+      "kind": "authored",
+      "path": "tests/authoring/register-k12-suite.mjs"
     },
     {
       "expectedId": null,

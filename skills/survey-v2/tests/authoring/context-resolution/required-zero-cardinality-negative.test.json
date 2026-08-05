@@ -1,0 +1,44 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:authoring:context-resolution:required-zero-cardinality-negative",
+  "obligationId": "O-AS06-60",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS06"
+  ],
+  "verification": {
+    "precondition": "The mapped K12 authorities and immutable fixtures exist as package-owned files.",
+    "stimulus": "Execute tests/authoring/context-resolution/required-zero-cardinality-negative.test.mjs with node:test.",
+    "expectedSemanticState": "No durable authoring runtime state transition is claimed by O-AS06-60.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: zero matches for a required selector fail its declared cardinality",
+    "forbiddenMutation": "Do not infer persistence, locking, commit authority, journaling, adapter parity, transport behavior, Survey semantics, or cold-resume behavior beyond the literal assertion.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "schemas/authoring/v1alpha1/common.schema.json",
+      "schemas/authoring/v1alpha1/context-closure.schema.json",
+      "source/authoring/kernel/canonical.mjs",
+      "source/authoring/kernel/context-resolver.mjs",
+      "source/authoring/kernel/contract-semantics.mjs",
+      "source/authoring/kernel/digests.mjs",
+      "source/authoring/kernel/resource-resolution.mjs"
+    ]
+  },
+  "behavior": "zero matches for a required selector fail its declared cardinality",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/authoring/context-resolution/required-zero-cardinality-negative.test.mjs",
+  "fixtures": [
+    "tests/authoring/context-resolution/support.mjs",
+    "tests/authoring/contracts/support/contract-validation.mjs",
+    "tests/fixtures/authoring/contracts/positive/authoring-profile-manifest.json",
+    "tests/fixtures/authoring/contracts/positive/authoring-protocol.json",
+    "tests/fixtures/authoring/contracts/positive/authoring-workspace.json"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

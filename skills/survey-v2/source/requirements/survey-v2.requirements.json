@@ -673,6 +673,10 @@
         {
           "id": "O-AS01-02",
           "statement": "neutral authoring kernel static imports remain inside its closure or use Node built-ins"
+        },
+        {
+          "id": "O-AS01-03",
+          "statement": "the pure generic reducer derives results without importing or invoking storage, lock, journal, or commit adapters"
         }
       ],
       "evidenceClasses": [
@@ -691,6 +695,50 @@
         {
           "id": "O-AS02-02",
           "statement": "the Survey AuthoringProtocol is closed and reachable with exactly eighteen states, its complete transition set, and exact task, wait, and terminal rules"
+        },
+        {
+          "id": "O-AS02-03",
+          "statement": "event ancestry produces only its manifest-owned empty mutation"
+        },
+        {
+          "id": "O-AS02-04",
+          "statement": "the reducer dispatches an admitted event into only its manifest-owned mutation"
+        },
+        {
+          "id": "O-AS02-05",
+          "statement": "guard evaluation rejects a transition body that differs from exact protocol authority"
+        },
+        {
+          "id": "O-AS02-06",
+          "statement": "a failed manifest guard prevents its guarded task or transition from dispatching"
+        },
+        {
+          "id": "O-AS02-07",
+          "statement": "the reducer derives legal task and transition authority only from the pinned declarative protocol and profile manifest"
+        },
+        {
+          "id": "O-AS02-08",
+          "statement": "an exact event command rejects a changed semantic snapshot before executable dispatch"
+        },
+        {
+          "id": "O-AS02-09",
+          "statement": "event guards receive the exact manifest-declared handler configuration authority"
+        },
+        {
+          "id": "O-AS02-10",
+          "statement": "revision guards receive the exact manifest-declared plan configuration authority"
+        },
+        {
+          "id": "O-AS02-11",
+          "statement": "submission guards receive the exact manifest-declared handler configuration authority"
+        },
+        {
+          "id": "O-AS02-12",
+          "statement": "event selection explicitly rejects a declared event with no matching edge"
+        },
+        {
+          "id": "O-AS02-13",
+          "statement": "transition guards execute in manifest order and stop at the first rejection before handler or validator dispatch"
         }
       ],
       "evidenceClasses": [
@@ -740,6 +788,30 @@
         {
           "id": "O-AS04-05",
           "statement": "repeated text-form renders produce identical bytes"
+        },
+        {
+          "id": "O-AS04-06",
+          "statement": "a frozen task state with multiple admitted task transitions fails closed explicitly"
+        },
+        {
+          "id": "O-AS04-07",
+          "statement": "repeated task selection from identical frozen inputs returns byte-identical results"
+        },
+        {
+          "id": "O-AS04-08",
+          "statement": "a frozen task state with exactly one admitted task returns that task explicitly"
+        },
+        {
+          "id": "O-AS04-09",
+          "statement": "a frozen state with no admitted task returns an explicit no-task result"
+        },
+        {
+          "id": "O-AS04-10",
+          "statement": "validation issue ordering has a total canonical tie-break independent of input order"
+        },
+        {
+          "id": "O-AS04-11",
+          "statement": "trusted inventory is snapshotted before executable dispatch"
         }
       ],
       "evidenceClasses": [
@@ -1049,6 +1121,118 @@
         {
           "id": "O-AS06-39",
           "statement": "context projection preserves layer order and exposes only ordered role values"
+        },
+        {
+          "id": "O-AS06-40",
+          "statement": "active-head resolution constructs one deterministic detached ContextClosure"
+        },
+        {
+          "id": "O-AS06-41",
+          "statement": "two active heads for one slot never gain selection authority from array order"
+        },
+        {
+          "id": "O-AS06-42",
+          "statement": "ambient-key diagnostics use UTF-8 byte order in both context modules"
+        },
+        {
+          "id": "O-AS06-43",
+          "statement": "a bounded 512-version inventory resolves 24 layers deterministically"
+        },
+        {
+          "id": "O-AS06-44",
+          "statement": "two selectors cannot emit the same role and exact source reference"
+        },
+        {
+          "id": "O-AS06-45",
+          "statement": "duplicate bodies for one exact stored-resource reference fail closed"
+        },
+        {
+          "id": "O-AS06-46",
+          "statement": "an end-to-end resolved closure satisfies the sealed K10 contract"
+        },
+        {
+          "id": "O-AS06-47",
+          "statement": "exact stored-resource lookup ignores another immutable semantic version of the same logical name"
+        },
+        {
+          "id": "O-AS06-48",
+          "statement": "ambient resource-inventory reordering cannot change ContextClosure bytes"
+        },
+        {
+          "id": "O-AS06-49",
+          "statement": "ambient layer or ContextClosure input cannot inject caller-owned context"
+        },
+        {
+          "id": "O-AS06-50",
+          "statement": "an array index with a leading zero is not a canonical RFC 6901 array selection"
+        },
+        {
+          "id": "O-AS06-51",
+          "statement": "a non-canonical JSON Pointer escape fails closed"
+        },
+        {
+          "id": "O-AS06-52",
+          "statement": "JSON Pointer resolution never traverses an inherited object property"
+        },
+        {
+          "id": "O-AS06-53",
+          "statement": "strict RFC 6901 resolution admits the root and canonical escaped tokens"
+        },
+        {
+          "id": "O-AS06-54",
+          "statement": "a valid observed lifecycle state that differs from required state fails closed"
+        },
+        {
+          "id": "O-AS06-55",
+          "statement": "a JSON-pointer lifecycle rule emits the exact observed-state proof"
+        },
+        {
+          "id": "O-AS06-56",
+          "statement": "an absent optional selector is omitted and emitted layer ordinals stay compact"
+        },
+        {
+          "id": "O-AS06-57",
+          "statement": "selected values preserve projection order and remain arrays for one field"
+        },
+        {
+          "id": "O-AS06-58",
+          "statement": "a missing projection pointer fails without a partial ContextClosure"
+        },
+        {
+          "id": "O-AS06-59",
+          "statement": "request-reference selection resolves only the named exact request input"
+        },
+        {
+          "id": "O-AS06-60",
+          "statement": "zero matches for a required selector fail its declared cardinality"
+        },
+        {
+          "id": "O-AS06-61",
+          "statement": "an ambient selector field cannot inject context authority"
+        },
+        {
+          "id": "O-AS06-62",
+          "statement": "selector array order cannot override declared selector ordinals"
+        },
+        {
+          "id": "O-AS06-63",
+          "statement": "a selected reference outside the selector's admitted resource type fails before lookup"
+        },
+        {
+          "id": "O-AS06-64",
+          "statement": "a semantic-preserving status change is rejected by full stored-resource integrity"
+        },
+        {
+          "id": "O-AS06-65",
+          "statement": "a stored resource body with a changed semantic core is rejected before integrity"
+        },
+        {
+          "id": "O-AS06-66",
+          "statement": "two emitted layers preserve manifest selector order and distinct roles"
+        },
+        {
+          "id": "O-AS06-67",
+          "statement": "task results reject malformed context closure layers after deterministic identities are recomputed"
         }
       ],
       "evidenceClasses": [
@@ -1180,6 +1364,18 @@
         {
           "id": "O-AS07-30",
           "statement": "reproduction from supplied immutable DAG resources returns byte-identical blank views"
+        },
+        {
+          "id": "O-AS07-31",
+          "statement": "request planning accepts only the manifest-resolved context closure from the exact workspace snapshot"
+        },
+        {
+          "id": "O-AS07-32",
+          "statement": "request planning rejects a task body that differs from exact profile authority"
+        },
+        {
+          "id": "O-AS07-33",
+          "statement": "a self-consistent submission with any broken K11 DAG edge rejects before semantic callbacks"
         }
       ],
       "evidenceClasses": [
@@ -1264,6 +1460,14 @@
         {
           "id": "O-AS10-07",
           "statement": "GenerationRecord producer and evidence changes do not alter its created-resource references"
+        },
+        {
+          "id": "O-AS10-08",
+          "statement": "producer evidence is absent from callback authority and cannot alter semantic reduction"
+        },
+        {
+          "id": "O-AS10-09",
+          "statement": "evidence-only workspace changes are absent from callback authority and semantic reduction"
         }
       ],
       "evidenceClasses": [
@@ -1318,6 +1522,26 @@
         {
           "id": "O-AS11-11",
           "statement": "the v2 session closes immutable resource history and active heads without deleting prior versions"
+        },
+        {
+          "id": "O-AS11-12",
+          "statement": "a revision cannot submit a partial replacement group"
+        },
+        {
+          "id": "O-AS11-13",
+          "statement": "revision supersession includes the replacement head and declared transitive descendant"
+        },
+        {
+          "id": "O-AS11-14",
+          "statement": "revision request planning rejects a unit or plan body that differs from exact profile authority"
+        },
+        {
+          "id": "O-AS11-15",
+          "statement": "the reducer issues one manifest-owned revision request from the named unit and event"
+        },
+        {
+          "id": "O-AS11-16",
+          "statement": "one sealed revision submission atomically replaces an ordered Brief and Appendix group through each kind's exact validators"
         }
       ],
       "evidenceClasses": [
@@ -1383,6 +1607,66 @@
         {
           "id": "O-AS13-11",
           "statement": "a recomputed mutation cannot supersede a workspace head outside its footprint"
+        },
+        {
+          "id": "O-AS13-12",
+          "statement": "handler candidates must already follow manifest target order"
+        },
+        {
+          "id": "O-AS13-13",
+          "statement": "a handler must satisfy every manifest target cardinality"
+        },
+        {
+          "id": "O-AS13-14",
+          "statement": "a created-slot selector derives an edge from the declaring created resource"
+        },
+        {
+          "id": "O-AS13-15",
+          "statement": "a dependency relation cannot escape the manifest footprint"
+        },
+        {
+          "id": "O-AS13-16",
+          "statement": "a dependency selector cannot resolve an ambient or missing active head"
+        },
+        {
+          "id": "O-AS13-17",
+          "statement": "a duplicate created-resource candidate is rejected before mutation construction"
+        },
+        {
+          "id": "O-AS13-18",
+          "statement": "the planner derives the complete exact task mutation from weak products"
+        },
+        {
+          "id": "O-AS13-19",
+          "statement": "a handler candidate cannot choose state, heads, or supersession"
+        },
+        {
+          "id": "O-AS13-20",
+          "statement": "an ambiguous workspace active head fails closed before planning"
+        },
+        {
+          "id": "O-AS13-21",
+          "statement": "a handler product cannot widen its manifest resource kind"
+        },
+        {
+          "id": "O-AS13-22",
+          "statement": "a handler product cannot escape to an undeclared slot"
+        },
+        {
+          "id": "O-AS13-23",
+          "statement": "the reducer constructs the exact manifest-bounded mutation from an admitted handler result"
+        },
+        {
+          "id": "O-AS13-24",
+          "statement": "a multi-kind task output resolves structural and semantic validation per product type"
+        },
+        {
+          "id": "O-AS13-25",
+          "statement": "mutation results reject an invalid next authoring state after deterministic identity is recomputed"
+        },
+        {
+          "id": "O-AS13-26",
+          "statement": "the complete product group is shape-checked before any product validator runs"
         }
       ],
       "evidenceClasses": [
@@ -1493,6 +1777,94 @@
         {
           "id": "O-AS14-25",
           "statement": "a v2 session rejects byte-distinct resource bodies that claim one exact four-field identity"
+        },
+        {
+          "id": "O-AS14-26",
+          "statement": "the injected mutation contract validator must return synchronously"
+        },
+        {
+          "id": "O-AS14-27",
+          "statement": "executable rejection diagnostics enforce the exact closed DomainIssue contract"
+        },
+        {
+          "id": "O-AS14-28",
+          "statement": "kernel and executable diagnostics admit schema-valid multi-segment JSON Pointers"
+        },
+        {
+          "id": "O-AS14-29",
+          "statement": "a profile manifest cannot self-authorize schema, validator, guard, or handler executables"
+        },
+        {
+          "id": "O-AS14-30",
+          "statement": "validation issues and reducer result constructors reject widened or identity-free values"
+        },
+        {
+          "id": "O-AS14-31",
+          "statement": "a compiled executable registry is an opaque branded capability that cannot be mutated or forged"
+        },
+        {
+          "id": "O-AS14-32",
+          "statement": "guard dispatch occurs only through the exact host-trusted stable ID and executable digest"
+        },
+        {
+          "id": "O-AS14-33",
+          "statement": "semantic-product handler dispatch occurs only through the exact host-trusted stable ID and executable digest"
+        },
+        {
+          "id": "O-AS14-34",
+          "statement": "structural schema dispatch occurs only through the exact host-trusted schema binding"
+        },
+        {
+          "id": "O-AS14-35",
+          "statement": "semantic-validator dispatch occurs only through the exact host-trusted validator-set binding"
+        },
+        {
+          "id": "O-AS14-36",
+          "statement": "callback exceptions cannot expose their message through reducer diagnostics"
+        },
+        {
+          "id": "O-AS14-37",
+          "statement": "the reducer rejects a native async host contract validator before its first call"
+        },
+        {
+          "id": "O-AS14-38",
+          "statement": "a synchronous host contract validator returning a rejected Promise is consumed and rejected deterministically"
+        },
+        {
+          "id": "O-AS14-39",
+          "statement": "mutation planning rejects a native async contract validator before invoking it"
+        },
+        {
+          "id": "O-AS14-40",
+          "statement": "a synchronous mutation contract validator returning a rejected Promise is consumed and rejected deterministically"
+        },
+        {
+          "id": "O-AS14-41",
+          "statement": "registry compilation rejects a native AsyncFunction without invoking it"
+        },
+        {
+          "id": "O-AS14-42",
+          "statement": "all profile-owned executable bindings preflight before any callback"
+        },
+        {
+          "id": "O-AS14-43",
+          "statement": "a synchronous executable returning a rejected Promise is consumed and rejected deterministically"
+        },
+        {
+          "id": "O-AS14-44",
+          "statement": "a rehashed profile cannot replace the exact host-trusted kernel identity"
+        },
+        {
+          "id": "O-AS14-45",
+          "statement": "the reducer rejects an accessor trusted surface without evaluating the accessor"
+        },
+        {
+          "id": "O-AS14-46",
+          "statement": "the reducer rejects a proxy trusted surface without invoking its contract validator"
+        },
+        {
+          "id": "O-AS14-47",
+          "statement": "executable identity rejection precedes stale command freshness without callback dispatch"
         }
       ],
       "evidenceClasses": [
@@ -1584,6 +1956,10 @@
         {
           "id": "O-AS15-20",
           "statement": "a repeated-machine commit must equal one complete ordered atomic edge sequence declared by the canonical protocol manifest"
+        },
+        {
+          "id": "O-AS15-21",
+          "statement": "trusted coupling details cannot add, drop, or reorder the manifest sequence"
         }
       ],
       "evidenceClasses": [
