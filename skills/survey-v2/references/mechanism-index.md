@@ -14,8 +14,8 @@
 | R08 | M10 | `urn:mission-kit:survey-v2:fragment:artifact:envelope-and-ratification` | O-R08-01 | positive, negative |
 | R09 | M12 | `urn:mission-kit:survey-v2:fragment:projection:isomorphic-projections` | O-R09-01 | conformance |
 | R10 | M12 | `urn:mission-kit:survey-v2:fragment:projection:isomorphic-projections` | O-R10-01, O-R10-02, O-R10-03, O-R10-04 | conformance, negative |
-| R11 | M09 | `urn:mission-kit:survey-v2:fragment:state:session-and-resume` | O-R11-01 | positive, resume |
-| R12 | M09 | `urn:mission-kit:survey-v2:fragment:state:session-and-resume` | O-R12-01 | resume, failure-injection |
+| R11 | M09 | `urn:mission-kit:survey-v2:fragment:state:session-and-resume` | O-R11-01, O-R11-02, O-R11-03, O-R11-04 | positive, resume |
+| R12 | M09 | `urn:mission-kit:survey-v2:fragment:state:session-and-resume` | O-R12-01, O-R12-02, O-R12-03, O-R12-04, O-R12-05 | resume, failure-injection |
 | R13 | M10 | `urn:mission-kit:survey-v2:fragment:artifact:envelope-and-ratification` | O-R13-01 | positive, negative, resume |
 | R14 | M11 | `urn:mission-kit:survey-v2:fragment:composition:fragment-contract` | O-R14-01 | conformance |
 | R15 | M11, M12 | `urn:mission-kit:survey-v2:fragment:composition:fragment-contract` | O-R15-01, O-R15-02, O-R15-03, O-R15-04, O-R15-05 | positive, negative, conformance, comparison |
@@ -30,5 +30,5 @@
 | R24 | M14 | `urn:mission-kit:survey-v2:fragment:assurance:promotion-boundary` | O-R24-01 | negative, conformance |
 | R25 | M01, M14 | `urn:mission-kit:survey-v2:fragment:authority:semantic-boundaries` | O-R25-01 | negative |
 | R26 | M10 | `urn:mission-kit:survey-v2:fragment:artifact:envelope-and-ratification` | O-R26-01 | negative, conformance |
-| R27 | M15 | `urn:mission-kit:survey-v2:fragment:identity:sovereign-root` | O-R27-01, O-R27-02 | conformance, failure-injection |
-| R28 | M07 | `urn:mission-kit:survey-v2:fragment:dependencies:typed-resolution` | O-R28-01 | positive, negative, resume |
+| R27 | M15 | `urn:mission-kit:survey-v2:fragment:identity:sovereign-root` | O-R27-01, O-R27-02, O-R27-03, O-R27-04 | conformance, failure-injection |
+| R28 | M07 | `urn:mission-kit:survey-v2:fragment:dependencies:typed-resolution` | O-R28-01, O-R28-02, O-R28-03 | positive, negative, resume |

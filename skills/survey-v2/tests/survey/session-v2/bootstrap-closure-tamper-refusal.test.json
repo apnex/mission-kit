@@ -1,0 +1,41 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:session-v2:bootstrap-closure-tamper-refusal",
+  "obligationId": "O-AS14-99",
+  "requirementIds": [
+    "R11",
+    "R12"
+  ],
+  "invariantIds": [
+    "AS14"
+  ],
+  "verification": {
+    "precondition": "A valid candidate session root has an externally keyed identity scope that binds its immutable outer bootstrap closure.",
+    "stimulus": "Change one legacy-compatible outer bootstrap field and recompute only the public root seal before attempting a public candidate read.",
+    "expectedSemanticState": "The read rejects with SESSION_JOURNAL_ADAPTER_SCOPE_MISMATCH before external key lookup or journal replay.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: a resealed immutable bootstrap change is rejected before key lookup or runtime replay",
+    "forbiddenMutation": "A public reseal must not authorize changed bootstrap bytes, invoke a writer, create a lock, or alter the attacker-supplied file during refusal.",
+    "applicability": {
+      "mode": "specific",
+      "transports": [],
+      "adapters": [
+        "urn:mission-kit:survey-v2:adapter:session"
+      ]
+    },
+    "inspectedAuthorities": [
+      "source/authoring/survey/session-journal-identity.mjs",
+      "source/authoring/survey/session-semantics.mjs",
+      "source/authoring/survey/session-store-adapter.mjs"
+    ]
+  },
+  "behavior": "a resealed immutable bootstrap change is rejected before key lookup or runtime replay",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/survey/session-v2/bootstrap-closure-tamper-refusal.test.mjs",
+  "fixtures": [
+    "tests/survey/session-v2/support.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

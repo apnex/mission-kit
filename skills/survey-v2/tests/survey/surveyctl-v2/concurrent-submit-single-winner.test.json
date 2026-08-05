@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:surveyctl-v2:concurrent-submit-single-winner",
+  "obligationId": "O-AS08-26",
+  "requirementIds": ["R11", "R12"],
+  "invariantIds": ["AS08"],
+  "verification": {
+    "precondition": "One durable run has one current SurveyFrame assignment and two callers hold the same completed form.",
+    "stimulus": "Submit both forms concurrently through independent surveyctl command executions, then authenticate and validate persisted state.",
+    "expectedSemanticState": "Exactly one submission commits, one loses or is rejected, revision advances once, and the resulting replay remains valid.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: two concurrent surveyctl submissions produce one commit and never corrupt the session",
+    "forbiddenMutation": "Concurrent callers must not both commit, overwrite each other, fork the journal, or leave an invalid session.",
+    "applicability": {"mode": "specific", "transports": [], "adapters": ["urn:mission-kit:survey-v2:adapter:surveyctl"]},
+    "inspectedAuthorities": ["source/authoring/survey/session-store-adapter.mjs", "source/executables/runtime/lib/surveyctl-engine.mjs"]
+  },
+  "behavior": "two concurrent surveyctl submissions produce one commit and never corrupt the session",
+  "evidenceClass": "failure-injection",
+  "runner": "node:test",
+  "executable": "tests/survey/surveyctl-v2/concurrent-submit-single-winner.test.mjs",
+  "fixtures": ["tests/survey/surveyctl-v2/support.mjs"],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

@@ -251,6 +251,18 @@
         {
           "id": "O-R11-01",
           "statement": "The atomic session contains every reached-state artifact and event."
+        },
+        {
+          "id": "O-R11-02",
+          "statement": "The production session externalizes its owner-only journal key and persists no secret bytes."
+        },
+        {
+          "id": "O-R11-03",
+          "statement": "surveyctl initialization reaches the exact active SurveyFrame-required persistent postcondition."
+        },
+        {
+          "id": "O-R11-04",
+          "statement": "surveyctl submission durably commits the SurveyFrame and validates its persisted replay."
         }
       ],
       "evidenceClasses": [
@@ -273,6 +285,22 @@
         {
           "id": "O-R12-01",
           "statement": "Cold takeover replays state and exposes only the current legal view."
+        },
+        {
+          "id": "O-R12-02",
+          "statement": "Repeated next reproduces exact pending bytes without a write."
+        },
+        {
+          "id": "O-R12-03",
+          "statement": "Independent surveyctl processes resume one run at its exact pending Assignment."
+        },
+        {
+          "id": "O-R12-04",
+          "statement": "A published zero-journal run completes interrupted initialization exactly once."
+        },
+        {
+          "id": "O-R12-05",
+          "statement": "Separate surveyctl processes complete and cold-resume one durable SurveyFrame lifecycle."
         }
       ],
       "evidenceClasses": [
@@ -630,6 +658,14 @@
         {
           "id": "O-R27-02",
           "statement": "A relocated Survey-v2 root checks and consumes shared structural and semantic validators without parent access."
+        },
+        {
+          "id": "O-R27-03",
+          "statement": "surveyctl admits only its exact command, positional, and option grammar."
+        },
+        {
+          "id": "O-R27-04",
+          "statement": "surveyctl defaults deterministically to exact text and admits JSON only through the literal format option."
         }
       ],
       "evidenceClasses": [
@@ -652,6 +688,14 @@
         {
           "id": "O-R28-01",
           "statement": "T41 freezes a stable bounded snapshot without configured refs or content pins."
+        },
+        {
+          "id": "O-R28-02",
+          "statement": "Survey source capture refuses a symbolic-link path without reading its target."
+        },
+        {
+          "id": "O-R28-03",
+          "statement": "T41 rejects a selected regular file whose opened size exceeds its per-file byte budget."
         }
       ],
       "evidenceClasses": [
@@ -1710,6 +1754,14 @@
         {
           "id": "O-AS08-25",
           "statement": "generation provider and model bounds count Unicode scalars consistently with their schema"
+        },
+        {
+          "id": "O-AS08-26",
+          "statement": "two concurrent surveyctl submissions produce one committed winner and one read-only loser without corrupting the session"
+        },
+        {
+          "id": "O-AS08-27",
+          "statement": "publicly recomputed bootstrap digests cannot replace the external keyed session binding"
         }
       ],
       "evidenceClasses": [
@@ -1777,6 +1829,10 @@
         {
           "id": "O-AS10-10",
           "statement": "post-receipt generation construction binds exact ancestry while producer telemetry remains evidence-only"
+        },
+        {
+          "id": "O-AS10-11",
+          "statement": "surveyctl retains explicit unattested external provenance without changing semantic products"
         }
       ],
       "evidenceClasses": [
@@ -2451,6 +2507,10 @@
         {
           "id": "O-AS14-98",
           "statement": "GenerationRecord semantic validation rejects omitted, extra, or reordered prior refs against the canonical request-input subset"
+        },
+        {
+          "id": "O-AS14-99",
+          "statement": "a resealed immutable candidate bootstrap change is rejected before key lookup or runtime replay"
         }
       ],
       "evidenceClasses": [
@@ -2822,6 +2882,30 @@
         {
           "id": "O-AS15-89",
           "statement": "a required request-reference omission is rejected before any Assignment or workspace mutation"
+        },
+        {
+          "id": "O-AS15-91",
+          "statement": "the external key reconstructs the exact persisted Survey journal identity after a cold start"
+        },
+        {
+          "id": "O-AS15-92",
+          "statement": "the Survey session projects to exactly one closed neutral K13 store snapshot"
+        },
+        {
+          "id": "O-AS15-93",
+          "statement": "a wrong external key is rejected before a lock or session write can occur"
+        },
+        {
+          "id": "O-AS15-94",
+          "statement": "an authenticated filesystem read replays the exact committed Survey journal"
+        },
+        {
+          "id": "O-AS15-95",
+          "statement": "one Survey writer permits one compare-and-commit attempt and a stale token leaves the root unchanged"
+        },
+        {
+          "id": "O-AS15-96",
+          "statement": "a cold Survey runtime preserves the pending assignment and reissues its exact view without a write"
         }
       ],
       "evidenceClasses": [

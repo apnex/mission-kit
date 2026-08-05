@@ -601,6 +601,10 @@
       "kind": "generated"
     },
     {
+      "path": "scripts/surveyctl.mjs",
+      "kind": "generated"
+    },
+    {
       "path": "shared-schemas.sh",
       "kind": "bootstrap"
     },
@@ -697,11 +701,19 @@
       "kind": "authored"
     },
     {
+      "path": "source/authoring/survey/authoring-runtime.mjs",
+      "kind": "authored"
+    },
+    {
       "path": "source/authoring/survey/generation-record.mjs",
       "kind": "authored"
     },
     {
       "path": "source/authoring/survey/initialization-adapter.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/authoring/survey/inspection.mjs",
       "kind": "authored"
     },
     {
@@ -721,7 +733,19 @@
       "kind": "authored"
     },
     {
+      "path": "source/authoring/survey/session-journal-identity.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/authoring/survey/session-root.mjs",
+      "kind": "authored"
+    },
+    {
       "path": "source/authoring/survey/session-semantics.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/authoring/survey/session-store-adapter.mjs",
       "kind": "authored"
     },
     {
@@ -822,6 +846,30 @@
       "kind": "authored"
     },
     {
+      "path": "source/executables/runtime/lib/surveyctl-arguments.fragment.json",
+      "kind": "authored"
+    },
+    {
+      "path": "source/executables/runtime/lib/surveyctl-arguments.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/executables/runtime/lib/surveyctl-engine.fragment.json",
+      "kind": "authored"
+    },
+    {
+      "path": "source/executables/runtime/lib/surveyctl-engine.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/executables/runtime/lib/surveyctl-io.fragment.json",
+      "kind": "authored"
+    },
+    {
+      "path": "source/executables/runtime/lib/surveyctl-io.mjs",
+      "kind": "authored"
+    },
+    {
       "path": "source/executables/runtime/survey-envelope.fragment.json",
       "kind": "authored"
     },
@@ -859,6 +907,14 @@
     },
     {
       "path": "source/executables/runtime/survey-transition.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/executables/runtime/surveyctl.fragment.json",
+      "kind": "authored"
+    },
+    {
+      "path": "source/executables/runtime/surveyctl.mjs",
       "kind": "authored"
     },
     {
@@ -5094,6 +5150,14 @@
       "kind": "authored"
     },
     {
+      "path": "tests/dependencies/snapshot-file-byte-budget.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/dependencies/snapshot-file-byte-budget.test.mjs",
+      "kind": "authored"
+    },
+    {
       "path": "tests/dependencies/stable-snapshot.test.json",
       "kind": "authored"
     },
@@ -6943,6 +7007,174 @@
     },
     {
       "path": "tests/survey/profile/support.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2/authenticated-read-replay.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2/authenticated-read-replay.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2/cold-identity-reconstruction.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2/cold-identity-reconstruction.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2/cold-restart-state-preservation.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2/cold-restart-state-preservation.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2/exact-neutral-projection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2/exact-neutral-projection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2/one-shot-cas-conflict.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2/one-shot-cas-conflict.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2/support.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2/wrong-key-read-only-refusal.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2/wrong-key-read-only-refusal.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2/bootstrap-closure-tamper-refusal.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2/bootstrap-closure-tamper-refusal.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2/keyed-bootstrap-scope-tamper-refusal.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2/keyed-bootstrap-scope-tamper-refusal.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/surveyctl-v2/cold-process-resume.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/surveyctl-v2/cold-process-resume.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/surveyctl-v2/concurrent-submit-single-winner.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/surveyctl-v2/concurrent-submit-single-winner.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/surveyctl-v2/exact-argument-grammar.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/surveyctl-v2/exact-argument-grammar.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/surveyctl-v2/init-exact-postcondition.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/surveyctl-v2/init-exact-postcondition.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/surveyctl-v2/key-registry-safety.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/surveyctl-v2/key-registry-safety.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/surveyctl-v2/next-repeat-read-only.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/surveyctl-v2/next-repeat-read-only.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/surveyctl-v2/source-symlink-refusal.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/surveyctl-v2/source-symlink-refusal.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/surveyctl-v2/submit-validate-persistence.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/surveyctl-v2/submit-validate-persistence.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/surveyctl-v2/support.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/surveyctl-v2/zero-journal-crash-recovery.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/surveyctl-v2/zero-journal-crash-recovery.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/surveyctl-v2/full-process-lifecycle.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/surveyctl-v2/full-process-lifecycle.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/surveyctl-v2/output-format-contract.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/surveyctl-v2/output-format-contract.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/surveyctl-v2/unattested-provenance-retention.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/surveyctl-v2/unattested-provenance-retention.test.mjs",
       "kind": "authored"
     },
     {

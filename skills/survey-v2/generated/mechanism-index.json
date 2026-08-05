@@ -122,7 +122,9 @@
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:interaction:pick-capture",
       "requirementId": "R06",
       "supportingOwners": [
-        "urn:mission-kit:survey-v2:executable:runtime:canonical"
+        "urn:mission-kit:survey-v2:executable:runtime:canonical",
+        "urn:mission-kit:survey-v2:executable:runtime:surveyctl-engine",
+        "urn:mission-kit:survey-v2:executable:runtime:surveyctl-io"
       ]
     },
     {
@@ -222,7 +224,10 @@
         "M09"
       ],
       "obligations": [
-        "O-R11-01"
+        "O-R11-01",
+        "O-R11-02",
+        "O-R11-03",
+        "O-R11-04"
       ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:state:session-and-resume",
       "requirementId": "R11",
@@ -232,6 +237,9 @@
         "urn:mission-kit:survey-v2:executable:runtime:init",
         "urn:mission-kit:survey-v2:executable:runtime:status",
         "urn:mission-kit:survey-v2:executable:runtime:storage",
+        "urn:mission-kit:survey-v2:executable:runtime:surveyctl",
+        "urn:mission-kit:survey-v2:executable:runtime:surveyctl-engine",
+        "urn:mission-kit:survey-v2:executable:runtime:surveyctl-io",
         "urn:mission-kit:survey-v2:executable:runtime:transition"
       ]
     },
@@ -247,7 +255,11 @@
         "M09"
       ],
       "obligations": [
-        "O-R12-01"
+        "O-R12-01",
+        "O-R12-02",
+        "O-R12-03",
+        "O-R12-04",
+        "O-R12-05"
       ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:state:session-and-resume",
       "requirementId": "R12",
@@ -256,6 +268,10 @@
         "urn:mission-kit:survey-v2:executable:runtime:present",
         "urn:mission-kit:survey-v2:executable:runtime:status",
         "urn:mission-kit:survey-v2:executable:runtime:storage",
+        "urn:mission-kit:survey-v2:executable:runtime:surveyctl",
+        "urn:mission-kit:survey-v2:executable:runtime:surveyctl-arguments",
+        "urn:mission-kit:survey-v2:executable:runtime:surveyctl-engine",
+        "urn:mission-kit:survey-v2:executable:runtime:surveyctl-io",
         "urn:mission-kit:survey-v2:executable:runtime:transition"
       ]
     },
@@ -367,7 +383,8 @@
       "supportingOwners": [
         "urn:mission-kit:survey-v2:executable:runtime:dependency-snapshot",
         "urn:mission-kit:survey-v2:executable:runtime:engine",
-        "urn:mission-kit:survey-v2:executable:runtime:init"
+        "urn:mission-kit:survey-v2:executable:runtime:init",
+        "urn:mission-kit:survey-v2:executable:runtime:surveyctl-engine"
       ]
     },
     {
@@ -427,7 +444,9 @@
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:interaction:single-question-disclosure",
       "requirementId": "R20",
       "supportingOwners": [
-        "urn:mission-kit:survey-v2:executable:runtime:present"
+        "urn:mission-kit:survey-v2:executable:runtime:present",
+        "urn:mission-kit:survey-v2:executable:runtime:surveyctl",
+        "urn:mission-kit:survey-v2:executable:runtime:surveyctl-arguments"
       ]
     },
     {
@@ -561,7 +580,9 @@
       ],
       "obligations": [
         "O-R27-01",
-        "O-R27-02"
+        "O-R27-02",
+        "O-R27-03",
+        "O-R27-04"
       ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:identity:sovereign-root",
       "requirementId": "R27",
@@ -569,7 +590,10 @@
         "urn:mission-kit:survey-v2:executable:compiler:build",
         "urn:mission-kit:survey-v2:executable:compiler:shared-schema-closure",
         "urn:mission-kit:survey-v2:executable:runtime:handler-surface",
-        "urn:mission-kit:survey-v2:executable:runtime:init"
+        "urn:mission-kit:survey-v2:executable:runtime:init",
+        "urn:mission-kit:survey-v2:executable:runtime:surveyctl",
+        "urn:mission-kit:survey-v2:executable:runtime:surveyctl-arguments",
+        "urn:mission-kit:survey-v2:executable:runtime:surveyctl-engine"
       ]
     },
     {
@@ -585,13 +609,17 @@
         "M07"
       ],
       "obligations": [
-        "O-R28-01"
+        "O-R28-01",
+        "O-R28-02",
+        "O-R28-03"
       ],
       "primaryOwner": "urn:mission-kit:survey-v2:fragment:dependencies:typed-resolution",
       "requirementId": "R28",
       "supportingOwners": [
         "urn:mission-kit:survey-v2:executable:runtime:dependency-snapshot",
-        "urn:mission-kit:survey-v2:executable:runtime:engine"
+        "urn:mission-kit:survey-v2:executable:runtime:engine",
+        "urn:mission-kit:survey-v2:executable:runtime:surveyctl-engine",
+        "urn:mission-kit:survey-v2:executable:runtime:surveyctl-io"
       ]
     }
   ],

@@ -1,0 +1,29 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:fragment:v1",
+  "schemaVersion": "1.0.0",
+  "id": "urn:mission-kit:survey-v2:executable:runtime:surveyctl-arguments",
+  "revision": 1,
+  "purpose": "Parse the closed text-first surveyctl command grammar without ambient option inference.",
+  "role": "executable",
+  "normativity": "normative",
+  "audiences": ["agent", "maintainer"],
+  "representation": {
+    "format": "javascript",
+    "payloadPath": "source/executables/runtime/lib/surveyctl-arguments.mjs",
+    "mediaType": "text/javascript"
+  },
+  "rationale": "A bounded command grammar keeps agent invocations deterministic and makes candidate-session selection explicit.",
+  "absenceConsequence": "Callers could introduce undeclared positionals, implicit formats, or ambiguous filesystem authority.",
+  "composition": {
+    "provides": ["runtime.surveyctl-arguments@1"],
+    "requires": [],
+    "dependencies": []
+  },
+  "requirements": ["R12", "R20", "R27"],
+  "contribution": {
+    "mode": "supporting",
+    "proofClass": "cold-resume-coverage",
+    "obligations": ["O-R12-01", "O-R27-03"]
+  },
+  "exposure": "internal"
+}

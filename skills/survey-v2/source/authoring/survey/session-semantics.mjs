@@ -21,6 +21,9 @@ import {
   resourceSemanticDigest,
   workspaceSemanticStateDigest
 } from "../kernel/digests.mjs";
+import {
+  journalIdentityScopeDigest
+} from "../runtime/journal-replay.mjs";
 import canonicalSurveyProtocol from "../../protocol/survey-v2.protocol.json"
   with { type: "json" };
 import canonicalSurveyProtocolV1 from "../../protocol/survey.protocol.json"
@@ -28,6 +31,8 @@ import canonicalSurveyProtocolV1 from "../../protocol/survey.protocol.json"
 import canonicalPairedStateMatrix from "../../protocol/paired-state-matrix.v2.json"
   with { type: "json" };
 import candidateProjectionLock from "../../../generated/projection-lock.json"
+  with { type: "json" };
+import axiomDependency from "../../dependencies/references/mission-kit-axioms.reference.json"
   with { type: "json" };
 
 export const SESSION_SCHEMA_V1 =
@@ -139,12 +144,60 @@ function withoutKey(value, key) {
 }
 
 /**
+ * Digest every candidate-v2 outer bootstrap value that is not owned by the
+ * K13 transaction snapshot or by one of the three persisted machine heads.
+ * These legacy-compatible fields are immutable inputs/projections in the
+ * candidate path; changing any of them must therefore invalidate the
+ * externally keyed journal identity binding.
+ */
+export function sessionBootstrapClosureDigest(session) {
+  return sha256Value({
+    domain:
+      "mission-kit:survey-v2:session-bootstrap-closure/v1",
+    schema: {
+      id: session.$schema,
+      version: session.schemaVersion
+    },
+    sessionId: session.sessionId,
+    slug: session.slug,
+    package: session.package,
+    protocol: session.protocol,
+    revision: session.revision,
+    blockReason: session.blockReason,
+    lineage: session.lineage,
+    inputs: session.inputs,
+    authority: session.authority,
+    events: session.events,
+    rejections: session.rejections,
+    idempotency: session.idempotency,
+    outbox: session.outbox,
+    attempts: session.attempts,
+    responses: session.responses,
+    drafts: session.drafts,
+    interpretations: session.interpretations,
+    dependencies: session.dependencies,
+    candidates: session.candidates,
+    feedback: session.feedback,
+    ratification: session.ratification,
+    finalization: session.finalization,
+    runtimeArtifactReferences:
+      session.authoring.runtimeArtifactReferences
+  });
+}
+
+/**
  * Derive the one canonical semantic state from which every candidate v2
  * journal begins. The profile and protocol pins are retained, while all
  * mutable authoring collections and revisions are reset to their declared
  * genesis values.
  */
 export function sessionGenesisRevisionState(session) {
+  const persisted =
+    session?.authoring?.persistence?.identityScope
+      ?.genesisRevisionState;
+  if (record(persisted)) {
+    return Object.freeze(structuredClone(persisted));
+  }
   const workspace = session?.authoring?.workspace;
   const genesisWorkspace = {
     apiVersion: workspace?.apiVersion,
@@ -211,7 +264,15 @@ function machineEdgeSequenceKey(edges) {
   })));
 }
 
-function canonicalMachineGenesisStates() {
+function canonicalMachineGenesisStates(session) {
+  const persisted =
+    session?.authoring?.persistence?.identityScope
+      ?.genesisMachineHeads;
+  if (Array.isArray(persisted)) {
+    return new Map(
+      persisted.map((head) => [head.machineId, head.state])
+    );
+  }
   if (canonicalMachineInitialStates) return canonicalMachineInitialStates;
   canonicalMachineInitialStates = new Map(
     canonicalSurveyProtocol.machines.map((machine) => [
@@ -222,6 +283,192 @@ function canonicalMachineGenesisStates() {
     ])
   );
   return canonicalMachineInitialStates;
+}
+
+function persistenceIssues(session) {
+  const persistence = session?.authoring?.persistence;
+  if (
+    !record(persistence) ||
+    !Array.isArray(persistence.machineHeads) ||
+    !Array.isArray(persistence.idempotencyOutcomeView) ||
+    !record(persistence.identityBinding) ||
+    !record(persistence.identityScope)
+  ) {
+    return [issue(
+      "SESSION_AUTHORING_PERSISTENCE_REQUIRED",
+      "/authoring/persistence",
+      "Candidate authoring requires the complete persisted transaction sidecars."
+    )];
+  }
+  const issues = [];
+  const scope = persistence.identityScope;
+  const binding = persistence.identityBinding;
+  const expectedAdapterScope = {
+    adapter: "survey-session",
+    schemaVersion: "1.0.0",
+    genesisBoundary: scope.adapterScope?.genesisBoundary,
+    sessionId: session.sessionId,
+    sessionSchema: session.$schema,
+    packageId: session.package.id,
+    packageVersion: session.package.version,
+    projectionDigest: session.package.projectionDigest,
+    protocolId: session.protocol.id,
+    protocolVersion: session.protocol.version,
+    protocolDigest: session.protocol.digest,
+    authorityDigest: sha256Value(session.authority),
+    pendingInputDigest: session.inputs.pendingInputDigest,
+    initializationResultDigest:
+      session.dependencies.outputs.initResolve?.resultDigest ??
+      null,
+    bootstrapClosureDigest:
+      sessionBootstrapClosureDigest(session)
+  };
+  if (
+    binding.id !== "survey-session-journal-identity" ||
+    binding.scopeDigest !== journalIdentityScopeDigest(scope)
+  ) {
+    issues.push(issue(
+      "SESSION_JOURNAL_IDENTITY_BINDING_INVALID",
+      "/authoring/persistence/identityBinding",
+      "The persisted journal identity binding does not bind the complete identity scope."
+    ));
+  }
+  if (canonicalize(scope.adapterScope) !== canonicalize(expectedAdapterScope)) {
+    issues.push(issue(
+      "SESSION_JOURNAL_ADAPTER_SCOPE_MISMATCH",
+      "/authoring/persistence/identityScope/adapterScope",
+      "The journal adapter scope does not bind the exact persisted session identity."
+    ));
+  }
+  if (
+    scope.genesisRevisionState?.semanticRevision !== 0 ||
+    scope.genesisRevisionState?.evidenceRevision !== 0
+  ) {
+    issues.push(issue(
+      "SESSION_JOURNAL_GENESIS_REVISION_INVALID",
+      "/authoring/persistence/identityScope/genesisRevisionState",
+      "The authoring journal must begin at zero semantic and evidence revisions."
+    ));
+  }
+  const expectedGenesisStates =
+    scope.adapterScope?.genesisBoundary === "post-bootstrap"
+      ? [
+        ["authoring", "new"],
+        ["phase", "initialized"],
+        ["runtime", "active"]
+      ]
+      : scope.adapterScope?.genesisBoundary === "protocol-start"
+        ? [
+          ["authoring", "new"],
+          ["phase", "new"],
+          ["runtime", "rehydrating"]
+        ]
+        : [];
+  if (
+    !Array.isArray(scope.genesisMachineHeads) ||
+    scope.genesisMachineHeads.length !== expectedGenesisStates.length
+  ) {
+    issues.push(issue(
+      "SESSION_JOURNAL_GENESIS_HEADS_INVALID",
+      "/authoring/persistence/identityScope/genesisMachineHeads",
+      "The production authoring journal requires exactly three post-bootstrap genesis heads."
+    ));
+  } else {
+    expectedGenesisStates.forEach(([machineId, state], index) => {
+      const head = scope.genesisMachineHeads[index];
+      const expectedDigest = sessionMachineStateDigest(session, {
+        machineId,
+        state,
+        journalOrdinal: 0
+      });
+      if (
+        head?.machineId !== machineId ||
+        head?.state !== state ||
+        head?.stateDigest !== expectedDigest
+      ) {
+        issues.push(issue(
+          "SESSION_JOURNAL_GENESIS_HEAD_INVALID",
+          `/authoring/persistence/identityScope/genesisMachineHeads/${index}`,
+          "Each journal genesis head must bind the canonical post-bootstrap state occurrence."
+        ));
+      }
+    });
+  }
+  if (
+    persistence.idempotencyOutcomeView.length !==
+      session.journal.length
+  ) {
+    issues.push(issue(
+      "SESSION_IDEMPOTENCY_OUTCOME_LENGTH_MISMATCH",
+      "/authoring/persistence/idempotencyOutcomeView",
+      "The idempotency outcome view must contain one entry per authoring journal record."
+    ));
+  }
+  return issues;
+}
+
+function candidateInputIssues(session) {
+  if (
+    session.authoring.persistence.identityScope.adapterScope
+      .genesisBoundary !== "post-bootstrap"
+  ) {
+    return [];
+  }
+  const inputs = session.inputs;
+  const workspace = session.authoring.workspace;
+  const issues = [];
+  const headBySlot = new Map(
+    workspace.spec.activeHeads.map(
+      (head) => [head.slot, head.reference],
+    ),
+  );
+  for (const [field, slot] of [
+    ["sourceSnapshotRef", "intake"],
+    ["policySnapshotRef", "policy"],
+  ]) {
+    if (
+      canonicalize(inputs[field]) !==
+        canonicalize(headBySlot.get(slot))
+    ) {
+      issues.push(issue(
+        "SESSION_INPUT_ACTIVE_HEAD_MISMATCH",
+        `/inputs/${field}`,
+        `${field} must equal the exact immutable ${slot} active head.`
+      ));
+    }
+  }
+  if (
+    inputs.requestedArtifactPath !==
+      `${session.slug}-survey.md`
+  ) {
+    issues.push(issue(
+      "SESSION_REQUESTED_ARTIFACT_PATH_INVALID",
+      "/inputs/requestedArtifactPath",
+      "The requested artifact path must be derived exactly from the session slug."
+    ));
+  }
+  const expectedPendingInputDigest = sha256Value({
+    domain: "mission-kit:survey-v2:candidate-input/v1",
+    slug: session.slug,
+    lineage: session.lineage,
+    authority: session.authority,
+    sourceSnapshotRef: inputs.sourceSnapshotRef,
+    policySnapshotRef: inputs.policySnapshotRef,
+    requestedArtifactPath: inputs.requestedArtifactPath,
+    axiomCorpus: inputs.axiomCorpus,
+    dependencies: [{
+      id: axiomDependency.id,
+      descriptorDigest: sha256Value(axiomDependency)
+    }]
+  });
+  if (inputs.pendingInputDigest !== expectedPendingInputDigest) {
+    issues.push(issue(
+      "SESSION_PENDING_INPUT_DIGEST_MISMATCH",
+      "/inputs/pendingInputDigest",
+      "The pending input digest does not bind the exact candidate initialization inputs."
+    ));
+  }
+  return issues;
 }
 
 /**
@@ -1077,7 +1324,7 @@ function journalIssues(session, matrixPairs) {
   let previousRecordDigest = null;
   const lastEdgeByMachine = new Map();
   const machineHeads = new Map(
-    [...canonicalMachineGenesisStates()].map(([machineId, state]) => [
+    [...canonicalMachineGenesisStates(session)].map(([machineId, state]) => [
       machineId,
       {
         state,
@@ -1386,6 +1633,25 @@ function journalIssues(session, matrixPairs) {
     }
   });
 
+  const persistedHeads =
+    session.authoring.persistence?.machineHeads;
+  if (
+    Array.isArray(persistedHeads) &&
+    canonicalize(persistedHeads) !== canonicalize(
+      [...machineHeads].map(([machineId, head]) => ({
+        machineId,
+        state: head.state,
+        stateDigest: head.digest
+      }))
+    )
+  ) {
+    issues.push(issue(
+      "SESSION_MACHINE_HEAD_VIEW_MISMATCH",
+      "/authoring/persistence/machineHeads",
+      "The persisted machine-head view differs from replayed journal state."
+    ));
+  }
+
   return issues;
 }
 
@@ -1401,6 +1667,7 @@ export function validateSessionSemantics(session) {
     session.schemaVersion !== "2.0.0" ||
     !record(session.authoring) ||
     !Array.isArray(session.authoring.runtimeArtifactReferences) ||
+    !record(session.authoring.persistence) ||
     !Array.isArray(session.events) ||
     !Array.isArray(session.journal)
   ) {
@@ -1425,6 +1692,8 @@ export function validateSessionSemantics(session) {
     ));
   }
   issues.push(
+    ...persistenceIssues(session),
+    ...candidateInputIssues(session),
     ...workspaceReferenceIssues(session),
     ...journalIssues(session, matrixPairs)
   );

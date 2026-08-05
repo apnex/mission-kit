@@ -75,7 +75,7 @@
       "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/properties/lineage"
     },
     "inputs": {
-      "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/properties/inputs"
+      "$ref": "#/$defs/candidateInputs"
     },
     "authority": {
       "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/properties/authority"
@@ -1061,7 +1061,8 @@
       "additionalProperties": false,
       "required": [
         "workspace",
-        "runtimeArtifactReferences"
+        "runtimeArtifactReferences",
+        "persistence"
       ],
       "properties": {
         "workspace": {
@@ -1133,6 +1134,323 @@
           "items": {
             "$ref": "#/$defs/surveyRuntimeArtifactReference"
           }
+        },
+        "persistence": {
+          "$ref": "#/$defs/authoringPersistence"
+        }
+      }
+    },
+    "candidateInputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceSnapshotRef",
+        "policySnapshotRef",
+        "requestedArtifactPath",
+        "axiomCorpus",
+        "pendingInputDigest"
+      ],
+      "properties": {
+        "sourceSnapshotRef": {
+          "allOf": [
+            {
+              "$ref": "urn:mission-kit:authoring:schema:resource-reference:v1alpha1"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "apiVersion": {
+                  "const": "authoring.mission-kit/v1alpha1"
+                },
+                "kind": {
+                  "const": "SourceSnapshot"
+                }
+              },
+              "required": [
+                "apiVersion",
+                "kind"
+              ]
+            }
+          ]
+        },
+        "policySnapshotRef": {
+          "allOf": [
+            {
+              "$ref": "urn:mission-kit:authoring:schema:resource-reference:v1alpha1"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "apiVersion": {
+                  "const": "survey.mission-kit/v1alpha1"
+                },
+                "kind": {
+                  "const": "SurveyPolicySnapshot"
+                }
+              },
+              "required": [
+                "apiVersion",
+                "kind"
+              ]
+            }
+          ]
+        },
+        "requestedArtifactPath": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v1#/$defs/relativePath"
+        },
+        "axiomCorpus": {
+          "type": "boolean"
+        },
+        "pendingInputDigest": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/digest"
+        }
+      }
+    },
+    "authoringPersistence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "machineHeads",
+        "idempotencyOutcomeView",
+        "identityBinding",
+        "identityScope"
+      ],
+      "properties": {
+        "machineHeads": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "$ref": "#/$defs/machineHead"
+          }
+        },
+        "idempotencyOutcomeView": {
+          "type": "array",
+          "maxItems": 65536,
+          "items": {
+            "$ref": "#/$defs/idempotencyOutcomeEntry"
+          }
+        },
+        "identityBinding": {
+          "$ref": "#/$defs/journalIdentityBinding"
+        },
+        "identityScope": {
+          "$ref": "#/$defs/journalIdentityScope"
+        }
+      }
+    },
+    "machineHead": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "machineId",
+        "state",
+        "stateDigest"
+      ],
+      "properties": {
+        "machineId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "state": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "stateDigest": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/digest"
+        }
+      }
+    },
+    "revisionState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "semanticRevision",
+        "evidenceRevision",
+        "semanticStateDigest"
+      ],
+      "properties": {
+        "semanticRevision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "evidenceRevision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "semanticStateDigest": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/digest"
+        }
+      }
+    },
+    "journalIdentityBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "digest",
+        "scopeDigest"
+      ],
+      "properties": {
+        "id": {
+          "const": "survey-session-journal-identity"
+        },
+        "digest": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/digest"
+        },
+        "scopeDigest": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/digest"
+        }
+      }
+    },
+    "journalIdentityScope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "genesisRevisionState",
+        "genesisWorkspaceIntegrityDigest",
+        "genesisMachineHeads",
+        "adapterScope"
+      ],
+      "properties": {
+        "genesisRevisionState": {
+          "$ref": "#/$defs/revisionState"
+        },
+        "genesisWorkspaceIntegrityDigest": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/digest"
+        },
+        "genesisMachineHeads": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "$ref": "#/$defs/machineHead"
+          }
+        },
+        "adapterScope": {
+          "$ref": "#/$defs/surveySessionAdapterScope"
+        }
+      }
+    },
+    "surveySessionAdapterScope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "adapter",
+        "schemaVersion",
+        "genesisBoundary",
+        "sessionId",
+        "sessionSchema",
+        "packageId",
+        "packageVersion",
+        "projectionDigest",
+        "protocolId",
+        "protocolVersion",
+        "protocolDigest",
+        "authorityDigest",
+        "pendingInputDigest",
+        "initializationResultDigest",
+        "bootstrapClosureDigest"
+      ],
+      "properties": {
+        "adapter": {
+          "const": "survey-session"
+        },
+        "schemaVersion": {
+          "const": "1.0.0"
+        },
+        "genesisBoundary": {
+          "enum": [
+            "protocol-start",
+            "post-bootstrap"
+          ]
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "sessionSchema": {
+          "const": "urn:mission-kit:survey-v2:schema:session-state:v2"
+        },
+        "packageId": {
+          "const": "urn:mission-kit:survey-v2:package:survey-v2"
+        },
+        "packageVersion": {
+          "const": "2.0.0"
+        },
+        "projectionDigest": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/digest"
+        },
+        "protocolId": {
+          "const": "urn:mission-kit:survey-v2:protocol:survey"
+        },
+        "protocolVersion": {
+          "const": "2.0.0"
+        },
+        "protocolDigest": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/digest"
+        },
+        "authorityDigest": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/digest"
+        },
+        "pendingInputDigest": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/digest"
+        },
+        "initializationResultDigest": {
+          "anyOf": [
+            {
+              "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/digest"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "bootstrapClosureDigest": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/digest"
+        }
+      }
+    },
+    "idempotencyOutcomeEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "machineId",
+        "key",
+        "recordDigest",
+        "operationDigest",
+        "commandDigest",
+        "payloadDigest",
+        "outcome"
+      ],
+      "properties": {
+        "machineId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "key": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "recordDigest": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/digest"
+        },
+        "operationDigest": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/digest"
+        },
+        "commandDigest": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/digest"
+        },
+        "payloadDigest": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/digest"
+        },
+        "outcome": {
+          "type": "object"
         }
       }
     }

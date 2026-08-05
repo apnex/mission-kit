@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:surveyctl-v2:submit-validate-persistence",
+  "obligationId": "O-R11-04",
+  "requirementIds": ["R11"],
+  "invariantIds": ["AS15"],
+  "verification": {
+    "precondition": "A production run has issued one current SurveyFrame assignment and one skeleton-preserving completed text form exists.",
+    "stimulus": "Submit the form, discard the command result, reread session.json, and execute validate through a fresh reopen.",
+    "expectedSemanticState": "One committed SurveyFrame advances the durable workspace to round_1_frame_required and authenticated replay validates without issues.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: surveyctl submit durably commits the SurveyFrame and validate certifies the persisted replay",
+    "forbiddenMutation": "Submission must not remain warm-only, retain an open assignment, or report validity without replaying persisted state.",
+    "applicability": {"mode": "specific", "transports": [], "adapters": ["urn:mission-kit:survey-v2:adapter:surveyctl"]},
+    "inspectedAuthorities": ["source/authoring/survey/inspection.mjs", "source/executables/runtime/lib/surveyctl-engine.mjs"]
+  },
+  "behavior": "surveyctl submit durably commits the SurveyFrame and validate certifies the persisted replay",
+  "evidenceClass": "positive",
+  "runner": "node:test",
+  "executable": "tests/survey/surveyctl-v2/submit-validate-persistence.test.mjs",
+  "fixtures": ["tests/survey/surveyctl-v2/support.mjs"],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

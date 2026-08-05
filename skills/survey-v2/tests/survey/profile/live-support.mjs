@@ -50,7 +50,7 @@ import {
   surveyFrameValues,
 } from "./support.mjs";
 
-export const surveyAuthoringMachineId = "authoring-kernel";
+export const surveyAuthoringMachineId = "authoring";
 export const surveyPhaseMachineId = "phase";
 
 const zeroDigest = `sha256:${"0".repeat(64)}`;

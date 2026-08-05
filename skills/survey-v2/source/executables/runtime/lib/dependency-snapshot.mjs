@@ -98,6 +98,15 @@ async function observePass(selectorRoot, policy, afterEnumeration) {
       if (opened.dev !== entry.device || opened.ino !== entry.inode) {
         fail("SOURCE_UNSTABLE", `selected member identity changed before open: ${entry.relative}`);
       }
+      if (opened.size > BigInt(policy.maxFileBytes)) {
+        fail("SOURCE_BUDGET", `${entry.relative} exceeds ${policy.maxFileBytes} bytes`);
+      }
+      if (
+        BigInt(totalBytes) + opened.size >
+          BigInt(policy.maxTotalBytes)
+      ) {
+        fail("SOURCE_BUDGET", `total bytes exceed ${policy.maxTotalBytes}`);
+      }
       buffer = await handle.readFile();
       const completed = await handle.stat({ bigint: true });
       if (

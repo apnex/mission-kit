@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:surveyctl-v2:init-exact-postcondition",
+  "obligationId": "O-R11-03",
+  "requirementIds": ["R11"],
+  "invariantIds": ["AS15"],
+  "verification": {
+    "precondition": "Canonical source, authority, session root, and external key root inputs are available.",
+    "stimulus": "Execute production surveyctl initialization once.",
+    "expectedSemanticState": "The durable run is active at round_1_drafting with commit revision one, SurveyFrame required, and no open assignment.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: surveyctl init reaches exactly the active SurveyFrame-required postcondition",
+    "forbiddenMutation": "Initialization must not issue the first assignment, skip SurveyFrame authoring, or retain a genesis-only root.",
+    "applicability": {"mode": "specific", "transports": [], "adapters": ["urn:mission-kit:survey-v2:adapter:surveyctl"]},
+    "inspectedAuthorities": ["source/authoring/survey/initialization-adapter.mjs", "source/executables/runtime/lib/surveyctl-engine.mjs"]
+  },
+  "behavior": "surveyctl init reaches exactly the active SurveyFrame-required postcondition",
+  "evidenceClass": "positive",
+  "runner": "node:test",
+  "executable": "tests/survey/surveyctl-v2/init-exact-postcondition.test.mjs",
+  "fixtures": ["tests/survey/surveyctl-v2/support.mjs"],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

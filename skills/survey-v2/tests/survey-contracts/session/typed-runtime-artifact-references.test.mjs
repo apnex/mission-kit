@@ -31,6 +31,7 @@ function replaceRuntimeArtifact(session, resource) {
     structuredClone(stored.reference)
   ];
   sealWorkspace(next.authoring.workspace);
+  attachJournal(next, next.journal);
   return { session: next, stored };
 }
 

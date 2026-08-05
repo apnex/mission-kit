@@ -1,0 +1,41 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:session-v2:wrong-key-read-only-refusal",
+  "obligationId": "O-AS15-93",
+  "requirementIds": [
+    "R11",
+    "R12"
+  ],
+  "invariantIds": [
+    "AS15"
+  ],
+  "verification": {
+    "precondition": "A valid candidate session.json is sealed with an identity binding committed to one external authentication key.",
+    "stimulus": "Attempt both a verified read and a writer lease with a different valid-length key.",
+    "expectedSemanticState": "Both operations reject with SURVEY_SESSION_IDENTITY_BINDING_MISMATCH before the writer callback runs.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: a wrong external key is rejected before a lock or session write can occur",
+    "forbiddenMutation": "A wrong key must not invoke the writer callback, create session.lock, change directory membership, or alter one byte of session.json.",
+    "applicability": {
+      "mode": "specific",
+      "transports": [],
+      "adapters": [
+        "urn:mission-kit:survey-v2:adapter:session"
+      ]
+    },
+    "inspectedAuthorities": [
+      "source/authoring/survey/session-journal-identity.mjs",
+      "source/authoring/survey/session-store-adapter.mjs",
+      "source/executables/runtime/lib/storage.mjs"
+    ]
+  },
+  "behavior": "a wrong external key is rejected before a lock or session write can occur",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/survey/session-v2/wrong-key-read-only-refusal.test.mjs",
+  "fixtures": [
+    "tests/survey/session-v2/support.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

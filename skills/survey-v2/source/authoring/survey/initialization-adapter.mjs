@@ -13,7 +13,7 @@ import {
 
 const adapterVersion =
   "mission-kit:survey-v2:survey-initialization-adapter/v1";
-const authoringMachineId = "authoring-kernel";
+const authoringMachineId = "authoring";
 const phaseMachineId = "phase";
 const digestPattern = /^sha256:[0-9a-f]{64}$/u;
 const issueCodePattern = /^[A-Z][A-Z0-9_]{0,79}$/u;

@@ -14,6 +14,10 @@ import {
   normalizeAuthoringCommand
 } from "../../../../source/authoring/kernel/manifest-reducer.mjs";
 import {
+  journalIdentityScopeDigest
+} from "../../../../source/authoring/runtime/journal-replay.mjs";
+import {
+  sessionBootstrapClosureDigest,
   sessionGenesisRevisionState,
   sessionGenesisSealDigest,
   sessionMachineStateDigest
@@ -56,11 +60,12 @@ export function contextClosureResource(
 }
 
 export function storedResourceVersion(resource) {
-  return {
+  const stored = {
     reference: resourceReferenceFrom(resource),
     integrityDigest: resourceIntegrityDigest(resource),
     resource: structuredClone(resource)
   };
+  return stored;
 }
 
 export function sealWorkspace(workspace) {
@@ -163,7 +168,7 @@ export function makeSession({
     handoffProducts,
     openAssignment
   });
-  return {
+  const session = {
     $schema: "urn:mission-kit:survey-v2:schema:session-state:v2",
     schemaVersion: "2.0.0",
     sessionId: "session-v2-fixture",
@@ -190,11 +195,18 @@ export function makeSession({
       parentEvidence: []
     },
     inputs: {
-      workItem: "Capture exact fixture intent.",
-      outcomeAxes: [
-        "quality",
-        "speed"
-      ],
+      sourceSnapshotRef: {
+        apiVersion: "authoring.mission-kit/v1alpha1",
+        kind: "SourceSnapshot",
+        name: "fixture-intake",
+        semanticDigest: digest("1")
+      },
+      policySnapshotRef: {
+        apiVersion: "survey.mission-kit/v1alpha1",
+        kind: "SurveyPolicySnapshot",
+        name: "fixture-policy",
+        semanticDigest: digest("2")
+      },
       requestedArtifactPath: "session-v2-fixture.md",
       axiomCorpus: false,
       pendingInputDigest: digest("d")
@@ -239,11 +251,64 @@ export function makeSession({
     finalization: null,
     authoring: {
       workspace,
-      runtimeArtifactReferences: structuredClone(runtimeArtifactReferences)
+      runtimeArtifactReferences: structuredClone(runtimeArtifactReferences),
+      persistence: null
     },
     journal: [],
     snapshotDigest: digest("e")
   };
+  const adapterScope = {
+    adapter: "survey-session",
+    schemaVersion: "1.0.0",
+    genesisBoundary: "protocol-start",
+    sessionId: session.sessionId,
+    sessionSchema: session.$schema,
+    packageId: session.package.id,
+    packageVersion: session.package.version,
+    projectionDigest: session.package.projectionDigest,
+    protocolId: session.protocol.id,
+    protocolVersion: session.protocol.version,
+    protocolDigest: session.protocol.digest,
+    authorityDigest: sha256Value(session.authority),
+    pendingInputDigest: session.inputs.pendingInputDigest,
+    initializationResultDigest: null,
+    bootstrapClosureDigest:
+      sessionBootstrapClosureDigest(session)
+  };
+  const genesisRevisionState = sessionGenesisRevisionState(session);
+  const genesisMachineHeads = [
+    ["authoring", "new"],
+    ["phase", "new"],
+    ["runtime", "rehydrating"]
+  ].map(([machineId, state]) => ({
+    machineId,
+    state,
+    stateDigest: sessionMachineStateDigest(session, {
+      machineId,
+      state,
+      journalOrdinal: 0
+    })
+  }));
+  const identityScope = {
+    genesisRevisionState,
+    genesisWorkspaceIntegrityDigest:
+      workspace.spec.integrity.workspaceIntegrityDigest,
+    genesisMachineHeads,
+    adapterScope
+  };
+  session.authoring.persistence = {
+    machineHeads: structuredClone(genesisMachineHeads),
+    idempotencyOutcomeView: [],
+    identityBinding: {
+      id: "survey-session-journal-identity",
+      digest: sha256Value({
+        domain: "survey-v2/session-fixture-journal-identity/v1"
+      }),
+      scopeDigest: journalIdentityScopeDigest(identityScope)
+    },
+    identityScope
+  };
+  return session;
 }
 
 export function makeJournalRecord({
@@ -354,8 +419,8 @@ export function makeJournalRecord({
 
 export function attachJournal(session, entries) {
   const genesisWorkspaceIntegrityDigest =
-    session.authoring.workspace.spec.integrity
-      .workspaceIntegrityDigest;
+    session.authoring.persistence.identityScope
+      .genesisWorkspaceIntegrityDigest;
   const finalState = entries.at(-1)?.after ?? {
     semanticRevision: 0,
     evidenceRevision: 0,
@@ -397,6 +462,44 @@ export function attachJournal(session, entries) {
   });
   session.journal = journal;
   session.commitRevision = journal.length;
+  const machineHeads = new Map(
+    session.authoring.persistence.identityScope.genesisMachineHeads
+      .map((head) => [head.machineId, structuredClone(head)])
+  );
+  journal.forEach((record) => {
+    record.machineEdges.forEach((edge) => {
+      machineHeads.set(edge.machineId, {
+        machineId: edge.machineId,
+        state: edge.toState,
+        stateDigest: edge.afterStateDigest
+      });
+    });
+  });
+  session.authoring.persistence.machineHeads =
+    [...machineHeads.values()];
+  session.authoring.persistence.idempotencyOutcomeView =
+    journal.map((record) => ({
+      machineId: record.idempotency.machineId,
+      key: record.idempotency.key,
+      recordDigest: record.recordDigest,
+      operationDigest: record.operationDigest,
+      commandDigest: record.commandDigest,
+      payloadDigest: record.payloadDigest,
+      outcome: {
+        class: "fixture"
+      }
+    }));
+  session.authoring.persistence.identityScope.adapterScope
+    .initializationResultDigest =
+      session.dependencies.outputs.initResolve?.resultDigest ??
+      null;
+  session.authoring.persistence.identityScope.adapterScope
+    .bootstrapClosureDigest =
+      sessionBootstrapClosureDigest(session);
+  session.authoring.persistence.identityBinding.scopeDigest =
+    journalIdentityScopeDigest(
+      session.authoring.persistence.identityScope
+    );
   return session;
 }
 

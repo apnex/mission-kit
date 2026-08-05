@@ -1,0 +1,40 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:session-v2:one-shot-cas-conflict",
+  "obligationId": "O-AS15-95",
+  "requirementIds": [
+    "R11"
+  ],
+  "invariantIds": [
+    "AS15"
+  ],
+  "verification": {
+    "precondition": "A valid candidate session store grants one writer capability under its physical filesystem lock.",
+    "stimulus": "Attempt compare-and-commit with a mismatched four-field token, attempt to reuse the same writer, then access it after its lease closes.",
+    "expectedSemanticState": "The first attempt returns conflict, the second rejects as already used, the expired capability rejects, and the session bytes remain unchanged.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: one Survey writer permits one compare-and-commit attempt and a stale token leaves the root unchanged",
+    "forbiddenMutation": "A conflict must not validate or publish its proposed post-image, a capability must not attempt CAS twice, and a writer must not outlive its lock lease.",
+    "applicability": {
+      "mode": "specific",
+      "transports": [],
+      "adapters": [
+        "urn:mission-kit:survey-v2:adapter:session"
+      ]
+    },
+    "inspectedAuthorities": [
+      "source/authoring/runtime/store-port.mjs",
+      "source/authoring/survey/session-store-adapter.mjs",
+      "source/executables/runtime/lib/storage.mjs"
+    ]
+  },
+  "behavior": "one Survey writer permits one compare-and-commit attempt and a stale token leaves the root unchanged",
+  "evidenceClass": "failure-injection",
+  "runner": "node:test",
+  "executable": "tests/survey/session-v2/one-shot-cas-conflict.test.mjs",
+  "fixtures": [
+    "tests/survey/session-v2/support.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}
