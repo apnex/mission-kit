@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:round-one-questions:projector-least-context",
+  "obligationId": "O-SV06-06",
+  "requirementIds": [],
+  "invariantIds": ["SV06"],
+  "verification": {
+    "precondition": "The exact seven-layer closure contains retained excluded identity sentinels.",
+    "stimulus": "Render the blank Round-1 Question form.",
+    "expectedSemanticState": "Only selected semantic values and all eighteen fields are visible; excluded retained source identity never appears.",
+    "expectedEvidenceState": "The test runner reports the literal seven-layer least-context assertion.",
+    "forbiddenMutation": "No SurveyRound body, broad frame-set or policy field, resource identity, runtime state, response, interpretation, or future content leaks.",
+    "applicability": {"mode": "not-applicable", "transports": [], "adapters": []},
+    "inspectedAuthorities": ["source/authoring/survey/round-one-questions-projector.mjs"]
+  },
+  "behavior": "Round 1 Question projector renders only the exact seven selected semantic layers",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/survey/round-one-questions/projector-least-context.test.mjs",
+  "fixtures": ["tests/survey/round-one-questions/support.mjs"],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

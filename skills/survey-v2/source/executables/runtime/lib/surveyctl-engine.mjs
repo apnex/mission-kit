@@ -498,6 +498,23 @@ function nextJson(pending, viewBytes) {
   });
 }
 
+function nextWaitView(pending) {
+  if (
+    pending?.kind !== "wait" ||
+    pending?.state?.class !== "wait"
+  ) {
+    fail(
+      "SURVEYCTL_WAIT_RESULT_INVALID",
+      "the authoring runtime returned a non-canonical wait result",
+    );
+  }
+  return stableValue({
+    kind: "SurveyctlWait",
+    disposition: "wait",
+    state: pending.state,
+  });
+}
+
 function submissionView(result, state) {
   if (
     result?.kind !== "committed" &&
@@ -599,6 +616,15 @@ export async function executeSurveyctlCommand(
       runtime,
       storeId,
     );
+    if (pending.kind === "wait") {
+      return Object.freeze({
+        output: rendered(
+          options.format,
+          nextWaitView(pending),
+        ),
+        result: pending,
+      });
+    }
     const viewBytes = pendingView(pending);
     return Object.freeze({
       output: options.format === "json"

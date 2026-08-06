@@ -253,13 +253,19 @@ async function neutralQuestionBinding() {
   assert.equal(binding.spec.questionRef.kind, "Question");
   assert.equal(binding.spec.questionFrameRef.kind, "ContextFrame");
   assert.deepEqual(Object.keys(binding.spec).sort(), [
+    "designRationale",
     "frameSetRef",
+    "incompatibilities",
+    "optionRelationship",
     "questionFrameRef",
     "questionOrdinal",
     "questionRef",
     "roundRef",
     "slot"
   ]);
+  assert.equal(binding.spec.optionRelationship, "composable");
+  assert.deepEqual(binding.spec.incompatibilities, []);
+  assert.match(binding.spec.designRationale, /\S/u);
 }
 
 async function exactRoundInstrument() {

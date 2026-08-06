@@ -1,0 +1,37 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:session-v2-r12:director-projection-authority",
+  "obligationId": "O-SV06-10",
+  "requirementIds": [
+    "R12"
+  ],
+  "invariantIds": [
+    "SV06"
+  ],
+  "verification": {
+    "precondition": "The closed projection definition, self-contained renderer source, and question-presentation schema exist as exact package-owned bytes.",
+    "stimulus": "Derive the current-question projection authority from those three byte sources and compare every pin with its known answer.",
+    "expectedSemanticState": "The result contains exactly the definition digest, one-member renderer closure digest, and exact output-schema source digest, independent of filesystem location.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: director projection authority is exact, orthogonal, and relocatable",
+    "forbiddenMutation": "No absolute path, timestamp, ambient source, alternate definition, hidden renderer dependency, generated output, or runtime state may influence an authority pin.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "schemas/v2/question-presentation.schema.json",
+      "source/authoring/survey/current-question-projection.definition.json",
+      "source/authoring/survey/current-question-renderer.mjs",
+      "source/authoring/survey/director-question-projection.mjs"
+    ]
+  },
+  "behavior": "director projection authority is exact, orthogonal, and relocatable",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/survey/session-v2-r12/director-projection-authority.test.mjs",
+  "fixtures": [],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

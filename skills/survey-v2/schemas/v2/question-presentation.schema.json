@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:survey-v2:schema:question-presentation:v2",
+  "title": "Survey v2 current-question semantic presentation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "kind",
+    "questionId",
+    "context",
+    "prompt",
+    "options",
+    "responseGuidance"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:mission-kit:survey-v2:schema:question-presentation:v2"
+    },
+    "schemaVersion": {
+      "const": "2.0.0"
+    },
+    "kind": {
+      "const": "question"
+    },
+    "questionId": {
+      "const": "Q1"
+    },
+    "context": {
+      "$ref": "#/$defs/context"
+    },
+    "prompt": {
+      "$ref": "#/$defs/prompt"
+    },
+    "options": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 4,
+      "items": {
+        "$ref": "#/$defs/option"
+      }
+    },
+    "responseGuidance": {
+      "$ref": "#/$defs/responseGuidance"
+    }
+  },
+  "$defs": {
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "surveySynopsis",
+        "roundSynopsis",
+        "questionSynopsis"
+      ],
+      "properties": {
+        "surveySynopsis": {
+          "$ref": "#/$defs/nonemptyText"
+        },
+        "roundSynopsis": {
+          "$ref": "#/$defs/nonemptyText"
+        },
+        "questionSynopsis": {
+          "$ref": "#/$defs/nonemptyText"
+        }
+      }
+    },
+    "nonemptyText": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "prompt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text"
+      ],
+      "properties": {
+        "text": {
+          "$ref": "#/$defs/nonemptyText"
+        },
+        "instruction": {
+          "$ref": "#/$defs/nonemptyText"
+        }
+      }
+    },
+    "option": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "label",
+        "meaning"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-d]$"
+        },
+        "label": {
+          "$ref": "#/$defs/nonemptyText"
+        },
+        "meaning": {
+          "$ref": "#/$defs/nonemptyText"
+        }
+      }
+    },
+    "responseGuidance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "syntax",
+        "minimum",
+        "maximum"
+      ],
+      "properties": {
+        "syntax": {
+          "const": "Pick one or more option letters."
+        },
+        "minimum": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4
+        },
+        "maximum": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4
+        }
+      }
+    }
+  }
+}

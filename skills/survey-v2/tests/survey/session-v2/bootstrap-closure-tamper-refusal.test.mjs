@@ -18,7 +18,7 @@ import {
 function isBootstrapScopeMismatch(error) {
   assert.equal(
     error?.code,
-    "SESSION_JOURNAL_ADAPTER_SCOPE_MISMATCH",
+    "SURVEY_SESSION_INITIALIZATION_BOUNDARY_MISMATCH",
   );
   return true;
 }

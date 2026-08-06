@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:round-one-questions:relationship-derivation",
+  "obligationId": "O-SV06-07",
+  "requirementIds": [],
+  "invariantIds": ["SV06"],
+  "verification": {
+    "precondition": "One valid composable, exclusive, and mixed Question vector is available.",
+    "stimulus": "Build all three Questions and bindings.",
+    "expectedSemanticState": "Option IDs, cardinality, binding graph, and neutral Question constraints are exact deterministic equivalents.",
+    "expectedEvidenceState": "The test runner reports the literal relationship-derivation assertion.",
+    "forbiddenMutation": "Survey-specific relationship or rationale fields never enter a shared Question.",
+    "applicability": {"mode": "not-applicable", "transports": [], "adapters": []},
+    "inspectedAuthorities": ["source/authoring/survey/round-one-questions-authority.mjs"]
+  },
+  "behavior": "Composable exclusive and mixed relationships derive exact neutral Choice constraints",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/survey/round-one-questions/relationship-derivation.test.mjs",
+  "fixtures": ["tests/survey/round-one-questions/support.mjs"],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

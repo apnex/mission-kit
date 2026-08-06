@@ -29,6 +29,9 @@ import {
 import {
   roundOneQuestionFrameValues,
 } from "../round-one-question-frames/support.mjs";
+import {
+  roundOneQuestionValues,
+} from "../round-one-questions/support.mjs";
 
 export const surveyctlSource = fileURLToPath(
   new URL(
@@ -324,6 +327,49 @@ export async function writeRoundOneQuestionFramesInput(
   await writeFile(
     input,
     await populatedRoundOneQuestionFramesBytes(pending),
+    { flag: "wx" },
+  );
+  return input;
+}
+
+export async function populatedRoundOneQuestionsBytes(
+  pending,
+) {
+  const authority = await loadSurveyProfileAuthority();
+  const formBinding =
+    authority.profile.spec.formBindings.find(
+      (binding) =>
+        binding.id === pending.request.spec.bindings.form.id,
+    );
+  const formDefinition =
+    authority.forms.find(
+      (form) =>
+        form.metadata.name === formBinding?.definition?.name,
+    );
+  if (!formDefinition) {
+    throw new Error(
+      "test harness could not resolve the pending Question-set form",
+    );
+  }
+  return renderPopulatedTextForm({
+    formDefinition,
+    contextClosure: pending.contextClosure,
+    requestHandle: pending.assignment.spec.handle,
+    values: roundOneQuestionValues(),
+  });
+}
+
+export async function writeRoundOneQuestionsInput(
+  harness,
+  pending,
+) {
+  const input = path.join(
+    harness.temporaryRoot,
+    "round-one-questions.txt",
+  );
+  await writeFile(
+    input,
+    await populatedRoundOneQuestionsBytes(pending),
     { flag: "wx" },
   );
   return input;

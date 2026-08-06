@@ -1,0 +1,41 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:authoring:mutation-planning:context-closure-selector-closed",
+  "obligationId": "O-AS13-35",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS13"
+  ],
+  "verification": {
+    "precondition": "One valid task transaction admits a derived-from dependency.",
+    "stimulus": "Supply a context-closure selector with one ambient ordinal field.",
+    "expectedSemanticState": "Mutation planning rejects with DEPENDENCY_SELECTOR_INVALID.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: a context-closure dependency selector rejects every ambient field",
+    "forbiddenMutation": "The selector cannot reinterpret the ambient field as a layer, request input, head, or created slot.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "source/authoring/kernel/mutation-planner.mjs",
+      "tests/authoring/mutation-planning/support.mjs"
+    ]
+  },
+  "behavior": "a context-closure dependency selector rejects every ambient field",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/authoring/mutation-planning/context-closure-selector-closed.test.mjs",
+  "fixtures": [
+    "tests/authoring/contracts/support/contract-validation.mjs",
+    "tests/authoring/contracts/support/transaction-scenarios.mjs",
+    "tests/authoring/mutation-planning/support.mjs",
+    "tests/fixtures/authoring/contracts/positive/authoring-mutation.json",
+    "tests/fixtures/authoring/contracts/positive/authoring-profile-manifest.json",
+    "tests/fixtures/authoring/contracts/positive/authoring-protocol.json",
+    "tests/fixtures/authoring/contracts/positive/authoring-workspace.json"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

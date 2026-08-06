@@ -15,6 +15,7 @@ import { assertAuthoringAuthority } from "./manifest-selection.mjs";
 const digestPattern = /^sha256:[0-9a-f]{64}$/u;
 const dependencySelectorModes = new Set([
   "context-layer",
+  "context-closure",
   "request-input",
   "active-head",
   "created-slot",
@@ -945,6 +946,15 @@ function assertDependencySelectorSyntax(selector) {
     );
   }
   if (
+    selector.mode === "context-closure" &&
+    !exactKeys(selector, ["mode"])
+  ) {
+    fail(
+      "DEPENDENCY_SELECTOR_INVALID",
+      "context-closure selector accepts no ambient fields",
+    );
+  }
+  if (
     selector.mode === "request-input" &&
     (
       !exactKeys(selector, ["mode", "inputKey"]) ||
@@ -1025,6 +1035,20 @@ function resolveDependencySelector({
     }
     reference = layers[0].sourceReference;
     label = `context layer ${selector.ordinal}`;
+  } else if (selector.mode === "context-closure") {
+    if (
+      !exactKeys(selector, ["mode"]) ||
+      contextClosure?.apiVersion !==
+        "authoring.mission-kit/v1alpha1" ||
+      contextClosure?.kind !== "ContextClosure"
+    ) {
+      fail(
+        "DEPENDENCY_SELECTOR_UNRESOLVED",
+        "context-closure selector requires the exact current ContextClosure",
+      );
+    }
+    reference = resourceReferenceFrom(contextClosure);
+    label = "current context closure";
   } else if (selector.mode === "request-input") {
     if (
       !exactKeys(selector, ["mode", "inputKey"]) ||
@@ -1600,8 +1624,9 @@ function validateConstructedMutation(
  *
  * A ProductCandidate is exactly `{slot, resource, dependencies}`. Each
  * dependency is `{relation, selector}` and its selector is exactly one of:
- * `{mode:"context-layer", ordinal}`, `{mode:"request-input", inputKey}`,
- * `{mode:"active-head", slot}`, or `{mode:"created-slot", slot}`.
+ * `{mode:"context-layer", ordinal}`, `{mode:"context-closure"}`,
+ * `{mode:"request-input", inputKey}`, `{mode:"active-head", slot}`, or
+ * `{mode:"created-slot", slot}`.
  *
  * The function is synchronous, performs no persistence, and returns a deeply
  * frozen detached mutation. The injected validator must synchronously return

@@ -139,7 +139,7 @@ export const surveyContractSuite = Object.freeze([
     obligationId: "O-SV06-01",
     invariantId: "SV06",
     statement:
-      "SurveyQuestionBinding admits only a shared neutral Question reference and never inline Survey fields",
+      "SurveyQuestionBinding keeps Question content neutral while carrying only sanctioned Survey relationship metadata",
     category: "resources",
     name: "binding-neutrality",
     evidenceClass: "conformance",

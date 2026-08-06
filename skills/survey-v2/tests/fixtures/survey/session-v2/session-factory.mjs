@@ -17,11 +17,13 @@ import {
   journalIdentityScopeDigest
 } from "../../../../source/authoring/runtime/journal-replay.mjs";
 import {
-  sessionBootstrapClosureDigest,
   sessionGenesisRevisionState,
   sessionGenesisSealDigest,
   sessionMachineStateDigest
 } from "../../../../source/authoring/survey/session-semantics.mjs";
+import {
+  createSurveySessionAdapterScope
+} from "../../../../source/authoring/survey/session-bootstrap-boundary.mjs";
 
 const digest = (character) => `sha256:${character.repeat(64)}`;
 
@@ -220,6 +222,7 @@ export function makeSession({
     rejections: [],
     idempotency: {},
     outbox: null,
+    pendingProjection: null,
     attempts: [],
     responses: {},
     drafts: legacyDraftNeutralState(),
@@ -257,24 +260,10 @@ export function makeSession({
     journal: [],
     snapshotDigest: digest("e")
   };
-  const adapterScope = {
-    adapter: "survey-session",
-    schemaVersion: "1.0.0",
-    genesisBoundary: "protocol-start",
-    sessionId: session.sessionId,
-    sessionSchema: session.$schema,
-    packageId: session.package.id,
-    packageVersion: session.package.version,
-    projectionDigest: session.package.projectionDigest,
-    protocolId: session.protocol.id,
-    protocolVersion: session.protocol.version,
-    protocolDigest: session.protocol.digest,
-    authorityDigest: sha256Value(session.authority),
-    pendingInputDigest: session.inputs.pendingInputDigest,
-    initializationResultDigest: null,
-    bootstrapClosureDigest:
-      sessionBootstrapClosureDigest(session)
-  };
+  const adapterScope = createSurveySessionAdapterScope(
+    session,
+    "protocol-start"
+  );
   const genesisRevisionState = sessionGenesisRevisionState(session);
   const genesisMachineHeads = [
     ["authoring", "new"],
@@ -302,7 +291,7 @@ export function makeSession({
     identityBinding: {
       id: "survey-session-journal-identity",
       digest: sha256Value({
-        domain: "survey-v2/session-fixture-journal-identity/v1"
+        domain: "survey-v2/session-fixture-journal-identity/v4"
       }),
       scopeDigest: journalIdentityScopeDigest(identityScope)
     },
@@ -489,17 +478,6 @@ export function attachJournal(session, entries) {
         class: "fixture"
       }
     }));
-  session.authoring.persistence.identityScope.adapterScope
-    .initializationResultDigest =
-      session.dependencies.outputs.initResolve?.resultDigest ??
-      null;
-  session.authoring.persistence.identityScope.adapterScope
-    .bootstrapClosureDigest =
-      sessionBootstrapClosureDigest(session);
-  session.authoring.persistence.identityBinding.scopeDigest =
-    journalIdentityScopeDigest(
-      session.authoring.persistence.identityScope
-    );
   return session;
 }
 

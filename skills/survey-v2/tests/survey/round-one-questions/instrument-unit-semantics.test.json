@@ -1,0 +1,27 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:round-one-questions:instrument-unit-semantics",
+  "obligationId": "O-AS13-36",
+  "requirementIds": [],
+  "invariantIds": ["AS13"],
+  "verification": {
+    "precondition": "The production AT05 profile, exact active seven-layer ContextClosure, and complete constructed Round-1 instrument unit are available.",
+    "stimulus": "Independently validate the pristine unit, then adversarially replace policy or ContextClosure authority, corrupt a typed head, remove, add, reorder, or rename products, reorder RoundInstrument units, remove, redirect, or add an edge, and replace or widen the handoff.",
+    "expectedSemanticState": "Only the exact seven ordered products, exact active policy and ContextClosure, exact twenty-two directed dependency declarations, and singleton RoundInstrument handoff pass.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: AT05 instrument-unit semantics reject every non-exact product, authority reference, edge, and handoff without mutation",
+    "forbiddenMutation": "Every rejected candidate, ContextClosure, workspace semantic snapshot, and profile authority remains byte-equivalent to its pre-validation value.",
+    "applicability": {"mode": "not-applicable", "transports": [], "adapters": []},
+    "inspectedAuthorities": [
+      "source/authoring/survey/profile-executables.mjs",
+      "source/authoring/survey/round-one-questions-authority.mjs"
+    ]
+  },
+  "behavior": "AT05 instrument-unit semantics reject every non-exact product, authority reference, edge, and handoff without mutation",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/survey/round-one-questions/instrument-unit-semantics.test.mjs",
+  "fixtures": ["tests/survey/round-one-questions/support.mjs"],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

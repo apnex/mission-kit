@@ -128,7 +128,11 @@ function questionBinding(ordinal) {
     slot: geometry.slot,
     questionOrdinal: ordinal,
     questionFrameRef: questionFrameRef(ordinal),
-    questionRef: questionRef(ordinal)
+    questionRef: questionRef(ordinal),
+    optionRelationship: "composable",
+    incompatibilities: [],
+    designRationale:
+      `Question ${ordinal} provides distinct discriminating value within its frozen frame.`
   });
 }
 
@@ -154,7 +158,10 @@ function roundInstrument(roundOrdinal) {
       capture: "option-id-list",
       rawEvidence: "preserved",
       duplicateSubmission: "idempotent",
-      invalidSelection: "reject-without-advance"
+      invalidSyntax: "reject-without-advance",
+      unknownOption: "reject-without-advance",
+      cardinalityViolation: "reject-without-advance",
+      declaredConstraintViolation: "preserve-as-contradiction"
     }
   });
 }

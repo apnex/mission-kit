@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:round-one-questions:form-geometry",
+  "obligationId": "O-SV05-04",
+  "requirementIds": [],
+  "invariantIds": ["SV05"],
+  "verification": {
+    "precondition": "The Round-1 Question form authority is available.",
+    "stimulus": "Construct the canonical form definition.",
+    "expectedSemanticState": "Exactly eighteen fields occur in the frozen six-fields-per-Question order and preserve all accepted bounds.",
+    "expectedEvidenceState": "The test runner reports the literal form-geometry assertion.",
+    "forbiddenMutation": "No Question, binding, instrument, workspace, or runtime state is created.",
+    "applicability": {"mode": "not-applicable", "transports": [], "adapters": []},
+    "inspectedAuthorities": ["source/authoring/survey/round-one-questions-authority.mjs"]
+  },
+  "behavior": "Round 1 Question form fixes the exact eighteen-field semantic authorship boundary",
+  "evidenceClass": "positive",
+  "runner": "node:test",
+  "executable": "tests/survey/round-one-questions/form-geometry.test.mjs",
+  "fixtures": [],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

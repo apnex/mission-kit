@@ -20,18 +20,21 @@ import {
 import {
   CANDIDATE_V2_SELECTOR,
   selectSessionContract,
-  sessionBootstrapClosureDigest,
   sessionGenesisRevisionState,
   sessionGenesisSealDigest,
   sessionMachineStateDigest,
 } from "./session-semantics.mjs";
+import {
+  createSurveySessionAdapterScope,
+  rederiveSurveySessionAdapterScope,
+} from "./session-bootstrap-boundary.mjs";
 
 const identityId = "survey-session-journal-identity";
 const recordAuthenticationDomain =
   "mission-kit:survey-v2:session-journal-record-authentication/v1\0";
 const identityAlgorithmDescriptor = Object.freeze({
   id: identityId,
-  version: "v3",
+  version: "v4",
   genesis: "survey-v2/sessionGenesisSealDigest",
   machineOccurrence: "survey-v2/sessionMachineStateDigest",
   recordAuthentication: "hmac-sha256",
@@ -135,26 +138,13 @@ function normalizeOptions(options) {
 }
 
 function adapterScopeFor(session, genesisBoundary) {
-  return detachCanonicalStoreValue({
-    adapter: "survey-session",
-    schemaVersion: "1.0.0",
-    genesisBoundary,
-    sessionId: session.sessionId,
-    sessionSchema: session.$schema,
-    packageId: session.package.id,
-    packageVersion: session.package.version,
-    projectionDigest: session.package.projectionDigest,
-    protocolId: session.protocol.id,
-    protocolVersion: session.protocol.version,
-    protocolDigest: session.protocol.digest,
-    authorityDigest: sha256Value(session.authority),
-    pendingInputDigest: session.inputs.pendingInputDigest,
-    initializationResultDigest:
-      session.dependencies.outputs.initResolve?.resultDigest ??
-      null,
-    bootstrapClosureDigest:
-      sessionBootstrapClosureDigest(session),
-  }, "Survey session journal adapter scope");
+  return detachCanonicalStoreValue(
+    createSurveySessionAdapterScope(
+      session,
+      genesisBoundary,
+    ),
+    "Survey session journal adapter scope",
+  );
 }
 
 function identitySessionFromScope(scope) {
@@ -232,7 +222,7 @@ function bindingFor(scope, authenticationKey) {
     id: identityId,
     digest: sha256Value({
       domain:
-        "mission-kit:survey-v2:session-journal-identity-binding/v3",
+        "mission-kit:survey-v2:session-journal-identity-binding/v4",
       algorithmDigest: SURVEY_SESSION_JOURNAL_IDENTITY_DIGEST,
       authenticationKeyDigest:
         authenticationKeyDigest(authenticationKey),
@@ -427,9 +417,9 @@ export function reconstructSurveySessionJournalIdentity(
     persistence.identityScope,
     "persisted Survey session journal identity scope",
   );
-  const expectedAdapterScope = adapterScopeFor(
+  const expectedAdapterScope = rederiveSurveySessionAdapterScope(
     session,
-    scope.adapterScope?.genesisBoundary,
+    scope.adapterScope,
   );
   if (!sameValue(scope.adapterScope, expectedAdapterScope)) {
     fail(

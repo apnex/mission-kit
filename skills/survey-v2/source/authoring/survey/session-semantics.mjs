@@ -34,6 +34,15 @@ import candidateProjectionLock from "../../../generated/projection-lock.json"
   with { type: "json" };
 import axiomDependency from "../../dependencies/references/mission-kit-axioms.reference.json"
   with { type: "json" };
+import {
+  assertR12InitializationDependencyBoundary,
+  rederiveSurveySessionAdapterScope,
+  sessionBootstrapClosureDigest
+} from "./session-bootstrap-boundary.mjs";
+
+export {
+  sessionBootstrapClosureDigest
+} from "./session-bootstrap-boundary.mjs";
 
 export const SESSION_SCHEMA_V1 =
   "urn:mission-kit:survey-v2:schema:session-state:v1";
@@ -141,48 +150,6 @@ function withoutKey(value, key) {
   return Object.fromEntries(
     Object.entries(value).filter(([field]) => field !== key)
   );
-}
-
-/**
- * Digest every candidate-v2 outer bootstrap value that is not owned by the
- * K13 transaction snapshot or by one of the three persisted machine heads.
- * These legacy-compatible fields are immutable inputs/projections in the
- * candidate path; changing any of them must therefore invalidate the
- * externally keyed journal identity binding.
- */
-export function sessionBootstrapClosureDigest(session) {
-  return sha256Value({
-    domain:
-      "mission-kit:survey-v2:session-bootstrap-closure/v1",
-    schema: {
-      id: session.$schema,
-      version: session.schemaVersion
-    },
-    sessionId: session.sessionId,
-    slug: session.slug,
-    package: session.package,
-    protocol: session.protocol,
-    revision: session.revision,
-    blockReason: session.blockReason,
-    lineage: session.lineage,
-    inputs: session.inputs,
-    authority: session.authority,
-    events: session.events,
-    rejections: session.rejections,
-    idempotency: session.idempotency,
-    outbox: session.outbox,
-    attempts: session.attempts,
-    responses: session.responses,
-    drafts: session.drafts,
-    interpretations: session.interpretations,
-    dependencies: session.dependencies,
-    candidates: session.candidates,
-    feedback: session.feedback,
-    ratification: session.ratification,
-    finalization: session.finalization,
-    runtimeArtifactReferences:
-      session.authoring.runtimeArtifactReferences
-  });
 }
 
 /**
@@ -303,26 +270,20 @@ function persistenceIssues(session) {
   const issues = [];
   const scope = persistence.identityScope;
   const binding = persistence.identityBinding;
-  const expectedAdapterScope = {
-    adapter: "survey-session",
-    schemaVersion: "1.0.0",
-    genesisBoundary: scope.adapterScope?.genesisBoundary,
-    sessionId: session.sessionId,
-    sessionSchema: session.$schema,
-    packageId: session.package.id,
-    packageVersion: session.package.version,
-    projectionDigest: session.package.projectionDigest,
-    protocolId: session.protocol.id,
-    protocolVersion: session.protocol.version,
-    protocolDigest: session.protocol.digest,
-    authorityDigest: sha256Value(session.authority),
-    pendingInputDigest: session.inputs.pendingInputDigest,
-    initializationResultDigest:
-      session.dependencies.outputs.initResolve?.resultDigest ??
-      null,
-    bootstrapClosureDigest:
-      sessionBootstrapClosureDigest(session)
-  };
+  let expectedAdapterScope;
+  try {
+    expectedAdapterScope = rederiveSurveySessionAdapterScope(
+      session,
+      scope.adapterScope
+    );
+  } catch (error) {
+    issues.push(issue(
+      error?.code ?? "SESSION_JOURNAL_ADAPTER_SCOPE_MISMATCH",
+      "/authoring/persistence/identityScope/adapterScope",
+      error instanceof Error ? error.message :
+        "The initialization boundary could not be rederived."
+    ));
+  }
   if (
     binding.id !== "survey-session-journal-identity" ||
     binding.scopeDigest !== journalIdentityScopeDigest(scope)
@@ -333,7 +294,10 @@ function persistenceIssues(session) {
       "The persisted journal identity binding does not bind the complete identity scope."
     ));
   }
-  if (canonicalize(scope.adapterScope) !== canonicalize(expectedAdapterScope)) {
+  if (
+    expectedAdapterScope !== undefined &&
+    canonicalize(scope.adapterScope) !== canonicalize(expectedAdapterScope)
+  ) {
     issues.push(issue(
       "SESSION_JOURNAL_ADAPTER_SCOPE_MISMATCH",
       "/authoring/persistence/identityScope/adapterScope",
@@ -404,6 +368,142 @@ function persistenceIssues(session) {
       "The idempotency outcome view must contain one entry per authoring journal record."
     ));
   }
+  return issues;
+}
+
+const r12AdmittedPhases = new Set([
+  "new",
+  "initializing",
+  "initialized",
+  "round_1_drafting",
+  "round_1_q1_ready"
+]);
+
+const emptyBootstrapDrafts = Object.freeze({
+  round1Instruments: Object.freeze([]),
+  round1Interpretations: Object.freeze([]),
+  round2Instruments: Object.freeze([]),
+  round2Interpretations: Object.freeze([]),
+  composites: Object.freeze([]),
+  current: Object.freeze({})
+});
+
+function r12ExcludedFieldIssues(session) {
+  if (
+    session?.authoring?.persistence?.identityScope?.adapterScope
+      ?.schemaVersion !== "2.0.0" ||
+    session.authoring.persistence.identityScope.adapterScope
+      .genesisBoundary !== "post-bootstrap" ||
+    !r12AdmittedPhases.has(session.phase)
+  ) {
+    return [];
+  }
+  const issues = [];
+  const requireValue = (condition, code, field, reason) => {
+    if (!condition) issues.push(issue(code, field, reason));
+  };
+  requireValue(
+    session.revision === 0,
+    "SESSION_R12_REVISION_NOT_FROZEN",
+    "/revision",
+    "R12 requires the legacy revision projection to remain exactly zero."
+  );
+  requireValue(
+    session.blockReason === null,
+    "SESSION_R12_BLOCK_REASON_NOT_FROZEN",
+    "/blockReason",
+    "R12 requires blockReason to remain null."
+  );
+  for (const [field, value] of [
+    ["/events", session.events],
+    ["/rejections", session.rejections],
+    ["/attempts", session.attempts],
+    ["/candidates", session.candidates],
+    ["/feedback", session.feedback],
+    [
+      "/authoring/runtimeArtifactReferences",
+      session.authoring.runtimeArtifactReferences
+    ]
+  ]) {
+    requireValue(
+      Array.isArray(value) && value.length === 0,
+      "SESSION_R12_ARRAY_NOT_FROZEN",
+      field,
+      "This R12 runtime projection must remain the empty array."
+    );
+  }
+  for (const [field, value] of [
+    ["/idempotency", session.idempotency],
+    ["/responses", session.responses],
+    ["/interpretations", session.interpretations]
+  ]) {
+    requireValue(
+      record(value) && Object.keys(value).length === 0,
+      "SESSION_R12_OBJECT_NOT_FROZEN",
+      field,
+      "This R12 runtime projection must remain the empty object."
+    );
+  }
+  for (const [field, value] of [
+    ["/outbox", session.outbox],
+    ["/ratification", session.ratification],
+    ["/finalization", session.finalization]
+  ]) {
+    requireValue(
+      value === null,
+      "SESSION_R12_NULL_NOT_FROZEN",
+      field,
+      "This R12 runtime projection must remain null."
+    );
+  }
+  requireValue(
+    canonicalize(session.drafts) ===
+      canonicalize(emptyBootstrapDrafts),
+    "SESSION_R12_DRAFTS_NOT_FROZEN",
+    "/drafts",
+    "R12 drafts must equal the declared empty candidate bootstrap object."
+  );
+  try {
+    assertR12InitializationDependencyBoundary(
+      session,
+      Object.fromEntries(
+        [
+          "dependencyPlanCount",
+          "dependencyPlanDigest",
+          "resolverAttemptCount",
+          "resolverAttemptPrefixDigest",
+          "resolverReceiptCount",
+          "resolverReceiptPrefixDigest",
+          "rehydrationOutputCount",
+          "rehydrationOutputPrefixDigest",
+          "initResolveDigest"
+        ].map((field) => [
+          field,
+          session.authoring.persistence.identityScope.adapterScope[field]
+        ])
+      ),
+      {
+        genesisBoundary:
+          session.authoring.persistence.identityScope.adapterScope
+            .genesisBoundary
+      }
+    );
+  } catch (error) {
+    issues.push(issue(
+      error?.code ?? "SESSION_R12_DEPENDENCIES_NOT_FROZEN",
+      "/dependencies",
+      error instanceof Error ? error.message :
+        "R12 dependencies differ from their initialization boundary."
+    ));
+  }
+  requireValue(
+    session.phase === "round_1_q1_ready"
+      ? record(session.pendingProjection)
+      : session.pendingProjection === null,
+    "SESSION_R12_PENDING_PROJECTION_PHASE_INVALID",
+    "/pendingProjection",
+    "pendingProjection is non-null only at round_1_q1_ready."
+  );
   return issues;
 }
 
@@ -1695,7 +1795,8 @@ export function validateSessionSemantics(session) {
     ...persistenceIssues(session),
     ...candidateInputIssues(session),
     ...workspaceReferenceIssues(session),
-    ...journalIssues(session, matrixPairs)
+    ...journalIssues(session, matrixPairs),
+    ...r12ExcludedFieldIssues(session)
   );
   return Object.freeze(issues);
 }

@@ -316,6 +316,7 @@ export function createCandidateSessionSkeleton({
     rejections: [],
     idempotency: {},
     outbox: null,
+    pendingProjection: null,
     attempts: [],
     responses: {},
     drafts: {

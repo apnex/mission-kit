@@ -212,6 +212,14 @@
       "path": "schemas/v2/requirement.schema.json"
     },
     {
+      "id": "urn:mission-kit:survey-v2:schema:director-projection-recipe:v1",
+      "path": "schemas/v2/director-projection-recipe.schema.json"
+    },
+    {
+      "id": "urn:mission-kit:survey-v2:schema:question-presentation:v2",
+      "path": "schemas/v2/question-presentation.schema.json"
+    },
+    {
       "id": "urn:mission-kit:survey-v2:schema:session-state:v2",
       "path": "schemas/v2/session-state.schema.json"
     },
@@ -541,6 +549,10 @@
       "kind": "authored"
     },
     {
+      "path": "schemas/v2/director-projection-recipe.schema.json",
+      "kind": "authored"
+    },
+    {
       "path": "schemas/v2/package.schema.json",
       "kind": "authored"
     },
@@ -550,6 +562,10 @@
     },
     {
       "path": "schemas/v2/projection.schema.json",
+      "kind": "authored"
+    },
+    {
+      "path": "schemas/v2/question-presentation.schema.json",
       "kind": "authored"
     },
     {
@@ -705,6 +721,18 @@
       "kind": "authored"
     },
     {
+      "path": "source/authoring/survey/current-question-projection.definition.json",
+      "kind": "authored"
+    },
+    {
+      "path": "source/authoring/survey/current-question-renderer.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/authoring/survey/director-question-projection.mjs",
+      "kind": "authored"
+    },
+    {
       "path": "source/authoring/survey/generation-record.mjs",
       "kind": "authored"
     },
@@ -738,6 +766,18 @@
     },
     {
       "path": "source/authoring/survey/round-one-frame-projector.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/authoring/survey/round-one-questions-authority.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/authoring/survey/round-one-questions-projector.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "source/authoring/survey/session-bootstrap-boundary.mjs",
       "kind": "authored"
     },
     {
@@ -7427,6 +7467,242 @@
     },
     {
       "path": "tests/survey/surveyctl-v2/round-one-question-frames-process-lifecycle.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/context-closure-dependency.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/context-closure-dependency.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/context-closure-selector-closed.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/authoring/mutation-planning/context-closure-selector-closed.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/profile/profile-at05-authority.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/profile/profile-at05-authority.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/profile/profile-at05-prepublish-rollback.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/profile/profile-at05-prepublish-rollback.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/profile/profile-live-round-one-questions.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/profile/profile-live-round-one-questions.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/round-one-questions/ambient-derived-fields.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/round-one-questions/ambient-derived-fields.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/round-one-questions/ancestry-authority.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/round-one-questions/ancestry-authority.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/round-one-questions/form-geometry.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/round-one-questions/form-geometry.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/round-one-questions/forward-s20-reachability.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/round-one-questions/forward-s20-reachability.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/round-one-questions/incompatibility-graph-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/round-one-questions/incompatibility-graph-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/round-one-questions/instrument-unit-semantics.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/round-one-questions/instrument-unit-semantics.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/round-one-questions/option-delimiter-instruction.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/round-one-questions/option-delimiter-instruction.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/round-one-questions/product-unit.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/round-one-questions/product-unit.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/round-one-questions/projector-closure-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/round-one-questions/projector-closure-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/round-one-questions/projector-least-context.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/round-one-questions/projector-least-context.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/round-one-questions/relationship-derivation.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/round-one-questions/relationship-derivation.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/round-one-questions/semantic-relationship-equivalence.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/round-one-questions/semantic-relationship-equivalence.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/round-one-questions/semantic-relationship-rejection.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/round-one-questions/semantic-relationship-rejection.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/round-one-questions/support.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2-r12/director-projection-authority.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2-r12/director-projection-authority.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2-r12/director-projection-exclusion.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2-r12/director-projection-exclusion.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2-r12/director-projection-recipe.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2-r12/director-projection-recipe.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2-r12/director-question-renderer.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2-r12/director-question-renderer.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2-r12/excluded-field-matrix.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2-r12/excluded-field-matrix.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2-r12/projection-support.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2-r12/session-at05-postimage.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2-r12/session-at05-postimage.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2-r12/session-identity-v4.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2-r12/session-identity-v4.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2-r12/session-postimage-reducer.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2-r12/session-postimage-reducer.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2-r12/session-provenance-support.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2-r12/session-schema-projection-phase.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/session-v2-r12/session-schema-projection-phase.test.mjs",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/surveyctl-v2/round-one-questions-process-lifecycle.test.json",
+      "kind": "authored"
+    },
+    {
+      "path": "tests/survey/surveyctl-v2/round-one-questions-process-lifecycle.test.mjs",
       "kind": "authored"
     }
   ],

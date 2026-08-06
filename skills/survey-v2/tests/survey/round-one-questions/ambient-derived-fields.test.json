@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:round-one-questions:ambient-derived-fields",
+  "obligationId": "O-SV06-02",
+  "requirementIds": [],
+  "invariantIds": ["SV06"],
+  "verification": {
+    "precondition": "A valid semantic Question submission is available.",
+    "stimulus": "Add a producer-authored option-ID field.",
+    "expectedSemanticState": "The closed normalized-value boundary rejects the entire submission.",
+    "expectedEvidenceState": "The test runner reports the literal ambient-derived-field assertion.",
+    "forbiddenMutation": "Producer-authored identity, IDs, cardinality, constraints, references, ordinals, slots, or digests cannot enter products.",
+    "applicability": {"mode": "not-applicable", "transports": [], "adapters": []},
+    "inspectedAuthorities": ["source/authoring/survey/round-one-questions-authority.mjs"]
+  },
+  "behavior": "Round 1 Question authority rejects producer-authored identity and derived fields",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/survey/round-one-questions/ambient-derived-fields.test.mjs",
+  "fixtures": ["tests/survey/round-one-questions/support.mjs"],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

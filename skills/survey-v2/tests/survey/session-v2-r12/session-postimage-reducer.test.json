@@ -1,0 +1,40 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:session-v2-r12:session-postimage-reducer",
+  "obligationId": "O-AS08-38",
+  "requirementIds": [
+    "R12"
+  ],
+  "invariantIds": [
+    "AS08"
+  ],
+  "verification": {
+    "precondition": "The production Survey session adapter owns one locked deterministic postimage reducer over a validated neutral snapshot.",
+    "stimulus": "Apply the reducer repeatedly to detached equivalent inputs, then submit an invalid Q1-ready transition and compare both caller-owned preimages after rejection.",
+    "expectedSemanticState": "Equivalent inputs produce one equivalent unsealed postimage, final sealing remains adapter-owned, and invalid AT05/T03 admission changes no input or persisted state.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: the Survey postimage reducer is deterministic and failure-atomic",
+    "forbiddenMutation": "The reducer must not mutate caller objects, publish before keyed replay and recipe proof, alter unrelated root fields, create delivery state, or seal a failed postimage.",
+    "applicability": {
+      "mode": "specific",
+      "transports": [],
+      "adapters": [
+        "urn:mission-kit:survey-v2:adapter:session"
+      ]
+    },
+    "inspectedAuthorities": [
+      "source/authoring/runtime/store-port.mjs",
+      "source/authoring/survey/director-question-projection.mjs",
+      "source/authoring/survey/session-store-adapter.mjs"
+    ]
+  },
+  "behavior": "the Survey postimage reducer is deterministic and failure-atomic",
+  "evidenceClass": "failure-injection",
+  "runner": "node:test",
+  "executable": "tests/survey/session-v2-r12/session-postimage-reducer.test.mjs",
+  "fixtures": [
+    "tests/survey/session-v2-r12/session-provenance-support.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

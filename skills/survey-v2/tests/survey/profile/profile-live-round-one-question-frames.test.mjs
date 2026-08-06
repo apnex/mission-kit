@@ -175,18 +175,4 @@ test("the live Survey AT04 path atomically commits three grounded QuestionFrames
   const replayRead = await harness.coordinator.read(harness.storeId);
   assert.deepEqual(replayed, result);
   assert.deepEqual(replayRead.snapshot, firstRead.snapshot);
-
-  const unavailable = await harness.coordinator.execute(
-    harness.storeId,
-    { class: "next", inputs: {} },
-  );
-  assert.equal(unavailable.kind, "rejected");
-  assert.equal(
-    unavailable.issues[0].spec.code,
-    "PROFILE_EXECUTION_TRANSITION_UNAVAILABLE",
-  );
-  assert.deepEqual(
-    (await harness.coordinator.read(harness.storeId)).snapshot,
-    firstRead.snapshot,
-  );
 });

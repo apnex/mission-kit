@@ -1,0 +1,38 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:session-v2-r12:session-at05-postimage",
+  "obligationId": "O-AS08-34",
+  "requirementIds": [],
+  "invariantIds": [
+    "AS08"
+  ],
+  "verification": {
+    "precondition": "A production candidate Survey session is initialized and can execute the ratified AT01 through AT05 authoring path.",
+    "stimulus": "Author all four pre-response units through the production engine and read the physically persisted AT05 session root.",
+    "expectedSemanticState": "The round_1_q1_ready root contains exactly one verified current-question recipe for Q1 while outbox is null and attempts and responses remain empty.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: the persisted AT05 postimage contains one authenticated Q1 recipe and no delivery state",
+    "forbiddenMutation": "AT05 must not present a view, create an attempt, write an outbox item, accept a response, or persist a sibling-question recipe.",
+    "applicability": {
+      "mode": "specific",
+      "transports": [],
+      "adapters": [
+        "urn:mission-kit:survey-v2:adapter:filesystem"
+      ]
+    },
+    "inspectedAuthorities": [
+      "source/authoring/survey/director-question-projection.mjs",
+      "source/authoring/survey/session-store-adapter.mjs",
+      "source/executables/runtime/lib/surveyctl-engine.mjs"
+    ]
+  },
+  "behavior": "the persisted AT05 postimage contains one authenticated Q1 recipe and no delivery state",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/survey/session-v2-r12/session-at05-postimage.test.mjs",
+  "fixtures": [
+    "tests/survey/surveyctl-v2/support.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

@@ -102,7 +102,10 @@
       "capture": "option-id-list",
       "rawEvidence": "preserved",
       "duplicateSubmission": "idempotent",
-      "invalidSelection": "reject-without-advance"
+      "invalidSyntax": "reject-without-advance",
+      "unknownOption": "reject-without-advance",
+      "cardinalityViolation": "reject-without-advance",
+      "declaredConstraintViolation": "preserve-as-contradiction"
     }
   }
 }

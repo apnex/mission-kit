@@ -29,7 +29,10 @@
         "slot",
         "questionOrdinal",
         "questionFrameRef",
-        "questionRef"
+        "questionRef",
+        "optionRelationship",
+        "incompatibilities",
+        "designRationale"
       ],
       "properties": {
         "frameSetRef": {
@@ -49,6 +52,31 @@
         },
         "questionRef": {
           "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/QuestionReference"
+        },
+        "optionRelationship": {
+          "enum": [
+            "composable",
+            "exclusive",
+            "mixed"
+          ]
+        },
+        "incompatibilities": {
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 6,
+          "uniqueItems": true,
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "uniqueItems": true,
+            "items": {
+              "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/optionId"
+            }
+          }
+        },
+        "designRationale": {
+          "$ref": "urn:mission-kit:survey:schema:common:v1alpha1#/$defs/rationale"
         }
       }
     }

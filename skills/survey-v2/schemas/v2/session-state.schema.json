@@ -23,6 +23,7 @@
     "rejections",
     "idempotency",
     "outbox",
+    "pendingProjection",
     "attempts",
     "responses",
     "drafts",
@@ -91,6 +92,16 @@
     },
     "outbox": {
       "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/properties/outbox"
+    },
+    "pendingProjection": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "urn:mission-kit:survey-v2:schema:director-projection-recipe:v1"
+        }
+      ]
     },
     "attempts": {
       "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/properties/attempts"
@@ -987,6 +998,32 @@
     },
     {
       "$ref": "urn:mission-kit:survey-v2:schema:session-state:v1#/allOf/1"
+    },
+    {
+      "if": {
+        "properties": {
+          "phase": {
+            "const": "round_1_q1_ready"
+          }
+        },
+        "required": [
+          "phase"
+        ]
+      },
+      "then": {
+        "properties": {
+          "pendingProjection": {
+            "$ref": "urn:mission-kit:survey-v2:schema:director-projection-recipe:v1"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "pendingProjection": {
+            "type": "null"
+          }
+        }
+      }
     }
   ],
   "$defs": {
@@ -1351,7 +1388,15 @@
         "protocolDigest",
         "authorityDigest",
         "pendingInputDigest",
-        "initializationResultDigest",
+        "dependencyPlanCount",
+        "dependencyPlanDigest",
+        "resolverAttemptCount",
+        "resolverAttemptPrefixDigest",
+        "resolverReceiptCount",
+        "resolverReceiptPrefixDigest",
+        "rehydrationOutputCount",
+        "rehydrationOutputPrefixDigest",
+        "initResolveDigest",
         "bootstrapClosureDigest"
       ],
       "properties": {
@@ -1359,7 +1404,7 @@
           "const": "survey-session"
         },
         "schemaVersion": {
-          "const": "1.0.0"
+          "const": "2.0.0"
         },
         "genesisBoundary": {
           "enum": [
@@ -1399,7 +1444,35 @@
         "pendingInputDigest": {
           "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/digest"
         },
-        "initializationResultDigest": {
+        "dependencyPlanCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "dependencyPlanDigest": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/digest"
+        },
+        "resolverAttemptCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "resolverAttemptPrefixDigest": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/digest"
+        },
+        "resolverReceiptCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "resolverReceiptPrefixDigest": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/digest"
+        },
+        "rehydrationOutputCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "rehydrationOutputPrefixDigest": {
+          "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/digest"
+        },
+        "initResolveDigest": {
           "anyOf": [
             {
               "$ref": "urn:mission-kit:survey-v2:schema:common:v2#/$defs/digest"

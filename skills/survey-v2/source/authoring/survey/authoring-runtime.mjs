@@ -59,6 +59,12 @@ const schemaByKind = Object.freeze({
     "urn:mission-kit:survey:schema:generation-record:v1alpha1",
   QuestionFrameSet:
     "urn:mission-kit:survey:schema:question-frame-set:v1alpha1",
+  Question:
+    "urn:mission-kit:schemas:question:v1alpha1",
+  SurveyQuestionBinding:
+    "urn:mission-kit:survey:schema:survey-question-binding:v1alpha1",
+  RoundInstrument:
+    "urn:mission-kit:survey:schema:round-instrument:v1alpha1",
   ProjectionArtifact:
     "urn:mission-kit:authoring:schema:projection-artifact:v1alpha1",
   SourceSnapshot:
@@ -127,6 +133,89 @@ function assignmentBindings(runtime, pending) {
     projectionBinding,
     formDefinition,
   };
+}
+
+function taskExternalCouplingAuthority(runtime, pending) {
+  const operation = pending?.request?.spec?.operation;
+  if (operation?.class !== "task-submission") return [];
+  const transitionId = operation.task?.transitionId;
+  const matches = runtime.profile.spec.transitionBindings.filter(
+    (binding) => binding.transitionId === transitionId,
+  );
+  if (matches.length !== 1) {
+    const error = new Error(
+      "pending Assignment has no exact transition binding",
+    );
+    error.code = "SURVEY_PENDING_TRANSITION_BINDING_INVALID";
+    throw error;
+  }
+  return structuredClone(
+    matches[0].mutationFootprint.externalCouplings ?? [],
+  );
+}
+
+async function taskExternalCouplings(
+  runtime,
+  storeId,
+  pending,
+) {
+  const authority = taskExternalCouplingAuthority(
+    runtime,
+    pending,
+  );
+  if (authority.length === 0) return [];
+  const { snapshot } = await runtime.coordinator.read(storeId);
+  const journalOrdinal = snapshot.journal.length + 1;
+  return authority.map(({ machineId, transitionId }) => {
+    const heads = snapshot.machineHeads.filter(
+      (head) => head.machineId === machineId,
+    );
+    const protocols = runtime.profile.spec.machineBindings
+      .filter((binding) => binding.machineId === machineId)
+      .map((binding) => runtime.resources.filter(
+        (resource) =>
+          resource.kind === "AuthoringProtocol" &&
+          resource.metadata.name === binding.protocol.id,
+      ))
+      .flat();
+    const transitions = protocols.flatMap(
+      (protocol) => protocol.spec.transitions.filter(
+        (transition) => transition.id === transitionId,
+      ),
+    );
+    if (heads.length !== 1 || transitions.length !== 1) {
+      const error = new Error(
+        "pending Assignment coupling does not resolve one external machine edge",
+      );
+      error.code = "SURVEY_PENDING_EXTERNAL_COUPLING_INVALID";
+      throw error;
+    }
+    const head = heads[0];
+    const transition = transitions[0];
+    const admittedSources = transition.source.mode === "single"
+      ? [transition.source.stateId]
+      : transition.source.stateIds;
+    if (!admittedSources.includes(head.state)) {
+      const error = new Error(
+        "pending Assignment coupling source differs from the current external machine head",
+      );
+      error.code = "SURVEY_PENDING_EXTERNAL_COUPLING_STALE";
+      throw error;
+    }
+    return {
+      machineId,
+      transitionId,
+      fromState: head.state,
+      eventId: transition.eventId,
+      toState: transition.toState,
+      beforeStateDigest: head.stateDigest,
+      afterStateDigest: runtime.identity.machineStateDigest({
+        machineId,
+        state: transition.toState,
+        journalOrdinal,
+      }),
+    };
+  });
 }
 
 /**
@@ -269,11 +358,16 @@ export async function submitSurveyAuthoringTask({
   pending,
   submission,
 }) {
+  const externalCouplings = await taskExternalCouplings(
+    runtime,
+    storeId,
+    pending,
+  );
   return runtime.coordinator.execute(storeId, {
     class: "submit",
     request: pending.request,
     assignment: pending.assignment,
     submission,
-    externalCouplings: [],
+    externalCouplings,
   });
 }

@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:round-one-questions:option-delimiter-instruction",
+  "obligationId": "O-SV06-04",
+  "requirementIds": [],
+  "invariantIds": ["SV06"],
+  "verification": {
+    "precondition": "An option contains more than one exact label-meaning delimiter and its Question has no instruction.",
+    "stimulus": "Build the Question.",
+    "expectedSemanticState": "Only the first delimiter splits the option and the absent optional instruction remains absent.",
+    "expectedEvidenceState": "The test runner reports the literal delimiter and instruction assertion.",
+    "forbiddenMutation": "Later delimiters are not discarded and no instruction is synthesized.",
+    "applicability": {"mode": "not-applicable", "transports": [], "adapters": []},
+    "inspectedAuthorities": ["source/authoring/survey/round-one-questions-authority.mjs"]
+  },
+  "behavior": "Option parsing splits only the first exact delimiter and optional instruction remains absent",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/survey/round-one-questions/option-delimiter-instruction.test.mjs",
+  "fixtures": ["tests/survey/round-one-questions/support.mjs"],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

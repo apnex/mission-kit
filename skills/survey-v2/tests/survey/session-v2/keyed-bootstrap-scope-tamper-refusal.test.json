@@ -11,9 +11,9 @@
     "AS08"
   ],
   "verification": {
-    "precondition": "A valid candidate session root has an immutable bootstrap closure, a public scope digest, and an externally keyed identity-binding digest.",
-    "stimulus": "Change one bootstrap dependency receipt and recompute its closure digest, public scope digest, and root seal without the external key.",
-    "expectedSemanticState": "Public structural and derived-scope checks accept the internally consistent reseal, but authenticated reconstruction rejects with SURVEY_SESSION_IDENTITY_BINDING_MISMATCH.",
+    "precondition": "A valid candidate session root has an immutable v4 initialization-prefix boundary, public scope digest, and externally keyed identity-binding digest.",
+    "stimulus": "Change one bootstrap dependency receipt and attempt to recompute its closure digest and public root seal without the external key.",
+    "expectedSemanticState": "The immutable v4 prefix boundary rejects public closure rederivation and the resealed root with SURVEY_SESSION_INITIALIZATION_BOUNDARY_MISMATCH before keyed reconstruction.",
     "expectedEvidenceState": "The test runner reports the literal assertion: an attacker cannot authorize a changed bootstrap by recomputing only public digests",
     "forbiddenMutation": "Publicly computable digests must not substitute for the external keyed binding, invoke a writer, create a lock, or change the attacker-supplied bytes during refusal.",
     "applicability": {

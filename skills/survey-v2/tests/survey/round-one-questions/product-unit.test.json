@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:round-one-questions:product-unit",
+  "obligationId": "O-SV05-06",
+  "requirementIds": [],
+  "invariantIds": ["SV05"],
+  "verification": {
+    "precondition": "The exact seven-layer closure and authenticated Round-1 ancestry are available.",
+    "stimulus": "Build the complete Round-1 Question product unit twice.",
+    "expectedSemanticState": "Three Questions, three bindings, and one instrument are frozen, deterministic, ordered, and declare exactly twenty-two canonical edges.",
+    "expectedEvidenceState": "The test runner reports the literal seven-product and twenty-two-edge assertion.",
+    "forbiddenMutation": "Inputs and workspace state remain byte-equivalent and no partial product is published.",
+    "applicability": {"mode": "not-applicable", "transports": [], "adapters": []},
+    "inspectedAuthorities": ["source/authoring/survey/round-one-questions-authority.mjs"]
+  },
+  "behavior": "Round 1 Question authority deterministically creates the exact frozen seven-product and twenty-two-edge unit",
+  "evidenceClass": "positive",
+  "runner": "node:test",
+  "executable": "tests/survey/round-one-questions/product-unit.test.mjs",
+  "fixtures": ["tests/survey/round-one-questions/support.mjs"],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

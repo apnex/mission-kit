@@ -8,10 +8,10 @@
     "AS02"
   ],
   "verification": {
-    "precondition": "The canonical Survey protocol, neutral authoring schemas, R11 profile authority builder, and digest-pinned executable registry are available as package-owned inputs.",
+    "precondition": "The canonical Survey protocol, neutral authoring schemas, R12 profile authority builder, and digest-pinned executable registry are available as package-owned inputs.",
     "stimulus": "Execute tests/survey/profile/profile-authority-closure.test.mjs with node:test.",
-    "expectedSemanticState": "The generated profile is a complete canonical projection of all Survey tasks, guards, transitions, schemas, forms, exact AT04 footprint, external coupling authority, and cognitive sidecar declarations while execution remains closed to AT01 through AT04.",
-    "expectedEvidenceState": "The test runner reports the literal assertion: the Survey R11 profile is total over canonical authority and executable only through AT04",
+    "expectedSemanticState": "The generated profile is a complete canonical projection of all Survey tasks, guards, transitions, schemas, forms, AT02 through AT05 footprints, external coupling authority, and cognitive sidecar declarations while execution remains closed to AT01 through AT05.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: the Survey R12 profile is total over canonical authority and executable only through AT05",
     "forbiddenMutation": "The profile must not omit canonical edges, widen execution closure, hand-author executable identities, attach cognitive sidecars to runtime events, or alter the canonical protocol.",
     "applicability": {
       "mode": "not-applicable",
@@ -30,7 +30,7 @@
       "source/protocol/survey-v2.protocol.json"
     ]
   },
-  "behavior": "the Survey R11 profile is total over canonical authority and executable only through AT04",
+  "behavior": "the Survey R12 profile is total over canonical authority and executable only through AT05",
   "evidenceClass": "conformance",
   "runner": "node:test",
   "executable": "tests/survey/profile/profile-authority-closure.test.mjs",

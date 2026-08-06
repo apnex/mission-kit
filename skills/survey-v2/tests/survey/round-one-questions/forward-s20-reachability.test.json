@@ -1,0 +1,27 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:round-one-questions:forward-s20-reachability",
+  "obligationId": "O-AS11-27",
+  "requirementIds": [],
+  "invariantIds": ["AS11"],
+  "verification": {
+    "precondition": "The exact frozen pre-R12 ancestry and complete seven-product Round-1 instrument unit are available.",
+    "stimulus": "Resolve the unit's exact twenty-two dependency edges and traverse the complete dependency graph in reverse from each future S20 ancestor unit.",
+    "expectedSemanticState": "The QuestionFrameSet, Round-frame, and Survey-frame units each reach all seven instrument heads; every new edge is owned by the instrument unit; and RoundInstrument invalidation identifies and clears the sole handoff.",
+    "expectedEvidenceState": "The test runner reports the literal graph reachability, edge confinement, forbidden-edge absence, and pure handoff-partition assertions.",
+    "forbiddenMutation": "No revision is executed or claimed, no production state is mutated, and no extra edge or traversal relation is admitted.",
+    "applicability": {"mode": "not-applicable", "transports": [], "adapters": []},
+    "inspectedAuthorities": [
+      "source/authoring/survey/round-one-questions-authority.mjs",
+      "tests/survey/round-one-questions/support.mjs"
+    ]
+  },
+  "behavior": "R12 dependency graph proves forward S20 reverse reachability without claiming revision execution",
+  "evidenceClass": "positive",
+  "runner": "node:test",
+  "executable": "tests/survey/round-one-questions/forward-s20-reachability.test.mjs",
+  "fixtures": ["tests/survey/round-one-questions/support.mjs"],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

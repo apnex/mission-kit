@@ -27,7 +27,7 @@ import {
 } from "./support.mjs";
 
 test(
-  "the Survey R11 profile is total over canonical authority and executable only through AT04",
+  "the Survey R12 profile is total over canonical authority and executable only through AT05",
   async () => {
     const scenario = await loadProfileScenario();
     const {
@@ -87,8 +87,8 @@ test(
       protocol.spec.transitions.map((transition) => transition.id),
     );
     assert.deepEqual(profile.spec.executionClosure, {
-      id: "r11-round-one-question-frame-set",
-      transitionIds: ["AT01", "AT02", "AT03", "AT04"],
+      id: "r12-round-one-instrument",
+      transitionIds: ["AT01", "AT02", "AT03", "AT04", "AT05"],
       revisionPlanIds: [],
     });
     assert.deepEqual(profile.spec.revisionUnits, []);

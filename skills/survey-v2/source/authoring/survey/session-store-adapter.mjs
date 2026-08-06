@@ -42,6 +42,10 @@ import {
   SURVEY_SESSION_AUTHORING_MACHINE_ID,
   reconstructSurveySessionJournalIdentity,
 } from "./session-journal-identity.mjs";
+import {
+  deriveCurrentQuestionProjectionRecipeFromSession,
+  verifyCurrentQuestionProjectionRecipeFromSession,
+} from "./director-question-projection.mjs";
 
 const sessionFileName = "session.json";
 const requiredMachineIds = Object.freeze([
@@ -257,7 +261,10 @@ export function verifySurveySessionSnapshotDigest(session) {
 
 function validateSurveySessionPublicRoot(
   sessionValue,
-  { selector },
+  {
+    selector,
+    verifyRootSeal = true,
+  },
 ) {
   assertCandidateSelector(selector);
   const session = detachCanonicalStoreValue(
@@ -278,7 +285,9 @@ function validateSurveySessionPublicRoot(
       { errors: structure.errors },
     );
   }
-  verifySurveySessionSnapshotDigest(session);
+  if (verifyRootSeal) {
+    verifySurveySessionSnapshotDigest(session);
+  }
   assertSessionSemantics(session);
   return session;
 }
@@ -289,7 +298,7 @@ function validateSurveySessionPublicRoot(
  * external-key identity reconstruction, neutral snapshot validation, and K13
  * authenticated replay.
  */
-export function validateSurveySessionStoreRoot(
+function validateSurveySessionStoreRootCore(
   sessionValue,
   {
     selector,
@@ -297,6 +306,7 @@ export function validateSurveySessionStoreRoot(
     identity,
     authoringMachineId =
       SURVEY_SESSION_AUTHORING_MACHINE_ID,
+    verifyRootSeal = true,
   },
 ) {
   assertCandidateSelector(selector);
@@ -304,7 +314,7 @@ export function validateSurveySessionStoreRoot(
     assertCanonicalAuthoringMachineId(authoringMachineId);
   const session = validateSurveySessionPublicRoot(
     sessionValue,
-    { selector },
+    { selector, verifyRootSeal },
   );
   const runtimeIdentity = resolveRuntimeIdentity(
     session,
@@ -324,12 +334,26 @@ export function validateSurveySessionStoreRoot(
     authoringMachineId: machineId,
     identity: runtimeIdentity,
   });
+  verifyCurrentQuestionProjectionRecipeFromSession(session);
   return Object.freeze({
     session,
     snapshot,
     identity: runtimeIdentity,
     replay,
   });
+}
+
+export function validateSurveySessionStoreRoot(
+  sessionValue,
+  options,
+) {
+  return validateSurveySessionStoreRootCore(
+    sessionValue,
+    {
+      ...options,
+      verifyRootSeal: true,
+    },
+  );
 }
 
 async function readCandidateRootValue({
@@ -446,7 +470,73 @@ export function sealSurveySessionRoot(session) {
   );
 }
 
-function synchronizedSessionPostImage(
+function assertR12QuestionReadyPostImage(
+  currentSession,
+  nextSnapshot,
+) {
+  const record = nextSnapshot.journal.at(-1);
+  const exactEdges = [
+    {
+      machineId: "authoring",
+      transitionId: "AT05",
+      fromState: "round_1_questions_required",
+      toState: "waiting_for_round_1_responses",
+    },
+    {
+      machineId: "phase",
+      transitionId: "T03",
+      fromState: "round_1_drafting",
+      toState: "round_1_q1_ready",
+    },
+  ];
+  const observedEdges = record?.machineEdges?.map((edge) => ({
+    machineId: edge.machineId,
+    transitionId: edge.transitionId,
+    fromState: edge.fromState,
+    toState: edge.toState,
+  }));
+  if (
+    currentSession.phase !== "round_1_drafting" ||
+    nextSnapshot.commitRevision !==
+      currentSession.commitRevision + 1 ||
+    nextSnapshot.journal.length !==
+      currentSession.journal.length + 1 ||
+    record?.commitKind !== "transition" ||
+    !sameValue(observedEdges, exactEdges)
+  ) {
+    fail(
+      "SURVEY_SESSION_R12_POSTIMAGE_INVALID",
+      "round_1_q1_ready requires one atomic AT05 then T03 transition record",
+    );
+  }
+  const handoffs =
+    nextSnapshot.workspace?.spec?.handoffProducts;
+  if (
+    !Array.isArray(handoffs) ||
+    handoffs.length !== 1 ||
+    handoffs[0]?.slot !== "round-1-instrument" ||
+    !sameValue(
+      record?.workspaceEffect?.handoffSlots,
+      ["round-1-instrument"],
+    ) ||
+    !sameValue(
+      record?.workspaceEffect?.handoffProducts?.after,
+      handoffs,
+    )
+  ) {
+    fail(
+      "SURVEY_SESSION_R12_HANDOFF_INVALID",
+      "round_1_q1_ready requires exactly one round-1-instrument handoff",
+    );
+  }
+}
+
+/**
+ * Assemble the deterministic Survey-specific post-image without sealing or
+ * mutating either input. The locked writer proves this value first and only
+ * then calculates the final snapshotDigest.
+ */
+export function synchronizeSurveySessionPostImage(
   currentSession,
   nextSnapshot,
 ) {
@@ -479,7 +569,21 @@ function synchronizedSessionPostImage(
   };
   root.phase = heads.get("phase").state;
   root.runtimeStatus = heads.get("runtime").state;
-  return sealSurveySessionRoot(root);
+  if (root.phase === "round_1_q1_ready") {
+    assertR12QuestionReadyPostImage(
+      currentSession,
+      nextSnapshot,
+    );
+    root.pendingProjection =
+      deriveCurrentQuestionProjectionRecipeFromSession(root);
+  } else {
+    root.pendingProjection = null;
+  }
+  verifyCurrentQuestionProjectionRecipeFromSession(root);
+  return detachCanonicalStoreValue(
+    root,
+    "unsealed Survey session post-image",
+  );
 }
 
 function assertStoreId(storeId, sessionId) {
@@ -562,13 +666,25 @@ function createWriter({
       request.next,
       { authoringMachineId },
     );
-    const root = synchronizedSessionPostImage(
+    const postImage = synchronizeSurveySessionPostImage(
       current.session,
       next,
     );
 
-    // Re-run the entire read-side proof against the assembled root before
-    // atomic publication. No invalid partial state can reach session.json.
+    // Prove the complete post-image before calculating its final root seal.
+    // The existing preimage seal remains only as a structurally valid
+    // placeholder and is never published for the new value.
+    validateSurveySessionStoreRootCore(postImage, {
+      selector,
+      authenticationKey,
+      identity,
+      authoringMachineId,
+      verifyRootSeal: false,
+    });
+    const root = sealSurveySessionRoot(postImage);
+
+    // Re-run the complete read boundary over the finally sealed value. No
+    // failed proof or provisional root can reach session.json.
     const prepared = validateSurveySessionStoreRoot(root, {
       selector,
       authenticationKey,

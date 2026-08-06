@@ -444,6 +444,186 @@ function validateQuestionFrameSet(resource, resolver) {
   return issues;
 }
 
+function expectedChoiceOptionIds(count) {
+  return ["a", "b", "c", "d"].slice(0, count);
+}
+
+function canonicalPairOrder(left, right, positions) {
+  return (
+    (positions.get(left?.[0]) ?? Number.MAX_SAFE_INTEGER) -
+      (positions.get(right?.[0]) ?? Number.MAX_SAFE_INTEGER) ||
+    (positions.get(left?.[1]) ?? Number.MAX_SAFE_INTEGER) -
+      (positions.get(right?.[1]) ?? Number.MAX_SAFE_INTEGER)
+  );
+}
+
+function validateBindingRelationship(spec, question) {
+  const issues = [];
+  const response = object(question?.spec?.response);
+  const options = array(response.options);
+  const actualOptionIds = options.map((option) => option?.id);
+  const expectedOptionIds = expectedChoiceOptionIds(options.length);
+  const positions = new Map(
+    actualOptionIds.map((optionId, index) => [optionId, index])
+  );
+  const incompatibilities = array(spec.incompatibilities);
+
+  if (response.type !== "Choice") {
+    issues.push(issue(
+      "BINDING_QUESTION_RESPONSE_TYPE",
+      "/spec/questionRef",
+      "Survey Question binding must resolve to one Choice Question."
+    ));
+    return issues;
+  }
+  if (
+    options.length < 3 ||
+    options.length > 4 ||
+    actualOptionIds.length !== expectedOptionIds.length ||
+    actualOptionIds.some((optionId, index) =>
+      optionId !== expectedOptionIds[index]
+    )
+  ) {
+    issues.push(issue(
+      "BINDING_OPTION_ID_DERIVATION_MISMATCH",
+      "/spec/questionRef",
+      "Referenced Question options must be exactly a, b, c, and optionally d in authored order."
+    ));
+  }
+  if (
+    response.cardinality?.minimum !== 1 ||
+    response.cardinality?.maximum !== options.length
+  ) {
+    issues.push(issue(
+      "BINDING_CARDINALITY_DERIVATION_MISMATCH",
+      "/spec/questionRef",
+      "Referenced Question cardinality must be exactly one through its option count."
+    ));
+  }
+
+  const canonicalPairs = [...incompatibilities].sort((left, right) =>
+    canonicalPairOrder(left, right, positions)
+  );
+  const seen = new Set();
+  incompatibilities.forEach((pair, index) => {
+    if (
+      !Array.isArray(pair) ||
+      pair.length !== 2 ||
+      !positions.has(pair[0]) ||
+      !positions.has(pair[1]) ||
+      pair[0] === pair[1]
+    ) {
+      issues.push(issue(
+        "BINDING_INCOMPATIBILITY_UNKNOWN",
+        `/spec/incompatibilities/${index}`,
+        "Every incompatibility must contain two distinct known Question option IDs."
+      ));
+      return;
+    }
+    if (positions.get(pair[0]) >= positions.get(pair[1])) {
+      issues.push(issue(
+        "BINDING_INCOMPATIBILITY_PAIR_ORDER",
+        `/spec/incompatibilities/${index}`,
+        "Every incompatibility pair must follow Question option order."
+      ));
+    }
+    const key = `${pair[0]}\u0000${pair[1]}`;
+    if (seen.has(key)) {
+      issues.push(issue(
+        "BINDING_INCOMPATIBILITY_DUPLICATE",
+        `/spec/incompatibilities/${index}`,
+        "Equivalent incompatibility pairs are forbidden."
+      ));
+    }
+    seen.add(key);
+  });
+  if (
+    canonicalPairs.length === incompatibilities.length &&
+    canonicalPairs.some((pair, index) =>
+      !Array.isArray(pair) ||
+      !Array.isArray(incompatibilities[index]) ||
+      pair[0] !== incompatibilities[index][0] ||
+      pair[1] !== incompatibilities[index][1]
+    )
+  ) {
+    issues.push(issue(
+      "BINDING_INCOMPATIBILITY_LIST_ORDER",
+      "/spec/incompatibilities",
+      "Incompatibility pairs must be sorted in canonical Question option order."
+    ));
+  }
+
+  const completeCount = (options.length * (options.length - 1)) / 2;
+  let expectedConstraints = [];
+  if (spec.optionRelationship === "composable") {
+    if (incompatibilities.length !== 0) {
+      issues.push(issue(
+        "BINDING_COMPOSABLE_GRAPH_NONEMPTY",
+        "/spec/incompatibilities",
+        "Composable option relationships require an empty incompatibility graph."
+      ));
+    }
+  } else if (spec.optionRelationship === "exclusive") {
+    if (incompatibilities.length !== 0) {
+      issues.push(issue(
+        "BINDING_EXCLUSIVE_GRAPH_AUTHORED",
+        "/spec/incompatibilities",
+        "Exclusive option relationships derive complete exclusivity and require no authored pairs."
+      ));
+    }
+    expectedConstraints = [{
+      type: "MutuallyExclusive",
+      optionIds: actualOptionIds
+    }];
+  } else if (spec.optionRelationship === "mixed") {
+    if (
+      incompatibilities.length === 0 ||
+      incompatibilities.length === completeCount
+    ) {
+      issues.push(issue(
+        "BINDING_MIXED_GRAPH_CLASSIFICATION",
+        "/spec/incompatibilities",
+        "Mixed option relationships require a nonempty but incomplete incompatibility graph."
+      ));
+    }
+    expectedConstraints = incompatibilities.map((pair) => ({
+      type: "MutuallyExclusive",
+      optionIds: pair
+    }));
+  } else {
+    issues.push(issue(
+      "BINDING_OPTION_RELATIONSHIP_UNKNOWN",
+      "/spec/optionRelationship",
+      "Option relationship must be composable, exclusive, or mixed."
+    ));
+  }
+  if (
+    canonicalize(array(response.constraints)) !==
+      canonicalize(expectedConstraints)
+  ) {
+    issues.push(issue(
+      "BINDING_QUESTION_CONSTRAINT_DIVERGENCE",
+      "/spec/questionRef",
+      "Referenced Question constraints must exactly encode the binding relationship graph."
+    ));
+  }
+  return issues;
+}
+
+/**
+ * Validate the semantic relationship that is owned jointly by one
+ * SurveyQuestionBinding and its exact sibling Question. The complete resource
+ * graph validator reuses this same authority after reference resolution; AT05
+ * uses the focused form while its seven products are still an uncommitted
+ * instrument unit.
+ */
+export function validateSurveyQuestionBindingQuestionSemantics(
+  binding,
+  question
+) {
+  return validateBindingRelationship(object(binding?.spec), question);
+}
+
 function validateSurveyQuestionBinding(resource, resolver) {
   const issues = [];
   const spec = object(resource.spec);
@@ -487,6 +667,12 @@ function validateSurveyQuestionBinding(resource, resolver) {
       frameSetResolution.resource.spec?.roundRef
     ));
   }
+  const questionResolution = resolveReference(
+    spec.questionRef,
+    "/spec/questionRef",
+    resolver,
+    "Question"
+  );
   issues.push(
     ...resolveReference(
       spec.roundRef,
@@ -500,13 +686,14 @@ function validateSurveyQuestionBinding(resource, resolver) {
       resolver,
       "ContextFrame"
     ).issues,
-    ...resolveReference(
-      spec.questionRef,
-      "/spec/questionRef",
-      resolver,
-      "Question"
-    ).issues
+    ...questionResolution.issues
   );
+  if (questionResolution.resource) {
+    issues.push(...validateSurveyQuestionBindingQuestionSemantics(
+      resource,
+      questionResolution.resource
+    ));
+  }
   return issues;
 }
 
@@ -514,6 +701,25 @@ function validateRoundInstrument(resource, resolver) {
   const issues = [];
   const spec = object(resource.spec);
   const units = array(spec.units);
+  const expectedResponsePolicy = {
+    capture: "option-id-list",
+    rawEvidence: "preserved",
+    duplicateSubmission: "idempotent",
+    invalidSyntax: "reject-without-advance",
+    unknownOption: "reject-without-advance",
+    cardinalityViolation: "reject-without-advance",
+    declaredConstraintViolation: "preserve-as-contradiction"
+  };
+  if (
+    canonicalize(spec.responsePolicy) !==
+      canonicalize(expectedResponsePolicy)
+  ) {
+    issues.push(issue(
+      "INSTRUMENT_RESPONSE_POLICY_MISMATCH",
+      "/spec/responsePolicy",
+      "RoundInstrument must preserve the exact split syntax, option, cardinality, and declared-constraint policy."
+    ));
+  }
   issues.push(
     ...orderedRoundUnitIssues(
       units,

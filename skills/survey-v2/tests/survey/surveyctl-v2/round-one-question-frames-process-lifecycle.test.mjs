@@ -43,7 +43,7 @@ async function pending(harness) {
   };
 }
 
-test("separate surveyctl processes cold-resume through AT04 and refuse AT05 without a write", async (context) => {
+test("separate surveyctl processes cold-resume through AT04 and reproduce the issued AT05 assignment", async (context) => {
   const harness = await createSurveyctlHarness(context, {
     slug: "round-one-question-frames-process",
   });
@@ -114,15 +114,21 @@ test("separate surveyctl processes cold-resume through AT04 and refuse AT05 with
   ));
   assert.equal(validation.status, "valid");
   assert.equal(validation.commitRevision, 7);
-  const beforeUnavailable = await readFile(harness.sessionFile);
-  const unavailable = await runSurveyctlProcess(
+  const firstQuestionNext = await runSurveyctlProcess(
     args(harness, "next"),
   );
-  assert.equal(unavailable.code, 1);
-  assert.equal(unavailable.stdout.byteLength, 0);
-  assert.match(
-    unavailable.stderr.toString("utf8"),
-    /PROFILE_EXECUTION_TRANSITION_UNAVAILABLE/u,
+  const firstQuestionOutput = parse(firstQuestionNext);
+  assert.equal(
+    firstQuestionOutput.taskId,
+    "author-round-1-questions",
   );
-  assert.deepEqual(await readFile(harness.sessionFile), beforeUnavailable);
+  const afterQuestionIssue = await readFile(harness.sessionFile);
+  const repeatedQuestionNext = await runSurveyctlProcess(
+    args(harness, "next"),
+  );
+  assert.deepEqual(repeatedQuestionNext.stdout, firstQuestionNext.stdout);
+  assert.deepEqual(
+    await readFile(harness.sessionFile),
+    afterQuestionIssue,
+  );
 });

@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:round-one-questions:incompatibility-graph-rejection",
+  "obligationId": "O-SV06-03",
+  "requirementIds": [],
+  "invariantIds": ["SV06"],
+  "verification": {
+    "precondition": "A valid complete Round-1 Question vector is available.",
+    "stimulus": "Independently introduce each malformed, reversed, unknown, duplicate, reordered, empty-mixed, complete-mixed, or relationship-divergent graph.",
+    "expectedSemanticState": "Every invalid graph fails closed with a typed domain error before products exist.",
+    "expectedEvidenceState": "The test runner reports every literal graph-rejection vector.",
+    "forbiddenMutation": "No invalid binding or Question constraint is admitted.",
+    "applicability": {"mode": "not-applicable", "transports": [], "adapters": []},
+    "inspectedAuthorities": ["source/authoring/survey/round-one-questions-authority.mjs"]
+  },
+  "behavior": "Round 1 Question authority rejects every noncanonical incompatibility graph",
+  "evidenceClass": "negative",
+  "runner": "node:test",
+  "executable": "tests/survey/round-one-questions/incompatibility-graph-rejection.test.mjs",
+  "fixtures": ["tests/survey/round-one-questions/support.mjs"],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

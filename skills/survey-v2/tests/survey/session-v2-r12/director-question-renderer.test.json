@@ -1,0 +1,38 @@
+{
+  "$schema": "urn:mission-kit:survey-v2:schema:test-evidence:v2",
+  "schemaVersion": "2.0.0",
+  "id": "urn:mission-kit:survey-v2:test:survey:session-v2-r12:director-question-renderer",
+  "obligationId": "O-SV06-12",
+  "requirementIds": [
+    "R12"
+  ],
+  "invariantIds": [
+    "SV06"
+  ],
+  "verification": {
+    "precondition": "A self-consistent Q1 recipe is pinned to the current definition, renderer closure, and question-presentation schema authority.",
+    "stimulus": "Render the closed recipe through the dormant pure renderer and validate the resulting semantic model against the sovereign output schema.",
+    "expectedSemanticState": "The result is exactly one schema-valid Q1 presentation containing three context synopsis values, the selected prompt and options, and deterministic response guidance.",
+    "expectedEvidenceState": "The test runner reports the literal assertion: the dormant current-question renderer is closed, schema-valid, and tamper-evident",
+    "forbiddenMutation": "Rendering must not resolve workspace state, access files or networks, emit bytes, create an attempt, preserve excluded fields, or accept a stale recipe digest.",
+    "applicability": {
+      "mode": "not-applicable",
+      "transports": [],
+      "adapters": []
+    },
+    "inspectedAuthorities": [
+      "schemas/v2/question-presentation.schema.json",
+      "source/authoring/survey/current-question-renderer.mjs",
+      "source/authoring/survey/director-question-projection.mjs"
+    ]
+  },
+  "behavior": "the dormant current-question renderer is closed, schema-valid, and tamper-evident",
+  "evidenceClass": "conformance",
+  "runner": "node:test",
+  "executable": "tests/survey/session-v2-r12/director-question-renderer.test.mjs",
+  "fixtures": [
+    "tests/survey/session-v2-r12/projection-support.mjs"
+  ],
+  "prerequisites": [],
+  "resultSchema": "urn:mission-kit:survey-v2:test-result:v2"
+}

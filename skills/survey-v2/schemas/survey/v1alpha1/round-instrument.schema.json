@@ -98,7 +98,10 @@
         "capture",
         "rawEvidence",
         "duplicateSubmission",
-        "invalidSelection"
+        "invalidSyntax",
+        "unknownOption",
+        "cardinalityViolation",
+        "declaredConstraintViolation"
       ],
       "properties": {
         "capture": {
@@ -110,8 +113,17 @@
         "duplicateSubmission": {
           "const": "idempotent"
         },
-        "invalidSelection": {
+        "invalidSyntax": {
           "const": "reject-without-advance"
+        },
+        "unknownOption": {
+          "const": "reject-without-advance"
+        },
+        "cardinalityViolation": {
+          "const": "reject-without-advance"
+        },
+        "declaredConstraintViolation": {
+          "const": "preserve-as-contradiction"
         }
       }
     }

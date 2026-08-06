@@ -5,29 +5,24 @@ import {
   writeFile,
 } from "node:fs/promises";
 import {
-  journalIdentityScopeDigest,
-} from "../../../source/authoring/runtime/journal-replay.mjs";
-import {
   sessionBootstrapClosureDigest,
   validateSessionSemantics,
 } from "../../../source/authoring/survey/session-semantics.mjs";
 import {
   readCandidateSessionPublicRoot,
-  readVerifiedCandidateSession,
   sealSurveySessionRoot,
 } from "../../../source/authoring/survey/session-store-adapter.mjs";
 import {
-  authenticationKey,
   candidateSelector,
   createPersistentCandidate,
   readSessionBytes,
   sessionBytes,
 } from "./support.mjs";
 
-function isKeyedBindingMismatch(error) {
+function isInitializationBoundaryMismatch(error) {
   assert.equal(
     error?.code,
-    "SURVEY_SESSION_IDENTITY_BINDING_MISMATCH",
+    "SURVEY_SESSION_INITIALIZATION_BOUNDARY_MISMATCH",
   );
   return true;
 }
@@ -41,12 +36,10 @@ test(
     const tampered = structuredClone(harness.session);
     tampered.dependencies.resolverReceipts[0].resultDigest =
       `sha256:${"7".repeat(64)}`;
-    const scope =
-      tampered.authoring.persistence.identityScope;
-    scope.adapterScope.bootstrapClosureDigest =
-      sessionBootstrapClosureDigest(tampered);
-    tampered.authoring.persistence.identityBinding.scopeDigest =
-      journalIdentityScopeDigest(scope);
+    assert.throws(
+      () => sessionBootstrapClosureDigest(tampered),
+      isInitializationBoundaryMismatch,
+    );
     const resealed = sealSurveySessionRoot(tampered);
     await writeFile(
       harness.sessionFile,
@@ -57,21 +50,19 @@ test(
       harness.runDirectory,
     );
 
-    assert.deepEqual(
-      validateSessionSemantics(resealed),
-      [],
+    assert.ok(
+      validateSessionSemantics(resealed).some(
+        ({ code }) =>
+          code ===
+            "SURVEY_SESSION_INITIALIZATION_BOUNDARY_MISMATCH",
+      ),
     );
-    await readCandidateSessionPublicRoot({
-      runDirectory: harness.runDirectory,
-      selector: candidateSelector,
-    });
     await assert.rejects(
-      readVerifiedCandidateSession({
+      readCandidateSessionPublicRoot({
         runDirectory: harness.runDirectory,
         selector: candidateSelector,
-        authenticationKey,
       }),
-      isKeyedBindingMismatch,
+      isInitializationBoundaryMismatch,
     );
 
     assert.deepEqual(

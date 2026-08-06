@@ -30,10 +30,16 @@ import {
 import {
   createRoundOneQuestionFramesFormDefinition,
 } from "./round-one-question-frames-authority.mjs";
+import {
+  createRoundOneQuestionsFormDefinition,
+} from "./round-one-questions-authority.mjs";
+import {
+  DIRECTOR_QUESTION_PROJECTION_AUTHORITY,
+} from "./director-question-projection.mjs";
 
 export const SURVEY_PROFILE_NAME = "survey-v2-authoring-profile";
 export const SURVEY_EXECUTION_CLOSURE_ID =
-  "r11-round-one-question-frame-set";
+  "r12-round-one-instrument";
 export const SURVEY_GENERATION_SIDECAR_BINDING_ID =
   "survey-generation-record-sidecar";
 export const SURVEY_EVENT_COMMAND_ADMISSION_ID =
@@ -70,16 +76,22 @@ const executableClosureMembers = Object.freeze([
   "../kernel/executable-registry.mjs",
   "../kernel/text-forms.mjs",
   "./generation-record.mjs",
+  "./current-question-projection.definition.json",
+  "./current-question-renderer.mjs",
+  "./director-question-projection.mjs",
   "./profile-executables.mjs",
   "./resource-semantics.mjs",
   "./round-one-frame-authority.mjs",
   "./round-one-frame-projector.mjs",
   "./round-one-question-frames-authority.mjs",
   "./round-one-question-frames-projector.mjs",
+  "./round-one-questions-authority.mjs",
+  "./round-one-questions-projector.mjs",
   "./survey-frame-authority.mjs",
   "./survey-frame-projection-admission.mjs",
   "./survey-frame-projector.mjs",
   "../../../dependencies/shared-schemas/v1/snapshot/context-frame/v1alpha1/context-frame.validator.mjs",
+  "../../../dependencies/shared-schemas/v1/snapshot/question/v1alpha1/question.validator.mjs",
 ]);
 
 const concreteTypes = Object.freeze({
@@ -107,6 +119,18 @@ const concreteTypes = Object.freeze({
     apiVersion: "survey.mission-kit/v1alpha1",
     kind: "QuestionFrameSet",
   }),
+  question: Object.freeze({
+    apiVersion: "schemas.mission-kit/v1alpha1",
+    kind: "Question",
+  }),
+  surveyQuestionBinding: Object.freeze({
+    apiVersion: "survey.mission-kit/v1alpha1",
+    kind: "SurveyQuestionBinding",
+  }),
+  roundInstrument: Object.freeze({
+    apiVersion: "survey.mission-kit/v1alpha1",
+    kind: "RoundInstrument",
+  }),
 });
 
 const schemaSources = Object.freeze({
@@ -120,6 +144,12 @@ const schemaSources = Object.freeze({
     "schemas/survey/v1alpha1/generation-record.schema.json",
   questionFrameSet:
     "schemas/survey/v1alpha1/question-frame-set.schema.json",
+  question:
+    "dependencies/shared-schemas/v1/snapshot/question/v1alpha1/question.schema.json",
+  surveyQuestionBinding:
+    "schemas/survey/v1alpha1/survey-question-binding.schema.json",
+  roundInstrument:
+    "schemas/survey/v1alpha1/round-instrument.schema.json",
 });
 
 const futureTaskTargets = Object.freeze({
@@ -367,6 +397,88 @@ function roundOneQuestionFrameSelectors() {
   ];
 }
 
+function roundOneQuestionsSelectors() {
+  return [
+    selector({
+      id: "round-one-questions-survey-frame",
+      ordinal: 1,
+      role: "survey-frame",
+      resourceType: concreteTypes.contextFrame,
+      slot: "survey-frame",
+      fields: ["/spec"],
+    }),
+    selector({
+      id: "round-one-questions-round-frame",
+      ordinal: 2,
+      role: "round-frame",
+      resourceType: concreteTypes.contextFrame,
+      slot: "round-1-frame",
+      fields: ["/spec"],
+    }),
+    selector({
+      id: "round-one-questions-frame-set",
+      ordinal: 3,
+      role: "question-frame-set",
+      resourceType: concreteTypes.questionFrameSet,
+      slot: "round-1-question-frame-set",
+      fields: [
+        "/spec/slots/0/intentDimension",
+        "/spec/slots/0/outcomeAxisAnchors",
+        "/spec/slots/1/intentDimension",
+        "/spec/slots/1/outcomeAxisAnchors",
+        "/spec/slots/2/intentDimension",
+        "/spec/slots/2/outcomeAxisAnchors",
+        "/spec/coverageRationale",
+        "/spec/orthogonalityRationale",
+      ],
+    }),
+    selector({
+      id: "round-one-questions-frame-1",
+      ordinal: 4,
+      role: "question-frame-1",
+      resourceType: concreteTypes.contextFrame,
+      slot: "round-1-question-frame-1",
+      fields: ["/spec"],
+    }),
+    selector({
+      id: "round-one-questions-frame-2",
+      ordinal: 5,
+      role: "question-frame-2",
+      resourceType: concreteTypes.contextFrame,
+      slot: "round-1-question-frame-2",
+      fields: ["/spec"],
+    }),
+    selector({
+      id: "round-one-questions-frame-3",
+      ordinal: 6,
+      role: "question-frame-3",
+      resourceType: concreteTypes.contextFrame,
+      slot: "round-1-question-frame-3",
+      fields: ["/spec"],
+    }),
+    selector({
+      id: "round-one-questions-policy",
+      ordinal: 7,
+      role: "policy",
+      resourceType: {
+        apiVersion: "survey.mission-kit/v1alpha1",
+        kind: "SurveyPolicySnapshot",
+      },
+      slot: "policy",
+      fields: [
+        "/spec/geometry/questionsPerRound",
+        "/spec/geometry/choiceOptions",
+        "/spec/disclosure/mode",
+        "/spec/disclosure/siblingQuestionFramesVisible",
+        "/spec/disclosure/futureQuestionsVisible",
+        "/spec/disclosure/interimInterpretationVisible",
+        "/spec/validation/rationaleRequired",
+        "/spec/validation/authority",
+      ],
+    }),
+  ];
+}
+
 function initializationSelectors() {
   return [
     eventSelector({
@@ -570,6 +682,52 @@ function mutationFootprint(transition, coupling, implemented) {
       nextState: transition.toState,
     };
   }
+  if (transition.id === "AT05") {
+    if (coupling === undefined) {
+      throw new Error(
+        "canonical AT05 requires its exact phase coupling",
+      );
+    }
+    return {
+      created: [
+        target("round-1-question-1", concreteTypes.question),
+        target("round-1-question-2", concreteTypes.question),
+        target("round-1-question-3", concreteTypes.question),
+        target(
+          "round-1-question-binding-1",
+          concreteTypes.surveyQuestionBinding,
+        ),
+        target(
+          "round-1-question-binding-2",
+          concreteTypes.surveyQuestionBinding,
+        ),
+        target(
+          "round-1-question-binding-3",
+          concreteTypes.surveyQuestionBinding,
+        ),
+        target("round-1-instrument", concreteTypes.roundInstrument),
+      ],
+      activeHeadSlots: [
+        "round-1-question-1",
+        "round-1-question-2",
+        "round-1-question-3",
+        "round-1-question-binding-1",
+        "round-1-question-binding-2",
+        "round-1-question-binding-3",
+        "round-1-instrument",
+      ],
+      supersededSlots: [],
+      dependencyRelations: [
+        "belongs-to",
+        "binds",
+        "derived-from",
+        "governed-by",
+      ],
+      handoffSlots: ["round-1-instrument"],
+      nextState: transition.toState,
+      externalCouplings: [stableValue(coupling)],
+    };
+  }
   return {
     created: [],
     activeHeadSlots: [],
@@ -603,7 +761,8 @@ function transitionBindings({
     const implemented = transition.id === "AT01" ||
       transition.id === "AT02" ||
       transition.id === "AT03" ||
-      transition.id === "AT04";
+      transition.id === "AT04" ||
+      transition.id === "AT05";
     return {
       transitionId: transition.id,
       triggerClass: isTask ? "task-submission" : "event",
@@ -707,6 +866,33 @@ function buildBindings({
       "question-frame-set-semantic-validator",
       executableClosureDigest,
     ),
+    questionSchema: schemaExecutableBinding(
+      "question-schema-validator",
+      schemaDigests.question,
+      executableClosureDigest,
+    ),
+    questionSemantics: executableBinding(
+      "question-semantic-validator",
+      executableClosureDigest,
+    ),
+    surveyQuestionBindingSchema: schemaExecutableBinding(
+      "survey-question-binding-schema-validator",
+      schemaDigests.surveyQuestionBinding,
+      executableClosureDigest,
+    ),
+    surveyQuestionBindingSemantics: executableBinding(
+      "survey-question-binding-semantic-validator",
+      executableClosureDigest,
+    ),
+    roundInstrumentSchema: schemaExecutableBinding(
+      "round-instrument-schema-validator",
+      schemaDigests.roundInstrument,
+      executableClosureDigest,
+    ),
+    roundInstrumentSemantics: executableBinding(
+      "round-instrument-semantic-validator",
+      executableClosureDigest,
+    ),
   };
   return stableValue({
     guards,
@@ -723,6 +909,10 @@ function buildBindings({
       ),
       roundOneQuestionFrames: executableBinding(
         "round-one-question-frames-operational-projector",
+        executableClosureDigest,
+      ),
+      roundOneQuestions: executableBinding(
+        "round-one-questions-operational-projector",
         executableClosureDigest,
       ),
       future: executableBinding(
@@ -810,6 +1000,7 @@ function buildTasks({
   const surveySelectors = surveyFrameSelectors();
   const roundOneSelectors = roundOneFrameSelectors();
   const questionFrameSelectors = roundOneQuestionFrameSelectors();
+  const roundOneQuestions = roundOneQuestionsSelectors();
   return protocol.spec.states
     .filter((state) => state.class === "task")
     .map((state) => {
@@ -818,6 +1009,8 @@ function buildTasks({
         state.taskId === "author-round-1-frame";
       const roundOneQuestionFrames =
         state.taskId === "author-round-1-frame-set";
+      const roundOneQuestionSet =
+        state.taskId === "author-round-1-questions";
       return {
         id: state.taskId,
         stateId: state.id,
@@ -830,6 +1023,11 @@ function buildTasks({
                 "round-1-question-frame-set",
                 concreteTypes.questionFrameSet,
               )
+            : roundOneQuestionSet
+              ? target(
+                "round-1-instrument",
+                concreteTypes.roundInstrument,
+              )
             : futureTarget(state.taskId),
         contextSelectors: surveyFrame
           ? surveySelectors
@@ -837,6 +1035,8 @@ function buildTasks({
             ? roundOneSelectors
             : roundOneQuestionFrames
               ? questionFrameSelectors
+            : roundOneQuestionSet
+              ? roundOneQuestions
             : [],
         ...(surveyFrame
           ? {
@@ -881,6 +1081,45 @@ function buildTasks({
                 },
               ],
             }
+            : roundOneQuestionSet
+            ? {
+              requestInputBindings: [
+                {
+                  inputKey: "survey-frame",
+                  selectorId:
+                    "round-one-questions-survey-frame",
+                },
+                {
+                  inputKey: "round-frame",
+                  selectorId:
+                    "round-one-questions-round-frame",
+                },
+                {
+                  inputKey: "question-frame-set",
+                  selectorId:
+                    "round-one-questions-frame-set",
+                },
+                {
+                  inputKey: "question-frame-1",
+                  selectorId:
+                    "round-one-questions-frame-1",
+                },
+                {
+                  inputKey: "question-frame-2",
+                  selectorId:
+                    "round-one-questions-frame-2",
+                },
+                {
+                  inputKey: "question-frame-3",
+                  selectorId:
+                    "round-one-questions-frame-3",
+                },
+                {
+                  inputKey: "policy",
+                  selectorId: "round-one-questions-policy",
+                },
+              ],
+            }
               : {}),
         submissionSchemaBindingId:
           "authoring-submission-schema-binding",
@@ -890,6 +1129,8 @@ function buildTasks({
             ? "round-one-frame-form-binding"
             : roundOneQuestionFrames
               ? "round-one-question-frames-form-binding"
+            : roundOneQuestionSet
+              ? "round-one-questions-form-binding"
             : "survey-future-form-binding",
         handlerBindingId: handlerBindingIds.get(
           protocol.spec.transitions.find(
@@ -904,6 +1145,8 @@ function buildTasks({
             ? "round-one-frame-projection-binding"
             : roundOneQuestionFrames
               ? "round-one-question-frames-projection-binding"
+            : roundOneQuestionSet
+              ? "round-one-questions-projection-binding"
             : "survey-future-projection-binding",
         validatorSetId: "authoring-submission-validator-set",
       };
@@ -977,11 +1220,14 @@ async function buildAuthority() {
   const roundOneFrameForm = createRoundOneFrameFormDefinition();
   const roundOneQuestionFramesForm =
     createRoundOneQuestionFramesFormDefinition();
+  const roundOneQuestionsForm =
+    createRoundOneQuestionsFormDefinition();
   const futureForm = form("survey-future-unavailable-form");
   const forms = [
     surveyFrameForm,
     roundOneFrameForm,
     roundOneQuestionFramesForm,
+    roundOneQuestionsForm,
     futureForm,
   ];
   const handlerBindings = protocol.spec.transitions.map(
@@ -1020,6 +1266,18 @@ async function buildAuthority() {
     validatorSet(
       "question-frame-set-validator-set",
       bindings.validators.questionFrameSetSemantics,
+    ),
+    validatorSet(
+      "question-validator-set",
+      bindings.validators.questionSemantics,
+    ),
+    validatorSet(
+      "survey-question-binding-validator-set",
+      bindings.validators.surveyQuestionBindingSemantics,
+    ),
+    validatorSet(
+      "round-instrument-validator-set",
+      bindings.validators.roundInstrumentSemantics,
     ),
   ];
   const phaseMachine = source.machines.find(
@@ -1074,6 +1332,24 @@ async function buildAuthority() {
           bindings.validators.questionFrameSetSchema,
           bindings.validators.questionFrameSetSemantics,
         ),
+        schemaBinding(
+          "question-schema-binding",
+          concreteTypes.question,
+          bindings.validators.questionSchema,
+          bindings.validators.questionSemantics,
+        ),
+        schemaBinding(
+          "survey-question-binding-schema-binding",
+          concreteTypes.surveyQuestionBinding,
+          bindings.validators.surveyQuestionBindingSchema,
+          bindings.validators.surveyQuestionBindingSemantics,
+        ),
+        schemaBinding(
+          "round-instrument-schema-binding",
+          concreteTypes.roundInstrument,
+          bindings.validators.roundInstrumentSchema,
+          bindings.validators.roundInstrumentSemantics,
+        ),
       ],
       formBindings: [
         {
@@ -1097,6 +1373,16 @@ async function buildAuthority() {
           ),
           formDigest:
             roundOneQuestionFramesForm.spec.formDigest,
+          renderer: bindings.renderer,
+          parser: bindings.parser,
+        },
+        {
+          id: "round-one-questions-form-binding",
+          definition: resourceReferenceFrom(
+            roundOneQuestionsForm,
+          ),
+          formDigest:
+            roundOneQuestionsForm.spec.formDigest,
           renderer: bindings.renderer,
           parser: bindings.parser,
         },
@@ -1138,6 +1424,15 @@ async function buildAuthority() {
             format: "mission-kit-authoring-text/v1",
           }),
           engine: bindings.projectors.roundOneQuestionFrames,
+        },
+        {
+          id: "round-one-questions-projection-binding",
+          definitionDigest: sha256Value({
+            domain:
+              "mission-kit:survey-v2:round-one-questions-projection/v1",
+            format: "mission-kit-authoring-text/v1",
+          }),
+          engine: bindings.projectors.roundOneQuestions,
         },
         {
           id: "survey-future-projection-binding",
@@ -1182,7 +1477,13 @@ async function buildAuthority() {
       },
       executionClosure: {
         id: SURVEY_EXECUTION_CLOSURE_ID,
-        transitionIds: ["AT01", "AT02", "AT03", "AT04"],
+        transitionIds: [
+          "AT01",
+          "AT02",
+          "AT03",
+          "AT04",
+          "AT05",
+        ],
         revisionPlanIds: [],
       },
     },
@@ -1191,6 +1492,8 @@ async function buildAuthority() {
   assertProfile(profile, protocol, phaseProtocol, forms);
   return freezeValue(stableValue({
     bindings,
+    directorQuestionProjectionAuthority:
+      DIRECTOR_QUESTION_PROJECTION_AUTHORITY,
     forms,
     phaseProtocol,
     profile,

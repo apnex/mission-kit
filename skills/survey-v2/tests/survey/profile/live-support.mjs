@@ -83,6 +83,12 @@ const schemaByKind = Object.freeze({
     "urn:mission-kit:survey:schema:generation-record:v1alpha1",
   QuestionFrameSet:
     "urn:mission-kit:survey:schema:question-frame-set:v1alpha1",
+  Question:
+    "urn:mission-kit:schemas:question:v1alpha1",
+  SurveyQuestionBinding:
+    "urn:mission-kit:survey:schema:survey-question-binding:v1alpha1",
+  RoundInstrument:
+    "urn:mission-kit:survey:schema:round-instrument:v1alpha1",
   ProjectionArtifact:
     "urn:mission-kit:authoring:schema:projection-artifact:v1alpha1",
   SourceSnapshot:
@@ -408,6 +414,13 @@ export async function issueRoundOneQuestionFramesAssignment(harness) {
   );
 }
 
+export async function issueRoundOneQuestionsAssignment(harness) {
+  return harness.coordinator.execute(
+    harness.storeId,
+    { class: "next", inputs: {} },
+  );
+}
+
 function projectionRenderer(harness, projectionBinding) {
   return (input) => {
     const result = invokeProjector(
@@ -600,6 +613,65 @@ export function createRoundOneQuestionFramesSubmission(
   });
 }
 
+export function createRoundOneQuestionsSubmission(
+  harness,
+  issued,
+  normalizedValues,
+) {
+  const projectionBinding =
+    harness.profile.spec.projectionBindings.find(
+      (binding) =>
+        binding.id ===
+          issued.request.spec.bindings.projection.id,
+    );
+  const formBinding = harness.profile.spec.formBindings.find(
+    (binding) =>
+      binding.id === issued.request.spec.bindings.form.id,
+  );
+  const formDefinition = harness.forms.find(
+    (form) =>
+      form.metadata.name === formBinding.definition.name,
+  );
+  return createCanonicalSubmission({
+    name: "round-one-questions-live-submission",
+    request: issued.request,
+    contextClosure: issued.contextClosure,
+    assignment: issued.assignment,
+    projectionArtifact: issued.projectionArtifact,
+    projectionBinding,
+    formDefinition,
+    normalizedValues,
+    rawEvidenceBytes: Buffer.from(
+      "Round 1 Question values supplied by the live integration harness.\n",
+      "utf8",
+    ),
+    producerProvenance: {
+      producerId: "round-one-questions-test-agent",
+      producerClass: "agent",
+      evidenceDigest: digest("9"),
+      generation: {
+        attemptId: "round-one-questions-attempt-1",
+        provider: "mission-kit-test",
+        model: "deterministic-agent-fixture",
+        adapter: {
+          id: "round-one-questions-agent-adapter",
+          digest: digest("e"),
+        },
+        configurationDigest: digest("0"),
+        telemetry: {
+          inputTokens: 220,
+          outputTokens: 110,
+          latencyMs: 22,
+        },
+      },
+    },
+    renderProjection: projectionRenderer(
+      harness,
+      projectionBinding,
+    ),
+  });
+}
+
 export async function submitSurveyFrame(
   harness,
   issued,
@@ -653,6 +725,46 @@ export async function submitRoundOneQuestionFrames(
     assignment: issued.assignment,
     submission,
     externalCouplings: [],
+  };
+  return {
+    command,
+    result: await harness.coordinator.execute(
+      harness.storeId,
+      command,
+    ),
+  };
+}
+
+export async function submitRoundOneQuestions(
+  harness,
+  issued,
+  submission,
+) {
+  const { snapshot } = await harness.coordinator.read(
+    harness.storeId,
+  );
+  const phaseHead = snapshot.machineHeads.find(
+    (head) => head.machineId === surveyPhaseMachineId,
+  );
+  const journalOrdinal = snapshot.journal.length + 1;
+  const command = {
+    class: "submit",
+    request: issued.request,
+    assignment: issued.assignment,
+    submission,
+    externalCouplings: [{
+      machineId: surveyPhaseMachineId,
+      transitionId: "T03",
+      fromState: "round_1_drafting",
+      eventId: "FREEZE_R1",
+      toState: "round_1_q1_ready",
+      beforeStateDigest: phaseHead.stateDigest,
+      afterStateDigest: harness.identity.machineStateDigest({
+        machineId: surveyPhaseMachineId,
+        state: "round_1_q1_ready",
+        journalOrdinal,
+      }),
+    }],
   };
   return {
     command,
