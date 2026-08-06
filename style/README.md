@@ -16,3 +16,4 @@ Doc, commit, and naming conventions. The "how you say it" rules.
 | [S10](S10-horizontal-rule-between-h2-sections.md) | Horizontal rule between top-level sections in long-form docs | active |
 | [S11](S11-technical-identifiers-use-backticks.md) | Technical identifiers in prose use backticks | active |
 | [S12](S12-code-block-introducer-own-paragraph.md) | Code-block introducer is its own paragraph | active |
+| [S13](S13-plain-ascii-in-markdown.md) | Plain ASCII in markdown - typeable characters only | active |

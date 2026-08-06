@@ -50,6 +50,15 @@ paragraph render the same as in a heading, table cell, or bullet.
 - **URLs in markdown link targets.** The `[text](url)` form needs
   backticks on `text` if it's an identifier, but the `url` is already
   link-styled — no backticks there.
+- **Section headings that ARE the artifact, in a fixed convention.** The
+  `mod-*` Terraform-module SYN layout heads its sections `main.tf` and
+  `apply`, bare, where the heading labels the whole section by what it
+  produces rather than mentioning a file in passing. That is a
+  structural label, like an Install heading. Backticking it fights the
+  convention and reads as emphasis. The carve-out is narrow: it covers a
+  heading that names the section's own subject, not one that merely
+  mentions an identifier. A heading about configuring a specific binary
+  still backticks that binary.
 
 The test for borderline cases: *is this the literal name of a specific
 thing in the system that I could grep for?* If yes → identifier →

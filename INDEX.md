@@ -31,6 +31,7 @@ Flat ledger of every entry across categories. Sort by ID prefix.
 | [S10](style/S10-horizontal-rule-between-h2-sections.md) | style | Horizontal rule between top-level sections in long-form docs | active | 2026-05-24 |
 | [S11](style/S11-technical-identifiers-use-backticks.md) | style | Technical identifiers in prose use backticks | active | 2026-05-24 |
 | [S12](style/S12-code-block-introducer-own-paragraph.md) | style | Code-block introducer is its own paragraph | active | 2026-05-24 |
+| [S13](style/S13-plain-ascii-in-markdown.md) | style | Plain ASCII in markdown - typeable characters only | active | 2026-08-05 |
 | [M1](methodology/M1-triangulated-review.md) | methodology | Triangulated review — minimum 4 independent inputs | active | 2026-05-24 |
 | [M2](methodology/M2-test-drive-docs-by-execution.md) | methodology | Test-drive docs by execution | active | 2026-05-24 |
 | [M3](methodology/M3-default-reject-honest-yield.md) | methodology | Default-reject discipline + honest yield reporting | active | 2026-05-24 |
@@ -43,8 +44,8 @@ Flat ledger of every entry across categories. Sort by ID prefix.
 | [P3](patterns/P3-twin-parity-by-generation.md) | pattern | Twin-parity by generation — one master, generate the other, gate the round-trip | active | 2026-06-20 |
 | [P4](patterns/P4-neutral-core-tenant-composition.md) | pattern | Neutral core + tenant composition — shared mechanism, injected semantics, promote down by evidence | active | 2026-06-20 |
 | [P5](patterns/P5-verbs-as-data-surface.md) | pattern | Verbs-as-data surface — one manifest drives dispatch, docs, and validation | active | 2026-06-20 |
-| [K1](skills/K1-ai-attribution-scrub.md) | skill | AI-attribution scrub | active | 2026-05-24 |
-| [K2](skills/K2-force-push-carve-out.md) | skill | Force-push carve-out for fork branches | active | 2026-05-24 |
+| [K1](skills/K1-history-content-scrub.md) | skill | History content scrub | active | 2026-05-24 |
+| [K2](skills/K2-publishing-rewritten-history.md) | skill | Publishing rewritten history | active | 2026-05-24 |
 | [K3](skills/K3-substrate-audit.md) | skill | substrate-audit — code-grounded substrate audit | active | 2026-05-24 |
 | [K4](skills/K4-research-artefacts.md) | skill | research-artefacts — discipline for producing persistent research outputs | active | 2026-05-26 |
 | [K5](skills/K5-survey.md) | skill | survey — stakeholder-intent capture before design commitment | active | 2026-05-29 |
