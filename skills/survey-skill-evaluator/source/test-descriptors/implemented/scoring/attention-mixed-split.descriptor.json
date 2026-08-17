@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "scoring.attention-mixed-split",
+  "oneSentenceBehavior": "a mixed attention event must split its complete native measure into typed components.",
+  "obligationId": "EI17",
+  "mechanismId": "EM10",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/scoring/attention-mixed-split.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E4",
+  "groupId": "scoring",
+  "status": "implemented"
+}

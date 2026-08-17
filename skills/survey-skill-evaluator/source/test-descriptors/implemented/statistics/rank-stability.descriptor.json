@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "statistics.rank-stability",
+  "oneSentenceBehavior": "rank stability reports empirical rank distributions without calling them posterior probabilities.",
+  "obligationId": "TE25",
+  "mechanismId": "EM13",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/statistics/rank-stability.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E4",
+  "groupId": "statistics",
+  "status": "implemented"
+}

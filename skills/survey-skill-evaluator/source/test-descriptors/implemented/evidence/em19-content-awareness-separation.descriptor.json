@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "obligation.em19-content-awareness-separation",
+  "oneSentenceBehavior": "EM19 content seals before neutral awareness and remains immutable through missing response and unmask",
+  "obligationId": "EM19",
+  "mechanismId": "EM19",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/evidence/em19-content-awareness-separation.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/helpers/runtime-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E3",
+  "groupId": "evidence",
+  "status": "implemented"
+}

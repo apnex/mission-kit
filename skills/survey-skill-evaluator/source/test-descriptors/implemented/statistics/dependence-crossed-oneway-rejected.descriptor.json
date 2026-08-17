@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "statistics.dependence-crossed-oneway-rejected",
+  "oneSentenceBehavior": "crossed sampled factors reject a requested one-way bootstrap.",
+  "obligationId": "TE14",
+  "mechanismId": "EM07",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/statistics/dependence-crossed-oneway-rejected.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/statistics/fixtures.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E4",
+  "groupId": "statistics",
+  "status": "implemented"
+}

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "statistics.campaign-analysis-label-swap-invariance",
+  "oneSentenceBehavior": "The production registered analysis remains mechanically identical under an exact arm-label swap while signed contrasts reverse and two-sided inference, missingness structure, and rank structure remain invariant up to relabeling.",
+  "obligationId": "TE31",
+  "mechanismId": "EM15",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/statistics/campaign-analysis-label-swap-invariance.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/helpers/campaign-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E4",
+  "groupId": "statistics",
+  "status": "implemented"
+}

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "statistics.differential-missingness-bounds",
+  "oneSentenceBehavior": "differential missingness reports all-assigned arm rates and worst-best contrast bounds.",
+  "obligationId": "TE17",
+  "mechanismId": "EM12",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/statistics/differential-missingness-bounds.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E4",
+  "groupId": "statistics",
+  "status": "implemented"
+}

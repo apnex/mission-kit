@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "obligation.em05-canonical-tuple-admission",
+  "oneSentenceBehavior": "EM05 canonical lifecycle tuples alone authorize state mutation and reject wrong authority or source state",
+  "obligationId": "EM05",
+  "mechanismId": "EM05",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/lifecycle/em05-canonical-tuple-admission.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/helpers/canonical-lifecycle-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E3",
+  "groupId": "lifecycle",
+  "status": "implemented"
+}

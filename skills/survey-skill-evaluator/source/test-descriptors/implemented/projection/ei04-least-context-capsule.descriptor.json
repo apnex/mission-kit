@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "obligation.ei04-least-context-capsule",
+  "oneSentenceBehavior": "EI04 each capsule freezes only its permitted assignment projection and rejects forbidden or over-budget context",
+  "obligationId": "EI04",
+  "mechanismId": "EM04",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/projection/ei04-least-context-capsule.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E2",
+  "groupId": "projection",
+  "status": "implemented"
+}

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:survey-skill-evaluator-source:schema-catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "dialect",
+    "idPrefix",
+    "schemas",
+    "ownership"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "dialect": {
+      "const": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "idPrefix": {
+      "const": "urn:mission-kit:survey-skill-evaluator:"
+    },
+    "schemas": {
+      "type": "array",
+      "minItems": 141,
+      "maxItems": 141,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9-]+\\.schema\\.json$"
+      }
+    },
+    "ownership": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "minItems": 1,
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

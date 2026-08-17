@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "learning.diagnostic-result-commit-before-ack",
+  "oneSentenceBehavior": "diagnostic result acknowledgement occurs only after durable commit.",
+  "obligationId": "TE27",
+  "mechanismId": "EM17",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/learning/diagnostic-result-commit-before-ack.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/helpers/dbf00-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E5",
+  "groupId": "learning",
+  "status": "implemented"
+}

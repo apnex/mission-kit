@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "obligation.ei21-awareness-universe-totality",
+  "oneSentenceBehavior": "EI21 every registered awareness obligation reaches AW4 before one exact analyst-scoped unmask grant",
+  "obligationId": "EI21",
+  "mechanismId": "EM05",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/evidence/ei21-awareness-universe-totality.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/helpers/runtime-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E3",
+  "groupId": "evidence",
+  "status": "implemented"
+}

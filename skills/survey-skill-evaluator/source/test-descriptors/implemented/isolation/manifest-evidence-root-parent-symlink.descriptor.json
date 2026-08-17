@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "isolation.manifest-evidence-root-parent-symlink",
+  "oneSentenceBehavior": "manifest runner rejects an outside lexical evidence root whose parent symlink resolves into the package.",
+  "obligationId": "TE32",
+  "mechanismId": "EM08",
+  "evidenceClass": "manifest-runner-assurance",
+  "executable": "tests/isolation/manifest-evidence-root-parent-symlink.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/helpers/package-root.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E3",
+  "groupId": "isolation",
+  "status": "implemented"
+}

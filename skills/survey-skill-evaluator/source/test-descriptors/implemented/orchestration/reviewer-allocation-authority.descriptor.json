@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "orchestration.reviewer-allocation-authority",
+  "oneSentenceBehavior": "Externally supplied pre-outcome reviewer evidence binds two independent blinded reviewers to every exact assignment family.",
+  "obligationId": "EI19",
+  "mechanismId": "EM07",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/orchestration/reviewer-allocation-authority.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": ["tests/helpers/reviewer-allocation-authority-fixture.mjs"],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E3",
+  "groupId": "orchestration",
+  "status": "implemented"
+}

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "lifecycle.foundation-tuple-expansion",
+  "oneSentenceBehavior": "foundation lifecycle tuples expand into the complete runtime selector.",
+  "obligationId": "EI03",
+  "mechanismId": "EM05",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/lifecycle/foundation-tuple-expansion.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/helpers/package-root.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E3",
+  "groupId": "lifecycle",
+  "status": "implemented"
+}

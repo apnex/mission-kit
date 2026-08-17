@@ -1,0 +1,27 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"urn:mission-kit:survey-skill-evaluator-source:source-owner-registry",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["schemaVersion","hashProfileId","owners"],
+  "properties":{
+    "schemaVersion":{"const":"1.0.0"},
+    "hashProfileId":{"const":"survey-evaluator-sha256-jcs-v1"},
+    "owners":{
+      "type":"array",
+      "minItems":53,
+      "maxItems":53,
+      "items":{
+        "type":"object",
+        "additionalProperties":false,
+        "required":["sourceOwnerId","requirementId","fragmentId","obligation"],
+        "properties":{
+          "sourceOwnerId":{"type":"string","pattern":"^[a-z][a-z0-9-]*\\.[a-z0-9-]+$"},
+          "requirementId":{"type":"string","pattern":"^(?:TE|EI)\\d{2}$"},
+          "fragmentId":{"type":"string","pattern":"^[a-z][a-z0-9-]*\\.[a-z0-9-]+$"},
+          "obligation":{"type":"string","minLength":1}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "integration.full-role-failure-malformed-evidence-rejection",
+  "oneSentenceBehavior": "Failure closure rejects a malformed persisted role record rather than silently excluding it from the readable evidence cut.",
+  "obligationId": "TE16",
+  "mechanismId": "EM20",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/integration/full-role-failure-malformed-evidence-rejection.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/helpers/full-role-campaign-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E5",
+  "groupId": "integration",
+  "status": "implemented"
+}

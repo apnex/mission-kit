@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "roleId": "{{ROLE_ID}}",
+  "capsuleClass": "immutable-role-policy",
+  "awarenessRoleClass": "{{AWARENESS_ROLE_CLASS}}",
+  "authorizedContents": "{{AUTHORIZED_CONTENTS}}",
+  "forbiddenContents": "{{FORBIDDEN_CONTENTS}}",
+  "allowedCapabilities": "{{ALLOWED_CAPABILITIES}}",
+  "forbiddenCapabilities": "{{FORBIDDEN_CAPABILITIES}}",
+  "budgets": "{{BUDGETS}}",
+  "runtimeBindingContract": {
+    "workOrderId": "required-at-runtime",
+    "workOrderDigest": "required-at-runtime",
+    "visibilityPolicyRef": "required-at-runtime",
+    "authorizedProjectionRefs": "required-at-runtime",
+    "contentOutputSchemaRef": "schemas/role-result.schema.json"
+  }
+}

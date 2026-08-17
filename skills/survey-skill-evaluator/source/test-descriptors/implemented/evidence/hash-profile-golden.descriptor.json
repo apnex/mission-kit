@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "evidence.hash-profile-golden",
+  "oneSentenceBehavior": "semantic hashing is canonical, framed, and domain separated.",
+  "obligationId": "TE28",
+  "mechanismId": "EM08",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/evidence/hash-profile-golden.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E3",
+  "groupId": "evidence",
+  "status": "implemented"
+}

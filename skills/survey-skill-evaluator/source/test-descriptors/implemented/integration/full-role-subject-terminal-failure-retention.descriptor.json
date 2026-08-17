@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "integration.full-role-subject-terminal-failure-retention",
+  "oneSentenceBehavior": "a terminal Survey-subject failure remains sealed in the all-assigned failure cut without invented attribution, artifact, or metric outcome.",
+  "obligationId": "TE16",
+  "mechanismId": "EM08",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/integration/full-role-subject-terminal-failure-retention.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/helpers/campaign-fixture.mjs",
+    "tests/helpers/full-role-campaign-fixture.mjs",
+    "tests/helpers/subject-adapter-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E5",
+  "groupId": "integration",
+  "status": "implemented"
+}

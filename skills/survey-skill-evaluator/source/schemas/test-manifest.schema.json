@@ -1,0 +1,36 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"urn:mission-kit:survey-skill-evaluator-source:test-manifest",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["schemaVersion","hashProfileId","discovery","releaseStatus","groups","descriptorPaths"],
+  "properties":{
+    "schemaVersion":{"const":"1.0.0"},
+    "hashProfileId":{"const":"survey-evaluator-sha256-jcs-v1"},
+    "discovery":{"const":"manifest-only"},
+    "releaseStatus":{"enum":["incomplete","evidence-complete"]},
+    "groups":{
+      "type":"array",
+      "minItems":15,
+      "maxItems":15,
+      "items":{
+        "type":"object",
+        "additionalProperties":false,
+        "required":["groupId","purpose"],
+        "properties":{
+          "groupId":{"type":"string","pattern":"^[a-z][a-z-]+$"},
+          "purpose":{"type":"string","minLength":1}
+        }
+      }
+    },
+    "descriptorPaths":{
+      "type":"array",
+      "minItems":73,
+      "uniqueItems":true,
+      "items":{
+        "type":"string",
+        "pattern":"^source/test-descriptors/(?:implemented|planned)/[a-z0-9][a-z0-9/_-]*\\.descriptor\\.json$"
+      }
+    }
+  }
+}

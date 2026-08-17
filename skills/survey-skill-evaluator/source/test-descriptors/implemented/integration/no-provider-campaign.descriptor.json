@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "integration.no-provider-campaign",
+  "oneSentenceBehavior": "sealed no-provider campaign completes through canonical lifecycle transitions.",
+  "obligationId": "EI03",
+  "mechanismId": "EM05",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/integration/no-provider-campaign.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/fixtures/candidate.package.json",
+    "tests/fixtures/control.package.json",
+    "tests/helpers/campaign-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E3",
+  "groupId": "integration",
+  "status": "implemented"
+}

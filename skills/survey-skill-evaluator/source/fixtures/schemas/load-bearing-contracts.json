@@ -1,0 +1,377 @@
+{
+  "schemaVersion": "1.0.0",
+  "fixtures": [
+    {
+      "fixtureId": "source-request-lr03-valid",
+      "schema": "learning-capital-request-state.schema.json",
+      "definitionRef": "#/$defs/SourceRequest",
+      "expected": "valid",
+      "instance": {
+        "sourceRequestId": "sr-lr03-1",
+        "sourceType": "lr03_diagnosis",
+        "targetOperation": "LC01",
+        "sourceObjectId": "lr-1",
+        "sourceEventDigest": "0000000000000000000000000000000000000000000000000000000000000000",
+        "sourceSemanticRoot": "1111111111111111111111111111111111111111111111111111111111111111",
+        "upstreamOutboxId": "outbox-1",
+        "upstreamOutboxDigest": "2222222222222222222222222222222222222222222222222222222222222222",
+        "correlationId": "correlation-1",
+        "producerAuthorityId": "registered-learning-source-transition",
+        "immutable": true,
+        "conceptPatternKey": "concept-1",
+        "diagnosticDebateRoot": "3333333333333333333333333333333333333333333333333333333333333333"
+      }
+    },
+    {
+      "fixtureId": "source-request-cross-branch-payback-field-rejected",
+      "schema": "learning-capital-request-state.schema.json",
+      "definitionRef": "#/$defs/SourceRequest",
+      "expected": "invalid",
+      "instance": {
+        "sourceRequestId": "sr-lr03-2",
+        "sourceType": "lr03_diagnosis",
+        "targetOperation": "LC01",
+        "sourceObjectId": "lr-2",
+        "sourceEventDigest": "0000000000000000000000000000000000000000000000000000000000000000",
+        "sourceSemanticRoot": "1111111111111111111111111111111111111111111111111111111111111111",
+        "upstreamOutboxId": "outbox-2",
+        "upstreamOutboxDigest": "2222222222222222222222222222222222222222222222222222222222222222",
+        "correlationId": "correlation-2",
+        "producerAuthorityId": "registered-learning-source-transition",
+        "immutable": true,
+        "conceptPatternKey": "concept-2",
+        "diagnosticDebateRoot": "3333333333333333333333333333333333333333333333333333333333333333",
+        "paybackObservationRoot": "4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "fixtureId": "source-request-wrong-target-rejected",
+      "schema": "learning-capital-request-state.schema.json",
+      "definitionRef": "#/$defs/SourceRequest",
+      "expected": "invalid",
+      "instance": {
+        "sourceRequestId": "sr-lr03-3",
+        "sourceType": "lr03_diagnosis",
+        "targetOperation": "LC02",
+        "sourceObjectId": "lr-3",
+        "sourceEventDigest": "0000000000000000000000000000000000000000000000000000000000000000",
+        "sourceSemanticRoot": "1111111111111111111111111111111111111111111111111111111111111111",
+        "upstreamOutboxId": "outbox-3",
+        "upstreamOutboxDigest": "2222222222222222222222222222222222222222222222222222222222222222",
+        "correlationId": "correlation-3",
+        "producerAuthorityId": "registered-learning-source-transition",
+        "immutable": true,
+        "conceptPatternKey": "concept-3",
+        "diagnosticDebateRoot": "3333333333333333333333333333333333333333333333333333333333333333"
+      }
+    },
+    {
+      "fixtureId": "payback-observation-valid-pre-lcr-source",
+      "schema": "payback-observation.schema.json",
+      "expected": "valid",
+      "instance": {
+        "schemaVersion": "1.0.0",
+        "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+        "paybackObservationId": "payback-1",
+        "observerId": "observer-1",
+        "observerRegistryRevision": "0000000000000000000000000000000000000000000000000000000000000000",
+        "idempotencyKey": "payback-key-1",
+        "observedAfterLr4Root": "1111111111111111111111111111111111111111111111111111111111111111",
+        "governedWorkRoot": "2222222222222222222222222222222222222222222222222222222222222222",
+        "learningInvestmentId": "investment-1",
+        "conceptPatternKey": "concept-1",
+        "baselineContractRef": "3333333333333333333333333333333333333333333333333333333333333333",
+        "counterfactualContractRef": "4444444444444444444444444444444444444444444444444444444444444444",
+        "measureKind": "avoided_rework",
+        "nativeMeasure": 3,
+        "nativeUnit": "hours",
+        "measurementEvidenceRefs": ["5555555555555555555555555555555555555555555555555555555555555555"],
+        "observerAuthorityClass": "registered_payback_observer",
+        "authoredPreLcr": true,
+        "immutable": true
+      }
+    },
+    {
+      "fixtureId": "payback-observation-future-lcr-field-rejected",
+      "schema": "payback-observation.schema.json",
+      "expected": "invalid",
+      "instance": {
+        "schemaVersion": "1.0.0",
+        "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+        "paybackObservationId": "payback-2",
+        "observerId": "observer-2",
+        "observerRegistryRevision": "0000000000000000000000000000000000000000000000000000000000000000",
+        "idempotencyKey": "payback-key-2",
+        "observedAfterLr4Root": "1111111111111111111111111111111111111111111111111111111111111111",
+        "governedWorkRoot": "2222222222222222222222222222222222222222222222222222222222222222",
+        "learningInvestmentId": "investment-2",
+        "conceptPatternKey": "concept-2",
+        "baselineContractRef": "3333333333333333333333333333333333333333333333333333333333333333",
+        "counterfactualContractRef": "4444444444444444444444444444444444444444444444444444444444444444",
+        "measureKind": "deleted_future_friction",
+        "nativeMeasure": 1,
+        "nativeUnit": "handoffs",
+        "measurementEvidenceRefs": ["5555555555555555555555555555555555555555555555555555555555555555"],
+        "observerAuthorityClass": "registered_payback_observer",
+        "authoredPreLcr": true,
+        "immutable": true,
+        "learningCapitalRequestId": "forbidden-future-request"
+      }
+    },
+    {
+      "fixtureId": "diagnostic-terminal-sealed-valid",
+      "schema": "diagnostic-debate.schema.json",
+      "expected": "valid",
+      "instance": {
+        "schemaVersion": "1.0.0",
+        "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+        "diagnosticDebateResultId": "db-result-1",
+        "terminalResult": {
+          "terminalResultId": "db-terminal-1",
+          "terminalType": "sealed_diagnosis",
+          "diagnosticDebateId": "db-1",
+          "lr02GrantId": "grant-1",
+          "completeCutRoot": "0000000000000000000000000000000000000000000000000000000000000000",
+          "validPairCount": 2,
+          "contributionDigests": ["1111111111111111111111111111111111111111111111111111111111111111","2222222222222222222222222222222222222222222222222222222222222222"],
+          "dissentDigests": []
+        }
+      }
+    },
+    {
+      "fixtureId": "diagnostic-terminal-cross-branch-field-rejected",
+      "schema": "diagnostic-debate.schema.json",
+      "expected": "invalid",
+      "instance": {
+        "schemaVersion": "1.0.0",
+        "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+        "diagnosticDebateResultId": "db-result-2",
+        "terminalResult": {
+          "terminalResultId": "db-terminal-2",
+          "terminalType": "sealed_diagnosis",
+          "diagnosticDebateId": "db-2",
+          "lr02GrantId": "grant-2",
+          "completeCutRoot": "0000000000000000000000000000000000000000000000000000000000000000",
+          "validPairCount": 2,
+          "contributionDigests": ["1111111111111111111111111111111111111111111111111111111111111111","2222222222222222222222222222222222222222222222222222222222222222"],
+          "dissentDigests": [],
+          "brokerClosure": "fenced_before_delivery"
+        }
+      }
+    },
+    {
+      "fixtureId": "lcr-eligible-grant-valid",
+      "schema": "learning-capital-operation-grant.schema.json",
+      "expected": "valid",
+      "instance": {
+        "schemaVersion":"1.0.0",
+        "hashProfileId":"survey-evaluator-sha256-jcs-v1",
+        "operationGrantId":"lc-grant-1",
+        "grantClass":"eligible",
+        "learningCapitalRequestId":"lcr-1",
+        "targetOperation":"LC01",
+        "sourceRequestDigest":"0000000000000000000000000000000000000000000000000000000000000000",
+        "fence":1,
+        "brokerClaimId":"claim-1",
+        "invocable":true
+      }
+    },
+    {
+      "fixtureId": "lcr-eligible-grant-denial-field-rejected",
+      "schema": "learning-capital-operation-grant.schema.json",
+      "expected": "invalid",
+      "instance": {
+        "schemaVersion":"1.0.0",
+        "hashProfileId":"survey-evaluator-sha256-jcs-v1",
+        "operationGrantId":"lc-grant-2",
+        "grantClass":"eligible",
+        "learningCapitalRequestId":"lcr-2",
+        "targetOperation":"LC01",
+        "sourceRequestDigest":"0000000000000000000000000000000000000000000000000000000000000000",
+        "fence":2,
+        "brokerClaimId":"claim-2",
+        "invocable":true,
+        "denialReason":"blocked_by_quarantine_latch"
+      }
+    },
+    {
+      "fixtureId": "lcr-lc02-source-disposition-valid",
+      "schema": "learning-capital-source-disposition.schema.json",
+      "expected": "valid",
+      "instance": {
+        "schemaVersion":"1.0.0",
+        "hashProfileId":"survey-evaluator-sha256-jcs-v1",
+        "sourceDispositionId":"disposition-1",
+        "kind":"lc02_success",
+        "learningCapitalRequestId":"lcr-3",
+        "sourceRequestDigest":"0000000000000000000000000000000000000000000000000000000000000000",
+        "targetOperation":"LC02",
+        "grantOrDeniedProjectionRef":"1111111111111111111111111111111111111111111111111111111111111111",
+        "ordinaryResultRef":"2222222222222222222222222222222222222222222222222222222222222222",
+        "resultingLearningCapitalRoot":"3333333333333333333333333333333333333333333333333333333333333333",
+        "paybackObservationRef":"4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "fixtureId": "lcr-lc01-payback-cross-field-rejected",
+      "schema": "learning-capital-source-disposition.schema.json",
+      "expected": "invalid",
+      "instance": {
+        "schemaVersion":"1.0.0",
+        "hashProfileId":"survey-evaluator-sha256-jcs-v1",
+        "sourceDispositionId":"disposition-2",
+        "kind":"lc01_success",
+        "learningCapitalRequestId":"lcr-4",
+        "sourceRequestDigest":"0000000000000000000000000000000000000000000000000000000000000000",
+        "targetOperation":"LC01",
+        "grantOrDeniedProjectionRef":"1111111111111111111111111111111111111111111111111111111111111111",
+        "ordinaryResultRef":"2222222222222222222222222222222222222222222222222222222222222222",
+        "resultingLearningCapitalRoot":"3333333333333333333333333333333333333333333333333333333333333333",
+        "paybackObservationRef":"4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    },
+    {
+      "fixtureId": "learning-capital-state-valid",
+      "schema": "learning-capital-state.schema.json",
+      "expected": "valid",
+      "instance": {
+        "schemaVersion":"1.0.0",
+        "hashProfileId":"survey-evaluator-sha256-jcs-v1",
+        "learningCapitalId":"learning-capital",
+        "revision":0,
+        "state":"LC0_ACTIVE",
+        "predecessor":{
+          "kind":"absent",
+          "machineId":"learning-capital",
+          "objectId":"learning-capital",
+          "schemaVersion":"1.0.0",
+          "absentSentinel":"0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "conceptOccurrenceIndex":{},
+        "sourceRequestIndex":{},
+        "paybackObservationIndex":{},
+        "entryConflictIndex":{},
+        "eventRefs":[],
+        "outboxRefs":[]
+      }
+    },
+    {
+      "fixtureId": "learning-capital-authored-payback-payload-rejected",
+      "schema": "learning-capital-state.schema.json",
+      "expected": "invalid",
+      "instance": {
+        "schemaVersion":"1.0.0",
+        "hashProfileId":"survey-evaluator-sha256-jcs-v1",
+        "learningCapitalId":"learning-capital",
+        "revision":0,
+        "state":"LC0_ACTIVE",
+        "predecessor":{
+          "kind":"absent",
+          "machineId":"learning-capital",
+          "objectId":"learning-capital",
+          "schemaVersion":"1.0.0",
+          "absentSentinel":"0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "conceptOccurrenceIndex":{},
+        "sourceRequestIndex":{},
+        "paybackObservationIndex":{},
+        "entryConflictIndex":{},
+        "eventRefs":[],
+        "outboxRefs":[],
+        "paybackObservationPayload":{"invented":true}
+      }
+    },
+    {
+      "fixtureId": "campaign-evidence-envelope-pre-ec20-valid",
+      "schema": "campaign-evidence-envelope.schema.json",
+      "expected": "valid",
+      "instance": {
+        "schemaVersion":"1.0.0",
+        "hashProfileId":"survey-evaluator-sha256-jcs-v1",
+        "campaignEvidenceEnvelopeId":"envelope-1",
+        "campaignId":"campaign-1",
+        "frozenAtCampaignRevision":20,
+        "frozenBeforeTransition":"EC20",
+        "allAssignedPopulationRoot":"0000000000000000000000000000000000000000000000000000000000000000",
+        "instrumentValidPopulationRoot":"1111111111111111111111111111111111111111111111111111111111111111",
+        "releaseQualifiedPopulationRoot":"2222222222222222222222222222222222222222222222222222222222222222",
+        "roleContentEvidenceRoot":"3333333333333333333333333333333333333333333333333333333333333333",
+        "awarenessUniverseRoot":"4444444444444444444444444444444444444444444444444444444444444444",
+        "closedAwarenessLedgerRoot":"5555555555555555555555555555555555555555555555555555555555555555",
+        "awarenessDispositionCounts":{"reported":2,"missingAfterContent":0,"missingNoContent":0,"notApplicable":1},
+        "qualificationViewRoots":["6666666666666666666666666666666666666666666666666666666666666666","7777777777777777777777777777777777777777777777777777777777777777","8888888888888888888888888888888888888888888888888888888888888888"],
+        "protectedSourceIndexRoot":"9999999999999999999999999999999999999999999999999999999999999999",
+        "derivationRoots":[],
+        "disclosurePolicyDigest":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "disclosureRecipeDigest":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "disclosureSourceFieldMapDigest":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "immutable":true,
+        "containsProtectedUnmaskGrant":false,
+        "containsDisclosureOutputDigest":false,
+        "containsFutureTransitionReference":false
+      }
+    },
+    {
+      "fixtureId": "campaign-evidence-envelope-future-grant-rejected",
+      "schema": "campaign-evidence-envelope.schema.json",
+      "expected": "invalid",
+      "instance": {
+        "schemaVersion":"1.0.0",
+        "hashProfileId":"survey-evaluator-sha256-jcs-v1",
+        "campaignEvidenceEnvelopeId":"envelope-2",
+        "campaignId":"campaign-2",
+        "frozenAtCampaignRevision":20,
+        "frozenBeforeTransition":"EC20",
+        "allAssignedPopulationRoot":"0000000000000000000000000000000000000000000000000000000000000000",
+        "instrumentValidPopulationRoot":"1111111111111111111111111111111111111111111111111111111111111111",
+        "releaseQualifiedPopulationRoot":"2222222222222222222222222222222222222222222222222222222222222222",
+        "roleContentEvidenceRoot":"3333333333333333333333333333333333333333333333333333333333333333",
+        "awarenessUniverseRoot":"4444444444444444444444444444444444444444444444444444444444444444",
+        "closedAwarenessLedgerRoot":"5555555555555555555555555555555555555555555555555555555555555555",
+        "awarenessDispositionCounts":{"reported":2,"missingAfterContent":0,"missingNoContent":0,"notApplicable":1},
+        "qualificationViewRoots":["6666666666666666666666666666666666666666666666666666666666666666","7777777777777777777777777777777777777777777777777777777777777777","8888888888888888888888888888888888888888888888888888888888888888"],
+        "protectedSourceIndexRoot":"9999999999999999999999999999999999999999999999999999999999999999",
+        "derivationRoots":[],
+        "disclosurePolicyDigest":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "disclosureRecipeDigest":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "disclosureSourceFieldMapDigest":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "immutable":true,
+        "containsProtectedUnmaskGrant":false,
+        "containsDisclosureOutputDigest":false,
+        "containsFutureTransitionReference":false,
+        "protectedUnmaskGrantDigest":"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+      }
+    },
+    {
+      "fixtureId": "campaign-evidence-envelope-disclosure-output-rejected",
+      "schema": "campaign-evidence-envelope.schema.json",
+      "expected": "invalid",
+      "instance": {
+        "schemaVersion":"1.0.0",
+        "hashProfileId":"survey-evaluator-sha256-jcs-v1",
+        "campaignEvidenceEnvelopeId":"envelope-3",
+        "campaignId":"campaign-3",
+        "frozenAtCampaignRevision":20,
+        "frozenBeforeTransition":"EC20",
+        "allAssignedPopulationRoot":"0000000000000000000000000000000000000000000000000000000000000000",
+        "instrumentValidPopulationRoot":"1111111111111111111111111111111111111111111111111111111111111111",
+        "releaseQualifiedPopulationRoot":"2222222222222222222222222222222222222222222222222222222222222222",
+        "roleContentEvidenceRoot":"3333333333333333333333333333333333333333333333333333333333333333",
+        "awarenessUniverseRoot":"4444444444444444444444444444444444444444444444444444444444444444",
+        "closedAwarenessLedgerRoot":"5555555555555555555555555555555555555555555555555555555555555555",
+        "awarenessDispositionCounts":{"reported":2,"missingAfterContent":0,"missingNoContent":0,"notApplicable":1},
+        "qualificationViewRoots":["6666666666666666666666666666666666666666666666666666666666666666","7777777777777777777777777777777777777777777777777777777777777777","8888888888888888888888888888888888888888888888888888888888888888"],
+        "protectedSourceIndexRoot":"9999999999999999999999999999999999999999999999999999999999999999",
+        "derivationRoots":[],
+        "disclosurePolicyDigest":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "disclosureRecipeDigest":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "disclosureSourceFieldMapDigest":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "immutable":true,
+        "containsProtectedUnmaskGrant":false,
+        "containsDisclosureOutputDigest":false,
+        "containsFutureTransitionReference":false,
+        "campaignLineageDisclosureDigest":"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    }
+  ]
+}

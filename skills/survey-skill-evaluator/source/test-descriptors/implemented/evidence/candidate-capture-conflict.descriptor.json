@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "evidence.candidate-capture-conflict",
+  "oneSentenceBehavior": "candidate capture conflicts when a destination is replayed with changed source bytes.",
+  "obligationId": "TE28",
+  "mechanismId": "EM05",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/evidence/candidate-capture-conflict.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": ["tests/helpers/candidate-capture-fixture.mjs"],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E5",
+  "groupId": "evidence",
+  "status": "implemented"
+}

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "statistics.max-stat-convergence-qualification",
+  "oneSentenceBehavior": "unstable max-statistic draws fail closed instead of silently claiming strong FWER.",
+  "obligationId": "TE24",
+  "mechanismId": "EM12",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/statistics/max-stat-convergence-qualification.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/statistics/fixtures.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E4",
+  "groupId": "statistics",
+  "status": "implemented"
+}

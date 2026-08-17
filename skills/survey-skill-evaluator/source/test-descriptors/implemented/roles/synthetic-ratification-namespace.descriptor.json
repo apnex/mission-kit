@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "roles.synthetic-ratification-namespace",
+  "oneSentenceBehavior": "synthetic ratification cannot escape its disposable work-order namespace.",
+  "obligationId": "EI09",
+  "mechanismId": "EM06",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/roles/synthetic-ratification-namespace.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": ["tests/helpers/runtime-fixture.mjs"],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E5",
+  "groupId": "roles",
+  "status": "implemented"
+}

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "statistics.typed-failure-mapping-policy",
+  "oneSentenceBehavior": "Candidate failure remains typed missingness when the canonical metric descriptor does not authorize adverse-value substitution.",
+  "obligationId": "TE17",
+  "mechanismId": "EM12",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/statistics/typed-failure-mapping-policy.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E4",
+  "groupId": "statistics",
+  "status": "implemented"
+}

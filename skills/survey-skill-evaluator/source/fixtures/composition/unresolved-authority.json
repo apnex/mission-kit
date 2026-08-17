@@ -1,0 +1,10 @@
+{
+  "fixtureId":"participant-policy-unresolved-authority",
+  "expected":"invalid",
+  "policy":{
+    "commandAuthority":{"kind":"single","authorityId":"not-registered"},
+    "guardOwnerId":"mechanical-validator",
+    "orderedActionExecutors":[{"actionId":"validate-and-commit","executorAuthorityId":"deterministic-orchestrator"}],
+    "requiredAttestationAuthorityIds":[]
+  }
+}
