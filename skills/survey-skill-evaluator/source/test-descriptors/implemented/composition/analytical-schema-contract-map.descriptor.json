@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "composition.analytical-schema-contract-map",
+  "oneSentenceBehavior": "analytical contract map contains exactly fifteen immutable, lint-clean, recursively closed schemas.",
+  "obligationId": "TE31",
+  "mechanismId": "EM15",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/composition/analytical-schema-contract-map.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E1",
+  "groupId": "composition",
+  "status": "implemented"
+}

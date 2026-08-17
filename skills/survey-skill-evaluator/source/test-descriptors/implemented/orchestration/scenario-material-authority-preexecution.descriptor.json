@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "orchestration.scenario-material-authority-preexecution",
+  "oneSentenceBehavior": "scenario-material authority has no fallback and cannot construct or attest materials after execution starts.",
+  "obligationId": "TE10",
+  "mechanismId": "EM03",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/orchestration/scenario-material-authority-preexecution.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/helpers/campaign-fixture.mjs",
+    "tests/helpers/scenario-material-authority-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E5",
+  "groupId": "orchestration",
+  "status": "implemented"
+}

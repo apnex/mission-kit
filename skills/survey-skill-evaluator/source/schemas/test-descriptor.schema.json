@@ -1,0 +1,25 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"urn:mission-kit:survey-skill-evaluator-source:test-descriptor",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["schemaVersion","hashProfileId","testId","oneSentenceBehavior","obligationId","mechanismId","evidenceClass","executable","runner","executionIsolationClass","fixtures","prerequisites","expectedResultSchema","gate","groupId","status"],
+  "properties":{
+    "schemaVersion":{"const":"1.0.0"},
+    "hashProfileId":{"const":"survey-evaluator-sha256-jcs-v1"},
+    "testId":{"type":"string","pattern":"^[a-z][A-Za-z0-9._-]+$"},
+    "oneSentenceBehavior":{"type":"string","minLength":1},
+    "obligationId":{"type":"string","pattern":"^(?:TE|EI|EM)\\d{2}$"},
+    "mechanismId":{"type":"string","pattern":"^EM\\d{2}$"},
+    "evidenceClass":{"type":"string","minLength":1},
+    "executable":{"type":["string","null"]},
+    "runner":{"const":"node:test"},
+    "executionIsolationClass":{"enum":["not-applicable","read-only-package","package-root-mutating"]},
+    "fixtures":{"type":"array","uniqueItems":true,"items":{"type":"string","minLength":1}},
+    "prerequisites":{"type":"array","uniqueItems":true,"items":{"type":"string","minLength":1}},
+    "expectedResultSchema":{"const":"schemas/test-evidence.schema.json"},
+    "gate":{"type":"string","pattern":"^E[0-7]$"},
+    "groupId":{"type":"string","pattern":"^[a-z][a-z-]+$"},
+    "status":{"enum":["implemented","planned-unimplemented"]}
+  }
+}

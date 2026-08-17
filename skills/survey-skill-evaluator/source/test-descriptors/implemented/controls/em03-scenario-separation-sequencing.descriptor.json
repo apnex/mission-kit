@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "controls.em03-scenario-separation-sequencing",
+  "oneSentenceBehavior": "EM03 sequences a bounded holdout without exposing candidate truth or refunding uses.",
+  "obligationId": "EM03",
+  "mechanismId": "EM03",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/controls/em03-scenario-separation-sequencing.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E5",
+  "groupId": "controls",
+  "status": "implemented"
+}

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "controls.administrative-rename-invariant",
+  "oneSentenceBehavior": "administrative renames leave the registered semantic projection invariant.",
+  "obligationId": "TE31",
+  "mechanismId": "EM15",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/controls/administrative-rename-invariant.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E4",
+  "groupId": "controls",
+  "status": "implemented"
+}

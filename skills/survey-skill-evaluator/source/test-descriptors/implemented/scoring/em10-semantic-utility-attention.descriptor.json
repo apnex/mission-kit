@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "scoring.em10-semantic-utility-attention",
+  "oneSentenceBehavior": "EM10 measures semantic and downstream value while minimizing only observed toil.",
+  "obligationId": "EM10",
+  "mechanismId": "EM10",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/scoring/em10-semantic-utility-attention.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E4",
+  "groupId": "scoring",
+  "status": "implemented"
+}

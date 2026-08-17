@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "lifecycle.idempotency-conflict",
+  "oneSentenceBehavior": "an idempotency key reused with changed input is an integrity fault.",
+  "obligationId": "TE28",
+  "mechanismId": "EM05",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/lifecycle/idempotency-conflict.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/helpers/runtime-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E3",
+  "groupId": "lifecycle",
+  "status": "implemented"
+}

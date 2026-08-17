@@ -1,0 +1,13 @@
+{
+  "schemaVersion":"1.0.0",
+  "hashProfileId":"survey-evaluator-sha256-jcs-v1",
+  "fragmentId":"state.lifecycle-discipline",
+  "purpose":"Make manifest tuples, CAS, genesis, outbox, replay, drain, and quarantine authoritative.",
+  "rules":[
+    "The 267 canonical transition tuples are the sole runtime transition authority.",
+    "Every state change validates expected revision, product state, participants, guards, input digest, and idempotency.",
+    "Commit event, state, semantic cursor, and exact outbox in one durable replacement.",
+    "Replay identical bytes; reject changed bytes under a reused identity.",
+    "Scope quarantine to the smallest unverifiable object and preserve unrelated liveness."
+  ]
+}

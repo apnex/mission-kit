@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "controls.em14-governed-recommendation-boundary",
+  "oneSentenceBehavior": "EM14 emits decision support with visible policy evidence and no release effect.",
+  "obligationId": "EM14",
+  "mechanismId": "EM14",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/controls/em14-governed-recommendation-boundary.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": ["tests/composition/analytical-fixtures.mjs"],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E4",
+  "groupId": "controls",
+  "status": "implemented"
+}

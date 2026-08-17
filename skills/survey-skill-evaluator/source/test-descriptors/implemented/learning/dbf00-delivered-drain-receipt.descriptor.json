@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "learning.dbf00-delivered-drain-receipt",
+  "oneSentenceBehavior": "DBF00 accepts delivered work only with the exact not-committed drain receipt.",
+  "obligationId": "TE27",
+  "mechanismId": "EM17",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/learning/dbf00-delivered-drain-receipt.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/helpers/dbf00-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E5",
+  "groupId": "learning",
+  "status": "implemented"
+}

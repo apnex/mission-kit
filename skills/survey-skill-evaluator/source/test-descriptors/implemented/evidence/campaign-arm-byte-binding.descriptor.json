@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "evidence.campaign-arm-byte-binding",
+  "oneSentenceBehavior": "campaign sealing binds exact candidate bytes and rejects post-seal arm drift",
+  "obligationId": "TE07",
+  "mechanismId": "EM02",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/evidence/campaign-arm-byte-binding.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/helpers/campaign-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E1",
+  "groupId": "evidence",
+  "status": "implemented"
+}

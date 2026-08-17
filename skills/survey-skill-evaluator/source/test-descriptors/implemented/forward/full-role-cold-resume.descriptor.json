@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "forward.full-role-cold-resume",
+  "oneSentenceBehavior": "cold resume reuses durable role evidence and does not redispatch completed roles.",
+  "obligationId": "TE28",
+  "mechanismId": "EM05",
+  "evidenceClass": "known-answer-recovery-evidence",
+  "executable": "tests/forward/full-role-cold-resume.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/fixtures/candidate.package.json",
+    "tests/fixtures/control.package.json",
+    "tests/helpers/campaign-fixture.mjs",
+    "tests/helpers/full-role-campaign-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E3",
+  "groupId": "forward",
+  "status": "implemented"
+}

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "evidence.candidate-capture-source-immutability",
+  "oneSentenceBehavior": "candidate capture leaves source bytes and metadata unchanged.",
+  "obligationId": "EI01",
+  "mechanismId": "EM02",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/evidence/candidate-capture-source-immutability.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": ["tests/helpers/candidate-capture-fixture.mjs"],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E3",
+  "groupId": "evidence",
+  "status": "implemented"
+}

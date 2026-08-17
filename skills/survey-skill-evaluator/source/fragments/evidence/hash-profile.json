@@ -1,0 +1,20 @@
+{
+  "schemaVersion":"1.0.0",
+  "profileId":"survey-evaluator-sha256-jcs-v1",
+  "namespace":"survey-skill-evaluator/hash/v1",
+  "semanticAlgorithm":"SHA-256",
+  "canonicalJson":"RFC8785-JCS-UTF8",
+  "framing":"uint64be-length-framed",
+  "digestEncoding":"lowercase-hex",
+  "binaryEncoding":"base64url-unpadded",
+  "rawFileProfileId":"raw-file-sha256/v1",
+  "packageRootKinds":{
+    "candidate-package":{"exclusions":[]},
+    "evaluator-payload":{"exclusions":["package.manifest.json"]}
+  },
+  "manifestTag":"evaluator-package-manifest/v1",
+  "finalPackageTag":"evaluator-package/v1",
+  "absentStateTag":"absent-authoritative-state/v1",
+  "parentStagedGenesisTags":["parent-staged-genesis-core/v1","initial-semantic-core/v1","authoritative-state/v1","parent-staged-genesis-record/v1"],
+  "reject":["duplicate-object-key","lone-surrogate","non-finite-number","non-json-value","cycle","sparse-array","symlink","hardlink","special-file","invalid-utf8-path","unsafe-segment","backslash","nul","absolute-path","ascii-case-fold-collision","partial-execute-mode"]
+}

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "controls.control-doctrine-leak",
+  "oneSentenceBehavior": "control-delta audit fails on hidden treatment doctrine even when structural deltas are allowed.",
+  "obligationId": "TE05",
+  "mechanismId": "EM02",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/controls/control-doctrine-leak.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E1",
+  "groupId": "controls",
+  "status": "implemented"
+}

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "forward.full-role-execution-configuration-mismatch",
+  "oneSentenceBehavior": "cold recovery rejects a different coherently sealed role execution profile before any role is redispatched.",
+  "obligationId": "TE07",
+  "mechanismId": "EM08",
+  "evidenceClass": "adversarial-cold-recovery-execution-identity-evidence",
+  "executable": "tests/forward/full-role-execution-configuration-mismatch.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/helpers/full-role-campaign-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E5",
+  "groupId": "forward",
+  "status": "implemented"
+}

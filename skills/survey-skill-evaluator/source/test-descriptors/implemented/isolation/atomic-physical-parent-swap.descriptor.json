@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "isolation.atomic-physical-parent-swap",
+  "oneSentenceBehavior": "an atomic replacement stays on its pinned physical parent when the lexical parent is swapped.",
+  "obligationId": "TE32",
+  "mechanismId": "EM04",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/isolation/atomic-physical-parent-swap.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E3",
+  "groupId": "isolation",
+  "status": "implemented"
+}

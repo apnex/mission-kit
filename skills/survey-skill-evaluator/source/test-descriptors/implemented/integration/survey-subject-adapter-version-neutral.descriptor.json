@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "integration.survey-subject-adapter-version-neutral",
+  "oneSentenceBehavior": "Survey v1 and v2 expose the same sovereign subject operation geometry.",
+  "obligationId": "TE06",
+  "mechanismId": "EM02",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/integration/survey-subject-adapter-version-neutral.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": ["tests/helpers/subject-adapter-fixture.mjs"],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E3",
+  "groupId": "integration",
+  "status": "implemented"
+}

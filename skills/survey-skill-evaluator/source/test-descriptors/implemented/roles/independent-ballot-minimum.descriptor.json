@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "roles.independent-ballot-minimum",
+  "oneSentenceBehavior": "semantic scoring requires two independently committed blind ballots.",
+  "obligationId": "TE22",
+  "mechanismId": "EM11",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/roles/independent-ballot-minimum.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E4",
+  "groupId": "roles",
+  "status": "implemented"
+}

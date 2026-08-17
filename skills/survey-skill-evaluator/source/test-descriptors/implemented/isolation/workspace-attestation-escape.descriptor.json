@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "isolation.workspace-attestation-escape",
+  "oneSentenceBehavior": "a host attesting a different workspace is rejected as an isolation escape.",
+  "obligationId": "TE12",
+  "mechanismId": "EM04",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/isolation/workspace-attestation-escape.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/helpers/runtime-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E3",
+  "groupId": "isolation",
+  "status": "implemented"
+}

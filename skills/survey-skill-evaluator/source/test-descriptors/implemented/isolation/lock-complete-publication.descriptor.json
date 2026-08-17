@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "isolation.lock-complete-publication",
+  "oneSentenceBehavior": "lock acquisition publishes one complete regular-file owner record.",
+  "obligationId": "TE32",
+  "mechanismId": "EM04",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/isolation/lock-complete-publication.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E3",
+  "groupId": "isolation",
+  "status": "implemented"
+}

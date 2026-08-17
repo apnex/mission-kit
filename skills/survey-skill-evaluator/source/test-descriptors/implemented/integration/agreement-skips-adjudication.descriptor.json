@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "integration.agreement-skips-adjudication",
+  "oneSentenceBehavior": "When independent sealed ballots agree, the campaign follows EC18 and does not manufacture an adjudication.",
+  "obligationId": "TE22",
+  "mechanismId": "EM11",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/integration/agreement-skips-adjudication.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/helpers/full-role-campaign-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E5",
+  "groupId": "integration",
+  "status": "implemented"
+}

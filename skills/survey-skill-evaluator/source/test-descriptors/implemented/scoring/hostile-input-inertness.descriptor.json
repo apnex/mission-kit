@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "scoring.hostile-input-inertness",
+  "oneSentenceBehavior": "scoring rejects accessor and proxy views without invoking attacker code.",
+  "obligationId": "TE32",
+  "mechanismId": "EM14",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/scoring/hostile-input-inertness.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E4",
+  "groupId": "scoring",
+  "status": "implemented"
+}

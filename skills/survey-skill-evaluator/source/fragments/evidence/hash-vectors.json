@@ -1,0 +1,29 @@
+{
+  "schemaVersion":"1.0.0",
+  "hashProfileId":"survey-evaluator-sha256-jcs-v1",
+  "semantic":[
+    {"vectorId":"semantic-null","tag":"golden/null","value":null,"canonicalJson":"null","expectedDigest":"00645fb6e37b94b60f0a53f0acbd5f338b468524feadaaa8dab1ed411f501c2e"},
+    {"vectorId":"semantic-object-order","tag":"golden/object","value":{"b":2,"a":1},"canonicalJson":"{\"a\":1,\"b\":2}","expectedDigest":"55388ffffd06403aeacf62bbb9c6940ef5ea43bb6b15a00b5ec1a17efb927f1e"},
+    {"vectorId":"semantic-unicode","tag":"golden/unicode","value":{"composed":"é","astral":"😀"},"canonicalJson":"{\"astral\":\"😀\",\"composed\":\"é\"}","expectedDigest":"a2d7736be3d4214f659cf42e2e9b67b304dbda792f300b6a65ffb37104d56498"},
+    {"vectorId":"semantic-numbers","tag":"golden/numbers","value":[0,1e-7,333333333.3333333,1e+30],"canonicalJson":"[0,1e-7,333333333.3333333,1e+30]","expectedDigest":"25c642695aff2900a382b8497ce6de06d3037bdf9112c8c2a5b308efedb46557"},
+    {"vectorId":"semantic-binary-text","tag":"golden/binary","value":{"base64urlUnpadded":"AAE-_w"},"canonicalJson":"{\"base64urlUnpadded\":\"AAE-_w\"}","expectedDigest":"e9efcc572003c86415a0e437dd854ee019985567db4b810b2ddb26965db6611d"}
+  ],
+  "raw":[
+    {"vectorId":"raw-empty","utf8":"","expectedDigest":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+    {"vectorId":"raw-unicode","utf8":"é\n","expectedDigest":"edd3a863872a04239eb29ad4bc12fc892b3d4ae57cc7e786a3697816f8e141c2"}
+  ],
+  "inventory":[
+    {"vectorId":"candidate-empty","rootKind":"candidate-package","exclusions":[],"entries":[],"expectedInventory":[],"expectedRoot":"75a82c38efa5577f10d3789dff145c41253032259fcab963f253362d2b00159e"},
+    {"vectorId":"candidate-single-empty-file","rootKind":"candidate-package","exclusions":[],"entries":[{"path":"empty.txt","mode":"0644","utf8":""}],"expectedInventory":[{"path":"empty.txt","mode":"0644","byteLength":0,"rawFileSha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"}],"expectedRoot":"38d99ec5255221b74e9de9c00661eedb4fd190cd69e0464fbad426b6fdbe5323"},
+    {"vectorId":"candidate-path-byte-order-and-mode","rootKind":"candidate-package","exclusions":[],"entries":[{"path":"z-run","mode":"0755","utf8":"#!/bin/sh\n"},{"path":"A.txt","mode":"0644","utf8":"alpha"},{"path":"a-umlaut-ä.txt","mode":"0644","utf8":"unicode"}],"expectedInventory":[{"path":"A.txt","mode":"0644","byteLength":5,"rawFileSha256":"8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8"},{"path":"a-umlaut-ä.txt","mode":"0644","byteLength":7,"rawFileSha256":"2fcf76a4c3c75b1fb5288d83d62dd114dc556d16fba206ab35d38bfe294a2857"},{"path":"z-run","mode":"0755","byteLength":10,"rawFileSha256":"a8076d3d28d21e02012b20eaf7dbf75409a6277134439025f282e368e3305abf"}],"expectedRoot":"1db2da3a8f8189d65bb494ad457c9987ec8e1999b1e6bbfdfe91b7890e30895a"},
+    {"vectorId":"evaluator-empty-payload","rootKind":"evaluator-payload","exclusions":["package.manifest.json"],"entries":[],"expectedInventory":[],"expectedRoot":"ce28f6368d8316fb9606e8cd1b3e4bc8313a85afec1362a59cd3837037fd9e65"}
+  ],
+  "negative":[
+    {"vectorId":"reject-domain-substitution","mutation":"change semantic tag","expected":"digest-mismatch"},
+    {"vectorId":"reject-profile-substitution","mutation":"change profile identifier","expected":"profile-rejection"},
+    {"vectorId":"reject-candidate-exclusion","mutation":"exclude one candidate path","expected":"exclusion-rejection"},
+    {"vectorId":"reject-evaluator-extra-exclusion","mutation":"add an evaluator exclusion","expected":"exclusion-rejection"},
+    {"vectorId":"reject-path-case-collision","mutation":"inventory A and a aliases","expected":"path-rejection"},
+    {"vectorId":"reject-partial-execute","mutation":"use owner-only execute mode","expected":"mode-rejection"}
+  ]
+}

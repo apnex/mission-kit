@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "lifecycle.transition-commit-replay",
+  "oneSentenceBehavior": "an accepted transition atomically persists state, event, and outbox and replays exactly.",
+  "obligationId": "TE28",
+  "mechanismId": "EM05",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/lifecycle/transition-commit-replay.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/helpers/runtime-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E3",
+  "groupId": "lifecycle",
+  "status": "implemented"
+}

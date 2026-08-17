@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "integration.campaign-candidate-snapshot-binding",
+  "oneSentenceBehavior": "campaign seal binds every arm to its exact validated candidate snapshot.",
+  "obligationId": "TE07",
+  "mechanismId": "EM02",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/integration/campaign-candidate-snapshot-binding.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [
+    "tests/helpers/campaign-fixture.mjs",
+    "tests/helpers/candidate-capture-fixture.mjs"
+  ],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E5",
+  "groupId": "integration",
+  "status": "implemented"
+}

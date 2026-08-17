@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "hashProfileId": "survey-evaluator-sha256-jcs-v1",
+  "testId": "isolation.hostile-role-input-inertness",
+  "oneSentenceBehavior": "role capsule admission rejects hostile input views without invoking them.",
+  "obligationId": "TE32",
+  "mechanismId": "EM04",
+  "evidenceClass": "executable-contract-evidence",
+  "executable": "tests/isolation/hostile-role-input-inertness.test.mjs",
+  "runner": "node:test",
+  "executionIsolationClass": "read-only-package",
+  "fixtures": [],
+  "prerequisites": [],
+  "expectedResultSchema": "schemas/test-evidence.schema.json",
+  "gate": "E3",
+  "groupId": "isolation",
+  "status": "implemented"
+}
