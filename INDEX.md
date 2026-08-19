@@ -77,6 +77,7 @@ Sort by ID prefix.
 | [K25](skills/workgraph-arc-participant/SKILL.md) | skill | workgraph-arc-participant - act inside a Hub WorkGraph arc | active | 2026-07-23 |
 | [K26](skills/workgraph-arc-planning/SKILL.md) | skill | workgraph-arc-planning - bounded intent-to-design-seal planning arc | active | 2026-07-23 |
 | [K27](skills/write-discoverable-code/SKILL.md) | skill | write-discoverable-code - name and structure code so plain-text search resolves it in one hit (vendored, MIT) | active | 2026-08-19 |
+| [K28](skills/asd-ste100-verifier/SKILL.md) | skill | asd-ste100-verifier - audit and enforce ASD-STE100 Simplified Technical English, with a runnable engine | active | 2026-08-19 |
 | [MREQ-1](backlog/mreq-1-axiom-application-methodology.md) | mission-required | Axiom-application methodology for non-code missions | partially-fulfilled | 2026-07-01 |
 | [R0](roles/README.md) | role | Roles - the M axis (pure essence + type-determined authority) | active | 2026-07-13 |
 | [R1](roles/R1-architect.md) | role | architect - authority over system shape | active | 2026-07-13 |
