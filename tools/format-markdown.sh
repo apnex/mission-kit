@@ -37,12 +37,16 @@ changed=0
 for f in "${files[@]}"; do
 	[ -f "$f" ] || continue
 	head -12 "$f" | grep -qF "GENERATED FILE" && continue
+	# Honour the same exemption markers the checker honours, per pass rather than per file:
+	# a file exempt from S13 still wants its sentences and section rules fixed.
+	skip_s13=0
+	grep -qF "style-check: allow S13" "$f" && skip_s13=1
 
 	before=$(cat "$f")
 	tmp=$(mktemp); cp "$f" "$tmp"
 
 	# S13 - the conversions the entry's own table prescribes.
-	perl -CSD -i -pe '
+	[ "$skip_s13" -eq 0 ] && perl -CSD -i -pe '
 		s/ \x{2014} / - /g; s/\x{2014}/-/g; s/\x{2013}/-/g; s/\x{2212}/-/g;
 		s/\x{2192}/->/g; s/\x{2190}/<-/g; s/\x{2194}/<->/g; s/\x{27F6}/-->/g;
 		s/\x{21D2}/=>/g; s/\x{27FA}/<=>/g;

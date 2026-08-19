@@ -74,7 +74,11 @@ check_S6() {
 	              /^<!--/{next}
 	              /^(#|\||>|[[:space:]]*[-*+][[:space:]]|[[:space:]]*[0-9]+\.[[:space:]])/{next}
 	              /^[[:space:]]{2,}[^[:space:]]/{next}
-	              /[a-z)`][.!?] [A-Z`]/{printf "%s:%d\n", FILENAME, FNR}' "$f")
+	              # An abbreviation is not a sentence end. reflow-sentences.mjs already declines
+	              # to split on these, so without the same guard the checker and the converter
+	              # disagree and a file can never be made to pass.
+	              { s=$0; gsub(/(e\.g|E\.g|i\.e|I\.e|etc|vs|cf|approx|Dr|Mr|Ms|Fig|Eq|Sec)\./, "ABBREV", s)
+	                if (s ~ /[a-z)`][.!?] [A-Z`]/) printf "%s:%d\n", FILENAME, FNR }' "$f")
 
 	# S6 half 2 - adjacent sentences that collapse for want of a trailing backslash.
 	# List markers may be indented; a nested bullet is still a bullet.
@@ -148,8 +152,11 @@ check_S14() {
 	local f=$1
 	exempt "$f" S14 && return
 	local trig title
+	# A trailing YAML comment is not part of the value; the other frontmatter readers in this
+	# repository strip it and this one did not, so a documented placeholder read as two sentences.
 	trig=$(awk 'FNR==1 && !/^---$/{exit} FNR==1{next} /^---$/{exit}
-	            /^hydrate-when:/{sub(/^hydrate-when:[[:space:]]*/, ""); gsub(/^["\047]|["\047]$/, ""); print; exit}' "$f")
+	            /^hydrate-when:/{sub(/^hydrate-when:[[:space:]]*/, ""); sub(/[[:space:]]+#.*$/, "");
+	                             gsub(/^["\047]|["\047]$/, ""); print; exit}' "$f")
 	# Coverage is complete, so an absent trigger is a regression rather than a gap.
 	# Only a portable SKILL.md is exempt: it carries no catalogue placement by design,
 	# and its harness trigger is the description field the standard already defines.

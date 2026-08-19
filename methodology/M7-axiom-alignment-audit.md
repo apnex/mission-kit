@@ -7,17 +7,19 @@ hydrate-when: You are judging whether a design decision is anchored to a first p
 related: [M1, M5, M6, A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, MREQ-1]
 ---
 
-# M7 — Axiom alignment audit
+# M7 - Axiom alignment audit
 
 ## Rule
 
 Every **extensive planning or design exercise** must undergo a dedicated axiom alignment audit before implementation approval.
 
-The audit is a gate, not decoration.
+The audit is a gate, not decoration.\
 It maps the proposed plan/design to the active charter axioms, names load-bearing alignments, exposes tensions, and records whether implementation may proceed as-is, proceed with guardrails, or must revise the design.
 
-Do not use axioms to generate a preferred answer from an unverified story.
+Do not use axioms to generate a preferred answer from an unverified story.\
 Establish reality first, design from evidence, then use axioms to interrogate the near-final artifact.
+
+---
 
 ## When this is required
 
@@ -29,9 +31,11 @@ Run an axiom alignment audit when any of these are true:
 - the work is extensive enough to require council input, Director approval, a blueprint, a verifier gate, or a closeout packet;
 - the work touches multiple roles or changes what future agents will perceive as normal procedure.
 
-A short local bugfix does not require a standalone audit unless it changes operating doctrine or a reusable substrate seam.
-When unsure, run the audit.
+A short local bugfix does not require a standalone audit unless it changes operating doctrine or a reusable substrate seam.\
+When unsure, run the audit.\
 The cost is small; the missed-gate cost is compounding drift.
+
+---
 
 ## Required sequencing
 
@@ -41,6 +45,8 @@ The cost is small; the missed-gate cost is compounding drift.
 4. **Record deltas.** If the audit finds a flaw, either update the design or record an explicit authority-accepted deviation.
 5. **Gate implementation.** Do not start implementation until the audit verdict is `pass`, `pass-with-guardrails`, or an authorized exception.
 6. **Carry guardrails into validation and closeout.** Tests, verifier gates, delivery claims, and closeout packets must reference unresolved guardrails.
+
+---
 
 ## Audit artifact contract
 
@@ -57,13 +63,15 @@ The audit artifact must include:
 | Implementation guardrails | concrete rules implementation must not violate |
 | Closeout hooks | what validation/verifier/closeout must re-check |
 
-Do not force every axiom to be equally load-bearing.
-Mark whether each mapping is **load-bearing**, **supporting**, or **not materially implicated**.
+Do not force every axiom to be equally load-bearing.\
+Mark whether each mapping is **load-bearing**, **supporting**, or **not materially implicated**.\
 A decorative citation is worse than omission because it launders weak reasoning as principle.
+
+---
 
 ## Layered application guide
 
-Use the following layers to translate axioms into operational questions.
+Use the following layers to translate axioms into operational questions.\
 This is the first slice of the broader axiom application guide; extend it only from observed need.
 
 | Layer | Primary axioms | Audit questions |
@@ -79,6 +87,8 @@ This is the first slice of the broader axiom application guide; extend it only f
 | Self-evolution | A10, A14 | Did discovered friction become backlog, methodology, tests, or reusable capital? Is any lesson left in conversation memory only? |
 | Director attention / authority | A13 | Is the Director asked for strategic gate decisions only? Is authority explicit and non-delegated? |
 
+---
+
 ## Common failure modes
 
 | Failure | Why it is bad | Correction |
@@ -89,6 +99,8 @@ This is the first slice of the broader axiom application guide; extend it only f
 | Prompt-only enforcement | A recurring deterministic rule is left for the LLM to remember | Mechanize or file a primitive/config follow-up |
 | Director markdown gate | The Director is asked to read a long doc to approve | Present one decision at a time; markdown is the durable record |
 | Audit after implementation | The audit becomes a post-hoc justification | Gate implementation before code or record a process fault |
+
+---
 
 ## Output
 

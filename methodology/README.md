@@ -1,6 +1,7 @@
 # Methodology
 
-Ways of working. The "how you operate" rules.
+Ways of working.\
+The "how you operate" rules.
 
 <!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
 | ID | Title | Status | Hydrate when |

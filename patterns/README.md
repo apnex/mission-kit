@@ -1,6 +1,7 @@
 # Patterns
 
-Recurring designs. The "how you shape it" rules.
+Recurring designs.\
+The "how you shape it" rules.
 
 <!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
 | ID | Title | Status | Hydrate when |

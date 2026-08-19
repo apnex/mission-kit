@@ -8,13 +8,11 @@ supersedes: []
 related: [S3]
 ---
 
-# P2 — Node-label gate for cross-component contracts
+# P2 - Node-label gate for cross-component contracts
 
 ## Rule
 
-When a **producer** component must be ready before **consumer**
-components can run on the same node, encode the gate as a **node
-label** that the producer manages:
+When a **producer** component must be ready before **consumer** components can run on the same node, encode the gate as a **node label** that the producer manages:
 
 1. After successful initialization, the producer writes a label:
    `<producer>/state=ready` (and, if version skew matters,
@@ -22,19 +20,19 @@ label** that the producer manages:
 2. Consumers schedule with a `nodeSelector` (or equivalent
    affinity primitive) matching those labels.
 3. On graceful shutdown, the producer **removes the label first**
-   — before tearing down its own resources — so the scheduler
+   - before tearing down its own resources - so the scheduler
    stops placing new consumer work on the node while it still has
    capacity to drain in-flight work.
 4. The label keys are part of the producer's published contract
-   (see S3 — producer/consumer doc split).
+   (see S3 - producer/consumer doc split).
 
-The pattern works on any orchestrator that supports node labels +
-label-based scheduling affinity (Kubernetes, Nomad, others).
+The pattern works on any orchestrator that supports node labels + label-based scheduling affinity (Kubernetes, Nomad, others).
+
+---
 
 ## Rationale
 
-The alternatives all have known failure modes for cross-pod
-readiness:
+The alternatives all have known failure modes for cross-pod readiness:
 
 - **`readinessProbe` on the producer pod** controls the
   *producer's* own traffic, not whether *consumer* pods get
@@ -49,16 +47,13 @@ readiness:
   mesh, and are overkill for what is fundamentally binary state
   ("the producer on this node is ready / is not").
 
-Node labels are first-class to every orchestrator's scheduler.
-Affinity decisions happen at placement time, before any consumer
-container runs, which is exactly when the gate needs to fire.
+Node labels are first-class to every orchestrator's scheduler.\
+Affinity decisions happen at placement time, before any consumer container runs, which is exactly when the gate needs to fire.
 
-Removing the label *first* on shutdown is what makes the pattern
-graceful: any in-flight consumer work already on the node gets to
-drain; new consumer work goes to other ready nodes. Tearing down
-the producer first and the label second leaves a window where the
-scheduler still places consumer work on a node whose producer is
-already gone.
+Removing the label *first* on shutdown is what makes the pattern graceful: any in-flight consumer work already on the node gets to drain; new consumer work goes to other ready nodes.\
+Tearing down the producer first and the label second leaves a window where the scheduler still places consumer work on a node whose producer is already gone.
+
+---
 
 ## Examples
 
@@ -93,6 +88,8 @@ already gone.
 > <producer>/state- <producer>/version-` *first*, then proceeds
 > with its own teardown.
 
+---
+
 ## When to apply
 
 - Producer/consumer components co-scheduled to the same nodes
@@ -104,7 +101,4 @@ already gone.
 - Graceful drain is required on producer restart / node
   decommission.
 
-Don't apply: when producer and consumer always run on different
-nodes (use Service readiness or network-level gates instead); when
-producer readiness is *not* a hard precondition (the consumer can
-self-degrade).
+Don't apply: when producer and consumer always run on different nodes (use Service readiness or network-level gates instead); when producer readiness is *not* a hard precondition (the consumer can self-degrade).

@@ -3,22 +3,28 @@ id: X0
 category: style          # style | methodology | pattern | skill
 title: One-line title - imperative voice, no period
 status: active           # active | superseded | deprecated
+hydrate-when: You are about to <do the thing this entry governs>  # REQUIRED, a condition not a topic; see S14
 supersedes: []           # list of IDs this replaces (if any)
 related: []              # cross-link to other IDs that pair with this
 ---
 
-# X0 — <Title>
+# X0 - <Title>
 
 ## Rule
 
-One imperative paragraph stating the rule. The thing you'd put on a
-sticky note.
+One imperative paragraph stating the rule.\
+The thing you'd put on a sticky note.
+
+---
 
 ## Rationale
 
-Why this exists. What fails without it. Be concrete — name the
-specific failure mode that motivated codifying this. One or two
-paragraphs.
+Why this exists.\
+What fails without it.\
+Be concrete - name the specific failure mode that motivated codifying this.\
+One or two paragraphs.
+
+---
 
 ## Examples
 
@@ -30,10 +36,13 @@ paragraphs.
 
 > <generic example showing the rule applied; no project specifics>
 
+---
+
 ## When to apply
 
-The trigger condition. Read this section when you're about to start
-a task that might touch the rule's domain. Bulleted list works well.
+The trigger condition.\
+Read this section when you're about to start a task that might touch the rule's domain.\
+Bulleted list works well.
 
 - Trigger 1.
 - Trigger 2.

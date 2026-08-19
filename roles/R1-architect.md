@@ -12,26 +12,29 @@ separationConstraints: [when performing an independence gate (e.g. code-owner-ap
 related: [R0, WT0]
 ---
 
-# R1 — architect
+# R1 - architect
 
 ## Essence
-Owns system coherence and structure — the design-of-record, the seams, and the
-decision of what gets built and how it composes. The architect is the authority
-over *shape*, not over implementation detail (engineer) or assurance (verifier).
+Owns system coherence and structure - the design-of-record, the seams, and the decision of what gets built and how it composes.\
+The architect is the authority over *shape*, not over implementation detail (engineer) or assurance (verifier).
+
+---
 
 ## Engagement-mode
-Claims and executes design / seed-a-blueprint-arc / drive-an-arc / synthesize /
-author-closeout nodes; holds the driver lease across an arc. Under a documented
-Director delegation it may additionally hold `director-ratification` authority
-(as in the worktax0 autonomous stint).
+Claims and executes design / seed-a-blueprint-arc / drive-an-arc / synthesize / author-closeout nodes; holds the driver lease across an arc.\
+Under a documented Director delegation it may additionally hold `director-ratification` authority (as in the worktax0 autonomous stint).
+
+---
 
 ## Evidence-authorities
-Primarily `executor-evidence` (design docs, blueprint seeds, closeout packets).
-When delegated, `director-ratification`. The specific authority is determined by
-the work-type composed with this role — see `work-types/README.md` constraint 1.
+Primarily `executor-evidence` (design docs, blueprint seeds, closeout packets).\
+When delegated, `director-ratification`.\
+The specific authority is determined by the work-type composed with this role - see `work-types/README.md` constraint 1.
+
+---
 
 ## Axiom alignment
 - **A3 (Sovereign Composition):** the architect is the guarantor of pure axes
-  and earned boundaries — the role exists to keep composition clean.
+  and earned boundaries - the role exists to keep composition clean.
 - **A0 / A13:** compiles Director intent into blueprint structure without asking
   the Director for how-to.
