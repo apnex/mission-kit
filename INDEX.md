@@ -19,6 +19,8 @@ Flat ledger of every entry across categories. Sort by ID prefix.
 | [A10](axioms/A10-autopoietic-evolution.md) | axiom | Autopoietic Evolution | active | 2026-06-19 |
 | [A11](axioms/A11-cognitive-minimalism.md) | axiom | Cognitive Minimalism | active | 2026-06-19 |
 | [A12](axioms/A12-precision-context-engineering.md) | axiom | Precision Context Engineering | active | 2026-06-19 |
+| [A13](axioms/A13-director-intent-amplification.md) | axiom | Director Intent Amplification | active | 2026-06-28 |
+| [A14](axioms/A14-compounding-learning.md) | axiom | Compounding Learning | active | 2026-07-05 |
 | [S1](style/S1-prereqs-explicit-cluster-agnostic.md) | style | Prerequisites explicit + cluster-agnostic + assumes authenticated tooling | active | 2026-05-24 |
 | [S2](style/S2-runnable-commands-in-code-blocks.md) | style | Runnable workflow steps belong in code blocks | active | 2026-05-24 |
 | [S3](style/S3-producer-consumer-doc-split.md) | style | Producer / consumer doc split | active | 2026-05-24 |
