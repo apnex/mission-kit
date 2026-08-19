@@ -34,6 +34,3 @@ You'll know it holds when:
 2. Every completion report includes governance- and workflow-friction reflection sections (required; "no friction observed" is an acceptable value).
 3. Self-healing chains (defect → post-mortem → proposal/design → remediation work) execute on a single human approval.
 4. The concept registry accretes patterns from actor reflections without manual triage.
-
-## Provenance
-Derived from OIS `tele-10` (Autopoietic Evolution); preserves pre-reset tele-8 content with a retroactive four-section rewrite applied 2026-04-21, Director-ratified via idea-149. No prior external AX lineage. Composes with sibling A7 — the friction reflections this loop emits feed the same backlog from which the system later draws its remediation work.

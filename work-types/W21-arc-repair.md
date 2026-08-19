@@ -55,8 +55,3 @@ completion gate (the bug-250 class it was earned to defeat).
   must be superseded, not silently dropped, so closure remains honest.
 - **A11** — self-fed execution depends on completion gates that actually close;
   a trapped gate stalls the idle engine until topology is repaired.
-
-## Origin
-
-Earned from bug-250 (`abandoned != done` traps the parent forever) during
-resfix0.

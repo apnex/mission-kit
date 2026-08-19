@@ -35,6 +35,3 @@ You'll know it holds when:
 3. The simulation↔production delta is measurably within an explicitly-defined threshold; exceeding it declares the simulation broken and blocks feature work until refactored.
 4. Production telemetry continuously tunes the simulation environment, keeping injected entropy representative of live conditions.
 5. A change's first contact with real hardware and users is routinely uneventful, because its failure modes were already exhausted in simulation.
-
-## Provenance
-Derived from OIS `tele-9` (Chaos-Validated Deployment), Director-ratified 2026-04-21 (idea-149); a new tele carved from the chaos aspect of pre-reset `tele-6` (Deterministic Invincibility) and absorbing the prior external axiom AX-070 (Virtual Grounding). Composes with sibling A8 as the deployment-time gate that proves resilience before promotion; the deeper principle — prove resilience under injected adversity before production exists — generalizes to any system, while its named entropy mechanics are sharpest for distributed, stateful, and multi-agent architectures.

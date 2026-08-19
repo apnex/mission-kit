@@ -89,9 +89,3 @@ Separating the mechanics from the publication decision is what keeps this rule u
 - Onboarding contractors or vendors whose contracts disallow third-party attribution on delivered work.
 
 Do not apply to remove content you merely regret. History is a record; the bar is that the content must not be there, not that you would rather it weren't.
-
-## Origin
-
-2026-05-24 - a no-AI-attribution policy adopted mid-project required scrubbing existing commit history across a fork branch and a project repo. The procedure was codified into a reusable scrub-tool repo with four scripts and a README. Memory: `feedback_no_claude_attribution_in_commits`.
-
-2026-08-05 - the same procedure was needed for a GCP project ID in `apnex/k3s-gce`, a target class the attribution-only framing did not cover, so the rule was generalised to any history content with per-class obligations. Three corrections came out of that run. The rewrite had to cover blobs as well as messages, which the messages-only framing forbade. A backup *ref* would not have survived `git filter-repo`, which rewrites every ref including the backup. And the force-push did not purge - the orphaned commit was still served by the GitHub API afterwards, which is now a caveat rather than a discovery.

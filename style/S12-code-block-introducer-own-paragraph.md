@@ -128,10 +128,3 @@ Reader's eye jumps from code -> action sentence with zero visual hop.)
 - Reviewing a PR diff - scan for code blocks whose introducer is
   jammed into a multi-sentence description paragraph above.
 - Doc-pass cleanups - opportunistic when editing existing content.
-
----
-
-## Origin
-
-2026-05-24 README audit - the section Troubleshooting BAR1 entry packed three description sentences plus the action introducer into one paragraph, all running together with hard-break backslashes.\
-Operator scanning the section had no visual cue for "this last sentence is the fix." Adding a single blank line fixed it; promoting the pattern to a rule prevents the regression elsewhere.

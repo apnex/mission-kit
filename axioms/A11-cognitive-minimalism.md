@@ -22,6 +22,7 @@ LLM tokens are the scarce economic resource. Every deterministic function is mec
 
 ## Rationale
 LLM token consumption is the dominant variable cost of an agentic system and its primary scarce resource. Without a first principle that drives deterministic work out of the prompt, agents silently absorb toil that could be mechanized — paying in tokens what one function call would do for free, and burning context-window on ceremony that displaces judgment. Naming the principle promotes each local efficiency fix from an ad-hoc workaround to a governing rule.
+The principle generalises past the LLM case to any system holding a scarce, expensive oracle: reserve it for what only it can do.
 
 ## Faults
 - **LLM as Calculator** — the agent doing deterministic work (counting, sorting, pattern-matching, schema-validation, repetitive transformation) a function would do in microseconds at zero token cost.
@@ -40,6 +41,3 @@ You'll know it holds when:
 5. Model-tier migrations need only configuration change, not workload redesign.
 6. Prompt context is dominated by genuinely cognitive content; transcription and pattern-matching overhead is negligible by construction.
 7. When an LLM-side workaround for a deterministic pattern is observed, a reusable-primitive candidate is filed within one review cycle.
-
-## Provenance
-Derived from OIS `tele-11` (Cognitive Minimalism), architect-proposed 2026-04-22. Governs the extensive margin (whether to invoke the LLM at all); its companion A12 Precision Context Engineering governs the intensive margin (context efficiency when you do). It composes with its siblings: A6 governs anti-transcription between actors while this axiom governs offload-to-substrate within a single actor's own cognitive loop; A5 Perceptual Parity supplies the pre-hydrated state this axiom offloads the LLM onto; A2 and A3 give clean module boundaries while this axiom decides which side of each boundary a concern belongs on. The deeper principle — reserve the scarce expensive oracle for only what the oracle can do — generalizes to any costly-oracle system.

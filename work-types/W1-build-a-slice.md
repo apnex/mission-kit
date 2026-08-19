@@ -51,8 +51,3 @@ without hand-routing. Falsifier: CI red, scope drift, or unreviewed code merged.
   execution; the engine feeds the engineer without the architect hand-routing.
 - **A11** — the bracketing verify-gate keeps the executor's own green from
   standing as assurance, holding the independence line.
-
-## Origin
-
-Earned by resfix0 `build_494` under mission-107 — the recurring "implement a
-scoped increment" node that the HCAP slice work made into a standing type.

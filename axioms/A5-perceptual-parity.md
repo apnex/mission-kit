@@ -33,6 +33,3 @@ You'll know it holds when:
 2. The human↔agent perception delta is measurably within an explicitly-defined bound on shared entities.
 3. Agent output is perceived in context (rendered, mirrored, or streamed) before any cognitive decision acts on it.
 4. Hallucinated state is treated as a bug, not as expected behavior.
-
-## Provenance
-Derived from OIS `tele-5` (Perceptual Parity) — Director-ratified 2026-04-21 (idea-149); evolves the pre-reset tele-7 (Perfect Contextual Hydration) and absorbs the prior external axiom AX-040 (Observability Symmetry). Pairs with A11 Cognitive Minimalism, whose Hydration-as-Offload mechanic pre-computes the surfaces this axiom requires, and with A1 Sovereign State Transparency, which supplies the single ground truth that parity is measured against.

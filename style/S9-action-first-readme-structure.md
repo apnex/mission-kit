@@ -145,11 +145,3 @@ None in the second does.
   too-much-backstory-first pattern.
 - Reviewing a README PR - check that the first actionable command appears
   within the first ~30 lines of source.
-
----
-
-## Origin
-
-2026-05-24 README style audit - opening paragraph spent 7 lines on bug-description prose before reaching "Status: in production," and the first install hint appeared at line ~35.\
-"Why this exists" sat at line 220 (bottom).\
-The structural ordering was inverted from reader need.

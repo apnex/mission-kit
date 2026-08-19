@@ -103,10 +103,3 @@ Either commit to the rule everywhere or don't backtick at all - picking sporadic
   backticked.
 - Opportunistic cleanups when editing an existing doc; touch what
   you're already touching, don't bulk-backfill speculatively.
-
----
-
-## Origin
-
-2026-05-24 README pass extended backtick treatment from commands + filenames (existing informal convention in the project) to architectural-term identifiers (`Layer N`).\
-Surfacing the broader pattern showed it was already followed informally throughout the docs but never codified - promoting from convention to sanctioned rule eliminates the "is this case included?" judgment call.

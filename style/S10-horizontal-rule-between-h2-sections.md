@@ -98,9 +98,3 @@ A horizontal rule is the one separator that renders consistently visually (a lit
   touching the section boundaries.
 - Don't bulk-add to short docs just because the rule exists. The trigger
   is "long enough that sections risk running together visually."
-
----
-
-## Origin
-
-2026-05-24 README style discussion - operator preference, confirmed empirically against the project's README which has 10+ H2 sections and benefits visibly from explicit section breaks.

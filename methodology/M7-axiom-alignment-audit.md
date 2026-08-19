@@ -99,9 +99,3 @@ A successful audit leaves:
 - follow-up ids for reusable methodology or substrate gaps;
 - validation and closeout hooks;
 - no reliance on session memory for why the design is constitutionally acceptable.
-
-## Origin
-
-Codified from `stale_fyi0` / mission-111 after the Director asked whether the notification-handling plan/design had received a dedicated axiom mapping audit.
-It had not; implementation was halted, an audit gate was added, and the reusable rule was promoted here.
-This also revives the first slice of `MREQ-1`: axiom application as an audit discipline for non-code and planning/design work.

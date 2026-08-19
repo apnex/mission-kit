@@ -92,14 +92,3 @@ shape — which is almost never the one you'd have guessed from one.
 Don't apply with a single consumer and no concrete second one in
 sight: you'd be speculating. Keep the mechanism in the one place
 that uses it until the second consumer is real.
-
-## Origin
-
-A state-engine mechanism (graph walk + FSM step + transactional
-commit) was extracted into a neutral core once a *second* real
-consumer appeared to share it; a source-scanning gate enforces that
-the core names no consumer-domain vocabulary (it caught a domain
-term that had leaked into a comment, which an import-graph check
-would have passed). A maintained-index primitive used by only one
-consumer was deliberately left out of the core, gated on a future
-second consumer — the explicit promote-down-at-sample-size-two line.

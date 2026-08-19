@@ -150,14 +150,3 @@ Stands up:
 Don't convert paragraphs you're not otherwise touching, all at once, in a single PR.\
 The diff will be unreviewable.\
 Convert opportunistically as sections get edited.
-
----
-
-## Origin
-
-2026-05-24 README style audit - opening prose used 78-char hard wraps, with mid-sentence wraps breaking visual continuity.\
-The fix made the source substantially easier to read AND made the rendered output identical (the renderer wraps regardless of source layout).
-
-2026-08-05 - a Terraform module README applied the rule to an elevator pitch followed by a five-clause capability inventory, and both collapsed into one rendered block on GitHub.\
-The 2026-05-24 note above holds only where the sentences belong in one paragraph; where they don't, the break has to be made visible.\
-[[S12]] had already been using the trailing `\` for exactly this, without naming it as a rule - hence the "Making the break visible" section.

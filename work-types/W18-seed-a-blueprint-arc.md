@@ -56,9 +56,3 @@ unclaimable nodes** — a graph no agent can pick up is not a seeded arc.
 - **A11** — well-typed generation over manual dispatch: a valid seed hands the
   idle engine a complete evidence contract per node, so the architect need not
   shepherd each item.
-
-## Origin
-
-Earned by the worktax0 seed and mission-107, where blueprint instantiation minted
-arcs with deterministic runIds and full child graphs as the exemplar for this
-type.

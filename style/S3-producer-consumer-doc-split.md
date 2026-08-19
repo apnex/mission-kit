@@ -71,10 +71,3 @@ When a new consumer onboards, they read one document - the producer's contract -
 - Reviewing a doc PR that adds interface details to a consumer repo
   - push back, ask whether it should live in the producer's
   contract doc instead.
-
----
-
-## Origin
-
-A driver + workload split where the workload's manifest required node-label affinity, version-skew enforcement, and a graceful shutdown ordering.\
-First draft duplicated all three in both repos; the cleaner shape that landed was a single `consumer-contract.md` in the producer repo with the consumer's repo cross-linking it.

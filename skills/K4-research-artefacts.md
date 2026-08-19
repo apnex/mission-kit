@@ -82,14 +82,6 @@ Skip the discipline only when:
 - The output is a single-screen one-shot answer with no archival
   intent.
 
-## Origin
-
-Codified after repeated re-reading failures across multiple
-substrate-research efforts: artefacts that had been heavily invested
-in were found to be unreadable later, requiring the underlying
-investigation to be re-run. The four rules emerged as the minimal
-set whose joint absence reliably explained every observed decay mode.
-
 ## Tooling
 
 Full discipline, including foundational vocabulary and worked

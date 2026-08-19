@@ -83,10 +83,3 @@ kubectl rollout status -n kube-system ds/foo
   commands.
 - Pairing with [[P1]] which establishes the Path A / Path B labeling
   convention - S7 is how P1's labels render in markdown.
-
----
-
-## Origin
-
-2026-05-24 README style audit - install + remove sections packed Path A (docker-compose) and Path B (k3s) commands into single bash blocks with `# Path A:` / `# Path B:` comments as dividers.\
-A reader following the doc literally would run BOTH paths if they copy-pasted the whole block.

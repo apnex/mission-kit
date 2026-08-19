@@ -84,13 +84,3 @@ content (every field that carries meaning), or it's theater.
 Don't over-apply: if a representation is purely derived at read time
 (rendered on demand, never committed), there's nothing to keep in
 parity — this pattern is for *committed* twins.
-
-## Origin
-
-A modeling effort kept a spec and its instance data as two hand-
-authored twins guarded only by an existence/id-set check; the weak
-gate let a field's content drift between them undetected. Hardening
-the gate to diff truth-bearing field values immediately surfaced a
-real divergence. The durable fix was to make the data the single
-master and generate the spec view from it, with a regenerate-and-
-diff gate — after which the twins could not disagree.

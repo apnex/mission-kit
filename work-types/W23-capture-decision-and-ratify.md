@@ -56,9 +56,3 @@ the node FAIL.
 - **A13** — the director-ratification authority is the load-bearing purpose:
   ratifying a decision is a director act, and the delegation path stays under
   director authority so no architect narrative self-certifies a decision.
-
-## Origin
-
-Earned from `worktax0 delegation` and the standing `decision entities` practice —
-merged capture+decide, parameterized by `authority-holder`, where ratification
-authority never degrades to architect narrative.

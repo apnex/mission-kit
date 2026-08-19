@@ -52,9 +52,3 @@ lost during the convergence.
   before/after health evidence is the closure gate, not operator say-so.
 - **A11** — a well-typed convergence node lets the architect route fleet recovery
   as claimable work rather than hand-shepherding each seat.
-
-## Origin
-
-Earned from fleet ops and the bug-248 shared-tmux incident (a kill-server-class
-hazard taking out live seats) — hence the explicit no-kill-server-class-hazard
-clause in the evidence contract.

@@ -128,19 +128,6 @@ Skip the survey when:
 - The proposer and stakeholder are the same person and there is no later
   reviewer who needs the contract.
 
-## Origin
-
-Codified from the agentic-network *survey* skill
-([`skills/survey/`](https://github.com/apnex-org/agentic-network/tree/main/skills/survey)),
-which mechanised a recurring pre-design intent-capture step into a
-two-round, three-question pick-list with a schema-validated envelope.
-The portable kernel — bounded orthogonal questions, an adaptive second
-round, and a per-pick interpretation plus outcome-axis mapping plus
-calibration block in one validated artefact — is project-agnostic; the
-reference implementation's tracker-fetch, goal-framework, and role model
-are the substitutable seams. This entry strips those substrate-specific
-bindings and keeps only the intent-capture discipline.
-
 ## Tooling
 
 If shipping an executable instance of this skill, expose every

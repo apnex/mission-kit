@@ -112,20 +112,6 @@ Skip it for a short, flat, throwaway task list with no deferral, no
 dependencies, and a single human reader — the engine's structure costs
 more than it returns there.
 
-## Origin
-
-Codified from a sovereign lifecycle state-engine built to manage staged
-work and operated by an agent through a verb API (read / query /
-traverse / describe / project; FSM-gated transition + author; validate
-on write). A reference implementation exists as a domain-neutral JSON
-core (the `@apnex/arc-core` package) that a consumer programs with its
-own vocabulary + store paths — the engine is the substitutable substrate;
-this skill is the operating discipline. The four findings it rests on are
-generalized in [M5] (anti-amnesia deferral), [P3] (twin-parity by
-generation, for the projected views), [P4] (neutral-core + tenant
-composition, the engine's structure), and [P5] (verbs-as-data surface,
-the self-documenting verb API).
-
 ## Tooling
 
 If shipping an executable instance, keep the engine domain-neutral and

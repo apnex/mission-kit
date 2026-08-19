@@ -33,6 +33,3 @@ You'll know it holds when:
 2. Layer N+1 cannot be activated or deployed without layer N's certification.
 3. Failure at any layer triggers an audit downward toward the base, not an upward surface patch.
 4. Architecture layers are explicitly enumerated, each carrying a known ground-truth status.
-
-## Provenance
-Derived from OIS `tele-8` (Gated Recursive Integrity) — Director-ratified 2026-04-21 (idea-149); carries forward the prior external axiom AX-060 (Recursive Integrity), narrowed to its layered-construction aspect. The adversarial / chaos-validation aspect of the original AX-060 split into its sibling A9: A8 governs build-order integrity — certify before you ascend — while A9 governs the active proof that a sealed layer stays sealed under stress.

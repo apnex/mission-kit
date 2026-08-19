@@ -80,15 +80,3 @@ undetected.
   inputs (3) and (4) to break the tie objectively.
 - Any review where the cost of a missed bug is high enough to
   warrant deliberate work.
-
-## Origin
-
-A multi-sub-cycle patch review program where sub-cycle 2's
-"reviewer reads the v1 intent + review" pass produced zero
-must-fix deltas — flagging a self-confirmation risk. Sub-cycle 3
-added the four-input triangulation explicitly and surfaced a real
-register-offset bug that sub-cycle 2 had passed. The pattern
-generalizes: see project memory
-`project_patch_v3_improvements_complete_2026_05_23` and the
-reliability-methodology principle (one variable per test, n≥3 to
-resolve) in `feedback_reliability_methodology`.

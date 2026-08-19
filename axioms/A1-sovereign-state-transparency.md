@@ -33,6 +33,3 @@ You'll know it holds when:
 1. Every persistent entity survives a process or infrastructure restart with identical field values.
 2. No actor or tool holds state that another authorized actor cannot query.
 3. Topology changes go through a formal declared refactor; value changes do not.
-
-## Provenance
-Derived from OIS `tele-1` (Sovereign State Transparency) — Director-ratified 2026-04-21 (idea-149); evolves the pre-reset persistence tele and absorbs the prior external axiom AX-010 (State Sovereignty). Foundational substrate axiom: A2, A5, and A7 presuppose a single perceivable backplane as their ground.

@@ -73,15 +73,3 @@ reading-pass reviews can still strand a fresh operator at command
   doc bug.
 - When a doc has been "stable" for a while but the underlying
   system has evolved — drift only surfaces under execution.
-
-## Origin
-
-A strict-mode test-drive of a teardown workflow surfaced four
-real gaps that the prior reading-pass review had missed: a
-oneshot-service state asymmetry (start verb worked, stop verb
-didn't because the unit had already exited), a runtime-class
-deletion asymmetry (created by installer, never removed by
-uninstaller), a wrong exit-path hint, and a documentation pattern
-that treated `NotFound` as failure when it was the desired
-post-uninstall state. The same test-drive produced style rules S1
-and S2.

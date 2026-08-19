@@ -107,12 +107,3 @@ Don't apply: when producer and consumer always run on different
 nodes (use Service readiness or network-level gates instead); when
 producer readiness is *not* a hard precondition (the consumer can
 self-degrade).
-
-## Origin
-
-A producer/consumer split where the producer's per-node hardware
-initialization had to complete before consumer pods could safely
-start on the same node. The pattern was published as part of the
-producer's consumer contract; the label keys generalize as
-`<producer>/state=ready` + `<producer>/version=<value>` for any
-single-producer, multi-consumer-on-same-node arrangement.

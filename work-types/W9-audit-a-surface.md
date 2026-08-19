@@ -61,8 +61,3 @@ This falsifier must be able to fire: a findings-not-bound sweep is not closeable
 - **A8** — Law of Fallback: findings route the audit downward toward the base
   (ref-bound to the layer that actually failed), never a surface patch where the
   symptom appeared.
-
-## Origin
-
-Earned from the `K3` substrate-audit discipline exercised across `mission-104`
-(the audit-vestige retirement arc).

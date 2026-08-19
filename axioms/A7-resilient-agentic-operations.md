@@ -34,6 +34,3 @@ You'll know it holds when:
 2. Error boundaries isolate failures; primary operations complete even when secondary operations fail.
 3. Connectors resume cleanly after rate limits and network drops, replaying their backlog rather than losing it.
 4. Actor restart never produces duplicate directives or phantom state.
-
-## Provenance
-Derived from OIS `tele-7` (Resilient Agentic Operations); preserves the pre-reset tele-4 content through a retroactive four-section rewrite, Director-ratified 2026-04-21 (idea-149). Depends on A1 Sovereign State Transparency: the Hydrated Startup mechanic's phantom-free rehydration is only possible against a single perceivable, persistent backplane, making the A1→A7 dependency reciprocal. Pairs with A10: actionable failure feedback is the precondition for the autopoietic self-evolution A10 governs — resilience makes the system survivable, A10 makes it improvable.

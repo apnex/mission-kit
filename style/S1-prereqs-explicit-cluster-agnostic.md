@@ -72,10 +72,3 @@ The verify code block in a prerequisites section turns "is my env set up?" into 
   substrate-vs-implementation distinction is honored.
 - Porting docs across teams / clusters / clouds - substrate-generic
   phrasing is what makes that port mostly mechanical.
-
----
-
-## Origin
-
-Strict-mode test-drive of a teardown workflow surfaced that `KUBECONFIG=...` was undocumented across all user-facing docs AND the prereq tied the workflow gratuitously to k3s.\
-The operator running the docs literally would hit `connection refused` at the first command.

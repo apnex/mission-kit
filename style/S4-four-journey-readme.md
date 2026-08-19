@@ -71,10 +71,3 @@ If install has a doc but remove doesn't, the README itself exposes that gap.
 - Restructuring a project's docs when journeys start blurring
   together and operators report "I couldn't find the uninstall
   steps."
-
----
-
-## Origin
-
-A rigorous docs rewrite cut a top-level README from 491 lines to ~167 lines by adopting this exact shape.\
-The collapsed material moved into journey-specific deep-dive docs; nothing was lost; the README became navigable for both new arrivals and returning operators.

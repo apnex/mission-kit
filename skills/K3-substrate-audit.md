@@ -85,15 +85,6 @@ Skip the substrate-audit and use a lightweight survey when:
 - The substrate is already deeply familiar to the operator.
 - A comparative benchmark (L5) already exists and is fresh.
 
-## Origin
-
-Codified during the Honcho `v3.0.7` audit
-(`apnex/kate` `docs/memory/honcho/`), commit `76da77f`. The
-five-pass structure was discovered iteratively — promotion audits
-and lens synthesis emerged as distinct repeatable phases after the
-initial three-pass run missed three promotable features and several
-cross-feature invariants.
-
 ## Tooling
 
 Full procedure, templates, references, and analysis lenses live in

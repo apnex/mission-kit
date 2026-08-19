@@ -54,8 +54,3 @@ outcome.
   falsifier).
 - **A13** — director-frame deliberation: multi-lens convening surfaces the
   reconciled judgment a single seat cannot self-produce.
-
-## Origin
-
-Earned by the worktax0 council, which convened multi-lens seats to ratify the
-work-taxonomy and recorded its own convergence as the exemplar for this type.

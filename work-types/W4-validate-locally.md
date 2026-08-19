@@ -53,9 +53,3 @@ the exact built target, or it is worthless.
   without hand-routing, feeding a well-typed provisional node downstream.
 - **A8** — assurance stays independent: provisional executor evidence never
   self-certifies; the terminal verdict waits for a gate that is not the executor.
-
-## Origin
-
-Earned by `resfix0`'s throwaway-validate step; RE-TAGGED off proactive-poolable
-(it needs a fresh built target, worktax0 F2) and held provisional until an
-independent gate consumes it.

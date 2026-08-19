@@ -58,8 +58,3 @@ constraint-5/7 preflight rather than closing as assurance.
   consumes it.
 - **A8** — a guard that can go red is the durable repair-detector for the surface,
   turning future regressions into machine-visible FAILs.
-
-## Origin
-
-Earned from `bug-247` (the mock-adapter test) — a transport-neutral fix whose
-value was the guard test that could fail on the old behavior.

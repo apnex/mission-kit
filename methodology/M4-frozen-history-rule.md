@@ -85,14 +85,3 @@ misdirected operationally).
 - Writing a retrospective or planning doc — accept upfront that
   this artifact will become frozen the moment its decision is
   made.
-
-## Origin
-
-A policy change retiring AI-attribution trailers from commit
-history scrubbed real commit messages (under a documented
-carve-out) but **left historical planning docs untouched** even
-where those docs showed AI-trailer examples. The decision was
-explicit: the commits are the artifact of record for the source,
-but the plans are the artifact of record for what was decided at
-the time — and rewriting the latter would have silently revised
-the historical narrative.

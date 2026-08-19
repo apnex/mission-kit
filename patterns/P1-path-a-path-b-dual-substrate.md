@@ -99,12 +99,3 @@ the other is a niche fallback. In that case write the doc for the
 common substrate and add a short "alternative substrate" section
 with the deltas; the dual-path structure adds cost without
 proportionate value.
-
-## Origin
-
-A workflow doc rewrite split install + teardown procedures into
-two independent paths (containerized single-host vs. orchestrated
-multi-host). The pre-split version had interleaved conditionals;
-the post-split version was longer in raw line count but each
-operator read roughly half of it and reported the doc as
-*shorter*.

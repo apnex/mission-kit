@@ -44,6 +44,3 @@ You'll know it holds when:
 6. Per-subsystem context-engineering budget is documented and auditable.
 7. Shape-changes to major context types (tool results, state hydration, audit payloads) go through explicit review for token-cost impact.
 8. Prompt precision is measured, not assumed; silent degradation surfaces as a drift bug, not invisible waste.
-
-## Provenance
-Derived from OIS `tele-12` (Precision Context Engineering), architect-proposed 2026-04-22. Composition note: this axiom governs the intensive margin (context efficiency within an invocation), while its companion A11 Cognitive Minimalism governs the extensive margin (whether to invoke at all); the distinction surfaced when the two were first conflated and then separated under review. It draws accurate state from A5 Perceptual Parity (which it formats) and enforces that A4 Zero-Loss Knowledge's expansionist documentation reaches the model as a precision-engineered projection rather than a raw dump. The deeper principle — engineer the payload to a costly oracle for maximum judgment-per-unit-cost — generalizes to any costly-oracle system.

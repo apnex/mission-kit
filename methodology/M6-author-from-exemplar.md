@@ -73,17 +73,3 @@ enough that its own instances remain trustworthy exemplars.
   as convention onboarding.
 - Especially when a spec/README exists and feels sufficient —
   that feeling is the failure mode.
-
-## Origin
-
-An axiom (A14) was authored into this kit's axiom set from the
-collection README's shape spec alone, without reading a peer.
-The instance was structurally valid but broke three living
-conventions: sentence-form title where peers use the noun phrase,
-a missing customary framing line in success signals, and
-project-specific references in the body where every peer confines
-them to Provenance. The gap was caught by a principal's
-verification probe ("did you confirm content and structure match
-the other axioms?"), fixed by diffing against the nearest peer
-(A13) — and the corrected axiom's own mandate (capture the lesson,
-mine the friction) produced this entry.

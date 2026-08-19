@@ -69,10 +69,3 @@ The placeholder pattern (`<your-tag>`) is honest: the doc tells you what to put 
   with placeholders or source-of-truth references.
 - Authoring repo metadata (GitHub description, package descriptions,
   release-tracker summaries) - same rule applies, same drift problem.
-
----
-
-## Origin
-
-2026-05-24 README style audit on a project where the opening prose hardcoded the patched-driver version.\
-The version had already drifted once (repo description said `aorus.13`; reality was `aorus.14`); the README prose was about to drift the same way at the next cycle.

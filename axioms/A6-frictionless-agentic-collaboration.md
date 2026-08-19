@@ -33,6 +33,3 @@ You'll know it holds when:
 2. Ratification reaches execution through a single tool call or an automatic cascade.
 3. No role is ever blocked on another role's administrative or tooling gap.
 4. The substrate enforces the dependency graph invisibly; no actor constructs dependency graphs by hand.
-
-## Provenance
-Derived from OIS `tele-6` (Frictionless Agentic Collaboration); preserves the pre-reset tele-2 content via a retroactive four-section rewrite, Director-ratified 2026-04-21 (idea-149). Its mechanics presuppose the declarative coordination substrate and role-boundary discipline established by sibling axioms A2 and A3, which it extends specifically to the seams between collaborating agents.

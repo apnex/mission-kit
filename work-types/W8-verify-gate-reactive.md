@@ -54,8 +54,3 @@ evidence, or no load-bearing ref — any of these turns the node FAIL at seed.
 - **A7 / A8** — independent assurance is the load-bearing purpose: an attested
   gate on evidence the attester did not produce is what makes autonomous closure
   safe rather than self-certified.
-
-## Origin
-
-Earned by resfix0 `verify_494b` and hardened by the worktax0 `m7_audit`
-(constraint-2 / bug-249 separation-of-duties pass).

@@ -34,6 +34,3 @@ You'll know it holds when:
 2. Zero unhandled-event / unhandled-transition occurrences arise during normal multi-agent operation.
 3. An automated conformance harness covers 100% of documented workflows, including negative and adversarial/chaos paths.
 4. Active state that mismatches declared intent is detected and reverted automatically.
-
-## Provenance
-Derived from OIS `tele-2` (Isomorphic Specification) — Director-ratified 2026-04-21 (idea-149); preserves the prior declarative tele, absorbs the external axiom AX-050 (Declarative Primacy), and folds in the state-machine-enforcement aspect of a prior transition tele. Composes with A1 Sovereign State Transparency: A1 makes state a perceivable, sovereign object, while A2 makes the declared spec the sole generator of that state's legal transitions — together they close the loop between what is true and what is allowed to change.

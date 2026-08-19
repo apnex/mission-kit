@@ -33,6 +33,3 @@ You'll know it holds when:
 2. Prose appears only as wrapping around structured content; lists, tables, and trees carry the load.
 3. A cold pickup from the record alone reproduces the same outputs as a warm actor who never lost context — zero decision context is lost at handover.
 4. Documentation volume consistently exceeds raw intent volume.
-
-## Provenance
-Derived from OIS `tele-4` (Zero-Loss Knowledge) — Director-ratified 2026-04-21 (idea-149); a new tele promoting the prior external axiom AX-030 (Knowledge Fidelity), adopted at full strength. Pairs with A12 Precision Context Engineering: A4 governs the fidelity of the durable record (lose nothing when authoring), while A12 governs the economy of the live working set (assemble precisely when loading) — together, author lossless and load lean. Scoped to any-system because knowledge fidelity is foundational engineering, with the failure mode sharpest wherever a stateless cognitive engine rehydrates from the record.

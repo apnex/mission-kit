@@ -60,8 +60,3 @@ node FAIL rather than done.
   build/verify work rather than hand-routed prose.
 - **A11** — the design-of-record is the load-bearing contract a mechanized
   engine executes against without per-node architect shepherding.
-
-## Origin
-
-Earned by the worktax0 charter+design and mission-107; extensive designs must
-pass M7 (the axiom-alignment-gate) before build.

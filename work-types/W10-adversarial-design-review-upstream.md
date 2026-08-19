@@ -60,9 +60,3 @@ concerns** — an assurance pass that only ratifies is not this work-type.
 - **A7 (Resilient Agentic Operations)** — surfacing specific, falsifiable failure
   modes before build is what keeps operations resilient; an after-the-fact pass
   would have ratified them.
-
-## Origin
-
-Earned by the worktax0 red-team and mission-107, where critiquing a design
-before build/merge caught failure classes an after-the-fact pass would have
-ratified.

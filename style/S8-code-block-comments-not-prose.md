@@ -94,10 +94,3 @@ Each medium does its proper job.)
   context.
 - Reviewing a doc PR - scan for code blocks containing 2+ consecutive comment
   lines; that's the signal that prose was smuggled in.
-
----
-
-## Origin
-
-2026-05-24 README style audit - the Remove section had 3+ consecutive lines of comments inside a bash block, doing the work of an explanatory paragraph.\
-The comments were narrating workflow + listing flag options, not annotating what specific commands did.

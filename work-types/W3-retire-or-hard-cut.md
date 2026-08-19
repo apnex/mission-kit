@@ -52,9 +52,3 @@ FAIL rather than done.
   carry, directly serving the self-fed engine's throughput.
 - **A11** — the reference scan makes the cut verifiable at seed, so the architect
   need not hand-audit each removal.
-
-## Origin
-
-Earned by mission-122 `build_496` (cleanslate0) — the transient-package-swap and
-vendored-residue hard cuts, each closed on deletion-diff + merged SHA + a
-reference scan with residual disposition.

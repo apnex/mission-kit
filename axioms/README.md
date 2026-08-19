@@ -34,7 +34,6 @@ related: [A1, A2]         # cross-links to other axioms
 - **Rationale** — why the invariant is load-bearing. What architectural intent it protects.
 - **Faults** — the failure modes that appear when the axiom is violated. The named pathologies you observe when the invariant lapses.
 - **Success signals** — the observable evidence that the axiom is being upheld. What you can point at to claim conformance.
-- **Provenance** — where the axiom comes from: the `source-tele`, prior governance lineage, and the real findings that crystallized it.
 
 ---
 

@@ -34,7 +34,3 @@ the work-type composed with this role — see `work-types/README.md` constraint 
   and earned boundaries — the role exists to keep composition clean.
 - **A0 / A13:** compiles Director intent into blueprint structure without asking
   the Director for how-to.
-
-## Origin
-The driver/author-of-record seat across the cited arcs; formalized in worktax0
-§3.

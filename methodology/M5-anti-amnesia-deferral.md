@@ -78,14 +78,3 @@ re-triage would carry stale assumptions into a changed world.
   give terminal states an outgoing reopen edge.
 - Writing a decision record that defers an alternative: state the
   condition that would reopen the choice, not just the choice.
-
-## Origin
-
-A lifecycle model for staged work made the revival trigger a
-schema-enforced requirement on every non-active state and a
-deferral delta, with terminal states all reopenable and revival
-routed back through the initial triage state. The enforcement
-caught real deferrals that had been recorded without a reopen
-condition — exactly the items that would otherwise have gone
-silently missing — and turned the deferred set into conditions the
-system could re-surface on its own.

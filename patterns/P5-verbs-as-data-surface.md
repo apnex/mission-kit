@@ -92,16 +92,3 @@ into a clear error instead of a cryptic failure on first use.
 Verify the guard you add actually catches drift: inject a colliding
 verb name and a mis-keyed input, and confirm the check fails. A
 guard that can't fail on planted drift is decoration.
-
-## Origin
-
-A tool's operation catalog and dispatcher were unified onto one
-declarative manifest, so its self-documenting surface became derived
-rather than hand-listed. An adversarial review caught the first
-lockstep guard as false assurance: it grepped source text, so a verb
-whose name collided with another token passed while the command was
-unreachable, and there was no coverage that an operation's declared
-inputs matched what its logic consumed. The fix made the surface
-importable (assert against the live map), added a runtime drift
-guard, and proved both by injecting drift and watching the new
-checks fail.

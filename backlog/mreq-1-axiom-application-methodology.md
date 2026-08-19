@@ -100,11 +100,3 @@ missions actually observed by then — do not assume they still hold.
   mission-domains actually exist, from real missions) BEFORE designing the guide;
   earn the domain layer by demonstrated need (A3); do not invent fill-in (A4); do
   not build on speculation (A11).
-
-## Origin
-
-M-Shim-Distribution design dialogue, agentic-network, 2026-07-01. The v0.1→v0.2
-rewrite (design doc justified a decision on false premises; corrected once
-ADR-029 was found) is the durable evidence. Director raised the meta-question of
-axiom applicability to non-code missions and the domain-interpretation idea;
-directed this be parked in mission-kit for later pickup.

@@ -40,6 +40,3 @@ You'll know it holds when:
 4. Any module can be understood, tested, and changed in isolation from its contract alone.
 5. Boundary violations are detectable by review or tooling.
 6. Every stable, depended-upon surface traces to a real consumer that needed it; none exists on speculation alone.
-
-## Provenance
-Derived from OIS `tele-3` (Sovereign Composition), Director-ratified 2026-04-21 (idea-149); absorbs the prior external axiom AX-020 (Interface Singularity) and the boundary-isolation intent of idea-148. The deeper principle — one concern behind a versioned contract, composition over modification — is foundational to any system, but its stakes rise sharply under AI-assisted and agentic generation, where Spaghetti Synthesis accretes faster than review can contain. Pairs with A8 as a companion boundary axiom. Refined 2026-07-01 (M-Pi-Plugin-Adapter design dialogue) with the **Earned Exposure** mechanic, **Speculative Surface** fault, and success signal 6 — distinguishing a boundary that isolates a concern from a surface that is promoted to a depended-upon contract; the latter is earned by a demonstrated external consumer, not anticipated reuse. This is the boundary-layer analog of A8's Gated Ascension and the structural-margin sibling of A11's demand-earned-primitive discipline.

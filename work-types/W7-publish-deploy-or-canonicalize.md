@@ -50,8 +50,3 @@ open.
   users.
 - **A11** — the ready-to-ship target feeds a well-typed claimable node so an idle
   engineer ships it without Director/architect hand-routing.
-
-## Origin
-
-Earned by mission-121 (npm-unify) and OIS deploy, where shipping to the live
-plane was the recurring act distinct from the git-plane land.

@@ -54,8 +54,3 @@ FAIL, not done.
   walkthrough disposition must originate with the Director, load-bearing here
   because the falsifier fails exactly when that authority is inferred rather than
   exercised.
-
-## Origin
-
-Earned by the `workgraph-arc-closeout` skill in the mission-113 era, where live
-Director walkthroughs closed arcs on ratified disposition.

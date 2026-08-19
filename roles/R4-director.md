@@ -43,7 +43,3 @@ narrative**. The evidence path is a `DirectorSignal` / `Decision` /
   into autonomous execution.
 - **A0 (Sovereign Intelligence Engine):** intent enters the system here and
   compiles outward through the other axes.
-
-## Origin
-Defined alongside the agentic roles at Director request (worktax0), with the
-engagement-mode distinction that keeps it non-composing.

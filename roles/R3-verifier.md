@@ -36,7 +36,3 @@ attester is structurally not the executor given the live roster). See
   actionable defects; bug-249/250 became structural constraints through it.
 - **A8 (Gated Recursive Integrity):** verifier gates are the load-bearing checks
   between layers.
-
-## Origin
-The assurance seat across the cited arcs; the bug-249 anti-self-attest rule and
-the plain-review gate pattern are formalized here and in worktax0 §3.

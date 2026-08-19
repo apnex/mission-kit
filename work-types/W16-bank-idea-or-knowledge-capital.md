@@ -59,9 +59,3 @@ friction it surfaces is banked through W16.
   reusable capital is how the engine keeps that memory instead of re-learning.
 - **A1** — the entry is durable backplane truth with a revival trigger, so the
   insight survives restart rather than being lost as ephemeral truth.
-
-## Origin
-
-Earned from M5 anti-amnesia across many arcs — the standing discipline of
-turning surfaced friction and insight into a durable, self-resurfacing ledger
-entry.

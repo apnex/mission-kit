@@ -62,8 +62,3 @@ able to fire — a reconciliation that never checks against truth is not closeab
 - **A8** — Law of Fallback: reconciliation grounds each entity against the base
   layer of truth (git/live substrate), never patching the ledger row where the
   symptom shows without auditing the state that actually diverged.
-
-## Origin
-
-Earned from backlog-reconciliation practice and the `get_backlog_health`
-substrate check that surfaced ledger-vs-truth drift as recurring idle-poolable work.

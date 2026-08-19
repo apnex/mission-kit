@@ -55,8 +55,3 @@ finished.
 - **A13** (director intent amplification) — a proof-level closeout is the
   Director's trustworthy touchpoint on an arc's completion, so no per-node
   shepherding is required to know an arc truly landed.
-
-## Origin
-
-Earned by cleanslate0 and the resfix0 closeout, where the recurring closing act
-was a doc that pinned each proof plane separately rather than asserting done.

@@ -54,8 +54,3 @@ manual steps** — a control loop that runs off-substrate is not a driven arc.
 - **A11** — manage via the substrate, not by shepherding: the driver renews and
   closes through leased state, so no hidden manual step substitutes for the loop
   (this is the falsifier).
-
-## Origin
-
-Earned across all cited arcs, each of which was operated by a held driver over
-its stint — the recurring control-loop pattern this type names.

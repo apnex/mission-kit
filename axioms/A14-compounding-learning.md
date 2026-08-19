@@ -41,10 +41,3 @@ You'll know it holds when:
 4. Learning investments show traceable payback — deleted future friction and avoided rework are recorded when observed.
 5. Attention metrics distinguish toil from learning: toil trends to zero; learning-attention is structurally protected and never appears as a cost to minimize.
 6. Lessons flow into new designs as invariants *before* build — a captured finding becomes a stated requirement and then an enforced test — rather than arriving as post-incident patches.
-
-## Provenance
-
-- **source-tele:** tele-15 (Compounding Learning), Director-ratified 2026-07-05 — the current agentic-network constitutional binding of this axiom. Per Director direction (2026-07-05), the mission-kit axiom is the **first-class record**; axioms are the forward home of the constitutional layer.
-- **Director articulation** (2026-07-05, mission-102 P1 session): engineering the "path of greatest learning" over the "shortest path" — learning as "an invested force multiplier to greater velocity and returns in future," substantially surpassing shortest-path execution over the long horizon. Corollary sharpened same-day: *friction-rooted, infrastructure-adjacent, durably-captured*.
-- **First measured cycle:** the work-111 evidence-chain saga (agentic-network, 2026-07-04): a two-minute dishonest workaround was declined; a day of mining produced three defect records, two substrate fixes, one deprecation, and four design invariants; the next arc's first build slice closed with zero completion friction ~24h later. Tax converted to capital, payback recorded.
-- **Crystallizing register:** mission-102 design-inputs register row B9 + the B9 corollary.

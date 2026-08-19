@@ -34,7 +34,3 @@ independence-evidence (verifier-class) when performing `code-owner-approve`.
   merged code with an evidence contract, removing manual routing.
 - **A11 (Cognitive Minimalism):** build/fix/ship work is schema-gated, not
   re-derived per task.
-
-## Origin
-The executor seat across the cited arcs (dogfooded across ~12 work-types in the
-arcs immediately preceding worktax0); formalized in worktax0 §3.

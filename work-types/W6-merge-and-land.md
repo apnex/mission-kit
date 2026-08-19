@@ -48,8 +48,3 @@ canonical main* turns the node FAIL rather than leaving prose open.
   the load-bearing integration step that makes reviewed work live.
 - **A11** — the approved PR feeds a well-typed claimable node so an idle engineer
   lands it without Director/architect hand-routing.
-
-## Origin
-
-Earned by resfix0 / mission-121, where the git-plane land was the recurring act
-distinct from publish-deploy.

@@ -79,12 +79,3 @@ the bar was held).
   resist leading with process; lead with delivered outcome.
 - Self-checking your own change list: if you accepted most of what
   you generated, the bar was probably too low.
-
-## Origin
-
-A multi-cycle patch-review program where sub-cycle 3 explicitly
-held the default-reject bar across ~86 candidate improvements,
-landing 1 substantive code fix + a handful of doc-precision
-edits. The close-out summary's "honest yield assessment" section
-was what made the program legible to outside readers; see project
-memory `project_patch_v3_improvements_complete_2026_05_23`.

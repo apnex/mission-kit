@@ -57,9 +57,3 @@ rather than admitting it. Falsifier: the author approves their own change
 - **A13** — the director-ratification fallback is the only sanctioned path when
   no author-distinct code-owner exists, keeping the sole-owner escape under
   director authority.
-
-## Origin
-
-Earned from the `gh-codeowners-architect-approval` practice — a non-pusher
-architect code-owner whose author-distinct `--approve` clears REVIEW_REQUIRED on
-governed surfaces.

@@ -57,9 +57,3 @@ ignored.
   the recoverable-by-design hold, not after-the-fact cleanup.
 - **A13** — director eligibility gives the window a ratifying abort authority of
   last resort when the risk crosses a director-reserved line.
-
-## Origin
-
-Earned by `cleanslate0` (backstop-held prod windows) and ratified as a
-work-type — not an overlay — in the worktax0 backstops design (README §"Backstop
-is a work-type, not a layer").

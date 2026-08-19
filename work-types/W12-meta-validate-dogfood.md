@@ -52,8 +52,3 @@ no trace turns the node FAIL.
 
 - **A7 / A8** — dogfooding is assurance-by-real-use; provisional authority plus a
   consuming independent gate keeps executor self-evidence from self-certifying.
-
-## Origin
-
-Earned by worktax0 `simulate_generation`; re-tagged off proactive-poolable
-because it requires a just-shipped deliverable (worktax0 F2).

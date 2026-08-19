@@ -52,8 +52,3 @@ survive the load-bearing test fails the gate rather than passing on prose.
 - **A7/A8** — this is an assurance act: it holds the design's own axiom claims
   to the same falsifiable evidence bar the rest of the substrate is held to, so
   a decorative citation cannot be laundered into ratification.
-
-## Origin
-
-Earned by M7 (the author-from-exemplar guardrail against alignment drift) and
-the worktax0 `m7_audit` + `axiom_test_gate` passes.

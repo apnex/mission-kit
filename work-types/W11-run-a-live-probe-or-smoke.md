@@ -55,8 +55,3 @@ probe against a mock, or a transcript with no revision stamp, is FAIL.
   it must be consumed by an independent gate before it certifies anything.
 - **A1** — the `target` binds to a real live surface + revision (no vacuous
   probe against nothing).
-
-## Origin
-
-Earned by mission-122 and the idea-494 resume probe, where observing live
-behavior at a specific shipped revision was the load-bearing evidence.

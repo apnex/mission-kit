@@ -76,9 +76,3 @@ Condition 6 catches accidental tree changes, the worst-case failure of any rewri
 - Any rewrite of history that has already been pushed.
 
 Do not apply for cosmetic improvement, and do not treat a passing harm test as permission to rewrite habitually. The default is still no.
-
-## Origin
-
-2026-05-24 - a patch-series cascade rebase across fork branches needed force-push because consumer documentation cited the pre-cascade-base SHAs. Five conditions were codified to make the carve-out reviewable and repeatable. Memory: `feedback_force_push_fork_carve_out`.
-
-2026-08-05 - the rule was found to forbid the [[K1]] scrub it is cited by, on two counts. Its justification condition admitted only consumer-reference correctness, so a policy scrub failed it even on a fork branch; and its branch prohibition covered `master`, which is where [[K1]]'s own worked example operates. Both were artifacts of generalising from a single fork-branch incident. The justification condition became motive-agnostic and the branch prohibition became the harm test, so that a new scrub class never again requires editing this rule.

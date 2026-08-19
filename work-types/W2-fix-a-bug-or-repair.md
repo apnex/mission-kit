@@ -50,7 +50,3 @@ mints a well-typed claimable node with a complete evidence contract). Falsifier:
   is not closed until the defect is demonstrably gone.
 - **A8** — repair carries an independent gate (the regression test-run) so
   closure means the failing observation is consumed, not merely edited away.
-
-## Origin
-
-Earned by bug-247 during the resfix0 arc.

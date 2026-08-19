@@ -58,10 +58,3 @@ Workflow-step formatting tells the operator's eye "stop reading, start typing." 
 - Editing a doc that mixes prose explanation with operator steps.
 - Code-review of a doc PR - scan for backticks inline with verbs
   like "run", "execute", "type", "do".
-
----
-
-## Origin
-
-Strict-mode test-drive of a teardown workflow - operator following the docs verbatim shouldn't have to interpret prose to extract the next command to type.\
-The distinction between executable steps and descriptive references became sharp once we ran the doc literally.
