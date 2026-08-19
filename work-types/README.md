@@ -112,7 +112,6 @@ Every work-type carries:
 id:                   W<n>
 category:             work-type
 title:                <kebab-verb-phrase> — <one-line>
-added:                2026-07-13
 status:               active | candidate | posture   # candidate = not yet standing behavior; posture = not generatable
 roleEligibility:      [<pure role union>]
 evidenceContract:     [{kind, description}, ...]      # the evidenceRequirements[] template — the compile-target
@@ -123,7 +122,6 @@ parameters:           [{name, fills, bindingSource, predicate}]   # bindingSourc
 generationMode:       proactive-poolable | reactive-triggered | arc-seeded | externally-triggered
 falsifier:            <the observation that turns the node FAIL, not prose>
 compositionHooks:     <dependsOn / completionDependsOn patterns>
-provenance:           [<mission/work-item ids that earned this type>]
 ```
 
 Body sections (M6 exemplar): `## Definition`, `## Evidence & closeability`

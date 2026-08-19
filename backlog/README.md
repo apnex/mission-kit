@@ -28,7 +28,6 @@ as it is then, not silently resumed.
 id: MREQ-N
 category: mission-required
 title: One-line title — noun phrase, no period
-added: 2026-MM-DD
 status: deferred          # deferred | active | done | wont-do  (all reopenable per M5)
 revival-trigger: >        # REQUIRED — the observable condition to re-triage
   ...

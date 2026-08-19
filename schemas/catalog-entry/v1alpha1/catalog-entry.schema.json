@@ -38,13 +38,19 @@
       "minLength": 1
     },
     "status": {
-      "description": "Whether the entry is in force. An agent must not apply a retired or draft entry as though it were active.",
+      "description": "Whether the entry is in force. An agent must not apply a non-active entry as though it were. The vocabulary is the union of the per-category vocabularies documented in the category READMEs; those four vocabularies are not yet reconciled with each other.",
       "type": "string",
       "enum": [
         "active",
+        "candidate",
+        "posture",
         "draft",
-        "retired",
+        "deferred",
+        "done",
+        "wont-do",
         "superseded",
+        "deprecated",
+        "retired",
         "partially-fulfilled"
       ]
     },

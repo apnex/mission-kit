@@ -22,11 +22,9 @@ Axioms carry a tele-native body shape rather than the standard `S`/`M`/`P`/`K` s
 id: A0                    # stable ID, prefix A
 category: axiom
 title: One-line title — imperative or noun-phrase, no period
-added: 2026-MM-DD         # chronological provenance only
 status: active            # active | superseded | deprecated
 applies-to: [any-system]  # domain of validity — see Applicability model
 related: [A1, A2]         # cross-links to other axioms
-source-tele: tele-N       # the tele mandate this axiom crystallizes
 ```
 
 **Body sections**, in order:
