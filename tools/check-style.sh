@@ -46,7 +46,11 @@ fail_count=0
 
 # does $1 opt out of rule $2?
 exempt() {
-	grep -qF "style-check: allow $2" "$1"
+	grep -qF "style-check: allow $2" "$1" && return 0
+	# A generated artifact is not hand-edited: the next compile discards any fix, and the
+	# defect belongs to the source the compiler reads.
+	head -12 "$1" | grep -qF "GENERATED FILE" && return 0
+	return 1
 }
 
 report() { # rule, file, line, detail

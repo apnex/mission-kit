@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:schemas:skill:skill:v1alpha1",
+  "title": "Portable skill body frontmatter v1alpha1",
+  "description": "Frontmatter contract for a SKILL.md, the portable body of a skill. This file must be liftable into any repository or harness, so it carries no catalogue placement: no id, no status, no ledger title. Those live in the K* stub beside it, which is meaningless once the skill leaves this catalogue. The description is the routing surface a harness reads, which is why its shape is constrained here rather than left to convention.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "description"],
+  "properties": {
+    "name": {
+      "description": "The skill's own name, and how a harness loads it. Must match the directory that holds the body.",
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "maxLength": 64
+    },
+    "description": {
+      "description": "What the skill does and the condition under which to use it. A harness surfaces this and nothing else when deciding whether to load, so the condition belongs in the first sentence. See S14 for the condition-versus-topic test.",
+      "type": "string",
+      "minLength": 40
+    },
+    "when_to_use": {
+      "description": "Conditions that widen the description's trigger. Optional; the description must already carry one.",
+      "type": "array",
+      "items": { "type": "string", "minLength": 10 }
+    },
+    "when_not_to_use": {
+      "description": "Conditions that exclude this skill, so an agent can rule it out rather than infer.",
+      "type": "array",
+      "items": { "type": "string", "minLength": 10 }
+    },
+    "related_skills": {
+      "description": "Sibling skills worth knowing about. Not an edge: prerequisite and composes carry the graph.",
+      "type": ["array", "string"]
+    },
+    "license": {
+      "description": "Present only on vendored third-party content, where the licence travels with the body.",
+      "type": "string"
+    },
+    "metadata": {
+      "description": "Graph edges and provenance for vendored content. tools/skill-graph.mjs reads prerequisite and composes.",
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "prerequisite": {
+          "description": "Skills to read first. Must resolve to a real skill; skill-graph enforces that and acyclicity.",
+          "type": ["array", "string"]
+        },
+        "composes": {
+          "description": "Primitives this specialist system is built from. Level is derived from these edges, never stored in a name.",
+          "type": ["array", "string"]
+        },
+        "source": {
+          "description": "Upstream origin. Present only on vendored content, and its presence exempts the description from this corpus's shaping conventions, because the text is not ours to reshape.",
+          "type": "string",
+          "pattern": "^https://"
+        }
+      }
+    }
+  }
+}

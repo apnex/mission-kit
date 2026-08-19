@@ -45,7 +45,7 @@ Every check here runs the checker its own entry publishes rather than reimplemen
 
 **Run it when** you have edited any markdown in this repository, or before opening a pull request that touches documentation.
 
-Implements [`S6`](../style/S6-one-sentence-per-line.md), [`S8`](../style/S8-code-block-comments-not-prose.md), [`S10`](../style/S10-horizontal-rule-between-h2-sections.md), [`S12`](../style/S12-code-block-introducer-own-paragraph.md) and [`S13`](../style/S13-plain-ascii-in-markdown.md).\
+Implements [`S6`](../style/S6-one-sentence-per-line.md), [`S8`](../style/S8-code-block-comments-not-prose.md), [`S10`](../style/S10-horizontal-rule-between-h2-sections.md), [`S12`](../style/S12-code-block-introducer-own-paragraph.md), [`S13`](../style/S13-plain-ascii-in-markdown.md) and [`S14`](../style/S14-hydration-triggers-state-a-condition.md).\
 `S1`, `S3`, `S4`, `S5`, `S7`, `S9` and `S11` need judgement and are deliberately absent, because a heuristic there would emit false failures and train readers to ignore the tool.\
 Review those by reading.
 
@@ -53,6 +53,9 @@ A file opts out of one rule with a marker on its own line, which keeps the exemp
 ```
 <!-- style-check: allow S13 (character is the subject) -->
 ```
+
+A generated artifact is exempt automatically.\
+If the first lines declare `GENERATED FILE`, the defect belongs to the source the compiler reads, and any fix here is discarded on the next build.
 
 Exit status is non-zero when any check fails.
 
