@@ -12,10 +12,12 @@ related: [K1, M4]
 
 ## Rule
 
-Force-push of rewritten history is **forbidden by default**.
+Force-push of rewritten history is **forbidden by default**.\
 It is acceptable only when a named justification, a clean harm test, and the mechanical safeguards all hold.
 
-The gate is on **blast radius, not branch name**. A solo `master` with no forks and no consumers is safe to rewrite; a shared `feature/x` that CI pins by SHA is not. Judge the branch you have, not the branch its name suggests.
+The gate is on **blast radius, not branch name**.\
+A solo `master` with no forks and no consumers is safe to rewrite; a shared `feature/x` that CI pins by SHA is not.\
+Judge the branch you have, not the branch its name suggests.
 
 ### Justification
 
@@ -34,8 +36,10 @@ The gate is on **blast radius, not branch name**. A solo `master` with no forks 
 7. **Rollback preserved.** A filesystem copy of the pre-rewrite repository and its tip SHA, both retained until the push is confirmed good. Recovery must be mechanical, not reconstructive.
 8. **Logged.** The invocation is recorded somewhere durable - a catalog doc, a memory entry, a changelog - naming the justification, the harm-test evidence, and both tips. Implicit invocations do not count.
 
-Use `git push --force-with-lease=<branch>:<expected-sha>`, never `git push --force`.
+Use `git push --force-with-lease=<branch>:<expected-sha>`, never `git push --force`.\
 The explicit lease value is the last defence against racing another push, and it still applies when the rewrite tool has dropped your remote-tracking ref.
+
+---
 
 ## Never
 
@@ -43,13 +47,24 @@ The explicit lease value is the last defence against racing another push, and it
 - An upstream repository you do not control.
 - A branch under a policy requiring linear or immutable history, regardless of the harm test.
 
+---
+
 ## Rationale
 
-Rewriting published history is destructive. Collaborators lose work, CI rebuilds from refs that no longer exist, and anyone who branched off the old history has to rebase. The conditions exist to make those harms bounded and reviewable rather than discovered afterwards.
+Rewriting published history is destructive.\
+Collaborators lose work, CI rebuilds from refs that no longer exist, and anyone who branched off the old history has to rebase.\
+The conditions exist to make those harms bounded and reviewable rather than discovered afterwards.
 
-The split between justification and harm test is deliberate, and it is what keeps this rule general. Whether a rewrite is *warranted* depends entirely on motive, and motives multiply - attribution, secrets, identifiers, rebases, licence headers. Whether a rewrite is *safe to publish* does not depend on motive at all; it depends on who else is holding the old history. Enumerating admissible motives here would mean editing this rule every time a new one appears, which is exactly how the earlier version came to forbid the [[K1]] scrub it was written to authorise.
+The split between justification and harm test is deliberate, and it is what keeps this rule general.\
+Whether a rewrite is *warranted* depends entirely on motive, and motives multiply - attribution, secrets, identifiers, rebases, licence headers.\
+Whether a rewrite is *safe to publish* does not depend on motive at all; it depends on who else is holding the old history.\
+Enumerating admissible motives here would mean editing this rule every time a new one appears, which is exactly how the earlier version came to forbid the [[K1]] scrub it was written to authorise.
 
-Condition 6 catches accidental tree changes, the worst-case failure of any rewrite. Condition 7 makes rollback cheap enough that you will actually do it. Condition 8 turns *"this seemed fine at the time"* into an auditable record.
+Condition 6 catches accidental tree changes, the worst-case failure of any rewrite.\
+Condition 7 makes rollback cheap enough that you will actually do it.\
+Condition 8 turns *"this seemed fine at the time"* into an auditable record.
+
+---
 
 ## Examples
 
@@ -70,10 +85,13 @@ Condition 6 catches accidental tree changes, the worst-case failure of any rewri
 > git push --force-with-lease=master:<pre-tip-sha> origin master
 > ```
 
+---
+
 ## When to apply
 
 - Publishing the result of a [[K1]] scrub.
 - A cascade rebase across a patch series where consumer documentation cites the pre-cascade SHAs.
 - Any rewrite of history that has already been pushed.
 
-Do not apply for cosmetic improvement, and do not treat a passing harm test as permission to rewrite habitually. The default is still no.
+Do not apply for cosmetic improvement, and do not treat a passing harm test as permission to rewrite habitually.\
+The default is still no.

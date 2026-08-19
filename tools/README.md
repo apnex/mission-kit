@@ -4,7 +4,7 @@ Runnable checks and conversions that operate on this repository.
 
 Each tool owns one duty.\
 A style rule is held by exactly one tool named for it, and that tool owns both the check and the fix, so a rule cannot be reported by one implementation and refused by another.\
-The rule declares its enforcer in frontmatter and `check-structure.sh` verifies the pairing in both directions.
+The rule declares its enforcer in frontmatter and `check-enforcers.sh` verifies the pairing in both directions.
 
 | Rule | Enforcer | Fix |
 | --- | --- | --- |
@@ -66,48 +66,6 @@ Exit status is non-zero if any gate fails, and every gate runs even after an ear
 
 ---
 
-# Mission Kit tools
-
-Runnable checks and conversions that operate on this repository.
-
-Each entry states what it does, why it exists, and the condition under which you run it.\
-Nothing here is loaded as context: read a tool when its trigger fires, then run it.\
-All three are dependency-free and run from the repository root.
-
----
-
-## check-style.sh
-
-Verifies markdown against the style rules that can be decided by reading the text.
-
-```sh
-tools/check-style.sh                      # every *.md in the repo
-tools/check-style.sh style/               # a subtree
-tools/check-style.sh --rule S6 INDEX.md   # one rule, one file
-```
-
-**Why it exists.**\
-The style entries published their checkers as prose one-liners, so nothing ran them and the corpus drifted out of compliance with the rules it publishes.\
-Every check here runs the checker its own entry publishes rather than reimplementing it, so the entry and the tool cannot diverge.
-
-**Run it when** you have edited any markdown in this repository, or before opening a pull request that touches documentation.
-
-Implements [`S6`](../style/S6-one-sentence-per-line.md), [`S8`](../style/S8-code-block-comments-not-prose.md), [`S10`](../style/S10-horizontal-rule-between-h2-sections.md), [`S12`](../style/S12-code-block-introducer-own-paragraph.md), [`S13`](../style/S13-plain-ascii-in-markdown.md) and [`S14`](../style/S14-hydration-triggers-state-a-condition.md).\
-`S1`, `S3`, `S4`, `S5`, `S7`, `S9` and `S11` need judgement and are deliberately absent, because a heuristic there would emit false failures and train readers to ignore the tool.\
-Review those by reading.
-
-A file opts out of one rule with a marker on its own line, which keeps the exemption explicit and greppable:
-```
-<!-- style-check: allow S13 (character is the subject) -->
-```
-
-A generated artifact is exempt automatically.\
-If the first lines declare `GENERATED FILE`, the defect belongs to the source the compiler reads, and any fix here is discarded on the next build.
-
-Exit status is non-zero when any check fails.
-
----
-
 ## generate-index.mjs
 
 Derives `INDEX.md` and the category tables from entry frontmatter.
@@ -130,26 +88,61 @@ Exit status is non-zero in `--check` mode when a region is stale.
 
 ---
 
-## reflow-sentences.mjs
+## check-structure.sh
 
-Rewrites markdown prose to one sentence per line.
+Holds the repository's shape to what its documents claim.
 
 ```sh
-node tools/reflow-sentences.mjs --dry style/S5-no-version-pins-in-prose.md
-node tools/reflow-sentences.mjs style/S5-no-version-pins-in-prose.md
+tools/check-structure.sh
 ```
 
 **Why it exists.**\
-[`S6`](../style/S6-one-sentence-per-line.md) asks for conversion to be opportunistic rather than bulk, and that only works if converting a section is cheap enough to do while you are already editing it.\
-This does the mechanical part: unwrap mid-sentence hard wraps, put each sentence on its own line, and add a trailing backslash between adjacent sentences in a paragraph so they render on separate lines.
+A new directory appears in no document until somebody remembers, and nothing notices that it did not.\
+`statusline/` and `statusline-pi/` went undocumented in the charter that way while being listed in the ledger, which is the typed-index fault at directory granularity.
 
-**Run it when** you are editing a section that is still hard-wrapped, immediately before your own edits.\
-Do not run it across files you are not otherwise touching; `S6` says the diff becomes unreviewable.
+**Run it when** you add, rename or remove a top-level directory.
 
-Prose only.\
-Frontmatter, fenced blocks, tables, headings, list items and blockquotes are copied through untouched, because a multi-sentence bullet is the form `S6` endorses.\
-Sentence splitting declines on abbreviations, initials and ellipses, since a wrong split costs more than a missed one.\
-Use `--dry` first, and check the result with `check-style.sh`.
+Two invariants: every top-level directory is named in the root README, and every top-level directory carries its own README.\
+Exit status is non-zero if either is broken.
+
+---
+
+## check-enforcers.sh
+
+Holds the pairing between a style rule and the tool that enforces it.
+
+```sh
+tools/check-enforcers.sh
+```
+
+**Why it exists.**\
+The link between a rule and its mechanism lived only in prose, which is how six rules came to be enforced by one file holding six duties.\
+Declaring it in frontmatter makes it checkable in both directions: a rule naming a tool that does not exist is a broken promise, and a per-rule tool that no rule claims is orphaned.
+
+**Run it when** you add or rename a style rule or its enforcer.
+
+Exit status is non-zero if either direction is broken.
+
+---
+
+## check-tool-docs.sh
+
+Holds this file to the directory it indexes.
+
+```sh
+tools/check-tool-docs.sh
+```
+
+**Why it exists.**\
+This README was once two documents concatenated, and the older half advertised two tools that the same commit had deleted.\
+Nothing detected it, because the checkers read entries and directories rather than the tool index itself.\
+That is the drifted-specification fault inside the directory whose purpose is preventing drift.
+
+**Run it when** you add, rename or remove anything in `tools/`.
+
+Two invariants: every section in this README names a file that exists, and every executable in `tools/` is named somewhere in this README.\
+A per-rule enforcer satisfies the second through the rule table rather than a section of its own.\
+Exit status is non-zero if either is broken.
 
 ---
 

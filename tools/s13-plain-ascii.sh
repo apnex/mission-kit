@@ -27,11 +27,19 @@ for f in "${files[@]}"; do
 			s/\x{00D7}/x/g; s/\x{00B1}/+\/-/g; s/\x{2026}/.../g;
 			s/\x{2019}/\x27/g; s/[\x{201C}\x{201D}]/"/g;
 			s/ \x{00B7} / - /g; s/\x{00B7}/-/g;
-			s/\x{00A7}\s*/section /g; s/\x{00A9}/(c)/g;
-			s/\x{25B6}\s*/> /g; s/\x{25C9}\s*/* /g;
-			s/\x{26A0}\s*/WARNING /g; s/\x{2705}\s*/[x] /g;
-			s/\x{2713}\s*/[x] /g; s/\x{2717}\s*/[ ] /g;
-			s/\x{1F534}\s*//g; s/\x{1F916}\s*//g; s/\x{27F3}\s*/retry /g;
+			s/\x{00A9}/(c)/g;
+			# A word-substitution keeps the separating space only when a word follows it.
+			# Emitting it unconditionally turns "\x{00A7}-style" into "section -style", inventing a
+			# space the author did not write.
+			s/\x{00A7}\s*(?=\w)/section /g;   s/\x{00A7}\s*/section/g;
+			s/\x{25B6}\s*(?=\w)/> /g;         s/\x{25B6}\s*/>/g;
+			s/\x{25C9}\s*(?=\w)/* /g;         s/\x{25C9}\s*/*/g;
+			s/\x{26A0}\s*(?=\w)/WARNING /g;   s/\x{26A0}\s*/WARNING/g;
+			s/\x{2705}\s*(?=\w)/[x] /g;       s/\x{2705}\s*/[x]/g;
+			s/\x{2713}\s*(?=\w)/[x] /g;       s/\x{2713}\s*/[x]/g;
+			s/\x{2717}\s*(?=\w)/[ ] /g;       s/\x{2717}\s*/[ ]/g;
+			s/\x{27F3}\s*(?=\w)/retry /g;     s/\x{27F3}\s*/retry/g;
+			s/\x{1F534}\s*//g; s/\x{1F916}\s*//g;
 		' "$f"
 		continue
 	fi
