@@ -1,9 +1,4 @@
 ---
-id: K16
-category: skill
-title: model-an-arc - model an arc as a composed L2 system (composes the six primitives)
-status: active
-hydrate-when: You are modelling a whole arc as a composed system rather than a single construct
 name: model-an-arc
 description: "Use when modelling an arc/roadmap/backlog as a system, or as the worked example of composing primitives into an L2. Model an arc - a staged-work methodology - as a COMPOSED system in SysML v2, by composing the six L1 primitives: components (summit/arc/rung), classification axes (payoff/tier/risk), a dependency-graph (dependsOn DAG), constraints (anti-amnesia, buildsOn-banked), a state machine (the reopenable lifecycle), and a workflow (the park cascade). Read sysml-literacy + the model-a-X primitives first; the operate facet is the arc-lifecycle skill."
 metadata:
@@ -32,6 +27,8 @@ Not for a single construct - reach for the relevant `model-a-X` primitive.
 
 ---
 
+---
+
 ## Read / author it (the short path)
 
 1. Read **[`references/an-arc.md`](references/an-arc.md)** - the composition table (which primitive supplies
@@ -40,6 +37,8 @@ Not for a single construct - reach for the relevant `model-a-X` primitive.
    in one gate-valid model, all six primitives composed. The composition *is* the deliverable.
 3. Author your own by following **[`assets/composition-procedure.sysml`](assets/composition-procedure.sysml)**:
    entities -> axes -> dependencies -> lifecycle -> cascade -> invariants -> review (composes-vs-model) -> validate.
+
+---
 
 ---
 
@@ -57,12 +56,16 @@ Not for a single construct - reach for the relevant `model-a-X` primitive.
 
 ---
 
+---
+
 ## Validate
 
 `syntaxErrors == 0` on every asset (see **[`sysml-literacy/references/validating-sysml.md`](../sysml-literacy/references/validating-sysml.md)**), the **composes-vs-model lint green** (`tools/skill-graph.mjs` - every composed primitive's construct present), and the skill passes `sysml-skill-tester`.\
 The decidable arc-model rules are a checkable spec in **[`assets/well-formedness.sysml`](assets/well-formedness.sysml)**.\
 (`compatibility`: requires a SysML v2 parser
 + the catalogue's `skill-graph` lint with the composes-vs-model check.)
+
+---
 
 ---
 

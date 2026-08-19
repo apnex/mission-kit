@@ -1,9 +1,4 @@
 ---
-id: K12
-category: skill
-title: sysml-skill-tester - verify a SysML-anchored modelling skill (meta)
-status: active
-hydrate-when: You are verifying that a SysML-anchored modelling skill actually works
 name: sysml-skill-tester
 description: "Use to test a model-a-X or composed system skill (the acceptance bar). Verify a SysML-anchored modelling skill before it ships - author a fresh model from the skill ALONE and gate-validate it, audit cross-links/consistency, and gate-verify every 'X parses' claim against the validator. Read sysml-literacy first; pairs with sysml-skill-builder."
 metadata:
@@ -29,6 +24,8 @@ This verifies the *skill* as a teaching artifact.
 
 ---
 
+---
+
 ## Test it (the short path)
 
 1. Read **[`references/testing-a-skill.md`](references/testing-a-skill.md)** - the bar, the procedure, the lenses,
@@ -41,6 +38,8 @@ This verifies the *skill* as a teaching artifact.
 
 ---
 
+---
+
 ## Watch out
 
 - **The authoring test is the core.** If an agent given only the skill cannot author a valid model in a NEW
@@ -50,6 +49,8 @@ This verifies the *skill* as a teaching artifact.
 - **A green gate is not enough.** `syntaxErrors == 0` is blind to unreachable/unused/unbound semantics, a
   `ref`-vs-`part` mistake, a missing `import`, and non-idiomatic forms it silently accepts.
 - **Separate must-fix from nice-to-have** - ship on correct + consistent; defer polish.
+
+---
 
 ---
 

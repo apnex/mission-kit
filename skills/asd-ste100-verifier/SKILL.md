@@ -1,9 +1,4 @@
 ---
-id: K28
-category: skill
-title: asd-ste100-verifier - audit and enforce ASD-STE100 Simplified Technical English, with a runnable engine
-status: active
-hydrate-when: You are writing documentation that must be readable by a non-native English speaker
 name: asd-ste100-verifier
 description: "Use to audit, test, and enforce ASD-STE100 (Simplified Technical English) standards across conversation outputs, documentation drafts, and repository Markdown files. Evaluates vocabulary against the controlled STE dictionary and checks sentence length, passive voice, noun clusters, and verb tenses."
 ---
@@ -46,6 +41,8 @@ Enforce these five principles when reviewing or writing text in ASD-STE100:
 
 ---
 
+---
+
 ## 2. Text-First Vocabulary Triage and Orthogonal Value Methodology
 
 Follow this strict methodology when handling unlisted or non-compliant vocabulary:
@@ -68,6 +65,8 @@ Follow this strict methodology when handling unlisted or non-compliant vocabular
 
 ---
 
+---
+
 ## 3. Automated Pre-Flight Response & File Linter Workflow
 
 Before finalizing chat response text or writing Markdown files, the agent MUST run this automated pre-flight check:
@@ -78,6 +77,8 @@ Before finalizing chat response text or writing Markdown files, the agent MUST r
    * Rewrite any flagged non-STE tokens using core approved STE words before outputting text.
 3. **Automated Lifecycle Hook:**
    * The `post_file_write` hook automatically runs `python3 -m ste_verifier.cli --fix` on any modified Markdown file.
+
+---
 
 ---
 
@@ -94,6 +95,8 @@ python3 -m ste_verifier.cli <filename.md>
 # Automatically fix unapproved vocabulary terms in-place
 python3 -m ste_verifier.cli --fix <filename.md>
 ```
+
+---
 
 ---
 

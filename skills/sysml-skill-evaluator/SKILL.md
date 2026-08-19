@@ -1,9 +1,4 @@
 ---
-id: K17
-category: skill
-title: sysml-skill-evaluator - measure a SysML skill's leverage vs the base model (meta)
-status: active
-hydrate-when: You need to know whether a SysML skill beats the base model, and by how much
 name: sysml-skill-evaluator
 description: "Use when a new or changed SysML-anchored skill needs its leverage measured before it ships. Measure a SysML-anchored skill's LEVERAGE - whether it conveys methodology understanding the base model lacks, vs merely restating SysML. Run as a gate on a new/changed skill: format held constant (both arms read the same model), the convention WITHHELD from the task, treatment (agent+skill) vs control (agent+grammar-primer), blind-judged vs convention keys, reported as a per-convention treatment-minus-control delta. Read sysml-literacy first; completes the meta-quartet with sysml-skill-builder + sysml-skill-tester."
 metadata:
@@ -29,6 +24,8 @@ This measures **leverage** - the gap a skill opens over the base model.
 
 ---
 
+---
+
 ## Evaluate it (the short path)
 
 1. Read **[`references/evaluating-a-skill.md`](references/evaluating-a-skill.md)** - the three design invariants,
@@ -37,6 +34,8 @@ This measures **leverage** - the gap a skill opens over the base model.
    pick the skill's conventions -> **withhold them from the task** -> set arms (treatment=skill, control=grammar
    primer, **same medium**) -> blind-solve -> blind-judge vs a convention key -> per-convention delta -> review
    soundness -> verdict (skill-unique vs innate).
+
+---
 
 ---
 
@@ -57,12 +56,16 @@ This measures **leverage** - the gap a skill opens over the base model.
 
 ---
 
+---
+
 ## Validate
 
 Every `.sysml` asset must pass the gate (**`syntaxErrors == 0`**; see **[`sysml-literacy/references/validating-sysml.md`](../sysml-literacy/references/validating-sysml.md)**).\
 The eval itself is sound only if every criterion in **[`assets/well-formedness.sysml`](assets/well-formedness.sysml)** holds (format constant - conventions withheld - control format-matched - blind judge - metric discriminates - convention load-bearing).\
 A result where the **control is not at the ceiling AND there is a non-zero per-convention delta** is a **necessary condition** for a verdict - *not sufficient* (the withheld convention must also be load-bearing, per the scale + gate threshold in the reference); anything less is a redesign, not a verdict.\
 (`compatibility`: needs an agent that can run independent solver/judge roles; >=5 replicates + a second judge for anything past a directional read.)
+
+---
 
 ---
 

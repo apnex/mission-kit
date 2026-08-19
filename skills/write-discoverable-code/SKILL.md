@@ -1,9 +1,4 @@
 ---
-id: K27
-category: skill
-title: write-discoverable-code - name and structure code so plain-text search resolves it in one hit (vendored, MIT)
-status: active
-hydrate-when: You are naming anything another agent must find by plain-text search
 name: write-discoverable-code
 description: |
   Rules for writing code that coding agents (and humans) can find and understand through
@@ -21,13 +16,13 @@ metadata:
 
 # Write discoverable code
 
-Coding agents discover code by searching for strings and reading small windows around the
-hits. They have no hover text, no jump-to-definition, and no memory between sessions. These
-rules make code resolvable in one search instead of five.
+Coding agents discover code by searching for strings and reading small windows around the hits.\
+They have no hover text, no jump-to-definition, and no memory between sessions.\
+These rules make code resolvable in one search instead of five.
 
 ## 1. Names are search queries
 
-- **Exported symbols get 2–4 word names, at least one of them a domain word.**
+- **Exported symbols get 2-4 word names, at least one of them a domain word.**
   `diffUserObjects`, not `diff`. `queueEventForDispatch`, not `queue`.
   Measured on a ~700k-line monorepo: 1-word exported names are globally unique 61% of
   the time; 3-word names 96%; 4+ words 98%. Three words is the knee of the curve.
@@ -47,13 +42,15 @@ rules make code resolvable in one search instead of five.
   every synonym splits every future search in half. Reuse existing vocabulary in the
   codebase you are editing rather than introducing near-synonyms.
 - **When behavior or audience changes, rename in the same commit.** A stale name is
-  misinformation with a 100% open rate — that includes visibility markers: a `_private`
+  misinformation with a 100% open rate - that includes visibility markers: a `_private`
   helper that other modules now import needs a public name.
-- **Filenames are names too — never use bare-role filenames.** `config.ts`, `types.ts`,
+- **Filenames are names too - never use bare-role filenames.** `config.ts`, `types.ts`,
   `utils.ts`, `helpers.ts`, `handlers.ts` say nothing in a search result and collide with
   every other module's config/types/utils in the repo. Prefix the domain:
   `billing-plan-config.ts`, not `config.ts`. (`index.ts` is acceptable only as a
   thin re-export entry point.)
+
+---
 
 ## 2. Types are the documentation agents can't skip
 
@@ -65,9 +62,11 @@ rules make code resolvable in one search instead of five.
   physics.
 - **Model state with discriminated unions**, not clusters of nullable fields with implicit
   rules.
-- **Name types like they'll be quoted back** — they will be, in compiler errors the agent
+- **Name types like they'll be quoted back** - they will be, in compiler errors the agent
   uses to self-correct. `OrgScopedDb` explains itself; `Ctx2` does not. Avoid `any`: every
   `any` is a spot where the compiler goes silent and the agent is back to guessing.
+
+---
 
 ## 3. Say it where the search lands
 
@@ -75,7 +74,7 @@ rules make code resolvable in one search instead of five.
   itself can't show (units, timezone, "source time, not insert time", ownership).
   The definition is where a name search lands; that line is your whole message.
 - **Write the plain-words phrase in the doc comment.** Searches arrive as natural language
-  ("rate limit", "retry delay"), and camelCase identifiers don't match phrase greps —
+  ("rate limit", "retry delay"), and camelCase identifiers don't match phrase greps -
   `RateLimiter` is invisible to a search for "rate limit". The doc comment above each
   export should contain, in ordinary spaced-out words, the phrase someone would search
   for: a `SessionExpiryChecker` should say /** Checks whether the user session has
@@ -90,8 +89,8 @@ rules make code resolvable in one search instead of five.
   straight back to the throw site. ``throw new Error(`Webhook signature mismatch for ${id}`)``,
   never ``throw new Error(`${prefix}: mismatch`)``.
 - **One searchable concept per file, and keep orchestrators thin.** The code that answers
-  "where is X done?" should live in a module named after X — the thing a reader would
-  ask about, not the mechanism inside — not inline in a coordinator,
+  "where is X done?" should live in a module named after X - the thing a reader would
+  ask about, not the mechanism inside - not inline in a coordinator,
   pipeline, or service class. An orchestrator should read as a sequence of calls into
   well-named modules; if a reader lands in it from a search, every line should point them
   one hop from the real implementation. Burying the implementation of several concepts in
@@ -103,6 +102,8 @@ rules make code resolvable in one search instead of five.
 - **Colocate tests** (`foo.test.ts` next to `foo.ts`) so one search finds behavior and its
   specification together.
 - **Mark dead ends.** `@deprecated` on the old path, with a pointer to the new one.
+
+---
 
 ## Quick checklist before committing
 

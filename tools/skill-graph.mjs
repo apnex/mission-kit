@@ -150,5 +150,14 @@ for (const name of byLevel) {
 	console.log(`  L${level.get(name)}  ${name}${tags.length ? '   (' + tags.join(', ') + ')' : ''}`);
 }
 console.log();
+// Every skill directory must have a K* catalogue stub beside it, or it is loadable and
+// invisible: absent from INDEX.md, unreachable by ID, and routed to by nothing.
+for (const dir of readdirSync(SKILLS)) {
+	const body = path.join(SKILLS, dir, 'SKILL.md');
+	if (!existsSync(body)) continue;
+	const stub = readdirSync(SKILLS).some((f) => /^K\d+-/.test(f) && f.endsWith(`-${dir}.md`));
+	if (!stub) errors.push(`uncatalogued skill: skills/${dir}/ has no K* stub, so nothing can route to it`);
+}
+
 if (errors.length) { for (const e of errors) console.log(`FAIL  ${e}`); console.log(`\n${errors.length} error(s).`); process.exit(1); }
 console.log(`PASS — ${skills.size} skills, graph acyclic, all edges + bundle entries resolve, composes-vs-model holds, WorkGraph lifecycle/selection conforms.`);

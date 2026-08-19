@@ -1,9 +1,4 @@
 ---
-id: K11
-category: skill
-title: sysml-skill-builder - build a SysML-anchored modelling skill (meta)
-status: active
-hydrate-when: You are building a new SysML-anchored modelling skill
 name: sysml-skill-builder
 description: "Use when authoring a new model-a-X primitive or a composed system skill for the SysML modelling catalogue. Build a SysML-anchored modelling skill WITH SysML - assemble the fixed scaffold (thin SKILL.md + the five assets: template, example, one advanced example, the authoring procedure as an action def, the well-formedness rules as constraint defs + one reference) and declare its prerequisite/composes edges. NOT for modelling a 'skill' as a SysML system. Read sysml-literacy first; pairs with sysml-skill-tester."
 metadata:
@@ -29,6 +24,8 @@ Not for: modelling a "skill" as a SysML system for its own sake (this *builds* a
 
 ---
 
+---
+
 ## Author it (the short path)
 
 1. Read **[`references/building-a-skill.md`](references/building-a-skill.md)** - the full artifact grammar
@@ -39,6 +36,8 @@ Not for: modelling a "skill" as a SysML system for its own sake (this *builds* a
 3. Follow the procedure: pick the construct -> **probe the idioms against the gate first** -> write the five-asset
    scaffold + SKILL.md -> dogfood (procedure as `action def`, rules as `constraint def`s) -> declare edges + keep
    the skill-graph lint green -> hand to `sysml-skill-tester`.
+
+---
 
 ---
 
@@ -55,6 +54,8 @@ Not for: modelling a "skill" as a SysML system for its own sake (this *builds* a
   express" - that framing fits behavioral constructs, not structural ones).
 - **Declare edges; level is derived.** `prerequisite: sysml-literacy` always; `composes:` the primitives an
   L2/meta skill is built from. Never write a level into a name.
+
+---
 
 ---
 

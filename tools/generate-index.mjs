@@ -54,11 +54,11 @@ function collect() {
 		const abs = path.join(ROOT, dir);
 		if (!existsSync(abs)) continue;
 		for (const file of readdirSync(abs)) {
-			// An entry is either a file in the category directory, or a directory holding a
-			// SKILL.md. Both declare their own identity; neither takes it from an index.
-			const candidates = file.endsWith('.md')
-				? [`${dir}/${file}`]
-				: existsSync(path.join(abs, file, 'SKILL.md')) ? [`${dir}/${file}/SKILL.md`] : [];
+			// An entry is a file in the category directory. A skill's portable SKILL.md is not
+			// an entry: it carries no catalogue placement, because an id, a status and a
+			// ledger title are meaningless once the skill is lifted into another repository.
+			// The K* stub beside it is the entry, and it points at the body.
+			const candidates = file.endsWith('.md') ? [`${dir}/${file}`] : [];
 			for (const rel of candidates) {
 				const fm = frontmatter(readFileSync(path.join(ROOT, rel), 'utf8'));
 				if (!fm || !fm.id) continue;

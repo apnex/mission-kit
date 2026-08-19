@@ -1,9 +1,4 @@
 ---
-id: K9
-category: skill
-title: model-a-workflow - author an ordered activity / workflow in SysML v2
-status: active
-hydrate-when: You are modelling an ordered activity or workflow in SysML v2
 name: model-a-workflow
 description: "Use when modelling what something DOES as ordered steps (a pipeline, a procedure, a cascade, an algorithm, a transition's effect), not the states it is in. Author a workflow (an ordered activity / process) in SysML v2 - actions, successions (then), in/out pins, decisions (decide/if), and recursion. Read the sysml-literacy skill first; this is the authoring counterpart, and the home for a state machine's effects."
 metadata:
@@ -25,6 +20,8 @@ metadata:
 Not for: the *states* a thing is in and the events between them (that's `model-a-state-machine` - a `state def`); or static structure with no behaviour (that's `model-a-component` - a `part def`).
 
 **Prerequisite:** `sysml-literacy` (you must be able to *read* an `action def` before you author one).
+
+---
 
 ---
 
@@ -50,6 +47,8 @@ action def Workflow {
 
 ---
 
+---
+
 ## Watch out (see references for the full list)
 
 - **Reserved/contextual keywords can't be names** - not `action`, `state`, `from`, `accept`, `to`, `then`,
@@ -62,12 +61,16 @@ action def Workflow {
 
 ---
 
+---
+
 ## Validate
 
 Authoring SysML is the error-prone direction - **always validate before you trust the model.** The discipline is shared across all model-a-X skills: **[`sysml-literacy/references/validating-sysml.md`](../sysml-literacy/references/validating-sysml.md)**.\
 In short: run a SysML v2 parser, require **`syntaxErrors == 0`** (necessary, not sufficient), then scan the semantics by hand - the parser will *not* catch an unreachable action or an unbound pin.\
 The decidable workflow rules are written as a checkable spec in **[`assets/well-formedness.sysml`](assets/well-formedness.sysml)**.\
 (`compatibility`: requires a SysML v2 parser to validate.)
+
+---
 
 ---
 

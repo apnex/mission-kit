@@ -1,21 +1,16 @@
 ---
-id: K25
-category: skill
-title: workgraph-arc-participant - act inside a Hub WorkGraph arc
-status: active
-hydrate-when: You are acting inside an arc someone else is driving
 name: workgraph-arc-participant
 description: "Use when you are a participant in a Hub WorkGraph arc rather than the arc driver: arriving at assigned work, reading runbooks/references, claiming/starting/completing safely, reporting frictionReflection, handling stale notifications, and respecting verifier/SEAL boundaries."
 metadata:
   related-skills: arc-lifecycle, workgraph-arc-operator, workgraph-verification-gates, workgraph-pr-delivery, workgraph-recovery, workgraph-arc-closeout
   series: workgraph
   series-role: participant
-  facet: participate — execute or verify a WorkGraph node correctly
+  facet: participate - execute or verify a WorkGraph node correctly
   substrate: Hub WorkGraph / WorkItem node-contract / completion evidence / frictionReflection
   primary-verbs: get_work, get_current_stint, get_next_action, legal_moves, claim_work, start_work, renew_lease, complete_work, attest_evidence, ack_message
 ---
 
-# workgraph-arc-participant — act inside a WorkGraph arc
+# workgraph-arc-participant - act inside a WorkGraph arc
 
 ## When to use
 
@@ -29,26 +24,32 @@ Use it for:
 - actionable WorkItem notifications, claimable-digest wakes, lease-stall prompts, or manual checks;
 - completing WorkItems with evidence and `frictionReflection`.
 
-The arc driver uses `workgraph-arc-operator` to govern the arc.
+The arc driver uses `workgraph-arc-operator` to govern the arc.\
 You use this skill to act correctly at the node level so the driver can orchestrate at a higher altitude.
+
+---
 
 ## Not for
 
-- Choosing the arc's strategic direction — use `arc-lifecycle`, `survey`, or the arc driver's plan.
-- Seeding blueprints or changing the arc graph — use `workgraph-arc-operator` / blueprint guidance unless your runbook explicitly asks you to author the graph.
-- Terminal closeout reconciliation — use `workgraph-arc-closeout`.
+- Choosing the arc's strategic direction - use `arc-lifecycle`, `survey`, or the arc driver's plan.
+- Seeding blueprints or changing the arc graph - use `workgraph-arc-operator` / blueprint guidance unless your runbook explicitly asks you to author the graph.
+- Terminal closeout reconciliation - use `workgraph-arc-closeout`.
 - GitHub-only work that is not represented by a WorkItem.
+
+---
 
 ## Lifecycle position and assignment boundary
 
-The canonical lifecycle is `../arc-lifecycle/assets/workgraph-lifecycle-v1.json`.
-This skill governs node execution at any stage; it does not own the arc-level stage transition.
-Readiness is not assignment.
+The canonical lifecycle is `../arc-lifecycle/assets/workgraph-lifecycle-v1.json`.\
+This skill governs node execution at any stage; it does not own the arc-level stage transition.\
+Readiness is not assignment.\
 Claim only the explicit WorkItem/role/scope assigned to you, and do not claim another ready node absent controller assignment.
 
-A participant may perform only the effect classes frozen in the node contract.
-A code node that says commit/PR evidence does not authorize merge, publication, distribution, deploy, restart, live exercise, entity disposition, or closeout.
+A participant may perform only the effect classes frozen in the node contract.\
+A code node that says commit/PR evidence does not authorize merge, publication, distribution, deploy, restart, live exercise, entity disposition, or closeout.\
 A verifier seat uses `workgraph-verification-gates` and never claims the WorkItem whose verifier-attestation it supplies.
+
+---
 
 ## Director closeout requests while participating
 
@@ -60,9 +61,11 @@ Fresh-read the arc if you know the driver id, then route by role:
 - If you are not the driver, do not improvise the official closeout. State the current substrate truth you can verify and notify/handoff to the driver/controller that the Director requested live closeout.
 - If the substrate closeout packet already exists, the Director request still matters: it means the live walkthrough is requested now. A prior `not applicable` packet row is not a permanent refusal; it should be corrected by the driver in closeout records.
 
-## Core rule — fresh WorkGraph truth beats memory
+---
 
-Treat messages, FYIs, and chat context as signals, not authority.
+## Core rule - fresh WorkGraph truth beats memory
+
+Treat messages, FYIs, and chat context as signals, not authority.\
 Before acting, fresh-read the WorkItem and relevant projections.
 
 Minimum arrival read:
@@ -72,8 +75,10 @@ Minimum arrival read:
 3. `legal_moves(workId)` to see what you can actually do from your seat.
 4. If the node is inside an arc and the driver id is known, use `get_current_stint(driverId)` or `get_next_action(driverId)` for arc context.
 
-Do not act from a notification alone.
+Do not act from a notification alone.\
 If a notification says a node is ready but the fresh read says terminal, paused, held by another agent, blocked, or no longer claimable, treat the notification as stale and ack/ignore it.
+
+---
 
 ## Arrival / next-action behavior
 
@@ -87,8 +92,10 @@ When you receive a ready/unblocked/claimable notification:
 6. Save the lease token; every lease-bound verb needs it.
 7. If the work will take a while, renew the lease during each active turn.
 
-If `legal_moves` says no, do not force a path from memory.
+If `legal_moves` says no, do not force a path from memory.\
 Use the reason: WIP-capped, quarantined, dependency-gated, not holder, not creator, paused, completion-gated, or terminal.
+
+---
 
 ## Read the node-contract
 
@@ -100,7 +107,7 @@ A WorkItem node-contract has three load-bearing legs:
 | Inputs | `runbook` + `references` + `targetRef` | tells what to read and what the node is about |
 | Outputs | `evidenceRequirements` + `frictionReflection` | tells what must be produced to complete |
 
-Read `references` before improvising.
+Read `references` before improvising.\
 A `mode: triangulate-against` reference is not background color; it is an explicit cross-check input.
 
 Before **every effect**, satisfy the node's authority fence locally:
@@ -113,11 +120,13 @@ Before **every effect**, satisfy the node's authority fence locally:
 6. confirm actor, repository, environment, effect class, scope, and assignment are explicitly authorized;
 7. require no active FAIL, pause, recall, currentness mismatch, protected-delivery denial, or P0/readiness prohibition.
 
-Dependencies, instructions, a controller message, and a completed commencement node are not proof substitutes.
+Dependencies, instructions, a controller message, and a completed commencement node are not proof substitutes.\
 Unreadable or mismatched authority means block with **no effect**.
 
-If a required reference is inaccessible, stale, ambiguous, or points at a missing artifact, do not paper over it.
+If a required reference is inaccessible, stale, ambiguous, or points at a missing artifact, do not paper over it.\
 Block or ask through the WorkGraph, and report `runbook_confusion` or `stale_context` friction if it affected the work.
+
+---
 
 ## Claim/start/lease discipline
 
@@ -130,8 +139,10 @@ Block or ask through the WorkGraph, and report `runbook_confusion` or `stale_con
 - Never release, abandon, expire, prune, or migrate a mandatory failed-gate lease to free WIP; retain it until deployed failed-seal mechanics lawfully clear live authority while preserving before-state.
 - Never keep an ordinary lease just to avoid admitting uncertainty.
 
-A paused WorkItem is dormant, not an instruction to act.
+A paused WorkItem is dormant, not an instruction to act.\
 Only act on it after an explicit unpause/update and a fresh legal move.
+
+---
 
 ## Evidence discipline
 
@@ -146,20 +157,21 @@ Good evidence includes:
 - bug/idea/mission ids for backlog changes;
 - explicit note separating code proof, CI proof, merge proof, deploy proof, and live observation.
 
-Bind every evidence item to the correct `evidenceRequirements[].id`.
-Do not double-count one artifact for two requirements unless the evidence contract permits it.
-Do not claim live behavior if you only observed local/CI/merge truth.
-Write `live not observed` when that is the truth.
-For source work, report repository, clean worktree, branch, base SHA, commit/tree, changed paths, tests, PR/head/base, and explicit non-effects.
+Bind every evidence item to the correct `evidenceRequirements[].id`.\
+Do not double-count one artifact for two requirements unless the evidence contract permits it.\
+Do not claim live behavior if you only observed local/CI/merge truth.\
+Write `live not observed` when that is the truth.\
+For source work, report repository, clean worktree, branch, base SHA, commit/tree, changed paths, tests, PR/head/base, and explicit non-effects.\
 Use `workgraph-pr-delivery` before opening a PR or claiming any delivery layer.
+
+---
 
 ## Friction reflection is part of completion
 
-Every `complete_work` call should include a conscious `frictionReflection`.
+Every `complete_work` call should include a conscious `frictionReflection`.\
 This is not an essay requirement; it is how the org learns where WorkGraph, runbooks, tools, and coordination are still awkward.
 
 Use `observed:false` when no friction was observed:
-
 ```json
 {
   "observed": false,
@@ -169,7 +181,6 @@ Use `observed:false` when no friction was observed:
 ```
 
 Use `observed:true` when friction affected the work:
-
 ```json
 {
   "observed": true,
@@ -199,7 +210,7 @@ Use the closest category or categories:
 | `scope_drift` | pressure to expand beyond the runbook or current slice appeared |
 | `other` | only when none of the above fits |
 
-Keep the reflection short and concrete.
+Keep the reflection short and concrete.\
 Name the mechanism or missing mechanism, not just the feeling.
 
 ### Follow-up routing
@@ -217,6 +228,8 @@ Pick the follow-up kind honestly:
 
 If you choose `bug`, `idea`, or `work` but cannot create it yourself, include enough text for the arc driver to route it.
 
+---
+
 ## Completing work
 
 Before `complete_work`:
@@ -227,8 +240,10 @@ Before `complete_work`:
 4. Confirm any completion gate is open (`includeCompletionProgress` helps on arc nodes).
 5. Include `frictionReflection`.
 
-If evidence is ready but friction reflection is missing, add the reflection rather than trying to bypass completion.
+If evidence is ready but friction reflection is missing, add the reflection rather than trying to bypass completion.\
 If the Hub policy stores evidence but blocks terminal advance until reflection is present, treat that as designed steering, not a failure.
+
+---
 
 ## Verifier posture
 
@@ -241,6 +256,8 @@ If you are verifying:
 - Do not terminalize stale gates merely to clean up; preserve failed/abandoned lineage.
 
 If a gate shape is unclosable without violating authority, surface the structural issue instead of laundering a pass through prose.
+
+---
 
 ## Notification and stale-event handling
 
@@ -255,25 +272,29 @@ For each WorkGraph notification:
 
 Common stale cases:
 
-- unpause→ready event arrives after the item was abandoned;
+- unpause->ready event arrives after the item was abandoned;
 - work-unblocked arrives after another agent claimed it;
 - pass/merge FYI arrives after the WorkItem is done;
 - old paused residual work becomes visible after a cleanup wave.
 
 Substrate truth wins.
 
+---
+
 ## Hard stops and repair behavior
 
 Stop the affected effect when authority/bytes/currentness mismatch, constitution is stale/unavailable, a required attestation is absent/invalid/FAIL, scope expands, verifier independence fails, protected delivery is denied, a live proof fallback is forbidden, or completion would overclaim a proof layer.
 
-Use `block_work` with the exact blocker when you hold the node.
-Preserve local artifacts and attempt polarity.
-Do not edit/replay a failed gate or self-author a PASS.
-The controller uses `workgraph-recovery` to create a distinct repair node/gate/runId.
+Use `block_work` with the exact blocker when you hold the node.\
+Preserve local artifacts and attempt polarity.\
+Do not edit/replay a failed gate or self-author a PASS.\
+The controller uses `workgraph-recovery` to create a distinct repair node/gate/runId.\
 Routine technical failure is not a reason to abandon the arc or escalate to the Director.
 
-For contract/topology drift, do not work around the frozen node.
+For contract/topology drift, do not work around the frozen node.\
 The authorized controller must `pause -> revise -> unpause/recommit`; successors require fresh evidence and attestations.
+
+---
 
 ## When to ask or block
 
@@ -287,8 +308,10 @@ Ask/block rather than guessing when:
 - the work appears superseded but is not terminal;
 - scope has expanded beyond the node.
 
-Use `block_work` when the blocker is concrete and the node holder cannot proceed.
+Use `block_work` when the blocker is concrete and the node holder cannot proceed.\
 Use an idea/bug/skill/doc follow-up when the issue is future-facing rather than an immediate blocker.
+
+---
 
 ## Participant acceptance bar
 

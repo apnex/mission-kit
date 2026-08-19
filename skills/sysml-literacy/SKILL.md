@@ -1,9 +1,4 @@
 ---
-id: K7
-category: skill
-title: sysml-literacy - read + understand SysML v2 (literacy base for SysML-anchored skills)
-status: active
-hydrate-when: You are about to read a SysML v2 model and cannot yet parse it
 name: sysml-literacy
 description: "Use BEFORE reading, reasoning over, or answering questions about any SysML v2 model, and as the prerequisite literacy base that other SysML-anchored skills build on. Read and understand SysML v2 model text - packages, enum/part/item/requirement/state/action defs, attributes and refs, state transitions, action successions, and the :> (specialize) and :>> (bind) operators."
 metadata:
@@ -26,6 +21,8 @@ And not for prose docs: if there's no model, there's nothing to read here.
 
 ---
 
+---
+
 ## What a SysML model is (and why bother)
 
 A SysML v2 model is **structured text with a grammar.** Unlike prose, every relationship is explicit and typed, so you can answer questions by *tracing* the model rather than *interpreting* a paragraph.\
@@ -33,6 +30,8 @@ The win is not fewer tokens - it's **unambiguity and queryability**: "what's the
 
 One rule of thumb runs through the notation: **a `def` is a DEFINITION (a type); a usage `name : SomeDef` is a *use* of it (a role/feature).** `part def Builder` defines what a builder is; `myBuilder : Builder` is a builder used in some context.\
 (A concrete runtime instance is an `individual`/snapshot - rarely needed just to *read* a model.)
+
+---
 
 ---
 
@@ -53,6 +52,8 @@ Full legend with snippets: **[`references/notation.md`](references/notation.md)*
 
 ---
 
+---
+
 ## How to read a model (the six-step pass)
 
 1. **Orient** - read the `package` `doc` + the `enum def`s (the vocabulary).
@@ -66,6 +67,8 @@ Worked questions + a step-by-step example: **[`references/reading-a-model.md`](r
 
 ---
 
+---
+
 ## Practise
 
 - **[`assets/example.sysml`](assets/example.sysml)** - a small, complete, syntax-checked model (components +
@@ -73,6 +76,8 @@ Worked questions + a step-by-step example: **[`references/reading-a-model.md`](r
   questions in `reading-a-model.md`.
 - **[`assets/reading-procedure.sysml`](assets/reading-procedure.sysml)** - the six-step pass itself,
   modelled as an `action def`. The capstone: read the method *as a model*, using the method.
+
+---
 
 ---
 

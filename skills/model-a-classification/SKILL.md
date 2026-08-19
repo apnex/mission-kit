@@ -1,9 +1,4 @@
 ---
-id: K15
-category: skill
-title: model-a-classification - author orthogonal enum classification axes in SysML v2
-status: active
-hydrate-when: You are modelling orthogonal classification axes in SysML v2
 name: model-a-classification
 description: "Use when modelling which bucket(s) a thing sits in: priority, status, tier, risk, size, a category. Author a classification in SysML v2 - fixed-value axes (enum def) carried as enum-typed attributes to classify a thing along INDEPENDENT dimensions. Keeps orthogonal axes as separate enums (one enum = one axis; a thing carries several), not one combined enum. Read the sysml-literacy skill first; this is the authoring counterpart."
 metadata:
@@ -26,6 +21,8 @@ Not for: the *structure* a thing is made of - its parts, data and dependencies (
 A classification is *which bucket(s)*, not what it owns, what state it's in, or what it does.
 
 **Prerequisite:** `sysml-literacy` (you must be able to *read* an `enum def` + an attribute before you author one).
+
+---
 
 ---
 
@@ -53,6 +50,8 @@ part def WorkItem {
 
 ---
 
+---
+
 ## Watch out (see references for the full list)
 
 - **The one distinction that matters: ORTHOGONALITY - one enum = one axis; a thing carries several.**
@@ -72,12 +71,16 @@ part def WorkItem {
 
 ---
 
+---
+
 ## Validate
 
 Authoring SysML is the error-prone direction - **always validate before you trust the model.** The discipline is shared across all model-a-X skills: **[`sysml-literacy/references/validating-sysml.md`](../sysml-literacy/references/validating-sysml.md)**.\
 In short: run a SysML v2 parser, require **`syntaxErrors == 0`** (necessary, not sufficient), then scan the semantics by hand - the parser is *silent* on the two things that matter here: **conflated (non-orthogonal) axes** and a **typo'd default literal** (both gate-verified to parse clean).\
 The decidable rules are a checkable spec in **[`assets/well-formedness.sysml`](assets/well-formedness.sysml)**.\
 (`compatibility`: requires a SysML v2 parser to validate.)
+
+---
 
 ---
 

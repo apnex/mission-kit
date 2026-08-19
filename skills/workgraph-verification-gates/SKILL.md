@@ -1,9 +1,4 @@
 ---
-id: K21
-category: skill
-title: workgraph-verification-gates - exact independent WorkGraph PASS/FAIL gates
-status: active
-hydrate-when: You are gating a build and the pass or fail must be exact and independent
 name: workgraph-verification-gates
 description: "Use to author, stage, independently judge, verify, and recover exact WorkGraph PASS/FAIL gates without self-attestation, vacuous evidence, mutable-byte drift, or failed-gate replay."
 metadata:
@@ -17,7 +12,7 @@ metadata:
   lifecycle-stages: planning, admission, executing, implementation-sealed, publication-qualified, live-qualified, substrate-closing
 ---
 
-# workgraph-verification-gates — exact independent PASS/FAIL
+# workgraph-verification-gates - exact independent PASS/FAIL
 
 ## When to use
 
@@ -30,18 +25,22 @@ Use this skill whenever an arc transition depends on independent proof:
 - deployment/live/postproduction qualification;
 - terminal closeout.
 
-Do not use a verifier note as a substitute for a load-bearing gate.
-Do not ask a verifier to claim or execute the WorkItem whose requirement they attest.
+Do not use a verifier note as a substitute for a load-bearing gate.\
+Do not ask a verifier to claim or execute the WorkItem whose requirement they attest.\
 Use `workgraph-arc-participant` for ordinary node behavior and this skill for the independent judgment boundary.
+
+---
 
 ## Lifecycle position
 
-The canonical lifecycle is `skills/arc-lifecycle/assets/workgraph-lifecycle-v1.json`.
-This skill owns independent transitions such as `seal-design`, `approve-for-go`, `seal-implementation`, effect qualification, and closeout PASS.
-A PASS proves only the exact requirement, target, evidence set, and effect scope it binds.
+The canonical lifecycle is `skills/arc-lifecycle/assets/workgraph-lifecycle-v1.json`.\
+This skill owns independent transitions such as `seal-design`, `approve-for-go`, `seal-implementation`, effect qualification, and closeout PASS.\
+A PASS proves only the exact requirement, target, evidence set, and effect scope it binds.\
 It performs no seed, merge, publication, deployment, entity, live, or closeout effect.
 
-## Gate model — stage mechanically, judge independently
+---
+
+## Gate model - stage mechanically, judge independently
 
 Use Model B for a load-bearing verifier-attestation requirement:
 
@@ -54,7 +53,6 @@ Use Model B for a load-bearing verifier-attestation requirement:
 7. Every consumer calls `verify_attestation` fresh before relying on the verdict.
 
 The gate requirement must use:
-
 ```json
 {
   "id": "<seal-id>",
@@ -63,9 +61,11 @@ The gate requirement must use:
 }
 ```
 
-Do not combine it with executor-supplied review evidence as a verdict.
-Do not use `kind: review` plus `refResolvable:true` for a verifier-created WorkItem that cannot exist.
+Do not combine it with executor-supplied review evidence as a verdict.\
+Do not use `kind: review` plus `refResolvable:true` for a verifier-created WorkItem that cannot exist.\
 The executor may stage reports and exact bindings, but only the server-stamped verifier attestation supplies polarity.
+
+---
 
 ## Gate classes and exact predicates
 
@@ -80,11 +80,13 @@ The executor may stage reports and exact bindings, but only the server-stamped v
 | Live/postproduction | exact runtime/deploy identity, authorized live surface, raw observations, no forbidden fallback, persistence/restart evidence | entity disposition/closeout | broader environments |
 | Closeout | graph state, every gate/attempt, delivery/live/entity/friction/stakeholder/surface ledger, Director proof state | closeout then driver-last | rewrite history |
 
-A mutable input is exact only when its current identity is frozen and rechecked.
-For Hub documents use one authoritative identity `{path, resourceVersion, utf8Bytes, sha256}`.
-For Git use repository, full commit, path/tree/blob identity.
-For entities use kind/id/resourceVersion/state hash.
+A mutable input is exact only when its current identity is frozen and rechecked.\
+For Hub documents use one authoritative identity `{path, resourceVersion, utf8Bytes, sha256}`.\
+For Git use repository, full commit, path/tree/blob identity.\
+For entities use kind/id/resourceVersion/state hash.\
 A path, branch, tag, dependency, message, or remembered content is not exact proof.
+
+---
 
 ## Blueprint pre-seed gate
 
@@ -102,9 +104,11 @@ Before live seed, independently prove all of:
 - dry-run created zero WorkItems;
 - every prior FAIL remains separately queryable and non-authorizing.
 
-The blueprint cannot approve itself.
-A dry-run cannot substitute for independent PASS.
+The blueprint cannot approve itself.\
+A dry-run cannot substitute for independent PASS.\
 A PASS over V1 cannot authorize V2 bytes or a larger scope.
+
+---
 
 ## Verifier independence and non-vacuity
 
@@ -121,14 +125,16 @@ Reject or FAIL when any is true:
 - a forbidden fallback is used for live proof;
 - an active FAIL already seals this physical gate.
 
-A meaningful review tries to falsify the claim.
-For code, reproduce focused tests and inspect exact diffs.
-For graphs, mutate required edges/gates/driver coverage and prove validation rejects.
+A meaningful review tries to falsify the claim.\
+For code, reproduce focused tests and inspect exact diffs.\
+For graphs, mutate required edges/gates/driver coverage and prove validation rejects.\
 For live gates, execute only the authorized live path and preserve raw observations.
+
+---
 
 ## PASS consumption
 
-Never consume a remembered PASS.
+Never consume a remembered PASS.\
 Before each dependent effect:
 
 1. `get_work(gateId)` and require the expected target, requirement, evidence, current status, and active verdict.
@@ -137,13 +143,15 @@ Before each dependent effect:
 4. Rehash/re-resolve the exact artifacts the gate is supposed to bind.
 5. Recheck constitution, scope, effect-specific currentness, and absence of a newer FAIL/pause/recall/prohibition.
 
-Dependency completion and instructions are not proof.
-An authority envelope cannot widen a gate.
+Dependency completion and instructions are not proof.\
+An authority envelope cannot widen a gate.\
 A gate cannot invent missing evidence.
+
+---
 
 ## FAIL is immutable and effectively terminal
 
-A verifier FAIL is not an invitation to edit evidence and re-attest the same physical gate.
+A verifier FAIL is not an invitation to edit evidence and re-attest the same physical gate.\
 Preserve:
 
 - original WorkItem and phase;
@@ -154,23 +162,27 @@ Preserve:
 - exact candidate/attempt identity;
 - failure report.
 
-The failed gate is nonclaimable, nonreplayable, and non-re-attestable.
-Lease expiry, sweeper, restart, pause, or later PASS must not requeue it.
-Use `workgraph-recovery` to author a **distinct repair graph** with a new gate, candidate/attempt identity, runId where applicable, and downstream tail.
+The failed gate is nonclaimable, nonreplayable, and non-re-attestable.\
+Lease expiry, sweeper, restart, pause, or later PASS must not requeue it.\
+Use `workgraph-recovery` to author a **distinct repair graph** with a new gate, candidate/attempt identity, runId where applicable, and downstream tail.\
 The repair may pass; it never changes the old FAIL.
 
-If the deployed substrate does not yet clear a failed-gate lease safely, retain it.
+If the deployed substrate does not yet clear a failed-gate lease safely, retain it.\
 Do not release, abandon, expire, prune, or terminalize it merely to free WIP.
+
+---
 
 ## Advisory versus load-bearing review
 
-Use advisory review only when the arc can lawfully continue without it and the WorkItem contract says so.
-Record the authority downgrade at closeout.
+Use advisory review only when the arc can lawfully continue without it and the WorkItem contract says so.\
+Record the authority downgrade at closeout.\
 Do not describe advisory feedback as `PASS`, `sealed`, or independently authorized.
 
-Use verifier-attestation when the gate controls seed, merge, publication, deployment, live qualification, entity disposition, or driver completion.
-If verifier capacity is unavailable, the correct result is blocked/awaiting-verifier unless exact authority explicitly accepts a weaker path.
+Use verifier-attestation when the gate controls seed, merge, publication, deployment, live qualification, entity disposition, or driver completion.\
+If verifier capacity is unavailable, the correct result is blocked/awaiting-verifier unless exact authority explicitly accepts a weaker path.\
 Controller self-review never silently upgrades itself.
+
+---
 
 ## Gate completion checklist
 
@@ -187,6 +199,8 @@ Before issuing a verdict, confirm:
 - [ ] PASS or FAIL recorded with load-bearing refs;
 - [ ] `verify_attestation` returns valid;
 - [ ] downstream actor told to fresh-verify rather than trust a message.
+
+---
 
 ## Output
 

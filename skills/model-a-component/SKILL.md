@@ -1,9 +1,4 @@
 ---
-id: K10
-category: skill
-title: model-a-component - author a structural breakdown in SysML v2
-status: active
-hydrate-when: You are modelling a structural breakdown in SysML v2
 name: model-a-component
 description: "Use when modelling what a system is MADE OF: its components, the data they carry, what they own, and what they depend on (a service breakdown, a data model, a device, a subsystem). Author a component / structural breakdown in SysML v2 - part defs and item defs, attributes (data), refs (dependencies), parts (composition/ownership), multiplicity, and subtyping (:> / :>>). Read the sysml-literacy skill first; this is the authoring counterpart."
 metadata:
@@ -24,6 +19,8 @@ Not for: the *states* a thing moves through (that's `model-a-state-machine`); or
 A component is the *being-made-of*.
 
 **Prerequisite:** `sysml-literacy` (you must be able to *read* a `part def` before you author one).
+
+---
 
 ---
 
@@ -49,6 +46,8 @@ part def Component {
 
 ---
 
+---
+
 ## Watch out (see references for the full list)
 
 - **The one distinction that matters: `ref` = dependency (points at), `part` = composition (owns).** Getting
@@ -63,6 +62,8 @@ part def Component {
 
 ---
 
+---
+
 ## Validate
 
 Authoring SysML is the error-prone direction - **always validate before you trust the model.** The discipline is shared across all model-a-X skills: **[`sysml-literacy/references/validating-sysml.md`](../sysml-literacy/references/validating-sysml.md)**.\
@@ -71,6 +72,8 @@ The decidable rules are a checkable spec in **[`assets/well-formedness.sysml`](a
 (`compatibility`: requires a SysML v2 parser.\
 Note: a `ref` edge pointing back at a type that is also `part`-owned trips this validator's spurious "circular containment" advisory - `example.sysml`'s `ref dependsOn : Service` does so; not gated, `syntaxErrors` stays 0.\
 The gate conflating `ref`/`part` there is exactly the bug this skill prevents; see `validating-sysml.md`.)
+
+---
 
 ---
 

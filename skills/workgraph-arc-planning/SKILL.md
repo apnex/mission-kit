@@ -1,21 +1,16 @@
 ---
-id: K26
-category: skill
-title: workgraph-arc-planning - bounded intent-to-design-seal planning arc
-status: active
-hydrate-when: You are planning from intent to a sealed design under a bounded arc
 name: workgraph-arc-planning
 description: "Use before an implementation arc is committed, to run a bounded WorkGraph planning/design arc that maps the target space, ranks value/unlock/friction, fences scope, gathers engineer/verifier inputs, gates the design, and closes with reusable evidence rather than chat memory."
 metadata:
   related-skills: workgraph-arc-operator, workgraph-arc-participant, workgraph-arc-closeout, survey, arc-lifecycle
   series: workgraph
   series-role: planning
-  facet: plan — reusable WorkGraph planning/design arc methodology
+  facet: plan - reusable WorkGraph planning/design arc methodology
   substrate: Hub WorkGraph / seed_blueprint / WorkItem planning arc
   primary-verbs: seed_blueprint, get_current_stint, get_next_action, get_work, complete_work
 ---
 
-# workgraph-arc-planning — plan a bounded implementation arc through WorkGraph
+# workgraph-arc-planning - plan a bounded implementation arc through WorkGraph
 
 ## When to use
 
@@ -28,17 +23,18 @@ Use it for:
 - running target-space mapping, value/unlock triage, scope fencing, engineer inventory, verifier audit, design options, feasibility, design gate, final design, and closeout as WorkItems;
 - banking a reusable planning packet so later implementation agents start from captured intent and substrate truth.
 
-Do not use it to implement the selected arc.
+Do not use it to implement the selected arc.\
 The planning arc chooses and specifies an implementation arc; the implementation arc is separately seeded after authority approves the final design.
+
+---
 
 ## Lifecycle position and authority boundary
 
-The canonical lifecycle is `../arc-lifecycle/assets/workgraph-lifecycle-v1.json`.
-This skill owns `intent-captured -> planning -> design-sealed`.
+The canonical lifecycle is `../arc-lifecycle/assets/workgraph-lifecycle-v1.json`.\
+This skill owns `intent-captured -> planning -> design-sealed`.\
 It produces exact admission inputs but performs no implementation seed, source, PR, merge, publication, deployment, live, entity, or closeout effect for the later implementation arc.
 
 The forward handoff is evidence-gated:
-
 ```text
 intent envelope
   -> bounded planning driver
@@ -48,9 +44,11 @@ intent envelope
   -> design-sealed admission packet
 ```
 
-A design memo, completed dependency, architect instruction, or planning driver completion is not an independent design PASS.
-The design gate is mechanically staged by the architect and judged by a non-claiming independent verifier through `attest_evidence` plus `verify_attestation`.
+A design memo, completed dependency, architect instruction, or planning driver completion is not an independent design PASS.\
+The design gate is mechanically staged by the architect and judged by a non-claiming independent verifier through `attest_evidence` plus `verify_attestation`.\
 An immutable FAIL requires a distinct repair candidate/gate/runId and remains negative evidence forever.
+
+---
 
 ## Core invariant
 
@@ -67,6 +65,8 @@ The minimum successful output is:
 7. exact design candidate identity and an active-valid independent design PASS, with all prior FAILs preserved;
 8. an admission-ready handoff naming exact blueprint requirements, authority envelope fields, effect classes, repositories/environments, anti-scope, repair policy, and non-effects without claiming approved-for-go.
 
+---
+
 ## Arc-start authority envelope
 
 A planning arc must shape implementation authority around the **bounded outcome**, not accidentally around the first provisional artifact identity.
@@ -80,30 +80,35 @@ Before requesting approval, the final design should state an authority envelope 
 - which ordinary refinements are expected inside the arc, including reviewed corrective commits, replacement heads, or successor PRs produced to satisfy those gates;
 - the concrete conditions that would count as material scope expansion and require new authority.
 
-Once the Director/operator authorizes that envelope, do **not** ask again merely because implementation, review, or a failed gate produces a new exact commit, tree, branch, or successor PR within it. Bind the final exact identity at the WorkGraph admission/mutation gate and preserve fresh independent verification; exact artifact binding is proof of what will execute, not automatically a new consent ceremony.
+Once the Director/operator authorizes that envelope, do **not** ask again merely because implementation, review, or a failed gate produces a new exact commit, tree, branch, or successor PR within it.\
+Bind the final exact identity at the WorkGraph admission/mutation gate and preserve fresh independent verification; exact artifact binding is proof of what will execute, not automatically a new consent ceremony.
 
-Re-authorization is required only when the proposed successor exceeds the envelope: a different outcome or audience, a broader mutation class, higher irreversibility or risk, relaxed safeguards, new external side effects, explicit expiry/revocation, or another material anti-scope breach. If the boundary is ambiguous, request one focused clarification rather than replaying the whole approval.
+Re-authorization is required only when the proposed successor exceeds the envelope: a different outcome or audience, a broader mutation class, higher irreversibility or risk, relaxed safeguards, new external side effects, explicit expiry/revocation, or another material anti-scope breach.\
+If the boundary is ambiguous, request one focused clarification rather than replaying the whole approval.
 
-When exact identity is not knowable at planning time, write a machine-checkable successor-selection rule into the design and authority request (for example: reviewed descendants of an admitted source head that only repair named gate failures and must pass fresh exact-head admission). Never reinterpret an artifact-specific approval as a standing envelope after the fact.
+When exact identity is not knowable at planning time, write a machine-checkable successor-selection rule into the design and authority request (for example: reviewed descendants of an admitted source head that only repair named gate failures and must pass fresh exact-head admission).\
+Never reinterpret an artifact-specific approval as a standing envelope after the fact.
+
+---
 
 ## Canonical blueprint asset
 
 This skill ships a reusable template and structural proof assets:
-
 ```text
 skills/workgraph-arc-planning/assets/planning-blueprint-template.json
 skills/workgraph-arc-planning/assets/dependency-matrix.md
 skills/workgraph-arc-planning/assets/validate-planning-blueprint.mjs
 ```
 
-The mission-kit asset is the canonical source.
-For live use, copy the JSON into a Hub Document or pass its `nodes` inline to `seed_blueprint` after replacing placeholders such as the run id, target entity, charter text, and evidence paths.
-When copying into Hub storage, cite the mission-kit source ref and this path so the Hub document does not become anonymous forked truth.
+The mission-kit asset is the canonical source.\
+For live use, copy the JSON into a Hub Document or pass its `nodes` inline to `seed_blueprint` after replacing placeholders such as the run id, target entity, charter text, and evidence paths.\
+When copying into Hub storage, cite the mission-kit source ref and this path so the Hub document does not become anonymous forked truth.\
 Before promoting or reusing a changed template, run the validation fixture from the mission-kit root:
-
 ```bash
 node skills/workgraph-arc-planning/assets/validate-planning-blueprint.mjs
 ```
+
+---
 
 ## Planning sequence
 
@@ -127,11 +132,13 @@ A standard planning arc uses these nodes:
 
 The sequence is intentionally redundant across roles: the architect frames, the engineer grounds feasibility in current surfaces, and the verifier attacks false confidence before implementation starts.
 
+---
+
 ## Dependency discipline
 
-Every runbook-required input must be represented structurally when possible.
-Use `dependsOn` when the input is another WorkItem's output.
-Use required `references` when the input already exists at seed time.
+Every runbook-required input must be represented structurally when possible.\
+Use `dependsOn` when the input is another WorkItem's output.\
+Use required `references` when the input already exists at seed time.\
 Use a compensating gate check only when the input is a future sibling artifact that cannot exist yet at seed time.
 
 Minimum structural assertions:
@@ -147,12 +154,15 @@ Minimum structural assertions:
 - `planning_closeout` depends on `final_design_packet`.
 - `driver.completionDependsOn` covers every child and the driver completes last.
 
-If a planning graph violates these assertions, fix the graph before implementation authority is requested.
+If a planning graph violates these assertions, fix the graph before implementation authority is requested.\
 The canonical dependency matrix records how each runbook-required input is represented by `dependsOn`, required references, or an explicit compensating gate check; the validation fixture asserts the structural edges and includes negative checks for the prior early-gate/runbook mismatch class.
+
+---
 
 ## Past-friction intake and value triage
 
-Every planning arc must explicitly review past/recent friction before final scope is chosen. This is separate from whether the primary target is itself a friction defect.
+Every planning arc must explicitly review past/recent friction before final scope is chosen.\
+This is separate from whether the primary target is itself a friction defect.
 
 Minimum friction intake:
 
@@ -172,15 +182,17 @@ The target-space and triage nodes should score candidate clusters on:
 - sequencing leverage;
 - scope containment.
 
-Every implementation arc should explicitly consider prior friction points.
-This does not mean every arc becomes a platform project.
-It means friction candidates are ranked beside capability work, then the smallest bounded arc that maximizes learning/capital/unlock is chosen.
+Every implementation arc should explicitly consider prior friction points.\
+This does not mean every arc becomes a platform project.\
+It means friction candidates are ranked beside capability work, then the smallest bounded arc that maximizes learning/capital/unlock is chosen.\
 If no friction is included, the planning packet must say why and record whether the candidates were deferred, no-actioned, or split into separate arcs.
 
+---
 
 ## Direct axiom alignment
 
-Planning arcs that affect operating guidance, methodology, skills, authority, proof discipline, lifecycle, delivery, verification, governance, coordination, or reusable organizational process must include direct constitutional alignment before implementation authority. Do not satisfy this with a vague principle summary.
+Planning arcs that affect operating guidance, methodology, skills, authority, proof discipline, lifecycle, delivery, verification, governance, coordination, or reusable organizational process must include direct constitutional alignment before implementation authority.\
+Do not satisfy this with a vague principle summary.
 
 The axiom alignment record must include:
 
@@ -192,9 +204,11 @@ The axiom alignment record must include:
 
 For small/local planning arcs where this is not required, the planning packet must say why the arc does not affect reusable guidance, authority, proof discipline, or operating methodology.
 
+---
+
 ## Survey inputs
 
-If a survey informs the planning arc, treat the survey envelope as load-bearing input.
+If a survey informs the planning arc, treat the survey envelope as load-bearing input.\
 The design must consume:
 
 - per-question interpretations;
@@ -205,6 +219,8 @@ The design must consume:
 - calibration notes.
 
 If those fields are missing, record the gap and either repair the survey artifact or make the limitation explicit in the design packet.
+
+---
 
 ## Fully-in-scope entity realization contract
 
@@ -222,9 +238,11 @@ Planning artifacts must include an `entityRealizationPlan` for every fully-in-sc
 
 A planning output that leaves a fully-in-scope entity to prose closeout, or lets the implementation driver complete while the entity remains open only because realization gates were omitted, is invalid.
 
+---
+
 ## Design gate posture
 
-The verifier design gate must not be claimable until the artifacts it evaluates exist.
+The verifier design gate must not be claimable until the artifacts it evaluates exist.\
 Use the Model-B gate shape from `workgraph-verification-gates`:
 
 - `roleEligibility: [architect]` for mechanical staging;
@@ -248,8 +266,10 @@ The gate should check:
 - the later blueprint must receive a distinct exact pre-seed PASS and final admission PASS before any seed/effect;
 - a FAIL retains original candidate, evidence, lease before-state, verdict, and downstream prohibition; repair is a distinct graph.
 
-A planning design PASS unlocks only exact blueprint/admission authoring.
+A planning design PASS unlocks only exact blueprint/admission authoring.\
 It does not approve implementation.
+
+---
 
 ## Planning hard stops
 
@@ -263,12 +283,14 @@ Stop with no implementation-authority claim when any is true:
 - blueprint/delivery/live/entity/closeout obligations are left as implicit prose;
 - anti-scope is pulled into the candidate without authority.
 
-A routine design FAIL is not a Director escalation.
+A routine design FAIL is not a Director escalation.\
 Preserve it, author a distinct bounded repair, independently re-gate, and continue.
+
+---
 
 ## Closeout requirements
 
-Use `workgraph-arc-closeout` for terminal reconciliation.
+Use `workgraph-arc-closeout` for terminal reconciliation.\
 A planning closeout packet should include:
 
 - authority and target set;
@@ -288,6 +310,8 @@ A planning closeout packet should include:
 
 Do not mark a live walkthrough as `performed` unless there is a transcript/message ref for progressive walkthrough, or the Director explicitly waived progressive mode.
 
+---
+
 ## Active-surface truth boundary
 
 If a planning or implementation arc changes skills/templates and claims active availability, prove the whole chain:
@@ -299,12 +323,14 @@ If a planning or implementation arc changes skills/templates and claims active a
 5. live seat skill directory / ledger / hash proof;
 6. reload/relaunch boundary for running prompt contexts.
 
-If only source/repo artifacts changed, say source/repo only.
+If only source/repo artifacts changed, say source/repo only.\
 Do not imply running agents loaded new guidance unless reload/relaunch or equivalent runtime evidence exists.
+
+---
 
 ## Anti-scope guard
 
-A planning arc may identify future platform work, but must not smuggle it into the implementation arc.
+A planning arc may identify future platform work, but must not smuggle it into the implementation arc.\
 Common anti-scope examples:
 
 - live runtime reload hooks;

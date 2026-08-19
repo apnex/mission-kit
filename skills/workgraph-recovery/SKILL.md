@@ -1,9 +1,4 @@
 ---
-id: K24
-category: skill
-title: workgraph-recovery - immutable-lineage recovery for stopped/failed/revised arcs
-status: active
-hydrate-when: An arc has stopped, failed or been revised and you are recovering it
 name: workgraph-recovery
 description: "Use when a WorkGraph arc is hard-stopped, failed, paused, stale, drifted, lease-stuck, or delivery-blocked; restores liveness through fresh truth, immutable failure lineage, pause-revise-unpause, and distinct independently gated repair rather than replay, reset, or give-up."
 metadata:
@@ -17,7 +12,7 @@ metadata:
   lifecycle-control-states: hard-stopped, repairing
 ---
 
-# workgraph-recovery — preserve truth and restore lawful progress
+# workgraph-recovery - preserve truth and restore lawful progress
 
 ## When to use
 
@@ -33,22 +28,25 @@ Use this skill when fresh substrate truth shows:
 
 Do not use recovery as a euphemism for deleting evidence, replaying a failed gate, force-completing a driver, or bypassing authority.
 
+---
+
 ## Lifecycle position
 
 The canonical control FSM is in `skills/arc-lifecycle/assets/workgraph-lifecycle-v1.json`:
-
 ```text
 running --hard-stop--> hard-stopped
 hard-stopped --author-distinct-repair--> repairing
 repairing --admit-distinct-repair--> running
 ```
 
-The evidence-derived lifecycle stage does not rewind when control stops.
+The evidence-derived lifecycle stage does not rewind when control stops.\
 A distinct repair resumes from the current proven stage only after independent admission.
+
+---
 
 ## No-give-up rule
 
-Routine implementation difficulty, red CI, verifier FAIL, rate limiting, temporary verifier unavailability, reversible infrastructure failure, and bounded delivery failure are expected autonomous conditions.
+Routine implementation difficulty, red CI, verifier FAIL, rate limiting, temporary verifier unavailability, reversible infrastructure failure, and bounded delivery failure are expected autonomous conditions.\
 They do not justify abandonment or a Director round trip.
 
 Recovery order:
@@ -62,6 +60,8 @@ Recovery order:
 7. resume only after fresh proof.
 
 Escalate only constitutional contradiction, scope/authority conflict, destructive out-of-envelope action, unavailable reserved authority, or irreducible external blocker.
+
+---
 
 ## Diagnose from truth, not symptoms
 
@@ -87,9 +87,11 @@ Classify the blocker as one of:
 - **effect failure:** merge/publish/deploy/live attempt failed or ambiguous;
 - **scope/authority/constitution:** loud hard stop.
 
+---
+
 ## Stale FYIs and crossed messages
 
-Messages are signals only.
+Messages are signals only.\
 For each late ready/unblocked/PASS/merge/close FYI:
 
 1. claim it when the Message protocol applies;
@@ -97,6 +99,8 @@ For each late ready/unblocked/PASS/merge/close FYI:
 3. if state is already advanced, terminal, owned elsewhere, or invalid, ack/ignore;
 4. never reopen, reclaim, reply-loop, re-merge, or double-close from the FYI;
 5. record stale-signal friction only when it materially affected work.
+
+---
 
 ## Lease and driver recovery
 
@@ -108,6 +112,8 @@ For each late ready/unblocked/PASS/merge/close FYI:
 - If an active FAIL retains a lease because failed-seal cleanup is not deployed, **retain it**. Do not release, abandon, expire, prune, or migrate it to free capacity.
 
 Failed-gate WIP pressure is a capacity/planning fact, not permission to destroy negative lineage.
+
+---
 
 ## Immutable FAIL repair
 
@@ -122,10 +128,12 @@ For an active verifier FAIL:
 - cite old FAIL as negative evidence in the repair gate;
 - never call the old FAIL superseded in the sense of no longer true.
 
-A later PASS means the distinct repair passed.
+A later PASS means the distinct repair passed.\
 It does not mean the original attempt passed.
 
-## Pause → revise → unpause
+---
+
+## Pause -> revise -> unpause
 
 Use semantic WorkGraph revision, not prose or in-place mutation, when a current node contract or topology must change.
 
@@ -134,9 +142,11 @@ Use semantic WorkGraph revision, not prose or in-place mutation, when a current 
 3. **Unpause/recommit.** Atomically recommit the exact revision set to `ready`; start-gate satisfaction remains a later `claim_work` predicate.
 4. **Reprove.** Evidence and attestations do not migrate. New physical revisions obtain fresh evidence and independent gates.
 
-Never mutate an active FAIL, terminal/evidence-bearing row, or old physical revision into new meaning.
-Never roll back the topology head.
+Never mutate an active FAIL, terminal/evidence-bearing row, or old physical revision into new meaning.\
+Never roll back the topology head.\
 If revision verbs are not deployed, stop and author a distinct blueprint/repair graph under current capabilities.
+
+---
 
 ## Code and delivery recovery
 
@@ -157,9 +167,11 @@ For ambiguous merge/publish/deploy/live calls:
 
 See `workgraph-pr-delivery` for the layer-specific evidence contract.
 
+---
+
 ## Scope and authority drift
 
-If recovery discovers required in-scope work, add/append a WorkItem or distinct repair graph under architect authority.
+If recovery discovers required in-scope work, add/append a WorkItem or distinct repair graph under architect authority.\
 If it is valuable but outside the fence, create a durable Idea/Bug/follow-up with a revival trigger and keep the current arc narrow.
 
 Stop loud when:
@@ -170,10 +182,11 @@ Stop loud when:
 - repair would be destructive, cross-scope, or history-erasing;
 - required independent authority is unavailable and no lawful fallback exists.
 
+---
+
 ## Recovery receipt
 
 Record:
-
 ```text
 Arc/driver:
 Evidence-derived lifecycle stage:
@@ -189,6 +202,8 @@ Independent repair gate and verify_attestation result:
 Resume predicate:
 Residual/revival trigger:
 ```
+
+---
 
 ## Acceptance bar
 

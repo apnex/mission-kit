@@ -34,7 +34,7 @@ function splitSentences(text) {
 		if (text[i - 1] === '.' || text[i + 1] === '.') continue;
 		// must be followed by whitespace then something that can open a sentence
 		const rest = text.slice(i + 1);
-		const m = rest.match(/^\s+(?=[A-Z`\[(*_"'])/);
+		const m = rest.match(/^\s+(?=[A-Z`\[(*_"'\u0001])/);
 		if (!m) continue;
 		const head = text.slice(start, i + 1);
 		if (ABBREV.test(head)) continue;

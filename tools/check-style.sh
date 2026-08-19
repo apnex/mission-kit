@@ -139,7 +139,14 @@ check_S14() {
 	local trig title
 	trig=$(awk 'FNR==1 && !/^---$/{exit} FNR==1{next} /^---$/{exit}
 	            /^hydrate-when:/{sub(/^hydrate-when:[[:space:]]*/, ""); gsub(/^["\047]|["\047]$/, ""); print; exit}' "$f")
-	[ -z "$trig" ] && return   # absent is allowed until coverage is complete
+	# Coverage is complete, so an absent trigger is a regression rather than a gap.
+	# Only a portable SKILL.md is exempt: it carries no catalogue placement by design,
+	# and its harness trigger is the description field the standard already defines.
+	if [ -z "$trig" ]; then
+		case "$f" in */SKILL.md) return ;; esac
+		grep -q "^id:" "$f" 2>/dev/null && report S14 "$f" 1 "catalogue entry declares no hydrate-when"
+		return
+	fi
 	title=$(awk 'FNR==1 && !/^---$/{exit} FNR==1{next} /^---$/{exit}
 	             /^title:/{sub(/^title:[[:space:]]*/, ""); print; exit}' "$f")
 	[ "${#trig}" -ge 30 ] || report S14 "$f" 1 "trigger is ${#trig} characters; too short to state a condition"

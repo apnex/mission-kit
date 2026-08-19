@@ -1,9 +1,4 @@
 ---
-id: K8
-category: skill
-title: model-a-state-machine - author an FSM/lifecycle in SysML v2
-status: active
-hydrate-when: You are modelling a lifecycle or state machine in SysML v2
 name: model-a-state-machine
 description: "Use when modelling the stateful lifecycle or behavior of a thing (an order, a subscription, a connection, a build, a process) as states and the transitions between them. Author a state machine (a lifecycle / FSM) in SysML v2 - states, events, transitions (first/accept/then), guards (if), and an initial state. Read the sysml-literacy skill first; this is the authoring counterpart."
 metadata:
@@ -24,6 +19,8 @@ Not for: ordered *activities/steps* with no states (that's `model-a-workflow` - 
 A transition's **effect** (what it *does*) is also a workflow concern - see "Effects" below.
 
 **Prerequisite:** `sysml-literacy` (you must be able to *read* a `state def` before you author one).
+
+---
 
 ---
 
@@ -50,6 +47,8 @@ state def Machine {
 
 ---
 
+---
+
 ## Watch out (see references for the full list)
 
 - **Reserved/contextual keywords can't be names** - not `state`, `from`, `accept`, `to`, `then`, `entry`,
@@ -64,12 +63,16 @@ state def Machine {
 
 ---
 
+---
+
 ## Validate
 
 Authoring SysML is the error-prone direction - **always validate before you trust the model.** The discipline is shared across all model-a-X skills: **[`sysml-literacy/references/validating-sysml.md`](../sysml-literacy/references/validating-sysml.md)**.\
 In short: run a SysML v2 parser, require **`syntaxErrors == 0`** (necessary, not sufficient), then scan the semantics by hand - the parser will *not* catch an unreachable state, an unused event, or an unbound effect.\
 The decidable FSM rules are also written as a checkable spec in **[`assets/well-formedness.sysml`](assets/well-formedness.sysml)**.\
 (`compatibility`: requires a SysML v2 parser to validate.)
+
+---
 
 ---
 

@@ -1,9 +1,4 @@
 ---
-id: K14
-category: skill
-title: model-a-constraint - author a reusable boolean rule (constraint def) in SysML v2
-status: active
-hydrate-when: You are modelling a reusable boolean rule in SysML v2
 name: model-a-constraint
 description: "Use when modelling a CHECKABLE rule over data - an invariant, a bound, a validity condition - as a spec, distinct from prose intent (a requirement). Author a constraint (a reusable boolean rule) in SysML v2 - constraint defs with in parameters and a boolean expression (== and or not implies xor), asserted on a part's attributes (assert constraint), and composed into higher-level invariants. Read the sysml-literacy skill first; this is the authoring counterpart."
 metadata:
@@ -25,6 +20,8 @@ Not for: *prose intent* about what is wanted (that's a requirement - `satisfy`/`
 A constraint is the *must-hold rule over the data*.
 
 **Prerequisite:** `sysml-literacy` (you must be able to *read* a `constraint def` before you author one).
+
+---
 
 ---
 
@@ -55,6 +52,8 @@ part def Subject {
 
 ---
 
+---
+
 ## Watch out (see references for the full list)
 
 - **The one distinction that matters: a constraint is a CHECKABLE boolean SPEC over data - not prose
@@ -74,12 +73,16 @@ part def Subject {
 
 ---
 
+---
+
 ## Validate
 
 Authoring SysML is the error-prone direction - **always validate before you trust the model.** The discipline is shared across all model-a-X skills: **[`sysml-literacy/references/validating-sysml.md`](../sysml-literacy/references/validating-sysml.md)**.\
 In short: run a SysML v2 parser, require **`syntaxErrors == 0`** (necessary, not sufficient), then scan the semantics by hand - the parser will *not* catch a body-less rule, an unused/unbound parameter, an always-false rule, or a missing `import ScalarValues::*;`, and it will *not* evaluate whether the rule holds (it is parse-only).\
 The decidable constraint rules are written as a checkable spec in **[`assets/well-formedness.sysml`](assets/well-formedness.sysml)** - which also dogfoods the construct (the rules *about* constraints are themselves `constraint def`s).\
 (`compatibility`: requires a SysML v2 parser to validate; it parses but does not evaluate constraints.)
+
+---
 
 ---
 

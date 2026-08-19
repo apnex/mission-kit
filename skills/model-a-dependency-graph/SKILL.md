@@ -1,9 +1,4 @@
 ---
-id: K13
-category: skill
-title: model-a-dependency-graph - author a DAG of typed nodes (ref edges) in SysML v2
-status: active
-hydrate-when: You are modelling a dependency graph of typed nodes in SysML v2
 name: model-a-dependency-graph
 description: "Use when the graph TOPOLOGY is the subject: a build/task graph, module or package dependencies, a precedence order. Author a dependency graph (a DAG of typed nodes) in SysML v2 - one part def for the node kind joined to itself by a `ref` edge that means order/precedence, with the graph kept acyclic. The ref-edge DAG over a single node kind IS the whole model - distinct from model-a-component, where ref is just one structural relation among ownership and data. Read the sysml-literacy skill first; this is the authoring counterpart."
 metadata:
@@ -25,6 +20,8 @@ Not for: what a system is **made of** (heterogeneous parts, ownership, data - th
 A dependency graph is the *who-must-come-after-whom* over a population of peers - one node kind, one edge kind.
 
 **Prerequisite:** `sysml-literacy` (you must be able to *read* a `part def` and a `ref` before you author one).
+
+---
 
 ---
 
@@ -53,6 +50,8 @@ part c : Node { ref dependsOn :>> dependsOn = (a, b); }   // c after a and b
 
 ---
 
+---
+
 ## Watch out (see references for the full list)
 
 - **The one distinction that matters: the `ref`-edge DAG over a SINGLE node kind IS the model.** Unlike
@@ -75,6 +74,8 @@ part c : Node { ref dependsOn :>> dependsOn = (a, b); }   // c after a and b
 
 ---
 
+---
+
 ## Validate
 
 Authoring SysML is the error-prone direction - **always validate before you trust the model.** The discipline is shared across all model-a-X skills: **[`sysml-literacy/references/validating-sysml.md`](../sysml-literacy/references/validating-sysml.md)**.\
@@ -82,6 +83,8 @@ In short: run a SysML v2 parser, require **`syntaxErrors == 0`** (necessary, not
 The decidable rules are a checkable spec in **[`assets/well-formedness.sysml`](assets/well-formedness.sysml)** (`IsAcyclic`, `EveryEdgeResolves`, `EdgeMultiplicitySane`, `EdgesPointDownward`).\
 (`compatibility`: requires a SysML v2 parser.\
 Note: a `part`-owned container over a self-`ref` node kind trips this validator's spurious "circular containment" advisory - not gated, `syntaxErrors` stays 0; see `assets/example.sysml` and `validating-sysml.md`.)
+
+---
 
 ---
 

@@ -1,9 +1,4 @@
 ---
-id: K23
-category: skill
-title: workgraph-arc-closeout - terminal proof reconciliation for WorkGraph arc closeout
-status: active
-hydrate-when: You are closing an arc and must reconcile terminal proof
 name: workgraph-arc-closeout
 description: "Use at the terminal phase of a Hub WorkGraph arc to reconcile graph state, delivery truth, verifier evidence, active surfaces, backlog/stakeholder obligations, stale FYIs, and complete the arc-driver last."
 metadata:
@@ -16,7 +11,7 @@ metadata:
   primary-verbs: get_current_stint, get_work, legal_moves, complete_work, update_idea, update_bug, update_mission
 ---
 
-# workgraph-arc-closeout — terminal proof reconciliation
+# workgraph-arc-closeout - terminal proof reconciliation
 
 ## When to use
 
@@ -30,34 +25,44 @@ Use it for:
 - arcs that touched missions, ideas, bugs, decisions, or stakeholder obligations;
 - any arc where the driver must be completed last with durable evidence.
 
-Do not use chat, FYIs, or memory as close authority.
+Do not use chat, FYIs, or memory as close authority.\
 WorkGraph state, GitHub/CI state, Hub entities, and durable docs are the truth surfaces.
+
+---
 
 ## Closeout mode disambiguation
 
 This skill covers two related but distinct modes:
 
-- **Substrate closeout** — terminal proof reconciliation: write/update the durable packet, complete closeout WorkItem, complete driver last.
-- **Director live closeout** — the Director/operator-facing progressive walkthrough of the packet or terminal state.
+- **Substrate closeout** - terminal proof reconciliation: write/update the durable packet, complete closeout WorkItem, complete driver last.
+- **Director live closeout** - the Director/operator-facing progressive walkthrough of the packet or terminal state.
 
-If the Director/operator says `commence closeout`, `initiate closeout`, `walk me through closeout`, or equivalent, default to **Director live closeout**. Do not respond only that the WorkGraph is already closed. A live walkthrough can be requested at the end of any arc, before or after the substrate driver is done. If substrate closeout is incomplete, say what is missing and offer Step 1 only when enough truth exists; if the packet exists, start the live protocol from it.
+If the Director/operator says `commence closeout`, `initiate closeout`, `walk me through closeout`, or equivalent, default to **Director live closeout**.\
+Do not respond only that the WorkGraph is already closed.\
+A live walkthrough can be requested at the end of any arc, before or after the substrate driver is done.\
+If substrate closeout is incomplete, say what is missing and offer Step 1 only when enough truth exists; if the packet exists, start the live protocol from it.
 
-A `not applicable` live-walkthrough row is point-in-time, not permanent. It is valid only when no live Director delivery has been requested, triggered, or implied **as of that packet version**. If the Director later requests live closeout, update or append to the closeout record and perform/waive the walkthrough; do not cite the old `not applicable` row as a reason not to proceed.
+A `not applicable` live-walkthrough row is point-in-time, not permanent.\
+It is valid only when no live Director delivery has been requested, triggered, or implied **as of that packet version**.\
+If the Director later requests live closeout, update or append to the closeout record and perform/waive the walkthrough; do not cite the old `not applicable` row as a reason not to proceed.
+
+---
 
 ## Lifecycle position
 
-The canonical lifecycle is `../arc-lifecycle/assets/workgraph-lifecycle-v1.json`.
+The canonical lifecycle is `../arc-lifecycle/assets/workgraph-lifecycle-v1.json`.\
 This skill owns:
-
 ```text
 live-qualified -> substrate-closing -> substrate-closed
               -> director-closing -> closed
 closed --append-terminal-correction--> closed
 ```
 
-Lifecycle stage is derived from fresh evidence.
-Do not mark `live-qualified` from merge/deploy alone, `substrate-closed` before closeout plus driver-last, or `closed` before the Director walkthrough gate is performed, explicitly waived, or validly point-in-time not applicable.
+Lifecycle stage is derived from fresh evidence.\
+Do not mark `live-qualified` from merge/deploy alone, `substrate-closed` before closeout plus driver-last, or `closed` before the Director walkthrough gate is performed, explicitly waived, or validly point-in-time not applicable.\
 A post-terminal audit never re-completes the driver or rewrites the original closeout.
+
+---
 
 ## Required inputs
 
@@ -84,36 +89,38 @@ Before closing, identify:
 - dedicated friction section source: observed friction themes, disposition/follow-up/no-action rationale, accepted residual friction, by-construction opportunities, and which related friction was included/deferred/no-actioned in this or the next arc for both the durable packet and any live Director walkthrough;
 - minimal `bug-283` / `idea-550` qualitative friction-assessment row when friction/triage discipline is in scope: dominant themes, triaged vs untriaged status, and follow-up id or no-file rationale.
 
-If the driver id is unknown, stop.
+If the driver id is unknown, stop.\
 A WorkGraph arc cannot be honestly closed from a transcript alone.
+
+---
 
 ## Closeout loop
 
 ### 1. Project the arc
 
-Read `get_current_stint(driverId)`.
+Read `get_current_stint(driverId)`.\
 Record driver status, `done/total`, pending children, in-flight children, blocked children, and failed/repair/verifier nodes.
 
 Stop if any required child is non-terminal and there is no explicit authority accepting a limitation.
 
-If the arc is already terminal and the current task is an audit, packet refresh, or historical verification, switch to **post-terminal audit mode**: do not attempt to re-complete terminal WorkItems; read substrate truth, record the audit scope, and make clear that evidence refresh is not a new close claim.
+If the arc is already terminal and the current task is an audit, packet refresh, or historical verification, switch to **post-terminal audit mode**: do not attempt to re-complete terminal WorkItems; read substrate truth, record the audit scope, and make clear that evidence refresh is not a new close claim.\
 If a terminal claim is wrong or stale, use `../arc-lifecycle/templates/post-terminal-correction.md.tmpl`: append a linked correction with fresh evidence, preserve the original record and polarity, route any distinct entity/repair effect under current authority, and reopen the Director walkthrough only when the correction is material.
 
 ### 2. Inspect load-bearing evidence
 
-Read `get_work` for children whose evidence affects close truth.
+Read `get_work` for children whose evidence affects close truth.\
 Check that evidence belongs to the current WorkItem/PR/branch and is fresh enough for the evidence requirement.
 
-For extensive planning/design arcs, verify the `M7` axiom alignment audit exists before implementation approval, or record the explicit not-required rationale.
+For extensive planning/design arcs, verify the `M7` axiom alignment audit exists before implementation approval, or record the explicit not-required rationale.\
 If the audit produced guardrails, confirm validation and closeout re-check them.
 
-A failed verifier gate remains part of history.
+A failed verifier gate remains part of history.\
 A later pass must have repair/rerun evidence; it does not erase the earlier fail.
 
 ### 3. Reconcile exact gates and delivery truth
 
-For each load-bearing gate, record gate id, requirement id, target, candidate/attempt identity, verifier, verdict/time, `verify_attestation` result, and the effect it unlocked.
-A prior FAIL remains in the ledger even when a distinct repair PASS exists.
+For each load-bearing gate, record gate id, requirement id, target, candidate/attempt identity, verifier, verdict/time, `verify_attestation` result, and the effect it unlocked.\
+A prior FAIL remains in the ledger even when a distinct repair PASS exists.\
 A dependency, message, review comment, or closeout prose cannot replace the attestation.
 
 Separate proof levels:
@@ -129,7 +136,7 @@ Separate proof levels:
 | live-observed | target behavior was actually observed | unrelated environments |
 | verifier-attested | independent verifier passed the gate | broader scope than the gate |
 
-Use the strongest true label only.
+Use the strongest true label only.\
 If live behavior was not observed, write `live not observed` rather than implying it.
 
 For active skill availability, treat proof as a ladder, not a synonym set:
@@ -142,13 +149,14 @@ For active skill availability, treat proof as a ladder, not a synonym set:
 | consumer sync/restart | the sync/seed/launcher path consumed the deployed manifest at a time/ref | every relevant live seat has the expected active files |
 | live active-seat availability | each relevant live prod seat's active skill directory contains the expected skills/hashes, or has an explicit exemption | unrelated seats or future restarts |
 
-Do not claim active skill availability from upstream source, repo manifest, or deployed manifest proof alone. A closeout may claim only the strongest observed layer; otherwise record `live not observed`, `not deployed`, `sync not proven`, or the explicit seat exemption.
+Do not claim active skill availability from upstream source, repo manifest, or deployed manifest proof alone.\
+A closeout may claim only the strongest observed layer; otherwise record `live not observed`, `not deployed`, `sync not proven`, or the explicit seat exemption.
 
 ### 4. Reconcile active surfaces
 
 List future-facing surfaces affected by the arc and mark each `updated`, `unaffected`, `historical`, or `residual`.
 
-For procedure or skill arcs, this is load-bearing.
+For procedure or skill arcs, this is load-bearing.\
 Update indexes/root pointers and retire, remove, or clearly historical-mark stale scaffolds.
 
 For skill availability or fleet-skill arcs, complete an active-surface proof chain before claiming availability:
@@ -163,25 +171,26 @@ For skill availability or fleet-skill arcs, complete an active-surface proof cha
 
 If any layer is missing, mark the surface `residual` or write the exact non-claim; do not collapse lower-layer proof into a higher-layer claim.
 
-For this skill family, `workgraph-arc-closeout` is the canonical terminal-phase skill name.
+For this skill family, `workgraph-arc-closeout` is the canonical terminal-phase skill name.\
 Do not leave active guidance pointing to the old `workgraph-closeout` scaffold.
 
 ### 5. Reconcile friction and A10 learning
 
-Inspect the arc friction rollup and child `frictionReflections`.
-For each reflection, preserve the summary, category, producer, source WorkItem, and suggested follow-up.
+Inspect the arc friction rollup and child `frictionReflections`.\
+For each reflection, preserve the summary, category, producer, source WorkItem, and suggested follow-up.\
 Route concrete follow-ups to ideas, bugs, WorkItems, skill updates, or doc updates.
 
-If `friction.total=0` or no child records friction, do not silently celebrate.
+If `friction.total=0` or no child records friction, do not silently celebrate.\
 Record one of:
 
-- `credible zero friction` — the arc had few/no completions or every completion explicitly used `observed:false`;
-- `dogfood caveat` — the arc should have exercised friction capture but produced no records;
-- `exempt` — explain why A10 friction capture did not apply.
+- `credible zero friction` - the arc had few/no completions or every completion explicitly used `observed:false`;
+- `dogfood caveat` - the arc should have exercised friction capture but produced no records;
+- `exempt` - explain why A10 friction capture did not apply.
 
 A zero-friction arc with missing reflections is a learning failure, not proof that the process was frictionless.
 
-When `bug-283` / `idea-550` friction-assessment discipline is in scope, add a qualitative row even if no new substrate exists yet: dominant themes, whether each theme is triaged or untriaged, and the follow-up id or explicit no-file rationale. Keep this minimum qualitative assessment separate from broad friction-platform work.
+When `bug-283` / `idea-550` friction-assessment discipline is in scope, add a qualitative row even if no new substrate exists yet: dominant themes, whether each theme is triaged or untriaged, and the follow-up id or explicit no-file rationale.\
+Keep this minimum qualitative assessment separate from broad friction-platform work.
 
 Also record a related-friction triage row for Director/operator sensemaking:
 
@@ -196,53 +205,58 @@ This is required even when the arc's primary target is itself a friction defect,
 
 Update or disposition linked missions, ideas, bugs, decisions, and follow-up WorkItems.
 
-Write an entity disposition ledger, not only residual prose. Include every material entity or obligation and classify it as `definitively complete/closed`, `partially satisfied`, `deferred`, `deliberately not complete/remains open`, `superseded/no-action`, or `not claimed/not proven`. Each row needs evidence and, if not closed, the condition that would close it.
+Write an entity disposition ledger, not only residual prose.\
+Include every material entity or obligation and classify it as `definitively complete/closed`, `partially satisfied`, `deferred`, `deliberately not complete/remains open`, `superseded/no-action`, or `not claimed/not proven`.\
+Each row needs evidence and, if not closed, the condition that would close it.
 
-For any Bug/Idea marked `fully-in-scope` by the planning packet or scope fence, closeout must record one explicit terminal disposition: resolved/incorporated with proof, accepted-deferred with authority, blocked with durable blocker/revival trigger, or reclassified with a replacement ref. A fully-in-scope entity left open because realization/promotion/materialization gates were omitted is a closeout failure, not a normal residual.
+For any Bug/Idea marked `fully-in-scope` by the planning packet or scope fence, closeout must record one explicit terminal disposition: resolved/incorporated with proof, accepted-deferred with authority, blocked with durable blocker/revival trigger, or reclassified with a replacement ref.\
+A fully-in-scope entity left open because realization/promotion/materialization gates were omitted is a closeout failure, not a normal residual.
 
-Every residual expected to matter later needs an id.
+Every residual expected to matter later needs an id.\
 A residual paragraph without an Idea/Bug/WorkItem/Decision id is context, not routed work.
 
-For stakeholder lanes, record `satisfied`, `not required`, `deferred with follow-up`, or `blocked`.
-Consider architect/controller, engineer/operator, verifier, and Director/operator lanes.
+For stakeholder lanes, record `satisfied`, `not required`, `deferred with follow-up`, or `blocked`.\
+Consider architect/controller, engineer/operator, verifier, and Director/operator lanes.\
 Director/operator-facing sensemaking is required when the Director/operator requested or authorized the arc, the arc changes org operating procedure/tooling/skill/template/methodology/governance/coordination/lifecycle/delivery/verification/authority patterns, future agents/operators will treat the result as operating guidance, material limitations or residuals remain, or the closeout packet is the organizational memory artifact.
 
 Use tiers to avoid ceremony bloat:
 
 | Tier | Use when | Director-facing output |
 |---|---|---|
-| 0 — evidence-only local close | small local work with no Director/material procedure impact | normal evidence and close note; no qualitative walkthrough required |
-| 1 — sensemaking capsule | stakeholder relevance but no broad operating change | short bullets: shipped, why, caveat, decision state |
-| 2 — full Director walkthrough | Director-requested/authorized arc, WorkGraph arc with closeout burden, procedure/tooling/skill/template/org-operating change, or material residual/caveat | dedicated walkthrough covering all required elements |
-| 3 — M7 + full walkthrough | extensive planning/design or reusable methodology/substrate/governance change | pre-implementation M7 audit plus closeout walkthrough re-checking guardrails |
+| 0 - evidence-only local close | small local work with no Director/material procedure impact | normal evidence and close note; no qualitative walkthrough required |
+| 1 - sensemaking capsule | stakeholder relevance but no broad operating change | short bullets: shipped, why, caveat, decision state |
+| 2 - full Director walkthrough | Director-requested/authorized arc, WorkGraph arc with closeout burden, procedure/tooling/skill/template/org-operating change, or material residual/caveat | dedicated walkthrough covering all required elements |
+| 3 - M7 + full walkthrough | extensive planning/design or reusable methodology/substrate/governance change | pre-implementation M7 audit plus closeout walkthrough re-checking guardrails |
 
 ### 7. Write the Director qualitative walkthrough when triggered
 
-For Tier 1–3 arcs, write a Director/operator-readable projection that translates proof into meaning without replacing proof.
-It must be structured, bounded, and decision-shaped.
+For Tier 1-3 arcs, write a Director/operator-readable projection that translates proof into meaning without replacing proof.\
+It must be structured, bounded, and decision-shaped.\
 This durable content is necessary but not sufficient for a live Director closeout: if the Director requested or clearly expects a live walkthrough, run the live protocol in step 7 or record the explicit waiver.
 
 Required elements for a full walkthrough:
 
-- **what shipped / changed** — concrete delivered artifact, behavior, process, or decision, with refs;
-- **why it matters** — rationale and consequence in strategic/operator terms;
-- **target-state delta** — before/after movement toward the desired org/system state;
-- **axiom / principle mapping** — only load-bearing or supporting axioms/tensions; no decorative filler;
-- **caveats / non-claims** — proof boundaries, live-not-observed, scope not delivered, or authority downgrade;
-- **friction assessment** — observed friction, disposition/follow-up/no-action rationale, accepted residual friction, by-construction opportunities, and related friction triaged/included/deferred with rationale;
-- **residuals / revival triggers** — durable ids or explicit no-file rationale;
-- **decision state** — one of `no Director decision required`, `Director awareness only`, or `Director decision required` with the single decision topic and authority boundary.
+- **what shipped / changed** - concrete delivered artifact, behavior, process, or decision, with refs;
+- **why it matters** - rationale and consequence in strategic/operator terms;
+- **target-state delta** - before/after movement toward the desired org/system state;
+- **axiom / principle mapping** - only load-bearing or supporting axioms/tensions; no decorative filler;
+- **caveats / non-claims** - proof boundaries, live-not-observed, scope not delivered, or authority downgrade;
+- **friction assessment** - observed friction, disposition/follow-up/no-action rationale, accepted residual friction, by-construction opportunities, and related friction triaged/included/deferred with rationale;
+- **residuals / revival triggers** - durable ids or explicit no-file rationale;
+- **decision state** - one of `no Director decision required`, `Director awareness only`, or `Director decision required` with the single decision topic and authority boundary.
 
-Closeout-level axiom mapping is not a full M7 audit.
-It is a post-evidence translation of delivered work into constitutional meaning.
-Full M7 remains a pre-implementation gate when the arc creates or changes reusable methodology, workflow, skill, template, substrate behavior, governance, coordination, lifecycle, delivery, verification, or authority patterns.
+Closeout-level axiom mapping is not a full M7 audit.\
+It is a post-evidence translation of delivered work into constitutional meaning.\
+Full M7 remains a pre-implementation gate when the arc creates or changes reusable methodology, workflow, skill, template, substrate behavior, governance, coordination, lifecycle, delivery, verification, or authority patterns.\
 If M7 produced guardrails, the walkthrough must state how closeout re-checked them.
 
 ### 8. Deliver the live Director walkthrough when requested
 
-Use this protocol when the Director asks to be walked through the closeout, when the closeout is being delivered live in terminal/chat for the Director, or when a Director-facing interactive closeout is clearly implied. Phrases like `commence closeout`, `initiate closeout procedure`, `start closeout`, or `walk me through the closeout` from the Director are live-walkthrough triggers unless they explicitly ask only for substrate status.
+Use this protocol when the Director asks to be walked through the closeout, when the closeout is being delivered live in terminal/chat for the Director, or when a Director-facing interactive closeout is clearly implied.\
+Phrases like `commence closeout`, `initiate closeout procedure`, `start closeout`, or `walk me through the closeout` from the Director are live-walkthrough triggers unless they explicitly ask only for substrate status.
 
-Do not satisfy this requirement by dumping the full packet or a long markdown wall. Do not answer `already done` just because the WorkGraph driver is terminal; substrate closeout and live closeout are different modes.
+Do not satisfy this requirement by dumping the full packet or a long markdown wall.\
+Do not answer `already done` just because the WorkGraph driver is terminal; substrate closeout and live closeout are different modes.\
 The live surface is an intent interface; deliver progressive disclosure.
 
 Default live sequence:
@@ -272,18 +286,18 @@ Protocol rules:
 - A compact summary, full packet dump, or non-progressive closeout note is **not** `performed`; it is valid only if the Director explicitly waived progressive mode, in which case record `waived` with the waiver ref.
 - A waiver is acceptable only when explicit: e.g. `send the whole thing`, `skip the walkthrough`, or equivalent.
 
-The live protocol may summarize the durable packet, but it does not replace the packet.
+The live protocol may summarize the durable packet, but it does not replace the packet.\
 The packet preserves zero-loss closeout evidence; the live protocol preserves Director attention and shared sensemaking.
 
 ### 9. Handle stale FYIs without loops
 
-Messages and FYIs are signals.
-When a message conflicts with WorkGraph/GitHub/Hub entity truth, trust the substrate and ack or ignore the stale signal.
+Messages and FYIs are signals.\
+When a message conflicts with WorkGraph/GitHub/Hub entity truth, trust the substrate and ack or ignore the stale signal.\
 Do not reopen or double-close work because a crossed FYI arrived late.
 
 ### 10. Write the closeout packet
 
-Use `assets/closeout-packet-template.md` or a stricter project template.
+Use `assets/closeout-packet-template.md` or a stricter project template.\
 The packet must exist before completing the closeout WorkItem or driver.
 
 At minimum it records:
@@ -310,13 +324,15 @@ At minimum it records:
 
 ### 11. Complete closeout, then driver last
 
-Complete the closeout WorkItem with the packet as evidence only after an active-valid independent closeout PASS when the graph requires it.
-Then re-read `get_current_stint(driverId)` and all final gate/currentness predicates.
-Complete the driver only when the completion gate is open, every required child/attempt/entity/stakeholder/surface is dispositioned, and the packet remains current.
-Record the closeout completion time before the driver completion time.
+Complete the closeout WorkItem with the packet as evidence only after an active-valid independent closeout PASS when the graph requires it.\
+Then re-read `get_current_stint(driverId)` and all final gate/currentness predicates.\
+Complete the driver only when the completion gate is open, every required child/attempt/entity/stakeholder/surface is dispositioned, and the packet remains current.\
+Record the closeout completion time before the driver completion time.\
 A controller message or `N/N` count without exact ledgers is not driver-last proof.
 
 Driver evidence should include the closeout packet path, final child progress, delivery truth summary, verification refs, entity updates, Director qualitative walkthrough status, live Director walkthrough performed/waived/not-applicable status, and accepted limitations.
+
+---
 
 ## Hard stop conditions
 
@@ -351,6 +367,8 @@ Do not complete the closeout WorkItem or driver if any are true:
 - scope expands during closeout without authority;
 - the driver would complete before closeout evidence or before a required independent closeout PASS;
 - a post-terminal correction would overwrite the original packet/WorkItem/verdict rather than append a linked correction.
+
+---
 
 ## Output
 
