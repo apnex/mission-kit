@@ -10,6 +10,8 @@ related: [S6, S8, S11]
 
 # S13 - Plain ASCII in markdown
 
+<!-- style-check: allow S13 (character is the subject; this entry inventories the glyphs it bans) -->
+
 ## Rule
 
 Two questions, in order.
