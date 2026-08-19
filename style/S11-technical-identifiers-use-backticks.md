@@ -12,9 +12,7 @@ related: [S2, S5, S8]
 
 ## Rule
 
-When a technical identifier appears in prose - paragraphs, bullets,
-headings, table cells, anywhere - wrap it in backticks (inline code
-formatting).
+When a technical identifier appears in prose - paragraphs, bullets, headings, table cells, anywhere - wrap it in backticks (inline code formatting).
 
 Counts as a technical identifier:
 
@@ -34,8 +32,7 @@ Counts as a technical identifier:
 - Package / module / image names: `nvidia-container-toolkit`,
   `apnex/nvidia-driver-diag`.
 
-Format identifiers identically across contexts - backticks in a
-paragraph render the same as in a heading, table cell, or bullet.
+Format identifiers identically across contexts - backticks in a paragraph render the same as in a heading, table cell, or bullet.
 
 ---
 
@@ -62,30 +59,20 @@ paragraph render the same as in a heading, table cell, or bullet.
   mentions an identifier. A heading about configuring a specific binary
   still backticks that binary.
 
-The test for borderline cases: *is this the literal name of a specific
-thing in the system that I could grep for?* If yes -> identifier ->
-backticks. If no -> English word -> no backticks.
+The test for borderline cases: *is this the literal name of a specific thing in the system that I could grep for?* If yes -> identifier -> backticks.\
+If no -> English word -> no backticks.
 
 ---
 
 ## Rationale
 
-**Visual distinction.** Inline code styling signals "this is a specific
-named thing." Without it, identifiers blend into surrounding prose
-visually - the reader has to parse syntax + context to know whether
-"layer 1" is "the first layer in the system's design" or "first-layer
-neural-network jargon." Backticks remove the ambiguity at a glance.
+**Visual distinction.** Inline code styling signals "this is a specific named thing." Without it, identifiers blend into surrounding prose visually - the reader has to parse syntax + context to know whether "layer 1" is "the first layer in the system's design" or "first-layer neural-network jargon." Backticks remove the ambiguity at a glance.
 
-**Grep friendliness.** A reader who reads "the `apply.sh` script" and
-wants to find that script can grep the codebase for the literal string.
-Unmarked "the apply.sh script" works too, but mixed-with-prose
-identifiers are harder to extract by sight, and AI doc-parsers /
-indexers similarly benefit from the explicit marker.
+**Grep friendliness.** A reader who reads "the `apply.sh` script" and wants to find that script can grep the codebase for the literal string.\
+Unmarked "the apply.sh script" works too, but mixed-with-prose identifiers are harder to extract by sight, and AI doc-parsers / indexers similarly benefit from the explicit marker.
 
-**Consistency cost.** Once you backtick *some* identifiers, mixing in
-unmarked ones reads as accidental inconsistency. Either commit to the
-rule everywhere or don't backtick at all - picking sporadically is
-worse than either pole.
+**Consistency cost.** Once you backtick *some* identifiers, mixing in unmarked ones reads as accidental inconsistency.\
+Either commit to the rule everywhere or don't backtick at all - picking sporadically is worse than either pole.
 
 ---
 
@@ -106,8 +93,7 @@ worse than either pole.
 > Run `apply.sh` to set up Layer 1; the `nvidia.driver/state` label
 > appears after kubectl rollout status succeeds.
 
-(Backticked `apply.sh` + unbackticked `Layer 1` + backticked label +
-unbackticked command = looks accidental even though some are right.)
+(Backticked `apply.sh` + unbackticked `Layer 1` + backticked label + unbackticked command = looks accidental even though some are right.)
 
 ---
 
@@ -123,9 +109,5 @@ unbackticked command = looks accidental even though some are right.)
 
 ## Origin
 
-2026-05-24 README pass extended backtick treatment from commands +
-filenames (existing informal convention in the project) to
-architectural-term identifiers (`Layer N`). Surfacing the broader
-pattern showed it was already followed informally throughout the
-docs but never codified - promoting from convention to sanctioned
-rule eliminates the "is this case included?" judgment call.
+2026-05-24 README pass extended backtick treatment from commands + filenames (existing informal convention in the project) to architectural-term identifiers (`Layer N`).\
+Surfacing the broader pattern showed it was already followed informally throughout the docs but never codified - promoting from convention to sanctioned rule eliminates the "is this case included?" judgment call.

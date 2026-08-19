@@ -1,6 +1,7 @@
 # Style
 
-Doc, commit, and naming conventions. The "how you say it" rules.
+Doc, commit, and naming conventions.\
+The "how you say it" rules.
 
 | ID | Title | Status |
 |---|---|---|

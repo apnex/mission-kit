@@ -12,10 +12,7 @@ related: [S6, S9]
 
 ## Rule
 
-In long-form markdown docs (READMEs and deep-dive docs with 5+ top-level
-`##` sections, or with any H2 section longer than ~20 lines), insert a
-horizontal rule (`---`) on its own line, surrounded by blank lines, between
-each `##` section.
+In long-form markdown docs (READMEs and deep-dive docs with 5+ top-level `##` sections, or with any H2 section longer than ~20 lines), insert a horizontal rule (`---`) on its own line, surrounded by blank lines, between each `##` section.
 
 Pattern:
 ````markdown
@@ -44,22 +41,13 @@ Don't apply to:
 
 ## Rationale
 
-**Reader scanning.** In a long README with 8-10 H2 sections, the header
-typography (`##`) alone often isn't visually heavy enough to dominate
-surrounding code blocks, tables, and paragraphs. A horizontal rule is an
-unambiguous "new section starts here" cue that helps the reader scroll-scan
-to the section they want without re-parsing every header along the way.
+**Reader scanning.** In a long README with 8-10 H2 sections, the header typography (`##`) alone often isn't visually heavy enough to dominate surrounding code blocks, tables, and paragraphs.\
+A horizontal rule is an unambiguous "new section starts here" cue that helps the reader scroll-scan to the section they want without re-parsing every header along the way.
 
-**Renderer consistency.** Markdown renderers vary in how strongly they
-weight H2 headers - some make them barely distinguishable from H3, some
-make them prominent. A horizontal rule is the one separator that renders
-consistently visually (a literal line across the column width) regardless
-of theme or renderer.
+**Renderer consistency.** Markdown renderers vary in how strongly they weight H2 headers - some make them barely distinguishable from H3, some make them prominent.\
+A horizontal rule is the one separator that renders consistently visually (a literal line across the column width) regardless of theme or renderer.
 
-**Source-file structure.** When editing or grepping the source, the `---`
-marker is unambiguous - it's never part of prose, never part of a code
-block (those have fenced delimiters), so it's a clean grep anchor for
-"give me every top-level section break."
+**Source-file structure.** When editing or grepping the source, the `---` marker is unambiguous - it's never part of prose, never part of a code block (those have fenced delimiters), so it's a clean grep anchor for "give me every top-level section break."
 
 ---
 
@@ -78,9 +66,7 @@ block (those have fenced delimiters), so it's a clean grep anchor for
 ...
 ````
 
-(In rendered output, sections may run together visually - particularly
-if any section ends with a long code block or table that already has
-visible borders.)
+(In rendered output, sections may run together visually - particularly if any section ends with a long code block or table that already has visible borders.)
 
 **Good (separators between top-level sections):**
 
@@ -118,6 +104,4 @@ visible borders.)
 
 ## Origin
 
-2026-05-24 README style discussion - operator preference, confirmed
-empirically against the project's README which has 10+ H2 sections and
-benefits visibly from explicit section breaks.
+2026-05-24 README style discussion - operator preference, confirmed empirically against the project's README which has 10+ H2 sections and benefits visibly from explicit section breaks.

@@ -12,8 +12,7 @@ related: [S2, M2, P1]
 
 ## Rule
 
-Every workflow doc that drives shared infrastructure (Kubernetes,
-cloud APIs, etc.) must state in its prerequisites:
+Every workflow doc that drives shared infrastructure (Kubernetes, cloud APIs, etc.) must state in its prerequisites:
 
 1. Which **substrate family** is required, not which specific
    implementation. *Kubernetes* - not k3s. *Cloud SQL* - not
@@ -30,19 +29,13 @@ cloud APIs, etc.) must state in its prerequisites:
 
 ## Rationale
 
-Tying a workflow doc to a specific implementation (k3s, a specific
-cloud region, etc.) excludes operators on other implementations for
-no functional reason. The patches / commands / contracts are usually
-substrate-generic.
+Tying a workflow doc to a specific implementation (k3s, a specific cloud region, etc.) excludes operators on other implementations for no functional reason.\
+The patches / commands / contracts are usually substrate-generic.
 
-Conversely, not stating the authenticated-tooling assumption invites
-operators to copy-paste the first command, get a cryptic auth error,
-and have no escalation path. The doc shouldn't try to teach how to
-log in to AWS / configure kubeconfig / install gcloud - those are
-the operator's environment, not the workflow's.
+Conversely, not stating the authenticated-tooling assumption invites operators to copy-paste the first command, get a cryptic auth error, and have no escalation path.\
+The doc shouldn't try to teach how to log in to AWS / configure kubeconfig / install gcloud - those are the operator's environment, not the workflow's.
 
-The verify code block in a prerequisites section turns "is my env
-set up?" into a yes/no answer the operator can act on.
+The verify code block in a prerequisites section turns "is my env set up?" into a yes/no answer the operator can act on.
 
 ---
 
@@ -53,8 +46,7 @@ set up?" into a yes/no answer the operator can act on.
 > Path B: k3s installed (`systemctl is-active k3s`) and
 > nvidia-container-toolkit installed.
 
-(Ties to k3s specifically; doesn't say how kubectl reaches the
-cluster; doesn't say what "installed" looks like to verify.)
+(Ties to k3s specifically; doesn't say how kubectl reaches the cluster; doesn't say what "installed" looks like to verify.)
 
 **Good:**
 
@@ -86,8 +78,5 @@ cluster; doesn't say what "installed" looks like to verify.)
 
 ## Origin
 
-Strict-mode test-drive of a teardown workflow surfaced that
-`KUBECONFIG=...` was undocumented across all user-facing docs AND
-the prereq tied the workflow gratuitously to k3s. The operator
-running the docs literally would hit `connection refused` at the
-first command.
+Strict-mode test-drive of a teardown workflow surfaced that `KUBECONFIG=...` was undocumented across all user-facing docs AND the prereq tied the workflow gratuitously to k3s.\
+The operator running the docs literally would hit `connection refused` at the first command.

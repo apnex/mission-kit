@@ -24,25 +24,19 @@ API + its clients), split the documentation along the same boundary:
    it uses the producer - and (b) a one-line cross-link to the
    producer's contract. It does **not** restate the contract.
 
-If a consumer needs information about the producer's behavior that
-isn't in the contract, the fix is to extend the contract (in the
-producer repo), not to encode the assumption in the consumer repo.
+If a consumer needs information about the producer's behavior that isn't in the contract, the fix is to extend the contract (in the producer repo), not to encode the assumption in the consumer repo.
 
 ---
 
 ## Rationale
 
-Duplicating the contract in both repos guarantees drift. The
-producer evolves its interface; one of the two copies gets updated
-and the other doesn't; consumers downstream silently follow the
-wrong copy. The single-source-of-truth rule is mechanical
-prevention for this.
+Duplicating the contract in both repos guarantees drift.\
+The producer evolves its interface; one of the two copies gets updated and the other doesn't; consumers downstream silently follow the wrong copy.\
+The single-source-of-truth rule is mechanical prevention for this.
 
-The split also makes ownership crisp. When something about the
-interface is wrong, you know which repo's PR queue handles it. When
-a new consumer onboards, they read one document - the producer's
-contract - rather than reverse-engineering an existing consumer's
-docs to figure out what's contract vs. local convention.
+The split also makes ownership crisp.\
+When something about the interface is wrong, you know which repo's PR queue handles it.\
+When a new consumer onboards, they read one document - the producer's contract - rather than reverse-engineering an existing consumer's docs to figure out what's contract vs. local convention.
 
 ---
 
@@ -83,8 +77,5 @@ docs to figure out what's contract vs. local convention.
 
 ## Origin
 
-A driver + workload split where the workload's manifest required
-node-label affinity, version-skew enforcement, and a graceful
-shutdown ordering. First draft duplicated all three in both repos;
-the cleaner shape that landed was a single `consumer-contract.md`
-in the producer repo with the consumer's repo cross-linking it.
+A driver + workload split where the workload's manifest required node-label affinity, version-skew enforcement, and a graceful shutdown ordering.\
+First draft duplicated all three in both repos; the cleaner shape that landed was a single `consumer-contract.md` in the producer repo with the consumer's repo cross-linking it.
