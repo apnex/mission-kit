@@ -3,6 +3,7 @@ id: K18
 category: skill
 title: workgraph-arc-operator - execute and manage a Hub WorkGraph arc
 status: active
+hydrate-when: You are executing or managing an arc on the coordination substrate
 name: workgraph-arc-operator
 description: "Use to commence, execute, recover, and close a Hub WorkGraph-based arc. This is the substrate-specific companion to arc-lifecycle: arc-lifecycle reasons about value chains, payoff, deferral, and revival; workgraph-arc-operator runs the actual control loop through WorkItems, blueprints, leases, evidence, verification, PRs, and closeout. Use when an agent is driving a multi-node initiative on the Hub WorkGraph and must keep liveness, authority, evidence, and scope under control."
 metadata:

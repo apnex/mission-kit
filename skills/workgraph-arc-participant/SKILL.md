@@ -3,6 +3,7 @@ id: K25
 category: skill
 title: workgraph-arc-participant - act inside a Hub WorkGraph arc
 status: active
+hydrate-when: You are acting inside an arc someone else is driving
 name: workgraph-arc-participant
 description: "Use when you are a participant in a Hub WorkGraph arc rather than the arc driver: arriving at assigned work, reading runbooks/references, claiming/starting/completing safely, reporting frictionReflection, handling stale notifications, and respecting verifier/SEAL boundaries."
 metadata:

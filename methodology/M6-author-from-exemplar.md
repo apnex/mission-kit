@@ -3,6 +3,7 @@ id: M6
 category: methodology
 title: Author from exemplar - read a peer instance before adding to a collection
 status: active
+hydrate-when: You are about to add an entry to a curated collection
 supersedes: []
 related: [M2, S1, A4, A14]
 ---

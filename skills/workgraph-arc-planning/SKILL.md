@@ -3,6 +3,7 @@ id: K26
 category: skill
 title: workgraph-arc-planning - bounded intent-to-design-seal planning arc
 status: active
+hydrate-when: You are planning from intent to a sealed design under a bounded arc
 name: workgraph-arc-planning
 description: "Use before an implementation arc is committed, to run a bounded WorkGraph planning/design arc that maps the target space, ranks value/unlock/friction, fences scope, gathers engineer/verifier inputs, gates the design, and closes with reusable evidence rather than chat memory."
 metadata:

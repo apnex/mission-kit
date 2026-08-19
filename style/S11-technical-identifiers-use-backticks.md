@@ -3,6 +3,7 @@ id: S11
 category: style
 title: Technical identifiers in prose use backticks
 status: active
+hydrate-when: You are about to mention a command, path, flag or other literal name in prose
 supersedes: []
 related: [S2, S5, S8]
 ---

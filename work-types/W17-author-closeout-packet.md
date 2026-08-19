@@ -3,6 +3,7 @@ id: W17
 category: work-type
 title: author-closeout-packet - proof-level arc closeout
 status: active
+hydrate-when: You are closing an arc and must assemble proof rather than narrative
 roleEligibility: [architect]
 evidenceContract:
   - {kind: doc, description: closeout doc separating PR/CI/deploy/live proof}

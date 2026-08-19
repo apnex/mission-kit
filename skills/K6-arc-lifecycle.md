@@ -3,6 +3,7 @@ id: K6
 category: skill
 title: arc-lifecycle - operate staged work as a sovereign FSM-gated state engine
 status: active
+hydrate-when: You are operating staged work whose gates must hold rather than be trusted
 supersedes: []
 related: [M5, M7, P3, P4, P5]
 ---

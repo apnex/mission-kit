@@ -3,6 +3,7 @@ id: M5
 category: methodology
 title: Anti-amnesia deferral - every parked or cut item carries a revival trigger
 status: active
+hydrate-when: You are parking, cutting or marking won't-do on a unit of tracked work
 supersedes: []
 related: [M3, M4]
 ---

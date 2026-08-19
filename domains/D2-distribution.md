@@ -3,6 +3,7 @@ id: D2
 category: domain
 title: distribution - release channels and the rollout plane
 status: active
+hydrate-when: You are changing how a release reaches its consumers
 subjectSurface: release channels — npm, containers, the estate/fleet rollout plane
 evidenceResolvesAgainst: published artifacts, version/digest/SHA, deploy logs, rollback anchors, live-estate state
 freeForTypes: [publish-deploy-or-canonicalize, retire-or-hard-cut, run-a-live-probe-or-smoke, audit-a-surface, verify-gate-reactive, reset-or-converge-the-fleet]

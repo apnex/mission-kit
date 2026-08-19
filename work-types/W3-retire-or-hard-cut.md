@@ -3,6 +3,7 @@ id: W3
 category: work-type
 title: retire-or-hard-cut - delete a surface with disposition
 status: active
+hydrate-when: You are deleting a surface and must say what happens to what depended on it
 roleEligibility: [engineer]
 evidenceContract:
   - {kind: pr, description: deletion diff}

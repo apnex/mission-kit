@@ -3,6 +3,7 @@ id: K23
 category: skill
 title: workgraph-arc-closeout - terminal proof reconciliation for WorkGraph arc closeout
 status: active
+hydrate-when: You are closing an arc and must reconcile terminal proof
 name: workgraph-arc-closeout
 description: "Use at the terminal phase of a Hub WorkGraph arc to reconcile graph state, delivery truth, verifier evidence, active surfaces, backlog/stakeholder obligations, stale FYIs, and complete the arc-driver last."
 metadata:

@@ -3,6 +3,7 @@ id: A2
 category: axiom
 title: Isomorphic Specification
 status: active
+hydrate-when: Declared intent and running reality have drifted, or you are about to change one without the other
 applies-to: [declarative]
 related: [A1, A6]
 ---

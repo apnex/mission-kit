@@ -3,6 +3,7 @@ id: W9
 category: work-type
 title: audit-a-surface - bounded adversarial sweep of a surface
 status: active
+hydrate-when: You are sweeping a bounded surface adversarially rather than reviewing a diff
 roleEligibility: [verifier]
 evidenceContract:
   - kind: review

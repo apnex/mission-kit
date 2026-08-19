@@ -3,6 +3,7 @@ id: S12
 category: style
 title: Code-block introducer is its own paragraph
 status: active
+hydrate-when: You are about to introduce a code block with a sentence
 supersedes: []
 related: [S2, S6, S8]
 ---

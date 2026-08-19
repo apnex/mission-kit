@@ -3,6 +3,7 @@ id: K28
 category: skill
 title: asd-ste100-verifier - audit and enforce ASD-STE100 Simplified Technical English, with a runnable engine
 status: active
+hydrate-when: You are writing documentation that must be readable by a non-native English speaker
 name: asd-ste100-verifier
 description: "Use to audit, test, and enforce ASD-STE100 (Simplified Technical English) standards across conversation outputs, documentation drafts, and repository Markdown files. Evaluates vocabulary against the controlled STE dictionary and checks sentence length, passive voice, noun clusters, and verb tenses."
 ---

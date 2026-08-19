@@ -3,6 +3,7 @@ id: A0
 category: axiom
 title: Sovereign Intelligence Engine
 status: active
+hydrate-when: You are justifying a decision against the composing vision rather than a single principle
 applies-to: [umbrella]
 related: [A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13]
 ---

@@ -3,6 +3,7 @@ id: W23
 category: work-type
 title: capture-decision-and-ratify - record + ratify a decision
 status: active
+hydrate-when: You are recording a decision and having it ratified
 roleEligibility: [director, architect]
 evidenceContract:
   - kind: freeform

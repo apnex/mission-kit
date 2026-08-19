@@ -9,6 +9,7 @@
 #   S10 horizontal rule between H2  - triggers at 5+ H2 sections
 #   S12 code-block introducer       - a line ending ':' must touch the fence it introduces
 #   S13 plain ASCII                 - the entry ships the grep; Box Drawing is exempt
+#   S14 hydration triggers          - a trigger states a condition, not a topic
 #
 # NOT implemented, because they need judgement and a heuristic would emit false failures:
 #   S1 S3 S4 S5 S7 S9 S11. Review those by reading.
@@ -24,7 +25,7 @@
 
 set -uo pipefail
 
-RULES_DEFAULT="S6 S8 S10 S12 S13"
+RULES_DEFAULT="S6 S8 S10 S12 S13 S14"
 rule_filter=""
 paths=()
 
@@ -125,6 +126,24 @@ check_S13() {
 	while IFS=: read -r line _; do
 		[ -n "$line" ] && report S13 "$f" "$line" "non-ASCII character"
 	done < <(grep -nP '[\x{80}-\x{24FF}\x{2580}-\x{10FFFF}]' "$f" | cut -d: -f1 | uniq)
+}
+
+# S14 - a hydration trigger states a condition an agent can evaluate, not a topic.
+# The marker list is a proxy for that test, not a substitute: it catches the obvious failures.
+check_S14() {
+	local f=$1
+	exempt "$f" S14 && return
+	local trig title
+	trig=$(awk 'FNR==1 && !/^---$/{exit} FNR==1{next} /^---$/{exit}
+	            /^hydrate-when:/{sub(/^hydrate-when:[[:space:]]*/, ""); gsub(/^["\047]|["\047]$/, ""); print; exit}' "$f")
+	[ -z "$trig" ] && return   # absent is allowed until coverage is complete
+	title=$(awk 'FNR==1 && !/^---$/{exit} FNR==1{next} /^---$/{exit}
+	             /^title:/{sub(/^title:[[:space:]]*/, ""); print; exit}' "$f")
+	[ "${#trig}" -ge 30 ] || report S14 "$f" 1 "trigger is ${#trig} characters; too short to state a condition"
+	[ "$trig" != "$title" ] || report S14 "$f" 1 "trigger restates the title rather than naming a moment"
+	echo "$trig" | grep -qE '[.!?].+[.!?]' && report S14 "$f" 1 "trigger is more than one sentence; it is describing the entry, not the moment"
+	echo "$trig" | grep -qiE 'you are|you have|you need|you must|before you|after you|about to|is still|has been|when the|if the|while the' \
+		|| report S14 "$f" 1 "trigger carries no condition marker; it reads as a topic"
 }
 
 rules=${rule_filter:-$RULES_DEFAULT}

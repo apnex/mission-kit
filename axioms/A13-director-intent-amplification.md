@@ -3,6 +3,7 @@ id: A13
 category: axiom
 title: Director Intent Amplification
 status: active
+hydrate-when: You are about to consume the director's attention, or to decide something in their absence
 applies-to: [multi-agent, autonomous]
 related: [A0, A5, A10, A11, A12]
 ---

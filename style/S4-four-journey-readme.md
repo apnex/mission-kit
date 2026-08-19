@@ -3,6 +3,7 @@ id: S4
 category: style
 title: Four-journey README
 status: active
+hydrate-when: You are writing or restructuring the top-level README of an operator-facing project
 supersedes: []
 related: [S3, P1]
 ---

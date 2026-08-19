@@ -3,6 +3,7 @@ id: W24
 category: work-type
 title: director-walkthrough - live Director sensemaking walkthrough
 status: active
+hydrate-when: You are walking the director through something live for sensemaking
 roleEligibility: [director]
 evidenceContract:
   - {kind: freeform, description: walkthrough record + Director disposition}

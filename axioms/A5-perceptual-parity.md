@@ -3,6 +3,7 @@ id: A5
 category: axiom
 title: Perceptual Parity
 status: active
+hydrate-when: An agent is about to act on state it derived rather than state it was given
 applies-to: [multi-agent, llm-in-the-loop]
 related: [A1, A11, A12]
 ---

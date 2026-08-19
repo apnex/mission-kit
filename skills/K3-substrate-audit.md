@@ -3,6 +3,7 @@ id: K3
 category: skill
 title: substrate-audit - code-grounded substrate audit
 status: active
+hydrate-when: You are auditing a substrate and must ground every claim in its source
 supersedes: []
 related: [M1, M3]
 ---

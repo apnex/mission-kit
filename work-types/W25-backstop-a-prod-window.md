@@ -3,6 +3,7 @@ id: W25
 category: work-type
 title: backstop-a-prod-window - hold abort/rollback over a risk window
 status: active
+hydrate-when: You are holding abort or rollback authority across a risk window
 backstop: true
 roleEligibility: [architect, verifier, director]
 evidenceContract:

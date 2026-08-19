@@ -3,6 +3,7 @@ id: A8
 category: axiom
 title: Gated Recursive Integrity
 status: active
+hydrate-when: You are about to promote something past a gate, or deciding what the gate must prove
 applies-to: [any-system]
 related: [A9, A3]
 ---

@@ -3,6 +3,7 @@ id: W14
 category: work-type
 title: design-a-contract-or-invariant - author a design-of-record
 status: active
+hydrate-when: You are authoring a design of record, a contract or an invariant
 roleEligibility: [architect]
 evidenceContract:
   - kind: doc

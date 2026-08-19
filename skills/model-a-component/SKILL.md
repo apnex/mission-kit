@@ -3,6 +3,7 @@ id: K10
 category: skill
 title: model-a-component - author a structural breakdown in SysML v2
 status: active
+hydrate-when: You are modelling a structural breakdown in SysML v2
 name: model-a-component
 description: "Author a component / structural breakdown in SysML v2 — part defs and item defs, attributes (data), refs (dependencies), parts (composition/ownership), multiplicity, and subtyping (:> / :>>). Use when modelling what a system is MADE OF: its components, the data they carry, what they own, and what they depend on (a service breakdown, a data model, a device, a subsystem). Read the sysml-literacy skill first; this is the authoring counterpart."
 metadata:

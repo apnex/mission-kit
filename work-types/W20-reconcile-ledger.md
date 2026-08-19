@@ -3,6 +3,7 @@ id: W20
 category: work-type
 title: reconcile-ledger - reconcile entity/backlog state vs truth
 status: active
+hydrate-when: Entity or backlog state has diverged from truth and you are reconciling it
 roleEligibility: [architect, verifier]
 evidenceContract:
   - kind: freeform

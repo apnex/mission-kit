@@ -3,6 +3,7 @@ id: W8
 category: work-type
 title: verify-gate-reactive - independently gate a build/change
 status: active
+hydrate-when: You are gating a build or change that you did not author
 roleEligibility: [verifier]
 evidenceContract:
   - kind: review

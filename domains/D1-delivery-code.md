@@ -3,6 +3,7 @@ id: D1
 category: domain
 title: delivery-code - the product/service codebase
 status: active
+hydrate-when: You are changing the product or service codebase itself
 subjectSurface: the shipped product/service codebase — features, fixes, the delivered artifact
 evidenceResolvesAgainst: source files, PRs, commits, CI/test runs on the product repo
 freeForTypes: [build-a-slice, fix-a-bug-or-repair, retire-or-hard-cut, validate-locally, author-guard-or-falsifier-tests, merge-and-land, verify-gate-reactive, audit-a-surface, design-a-contract-or-invariant]

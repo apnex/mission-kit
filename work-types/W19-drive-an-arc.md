@@ -3,6 +3,7 @@ id: W19
 category: work-type
 title: drive-an-arc - operate an arc over its lifetime
 status: active
+hydrate-when: You are operating an arc across its lifetime rather than a single node
 roleEligibility: [architect]
 evidenceContract:
   - kind: freeform

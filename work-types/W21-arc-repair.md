@@ -3,6 +3,7 @@ id: W21
 category: work-type
 title: arc-repair - repair a WorkGraph arc topology
 status: active
+hydrate-when: An arc topology is wrong and you are repairing it in place
 roleEligibility: [architect]
 evidenceContract:
   - kind: freeform

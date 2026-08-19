@@ -3,6 +3,7 @@ id: W10
 category: work-type
 title: adversarial-design-review-upstream - critique a design before build/merge
 status: active
+hydrate-when: You are critiquing a design before it is built or merged
 roleEligibility: [verifier]
 evidenceContract:
   - kind: review

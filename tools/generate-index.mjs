@@ -81,14 +81,14 @@ const cell = (s) => String(s ?? '').replace(/\|/g, '\\|').trim();
 
 function ledgerTable(entries) {
 	const rows = ordered(entries).map((e) =>
-		`| [${e.id}](${e.rel}) | ${cell(e.category)} | ${cell(e.title)} | ${cell(e.status)} |`);
-	return ['| ID | Category | Title | Status |', '|---|---|---|---|', ...rows].join('\n');
+		`| [${e.id}](${e.rel}) | ${cell(e.category)} | ${cell(e.title)} | ${cell(e.status)} | ${cell(e['hydrate-when'])} |`);
+	return ['| ID | Category | Title | Status | Hydrate when |', '|---|---|---|---|---|', ...rows].join('\n');
 }
 
 function categoryTable(entries, dir) {
 	const rows = ordered(entries.filter((e) => e.dir === dir)).map((e) =>
-		`| [${e.id}](${path.basename(e.rel)}) | ${cell(e.title)} | ${cell(e.status)} |`);
-	return ['| ID | Title | Status |', '|---|---|---|', ...rows].join('\n');
+		`| [${e.id}](${path.relative(e.dir, e.rel)}) | ${cell(e.title)} | ${cell(e.status)} | ${cell(e['hydrate-when'])} |`);
+	return ['| ID | Title | Status | Hydrate when |', '|---|---|---|---|', ...rows].join('\n');
 }
 
 // Replace the delimited region, or report that the file does not opt in.

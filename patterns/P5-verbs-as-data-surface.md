@@ -3,6 +3,7 @@ id: P5
 category: pattern
 title: Verbs-as-data surface - one manifest drives dispatch, docs, and validation
 status: active
+hydrate-when: You are designing a tool surface where each operation needs its own contract
 supersedes: []
 related: [A12, P4]
 ---

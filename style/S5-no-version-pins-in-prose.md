@@ -3,6 +3,7 @@ id: S5
 category: style
 title: No version pins in user-facing prose
 status: active
+hydrate-when: You are about to name a version, date or other point-in-time identifier in prose
 supersedes: []
 related: [S6, S7, S8, S9, M4]
 ---

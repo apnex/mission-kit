@@ -3,6 +3,7 @@ id: K27
 category: skill
 title: write-discoverable-code - name and structure code so plain-text search resolves it in one hit (vendored, MIT)
 status: active
+hydrate-when: You are naming anything another agent must find by plain-text search
 name: write-discoverable-code
 description: |
   Rules for writing code that coding agents (and humans) can find and understand through

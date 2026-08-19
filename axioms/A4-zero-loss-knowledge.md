@@ -3,6 +3,7 @@ id: A4
 category: axiom
 title: Zero-Loss Knowledge
 status: active
+hydrate-when: You are about to summarise an artifact rather than carry it forward whole
 applies-to: [any-system]
 related: [A12]
 ---

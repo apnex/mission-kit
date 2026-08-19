@@ -3,6 +3,7 @@ id: R2
 category: role
 title: engineer - make it real
 status: active
+hydrate-when: You are building, and need to know what an engineer may attest to about their own work
 essence: buildability & mechanisation; authority over implementation — turning a design into a working, merged, deployed artifact
 engagementMode: claim+execute build/fix/retire/validate/guard-tests/merge/deploy nodes; produce executor-evidence
 evidenceAuthorities: [executor-evidence, executor-evidence-provisional, verifier-attestation]   # verifier-attestation/independence only via code-owner-approve; provisional for un-bracketed idle executor work

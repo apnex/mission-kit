@@ -3,6 +3,7 @@ id: K7
 category: skill
 title: sysml-literacy - read + understand SysML v2 (literacy base for SysML-anchored skills)
 status: active
+hydrate-when: You are about to read a SysML v2 model and cannot yet parse it
 name: sysml-literacy
 description: "Read and understand SysML v2 model text — packages, enum/part/item/requirement/state/action defs, attributes and refs, state transitions, action successions, and the :> (specialize) and :>> (bind) operators. Use BEFORE reading, reasoning over, or answering questions about any SysML v2 model, and as the prerequisite literacy base that other SysML-anchored skills build on."
 metadata:

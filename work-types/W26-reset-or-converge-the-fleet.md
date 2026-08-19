@@ -3,6 +3,7 @@ id: W26
 category: work-type
 title: reset-or-converge-the-fleet - restore fleet to a healthy state
 status: active
+hydrate-when: The fleet is unhealthy and you are restoring it to a known state
 roleEligibility: [architect, engineer]
 evidenceContract:
   - kind: freeform

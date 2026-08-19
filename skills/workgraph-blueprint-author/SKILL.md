@@ -3,6 +3,7 @@ id: K19
 category: skill
 title: workgraph-blueprint-author - author valid Hub WorkGraph blueprints
 status: stub
+hydrate-when: You are authoring a blueprint that the substrate must accept
 name: workgraph-blueprint-author
 description: "Scaffold stub. Planned WorkGraph-series skill for authoring valid Hub seed_blueprint graphs: driver nodes, child nodes, start-gates, completion-gates, references, runbooks, evidence requirements, and dry-run validation. Use after workgraph-arc-operator when the next problem is blueprint shape rather than arc drive-loop operation."
 metadata:

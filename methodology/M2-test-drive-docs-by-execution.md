@@ -3,6 +3,7 @@ id: M2
 category: methodology
 title: Test-drive docs by execution
 status: active
+hydrate-when: You are about to ship an operator-facing workflow document to someone who will run it
 supersedes: []
 related: [S1, S2, M1]
 ---

@@ -3,6 +3,7 @@ id: W2
 category: work-type
 title: fix-a-bug-or-repair - resolve a filed defect
 status: active
+hydrate-when: You are resolving a defect that has already been filed
 roleEligibility: [engineer]
 evidenceContract:
   - {kind: freeform, description: repro}

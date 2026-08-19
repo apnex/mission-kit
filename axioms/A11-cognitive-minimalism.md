@@ -3,6 +3,7 @@ id: A11
 category: axiom
 title: Cognitive Minimalism
 status: active
+hydrate-when: You are about to have an agent do work that deterministic code could do instead
 applies-to: [llm-in-the-loop]
 related: [A2, A3, A5, A6, A12]
 ---

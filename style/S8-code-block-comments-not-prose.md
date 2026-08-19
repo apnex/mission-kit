@@ -3,6 +3,7 @@ id: S8
 category: style
 title: Code-block comments are for what-the-line-does, not prose substitutes
 status: active
+hydrate-when: You are about to put explanatory text inside a code block
 supersedes: []
 related: [S2, S5, S6, S7]
 ---

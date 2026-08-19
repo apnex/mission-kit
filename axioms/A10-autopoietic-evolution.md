@@ -3,6 +3,7 @@ id: A10
 category: axiom
 title: Autopoietic Evolution
 status: active
+hydrate-when: Friction has surfaced during work and you are deciding whether to route around it or fix its cause
 applies-to: [multi-agent, autonomous]
 related: [A7]
 ---

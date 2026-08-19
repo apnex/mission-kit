@@ -3,6 +3,7 @@ id: R3
 category: role
 title: verifier - independent adversarial assurance
 status: active
+hydrate-when: You are sealing a gate and need to know what independence the verifier must hold
 essence: independent adversarial assurance — prove or refute claims, preserve separation of duties, make defects visible with load-bearing evidence
 engagementMode: claim+execute review/audit/probe/gate nodes; author falsifiable verdicts; file bugs/ideas on gate-revealed gaps; never self-attest
 evidenceAuthorities: [verifier-attestation, review]   # kind:review for verifier-held gates; verifier-attestation (SEAL) only where structurally non-self

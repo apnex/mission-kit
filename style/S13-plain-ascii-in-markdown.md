@@ -3,6 +3,7 @@ id: S13
 category: style
 title: Plain ASCII in markdown - typeable characters only
 status: active
+hydrate-when: You are about to type a character you could not produce on a standard keyboard
 supersedes: []
 related: [S6, S8, S11]
 ---

@@ -3,6 +3,7 @@ id: W11
 category: work-type
 title: run-a-live-probe-or-smoke - observe live behavior at a revision
 status: active
+hydrate-when: You need to observe live behaviour at a specific revision
 roleEligibility: [verifier, engineer]
 evidenceContract:
   - kind: freeform

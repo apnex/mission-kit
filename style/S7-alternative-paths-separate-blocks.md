@@ -3,6 +3,7 @@ id: S7
 category: style
 title: Alternative paths in separate code blocks under subsections
 status: active
+hydrate-when: You are documenting two or more alternative paths the reader must choose between
 supersedes: []
 related: [S2, S5, S8, P1]
 ---

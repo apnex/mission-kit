@@ -3,6 +3,7 @@ id: M4
 category: methodology
 title: Frozen-history rule
 status: active
+hydrate-when: You are making a policy change that would rewrite artifacts recorded before it
 supersedes: []
 related: [M3, K1]
 ---

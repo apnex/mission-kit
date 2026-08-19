@@ -3,6 +3,7 @@ id: W13
 category: work-type
 title: code-owner-approve - non-author independence approval
 status: active
+hydrate-when: You are approving as a code owner who did not write the change
 roleEligibility: [architect, verifier, engineer]
 evidenceContract:
   - kind: review

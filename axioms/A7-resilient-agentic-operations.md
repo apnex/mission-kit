@@ -3,6 +3,7 @@ id: A7
 category: axiom
 title: Resilient Agentic Operations
 status: active
+hydrate-when: You are deciding how the system should behave when a unit of work fails or a thread stalls
 applies-to: [multi-agent, autonomous]
 related: [A1, A10]
 ---

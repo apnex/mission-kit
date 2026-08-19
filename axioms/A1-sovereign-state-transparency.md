@@ -3,6 +3,7 @@ id: A1
 category: axiom
 title: Sovereign State Transparency
 status: active
+hydrate-when: You cannot see the current state of the system from one place and are about to infer it
 applies-to: [stateful]
 related: [A2, A5, A7]
 ---

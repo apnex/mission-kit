@@ -3,6 +3,7 @@ id: P4
 category: pattern
 title: Neutral core + tenant composition - shared mechanism, injected semantics, promote down by evidence
 status: active
+hydrate-when: A second domain is about to grow a mechanism the first already has
 supersedes: []
 related: [A3, P3]
 ---

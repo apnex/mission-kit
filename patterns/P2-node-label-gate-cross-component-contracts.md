@@ -3,6 +3,7 @@ id: P2
 category: pattern
 title: Node-label gate for cross-component contracts
 status: active
+hydrate-when: You have producer and consumer components co-scheduled onto the same nodes
 supersedes: []
 related: [S3]
 ---

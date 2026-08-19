@@ -3,6 +3,7 @@ id: S3
 category: style
 title: Producer / consumer doc split
 status: active
+hydrate-when: You are documenting a component that another repository consumes
 supersedes: []
 related: [S4, P2]
 ---

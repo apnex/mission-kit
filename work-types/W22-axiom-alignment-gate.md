@@ -3,6 +3,7 @@ id: W22
 category: work-type
 title: axiom-alignment-gate - per-item axiom-alignment check
 status: active
+hydrate-when: You are checking a single item against the axioms it claims to satisfy
 roleEligibility: [verifier]
 evidenceContract:
   - kind: review

@@ -3,6 +3,7 @@ id: W12
 category: work-type
 title: meta-validate-dogfood - use the deliverable as its own test
 status: active
+hydrate-when: You are using a deliverable as its own test
 roleEligibility: [verifier, engineer]
 evidenceContract:
   - kind: freeform

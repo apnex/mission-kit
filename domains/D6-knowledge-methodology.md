@@ -3,6 +3,7 @@ id: D6
 category: domain
 title: knowledge-methodology - the durable knowledge capital
 status: active
+hydrate-when: You are changing the durable knowledge the organisation keeps
 subjectSurface: the durable knowledge capital — mission-kit (axioms/methodology/patterns/skills), ideas, this taxonomy
 evidenceResolvesAgainst: mission-kit entries, idea/knowledge-capital records, methodology docs, the taxonomy itself
 pinnedForTypes: [bank-idea-or-knowledge-capital]

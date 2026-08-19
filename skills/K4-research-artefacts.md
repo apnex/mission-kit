@@ -3,6 +3,7 @@ id: K4
 category: skill
 title: research-artefacts - discipline for producing persistent research outputs
 status: active
+hydrate-when: You are producing a research output that must survive the session that made it
 supersedes: []
 related: [K3, M1, M3, S6]
 ---

@@ -3,6 +3,7 @@ id: W5
 category: work-type
 title: author-guard-or-falsifier-tests - add a test that can fail
 status: active
+hydrate-when: You are adding a test that is able to fail
 roleEligibility: [engineer]
 evidenceContract:
   - kind: test-run

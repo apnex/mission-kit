@@ -3,6 +3,7 @@ id: P1
 category: pattern
 title: Path A / Path B labeling for dual-substrate workflows
 status: active
+hydrate-when: You are authoring a workflow document that supports more than one execution path
 supersedes: []
 related: [S1, S4]
 ---

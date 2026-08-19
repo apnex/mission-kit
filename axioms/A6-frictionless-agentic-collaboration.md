@@ -3,6 +3,7 @@ id: A6
 category: axiom
 title: Frictionless Agentic Collaboration
 status: active
+hydrate-when: You are designing a seam between two agents that must collaborate without a human relay
 applies-to: [multi-agent]
 related: [A2, A3]
 ---

@@ -3,6 +3,7 @@ id: K1
 category: skill
 title: History content scrub
 status: active
+hydrate-when: You must remove content from history that is already committed
 supersedes: []
 related: [K2, M4, S3]
 ---

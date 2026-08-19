@@ -3,6 +3,7 @@ id: S9
 category: style
 title: Action-first README structure
 status: active
+hydrate-when: You are deciding what a reader meets first at the top of a README
 supersedes: []
 related: [S4, S5, S6, S7, S8]
 ---

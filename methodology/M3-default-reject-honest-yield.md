@@ -3,6 +3,7 @@ id: M3
 category: methodology
 title: Default-reject discipline + honest yield reporting
 status: active
+hydrate-when: You are running an improvement sweep, refactor programme or audit cycle
 supersedes: []
 related: [M1, M4]
 ---

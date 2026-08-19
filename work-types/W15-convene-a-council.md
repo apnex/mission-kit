@@ -3,6 +3,7 @@ id: W15
 category: work-type
 title: convene-a-council - multi-lens deliberation + synthesis
 status: active
+hydrate-when: You need several lenses deliberated and synthesised before deciding
 roleEligibility: [architect]
 evidenceContract:
   - kind: doc

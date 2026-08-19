@@ -3,6 +3,7 @@ id: S6
 category: style
 title: One sentence per line (semantic line breaks)
 status: active
+hydrate-when: You are about to write or edit markdown prose that someone else will read
 supersedes: []
 related: [S2, S5, S7, S8, S9, S12]
 ---

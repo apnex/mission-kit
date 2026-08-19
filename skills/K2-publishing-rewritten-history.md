@@ -3,6 +3,7 @@ id: K2
 category: skill
 title: Publishing rewritten history
 status: active
+hydrate-when: You are about to force-push rewritten history that others may have consumed
 supersedes: []
 related: [K1, M4]
 ---

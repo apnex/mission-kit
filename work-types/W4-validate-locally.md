@@ -3,6 +3,7 @@ id: W4
 category: work-type
 title: validate-locally - self-check a fresh artifact
 status: active
+hydrate-when: You have a fresh artifact and are self-checking it before anyone else sees it
 roleEligibility: [engineer]
 evidenceContract:
   - kind: test-run

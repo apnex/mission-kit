@@ -3,6 +3,7 @@ id: D5
 category: domain
 title: coordination-substrate - the WorkGraph/lifecycle/messaging machinery
 status: active
+hydrate-when: You are changing the machinery that coordinates work between agents
 subjectSurface: the WorkGraph / lifecycle / messaging machinery as subject — blueprints, gates, leases, the queue
 evidenceResolvesAgainst: WorkItem/blueprint state, driver leases, stint projections, gate/completion state, before/after graph topology
 pinnedForTypes: [seed-a-blueprint-arc, drive-an-arc, reconcile-ledger, arc-repair, convene-a-council, author-closeout-packet, backstop-a-prod-window]

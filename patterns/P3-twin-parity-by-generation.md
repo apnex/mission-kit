@@ -3,6 +3,7 @@ id: P3
 category: pattern
 title: Twin-parity by generation - one master, generate the other, gate the round-trip
 status: active
+hydrate-when: You have a spec and data, or a view and source, that must not disagree
 supersedes: []
 related: [A2, P1]
 ---

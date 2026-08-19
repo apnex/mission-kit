@@ -3,6 +3,7 @@ id: W7
 category: work-type
 title: publish-deploy-or-canonicalize - ship to the estate/channel
 status: active
+hydrate-when: You are shipping something to the estate or a release channel
 roleEligibility: [engineer]
 evidenceContract:
   - {kind: freeform, description: release artifact + deploy log}

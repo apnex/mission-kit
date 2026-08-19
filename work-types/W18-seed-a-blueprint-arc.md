@@ -3,6 +3,7 @@ id: W18
 category: work-type
 title: seed-a-blueprint-arc - instantiate a WorkGraph arc
 status: active
+hydrate-when: You are instantiating a staged arc from a blueprint
 roleEligibility: [architect]
 evidenceContract:
   - kind: freeform

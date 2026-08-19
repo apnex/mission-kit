@@ -3,6 +3,7 @@ id: D4
 category: domain
 title: authority-governance - the governance/authority substrate
 status: active
+hydrate-when: You are changing who holds authority or how governance is enforced
 subjectSurface: the governance/authority substrate as subject — SEAL, CODEOWNERS, decisions, class-grants, axioms-as-law
 evidenceResolvesAgainst: Decision/Confirmation/Signal entities, class-grants, CODEOWNERS approvals, axiom-alignment records
 pinnedForTypes: [capture-decision-and-ratify, axiom-alignment-gate, director-walkthrough, code-owner-approve]

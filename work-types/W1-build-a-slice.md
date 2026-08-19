@@ -3,6 +3,7 @@ id: W1
 category: work-type
 title: build-a-slice - implement a scoped increment
 status: active
+hydrate-when: You are scoping the implementation of a bounded increment
 roleEligibility: [engineer]
 evidenceContract:
   - {kind: pr, description: the change as a PR}

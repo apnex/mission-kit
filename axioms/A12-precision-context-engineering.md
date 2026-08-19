@@ -3,6 +3,7 @@ id: A12
 category: axiom
 title: Precision Context Engineering
 status: active
+hydrate-when: You are assembling the context for an invocation and deciding what earns its place
 applies-to: [llm-in-the-loop]
 related: [A4, A5, A11]
 ---

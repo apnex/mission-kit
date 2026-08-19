@@ -82,21 +82,21 @@ Adopt the rows your architecture satisfies: a plain library takes `any-system`; 
 ## Index
 
 <!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
-| ID | Title | Status |
-|---|---|---|
-| [A0](A0-sovereign-intelligence-engine.md) | Sovereign Intelligence Engine | active |
-| [A1](A1-sovereign-state-transparency.md) | Sovereign State Transparency | active |
-| [A2](A2-isomorphic-specification.md) | Isomorphic Specification | active |
-| [A3](A3-sovereign-composition.md) | Sovereign Composition | active |
-| [A4](A4-zero-loss-knowledge.md) | Zero-Loss Knowledge | active |
-| [A5](A5-perceptual-parity.md) | Perceptual Parity | active |
-| [A6](A6-frictionless-agentic-collaboration.md) | Frictionless Agentic Collaboration | active |
-| [A7](A7-resilient-agentic-operations.md) | Resilient Agentic Operations | active |
-| [A8](A8-gated-recursive-integrity.md) | Gated Recursive Integrity | active |
-| [A9](A9-chaos-validated-deployment.md) | Chaos-Validated Deployment | active |
-| [A10](A10-autopoietic-evolution.md) | Autopoietic Evolution | active |
-| [A11](A11-cognitive-minimalism.md) | Cognitive Minimalism | active |
-| [A12](A12-precision-context-engineering.md) | Precision Context Engineering | active |
-| [A13](A13-director-intent-amplification.md) | Director Intent Amplification | active |
-| [A14](A14-compounding-learning.md) | Compounding Learning | active |
+| ID | Title | Status | Hydrate when |
+|---|---|---|---|
+| [A0](A0-sovereign-intelligence-engine.md) | Sovereign Intelligence Engine | active | You are justifying a decision against the composing vision rather than a single principle |
+| [A1](A1-sovereign-state-transparency.md) | Sovereign State Transparency | active | You cannot see the current state of the system from one place and are about to infer it |
+| [A2](A2-isomorphic-specification.md) | Isomorphic Specification | active | Declared intent and running reality have drifted, or you are about to change one without the other |
+| [A3](A3-sovereign-composition.md) | Sovereign Composition | active | You are deciding whether a concern belongs behind a new boundary or an existing one |
+| [A4](A4-zero-loss-knowledge.md) | Zero-Loss Knowledge | active | You are about to summarise an artifact rather than carry it forward whole |
+| [A5](A5-perceptual-parity.md) | Perceptual Parity | active | An agent is about to act on state it derived rather than state it was given |
+| [A6](A6-frictionless-agentic-collaboration.md) | Frictionless Agentic Collaboration | active | You are designing a seam between two agents that must collaborate without a human relay |
+| [A7](A7-resilient-agentic-operations.md) | Resilient Agentic Operations | active | You are deciding how the system should behave when a unit of work fails or a thread stalls |
+| [A8](A8-gated-recursive-integrity.md) | Gated Recursive Integrity | active | You are about to promote something past a gate, or deciding what the gate must prove |
+| [A9](A9-chaos-validated-deployment.md) | Chaos-Validated Deployment | active | You are about to trust a deployment you have not seen survive failure |
+| [A10](A10-autopoietic-evolution.md) | Autopoietic Evolution | active | Friction has surfaced during work and you are deciding whether to route around it or fix its cause |
+| [A11](A11-cognitive-minimalism.md) | Cognitive Minimalism | active | You are about to have an agent do work that deterministic code could do instead |
+| [A12](A12-precision-context-engineering.md) | Precision Context Engineering | active | You are assembling the context for an invocation and deciding what earns its place |
+| [A13](A13-director-intent-amplification.md) | Director Intent Amplification | active | You are about to consume the director's attention, or to decide something in their absence |
+| [A14](A14-compounding-learning.md) | Compounding Learning | active | You have learned something during work and are deciding whether to capture it |
 <!-- END GENERATED -->

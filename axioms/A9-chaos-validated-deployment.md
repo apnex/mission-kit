@@ -3,6 +3,7 @@ id: A9
 category: axiom
 title: Chaos-Validated Deployment
 status: active
+hydrate-when: You are about to trust a deployment you have not seen survive failure
 applies-to: [any-system]
 related: [A8]
 ---

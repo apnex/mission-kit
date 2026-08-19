@@ -3,6 +3,7 @@ id: W6
 category: work-type
 title: merge-and-land - land an approved change on canonical main
 status: active
+hydrate-when: You are landing an approved change on the canonical branch
 roleEligibility: [engineer]
 evidenceContract:
   - {kind: commit, description: merge commit}

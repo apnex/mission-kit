@@ -3,6 +3,7 @@ id: K5
 category: skill
 title: survey - stakeholder-intent capture before design commitment
 status: active
+hydrate-when: Direction is still open and you are about to commit to a design
 supersedes: []
 related: [M1, M3]
 ---

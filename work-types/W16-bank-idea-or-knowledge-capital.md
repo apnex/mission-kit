@@ -3,6 +3,7 @@ id: W16
 category: work-type
 title: bank-idea-or-knowledge-capital - capture reusable capital
 status: active
+hydrate-when: You have reusable capital in hand and are capturing it
 roleEligibility: [architect, engineer, verifier, director]
 evidenceContract:
   - kind: freeform
