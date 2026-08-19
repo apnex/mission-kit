@@ -14,7 +14,7 @@ Where an `S`/`M`/`P`/`K` entry answers "how should I do this thing well?", an ax
 
 ## Entry shape
 
-Axioms carry a tele-native body shape rather than the standard `S`/`M`/`P`/`K` skeleton.
+Axioms carry their own body shape rather than the standard `S`/`M`/`P`/`K` skeleton, because an axiom states an invariant and its consequences rather than a situated move.
 
 **Frontmatter** (machine-parseable):
 ```yaml
