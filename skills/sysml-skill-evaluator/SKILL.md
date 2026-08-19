@@ -1,4 +1,8 @@
 ---
+id: K17
+category: skill
+title: sysml-skill-evaluator - measure a SysML skill's leverage vs the base model (meta)
+status: active
 name: sysml-skill-evaluator
 description: "Measure a SysML-anchored skill's LEVERAGE — whether it conveys methodology understanding the base model lacks, vs merely restating SysML. Run as a gate on a new/changed skill: format held constant (both arms read the same model), the convention WITHHELD from the task, treatment (agent+skill) vs control (agent+grammar-primer), blind-judged vs convention keys, reported as a per-convention treatment-minus-control delta. Read sysml-literacy first; completes the meta-quartet with sysml-skill-builder + sysml-skill-tester."
 metadata:

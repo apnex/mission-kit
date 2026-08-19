@@ -8,6 +8,7 @@ Sort by ID prefix.
 [`statusline-pi/`](statusline-pi/README.md) - pi swarm-aware 2-line footer, the multi-agent evolution (design-of-record; canonical A5 instance).\
 [`tools/`](tools/README.md) - runnable checks and conversions for this repository: style compliance, sentence reflow, skill-graph lint.
 
+<!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
 | ID | Category | Title | Status |
 |---|---|---|---|
 | [A0](axioms/A0-sovereign-intelligence-engine.md) | axiom | Sovereign Intelligence Engine | active |
@@ -45,45 +46,16 @@ Sort by ID prefix.
 | [M5](methodology/M5-anti-amnesia-deferral.md) | methodology | Anti-amnesia deferral - every parked or cut item carries a revival trigger | active |
 | [M6](methodology/M6-author-from-exemplar.md) | methodology | Author from exemplar - read a peer instance before adding to a collection | active |
 | [M7](methodology/M7-axiom-alignment-audit.md) | methodology | Axiom alignment audit - required gate for extensive planning/design | active |
-| [P1](patterns/P1-path-a-path-b-dual-substrate.md) | pattern | Path A / Path B labeling for dual-substrate workflows | active |
-| [P2](patterns/P2-node-label-gate-cross-component-contracts.md) | pattern | Node-label gate for cross-component contracts | active |
-| [P3](patterns/P3-twin-parity-by-generation.md) | pattern | Twin-parity by generation - one master, generate the other, gate the round-trip | active |
-| [P4](patterns/P4-neutral-core-tenant-composition.md) | pattern | Neutral core + tenant composition - shared mechanism, injected semantics, promote down by evidence | active |
-| [P5](patterns/P5-verbs-as-data-surface.md) | pattern | Verbs-as-data surface - one manifest drives dispatch, docs, and validation | active |
-| [K1](skills/K1-history-content-scrub.md) | skill | History content scrub | active |
-| [K2](skills/K2-publishing-rewritten-history.md) | skill | Publishing rewritten history | active |
-| [K3](skills/K3-substrate-audit.md) | skill | substrate-audit - code-grounded substrate audit | active |
-| [K4](skills/K4-research-artefacts.md) | skill | research-artefacts - discipline for producing persistent research outputs | active |
-| [K5](skills/K5-survey.md) | skill | survey - stakeholder-intent capture before design commitment | active |
-| [K6](skills/K6-arc-lifecycle.md) | skill | arc-lifecycle - operate staged work as a sovereign FSM-gated state engine | active |
-| [K7](skills/sysml-literacy/SKILL.md) | skill | sysml-literacy - read + understand SysML v2 (the literacy base for SysML-anchored skills) | active |
-| [K8](skills/model-a-state-machine/SKILL.md) | skill | model-a-state-machine - author an FSM/lifecycle in SysML v2 | active |
-| [K9](skills/model-a-workflow/SKILL.md) | skill | model-a-workflow - author an ordered activity / workflow in SysML v2 | active |
-| [K10](skills/model-a-component/SKILL.md) | skill | model-a-component - author a structural breakdown in SysML v2 | active |
-| [K11](skills/sysml-skill-builder/SKILL.md) | skill | sysml-skill-builder - build a SysML-anchored modelling skill (the artifact grammar) | active |
-| [K12](skills/sysml-skill-tester/SKILL.md) | skill | sysml-skill-tester - verify a SysML-anchored modelling skill (the acceptance bar) | active |
-| [K13](skills/model-a-dependency-graph/SKILL.md) | skill | model-a-dependency-graph - author a DAG of typed nodes (ref edges) in SysML v2 | active |
-| [K14](skills/model-a-constraint/SKILL.md) | skill | model-a-constraint - author a reusable boolean rule (constraint def) in SysML v2 | active |
-| [K15](skills/model-a-classification/SKILL.md) | skill | model-a-classification - author orthogonal enum classification axes in SysML v2 | active |
-| [K16](skills/model-an-arc/SKILL.md) | skill | model-an-arc - model an arc as a composed L2 system (composes the six primitives) | active |
-| [K17](skills/sysml-skill-evaluator/SKILL.md) | skill | sysml-skill-evaluator - measure a SysML skill's leverage vs the base model (the leverage gate) | active |
-| [K18](skills/workgraph-arc-operator/SKILL.md) | skill | workgraph-arc-operator - execute and manage a Hub WorkGraph arc | active |
-| [K19](skills/workgraph-blueprint-author/SKILL.md) | skill | workgraph-blueprint-author - author valid Hub WorkGraph blueprints | stub |
-| [K20](skills/workgraph-lease-discipline/SKILL.md) | skill | workgraph-lease-discipline - operate WorkGraph leases and liveness | stub |
-| [K21](skills/workgraph-verification-gates/SKILL.md) | skill | workgraph-verification-gates - exact independent WorkGraph PASS/FAIL gates | active |
-| [K22](skills/workgraph-pr-delivery/SKILL.md) | skill | workgraph-pr-delivery - exact source-to-live proof under WorkGraph control | active |
-| [K23](skills/workgraph-arc-closeout/SKILL.md) | skill | workgraph-arc-closeout - terminal proof reconciliation for WorkGraph arc closeout | active |
-| [K24](skills/workgraph-recovery/SKILL.md) | skill | workgraph-recovery - immutable-lineage recovery for stopped/failed/revised arcs | active |
-| [K25](skills/workgraph-arc-participant/SKILL.md) | skill | workgraph-arc-participant - act inside a Hub WorkGraph arc | active |
-| [K26](skills/workgraph-arc-planning/SKILL.md) | skill | workgraph-arc-planning - bounded intent-to-design-seal planning arc | active |
-| [K27](skills/write-discoverable-code/SKILL.md) | skill | write-discoverable-code - name and structure code so plain-text search resolves it in one hit (vendored, MIT) | active |
-| [K28](skills/asd-ste100-verifier/SKILL.md) | skill | asd-ste100-verifier - audit and enforce ASD-STE100 Simplified Technical English, with a runnable engine | active |
-| [MREQ-1](backlog/mreq-1-axiom-application-methodology.md) | mission-required | Axiom-application methodology for non-code missions | partially-fulfilled |
 | [R0](roles/README.md) | role | Roles - the M axis (pure essence + type-determined authority) | active |
 | [R1](roles/R1-architect.md) | role | architect - authority over system shape | active |
 | [R2](roles/R2-engineer.md) | role | engineer - make it real | active |
 | [R3](roles/R3-verifier.md) | role | verifier - independent adversarial assurance | active |
 | [R4](roles/R4-director.md) | role | director - intent source and ratification authority | active |
+| [P1](patterns/P1-path-a-path-b-dual-substrate.md) | pattern | Path A / Path B labeling for dual-substrate workflows | active |
+| [P2](patterns/P2-node-label-gate-cross-component-contracts.md) | pattern | Node-label gate for cross-component contracts | active |
+| [P3](patterns/P3-twin-parity-by-generation.md) | pattern | Twin-parity by generation - one master, generate the other, gate the round-trip | active |
+| [P4](patterns/P4-neutral-core-tenant-composition.md) | pattern | Neutral core + tenant composition - shared mechanism, injected semantics, promote down by evidence | active |
+| [P5](patterns/P5-verbs-as-data-surface.md) | pattern | Verbs-as-data surface - one manifest drives dispatch, docs, and validation | active |
 | [D0](domains/README.md) | domain | Domains - the N axis (subject-surfaces, bimodal freedom) | active |
 | [D1](domains/D1-delivery-code.md) | domain | delivery-code - the product/service codebase | active |
 | [D2](domains/D2-distribution.md) | domain | distribution - release channels and the rollout plane | active |
@@ -91,7 +63,7 @@ Sort by ID prefix.
 | [D4](domains/D4-authority-governance.md) | domain | authority-governance - the governance/authority substrate | active |
 | [D5](domains/D5-coordination-substrate.md) | domain | coordination-substrate - the WorkGraph/lifecycle/messaging machinery | active |
 | [D6](domains/D6-knowledge-methodology.md) | domain | knowledge-methodology - the durable knowledge capital | active |
-| [WT0](work-types/README.md) | work-type | Work-types - composition, closeability, and schema | active |
+| [WT0](work-types/README.md) | work-type | Work-types - the composition rule, the canonical closeability preflight, and the entry schema | active |
 | [W1](work-types/W1-build-a-slice.md) | work-type | build-a-slice - implement a scoped increment | active |
 | [W2](work-types/W2-fix-a-bug-or-repair.md) | work-type | fix-a-bug-or-repair - resolve a filed defect | active |
 | [W3](work-types/W3-retire-or-hard-cut.md) | work-type | retire-or-hard-cut - delete a surface with disposition | active |
@@ -118,3 +90,33 @@ Sort by ID prefix.
 | [W24](work-types/W24-director-walkthrough.md) | work-type | director-walkthrough - live Director sensemaking walkthrough | active |
 | [W25](work-types/W25-backstop-a-prod-window.md) | work-type | backstop-a-prod-window - hold abort/rollback over a risk window | active |
 | [W26](work-types/W26-reset-or-converge-the-fleet.md) | work-type | reset-or-converge-the-fleet - restore fleet to a healthy state | active |
+| [K1](skills/K1-history-content-scrub.md) | skill | History content scrub | active |
+| [K2](skills/K2-publishing-rewritten-history.md) | skill | Publishing rewritten history | active |
+| [K3](skills/K3-substrate-audit.md) | skill | substrate-audit - code-grounded substrate audit | active |
+| [K4](skills/K4-research-artefacts.md) | skill | research-artefacts - discipline for producing persistent research outputs | active |
+| [K5](skills/K5-survey.md) | skill | survey - stakeholder-intent capture before design commitment | active |
+| [K6](skills/K6-arc-lifecycle.md) | skill | arc-lifecycle - operate staged work as a sovereign FSM-gated state engine | active |
+| [K7](skills/sysml-literacy/SKILL.md) | skill | sysml-literacy - read + understand SysML v2 (literacy base for SysML-anchored skills) | active |
+| [K8](skills/model-a-state-machine/SKILL.md) | skill | model-a-state-machine - author an FSM/lifecycle in SysML v2 | active |
+| [K9](skills/model-a-workflow/SKILL.md) | skill | model-a-workflow - author an ordered activity / workflow in SysML v2 | active |
+| [K10](skills/model-a-component/SKILL.md) | skill | model-a-component - author a structural breakdown in SysML v2 | active |
+| [K11](skills/sysml-skill-builder/SKILL.md) | skill | sysml-skill-builder - build a SysML-anchored modelling skill (meta) | active |
+| [K12](skills/sysml-skill-tester/SKILL.md) | skill | sysml-skill-tester - verify a SysML-anchored modelling skill (meta) | active |
+| [K13](skills/model-a-dependency-graph/SKILL.md) | skill | model-a-dependency-graph - author a DAG of typed nodes (ref edges) in SysML v2 | active |
+| [K14](skills/model-a-constraint/SKILL.md) | skill | model-a-constraint - author a reusable boolean rule (constraint def) in SysML v2 | active |
+| [K15](skills/model-a-classification/SKILL.md) | skill | model-a-classification - author orthogonal enum classification axes in SysML v2 | active |
+| [K16](skills/model-an-arc/SKILL.md) | skill | model-an-arc - model an arc as a composed L2 system (composes the six primitives) | active |
+| [K17](skills/sysml-skill-evaluator/SKILL.md) | skill | sysml-skill-evaluator - measure a SysML skill's leverage vs the base model (meta) | active |
+| [K18](skills/workgraph-arc-operator/SKILL.md) | skill | workgraph-arc-operator - execute and manage a Hub WorkGraph arc | active |
+| [K19](skills/workgraph-blueprint-author/SKILL.md) | skill | workgraph-blueprint-author - author valid Hub WorkGraph blueprints | stub |
+| [K20](skills/workgraph-lease-discipline/SKILL.md) | skill | workgraph-lease-discipline - operate WorkGraph leases and liveness | stub |
+| [K21](skills/workgraph-verification-gates/SKILL.md) | skill | workgraph-verification-gates - exact independent WorkGraph PASS/FAIL gates | active |
+| [K22](skills/workgraph-pr-delivery/SKILL.md) | skill | workgraph-pr-delivery - exact source-to-live proof under WorkGraph control | active |
+| [K23](skills/workgraph-arc-closeout/SKILL.md) | skill | workgraph-arc-closeout - terminal proof reconciliation for WorkGraph arc closeout | active |
+| [K24](skills/workgraph-recovery/SKILL.md) | skill | workgraph-recovery - immutable-lineage recovery for stopped/failed/revised arcs | active |
+| [K25](skills/workgraph-arc-participant/SKILL.md) | skill | workgraph-arc-participant - act inside a Hub WorkGraph arc | active |
+| [K26](skills/workgraph-arc-planning/SKILL.md) | skill | workgraph-arc-planning - bounded intent-to-design-seal planning arc | active |
+| [K27](skills/write-discoverable-code/SKILL.md) | skill | write-discoverable-code - name and structure code so plain-text search resolves it in one hit (vendored, MIT) | active |
+| [K28](skills/asd-ste100-verifier/SKILL.md) | skill | asd-ste100-verifier - audit and enforce ASD-STE100 Simplified Technical English, with a runnable engine | active |
+| [MREQ-1](backlog/mreq-1-axiom-application-methodology.md) | mission-required | Axiom-application methodology for non-code missions | partially-fulfilled |
+<!-- END GENERATED -->

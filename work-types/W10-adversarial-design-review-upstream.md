@@ -1,7 +1,7 @@
 ---
 id: W10
 category: work-type
-title: adversarial-design-review-upstream — critique a design before build/merge
+title: adversarial-design-review-upstream - critique a design before build/merge
 status: active
 roleEligibility: [verifier]
 evidenceContract:

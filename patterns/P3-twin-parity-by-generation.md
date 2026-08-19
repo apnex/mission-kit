@@ -1,7 +1,7 @@
 ---
 id: P3
 category: pattern
-title: Twin-parity by generation — one master, generate the other, gate the round-trip
+title: Twin-parity by generation - one master, generate the other, gate the round-trip
 status: active
 supersedes: []
 related: [A2, P1]

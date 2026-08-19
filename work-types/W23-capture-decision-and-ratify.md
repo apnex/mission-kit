@@ -1,7 +1,7 @@
 ---
 id: W23
 category: work-type
-title: capture-decision-and-ratify — record + ratify a decision
+title: capture-decision-and-ratify - record + ratify a decision
 status: active
 roleEligibility: [director, architect]
 evidenceContract:

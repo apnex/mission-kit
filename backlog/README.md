@@ -27,7 +27,7 @@ as it is then, not silently resumed.
 ```yaml
 id: MREQ-N
 category: mission-required
-title: One-line title — noun phrase, no period
+title: One-line title - noun phrase, no period
 status: deferred          # deferred | active | done | wont-do  (all reopenable per M5)
 revival-trigger: >        # REQUIRED — the observable condition to re-triage
   ...

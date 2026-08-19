@@ -1,7 +1,7 @@
 ---
 id: D1
 category: domain
-title: delivery-code — the product/service codebase
+title: delivery-code - the product/service codebase
 status: active
 subjectSurface: the shipped product/service codebase — features, fixes, the delivered artifact
 evidenceResolvesAgainst: source files, PRs, commits, CI/test runs on the product repo

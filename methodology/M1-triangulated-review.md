@@ -1,7 +1,7 @@
 ---
 id: M1
 category: methodology
-title: Triangulated review — minimum 4 independent inputs
+title: Triangulated review - minimum 4 independent inputs
 status: active
 supersedes: []
 related: [M2, M3]

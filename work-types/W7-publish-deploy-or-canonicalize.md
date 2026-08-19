@@ -1,7 +1,7 @@
 ---
 id: W7
 category: work-type
-title: publish-deploy-or-canonicalize — ship to the estate/channel
+title: publish-deploy-or-canonicalize - ship to the estate/channel
 status: active
 roleEligibility: [engineer]
 evidenceContract:

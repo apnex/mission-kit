@@ -1,7 +1,7 @@
 ---
 id: W3
 category: work-type
-title: retire-or-hard-cut — delete a surface with disposition
+title: retire-or-hard-cut - delete a surface with disposition
 status: active
 roleEligibility: [engineer]
 evidenceContract:

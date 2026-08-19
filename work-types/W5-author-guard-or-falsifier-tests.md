@@ -1,7 +1,7 @@
 ---
 id: W5
 category: work-type
-title: author-guard-or-falsifier-tests — add a test that can fail
+title: author-guard-or-falsifier-tests - add a test that can fail
 status: active
 roleEligibility: [engineer]
 evidenceContract:

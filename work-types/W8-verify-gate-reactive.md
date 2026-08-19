@@ -1,7 +1,7 @@
 ---
 id: W8
 category: work-type
-title: verify-gate-reactive — independently gate a build/change
+title: verify-gate-reactive - independently gate a build/change
 status: active
 roleEligibility: [verifier]
 evidenceContract:

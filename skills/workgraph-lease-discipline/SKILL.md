@@ -1,4 +1,8 @@
 ---
+id: K20
+category: skill
+title: workgraph-lease-discipline - operate WorkGraph leases and liveness
+status: stub
 name: workgraph-lease-discipline
 description: "Scaffold stub. Planned WorkGraph-series skill for lease-based control of active arcs and WorkItems: driver lease heartbeat, renew/reclaim/release behavior, no-idle/no-manual-ping discipline, and recovery from expired or lost leases."
 metadata:

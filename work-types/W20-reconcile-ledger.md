@@ -1,7 +1,7 @@
 ---
 id: W20
 category: work-type
-title: reconcile-ledger — reconcile entity/backlog state vs truth
+title: reconcile-ledger - reconcile entity/backlog state vs truth
 status: active
 roleEligibility: [architect, verifier]
 evidenceContract:

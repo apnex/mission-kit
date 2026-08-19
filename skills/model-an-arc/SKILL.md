@@ -1,4 +1,8 @@
 ---
+id: K16
+category: skill
+title: model-an-arc - model an arc as a composed L2 system (composes the six primitives)
+status: active
 name: model-an-arc
 description: "Model an arc — a staged-work methodology — as a COMPOSED system in SysML v2, by composing the six L1 primitives: components (summit/arc/rung), classification axes (payoff/tier/risk), a dependency-graph (dependsOn DAG), constraints (anti-amnesia, buildsOn-banked), a state machine (the reopenable lifecycle), and a workflow (the park cascade). Use when modelling an arc/roadmap/backlog as a system, or as the worked example of composing primitives into an L2. Read sysml-literacy + the model-a-X primitives first; the operate facet is the arc-lifecycle skill."
 metadata:

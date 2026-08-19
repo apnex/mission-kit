@@ -1,7 +1,7 @@
 ---
 id: W22
 category: work-type
-title: axiom-alignment-gate — per-item axiom-alignment check
+title: axiom-alignment-gate - per-item axiom-alignment check
 status: active
 roleEligibility: [verifier]
 evidenceContract:

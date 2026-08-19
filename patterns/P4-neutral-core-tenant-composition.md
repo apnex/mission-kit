@@ -1,7 +1,7 @@
 ---
 id: P4
 category: pattern
-title: Neutral core + tenant composition — shared mechanism, injected semantics, promote down by evidence
+title: Neutral core + tenant composition - shared mechanism, injected semantics, promote down by evidence
 status: active
 supersedes: []
 related: [A3, P3]

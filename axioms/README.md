@@ -21,7 +21,7 @@ Axioms carry a tele-native body shape rather than the standard `S`/`M`/`P`/`K` s
 ```yaml
 id: A0                    # stable ID, prefix A
 category: axiom
-title: One-line title — imperative or noun-phrase, no period
+title: One-line title - imperative or noun-phrase, no period
 status: active            # active | superseded | deprecated
 applies-to: [any-system]  # domain of validity — see Applicability model
 related: [A1, A2]         # cross-links to other axioms
@@ -81,6 +81,7 @@ Adopt the rows your architecture satisfies: a plain library takes `any-system`; 
 
 ## Index
 
+<!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
 | ID | Title | Status |
 |---|---|---|
 | [A0](A0-sovereign-intelligence-engine.md) | Sovereign Intelligence Engine | active |
@@ -98,3 +99,4 @@ Adopt the rows your architecture satisfies: a plain library takes `any-system`; 
 | [A12](A12-precision-context-engineering.md) | Precision Context Engineering | active |
 | [A13](A13-director-intent-amplification.md) | Director Intent Amplification | active |
 | [A14](A14-compounding-learning.md) | Compounding Learning | active |
+<!-- END GENERATED -->

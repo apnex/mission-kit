@@ -1,4 +1,8 @@
 ---
+id: K9
+category: skill
+title: model-a-workflow - author an ordered activity / workflow in SysML v2
+status: active
 name: model-a-workflow
 description: "Author a workflow (an ordered activity / process) in SysML v2 — actions, successions (then), in/out pins, decisions (decide/if), and recursion. Use when modelling what something DOES as ordered steps (a pipeline, a procedure, a cascade, an algorithm, a transition's effect), not the states it is in. Read the sysml-literacy skill first; this is the authoring counterpart, and the home for a state machine's effects."
 metadata:

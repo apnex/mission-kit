@@ -1,7 +1,7 @@
 ---
 id: W26
 category: work-type
-title: reset-or-converge-the-fleet — restore fleet to a healthy state
+title: reset-or-converge-the-fleet - restore fleet to a healthy state
 status: active
 roleEligibility: [architect, engineer]
 evidenceContract:

@@ -1,7 +1,7 @@
 ---
 id: W25
 category: work-type
-title: backstop-a-prod-window — hold abort/rollback over a risk window
+title: backstop-a-prod-window - hold abort/rollback over a risk window
 status: active
 backstop: true
 roleEligibility: [architect, verifier, director]

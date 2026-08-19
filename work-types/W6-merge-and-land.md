@@ -1,7 +1,7 @@
 ---
 id: W6
 category: work-type
-title: merge-and-land — land an approved change on canonical main
+title: merge-and-land - land an approved change on canonical main
 status: active
 roleEligibility: [engineer]
 evidenceContract:

@@ -1,4 +1,8 @@
 ---
+id: K21
+category: skill
+title: workgraph-verification-gates - exact independent WorkGraph PASS/FAIL gates
+status: active
 name: workgraph-verification-gates
 description: "Use to author, stage, independently judge, verify, and recover exact WorkGraph PASS/FAIL gates without self-attestation, vacuous evidence, mutable-byte drift, or failed-gate replay."
 metadata:

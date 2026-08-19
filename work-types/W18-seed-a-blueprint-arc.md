@@ -1,7 +1,7 @@
 ---
 id: W18
 category: work-type
-title: seed-a-blueprint-arc — instantiate a WorkGraph arc
+title: seed-a-blueprint-arc - instantiate a WorkGraph arc
 status: active
 roleEligibility: [architect]
 evidenceContract:

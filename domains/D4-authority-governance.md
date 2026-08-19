@@ -1,7 +1,7 @@
 ---
 id: D4
 category: domain
-title: authority-governance — the governance/authority substrate
+title: authority-governance - the governance/authority substrate
 status: active
 subjectSurface: the governance/authority substrate as subject — SEAL, CODEOWNERS, decisions, class-grants, axioms-as-law
 evidenceResolvesAgainst: Decision/Confirmation/Signal entities, class-grants, CODEOWNERS approvals, axiom-alignment records

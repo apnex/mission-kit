@@ -1,4 +1,8 @@
 ---
+id: K13
+category: skill
+title: model-a-dependency-graph - author a DAG of typed nodes (ref edges) in SysML v2
+status: active
 name: model-a-dependency-graph
 description: "Author a dependency graph (a DAG of typed nodes) in SysML v2 — one part def for the node kind joined to itself by a `ref` edge that means order/precedence, with the graph kept acyclic. Use when the graph TOPOLOGY is the subject: a build/task graph, module or package dependencies, a precedence order. The ref-edge DAG over a single node kind IS the whole model — distinct from model-a-component, where ref is just one structural relation among ownership and data. Read the sysml-literacy skill first; this is the authoring counterpart."
 metadata:

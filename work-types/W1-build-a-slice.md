@@ -1,7 +1,7 @@
 ---
 id: W1
 category: work-type
-title: build-a-slice — implement a scoped increment
+title: build-a-slice - implement a scoped increment
 status: active
 roleEligibility: [engineer]
 evidenceContract:

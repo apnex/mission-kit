@@ -1,4 +1,8 @@
 ---
+id: K14
+category: skill
+title: model-a-constraint - author a reusable boolean rule (constraint def) in SysML v2
+status: active
 name: model-a-constraint
 description: "Author a constraint (a reusable boolean rule) in SysML v2 — constraint defs with in parameters and a boolean expression (== and or not implies xor), asserted on a part's attributes (assert constraint), and composed into higher-level invariants. Use when modelling a CHECKABLE rule over data — an invariant, a bound, a validity condition — as a spec, distinct from prose intent (a requirement). Read the sysml-literacy skill first; this is the authoring counterpart."
 metadata:

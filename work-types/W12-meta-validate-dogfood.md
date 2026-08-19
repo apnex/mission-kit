@@ -1,7 +1,7 @@
 ---
 id: W12
 category: work-type
-title: meta-validate-dogfood — use the deliverable as its own test
+title: meta-validate-dogfood - use the deliverable as its own test
 status: active
 roleEligibility: [verifier, engineer]
 evidenceContract:

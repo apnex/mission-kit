@@ -1,4 +1,8 @@
 ---
+id: K8
+category: skill
+title: model-a-state-machine - author an FSM/lifecycle in SysML v2
+status: active
 name: model-a-state-machine
 description: "Author a state machine (a lifecycle / FSM) in SysML v2 — states, events, transitions (first/accept/then), guards (if), and an initial state. Use when modelling the stateful lifecycle or behavior of a thing (an order, a subscription, a connection, a build, a process) as states and the transitions between them. Read the sysml-literacy skill first; this is the authoring counterpart."
 metadata:

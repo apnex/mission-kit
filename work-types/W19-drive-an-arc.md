@@ -1,7 +1,7 @@
 ---
 id: W19
 category: work-type
-title: drive-an-arc — operate an arc over its lifetime
+title: drive-an-arc - operate an arc over its lifetime
 status: active
 roleEligibility: [architect]
 evidenceContract:

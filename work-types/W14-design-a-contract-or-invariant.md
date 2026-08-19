@@ -1,7 +1,7 @@
 ---
 id: W14
 category: work-type
-title: design-a-contract-or-invariant — author a design-of-record
+title: design-a-contract-or-invariant - author a design-of-record
 status: active
 roleEligibility: [architect]
 evidenceContract:

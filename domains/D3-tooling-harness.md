@@ -1,7 +1,7 @@
 ---
 id: D3
 category: domain
-title: tooling-harness — the launch/runtime harness
+title: tooling-harness - the launch/runtime harness
 status: active
 subjectSurface: the launch/runtime harness — ois/pi/claude launchers, prompt-handlers, dev tooling
 evidenceResolvesAgainst: harness source/config, launcher behavior, prompt-handler tables, live seat/session state

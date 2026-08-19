@@ -1,7 +1,7 @@
 ---
 id: W17
 category: work-type
-title: author-closeout-packet — proof-level arc closeout
+title: author-closeout-packet - proof-level arc closeout
 status: active
 roleEligibility: [architect]
 evidenceContract:

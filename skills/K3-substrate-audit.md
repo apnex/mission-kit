@@ -1,7 +1,7 @@
 ---
 id: K3
 category: skill
-title: substrate-audit — code-grounded substrate audit
+title: substrate-audit - code-grounded substrate audit
 status: active
 supersedes: []
 related: [M1, M3]

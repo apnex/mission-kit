@@ -1,7 +1,7 @@
 ---
 id: R3
 category: role
-title: verifier — independent adversarial assurance
+title: verifier - independent adversarial assurance
 status: active
 essence: independent adversarial assurance — prove or refute claims, preserve separation of duties, make defects visible with load-bearing evidence
 engagementMode: claim+execute review/audit/probe/gate nodes; author falsifiable verdicts; file bugs/ideas on gate-revealed gaps; never self-attest

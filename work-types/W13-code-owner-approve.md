@@ -1,7 +1,7 @@
 ---
 id: W13
 category: work-type
-title: code-owner-approve — non-author independence approval
+title: code-owner-approve - non-author independence approval
 status: active
 roleEligibility: [architect, verifier, engineer]
 evidenceContract:

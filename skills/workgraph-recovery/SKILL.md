@@ -1,4 +1,8 @@
 ---
+id: K24
+category: skill
+title: workgraph-recovery - immutable-lineage recovery for stopped/failed/revised arcs
+status: active
 name: workgraph-recovery
 description: "Use when a WorkGraph arc is hard-stopped, failed, paused, stale, drifted, lease-stuck, or delivery-blocked; restores liveness through fresh truth, immutable failure lineage, pause-revise-unpause, and distinct independently gated repair rather than replay, reset, or give-up."
 metadata:

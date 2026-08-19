@@ -32,6 +32,29 @@ A file opts out of one rule with a marker on its own line, which keeps the exemp
 
 Exit status is non-zero when any check fails.
 
+---
+
+## generate-index.mjs
+
+Derives `INDEX.md` and the category tables from entry frontmatter.
+
+```sh
+node tools/generate-index.mjs
+node tools/generate-index.mjs --check
+```
+
+**Why it exists.** An index maintained by hand omits whatever nobody remembered to add, and nothing detects the omission.\
+Three entries went missing that way before this existed.\
+Deriving every table from the entries makes that class impossible rather than merely fixed, and `--check` is the half that makes it a mechanism: generation alone is a convention.
+
+**Run it when** you add, retire or rename an entry, and in any gate that guards this repository.
+
+Generated regions are delimited by markers, so hand-written prose in the same file survives untouched.\
+A file carrying no markers is left alone, which is how `roles/`, `domains/` and `work-types/` opt out of a local table.\
+Exit status is non-zero in `--check` mode when a region is stale.
+
+---
+
 ## reflow-sentences.mjs
 
 Rewrites markdown prose to one sentence per line.
@@ -52,6 +75,8 @@ Frontmatter, fenced blocks, tables, headings, list items and blockquotes are cop
 Sentence splitting declines on abbreviations, initials and ellipses, since a wrong split costs more than a missed one.\
 Use `--dry` first, and check the result with `check-style.sh`.
 
+---
+
 ## check-standing-context.sh
 
 Validates a standing-context document against the contract it declares.
@@ -70,6 +95,8 @@ Checks the frontmatter, the presence of every required section, plain ASCII, tha
 Start a new document from [`_template-standing-context.md`](../_template-standing-context.md); the contract is [`schemas/standing-context/v1alpha1`](../schemas/standing-context/v1alpha1/standing-context.schema.json).
 
 Exit status is non-zero when any check fails.
+
+---
 
 ## skill-graph.mjs
 

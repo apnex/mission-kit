@@ -1,4 +1,8 @@
 ---
+id: K12
+category: skill
+title: sysml-skill-tester - verify a SysML-anchored modelling skill (meta)
+status: active
 name: sysml-skill-tester
 description: "Verify a SysML-anchored modelling skill before it ships — author a fresh model from the skill ALONE and gate-validate it, audit cross-links/consistency, and gate-verify every 'X parses' claim against the validator. Use to test a model-a-X or composed system skill (the acceptance bar). Read sysml-literacy first; pairs with sysml-skill-builder."
 metadata:

@@ -1,7 +1,7 @@
 ---
 id: W2
 category: work-type
-title: fix-a-bug-or-repair — resolve a filed defect
+title: fix-a-bug-or-repair - resolve a filed defect
 status: active
 roleEligibility: [engineer]
 evidenceContract:

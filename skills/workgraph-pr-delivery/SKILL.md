@@ -1,4 +1,8 @@
 ---
+id: K22
+category: skill
+title: workgraph-pr-delivery - exact source-to-live proof under WorkGraph control
+status: active
 name: workgraph-pr-delivery
 description: "Use to move an exact WorkGraph-bound source candidate through clean branch/worktree, commit, PR, independent review, protected merge, applicable publication, deployment, and live proof without collapsing delivery layers or retry polarity."
 metadata:

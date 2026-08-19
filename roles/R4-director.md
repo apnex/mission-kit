@@ -1,7 +1,7 @@
 ---
 id: R4
 category: role
-title: director — intent source and ratification authority
+title: director - intent source and ratification authority
 status: active
 essence: the sovereign intent-source; ratification & curation authority; the delegator whose authority the other roles act under
 engagementMode: steer / ratify / gate / curate — signals, decisions, confirmations, class-grants, walkthroughs — OUTSIDE the claim->execute loop; may delegate authority

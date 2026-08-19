@@ -1,4 +1,8 @@
 ---
+id: K11
+category: skill
+title: sysml-skill-builder - build a SysML-anchored modelling skill (meta)
+status: active
 name: sysml-skill-builder
 description: "Build a SysML-anchored modelling skill WITH SysML — assemble the fixed scaffold (thin SKILL.md + the five assets: template, example, one advanced example, the authoring procedure as an action def, the well-formedness rules as constraint defs + one reference) and declare its prerequisite/composes edges. Use when authoring a new model-a-X primitive or a composed system skill for the SysML modelling catalogue. NOT for modelling a 'skill' as a SysML system. Read sysml-literacy first; pairs with sysml-skill-tester."
 metadata:

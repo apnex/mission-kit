@@ -1,7 +1,7 @@
 ---
 id: W24
 category: work-type
-title: director-walkthrough — live Director sensemaking walkthrough
+title: director-walkthrough - live Director sensemaking walkthrough
 status: active
 roleEligibility: [director]
 evidenceContract:

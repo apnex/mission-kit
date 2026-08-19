@@ -1,7 +1,7 @@
 ---
 id: M6
 category: methodology
-title: Author from exemplar — read a peer instance before adding to a collection
+title: Author from exemplar - read a peer instance before adding to a collection
 status: active
 supersedes: []
 related: [M2, S1, A4, A14]

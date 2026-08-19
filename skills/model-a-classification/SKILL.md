@@ -1,4 +1,8 @@
 ---
+id: K15
+category: skill
+title: model-a-classification - author orthogonal enum classification axes in SysML v2
+status: active
 name: model-a-classification
 description: "Author a classification in SysML v2 — fixed-value axes (enum def) carried as enum-typed attributes to classify a thing along INDEPENDENT dimensions. Use when modelling which bucket(s) a thing sits in: priority, status, tier, risk, size, a category. Keeps orthogonal axes as separate enums (one enum = one axis; a thing carries several), not one combined enum. Read the sysml-literacy skill first; this is the authoring counterpart."
 metadata:

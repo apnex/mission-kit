@@ -1,7 +1,7 @@
 ---
 id: W9
 category: work-type
-title: audit-a-surface — bounded adversarial sweep of a surface
+title: audit-a-surface - bounded adversarial sweep of a surface
 status: active
 roleEligibility: [verifier]
 evidenceContract:

@@ -66,6 +66,7 @@ check_S6() {
 	# YAML frontmatter is structured data, not prose, so neither half applies to it.
 	done < <(awk 'FNR==1 && /^---$/{fm=1; next} fm && /^---$/{fm=0; next} fm{next}
 	              /^```|^````/{c=!c; next} c{next}
+	              /^<!--/{next}
 	              /^(#|\||>|[[:space:]]*[-*+][[:space:]]|[[:space:]]*[0-9]+\.[[:space:]])/{next}
 	              /^[[:space:]]{2,}[^[:space:]]/{next}
 	              /[a-z)`][.!?] [A-Z`]/{printf "%s:%d\n", FILENAME, FNR}' "$f")
@@ -77,6 +78,7 @@ check_S6() {
 	done < <(awk 'FNR==1 && /^---$/{fm=1; next} fm && /^---$/{fm=0; next} fm{next}
 	              /^```|^````/{c=!c; p=""; next} c{next}
 	              /^[[:space:]]*$/{p=""; next}
+	              /^<!--/{p=""; next}
 	              /^[[:space:]]*(#|\||>|[-*+][[:space:]]|[0-9]+\.[[:space:]])/{p=""; next}
 	              { if (p != "" && p !~ /\\$/ && p ~ /[.!?]$/) printf "%s:%d\n", FILENAME, FNR-1; p=$0 }' "$f")
 }

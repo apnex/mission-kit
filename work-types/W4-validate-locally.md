@@ -1,7 +1,7 @@
 ---
 id: W4
 category: work-type
-title: validate-locally — self-check a fresh artifact
+title: validate-locally - self-check a fresh artifact
 status: active
 roleEligibility: [engineer]
 evidenceContract:

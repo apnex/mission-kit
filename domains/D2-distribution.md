@@ -1,7 +1,7 @@
 ---
 id: D2
 category: domain
-title: distribution — release channels and the rollout plane
+title: distribution - release channels and the rollout plane
 status: active
 subjectSurface: release channels — npm, containers, the estate/fleet rollout plane
 evidenceResolvesAgainst: published artifacts, version/digest/SHA, deploy logs, rollback anchors, live-estate state

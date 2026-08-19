@@ -1,7 +1,7 @@
 ---
 id: W21
 category: work-type
-title: arc-repair — repair a WorkGraph arc topology
+title: arc-repair - repair a WorkGraph arc topology
 status: active
 roleEligibility: [architect]
 evidenceContract:

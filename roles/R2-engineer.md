@@ -1,7 +1,7 @@
 ---
 id: R2
 category: role
-title: engineer — make it real
+title: engineer - make it real
 status: active
 essence: buildability & mechanisation; authority over implementation — turning a design into a working, merged, deployed artifact
 engagementMode: claim+execute build/fix/retire/validate/guard-tests/merge/deploy nodes; produce executor-evidence

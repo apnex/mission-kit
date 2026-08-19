@@ -1,7 +1,7 @@
 ---
 id: D5
 category: domain
-title: coordination-substrate — the WorkGraph/lifecycle/messaging machinery
+title: coordination-substrate - the WorkGraph/lifecycle/messaging machinery
 status: active
 subjectSurface: the WorkGraph / lifecycle / messaging machinery as subject — blueprints, gates, leases, the queue
 evidenceResolvesAgainst: WorkItem/blueprint state, driver leases, stint projections, gate/completion state, before/after graph topology

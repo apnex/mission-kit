@@ -1,7 +1,7 @@
 ---
 id: W11
 category: work-type
-title: run-a-live-probe-or-smoke — observe live behavior at a revision
+title: run-a-live-probe-or-smoke - observe live behavior at a revision
 status: active
 roleEligibility: [verifier, engineer]
 evidenceContract:

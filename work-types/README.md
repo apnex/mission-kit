@@ -1,7 +1,7 @@
 ---
 id: WT0
 category: work-type
-title: Work-types — the composition rule, the canonical closeability preflight, and the entry schema
+title: Work-types - the composition rule, the canonical closeability preflight, and the entry schema
 status: active
 related: [R0, D0, A0, A3, A6, A7, A11]
 source: worktax0 (docs/design/worktax-ratified-design.md v2)
@@ -111,7 +111,7 @@ Every work-type carries:
 ```yaml
 id:                   W<n>
 category:             work-type
-title:                <kebab-verb-phrase> — <one-line>
+title:                <kebab-verb-phrase> - <one-line>
 status:               active | candidate | posture   # candidate = not yet standing behavior; posture = not generatable
 roleEligibility:      [<pure role union>]
 evidenceContract:     [{kind, description}, ...]      # the evidenceRequirements[] template — the compile-target
