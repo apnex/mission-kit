@@ -7,9 +7,10 @@
     "node": ">=22"
   },
   "scripts": {
-    "test": "node --test tests/question/*.test.mjs tests/context-frame/*.test.mjs",
+    "test": "node --test tests/question/*.test.mjs tests/context-frame/*.test.mjs tests/catalog-entry/*.test.mjs",
     "test:context-frame": "node --test tests/context-frame/*.test.mjs",
-    "test:question": "node --test tests/question/*.test.mjs"
+    "test:question": "node --test tests/question/*.test.mjs",
+    "test:catalog-entry": "node --test tests/catalog-entry/*.test.mjs"
   },
   "devDependencies": {
     "ajv": "8.20.0"

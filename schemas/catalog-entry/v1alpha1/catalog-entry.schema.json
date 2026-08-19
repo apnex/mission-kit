@@ -1,0 +1,182 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:schemas:catalog-entry:catalog-entry:v1alpha1",
+  "title": "Mission Kit catalogue entry frontmatter v1alpha1",
+  "description": "Frontmatter contract for an ID-prefixed Mission Kit entry: axiom, style, methodology, role, pattern, domain, work-type or mission-required. Every property either changes how an agent acts on the entry or addresses the entry. Archival bookkeeping is excluded by construction: additionalProperties is false, so a reintroduced added, provenance, source-tele or retrieved field fails validation rather than accumulating unread.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "category",
+    "title",
+    "status"
+  ],
+  "properties": {
+    "id": {
+      "description": "Stable address. An entry that cannot be cited cannot be referenced from another entry or from an agent's context.",
+      "type": "string",
+      "pattern": "^(A|S|M|R|K|W|D|P|WT|MREQ)-?[0-9]+$"
+    },
+    "category": {
+      "description": "Selects the directory that owns the entry and the ID prefix it must carry.",
+      "type": "string",
+      "enum": [
+        "axiom",
+        "style",
+        "methodology",
+        "role",
+        "pattern",
+        "domain",
+        "work-type",
+        "mission-required",
+        "skill"
+      ]
+    },
+    "title": {
+      "description": "Human-readable name, reproduced verbatim in INDEX.md.",
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "description": "Whether the entry is in force. An agent must not apply a retired or draft entry as though it were active.",
+      "type": "string",
+      "enum": [
+        "active",
+        "draft",
+        "retired",
+        "superseded",
+        "partially-fulfilled"
+      ]
+    },
+    "supersedes": {
+      "description": "Entries this one replaces. Following a superseded entry is an error, and only this field says so.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "related": {
+      "description": "Adjacent entries worth hydrating alongside this one. Routing, not provenance.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "applies-to": {
+      "description": "Axiom scope: the class of system the mandate governs.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source": {
+      "description": "Upstream origin, permitted only where the entry is third-party content carrying a licence obligation.",
+      "type": "string"
+    },
+    "essence": {
+      "type": "string"
+    },
+    "engagementMode": {
+      "type": "string"
+    },
+    "evidenceAuthorities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "composing": {
+      "description": "Whether the role composes into an arc symmetrically. Director is authority-only and does not.",
+      "type": "boolean"
+    },
+    "separationConstraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "subjectSurface": {
+      "type": "string"
+    },
+    "evidenceResolvesAgainst": {
+      "type": "string"
+    },
+    "freeForTypes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "pinnedForTypes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "roleEligibility": {},
+    "domainEligibility": {},
+    "domainFreedom": {},
+    "evidenceContract": {},
+    "evidenceAuthority": {},
+    "parameters": {},
+    "generationMode": {},
+    "falsifier": {},
+    "compositionHooks": {},
+    "backstop": {},
+    "revival-trigger": {
+      "type": "string"
+    },
+    "promoted-slice": {
+      "type": "string"
+    },
+    "related-axioms": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "category": {
+            "const": "axiom"
+          }
+        },
+        "required": [
+          "category"
+        ]
+      },
+      "then": {
+        "required": [
+          "applies-to",
+          "related"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "category": {
+            "const": "work-type"
+          },
+          "id": {
+            "pattern": "^W[0-9]+$"
+          }
+        },
+        "required": [
+          "category",
+          "id"
+        ]
+      },
+      "then": {
+        "required": [
+          "roleEligibility",
+          "evidenceContract",
+          "domainEligibility"
+        ]
+      }
+    }
+  ]
+}
