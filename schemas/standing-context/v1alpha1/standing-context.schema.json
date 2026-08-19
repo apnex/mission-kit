@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mission-kit:schemas:standing-context:standing-context:v1alpha1",
+  "title": "Standing context document frontmatter v1alpha1",
+  "description": "Frontmatter contract for a standing-context document: the single always-on file an agent loads at session start for a given workspace. The document declares its own instance rules here, so the validator that checks it needs no knowledge of the machine it runs on and can be carried anywhere.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["kind", "schema", "knowledge-base"],
+  "properties": {
+    "kind": {
+      "description": "Discriminator. Identifies the document as an instance of this type.",
+      "const": "standing-context"
+    },
+    "schema": {
+      "description": "The contract this document claims to satisfy. A validator resolves its rules from here rather than assuming them.",
+      "type": "string",
+      "const": "urn:mission-kit:schemas:standing-context:standing-context:v1alpha1"
+    },
+    "knowledge-base": {
+      "description": "Canonical address of the knowledge base this document routes to. A URL, so it resolves from any working directory on any host.",
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "forbids": {
+      "description": "Terms that must not appear in the document body. These are the couplings this instance has ruled out of scope; naming them here is what lets the check be enforced without being hardcoded into the tool.",
+      "type": "array",
+      "items": { "type": "string", "minLength": 2 },
+      "uniqueItems": true
+    },
+    "required-sections": {
+      "description": "Level-two headings that must be present, matched on their leading text. Defaults are applied when absent; naming them lets an instance require more than the minimum, never less.",
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "max-bytes": {
+      "description": "Upper bound on the document size. A standing-context file is read every turn, so unbounded growth is a defect rather than a preference.",
+      "type": "integer",
+      "minimum": 1024
+    }
+  }
+}

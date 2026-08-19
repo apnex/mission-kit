@@ -52,6 +52,25 @@ Frontmatter, fenced blocks, tables, headings, list items and blockquotes are cop
 Sentence splitting declines on abbreviations, initials and ellipses, since a wrong split costs more than a missed one.\
 Use `--dry` first, and check the result with `check-style.sh`.
 
+## check-standing-context.sh
+
+Validates a standing-context document against the contract it declares.
+
+```sh
+tools/check-standing-context.sh /path/to/AGENTS.md
+tools/check-standing-context.sh --no-network /path/to/AGENTS.md
+```
+
+**Why it exists.** A standing-context document is the single always-on file an agent loads at session start, which makes it the one artifact nothing reviews.\
+The document declares its own rules in frontmatter, so this tool holds no knowledge of any workspace, path or host and can be carried anywhere the knowledge base goes.
+
+**Run it when** you have edited a standing-context document, or when you want to confirm one you did not write still satisfies its contract.
+
+Checks the frontmatter, the presence of every required section, plain ASCII, that no term under `forbids` appears in the body, that every address resolves, and that the file is within `max-bytes`.\
+Start a new document from [`_template-standing-context.md`](../_template-standing-context.md); the contract is [`schemas/standing-context/v1alpha1`](../schemas/standing-context/v1alpha1/standing-context.schema.json).
+
+Exit status is non-zero when any check fails.
+
 ## skill-graph.mjs
 
 Lints the `SKILL.md` catalogue as a directed acyclic graph and derives each skill's level.
