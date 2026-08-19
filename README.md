@@ -48,7 +48,9 @@ The constraint set is authored once in the cross-axis reference and never forked
 | `MREQ` | [`backlog/`](backlog/) | Deferred requirements, each carrying a revival trigger. |
 | - | [`bundles/`](bundles/README.md) | Skills composed into operator-facing roles, by declared edge rather than by name. |
 | - | [`schemas/`](schemas/) | Machine-verifiable entity contracts, validatable without importing a runtime. |
-| - | [`tools/`](tools/) | The scripts that hold the corpus to its own rules. |
+| - | [`tools/`](tools/README.md) | The scripts that hold the corpus to its own rules. |
+| - | [`statusline/`](statusline/README.md) | A single-session bash statusline, runnable as shipped. |
+| - | [`statusline-pi/`](statusline-pi/README.md) | The swarm-aware evolution of it, and the canonical A5 instance. |
 
 **Identity is stable and never reused.** A replaced entry keeps its ID and flips `status`, and the replacement carries `supersedes`.\
 [`INDEX.md`](INDEX.md) is the flat ledger across every category.

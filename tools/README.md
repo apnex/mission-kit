@@ -1,3 +1,21 @@
+## check-structure.sh
+
+Holds the repository's own shape to what its documents claim.
+
+```sh
+tools/check-structure.sh
+```
+
+**Why it exists.** A new top-level directory appears in no document until somebody remembers, and nothing notices that it did not.\
+`statusline/` and `statusline-pi/` went undocumented in the charter that way while being listed in the ledger, which is the typed-index fault at directory granularity.
+
+**Run it when** you add or remove a top-level directory, and let the gate run it on every change.
+
+Checks that every top-level directory is named in the root README and carries its own README.\
+Exit status is non-zero if either invariant is broken.
+
+---
+
 ## check-all.sh
 
 Runs every gate this repository holds itself to.

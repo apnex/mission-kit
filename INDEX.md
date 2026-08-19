@@ -6,7 +6,8 @@ Sort by ID prefix.
 **Reference artifacts** (not ID-prefixed): [`schemas/`](schemas/README.md) - reusable Kubernetes-shaped entity contracts with executable validation.\
 [`statusline/`](statusline/README.md) - Claude Code single-session bash statusline (runnable).\
 [`statusline-pi/`](statusline-pi/README.md) - pi swarm-aware 2-line footer, the multi-agent evolution (design-of-record; canonical A5 instance).\
-[`tools/`](tools/README.md) - runnable checks and conversions for this repository: style compliance, sentence reflow, skill-graph lint.
+[`tools/`](tools/README.md) - runnable checks and conversions for this repository: style compliance, sentence reflow, skill-graph lint.\
+[`bundles/`](bundles/README.md) - skills composed into operator-facing roles; deployment composition, so no IDs.
 
 <!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
 | ID | Category | Title | Status | Hydrate when |
