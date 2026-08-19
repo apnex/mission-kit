@@ -1,5 +1,5 @@
 ---
-id: C4
+id: SC4
 category: contract
 title: question - a process-neutral question definition with an ordered response variant
 status: active
@@ -8,7 +8,7 @@ supersedes: []
 related: []
 ---
 
-# C4 - question
+# SC4 - question
 
 Canonical contract: [`question/v1alpha1/question.schema.json`](question/v1alpha1/question.schema.json).
 

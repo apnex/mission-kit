@@ -1,5 +1,5 @@
 ---
-id: C5
+id: SC5
 category: contract
 title: context-frame - a process-neutral semantic context definition with ordered scope and givens
 status: active
@@ -8,7 +8,7 @@ supersedes: []
 related: []
 ---
 
-# C5 - context-frame
+# SC5 - context-frame
 
 Canonical contract: [`context-frame/v1alpha1/context-frame.schema.json`](context-frame/v1alpha1/context-frame.schema.json).
 

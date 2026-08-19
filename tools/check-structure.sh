@@ -32,21 +32,34 @@ for dir in */; do
 	# Owns its own README, so the layer explains itself rather than relying on the root.
 	[ -f "$d/README.md" ] || report "no readme" "$d/ has no README.md"
 
-	# The charter's prefix column is a claim about the ledger, so hold it to one. A layer
-	# declaring a prefix must have entries under it; a layer declaring '-' must have none.
-	# Without this the knowledge-versus-mechanism ruling is advisory, and the charter and the
-	# ledger are free to disagree about whether a directory's contents are entries.
+	# The charter's prefix column is a claim about the ledger, so hold it to one.
+	#
+	# The claim is an equality, not a presence. An earlier form asked only whether a prefixed
+	# layer had at least one row, which passed a layer holding five entry files and one row, and
+	# false-failed a layer declared before its first entry exists. Counting both sides fixes both.
+	#
+	# An entry is a top-level markdown file in the layer that declares an id in its frontmatter.
+	# Counting by filename pattern instead was wrong twice over: backlog/ names its files in
+	# lowercase, and roles/, domains/ and work-types/ carry their entry in README.md itself.
+	# The declaration is the fact; the filename is a convention. A layer declaring '-' holds
+	# mechanism, so it must have neither an entry nor a ledger row.
 	row=$(grep -E "^\| .* \[\`${d}/\`\]" README.md | head -1)
 	[ -z "$row" ] && continue
 	prefix=$(printf '%s' "$row" | sed -E 's/^\| *`?([^`|]*)`? *\|.*/\1/' | tr -d ' ')
 	in_ledger=$(grep -cE "^\| \[[A-Z]+-?[0-9]+\]\(${d}/" INDEX.md)
+	on_disk=0
+	for f in "$d"/*.md; do
+		[ -f "$f" ] || continue
+		awk 'FNR==1 && !/^---$/{exit} FNR==1{next} /^---$/{exit} /^id:[[:space:]]*[^[:space:]]/{found=1; exit}
+		     END{exit !found}' "$f" && on_disk=$((on_disk + 1))
+	done
 
 	if [ "$prefix" = "-" ]; then
-		[ "$in_ledger" -eq 0 ] \
-			|| report "unclassified" "$d/ declares no prefix but has $in_ledger entr(ies) in INDEX.md"
+		[ "$in_ledger" -eq 0 ] && [ "$on_disk" -eq 0 ] \
+			|| report "unclassified" "$d/ declares no prefix but has $on_disk entry file(s) and $in_ledger ledger row(s)"
 	else
-		[ "$in_ledger" -gt 0 ] \
-			|| report "unclassified" "$d/ declares prefix '$prefix' but has no entries in INDEX.md"
+		[ "$in_ledger" -eq "$on_disk" ] \
+			|| report "unclassified" "$d/ declares prefix '$prefix' with $on_disk entry file(s) but $in_ledger ledger row(s)"
 	fi
 done
 

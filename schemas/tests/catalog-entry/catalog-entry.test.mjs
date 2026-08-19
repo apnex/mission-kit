@@ -18,7 +18,7 @@ const ROOT = path.resolve(SCHEMAS, '..');
 
 // skills/ holds K* catalogue stubs alongside skill directories; only the stubs are entries,
 // and the directory bodies are filtered out below because they declare no id.
-const CATALOGUE_DIRS = ['axioms', 'style', 'methodology', 'roles', 'patterns', 'domains', 'work-types', 'backlog', 'skills', 'schemas'];
+const CATALOGUE_DIRS = ['axioms', 'style', 'methodology', 'roles', 'patterns', 'domains', 'work-types', 'backlog', 'skills', 'schemas', 'entities', 'components', 'artifacts'];
 
 const schema = JSON.parse(readFileSync(path.join(SCHEMAS, 'catalog-entry/v1alpha1/catalog-entry.schema.json'), 'utf8'));
 const validate = new Ajv2020({ allErrors: true, strict: false }).compile(schema);

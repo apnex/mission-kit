@@ -1,5 +1,5 @@
 ---
-id: C2
+id: SC2
 category: contract
 title: standing-context - the frontmatter contract for an always-on standing-context document
 status: active
@@ -8,7 +8,7 @@ supersedes: []
 related: []
 ---
 
-# C2 - standing-context
+# SC2 - standing-context
 
 Canonical contract: [`standing-context/v1alpha1/standing-context.schema.json`](standing-context/v1alpha1/standing-context.schema.json).
 

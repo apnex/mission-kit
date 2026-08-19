@@ -1,5 +1,5 @@
 ---
-id: C3
+id: SC3
 category: contract
 title: skill - the portable frontmatter contract for a skill body
 status: active
@@ -8,7 +8,7 @@ supersedes: []
 related: []
 ---
 
-# C3 - skill
+# SC3 - skill
 
 Canonical contract: [`skill/v1alpha1/skill.schema.json`](skill/v1alpha1/skill.schema.json).
 

@@ -46,9 +46,12 @@ The constraint set is authored once in the cross-axis reference and never forked
 | `S` | [`style/`](style/) | How artifacts are written. |
 | `P` | [`patterns/`](patterns/) | Recurring solutions. |
 | `K` | [`skills/`](skills/) | Executable operator capability. |
+| `E` | [`entities/`](entities/README.md) | What a thing is. Precise definitions, never mechanism. |
+| `C` | [`components/`](components/README.md) | Sovereign shareable substrates to be used rather than rebuilt. |
+| `AR` | [`artifacts/`](artifacts/README.md) | Engineering document types, each with a schema. |
 | `MREQ` | [`backlog/`](backlog/) | Deferred requirements, each carrying a revival trigger. |
 | - | [`bundles/`](bundles/README.md) | Skills composed into operator-facing roles, by declared edge rather than by name. |
-| `C` | [`schemas/`](schemas/) | Machine-verifiable entity contracts, validatable without importing a runtime. |
+| `SC` | [`schemas/`](schemas/) | Machine-verifiable entity contracts, validatable without importing a runtime. |
 | - | [`tools/`](tools/README.md) | The scripts that hold the corpus to its own rules. |
 | - | [`plugins/`](plugins/README.md) | Operator-facing artifacts that run inside a specific agent host. |
 

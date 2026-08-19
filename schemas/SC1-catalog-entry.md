@@ -1,5 +1,5 @@
 ---
-id: C1
+id: SC1
 category: contract
 title: catalog-entry - the frontmatter every catalogue entry must satisfy
 status: active
@@ -8,7 +8,7 @@ supersedes: []
 related: []
 ---
 
-# C1 - catalog-entry
+# SC1 - catalog-entry
 
 Canonical contract: [`catalog-entry/v1alpha1/catalog-entry.schema.json`](catalog-entry/v1alpha1/catalog-entry.schema.json).
 

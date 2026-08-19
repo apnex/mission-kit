@@ -1,0 +1,72 @@
+# Components
+
+Sovereign, shareable substrates that should be **used** rather than rebuilt.
+
+A component entry is a portable definition and a reference: what the component's single duty is, what contract it exposes, and where the implementation lives.\
+The definition is held here so it is citable and comparable.\
+The implementation is not, because vendoring code into a cross-project corpus is how a knowledge base becomes a monorepo.
+
+## Why the layer exists
+
+[`A3`](../axioms/A3-sovereign-composition.md) mandates that a new capability is assembled by composing existing units rather than by modifying them, and its success signals ask that new capabilities arrive by composition.\
+The corpus asserted this and offered nothing to compose.\
+`patterns/` holds solution shapes rather than units, `bundles/` composes skills rather than substrate, and every structural definition in the repository sat inside a teaching skill as an example.
+
+Without an index, the default is to rebuild.\
+Rebuilding is not merely wasted effort; it produces a second unit with the same duty and a slightly different contract, which is the coupling `A3` exists to prevent.
+
+---
+
+## Use before build
+
+The registry is a catalogue, not a discipline.\
+The obligation to search it, to weigh closeness of fit, and to adjust or split an existing component rather than author a new one is a procedure, and procedures live in [`methodology/`](../methodology/README.md).\
+Folding it in here would give this layer two concerns.
+
+What the layer does guarantee is that the search is possible: every component states its duty, its contract and its fit criteria, so closeness of fit can be judged without reading the implementation.
+
+A miss is information.\
+If a search finds nothing, that is a finding about the index before it is a licence to build.
+
+---
+
+## Adjustment over replacement
+
+A component that almost fits is adjusted, and a component that has grown two duties is split into two sovereign components.\
+Neither is a fork.\
+Forking produces divergent contracts that both read as authoritative, which is the same failure as never having indexed the component at all.
+
+Splitting is the expected outcome of pressure on a component, not a sign the original was wrong.\
+`A3` earns a boundary by having one concern, so discovering a second concern is discovering a second component.
+
+---
+
+## Body shape
+
+This list is the shape until a contract in [`schemas/`](../schemas/README.md) enforces it, at which point the contract becomes authoritative and this list points at it.
+
+- **Duty** - the single concern, stated so that "and" or "also" would be a violation.
+- **Contract** - the interface a consumer depends on.
+- **Reference** - where the implementation lives, pinned.
+- **Fit criteria** - when to reach for it, and when it is the wrong tool.
+- **Adjustment policy** - how it may be extended without forking.
+- **Edges** - `composes` and `composed-by`, so depth is derived rather than named.
+
+---
+
+## Faults
+
+- **The reinvented unit.** The same boundary drawn again because nothing named it the first time. Two implementations, two contracts, one duty.
+- **The fork disguised as a variant.** A copy adjusted locally instead of the original being adjusted centrally. Both copies read as authoritative and they drift apart silently.
+- **The dual-duty component.** A unit that accreted a second concern and was never split, so consumers depend on it for unrelated reasons and it can no longer change.
+- **The squatting project.** Project-specific code indexed as a portable component. It fails the first time another team reaches for it.
+- **The index nobody searches.** A registry that exists while work still starts from scratch. The catalogue is necessary and is not sufficient.
+
+---
+
+## Index
+
+<!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
+| ID | Title | Status | Hydrate when |
+|---|---|---|---|
+<!-- END GENERATED -->

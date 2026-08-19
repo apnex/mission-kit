@@ -16,7 +16,7 @@
     "id": {
       "description": "Stable address. An entry that cannot be cited cannot be referenced from another entry or from an agent's context.",
       "type": "string",
-      "pattern": "^(A|S|M|R|K|W|D|P|C|WT|MREQ)-?[0-9]+$"
+      "pattern": "^(AR|MREQ|WT|SC|A|S|M|R|K|W|D|P|C|E)-?[0-9]+$"
     },
     "category": {
       "description": "Selects the directory that owns the entry and the ID prefix it must carry.",
@@ -31,7 +31,10 @@
         "work-type",
         "mission-required",
         "skill",
-        "contract"
+        "contract",
+        "entity",
+        "component",
+        "artifact"
       ]
     },
     "title": {
