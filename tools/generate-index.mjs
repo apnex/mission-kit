@@ -32,7 +32,7 @@ const END = '<!-- END GENERATED -->';
 const CATEGORIES = [
 	['axioms', 'A'], ['style', 'S'], ['methodology', 'M'], ['roles', 'R'],
 	['patterns', 'P'], ['domains', 'D'], ['work-types', 'W'], ['skills', 'K'],
-	['backlog', 'MREQ'],
+	['schemas', 'C'], ['backlog', 'MREQ'],
 ];
 
 function frontmatter(text) {

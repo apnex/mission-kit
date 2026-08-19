@@ -120,5 +120,10 @@ This file described them a second time and the copy had already drifted, naming 
 | [K28](skills/K28-asd-ste100-verifier.md) | skill | asd-ste100-verifier - audit and enforce ASD-STE100 Simplified Technical English, with a runnable engine | active | You are writing documentation that must be readable by a non-native English speaker |
 | [K29](skills/K29-survey-skill-evaluator.md) | skill | survey-skill-evaluator - controlled campaign evaluation of sealed Survey-skill candidates | active | You are running a controlled evaluation campaign over sealed skill candidates |
 | [K30](skills/K30-survey-v2.md) | skill | survey-v2 - stakeholder-intent capture with generated context trees | active | Direction is still open and you need intent captured against a generated context tree |
+| [C1](schemas/C1-catalog-entry.md) | contract | catalog-entry - the frontmatter every catalogue entry must satisfy | active | You are adding or changing a field in catalogue entry frontmatter |
+| [C2](schemas/C2-standing-context.md) | contract | standing-context - the frontmatter contract for an always-on standing-context document | active | You are authoring or validating the always-on document an agent loads at session start |
+| [C3](schemas/C3-skill.md) | contract | skill - the portable frontmatter contract for a skill body | active | You are authoring a portable skill body that a harness must route to |
+| [C4](schemas/C4-question.md) | contract | question - a process-neutral question definition with an ordered response variant | active | You are defining a question whose options and cardinality must validate deterministically |
+| [C5](schemas/C5-context-frame.md) | contract | context-frame - a process-neutral semantic context definition with ordered scope and givens | active | You are defining the bounded context a question or task is answered against |
 | [MREQ-1](backlog/mreq-1-axiom-application-methodology.md) | mission-required | Axiom-application methodology for non-code missions | active | You are applying axioms to a mission that produces no code |
 <!-- END GENERATED -->

@@ -3,6 +3,20 @@
 This directory owns cross-project, machine-verifiable entity contracts.\
 Each entity is a sovereign resource that can be understood and validated without importing a skill or project runtime.
 
+## Contracts
+
+<!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
+| ID | Title | Status | Hydrate when |
+|---|---|---|---|
+| [C1](C1-catalog-entry.md) | catalog-entry - the frontmatter every catalogue entry must satisfy | active | You are adding or changing a field in catalogue entry frontmatter |
+| [C2](C2-standing-context.md) | standing-context - the frontmatter contract for an always-on standing-context document | active | You are authoring or validating the always-on document an agent loads at session start |
+| [C3](C3-skill.md) | skill - the portable frontmatter contract for a skill body | active | You are authoring a portable skill body that a harness must route to |
+| [C4](C4-question.md) | question - a process-neutral question definition with an ordered response variant | active | You are defining a question whose options and cardinality must validate deterministically |
+| [C5](C5-context-frame.md) | context-frame - a process-neutral semantic context definition with ordered scope and givens | active | You are defining the bounded context a question or task is answered against |
+<!-- END GENERATED -->
+
+---
+
 ## Resource convention
 
 Resources follow a deliberately small Kubernetes-like envelope:
