@@ -30,3 +30,4 @@ Operator-level capabilities + reusable tooling. The "how you do it" entries.
 | [K24](workgraph-recovery/SKILL.md) | workgraph-recovery — immutable-lineage recovery for stopped/failed/revised arcs | active |
 | [K25](workgraph-arc-participant/SKILL.md) | workgraph-arc-participant — act inside a Hub WorkGraph arc | active |
 | [K26](workgraph-arc-planning/SKILL.md) | workgraph-arc-planning — bounded intent-to-design-seal planning arc | active |
+| [K27](write-discoverable-code/SKILL.md) | write-discoverable-code — name and structure code so plain-text search resolves it in one hit (vendored, MIT) | active |
