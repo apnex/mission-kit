@@ -1,136 +1,136 @@
 # mission-kit
 
-Cross-project engineering knowledge — precision-engineered, managed
-content. **What lives here:** rules, methodologies, patterns, and
-skills that survive any specific project. **What doesn't:** point-in-time
-state, migration records, hardware-specific notes, project-only
-artifacts.
+The portable specification of how an engineering organisation operates.
 
-## Why
+This is the charter, and it deliberately carries no `A` prefix: it governs the corpus, while the axioms govern the systems the corpus is used to build.
 
-Solo engineers + small teams accumulate hard-won practice as you ship
-projects. That practice tends to live in three places: in your head,
-in scattered project README files, and in chat logs. None of those
-are searchable or referenceable later. `mission-kit` is the
-forward-application repo: codify the rule once, link it from project
-repos when you apply it.
+Not a wiki, and not a lessons file.\
+This repository holds the constitution, the composable axes of work, the methods and conventions, the executable capabilities, and the machinery that keeps all of it true.
 
-## Entry shape
+---
 
-Every entry has the same frontmatter + body skeleton — see
-[`_template.md`](_template.md). Frontmatter is machine-parseable; the
-body sticks to *rule + rationale + good/bad examples + when to apply +
-origin*.
+## Mandate
 
-Axiom entries (prefix `A`, folder [`axioms/`](axioms/)) are the
-exception: they carry a tele-native body shape — *Mandate / Mechanics /
-Rationale / Faults / Success signals / Provenance* — rather than the
-standard skeleton, and add an `applies-to` frontmatter field declaring
-the axiom's domain of validity (the architectural assumptions under
-which it is load-bearing). See [`axioms/README.md`](axioms/README.md).
+mission-kit is complete enough that an agent holding nothing can instantiate the organisation, compile strategic intent into correct work, and have that correctness measured rather than trusted.
 
-## ID scheme
+Four properties, each falsifiable:
 
-Each entry has a stable ID, prefixed by category:
+- **Portable.** The corpus is self-contained and resolves from any host, any working directory, any harness. A rule that only works on one machine is a project artifact, not an entry here.
+- **Addressable.** Every entry has a stable ID and is reachable by it. An entry nothing can cite cannot be applied.
+- **Routable.** Every entry states the condition under which to open it. An entry that exists but is never reached has the same value as no entry.
+- **Checkable.** What can be verified by a script is verified by a script. Prose states intent; mechanism holds it.
 
-| Prefix | Category | Folder |
-|---|---|---|
-| `A` | **Axiom** — foundational always-in-force principles | [`axioms/`](axioms/) |
-| `S` | **Style** — doc + commit + naming conventions | [`style/`](style/) |
-| `M` | **Methodology** — ways of working | [`methodology/`](methodology/) |
-| `P` | **Pattern** — recurring designs | [`patterns/`](patterns/) |
-| `K` | **Skill** — operator-level capabilities + tooling | [`skills/`](skills/) |
+---
 
-IDs never get re-used. If an entry is replaced, the new entry gets a
-new ID and the old one's `status:` flips to `superseded` with a
-`supersedes:` cross-link. The full ledger lives in
-[`INDEX.md`](INDEX.md).
+## Mechanics
 
-## Hard rules
-
-These are non-negotiable; they're what makes the repo "precision
-engineered" rather than a dumping ground.
-
-1. **Cross-project only.** Entry must be applicable to a project that
-   isn't this one. The test: *"could a different team, on different
-   hardware, in a different problem domain, follow this directly?"*
-   If no → it belongs in the project's repo, not here.
-
-2. **No point-in-time content.** No "current state of X", no "as of
-   2026-XX", no version pins in the body ("Kubernetes 1.32.5"). If
-   you must mention a version, qualify it ("Kubernetes 1.25+"). The
-   only date in an entry is the `added:` field in frontmatter (for
-   chronological provenance).
-
-3. **No archival.** Don't keep stale entries "for history." Use
-   `status: superseded` + a cross-link to the replacement. The OLD
-   entry stays at its ID; the NEW entry gets a fresh ID.
-
-4. **Each entry derives from at least one real finding.** Don't
-   speculate. Codify what you've actually proven on a project. The
-   `Origin` section says where.
-
-5. **Examples are generic.** Don't write "in nvidia-driver-injector
-   we did X." Write "when you have producer/consumer split, do X."
-   Project-specific phrasing belongs in the project repo.
-
-## How to add a new entry
-
-1. Copy [`_template.md`](_template.md) to the right category folder.
-2. Pick the next free ID in that category (check
-   [`INDEX.md`](INDEX.md)).
-3. Fill in frontmatter + body following the template.
-4. Add a row to [`INDEX.md`](INDEX.md).
-5. Add a row to that category's `README.md` (the local index).
-6. Commit. Reference the entry ID in any project repo that applies
-   the rule from now on.
-
-## How to reference from a project repo
-
-Project repos link back rather than duplicate. Example, in a
-project's `docs/style-guide.md`:
-
-```markdown
-The doc style rules this repo follows live in [mission-kit][1].
-Applied entries: S1, S2, S3, S4.
-
-[1]: https://github.com/<your-org>/mission-kit
+**Three axes compose, rather than enumerate.** Work is generated, not catalogued:
+```
+role x work-type x domain
+   -> WorkItem template + evidence authority + independence constraints
 ```
 
+`roles/README.md` owns the role axis, `domains/README.md` the domain axis, and `work-types/README.md` the composition rule and the closeability preflight.\
+The constraint set is authored once in the cross-axis reference and never forked into the entries that use it.
 
-## Bundles
+**Layers, each owning one concern.**
 
-The `bundles/` directory composes skills into operator-facing roles.
-A bundle is a small YAML file listing the skills required to perform
-a particular kind of work (e.g. `nanoprobe.yaml` composes the skills
-needed for code-grounded substrate research).
+| Prefix | Layer | Owns |
+| --- | --- | --- |
+| `A` | [`axioms/`](axioms/) | First principles. Why a design is correct rather than merely working. |
+| `R` | [`roles/`](roles/) | Who may attest, approve or decide. The M axis. |
+| `D` | [`domains/`](domains/) | Subject surfaces. The N axis. |
+| `W` | [`work-types/`](work-types/) | Units of work and their evidence contracts. |
+| `M` | [`methodology/`](methodology/) | How work is conducted: review, audit, deferral. |
+| `S` | [`style/`](style/) | How artifacts are written. |
+| `P` | [`patterns/`](patterns/) | Recurring solutions. |
+| `K` | [`skills/`](skills/) | Executable operator capability. |
+| `MREQ` | [`backlog/`](backlog/) | Deferred requirements, each carrying a revival trigger. |
+| - | [`bundles/`](bundles/README.md) | Skills composed into operator-facing roles, by declared edge rather than by name. |
+| - | [`schemas/`](schemas/) | Machine-verifiable entity contracts, validatable without importing a runtime. |
+| - | [`tools/`](tools/) | The scripts that hold the corpus to its own rules. |
 
-Bundles are deliberately separate from the entry taxonomy:
+**Identity is stable and never reused.** A replaced entry keeps its ID and flips `status`, and the replacement carries `supersedes`.\
+[`INDEX.md`](INDEX.md) is the flat ledger across every category.
 
-- **Entries** (S/M/P/K) are units of *knowledge*. They are authored,
-  reviewed, and curated.
-- **Bundles** are units of *deployment composition*. They tell a
-  consumer system (e.g. a GitOps skill loader like `skill-sync`)
-  which skill subdirectories to pull when assembling a given role.
+**Composition is expressed as edges, not as names.** A skill declares what it requires and what it composes; depth is derived from the graph.\
+Encoding hierarchy into a name freezes it and it rots on the first change.
 
-Bundles MUST stay agent-agnostic — no harness-specific fields, no
-tool names. Any agent that consumes SKILL.md trees from a directory
-should be able to resolve a bundle by reading its `skills:` list.
+**Enforcement lives with the corpus.** [`tools/`](tools/) carries the checkers, so a clone anywhere can verify itself.\
+A rule that becomes mechanically checkable moves into a script, leaving only its name behind.
 
-Bundles do not get IDs in `INDEX.md`. They are convention-managed by
-filename (`bundles/<role>.yaml`).
+**Admission is a test, not a preference.** Could a different team, on different hardware, in a different problem domain, follow this directly?\
+If no, it belongs in the project repository.
 
-## Schemas
+Three further admission rules, each of which has been broken here:
 
-The [`schemas/`](schemas/README.md) directory owns reusable, machine-verifiable
-entity contracts that are independent of any one skill or project.
-Schema resources use a small Kubernetes-like `apiVersion` / `kind` /
-`metadata` / `spec` envelope and carry their own examples and executable
-validation tests.
-Schemas do not receive knowledge-entry IDs in `INDEX.md`.
+- **No point-in-time content.** No current state of anything, no as-of dates, no version pins in prose. Qualify a version rather than fixing it.
+- **Every entry derives from a real finding.** Codify what has been proven, not what sounds correct. Speculation admitted once is indistinguishable from evidence later.
+- **Examples are generic.** Write the shape, not the incident. Project-specific phrasing belongs in the project repository.
 
-## Status
+---
 
-Bootstrap commit seeded with 12 entries from the
-`nvidia-driver-injector` project's first cycles. Grows
-opportunistically as new findings surface; not exhaustively.
+## Rationale
+
+An organisation staffed by humans accumulates practice in heads.\
+An organisation staffed by agents cannot, because its workers start cold and retain nothing between sessions.
+
+Institutional memory therefore has to be external, or it does not exist.\
+That much follows from [`A0`](axioms/A0-sovereign-intelligence-engine.md) and [`A14`](axioms/A14-compounding-learning.md).
+
+External is not sufficient.\
+A specification an agent cannot route through is not reachable, and one it cannot verify against is not trustworthy.\
+So the corpus is addressable, routable and checkable, which is [`A2`](axioms/A2-isomorphic-specification.md) applied to the organisation itself: the specification is the system.
+
+Composition rather than enumeration is [`A3`](axioms/A3-sovereign-composition.md).\
+An enumerated table of every valid role, work-type and domain triple freezes a many-to-many relation and dies on the first role that wears two hats.\
+Generating from axes survives that.
+
+The corpus is expected to change itself.\
+Friction surfaced during work becomes an entry, per [`A10`](axioms/A10-autopoietic-evolution.md), and fidelity of capture is governed by [`A4`](axioms/A4-zero-loss-knowledge.md).
+
+---
+
+## Faults
+
+Named failure modes for this corpus.\
+Each one has occurred.
+
+- **The dump.** Content admitted because it was written, not because it passed the admission test. The corpus grows and its signal falls.
+- **The forked constraint.** A rule restated in a second place instead of referenced. Both copies read as authoritative and they drift silently.
+- **The typed index.** A ledger maintained by hand rather than derived from the entries. It omits what nobody remembered to add, and nothing detects the omission.
+- **The unreachable entry.** Correct, addressable, and carrying no trigger. It is found only by someone who already knew it existed.
+- **The broken axis.** A layer stops composing, so work is hand-authored instead of generated, and the taxonomy becomes decoration.
+- **The drifted specification.** The corpus and the running system disagree, and the corpus is the one nobody checks.
+- **The local rule.** Project-specific content wearing a cross-project ID. It fails the first time anyone else applies it.
+- **The unread checker.** A rule shipping a verification command that nothing ever runs.
+
+---
+
+## Success signals
+
+- Every entry resolves from its ID, and every internal link resolves.
+- Every entry carries a trigger, and an agent can decide whether to open it without opening it.
+- Indexes are generated from entries, so an omission is impossible rather than merely rare.
+- The checkers in [`tools/`](tools/) pass against the corpus that publishes them.
+- A fresh clone on an unrelated host validates itself with no configuration.
+- Work is composed from the axes rather than authored by hand.
+
+---
+
+## Adding an entry
+
+1. Copy [`_template.md`](_template.md) into the category folder.
+2. Take the next free ID in that category, checking [`INDEX.md`](INDEX.md).
+3. Fill in the frontmatter and body. Frontmatter is machine-parseable and is validated by the contract in [`schemas/`](schemas/).
+4. State the trigger. An entry without one is unreachable.
+5. Add the entry to [`INDEX.md`](INDEX.md) and to the category's own README.
+6. Run the checkers in [`tools/`](tools/).
+
+Body sections stay close to rule, rationale, examples, and when to apply.\
+Axiom entries take a different shape, described in [`axioms/README.md`](axioms/README.md).
+
+## Referencing from a project repository
+
+Link back rather than duplicate.\
+A project cites the entry ID where it applies the rule, so the rule keeps one home and the project keeps its own context.
