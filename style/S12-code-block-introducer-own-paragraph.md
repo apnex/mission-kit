@@ -20,7 +20,6 @@ own one-sentence paragraph, visually paired with the code block it
 introduces.
 
 Resulting source pattern:
-
 ````markdown
 Description sentence.\
 Description sentence.\
@@ -50,6 +49,8 @@ CommonMark explicitly allows a fenced code block to immediately follow
 a paragraph (no blank line required); GitHub and other major renderers
 handle this correctly. Don't worry about parser compatibility.
 
+---
+
 ## Doesn't apply when
 
 - **No preceding prose.** The introducer is the first thing in a
@@ -60,6 +61,8 @@ handle this correctly. Don't worry about parser compatibility.
   is self-explanatory.)
 - **Code-block-then-prose** (reverse order). This rule is about prose
   leading INTO a code block, not the prose following one.
+
+---
 
 ## Rationale
 
@@ -79,6 +82,8 @@ deserve different paragraphs.
 rendered result reads exactly the way the writer's intent maps to the
 reader's scan path.
 
+---
+
 ## Examples
 
 **Bad (description and introducer in one paragraph):**
@@ -88,7 +93,6 @@ The container exits at the BAR1-verify step with `BAR1 too small`.\
 The kernel cmdline is missing the required boot params.\
 BAR1 sizing happens once at boot and cannot be changed at runtime.\
 Re-run `Layer 1` host bring-up, then reboot:
-
 ```bash
 sudo ./scripts/apply.sh
 ```
@@ -106,7 +110,6 @@ The kernel cmdline is missing the required boot params.\
 BAR1 sizing happens once at boot and cannot be changed at runtime.
 
 Re-run `Layer 1` host bring-up, then reboot:
-
 ```bash
 sudo ./scripts/apply.sh
 ```
@@ -133,12 +136,16 @@ sudo ./scripts/apply.sh
 block. Reader's eye jumps from code -> action sentence with zero
 visual hop.)
 
+---
+
 ## When to apply
 
 - Authoring any new prose-and-code mixed content.
 - Reviewing a PR diff - scan for code blocks whose introducer is
   jammed into a multi-sentence description paragraph above.
 - Doc-pass cleanups - opportunistic when editing existing content.
+
+---
 
 ## Origin
 

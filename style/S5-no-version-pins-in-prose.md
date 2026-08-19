@@ -8,7 +8,7 @@ supersedes: []
 related: [S6, S7, S8, S9, M4]
 ---
 
-# S5 — No version pins in user-facing prose
+# S5 - No version pins in user-facing prose
 
 ## Rule
 
@@ -20,14 +20,16 @@ source-of-truth file (a `VERSION` file, the `image:` tag in a
 
 Exceptions for prose that is intrinsically about a specific version:
 release notes, migration narratives at the moment they're written, audit
-trails. Those are point-in-time artifacts by design — and per [[M4]],
+trails. Those are point-in-time artifacts by design - and per [[M4]],
 they're frozen at authorship and not kept in the active-docs surface.
+
+---
 
 ## Rationale
 
 Every version bump forces edits in N places. Some places get missed.
 The doc rots from the moment it's written. Operators land on a doc that
-says "tag `aorus.14`" and wonder whether that's still current — they
+says "tag `aorus.14`" and wonder whether that's still current - they
 have to cross-reference against another source anyway, so the pin in
 prose served no purpose except to drift.
 
@@ -41,6 +43,8 @@ The placeholder pattern (`<your-tag>`) is honest: the doc tells you
 what to put in, the source-of-truth file tells you what value to use,
 the doc and reality stay in sync regardless of when the doc was last
 edited.
+
+---
 
 ## Examples
 
@@ -66,14 +70,18 @@ edited.
 > open kernel module that mitigates the Thunderbolt eGPU host-freeze
 > bug. Current build version is the `image:` tag in `docker-compose.yml`.
 
+---
+
 ## When to apply
 
 - Writing or editing user-facing prose (READMEs, install guides,
   teardown guides, troubleshooting).
-- Reviewing a doc PR — scan for hardcoded versions in prose; replace
+- Reviewing a doc PR - scan for hardcoded versions in prose; replace
   with placeholders or source-of-truth references.
 - Authoring repo metadata (GitHub description, package descriptions,
-  release-tracker summaries) — same rule applies, same drift problem.
+  release-tracker summaries) - same rule applies, same drift problem.
+
+---
 
 ## Origin
 

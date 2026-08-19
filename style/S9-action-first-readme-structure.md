@@ -48,6 +48,8 @@ test / remove the thing. Backstory, design philosophy, and bug-description
 prose are valuable - but they don't gate action paths. Putting backstory
 first taxes every reader to subsidize the few who want it.
 
+---
+
 ## Rationale
 
 **Reader intent.** The README is a landing page. Some readers want to
@@ -70,6 +72,8 @@ looking.
 need context first to understand the project." Readers experience the
 opposite - they need to ACT first; understanding solidifies through use.
 Resist the urge to front-load context.
+
+---
 
 ## Examples
 
@@ -144,6 +148,8 @@ Status: stable as of 2026-08-06, 14 deployments without incident.
 Every line in the first block needs editing after an ordinary run.
 None in the second does.
 
+---
+
 ## When to apply
 
 - Writing a new operator-facing README.
@@ -151,6 +157,8 @@ None in the second does.
   too-much-backstory-first pattern.
 - Reviewing a README PR - check that the first actionable command appears
   within the first ~30 lines of source.
+
+---
 
 ## Origin
 

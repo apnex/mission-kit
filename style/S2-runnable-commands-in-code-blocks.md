@@ -8,7 +8,7 @@ supersedes: []
 related: [S1, M2]
 ---
 
-# S2 — Runnable workflow steps belong in code blocks
+# S2 - Runnable workflow steps belong in code blocks
 
 ## Rule
 
@@ -20,8 +20,10 @@ than **directing** (now type this).
 
 The distinguishing test: *would the operator copy-paste this to run
 right now, as part of the linear workflow being described?* If yes
-→ code block. If they're just being told a command exists for
-context, troubleshooting, or identification → inline backticks fine.
+-> code block. If they're just being told a command exists for
+context, troubleshooting, or identification -> inline backticks fine.
+
+---
 
 ## Rationale
 
@@ -36,6 +38,8 @@ The two roles are different. Workflow-step formatting tells the
 operator's eye "stop reading, start typing." Reference-mention
 formatting tells the eye "this is a technical term being discussed,
 not an instruction."
+
+---
 
 ## Examples
 
@@ -59,16 +63,20 @@ not an instruction."
 > The `kubectl rollout status` command is documented to take up to
 > 60 seconds before declaring failure.
 
+---
+
 ## When to apply
 
 - Authoring any workflow doc (install, teardown, upgrade, runbook).
 - Editing a doc that mixes prose explanation with operator steps.
-- Code-review of a doc PR — scan for backticks inline with verbs
+- Code-review of a doc PR - scan for backticks inline with verbs
   like "run", "execute", "type", "do".
+
+---
 
 ## Origin
 
-Strict-mode test-drive of a teardown workflow — operator following
+Strict-mode test-drive of a teardown workflow - operator following
 the docs verbatim shouldn't have to interpret prose to extract the
 next command to type. The distinction between executable steps and
 descriptive references became sharp once we ran the doc literally.

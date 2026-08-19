@@ -8,7 +8,7 @@ supersedes: []
 related: [S2, S5, S6, S7]
 ---
 
-# S8 — Code-block comments are for what-the-line-does, not prose substitutes
+# S8 - Code-block comments are for what-the-line-does, not prose substitutes
 
 ## Rule
 
@@ -19,9 +19,11 @@ or "here's some context about this workflow" all belong in prose **between**
 code blocks, not as comment runs **inside** them.
 
 The test: if you removed the comment, would the adjacent code line be less
-clear about what IT does? If yes → comment belongs there. If no → it's
+clear about what IT does? If yes -> comment belongs there. If no -> it's
 narration about a different scope (workflow, design, alternatives) and should
 be prose.
+
+---
 
 ## Rationale
 
@@ -29,7 +31,7 @@ be prose.
 code blocks gets a stable position in the doc structure; it shows up in
 markdown TOCs, in plain-text search, in renderers' typography
 (distinguishable from code by font + color). Comments inside code blocks are
-formatted as code — visually identical to the executable lines, harder to
+formatted as code - visually identical to the executable lines, harder to
 distinguish at a glance.
 
 **Operator cognitive load.** When a reader sees `# Add --revert-cmdline for
@@ -46,6 +48,8 @@ code block as comments is invisible to that tooling.
 executable commands. They don't want to also paste 4 lines of "side note
 about kernel cmdline philosophy." Prose-as-comments forces them to clean up
 after pasting.
+
+---
 
 ## Examples
 
@@ -72,7 +76,7 @@ sudo ./scripts/remove.sh
 ````markdown
 ## Remove
 
-Reverse the install order: Layer 3 (workload) → Layer 2 (this container) →
+Reverse the install order: Layer 3 (workload) -> Layer 2 (this container) ->
 Layer 1 (host).
 
 Gracefully unload modules and tear down the container:
@@ -96,16 +100,20 @@ alone.
 (Comments inside the block describe individual commands. Prose between blocks
 describes the workflow + flag options. Each medium does its proper job.)
 
+---
+
 ## When to apply
 
 - Writing or editing workflow docs that mix executable steps with explanatory
   context.
-- Reviewing a doc PR — scan for code blocks containing 2+ consecutive comment
+- Reviewing a doc PR - scan for code blocks containing 2+ consecutive comment
   lines; that's the signal that prose was smuggled in.
+
+---
 
 ## Origin
 
-2026-05-24 README style audit — the Remove section had 3+ consecutive lines
+2026-05-24 README style audit - the Remove section had 3+ consecutive lines
 of comments inside a bash block, doing the work of an explanatory paragraph.
 The comments were narrating workflow + listing flag options, not annotating
 what specific commands did.

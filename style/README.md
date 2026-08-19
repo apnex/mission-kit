@@ -6,8 +6,8 @@ Doc, commit, and naming conventions. The "how you say it" rules.
 |---|---|---|
 | [S1](S1-prereqs-explicit-cluster-agnostic.md) | Prerequisites explicit + cluster-agnostic + assumes authenticated tooling | active |
 | [S2](S2-runnable-commands-in-code-blocks.md) | Runnable workflow steps belong in code blocks | active |
-| [S3](S3-producer-consumer-doc-split.md) | Producer / consumer doc split — contract with producer, impl with consumer | active |
-| [S4](S4-four-journey-readme.md) | Four-journey README — install / use / test / remove | active |
+| [S3](S3-producer-consumer-doc-split.md) | Producer / consumer doc split - contract with producer, impl with consumer | active |
+| [S4](S4-four-journey-readme.md) | Four-journey README - install / use / test / remove | active |
 | [S5](S5-no-version-pins-in-prose.md) | No version pins in user-facing prose | active |
 | [S6](S6-one-sentence-per-line.md) | One sentence per line (semantic line breaks) | active |
 | [S7](S7-alternative-paths-separate-blocks.md) | Alternative paths in separate code blocks under subsections | active |

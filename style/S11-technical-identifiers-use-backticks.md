@@ -8,12 +8,12 @@ supersedes: []
 related: [S2, S5, S8]
 ---
 
-# S11 — Technical identifiers in prose use backticks
+# S11 - Technical identifiers in prose use backticks
 
 ## Rule
 
-When a technical identifier appears in prose — paragraphs, bullets,
-headings, table cells, anywhere — wrap it in backticks (inline code
+When a technical identifier appears in prose - paragraphs, bullets,
+headings, table cells, anywhere - wrap it in backticks (inline code
 formatting).
 
 Counts as a technical identifier:
@@ -34,22 +34,24 @@ Counts as a technical identifier:
 - Package / module / image names: `nvidia-container-toolkit`,
   `apnex/nvidia-driver-diag`.
 
-Format identifiers identically across contexts — backticks in a
+Format identifiers identically across contexts - backticks in a
 paragraph render the same as in a heading, table cell, or bullet.
+
+---
 
 ## Don't backtick
 
 - **Generic English words.** "The container starts." not "The `container`
   starts."
 - **Product names used colloquially.** "Runs on Kubernetes." not "Runs
-  on `Kubernetes`." But: "the `kubectl` binary" — that IS an identifier.
+  on `Kubernetes`." But: "the `kubectl` binary" - that IS an identifier.
 - **Narrative subjects.** "The workload uses the GPU." not "`The workload`
   uses the GPU."
 - **People / organization names.** "NVIDIA's open driver" not "`NVIDIA`'s
-  open driver." But: "the `nvidia.ko` module" — that IS an identifier.
+  open driver." But: "the `nvidia.ko` module" - that IS an identifier.
 - **URLs in markdown link targets.** The `[text](url)` form needs
   backticks on `text` if it's an identifier, but the `url` is already
-  link-styled — no backticks there.
+  link-styled - no backticks there.
 - **Section headings that ARE the artifact, in a fixed convention.** The
   `mod-*` Terraform-module SYN layout heads its sections `main.tf` and
   `apply`, bare, where the heading labels the whole section by what it
@@ -61,14 +63,16 @@ paragraph render the same as in a heading, table cell, or bullet.
   still backticks that binary.
 
 The test for borderline cases: *is this the literal name of a specific
-thing in the system that I could grep for?* If yes → identifier →
-backticks. If no → English word → no backticks.
+thing in the system that I could grep for?* If yes -> identifier ->
+backticks. If no -> English word -> no backticks.
+
+---
 
 ## Rationale
 
 **Visual distinction.** Inline code styling signals "this is a specific
 named thing." Without it, identifiers blend into surrounding prose
-visually — the reader has to parse syntax + context to know whether
+visually - the reader has to parse syntax + context to know whether
 "layer 1" is "the first layer in the system's design" or "first-layer
 neural-network jargon." Backticks remove the ambiguity at a glance.
 
@@ -80,8 +84,10 @@ indexers similarly benefit from the explicit marker.
 
 **Consistency cost.** Once you backtick *some* identifiers, mixing in
 unmarked ones reads as accidental inconsistency. Either commit to the
-rule everywhere or don't backtick at all — picking sporadically is
+rule everywhere or don't backtick at all - picking sporadically is
 worse than either pole.
+
+---
 
 ## Examples
 
@@ -103,13 +109,17 @@ worse than either pole.
 (Backticked `apply.sh` + unbackticked `Layer 1` + backticked label +
 unbackticked command = looks accidental even though some are right.)
 
+---
+
 ## When to apply
 
 - Authoring any new prose in any doc, anywhere in the project.
-- Reviewing a PR diff — scan for bare identifiers that should be
+- Reviewing a PR diff - scan for bare identifiers that should be
   backticked.
 - Opportunistic cleanups when editing an existing doc; touch what
   you're already touching, don't bulk-backfill speculatively.
+
+---
 
 ## Origin
 
@@ -117,5 +127,5 @@ unbackticked command = looks accidental even though some are right.)
 filenames (existing informal convention in the project) to
 architectural-term identifiers (`Layer N`). Surfacing the broader
 pattern showed it was already followed informally throughout the
-docs but never codified — promoting from convention to sanctioned
+docs but never codified - promoting from convention to sanctioned
 rule eliminates the "is this case included?" judgment call.

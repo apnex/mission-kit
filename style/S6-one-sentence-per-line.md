@@ -24,6 +24,8 @@ Applies to markdown prose. Code blocks follow their own line-break conventions
 (natural code flow, comments aligned to columns, etc.) - this rule is about
 prose only.
 
+---
+
 ## Making the break visible
 
 Sentence-per-line is a **source** convention.\
@@ -46,6 +48,8 @@ A pitch followed by an inventory, collapsed into a single rendered block, is the
 
 This section is written the way it prescribes: the paired sentences above carry a trailing `\`, the shifts of subject are blank-line separated, and the four cases are a list rather than a run of prose.
 
+---
+
 ## Checking
 
 The rule has two halves and they fail independently, so check both.\
@@ -67,6 +71,8 @@ awk '/^```|^````/{f=!f; p=""; next} f{next}
 Checking only the source half is the trap.\
 It passes a file whose sentences each sit on their own line and then render as one block, which is the failure the "Making the break visible" section above exists to prevent.
 
+---
+
 ## Rationale
 
 **Diffs.** Rewording one sentence becomes a one-line diff, not a re-wrap
@@ -86,6 +92,8 @@ to extract, harder to reference (`file.md:42` no longer identifies a sentence).
 widths from 50 years ago. Modern editors wrap visually; renderers (GitHub,
 IDE preview, browser) wrap to viewport. The source file doesn't need to
 pre-wrap for them.
+
+---
 
 ## Examples
 
@@ -135,6 +143,8 @@ Stands up:
 - self-assembly on first boot (optional)
 ```
 
+---
+
 ## When to apply
 
 - Writing any markdown prose. (Code blocks exempt.)
@@ -146,6 +156,8 @@ Stands up:
 Don't convert paragraphs you're not otherwise touching, all at once, in a
 single PR. The diff will be unreviewable. Convert opportunistically as
 sections get edited.
+
+---
 
 ## Origin
 

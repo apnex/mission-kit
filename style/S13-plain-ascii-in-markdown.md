@@ -56,6 +56,8 @@ Three cases are outside the rule rather than exceptions to it:
 Code blocks are not automatically exempt.
 A transcript that genuinely emitted a glyph is verbatim content and stays; a glyph you typed into an example is a choice, and the rule applies.
 
+---
+
 ## Conversions
 
 Not a definition of what is banned - the test above is that.
@@ -92,6 +94,8 @@ This is what to write instead, for the characters that actually turn up.
 
 All emoji are banned, whether or not they appear above.
 
+---
+
 ## Checking
 
 This file is the one place in the corpus where the banned characters may appear, because here they are the subject.
@@ -100,6 +104,8 @@ Scan a tree, box drawing excluded:
 ```bash
 grep -rnP '[\x{80}-\x{24FF}\x{2580}-\x{10FFFF}]' --include="*.md" .
 ```
+
+---
 
 ## Rationale
 
@@ -113,6 +119,8 @@ grep -rnP '[\x{80}-\x{24FF}\x{2580}-\x{10FFFF}]' --include="*.md" .
 
 **A test beats a list.** An enumerated ban has to be extended every time someone pastes in a new glyph, and it invites argument at the borderline. Keyboard-typeability is decidable on sight, by anyone, for any character, without consulting this file.
 
+---
+
 ## Examples
 
 **Bad:**
@@ -123,11 +131,15 @@ grep -rnP '[\x{80}-\x{24FF}\x{2580}-\x{10FFFF}]' --include="*.md" .
 
 > The same content using `->`, `[x]`, and ` - `. Every phrase is typeable, greppable, and renders identically in a terminal, a diff, and a browser.
 
+---
+
 ## When to apply
 
 - Writing or editing any markdown.
 - Reviewing a doc change - run the grep above; it is a one-line check.
 - Converting a doc that predates this rule, opportunistically, while editing it for another reason. Do not sweep a whole corpus in one commit - per [[S6]] the diff becomes unreviewable.
+
+---
 
 ## Origin
 

@@ -8,21 +8,21 @@ supersedes: []
 related: [S3, P1]
 ---
 
-# S4 — Four-journey README
+# S4 - Four-journey README
 
 ## Rule
 
 The top-level README of an operator-facing project orients on the
 four lifecycle journeys an operator can take:
 
-1. **Install** — get it running for the first time.
-2. **Use** — drive it day-to-day once installed.
-3. **Test / verify** — confirm it's working as intended.
-4. **Remove** — uninstall cleanly, leaving the host in a known
+1. **Install** - get it running for the first time.
+2. **Use** - drive it day-to-day once installed.
+3. **Test / verify** - confirm it's working as intended.
+4. **Remove** - uninstall cleanly, leaving the host in a known
    state.
 
 Each journey gets a short section in the README that (a) names the
-journey, (b) summarizes the shape of the journey in 1–3 sentences,
+journey, (b) summarizes the shape of the journey in 1-3 sentences,
 and (c) **links to the deep-dive doc** that walks the operator
 through it step-by-step. The README itself does not embed the
 step-by-step.
@@ -30,6 +30,8 @@ step-by-step.
 A "what this project is" intro (1 paragraph) and a "prerequisites
 overview" section can precede the four journeys; nothing else
 should.
+
+---
 
 ## Rationale
 
@@ -40,7 +42,7 @@ specific thing have to re-scan the wall to locate it. Both cases
 fail.
 
 The four journeys are exhaustive for any operator-facing
-deliverable — there is no fifth life-cycle phase an operator drives
+deliverable - there is no fifth life-cycle phase an operator drives
 that doesn't fit one of those four labels. So the README's job is
 just to be the discovery layer: "you are here; the four things you
 can do are these; click through to the one you need."
@@ -48,6 +50,8 @@ can do are these; click through to the one you need."
 This also makes the project's documentation surface visible at a
 glance. If install has a doc but remove doesn't, the README itself
 exposes that gap.
+
+---
 
 ## Examples
 
@@ -70,14 +74,18 @@ exposes that gap.
 > - **Remove** section: 2 sentences + link to `docs/teardown.md`.
 > - Status / project-meta footer.
 
+---
+
 ## When to apply
 
 - Bootstrapping the README for any new operator-facing project.
-- Reviewing a README that's grown past ~200 lines — that's the
+- Reviewing a README that's grown past ~200 lines - that's the
   signal it's outgrown the inline-everything shape.
 - Restructuring a project's docs when journeys start blurring
   together and operators report "I couldn't find the uninstall
   steps."
+
+---
 
 ## Origin
 
