@@ -21,7 +21,6 @@ And not for prose docs: if there's no model, there's nothing to read here.
 
 ---
 
----
 
 ## What a SysML model is (and why bother)
 
@@ -33,7 +32,6 @@ One rule of thumb runs through the notation: **a `def` is a DEFINITION (a type);
 
 ---
 
----
 
 ## The constructs at a glance
 
@@ -52,7 +50,6 @@ Full legend with snippets: **[`references/notation.md`](references/notation.md)*
 
 ---
 
----
 
 ## How to read a model (the six-step pass)
 
@@ -67,7 +64,6 @@ Worked questions + a step-by-step example: **[`references/reading-a-model.md`](r
 
 ---
 
----
 
 ## Practise
 
@@ -79,7 +75,6 @@ Worked questions + a step-by-step example: **[`references/reading-a-model.md`](r
 
 ---
 
----
 
 ## For skill authors (the composition base)
 

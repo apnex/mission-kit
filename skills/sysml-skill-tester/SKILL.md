@@ -24,7 +24,6 @@ This verifies the *skill* as a teaching artifact.
 
 ---
 
----
 
 ## Test it (the short path)
 
@@ -38,7 +37,6 @@ This verifies the *skill* as a teaching artifact.
 
 ---
 
----
 
 ## Watch out
 
@@ -52,7 +50,6 @@ This verifies the *skill* as a teaching artifact.
 
 ---
 
----
 
 ## Validate
 

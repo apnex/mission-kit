@@ -23,7 +23,6 @@ A constraint is the *must-hold rule over the data*.
 
 ---
 
----
 
 ## Author it (the short path)
 
@@ -52,7 +51,6 @@ part def Subject {
 
 ---
 
----
 
 ## Watch out (see references for the full list)
 
@@ -73,7 +71,6 @@ part def Subject {
 
 ---
 
----
 
 ## Validate
 
@@ -84,7 +81,6 @@ The decidable constraint rules are written as a checkable spec in **[`assets/wel
 
 ---
 
----
 
 ## Note for skill authors
 

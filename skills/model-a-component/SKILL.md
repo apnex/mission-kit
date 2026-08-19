@@ -22,7 +22,6 @@ A component is the *being-made-of*.
 
 ---
 
----
 
 ## Author it (the short path)
 
@@ -46,7 +45,6 @@ part def Component {
 
 ---
 
----
 
 ## Watch out (see references for the full list)
 
@@ -62,7 +60,6 @@ part def Component {
 
 ---
 
----
 
 ## Validate
 
@@ -75,7 +72,6 @@ The gate conflating `ref`/`part` there is exactly the bug this skill prevents; s
 
 ---
 
----
 
 ## Note for skill authors
 

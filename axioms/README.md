@@ -36,7 +36,6 @@ related: [A1, A2]         # cross-links to other axioms
 
 ---
 
----
 
 ## Applicability model
 
@@ -57,7 +56,6 @@ The vocabulary:
 
 ---
 
----
 
 ## Applicability matrix
 
@@ -76,7 +74,6 @@ An axiom with multiple tags appears under each tag it carries.
 
 ---
 
----
 
 ## Adoption guide
 
@@ -84,7 +81,6 @@ Adopt the rows your architecture satisfies: a plain library takes `any-system`; 
 
 ---
 
----
 
 ## Index
 

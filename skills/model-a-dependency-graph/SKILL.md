@@ -23,7 +23,6 @@ A dependency graph is the *who-must-come-after-whom* over a population of peers 
 
 ---
 
----
 
 ## Author it (the short path)
 
@@ -50,7 +49,6 @@ part c : Node { ref dependsOn :>> dependsOn = (a, b); }   // c after a and b
 
 ---
 
----
 
 ## Watch out (see references for the full list)
 
@@ -74,7 +72,6 @@ part c : Node { ref dependsOn :>> dependsOn = (a, b); }   // c after a and b
 
 ---
 
----
 
 ## Validate
 
@@ -86,7 +83,6 @@ Note: a `part`-owned container over a self-`ref` node kind trips this validator'
 
 ---
 
----
 
 ## Note for skill authors
 

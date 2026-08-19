@@ -23,7 +23,6 @@ Not for: the *states* a thing is in and the events between them (that's `model-a
 
 ---
 
----
 
 ## Author it (the short path)
 
@@ -47,7 +46,6 @@ action def Workflow {
 
 ---
 
----
 
 ## Watch out (see references for the full list)
 
@@ -61,7 +59,6 @@ action def Workflow {
 
 ---
 
----
 
 ## Validate
 
@@ -72,7 +69,6 @@ The decidable workflow rules are written as a checkable spec in **[`assets/well-
 
 ---
 
----
 
 ## Note for skill authors
 

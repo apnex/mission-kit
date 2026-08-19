@@ -23,7 +23,6 @@ Use `workgraph-verification-gates` for independent PASS/FAIL and `workgraph-arc-
 
 ---
 
----
 
 ## Lifecycle position
 
@@ -41,7 +40,6 @@ A stage may be satisfied by an independently gated not-applicable result, never 
 
 ---
 
----
 
 ## Proof layers never collapse
 
@@ -65,7 +63,6 @@ Record the strongest true layer only.\
 
 ---
 
----
 
 ## Source candidate lane
 
@@ -88,7 +85,6 @@ A PR requirement authorizes opening the PR, not merging it.
 
 ---
 
----
 
 ## PR identity and authorship
 
@@ -110,7 +106,6 @@ A review over old head bytes does not approve a later push.
 
 ---
 
----
 
 ## Source gate then protected merge
 
@@ -136,7 +131,6 @@ If the merge fails, times out, races, or returns ambiguous state:
 
 ---
 
----
 
 ## Publication is authority-separated
 
@@ -161,7 +155,6 @@ Deployment cannot start until publication is independently qualified or an indep
 
 ---
 
----
 
 ## Deployment and activation
 
@@ -181,7 +174,6 @@ A failed attempt remains failed even when a later attempt succeeds.
 
 ---
 
----
 
 ## Live and postproduction proof
 
@@ -205,7 +197,6 @@ Only active-valid postproduction PASS unlocks entity disposition or terminal clo
 
 ---
 
----
 
 ## Failed delivery recovery
 
@@ -226,7 +217,6 @@ Escalate only authority/constitutional conflict, destructive out-of-scope action
 
 ---
 
----
 
 ## Evidence packet
 
@@ -254,7 +244,6 @@ Include `frictionReflection` when completing the WorkItem.
 
 ---
 
----
 
 ## Hard stops
 
@@ -276,7 +265,6 @@ Do not convert a hard stop into a vague chat warning.
 
 ---
 
----
 
 ## Acceptance bar
 

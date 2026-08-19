@@ -24,7 +24,6 @@ This measures **leverage** - the gap a skill opens over the base model.
 
 ---
 
----
 
 ## Evaluate it (the short path)
 
@@ -37,7 +36,6 @@ This measures **leverage** - the gap a skill opens over the base model.
 
 ---
 
----
 
 ## Watch out (the null-traps - these cause false "no leverage" results)
 
@@ -56,7 +54,6 @@ This measures **leverage** - the gap a skill opens over the base model.
 
 ---
 
----
 
 ## Validate
 
@@ -67,7 +64,6 @@ A result where the **control is not at the ceiling AND there is a non-zero per-c
 
 ---
 
----
 
 ## Note for skill authors
 

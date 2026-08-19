@@ -27,7 +27,6 @@ Not for a single construct - reach for the relevant `model-a-X` primitive.
 
 ---
 
----
 
 ## Read / author it (the short path)
 
@@ -40,7 +39,6 @@ Not for a single construct - reach for the relevant `model-a-X` primitive.
 
 ---
 
----
 
 ## Watch out
 
@@ -56,7 +54,6 @@ Not for a single construct - reach for the relevant `model-a-X` primitive.
 
 ---
 
----
 
 ## Validate
 
@@ -67,7 +64,6 @@ The decidable arc-model rules are a checkable spec in **[`assets/well-formedness
 
 ---
 
----
 
 ## Note for skill authors (this is the L2 template)
 

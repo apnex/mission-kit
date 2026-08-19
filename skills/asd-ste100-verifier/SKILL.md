@@ -41,7 +41,6 @@ Enforce these five principles when reviewing or writing text in ASD-STE100:
 
 ---
 
----
 
 ## 2. Text-First Vocabulary Triage and Orthogonal Value Methodology
 
@@ -65,7 +64,6 @@ Follow this strict methodology when handling unlisted or non-compliant vocabular
 
 ---
 
----
 
 ## 3. Automated Pre-Flight Response & File Linter Workflow
 
@@ -80,7 +78,6 @@ Before finalizing chat response text or writing Markdown files, the agent MUST r
 
 ---
 
----
 
 ## 4. Automated CLI Execution
 
@@ -98,7 +95,6 @@ python3 -m ste_verifier.cli --fix <filename.md>
 
 ---
 
----
 
 ## 5. Harness & Repository Installation Runbook
 

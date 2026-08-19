@@ -22,7 +22,6 @@ A transition's **effect** (what it *does*) is also a workflow concern - see "Eff
 
 ---
 
----
 
 ## Author it (the short path)
 
@@ -47,7 +46,6 @@ state def Machine {
 
 ---
 
----
 
 ## Watch out (see references for the full list)
 
@@ -63,7 +61,6 @@ state def Machine {
 
 ---
 
----
 
 ## Validate
 
@@ -74,7 +71,6 @@ The decidable FSM rules are also written as a checkable spec in **[`assets/well-
 
 ---
 
----
 
 ## Note for skill authors (the model-X template)
 

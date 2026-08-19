@@ -24,7 +24,6 @@ A classification is *which bucket(s)*, not what it owns, what state it's in, or 
 
 ---
 
----
 
 ## Author it (the short path)
 
@@ -50,7 +49,6 @@ part def WorkItem {
 
 ---
 
----
 
 ## Watch out (see references for the full list)
 
@@ -71,7 +69,6 @@ part def WorkItem {
 
 ---
 
----
 
 ## Validate
 
@@ -82,7 +79,6 @@ The decidable rules are a checkable spec in **[`assets/well-formedness.sysml`](a
 
 ---
 
----
 
 ## Note for skill authors
 

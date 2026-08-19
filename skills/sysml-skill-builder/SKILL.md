@@ -24,7 +24,6 @@ Not for: modelling a "skill" as a SysML system for its own sake (this *builds* a
 
 ---
 
----
 
 ## Author it (the short path)
 
@@ -39,7 +38,6 @@ Not for: modelling a "skill" as a SysML system for its own sake (this *builds* a
 
 ---
 
----
 
 ## Watch out
 
@@ -57,7 +55,6 @@ Not for: modelling a "skill" as a SysML system for its own sake (this *builds* a
 
 ---
 
----
 
 ## Validate
 

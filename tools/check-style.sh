@@ -108,6 +108,13 @@ check_S10() {
 	local f=$1
 	exempt "$f" S10 && return
 	local h2 hr need
+	# A rule separates two sections. Two in a row separates nothing and renders as a doubled
+	# line, which a count-based check passes because more rules than needed still satisfies it.
+	while IFS= read -r dup; do
+		[ -n "$dup" ] && report S10 "$f" "$dup" "two horizontal rules in a row"
+	done < <(awk '/^`{3,}/{c=!c} c{next}
+	         /^---[[:space:]]*$/{ if (seen && blanks) print FNR; seen=1; blanks=1; next }
+	         /^[[:space:]]*$/{next} {blanks=0}' "$f")
 	# H2s inside a fenced block are illustrative markdown, not sections of this document.
 	h2=$(awk '/^`{3,}/{c=!c; next} !c && /^## /{n++} END{print n+0}' "$f")
 	[ "$h2" -lt 5 ] && return

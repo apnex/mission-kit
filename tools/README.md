@@ -1,3 +1,24 @@
+## format-markdown.sh
+
+Applies every mechanical style fix that needs no judgement.
+
+```sh
+tools/format-markdown.sh FILE...
+tools/format-markdown.sh --check FILE...
+```
+
+**Why it exists.** These four passes were hand-written at each call site for a while, and one of them was not idempotent: it inserted a horizontal rule before every top-level section without checking whether one was already there, which put a second rule into fourteen files that were already correct.\
+A count-based S10 check passed them, because more rules than required still satisfies a minimum.
+
+**Run it when** you are editing a file the gate will check, and before committing.
+
+Converts non-ASCII per S13's table, reflows to one sentence per line, moves an introducer against its fence, and inserts a section rule only where none exists.\
+Nothing here rewords or restructures, so a word-stream comparison should differ only by the S13 substitutions.\
+A file declaring `GENERATED FILE` is skipped, since the defect belongs to the source its compiler reads.\
+Running it twice leaves the second run with nothing to do, and `--check` reports without writing.
+
+---
+
 ## check-structure.sh
 
 Holds the repository's own shape to what its documents claim.
@@ -47,6 +68,8 @@ Runnable checks and conversions that operate on this repository.
 Each entry states what it does, why it exists, and the condition under which you run it.\
 Nothing here is loaded as context: read a tool when its trigger fires, then run it.\
 All three are dependency-free and run from the repository root.
+
+---
 
 ## check-style.sh
 
