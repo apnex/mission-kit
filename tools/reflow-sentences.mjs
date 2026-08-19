@@ -47,6 +47,22 @@ function splitSentences(text) {
 	return parts.filter(Boolean);
 }
 
+
+// Inline code is not prose. A sentence break inside a code span would put a hard-break marker
+// into the reader's command, and a span may legitimately contain ". " without ending a sentence.
+// Mask spans to opaque tokens carrying no sentence-ending punctuation, then restore them.
+function maskInlineCode(text) {
+	const spans = [];
+	const masked = text.replace(/(`+)([^`]|[^`][\s\S]*?)\1/g, (m) => {
+		spans.push(m);
+		return `\u0001${spans.length - 1}\u0001`;
+	});
+	return { masked, spans };
+}
+function restoreInlineCode(text, spans) {
+	return text.replace(/\u0001(\d+)\u0001/g, (_, i) => spans[Number(i)]);
+}
+
 function isStructural(line) {
 	return (
 		line.trim() === '' ||
@@ -93,7 +109,8 @@ function reflow(src) {
 			buf.push(lines[i].replace(/\\$/, '').trim());
 			i++;
 		}
-		const sentences = splitSentences(buf.join(' '));
+		const { masked, spans } = maskInlineCode(buf.join(' '));
+		const sentences = splitSentences(masked).map((s) => restoreInlineCode(s, spans));
 		sentences.forEach((s, n) => out.push(n < sentences.length - 1 ? `${s}\\` : s));
 	}
 	return out.join('\n');

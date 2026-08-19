@@ -81,6 +81,9 @@ check_S6() {
 	              /^[[:space:]]*$/{p=""; next}
 	              /^<!--/{p=""; next}
 	              /^[[:space:]]*(#|\||>|[-*+][[:space:]]|[0-9]+\.[[:space:]])/{p=""; next}
+	              # An indented continuation belongs to the list item above it, and S6 endorses a
+	              # multi-sentence list item. Half 1 already skips these; half 2 must agree.
+	              /^[[:space:]]{2,}[^[:space:]]/{p=""; next}
 	              { if (p != "" && p !~ /\\$/ && p ~ /[.!?]$/) printf "%s:%d\n", FILENAME, FNR-1; p=$0 }' "$f")
 }
 
