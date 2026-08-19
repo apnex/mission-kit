@@ -2,7 +2,6 @@
 id: M2
 category: methodology
 title: Test-drive docs by execution
-added: 2026-05-24
 status: active
 supersedes: []
 related: [S1, S2, M1]

@@ -2,11 +2,9 @@
 id: A2
 category: axiom
 title: Isomorphic Specification
-added: 2026-06-19
 status: active
 applies-to: [declarative]
 related: [A1, A6]
-source-tele: tele-2
 ---
 
 # A2 — Isomorphic Specification

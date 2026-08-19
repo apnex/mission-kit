@@ -2,7 +2,6 @@
 id: R0
 category: role
 title: Roles — the M axis (pure essence + type-determined authority)
-added: 2026-07-13
 status: active
 related: [WT0, D0, A0, A6, A13]
 source: worktax0 (docs/design/worktax-ratified-design.md v2 §3)

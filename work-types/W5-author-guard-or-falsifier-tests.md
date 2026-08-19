@@ -2,7 +2,6 @@
 id: W5
 category: work-type
 title: author-guard-or-falsifier-tests — add a test that can fail
-added: 2026-07-13
 status: active
 roleEligibility: [engineer]
 evidenceContract:
@@ -18,7 +17,6 @@ parameters:
 generationMode: proactive-poolable
 falsifier: a vacuous test that cannot fail
 compositionHooks: proactive-poolable ONLY under constraint 7 — a mandatory bracketing verify-gate the idle engine instantiates alongside it, OR the provisional authority (executor-evidence-provisional). Closure does not count as assurance until an independent gate consumes it.
-provenance: [bug-247 mock-adapter test]
 ---
 
 # W5 — author-guard-or-falsifier-tests

@@ -2,7 +2,6 @@
 id: S11
 category: style
 title: Technical identifiers in prose use backticks
-added: 2026-05-24
 status: active
 supersedes: []
 related: [S2, S5, S8]

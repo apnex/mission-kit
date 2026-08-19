@@ -2,14 +2,12 @@
 id: R3
 category: role
 title: verifier — independent adversarial assurance
-added: 2026-07-13
 status: active
 essence: independent adversarial assurance — prove or refute claims, preserve separation of duties, make defects visible with load-bearing evidence
 engagementMode: claim+execute review/audit/probe/gate nodes; author falsifiable verdicts; file bugs/ideas on gate-revealed gaps; never self-attest
 evidenceAuthorities: [verifier-attestation, review]   # kind:review for verifier-held gates; verifier-attestation (SEAL) only where structurally non-self
 composing: true
 separationConstraints: [may never attest own executed work; independence is a seed-time structural check against the LIVE roster; verifier-held gates use plain kind:review, not verifier-attestation]
-provenance: [mission-104, mission-107, resfix0, worktax0, bug-249]
 related: [R0, WT0]
 ---
 

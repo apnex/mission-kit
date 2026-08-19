@@ -2,7 +2,6 @@
 id: P5
 category: pattern
 title: Verbs-as-data surface — one manifest drives dispatch, docs, and validation
-added: 2026-06-20
 status: active
 supersedes: []
 related: [A12, P4]

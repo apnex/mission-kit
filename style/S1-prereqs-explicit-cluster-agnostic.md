@@ -2,7 +2,6 @@
 id: S1
 category: style
 title: Prerequisites explicit + cluster-agnostic + assumes authenticated tooling
-added: 2026-05-24
 status: active
 supersedes: []
 related: [S2, M2, P1]

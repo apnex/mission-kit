@@ -2,11 +2,9 @@
 id: A4
 category: axiom
 title: Zero-Loss Knowledge
-added: 2026-06-19
 status: active
 applies-to: [any-system]
 related: [A12]
-source-tele: tele-4
 ---
 
 # A4 — Zero-Loss Knowledge

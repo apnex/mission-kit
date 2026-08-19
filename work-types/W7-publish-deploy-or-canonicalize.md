@@ -2,7 +2,6 @@
 id: W7
 category: work-type
 title: publish-deploy-or-canonicalize — ship to the estate/channel
-added: 2026-07-13
 status: active
 roleEligibility: [engineer]
 evidenceContract:
@@ -16,7 +15,6 @@ parameters:
 generationMode: reactive-triggered
 falsifier: live artifact mismatch or rollback path absent
 compositionHooks: dependsOn the landed change (W6 merge-and-land); artifact/live plane, distinct from the git plane
-provenance: [mission-121, ois deploy]
 ---
 
 # W7 — publish-deploy-or-canonicalize

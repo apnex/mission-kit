@@ -2,7 +2,6 @@
 id: W11
 category: work-type
 title: run-a-live-probe-or-smoke — observe live behavior at a revision
-added: 2026-07-13
 status: active
 roleEligibility: [verifier, engineer]
 evidenceContract:
@@ -18,7 +17,6 @@ parameters:
 generationMode: reactive-triggered
 falsifier: not actually live, or no target revision recorded
 compositionHooks: dependsOn the triggering event; bracketed by an independent verify-gate when its result is consumed as assurance
-provenance: [mission-122, idea-494 resume probe]
 ---
 
 # W11 — run-a-live-probe-or-smoke

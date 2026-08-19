@@ -2,7 +2,6 @@
 id: S4
 category: style
 title: Four-journey README
-added: 2026-05-24
 status: active
 supersedes: []
 related: [S3, P1]

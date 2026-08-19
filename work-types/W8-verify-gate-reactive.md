@@ -2,7 +2,6 @@
 id: W8
 category: work-type
 title: verify-gate-reactive — independently gate a build/change
-added: 2026-07-13
 status: active
 roleEligibility: [verifier]
 evidenceContract:
@@ -18,7 +17,6 @@ parameters:
 generationMode: reactive-triggered
 falsifier: self-attestation, targetRef null with attestation-only evidence, or no load-bearing ref
 compositionHooks: brackets the target node; generative-on-FAIL — a FAIL grows a repair subgraph routing through arc-repair's supersession path (never bare-abandon a completion-gated child)
-provenance: [resfix0 verify_494b, worktax0 m7_audit]
 ---
 
 # W8 — verify-gate-reactive

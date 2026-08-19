@@ -2,7 +2,6 @@
 id: K2
 category: skill
 title: Publishing rewritten history
-added: 2026-05-24
 status: active
 supersedes: []
 related: [K1, M4]

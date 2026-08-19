@@ -2,11 +2,9 @@
 id: A3
 category: axiom
 title: Sovereign Composition
-added: 2026-06-19
 status: active
 applies-to: [any-system]
 related: [A8]
-source-tele: tele-3
 ---
 
 # A3 — Sovereign Composition

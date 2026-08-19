@@ -2,7 +2,6 @@
 id: W22
 category: work-type
 title: axiom-alignment-gate — per-item axiom-alignment check
-added: 2026-07-13
 status: active
 roleEligibility: [verifier]
 evidenceContract:
@@ -18,7 +17,6 @@ parameters:
 generationMode: arc-seeded
 falsifier: speculative or laundered axiom citations
 compositionHooks: seeded as a verifier-held gate over the target items (plain kind:review, not verifier-attestation per README constraint 2)
-provenance: [M7, worktax0 m7_audit + axiom_test_gate]
 ---
 
 # W22 — axiom-alignment-gate

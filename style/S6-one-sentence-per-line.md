@@ -2,7 +2,6 @@
 id: S6
 category: style
 title: One sentence per line (semantic line breaks)
-added: 2026-05-24
 status: active
 supersedes: []
 related: [S2, S5, S7, S8, S9, S12]

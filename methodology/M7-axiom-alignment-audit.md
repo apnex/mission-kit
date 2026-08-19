@@ -2,7 +2,6 @@
 id: M7
 category: methodology
 title: Axiom alignment audit — required gate for extensive planning/design
-added: 2026-07-08
 status: active
 related: [M1, M5, M6, A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, MREQ-1]
 ---

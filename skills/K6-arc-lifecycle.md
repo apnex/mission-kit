@@ -2,7 +2,6 @@
 id: K6
 category: skill
 title: arc-lifecycle — operate staged work as a sovereign FSM-gated state engine
-added: 2026-06-20
 status: active
 supersedes: []
 related: [M5, M7, P3, P4, P5]

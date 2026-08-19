@@ -2,13 +2,11 @@
 id: D4
 category: domain
 title: authority-governance — the governance/authority substrate
-added: 2026-07-13
 status: active
 subjectSurface: the governance/authority substrate as subject — SEAL, CODEOWNERS, decisions, class-grants, axioms-as-law
 evidenceResolvesAgainst: Decision/Confirmation/Signal entities, class-grants, CODEOWNERS approvals, axiom-alignment records
 pinnedForTypes: [capture-decision-and-ratify, axiom-alignment-gate, director-walkthrough, code-owner-approve]
 freeForTypes: [audit-a-surface, verify-gate-reactive, design-a-contract-or-invariant]
-provenance: [gh-codeowners-architect-approval, idea-444-SEAL, worktax0]
 related: [D0]
 ---
 

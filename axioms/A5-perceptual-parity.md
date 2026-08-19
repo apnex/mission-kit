@@ -2,11 +2,9 @@
 id: A5
 category: axiom
 title: Perceptual Parity
-added: 2026-06-19
 status: active
 applies-to: [multi-agent, llm-in-the-loop]
 related: [A1, A11, A12]
-source-tele: tele-5
 ---
 
 # A5 — Perceptual Parity

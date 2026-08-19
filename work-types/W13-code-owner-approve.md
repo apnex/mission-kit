@@ -2,7 +2,6 @@
 id: W13
 category: work-type
 title: code-owner-approve — non-author independence approval
-added: 2026-07-13
 status: active
 roleEligibility: [architect, verifier, engineer]
 evidenceContract:
@@ -18,7 +17,6 @@ parameters:
 generationMode: reactive-triggered
 falsifier: author approves own change (author == approver)
 compositionHooks: brackets the PR node; approval gate whose eligible-approver set must contain an identity != the change author, else routes to the director-ratification path
-provenance: [gh-codeowners-architect-approval]
 ---
 
 # W13 — code-owner-approve

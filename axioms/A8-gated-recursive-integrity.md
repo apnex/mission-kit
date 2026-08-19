@@ -2,11 +2,9 @@
 id: A8
 category: axiom
 title: Gated Recursive Integrity
-added: 2026-06-19
 status: active
 applies-to: [any-system]
 related: [A9, A3]
-source-tele: tele-8
 ---
 
 # A8 — Gated Recursive Integrity

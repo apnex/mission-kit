@@ -2,13 +2,11 @@
 id: D1
 category: domain
 title: delivery-code — the product/service codebase
-added: 2026-07-13
 status: active
 subjectSurface: the shipped product/service codebase — features, fixes, the delivered artifact
 evidenceResolvesAgainst: source files, PRs, commits, CI/test runs on the product repo
 freeForTypes: [build-a-slice, fix-a-bug-or-repair, retire-or-hard-cut, validate-locally, author-guard-or-falsifier-tests, merge-and-land, verify-gate-reactive, audit-a-surface, design-a-contract-or-invariant]
 pinnedForTypes: []
-provenance: [mission-104, mission-107, resfix0]
 related: [D0]
 ---
 

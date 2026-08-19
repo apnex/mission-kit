@@ -2,7 +2,6 @@
 id: P1
 category: pattern
 title: Path A / Path B labeling for dual-substrate workflows
-added: 2026-05-24
 status: active
 supersedes: []
 related: [S1, S4]

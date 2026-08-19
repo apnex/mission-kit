@@ -2,7 +2,6 @@
 id: W24
 category: work-type
 title: director-walkthrough — live Director sensemaking walkthrough
-added: 2026-07-13
 status: active
 roleEligibility: [director]
 evidenceContract:
@@ -15,7 +14,6 @@ parameters:
 generationMode: externally-triggered
 falsifier: Director authority inferred from architect prose only
 compositionHooks: none
-provenance: [workgraph-arc-closeout skill, mission-113 era]
 ---
 
 # W24 — director-walkthrough

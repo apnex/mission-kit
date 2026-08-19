@@ -2,7 +2,6 @@
 id: W20
 category: work-type
 title: reconcile-ledger — reconcile entity/backlog state vs truth
-added: 2026-07-13
 status: active
 roleEligibility: [architect, verifier]
 evidenceContract:
@@ -18,7 +17,6 @@ parameters:
 generationMode: proactive-poolable
 falsifier: ledger state contradicts git/live truth
 compositionHooks: proactive-poolable under constraint 7 — executor-evidence, so it carries a mandatory bracketing verify-gate the idle engine instantiates alongside it; its closure does not count as assurance until that independent gate consumes the before/after evidence. Reopens/state-corrections it emits seed follow-up nodes via a reactive-triggered edge.
-provenance: [backlog reconciliation, get_backlog_health]
 ---
 
 # W20 — reconcile-ledger

@@ -2,7 +2,6 @@
 id: W26
 category: work-type
 title: reset-or-converge-the-fleet — restore fleet to a healthy state
-added: 2026-07-13
 status: active
 roleEligibility: [architect, engineer]
 evidenceContract:
@@ -18,7 +17,6 @@ parameters:
 generationMode: reactive-triggered
 falsifier: hidden disruption or a live seat lost
 compositionHooks: none
-provenance: [fleet ops, bug-248 shared-tmux]
 ---
 
 # W26 — reset-or-converge-the-fleet

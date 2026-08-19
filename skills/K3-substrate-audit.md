@@ -2,7 +2,6 @@
 id: K3
 category: skill
 title: substrate-audit — code-grounded substrate audit
-added: 2026-05-24
 status: active
 supersedes: []
 related: [M1, M3]

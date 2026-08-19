@@ -2,11 +2,9 @@
 id: A7
 category: axiom
 title: Resilient Agentic Operations
-added: 2026-06-19
 status: active
 applies-to: [multi-agent, autonomous]
 related: [A1, A10]
-source-tele: tele-7
 ---
 
 # A7 — Resilient Agentic Operations

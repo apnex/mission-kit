@@ -2,14 +2,12 @@
 id: R4
 category: role
 title: director — intent source and ratification authority
-added: 2026-07-13
 status: active
 essence: the sovereign intent-source; ratification & curation authority; the delegator whose authority the other roles act under
 engagementMode: steer / ratify / gate / curate — signals, decisions, confirmations, class-grants, walkthroughs — OUTSIDE the claim->execute loop; may delegate authority
 evidenceAuthorities: [director-ratification]
 composing: false     # non-composing / non-idle-poolable / authority-only
 separationConstraints: [director-ratification cannot be satisfied by architect narrative; requires a DirectorSignal / Decision / Confirmation or explicitly documented ratified delegation]
-provenance: [worktax0 charter, director-communication-style, all cited arcs' rail decisions]
 related: [R0, WT0, A13]
 ---
 

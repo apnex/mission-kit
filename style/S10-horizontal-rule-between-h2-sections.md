@@ -2,7 +2,6 @@
 id: S10
 category: style
 title: Horizontal rule between top-level sections in long-form docs
-added: 2026-05-24
 status: active
 supersedes: []
 related: [S6, S9]

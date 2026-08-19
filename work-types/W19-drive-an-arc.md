@@ -2,7 +2,6 @@
 id: W19
 category: work-type
 title: drive-an-arc — operate an arc over its lifetime
-added: 2026-07-13
 status: active
 roleEligibility: [architect]
 evidenceContract:
@@ -18,7 +17,6 @@ parameters:
 generationMode: arc-seeded
 falsifier: driver unheld/stale, or hidden manual steps
 compositionHooks: dependsOn the arc's live rungs; the driver lease is renewed across the stint and released at close
-provenance: [all cited arcs]
 ---
 
 # W19 — drive-an-arc

@@ -2,13 +2,11 @@
 id: D6
 category: domain
 title: knowledge-methodology — the durable knowledge capital
-added: 2026-07-13
 status: active
 subjectSurface: the durable knowledge capital — mission-kit (axioms/methodology/patterns/skills), ideas, this taxonomy
 evidenceResolvesAgainst: mission-kit entries, idea/knowledge-capital records, methodology docs, the taxonomy itself
 pinnedForTypes: [bank-idea-or-knowledge-capital]
 freeForTypes: [audit-a-surface, design-a-contract-or-invariant, adversarial-design-review-upstream]
-provenance: [worktax0, always-use-full-team, velocity-first-hygiene-strategy]
 related: [D0]
 ---
 

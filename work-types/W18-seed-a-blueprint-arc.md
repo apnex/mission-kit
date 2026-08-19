@@ -2,7 +2,6 @@
 id: W18
 category: work-type
 title: seed-a-blueprint-arc — instantiate a WorkGraph arc
-added: 2026-07-13
 status: active
 roleEligibility: [architect]
 evidenceContract:
@@ -18,7 +17,6 @@ parameters:
 generationMode: arc-seeded
 falsifier: dangling deps, missing driver, or unclaimable nodes
 compositionHooks: seeds the child graph (driver + rungs) whose dependsOn/completionDependsOn edges the blueprint declares
-provenance: [worktax0 seed, mission-107]
 ---
 
 # W18 — seed-a-blueprint-arc

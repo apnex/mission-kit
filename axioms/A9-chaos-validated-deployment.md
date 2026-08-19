@@ -2,11 +2,9 @@
 id: A9
 category: axiom
 title: Chaos-Validated Deployment
-added: 2026-06-19
 status: active
 applies-to: [any-system]
 related: [A8]
-source-tele: tele-9
 ---
 
 # A9 — Chaos-Validated Deployment

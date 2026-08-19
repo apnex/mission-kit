@@ -2,11 +2,9 @@
 id: A12
 category: axiom
 title: Precision Context Engineering
-added: 2026-06-19
 status: active
 applies-to: [llm-in-the-loop]
 related: [A4, A5, A11]
-source-tele: tele-12
 ---
 
 # A12 — Precision Context Engineering

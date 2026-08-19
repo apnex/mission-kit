@@ -2,7 +2,6 @@
 id: W6
 category: work-type
 title: merge-and-land — land an approved change on canonical main
-added: 2026-07-13
 status: active
 roleEligibility: [engineer]
 evidenceContract:
@@ -16,7 +15,6 @@ parameters:
 generationMode: reactive-triggered
 falsifier: branch not merged to canonical main
 compositionHooks: dependsOn the approving review/gate on the PR; distinct from publish-deploy (git plane, not release plane)
-provenance: [resfix0, mission-121]
 ---
 
 # W6 — merge-and-land

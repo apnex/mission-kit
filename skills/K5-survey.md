@@ -2,7 +2,6 @@
 id: K5
 category: skill
 title: survey — stakeholder-intent capture before design commitment
-added: 2026-05-29
 status: active
 supersedes: []
 related: [M1, M3]

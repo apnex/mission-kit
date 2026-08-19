@@ -2,7 +2,6 @@
 id: X0
 category: style          # style | methodology | pattern | skill
 title: One-line title — imperative voice, no period
-added: 2026-MM-DD
 status: active           # active | superseded | deprecated
 supersedes: []           # list of IDs this replaces (if any)
 related: []              # cross-link to other IDs that pair with this

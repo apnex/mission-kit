@@ -2,7 +2,6 @@
 id: W12
 category: work-type
 title: meta-validate-dogfood — use the deliverable as its own test
-added: 2026-07-13
 status: active
 roleEligibility: [verifier, engineer]
 evidenceContract:
@@ -18,7 +17,6 @@ parameters:
 generationMode: arc-seeded
 falsifier: self-report without an observable use trace
 compositionHooks: dependsOn the ship node that produced target; provisional closure does not count as assurance until an independent gate consumes the trace
-provenance: [worktax0 simulate_generation]
 ---
 
 # W12 — meta-validate-dogfood

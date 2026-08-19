@@ -11,10 +11,6 @@ description: |
 license: MIT
 metadata:
   source: https://github.com/modem-dev/skills/tree/main/write-discoverable-code
-  upstream-sha256: c873629b4996443d42abf7b8cc8a216b5a3dce37bc5d44a23f1cce16b313db28
-  retrieved: 2026-08-19
-  provenance: third-party skill vendored verbatim under its MIT licence; body unmodified
-  local-deviation: "lines 73-74 only — unescaped an upstream markdown-escaping artifact in the doc-comment example so the literal reads /** ... */ as intended"
   related-skills: research-artefacts, substrate-audit
 ---
 

@@ -2,7 +2,6 @@
 id: W17
 category: work-type
 title: author-closeout-packet — proof-level arc closeout
-added: 2026-07-13
 status: active
 roleEligibility: [architect]
 evidenceContract:
@@ -15,7 +14,6 @@ parameters:
 generationMode: arc-seeded
 falsifier: future observation claimed as done, or pending work hidden
 compositionHooks: completionDependsOn the arc's landed/shipped nodes; the stands-last closeout that binds their proof planes together
-provenance: [cleanslate0, resfix0 closeout]
 ---
 
 # W17 — author-closeout-packet

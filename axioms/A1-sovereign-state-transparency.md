@@ -2,11 +2,9 @@
 id: A1
 category: axiom
 title: Sovereign State Transparency
-added: 2026-06-19
 status: active
 applies-to: [stateful]
 related: [A2, A5, A7]
-source-tele: tele-1
 ---
 
 # A1 — Sovereign State Transparency

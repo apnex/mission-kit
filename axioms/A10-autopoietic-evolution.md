@@ -2,11 +2,9 @@
 id: A10
 category: axiom
 title: Autopoietic Evolution
-added: 2026-06-19
 status: active
 applies-to: [multi-agent, autonomous]
 related: [A7]
-source-tele: tele-10
 ---
 
 # A10 — Autopoietic Evolution

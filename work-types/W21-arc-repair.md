@@ -2,7 +2,6 @@
 id: W21
 category: work-type
 title: arc-repair — repair a WorkGraph arc topology
-added: 2026-07-13
 status: active
 roleEligibility: [architect]
 evidenceContract:
@@ -18,7 +17,6 @@ parameters:
 generationMode: reactive-triggered
 falsifier: an abandoned/blocked child still blocks the parent completion gate (bug-250 class)
 compositionHooks: seeded as an external successor-driver OUTSIDE the target completion gate (never inside it); never bare-abandon; also arc-seeded
-provenance: [bug-250, resfix0]
 ---
 
 # W21 — arc-repair

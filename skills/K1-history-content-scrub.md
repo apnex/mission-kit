@@ -2,7 +2,6 @@
 id: K1
 category: skill
 title: History content scrub
-added: 2026-05-24
 status: active
 supersedes: []
 related: [K2, M4, S3]

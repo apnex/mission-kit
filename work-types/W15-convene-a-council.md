@@ -2,7 +2,6 @@
 id: W15
 category: work-type
 title: convene-a-council — multi-lens deliberation + synthesis
-added: 2026-07-13
 status: active
 roleEligibility: [architect]
 evidenceContract:
@@ -18,7 +17,6 @@ parameters:
 generationMode: arc-seeded
 falsifier: minority claims erased or no convergence record
 compositionHooks: dependsOn the per-lens seat docs; synthesis node completionDependsOn the lens contributions
-provenance: [worktax0 council]
 ---
 
 # W15 — convene-a-council

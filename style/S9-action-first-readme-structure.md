@@ -2,7 +2,6 @@
 id: S9
 category: style
 title: Action-first README structure
-added: 2026-05-24
 status: active
 supersedes: []
 related: [S4, S5, S6, S7, S8]

@@ -2,14 +2,12 @@
 id: R1
 category: role
 title: architect — authority over system shape
-added: 2026-07-13
 status: active
 essence: system coherence & structure; authority over the design-of-record, the seams, what gets built and how it composes
 engagementMode: claim+execute design/seed/drive/synthesize/closeout nodes; hold the driver lease; may act as director-delegate when authority is granted
 evidenceAuthorities: [executor-evidence, director-ratification]   # director-ratification only under documented delegation
 composing: true
 separationConstraints: [when performing an independence gate (e.g. code-owner-approve) author must not equal approver; may not be the degradation target for an own-executed node's independence check]
-provenance: [mission-104, mission-107, mission-121, mission-122, worktax0]
 related: [R0, WT0]
 ---
 

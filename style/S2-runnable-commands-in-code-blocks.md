@@ -2,7 +2,6 @@
 id: S2
 category: style
 title: Runnable workflow steps belong in code blocks
-added: 2026-05-24
 status: active
 supersedes: []
 related: [S1, M2]

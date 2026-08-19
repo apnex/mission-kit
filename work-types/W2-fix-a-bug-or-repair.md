@@ -2,7 +2,6 @@
 id: W2
 category: work-type
 title: fix-a-bug-or-repair — resolve a filed defect
-added: 2026-07-13
 status: active
 roleEligibility: [engineer]
 evidenceContract:
@@ -18,7 +17,6 @@ parameters:
 generationMode: reactive-triggered
 falsifier: bug still reproduces or fix not in main
 compositionHooks: dependsOn a filed bug entity; brackets under a verify-gate that re-runs the regression
-provenance: [bug-247, resfix0]
 ---
 
 # W2 — fix-a-bug-or-repair

@@ -2,7 +2,6 @@
 id: S13
 category: style
 title: Plain ASCII in markdown - typeable characters only
-added: 2026-08-05
 status: active
 supersedes: []
 related: [S6, S8, S11]

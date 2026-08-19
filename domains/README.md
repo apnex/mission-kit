@@ -2,7 +2,6 @@
 id: D0
 category: domain
 title: Domains — the N axis (subject-surfaces, bimodal freedom)
-added: 2026-07-13
 status: active
 related: [WT0, R0, A1, A3, A5]
 source: worktax0 (docs/design/worktax-ratified-design.md v2 §2)

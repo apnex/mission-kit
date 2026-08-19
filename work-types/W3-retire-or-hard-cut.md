@@ -2,7 +2,6 @@
 id: W3
 category: work-type
 title: retire-or-hard-cut — delete a surface with disposition
-added: 2026-07-13
 status: active
 roleEligibility: [engineer]
 evidenceContract:
@@ -17,7 +16,6 @@ parameters:
 generationMode: arc-seeded
 falsifier: active refs remain or rollback not documented
 compositionHooks: dependsOn the reference-scan; disposition recorded before the deletion merges
-provenance: [mission-122 build_496, cleanslate0]
 ---
 
 # W3 — retire-or-hard-cut

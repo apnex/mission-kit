@@ -2,11 +2,9 @@
 id: A6
 category: axiom
 title: Frictionless Agentic Collaboration
-added: 2026-06-19
 status: active
 applies-to: [multi-agent]
 related: [A2, A3]
-source-tele: tele-6
 ---
 
 # A6 — Frictionless Agentic Collaboration

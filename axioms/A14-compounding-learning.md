@@ -2,11 +2,9 @@
 id: A14
 category: axiom
 title: Compounding Learning
-added: 2026-07-05
 status: active
 applies-to: [any-system]
 related: [A4, A10, A11, A12, A13]
-source-tele: tele-15
 ---
 
 # A14 — Compounding Learning

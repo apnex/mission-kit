@@ -2,7 +2,6 @@
 id: W16
 category: work-type
 title: bank-idea-or-knowledge-capital — capture reusable capital
-added: 2026-07-13
 status: active
 roleEligibility: [architect, engineer, verifier, director]
 evidenceContract:
@@ -18,7 +17,6 @@ parameters:
 generationMode: proactive-poolable
 falsifier: no source, no actionability, or duplicate of an existing ledger entry
 compositionHooks: proactive-poolable under constraint 7 — the banked entry carries an embedded revival trigger (M5 anti-amnesia) so a deferred insight self-resurfaces; idle-pool minting is bracketed per the idle-safety rule
-provenance: [M5 anti-amnesia, many arcs]
 ---
 
 # W16 — bank-idea-or-knowledge-capital

@@ -2,7 +2,6 @@
 id: W23
 category: work-type
 title: capture-decision-and-ratify — record + ratify a decision
-added: 2026-07-13
 status: active
 roleEligibility: [director, architect]
 evidenceContract:
@@ -18,7 +17,6 @@ parameters:
 generationMode: reactive-triggered
 falsifier: authority proof absent, or a non-delegable boundary crossed
 compositionHooks: brackets the decision entity; ratification gate whose satisfying identity must be the director (or an architect holding a documented ratified delegation), never architect narrative
-provenance: [worktax0 delegation, decision entities]
 ---
 
 # W23 — capture-decision-and-ratify

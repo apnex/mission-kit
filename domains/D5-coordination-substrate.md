@@ -2,13 +2,11 @@
 id: D5
 category: domain
 title: coordination-substrate — the WorkGraph/lifecycle/messaging machinery
-added: 2026-07-13
 status: active
 subjectSurface: the WorkGraph / lifecycle / messaging machinery as subject — blueprints, gates, leases, the queue
 evidenceResolvesAgainst: WorkItem/blueprint state, driver leases, stint projections, gate/completion state, before/after graph topology
 pinnedForTypes: [seed-a-blueprint-arc, drive-an-arc, reconcile-ledger, arc-repair, convene-a-council, author-closeout-packet, backstop-a-prod-window]
 freeForTypes: [audit-a-surface, verify-gate-reactive]
-provenance: [mission-107, resfix0, bug-250, worktax0]
 related: [D0]
 ---
 

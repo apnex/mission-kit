@@ -2,7 +2,6 @@
 id: W14
 category: work-type
 title: design-a-contract-or-invariant — author a design-of-record
-added: 2026-07-13
 status: active
 roleEligibility: [architect]
 evidenceContract:
@@ -26,9 +25,6 @@ falsifier: no acceptance tests/invariants, or axioms cited as decoration
 compositionHooks: >-
   bracketing M7 axiom-alignment-gate on completionDependsOn for extensive
   designs before any downstream build node claims against the design-of-record
-provenance:
-  - worktax0 charter+design
-  - mission-107
 ---
 
 # W14 — design-a-contract-or-invariant

@@ -2,7 +2,6 @@
 id: W10
 category: work-type
 title: adversarial-design-review-upstream — critique a design before build/merge
-added: 2026-07-13
 status: active
 roleEligibility: [verifier]
 evidenceContract:
@@ -24,7 +23,6 @@ parameters:
 generationMode: reactive-triggered
 falsifier: review after the decision, or no falsifiable concerns raised
 compositionHooks: dependsOn the design under review; brackets build/merge as an upstream gate
-provenance: [worktax0 red-team, mission-107]
 ---
 
 # W10 — adversarial-design-review-upstream

@@ -2,7 +2,6 @@
 id: S3
 category: style
 title: Producer / consumer doc split
-added: 2026-05-24
 status: active
 supersedes: []
 related: [S4, P2]

@@ -2,7 +2,6 @@
 id: M3
 category: methodology
 title: Default-reject discipline + honest yield reporting
-added: 2026-05-24
 status: active
 supersedes: []
 related: [M1, M4]

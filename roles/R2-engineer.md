@@ -2,14 +2,12 @@
 id: R2
 category: role
 title: engineer — make it real
-added: 2026-07-13
 status: active
 essence: buildability & mechanisation; authority over implementation — turning a design into a working, merged, deployed artifact
 engagementMode: claim+execute build/fix/retire/validate/guard-tests/merge/deploy nodes; produce executor-evidence
 evidenceAuthorities: [executor-evidence, executor-evidence-provisional, verifier-attestation]   # verifier-attestation/independence only via code-owner-approve; provisional for un-bracketed idle executor work
 composing: true
 separationConstraints: [code-owner-approve requires author != approver; idle-pool executor-evidence is provisional until an independent gate consumes it]
-provenance: [bug-247, resfix0, mission-121, mission-122, worktax0]
 related: [R0, WT0]
 ---
 

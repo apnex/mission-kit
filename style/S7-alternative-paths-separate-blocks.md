@@ -2,7 +2,6 @@
 id: S7
 category: style
 title: Alternative paths in separate code blocks under subsections
-added: 2026-05-24
 status: active
 supersedes: []
 related: [S2, S5, S8, P1]

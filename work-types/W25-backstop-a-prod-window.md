@@ -2,7 +2,6 @@
 id: W25
 category: work-type
 title: backstop-a-prod-window — hold abort/rollback over a risk window
-added: 2026-07-13
 status: active
 backstop: true
 roleEligibility: [architect, verifier, director]
@@ -19,7 +18,6 @@ parameters:
 generationMode: arc-seeded
 falsifier: stood down before closeout, or abort trigger ignored
 compositionHooks: completionDependsOn on the bracketed nodes (stands-down-last)
-provenance: [cleanslate0, worktax0 backstops]
 ---
 
 # W25 — backstop-a-prod-window

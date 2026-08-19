@@ -2,11 +2,9 @@
 id: A11
 category: axiom
 title: Cognitive Minimalism
-added: 2026-06-19
 status: active
 applies-to: [llm-in-the-loop]
 related: [A2, A3, A5, A6, A12]
-source-tele: tele-11
 ---
 
 # A11 — Cognitive Minimalism

@@ -2,7 +2,6 @@
 id: W1
 category: work-type
 title: build-a-slice — implement a scoped increment
-added: 2026-07-13
 status: active
 roleEligibility: [engineer]
 evidenceContract:
@@ -18,7 +17,6 @@ parameters:
 generationMode: arc-seeded
 falsifier: CI red, scope drift, or unreviewed code merged
 compositionHooks: bracketed by a verify-gate on the produced evidence; dependsOn its design/spec node
-provenance: [resfix0 build_494, mission-107]
 ---
 
 # W1 — build-a-slice

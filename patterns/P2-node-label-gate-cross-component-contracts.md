@@ -2,7 +2,6 @@
 id: P2
 category: pattern
 title: Node-label gate for cross-component contracts
-added: 2026-05-24
 status: active
 supersedes: []
 related: [S3]

@@ -2,7 +2,6 @@
 id: M4
 category: methodology
 title: Frozen-history rule
-added: 2026-05-24
 status: active
 supersedes: []
 related: [M3, K1]

@@ -2,7 +2,6 @@
 id: S12
 category: style
 title: Code-block introducer is its own paragraph
-added: 2026-05-24
 status: active
 supersedes: []
 related: [S2, S6, S8]

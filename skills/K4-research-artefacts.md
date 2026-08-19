@@ -2,7 +2,6 @@
 id: K4
 category: skill
 title: research-artefacts — discipline for producing persistent research outputs
-added: 2026-05-26
 status: active
 supersedes: []
 related: [K3, M1, M3, S6]

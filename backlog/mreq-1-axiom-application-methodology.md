@@ -2,7 +2,6 @@
 id: MREQ-1
 category: mission-required
 title: Axiom-application methodology for non-code missions
-added: 2026-07-01
 status: partially-fulfilled
 revival-trigger: >
   Pick up the remaining guide layers when EITHER (a) a third non-code mission

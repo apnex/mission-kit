@@ -2,7 +2,6 @@
 id: S5
 category: style
 title: No version pins in user-facing prose
-added: 2026-05-24
 status: active
 supersedes: []
 related: [S6, S7, S8, S9, M4]

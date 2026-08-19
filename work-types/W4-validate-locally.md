@@ -2,7 +2,6 @@
 id: W4
 category: work-type
 title: validate-locally — self-check a fresh artifact
-added: 2026-07-13
 status: active
 roleEligibility: [engineer]
 evidenceContract:
@@ -18,7 +17,6 @@ parameters:
 generationMode: arc-seeded
 falsifier: non-reproducible command or wrong target SHA
 compositionHooks: seeded by the build node that produced the target; feeds an independent gate (verify-gate / verifier-attestation) that consumes its provisional evidence
-provenance: [resfix0 throwaway-validate]
 ---
 
 # W4 — validate-locally

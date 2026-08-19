@@ -2,7 +2,6 @@
 id: W9
 category: work-type
 title: audit-a-surface — bounded adversarial sweep of a surface
-added: 2026-07-13
 status: active
 roleEligibility: [verifier]
 evidenceContract:
@@ -18,7 +17,6 @@ parameters:
 generationMode: proactive-poolable
 falsifier: audit scope not falsifiable or findings not bound to refs
 compositionHooks: proactive-poolable under constraint 7 — verifier-attestation carries its own independent authority, so closure stands on the attesting verifier being roster-distinct from any executor (constraint 2); findings that turn up defects seed follow-up bug/idea nodes via a reactive-triggered edge.
-provenance: [K3 substrate-audit, mission-104]
 ---
 
 # W9 — audit-a-surface

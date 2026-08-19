@@ -2,7 +2,6 @@
 id: M5
 category: methodology
 title: Anti-amnesia deferral — every parked or cut item carries a revival trigger
-added: 2026-06-20
 status: active
 supersedes: []
 related: [M3, M4]

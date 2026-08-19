@@ -2,11 +2,9 @@
 id: A13
 category: axiom
 title: Director Intent Amplification
-added: 2026-06-28
 status: active
 applies-to: [multi-agent, autonomous]
 related: [A0, A5, A10, A11, A12]
-source-tele: tele-13
 ---
 
 # A13 — Director Intent Amplification

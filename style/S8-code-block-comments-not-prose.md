@@ -2,7 +2,6 @@
 id: S8
 category: style
 title: Code-block comments are for what-the-line-does, not prose substitutes
-added: 2026-05-24
 status: active
 supersedes: []
 related: [S2, S5, S6, S7]

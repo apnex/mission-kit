@@ -2,7 +2,6 @@
 id: WT0
 category: work-type
 title: Work-types — the composition rule, the canonical closeability preflight, and the entry schema
-added: 2026-07-13
 status: active
 related: [R0, D0, A0, A3, A6, A7, A11]
 source: worktax0 (docs/design/worktax-ratified-design.md v2)
