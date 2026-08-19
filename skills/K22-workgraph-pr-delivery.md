@@ -12,5 +12,5 @@ related: []
 
 Canonical body: [`workgraph-pr-delivery/SKILL.md`](workgraph-pr-delivery/SKILL.md).
 
-Exact source-to-live proof under WorkGraph control.
+Exact source-to-live proof under WorkGraph control.\
 This entry carries the catalogue placement only; the operational content lives in the body above.

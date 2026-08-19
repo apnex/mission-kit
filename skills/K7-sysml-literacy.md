@@ -12,5 +12,5 @@ related: []
 
 Canonical body: [`sysml-literacy/SKILL.md`](sysml-literacy/SKILL.md).
 
-Read + understand SysML v2 (literacy base for SysML-anchored skills).
+Read + understand SysML v2 (literacy base for SysML-anchored skills).\
 This entry carries the catalogue placement only; the operational content lives in the body above.

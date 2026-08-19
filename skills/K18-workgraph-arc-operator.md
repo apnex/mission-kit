@@ -12,5 +12,5 @@ related: []
 
 Canonical body: [`workgraph-arc-operator/SKILL.md`](workgraph-arc-operator/SKILL.md).
 
-Execute and manage a Hub WorkGraph arc.
+Execute and manage a Hub WorkGraph arc.\
 This entry carries the catalogue placement only; the operational content lives in the body above.

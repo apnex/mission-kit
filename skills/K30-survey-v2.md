@@ -12,5 +12,5 @@ related: []
 
 Canonical body: [`survey-v2/SKILL.md`](survey-v2/SKILL.md).
 
-Stakeholder-intent capture with generated context trees.
+Stakeholder-intent capture with generated context trees.\
 This entry carries the catalogue placement only; the operational content lives in the body above.

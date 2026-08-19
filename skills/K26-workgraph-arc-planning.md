@@ -12,5 +12,5 @@ related: []
 
 Canonical body: [`workgraph-arc-planning/SKILL.md`](workgraph-arc-planning/SKILL.md).
 
-Bounded intent-to-design-seal planning arc.
+Bounded intent-to-design-seal planning arc.\
 This entry carries the catalogue placement only; the operational content lives in the body above.

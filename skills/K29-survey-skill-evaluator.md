@@ -12,5 +12,5 @@ related: []
 
 Canonical body: [`survey-skill-evaluator/SKILL.md`](survey-skill-evaluator/SKILL.md).
 
-Controlled campaign evaluation of sealed Survey-skill candidates.
+Controlled campaign evaluation of sealed Survey-skill candidates.\
 This entry carries the catalogue placement only; the operational content lives in the body above.

@@ -12,5 +12,5 @@ related: []
 
 Canonical body: [`model-a-workflow/SKILL.md`](model-a-workflow/SKILL.md).
 
-Author an ordered activity / workflow in SysML v2.
+Author an ordered activity / workflow in SysML v2.\
 This entry carries the catalogue placement only; the operational content lives in the body above.

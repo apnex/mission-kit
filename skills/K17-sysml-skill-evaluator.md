@@ -12,5 +12,5 @@ related: []
 
 Canonical body: [`sysml-skill-evaluator/SKILL.md`](sysml-skill-evaluator/SKILL.md).
 
-Measure a SysML skill's leverage vs the base model (meta).
+Measure a SysML skill's leverage vs the base model (meta).\
 This entry carries the catalogue placement only; the operational content lives in the body above.

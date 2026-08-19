@@ -12,5 +12,5 @@ related: []
 
 Canonical body: [`sysml-skill-tester/SKILL.md`](sysml-skill-tester/SKILL.md).
 
-Verify a SysML-anchored modelling skill (meta).
+Verify a SysML-anchored modelling skill (meta).\
 This entry carries the catalogue placement only; the operational content lives in the body above.

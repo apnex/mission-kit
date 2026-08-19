@@ -12,5 +12,5 @@ related: []
 
 Canonical body: [`workgraph-lease-discipline/SKILL.md`](workgraph-lease-discipline/SKILL.md).
 
-Operate WorkGraph leases and liveness.
+Operate WorkGraph leases and liveness.\
 This entry carries the catalogue placement only; the operational content lives in the body above.

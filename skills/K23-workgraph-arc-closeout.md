@@ -12,5 +12,5 @@ related: []
 
 Canonical body: [`workgraph-arc-closeout/SKILL.md`](workgraph-arc-closeout/SKILL.md).
 
-Terminal proof reconciliation for WorkGraph arc closeout.
+Terminal proof reconciliation for WorkGraph arc closeout.\
 This entry carries the catalogue placement only; the operational content lives in the body above.

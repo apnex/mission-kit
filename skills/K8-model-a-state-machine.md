@@ -12,5 +12,5 @@ related: []
 
 Canonical body: [`model-a-state-machine/SKILL.md`](model-a-state-machine/SKILL.md).
 
-Author an FSM/lifecycle in SysML v2.
+Author an FSM/lifecycle in SysML v2.\
 This entry carries the catalogue placement only; the operational content lives in the body above.

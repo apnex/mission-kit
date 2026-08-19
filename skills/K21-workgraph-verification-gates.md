@@ -12,5 +12,5 @@ related: []
 
 Canonical body: [`workgraph-verification-gates/SKILL.md`](workgraph-verification-gates/SKILL.md).
 
-Exact independent WorkGraph PASS/FAIL gates.
+Exact independent WorkGraph PASS/FAIL gates.\
 This entry carries the catalogue placement only; the operational content lives in the body above.

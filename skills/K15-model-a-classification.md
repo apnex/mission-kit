@@ -12,5 +12,5 @@ related: []
 
 Canonical body: [`model-a-classification/SKILL.md`](model-a-classification/SKILL.md).
 
-Author orthogonal enum classification axes in SysML v2.
+Author orthogonal enum classification axes in SysML v2.\
 This entry carries the catalogue placement only; the operational content lives in the body above.

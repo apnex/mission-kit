@@ -12,5 +12,5 @@ related: []
 
 Canonical body: [`asd-ste100-verifier/SKILL.md`](asd-ste100-verifier/SKILL.md).
 
-Audit and enforce ASD-STE100 Simplified Technical English, with a runnable engine.
+Audit and enforce ASD-STE100 Simplified Technical English, with a runnable engine.\
 This entry carries the catalogue placement only; the operational content lives in the body above.

@@ -61,9 +61,13 @@ else
 	# Only markdown that still exists and actually changed. No changes means nothing to gate.
 	# Committed against the base, plus staged, plus unstaged. Comparing commits alone makes the
 	# gate vacuous locally, where the work is not committed yet and the check matters most.
+	# Committed against the base, plus staged, plus unstaged, plus untracked. git diff lists
+	# only tracked paths, so without the last of these a brand-new file escapes the gate
+	# locally and is caught only once CI sees it committed.
 	mapfile -t changed < <( { git diff --name-only --diff-filter=d "$since"...HEAD 2>/dev/null
 	                          git diff --name-only --diff-filter=d HEAD 2>/dev/null
 	                          git diff --name-only --diff-filter=d --cached 2>/dev/null
+	                          git ls-files --others --exclude-standard 2>/dev/null
 	                        } | grep '\.md$' | sort -u || true)
 	if [ ${#changed[@]} -eq 0 ]; then
 		printf '\n=== markdown style (changed files) ===\nno markdown changed against %s\nPASS  markdown style (changed files)\n' "$since"

@@ -12,5 +12,5 @@ related: []
 
 Canonical body: [`workgraph-blueprint-author/SKILL.md`](workgraph-blueprint-author/SKILL.md).
 
-Author valid Hub WorkGraph blueprints.
+Author valid Hub WorkGraph blueprints.\
 This entry carries the catalogue placement only; the operational content lives in the body above.

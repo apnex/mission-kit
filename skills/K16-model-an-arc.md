@@ -12,5 +12,5 @@ related: []
 
 Canonical body: [`model-an-arc/SKILL.md`](model-an-arc/SKILL.md).
 
-Model an arc as a composed L2 system (composes the six primitives).
+Model an arc as a composed L2 system (composes the six primitives).\
 This entry carries the catalogue placement only; the operational content lives in the body above.

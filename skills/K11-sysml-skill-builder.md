@@ -12,5 +12,5 @@ related: []
 
 Canonical body: [`sysml-skill-builder/SKILL.md`](sysml-skill-builder/SKILL.md).
 
-Build a SysML-anchored modelling skill (meta).
+Build a SysML-anchored modelling skill (meta).\
 This entry carries the catalogue placement only; the operational content lives in the body above.

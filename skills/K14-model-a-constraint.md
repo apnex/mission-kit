@@ -12,5 +12,5 @@ related: []
 
 Canonical body: [`model-a-constraint/SKILL.md`](model-a-constraint/SKILL.md).
 
-Author a reusable boolean rule (constraint def) in SysML v2.
+Author a reusable boolean rule (constraint def) in SysML v2.\
 This entry carries the catalogue placement only; the operational content lives in the body above.

@@ -12,5 +12,5 @@ related: []
 
 Canonical body: [`workgraph-arc-participant/SKILL.md`](workgraph-arc-participant/SKILL.md).
 
-Act inside a Hub WorkGraph arc.
+Act inside a Hub WorkGraph arc.\
 This entry carries the catalogue placement only; the operational content lives in the body above.

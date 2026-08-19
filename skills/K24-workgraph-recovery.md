@@ -12,5 +12,5 @@ related: []
 
 Canonical body: [`workgraph-recovery/SKILL.md`](workgraph-recovery/SKILL.md).
 
-Immutable-lineage recovery for stopped/failed/revised arcs.
+Immutable-lineage recovery for stopped/failed/revised arcs.\
 This entry carries the catalogue placement only; the operational content lives in the body above.

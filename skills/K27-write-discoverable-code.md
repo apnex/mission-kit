@@ -12,5 +12,5 @@ related: []
 
 Canonical body: [`write-discoverable-code/SKILL.md`](write-discoverable-code/SKILL.md).
 
-Name and structure code so plain-text search resolves it in one hit (vendored, MIT).
+Name and structure code so plain-text search resolves it in one hit (vendored, MIT).\
 This entry carries the catalogue placement only; the operational content lives in the body above.
