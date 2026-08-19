@@ -87,9 +87,10 @@ check_S10() {
 	local f=$1
 	exempt "$f" S10 && return
 	local h2 hr need
-	h2=$(grep -c '^## ' "$f")
+	# H2s inside a fenced block are illustrative markdown, not sections of this document.
+	h2=$(awk '/^`{3,}/{c=!c; next} !c && /^## /{n++} END{print n+0}' "$f")
 	[ "$h2" -lt 5 ] && return
-	hr=$(awk 'FNR==1 && /^---$/ {fm=1; next} fm && /^---$/ {fm=0; next} /^---$/{n++} END{print n+0}' "$f")
+	hr=$(awk 'FNR==1 && /^---$/ {fm=1; next} fm && /^---$/ {fm=0; next} /^`{3,}/{c=!c} !c && /^---$/{n++} END{print n+0}' "$f")
 	need=$((h2 - 1))
 	[ "$hr" -ge "$need" ] || report S10 "$f" 1 "$h2 H2 sections but $hr horizontal rules; need $need"
 }
