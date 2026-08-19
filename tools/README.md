@@ -1,3 +1,27 @@
+## check-all.sh
+
+Runs every gate this repository holds itself to.
+
+```sh
+tools/check-all.sh                 # style over files changed against origin/main
+tools/check-all.sh --all           # style over the whole corpus
+tools/check-all.sh --since REF     # style over files changed against REF
+```
+
+**Why it exists.** Five checkers existed and nothing ran any of them, which is the unread-checker fault the charter names.\
+This is the single entry point, so the gate a contributor runs and the gate CI runs are the same script rather than two copies that drift.
+
+**Run it when** you are about to commit, and let CI run it on every push and pull request.
+
+Style is gated on changed files rather than the whole corpus.\
+The corpus carries debt that predates the checker, so blocking on all of it would either stall every change or force one unreviewable sweep.\
+Gating the diff blocks new debt and implements S6's instruction to convert opportunistically.\
+Changed means committed against the base plus staged plus unstaged, because comparing commits alone makes the gate vacuous locally.
+
+Exit status is non-zero if any gate fails, and every gate runs even after an earlier one fails, so one run reports everything.
+
+---
+
 # Mission Kit tools
 
 Runnable checks and conversions that operate on this repository.

@@ -1,0 +1,41 @@
+name: check
+
+# Runs the same gate a contributor runs locally. The steps below deliberately do not restate any
+# check: they call tools/check-all.sh, so the rule has one definition and CI cannot drift from it.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Style is gated on the diff, so the base commit has to be present to diff against.
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Resolve the base to compare against
+        id: base
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            base="origin/${{ github.base_ref }}"
+          else
+            base="${{ github.event.before }}"
+            # A new branch or a forced update has no usable predecessor; fall back to main.
+            git cat-file -e "$base^{commit}" 2>/dev/null || base="origin/main"
+          fi
+          echo "ref=$base" >> "$GITHUB_OUTPUT"
+          echo "comparing against $base"
+
+      - name: Run the gate
+        run: tools/check-all.sh --since "${{ steps.base.outputs.ref }}"
