@@ -59,7 +59,13 @@ check_S6() {
 	exempt "$f" S6 && return
 	while IFS=: read -r _ line; do
 		[ -n "$line" ] && report S6 "$f" "$line" "more than one sentence on this line"
+	# Structural lines are skipped for the same reason half 2 skips them, and for the same
+	# reason both skip fences: a list item, a table cell or a quoted example is not the
+	# document's own prose. S6 names "a list wearing prose - a real markdown list" as the
+	# correct outcome, so a multi-sentence bullet is the endorsed form, not a violation.
 	done < <(awk '/^```|^````/{c=!c; next} c{next}
+	              /^(#|\||>|[[:space:]]*[-*+][[:space:]]|[[:space:]]*[0-9]+\.[[:space:]])/{next}
+	              /^[[:space:]]{2,}[^[:space:]]/{next}
 	              /[a-z)`][.!?] [A-Z`]/{printf "%s:%d\n", FILENAME, FNR}' "$f")
 
 	# S6 half 2 - adjacent sentences that collapse for want of a trailing backslash.
