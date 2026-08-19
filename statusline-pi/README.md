@@ -21,7 +21,8 @@ Line 1 = SELF, line 2 = WORLD:
  work idle │ hub [live] [45s] │ peers * * * │ nothing needs you
 ```
 
-Grammar (inherited from the Claude `statusline/`): **pipes `│` delimit functional GROUPS; brackets `[ ]` enclose critical VALUES.** Color is an accelerator, never the sole carrier - glyph + value + text carry severity on monochrome terminals.\
+Grammar (inherited from the Claude `statusline/`): **pipes `│` delimit functional GROUPS; brackets `[ ]` enclose critical VALUES.**\
+Color is an accelerator, never the sole carrier - glyph + value + text carry severity on monochrome terminals.\
 No `alert`/`all clear` verbiage: calm = absence of amber/red.
 
 **Line 1 - SELF** (*how am I doing*):
@@ -42,7 +43,8 @@ The live incrementing model-call timer lives at the **prompt** (Claude-style `re
 ## Honesty (A5 / A1)
 
 The hub FSM state **gates downstream honesty**: only `[live]` shows fresh data + trusted peers/needs.\
-In `[recon]`/`[sync]` the swarm cells are stale-marked; in `[disc]` they render `?`, never zeros or "all clear." Stale data never red-alerts and never masquerades as nominal.\
+In `[recon]`/`[sync]` the swarm cells are stale-marked; in `[disc]` they render `?`, never zeros or "all clear."\
+Stale data never red-alerts and never masquerades as nominal.\
 Perception surfaces verified reality or an explicit unknown - never an invented one.
 
 ---

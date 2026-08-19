@@ -21,15 +21,19 @@ Each block must be independently copy-pasteable - running it in isolation must p
 
 ## Rationale
 
-**Copy-paste safety.** A single block with comment dividers tempts a careless operator to copy the whole block - running Path A's commands AND Path B's commands, even though they're alternatives, not a sequence.
+**Copy-paste safety.**\
+A single block with comment dividers tempts a careless operator to copy the whole block - running Path A's commands AND Path B's commands, even though they're alternatives, not a sequence.
 
-**Visual structure mirrors logical structure.** If two things are alternatives, they should LOOK like alternatives in the doc.\
+**Visual structure mirrors logical structure.**\
+If two things are alternatives, they should LOOK like alternatives in the doc.\
 A reader scanning for "the Kubernetes path" should be able to skip directly to the Path B subsection without parsing every line of a single block to find which comments mark their path.
 
-**Independent maintenance.** When Path A changes, the diff touches only Path A's block.\
+**Independent maintenance.**\
+When Path A changes, the diff touches only Path A's block.\
 Mixed blocks invite changes that accidentally reflow or restructure the OTHER path's text.
 
-**Reader trust.** Comment-dividers-as-section-markers feel like a structural hack - the doc is fighting markdown's own affordances (headers, separate blocks).\
+**Reader trust.**\
+Comment-dividers-as-section-markers feel like a structural hack - the doc is fighting markdown's own affordances (headers, separate blocks).\
 Using headers + separate blocks signals "this doc respects its medium."
 
 ---

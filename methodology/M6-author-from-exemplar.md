@@ -12,7 +12,8 @@ related: [M2, S1, A4, A14]
 
 ## Rule
 
-Before authoring a new instance into an existing collection - an axiom into an axiom set, a handler into a handler directory, a doc into a doc family, a config into a fleet of configs - **read at least one full peer instance first.** The ground rules:
+Before authoring a new instance into an existing collection - an axiom into an axiom set, a handler into a handler directory, a doc into a doc family, a config into a fleet of configs - **read at least one full peer instance first.**\
+The ground rules:
 
 1. A **spec or README tells you the required shape**; only a
    peer instance tells you the **living conventions** - voice,

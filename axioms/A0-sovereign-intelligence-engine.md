@@ -29,7 +29,8 @@ This is the composing vision: the single axiom under which every other axiom is 
 
 ## Rationale
 The constituent axioms are orthogonal, and collectively they compose this vision.\
-Without a named umbrella, new principles drift with no unifying reference, contradictory additions go unchallenged, and the strategic authority loses a single handle for "why are we doing any of this?" The umbrella is the constitutional north star: it gives every contributor the global target their local optimization must serve, and gives every unit of work a transitive line of descent back to strategic intent.\
+Without a named umbrella, new principles drift with no unifying reference, contradictory additions go unchallenged, and the strategic authority loses a single handle for "why are we doing any of this?"\
+The umbrella is the constitutional north star: it gives every contributor the global target their local optimization must serve, and gives every unit of work a transitive line of descent back to strategic intent.\
 It is the only axiom that presupposes the full stack rather than a single architectural assumption.
 
 ---

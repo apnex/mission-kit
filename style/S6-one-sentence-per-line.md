@@ -3,6 +3,7 @@ id: S6
 category: style
 title: One sentence per line (semantic line breaks)
 status: active
+enforced-by: tools/s6-one-sentence-per-line.mjs
 hydrate-when: You are about to write or edit markdown prose that someone else will read
 supersedes: []
 related: [S2, S5, S7, S8, S9, S12]
@@ -16,7 +17,8 @@ Each sentence starts at column 0 on its own line.\
 Don't hard-wrap mid-sentence to fit a column budget.\
 If a sentence is too long for comfort, split it into shorter sentences - don't wrap the long one.
 
-The principle: **line breaks carry semantic information.** A new line means a new sentence.\
+The principle: **line breaks carry semantic information.**\
+A new line means a new sentence.\
 A wrap inside a sentence means nothing - it confuses readers and clutters diffs.
 
 Applies to markdown prose.\
@@ -73,18 +75,22 @@ It passes a file whose sentences each sit on their own line and then render as o
 
 ## Rationale
 
-**Diffs.** Rewording one sentence becomes a one-line diff, not a re-wrap cascade across an entire paragraph.\
+**Diffs.**\
+Rewording one sentence becomes a one-line diff, not a re-wrap cascade across an entire paragraph.\
 PR review focuses on the actual change, not on noise from re-flow.
 
-**Reading flow.** Eyes navigate by line.\
+**Reading flow.**\
+Eyes navigate by line.\
 With one sentence per line, navigating by line equals navigating by thought.\
 With mid-sentence wraps, the eye has to re-scan the previous line's tail to maintain context across the wrap boundary.
 
-**Tooling friendliness.** Greps, grep-based AI/LLM doc-parsers, and text diffing all work on lines.\
+**Tooling friendliness.**\
+Greps, grep-based AI/LLM doc-parsers, and text diffing all work on lines.\
 Sentence-per-line gives each sentence a stable line identity.\
 Mid-sentence wrap means a sentence is a multi-line region - harder to extract, harder to reference (`file.md:42` no longer identifies a sentence).
 
-**No column-budget tyranny.** A 78-char hard wrap was a relic of terminal widths from 50 years ago.\
+**No column-budget tyranny.**\
+A 78-char hard wrap was a relic of terminal widths from 50 years ago.\
 Modern editors wrap visually; renderers (GitHub, IDE preview, browser) wrap to viewport.\
 The source file doesn't need to pre-wrap for them.
 

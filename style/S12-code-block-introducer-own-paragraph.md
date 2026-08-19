@@ -3,6 +3,7 @@ id: S12
 category: style
 title: Code-block introducer is its own paragraph
 status: active
+enforced-by: tools/s12-code-block-introducer.sh
 hydrate-when: You are about to introduce a code block with a sentence
 supersedes: []
 related: [S2, S6, S8]
@@ -58,14 +59,17 @@ Don't worry about parser compatibility.
 
 ## Rationale
 
-**Visual scanning.** Readers scrolling through a long troubleshooting section or workflow are looking for "what do I type" markers.\
+**Visual scanning.**\
+Readers scrolling through a long troubleshooting section or workflow are looking for "what do I type" markers.\
 The code block is the unmissable visual anchor; the sentence directly above it is the action description.\
 Without a blank line, that sentence is buried in the description paragraph above - the reader has to mentally extract it.
 
-**Paragraph semantics match prose role.** Description sentences (explaining the problem, the context, the constraints) play one role; the introducer plays another (announcing the action).\
+**Paragraph semantics match prose role.**\
+Description sentences (explaining the problem, the context, the constraints) play one role; the introducer plays another (announcing the action).\
 Different roles deserve different paragraphs.
 
-**Cheap fix.** A blank line.\
+**Cheap fix.**\
+A blank line.\
 No new syntax, no markup gymnastics.\
 The rendered result reads exactly the way the writer's intent maps to the reader's scan path.
 

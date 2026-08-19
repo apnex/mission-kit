@@ -8,7 +8,8 @@ It is distinct from the tactical `S`/`M`/`P`/`K` entries (which are situated mov
 Every entry MUST carry a `revival-trigger` (per [M5 - Anti-amnesia deferral](../methodology/M5-anti-amnesia-deferral.md)): the observable condition under which the item should be re-triaged.\
 A deferral without a revival trigger is rejected the same way a malformed record is.
 
-**Revival re-triages, it does not resume.** When a trigger fires, the item routes back through fresh intake - its parked findings are re-examined against the world as it is then, not silently resumed.
+**Revival re-triages, it does not resume.**\
+When a trigger fires, the item routes back through fresh intake - its parked findings are re-examined against the world as it is then, not silently resumed.
 
 ## Entries
 

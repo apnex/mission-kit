@@ -37,7 +37,8 @@ Quietly rewriting a design record to match new norms is falsification.\
 A reader six months later assumes the record reflects what was actually decided at the time; if the record has been silently updated, that assumption is wrong, and the reader has no way to know.\
 The audit trail is gone.
 
-This matters most when later questions arise: "why did we choose X over Y back then?" The original record is the only honest answer.\
+This matters most when later questions arise: "why did we choose X over Y back then?"\
+The original record is the only honest answer.\
 If it's been polished to fit current policy, you've lost the ability to reconstruct the actual decision - including its constraints, its alternatives, and the reasoning that no longer applies.
 
 Status banners + cross-links preserve both signals: the historical record stays intact (so the audit trail survives) and the current-state pointer is one click away (so readers aren't misdirected operationally).

@@ -24,7 +24,8 @@ A **request to run a future mission**, not the mission itself.\
 Captured per M5 (anti-amnesia deferral) so it is not silently lost.\
 The mission is: define *how* the axioms are applied to missions whose deliverable is NOT code (design docs, governance decisions, distribution/architecture planning), WITHOUT diluting or damaging their code-mission applicability.
 
-**Partially picked up.** `M7` now codifies the first reusable slice: axioms are applied as a required alignment audit gate for extensive planning/design before implementation approval.\
+**Partially picked up.**\
+`M7` now codifies the first reusable slice: axioms are applied as a required alignment audit gate for extensive planning/design before implementation approval.\
 The broader layered interpretation guide remains parked here until the revival trigger fires again.
 
 ---

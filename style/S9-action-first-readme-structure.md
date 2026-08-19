@@ -32,7 +32,8 @@ What has *happened* to the project is a different kind of fact: how many times i
 That is point-in-time.\
 A README is always current by construction, so a line asserting what was true when it was written has nothing to say and dates the document the moment it lands.
 
-The test: **would a routine, uneventful run make this line wrong?** If yes, it is a changelog entry wearing a status line's clothes.
+The test: **would a routine, uneventful run make this line wrong?**\
+If yes, it is a changelog entry wearing a status line's clothes.
 
 Supported platforms and versions are still fair game, because they are claims about what the project supports rather than about what was done to it.\
 "Tested on P, Q, R" is a support claim.\
@@ -47,19 +48,26 @@ Putting backstory first taxes every reader to subsidize the few who want it.
 
 ## Rationale
 
-**Reader intent.** The README is a landing page.\
+**Reader intent.**\
+The README is a landing page.\
 Some readers want to understand; most want to use.\
 The action-seekers vastly outnumber the understanding-seekers in the steady-state.\
 Optimize for the majority.
 
-**Scroll cost.** Every line of backstory above the first install hint is a scroll the action-seeker must do before they can start.\
+**Scroll cost.**\
+Every line of backstory above the first install hint is a scroll the action-seeker must do before they can start.\
 On a 200-line README, "Status" appearing at line 9 vs line 80 is a real cost in abandoned attention.
 
-**Backstory belongs where readers look for it.** "Why does this exist?" "What problem does it solve?" "What was the design rationale?" are valid questions, but they're meta-questions.\
+**Backstory belongs where readers look for it.**\
+"Why does this exist?"\
+"What problem does it solve?"\
+"What was the design rationale?" are valid questions, but they're meta-questions.\
 Readers who want them will scroll past the action paths or use the TOC.\
 Putting them at the bottom doesn't hide them - it puts them where the small audience who wants them goes looking.
 
-**Don't read your own README as a writer.** Writers tend to think "people need context first to understand the project." Readers experience the opposite - they need to ACT first; understanding solidifies through use.\
+**Don't read your own README as a writer.**\
+Writers tend to think "people need context first to understand the project."\
+Readers experience the opposite - they need to ACT first; understanding solidifies through use.\
 Resist the urge to front-load context.
 
 ---

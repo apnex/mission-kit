@@ -3,6 +3,7 @@ id: S8
 category: style
 title: Code-block comments are for what-the-line-does, not prose substitutes
 status: active
+enforced-by: tools/s8-code-block-comments.sh
 hydrate-when: You are about to put explanatory text inside a code block
 supersedes: []
 related: [S2, S5, S6, S7]
@@ -24,16 +25,22 @@ If no -> it's narration about a different scope (workflow, design, alternatives)
 
 ## Rationale
 
-**Prose is searchable + indexable + screen-readable.** A paragraph between code blocks gets a stable position in the doc structure; it shows up in markdown TOCs, in plain-text search, in renderers' typography (distinguishable from code by font + color).\
+**Prose is searchable + indexable + screen-readable.**\
+A paragraph between code blocks gets a stable position in the doc structure; it shows up in markdown TOCs, in plain-text search, in renderers' typography (distinguishable from code by font + color).\
 Comments inside code blocks are formatted as code - visually identical to the executable lines, harder to distinguish at a glance.
 
-**Operator cognitive load.** When a reader sees `# Add --revert-cmdline for X` above a `sudo ./scripts/remove.sh` line, they have to mentally disambiguate: is this comment telling me to ADD that flag (i.e., modify the command), or is it just listing flags I could optionally use?\
+**Operator cognitive load.**\
+When a reader sees `# Add --revert-cmdline for X` above a `sudo ./scripts/remove.sh` line, they have to mentally disambiguate: is this comment telling me to ADD that flag (i.e., modify the command), or is it just listing flags I could optionally use?\
 Prose makes that distinction visible by separating the executable from the explanatory.
 
-**Doc-block tooling.** AI doc-parsers, syntax highlighters, copy-on-click buttons all work on the boundary "this is a code block." Prose hidden in a code block as comments is invisible to that tooling.
+**Doc-block tooling.**\
+AI doc-parsers, syntax highlighters, copy-on-click buttons all work on the boundary "this is a code block."\
+Prose hidden in a code block as comments is invisible to that tooling.
 
-**Copy-paste hygiene.** An operator copying the code block expects to get executable commands.\
-They don't want to also paste 4 lines of "side note about kernel cmdline philosophy." Prose-as-comments forces them to clean up after pasting.
+**Copy-paste hygiene.**\
+An operator copying the code block expects to get executable commands.\
+They don't want to also paste 4 lines of "side note about kernel cmdline philosophy."\
+Prose-as-comments forces them to clean up after pasting.
 
 ---
 

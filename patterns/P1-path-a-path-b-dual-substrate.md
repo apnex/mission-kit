@@ -34,7 +34,8 @@ Substrate sections must not interleave.
 
 ## Rationale
 
-Substrate-interleaved docs read like: *"for substrate A do X; for substrate B do Y; for both do Z; except in substrate A also do W."* Every step costs the operator a context-switch to figure out which clause applies.\
+Substrate-interleaved docs read like: *"for substrate A do X; for substrate B do Y; for both do Z; except in substrate A also do W."*\
+Every step costs the operator a context-switch to figure out which clause applies.\
 The cost compounds across a long workflow and operators make mistakes from the cognitive overhead, not from the substrates being hard.
 
 Pre-splitting the doc into independent paths trades a small amount of duplication (the shared steps appear twice) for a large reduction in cognitive load: each operator follows one linear sequence with no branches.\

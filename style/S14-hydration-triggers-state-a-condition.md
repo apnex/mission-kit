@@ -3,6 +3,7 @@ id: S14
 category: style
 title: Hydration triggers state a condition, not a topic
 status: active
+enforced-by: tools/s14-hydration-triggers.sh
 hydrate-when: You are adding a catalogue entry, or reviewing one that has never routed anyone
 supersedes: []
 related: [S11, A11, A12]

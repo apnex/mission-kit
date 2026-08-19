@@ -1,39 +1,43 @@
-## format-markdown.sh
+# Mission Kit tools
 
-Applies every mechanical style fix that needs no judgement.
+Runnable checks and conversions that operate on this repository.
 
-```sh
-tools/format-markdown.sh FILE...
-tools/format-markdown.sh --check FILE...
+Each tool owns one duty.\
+A style rule is held by exactly one tool named for it, and that tool owns both the check and the fix, so a rule cannot be reported by one implementation and refused by another.\
+The rule declares its enforcer in frontmatter and `check-structure.sh` verifies the pairing in both directions.
+
+| Rule | Enforcer | Fix |
+| --- | --- | --- |
+| [`S6`](../style/S6-one-sentence-per-line.md) | `s6-one-sentence-per-line.mjs` | yes |
+| [`S8`](../style/S8-code-block-comments-not-prose.md) | `s8-code-block-comments.sh` | no, needs judgement |
+| [`S10`](../style/S10-horizontal-rule-between-h2-sections.md) | `s10-section-rules.sh` | yes |
+| [`S12`](../style/S12-code-block-introducer-own-paragraph.md) | `s12-code-block-introducer.sh` | yes |
+| [`S13`](../style/S13-plain-ascii-in-markdown.md) | `s13-plain-ascii.sh` | yes |
+| [`S14`](../style/S14-hydration-triggers-state-a-condition.md) | `s14-hydration-triggers.sh` | no, needs judgement |
+
+Every checker takes the same arguments, prints the same finding format, and honours the same exemption markers, which live once in [`lib/style-common.sh`](lib/style-common.sh).\
+Rules `S1`, `S3`, `S4`, `S5`, `S7`, `S9` and `S11` need judgement and have no enforcer; review those by reading.
+
+A file opts out of one rule with a marker on its own line, so the exemption is explicit:
+```
+<!-- style-check: allow S13 (character is the subject) -->
 ```
 
-**Why it exists.** These four passes were hand-written at each call site for a while, and one of them was not idempotent: it inserted a horizontal rule before every top-level section without checking whether one was already there, which put a second rule into fourteen files that were already correct.\
-A count-based S10 check passed them, because more rules than required still satisfies a minimum.
-
-**Run it when** you are editing a file the gate will check, and before committing.
-
-Converts non-ASCII per S13's table, reflows to one sentence per line, moves an introducer against its fence, and inserts a section rule only where none exists.\
-Nothing here rewords or restructures, so a word-stream comparison should differ only by the S13 substitutions.\
-A file declaring `GENERATED FILE` is skipped, since the defect belongs to the source its compiler reads.\
-Running it twice leaves the second run with nothing to do, and `--check` reports without writing.
+A generated artifact is exempt automatically.\
+If its first lines declare `GENERATED FILE`, the defect belongs to the source its compiler reads.
 
 ---
 
-## check-structure.sh
+## format-markdown.sh
 
-Holds the repository's own shape to what its documents claim.
+Applies every rule that has a fix.
 
 ```sh
-tools/check-structure.sh
+tools/format-markdown.sh FILE...
 ```
 
-**Why it exists.** A new top-level directory appears in no document until somebody remembers, and nothing notices that it did not.\
-`statusline/` and `statusline-pi/` went undocumented in the charter that way while being listed in the ledger, which is the typed-index fault at directory granularity.
-
-**Run it when** you add or remove a top-level directory, and let the gate run it on every change.
-
-Checks that every top-level directory is named in the root README and carries its own README.\
-Exit status is non-zero if either invariant is broken.
+An alias, not an implementation: it runs each sovereign tool in `--fix` mode.\
+Running it twice leaves the second run with nothing to do.
 
 ---
 
@@ -47,7 +51,8 @@ tools/check-all.sh --all           # style over the whole corpus
 tools/check-all.sh --since REF     # style over files changed against REF
 ```
 
-**Why it exists.** Five checkers existed and nothing ran any of them, which is the unread-checker fault the charter names.\
+**Why it exists.**\
+Five checkers existed and nothing ran any of them, which is the unread-checker fault the charter names.\
 This is the single entry point, so the gate a contributor runs and the gate CI runs are the same script rather than two copies that drift.
 
 **Run it when** you are about to commit, and let CI run it on every push and pull request.
@@ -81,7 +86,8 @@ tools/check-style.sh style/               # a subtree
 tools/check-style.sh --rule S6 INDEX.md   # one rule, one file
 ```
 
-**Why it exists.** The style entries published their checkers as prose one-liners, so nothing ran them and the corpus drifted out of compliance with the rules it publishes.\
+**Why it exists.**\
+The style entries published their checkers as prose one-liners, so nothing ran them and the corpus drifted out of compliance with the rules it publishes.\
 Every check here runs the checker its own entry publishes rather than reimplementing it, so the entry and the tool cannot diverge.
 
 **Run it when** you have edited any markdown in this repository, or before opening a pull request that touches documentation.
@@ -111,7 +117,8 @@ node tools/generate-index.mjs
 node tools/generate-index.mjs --check
 ```
 
-**Why it exists.** An index maintained by hand omits whatever nobody remembered to add, and nothing detects the omission.\
+**Why it exists.**\
+An index maintained by hand omits whatever nobody remembered to add, and nothing detects the omission.\
 Three entries went missing that way before this existed.\
 Deriving every table from the entries makes that class impossible rather than merely fixed, and `--check` is the half that makes it a mechanism: generation alone is a convention.
 
@@ -132,7 +139,8 @@ node tools/reflow-sentences.mjs --dry style/S5-no-version-pins-in-prose.md
 node tools/reflow-sentences.mjs style/S5-no-version-pins-in-prose.md
 ```
 
-**Why it exists.** [`S6`](../style/S6-one-sentence-per-line.md) asks for conversion to be opportunistic rather than bulk, and that only works if converting a section is cheap enough to do while you are already editing it.\
+**Why it exists.**\
+[`S6`](../style/S6-one-sentence-per-line.md) asks for conversion to be opportunistic rather than bulk, and that only works if converting a section is cheap enough to do while you are already editing it.\
 This does the mechanical part: unwrap mid-sentence hard wraps, put each sentence on its own line, and add a trailing backslash between adjacent sentences in a paragraph so they render on separate lines.
 
 **Run it when** you are editing a section that is still hard-wrapped, immediately before your own edits.\
@@ -154,7 +162,8 @@ tools/check-standing-context.sh /path/to/AGENTS.md
 tools/check-standing-context.sh --no-network /path/to/AGENTS.md
 ```
 
-**Why it exists.** A standing-context document is the single always-on file an agent loads at session start, which makes it the one artifact nothing reviews.\
+**Why it exists.**\
+A standing-context document is the single always-on file an agent loads at session start, which makes it the one artifact nothing reviews.\
 The document declares its own rules in frontmatter, so this tool holds no knowledge of any workspace, path or host and can be carried anywhere the knowledge base goes.
 
 **Run it when** you have edited a standing-context document, or when you want to confirm one you did not write still satisfies its contract.
@@ -174,7 +183,8 @@ Lints the `SKILL.md` catalogue as a directed acyclic graph and derives each skil
 node tools/skill-graph.mjs
 ```
 
-**Why it exists.** The catalogue is a hierarchy expressed as edges, not as numbered names.\
+**Why it exists.**\
+The catalogue is a hierarchy expressed as edges, not as numbered names.\
 This makes those edges load-bearing: every `prerequisite` and `composes` target must resolve, the graph must be acyclic, level is derived rather than stored in a name, and every bundle's `skills` entry must resolve.
 
 **Run it when** you add or retire a skill, or change a `prerequisite` or `composes` edge.

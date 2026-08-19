@@ -3,6 +3,7 @@ id: S13
 category: style
 title: Plain ASCII in markdown - typeable characters only
 status: active
+enforced-by: tools/s13-plain-ascii.sh
 hydrate-when: You are about to type a character you could not produce on a standard keyboard
 supersedes: []
 related: [S6, S8, S11]
@@ -118,21 +119,26 @@ grep -rnP '[\x{80}-\x{24FF}\x{2580}-\x{10FFFF}]' --include="*.md" .
 
 ## Rationale
 
-**You cannot search for what you cannot type.** This is the argument that subsumes the rest.\
+**You cannot search for what you cannot type.**\
+This is the argument that subsumes the rest.\
 A reader who wants to find a phrase containing an em dash has to copy it from the rendered page, because they cannot produce the character at a prompt.\
 Every non-typeable character imposes a copy-paste dependency on every future reader, in every grep, every diff filter, every bug report that quotes the line.
 
-**Typographic characters are invisible failures.** An em dash and a hyphen look nearly identical in most monospace fonts, so a reader cannot tell which is in the file.\
+**Typographic characters are invisible failures.**\
+An em dash and a hyphen look nearly identical in most monospace fonts, so a reader cannot tell which is in the file.\
 They are not interchangeable to a grep, a diff, or a script.\
 Searching for a phrase you can see and getting no match is a real cost, paid repeatedly.
 
-**They do not survive the pipeline.** Terminals, editors with the wrong locale, `cat` over a serial console, log aggregators, and CI output all degrade non-ASCII differently.\
+**They do not survive the pipeline.**\
+Terminals, editors with the wrong locale, `cat` over a serial console, log aggregators, and CI output all degrade non-ASCII differently.\
 The failure mode is silent replacement or mojibake, and it surfaces where you least want a surprise.
 
-**Nothing is gained.** An arrow glyph and `->` carry identical meaning, and `->` is what the surrounding code already uses.\
+**Nothing is gained.**\
+An arrow glyph and `->` carry identical meaning, and `->` is what the surrounding code already uses.\
 The typographic version buys polish in one rendering context and costs legibility in every other.
 
-**A test beats a list.** An enumerated ban has to be extended every time someone pastes in a new glyph, and it invites argument at the borderline.\
+**A test beats a list.**\
+An enumerated ban has to be extended every time someone pastes in a new glyph, and it invites argument at the borderline.\
 Keyboard-typeability is decidable on sight, by anyone, for any character, without consulting this file.
 
 ---

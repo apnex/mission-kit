@@ -1,12 +1,11 @@
 # Mission Kit schemas
 
-This directory owns cross-project, machine-verifiable entity contracts.
+This directory owns cross-project, machine-verifiable entity contracts.\
 Each entity is a sovereign resource that can be understood and validated without importing a skill or project runtime.
 
 ## Resource convention
 
 Resources follow a deliberately small Kubernetes-like envelope:
-
 ```yaml
 apiVersion: schemas.mission-kit/v1alpha1
 kind: Question
@@ -17,56 +16,57 @@ metadata:
 spec: {}
 ```
 
-`apiVersion` and `kind` select the domain contract.
-The JSON Schema document's `$id` selects the validator contract.
-`metadata` holds portable identity and machine-oriented labels or annotations.
-`spec` holds all configuration that affects entity meaning or behaviour.
+`apiVersion` and `kind` select the domain contract.\
+The JSON Schema document's `$id` selects the validator contract.\
+`metadata` holds portable identity and machine-oriented labels or annotations.\
+`spec` holds all configuration that affects entity meaning or behaviour.\
 [`catalog.json`](catalog.json) maps resource identity to schema identity and its semantic validator.
 
-Runtime observations do not belong in `spec`.
+Runtime observations do not belong in `spec`.\
 A kind only gains `status` when a real reconciler needs observed state.
+
+---
 
 ## Question
 
-`Question` is a process-neutral question definition.
+`Question` is a process-neutral question definition.\
 It contains no Survey, round, Director, interpretation, or outcome-axis semantics.
 
-The initial `v1alpha1` response variant is `Choice`.
-Further response variants can be added as separately testable schemas and admitted through a later Question API contract.
-`Choice` is bounded to sixteen ordered alternatives so its complete constraint system can be checked deterministically.
+The initial `v1alpha1` response variant is `Choice`.\
+Further response variants can be added as separately testable schemas and admitted through a later Question API contract.\
+`Choice` is bounded to sixteen ordered alternatives so its complete constraint system can be checked deterministically.\
 Larger searchable or paginated answer sets require a different response variant.
 
-Question identity and presentation order are separate concerns.
+Question identity and presentation order are separate concerns.\
 `metadata.name` identifies a Question, while a composing process owns placement such as round and ordinal.
 
-Respondent-visible information belongs in `spec`.
-Labels and annotations must not carry text that a respondent needs in order to answer correctly.
-Selection wording must be generated from `spec.response.cardinality`.
+Respondent-visible information belongs in `spec`.\
+Labels and annotations must not carry text that a respondent needs in order to answer correctly.\
+Selection wording must be generated from `spec.response.cardinality`.\
 `spec.prompt.instruction` is reserved for non-derivable guidance and must not paraphrase cardinality.
 
-Context fields are intentionally absent from `Question/v1alpha1`.
-A composing process associates a complete, separate `ContextFrame` resource
-without injecting context into the Question resource.
+Context fields are intentionally absent from `Question/v1alpha1`.\
+A composing process associates a complete, separate `ContextFrame` resource without injecting context into the Question resource.
+
+---
 
 ## ContextFrame
 
-`ContextFrame` is a process-neutral semantic context definition.
-It carries an exact subject, purpose, included and excluded scope, classified
-givens, bounded authored synopsis, and term definitions.
+`ContextFrame` is a process-neutral semantic context definition.\
+It carries an exact subject, purpose, included and excluded scope, classified givens, bounded authored synopsis, and term definitions.\
 Its ordered arrays preserve authored order.
 
-The synopsis is semantic content authored before projection; it is not
-generated or summarized by a renderer.
-Process placement, ancestry, execution authority, generation provenance,
-answers, and observed state remain outside the resource.
+The synopsis is semantic content authored before projection; it is not generated or summarized by a renderer.\
+Process placement, ancestry, execution authority, generation provenance, answers, and observed state remain outside the resource.
+
+---
 
 ## Composition
 
-A process composes or snapshots a complete `Question` resource and owns its process-specific fields beside it.
+A process composes or snapshots a complete `Question` resource and owns its process-specific fields beside it.\
 It must not inject process fields into the Question resource.
 
 For example, a future `SurveyQuestion` can contain:
-
 ```yaml
 spec:
   question:
@@ -82,18 +82,18 @@ spec:
 
 This wrapper boundary keeps the neutral resource closed and prevents Survey evolution from changing the Question contract.
 
+---
+
 ## Validation
 
 Install the local validation dependency and run the complete schema suite:
-
 ```bash
 npm install
 npm test
 ```
 
-JSON Schema validates structure.
-The Question semantic validator checks ordered-array invariants that JSON
-Schema Draft 2020-12 cannot express:
+JSON Schema validates structure.\
+The Question semantic validator checks ordered-array invariants that JSON Schema Draft 2020-12 cannot express:
 
 - option IDs are unique;
 - minimum selections do not exceed maximum selections;
@@ -109,12 +109,13 @@ The ContextFrame semantic validator rejects:
 - duplicate given text, including text assigned different classifications; and
 - duplicate terms, including terms assigned different meanings.
 
-Duplicate comparison preserves exact authored string values; it does not
-case-fold, trim, or otherwise normalize semantic content.
+Duplicate comparison preserves exact authored string values; it does not case-fold, trim, or otherwise normalize semantic content.
 
-A consumer must run structural validation before semantic validation.
-Consumers can preload every schema listed in `catalog.json` to resolve absolute URN references without importing Survey.
+A consumer must run structural validation before semantic validation.\
+Consumers can preload every schema listed in `catalog.json` to resolve absolute URN references without importing Survey.\
 JSON Schema `default` annotations do not mutate resource instances, so this contract does not use them as implicit configuration.
+
+---
 
 ## Layout
 

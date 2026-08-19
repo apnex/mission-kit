@@ -3,6 +3,7 @@ id: S10
 category: style
 title: Horizontal rule between top-level sections in long-form docs
 status: active
+enforced-by: tools/s10-section-rules.sh
 hydrate-when: You are writing a document you expect to grow past five top-level sections
 supersedes: []
 related: [S6, S9]
@@ -41,13 +42,16 @@ Don't apply to:
 
 ## Rationale
 
-**Reader scanning.** In a long README with 8-10 H2 sections, the header typography (`##`) alone often isn't visually heavy enough to dominate surrounding code blocks, tables, and paragraphs.\
+**Reader scanning.**\
+In a long README with 8-10 H2 sections, the header typography (`##`) alone often isn't visually heavy enough to dominate surrounding code blocks, tables, and paragraphs.\
 A horizontal rule is an unambiguous "new section starts here" cue that helps the reader scroll-scan to the section they want without re-parsing every header along the way.
 
-**Renderer consistency.** Markdown renderers vary in how strongly they weight H2 headers - some make them barely distinguishable from H3, some make them prominent.\
+**Renderer consistency.**\
+Markdown renderers vary in how strongly they weight H2 headers - some make them barely distinguishable from H3, some make them prominent.\
 A horizontal rule is the one separator that renders consistently visually (a literal line across the column width) regardless of theme or renderer.
 
-**Source-file structure.** When editing or grepping the source, the `---` marker is unambiguous - it's never part of prose, never part of a code block (those have fenced delimiters), so it's a clean grep anchor for "give me every top-level section break."
+**Source-file structure.**\
+When editing or grepping the source, the `---` marker is unambiguous - it's never part of prose, never part of a code block (those have fenced delimiters), so it's a clean grep anchor for "give me every top-level section break."
 
 ---
 

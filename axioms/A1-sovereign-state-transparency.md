@@ -27,7 +27,8 @@ No functional unit possesses private, opaque, or transient truth; all state is p
 
 ## Rationale
 Eliminates the Hidden State Problem.\
-In any multi-actor system, hidden state is the primary source of Silent Drift - different actors reasoning against different "truths." A sovereign backplane gives every actor, and every human audit, the same ground truth.\
+In any multi-actor system, hidden state is the primary source of Silent Drift - different actors reasoning against different "truths."\
+A sovereign backplane gives every actor, and every human audit, the same ground truth.\
 Persistence makes transient truth physically impossible.\
 The principle is load-bearing wherever shared state outlives a single process; it sharpens as the number of concurrent actors grows.
 

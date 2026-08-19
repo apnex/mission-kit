@@ -62,6 +62,11 @@
       "minLength": 30,
       "pattern": "^[^.!?]*[.!?]?$"
     },
+    "enforced-by": {
+      "description": "The tool that holds this rule, relative to the repository root. Declaring it makes the pairing checkable: a rule claiming an enforcer that does not exist is a broken promise, and an enforcer with no rule is orphaned.",
+      "type": "string",
+      "pattern": "^tools/"
+    },
     "supersedes": {
       "description": "Entries this one replaces. Following a superseded entry is an error, and only this field says so.",
       "type": "array",

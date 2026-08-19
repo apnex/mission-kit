@@ -24,7 +24,8 @@ Four properties, each falsifiable:
 
 ## Mechanics
 
-**Three axes compose, rather than enumerate.** Work is generated, not catalogued:
+**Three axes compose, rather than enumerate.**\
+Work is generated, not catalogued:
 ```
 role x work-type x domain
    -> WorkItem template + evidence authority + independence constraints
@@ -52,16 +53,20 @@ The constraint set is authored once in the cross-axis reference and never forked
 | - | [`statusline/`](statusline/README.md) | A single-session bash statusline, runnable as shipped. |
 | - | [`statusline-pi/`](statusline-pi/README.md) | The swarm-aware evolution of it, and the canonical A5 instance. |
 
-**Identity is stable and never reused.** A replaced entry keeps its ID and flips `status`, and the replacement carries `supersedes`.\
+**Identity is stable and never reused.**\
+A replaced entry keeps its ID and flips `status`, and the replacement carries `supersedes`.\
 [`INDEX.md`](INDEX.md) is the flat ledger across every category.
 
-**Composition is expressed as edges, not as names.** A skill declares what it requires and what it composes; depth is derived from the graph.\
+**Composition is expressed as edges, not as names.**\
+A skill declares what it requires and what it composes; depth is derived from the graph.\
 Encoding hierarchy into a name freezes it and it rots on the first change.
 
-**Enforcement lives with the corpus.** [`tools/`](tools/) carries the checkers, so a clone anywhere can verify itself.\
+**Enforcement lives with the corpus.**\
+[`tools/`](tools/) carries the checkers, so a clone anywhere can verify itself.\
 A rule that becomes mechanically checkable moves into a script, leaving only its name behind.
 
-**Admission is a test, not a preference.** Could a different team, on different hardware, in a different problem domain, follow this directly?\
+**Admission is a test, not a preference.**\
+Could a different team, on different hardware, in a different problem domain, follow this directly?\
 If no, it belongs in the project repository.
 
 Three further admission rules, each of which has been broken here:

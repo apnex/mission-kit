@@ -9,7 +9,7 @@
 #   skill-graph                every catalogue edge resolves and the graph is acyclic
 #   schema tests               every entry conforms to its contract
 #   check-standing-context     the standing-context template satisfies its own contract
-#   check-style                markdown style, on changed files only
+#   s6 s8 s10 s12 s13 s14      one sovereign checker per style rule, on changed files only
 #
 # Style runs against changed files rather than the whole corpus. The corpus carries legacy debt
 # that predates the checker, and blocking on it would either stall every change or force one
@@ -57,8 +57,22 @@ run "catalogue graph resolves" node tools/skill-graph.mjs
 run "entries conform to their contract" bash -c 'cd schemas && npm ci --silent >/dev/null 2>&1 || npm install --silent >/dev/null 2>&1; npm test --silent'
 run "standing-context template holds" ./tools/check-standing-context.sh $network_flag _template-standing-context.md
 
+# Every per-rule checker, discovered rather than listed, so adding a rule adds its gate.
+run_style() { # files...
+	local rule tool
+	for tool in "$root"/tools/s[0-9]*-*.sh "$root"/tools/s[0-9]*-*.mjs; do
+		[ -e "$tool" ] || continue
+		rule=$(basename "$tool" | grep -oE '^s[0-9]+' | tr 'a-z' 'A-Z')
+		case "$tool" in
+			*.mjs) run "$rule" node "$tool" --check "$@" ;;
+			*)     run "$rule" "$tool" "$@" ;;
+		esac
+	done
+}
+
 if [ "$scope" = "all" ]; then
-	run "markdown style (whole corpus)" ./tools/check-style.sh
+	mapfile -t allmd < <(find "$root" -name '*.md' -not -path '*/.git/*' -not -path '*/node_modules/*' | sort)
+	run_style "${allmd[@]}"
 else
 	# Only markdown that still exists and actually changed. No changes means nothing to gate.
 	# Committed against the base, plus staged, plus unstaged. Comparing commits alone makes the
@@ -72,10 +86,10 @@ else
 	                          git ls-files --others --exclude-standard 2>/dev/null
 	                        } | grep '\.md$' | sort -u || true)
 	if [ ${#changed[@]} -eq 0 ]; then
-		printf '\n=== markdown style (changed files) ===\nno markdown changed against %s\nPASS  markdown style (changed files)\n' "$since"
+		printf '\n=== style rules (changed files) ===\nno markdown changed against %s\nPASS  style rules\n' "$since"
 	else
 		printf '\n%d changed markdown file(s) against %s\n' "${#changed[@]}" "$since"
-		run "markdown style (changed files)" ./tools/check-style.sh "${changed[@]}"
+		run_style "${changed[@]}"
 	fi
 fi
 

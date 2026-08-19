@@ -47,7 +47,9 @@ The source-scanning gate is what keeps the neutrality honest under maintenance: 
 The strictness is the point.
 
 Promotion-by-evidence is what stops the core from bloating.\
-The question is never "could this be generic?" (everything could) but "do two real consumers already need it?" Until the second consumer exists, the primitive lives in the first tenant, where it's cheap to change.\
+The question is never "could this be generic?"\
+(everything could) but "do two real consumers already need it?"\
+Until the second consumer exists, the primitive lives in the first tenant, where it's cheap to change.\
 The second consumer is what reveals the *actual* shared shape - which is almost never the one you'd have guessed from one.
 
 ---

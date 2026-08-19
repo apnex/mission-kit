@@ -59,19 +59,25 @@ Format identifiers identically across contexts - backticks in a paragraph render
   mentions an identifier. A heading about configuring a specific binary
   still backticks that binary.
 
-The test for borderline cases: *is this the literal name of a specific thing in the system that I could grep for?* If yes -> identifier -> backticks.\
+The test for borderline cases: *is this the literal name of a specific thing in the system that I could grep for?*\
+If yes -> identifier -> backticks.\
 If no -> English word -> no backticks.
 
 ---
 
 ## Rationale
 
-**Visual distinction.** Inline code styling signals "this is a specific named thing." Without it, identifiers blend into surrounding prose visually - the reader has to parse syntax + context to know whether "layer 1" is "the first layer in the system's design" or "first-layer neural-network jargon." Backticks remove the ambiguity at a glance.
+**Visual distinction.**\
+Inline code styling signals "this is a specific named thing."\
+Without it, identifiers blend into surrounding prose visually - the reader has to parse syntax + context to know whether "layer 1" is "the first layer in the system's design" or "first-layer neural-network jargon."\
+Backticks remove the ambiguity at a glance.
 
-**Grep friendliness.** A reader who reads "the `apply.sh` script" and wants to find that script can grep the codebase for the literal string.\
+**Grep friendliness.**\
+A reader who reads "the `apply.sh` script" and wants to find that script can grep the codebase for the literal string.\
 Unmarked "the apply.sh script" works too, but mixed-with-prose identifiers are harder to extract by sight, and AI doc-parsers / indexers similarly benefit from the explicit marker.
 
-**Consistency cost.** Once you backtick *some* identifiers, mixing in unmarked ones reads as accidental inconsistency.\
+**Consistency cost.**\
+Once you backtick *some* identifiers, mixing in unmarked ones reads as accidental inconsistency.\
 Either commit to the rule everywhere or don't backtick at all - picking sporadically is worse than either pole.
 
 ---
