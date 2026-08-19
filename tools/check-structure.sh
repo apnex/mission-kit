@@ -31,6 +31,23 @@ for dir in */; do
 
 	# Owns its own README, so the layer explains itself rather than relying on the root.
 	[ -f "$d/README.md" ] || report "no readme" "$d/ has no README.md"
+
+	# The charter's prefix column is a claim about the ledger, so hold it to one. A layer
+	# declaring a prefix must have entries under it; a layer declaring '-' must have none.
+	# Without this the knowledge-versus-mechanism ruling is advisory, and the charter and the
+	# ledger are free to disagree about whether a directory's contents are entries.
+	row=$(grep -E "^\| .* \[\`${d}/\`\]" README.md | head -1)
+	[ -z "$row" ] && continue
+	prefix=$(printf '%s' "$row" | sed -E 's/^\| *`?([^`|]*)`? *\|.*/\1/' | tr -d ' ')
+	in_ledger=$(grep -cE "^\| \[[A-Z]+-?[0-9]+\]\(${d}/" INDEX.md)
+
+	if [ "$prefix" = "-" ]; then
+		[ "$in_ledger" -eq 0 ] \
+			|| report "unclassified" "$d/ declares no prefix but has $in_ledger entr(ies) in INDEX.md"
+	else
+		[ "$in_ledger" -gt 0 ] \
+			|| report "unclassified" "$d/ declares prefix '$prefix' but has no entries in INDEX.md"
+	fi
 done
 
 echo

@@ -13,9 +13,14 @@ When a trigger fires, the item routes back through fresh intake - its parked fin
 
 ## Entries
 
-| ID | Title | Status | Revival trigger (short) |
+<!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
+| ID | Title | Status | Hydrate when |
 |---|---|---|---|
-| [MREQ-1](mreq-1-axiom-application-methodology.md) | Axiom-application methodology for non-code missions | deferred | a 3rd non-code mission needs disciplined axiom use, OR a 2nd "axiom-laundered wrong conclusion" is observed |
+| [MREQ-1](mreq-1-axiom-application-methodology.md) | Axiom-application methodology for non-code missions | active | You are applying axioms to a mission that produces no code |
+| [MREQ-2](mreq-2-extend-the-corpus-work-type.md) | Work-type for extending the corpus itself | active | You are adding or retiring a layer and want the work claimable rather than hand-run |
+<!-- END GENERATED -->
+
+Each entry's `revival-trigger` is in its frontmatter, which is the one place it is authored.
 
 ---
 

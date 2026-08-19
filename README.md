@@ -138,6 +138,48 @@ Axiom entries take a different shape, described in [`axioms/README.md`](axioms/R
 
 ---
 
+## Adding and retiring a layer
+
+A layer is a top-level directory owning one concern.\
+Adding one changes the shape of the corpus rather than its contents, so it answers a different question from adding an entry.
+
+**When.**\
+[`A3`](axioms/A3-sovereign-composition.md) Earned Exposure governs this and is not restated here: a concern earns a boundary by being one concern, and earns a depended-upon surface only when a real consumer outside its origin needs one.\
+A directory minted for a concern that does not yet exist is Speculative Surface, and the cost is paid by everyone who has to learn the taxonomy.\
+Prefer an entry in an existing layer until the second occupant is real.
+
+**Whether it takes an ID.**\
+A layer holding *knowledge* takes a prefix and appears in [`INDEX.md`](INDEX.md).\
+A layer holding *mechanism* takes no prefix and appears in no ledger.\
+The test is what the layer's contents are for: an axiom, a pattern or a contract states what must be true, while a tool, a bundle or a plugin does something.\
+This is the single authored statement of that split; `bundles/`, `plugins/` and `INDEX.md` point here rather than repeat it.
+
+**Who may mint one.**\
+The director, with no ratification gate.\
+The charter records the decision so it is not rediscovered, not to add a step.
+
+**What admission costs.**
+
+1. A README that explains the layer, since a directory that cannot introduce itself is not a layer.
+2. A row in the table under `Mechanics`, carrying its prefix or `-`.
+3. A generated index region in that README, if the layer is ID-bearing.
+4. Entry of its contents into the contract in [`schemas/`](schemas/), if the layer is ID-bearing.
+5. A checker, if the layer makes a claim a script could verify. A layer that ships an unverifiable claim weakens `Checkable` for the whole corpus.
+
+**Retiring one.**\
+A layer leaves the same way it arrived and in the same commit: contents relocated or converted to entries, the table row removed, and any pointer to it repaired.\
+An empty directory left behind is worse than the layer was, because it reads as a place things belong.\
+Identity rules are unchanged - a relocated entry keeps its ID, and only a replaced one is superseded.
+
+**Faults.**
+
+- **The premature layer.** A directory minted for one artifact that might have peers later. It teaches the taxonomy a distinction the corpus does not make.
+- **The unclassified layer.** Admitted without an ID ruling, so the charter and the ledger disagree about whether its contents are entries.
+- **The squatting project.** Project-specific material wearing a layer's name. It fails the admission test the first time another team reads it.
+- **The orphaned pointer.** A layer retired from the table while other documents still link to it.
+
+---
+
 ## Referencing from a project repository
 
 Link back rather than duplicate.\

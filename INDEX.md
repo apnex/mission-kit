@@ -126,4 +126,5 @@ This file described them a second time and the copy had already drifted, naming 
 | [C4](schemas/C4-question.md) | contract | question - a process-neutral question definition with an ordered response variant | active | You are defining a question whose options and cardinality must validate deterministically |
 | [C5](schemas/C5-context-frame.md) | contract | context-frame - a process-neutral semantic context definition with ordered scope and givens | active | You are defining the bounded context a question or task is answered against |
 | [MREQ-1](backlog/mreq-1-axiom-application-methodology.md) | mission-required | Axiom-application methodology for non-code missions | active | You are applying axioms to a mission that produces no code |
+| [MREQ-2](backlog/mreq-2-extend-the-corpus-work-type.md) | mission-required | Work-type for extending the corpus itself | active | You are adding or retiring a layer and want the work claimable rather than hand-run |
 <!-- END GENERATED -->
