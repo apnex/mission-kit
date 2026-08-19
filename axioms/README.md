@@ -21,7 +21,7 @@ Axioms carry their own body shape rather than the standard `S`/`M`/`P`/`K` skele
 id: A0                    # stable ID, prefix A
 category: axiom
 title: One-line title - imperative or noun-phrase, no period
-status: active            # active | superseded | deprecated
+status: active            # see schemas/catalog-entry for the vocabulary
 applies-to: [any-system]  # domain of validity - see Applicability model
 related: [A1, A2]         # cross-links to other axioms
 ```

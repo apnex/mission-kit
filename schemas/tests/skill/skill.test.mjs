@@ -74,7 +74,7 @@ function publicName(slug) {
 	return null;
 }
 
-function stubStatus(slug) {
+function entryStatus(slug) {
 	const stub = readdirSync(SKILLS).find((f) => /^K\d+-/.test(f) && f === `${f.match(/^K\d+-/)[0]}${slug}.md`);
 	if (!stub) return null;
 	const m = readFileSync(path.join(SKILLS, stub), 'utf8').match(/^status:\s*(\S+)/m);
@@ -105,8 +105,9 @@ for (const { slug, text } of bodies) {
 	});
 
 	test(`description routes: ${slug}`, () => {
-		// A scaffold is not expected to route, and vendored text is not ours to reshape.
-		if (stubStatus(slug) === 'stub') return;
+		// An entry not yet in force is not expected to route, and vendored text is not ours
+		// to reshape. The status vocabulary is the schema's; do not restate it beyond this.
+		if (entryStatus(slug) === 'draft') return;
 		if (/^\s*source:\s*https?:\/\//m.test(text)) return;
 		const d = String((frontmatter(text) || {}).description || '');
 		assert.ok(CONDITION.test(d), `${slug}: description states no use-condition in its first sentence: "${d.slice(0, 90)}"`);

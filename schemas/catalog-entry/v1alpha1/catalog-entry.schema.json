@@ -39,22 +39,28 @@
       "minLength": 1
     },
     "status": {
-      "description": "Whether the entry is in force. An agent must not apply a non-active entry as though it were. The vocabulary is the union of the per-category vocabularies documented in the category READMEs; five such vocabularies exist and they are not yet reconciled with each other.",
+      "description": "Whether this entry is in force, and if not, why not. This field answers that question and no other: a requirement's progress and a work-type's generatability are separate concerns with their own fields, because conflating them is how five disagreeing vocabularies arose. active: in force, apply it. draft: not yet in force, do not apply. superseded: replaced, follow the entry whose supersedes names this one. retired: no longer in force, the ID is kept so citations resolve.",
       "type": "string",
       "enum": [
         "active",
-        "candidate",
-        "posture",
         "draft",
-        "stub",
-        "deferred",
-        "done",
-        "wont-do",
         "superseded",
-        "deprecated",
-        "retired",
-        "partially-fulfilled"
+        "retired"
       ]
+    },
+    "fulfilment": {
+      "description": "How far a tracked requirement has got. Progress, not force: an MREQ entry is in force while it stands, whatever its progress.",
+      "type": "string",
+      "enum": [
+        "deferred",
+        "partial",
+        "done",
+        "wont-do"
+      ]
+    },
+    "generatable": {
+      "description": "Whether the substrate can generate this work-type from the axes, or it must be authored by hand. A capability of the type, not a lifecycle state.",
+      "type": "boolean"
     },
     "hydrate-when": {
       "description": "The condition under which to open this entry, stated so an agent can evaluate it against what it is doing now. A topic never fires; see S14. Required: an entry nothing routes to has the same value as no entry.",

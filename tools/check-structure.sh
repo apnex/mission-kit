@@ -33,24 +33,6 @@ for dir in */; do
 	[ -f "$d/README.md" ] || report "no readme" "$d/ has no README.md"
 done
 
-# Every rule that declares an enforcer must have one, and every per-rule tool must belong to a
-# rule. The link between a rule and its mechanism was prose-only, which is how six rules came to
-# be enforced by one file holding six duties.
-for entry in style/S*.md; do
-	[ -f "$entry" ] || continue
-	tool=$(awk 'FNR==1 && !/^---$/{exit} FNR==1{next} /^---$/{exit}
-	            /^enforced-by:/{sub(/^enforced-by:[[:space:]]*/, ""); print; exit}' "$entry")
-	[ -z "$tool" ] && continue
-	[ -x "$tool" ] || report "no enforcer" "$entry names $tool, which is not an executable file"
-done
-
-for tool in tools/s[0-9]*-*; do
-	[ -e "$tool" ] || continue
-	rule=$(basename "$tool" | grep -oE '^s[0-9]+' | tr 'a-z' 'A-Z')
-	grep -ql "^enforced-by: $tool$" style/${rule}-*.md 2>/dev/null \
-		|| report "orphan tool" "$tool is claimed by no rule; expected style/${rule}-*.md to name it"
-done
-
 echo
 if [ "$fail" -gt 0 ]; then
 	echo "$fail structural failure(s)."

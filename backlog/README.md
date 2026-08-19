@@ -25,7 +25,8 @@ When a trigger fires, the item routes back through fresh intake - its parked fin
 id: MREQ-N
 category: mission-required
 title: One-line title - noun phrase, no period
-status: deferred          # deferred | active | done | wont-do  (all reopenable per M5)
+status: active            # see schemas/catalog-entry for the vocabulary
+fulfilment: deferred      # deferred | partial | done | wont-do (all reopenable per M5)
 revival-trigger: >        # REQUIRED - the observable condition to re-triage
   ...
 related-axioms: []        # axioms the future mission bears on

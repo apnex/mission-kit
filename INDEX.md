@@ -110,8 +110,8 @@ Sort by ID prefix.
 | [K16](skills/K16-model-an-arc.md) | skill | model-an-arc - model an arc as a composed L2 system (composes the six primitives) | active | You are modelling a whole arc as a composed system rather than a single construct |
 | [K17](skills/K17-sysml-skill-evaluator.md) | skill | sysml-skill-evaluator - measure a SysML skill's leverage vs the base model (meta) | active | You need to know whether a SysML skill beats the base model, and by how much |
 | [K18](skills/K18-workgraph-arc-operator.md) | skill | workgraph-arc-operator - execute and manage a Hub WorkGraph arc | active | You are executing or managing an arc on the coordination substrate |
-| [K19](skills/K19-workgraph-blueprint-author.md) | skill | workgraph-blueprint-author - author valid Hub WorkGraph blueprints | stub | You are authoring a blueprint that the substrate must accept |
-| [K20](skills/K20-workgraph-lease-discipline.md) | skill | workgraph-lease-discipline - operate WorkGraph leases and liveness | stub | You are holding a lease and must keep liveness rather than assume it |
+| [K19](skills/K19-workgraph-blueprint-author.md) | skill | workgraph-blueprint-author - author valid Hub WorkGraph blueprints | draft | You are authoring a blueprint that the substrate must accept |
+| [K20](skills/K20-workgraph-lease-discipline.md) | skill | workgraph-lease-discipline - operate WorkGraph leases and liveness | draft | You are holding a lease and must keep liveness rather than assume it |
 | [K21](skills/K21-workgraph-verification-gates.md) | skill | workgraph-verification-gates - exact independent WorkGraph PASS/FAIL gates | active | You are gating a build and the pass or fail must be exact and independent |
 | [K22](skills/K22-workgraph-pr-delivery.md) | skill | workgraph-pr-delivery - exact source-to-live proof under WorkGraph control | active | You must prove a change reached live, not merely that it merged |
 | [K23](skills/K23-workgraph-arc-closeout.md) | skill | workgraph-arc-closeout - terminal proof reconciliation for WorkGraph arc closeout | active | You are closing an arc and must reconcile terminal proof |
@@ -122,5 +122,5 @@ Sort by ID prefix.
 | [K28](skills/K28-asd-ste100-verifier.md) | skill | asd-ste100-verifier - audit and enforce ASD-STE100 Simplified Technical English, with a runnable engine | active | You are writing documentation that must be readable by a non-native English speaker |
 | [K29](skills/K29-survey-skill-evaluator.md) | skill | survey-skill-evaluator - controlled campaign evaluation of sealed Survey-skill candidates | active | You are running a controlled evaluation campaign over sealed skill candidates |
 | [K30](skills/K30-survey-v2.md) | skill | survey-v2 - stakeholder-intent capture with generated context trees | active | Direction is still open and you need intent captured against a generated context tree |
-| [MREQ-1](backlog/mreq-1-axiom-application-methodology.md) | mission-required | Axiom-application methodology for non-code missions | partially-fulfilled | You are applying axioms to a mission that produces no code |
+| [MREQ-1](backlog/mreq-1-axiom-application-methodology.md) | mission-required | Axiom-application methodology for non-code missions | active | You are applying axioms to a mission that produces no code |
 <!-- END GENERATED -->

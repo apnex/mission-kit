@@ -2,7 +2,7 @@
 id: K19
 category: skill
 title: workgraph-blueprint-author - author valid Hub WorkGraph blueprints
-status: stub
+status: draft
 hydrate-when: You are authoring a blueprint that the substrate must accept
 supersedes: []
 related: []

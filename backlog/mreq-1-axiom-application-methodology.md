@@ -2,7 +2,8 @@
 id: MREQ-1
 category: mission-required
 title: Axiom-application methodology for non-code missions
-status: partially-fulfilled
+status: active
+fulfilment: partial
 hydrate-when: You are applying axioms to a mission that produces no code
 revival-trigger: >
   Pick up the remaining guide layers when EITHER (a) a third non-code mission

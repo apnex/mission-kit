@@ -2,7 +2,7 @@
 id: K20
 category: skill
 title: workgraph-lease-discipline - operate WorkGraph leases and liveness
-status: stub
+status: draft
 hydrate-when: You are holding a lease and must keep liveness rather than assume it
 supersedes: []
 related: []

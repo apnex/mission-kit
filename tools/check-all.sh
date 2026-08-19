@@ -5,6 +5,7 @@
 # script. A workflow that restates the checks is a second copy of the rule, and the two drift.
 #
 #   check-structure            every top-level directory is documented and self-describing
+#   check-enforcers            every rule names a real tool, and every tool a real rule
 #   generate-index --check     the ledger and category tables match the entries
 #   skill-graph                every catalogue edge resolves and the graph is acyclic
 #   schema tests               every entry conforms to its contract
@@ -52,6 +53,7 @@ run() { # name, command...
 }
 
 run "repository structure is documented" ./tools/check-structure.sh
+run "rules and enforcers are paired" ./tools/check-enforcers.sh
 run "index is derived, not typed" node tools/generate-index.mjs --check
 run "catalogue graph resolves" node tools/skill-graph.mjs
 run "entries conform to their contract" bash -c 'cd schemas && npm ci --silent >/dev/null 2>&1 || npm install --silent >/dev/null 2>&1; npm test --silent'

@@ -106,7 +106,8 @@ Every work-type carries:
 id:                   W<n>
 category:             work-type
 title:                <kebab-verb-phrase> - <one-line>
-status:               active | candidate | posture   # candidate = not yet standing behavior; posture = not generatable
+status:               active    # see schemas/catalog-entry for the vocabulary
+generatable:          true      # false when the type must be authored by hand
 roleEligibility:      [<pure role union>]
 evidenceContract:     [{kind, description}, ...]      # the evidenceRequirements[] template - the compile-target
 evidenceAuthority:    executor-evidence | executor-evidence-provisional | verifier-attestation | director-ratification
