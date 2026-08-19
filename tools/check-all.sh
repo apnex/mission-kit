@@ -7,6 +7,7 @@
 #   check-structure            every top-level directory is documented and self-describing
 #   check-enforcers            every rule names a real tool, and every tool a real rule
 #   check-tool-docs            the tool index matches the tools beside it
+#   check-entry-body           every entry carries the body sections its category declares
 #   generate-index --check     the ledger and category tables match the entries
 #   skill-graph                every catalogue edge resolves and the graph is acyclic
 #   schema tests               every entry conforms to its contract
@@ -56,6 +57,7 @@ run() { # name, command...
 run "repository structure is documented" ./tools/check-structure.sh
 run "rules and enforcers are paired" ./tools/check-enforcers.sh
 run "tool index matches the directory" ./tools/check-tool-docs.sh
+run "entry bodies match their category" ./tools/check-entry-body.sh
 run "index is derived, not typed" node tools/generate-index.mjs --check
 run "catalogue graph resolves" node tools/skill-graph.mjs
 run "entries conform to their contract" bash -c 'cd schemas && npm ci --silent >/dev/null 2>&1 || npm install --silent >/dev/null 2>&1; npm test --silent'

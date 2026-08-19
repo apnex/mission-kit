@@ -1,0 +1,61 @@
+{
+  "apiVersion": "schemas.mission-kit/v1alpha1",
+  "kind": "EntryBody",
+  "metadata": {
+    "name": "catalogue-body-shapes"
+  },
+  "spec": {
+    "categories": [
+      {
+        "category": "axiom",
+        "rationale": "An axiom states an invariant and its consequences, so the reader needs the claim, how it is held, why it is load-bearing, what breaks without it, and how conformance is observed.",
+        "ordered": true,
+        "sections": [
+          "Mandate",
+          "Mechanics",
+          "Rationale",
+          "Faults",
+          "Success signals"
+        ]
+      },
+      {
+        "category": "entity",
+        "rationale": "A definition is only usable if it also says what it excludes, so Boundaries is required rather than optional; a definition that only says what a thing is leaves every adjacent case undecided.",
+        "ordered": true,
+        "sections": [
+          "Definition",
+          "Discriminators",
+          "Boundaries",
+          "Relations",
+          "Why precision matters"
+        ]
+      },
+      {
+        "category": "component",
+        "rationale": "Closeness of fit must be judgeable without reading the implementation, which requires the duty, the contract and the fit criteria to be stated separately.",
+        "ordered": true,
+        "sections": [
+          "Duty",
+          "Contract",
+          "Reference",
+          "Fit criteria",
+          "Adjustment policy",
+          "Edges"
+        ]
+      },
+      {
+        "category": "artifact",
+        "rationale": "A document type is instantiable only when its required sections and its acceptance condition are both stated, and acceptance must be an observation rather than prose about quality.",
+        "ordered": true,
+        "sections": [
+          "Purpose",
+          "Lifecycle stage",
+          "Required sections",
+          "Authority",
+          "Acceptance falsifier",
+          "Template"
+        ]
+      }
+    ]
+  }
+}

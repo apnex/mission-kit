@@ -43,7 +43,7 @@ If they could, define it.
 ## Body shape
 
 Fixed, so definitions can be compared and evaluated rather than merely read.\
-This list is the shape until a contract in [`schemas/`](../schemas/README.md) enforces it, at which point the contract becomes authoritative and this list points at it.
+The shape is declared in [`SC6`](../schemas/SC6-entry-body.md) and enforced by `tools/check-entry-body.sh`, so this list is a reading of the contract rather than a second copy of it.
 
 - **Definition** - what it is, stated once, without mechanism.
 - **Discriminators** - the tests that separate it from its near neighbours.

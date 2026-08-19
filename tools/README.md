@@ -146,6 +146,26 @@ Exit status is non-zero if either is broken.
 
 ---
 
+## check-entry-body.sh
+
+Holds catalogue entries to the body shape their category declares.
+
+```sh
+tools/check-entry-body.sh
+```
+
+**Why it exists.**\
+The catalogue entry contract governs frontmatter and stops at the closing marker, so nothing governed the body.\
+`axioms/README.md` had always specified a five-section shape and all fifteen axioms had always followed it, which is a convention held by the care of whoever wrote last rather than a rule.
+
+**Run it when** you add an entry in a governed category, or change a declared shape.
+
+The shape is data in [`schemas/entry-body/v1alpha1/entry-body.json`](../schemas/entry-body/v1alpha1/entry-body.json), so adding a category is an edit to that file rather than to this tool.\
+A category absent from it is ungoverned by design.\
+Exit status is non-zero if any entry is missing a declared section or carries them out of order.
+
+---
+
 ## check-standing-context.sh
 
 Validates a standing-context document against the contract it declares.

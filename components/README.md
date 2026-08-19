@@ -43,7 +43,7 @@ Splitting is the expected outcome of pressure on a component, not a sign the ori
 
 ## Body shape
 
-This list is the shape until a contract in [`schemas/`](../schemas/README.md) enforces it, at which point the contract becomes authoritative and this list points at it.
+The shape is declared in [`SC6`](../schemas/SC6-entry-body.md) and enforced by `tools/check-entry-body.sh`, so this list is a reading of the contract rather than a second copy of it.
 
 - **Duty** - the single concern, stated so that "and" or "also" would be a violation.
 - **Contract** - the interface a consumer depends on.

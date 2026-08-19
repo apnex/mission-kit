@@ -125,6 +125,7 @@ This file described them a second time and the copy had already drifted, naming 
 | [SC3](schemas/SC3-skill.md) | contract | skill - the portable frontmatter contract for a skill body | active | You are authoring a portable skill body that a harness must route to |
 | [SC4](schemas/SC4-question.md) | contract | question - a process-neutral question definition with an ordered response variant | active | You are defining a question whose options and cardinality must validate deterministically |
 | [SC5](schemas/SC5-context-frame.md) | contract | context-frame - a process-neutral semantic context definition with ordered scope and givens | active | You are defining the bounded context a question or task is answered against |
+| [SC6](schemas/SC6-entry-body.md) | contract | entry-body - the body sections an entry of a given category must carry | active | You are defining or changing the body shape a category of catalogue entry must follow |
 | [MREQ-1](backlog/mreq-1-axiom-application-methodology.md) | mission-required | Axiom-application methodology for non-code missions | active | You are applying axioms to a mission that produces no code |
 | [MREQ-2](backlog/mreq-2-extend-the-corpus-work-type.md) | mission-required | Work-type for extending the corpus itself | active | You are adding or retiring a layer and want the work claimable rather than hand-run |
 <!-- END GENERATED -->

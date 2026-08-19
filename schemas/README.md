@@ -13,6 +13,7 @@ Each entity is a sovereign resource that can be understood and validated without
 | [SC3](SC3-skill.md) | skill - the portable frontmatter contract for a skill body | active | You are authoring a portable skill body that a harness must route to |
 | [SC4](SC4-question.md) | question - a process-neutral question definition with an ordered response variant | active | You are defining a question whose options and cardinality must validate deterministically |
 | [SC5](SC5-context-frame.md) | context-frame - a process-neutral semantic context definition with ordered scope and givens | active | You are defining the bounded context a question or task is answered against |
+| [SC6](SC6-entry-body.md) | entry-body - the body sections an entry of a given category must carry | active | You are defining or changing the body shape a category of catalogue entry must follow |
 <!-- END GENERATED -->
 
 ---
