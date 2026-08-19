@@ -50,8 +50,7 @@ The constraint set is authored once in the cross-axis reference and never forked
 | - | [`bundles/`](bundles/README.md) | Skills composed into operator-facing roles, by declared edge rather than by name. |
 | - | [`schemas/`](schemas/) | Machine-verifiable entity contracts, validatable without importing a runtime. |
 | - | [`tools/`](tools/README.md) | The scripts that hold the corpus to its own rules. |
-| - | [`statusline/`](statusline/README.md) | A single-session bash statusline, runnable as shipped. |
-| - | [`statusline-pi/`](statusline-pi/README.md) | The swarm-aware evolution of it, and the canonical A5 instance. |
+| - | [`plugins/`](plugins/README.md) | Operator-facing artifacts that run inside a specific agent host. |
 
 **Identity is stable and never reused.**\
 A replaced entry keeps its ID and flips `status`, and the replacement carries `supersedes`.\
@@ -136,6 +135,8 @@ Each one has occurred.
 
 Body sections stay close to rule, rationale, examples, and when to apply.\
 Axiom entries take a different shape, described in [`axioms/README.md`](axioms/README.md).
+
+---
 
 ## Referencing from a project repository
 

@@ -8,7 +8,7 @@ Where the Claude statusline answers *"how is MY session?"* for a single human-dr
 This is a **design reference**, not a drop-in script - the footer is a native pi extension (`@apnex/pi-plugin`), not a bash statusline hook.\
 The Claude `statusline/` remains the runnable bash example.
 
-This artifact is a canonical instance of **[A5 - Perceptual Parity](../axioms/A5-perceptual-parity.md)** (Pre-Attentive Rendering; "agents never ask 'what is the status of X?'"), composed under **[A3 - Sovereign Composition](../axioms/A3-sovereign-composition.md)** (render lives in the last-mile shim, not the shared core), **[A11 - Cognitive Minimalism](../axioms/A11-cognitive-minimalism.md)** (fixed 2-line budget, zero hot-path cost), and **[A12 - Precision Context Engineering](../axioms/A12-precision-context-engineering.md)**.
+This artifact is a canonical instance of **[A5 - Perceptual Parity](../../axioms/A5-perceptual-parity.md)** (Pre-Attentive Rendering; "agents never ask 'what is the status of X?'"), composed under **[A3 - Sovereign Composition](../../axioms/A3-sovereign-composition.md)** (render lives in the last-mile shim, not the shared core), **[A11 - Cognitive Minimalism](../../axioms/A11-cognitive-minimalism.md)** (fixed 2-line budget, zero hot-path cost), and **[A12 - Precision Context Engineering](../../axioms/A12-precision-context-engineering.md)**.
 
 ---
 
