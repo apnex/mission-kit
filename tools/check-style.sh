@@ -63,16 +63,21 @@ check_S6() {
 	# reason both skip fences: a list item, a table cell or a quoted example is not the
 	# document's own prose. S6 names "a list wearing prose - a real markdown list" as the
 	# correct outcome, so a multi-sentence bullet is the endorsed form, not a violation.
-	done < <(awk '/^```|^````/{c=!c; next} c{next}
+	# YAML frontmatter is structured data, not prose, so neither half applies to it.
+	done < <(awk 'FNR==1 && /^---$/{fm=1; next} fm && /^---$/{fm=0; next} fm{next}
+	              /^```|^````/{c=!c; next} c{next}
 	              /^(#|\||>|[[:space:]]*[-*+][[:space:]]|[[:space:]]*[0-9]+\.[[:space:]])/{next}
 	              /^[[:space:]]{2,}[^[:space:]]/{next}
 	              /[a-z)`][.!?] [A-Z`]/{printf "%s:%d\n", FILENAME, FNR}' "$f")
 
 	# S6 half 2 - adjacent sentences that collapse for want of a trailing backslash.
+	# List markers may be indented; a nested bullet is still a bullet.
 	while IFS=: read -r _ line; do
 		[ -n "$line" ] && report S6 "$f" "$line" "sentence collapses into the next; needs a trailing backslash or blank line"
-	done < <(awk '/^```|^````/{c=!c; p=""; next} c{next}
-	              /^[[:space:]]*$/{p=""; next} /^(#|\||-|>|\*|[0-9]+\.)/{p=""; next}
+	done < <(awk 'FNR==1 && /^---$/{fm=1; next} fm && /^---$/{fm=0; next} fm{next}
+	              /^```|^````/{c=!c; p=""; next} c{next}
+	              /^[[:space:]]*$/{p=""; next}
+	              /^[[:space:]]*(#|\||>|[-*+][[:space:]]|[0-9]+\.[[:space:]])/{p=""; next}
 	              { if (p != "" && p !~ /\\$/ && p ~ /[.!?]$/) printf "%s:%d\n", FILENAME, FNR-1; p=$0 }' "$f")
 }
 
