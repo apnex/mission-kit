@@ -148,7 +148,10 @@ check_S14() {
 	# and its harness trigger is the description field the standard already defines.
 	if [ -z "$trig" ]; then
 		case "$f" in */SKILL.md) return ;; esac
-		grep -q "^id:" "$f" 2>/dev/null && report S14 "$f" 1 "catalogue entry declares no hydrate-when"
+		# Only frontmatter makes a file a catalogue entry. A template example inside a fence
+		# is illustration, not identity.
+		awk 'FNR==1 && !/^---$/{exit} FNR==1{next} /^---$/{exit} /^id:/{found=1} END{exit !found}' "$f" \
+			&& report S14 "$f" 1 "catalogue entry declares no hydrate-when"
 		return
 	fi
 	title=$(awk 'FNR==1 && !/^---$/{exit} FNR==1{next} /^---$/{exit}

@@ -8,26 +8,38 @@ applies-to: [stateful]
 related: [A2, A5, A7]
 ---
 
-# A1 — Sovereign State Transparency
+# A1 - Sovereign State Transparency
 
 ## Mandate
-All system truth lives in a single sovereign, structured, decoupled state backplane. No functional unit possesses private, opaque, or transient truth; all state is perceivable by any authorized entity and durable across any infrastructure restart.
+All system truth lives in a single sovereign, structured, decoupled state backplane.\
+No functional unit possesses private, opaque, or transient truth; all state is perceivable by any authorized entity and durable across any infrastructure restart.
+
+---
 
 ## Mechanics
 - State is a physical object in the backplane, not a variable living inside a process.
-- The components that act on state — agents, services, adapters, tools — are stateless: they read, transform, and write back.
+- The components that act on state - agents, services, adapters, tools - are stateless: they read, transform, and write back.
 - Any authorized entity perceives any other entity's state in real time.
 - Topology (entity shape) is version-locked: values change freely; structure changes only through a formal, declared refactor.
 - Entities survive restart with identical field values.
 
+---
+
 ## Rationale
-Eliminates the Hidden State Problem. In any multi-actor system, hidden state is the primary source of Silent Drift — different actors reasoning against different "truths." A sovereign backplane gives every actor, and every human audit, the same ground truth. Persistence makes transient truth physically impossible. The principle is load-bearing wherever shared state outlives a single process; it sharpens as the number of concurrent actors grows.
+Eliminates the Hidden State Problem.\
+In any multi-actor system, hidden state is the primary source of Silent Drift - different actors reasoning against different "truths." A sovereign backplane gives every actor, and every human audit, the same ground truth.\
+Persistence makes transient truth physically impossible.\
+The principle is load-bearing wherever shared state outlives a single process; it sharpens as the number of concurrent actors grows.
+
+---
 
 ## Faults
-- **Hidden State Problem** — state lives inside a process; other actors reason about a different reality.
-- **Silent Drift** — actors acting on divergent ground truth, with no detection.
-- **Ephemeral Truth Loss** — state evaporates on restart, taking accumulated context with it.
-- **Logic Poisoning** — components depend on hidden side-effects; refactor becomes impossible.
+- **Hidden State Problem** - state lives inside a process; other actors reason about a different reality.
+- **Silent Drift** - actors acting on divergent ground truth, with no detection.
+- **Ephemeral Truth Loss** - state evaporates on restart, taking accumulated context with it.
+- **Logic Poisoning** - components depend on hidden side-effects; refactor becomes impossible.
+
+---
 
 ## Success signals
 You'll know it holds when:
