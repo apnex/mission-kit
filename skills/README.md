@@ -34,6 +34,4 @@ The "how you do it" entries.
 | [K26](K26-workgraph-arc-planning.md) | workgraph-arc-planning - bounded intent-to-design-seal planning arc | active | You are planning from intent to a sealed design under a bounded arc |
 | [K27](K27-write-discoverable-code.md) | write-discoverable-code - name and structure code so plain-text search resolves it in one hit (vendored, MIT) | active | You are naming anything another agent must find by plain-text search |
 | [K28](K28-asd-ste100-verifier.md) | asd-ste100-verifier - audit and enforce ASD-STE100 Simplified Technical English, with a runnable engine | active | You are writing documentation that must be readable by a non-native English speaker |
-| [K29](K29-survey-skill-evaluator.md) | survey-skill-evaluator - controlled campaign evaluation of sealed Survey-skill candidates | active | You are running a controlled evaluation campaign over sealed skill candidates |
-| [K30](K30-survey-v2.md) | survey-v2 - stakeholder-intent capture with generated context trees | active | Direction is still open and you need intent captured against a generated context tree |
 <!-- END GENERATED -->
