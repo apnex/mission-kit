@@ -36,13 +36,18 @@ report() { printf 'FAIL  %-14s %s\n' "$1" "$2"; fail=$((fail + 1)); }
 while IFS='	' read -r file category; do
 	[ -z "$category" ] && continue
 
+	# The entry's own id, so a declared exemption can be honoured. A layer's composition entry
+	# defines its category rather than instantiating it, so the instance shape does not apply.
+	entry_id=$(awk 'FNR==1{next} /^---$/{exit} /^id:/{sub(/^id:[[:space:]]*/, ""); gsub(/"/, ""); print; exit}' "$file")
+
 	spec=$(node -e '
 		const fs = require("fs");
 		const d = JSON.parse(fs.readFileSync(process.argv[1], "utf8"));
 		const c = d.spec.categories.find((x) => x.category === process.argv[2]);
 		if (!c) process.exit(0);
+		if ((c.exemptIds || []).includes(process.argv[3])) process.exit(0);
 		process.stdout.write((c.ordered === false ? "unordered" : "ordered") + "\n" + c.sections.join("\n"));
-	' "$decl" "$category")
+	' "$decl" "$category" "$entry_id")
 	[ -z "$spec" ] && continue
 
 	checked=$((checked + 1))
@@ -68,7 +73,9 @@ while IFS='	' read -r file category; do
 	[ "$actual" = "$wanted" ] \
 		|| report "section order" "$file ($category) declares ordered sections but they appear as: $(printf '%s' "$actual" | tr '\n' ' ')"
 done < <(
-	for f in $(git ls-files '*.md'); do
+	# Tracked plus untracked-not-ignored. Listing only tracked files made the check blind to a
+	# brand new entry, which is exactly when its shape has never been reviewed by anyone.
+	for f in $( { git ls-files '*.md'; git ls-files --others --exclude-standard '*.md'; } | sort -u ); do
 		cat=$(awk 'FNR==1 && !/^---$/{exit} FNR==1{next} /^---$/{exit}
 		           /^category:[[:space:]]*/{sub(/^category:[[:space:]]*/, ""); print; exit}' "$f")
 		[ -n "$cat" ] && printf '%s\t%s\n' "$f" "$cat"

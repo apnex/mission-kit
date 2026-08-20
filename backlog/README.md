@@ -18,6 +18,7 @@ When a trigger fires, the item routes back through fresh intake - its parked fin
 |---|---|---|---|
 | [MREQ-1](mreq-1-axiom-application-methodology.md) | Axiom-application methodology for non-code missions | active | You are applying axioms to a mission that produces no code |
 | [MREQ-2](mreq-2-extend-the-corpus-work-type.md) | Work-type for extending the corpus itself | active | You are adding or retiring a layer and want the work claimable rather than hand-run |
+| [MREQ-3](mreq-3-component-design-spec-altitude.md) | The component design and specification altitude | active | You need to specify one component's configuration and implementation and find no artifact type for it |
 <!-- END GENERATED -->
 
 Each entry's `revival-trigger` is in its frontmatter, which is the one place it is authored.

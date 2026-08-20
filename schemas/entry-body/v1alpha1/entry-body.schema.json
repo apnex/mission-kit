@@ -5,7 +5,12 @@
   "description": "Declares the ordered body sections an entry of a given category must carry. Frontmatter is governed by the catalogue entry contract; this governs everything below it. Held as one resource rather than one per category, because the concern is section conformance and splitting it would fork the mechanism.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["apiVersion", "kind", "metadata", "spec"],
+  "required": [
+    "apiVersion",
+    "kind",
+    "metadata",
+    "spec"
+  ],
   "properties": {
     "apiVersion": {
       "const": "schemas.mission-kit/v1alpha1"
@@ -19,7 +24,9 @@
     "spec": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["categories"],
+      "required": [
+        "categories"
+      ],
       "properties": {
         "categories": {
           "description": "One declaration per governed category. A category absent from this list is ungoverned, which is a stated gap rather than a silent one.",
@@ -28,12 +35,20 @@
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["category", "sections"],
+            "required": [
+              "category",
+              "sections"
+            ],
             "properties": {
               "category": {
                 "description": "The catalogue category this shape governs. Matches the category field of the entries it applies to.",
                 "type": "string",
-                "enum": ["axiom", "entity", "component", "artifact"]
+                "enum": [
+                  "axiom",
+                  "entity",
+                  "component",
+                  "artifact"
+                ]
               },
               "rationale": {
                 "description": "Why this shape, in one sentence. A shape with no stated reason is a convention that nobody can argue with.",
@@ -54,6 +69,15 @@
                   "type": "string",
                   "minLength": 1,
                   "pattern": "^[A-Z][^#\\n]*$"
+                }
+              },
+              "exemptIds": {
+                "description": "Entries of this category that the shape does not govern. The layer's composition entry defines the category rather than instantiating it, so it carries a different body. Declared rather than derived from the ID, because A0 follows the axiom shape genuinely and must stay governed.",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Z]+-?[0-9]+$"
                 }
               }
             }
