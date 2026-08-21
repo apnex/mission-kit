@@ -107,9 +107,9 @@ It refuses when an entry's `category` does not match the layer that owns it.\
 The value is the entry's own claim about where it lives, and the two can disagree.\
 Nothing else can catch this: `check-entry-body.sh` reads the declared category deliberately, so a misfiled entry is held to the wrong body shape rather than reported, and only four of the thirteen categories are body-governed.
 
-It refuses when the layer order in `CATEGORIES` disagrees with the root README's layer table.\
-That table is the authored order; `CATEGORIES` mirrors it.\
-The two had already drifted into different sequences of the same thirteen layers, unnoticed while the flat ledger kept the order invisible.
+It refuses when the root README's layer table and the directories carrying a charter do not name the same layers.\
+The generator declares no layer list of its own: the reading order is the charter's table, and the set is every directory whose README declares an id and a category.\
+A layer present in one and not the other would have its entries silently uncollected, or a heading with nothing under it, and the ledger would look correct either way.
 
 ---
 

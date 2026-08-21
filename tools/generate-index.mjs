@@ -28,16 +28,17 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const BEGIN = '<!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->';
 const END = '<!-- END GENERATED -->';
 
-// dir -> ID prefix, in the order layers appear in the ledger. The order is authored once, in the
-// root charter's layer table, and mirrored here; orderDisagreement below asserts the two match.
-// They had already drifted into two different sequences of the same thirteen layers, which nothing
-// noticed while the ledger was flat and its order invisible.
-const CATEGORIES = [
-	['axioms', 'A'], ['roles', 'R'], ['domains', 'D'], ['work-types', 'W'],
-	['methodology', 'M'], ['style', 'S'], ['patterns', 'P'], ['skills', 'K'],
-	['entities', 'E'], ['components', 'C'], ['artifacts', 'AR'], ['backlog', 'MREQ'],
-	['schemas', 'SC'],
-];
+// The layer set is not declared here. It is read from the corpus twice, from two places that are
+// maintained for other reasons, and the two are held against each other.
+//
+//   order  - the root charter's layer table, which is the authored reading order
+//   set    - the directories that carry a charter, which is what makes a layer self-describing
+//
+// A list here would be a third statement of a fact the corpus already makes twice, and it was:
+// it had drifted into a different sequence of the same thirteen layers, and nothing noticed while
+// the ledger was flat and its order invisible. Adding a layer is now an edit to the corpus and
+// never to this tool. A prefix is not needed at all - it was only ever used to rank entries for
+// sorting, which the layer order does directly.
 
 function frontmatter(text) {
 	const m = text.match(/^---\n([\s\S]*?)\n---/);
@@ -51,10 +52,47 @@ function frontmatter(text) {
 	return out;
 }
 
+// The authored reading order: the root charter's layer table, minus the mechanism layers, which
+// declare '-' for a prefix and appear in no ledger.
+function layersFromCharter() {
+	const readme = readFileSync(path.join(ROOT, 'README.md'), 'utf8');
+	return [...readme.matchAll(/^\| *`?([A-Z-]+)`? *\| *\[`([a-z-]+)\/`\]/gm)]
+		.filter((m) => m[1] !== '-').map((m) => m[2]);
+}
+
+// What is actually on disk: a directory carrying a charter, which is a README declaring both an id
+// and a category. That predicate is only exact because every layer has a charter; before they did,
+// it would have found four of thirteen.
+function layersOnDisk() {
+	return readdirSync(ROOT, { withFileTypes: true })
+		.filter((d) => d.isDirectory() && !d.name.startsWith('.') && d.name !== 'node_modules')
+		.map((d) => d.name)
+		.filter((name) => {
+			const readme = path.join(ROOT, name, 'README.md');
+			if (!existsSync(readme)) return false;
+			const fm = frontmatter(readFileSync(readme, 'utf8'));
+			return Boolean(fm && fm.id && fm.category);
+		});
+}
+
+// Held against each other before anything is read. A layer in one and not the other is a layer
+// whose entries would silently not be collected, or a heading with nothing under it, and the
+// ledger would look correct either way.
+const LAYERS = layersFromCharter();
+const onDisk = layersOnDisk();
+const missing = onDisk.filter((d) => !LAYERS.includes(d));
+const phantom = LAYERS.filter((d) => !onDisk.includes(d));
+if (missing.length || phantom.length) {
+	for (const d of missing) console.error(`FAIL  layer set  ${d}/ carries a charter but the root README layer table does not list it`);
+	for (const d of phantom) console.error(`FAIL  layer set  the root README layer table lists ${d}/, which carries no charter`);
+	console.error('\nThe charter table and the directories that carry charters must name the same layers.');
+	process.exit(1);
+}
+
 // Collect every entry that declares an id, from the category directory that owns it.
 function collect() {
 	const entries = [];
-	for (const [dir, prefix] of CATEGORIES) {
+	for (const dir of LAYERS) {
 		const abs = path.join(ROOT, dir);
 		if (!existsSync(abs)) continue;
 		for (const file of readdirSync(abs)) {
@@ -66,7 +104,7 @@ function collect() {
 			for (const rel of candidates) {
 				const fm = frontmatter(readFileSync(path.join(ROOT, rel), 'utf8'));
 				if (!fm || !fm.id) continue;
-				entries.push({ ...fm, prefix, dir, rel });
+				entries.push({ ...fm, dir, rel });
 			}
 		}
 	}
@@ -76,9 +114,9 @@ function collect() {
 // Sort by category order, then numerically inside it, so A9 precedes A10.
 const num = (id) => Number((id.match(/(\d+)$/) || [0, 0])[1]);
 function ordered(entries) {
-	const rank = new Map(CATEGORIES.map(([, p], i) => [p, i]));
+	const rank = new Map(LAYERS.map((dir, i) => [dir, i]));
 	return [...entries].sort((a, b) =>
-		(rank.get(a.prefix) - rank.get(b.prefix)) || (num(a.id) - num(b.id)));
+		(rank.get(a.dir) - rank.get(b.dir)) || (num(a.id) - num(b.id)));
 }
 
 const cell = (s) => String(s ?? '').replace(/\|/g, '\\|').trim();
@@ -109,8 +147,8 @@ function table(entries, linkFrom) {
 // heading states the layer once per layer instead of once per entry, and each row's link already
 // names the directory. `layer`, `category` and `prefix` are distinct - see E2.
 function ledgerSections(entries) {
-	return CATEGORIES
-		.map(([dir]) => [dir, ordered(entries.filter((e) => e.dir === dir))])
+	return LAYERS
+		.map((dir) => [dir, ordered(entries.filter((e) => e.dir === dir))])
 		.filter(([, es]) => es.length)
 		.map(([dir, es]) => `## ${headingOf(dir)}\n\n${table(es, null)}`)
 		.join('\n\n---\n\n');
@@ -184,7 +222,7 @@ if (dangling.length) {
 // and a charter titled out of step with its directory silently renames the section.
 function headingDisagreements(entries) {
 	const out = [];
-	for (const [dir] of CATEGORIES) {
+	for (const dir of LAYERS) {
 		const charter = entries.find((e) => e.rel === `${dir}/README.md`);
 		if (!charter) { out.push(`${dir}/ has no charter; ${dir}/README.md must declare an id and a category`); continue; }
 		const first = String(charter.title).split(' - ')[0].trim();
@@ -194,16 +232,6 @@ function headingDisagreements(entries) {
 	return out;
 }
 
-// The reading order is authored once, in the root charter's layer table, and CATEGORIES mirrors it.
-// Two hand-maintained sequences of the same thirteen layers had already diverged while the flat
-// ledger kept the order invisible; grouping promotes it to thirteen headings, so it is gated.
-function orderDisagreement() {
-	const readme = readFileSync(path.join(ROOT, 'README.md'), 'utf8');
-	const declared = [...readme.matchAll(/^\| *`?([A-Z-]+)`? *\| *\[`([a-z-]+)\/`\]/gm)]
-		.filter((m) => m[1] !== '-').map((m) => m[2]);
-	const mirrored = CATEGORIES.map(([dir]) => dir);
-	return declared.join(' ') === mirrored.join(' ') ? null : { declared, mirrored };
-}
 
 const headingProblems = headingDisagreements(entries);
 if (headingProblems.length) {
@@ -221,7 +249,7 @@ if (headingProblems.length) {
 // section heading, which removed the last place a human might have noticed.
 function misfiled(entries) {
 	const out = [];
-	for (const [dir] of CATEGORIES) {
+	for (const dir of LAYERS) {
 		const charter = entries.find((e) => e.rel === `${dir}/README.md`);
 		if (!charter) continue; // headingDisagreements already reports a layer with no charter
 		for (const e of entries.filter((x) => x.dir === dir && x.category !== charter.category))
@@ -238,17 +266,9 @@ if (wrongLayer.length) {
 	process.exit(1);
 }
 
-const drift = orderDisagreement();
-if (drift) {
-	console.error('FAIL  layer order  the root charter table and CATEGORIES disagree');
-	console.error(`  charter table : ${drift.declared.join(' ')}`);
-	console.error(`  CATEGORIES    : ${drift.mirrored.join(' ')}`);
-	console.error('\nThe charter table is the authored order. Mirror it in CATEGORIES.');
-	process.exit(1);
-}
 
 const targets = [['INDEX.md', ledgerSections(entries)]];
-for (const [dir] of CATEGORIES) {
+for (const dir of LAYERS) {
 	const readme = `${dir}/README.md`;
 	if (existsSync(path.join(ROOT, readme))) targets.push([readme, categoryTable(entries, dir)]);
 }

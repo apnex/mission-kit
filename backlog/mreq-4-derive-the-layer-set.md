@@ -3,7 +3,7 @@ id: MREQ-4
 category: mission-required
 title: Deriving the layer set rather than declaring it in the generator
 status: active
-fulfilment: deferred
+fulfilment: done
 hydrate-when: You are adding or renaming a layer and find the index generator must be edited before it will see it
 revival-trigger: >
   a layer is added, renamed or retired and the generator must be edited before it
@@ -52,10 +52,13 @@ That is the cheap half of this item, and it is done.
 
 ---
 
-## On revival
+## Fulfilled
 
-Re-triage rather than resume, per [`M5`](../methodology/M5-anti-amnesia-deferral.md).
+`CATEGORIES` is gone.\
+The generator now reads the order from the root charter's layer table and the set from the directories that carry a charter, and refuses when the two disagree in either direction.
 
-Both triggers are observable and both mean the same thing: the declaration has started costing more than it saves.\
-The first is a contributor discovering that adding a layer requires editing a tool, which is the friction [`A10`](../axioms/A10-autopoietic-evolution.md) asks to be mined rather than absorbed.\
-The second is the gate firing, which proves the two lists are genuinely maintained by hand and genuinely drift.
+The trade named above was taken rather than avoided: the generator does parse a hand-edited table, and a malformed row there is now a build failure.\
+That was judged acceptable because `check-structure.sh` already depended on the same table, so the exposure widened rather than appeared.
+
+Adding a layer is now an edit to the corpus alone.\
+The tool has no list to forget.
