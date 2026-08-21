@@ -235,6 +235,10 @@ This file described them a second time and the copy had already drifted, naming 
 | [MREQ-1](backlog/mreq-1-axiom-application-methodology.md) | Axiom-application methodology for non-code missions | You are applying axioms to a mission that produces no code |
 | [MREQ-2](backlog/mreq-2-extend-the-corpus-work-type.md) | Work-type for extending the corpus itself | You are adding or retiring a layer and want the work claimable rather than hand-run |
 | [MREQ-3](backlog/mreq-3-component-design-spec-altitude.md) | The component design and specification altitude | You need to specify one component's configuration and implementation and find no artifact type for it |
+| [MREQ-4](backlog/mreq-4-derive-the-layer-set.md) | Deriving the layer set rather than declaring it in the generator | You are adding or renaming a layer and find the index generator must be edited before it will see it |
+| [MREQ-5](backlog/mreq-5-retire-legacy-style-debt.md) | Retiring the legacy style debt that keeps the whole-corpus gate red | You need the whole-corpus style gate to be green rather than known-red before you can trust it |
+| [MREQ-6](backlog/mreq-6-ledger-retrieval-strategy.md) | The retrieval strategy for a ledger that outgrows always-on context | You are deciding how the ledger reaches an agent once it no longer fits comfortably in always-on context |
+| [MREQ-7](backlog/mreq-7-provenance-and-trust-vocabulary.md) | A provenance and trust vocabulary for an agent-maintained corpus | You need to know when an entry was last verified or who asserted it, and the corpus does not record either |
 
 ---
 
