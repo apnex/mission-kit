@@ -126,6 +126,30 @@ if (duplicated.length) {
 	process.exit(1);
 }
 
+// A citation that resolves to nothing is worse than an absent one, because it reads as routing.
+// Nothing else reports these: skill-graph resolves `prerequisite` and `composes` between SKILL.md
+// bodies and never reads catalogue frontmatter, and the schema validates one file at a time, so a
+// cross-file reference is outside what any single-file contract can see. Checked here because
+// collect() is already the only inventory of which ids exist. Blocking is not onerous: the root
+// charter already requires a retired entry's pointers to be repaired in the same commit.
+const EDGE_FIELDS = ['related', 'supersedes', 'related-axioms'];
+function danglingEdges(entries) {
+	const known = new Set(entries.map((e) => e.id));
+	const out = [];
+	for (const e of entries)
+		for (const field of EDGE_FIELDS)
+			for (const target of String(e[field] ?? '').replace(/[[\]]/g, '').split(',').map((s) => s.trim()).filter(Boolean))
+				if (!known.has(target)) out.push({ rel: e.rel, field, target });
+	return out;
+}
+
+const dangling = danglingEdges(entries);
+if (dangling.length) {
+	for (const d of dangling) console.error(`FAIL  dangling edge  ${d.rel}: ${d.field} names ${d.target}, which is not an entry`);
+	console.error(`\n${dangling.length} dangling edge(s); refusing to index a corpus whose own citations do not resolve.`);
+	process.exit(1);
+}
+
 const targets = [['INDEX.md', ledgerTable(entries)]];
 for (const [dir] of CATEGORIES) {
 	const readme = `${dir}/README.md`;

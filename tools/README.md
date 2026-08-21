@@ -90,6 +90,10 @@ It also refuses to emit when two entries declare the same `id`, in both modes ra
 An id addresses an entry, so a collision means neither is addressable: the ledger renders both rows, a `related:` edge naming the id becomes ambiguous, and `check-entry-body.sh` keys its exemptions on `(category, id)`, so exempting one of the pair silently exempts the other.\
 Uniqueness is checked here because this is the only thing that collects the entry set, and a second collector would be a copy free to disagree with it.
 
+It refuses on a dangling catalogue edge for the same reason.\
+A `related`, `supersedes` or `related-axioms` naming an entry that does not exist is a citation resolving to nothing, which reads as routing and leads nowhere.\
+Nothing else reports these: `skill-graph.mjs` resolves edges between `SKILL.md` bodies and never reads catalogue frontmatter, and the schema validates one file at a time, so a cross-file reference is outside what any single-file contract can see.
+
 ---
 
 ## check-structure.sh
