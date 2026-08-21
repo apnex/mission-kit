@@ -1,11 +1,75 @@
-# Skills
+---
+id: K0
+category: skill
+title: Skills - executable capability, the stub-and-body split, and composition by edge
+status: active
+hydrate-when: You are adding or invoking an executable capability, or you need to know why a skill is two files rather than one
+supersedes: []
+related: [M0, P0, SC3, A11]
+---
 
-Operator-level capabilities + reusable tooling.\
-The "how you do it" entries.
+# Skills - the how-you-do-it layer
+
+Operator-level capabilities and reusable tooling.\
+A skill is *invoked*, not followed: it names a procedure with inputs, steps and an output, and it is expected to be executed largely as written.
+
+That is the boundary against [`M0`](../methodology/README.md).\
+A methodology entry governs how you conduct work you are already doing; a skill is a capability you pick up to do a thing you could not otherwise do.
+
+---
+
+## A skill is two files, on purpose
+
+Each skill is a directory holding a portable `SKILL.md`, with a `K*` stub beside it in this layer.
+
+The stub is the catalogue entry.\
+It carries the `id`, `status`, ledger title and hydration trigger, and it points at the body.
+
+The body carries none of those.\
+A catalogue placement is meaningless once the skill is lifted into another repository, and a skill that arrives carrying a foreign corpus's ID is unusable without editing.\
+The split is what makes a skill portable and addressable at the same time, and it is why [`SC3`](../schemas/SC3-skill.md) governs the body's frontmatter separately from [`SC1`](../schemas/SC1-catalog-entry.md) governing the stub's.
+
+---
+
+## Composition is expressed as edges, not as names
+
+A skill declares `prerequisite` for what must be read first, and `composes` for the primitives a specialist system is built from.
+
+Depth is **derived** from those edges as the longest path from a root, and is never stored in a name.\
+Encoding hierarchy into a name freezes it, and it rots on the first change to the graph.
+
+[`tools/skill-graph.mjs`](../tools/skill-graph.mjs) makes the edges load-bearing rather than narrative: every target must resolve, the graph must be acyclic, each composed primitive's construct family must actually appear in the skill's assets, and every bundle's `skills` entry must name a real skill.
+
+Skills compose into operator-facing roles through [`bundles/`](../bundles/README.md), which hold deployment composition rather than knowledge and therefore take no ID and appear in no ledger.
+
+---
+
+## What earns an entry
+
+A capability earns one when it is executable, repeatable, and would otherwise be reconstructed from scratch by whoever needs it next.
+
+A skill that only describes is a methodology entry filed in the wrong layer.\
+A skill invoked once, for one system, is a runbook and belongs with that system.\
+A skill whose steps a script could take should be that script, per [`A11`](../axioms/A11-cognitive-minimalism.md), with the skill reduced to when to run it.
+
+---
+
+## Faults
+
+- **The stub without a body, or a body without a stub.** One is a citation resolving to nothing; the other is a capability nothing routes to.
+- **The unportable skill.** A body carrying host-specific paths, catalogue IDs or tool names, so it cannot be lifted without editing.
+- **The level in the name.** Hierarchy encoded into a filename, which freezes a graph that is expected to change.
+- **The narrated skill.** A body that explains rather than instructs, so two operators executing it produce different work and neither has departed from it.
+- **The skill that should be a tool.** A deterministic procedure written for a model to follow, spending judgement on work a script would do identically and cheaper.
+
+---
+
+## Index
 
 <!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
 | ID | Title | Status | Hydrate when |
 |---|---|---|---|
+| [K0](README.md) | Skills - executable capability, the stub-and-body split, and composition by edge | active | You are adding or invoking an executable capability, or you need to know why a skill is two files rather than one |
 | [K1](K1-history-content-scrub.md) | History content scrub | active | You must remove content from history that is already committed |
 | [K2](K2-publishing-rewritten-history.md) | Publishing rewritten history | active | You are about to force-push rewritten history that others may have consumed |
 | [K3](K3-substrate-audit.md) | substrate-audit - code-grounded substrate audit | active | You are auditing a substrate and must ground every claim in its source |

@@ -1,6 +1,19 @@
+---
+id: E0
+category: entity
+title: Entities - precise definitions of load-bearing terms, and what earns one
+status: active
+hydrate-when: You are about to define a term the corpus leans on, or two readers could act differently on the same sentence
+supersedes: []
+related: [E1, M0, SC6, A4]
+---
+
 # Entities
 
 What a thing **is**, never how it is done.
+
+This entry is the layer's composition rule: it states what earns a definition and what shape one takes, and it defines no term itself.\
+It is not an entity, which is why the entity body shape declared in [`SC6`](../schemas/SC6-entry-body.md) exempts it.
 
 An entity entry fixes the meaning of one term that an engineering organisation cannot afford to leave imprecise.\
 Every other layer in this corpus answers *how*: methodology how work is conducted, style how artifacts are written, skills how a capability is executed, patterns how a problem is shaped.\
@@ -70,5 +83,6 @@ A definition that only says what a thing is leaves every adjacent case undecided
 <!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
 | ID | Title | Status | Hydrate when |
 |---|---|---|---|
+| [E0](README.md) | Entities - precise definitions of load-bearing terms, and what earns one | active | You are about to define a term the corpus leans on, or two readers could act differently on the same sentence |
 | [E1](E1-sovereign-hierarchy.md) | sovereign-hierarchy - layered authority where each layer holds final say over one class of decision | active | You are deciding which layer owns a decision, or an actor is about to decide something at another layer's altitude |
 <!-- END GENERATED -->

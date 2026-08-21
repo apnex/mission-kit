@@ -1,3 +1,13 @@
+---
+id: SC0
+category: contract
+title: Schemas - machine-verifiable entity contracts, validatable without a project runtime
+status: active
+hydrate-when: You are defining or validating a structured entity and need its contract to hold without importing a runtime
+supersedes: []
+related: [SC1, SC6, A2, A8]
+---
+
 # Mission Kit schemas
 
 This directory owns cross-project, machine-verifiable entity contracts.\
@@ -8,6 +18,7 @@ Each entity is a sovereign resource that can be understood and validated without
 <!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
 | ID | Title | Status | Hydrate when |
 |---|---|---|---|
+| [SC0](README.md) | Schemas - machine-verifiable entity contracts, validatable without a project runtime | active | You are defining or validating a structured entity and need its contract to hold without importing a runtime |
 | [SC1](SC1-catalog-entry.md) | catalog-entry - the frontmatter every catalogue entry must satisfy | active | You are adding or changing a field in catalogue entry frontmatter |
 | [SC2](SC2-standing-context.md) | standing-context - the frontmatter contract for an always-on standing-context document | active | You are authoring or validating the always-on document an agent loads at session start |
 | [SC3](SC3-skill.md) | skill - the portable frontmatter contract for a skill body | active | You are authoring a portable skill body that a harness must route to |

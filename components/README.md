@@ -1,6 +1,19 @@
+---
+id: C0
+category: component
+title: Components - sovereign shareable substrates to be used rather than rebuilt
+status: active
+hydrate-when: You are about to build a capability that may already exist as a unit you could depend on instead
+supersedes: []
+related: [P0, M0, A3]
+---
+
 # Components
 
 Sovereign, shareable substrates that should be **used** rather than rebuilt.
+
+This entry is the layer's composition rule: it states what earns a component entry and how closeness of fit is judged, and it registers no component itself.\
+It is not a component, which is why the component body shape declared in [`SC6`](../schemas/SC6-entry-body.md) exempts it.
 
 A component entry is a portable definition and a reference: what the component's single duty is, what contract it exposes, and where the implementation lives.\
 The definition is held here so it is citable and comparable.\
@@ -69,4 +82,5 @@ The shape is declared in [`SC6`](../schemas/SC6-entry-body.md) and enforced by `
 <!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
 | ID | Title | Status | Hydrate when |
 |---|---|---|---|
+| [C0](README.md) | Components - sovereign shareable substrates to be used rather than rebuilt | active | You are about to build a capability that may already exist as a unit you could depend on instead |
 <!-- END GENERATED -->

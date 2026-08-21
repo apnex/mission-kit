@@ -1,3 +1,13 @@
+---
+id: MREQ-0
+category: mission-required
+title: Backlog - deferred requests to run a future mission, each carrying a revival trigger
+status: active
+hydrate-when: You are deferring or parking a unit of work and it must not quietly become forgetting
+supersedes: []
+related: [M5, AR5, A14]
+---
+
 # Backlog - mission-required notes
 
 Deferred **requests to run a future mission**, not the missions themselves.
@@ -16,6 +26,7 @@ When a trigger fires, the item routes back through fresh intake - its parked fin
 <!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
 | ID | Title | Status | Hydrate when |
 |---|---|---|---|
+| [MREQ-0](README.md) | Backlog - deferred requests to run a future mission, each carrying a revival trigger | active | You are deferring or parking a unit of work and it must not quietly become forgetting |
 | [MREQ-1](mreq-1-axiom-application-methodology.md) | Axiom-application methodology for non-code missions | active | You are applying axioms to a mission that produces no code |
 | [MREQ-2](mreq-2-extend-the-corpus-work-type.md) | Work-type for extending the corpus itself | active | You are adding or retiring a layer and want the work claimable rather than hand-run |
 | [MREQ-3](mreq-3-component-design-spec-altitude.md) | The component design and specification altitude | active | You need to specify one component's configuration and implementation and find no artifact type for it |
