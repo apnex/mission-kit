@@ -133,12 +133,12 @@ It is deferred rather than guessed, under [`MREQ-3`](../backlog/mreq-3-component
 ## Index
 
 <!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
-| ID | Title | Status | Hydrate when |
-|---|---|---|---|
-| [AR0](README.md) | Artifacts - the engineering lifecycle loop, and what earns a document type | active | You are deciding which engineering document a piece of work needs, or whether a shape deserves to be a type |
-| [AR1](AR1-system-architecture.md) | System architecture - one system, one altitude, one instant | active | You need to state where a system is or where it is going, and have the two be comparable |
-| [AR2](AR2-delta.md) | Delta - a declared, gated transition between two architecture states | active | You are about to change a system and need the change declared and its landing provable |
-| [AR3](AR3-board.md) | Board - the triaged graph of legal next moves, for director selection | active | You are deciding what to do next and want the choice reasoned rather than taken under local pressure |
-| [AR4](AR4-decision-record.md) | Decision record - one ruling, append-only, with what it affects | active | You are ruling on something that later work will be built on and must not be re-litigated |
-| [AR5](AR5-backlog.md) | Backlog - the durable record of what was not done, each row with a trigger | active | You are deferring, cutting or parking work and it must not become forgetting |
+| ID | Title | Hydrate when |
+|---|---|---|
+| [AR0](README.md) | Artifacts - the engineering lifecycle loop, and what earns a document type | You are deciding which engineering document a piece of work needs, or whether a shape deserves to be a type |
+| [AR1](AR1-system-architecture.md) | System architecture - one system, one altitude, one instant | You need to state where a system is or where it is going, and have the two be comparable |
+| [AR2](AR2-delta.md) | Delta - a declared, gated transition between two architecture states | You are about to change a system and need the change declared and its landing provable |
+| [AR3](AR3-board.md) | Board - the triaged graph of legal next moves, for director selection | You are deciding what to do next and want the choice reasoned rather than taken under local pressure |
+| [AR4](AR4-decision-record.md) | Decision record - one ruling, append-only, with what it affects | You are ruling on something that later work will be built on and must not be re-litigated |
+| [AR5](AR5-backlog.md) | Backlog - the durable record of what was not done, each row with a trigger | You are deferring, cutting or parking work and it must not become forgetting |
 <!-- END GENERATED -->

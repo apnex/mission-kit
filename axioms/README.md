@@ -120,21 +120,21 @@ Axioms carry this shape rather than the `S`/`M`/`P`/`K` skeleton because an axio
 ## Index
 
 <!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
-| ID | Title | Status | Hydrate when |
-|---|---|---|---|
-| [A0](README.md) | Axioms - standing commitments, what brings one into force, and how they compose | active | You are deciding whether a principle is a standing commitment or a situated move, or which axioms bind the system in front of you |
-| [A1](A1-sovereign-state-transparency.md) | Sovereign State Transparency | active | You cannot see the current state of the system from one place and are about to infer it |
-| [A2](A2-isomorphic-specification.md) | Isomorphic Specification | active | Declared intent and running reality have drifted, or you are about to change one without the other |
-| [A3](A3-sovereign-composition.md) | Sovereign Composition | active | You are deciding whether a concern belongs behind a new boundary or an existing one |
-| [A4](A4-zero-loss-knowledge.md) | Zero-Loss Knowledge | active | You are about to summarise an artifact rather than carry it forward whole |
-| [A5](A5-perceptual-parity.md) | Perceptual Parity | active | An agent is about to act on state it derived rather than state it was given |
-| [A6](A6-frictionless-agentic-collaboration.md) | Frictionless Agentic Collaboration | active | You are designing a seam between two agents that must collaborate without a human relay |
-| [A7](A7-resilient-agentic-operations.md) | Resilient Agentic Operations | active | You are deciding how the system should behave when a unit of work fails or a thread stalls |
-| [A8](A8-gated-recursive-integrity.md) | Gated Recursive Integrity | active | You are about to promote something past a gate, or deciding what the gate must prove |
-| [A9](A9-chaos-validated-deployment.md) | Chaos-Validated Deployment | active | You are about to trust a deployment you have not seen survive failure |
-| [A10](A10-autopoietic-evolution.md) | Autopoietic Evolution | active | Friction has surfaced during work and you are deciding whether to route around it or fix its cause |
-| [A11](A11-cognitive-minimalism.md) | Cognitive Minimalism | active | You are about to have an agent do work that deterministic code could do instead |
-| [A12](A12-precision-context-engineering.md) | Precision Context Engineering | active | You are assembling the context for an invocation and deciding what earns its place |
-| [A13](A13-director-intent-amplification.md) | Director Intent Amplification | active | You are about to consume the director's attention, or to decide something in their absence |
-| [A14](A14-compounding-learning.md) | Compounding Learning | active | You have learned something during work and are deciding whether to capture it |
+| ID | Title | Hydrate when |
+|---|---|---|
+| [A0](README.md) | Axioms - standing commitments, what brings one into force, and how they compose | You are deciding whether a principle is a standing commitment or a situated move, or which axioms bind the system in front of you |
+| [A1](A1-sovereign-state-transparency.md) | Sovereign State Transparency | You cannot see the current state of the system from one place and are about to infer it |
+| [A2](A2-isomorphic-specification.md) | Isomorphic Specification | Declared intent and running reality have drifted, or you are about to change one without the other |
+| [A3](A3-sovereign-composition.md) | Sovereign Composition | You are deciding whether a concern belongs behind a new boundary or an existing one |
+| [A4](A4-zero-loss-knowledge.md) | Zero-Loss Knowledge | You are about to summarise an artifact rather than carry it forward whole |
+| [A5](A5-perceptual-parity.md) | Perceptual Parity | An agent is about to act on state it derived rather than state it was given |
+| [A6](A6-frictionless-agentic-collaboration.md) | Frictionless Agentic Collaboration | You are designing a seam between two agents that must collaborate without a human relay |
+| [A7](A7-resilient-agentic-operations.md) | Resilient Agentic Operations | You are deciding how the system should behave when a unit of work fails or a thread stalls |
+| [A8](A8-gated-recursive-integrity.md) | Gated Recursive Integrity | You are about to promote something past a gate, or deciding what the gate must prove |
+| [A9](A9-chaos-validated-deployment.md) | Chaos-Validated Deployment | You are about to trust a deployment you have not seen survive failure |
+| [A10](A10-autopoietic-evolution.md) | Autopoietic Evolution | Friction has surfaced during work and you are deciding whether to route around it or fix its cause |
+| [A11](A11-cognitive-minimalism.md) | Cognitive Minimalism | You are about to have an agent do work that deterministic code could do instead |
+| [A12](A12-precision-context-engineering.md) | Precision Context Engineering | You are assembling the context for an invocation and deciding what earns its place |
+| [A13](A13-director-intent-amplification.md) | Director Intent Amplification | You are about to consume the director's attention, or to decide something in their absence |
+| [A14](A14-compounding-learning.md) | Compounding Learning | You have learned something during work and are deciding whether to capture it |
 <!-- END GENERATED -->

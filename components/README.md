@@ -80,7 +80,7 @@ The shape is declared in [`SC6`](../schemas/SC6-entry-body.md) and enforced by `
 ## Index
 
 <!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
-| ID | Title | Status | Hydrate when |
-|---|---|---|---|
-| [C0](README.md) | Components - sovereign shareable substrates to be used rather than rebuilt | active | You are about to build a capability that may already exist as a unit you could depend on instead |
+| ID | Title | Hydrate when |
+|---|---|---|
+| [C0](README.md) | Components - sovereign shareable substrates to be used rather than rebuilt | You are about to build a capability that may already exist as a unit you could depend on instead |
 <!-- END GENERATED -->

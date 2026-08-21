@@ -28,12 +28,15 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const BEGIN = '<!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->';
 const END = '<!-- END GENERATED -->';
 
-// dir -> ID prefix. Order here is the order categories appear in the flat ledger.
+// dir -> ID prefix, in the order layers appear in the ledger. The order is authored once, in the
+// root charter's layer table, and mirrored here; orderDisagreement below asserts the two match.
+// They had already drifted into two different sequences of the same thirteen layers, which nothing
+// noticed while the ledger was flat and its order invisible.
 const CATEGORIES = [
-	['axioms', 'A'], ['style', 'S'], ['methodology', 'M'], ['roles', 'R'],
-	['patterns', 'P'], ['domains', 'D'], ['work-types', 'W'], ['skills', 'K'],
-	['schemas', 'SC'], ['entities', 'E'], ['components', 'C'], ['artifacts', 'AR'],
-	['backlog', 'MREQ'],
+	['axioms', 'A'], ['roles', 'R'], ['domains', 'D'], ['work-types', 'W'],
+	['methodology', 'M'], ['style', 'S'], ['patterns', 'P'], ['skills', 'K'],
+	['entities', 'E'], ['components', 'C'], ['artifacts', 'AR'], ['backlog', 'MREQ'],
+	['schemas', 'SC'],
 ];
 
 function frontmatter(text) {
@@ -80,16 +83,41 @@ function ordered(entries) {
 
 const cell = (s) => String(s ?? '').replace(/\|/g, '\\|').trim();
 
-function ledgerTable(entries) {
-	const rows = ordered(entries).map((e) =>
-		`| [${e.id}](${e.rel}) | ${cell(e.category)} | ${cell(e.title)} | ${cell(e.status)} | ${cell(e['hydrate-when'])} |`);
-	return ['| ID | Category | Title | Status | Hydrate when |', '|---|---|---|---|---|', ...rows].join('\n');
+// A layer's display name is its directory name. The charter's title must begin with the same word,
+// so the heading has two independent derivations gated against each other rather than one nobody
+// can check. See headingDisagreements.
+const headingOf = (dir) => dir[0].toUpperCase() + dir.slice(1);
+
+// Status is emitted only where some row is not active. Nearly every entry is, so a column
+// restating it is ballast in a file that loads into every session.
+function table(entries, linkFrom) {
+	const withStatus = entries.some((e) => e.status !== 'active');
+	const head = withStatus
+		? ['| ID | Title | Status | Hydrate when |', '|---|---|---|---|']
+		: ['| ID | Title | Hydrate when |', '|---|---|---|'];
+	const rows = entries.map((e) => {
+		const href = linkFrom ? path.relative(linkFrom, e.rel) : e.rel;
+		const cells = [`[${e.id}](${href})`, cell(e.title)];
+		if (withStatus) cells.push(cell(e.status));
+		cells.push(cell(e['hydrate-when']));
+		return `| ${cells.join(' | ')} |`;
+	});
+	return [...head, ...rows].join('\n');
+}
+
+// One section per layer, charter first because its id ends in 0. There is no Category column: the
+// heading states the layer once per layer instead of once per entry, and each row's link already
+// names the directory. `layer`, `category` and `prefix` are distinct - see E2.
+function ledgerSections(entries) {
+	return CATEGORIES
+		.map(([dir]) => [dir, ordered(entries.filter((e) => e.dir === dir))])
+		.filter(([, es]) => es.length)
+		.map(([dir, es]) => `## ${headingOf(dir)}\n\n${table(es, null)}`)
+		.join('\n\n---\n\n');
 }
 
 function categoryTable(entries, dir) {
-	const rows = ordered(entries.filter((e) => e.dir === dir)).map((e) =>
-		`| [${e.id}](${path.relative(e.dir, e.rel)}) | ${cell(e.title)} | ${cell(e.status)} | ${cell(e['hydrate-when'])} |`);
-	return ['| ID | Title | Status | Hydrate when |', '|---|---|---|---|', ...rows].join('\n');
+	return table(ordered(entries.filter((e) => e.dir === dir)), dir);
 }
 
 // Replace the delimited region, or report that the file does not opt in.
@@ -150,7 +178,50 @@ if (dangling.length) {
 	process.exit(1);
 }
 
-const targets = [['INDEX.md', ledgerTable(entries)]];
+// Every layer must have a charter, and the charter's title must begin with the layer's own name.
+// The charter is what makes a layer self-describing: its id carries the prefix, its title the
+// heading, its trigger the route in. A layer without one cannot be discovered from its directory,
+// and a charter titled out of step with its directory silently renames the section.
+function headingDisagreements(entries) {
+	const out = [];
+	for (const [dir] of CATEGORIES) {
+		const charter = entries.find((e) => e.rel === `${dir}/README.md`);
+		if (!charter) { out.push(`${dir}/ has no charter; ${dir}/README.md must declare an id and a category`); continue; }
+		const first = String(charter.title).split(' - ')[0].trim();
+		if (first !== headingOf(dir))
+			out.push(`${dir}/README.md is titled "${first} - ...", so its heading would read "${first}" rather than "${headingOf(dir)}"`);
+	}
+	return out;
+}
+
+// The reading order is authored once, in the root charter's layer table, and CATEGORIES mirrors it.
+// Two hand-maintained sequences of the same thirteen layers had already diverged while the flat
+// ledger kept the order invisible; grouping promotes it to thirteen headings, so it is gated.
+function orderDisagreement() {
+	const readme = readFileSync(path.join(ROOT, 'README.md'), 'utf8');
+	const declared = [...readme.matchAll(/^\| *`?([A-Z-]+)`? *\| *\[`([a-z-]+)\/`\]/gm)]
+		.filter((m) => m[1] !== '-').map((m) => m[2]);
+	const mirrored = CATEGORIES.map(([dir]) => dir);
+	return declared.join(' ') === mirrored.join(' ') ? null : { declared, mirrored };
+}
+
+const headingProblems = headingDisagreements(entries);
+if (headingProblems.length) {
+	for (const p of headingProblems) console.error(`FAIL  charter  ${p}`);
+	console.error(`\n${headingProblems.length} charter problem(s); a layer's heading is derived from it, so it must agree.`);
+	process.exit(1);
+}
+
+const drift = orderDisagreement();
+if (drift) {
+	console.error('FAIL  layer order  the root charter table and CATEGORIES disagree');
+	console.error(`  charter table : ${drift.declared.join(' ')}`);
+	console.error(`  CATEGORIES    : ${drift.mirrored.join(' ')}`);
+	console.error('\nThe charter table is the authored order. Mirror it in CATEGORIES.');
+	process.exit(1);
+}
+
+const targets = [['INDEX.md', ledgerSections(entries)]];
 for (const [dir] of CATEGORIES) {
 	const readme = `${dir}/README.md`;
 	if (existsSync(path.join(ROOT, readme))) targets.push([readme, categoryTable(entries, dir)]);

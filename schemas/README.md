@@ -16,15 +16,15 @@ Each entity is a sovereign resource that can be understood and validated without
 ## Contracts
 
 <!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
-| ID | Title | Status | Hydrate when |
-|---|---|---|---|
-| [SC0](README.md) | Schemas - machine-verifiable entity contracts, validatable without a project runtime | active | You are defining or validating a structured entity and need its contract to hold without importing a runtime |
-| [SC1](SC1-catalog-entry.md) | catalog-entry - the frontmatter every catalogue entry must satisfy | active | You are adding or changing a field in catalogue entry frontmatter |
-| [SC2](SC2-standing-context.md) | standing-context - the frontmatter contract for an always-on standing-context document | active | You are authoring or validating the always-on document an agent loads at session start |
-| [SC3](SC3-skill.md) | skill - the portable frontmatter contract for a skill body | active | You are authoring a portable skill body that a harness must route to |
-| [SC4](SC4-question.md) | question - a process-neutral question definition with an ordered response variant | active | You are defining a question whose options and cardinality must validate deterministically |
-| [SC5](SC5-context-frame.md) | context-frame - a process-neutral semantic context definition with ordered scope and givens | active | You are defining the bounded context a question or task is answered against |
-| [SC6](SC6-entry-body.md) | entry-body - the body sections an entry of a given category must carry | active | You are defining or changing the body shape a category of catalogue entry must follow |
+| ID | Title | Hydrate when |
+|---|---|---|
+| [SC0](README.md) | Schemas - machine-verifiable entity contracts, validatable without a project runtime | You are defining or validating a structured entity and need its contract to hold without importing a runtime |
+| [SC1](SC1-catalog-entry.md) | catalog-entry - the frontmatter every catalogue entry must satisfy | You are adding or changing a field in catalogue entry frontmatter |
+| [SC2](SC2-standing-context.md) | standing-context - the frontmatter contract for an always-on standing-context document | You are authoring or validating the always-on document an agent loads at session start |
+| [SC3](SC3-skill.md) | skill - the portable frontmatter contract for a skill body | You are authoring a portable skill body that a harness must route to |
+| [SC4](SC4-question.md) | question - a process-neutral question definition with an ordered response variant | You are defining a question whose options and cardinality must validate deterministically |
+| [SC5](SC5-context-frame.md) | context-frame - a process-neutral semantic context definition with ordered scope and givens | You are defining the bounded context a question or task is answered against |
+| [SC6](SC6-entry-body.md) | entry-body - the body sections an entry of a given category must carry | You are defining or changing the body shape a category of catalogue entry must follow |
 <!-- END GENERATED -->
 
 ---
