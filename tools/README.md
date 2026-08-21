@@ -86,6 +86,10 @@ Generated regions are delimited by markers, so hand-written prose in the same fi
 A file carrying no markers is left alone, which is how `roles/`, `domains/` and `work-types/` opt out of a local table.\
 Exit status is non-zero in `--check` mode when a region is stale.
 
+It also refuses to emit when two entries declare the same `id`, in both modes rather than only under `--check`.\
+An id addresses an entry, so a collision means neither is addressable: the ledger renders both rows, a `related:` edge naming the id becomes ambiguous, and `check-entry-body.sh` keys its exemptions on `(category, id)`, so exempting one of the pair silently exempts the other.\
+Uniqueness is checked here because this is the only thing that collects the entry set, and a second collector would be a copy free to disagree with it.
+
 ---
 
 ## check-structure.sh

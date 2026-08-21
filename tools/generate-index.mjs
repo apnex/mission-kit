@@ -104,9 +104,27 @@ function splice(file, table) {
 	return { file, opted: true, text, next };
 }
 
+// An id addresses an entry, so two entries holding one id means the corpus cannot address either.
+// Nothing downstream notices: the ledger renders both rows, every `related:` edge naming the id
+// becomes ambiguous, and check-entry-body keys its exemptIds on (category, id), so exempting one
+// of the pair silently exempts the other and a gate stops gating. Refuse to emit, for the same
+// reason an empty index is refused: an artifact that encodes the defect is worse than none.
+function collisions(entries) {
+	const byId = new Map();
+	for (const e of entries) byId.set(e.id, [...(byId.get(e.id) ?? []), e.rel]);
+	return [...byId].filter(([, files]) => files.length > 1);
+}
+
 const check = process.argv.includes('--check');
 const entries = collect();
 if (!entries.length) { console.error('FAIL  no entries found; refusing to write an empty index'); process.exit(1); }
+
+const duplicated = collisions(entries);
+if (duplicated.length) {
+	for (const [id, files] of duplicated) console.error(`FAIL  duplicate id  ${id} is declared by ${files.join(' and ')}`);
+	console.error(`\n${duplicated.length} duplicate id(s); refusing to index a corpus that cannot address its own entries.`);
+	process.exit(1);
+}
 
 const targets = [['INDEX.md', ledgerTable(entries)]];
 for (const [dir] of CATEGORIES) {
