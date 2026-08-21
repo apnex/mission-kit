@@ -1,8 +1,9 @@
-# WorkGraph arc planning blueprint — dependency matrix
+# WorkGraph arc planning blueprint - dependency matrix
 
 Canonical blueprint asset: `skills/workgraph-arc-planning/assets/planning-blueprint-template.json`
 
-This matrix makes the planning blueprint's runbook-input discipline explicit. Future sibling outputs cannot be required Hub-doc references at seed time, so the blueprint uses `dependsOn` and verifier/closeout gate runbooks as compensating checks.
+This matrix makes the planning blueprint's runbook-input discipline explicit.\
+Future sibling outputs cannot be required Hub-doc references at seed time, so the blueprint uses `dependsOn` and verifier/closeout gate runbooks as compensating checks.
 
 ## Structural assertions
 
@@ -22,9 +23,12 @@ This matrix makes the planning blueprint's runbook-input discipline explicit. Fu
 | `planning_closeout` | Final design packet | `dependsOn: [final_design_packet]` | Closeout runbook requires WorkGraph state, selected arc, rejected alternatives, anti-scope, live walkthrough status, friction, entities, residuals, and non-claims. |
 | `driver` | All planning children and final closeout | `completionDependsOn` covers every non-driver child | Driver is architect-held and can complete only after all child nodes, including closeout, are done. |
 
+---
+
 ## Seed-time limitation and compensating control
 
-Sibling output documents such as the target map, triage packet, scope fence, inventory, audit, design options, feasibility sketch, design gate, final packet, and closeout packet do not exist when the blueprint is seeded. The blueprint therefore cannot list those future docs as required Hub-doc `references` without creating seed-time dangling references.
+Sibling output documents such as the target map, triage packet, scope fence, inventory, audit, design options, feasibility sketch, design gate, final packet, and closeout packet do not exist when the blueprint is seeded.\
+The blueprint therefore cannot list those future docs as required Hub-doc `references` without creating seed-time dangling references.
 
 The compensating control is load-bearing structure:
 
@@ -34,16 +38,16 @@ The compensating control is load-bearing structure:
 4. The driver completion gate covers every child and completes last.
 5. `validate-planning-blueprint.mjs` below asserts the structural edges and includes negative checks that fail if the prior early-gate/runbook mismatch class is reintroduced.
 
+---
+
 ## Validation command
 
 Run from the mission-kit root:
-
 ```bash
 node skills/workgraph-arc-planning/assets/validate-planning-blueprint.mjs
 ```
 
 Expected result:
-
 ```text
 PASS planning blueprint validation: 13 nodes, 11 dependency assertions, driver gates 12 children, negative checks caught 10 broken variants.
 ```
