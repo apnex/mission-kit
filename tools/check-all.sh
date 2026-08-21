@@ -11,7 +11,7 @@
 #   generate-index --check     the ledger and category tables match the entries
 #   skill-graph                every catalogue edge resolves and the graph is acyclic
 #   schema tests               every entry conforms to its contract
-#   check-standing-context     the standing-context template satisfies its own contract
+#   check-standing-context     the template and this repo's own AGENTS.md satisfy their contract
 #   s6 s8 s10 s12 s13 s14      one sovereign checker per style rule, on changed files only
 #
 # Style runs against changed files rather than the whole corpus. The corpus carries legacy debt
@@ -62,6 +62,7 @@ run "index is derived, not typed" node tools/generate-index.mjs --check
 run "catalogue graph resolves" node tools/skill-graph.mjs
 run "entries conform to their contract" bash -c 'cd schemas && npm ci --silent >/dev/null 2>&1 || npm install --silent >/dev/null 2>&1; npm test --silent'
 run "standing-context template holds" ./tools/check-standing-context.sh $network_flag _template-standing-context.md
+run "this repo's own standing context holds" ./tools/check-standing-context.sh $network_flag AGENTS.md
 
 # Every per-rule checker, discovered rather than listed, so adding a rule adds its gate.
 run_style() { # files...

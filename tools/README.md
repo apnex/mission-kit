@@ -200,6 +200,10 @@ tools/check-standing-context.sh /path/to/AGENTS.md
 tools/check-standing-context.sh --no-network /path/to/AGENTS.md
 ```
 
+`check-all.sh` runs it twice: once on [`_template-standing-context.md`](../_template-standing-context.md), and once on this repository's own [`AGENTS.md`](../AGENTS.md).\
+The second is the point.\
+A corpus that defines the contract and holds an instance nothing validates is asserting a rule it does not keep.
+
 **Why it exists.**\
 A standing-context document is the single always-on file an agent loads at session start, which makes it the one artifact nothing reviews.\
 The document declares its own rules in frontmatter, so this tool holds no knowledge of any workspace, path or host and can be carried anywhere the knowledge base goes.
