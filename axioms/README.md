@@ -5,7 +5,7 @@ title: Axioms - standing commitments, what brings one into force, and how they c
 status: active
 hydrate-when: You are deciding whether a principle is a standing commitment or a situated move, or which axioms bind the system in front of you
 supersedes: []
-related: [SC6, WT0, R0, D0, E1]
+related: [SC6, W0, R0, D0, E1]
 ---
 
 # Axioms - the standing-commitment layer
@@ -13,7 +13,7 @@ related: [SC6, WT0, R0, D0, E1]
 Foundational, always-in-force principles for aligned systems.\
 The "what must always hold" layer beneath the tactical entries.
 
-This entry is the layer's composition rule, in the shape [`AR0`](../artifacts/README.md) and [`WT0`](../work-types/README.md) use: it states what an axiom is, what brings one into force, and how the set composes, and it does not restate any individual axiom.\
+This entry is the layer's composition rule, in the shape [`AR0`](../artifacts/README.md) and [`W0`](../work-types/README.md) use: it states what an axiom is, what brings one into force, and how the set composes, and it does not restate any individual axiom.\
 It is not itself an axiom, which is why the axiom body shape declared in [`SC6`](../schemas/SC6-entry-body.md) exempts it, and why the frontmatter contract does not ask it for `applies-to`.
 
 **On the `A0` slot.**\

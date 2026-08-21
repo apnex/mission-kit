@@ -45,9 +45,13 @@ For a knowledge layer the directory, the prefix and the category value stand in 
 | `skills/` | `K` | `skill` | prefix irregular; `S` was taken |
 | `schemas/` | `SC` | `contract` | category is a different word |
 | `backlog/` | `MREQ` | `mission-required` | both a different word |
-| `work-types/` | `W` | `work-type` | singularised; charter is `WT0` |
+| `work-types/` | `W` | `work-type` | singularised |
 
 Singularising a directory name yields the category for most layers and is wrong for two, which is precisely the kind of near-rule that produces a confident error.
+
+**The charter slot is the one part that is regular.**\
+Every knowledge layer's charter is `<prefix>0`, without exception, so the prefix can be read off the charter's own `id` and needs no lookup.\
+That uniformity is load-bearing rather than tidy: it is what lets a layer be discovered from its own directory instead of being listed somewhere a new layer can be forgotten.
 
 **The altitude test.**\
 A layer owns a concern, not a topic.\

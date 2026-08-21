@@ -81,7 +81,7 @@ This file described them a second time and the copy had already drifted, naming 
 | [D4](domains/D4-authority-governance.md) | domain | authority-governance - the governance/authority substrate | active | You are changing who holds authority or how governance is enforced |
 | [D5](domains/D5-coordination-substrate.md) | domain | coordination-substrate - the WorkGraph/lifecycle/messaging machinery | active | You are changing the machinery that coordinates work between agents |
 | [D6](domains/D6-knowledge-methodology.md) | domain | knowledge-methodology - the durable knowledge capital | active | You are changing the durable knowledge the organisation keeps |
-| [WT0](work-types/README.md) | work-type | Work-types - the composition rule, the canonical closeability preflight, and the entry schema | active | You are classifying a unit of work and need the composition rule or the closeability preflight |
+| [W0](work-types/README.md) | work-type | Work-types - the composition rule, the canonical closeability preflight, and the entry schema | active | You are classifying a unit of work and need the composition rule or the closeability preflight |
 | [W1](work-types/W1-build-a-slice.md) | work-type | build-a-slice - implement a scoped increment | active | You are scoping the implementation of a bounded increment |
 | [W2](work-types/W2-fix-a-bug-or-repair.md) | work-type | fix-a-bug-or-repair - resolve a filed defect | active | You are resolving a defect that has already been filed |
 | [W3](work-types/W3-retire-or-hard-cut.md) | work-type | retire-or-hard-cut - delete a surface with disposition | active | You are deleting a surface and must say what happens to what depended on it |

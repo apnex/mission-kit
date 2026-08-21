@@ -9,7 +9,7 @@ engagementMode: claim+execute design/seed/drive/synthesize/closeout nodes; hold 
 evidenceAuthorities: [executor-evidence, director-ratification]   # director-ratification only under documented delegation
 composing: true
 separationConstraints: [when performing an independence gate (e.g. code-owner-approve) author must not equal approver; may not be the degradation target for an own-executed node's independence check]
-related: [R0, WT0]
+related: [R0, W0]
 ---
 
 # R1 - architect

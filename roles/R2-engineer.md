@@ -9,7 +9,7 @@ engagementMode: claim+execute build/fix/retire/validate/guard-tests/merge/deploy
 evidenceAuthorities: [executor-evidence, executor-evidence-provisional, verifier-attestation]   # verifier-attestation/independence only via code-owner-approve; provisional for un-bracketed idle executor work
 composing: true
 separationConstraints: [code-owner-approve requires author != approver; idle-pool executor-evidence is provisional until an independent gate consumes it]
-related: [R0, WT0]
+related: [R0, W0]
 ---
 
 # R2 - engineer

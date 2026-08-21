@@ -5,7 +5,7 @@ title: Methodology - how work is conducted, as against how artifacts are written
 status: active
 hydrate-when: You are choosing how to run a review, audit or deferral, or you need to know whether a rule belongs here or in style
 supersedes: []
-related: [S0, P0, K0, WT0]
+related: [S0, P0, K0, W0]
 ---
 
 # Methodology - the how-you-operate layer

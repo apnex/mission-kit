@@ -9,7 +9,7 @@ engagementMode: steer / ratify / gate / curate - signals, decisions, confirmatio
 evidenceAuthorities: [director-ratification]
 composing: false     # non-composing / non-idle-poolable / authority-only
 separationConstraints: [director-ratification cannot be satisfied by architect narrative; requires a DirectorSignal / Decision / Confirmation or explicitly documented ratified delegation]
-related: [R0, WT0, A13]
+related: [R0, W0, A13]
 ---
 
 # R4 - director

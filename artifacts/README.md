@@ -5,14 +5,14 @@ title: Artifacts - the engineering lifecycle loop, and what earns a document typ
 status: active
 hydrate-when: You are deciding which engineering document a piece of work needs, or whether a shape deserves to be a type
 supersedes: []
-related: [AR1, AR2, AR3, AR4, AR5, A13, A14, WT0]
+related: [AR1, AR2, AR3, AR4, AR5, A13, A14, W0]
 ---
 
 # Artifacts - the lifecycle loop and the admission rule
 
 The document types an engineering lifecycle produces, each with a schema, so a document is instantiated rather than reinvented.
 
-This entry is the layer's composition rule, in the shape [`WT0`](../work-types/README.md) uses for work-types: it states how the types compose and what earns admission, and it does not restate any individual type.\
+This entry is the layer's composition rule, in the shape [`W0`](../work-types/README.md) uses for work-types: it states how the types compose and what earns admission, and it does not restate any individual type.\
 It is not itself an artifact type, which is why the artifact body shape declared in [`SC6`](../schemas/SC6-entry-body.md) exempts it.
 
 ---

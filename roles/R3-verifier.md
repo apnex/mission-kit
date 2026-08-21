@@ -9,7 +9,7 @@ engagementMode: claim+execute review/audit/probe/gate nodes; author falsifiable 
 evidenceAuthorities: [verifier-attestation, review]   # kind:review for verifier-held gates; verifier-attestation (SEAL) only where structurally non-self
 composing: true
 separationConstraints: [may never attest own executed work; independence is a seed-time structural check against the LIVE roster; verifier-held gates use plain kind:review, not verifier-attestation]
-related: [R0, WT0]
+related: [R0, W0]
 ---
 
 # R3 - verifier

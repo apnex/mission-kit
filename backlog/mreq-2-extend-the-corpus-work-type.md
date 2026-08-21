@@ -9,7 +9,7 @@ revival-trigger: >
   a third layer is added or retired, OR corpus-extension work needs to be
   claimed on the coordination substrate rather than performed by hand
 related-axioms: [A3, A10]
-related: [WT0, MREQ-1]
+related: [W0, MREQ-1]
 ---
 
 # MREQ-2 - work-type for extending the corpus itself

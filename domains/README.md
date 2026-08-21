@@ -4,7 +4,7 @@ category: domain
 title: Domains - the N axis (subject-surfaces, bimodal freedom)
 status: active
 hydrate-when: You are placing a piece of work on the domain axis and need the subject surfaces
-related: [WT0, R0, A1, A3, A5]
+related: [W0, R0, A1, A3, A5]
 ---
 
 # Domains - the N axis

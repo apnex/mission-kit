@@ -1,5 +1,5 @@
 ---
-id: WT0
+id: W0
 category: work-type
 title: Work-types - the composition rule, the canonical closeability preflight, and the entry schema
 status: active

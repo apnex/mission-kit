@@ -4,7 +4,7 @@ category: role
 title: Roles - the M axis (pure essence + type-determined authority)
 status: active
 hydrate-when: You need to know which role may attest, approve or decide on a piece of work
-related: [WT0, D0, A6, A13, E1]
+related: [W0, D0, A6, A13, E1]
 ---
 
 # Roles - the M axis
