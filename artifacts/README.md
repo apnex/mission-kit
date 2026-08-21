@@ -5,7 +5,7 @@ title: Artifacts - the engineering lifecycle loop, and what earns a document typ
 status: active
 hydrate-when: You are deciding which engineering document a piece of work needs, or whether a shape deserves to be a type
 supersedes: []
-related: [AR1, AR2, AR3, AR4, AR5, A13, A14, W0]
+related: [AR1, AR2, AR3, AR4, AR5, AR6, A13, A14, W0]
 ---
 
 # Artifacts - the lifecycle loop and the admission rule
@@ -23,6 +23,10 @@ The types are not a list.\
 They are one control loop, and each is load-bearing only because of its position in it.
 
 ```text
+   intent  --------------------------------------->  shapes the target
+                                                     the inlet; nothing upstream of it
+       |
+       v
    SA @ now  ------------------>  SA @ target        one type, two instants
        |                              |              converging; the target keeps moving
        +---------- delta ------------ +              the routing points between them
@@ -33,7 +37,12 @@ They are one control loop, and each is load-bearing only because of its position
      decisions ------+------ backlog                 rulings in, deferrals out
 ```
 
-Read as a cycle: the architecture states where the system is and where it is going, the board proposes and triages the legal moves between those two points, the director selects, a delta declares and gates the chosen transition, execution produces rulings that amend the architecture and deferrals that return to the board.
+Read as a cycle with one inlet: intent states what the programme is for, the architecture states where the system is and where it is going, the board proposes and triages the legal moves between those two points, the director selects, a delta declares and gates the chosen transition, execution produces rulings that amend the architecture and the intent, and deferrals that return to the board.
+
+**The inlet was missing until it was looked for from the bottom.**\
+The first pass over this layer ran top-down from the loop, which can only find types the loop already predicts, and the loop as first drawn was closed.\
+A later bottom-up excavation of three programmes found the concern in all three and homed in one, which is the absence signature recorded below.\
+`AR1`'s own justification chain had named `north star` as a layer the whole time, with nothing owning it.
 
 The frame is the controller pattern applied to an engineering programme: observe current, diff against target, derive the work, reconcile.\
 It is deliberately isomorphic to the substrate it governs, which is [`A2`](../axioms/A2-isomorphic-specification.md) turned on the organisation itself.
@@ -50,6 +59,7 @@ Each position answers a question no other position can.
 
 | Position | Answers | Without it |
 | --- | --- | --- |
+| [`AR6`](AR6-intent-statement.md) | what is this for, and what will it not become | the target is derived from nothing, and the board has no axis to rank against |
 | [`AR1`](AR1-system-architecture.md) | where we are, where we are going | drift is undetectable, because there is no target to diff against |
 | [`AR3`](AR3-board.md) | what may we do next, and what is it worth | the next move is chosen implicitly under local pressure |
 | [`AR2`](AR2-delta.md) | what exactly changes, and how do we know it landed | progress is reported rather than measured |
@@ -117,6 +127,10 @@ Gaps are recorded as gaps rather than filled speculatively, which would be Specu
 The configuration and implementation detail of a single component or duty inside it sits below that altitude and above code, and has no type.\
 It is deferred rather than guessed, under [`MREQ-3`](../backlog/mreq-3-component-design-spec-altitude.md).
 
+That deferral has since been re-triaged against 25 measured instances and **held**, which is the more instructive outcome.\
+Instance count is not shape evidence: across those 25 no section appears in a majority, and the two questions that would settle the type - how a component specification binds upward to the duty its architecture declares, and where its boundary with code sits - are answered incompatibly by different programmes rather than merely left open.\
+Abundant evidence of a need is routinely mistaken for evidence of a shape, and this layer has now made that mistake once and caught it.
+
 ---
 
 ## Faults
@@ -141,4 +155,5 @@ It is deferred rather than guessed, under [`MREQ-3`](../backlog/mreq-3-component
 | [AR3](AR3-board.md) | Board - the triaged graph of legal next moves, for director selection | You are deciding what to do next and want the choice reasoned rather than taken under local pressure |
 | [AR4](AR4-decision-record.md) | Decision record - one ruling, append-only, with what it affects | You are ruling on something that later work will be built on and must not be re-litigated |
 | [AR5](AR5-backlog.md) | Backlog - the durable record of what was not done, each row with a trigger | You are deferring, cutting or parking work and it must not become forgetting |
+| [AR6](AR6-intent-statement.md) | Intent statement - the enduring purpose a programme is measured against | You are about to state where a system is going and find the reason it exists has no home |
 <!-- END GENERATED -->
