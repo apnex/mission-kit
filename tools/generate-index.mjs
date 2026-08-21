@@ -212,6 +212,32 @@ if (headingProblems.length) {
 	process.exit(1);
 }
 
+// An entry's category must match the layer that owns it. The value is the entry's own claim about
+// where it lives, and the two can disagree: an entry sitting in patterns/ while declaring
+// `category: methodology` passed every gate before this existed. Nothing else can catch it.
+// check-entry-body reads the declared category deliberately, so a misfiled entry is held to the
+// wrong shape rather than reported, and only four of thirteen categories are body-governed, so the
+// other nine misfile in silence. The ledger stopped rendering the value once the layer moved to the
+// section heading, which removed the last place a human might have noticed.
+function misfiled(entries) {
+	const out = [];
+	for (const [dir] of CATEGORIES) {
+		const charter = entries.find((e) => e.rel === `${dir}/README.md`);
+		if (!charter) continue; // headingDisagreements already reports a layer with no charter
+		for (const e of entries.filter((x) => x.dir === dir && x.category !== charter.category))
+			out.push({ rel: e.rel, declared: e.category, expected: charter.category });
+	}
+	return out;
+}
+
+const wrongLayer = misfiled(entries);
+if (wrongLayer.length) {
+	for (const w of wrongLayer)
+		console.error(`FAIL  misfiled  ${w.rel} declares category '${w.declared}', but its layer's charter declares '${w.expected}'`);
+	console.error(`\n${wrongLayer.length} misfiled entr(ies); an entry's category names the layer that owns it.`);
+	process.exit(1);
+}
+
 const drift = orderDisagreement();
 if (drift) {
 	console.error('FAIL  layer order  the root charter table and CATEGORIES disagree');

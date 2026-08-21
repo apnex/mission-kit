@@ -90,7 +90,7 @@ The ledger is emitted as one section per layer rather than one flat table.\
 A layer's heading is its directory name, and the layer is stated once there instead of in a column on every row.\
 `Status` is emitted only in a table holding an entry that is not `active`.
 
-Four things are refused rather than rendered, because each produces an index that reads as correct and is not.
+Five things are refused rather than rendered, because each produces an index that reads as correct and is not.
 
 It also refuses to emit when two entries declare the same `id`, in both modes rather than only under `--check`.\
 An id addresses an entry, so a collision means neither is addressable: the ledger renders both rows, a `related:` edge naming the id becomes ambiguous, and `check-entry-body.sh` keys its exemptions on `(category, id)`, so exempting one of the pair silently exempts the other.\
@@ -102,6 +102,10 @@ Nothing else reports these: `skill-graph.mjs` resolves edges between `SKILL.md` 
 
 It refuses when a layer has no charter, or when a charter's title does not begin with its own directory name.\
 The charter is what makes a layer self-describing - its `id` carries the prefix, its `title` the section heading, its trigger the route in - so a heading has two independent derivations and they are gated against each other.
+
+It refuses when an entry's `category` does not match the layer that owns it.\
+The value is the entry's own claim about where it lives, and the two can disagree.\
+Nothing else can catch this: `check-entry-body.sh` reads the declared category deliberately, so a misfiled entry is held to the wrong body shape rather than reported, and only four of the thirteen categories are body-governed.
 
 It refuses when the layer order in `CATEGORIES` disagrees with the root README's layer table.\
 That table is the authored order; `CATEGORIES` mirrors it.\
