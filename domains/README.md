@@ -5,7 +5,6 @@ title: Domains - the N axis (subject-surfaces, bimodal freedom)
 status: active
 hydrate-when: You are placing a piece of work on the domain axis and need the subject surfaces
 related: [WT0, R0, A1, A3, A5]
-source: worktax0 (docs/design/worktax-ratified-design.md v2 section 2)
 ---
 
 # Domains - the N axis

@@ -10,7 +10,7 @@ If a condition describes what you are about to do, read that entry before procee
 - Do not infer an entry's content from its title; open the file.
 - Do not rely on recall of an entry read earlier in the session; read it again.
 - More than one condition may match; read each that does.
-- Each layer also carries a `README.md` charter describing that set as a whole. Read the charter when your work spans a whole layer rather than a single entry.
+- Each layer's charter is a row here too, at the `0` slot of that layer's prefix - `A0`, `S0`, `M0` and so on. Read it when your work spans a whole layer rather than a single entry, or when you are deciding which layer a new entry belongs in.
 
 Links below are relative to the repository root.\
 Resolve them against a local mission-kit checkout when you have one, otherwise fetch from `https://raw.githubusercontent.com/apnex/mission-kit/main/`.

@@ -5,7 +5,6 @@ title: Work-types - the composition rule, the canonical closeability preflight, 
 status: active
 hydrate-when: You are classifying a unit of work and need the composition rule or the closeability preflight
 related: [R0, D0, A3, A6, A7, A11]
-source: worktax0 (docs/design/worktax-ratified-design.md v2)
 ---
 
 # Work-types - composition, closeability, and schema
@@ -154,15 +153,14 @@ Body sections (M6 exemplar): `## Definition`, `## Evidence & closeability` (refe
 ## Not a work-type: `recover-incident`
 
 Incident-recovery is **not a generatable work-type** - there is no `incident` substrate entity for a trigger to fire on, and once an incident is machine- visible it *is* a bug.\
-It is recorded as a **posture / routing note**: an incident routes through `fix-a-bug-or-repair` / `arc-repair`; the friction it surfaces is harvested via `bank-idea-or-knowledge-capital`.\
-(worktax0 section 10-L.)
+It is recorded as a **posture / routing note**: an incident routes through `fix-a-bug-or-repair` / `arc-repair`; the friction it surfaces is harvested via `bank-idea-or-knowledge-capital`.
 
 ---
 
 ## Backstop is a work-type, not a layer
 
 `backstop-a-prod-window` (W-series) is an ordinary `arc-seeded` work-type with a `backstop:true` flag, a `roleEligibility` union, final-disposition evidence, and a "stands-down-last" `compositionHook` (`completionDependsOn` on the bracketed nodes).\
-There is **no `overlays/` directory** (worktax0 section 10-F).
+There is **no `overlays/` directory**.
 
 ---
 

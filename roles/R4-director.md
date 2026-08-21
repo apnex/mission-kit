@@ -22,7 +22,7 @@ Distinct from the other three: the Director sets intent and ratifies, rather tha
 
 ## Engagement-mode
 **Steer / ratify / gate / curate**, *outside* the claim->execute loop: Director signals, decisions, confirmations, class-grants, and sensemaking walkthroughs.\
-May delegate authority (as in the worktax0 autonomous stint, where the architect held director-delegate authority).
+May delegate authority under a documented delegation, as when an architect holds director-delegate authority for an autonomous stint.
 
 ---
 

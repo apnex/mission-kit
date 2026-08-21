@@ -39,7 +39,7 @@ Closeability is governed by the canonical constraint set and the seed-time close
 
 ## Generation
 
-`arc-seeded`: a driver mints the council inside a blueprint (as worktax0 itself did) rather than pooling it idly.\
+`arc-seeded`: a driver mints the council inside a blueprint rather than pooling it idly.\
 The `target` question is `operator-supplied` at seed. idea-425/451/403 instantiate it as a `role x work-type x domain` triple whose seat contributions are `dependsOn` inputs to a synthesis node.\
 The falsifier is concrete: the node FAILs if **minority claims are erased or there is no convergence record** - a synthesis that flattens dissent is not a council outcome.
 

@@ -22,7 +22,7 @@ The architect is the authority over *shape*, not over implementation detail (eng
 
 ## Engagement-mode
 Claims and executes design / seed-a-blueprint-arc / drive-an-arc / synthesize / author-closeout nodes; holds the driver lease across an arc.\
-Under a documented Director delegation it may additionally hold `director-ratification` authority (as in the worktax0 autonomous stint).
+Under a documented Director delegation it may additionally hold `director-ratification` authority, as during an autonomous stint.
 
 ---
 
