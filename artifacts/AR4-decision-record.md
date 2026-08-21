@@ -30,7 +30,21 @@ A ruling is emitted whenever a question is settled, and the target [`AR1`](AR1-s
 
 ## Required sections
 
-Frontmatter carries the machine-readable contract:
+**One ruling is one record.\
+A record is not necessarily one file.**
+
+The observed forms are three, and all three hold: a register document carrying rulings as rows with an authority column; rulings as sections inside the document each governs; and one file per ruling.\
+What must not vary is that a ruling is separately addressable, separately dated, and separately superseded.\
+What may vary is where the bytes sit.
+
+An earlier version of this entry mandated one file per ruling, which no observed programme does.\
+That was one instance generalised into a physical-form requirement, and it is withdrawn: the fields below are required, and their carrier is not specified.
+
+**Every ruling carries a status, and the status is load-bearing.**\
+At least `proposed` and `ratified`, distinguished.\
+The measured practice worth adopting is to make the status a gate condition rather than a label - one programme's gate definitions state that no `proposed` decision authorises implementation or a gate pass, which turns the field into a mechanism instead of an annotation.
+
+Frontmatter, or the equivalent columns where the carrier is a register:
 ```yaml
 id:         "0047"                  # zero-padded, monotonic, never reused
 title:      <the ruling, as a sentence>
@@ -46,8 +60,13 @@ affects:    ["design/tssa.md", ...] # documents that must absorb it
 Superseding retires a record; amending leaves it live and changes part of it.\
 Collapsing them loses which prior rulings are still standing.
 
-`affects` is the field that makes absorption checkable.\
+`affects` is **one** way to make absorption checkable.\
 A record naming a document creates an obligation on that document, and a gate can walk it.
+
+It is not the only way, and no observed programme uses it.\
+The measured alternative is a machine-readable sibling artifact - a traceability declaration outside the prose that binds each ruling to the gates and tests that own it, checked by its own test.\
+Either satisfies the requirement, which is that **absorption is checkable by something other than a reader**.\
+A programme that carries neither has an unfalsifiable claim, whatever its records say.
 
 Body:
 
@@ -88,14 +107,25 @@ An instance is unacceptable if:
 
 - it refutes no alternative;
 - a load-bearing claim carries no provenance tag, so measured and argued are indistinguishable;
-- it names documents in `affects` that do not absorb it - **registration in an index is not absorption**;
+- absorption is checkable by no mechanism - neither an `affects` list a gate can walk nor a machine-readable binding outside the prose;
+- a named absorption obligation is not met - **registration in an index is not absorption**;
+- it carries no status, or a status vocabulary that cannot distinguish a proposal from a ruling;
+- a proposal is cited as authority for work already done;
 - its `id` reuses a retired one;
 - it was edited after ratification other than by an appended, dated amendment;
 - `authority` names no one.
 
+Nothing here constrains the carrier.\
+A register row and a standalone file fail and pass these identically, which is the point of the relaxation.
+
 ---
 
 ## Template
+
+Two carriers, both conformant.\
+Choose by how many rulings the programme expects, not by preference.
+
+### One file per ruling
 
 ```markdown
 ---
@@ -117,3 +147,19 @@ affects: []
 ## Named costs
 ## Consequences
 ```
+
+### A register carrying many rulings
+
+```markdown
+# <system> - decision register
+
+## Status            <- what authority ratified these, and when
+## Confirmed intent  <- the intent the rulings realise, if it has no other home
+
+## Decision records
+| id | ruling | authority | status |
+```
+
+The register form carries the same fields as columns, and each ruling keeps its own body below the table for the refuted alternatives, costs and consequences.\
+One observed programme absorbs its intent capture into the `Confirmed intent` section of the register, so that a reader reaches the authority from the decision it authorises rather than from a separate artifact.\
+That is a legitimate placement and not a missing document.

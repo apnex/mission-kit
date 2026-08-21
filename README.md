@@ -48,7 +48,7 @@ The constraint set is authored once in the cross-axis reference and never forked
 | `K` | [`skills/`](skills/) | Executable operator capability. |
 | `E` | [`entities/`](entities/README.md) | What a thing is. Precise definitions, never mechanism. |
 | `C` | [`components/`](components/README.md) | Sovereign shareable substrates to be used rather than rebuilt. |
-| `AR` | [`artifacts/`](artifacts/README.md) | Engineering document types, each with a schema. |
+| `AR` | [`artifacts/`](artifacts/README.md) | Engineering document types, each with an acceptance falsifier. |
 | `MREQ` | [`backlog/`](backlog/) | Deferred requirements, each carrying a revival trigger. |
 | - | [`bundles/`](bundles/README.md) | Skills composed into operator-facing roles, by declared edge rather than by name. |
 | `SC` | [`schemas/`](schemas/) | Machine-verifiable entity contracts, validatable without importing a runtime. |

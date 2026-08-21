@@ -81,7 +81,10 @@ An instance is unacceptable if:
 - a `Decisions required` entry does not name what it blocks;
 - the board and the record disagree about any item's state.
 
-The last is mechanically checkable and should be: every record row naming a board milestone must exist on the board, and every board item must cite a live row.
+**The last is the board-record invariant, and this entry owns it.**\
+Stated once: every record row naming a board milestone must exist on the board, and every board item must cite a live row.\
+It is mechanically checkable and should be.\
+[`AR5`](AR5-backlog.md) cites this rule rather than restating it, because a constraint written in two places reads as authoritative in both and drifts silently in one.
 
 ---
 
