@@ -1,5 +1,20 @@
 # Index
 
+**This is the mission-kit entry ledger.\
+Read it before you act.**
+
+Each row states a condition in the `Hydrate when` column.\
+If a condition describes what you are about to do, read that entry before proceeding.
+
+- Every entry that carries an ID appears here - this ledger is the complete list of them.
+- Do not infer an entry's content from its title; open the file.
+- Do not rely on recall of an entry read earlier in the session; read it again.
+- More than one condition may match; read each that does.
+- Each layer also carries a `README.md` charter describing that set as a whole. Read the charter when your work spans a whole layer rather than a single entry.
+
+Links below are relative to the repository root.\
+Resolve them against a local mission-kit checkout when you have one, otherwise fetch from `https://raw.githubusercontent.com/apnex/mission-kit/main/`.
+
 Flat ledger of every entry across categories.\
 Sort by ID prefix.
 
