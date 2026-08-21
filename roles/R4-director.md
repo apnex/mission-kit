@@ -44,5 +44,5 @@ The evidence path is a `DirectorSignal` / `Decision` / `Confirmation` or explici
 - **A13 (Director Intent Amplification):** the role protects non-delegable
   Director authority from being synthesized by agents while amplifying intent
   into autonomous execution.
-- **A0 (Sovereign Intelligence Engine):** intent enters the system here and
+- **A13 (Director Intent Amplification):** intent enters the system here and
   compiles outward through the other axes.

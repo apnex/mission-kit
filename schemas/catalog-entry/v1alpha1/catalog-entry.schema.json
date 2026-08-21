@@ -179,10 +179,14 @@
         "properties": {
           "category": {
             "const": "axiom"
+          },
+          "id": {
+            "pattern": "^A[1-9][0-9]*$"
           }
         },
         "required": [
-          "category"
+          "category",
+          "id"
         ]
       },
       "then": {

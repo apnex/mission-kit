@@ -36,5 +36,5 @@ The specific authority is determined by the work-type composed with this role - 
 ## Axiom alignment
 - **A3 (Sovereign Composition):** the architect is the guarantor of pure axes
   and earned boundaries - the role exists to keep composition clean.
-- **A0 / A13:** compiles Director intent into blueprint structure without asking
+- **A13:** compiles Director intent into blueprint structure without asking
   the Director for how-to.

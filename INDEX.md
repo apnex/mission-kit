@@ -25,7 +25,7 @@ This file described them a second time and the copy had already drifted, naming 
 <!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
 | ID | Category | Title | Status | Hydrate when |
 |---|---|---|---|---|
-| [A0](axioms/A0-sovereign-intelligence-engine.md) | axiom | Sovereign Intelligence Engine | active | You are justifying a decision against the composing vision rather than a single principle |
+| [A0](axioms/README.md) | axiom | Axioms - standing commitments, what brings one into force, and how they compose | active | You are deciding whether a principle is a standing commitment or a situated move, or which axioms bind the system in front of you |
 | [A1](axioms/A1-sovereign-state-transparency.md) | axiom | Sovereign State Transparency | active | You cannot see the current state of the system from one place and are about to infer it |
 | [A2](axioms/A2-isomorphic-specification.md) | axiom | Isomorphic Specification | active | Declared intent and running reality have drifted, or you are about to change one without the other |
 | [A3](axioms/A3-sovereign-composition.md) | axiom | Sovereign Composition | active | You are deciding whether a concern belongs behind a new boundary or an existing one |
@@ -139,6 +139,7 @@ This file described them a second time and the copy had already drifted, naming 
 | [SC4](schemas/SC4-question.md) | contract | question - a process-neutral question definition with an ordered response variant | active | You are defining a question whose options and cardinality must validate deterministically |
 | [SC5](schemas/SC5-context-frame.md) | contract | context-frame - a process-neutral semantic context definition with ordered scope and givens | active | You are defining the bounded context a question or task is answered against |
 | [SC6](schemas/SC6-entry-body.md) | contract | entry-body - the body sections an entry of a given category must carry | active | You are defining or changing the body shape a category of catalogue entry must follow |
+| [E1](entities/E1-sovereign-hierarchy.md) | entity | sovereign-hierarchy - layered authority where each layer holds final say over one class of decision | active | You are deciding which layer owns a decision, or an actor is about to decide something at another layer's altitude |
 | [AR0](artifacts/README.md) | artifact | Artifacts - the engineering lifecycle loop, and what earns a document type | active | You are deciding which engineering document a piece of work needs, or whether a shape deserves to be a type |
 | [AR1](artifacts/AR1-system-architecture.md) | artifact | System architecture - one system, one altitude, one instant | active | You need to state where a system is or where it is going, and have the two be comparable |
 | [AR2](artifacts/AR2-delta.md) | artifact | Delta - a declared, gated transition between two architecture states | active | You are about to change a system and need the change declared and its landing provable |

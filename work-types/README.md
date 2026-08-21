@@ -4,7 +4,7 @@ category: work-type
 title: Work-types - the composition rule, the canonical closeability preflight, and the entry schema
 status: active
 hydrate-when: You are classifying a unit of work and need the composition rule or the closeability preflight
-related: [R0, D0, A0, A3, A6, A7, A11]
+related: [R0, D0, A3, A6, A7, A11]
 source: worktax0 (docs/design/worktax-ratified-design.md v2)
 ---
 
@@ -14,7 +14,7 @@ This is the **canonical** cross-axis reference for the work-taxonomy.\
 Every `work-types/W*.md` entry references this file for its composition rule and its closeability preflight - **the constraint set is authored here once and never forked per entry** (M7 guardrail #2).\
 Read `roles/README.md` (the M role axis) and `domains/README.md` (the N domain axis) alongside this.
 
-The taxonomy exists to let strategic intent compile into self-fed WorkGraph execution (A0): a `role x work-type x domain` triple **generates** a claimable WorkItem with a complete evidence contract, so idle agents can be fed well-typed work and the Director/architect need not hand-route it (A6, A11).
+The taxonomy exists to let strategic intent compile into self-fed WorkGraph execution (A13): a `role x work-type x domain` triple **generates** a claimable WorkItem with a complete evidence contract, so idle agents can be fed well-typed work and the Director/architect need not hand-route it (A6, A11).
 
 ## Two structural concepts, three pure axes
 

@@ -85,7 +85,7 @@ An organisation staffed by humans accumulates practice in heads.\
 An organisation staffed by agents cannot, because its workers start cold and retain nothing between sessions.
 
 Institutional memory therefore has to be external, or it does not exist.\
-That much follows from [`A0`](axioms/A0-sovereign-intelligence-engine.md) and [`A14`](axioms/A14-compounding-learning.md).
+That much follows from [`A4`](axioms/A4-zero-loss-knowledge.md) and [`A14`](axioms/A14-compounding-learning.md).
 
 External is not sufficient.\
 A specification an agent cannot route through is not reachable, and one it cannot verify against is not trustworthy.\

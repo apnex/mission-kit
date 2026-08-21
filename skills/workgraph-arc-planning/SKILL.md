@@ -61,7 +61,7 @@ The minimum successful output is:
 3. a closeout packet recording decisions, caveats, deferred items, friction, and entity disposition;
 4. enough WorkGraph evidence that a cold-start architect, engineer, or verifier can reconstruct why this implementation arc is next;
 5. an explicit past-friction intake/triage record showing which friction learnings were included, deferred, no-actioned, or split into separate arcs;
-6. for arcs that affect operating guidance, methodology, skills, authority, proof discipline, lifecycle, delivery, verification, governance, coordination, or reusable organizational process: a direct axiom alignment audit against the current constitutional corpus (`get_constitution` / `get_axiom` provenance, A0-A14 as applicable), or an explicit not-required rationale before implementation authority is requested;
+6. for arcs that affect operating guidance, methodology, skills, authority, proof discipline, lifecycle, delivery, verification, governance, coordination, or reusable organizational process: a direct axiom alignment audit against the current constitutional corpus (`get_constitution` / `get_axiom` provenance, A1-A14 as applicable), or an explicit not-required rationale before implementation authority is requested;
 7. exact design candidate identity and an active-valid independent design PASS, with all prior FAILs preserved;
 8. an admission-ready handoff naming exact blueprint requirements, authority envelope fields, effect classes, repositories/environments, anti-scope, repair policy, and non-effects without claiming approved-for-go.
 
@@ -121,7 +121,7 @@ A standard planning arc uses these nodes:
 | `friction_intake` | architect | target map | prior/recent friction candidates, ranking, and included/companion/deferred/no-action/separate-arc dispositions |
 | `value_unlock_triage` | architect | target map + friction intake/section | value, learning, bootstrap capital, friction, risk, sequence ranking |
 | `scope_fence` | architect | triage | selected candidate, in-scope, deferred, anti-scope, open design questions |
-| `axiom_alignment_audit` | architect | scope fence | direct A0-A14 constitutional mapping with provenance, implementation invariants, or explicit not-required rationale |
+| `axiom_alignment_audit` | architect | scope fence | direct A1-A14 constitutional mapping with provenance, implementation invariants, or explicit not-required rationale |
 | `current_state_inventory` | engineer | scope fence | factual implementation-surface inventory |
 | `failure_mode_audit` | verifier | scope fence | proof needs, red lines, failure modes, gate criteria |
 | `design_options` | architect | scope fence + inventory + audit | compared options and recommended shape |
@@ -197,7 +197,7 @@ Do not satisfy this with a vague principle summary.
 The axiom alignment record must include:
 
 - constitution provenance from `get_constitution` and/or `get_axiom` (`sourceRepo`, `sha`, `syncedAt`, `manifestHash`, and `stale` flag);
-- direct mapping against A0-A14 as applicable, citing the load-bearing content of each relevant axiom;
+- direct mapping against A1-A14 as applicable, citing the load-bearing content of each relevant axiom;
 - implementation invariants derived from the mapping;
 - explicit tensions, risks, or non-applicability rationale;
 - verifier/design-gate checks that the final design consumes the alignment.

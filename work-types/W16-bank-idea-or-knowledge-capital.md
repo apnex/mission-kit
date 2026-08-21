@@ -48,7 +48,7 @@ Incident friction-harvest routes here: an incident is not a generatable work-typ
 
 ## Axiom alignment
 
-- **A0** - perfect institutional memory is a first-class invariant; banking
+- **A4** - perfect institutional memory is a first-class invariant; banking
   reusable capital is how the engine keeps that memory instead of re-learning.
 - **A1** - the entry is durable backplane truth with a revival trigger, so the
   insight survives restart rather than being lost as ephemeral truth.

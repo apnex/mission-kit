@@ -47,7 +47,7 @@ The falsifier is concrete: the node FAILs if the **driver is unheld or stale, or
 
 ## Axiom alignment
 
-- **A0** - strategic intent compiling into self-fed WorkGraph execution: driving
+- **A13** - strategic intent compiling into self-fed WorkGraph execution: driving
   an arc is the operation that keeps that self-feeding loop live over the stint.
 - **A11** - manage via the substrate, not by shepherding: the driver renews and
   closes through leased state, so no hidden manual step substitutes for the loop

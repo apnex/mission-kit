@@ -4,7 +4,7 @@ category: methodology
 title: Axiom alignment audit - required gate for extensive planning/design
 status: active
 hydrate-when: You are judging whether a design decision is anchored to a first principle
-related: [M1, M5, M6, A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, MREQ-1]
+related: [M1, M5, M6, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, MREQ-1]
 ---
 
 # M7 - Axiom alignment audit
@@ -76,7 +76,7 @@ This is the first slice of the broader axiom application guide; extend it only f
 
 | Layer | Primary axioms | Audit questions |
 |---|---|---|
-| Umbrella / intent | A0 | Does this design help strategic intent become substrate-owned execution, or does it drag the Director into how-to? |
+| Umbrella / intent | A13 | Does this design help strategic intent become substrate-owned execution, or does it drag the Director into how-to? |
 | Substrate / state | A1, A5, A7 | What is the source of truth? Is any state hidden, stale, lossy, or unqueryable? What happens on restart/failure? |
 | Specification / configuration | A2, A11 | Is behavior declared/configured/mechanized, or trapped in prompts and prose? Can the spec and runtime drift? |
 | Composition / boundaries | A3 | Does each module/pattern own one concern? Are surfaces earned by real consumers, not speculative reuse? |

@@ -70,4 +70,5 @@ A definition that only says what a thing is leaves every adjacent case undecided
 <!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
 | ID | Title | Status | Hydrate when |
 |---|---|---|---|
+| [E1](E1-sovereign-hierarchy.md) | sovereign-hierarchy - layered authority where each layer holds final say over one class of decision | active | You are deciding which layer owns a decision, or an actor is about to decide something at another layer's altitude |
 <!-- END GENERATED -->

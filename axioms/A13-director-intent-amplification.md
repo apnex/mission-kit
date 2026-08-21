@@ -5,7 +5,7 @@ title: Director Intent Amplification
 status: active
 hydrate-when: You are about to consume the director's attention, or to decide something in their absence
 applies-to: [multi-agent, autonomous]
-related: [A0, A5, A10, A11, A12]
+related: [A5, A10, A11, A12, E1]
 ---
 
 # A13 - Director Intent Amplification
@@ -29,7 +29,7 @@ Where A11 Cognitive Minimalism and A12 Precision Context Engineering treat LLM t
 ---
 
 ## Rationale
-The whole sovereign hierarchy descends from a single human strategic authority (A0).\
+The whole [sovereign hierarchy](../entities/E1-sovereign-hierarchy.md) descends from a single human strategic authority.\
 Every other resource in the system scales: agents fork, tokens buy, compute provisions.\
 The one input that does not scale is the attention, judgment, and will of the single human Director.\
 As the autonomous network grows, the Director becomes the structural bottleneck unless the system actively economizes the demand it places on that attention *and* continuously improves the interfaces through which intent flows in and decisions flow out.\
