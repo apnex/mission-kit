@@ -60,7 +60,9 @@ while IFS='	' read -r file category; do
 
 	missing=0
 	while IFS= read -r want; do
-		printf '%s\n' "$present" | grep -qxF "$want" \
+		# Herestring rather than a pipe: grep -q exits on the first match, and under pipefail a
+		# writer killed by the resulting SIGPIPE makes the pipeline 141, which reads as "absent".
+		grep -qxF "$want" <<< "$present" \
 			|| { report "missing section" "$file ($category) has no '## $want'"; missing=1; }
 	done <<< "$wanted"
 

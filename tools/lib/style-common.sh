@@ -13,7 +13,7 @@
 # belongs to the source its compiler reads. The marker may sit below the frontmatter.
 style_exempt() { # file, rule
 	grep -qF "style-check: allow $2" "$1" && return 0
-	head -12 "$1" | grep -qF "GENERATED FILE" && return 0
+	grep -qF "GENERATED FILE" <<< "$(head -12 "$1")" && return 0
 	return 1
 }
 

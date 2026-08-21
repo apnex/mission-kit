@@ -36,8 +36,8 @@ for f in "${files[@]}"; do
 
 	[ "${#trig}" -ge 30 ] || style_report S14 "$f" 1 "trigger is ${#trig} characters; too short to state a condition"
 	[ "$trig" != "$title" ] || style_report S14 "$f" 1 "trigger restates the title rather than naming a moment"
-	echo "$trig" | grep -qE '[.!?].+[.!?]' && style_report S14 "$f" 1 "trigger is more than one sentence; it is describing the entry, not the moment"
-	echo "$trig" | grep -qiE 'you are|you have|you need|you must|before you|after you|about to|is still|has been|when the|if the|while the' \
+	grep -qE '[.!?].+[.!?]' <<< "$trig" && style_report S14 "$f" 1 "trigger is more than one sentence; it is describing the entry, not the moment"
+	grep -qiE 'you are|you have|you need|you must|before you|after you|about to|is still|has been|when the|if the|while the' <<< "$trig" \
 		|| style_report S14 "$f" 1 "trigger carries no condition marker; it reads as a topic"
 done
 style_summary S14 "${#files[@]}"

@@ -80,7 +80,7 @@ for f in "${files[@]}"; do
 	[ -z "$sections" ] && sections=$(echo "$DEFAULT_SECTIONS" | tr '|' '\n')
 	while IFS= read -r want; do
 		[ -z "$want" ] && continue
-		echo "$body" | grep -qiE "^## +([0-9]+\. *)?${want}" || report section "$f" "required section not found: $want"
+		grep -qiE "^## +([0-9]+\. *)?${want}" <<< "$body" || report section "$f" "required section not found: $want"
 	done <<< "$sections"
 
 	# --- plain ASCII (S13) ---
