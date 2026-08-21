@@ -10,13 +10,18 @@ If a condition describes what you are about to do, read that entry before procee
 - Do not infer an entry's content from its title; open the file.
 - Do not rely on recall of an entry read earlier in the session; read it again.
 - More than one condition may match; read each that does.
-- Each layer's charter is a row here too, at the `0` slot of that layer's prefix - `A0`, `S0`, `M0` and so on. Read it when your work spans a whole layer rather than a single entry, or when you are deciding which layer a new entry belongs in.
+- Scan every section. A condition can match from a layer you did not expect to be in, and the headings are an aid to reading rather than a filter to narrow by.
+
+One section per layer, in the order the [charter](README.md#mechanics) lists them.\
+Each section opens with that layer's charter at the `0` slot of its prefix - `A0`, `R0`, `D0` and so on.\
+Read a charter when your work spans a whole layer rather than a single entry, or when you are deciding which layer a new entry belongs in.
+
+A section states its layer once, in the heading, rather than in every row.\
+`layer`, `category` and `prefix` are three names for related but distinct things, defined in [`E2`](entities/E2-layer.md).\
+`Status` appears only in sections holding an entry that is not `active`.
 
 Links below are relative to the repository root.\
 Resolve them against a local mission-kit checkout when you have one, otherwise fetch from `https://raw.githubusercontent.com/apnex/mission-kit/main/`.
-
-Flat ledger of every entry across categories.\
-Sort by ID prefix.
 
 Layers that carry no ID prefix hold mechanism rather than knowledge, so they appear in no ledger.\
 They are listed once, with the concern each owns, in the [charter](README.md#mechanics).\

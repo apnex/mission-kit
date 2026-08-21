@@ -86,6 +86,12 @@ Generated regions are delimited by markers, so hand-written prose in the same fi
 A file carrying no markers is left alone, which is how `roles/`, `domains/` and `work-types/` opt out of a local table.\
 Exit status is non-zero in `--check` mode when a region is stale.
 
+The ledger is emitted as one section per layer rather than one flat table.\
+A layer's heading is its directory name, and the layer is stated once there instead of in a column on every row.\
+`Status` is emitted only in a table holding an entry that is not `active`.
+
+Four things are refused rather than rendered, because each produces an index that reads as correct and is not.
+
 It also refuses to emit when two entries declare the same `id`, in both modes rather than only under `--check`.\
 An id addresses an entry, so a collision means neither is addressable: the ledger renders both rows, a `related:` edge naming the id becomes ambiguous, and `check-entry-body.sh` keys its exemptions on `(category, id)`, so exempting one of the pair silently exempts the other.\
 Uniqueness is checked here because this is the only thing that collects the entry set, and a second collector would be a copy free to disagree with it.
@@ -93,6 +99,13 @@ Uniqueness is checked here because this is the only thing that collects the entr
 It refuses on a dangling catalogue edge for the same reason.\
 A `related`, `supersedes` or `related-axioms` naming an entry that does not exist is a citation resolving to nothing, which reads as routing and leads nowhere.\
 Nothing else reports these: `skill-graph.mjs` resolves edges between `SKILL.md` bodies and never reads catalogue frontmatter, and the schema validates one file at a time, so a cross-file reference is outside what any single-file contract can see.
+
+It refuses when a layer has no charter, or when a charter's title does not begin with its own directory name.\
+The charter is what makes a layer self-describing - its `id` carries the prefix, its `title` the section heading, its trigger the route in - so a heading has two independent derivations and they are gated against each other.
+
+It refuses when the layer order in `CATEGORIES` disagrees with the root README's layer table.\
+That table is the authored order; `CATEGORIES` mirrors it.\
+The two had already drifted into different sequences of the same thirteen layers, unnoticed while the flat ledger kept the order invisible.
 
 ---
 
