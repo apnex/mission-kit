@@ -4,14 +4,14 @@ category: component
 title: AGP - name-addressed routing between application components
 status: active
 hydrate-when: Parts of your application must reach each other and you are about to write the code that connects them
+sovereignty: internal
 supersedes: []
 related: [C0, A3]
 ---
 
 # C1 - AGP
 
-**Type: internal, sovereign.**\
-Owned here, so a misfit is pressure that routes upstream rather than a constraint to work around.
+Sovereignty is `internal`, so a fit gap here is pressure that routes upstream rather than a constraint a consumer works around.
 
 ---
 

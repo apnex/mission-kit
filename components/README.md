@@ -54,6 +54,26 @@ Splitting is the expected outcome of pressure on a component, not a sign the ori
 
 ---
 
+## Internal and external
+
+Every component declares its `sovereignty`, and the value decides whether a fit gap has anywhere to go.
+
+**Internal** is a sovereign unit under our own authority.\
+A gap is pressure: the component is adjusted so that every consumer gets the change, or it is fractured into sovereign parts and recomposed.\
+Either way the decision is a ruling in the component's own record, and the consuming project's measured gap is the evidence for it.
+
+**External** is a unit we do not control.\
+There is no upstream to push to, so a gap is adapted at our own boundary, replaced, or absorbed.\
+Forking it is the one move that looks like a fix and is not: it makes us the owner of a copy we did not write and cannot re-merge.
+
+An external entry therefore carries an `internalisation-trigger` - the observable condition under which it is replaced by a sovereign internal one.\
+The contract requires it, so a dependency cannot be registered without its exit condition and cannot become permanent by inattention.
+
+The intended end state is that every component is internal.\
+That is a direction rather than a rule, and holding it as a declared field rather than as a preference is what makes it countable: the number of external entries is a measurement, and it is supposed to fall.
+
+---
+
 ## Duty is singular at an altitude
 
 A component's duty is one duty **at the altitude where it appears as a box in an architecture**.\

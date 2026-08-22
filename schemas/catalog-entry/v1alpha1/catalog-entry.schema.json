@@ -171,6 +171,18 @@
         "demonstrated",
         "argued"
       ]
+    },
+    "sovereignty": {
+      "description": "Whether a component is owned here or referenced from outside. 'internal' is a sovereign unit under our own authority, so a fit gap is pressure that routes upstream and resolves by adjusting or fracturing the component itself. 'external' is a unit we do not control, so a fit gap has no upstream and must be adapted at our boundary, replaced, or absorbed.",
+      "type": "string",
+      "enum": [
+        "internal",
+        "external"
+      ]
+    },
+    "internalisation-trigger": {
+      "description": "The observable condition under which an external component is replaced by a sovereign internal one. Required on every external entry so a dependency we do not own carries its exit condition, rather than becoming permanent by default.",
+      "type": "string"
     }
   },
   "allOf": [
@@ -237,6 +249,44 @@
       "then": {
         "required": [
           "recurrence"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "category": {
+            "const": "component"
+          },
+          "id": {
+            "pattern": "^C[1-9][0-9]*$"
+          }
+        },
+        "required": [
+          "category",
+          "id"
+        ]
+      },
+      "then": {
+        "required": [
+          "sovereignty"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "sovereignty": {
+            "const": "external"
+          }
+        },
+        "required": [
+          "sovereignty"
+        ]
+      },
+      "then": {
+        "required": [
+          "internalisation-trigger"
         ]
       }
     }
