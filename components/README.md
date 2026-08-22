@@ -54,6 +54,21 @@ Splitting is the expected outcome of pressure on a component, not a sign the ori
 
 ---
 
+## Duty is singular at an altitude
+
+A component's duty is one duty **at the altitude where it appears as a box in an architecture**.\
+Descend an altitude and the same component is many concerns, each with a duty of its own.\
+Both readings are correct, and the second does not refute the first.
+
+So the "and" test applies to the box, never to the implementation beneath it.\
+A component with eight internal parts has not grown eight duties; it has one duty and an anchored core.\
+What the test forbids is a *box* whose purpose needs a conjunction to state.
+
+This is what makes the registry's target reachable.\
+A managed set of orthogonal duties is a claim about architecture altitude; below that altitude feature counts are unbounded, and they are not what a consumer is choosing between when deciding what to assemble from.
+
+---
+
 ## Body shape
 
 The shape is declared in [`SC6`](../schemas/SC6-entry-body.md) and enforced by `tools/check-entry-body.sh`, so this list is a reading of the contract rather than a second copy of it.
@@ -83,4 +98,5 @@ The shape is declared in [`SC6`](../schemas/SC6-entry-body.md) and enforced by `
 | ID | Title | Hydrate when |
 |---|---|---|
 | [C0](README.md) | Components - sovereign shareable substrates to be used rather than rebuilt | You are about to build a capability that may already exist as a unit you could depend on instead |
+| [C1](C1-agp.md) | AGP - name-addressed routing between application components | Parts of your application must reach each other and you are about to write the code that connects them |
 <!-- END GENERATED -->
