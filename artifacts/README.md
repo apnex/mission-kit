@@ -23,11 +23,11 @@ The types are not a list.\
 They are one control loop, and each is load-bearing only because of its position in it.
 
 ```text
-   intent  --------------------------------------->  shapes the target
+   vision  --------------------------------------->  shapes the target
                                                      the inlet; nothing upstream of it
        |
        v
-   SA @ now  ------------------>  SA @ target        one type, two instants
+   SA @ now  ------------------>  SA @ target        one architecture, two projections
        |                              |              converging; the target keeps moving
        +---------- delta ------------ +              the routing points between them
                      ^
@@ -37,7 +37,7 @@ They are one control loop, and each is load-bearing only because of its position
      decisions ------+------ backlog                 rulings in, deferrals out
 ```
 
-Read as a cycle with one inlet: intent states what the programme is for, the architecture states where the system is and where it is going, the board proposes and triages the legal moves between those two points, the director selects, a delta declares and gates the chosen transition, execution produces rulings that amend the architecture and the intent, and deferrals that return to the board.
+Read as a cycle with one inlet: the vision states what the programme is for, the architecture states where the system is and where it is going, the board proposes and triages the legal moves between those two points, the director selects, a delta declares and gates the chosen transition, execution produces rulings that amend the architecture and the intent, and deferrals that return to the board.
 
 **The inlet was missing until it was looked for from the bottom.**\
 The first pass over this layer ran top-down from the loop, which can only find types the loop already predicts, and the loop as first drawn was closed.\
@@ -59,7 +59,7 @@ Each position answers a question no other position can.
 
 | Position | Answers | Without it |
 | --- | --- | --- |
-| [`AR6`](AR6-intent-statement.md) | what is this for, and what will it not become | the target is derived from nothing, and the board has no axis to rank against |
+| [`AR6`](AR6-vision.md) | what is this for, and what will it not become | the target is derived from nothing, and the board has no axis to rank against |
 | [`AR1`](AR1-system-architecture.md) | where we are, where we are going | drift is undetectable, because there is no target to diff against |
 | [`AR3`](AR3-board.md) | what may we do next, and what is it worth | the next move is chosen implicitly under local pressure |
 | [`AR2`](AR2-delta.md) | what exactly changes, and how do we know it landed | progress is reported rather than measured |
@@ -155,5 +155,5 @@ Abundant evidence of a need is routinely mistaken for evidence of a shape, and t
 | [AR3](AR3-board.md) | Board - the triaged graph of legal next moves, for director selection | You are deciding what to do next and want the choice reasoned rather than taken under local pressure |
 | [AR4](AR4-decision-record.md) | Decision record - one ruling, append-only, with what it affects | You are ruling on something that later work will be built on and must not be re-litigated |
 | [AR5](AR5-backlog.md) | Backlog - the durable record of what was not done, each row with a trigger | You are deferring, cutting or parking work and it must not become forgetting |
-| [AR6](AR6-intent-statement.md) | Intent statement - the enduring purpose a programme is measured against | You are about to state where a system is going and find the reason it exists has no home |
+| [AR6](AR6-vision.md) | Vision - the enduring purpose a programme is measured against | You need to say why a programme exists and what it must never become, and no document holds it |
 <!-- END GENERATED -->

@@ -224,7 +224,7 @@ This file described them a second time and the copy had already drifted, naming 
 | [AR3](artifacts/AR3-board.md) | Board - the triaged graph of legal next moves, for director selection | You are deciding what to do next and want the choice reasoned rather than taken under local pressure |
 | [AR4](artifacts/AR4-decision-record.md) | Decision record - one ruling, append-only, with what it affects | You are ruling on something that later work will be built on and must not be re-litigated |
 | [AR5](artifacts/AR5-backlog.md) | Backlog - the durable record of what was not done, each row with a trigger | You are deferring, cutting or parking work and it must not become forgetting |
-| [AR6](artifacts/AR6-intent-statement.md) | Intent statement - the enduring purpose a programme is measured against | You are about to state where a system is going and find the reason it exists has no home |
+| [AR6](artifacts/AR6-vision.md) | Vision - the enduring purpose a programme is measured against | You need to say why a programme exists and what it must never become, and no document holds it |
 
 ---
 

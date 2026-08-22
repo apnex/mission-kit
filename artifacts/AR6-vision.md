@@ -1,30 +1,50 @@
 ---
 id: AR6
 category: artifact
-title: Intent statement - the enduring purpose a programme is measured against
+title: Vision - the enduring purpose a programme is measured against
 status: active
-hydrate-when: You are about to state where a system is going and find the reason it exists has no home
+hydrate-when: You need to say why a programme exists and what it must never become, and no document holds it
 recurrence: argued
 supersedes: []
 related: [AR0, AR1, AR3, A13, A14]
 ---
 
-# AR6 - intent statement
+# AR6 - vision
 
 ## Purpose
 
-Carry the enduring purpose of a programme - what it is for, what it will not become, and what would count as succeeding - so that a target architecture has something to be derived from and a board has something to rank against.
+Carry the enduring purpose of a programme - what it is for, what it will not become, and what would count as succeeding.
 
-An intent statement is the **inlet to the lifecycle loop**.\
-[`AR0`](README.md)'s loop is otherwise closed: the architecture states two instants, the board selects between them, deltas transition, rulings and deferrals return.\
-Nothing in it receives intent, and every other type presupposes a direction that no type states.
+A vision conveys intent, but intent is its consequence rather than its type.\
+The type is the statement of purpose, which is why it outlives every plan derived from it.
 
-[`AR1`](AR1-system-architecture.md) already names the gap.\
-Its justification chain is *domain, axioms, north star, principles, decisions, model*, each layer citing only layers above it.\
-**North star is a named layer of that chain and nothing owns it**, so an architecture citing it reaches for a document that does not exist.
+A vision is the **inlet to the lifecycle loop**.\
+[`AR0`](README.md)'s loop is otherwise closed: the architecture is projected at two instants, the board selects between them, deltas transition, rulings and deferrals return.\
+Nothing in it says why any of it is being done, and every other type presupposes a purpose that no type carries.
 
-An intent statement is not a plan and grants no authority.\
+A vision is not a plan and grants no authority.\
 It is the thing a plan is checked against.
+
+---
+
+## Not an architecture
+
+**A vision and a system architecture are orthogonal devices, and this section exists because they were once confused.**
+
+[`AR1`](AR1-system-architecture.md) describes a system - components, duties, interfaces, state, run time.\
+A vision describes an endeavour and names no component at all.
+
+Two discriminators, both observable:
+
+- **Structure.** If the document names a component, an interface or a duty, it is an `AR1` at some instant. A vision that has grown a component is an architecture wearing the wrong title.
+- **Projection.** `AR1` is *temporally projected* - one architecture stated at two instants, `current` and `target`, conventionally CSSA and TSSA. **A vision is not projected.** There is no current vision and target vision; a vision that changed is a new vision, ratified as such, and never a second view of the same one.
+
+The relation runs one way, and it is citation rather than containment.\
+The target projection of `AR1` is shaped by the vision and cites it; the vision constrains the target and knows nothing of it.\
+A vision survives its target architecture being replaced wholesale, and a change of vision invalidates the target.
+
+`AR1`'s justification chain - *domain, axioms, north star, principles, decisions, model* - names the north star as a layer it **cites**, not one it contains.\
+That citation is what this type answers: before this entry existed, an architecture citing its north star reached for a document that did not exist.
 
 ---
 
@@ -50,7 +70,7 @@ What is required is that these **devices** are present and findable.\
 How they are arranged belongs to the programme.
 
 - **What this is, and what it is not.** Both, and the second is not optional. A purpose with no stated exclusions has not been bounded, and the negative half is the half that is observed to travel.
-- **The non-authority declaration.** What holding this document does *not* entitle its holder to do. An intent statement that reads as an approval will be cited as one.
+- **The non-authority declaration.** What holding this document does *not* entitle its holder to do. A vision that reads as an approval will be cited as one.
 - **The north star.** One statement, short enough to be quoted whole and cited by a board. If it uses a term that could be read two ways, the document defines that term itself rather than leaving it to the reader.
 - **What would count as succeeding**, as a set of dimensions rather than a score. A single number hides its weakest dimension. Where this was observed, the refusal to collapse was stated explicitly rather than left implicit - though that is a reading of one instance, not a survey of practice.
 - **The authority.** Who holds this intent and who may change it.
@@ -66,7 +86,7 @@ Current state belongs to `AR1`'s derived instant, and a live frontier belongs to
 Held by the director.\
 Drafted by anyone; ratified only by the director, because intent is the one thing no other role may supply.
 
-An intent statement is amended, never quietly rewritten.\
+A vision is amended, never quietly rewritten.\
 A ruling that changes direction is recorded as [`AR4`](AR4-decision-record.md) and absorbed here, so the reasoning survives the change.
 
 ---

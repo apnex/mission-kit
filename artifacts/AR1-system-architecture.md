@@ -19,7 +19,11 @@ A system architecture has **no concept of time within it** - it is a photograph,
 Time enters by which instant the document describes, and by nothing else.\
 Sequencing belongs to [`AR2`](AR2-delta.md); an architecture carrying build order has absorbed transition content and stopped being an instant.
 
-Two instantiations, declared in frontmatter as `instant: current | target`, conventionally named **CSSA** and **TSSA**:
+**Its subject is the system, never the endeavour.**\
+An architecture at either projection states structure - components, duties, interfaces, state, run time.\
+Why the programme exists is [`AR6`](AR6-vision.md) and is cited from here rather than restated, which is the discriminator when the two are hard to tell apart: a document that states purpose and names no component is not an architecture at any instant.
+
+**Two temporal projections of one architecture**, declared in frontmatter as `instant: current | target`, conventionally named **CSSA** and **TSSA**:
 
 - **`current`** - where the system is. **Derived, never hand-authored.** A hand-written statement of where we are is a second representation of the running system, and it drifts. It is evidenced instead: from delta exit criteria that are binary and gate-checked, and from what the verification harness proves. At most a thin generated summary sits on top.
 - **`target`** - where the system is going. Authored, and **living**: it tracks the ratified ruling corpus continuously rather than being frozen and revised.
@@ -44,7 +48,7 @@ An architecture is organised as its system is organised, and a shape imposed on 
 What is required is that these devices are present and findable.
 
 - **Identity, scope and non-goals.** What the system is, and what it is explicitly not. Non-goals are required, because a scope with no stated exclusions has not been bounded.
-- **The justification chain.** Domain, axioms, north star, principles, decisions, model - each layer citing only layers above it. A boundary that cites none of them is not a boundary, it is a preference.
+- **The justification chain.** Domain, axioms, north star, principles, decisions, model - each layer citing only layers above it. A boundary that cites none of them is not a boundary, it is a preference. The upper layers are **cited and not contained**: the north star is held by [`AR6`](AR6-vision.md) and the rulings by [`AR4`](AR4-decision-record.md), and an architecture that absorbs either has taken on a duty that is not its own.
 - **Axiom alignment, including unresolved tension.** Where the architecture stands against the standing commitments it claims, with contradictions named and either discharged by citation or left open. Compliance everywhere is a result an honest audit rarely earns, and claiming it is the finding.
 - **The anchored core.** Sovereign components, one duty each, with what each exposes and what it consumes. This is the load-bearing section; everything else elaborates, registers or proves around it.
 - **The entity or data model**, and the interfaces between components.
