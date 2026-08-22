@@ -23,21 +23,35 @@ The types are not a list.\
 They are one control loop, and each is load-bearing only because of its position in it.
 
 ```text
-   vision  --------------------------------------->  shapes the target
-                                                     the inlet; nothing upstream of it
-       |
-       v
-   SA @ now  ------------------>  SA @ target        one architecture, two projections
-       |                              |              converging; the target keeps moving
-       +---------- delta ------------ +              the routing points between them
-                     ^
-                     | director selects
-                  board                              the triaged legal moves
-                     ^
-     decisions ------+------ backlog                 rulings in, deferrals out
+        AR6  vision                            the inlet; nothing upstream of it
+          |
+          |  shapes the target, and outlives it
+          v
+   +--> AR1  @ target  <------- amend -------  AR4  decisions
+   |      |                                         ^
+   |      |  the gap                                |  execution emits
+   |      v                                         |
+   |    AR3  board  <------- open rows ------  AR5  backlog
+   |      |                                         ^
+   |      |  director selects                       |  execution defers
+   |      v                                         |
+   |    AR2  delta  --------------------------------+
+   |      |
+   |      |  exit criteria, gate-checked
+   |      v
+   +--- AR1  @ now                             derived, never hand-authored
 ```
 
-Read as a cycle with one inlet: the vision states what the programme is for, the architecture states where the system is and where it is going, the board proposes and triages the legal moves between those two points, the director selects, a delta declares and gates the chosen transition, execution produces rulings that amend the architecture and the intent, and deferrals that return to the board.
+`AR1` appears twice and is one type: the left rail is the diff between its two projections, and that diff is the only reason any of the rest exists.
+
+Read it as a cycle with one inlet.\
+The vision states what the programme is for and shapes the target.\
+The gap between the architecture's two projections is what the board triages into legal moves; the director selects one, and a delta declares and gates that transition.\
+Execution emits rulings that amend the target and deferrals that return to the board.
+
+**The edge that closes the loop is the one at the bottom.**\
+When a delta's exit criteria go green, the current projection is derived from them - and nothing else updates where the system is.\
+That is why `AR1`'s `current` may not be hand-authored: writing it by hand does not add a second source of truth, it *cuts the feedback path*, and a controller with no measurement is an open loop reporting on itself.
 
 **The inlet was missing until it was looked for from the bottom.**\
 A pass that runs top-down from the loop can only find types the loop already predicts, and the loop as first drawn was closed.\
