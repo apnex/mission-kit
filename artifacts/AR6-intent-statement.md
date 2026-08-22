@@ -52,7 +52,7 @@ How they are arranged belongs to the programme.
 - **What this is, and what it is not.** Both, and the second is not optional. A purpose with no stated exclusions has not been bounded, and the negative half is the half that is observed to travel.
 - **The non-authority declaration.** What holding this document does *not* entitle its holder to do. An intent statement that reads as an approval will be cited as one.
 - **The north star.** One statement, short enough to be quoted whole and cited by a board. If it uses a term that could be read two ways, the document defines that term itself rather than leaving it to the reader.
-- **What would count as succeeding**, as a set of dimensions rather than a score. A single number hides its weakest dimension, and the observed practice in every programme that states success at all is to refuse the collapse explicitly.
+- **What would count as succeeding**, as a set of dimensions rather than a score. A single number hides its weakest dimension. Where this was observed, the refusal to collapse was stated explicitly rather than left implicit - though that is a reading of one instance, not a survey of practice.
 - **The authority.** Who holds this intent and who may change it.
 
 **Enduring and point-in-time content are separated, or the document says which it is.**\

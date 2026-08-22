@@ -37,8 +37,15 @@ The observed forms are three, and all three hold: a register document carrying r
 What must not vary is that a ruling is separately addressable, separately dated, and separately superseded.\
 What may vary is where the bytes sit.
 
-An earlier version of this entry mandated one file per ruling, which no observed programme does.\
-That was one instance generalised into a physical-form requirement, and it is withdrawn: the fields below are required, and their carrier is not specified.
+An earlier version of this entry mandated one file per ruling.\
+That requirement is withdrawn - not because the form is wrong, but because it is one of three that work: the fields below are required, and their carrier is not.
+
+**Correction, and the reasoning that produced it was faulty.**\
+The withdrawal was first justified by the claim that *no observed programme uses one file per ruling*.\
+That claim is false.\
+It was drawn from an excavation of three programmes, then written as though it described every programme; two further programmes each keep a one-file-per-ruling corpus, one of sixty-six records and one of more than a dozen, and this entry's own example values were taken from the first of them.\
+The original claim is retained here rather than deleted, because the failure is instructive: a negative claim about practice is only as wide as the sample that produced it, and the sample was never stated.\
+The relaxation survives the correction on the evidence that actually supports it - three programmes carry rulings in carriers other than one-file-per-ruling, so the form is not universal and must not be mandated.
 
 **Every ruling carries a status, and the status is load-bearing.**\
 At least `proposed` and `ratified`, distinguished.\
@@ -63,10 +70,15 @@ Collapsing them loses which prior rulings are still standing.
 `affects` is **one** way to make absorption checkable.\
 A record naming a document creates an obligation on that document, and a gate can walk it.
 
-It is not the only way, and no observed programme uses it.\
+It is not the only way.\
 The measured alternative is a machine-readable sibling artifact - a traceability declaration outside the prose that binds each ruling to the gates and tests that own it, checked by its own test.\
 Either satisfies the requirement, which is that **absorption is checkable by something other than a reader**.\
 A programme that carries neither has an unfalsifiable claim, whatever its records say.
+
+A second correction belongs here.\
+This passage previously read that no observed programme uses `affects`.\
+That is false and was false by the same mechanism as the correction above - a three-programme sample reported as a survey of practice.\
+One programme uses `affects` on every record, and the example value in the block above is quoted from it.
 
 Body:
 

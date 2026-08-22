@@ -4,7 +4,7 @@ category: artifact
 title: Backlog - the durable record of what was not done, each row with a trigger
 status: active
 hydrate-when: You are deferring, cutting or parking work and it must not become forgetting
-recurrence: argued
+recurrence: demonstrated
 supersedes: []
 related: [AR0, AR3, M5, A14]
 ---
@@ -23,12 +23,18 @@ Keeping them as one document is the common failure: a plan that must also serve 
 Its governing rule is [`M5`](../methodology/M5-anti-amnesia-deferral.md): every parked or cut row carries a **revival trigger** naming an observable condition.\
 "Later" is not a trigger.
 
-**Correction - recurrence downgraded from `demonstrated` to `argued`.**\
-This entry claimed `demonstrated`, which `AR0` defines as observed in two or more independent projects.\
-A later excavation of three programmes measured exactly one instance.\
+**Correction - a downgrade to `argued` was made here and is withdrawn.**\
+This entry was briefly changed to `recurrence: argued` on the grounds that an excavation of three programmes measured exactly one instance.\
+That reasoning does not support the conclusion.\
+Three programmes are a sample, not the population, and the sample was chosen for a different purpose; asserting `argued` asserts that no second instance exists anywhere, which the sample cannot establish.\
+Further programmes outside it do carry deferral records, so the original tier stands unrefuted and is restored.
+
+The scoped observation is worth keeping, because it is true and it is useful.\
+Of the three programmes examined, exactly one carries a defect-and-deferral register.\
 The absence in the other two is not an oversight in either: one mandates a finding lifecycle - a durable finding id, capture status, owner and disposition - in its own gate definitions and has no document holding the findings, and the other carries four differently-shaped deferral statements across four documents and no register.\
-The claim is retained here under correction rather than deleted, because a silently corrected record teaches the next reader that corrections do not happen.\
-The type itself is unaffected; only the evidence tier was overstated.
+That is evidence about how easily this type goes missing, which is a different and more interesting claim than one about its recurrence tier.
+
+Both the downgrade and its withdrawal are retained rather than deleted, because a silently corrected record teaches the next reader that corrections do not happen.
 
 ---
 
