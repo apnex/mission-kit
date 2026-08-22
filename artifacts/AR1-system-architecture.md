@@ -15,13 +15,19 @@ related: [AR0, AR2, AR3, A2, A3, A4]
 
 State a whole system at one altitude, at one instant, so that two instants can be diffed and the difference becomes work.
 
-A system architecture has **no concept of time within it** - it is a photograph, not a film.\
+A system architecture has **no concept of time within it**.\
 Time enters by which instant the document describes, and by nothing else.\
 Sequencing belongs to [`AR2`](AR2-delta.md); an architecture carrying build order has absorbed transition content and stopped being an instant.
 
+**Both projections are written in the present tense of a system that exists.**\
+A target is not described as what will be built, what is planned, or what remains outstanding - it is described as though someone were reading it in the state it names.\
+The rule is mechanical, which is what makes it usable: a document containing a plan, an estimate, a migration or a progress report has stopped being an architecture at an instant, and the offending passage belongs in a delta.\
+Future tense is the reliable symptom.
+
 **Its subject is the system, never the endeavour.**\
-An architecture at either projection states structure - components, duties, interfaces, state, run time.\
-Why the programme exists is [`AR6`](AR6-vision.md) and is cited from here rather than restated, which is the discriminator when the two are hard to tell apart: a document that states purpose and names no component is not an architecture at any instant.
+An architecture at either projection states structure - components, duties, interfaces, state, run time - and the reasoning that justifies that structure.\
+Why the *programme* exists is a different altitude and belongs to [`AR6`](AR6-vision.md).\
+The discriminator, when the two are hard to tell apart: a document that states purpose and names no component is not an architecture at any instant.
 
 **Two temporal projections of one architecture**, declared in frontmatter as `instant: current | target`, conventionally named **CSSA** and **TSSA**:
 
@@ -48,7 +54,7 @@ An architecture is organised as its system is organised, and a shape imposed on 
 What is required is that these devices are present and findable.
 
 - **Identity, scope and non-goals.** What the system is, and what it is explicitly not. Non-goals are required, because a scope with no stated exclusions has not been bounded.
-- **The justification chain.** Domain, axioms, north star, principles, decisions, model - each layer citing only layers above it. A boundary that cites none of them is not a boundary, it is a preference. The upper layers are **cited and not contained**: the north star is held by [`AR6`](AR6-vision.md) and the rulings by [`AR4`](AR4-decision-record.md), and an architecture that absorbs either has taken on a duty that is not its own.
+- **The justification chain.** Domain, axioms, north star, principles, decisions, model - each layer citing only layers above it, and **each present in the document**. The chain is the architecture's own reasoning, not a set of pointers elsewhere: an architecture that states a model with no axioms above it has a boundary that cites nothing, and a boundary that cites nothing is not a boundary, it is a preference. **The north star at this layer is the system's** - what this shape must achieve - and it is a different altitude from the programme's purpose, which is [`AR6`](AR6-vision.md). Rulings are the exception to containment: they are recorded as [`AR4`](AR4-decision-record.md) and absorbed here, so the chain's decisions layer states what was ruled and the record retains why.
 - **Axiom alignment, including unresolved tension.** Where the architecture stands against the standing commitments it claims, with contradictions named and either discharged by citation or left open. Compliance everywhere is a result an honest audit rarely earns, and claiming it is the finding.
 - **The anchored core.** Sovereign components, one duty each, with what each exposes and what it consumes. This is the load-bearing section; everything else elaborates, registers or proves around it.
 - **The entity or data model**, and the interfaces between components.

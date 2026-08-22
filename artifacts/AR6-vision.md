@@ -39,12 +39,19 @@ Two discriminators, both observable:
 - **Structure.** If the document names a component, an interface or a duty, it is an `AR1` at some instant. A vision that has grown a component is an architecture wearing the wrong title.
 - **Projection.** `AR1` is *temporally projected* - one architecture stated at two instants, `current` and `target`, conventionally CSSA and TSSA. **A vision is not projected.** There is no current vision and target vision; a vision that changed is a new vision, ratified as such, and never a second view of the same one.
 
-The relation runs one way, and it is citation rather than containment.\
-The target projection of `AR1` is shaped by the vision and cites it; the vision constrains the target and knows nothing of it.\
+The relation runs one way.\
+A vision shapes which architecture is worth having; the architecture knows nothing of the vision.\
 A vision survives its target architecture being replaced wholesale, and a change of vision invalidates the target.
 
-`AR1`'s justification chain - *domain, axioms, north star, principles, decisions, model* - names the north star as a layer it **cites**, not one it contains.\
-That citation is what this type answers: before this entry existed, an architecture citing its north star reached for a document that did not exist.
+**The two north stars are different altitudes, and confusing them is what makes this type look redundant.**\
+`AR1`'s justification chain carries a north star of its own, and carries it *inside the document* as one of its layers.\
+That one is scoped to the system: what this shape must achieve, stated so that a structural decision can be justified against it by name.\
+A vision is scoped to the endeavour: why anything is being built, stated so that a whole architecture can be judged against it - including the judgement that it should be discarded.
+
+The test that separates them.\
+Replace the system's design entirely and its north star goes with it, because the goals were goals *for that shape*.\
+The vision is untouched, because it was never about a shape.\
+If a statement survives that replacement, it is a vision; if it does not, it belonged to the architecture.
 
 ---
 
