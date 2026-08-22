@@ -164,14 +164,6 @@
         "type": "string"
       }
     },
-    "recurrence": {
-      "description": "Evidence tier for an artifact type's cross-project recurrence. 'demonstrated' means observed in two or more independent projects; 'argued' means one instance plus a reasoned case. Recorded because a single project can show a shape was produced, never that another team would produce it.",
-      "type": "string",
-      "enum": [
-        "demonstrated",
-        "argued"
-      ]
-    },
     "sovereignty": {
       "description": "Whether a component is owned here or referenced from outside. 'internal' is a sovereign unit under our own authority, so a fit gap is pressure that routes upstream and resolves by adjusting or fracturing the component itself. 'external' is a unit we do not control, so a fit gap has no upstream and must be adapted at our boundary, replaced, or absorbed.",
       "type": "string",
@@ -228,27 +220,6 @@
           "roleEligibility",
           "evidenceContract",
           "domainEligibility"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "category": {
-            "const": "artifact"
-          },
-          "id": {
-            "pattern": "^AR[1-9][0-9]*$"
-          }
-        },
-        "required": [
-          "category",
-          "id"
-        ]
-      },
-      "then": {
-        "required": [
-          "recurrence"
         ]
       }
     },

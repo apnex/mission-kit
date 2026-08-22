@@ -4,7 +4,6 @@ category: artifact
 title: System architecture - one system, one altitude, one instant
 status: active
 hydrate-when: You need to state where a system is or where it is going, and have the two be comparable
-recurrence: demonstrated
 supersedes: []
 related: [AR0, AR2, AR3, A2, A3, A4]
 ---

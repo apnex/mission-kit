@@ -4,7 +4,6 @@ category: artifact
 title: Decision record - one ruling, append-only, with what it affects
 status: active
 hydrate-when: You are ruling on something that later work will be built on and must not be re-litigated
-recurrence: demonstrated
 supersedes: []
 related: [AR0, AR1, A4, A13, M4]
 ---

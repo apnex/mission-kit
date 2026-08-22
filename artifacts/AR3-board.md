@@ -4,7 +4,6 @@ category: artifact
 title: Board - the triaged graph of legal next moves, for director selection
 status: active
 hydrate-when: You are deciding what to do next and want the choice reasoned rather than taken under local pressure
-recurrence: argued
 supersedes: []
 related: [AR0, AR1, AR2, AR5, A13, A14]
 ---

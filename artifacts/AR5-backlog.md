@@ -4,7 +4,6 @@ category: artifact
 title: Backlog - the durable record of what was not done, each row with a trigger
 status: active
 hydrate-when: You are deferring, cutting or parking work and it must not become forgetting
-recurrence: demonstrated
 supersedes: []
 related: [AR0, AR3, M5, A14]
 ---
@@ -22,11 +21,6 @@ Keeping them as one document is the common failure: a plan that must also serve 
 
 Its governing rule is [`M5`](../methodology/M5-anti-amnesia-deferral.md): every parked or cut row carries a **revival trigger** naming an observable condition.\
 "Later" is not a trigger.
-
-**Correction - a downgrade of this entry's recurrence tier was made and is withdrawn.**\
-The tier was briefly set to `argued` on the strength of a sample that held one instance.\
-A sample cannot establish `argued`, because `argued` asserts that no second instance exists anywhere.\
-The original tier stands unrefuted and is restored, and the retraction is kept rather than deleted.
 
 **This type goes missing more readily than the others, and that is worth stating as a property.**\
 A programme can mandate a finding lifecycle - a durable id, capture status, owner and disposition - and still hold the findings in no document at all.\

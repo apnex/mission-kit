@@ -36,7 +36,7 @@ When a trigger fires, the item routes back through fresh intake - its parked fin
 | [MREQ-7](mreq-7-provenance-and-trust-vocabulary.md) | A provenance and trust vocabulary for an agent-maintained corpus | You need to know when an entry was last verified or who asserted it, and the corpus does not record either |
 | [MREQ-8](mreq-8-delta-post-ratification-shape.md) | The post-ratification half of a delta, and whether its required sections are two shapes | You are recording what a delta produced after it was ratified and find the type specifies only its opening |
 | [MREQ-9](mreq-9-artifact-work-axis-binding.md) | The binding between the work axes and the artifact layer | You are composing a unit of work and cannot tell from the corpus which document type it is supposed to produce |
-| [MREQ-10](mreq-10-recurrence-tier-evidence.md) | The evidence a recurrence tier rests on, in a corpus that bars naming it | You need to know whether an artifact type's recurrence tier rests on wide evidence or on one instance, and the entry does not say |
+| [MREQ-10](mreq-10-recurrence-tier-evidence.md) | The evidence a recurrence tier rests on, in a corpus that bars naming it | You are about to add a field that counts how widely something outside this corpus has adopted something inside it |
 <!-- END GENERATED -->
 
 Each entry's `revival-trigger` is in its frontmatter, which is the one place it is authored.

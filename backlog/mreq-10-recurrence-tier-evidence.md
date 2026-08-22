@@ -3,13 +3,12 @@ id: MREQ-10
 category: mission-required
 title: The evidence a recurrence tier rests on, in a corpus that bars naming it
 status: active
-fulfilment: deferred
-hydrate-when: You need to know whether an artifact type's recurrence tier rests on wide evidence or on one instance, and the entry does not say
+fulfilment: wont-do
+hydrate-when: You are about to add a field that counts how widely something outside this corpus has adopted something inside it
 revival-trigger: >
-  a recurrence tier is found to be wrong in either direction and nothing recorded
-  what it rested on, OR a second field in this corpus is proposed that states a
-  verdict about the world without stating what was examined, OR MREQ-7 is taken
-  up, since the maintenance question is the same one
+  a field is proposed that states a verdict about the world without stating what
+  was examined, OR someone outside this estate adopts the corpus and independent
+  evidence becomes obtainable for the first time
 related-axioms: [A4, A8, A14]
 related: [AR0, SC1, MREQ-7]
 ---
@@ -34,9 +33,9 @@ Those are opposite situations - one is a fact about the world and one is a fact 
 
 ---
 
-## Why it is parked rather than built
+## Why it could not be built as specified
 
-Because the obvious fix is barred by another rule this corpus holds, and the conflict is real rather than an oversight.
+Because the obvious fix was barred by another rule this corpus holds, and the conflict was real rather than an oversight.
 
 A tier that named its evidence would name projects.\
 Naming projects in an entry is citing downstream consumers, which the charter bars twice - under no point-in-time content, and under examples are generic, write the shape not the incident - and names as a fault, project-specific content wearing a cross-project ID.\
@@ -55,9 +54,29 @@ Adding a field first would bank the appearance of evidence and none of it, which
 
 ---
 
-## What was built instead
+## Resolved by removal - `wont-do`
 
-Nothing, and the gap has already cost something, which is why it is banked rather than noted.
+**The field was deleted rather than repaired, and this entry is kept as the record of why.**
+
+The problem turned out to be worse than a missing sample.\
+This corpus sits *upstream* of every project that could supply evidence for it, so a downstream instance demonstrates that the corpus was followed rather than that a shape recurs.\
+That failure occurred in practice: a type was admitted on one instance and a second appeared in a consuming project inside the hour, phrased in the new entry's own words, and was nearly counted.
+
+There is no clean escape.\
+Excluding downstream instances leaves nothing to count.\
+Admitting them makes the field a measure of the corpus's own influence dressed as independent evidence, which is worse than no field, because it reads as proof.
+
+So adoption is not tracked at all.\
+Recurrence survives as a judgement argued at admission, where a reader can weigh the argument, and not as a durable verdict that outlives the reasoning behind it.\
+[`AR0`](../artifacts/README.md) carries the reasoning where a reader meets the absence.
+
+**What generalises past this field.**\
+A corpus cannot measure its own uptake from inside itself.\
+Any future field that counts how widely something here has been adopted elsewhere will have the same defect, whatever it is named - which is what the revival trigger watches for.
+
+---
+
+## What the gap cost before it was closed
 
 Both directions of error have now occurred in this layer, in a single working session.\
 A tier was downgraded on a sample too narrow to support the conclusion and had to be restored.\
@@ -73,14 +92,17 @@ The mechanism that let both happen is untouched.
 
 Re-triage rather than resume, per [`M5`](../methodology/M5-anti-amnesia-deferral.md).
 
-The third trigger is the one to watch, because this is probably not an independent problem.\
-`MREQ-7` defers a provenance vocabulary for the whole corpus - who asserted an entry, when it was last verified, against what - and a recurrence tier is one claim that vocabulary would cover.\
-Taking either alone risks solving half a problem twice.
+This entry closed at the outcome its own last paragraph named as the cheapest honest one - no field at all - and it is worth noting that the option was written down before it was taken, because the analysis reached the answer one pass before the decision did.
 
-They are filed separately because they can be told apart and might be answered apart.\
-`MREQ-7` is about **staleness and authorship** of an entry as a whole.\
-This is about **the sample behind one claim**, and it carries a constraint `MREQ-7` does not: the evidence may not be named, so the answer cannot simply be a list.\
-Whoever takes either should read both first and may reasonably fold this one in.
+The first trigger is the general one and is why a `wont-do` record is kept rather than deleted.\
+The defect was never specific to recurrence: **a corpus cannot measure its own uptake from inside itself.**\
+Any later field that counts how widely something here has been adopted elsewhere inherits it, whatever the field is called, and the argument against it is already written above rather than needing rediscovery.
 
-The cheapest honest outcome may be no field at all.\
-A tier that stated its own limits in prose - what kind of evidence it rests on, without naming the sources - would be weaker than a schema and stronger than a bare word, and it is the option to rule out before building a mechanism.
+The second trigger is the only condition that would make the original question answerable.\
+Independent evidence requires someone outside this estate, reading this corpus and producing instances without being told to.\
+Until that exists, every instance available is downstream, and downstream instances measure influence rather than recurrence.
+
+[`MREQ-7`](mreq-7-provenance-and-trust-vocabulary.md) remains open and is **not** resolved by this.\
+It asks who asserted an entry and when it was last verified - claims about *this corpus*, answerable from inside it.\
+This asked about the world outside, which is the part that could not be reached.\
+Whoever takes `MREQ-7` should not treat this closure as precedent for closing that one.

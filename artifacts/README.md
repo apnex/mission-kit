@@ -100,10 +100,22 @@ Five tests, all of which must pass.
 4. **A consumer who acts.** It serves a decision or a handover. A document nobody acts on is a record, not a type.
 5. **Not already governed.** Contracts in [`schemas/`](../schemas/README.md) already own some shapes, and promoting one here would fork it.
 
-**Recurrence has two tiers, and the entry records which it holds.**\
-*Demonstrated* means observed in two or more independent projects.\
-*Argued* means one instance plus a reasoned case.\
-The distinction is kept because a single project can only show that a shape was produced, never that another team would produce it, and hiding that behind a single verdict would overstate the evidence.
+**Recurrence is a judgement made at admission, and it is not recorded as a field afterwards.**\
+An entry once carried a two-tier `recurrence` value - *demonstrated* for a shape observed in two or more independent projects, *argued* for one instance plus a reasoned case.\
+The field is gone, and the reason it went is worth keeping, because the obvious instinct is to add it back.
+
+**A corpus cannot count adoption of itself as evidence for itself.**\
+This corpus sits upstream of the projects that read it.\
+A project that adopts a type and produces an instance has demonstrated compliance, not recurrence - it wrote that document *because this said to* - and counting it promotes the entry on evidence the entry caused.\
+The failure is not hypothetical: a type was admitted here on one instance and a second instance appeared in a downstream project inside the hour, phrased in the new entry's own words.
+
+The trap has no clean escape.\
+Excluding downstream instances leaves nothing to count, since every project in reach is downstream.\
+Admitting them makes the tier a measure of the corpus's own influence wearing the language of independent evidence, which is worse than silence because it reads as proof.
+
+So the tier is not tracked at all.\
+Test 1 above still asks whether a different team would produce the shape - as a judgement the author makes and argues at admission, where a reader can weigh the argument.\
+What is not kept is a durable field asserting the answer, because the field outlives the reasoning that set it and nothing re-checks it.
 
 ### Disqualifiers
 

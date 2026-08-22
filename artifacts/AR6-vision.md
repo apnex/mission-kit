@@ -4,7 +4,6 @@ category: artifact
 title: Vision - the enduring purpose a programme is measured against
 status: active
 hydrate-when: You need to say why a programme exists and what it must never become, and no document holds it
-recurrence: argued
 supersedes: []
 related: [AR0, AR1, AR3, A13, A14]
 ---
@@ -69,7 +68,7 @@ It is amended by ratified rulings like any other living document, and it outlive
 
 **No fixed table of contents, deliberately, and the deliberation is the entry's main claim.**
 
-This type is admitted on `recurrence: argued`: the concern is well attested, and where it is met it is usually met as sections of some other document rather than as one of its own.\
+The concern is well attested, and where it is met it is usually met as sections of some other document rather than as one of its own.\
 Where it has been carried as a document, no section shape recurs.\
 Prescribing a spine from a single instance would fix the type to that instance, which is [`MREQ-3`](../backlog/mreq-3-component-design-spec-altitude.md)'s parked objection applied at a different altitude, and `AR0`'s admission rule bars it.
 
@@ -121,6 +120,6 @@ No template ships with this entry, for the reason given under `Required sections
 Author from a peer instance instead, per [`M6`](../methodology/M6-author-from-exemplar.md).\
 Take the devices, not the table of contents.
 
-**On promotion to `demonstrated`.**\
-This entry moves to `recurrence: demonstrated` when a second programme is observed carrying this concern as a document rather than as sections of one.\
-Until then the tier records honestly that one project can show a shape was produced and never that another team would produce it.
+**On a spine, later.**\
+If a second instance is ever authored by someone who has not read this entry, compare the two before prescribing anything.\
+An instance written *from* this entry cannot tell you whether the shape recurs - it can only tell you the entry was followed - which is why [`AR0`](README.md) tracks no adoption count and why the absence of a spine here is not a gap waiting on volume.

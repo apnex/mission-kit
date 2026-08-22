@@ -4,7 +4,6 @@ category: artifact
 title: Delta - a declared, gated transition between two architecture states
 status: active
 hydrate-when: You are about to change a system and need the change declared and its landing provable
-recurrence: demonstrated
 supersedes: []
 related: [AR0, AR1, AR3, A8, A14]
 ---
