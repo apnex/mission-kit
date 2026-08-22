@@ -19,15 +19,32 @@ A delta is the only place **sequencing** lives.\
 The architecture is timeless at both instants, so build order, staging and "what lands when" belong here and nowhere else.\
 An architecture that grows a stage column has absorbed delta content, and it relocates.
 
-A delta is a **build plan, not a ceremony class**.\
-It is lightweight by design: enough to state what changes, to fence what must not, and to know mechanically when it is done.
+A delta is **authored as a plan and lives as a record**.
+
+At ratification it states what changes, fences what must not, and fixes how it will be known to be done - and that much is deliberately spare.\
+From then it accumulates, in place: what was certified and by whom, what the work turned up, what was amended and under whose authority, and finally whether the to-state was reached.\
+The plan is the opening of the document rather than the whole of it, and in a delta that ran to completion it is usually the smaller part.
+
+**Correction.**\
+This entry previously read that a delta is *lightweight by design*.\
+That describes its opening and was written as though it described the document.\
+Measured against real deltas the claim does not survive: the majority of each is written after ratification, and in some the plan is a few percent of the whole.\
+The claim is retracted rather than deleted.
+
+What the original was reaching for is still true and is worth keeping separately: **a delta is not a ceremony class.**\
+Nothing in it is filled in for its own sake, and a section that exists because the template has one is the failure the phrase was guarding against.\
+Volume is not the test.\
+Whether every part of it is load-bearing is.
 
 ---
 
 ## Lifecycle stage
 
-Between selection and execution.\
-The board proposes and triages candidate moves, the director selects one, and the delta is what the selected move becomes before any work starts.
+Opens between selection and execution, and closes after it.\
+The board proposes and triages candidate moves, the director selects one, and the delta is what the selected move becomes before any work starts - but it is not finished at that point, only ratified.\
+It stays open across the work it declares and terminates in a statement of whether its to-state was reached.
+
+The post-ratification half of a delta is not yet specified here, and the gap is recorded rather than guessed at, under [`MREQ-8`](../backlog/mreq-8-delta-post-ratification-shape.md).
 
 ---
 

@@ -34,6 +34,7 @@ When a trigger fires, the item routes back through fresh intake - its parked fin
 | [MREQ-5](mreq-5-retire-legacy-style-debt.md) | Retiring the legacy style debt that keeps the whole-corpus gate red | You need the whole-corpus style gate to be green rather than known-red before you can trust it |
 | [MREQ-6](mreq-6-ledger-retrieval-strategy.md) | The retrieval strategy for a ledger that outgrows always-on context | You are deciding how the ledger reaches an agent once it no longer fits comfortably in always-on context |
 | [MREQ-7](mreq-7-provenance-and-trust-vocabulary.md) | A provenance and trust vocabulary for an agent-maintained corpus | You need to know when an entry was last verified or who asserted it, and the corpus does not record either |
+| [MREQ-8](mreq-8-delta-post-ratification-shape.md) | The post-ratification half of a delta, and whether its required sections are two shapes | You are recording what a delta produced after it was ratified and find the type specifies only its opening |
 <!-- END GENERATED -->
 
 Each entry's `revival-trigger` is in its frontmatter, which is the one place it is authored.
