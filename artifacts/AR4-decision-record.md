@@ -40,12 +40,10 @@ What may vary is where the bytes sit.
 An earlier version of this entry mandated one file per ruling.\
 That requirement is withdrawn - not because the form is wrong, but because it is one of three that work: the fields below are required, and their carrier is not.
 
-**Correction, and the reasoning that produced it was faulty.**\
-The withdrawal was first justified by the claim that *no observed programme uses one file per ruling*.\
-That claim is false.\
-It was drawn from an excavation of three programmes, then written as though it described every programme; two further programmes each keep a one-file-per-ruling corpus, one of sixty-six records and one of more than a dozen, and this entry's own example values were taken from the first of them.\
-The original claim is retained here rather than deleted, because the failure is instructive: a negative claim about practice is only as wide as the sample that produced it, and the sample was never stated.\
-The relaxation survives the correction on the evidence that actually supports it - three programmes carry rulings in carriers other than one-file-per-ruling, so the form is not universal and must not be mandated.
+**Correction.**\
+The withdrawal was first justified by the claim that no observed programme uses one file per ruling.\
+That claim was false, and it is retracted rather than deleted.\
+The form is well attested; what is not attested is its universality, and only universality would license mandating it.
 
 **Every ruling carries a status, and the status is load-bearing.**\
 At least `proposed` and `ratified`, distinguished.\
@@ -60,7 +58,7 @@ status:     ratified | proposed
 authority:  [<who ruled>]
 supersedes: []                      # records this one replaces
 amends:     ["0020", "0021"]        # records this one modifies but does not replace
-affects:    ["design/tssa.md", ...] # documents that must absorb it
+affects:    [<paths that must absorb it>]
 ```
 
 `amends` and `supersedes` are separate fields because they are different acts.\
@@ -75,10 +73,10 @@ The measured alternative is a machine-readable sibling artifact - a traceability
 Either satisfies the requirement, which is that **absorption is checkable by something other than a reader**.\
 A programme that carries neither has an unfalsifiable claim, whatever its records say.
 
-A second correction belongs here.\
+**Correction.**\
 This passage previously read that no observed programme uses `affects`.\
-That is false and was false by the same mechanism as the correction above - a three-programme sample reported as a survey of practice.\
-One programme uses `affects` on every record, and the example value in the block above is quoted from it.
+That claim was false and is retracted.\
+Both mechanisms are attested; neither is universal, which is why the requirement is stated as the property and not as either mechanism.
 
 Body:
 
@@ -173,5 +171,5 @@ affects: []
 ```
 
 The register form carries the same fields as columns, and each ruling keeps its own body below the table for the refuted alternatives, costs and consequences.\
-One observed programme absorbs its intent capture into the `Confirmed intent` section of the register, so that a reader reaches the authority from the decision it authorises rather than from a separate artifact.\
+A register may also absorb the intent capture that authorises its rulings, as a section of its own, so that a reader reaches the authority from the decision it authorises.\
 That is a legitimate placement and not a missing document.

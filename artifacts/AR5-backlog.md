@@ -23,18 +23,16 @@ Keeping them as one document is the common failure: a plan that must also serve 
 Its governing rule is [`M5`](../methodology/M5-anti-amnesia-deferral.md): every parked or cut row carries a **revival trigger** naming an observable condition.\
 "Later" is not a trigger.
 
-**Correction - a downgrade to `argued` was made here and is withdrawn.**\
-This entry was briefly changed to `recurrence: argued` on the grounds that an excavation of three programmes measured exactly one instance.\
-That reasoning does not support the conclusion.\
-Three programmes are a sample, not the population, and the sample was chosen for a different purpose; asserting `argued` asserts that no second instance exists anywhere, which the sample cannot establish.\
-Further programmes outside it do carry deferral records, so the original tier stands unrefuted and is restored.
+**Correction - a downgrade of this entry's recurrence tier was made and is withdrawn.**\
+The tier was briefly set to `argued` on the strength of a sample that held one instance.\
+A sample cannot establish `argued`, because `argued` asserts that no second instance exists anywhere.\
+The original tier stands unrefuted and is restored, and the retraction is kept rather than deleted.
 
-The scoped observation is worth keeping, because it is true and it is useful.\
-Of the three programmes examined, exactly one carries a defect-and-deferral register.\
-The absence in the other two is not an oversight in either: one mandates a finding lifecycle - a durable finding id, capture status, owner and disposition - in its own gate definitions and has no document holding the findings, and the other carries four differently-shaped deferral statements across four documents and no register.\
-That is evidence about how easily this type goes missing, which is a different and more interesting claim than one about its recurrence tier.
-
-Both the downgrade and its withdrawal are retained rather than deleted, because a silently corrected record teaches the next reader that corrections do not happen.
+**This type goes missing more readily than the others, and that is worth stating as a property.**\
+A programme can mandate a finding lifecycle - a durable id, capture status, owner and disposition - and still hold the findings in no document at all.\
+Another can carry deferrals in several differently-shaped statements scattered across the documents that raised them, and have no register.\
+Neither absence is an oversight in the ordinary sense; both look like discipline from inside.\
+That is the shape a reviewer should look for, and it is why `AR3` scores `Held` rows on the same scale rather than letting absence pass as agreement.
 
 ---
 

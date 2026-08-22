@@ -40,9 +40,9 @@ They are one control loop, and each is load-bearing only because of its position
 Read as a cycle with one inlet: the vision states what the programme is for, the architecture states where the system is and where it is going, the board proposes and triages the legal moves between those two points, the director selects, a delta declares and gates the chosen transition, execution produces rulings that amend the architecture and the intent, and deferrals that return to the board.
 
 **The inlet was missing until it was looked for from the bottom.**\
-The first pass over this layer ran top-down from the loop, which can only find types the loop already predicts, and the loop as first drawn was closed.\
-A later bottom-up excavation of three programmes found the concern in all three and homed in one, which is the absence signature recorded below.\
-`AR1`'s own justification chain had named `north star` as a layer the whole time, with nothing owning it.
+A pass that runs top-down from the loop can only find types the loop already predicts, and the loop as first drawn was closed.\
+Only a bottom-up pass can falsify the loop's own completeness, which is why `Coverage` below treats a missing position as a finding rather than a gap to fill.\
+`AR1`'s justification chain had named `north star` as a layer the whole time, with nothing owning it.
 
 The frame is the controller pattern applied to an engineering programme: observe current, diff against target, derive the work, reconcile.\
 It is deliberately isomorphic to the substrate it governs, which is [`A2`](../axioms/A2-isomorphic-specification.md) turned on the organisation itself.
@@ -127,9 +127,11 @@ Gaps are recorded as gaps rather than filled speculatively, which would be Specu
 The configuration and implementation detail of a single component or duty inside it sits below that altitude and above code, and has no type.\
 It is deferred rather than guessed, under [`MREQ-3`](../backlog/mreq-3-component-design-spec-altitude.md).
 
-That deferral has since been re-triaged against 25 measured instances and **held**, which is the more instructive outcome.\
-Instance count is not shape evidence: across those 25 no section appears in a majority, and the two questions that would settle the type - how a component specification binds upward to the duty its architecture declares, and where its boundary with code sits - are answered incompatibly by different programmes rather than merely left open.\
-Abundant evidence of a need is routinely mistaken for evidence of a shape, and this layer has now made that mistake once and caught it.
+That deferral has since been re-triaged and **held**, which is the more instructive outcome.\
+**Instance count is not shape evidence.**\
+A concern can recur widely, and diverge widely, while no section appears in a majority of its instances - and divergence at scale proves the need without settling the shape, because it is the same observation read two ways.\
+The two questions that would settle this type - how a component specification binds upward to the duty its architecture declares, and where its boundary with code sits - are currently answered *incompatibly* rather than merely left open, and that is a stronger reason to wait than silence would be.\
+Abundant evidence of a need is routinely mistaken for evidence of a shape.
 
 ---
 

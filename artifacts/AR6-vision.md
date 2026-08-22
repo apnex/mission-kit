@@ -62,9 +62,9 @@ It is amended by ratified rulings like any other living document, and it outlive
 
 **No fixed table of contents, deliberately, and the deliberation is the entry's main claim.**
 
-This type is admitted on `recurrence: argued` - one instance observed as a document, plus the same concern observed as embedded sections in two further programmes with no home of their own.\
-Across those three, no section recurs.\
-Prescribing a spine from one document would fix the type to that document, which is [`MREQ-3`](../backlog/mreq-3-component-design-spec-altitude.md)'s parked objection applied to a different altitude, and `AR0`'s admission rule bars it.
+This type is admitted on `recurrence: argued`: the concern is well attested, and where it is met it is usually met as sections of some other document rather than as one of its own.\
+Where it has been carried as a document, no section shape recurs.\
+Prescribing a spine from a single instance would fix the type to that instance, which is [`MREQ-3`](../backlog/mreq-3-component-design-spec-altitude.md)'s parked objection applied at a different altitude, and `AR0`'s admission rule bars it.
 
 What is required is that these **devices** are present and findable.\
 How they are arranged belongs to the programme.
