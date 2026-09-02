@@ -27,7 +27,7 @@ The tree is not this directory's to choose.\
 
 ```text
 mission-kit/
-  VISION.md          the enduring purpose, when it is ratified
+  VISION.md          an AR6 instance - the enduring purpose, ratified
   docs/
     BACKLOG.md       an AR5 instance - findings about this corpus
 ```
@@ -42,7 +42,9 @@ Flat, until there is reason to subdivide.
 |---|---|---|
 | [`BACKLOG.md`](BACKLOG.md) | [`AR5`](../artifacts/AR5-backlog.md) | findings about this corpus, each with evidence and a revival trigger |
 
-Absent, and known to be: the vision, an architecture, a board.\
+The vision is not in this directory by design - [`AR0`](../artifacts/README.md) anchors it at the component root, which for this corpus is [`../VISION.md`](../VISION.md).
+
+Absent, and known to be: an architecture and a board.\
 Their absence is row `B1` in the backlog rather than an omission here.
 
 ---
