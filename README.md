@@ -54,6 +54,7 @@ The constraint set is authored once in the cross-axis reference and never forked
 | `SC` | [`schemas/`](schemas/) | Machine-verifiable entity contracts, validatable without importing a runtime. |
 | - | [`tools/`](tools/README.md) | The scripts that hold the corpus to its own rules. |
 | - | [`plugins/`](plugins/README.md) | Operator-facing artifacts that run inside a specific agent host. |
+| - | [`docs/`](docs/README.md) | This corpus's own artifact instances, held where [`AR0`](artifacts/README.md) says an instance lives. |
 
 **Identity is stable and never reused.**\
 A replaced entry keeps its ID and flips `status`, and the replacement carries `supersedes`.\
