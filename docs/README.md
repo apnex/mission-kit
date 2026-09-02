@@ -29,7 +29,9 @@ The tree is not this directory's to choose.\
 mission-kit/
   VISION.md          an AR6 instance - the enduring purpose, ratified
   docs/
-    BACKLOG.md       an AR5 instance - findings about this corpus
+    ARCHITECTURE.md  an AR1 instance - instant: current
+    BOARD.md         an AR3 instance - the plan
+    BACKLOG.md       an AR5 instance - the record
 ```
 
 Flat, until there is reason to subdivide.
@@ -40,12 +42,14 @@ Flat, until there is reason to subdivide.
 
 | file | type | holds |
 |---|---|---|
+| [`ARCHITECTURE.md`](ARCHITECTURE.md) | [`AR1`](../artifacts/AR1-system-architecture.md) | this corpus stated at one altitude, instant `current` |
+| [`BOARD.md`](BOARD.md) | [`AR3`](../artifacts/AR3-board.md) | the triaged legal next moves, for director selection |
 | [`BACKLOG.md`](BACKLOG.md) | [`AR5`](../artifacts/AR5-backlog.md) | findings about this corpus, each with evidence and a revival trigger |
 
 The vision is not in this directory by design - [`AR0`](../artifacts/README.md) anchors it at the component root, which for this corpus is [`../VISION.md`](../VISION.md).
 
-Absent, and known to be: an architecture and a board.\
-Their absence is row `B1` in the backlog rather than an omission here.
+Absent, and known to be: a decision register, which is row `B15`.\
+This corpus prescribes [`AR4`](../artifacts/AR4-decision-record.md) to its adopters and keeps its own rulings in commit messages, which is the same defect `B1` recorded one altitude up.
 
 ---
 
