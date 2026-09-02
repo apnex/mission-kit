@@ -143,6 +143,40 @@ That is the corpus admission test doing its work: a delta's required shape is cr
 
 ---
 
+## Where instances live
+
+The layer prescribes no section list for several of its types, and it does prescribe **placement**, because the two answer different questions.\
+A shape imposed on an unlike system produces empty headings; an address left unstated produces a document nobody can find without being told where to look.
+
+**The document tree lives at the root of the scope of the component it describes.**
+
+```text
+<component root>/
+  VISION.md          the enduring purpose of THIS component
+  docs/              every other artifact instance
+```
+
+Three consequences, and the first is the point of the rule.
+
+**Placement is scope-relative, never repository-relative.**\
+A sovereign repository and a nested subsystem take the same rule, because both are components and a component's scope is its directory.\
+A component at `<root>/parts/thing/` carries `<root>/parts/thing/VISION.md`, and that vision governs that directory and nothing above or below it.\
+Two visions in one repository are not a conflict; they are two components, and the path states which is which.
+
+**The vision anchors at the root and the rest live under `docs/`.**\
+The vision is the one document an arriving reader needs before they know anything about the project, including where its documentation is kept, so it is the one that cannot be behind a directory they would have to guess.\
+Everything else is reachable once that is found.
+
+**Arrangement inside `docs/` is the component's own.**\
+Flat or subdivided by concern are both conformant.\
+What the rule fixes is the anchor and the tree root; below that, a component organises as it is organised, which is the same principle that keeps templates out of several of these entries.
+
+**Why prescribe here at all.**\
+Discoverability is not a convention that can be left to each adopter, because its whole value is being true before you have read anything.\
+Given a box in an anchored core, a reader reaches that component's vision by construction rather than by search - which is what makes the recursion in [`C0`](../components/README.md) navigable rather than merely true.
+
+---
+
 ## Coverage
 
 The layer is complete when every position in the loop has a type and no author must invent a shape.\
