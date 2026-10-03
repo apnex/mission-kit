@@ -19,14 +19,14 @@ Seeded from the two human sessions on 2026-10-03; grown one isolated test at a t
 
 | Move | Understand | Decide | Bad news | Evidence | Source |
 |---|---|---|---|---|---|
-| point first | package | package | package | did not separate guided from unguided in session 3 - both did it | sessions 2, 3 |
+| point first | package | package | package | did not separate guided from unguided in session 3 - both did it; the only isolated pairs (session 1, abandoned as invalid) were judged the same | sessions 1-3 |
 | where we are, and the finish line | package | package | package | present 4 / 4 guided, 0 / 4 unguided | session 3 |
-| picks with Continue / Explore / Return | package | package | package | present 4 / 4 guided, 0 / 4 unguided | sessions 2, 3 |
+| picks with Continue / Explore / Return | package | package | package | present 4 / 4 guided, 0 / 4 unguided | session 3 only - session 2's rewrites used a / b / c picks |
 | one question, at the end | package | package | - | | session 2 |
 | decision frame: why now, costs, do-nothing, labelled recommendation | - | package | - | | sessions 2, 3 |
 | system names explained; references in one line | package | package | - | IDs 43 to 0 in session 2 | session 2 |
-| request for action never in an optional pick | untested | untested | untested | a defect seen in one rewrite | session 2 review |
-| narrative only when it carries understanding | untested | - | untested | | director's reframe |
+| request for action never in an optional pick | package | package | untested | in the text tested in session 3 | session 3 |
+| narrative only when it carries understanding | package | - | package | in the text tested in session 3 | session 3 |
 | density and length | untested | untested | untested | guided versions were longer and still preferred | session 3 |
 | how uncertainty is worded | untested | untested | untested | | |
 | tables against bullets | untested | untested | untested | | |

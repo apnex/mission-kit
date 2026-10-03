@@ -27,6 +27,10 @@ It is the ground truth the explain set's metric is derived from.
 
 ## Derived, and confirmed
 
+**Limit 2 - decide.**\
+One decision at a time; why it is needed now; what each option costs, including doing nothing; nothing chosen or hidden; answerable with a pick; the reasoning recorded (`A3`, `A13`, `A4`, resting on Limit 1 by `A8`).\
+The director did not confirm it in words; they chose to proceed from it, which the agent took as confirmation.
+
 **Limit 1 - understand.**\
 The human ends up seeing what the agent sees on the point - nothing missing that matters, nothing extra - reached one confirmed step at a time, with depth available on request and never pushed (`A5`, `A12`, `A8`, `A4`).\
 Confirmed by the director.
