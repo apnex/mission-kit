@@ -1,0 +1,50 @@
+{
+  "id": "s0",
+  "mode": "corpus",
+  "group": "s0",
+  "source": "S0 conversion to E4. Q1-Q3 are controls the current S0 answers. Key reviewed by a fresh agent before any reader ran; Q4 rubric, Q5 and Q7 corrected.",
+  "probes": [
+    {
+      "id": "Q1",
+      "question": "Two tools both check the same style rule and disagree at the edges. What does the corpus say?",
+      "key": "One rule, one tool: a rule names exactly one enforcer, which owns both the check and the fix; two tools holding one rule is the forked-enforcer fault.",
+      "rubric": "2 for one rule one tool with the fault. 1 for one rule one tool alone. 0 otherwise."
+    },
+    {
+      "id": "Q2",
+      "question": "Someone proposes a style rule because they prefer a certain heading capitalisation. Does it earn an entry?",
+      "key": "No, not on preference: a convention earns an entry when its absence produced a real defect in a real artifact and the difference can be shown; aesthetic preference does not qualify.",
+      "rubric": "2 for no with the real-defect test. 1 for no alone. 0 otherwise."
+    },
+    {
+      "id": "Q3",
+      "question": "Does the style gate check every file in the corpus on each change?",
+      "key": "No: style is gated on changed files, because legacy debt predates the checkers; gating the diff blocks new debt and converts the rest as sections are edited.",
+      "rubric": "2 for changed files with the reason. 1 for changed files alone. 0 otherwise."
+    },
+    {
+      "id": "Q4",
+      "question": "Which style rules are held by a tool, and which are checked only by reading? Name at least three of each.",
+      "key": "Held by a tool: S6, S8, S10, S12, S13, S14. By reading: S1, S2, S3, S4, S5, S7, S9, S11, S15.",
+      "rubric": "2 for at least three correct in each group and none misplaced. Placing S15 under a tool is misplaced: check-guidance-placement.sh holds its tested wording, not messages. 1 for one group right. 0 otherwise."
+    },
+    {
+      "id": "Q5",
+      "question": "A team wants a style rule for comments in source code. Is there one, and where would it go?",
+      "key": "No style rule covers source-code comments today. S15 is already a single-medium style rule (messages to a human), so a source-comment rule would be the second, which is what makes sub-sets of style by medium due. Acceptable mentions: K27 (a skill) covers doc comments; S8 is about comments in markdown code blocks, not source files. Calling K27 or S8 the style rule for source comments is wrong.",
+      "rubric": "2 for no style rule today, plus: it would be a second single-medium rule and so make a sub-set by medium due. 1 for no style rule today alone, or with K27/S8 correctly placed. 0 if K27 or S8 is named as the style rule, or otherwise."
+    },
+    {
+      "id": "Q6",
+      "question": "Someone proposes: every deferred item's record must carry a revival trigger. Is that a style rule?",
+      "key": "No: it governs what the work must record, not how an artifact is written, so it is a rule (rules/); style governs an artifact's form whatever the work was.",
+      "rubric": "2 for no, rule, with the reason. 1 for no alone. 0 otherwise."
+    },
+    {
+      "id": "Q7",
+      "question": "What would an unhealthy population of style rules look like?",
+      "key": "Any two population faults: two tools holding one rule; a rule nobody enforces or reviews; rules for one medium scattered with no scope; a convention filed as style that governs the work rather than the text; legacy debt converted in one sweep. A single rule's own defect (for example a rule phrased as a quality with no predicate) is a member fault, not a population fault.",
+      "rubric": "2 for two population faults from the key or equivalent. 1 for one. 0 for none. A single rule's own defect, such as an unfalsifiable rule, earns nothing."
+    }
+  ]
+}
