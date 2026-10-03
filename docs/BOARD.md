@@ -83,7 +83,7 @@ A mandate breach is the commitment itself failing; a signal breach is a mechanic
 
 ## Triage ledger
 
-All forty-three rows, scored.\
+All forty-four rows, scored.\
 Held rows are [below](#held).
 
 | Row | Impact | Principle | Visible | Size | Milestone | One line |
@@ -127,6 +127,7 @@ Held rows are [below](#held).
 | **B41** | S4 | A14 signal | agent | S | **Held** | M5 may push agents to over-report deferrals in status messages |
 | **B42** | S3 | **A14 mandate** | director | S | **M5** | communication moves have package evidence only; grow by isolated pairs and the friction log |
 | **B43** | S3 | A3 signal | agent | S | **Held** | `K0` and one placement edge stale after Delta-1 |
+| **B44** | S2 | **A14 mandate** | director | S | `DONE` | lessons captured as notes recurred; four absorbed into mechanism |
 | **B20** | S5 | A3 signal | author | S | `DONE` | `M7` may be axiom-shaped in a methodology's place |
 | **B16** | S3 | **A8 mandate** | author | S | **M4** | the board drifted from itself within two commits, and the item meant to prevent that cited no row |
 | **B8** | S3 | **A2 mandate** | adopter | **L** | **Held** | `AR1` forbids the hand-authored current projection a bootstrap cannot avoid |
@@ -250,7 +251,7 @@ Every ID-bearing layer either has an observed consumer or a recorded reason it h
 | M5.5l | State the always-on-context confound in every evaluation result, and take after-runs before a change reaches `main` | `B40` | `WIP` - stated in `docs/evals/README.md` |
 | M5.5m | Grow the communication-moves matrix: isolated pairs in short sessions, and the live friction log | `B42` | `TODO` |
 | M5.6 | Rebuild the charter checker - fixed headings by name, free concerns by a declared location - and re-enable it | `B17` | `TODO` |
-| M5.7 | **Add a key review to `M2`** - a fresh reader audits the answer key against the population before any evaluator runs. Trigger fired at `D0`: three of seven answers wrong, caught before use | `B29` | `TODO` |
+| M5.7 | **Add a key review to `M2`** - a fresh reader audits the answer key against the population before any evaluator runs. Trigger fired at `D0`: three of seven answers wrong, caught before use | `B29` | `DONE` - in `M2` rule 1 |
 
 **How each charter is converted is product, not plan, and lives in the corpus.**\
 The editing rule is [`E4`](../entities/E4-charter.md) section *Changing a charter*; the evaluation that tests each conversion is [`M2`](../methodology/M2-test-drive-docs-by-execution.md).\

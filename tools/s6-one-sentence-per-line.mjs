@@ -10,7 +10,7 @@
 // A file passes S6 exactly when this tool has nothing to change. That is the definition of
 // compliance, not an approximation of it.
 //
-//   --check   report the lines a fix would rewrite, and exit non-zero if any
+//   --check   report the lines a fix would rewrite, and exit non-zero if any (the default)
 //   --fix     rewrite them
 //
 // Prose only. Frontmatter, fenced blocks, tables, headings, list items and blockquotes are
@@ -132,7 +132,10 @@ function reflow(src) {
 }
 
 const args = process.argv.slice(2);
-const check = args.includes('--check');
+// Check unless told to fix. The default once rewrote files when a reader ran it to inspect them, and
+// a stash of pending work could not be restored over the result. A tool that changes files on its
+// default path surprises whoever runs it to look.
+const check = !args.includes('--fix');
 const files = args.filter((a) => !a.startsWith('--'));
 if (!files.length) { console.error('usage: s6-one-sentence-per-line.mjs [--check|--fix] FILE...'); process.exit(2); }
 

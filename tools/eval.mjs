@@ -298,7 +298,12 @@ function cmdScore(o) {
 	const md = ["<!-- GENERATED FILE by tools/eval.mjs score; do not edit by hand. -->", "# Result", "", `Readers per corpus: ${m.readers}. Scored blind by a separate agent; mapping in \`sealed/\`.`, "",
 		`| Probe | ${labels.join(" | ")} |`, `|---|${labels.map(() => "---").join("|")}|`,
 		...probes.map((pr) => `| ${pr} | ${labels.map((l) => mean[pr][l]).join(" | ")} |`),
-		`| **Total / ${result.max}** | ${labels.map((l) => `**${total[l]}**`).join(" | ")} |`, ""];
+		`| **Total / ${result.max}** | ${labels.map((l) => `**${total[l]}**`).join(" | ")} |`, "",
+		// Generated beside every number, so a headline lifted from this table carries its limits with it.
+		"## What this measures", "",
+		`- Agents reading a corpus, scored against keys an author wrote, by agents of the same family: one measurement family, not ${m.readers} independent ones, and not a human judgement.`,
+		"- Every reader also received the harness's always-on context, so a comparison against no corpus is confounded; a comparison between two corpora is not.",
+		`- ${m.readers} readers per corpus: a difference of one reader on one probe moves its mean by ${(2 / m.readers).toFixed(2)}.`, ""];
 	fs.writeFileSync(path.join(run, "RESULT.md"), md.join("\n"));
 	process.stdout.write(md.join("\n"));
 }

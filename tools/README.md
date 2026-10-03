@@ -396,3 +396,17 @@ Delta-1 moved seven entries to new ids, keeping each old one as a superseded poi
 A move is only safe if each pointer reaches a successor that claims it, and no live guidance still cites the old id - otherwise a reader follows a citation to a dead end.
 
 **Run it when** an entry is superseded or moved; the gate runs it on every change.
+
+---
+
+## check-landed.sh
+
+Says whether local work has reached the remote, from git rather than from memory.
+
+```sh
+tools/check-landed.sh
+```
+
+**Why it exists.**\
+A commit the gate refused, followed by a push that pushed nothing, was reported as landed, because the report rested on an echo that ran regardless.\
+Run it after every push; it exits non-zero on an uncommitted change, a commit the remote lacks, or a remote ahead.

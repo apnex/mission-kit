@@ -32,7 +32,7 @@ assert_preserves_lines() {
 	local name=$1 body=$2 expect=$3
 	local f="$tmp/$name.md"
 	printf '%s' "$body" > "$f"
-	node "$tool" "$f" >/dev/null 2>&1
+	node "$tool" --fix "$f" >/dev/null 2>&1
 	local got
 	got=$(grep -c '^\*\*' "$f")
 	if [ "$got" -eq "$expect" ]; then
@@ -66,9 +66,9 @@ Some ordinary prose follows here.
 # green-and-wrong failure this suite exists to catch.
 f="$tmp/idem.md"
 printf '# T\n\n**Methodology:** K5 survey (2-round)\n**Work item:** WI-1\n' > "$f"
-node "$tool" "$f" >/dev/null 2>&1
+node "$tool" --fix "$f" >/dev/null 2>&1
 before=$(cat "$f")
-node "$tool" "$f" >/dev/null 2>&1
+node "$tool" --fix "$f" >/dev/null 2>&1
 after=$(cat "$f")
 if [ "$before" = "$after" ]; then
 	ok "idempotence: a second fix run changes nothing"
@@ -79,7 +79,7 @@ fi
 # (4) Genuine prose must still be split -- the fix must keep working, not be disabled.
 f="$tmp/prose.md"
 printf '# T\n\nOne sentence here. Two sentence here.\n' > "$f"
-node "$tool" "$f" >/dev/null 2>&1
+node "$tool" --fix "$f" >/dev/null 2>&1
 if [ "$(grep -c 'sentence here' "$f")" -eq 2 ] && grep -q 'One sentence here\.\\$' "$f"; then
 	ok "prose: two sentences on one line are still split with a hard break"
 else
@@ -92,7 +92,7 @@ fi
 # by an over-broad metadata pattern.
 f="$tmp/boldlead.md"
 printf '# T\n\n**Diffs.** Rewording one sentence becomes a one-line diff. PR review stays focused.\n' > "$f"
-node "$tool" "$f" >/dev/null 2>&1
+node "$tool" --fix "$f" >/dev/null 2>&1
 if [ "$(grep -c '.' "$f")" -ge 4 ]; then
 	ok "bold lead-in: a bold sentence opener is treated as prose and split"
 else
@@ -102,7 +102,12 @@ fi
 
 echo
 if [ "$fail" -gt 0 ]; then
-	echo "$fail of $((pass + fail)) s6 behaviour check(s) failed."
+	
 	exit 1
 fi
+# With no flag the tool checks and writes nothing: running it to look must never change the file.
+g="$tmp/default.md"; printf 'One sentence. Two sentences on one line.\n' > "$g"; cp "$g" "$g.orig"
+node "$tool" "$g" >/dev/null 2>&1
+if cmp -s "$g" "$g.orig"; then pass=$((pass+1)); else echo "  FAIL  the default writes nothing"; fail=$((fail+1)); fi
+[ "$fail" -gt 0 ] && { echo "$fail of $((pass + fail)) s6 behaviour check(s) failed."; exit 1; }
 echo "s6: $pass behaviour check(s) hold."

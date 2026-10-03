@@ -39,6 +39,8 @@ Its job is to change what a reader can decide, so it is tested by giving fresh r
 1. **Write the probes and the answer key before anyone reads the document.**
    A key written after seeing answers grades toward the result its author wants.
    Commit it, so the order is provable.
+   **Then have a fresh reader audit the key** against the documents it is about - not answer it, judge whether each answer is right - and correct it before anyone is scored.
+   The key is the author's opinion, and a wrong one yields a confident wrong result: every key audited this way in this corpus has had errors corrected before use.
 2. **Derive the probes from what the document is for, not from what was changed.**
    For a charter, probe each concern it must answer - routing an excluded item,
    choosing a member, finding a gap, relating members. Probes built around the

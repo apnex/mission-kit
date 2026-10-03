@@ -104,6 +104,7 @@ q2old=$(python3 -c "import json;print(json.load(open('$run/RESULT.json'))['mean'
 python3 -c "import sys;sys.exit(not (float($q2new)==2 and float($q2old)==0))" && ok "unblinding returns each score to its corpus" || no "unblinding returns each score to its corpus (new $q2new old $q2old)"
 
 # The gate: new against old improves; old against new is a regression and must fail.
+grep -q "## What this measures" "$run/RESULT.md" && grep -q "one measurement family" "$run/RESULT.md" && ok "every result states what it measures" || no "every result states what it measures"
 node "$tool" compare --base "$run/RESULT.json:OLDLABEL" --head "$run/RESULT.json:NEWLABEL" >/dev/null && ok "compare passes an improvement" || no "compare passes an improvement"
 node "$tool" compare --base "$run/RESULT.json:NEWLABEL" --head "$run/RESULT.json:OLDLABEL" >/dev/null && no "compare fails a regression" || ok "compare fails a regression"
 node "$tool" compare --base "$run/RESULT.json:NEWLABEL" --head "$run/RESULT.json:OLDLABEL" --tolerance 2 >/dev/null && ok "compare honours a stated tolerance" || no "compare honours a stated tolerance"
