@@ -18,6 +18,7 @@ parameters:
 generationMode: arc-seeded
 falsifier: speculative or laundered axiom citations
 compositionHooks: seeded as a verifier-held gate over the target items (plain kind:review, not verifier-attestation per README constraint 2)
+methods: [M7]
 ---
 
 # W22 - axiom-alignment-gate

@@ -15,6 +15,7 @@ parameters:
 generationMode: externally-triggered
 falsifier: Director authority inferred from architect prose only
 compositionHooks: none
+methods: [M10]
 ---
 
 # W24 - director-walkthrough

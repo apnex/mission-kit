@@ -25,7 +25,8 @@ Each message:
 - Use narrative only where it carries understanding - for instance when the path you took is the evidence. Leave out what you did when it does not change what the human understands or decides.
 
 Of the decision frame, the message's form is this rule's - the order, the recommendation labelled and separate, the pick at the end.\
-Whether the options are complete, with nothing hidden, can only be checked against the real options, so it is [`M10`](../methods/M10-guided-dialogue.md)'s step, the procedure these messages serve.
+Whether the options are complete, with nothing hidden, can only be checked against the real options, so it is [`M10`](../methods/M10-guided-dialogue.md)'s step, the procedure these messages serve.\
+When the message asks for a decision, the options are the picks: each option is a **Continue** pick naming it, and Explore and Return keep their meaning.
 
 ---
 

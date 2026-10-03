@@ -1,0 +1,50 @@
+### design-rulings.R1
+Your change takes ownership of the boundary between T and N. It must declare an interface and make N use it. entities/E5-system.md (Boundaries): "A change that alters what an undeclared neighbour reaches into owns that boundary: declaring and honouring the interface is inside its scope, not optional."
+Until that happens, N and T count as one system "with the traits of both" (E5; axioms/README.md, "An axiom binds a system..."), and the undeclared reach is "itself a fault under A3".
+N is also inside your change's scope, because A0 says a change touches "any consumer whose contract it alters".
+How the bypass ends: A3 "Bypass as Signal" and E5 "Declared against honoured" say to first check the interface against T's duty, then either move N onto the interface or adjust the interface to "what the consumer legitimately needs".
+Both modules sit inside the one service, so the change also answers to the service's axioms, since a change answers to "every system containing it" (A0).
+Because work passes between agents, the service is multi-agent under the T3 test, which brings in A5, A6, A7, A10 and A13 alongside the floor axioms (A3, A4, A8, A9, A14).
+
+### design-rulings.R2
+(1) No. In E5 Boundaries, merging only chains through what a change can reach: "if A reaches into B and B into C, a change to A is one system with C only when it alters something B takes from C." A change that only A uses alters nothing B takes from C, so C's axioms do not bind it.
+It does answer to B's axioms. A reaches into B with no declared boundary, so A and B are "one system with the traits of both, and the axioms either unit would bring all bind" (axioms/README.md).
+(2) Yes. Changing data that B takes from C is exactly the condition E5 names, so for this change the merged unit includes C and C's axioms bind.
+In both cases E5 says the change "owns that boundary" for any undeclared neighbour whose reach it alters, so declaring and honouring those interfaces is in scope. In (2) that covers at least the A-B seam, and probably the B-C seam as well.
+GUESS: the B-C seam counts as one this change alters in (2). The text does not spell out which seams a chained change owns.
+
+### design-rulings.R3
+Yes, the service is stateful. The module meets the T1 test: it writes something it later reads back, and the service acts on it.
+traits/README.md: a system "has every trait any part it contains has: a service with one stateful module is stateful". E5 says the same.
+Yes, A1 binds your change. A1 applies to stateful systems, and a change answers to "the system it modifies, every system containing it" (axioms/README.md). The stateless module sits inside the stateful service.
+E5 Boundaries adds that units inside one system need no chaining: a change to any of them "answers to the containing system, which has the traits of every part it contains."
+What A1 then asks is set by the change's scope (A0). The change must not move the service away from A1's limit, for example by giving the stateless module "private, opaque, or transient truth". It must close any A1 gap only as far as the part it already alters allows.
+E5 "Why precision matters" names the reverse reading as the failure: "a stateful system escapes its own axioms by being described as stateless modules".
+
+### design-rulings.R4
+Yes, A1 binds the team's records, not the tool. entities/E5-system.md: "A stateless product built by a team that keeps records it relies on has A1 binding the team's records, not the product."
+The organisation counts as a system ("The organisation doing the work is a system"), and its records pass the T1 test: they are written, read back and relied on.
+The tool fails the T1 test, so A1 does not bind the tool, and nothing in a change to the tool answers to A1.
+E5 keeps the two questions apart: the systems a change answers to are the product's, while "the organisation's axioms govern how the change is made and recorded".
+Work passes between the agents and the director, so the organisation is also multi-agent (T3) and A5, A6, A7, A10 and A13 bind it too. No model is in the loop, so the T5 axioms do not come in from that trait.
+
+### design-rulings.R5
+The axioms encourage the split but do not require it. You are expected to weigh it, and you must record the gap either way.
+A0: "as much as the touch allows" means "the part the change already alters to do its own work; restructuring beyond that, even inside the same component, is the encouraged improvement below, not a requirement". Also: an agent who sees an improvement within the component's duty "is expected to weigh doing it, not merely permitted to".
+A3 "Composable by Default" encourages fixing K, splitting it and re-cutting its seams within its duty, "as a change of its own, answering to every consumer whose interface it alters".
+K's interface is not versioned, so the split alters all three consumers at once and answers to their axioms immediately (E5). Adding versioning while doing it is "encouraged, not required; if it is not done, the gap is recorded."
+The feature itself must not make the tangle worse: new work "never repeats a gap the axiom names" (A0), and A3 says a change short of the limit "adds none of" the dual-purpose modules.
+If you do not split, record the gap with its evidence and a revival trigger (A0, RU3): "Either way the gap is recorded."
+NOT SETTLED: whether the feature's own edits fall inside the tangled code, which would make closing that part required.
+
+### design-rulings.R6
+All ten consumers. entities/E5-system.md: "A declared version range - any 2.x - is adoption in advance: a release within it alters every consumer bound by the range, whether or not the consumer's own files change."
+All ten use the declared interface whose documented behaviour 2.4 changes. That meets E6's blast-radius condition: an adjacent component is altered when "the interface between them changes".
+So publishing 2.4 answers to the axioms of all ten consumers. It is not the "publishing alters no consumer that has not adopted it" case, because the range already counts as adoption.
+NOT SETTLED: whether the corpus treats a change to documented behaviour inside a 2.x minor release as a versioning fault of its own. GUESS: A3 "Semantic Bit-Masking" (explicit, versioned contracts) points that way, but no text says so.
+
+### OBSERVATIONS
+- Possible tension: A0 limits required work to "the part the change already alters" and calls restructuring beyond that encouraged. E5 Boundaries makes declaring and honouring an undeclared interface mandatory ("not optional"). Honouring may mean editing the consumer (moving N onto the interface), which is beyond what the change alters. Neither file says which rule wins.
+- E5 says the chaining limit "governs units in different systems". But an undeclared dependency already makes A and B "one system" for binding, so whether A and B count as "different systems" here is circular. The A-B-C example suggests the limit applies to the merge, but the wording is unclear.
+- E5 does not say which undeclared seams a chained change (R2 part 2) owns: just the one it directly alters, or every seam along the chain.
+- E5 line 61 ("the component is not altered by being adopted") and line 63 (a range is adoption in advance) are consistent, but you need both lines to answer R6. A reader of line 61 alone could wrongly conclude that no consumer is altered.

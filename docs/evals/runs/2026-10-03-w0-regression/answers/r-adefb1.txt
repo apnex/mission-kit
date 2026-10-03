@@ -1,0 +1,49 @@
+### layer-charters.H1
+It belongs in `rules/` (prefix RU). methods/README.md (M0) gives this exact case under Placement: "The first question is about a system's properties, not about how universal a ban sounds: *credentials are never committed* binds an action in a situation, and is a rule."
+So it is not an axiom, even though the ban sounds universal. Following it produces no result of its own, so it is not a method (question 2). It does not govern how an artifact is written, so it is not style (question 3). It leaves a trace a check could test (the repository history shows whether a credential was committed), so it reaches question 4: "a rule, in `rules/`".
+Per rules/README.md (RU0), it must declare a `trace` in frontmatter. A related procedure already exists: methods/M9-history-content-scrub.md covers removing a credential that was committed ("Rotate first, then scrub"). No RU entry for the ban itself exists today (RU1-RU4 only).
+
+### layer-charters.H2
+It belongs in `practices/` (prefix PC). Using M0's placement order: it is not a limit a system is built toward (1). Re-reading produces no verdict, artifact or record (2). It does not govern an artifact's form (3). Nothing in the record afterwards shows whether the re-read happened (4). practices/README.md (PC0): "A practice is what is left: it produces nothing of its own, does not govern an artifact's form, and leaves no trace a check could test."
+It would sit at the *verifying* moment, which PC0 records as holding no practice today.
+Placement and admission are separate: PC0 says "A practice earns its place only by evidence that following it produces measurably different work", so it gets an entry only if such a difference has been observed.
+GUESS: if it were changed to require a recorded artifact (e.g. "the closeout quotes the original request"), it would leave a trace and become a rule ("if it acquires one, it is a rule and moves" - PC0).
+
+### layer-charters.H3
+It belongs in `methods/`, because following it produces a result of its own, a verdict (M0 question 2: "Does following it produce a result of its own - a verdict, an artifact, a record? A procedure, here.").
+An entry already covers it: methods/M1-triangulated-review.md, "Triangulated review - minimum 4 independent inputs". Its hydrate-when is "You are reviewing a patch or design that ships to production or upstream". Its text says to "require **at least four genuinely independent inputs** before reaching a verdict", and lists the canonical four for a code patch.
+M0 places M1 at the *verifying* moment and calls it the primitive that "carries the set". A new entry would go against M0's "Prefer strengthening an existing entry to adding a neighbour."
+
+### layer-charters.H4
+It belongs in `style/` (prefix S). It governs how an artifact is written, its form, whatever the work was (M0 question 3). style/README.md (S0) says it holds "Rules about the artifact itself, judged by reading the output rather than by watching it being produced."
+No existing style entry covers heading case. I checked the S1-S15 titles and searched the corpus for "sentence case", "sentence-case" and "title case", with no matches.
+Admission is a separate question: S0 says a convention earns an entry only "when its absence has produced a real defect in a real artifact", and "Aesthetic preference does not qualify". So it needs that evidence before it gets an entry.
+It can be stated as a predicate over text, so S0's "Prefer a rule a script can hold" applies: it should name exactly one tool in `enforced-by`.
+
+### layer-charters.H5
+A rule must declare `trace` in its frontmatter: "the observable in the record that shows it was kept or broken, required by the catalogue contract" (rules/README.md, RU0 "Member shape").
+The schema enforces this. schemas/catalog-entry/v1alpha1/catalog-entry.schema.json has an if/then: category `rule` with an id matching `^RU[1-9][0-9]*$` requires `trace` (minLength 20).
+It may also declare `enforced-by`, which names the tool that checks it (pattern `^tools/`). RU0: "It names an enforcer in `enforced-by` when a tool checks it ... a rule with no tool yet is still a rule". The schema's `trace` description says naming a tool "is optional".
+A practice "declares no `trace`; if it acquires one, it is a rule and moves" (practices/README.md, PC0). Both share the base required fields (id, category, title, status, hydrate-when).
+
+### layer-charters.H6
+methods/README.md (M0) gives the order under "Placement": ask in order and stop at the first yes. RU0 and PC0 cite this order without changing it.
+1. Is it a limit a system is built toward, in force for every system with the traits it names? Then it is an axiom (`axioms/`).
+2. Does following it produce a result of its own (a verdict, an artifact, a record)? Then it is a method (`methods/`). Guidance that only requires a record to carry something is a rule, not a method.
+3. Does it govern how an artifact is written (its form, whatever the work was)? Then it is style (`style/`).
+4. Does it leave a trace in the record of the work that a check could test? Then it is a rule (`rules/`).
+5. Otherwise it is a practice (`practices/`).
+
+### layer-charters.H7
+Handing over. Specifically, handing work in progress to another agent or to a later session.
+methods/README.md (M0): "handing work in progress to another agent or a later session has no procedure at all". rules/README.md (RU0) lists *handing over* among the moments that "hold no rule today", and notes that a rule such as "a handover record names what is unfinished" would leave a trace, "and none exists". practices/README.md (PC0) lists *handing over* among moments that "hold no practice today".
+One caveat: the moment as a whole is not empty. M10 (guided dialogue) covers handing understanding and decisions to a human, so the empty part is the handover between agents or sessions. M0 calls handing over a "thin moment, recorded rather than filled", and says it applies "to an agent working alone as much as to many: a lone agent hands over to its own next session."
+For comparison: every other moment has at least one member across the three layers. Entering has M8 and PC1. Committing to a design has M7. Verifying has M1 and M2. Deciding what to keep has RU1 and RU3. Treating the record has M9, RU2 and RU4.
+
+### OBSERVATIONS
+- H7's wording ("nothing at all") does not fit exactly. Read across methods/rules/practices, no one of the six moments is completely empty. Only the agent-to-agent or session handover within *handing over* is ungoverned, because M10 covers handover to a human.
+- practices/README.md "Gaps tested" lists verifying, deciding what to keep and handing over as holding no practice. By its own territory table, *committing to a design* and *treating the record* also hold no practice (PC1 is the only member, at Entering). So the gap list is incomplete.
+- methods/M1-triangulated-review.md is titled "minimum 4 independent inputs" and calls four "the empirical floor". Its Rationale then says "The number isn't sacred (sometimes 3 is enough ...)" and puts the floor's failure mode "below 3". So the floor is internally inconsistent, 4 vs 3.
+- M1 (a method) uses a "## Rule" body heading. This is a minor vocabulary collision now that "rule" names a separate layer.
+- The catalog-entry schema requires `trace` for rules but does not forbid `trace` on practices. PC0's "declares no `trace`" is held by prose only, not by the contract.
+- The root AGENTS.md and INDEX.md in my session context came from outside the corpus. I based these answers only on files under /tmp/opencode/evalc/c-cf632c74.

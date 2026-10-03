@@ -1,0 +1,34 @@
+You are an engineering agent who has just been given a knowledge corpus and nothing else. Read only files under /tmp/opencode/evalc/c-840447a0. Its entry point is INDEX.md; open whatever you need.
+
+Answer using the corpus, citing files and text.
+If it does not settle something, say "NOT SETTLED" and label any guess "GUESS:". Never present a guess as if the text said it. Under eight sentences per question.
+
+Do not edit any file except the one answer file named at the end. Do not run git.
+
+Questions:
+
+### composition.P1
+You will work on a long-running service that holds persistent state, is operated by several cooperating agents, and has a language model making decisions on its critical path. It is not driven by a declared specification it reconciles toward. Which axioms bind it, and how did you determine that?
+
+### composition.P2
+You will work on a stateless command-line text formatter, run by one person, with no model in the loop, written as an ordinary script. Which axioms bind it? Separately: the delivery-code domain entry cites A1 in its axiom alignment - does A1 constrain your work on this formatter's codebase?
+
+### composition.P3
+You must apply an already-merged schema migration to a production database. Which work-type, which domain, and which role? Name the entry IDs.
+
+### composition.P4
+Which work-types may a verifier perform on product-data? List them, and say which entries you treated as authoritative.
+
+### composition.P5
+You are the only agent. You have just built a change. Can you perform verify-gate-reactive on it yourself? If not, what do you do instead?
+
+### composition.P6
+Using the ledger's 'Hydrate when' column, list the entries you would read before changing the harness that launches agents for a service that holds persistent state. Say why each matched.
+
+### composition.P7
+(a) A domain entry's list of work-types and a work-type's list of domains disagree. Which governs, and where does the corpus say so? (b) A trait entry lists the axioms it brings into force. If that list disagreed with an axiom's applies-to field, which would govern, and where does the corpus say so?
+
+Write your answers to this file, and nothing else:
+  /home/apnex/taceng/mission-kit/docs/evals/runs/2026-10-03-w0-recheck/answers/r-ea4447.txt
+Put each answer under its heading exactly as given above (a line starting with ###), then a final heading `### OBSERVATIONS` noting anything ambiguous, inconsistent or wrong you met, or "none".
+When the file is written, reply with only the word DONE.

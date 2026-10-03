@@ -4,16 +4,49 @@ category: work-type
 title: Work-types - the composition rule, the canonical closeability preflight, and the entry schema
 status: active
 hydrate-when: You are classifying a unit of work and need the composition rule or the closeability preflight
-related: [R0, D0, A3, A6, A7, A11]
+related: [R0, D0, T0, E5, A3, A6, A7, A11]
 ---
 
 # Work-types - composition, closeability, and schema
+
+## Purpose
 
 This is the **canonical** cross-axis reference for the work-taxonomy.\
 Every `work-types/W*.md` entry references this file for its composition rule and its closeability preflight - **the constraint set is authored here once and never forked per entry** (M7 guardrail #2).\
 Read `roles/README.md` (the M role axis) and `domains/README.md` (the N domain axis) alongside this.
 
 The taxonomy exists to let strategic intent compile into self-fed WorkGraph execution (A13): a `role x work-type x domain` triple **generates** a claimable WorkItem with a complete evidence contract, so idle agents can be fed well-typed work and the Director/architect need not hand-route it (A6, A11).
+
+---
+
+## Territory
+
+This set covers **the kinds of work an engineering organisation does**, each a verb-family that compiles to a closeable claimable node.\
+The kinds group by what the work does, and the groups are the denominator.
+
+| Group | What the work does | Members |
+|---|---|---|
+| **Build** | changes the product or the harness | `W1` build a slice, `W2` fix a bug, `W3` retire or hard-cut, `W5` author guard or falsifier tests |
+| **Check** | produces evidence about work, its own or another's | `W4` validate locally, `W8` verify gate, `W9` audit a surface, `W10` adversarial design review, `W11` live probe, `W12` meta-validate by dogfooding, `W22` axiom-alignment gate |
+| **Land and ship** | moves work to where it runs | `W6` merge and land, `W7` publish or deploy, `W26` reset or converge the fleet |
+| **Approve and decide** | exercises authority over work | `W13` code-owner approve, `W23` capture and ratify a decision, `W24` director walkthrough |
+| **Design** | shapes work before it is built | `W14` design a contract or invariant, `W15` convene a council |
+| **Keep knowledge** | captures what work taught | `W16` bank an idea, `W17` author a closeout packet |
+| **Coordinate** | runs the arcs work happens inside | `W18` seed an arc, `W19` drive an arc, `W20` reconcile a ledger, `W21` repair an arc, `W25` backstop a production window |
+
+Every work-type sits in one row.
+
+**The set grows when the territory finds a gap.**\
+This set is not complete and is not expected to be.\
+A recurring kind of work that compiles to a closeable claimable node and fits no work-type is closed by adding one, not by stretching a neighbour to cover it, because a stretched work-type carries two evidence contracts under one name; until it exists, the work is recorded against the gap, as a row in the project's backlog ([`AR5`](../artifacts/AR5-backlog.md)).\
+Work that cannot compile to a node - no trigger, nothing to close - is recorded as a routing note instead, as incident recovery is below.\
+A new work-type is authored like any entry: from a peer exemplar ([`PC1`](../practices/PC1-author-from-exemplar.md)), against the entry schema below, landing through the gate; adding one changes how work is generated, so it is ratified by the director.
+
+**Gaps recorded.**\
+*Extending this corpus* - adding or retiring a layer - has no work-type, though it recurs.\
+Procedures that conduct work are cited by only some work-types, and artifacts by fewer; a work-type cites what it can name, and the rest are recorded rather than guessed.
+
+---
 
 ## Two structural concepts, three pure axes
 
@@ -46,6 +79,18 @@ role x work-type x domain
 This describes the live substrate (`roleEligibility` + `evidenceRequirements` + SEAL `attest_evidence` already implement it), not an invention.\
 An enumerated triple-table is rejected - it freezes the many-to-many and dies on role-doubling and overlay-hatting.
 
+**Everything else attaches by citation or by system, never by widening the triple.**\
+The work-type cites the procedure that conducts it, in `methods`, and the document it produces, in `produces`; the axioms come from the systems the change alters ([`E5`](../entities/E5-system.md), [`T0`](../traits/README.md)).\
+Adding method or system as a fourth axis would multiply every combination into the table this rule rejects.
+
+**The order a cold agent assembles one unit of work in:**
+
+1. **The systems the change alters** give the traits, and so the axioms in force; the organisation doing the work is a system too, and its axioms govern how the work is done and recorded.
+2. **The work-type** gives the eligible roles and domains, and its `evidenceAuthority` says who may satisfy the evidence.
+3. **The domain** is the surface the work's evidence lands on ([`D0`](../domains/README.md)).
+4. **The role** is who performs it; what it may attest is set by role and work-type together ([`R0`](../roles/README.md)).
+5. **The method and artifact** are the ones the work-type cites.
+
 ---
 
 ## The canonical constraint set (= the closeability preflight)
@@ -60,8 +105,10 @@ A generated node that cannot pass this preflight at seed is not admitted (this i
    verifier-attestation` requires the attesting role-set to contain an identity
    that **cannot be the executor given the LIVE roster** (single-agent-per-role
    aware). If the live roster collapses attester and executor to one agent ->
-   **fail the seed or downgrade to `kind:review`**. Verifier-*held* gates use
-   plain `kind:review`, never verifier-attestation (this is the bug-249 fix).
+   **fail the seed**, and the gate waits for an independent agent or is met by
+   director ratification (constraint 9); a same-agent review never stands in.
+   Verifier-*held* gates use plain `kind:review`, never verifier-attestation
+   (this is the bug-249 fix).
 3. **DomainEligibility gates the pairing.** `domain` is IN the intersection: a
    `(work-type x domain)` outside the type's `domainEligibility` is rejected.
    `domainFreedom: pinned` means the generator does not vary the domain. Each
@@ -100,13 +147,13 @@ A generated node that cannot pass this preflight at seed is not admitted (this i
 ## The entry schema (`work-types/W*.md` frontmatter)
 
 A candidate is taxonomy-grade **iff it compiles to a closeable claimable node**.\
-Every work-type carries:
+A work-type carries these fields; `generatable`, `methods` and `produces` are optional, and the rest are required:
 ```yaml
 id:                   W<n>
 category:             work-type
 title:                <kebab-verb-phrase> - <one-line>
 status:               active    # see schemas/catalog-entry for the vocabulary
-generatable:          true      # false when the type must be authored by hand
+generatable:          false     # optional; set only when the type must be authored by hand
 roleEligibility:      [<pure role union>]
 evidenceContract:     [{kind, description}, ...]      # the evidenceRequirements[] template - the compile-target
 evidenceAuthority:    executor-evidence | executor-evidence-provisional | verifier-attestation | director-ratification
@@ -116,6 +163,8 @@ parameters:           [{name, fills, bindingSource, predicate}]   # bindingSourc
 generationMode:       proactive-poolable | reactive-triggered | arc-seeded | externally-triggered
 falsifier:            <the observation that turns the node FAIL, not prose>
 compositionHooks:     <dependsOn / completionDependsOn patterns>
+methods:              [<M ids>]       # optional; the procedures that conduct this work
+produces:             [<AR ids>]      # optional; the document types this work produces
 ```
 
 Body sections (PC1 exemplar): `## Definition`, `## Evidence & closeability` (reference this file's constraint set - do not restate it), `## Generation` (mode + how idea-425/451/403 instantiate it), `## Axiom alignment` (load-bearing citations only - no decoration, per M7 / the per-item axiom-test gate), `## Origin`.
@@ -172,3 +221,51 @@ There is **no `overlays/` directory**.
   and evidence contracts into schema fields so LLMs do not re-derive them.
 - **A8 (Gated Recursive Integrity):** the closeability preflight is the
   lower-layer gate a generated node must pass before it bears weight.
+
+---
+
+## Faults
+
+Population faults - visible across the set, invisible to any one work-type.
+
+- **Two work-types for one act.** Two entries a generator could mint for the same work, so the same node appears under two names.
+- **The restated constraint.** A work-type that copies the canonical constraint set instead of satisfying it; the copy drifts from the one source.
+- **The doubly-declared pairing.** A pairing stated on the work-type and again on the domain, free to disagree; only the work-type's list governs, and the domain's view is generated.
+- **The uncovered work.** A recurring kind of work no work-type covers, so it is hand-routed every time.
+- **The uncited procedure.** A procedure that conducts work cited by no work-type, so a coordinating system cannot attach it.
+
+---
+
+## Index
+
+<!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
+| ID | Title | Hydrate when |
+|---|---|---|
+| [W0](README.md) | Work-types - the composition rule, the canonical closeability preflight, and the entry schema | You are classifying a unit of work and need the composition rule or the closeability preflight |
+| [W1](W1-build-a-slice.md) | build-a-slice - implement a scoped increment | You are scoping the implementation of a bounded increment |
+| [W2](W2-fix-a-bug-or-repair.md) | fix-a-bug-or-repair - resolve a filed defect | You are resolving a defect that has already been filed |
+| [W3](W3-retire-or-hard-cut.md) | retire-or-hard-cut - delete a surface with disposition | You are deleting a surface and must say what happens to what depended on it |
+| [W4](W4-validate-locally.md) | validate-locally - self-check a fresh artifact | You have a fresh artifact and are self-checking it before anyone else sees it |
+| [W5](W5-author-guard-or-falsifier-tests.md) | author-guard-or-falsifier-tests - add a test that can fail | You are adding a test that is able to fail |
+| [W6](W6-merge-and-land.md) | merge-and-land - land an approved change on canonical main | You are landing an approved change on the canonical branch |
+| [W7](W7-publish-deploy-or-canonicalize.md) | publish-deploy-or-canonicalize - ship to the estate/channel | You are shipping something to the estate or a release channel |
+| [W8](W8-verify-gate-reactive.md) | verify-gate-reactive - independently gate a build/change | You are gating a build or change that you did not author |
+| [W9](W9-audit-a-surface.md) | audit-a-surface - bounded adversarial sweep of a surface | You are sweeping a bounded surface adversarially rather than reviewing a diff |
+| [W10](W10-adversarial-design-review-upstream.md) | adversarial-design-review-upstream - critique a design before build/merge | You are critiquing a design before it is built or merged |
+| [W11](W11-run-a-live-probe-or-smoke.md) | run-a-live-probe-or-smoke - observe live behavior at a revision | You need to observe live behaviour at a specific revision |
+| [W12](W12-meta-validate-dogfood.md) | meta-validate-dogfood - use the deliverable as its own test | You are using a deliverable as its own test |
+| [W13](W13-code-owner-approve.md) | code-owner-approve - non-author independence approval | You are approving as a code owner who did not write the change |
+| [W14](W14-design-a-contract-or-invariant.md) | design-a-contract-or-invariant - author a design-of-record | You are authoring a design of record, a contract or an invariant |
+| [W15](W15-convene-a-council.md) | convene-a-council - multi-lens deliberation + synthesis | You need several lenses deliberated and synthesised before deciding |
+| [W16](W16-bank-idea-or-knowledge-capital.md) | bank-idea-or-knowledge-capital - capture reusable capital | You have reusable capital in hand and are capturing it |
+| [W17](W17-author-closeout-packet.md) | author-closeout-packet - proof-level arc closeout | You are closing an arc and must assemble proof rather than narrative |
+| [W18](W18-seed-a-blueprint-arc.md) | seed-a-blueprint-arc - instantiate a WorkGraph arc | You are instantiating a staged arc from a blueprint |
+| [W19](W19-drive-an-arc.md) | drive-an-arc - operate an arc over its lifetime | You are operating an arc across its lifetime rather than a single node |
+| [W20](W20-reconcile-ledger.md) | reconcile-ledger - reconcile entity/backlog state vs truth | Entity or backlog state has diverged from truth and you are reconciling it |
+| [W21](W21-arc-repair.md) | arc-repair - repair a WorkGraph arc topology | An arc topology is wrong and you are repairing it in place |
+| [W22](W22-axiom-alignment-gate.md) | axiom-alignment-gate - per-item axiom-alignment check | You are checking a single item against the axioms it claims to satisfy |
+| [W23](W23-capture-decision-and-ratify.md) | capture-decision-and-ratify - record + ratify a decision | You are recording a decision and having it ratified |
+| [W24](W24-director-walkthrough.md) | director-walkthrough - live Director sensemaking walkthrough | You are walking the director through something live for sensemaking |
+| [W25](W25-backstop-a-prod-window.md) | backstop-a-prod-window - hold abort/rollback over a risk window | You are holding abort or rollback authority across a risk window |
+| [W26](W26-reset-or-converge-the-fleet.md) | reset-or-converge-the-fleet - restore fleet to a healthy state | The fleet is unhealthy and you are restoring it to a known state |
+<!-- END GENERATED -->

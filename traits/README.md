@@ -87,6 +87,11 @@ A trait states an observable test, not a description.\
 
 ---
 
+**The set grows when a gap is found.**\
+A characteristic that would bring an obligation no trait captures is closed by adding a trait, as `domains/` and `work-types/` grow on a gap; the missing complement recorded above is one.
+
+---
+
 ## How traits compose
 
 **A system has as many traits as it has, and they do not exclude one another.**\

@@ -132,18 +132,6 @@
     "evidenceResolvesAgainst": {
       "type": "string"
     },
-    "freeForTypes": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "pinnedForTypes": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
     "roleEligibility": {},
     "domainEligibility": {},
     "domainFreedom": {},
@@ -187,6 +175,20 @@
         "type": "string"
       },
       "minItems": 1
+    },
+    "methods": {
+      "description": "For a work-type: the procedures (M entries) that conduct this work. Declared on the work-type, the side whose meaning includes it; the reverse view is generated.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "produces": {
+      "description": "For a work-type: the document types (AR entries) this work produces.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
     }
   },
   "allOf": [

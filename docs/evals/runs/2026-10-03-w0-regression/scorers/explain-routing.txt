@@ -1,0 +1,168 @@
+You are scoring answers to a comprehension test against an answer key. Read only this file. Do not open any other file under /home/apnex/taceng/mission-kit/docs/evals/runs/2026-10-03-w0-regression.
+
+Score each answer 0, 1 or 2 against the probe's key and rubric. An answer that labels its conclusion a guess, or says the text does not settle it, scores at most 1 unless the rubric says otherwise. Judge the answer, not its length or confidence.
+
+You do not know which answers came from which reader or document version, and must not try to infer it.
+
+Write one JSON object per line, for every answer id below and no others, to this file: /home/apnex/taceng/mission-kit/docs/evals/runs/2026-10-03-w0-regression/scores/explain-routing.txt
+Each line exactly: {"item": "<answer id>", "score": 0|1|2, "reason": "<one sentence>"}
+When written, reply with only DONE.
+
+======================================================================
+PROBE explain-routing.Q1
+
+Question:
+You are about to tell the project director that a release will slip. Which entries in this corpus guide how you write to them? Name each entry ID and what it asks of you.
+
+Key:
+M10 (guided dialogue: lead the human one confirmed step at a time to understanding, then a decision, recorded) and/or S15 (a message to a human: point first, one step and question, where we are, explained names, decision frame, Continue/Explore/Return picks). Naming ST1, the explain set that gathers them, is credited.
+
+Rubric:
+2 for naming M10 or S15 (or ST1 leading to them) with what it asks. 1 for naming one of them without what it asks, or only related entries (W23, AR4, A13, RU1) with a grounded link. 0 otherwise.
+
+--- answer a-1a578ac7 ---
+INDEX.md routes this to ST1 (sets/ST1-explain.md: "You are about to communicate with a human who has limited context"), whose two members are S15 and M10. S15 (style/S15-message-to-a-human.md) asks for "Point first: the first line is the conclusion", so the slip goes in the first line, with one question at the end, unseen names explained, and narrative only "where it carries understanding". If you want something decided, S15's decision frame applies: "what is being decided; why now; the options, each with its cost, including doing nothing; a recommendation, labelled and kept separate". M10 (methods/M10-guided-dialogue.md) asks that the director "ends up seeing what you see on the point - nothing missing that matters, nothing extra", and that nothing is "chosen for them or hidden". A13 asks you to economise the director's attention without going "silently dark on an action or decision the Director is owed", and never to narrow the options. S0 (style/README.md) is the layer charter, and its trigger fires on "a message a human will read". NOT SETTLED: no entry is specific to bad news, and ST1 records this as a gap: "Bad news and teaching were each tested in one pair; no move is isolated."
+
+--- answer a-31bc0623 ---
+ST1 (sets/ST1-explain.md) is the set for this situation: it gathers S15 for "the form of any message to a human" and M10 for "leading a human to understanding, then a decision".
+S15 (style/S15-message-to-a-human.md) asks for "Point first: the first line is the conclusion", so the slip goes in line one, followed by one question asked at the end, an explanation of any system-specific name, narrative "only where it carries understanding", and two or three Continue/Explore/Return picks.
+M10 (methods/M10-guided-dialogue.md) asks you to know the finish line, give one step per message, and confirm understanding before asking for any decision the slip forces, such as re-scoping.
+A13 (axioms/A13-director-intent-amplification.md) applies because you are about to use the director's attention: "decision over status", and "the system never goes silently dark on an action or decision the Director is owed - under-surfacing is as much a fault as over-surfacing".
+S0 (style/README.md) routes here ("a message a human will read") and names S15 as the rule for that medium.
+NOT SETTLED: no entry gives guidance specific to bad news, and ST1 records the gap: "Bad news and teaching were each tested in one pair; no move is isolated".
+
+--- answer a-16745921 ---
+ST1 (sets/ST1-explain.md) is the routing set for "communicate with a human who has limited context"; its members are S15 and M10, and S0's trigger ("a message a human will read") points to S15 as well. S15 (style/S15-message-to-a-human.md) asks: "Point first: the first line is the conclusion" (here, the slip itself); one step and one question, asked at the end; explain or leave out system-specific names; end with two or three Continue/Explore/Return picks. M10 (methods/M10-guided-dialogue.md) asks you to reach the "Understand" limit, "nothing missing that matters, nothing extra", one confirmed step at a time. If the slip needs a decision, it asks for one decision per message in S15's decision frame, and for the decision to be recorded (step 5). A13 (axioms/A13-director-intent-amplification.md) triggers when you "consume the director's attention": it says "never goes silently dark on an action or decision the Director is owed - under-surfacing is as much a fault as over-surfacing" and "decision over status". NOT SETTLED: no entry covers bad news as such, and ST1 records this gap itself: "Bad news and teaching were each tested in one pair; no move is isolated". GUESS: S5 (do not pin dates in prose) is aimed at documentation drift, not at a message giving a new release date.
+
+======================================================================
+PROBE explain-routing.Q2
+
+Question:
+You are about to send the director a progress update on work they have not followed. Which entries in this corpus guide how you write to them? Name each entry ID and what it asks of you.
+
+Key:
+M10 (guided dialogue: lead the human one confirmed step at a time to understanding, then a decision, recorded) and/or S15 (a message to a human: point first, one step and question, where we are, explained names, decision frame, Continue/Explore/Return picks). Naming ST1, the explain set that gathers them, is credited.
+
+Rubric:
+2 for naming M10 or S15 (or ST1 leading to them) with what it asks. 1 for naming one of them without what it asks, or only related entries (W23, AR4, A13, RU1) with a grounded link. 0 otherwise.
+
+--- answer a-5fef8c41 ---
+ST1 routes you to S15 and M10, and M10's "When to apply" says "especially when they have not followed the work". S15 asks for the point first, a "Show where you are: the step, and the finish line" line, explained names, and references kept "in one line or a pick, not through the body". It also says "Leave out what you did when it does not change what the human understands or decides". M10 asks for the finish line and the number of steps left, one step per message, with depth "available on request and never pushed". A13 says "Status-chatter, ceremony, how-to ... never reach the Director", asks for "digest over dump, decision over status", and also gives the no-silent-dark floor. A4 (axioms/A4-zero-loss-knowledge.md) triggers on summarising ("Summarization is loss"), and M10 cites it for "depth is kept rather than deleted", which it meets by offering depth rather than cutting it. RU1 applies only if the update reports a sweep, refactor or audit (lead with the yield); ST1 notes that RU1 "is triggered by sweeps and audits, not by any report".
+
+--- answer a-b10f0dbf ---
+ST1 routes you to S15 and M10. M10 says to apply it "especially when they have not followed the work".
+S15 asks for the conclusion first, then where you are ("the step, and the finish line"), with unseen names explained or left out and references kept "in one line or a pick, not through the body".
+S15 also says: "Leave out what you did when it does not change what the human understands or decides."
+M10 asks for one confirmed step at a time toward the understand limit ("nothing missing that matters, nothing extra"), with depth available on request "and never pushed".
+A13 says "Status-chatter ... never reach[es] the Director" and prefers "digest over dump, decision over status", so the update should be shaped as a digest or a decision.
+RU1 (rules/RU1-default-reject-honest-yield.md) applies only if the update summarises a sweep, triage, audit or review. It then asks you to lead with yield (considered, landed, verified versus asserted) before any narrative. ST1 notes RU1 "is triggered by sweeps and audits, not by any report".
+S0 routes to S15, as in Q1.
+
+--- answer a-3a48f737 ---
+The routing is the same: ST1, so S15 and M10, with S0 as the layer charter. M10 says to apply it "especially when they have not followed the work". It asks you to know the finish line and "say how many steps remain", and to give one step per message. S15 asks for point first, "Show where you are: the step, and the finish line", system-specific names explained or left out, and "Leave out what you did when it does not change what the human understands or decides". A13 (axioms/A13-director-intent-amplification.md) asks that "Status-chatter, ceremony, how-to ... never reach the Director", and prefers "digest over dump, decision over status". It still forbids under-surfacing. RU1 asks you to lead with yield ("Lead every summary with the actual delivered outcome"), but only when the update reports a sweep, refactor programme or audit; ST1 notes RU1 "is triggered by sweeps and audits, not by any report". NOT SETTLED: how a pure progress update squares with A13's bar on status (see OBSERVATIONS).
+
+======================================================================
+PROBE explain-routing.Q3
+
+Question:
+The director has asked you why something happened, and you are about to answer. Which entries in this corpus guide how you write to them? Name each entry ID and what it asks of you.
+
+Key:
+M10 (guided dialogue: lead the human one confirmed step at a time to understanding, then a decision, recorded) and/or S15 (a message to a human: point first, one step and question, where we are, explained names, decision frame, Continue/Explore/Return picks). Naming ST1, the explain set that gathers them, is credited.
+
+Rubric:
+2 for naming M10 or S15 (or ST1 leading to them) with what it asks. 1 for naming one of them without what it asks, or only related entries (W23, AR4, A13, RU1) with a grounded link. 0 otherwise.
+
+--- answer a-120700ea ---
+ST1, S15 and M10 apply, and S0 points to S15. S15 asks for the point first, which here means the cause is the first line. It allows narrative "only where it carries understanding - for instance when the path you took is the evidence", and asks you to leave out the rest. M10's Understand limit asks that the director "ends up seeing what you see on the point - nothing missing that matters, nothing extra", one confirmed step at a time, with depth only on request. A13 applies because you are spending director attention: give a digest, not a dump. NOT SETTLED: no entry tells you how to separate what you measured from what you inferred in a message to a human. AR4's provenance tags ([MEASURED]/[ARGUED]) are for decision records, and GUESS: they could be borrowed.
+
+--- answer a-dd9b75b3 ---
+ST1 routes you to S15 and M10.
+S15 asks for the conclusion first, meaning the cause, and allows narrative where it carries understanding, "for instance when the path you took is the evidence".
+M10 asks you to bring the director to see "what you see on the point - nothing missing that matters, nothing extra", one confirmed step at a time, with depth on request.
+A13 applies because you are using director attention, and it asks for a digest rather than a dump.
+If the "why" concerns a recorded decision, AR4 (artifacts/AR4-decision-record.md) is where the reasoning lives ("why the alternatives were refuted"), and its provenance tags ([MEASURED] versus [ARGUED]) separate observation from reasoning. GUESS: those tags are a useful habit in the answer itself, but AR4 states them for records, not for messages.
+NOT SETTLED: no entry is specific to explaining causes or root causes to a human.
+
+--- answer a-91959551 ---
+ST1 applies, so S15 and M10 do too, with S0 as the layer charter. S15 asks you to put the answer (the cause) in the first line. It allows narrative "only where it carries understanding - for instance when the path you took is the evidence", which is often true of a "why" answer. M10's understand limit asks for "nothing missing that matters, nothing extra", reached "one confirmed step at a time, with depth available on request and never pushed". A13 asks you to spend the director's attention on judgement, not dumps. NOT SETTLED: no entry addresses causal explanation as such. GUESS: AR4's tags ([MEASURED] versus [ARGUED]) are a reasonable way to mark what you observed apart from what you inferred, but AR4 governs decision records, not messages.
+
+======================================================================
+PROBE explain-routing.Q4
+
+Question:
+You are about to explain a technical concept to the director so they can describe it to others. Which entries in this corpus guide how you write to them? Name each entry ID and what it asks of you.
+
+Key:
+M10 (guided dialogue: lead the human one confirmed step at a time to understanding, then a decision, recorded) and/or S15 (a message to a human: point first, one step and question, where we are, explained names, decision frame, Continue/Explore/Return picks). Naming ST1, the explain set that gathers them, is credited.
+
+Rubric:
+2 for naming M10 or S15 (or ST1 leading to them) with what it asks. 1 for naming one of them without what it asks, or only related entries (W23, AR4, A13, RU1) with a grounded link. 0 otherwise.
+
+--- answer a-a7a74dd9 ---
+ST1 applies, so S15 and M10 do too, with S0 as the layer charter. M10's understand limit governs here: the human "ends up seeing what you see on the point", "reached one confirmed step at a time", with depth on request, never pushed. M10's step 2 says one step per message, stopping at a pause point. S15 asks you to explain "any system-specific name, label or ID the human has not seen, or leave it out" (general engineering terms may be assumed), and to end with picks such as "Explore (a side chamber, deeper on this point)". ST1 records teaching as under-tested ("Bad news and teaching were each tested in one pair"). NOT SETTLED: nothing covers making the explanation retellable to third parties. GUESS: if you ship it as a written document the director will reason from, M2's cold-reader test may apply, but M2's trigger names documents, not messages.
+
+--- answer a-3d43420f ---
+ST1 routes you to S15 and M10. Its stated purpose is that the human can "understand what an agent tells them".
+S15 asks you to explain every system-specific name, label or ID the director has not seen, or leave it out ("General engineering terms may be assumed"). It also asks for one step per message and picks that include Explore for going deeper.
+M10's understand limit asks for the director to see what you see "reached one confirmed step at a time, with depth available on request and never pushed". Step 3 asks you to confirm each step has landed before building on it.
+A13 applies as the general rule on director attention.
+NOT SETTLED: no entry addresses equipping the human to retell the concept to others. ST1 records that teaching "w[as] tested in one pair" only.
+GUESS: K28 (ASD-STE100) applies only if the audience includes non-native English readers. Its trigger is "documentation", not a message.
+
+--- answer a-8625f13c ---
+ST1 routes you to M10 and S15; this is the "understand" half of M10. M10 asks you to know the finish line and say how many steps remain, give one step per message and stop at a pause point, and confirm each step "has landed" before the next one builds on it (A8 as cited in M10). It also asks you to keep depth "available on request and never pushed". S15 asks you to explain any system-specific name, label or ID the director has not seen, or leave it out ("General engineering terms may be assumed"), and to ask one question at the end with Continue/Explore/Return picks. NOT SETTLED: no entry addresses getting the human ready to explain the concept to other people, and ST1 records teaching as thinly tested ("teaching ... tested in one pair"). GUESS: M2's cold-reader test is for shipped documents, not chat messages, so it applies only if you write the explanation up as a document for those others.
+
+======================================================================
+PROBE explain-routing.Q5
+
+Question:
+You need the director to choose between three options by a deadline. Which entries in this corpus guide how you write to them? Name each entry ID and what it asks of you.
+
+Key:
+M10 (guided dialogue: lead the human one confirmed step at a time to understanding, then a decision, recorded) and/or S15 (a message to a human: point first, one step and question, where we are, explained names, decision frame, Continue/Explore/Return picks). Naming ST1, the explain set that gathers them, is credited.
+
+Rubric:
+2 for naming M10 or S15 (or ST1 leading to them) with what it asks. 1 for naming one of them without what it asks, or only related entries (W23, AR4, A13, RU1) with a grounded link. 0 otherwise.
+
+--- answer a-b3025422 ---
+ST1 applies, so S15 and M10 do too, with S0 as the layer charter. S15's decision frame asks for "what is being decided; why now" (the deadline goes here), "the options, each with its cost, including doing nothing; a recommendation, labelled and kept separate; then ask for a pick". The decision request goes first and is "never hidden in an optional pick". M10 step 4 asks for one decision per message, and says checking the options are complete "needs the real options, so it is this step's, not the message's form". A13 asks that the director see "the full, unbiased option set", and that you never narrow it, pre-empt the choice, or synthesise the choice for them. Any lean you add appears "as a labeled tie-break input". R4 and W23 say that the choice itself is the director's alone ("cannot be satisfied by architect narrative"). M10 step 5, with AR4 and W23, has you record the decision and its reasoning afterwards and "say where in one line". NOT SETTLED: how S15's "two or three picks" (Continue/Explore/Return) fits three options plus doing nothing (see OBSERVATIONS).
+
+--- answer a-d5020014 ---
+S15's decision frame applies: "what is being decided; why now; the options, each with its cost, including doing nothing; a recommendation, labelled and kept separate; then ask for a pick". The deadline is the "why now", and "doing nothing" is an extra option beside your three. M10 step 4 asks for one decision per message, with every option and its cost and none hidden ("checking that needs the real options"), so the director "can answer with a pick, not a paragraph". M10 step 5 asks you to record the decision and its reasoning and give the location in one line. A13 says you may recommend but must never rework the option set, narrow the choices or pre-empt the decision, so present all three in full; R4 says the decide act is the director's alone. AR4 (decision record: ruling, refuted alternatives, costs, status) and W23 (capture and ratify, needs a director signal and not "architect narrative") govern the record that follows, as M10 "When to apply" says. ST1 marks K5 (three questions a round) and AR3 (many moves at once) as related but in tension with one-decision-at-a-time, so they are not guidance for this message. NOT SETTLED: S15's "two or three picks" are Continue/Explore/Return, and no entry says how three options plus doing nothing fit into those picks.
+
+--- answer a-24d197a2 ---
+S15 asks for its decision frame: "what is being decided; why now [the deadline]; the options, each with its cost, including doing nothing; a recommendation, labelled and kept separate; then ask for a pick". That means the three options plus doing nothing.
+M10 step 4 asks for one decision per message, with no option hidden and every cost stated. Step 5 asks you to record the decision and its reasoning and say where in one line.
+A13 says you may recommend but must never "rework the option set, narrow the choices, nor pre-empt the decision". Any revealed-preference lean appears only as a labelled tie-break.
+R4 (roles/R4-director.md) and W23 (work-types/W23-capture-decision-and-ratify.md) say the decide or ratify act belongs to the director and "cannot be satisfied by architect narrative". The ruling is recorded per AR4: status, authority, refuted alternatives, costs.
+ST1 is the set routing to S15 and M10.
+It lists AR3 (a board offering "many moves at once") as related but in tension with "one decision at a time".
+NOT SETTLED: no entry says what to do if the deadline passes without a pick.
+
+======================================================================
+PROBE explain-routing.Q6
+
+Question:
+You need two linked decisions from the director, where the second depends on the first. Which entries in this corpus guide how you write to them? Name each entry ID and what it asks of you.
+
+Key:
+M10 (guided dialogue: lead the human one confirmed step at a time to understanding, then a decision, recorded) and/or S15 (a message to a human: point first, one step and question, where we are, explained names, decision frame, Continue/Explore/Return picks). Naming ST1, the explain set that gathers them, is credited.
+
+Rubric:
+2 for naming M10 or S15 (or ST1 leading to them) with what it asks. 1 for naming one of them without what it asks, or only related entries (W23, AR4, A13, RU1) with a grounded link. 0 otherwise.
+
+--- answer a-cb10e35f ---
+M10 is central here. It asks for "one decision at a time" and "one decision per message", and step 3 says "If a decision depends on understanding, establish the understanding first, and confirm it has landed".
+So you ask the first decision, record it (step 5), then ask the second in a later message.
+S15 asks for one question per message, and "Show where you are: the step, and the finish line" (for example, decision 1 of 2). Each decision gets its own decision frame and picks.
+A13 forbids narrowing or pre-empting the second decision's options from the first answer beyond what the first answer legitimately settles.
+AR4 says each ruling must be "separately addressable, separately dated, and separately superseded". If the second ruling modifies the first, use `amends` or `supersedes`. W23 covers ratification.
+ST1 routes to S15 and M10. It lists AR3 as related with a tension: AR3 offers many moves at once, but its graph view, where "a move whose dependency is unmet is not legal yet", matches this dependency.
+GUESS: K5's two dependent rounds look similar, but ST1 flags K5's three questions a round as in tension with one question at a time.
+
+--- answer a-f8db5bd4 ---
+M10 is the main entry: "one decision at a time" and "Ask for one decision per message", with step 1 asking you to "Know the finish line ... and say how many steps remain". Its step 3 says that if a decision depends on understanding, you establish it first and confirm it landed. S15 asks for one question per message, a line showing "the step, and the finish line" (for example "decision 1 of 2"), and the decision frame for each decision. A13 says "A single Director approval may execute an entire downstream chain", but the approval "is never synthesized on the Director's behalf", so do not pre-decide the second decision from the first. AR4 says each ruling must be "separately addressable, separately dated, and separately superseded", so record two rulings; W23 governs ratifying each one. AR3 treats dependent moves as a graph ("a move whose dependency is unmet is not legal yet"), but ST1 records its tension with one-decision-at-a-time. NOT SETTLED: no entry says how much to preview the second decision, or how its options depend on each first-decision answer, while you ask the first.
+
+--- answer a-108d53d3 ---
+ST1 applies, so S15 and M10 do too, with S0 as the layer charter. M10's decide limit requires "one decision at a time", and step 4 requires "one decision per message". So ask the first decision, record it (step 5), and only then ask the second, each in S15's decision frame. M10 step 1 ("say how many steps remain") and S15 ("Show where you are: the step, and the finish line") ask you to show that a second decision follows. M10 step 3 says to establish and confirm any understanding a decision depends on first. A13 caps this: never narrow or pre-empt either choice. AR3 is related, not a member, and ST1 notes a tension with it ("many moves at once, against one decision at a time"); its "Decisions required" must each name what it blocks, and "a move whose dependency is unmet is not legal yet". NOT SETTLED: whether to preview the second decision's options in the first message. GUESS: name it as the next step, but frame it only after the first is decided.

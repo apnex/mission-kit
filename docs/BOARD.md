@@ -35,7 +35,7 @@ The thread of the current conversation, so a reader can see how the active work 
 Updated whenever the thread moves; the milestones below remain the plan.
 
 ```text
-M5  bring the charters to E4                     5 of 12 applied; W0 next         <- HERE
+M5  bring the charters to E4                     W0 awaiting review               <- HERE
  +- how the axis layers compose (B32)            done
      +- axioms as asymptotes, system, component  done
      +- six open design questions (B36)          done
@@ -108,7 +108,7 @@ Held rows are [below](#held).
 | **B19** | S4 | A14 signal | author | S | **Held** | nothing proportionate for a small design decision |
 | **B21** | **S2** | **A4 mandate** | agent | **L** | **Held** | no axiom states the property that protects an agent against its own error |
 | **B23** | S2 | **A13 mandate** | agent | S | `DONE` | organisation now defined as one agent or many; lone agent named a primary reader |
-| **B24** | S3 | **A3 mandate** | author | **L** | **M5** | the compositional split behind the work axes has not been revisited since sets were defined |
+| **B24** | S3 | **A3 mandate** | author | **L** | `DONE` | the compositional split behind the work axes has not been revisited since sets were defined |
 | **B22** | S4 | A9 signal | author | S | **Held** | `A9` binds every system and is the least exercised axiom |
 | **B25** | S2 | A13 signal | agent | S | **M3** | `M7`'s trigger is narrower than its title, so nothing routes an author to it unprompted |
 | **B26** | S2 | **A3 mandate** | adopter | S | `DONE` | multi-tag binding ambiguous in every revision; ruled any-tag |
@@ -116,9 +116,9 @@ Held rows are [below](#held).
 | **B28** | S2 | **A3 mandate** | adopter | M | `DONE` | applicability tags were undefined vocabulary; now the `traits/` layer |
 | **B29** | S2 | **A8 mandate** | author | S | **M5** | an evaluation key is the author's opinion; a wrong one yields a confident wrong result |
 | **B30** | S3 | **A8 signal** | adopter | S | **M4** | external addresses outside AGENTS.md are unchecked; placeholder links look real |
-| **B31** | S3 | A10 signal | adopter | S | **M5** | the duty to expand a set on a found gap is stated for domains only, not work-types, traits or sets in general |
+| **B31** | S3 | A10 signal | adopter | S | `DONE` | the duty to expand a set on a found gap is stated for domains only, not work-types, traits or sets in general |
 | **B32** | **S2** | **A12 mandate** - A3 | agent | M | **M5** | no record states how the axis layers compose; a context-less agent assembles it from four charters |
-| **B33** | S3 | A8 signal | agent | S | **M5** | `W0` constraints 2 and 9 contradict on same-agent degradation |
+| **B33** | S3 | A8 signal | agent | S | `DONE` | `W0` constraints 2 and 9 contradict on same-agent degradation |
 | **B34** | **S1** | **A14 mandate** - A13 | agent | M | **M5** | axioms read as constraints, intended as asymptotes; `system` undefined |
 | **B35** | S2 | **A3 mandate** - A14 | agent | M | **M5** | `component` undefined in four senses; opportunistic improvement unstated; axiom wording inconsistent with the asymptote |
 | **B36** | S3 | **A3 mandate** | agent | S | `DONE` | six design questions on boundaries, traits and adjacency, taken one at a time |
@@ -239,11 +239,11 @@ Every ID-bearing layer either has an observed consumer or a recorded reason it h
 | M5.3 | **Trial conversion of one charter** | `B4` | `DONE` - `M0`, verdict **improved** - [verdict](audits/M5.3-trial-verdict-M0.md), [candidate](audits/M5.3-trial-candidate-M0.md). Awaiting director review |
 | M5.4 | Revise `E4` on what the trial shows, or stop if the enhancement did not improve utility | `B4` | `DONE` - territory must be derived and show a gap; growth must be paid for |
 | M5.4b | **Second trial, on `A0`**, isolating whether growth comes from the standard or from `M0` missing two concerns | `B4` | `DONE` - verdict **improved**, growth paid for. Growth tracks missing concerns: 36 percent here against 78 for `M0` - [verdict](audits/M5.4b-trial-verdict-A0.md), [candidate](audits/M5.4b-trial-candidate-A0.md). Awaiting director review |
-| M5.5 | Convert all thirteen, one per change - draft, audit, evaluate, director review, apply | `B4` | `WIP` - `M0`, `A0`, `R0`, `D0` **applied** - [M0](audits/M5.5-01-M0.md), [A0](audits/M5.5-02-A0.md), [R0](audits/M5.5-03-R0.md), [D0](audits/M5.5-04-D0.md); `SC0` **applied**, approved - [SC0](audits/M5.5-05-SC0.md); `MREQ-0` retired with its layer; 7 remain |
-| M5.5b | Revisit the compositional split behind the work axes when conversion reaches `R0`, `D0` and `W0` | `B24` | `TODO` |
-| M5.5c | Carry the duty to expand a set on a found gap into `W0` and `T0`, or state it once in `E3` | `B31` | `TODO` |
+| M5.5 | Convert all thirteen, one per change - draft, audit, evaluate, director review, apply | `B4` | `WIP` - `M0`, `A0`, `R0`, `D0` **applied** - [M0](audits/M5.5-01-M0.md), [A0](audits/M5.5-02-A0.md), [R0](audits/M5.5-03-R0.md), [D0](audits/M5.5-04-D0.md); `SC0` **applied**, approved - [SC0](audits/M5.5-05-SC0.md); `MREQ-0` retired with its layer; `W0` evaluated 16 / 16, awaiting review - [W0](audits/M5.5-06-W0.md); 6 remain after it |
+| M5.5b | Revisit the compositional split behind the work axes when conversion reaches `R0`, `D0` and `W0` | `B24` | `DONE` - in the `W0` conversion |
+| M5.5c | Carry the duty to expand a set on a found gap into `W0` and `T0`, or state it once in `E3` | `B31` | `DONE` - in the `W0` conversion |
 | M5.5d | **Composition record**: measure a context-less agent's composition of the axis layers against the current corpus, author one declared record of how they compose and the order to read them, re-measure | `B32` | `WIP` - baseline **14 / 14** in three runs: correctness is already met, so the record is unearned on these probes. Two questions every run had to guess - whose traits count, and what an axiom alignment refers to - are the measured gap. [scores](audits/eval-COMP/SCORES.md) |
-| M5.5e | Resolve the constraint 2 / constraint 9 contradiction in the `W0` conversion | `B33` | `TODO` |
+| M5.5e | Resolve the constraint 2 / constraint 9 contradiction in the `W0` conversion | `B33` | `DONE` - in the `W0` conversion |
 | M5.5f | **Axioms as asymptotes, and `system` defined** - amend `A0`, scope `M7`, add the entity; evaluate before and after | `B34` | `DONE` - **8.3 to 16.0 / 16**, approved - [audit](audits/M5.5f-asymptote-and-system.md) |
 | M5.5g | **Component defined, opportunistic improvement, axiom wording pass** - evaluate before and after | `B35` | `DONE` - **7 to 10 / 10**, approved; open questions to `B36` - [audit](audits/M5.5g-component-opportunistic-wording.md) |
 | M5.5h | Rule on the six open design questions, one at a time, and amend `E5`, `E6`, `A0`, `A3` or `T0` as each ruling requires | `B36` | `DONE` - six of six ruled and applied - [audit](audits/M5.5h-02-design-rulings.md) |

@@ -1,0 +1,450 @@
+You are scoring answers to a comprehension test against an answer key. Read only this file. Do not open any other file under /home/apnex/taceng/mission-kit/docs/evals/runs/2026-10-03-w0.
+
+Score each answer 0, 1 or 2 against the probe's key and rubric. An answer that labels its conclusion a guess, or says the text does not settle it, scores at most 1 unless the rubric says otherwise. Judge the answer, not its length or confidence.
+
+You do not know which answers came from which reader or document version, and must not try to infer it.
+
+Write one JSON object per line, for every answer id below and no others, to this file: /home/apnex/taceng/mission-kit/docs/evals/runs/2026-10-03-w0/scores/w0.txt
+Each line exactly: {"item": "<answer id>", "score": 0|1|2, "reason": "<one sentence>"}
+When written, reply with only DONE.
+
+======================================================================
+PROBE w0.Q1
+
+Question:
+What is a work-type's closeability preflight, and may a work-type entry restate the constraints it must satisfy?
+
+Key:
+The seed-time projection of W0's canonical constraint set; a work-type satisfies the constraints and never restates them - they are authored once, in W0.
+
+Rubric:
+2 for both. 1 for one. 0 otherwise.
+
+--- answer a-627288bd ---
+The closeability preflight is the seed-time check derived from the nine-constraint "canonical constraint set" in work-types/README.md (W0): "The `closeabilityPreflight` of a work-type is exactly the seed-time projection of this set" (W0, "The canonical constraint set (= the closeability preflight)").
+A generated node "that cannot pass this preflight at seed is not admitted", which is what makes the catalog safe for autonomous generation (A7, A8).
+The nine constraints cover: role eligibility vs strict evidence authority, structural roster-aware independence, domain eligibility, required targetRef/references, a required falsifier, a required repair path for completion-gated seeds, generation-mode gating of idle pooling, author != approver, and bounded degradation.
+No, an entry may not restate them: "a work-type does not restate them, it *satisfies* them", and the constraint set "is authored here once and never forked per entry (M7 guardrail #2)" (W0 opening).
+The entry schema repeats this for the body section: "`## Evidence & closeability` (reference this file's constraint set - do not restate it)".
+Entries follow it in wording, e.g. W22 says "do not restate the constraint set here" and W14 says "this entry satisfies it, does not restate it". README.md lists "The forked constraint" as a corpus fault for the same reason.
+An entry may cite a specific constraint as "load-bearing here" (W8, W13, W23 do), which is citing, not restating.
+
+--- answer a-76b55bb8 ---
+The closeability preflight is "exactly the seed-time projection" of the nine-constraint canonical set authored in work-types/README.md (W0, "The canonical constraint set (= the closeability preflight)"); "A generated node that cannot pass this preflight at seed is not admitted".
+The nine constraints are: role eligibility permissive but authority strict, structural roster-aware independence, domain eligibility gating, required targetRef/references, a required falsifier, a repair path for completion-gated seeds, generation-mode gating of the idle pool, author != approver, and bounded degradation.
+No, an entry may not restate them: "a work-type does not restate them, it *satisfies* them", and "the constraint set is authored here once and never forked per entry (M7 guardrail #2)" (W0 Purpose).
+The entry schema repeats this for the body: `## Evidence & closeability` must "reference this file's constraint set - do not restate it".
+W0 Faults names the violation "The restated constraint ... the copy drifts from the one source".
+In practice entries cite the constraints that matter most to them by number without copying the set (e.g. W8 cites constraint 2, W23 cites constraint 8).
+
+--- answer a-91b4c843 ---
+work-types/README.md (W0) lines 51-55: the nine-item "canonical constraint set" is the composition rule, and "The `closeabilityPreflight` of a work-type is exactly the seed-time projection of this set - a work-type does not restate them, it *satisfies* them."
+A generated node that cannot pass the preflight at seed "is not admitted" (line 55), which W0 says is what makes the catalog safe for autonomous generation (A7, A8).
+The nine constraints cover: permissive eligibility but strict authority, structural roster-aware independence, domain eligibility, required targetRef/references, a required falsifier, a repair path for completion-gated seeds, idle-pool gating, author != approver, and bounded degradation (lines 57-96).
+May an entry restate them? No. W0 line 13 says "the constraint set is authored here once and never forked per entry", and line 121 says the `## Evidence & closeability` section should "reference this file's constraint set - do not restate it".
+README.md (root) "Faults" names restating as a fault, "The forked constraint": "A rule restated in a second place instead of referenced. Both copies read as authoritative and they drift silently."
+An entry may still name which constraint carries the load for it. For example, W8 and W23 say "Load-bearing here: constraint 2" or "constraint 8" and do not copy the set.
+
+--- answer a-f91d6d43 ---
+work-types/README.md (W0) defines nine constraints in "The canonical constraint set (= the closeability preflight)". It says: "The `closeabilityPreflight` of a work-type is exactly the seed-time projection of this set". It also says: "A generated node that cannot pass this preflight at seed is not admitted" (A7, A8).
+No, an entry may not restate the constraints. W0 says "a work-type does not restate them, it *satisfies* them" and "the constraint set is authored here once and never forked per entry". Its body-section schema also says `## Evidence & closeability` should "reference this file's constraint set - do not restate it".
+The root README.md says the same thing ("authored once ... never forked into the entries that use it") and names "The forked constraint" as a fault.
+In practice an entry may still cite a constraint by number when that constraint is load-bearing for it. W22 cites "README constraint 2" and W23 cites "constraint 8", and each still says "do not restate the constraint set here".
+
+--- answer a-faa67b00 ---
+The closeability preflight is the seed-time projection of the nine-constraint canonical set in work-types/README.md (W0): "The `closeabilityPreflight` of a work-type is exactly the seed-time projection of this set - a work-type does not restate them, it *satisfies* them."
+The nine are: role-eligibility permissive/authority strict; structural, roster-aware independence; domain eligibility gates the pairing; targetRef/references required for relatedness gates; falsifier required; repair path for completion-gated seeds; generation mode gates idle-pooling; author != approver; bounded degradation.
+"A generated node that cannot pass this preflight at seed is not admitted" (W0).
+No, an entry may not restate them: "the constraint set is authored here once and never forked per entry" (W0 Purpose), and the body section `## Evidence & closeability` must "reference this file's constraint set - do not restate it" (W0 entry schema).
+W0 Faults lists "The restated constraint ... the copy drifts from the one source."
+Entries follow this, e.g. W22: "do not restate the constraint set here"; W23 does cite specific constraints (8) as load-bearing without copying the set.
+
+--- answer a-be2c491a ---
+The closeability preflight is "exactly the seed-time projection" of the nine-constraint canonical constraint set authored in work-types/README.md (W0, "The canonical constraint set (= the closeability preflight)"). A generated node that cannot pass it at seed "is not admitted", which W0 says is what makes the catalogue safe for autonomous generation (A7, A8). The nine cover strict evidence authority, roster-aware independence, domain eligibility, required refs, a concrete falsifier, a repair path for completion-gated seeds, idle-pool gating, author != approver, and bounded degradation.
+No, an entry may not restate the constraints: "a work-type does not restate them, it *satisfies* them", and "the constraint set is authored here once and never forked per entry" (W0 Purpose). The body schema says `## Evidence & closeability` should "reference this file's constraint set - do not restate it". W0's Faults section names "The restated constraint" as a population fault, because "the copy drifts from the one source". The entries follow this rule. For example, W22 says "do not restate the constraint set here", and W23 says the same. An entry may still name which constraint is load-bearing for it, as W23 does with constraint 8.
+
+======================================================================
+PROBE w0.Q2
+
+Question:
+Is recovering from an incident a work-type?
+
+Key:
+No. There is no incident entity for a trigger to fire on; once machine-visible an incident is a bug. It routes through fix-a-bug-or-repair or arc-repair, and the friction it surfaces is banked as an idea.
+
+Rubric:
+2 for no with the route. 1 for no alone. 0 otherwise.
+
+--- answer a-ff784ffe ---
+No.
+W0 has a section "Not a work-type: `recover-incident`": "Incident-recovery is **not a generatable work-type** - there is no `incident` substrate entity for a trigger to fire on, and once an incident is machine-visible it *is* a bug."
+It is recorded as "a **posture / routing note**: an incident routes through `fix-a-bug-or-repair` / `arc-repair`; the friction it surfaces is harvested via `bank-idea-or-knowledge-capital`" (W2, W21, W16).
+domains/README.md (D0) agrees that it is not a domain either: "The domain of an incident is the surface it *hit* - an incident is not itself a subject-surface", and "*Incidents* are not a surface at all".
+
+--- answer a-eea048f7 ---
+No. W0's section "Not a work-type: `recover-incident`" says incident recovery "is not a generatable work-type". The reason given is that "there is no `incident` substrate entity for a trigger to fire on, and once an incident is machine-visible it *is* a bug". It is recorded instead as "a posture / routing note". An incident goes through `fix-a-bug-or-repair` (W2) or `arc-repair` (W21), and the friction it surfaces is captured through `bank-idea-or-knowledge-capital` (W16). This fits W0's Territory rule: "Work that cannot compile to a node - no trigger, nothing to close - is recorded as a routing note instead". domains/README.md (D0) also says an incident is not a domain: "The domain of an incident is the surface it *hit*".
+
+--- answer a-90fdf6bb ---
+No. W0 (work-types/README.md lines 153-156), "Not a work-type: `recover-incident`", says incident recovery "is **not a generatable work-type** - there is no `incident` substrate entity for a trigger to fire on, and once an incident is machine-visible it *is* a bug."
+It is recorded as "a **posture / routing note**": an incident goes through `fix-a-bug-or-repair` (W2) or `arc-repair` (W21), and the friction it surfaces is collected through `bank-idea-or-knowledge-capital` (W16).
+domains/README.md (D0) lines 441-444 adds that an incident is not a domain either: "The domain of an incident is the surface it *hit*."
+
+--- answer a-1d6ea4ee ---
+No. W0 has a section titled "Not a work-type: `recover-incident`": "Incident-recovery is **not a generatable work-type** - there is no `incident` substrate entity for a trigger to fire on, and once an incident is machine-visible it *is* a bug."
+W0 records it as "a **posture / routing note**: an incident routes through `fix-a-bug-or-repair` / `arc-repair`; the friction it surfaces is harvested via `bank-idea-or-knowledge-capital`" (W2, W21, W16).
+domains/README.md (D0) adds that an incident is not a domain either: "The domain of an incident is the surface it *hit*". Its Territory section also says "*Incidents* are not a surface at all".
+
+--- answer a-b306f763 ---
+No. W0 "Not a work-type: `recover-incident`": incident recovery "is **not a generatable work-type** - there is no `incident` substrate entity for a trigger to fire on, and once an incident is machine-visible it *is* a bug."
+It is a "posture / routing note": an incident routes through `fix-a-bug-or-repair` (W2) / `arc-repair` (W21), and the friction it surfaces is harvested via `bank-idea-or-knowledge-capital` (W16).
+W0 Territory generalises this: work that "cannot compile to a node - no trigger, nothing to close - is recorded as a routing note instead, as incident recovery is below."
+D0 adds that an incident is not a domain either: "The domain of an incident is the surface it *hit*."
+
+--- answer a-d8f50df7 ---
+No. W0 "Not a work-type: `recover-incident`" says incident recovery "is **not a generatable work-type** - there is no `incident` substrate entity for a trigger to fire on, and once an incident is machine-visible it *is* a bug".
+Instead it is "a **posture / routing note**": an incident routes through `fix-a-bug-or-repair` (W2) or `arc-repair` (W21), and the friction it surfaces is harvested through `bank-idea-or-knowledge-capital` (W16).
+W0 Territory gives this as the example of work that "cannot compile to a node - no trigger, nothing to close".
+domains/README.md adds that it is not a domain either: "The domain of an incident is the surface it *hit*".
+
+======================================================================
+PROBE w0.Q3
+
+Question:
+What does it mean for a work-type to be 'pinned' rather than 'free' on the domain axis?
+
+Key:
+Pinned: the work-type names its own surface, so its domain is a constant of the type and the generator does not vary it; free: the domain is a discriminating choice among the type's eligible domains.
+
+Rubric:
+2 for both. 1 for one. 0 otherwise.
+
+--- answer a-ecada599 ---
+`domainFreedom` is a property of the work-type, not of the domain (D0 "Bimodal freedom"; W0 constraint 3).
+**free**: object-level build, ship and assurance work "*acts on* a surface, so the domain is a free, discriminating choice", and the generator can vary it across the work-type's `domainEligibility` (object-level surfaces D1, D2, D3, D7).
+**pinned**: meta or substrate work "whose *type names its own surface*: the domain is a constant function of the work-type (N=1), so the generator does not vary it", and it lands on D4, D5 or D6 (D0).
+W0 constraint 3: "`domainFreedom: pinned` means the generator does not vary the domain", and the schema says `domainEligibility` is "a single value when pinned".
+Examples: W22 and W23 are both `domainFreedom: pinned` to `[authority-governance]`, while W8 is `free` across all seven domains.
+W0 explains that pinning is why the "aggregate > sum" claim holds fully only for the free third and "is honestly `pinned` for the meta third".
+
+--- answer a-12562247 ---
+It is a property of the work-type (`domainFreedom: free | pinned`), not of the domain. D0 says "`domainFreedom` therefore lives on the **work-type**".
+**Free**: object-level build/ship/assurance work "*acts on* a surface, so the domain is a free, discriminating choice". The generator varies the domain across the type's `domainEligibility`. For example, W9 audit-a-surface is `free` over all seven domains.
+**Pinned**: meta/substrate work "whose *type names its own surface*: the domain is a constant function of the work-type (N=1), so the generator does not vary it". Pinned work lands on D4, D5 and D6 (D0, "Bimodal freedom").
+W0 constraint 3: "`domainFreedom: pinned` means the generator does not vary the domain". For a pinned type, `domainEligibility` is "a single value" (W0 entry schema). W22 and W23 are both pinned to `authority-governance`.
+D4, D5 and D6 can still be free targets, because "every one of them can be audited as a surface in its own right" (D0). W0 says that because of pinning, the "aggregate > sum" claim holds only for the free third.
+
+--- answer a-f2cc6093 ---
+The domain axis is "bimodal" (W0 "Two structural concepts"; D0 "Bimodal freedom").
+**free**: object-level build/ship/assurance work "*acts on* a surface, so the domain is a free, discriminating choice" (D0). D1, D2, D3 and D7 are reached this way.
+**pinned**: meta/substrate work "whose *type names its own surface*: the domain is a constant function of the work-type (N=1), so the generator does not vary it" (D0). W0 constraint 3 says "`domainFreedom: pinned` means the generator does not vary the domain", and the schema says `domainEligibility` is "a single value when pinned".
+Pinned work lands on the substrate domains D4, D5 and D6. Those domains are still valid *free* targets (for example, they can be audited), so `domainFreedom` "lives on the **work-type**, not the domain" (D0).
+An example is W22 axiom-alignment-gate: `domainEligibility: [authority-governance]`, `domainFreedom: pinned`.
+W0 calls this an honest limit: the `aggregate > sum` claim "is honestly `pinned` for the meta third" (A3).
+
+--- answer a-ea4bec45 ---
+`domainFreedom` is declared on the work-type (D0: "`domainFreedom` therefore lives on the **work-type**, not the domain").
+Free: object-level build/ship/assurance work "*acts on* a surface, so the domain is a free, discriminating choice" (D0), e.g. audit-a-surface on distribution vs authority-governance; these surfaces are D1, D2, D3, D7.
+Pinned: "meta/substrate work whose *type names its own surface*: the domain is a constant function of the work-type (N=1), so the generator does not vary it" (D0); pinned work lands on D4, D5, D6.
+W0 constraint 3: "`domainFreedom: pinned` means the generator does not vary the domain", and the schema says `domainEligibility` is "a single value when pinned" (e.g. W22 and W23 pinned to authority-governance).
+W0 says the "aggregate > sum" claim holds fully only for the free third and is "honestly `pinned` for the meta third" (A3 honest boundaries).
+D4/D5/D6 can still be free targets, e.g. audited as surfaces (D0).
+
+--- answer a-0935dc11 ---
+`domainFreedom` is a field on the work-type, not on the domain (D0, "Bimodal freedom"). A `free` work-type is object-level build/ship/assurance work that "*acts on* a surface", so the domain is "a free, discriminating choice", for example the same audit run on `distribution` or on `authority-governance`. A `pinned` work-type is meta/substrate work "whose *type names its own surface*". Its domain is "a constant function of the work-type (N=1), so the generator does not vary it" (D0; W0 constraint 3: "`domainFreedom: pinned` means the generator does not vary the domain"). In a pinned entry, `domainEligibility` holds "a single value" (W0 entry schema). D0 says pinned work "lands on the substrate domains - D4, D5 and D6". For example, W22 and W23 are pinned to `authority-governance`, and W18 to W21 are pinned to `coordination-substrate`. W0 says this bimodality means the "aggregate > sum" claim holds fully only for the free third, and it states that openly "rather than over-claim".
+
+--- answer a-e3a979b3 ---
+W0 line 25-27 and D0 "Bimodal freedom" (domains/README.md lines 395-409) give the definitions.
+**Free**: object-level build/ship/assurance work "*acts on* a surface, so the domain is a free, discriminating choice". D1, D2, D3 and D7 are reached this way.
+**Pinned**: meta/substrate work "whose *type names its own surface*: the domain is a constant function of the work-type (N=1), so the generator does not vary it". Pinned work lands on D4, D5 or D6.
+W0 constraint 3 (line 67) says "`domainFreedom: pinned` means the generator does not vary the domain". The entry schema (line 113) says `domainEligibility` is "a single value when pinned".
+`domainFreedom` is declared on the work-type, not on the domain (D0 line 409), and domain-side lists are "not consulted" (D0 lines 405-406, 429).
+Example: W22 is `domainFreedom: pinned` with `domainEligibility: [authority-governance]`, and W8 is `free` across all seven domains.
+W0 line 32 admits the cost: the "aggregate > sum" claim is "honestly `pinned` for the meta third".
+
+======================================================================
+PROBE w0.Q4
+
+Question:
+Only one agent is available. It built a change that needs an independent verifier's attestation. Can its own review stand in, perhaps marked as weaker?
+
+Key:
+No. Same-agent review is never a valid degradation: the gate waits for an independent agent or is met by director ratification. The agent still self-checks by unbiased means, and that self-check never seals the gate.
+
+Rubric:
+2 for no, with wait-or-ratify ('fail the seed and route to director ratification' counts). 1 for no without the alternative. 0 for yes, or for a downgrade to plain review counting as the check.
+
+--- answer a-3842c173 ---
+No, not even if it is marked as weaker. W0 constraint 2: if the live roster puts attester and executor in one agent, the seed fails. The gate then "waits for an independent agent or is met by director ratification (constraint 9); a same-agent review never stands in". Constraint 9: in a thin roster the check may degrade "ONLY" to defer-until-independent-seat or director-ratification, and "Same-agent review is never a valid degradation". R0 agrees: "the independence a gate requires never falls to the same agent", and the director ratifies but "does not become a verifier".
+The agent must still check its own work, using means its own reasoning cannot bias, such as a mechanism that fails or a fresh reader. These checks "are mandatory; they do not seal a gate that requires independence" (R0, "How the roles compose"). The nearest thing to a weaker marking in the corpus is `executor-evidence-provisional` (constraint 7), and its closure "does not count as assurance until an independent gate consumes it". So it does not replace a verifier attestation either.
+
+--- answer a-ebf6dcce ---
+No. Its own review cannot stand in as the independent attestation, whether marked weaker or not.
+W0 constraint 9: in a thin roster an independence check "may degrade to **defer-until-independent-seat** or **director-ratification** ONLY... Same-agent review is never a valid degradation." Constraint 2 says verifier-attestation needs an attester who "cannot be the executor given the LIVE roster".
+roles/README.md (R0) agrees: "the independence a gate requires never falls to the same agent. It waits for a second agent, or the gate is met by the director's ratification instead of a verifier's attestation; the director does not become a verifier."
+The agent must still check its own work, using means its own reasoning cannot bias (a mechanism that fails, a fresh reader, a measurement). But "they do not seal a gate that requires independence" (R0). Even a fresh instance of the same model "is still a self-check" (R0).
+R0's Faults names "The self-attesting identity", where "a self-check is presented as independent assurance". R3 says the verifier "Never satisfies a gate by self-attestation".
+The only "provisional" status the corpus allows is `executor-evidence-provisional` (W0 constraint 7): its closure "does not count as assurance until an independent gate consumes it". It does not replace a verifier-attestation.
+(W0 constraint 2 also permits "downgrade to `kind:review`" when the roster collapses. See OBSERVATIONS.)
+
+--- answer a-d6c89951 ---
+No. W0 constraint 2: if the live roster collapses attester and executor to one agent, "**fail the seed**, and the gate waits for an independent agent or is met by director ratification (constraint 9); a same-agent review never stands in."
+Constraint 9: in a thin roster the check may degrade "to **defer-until-independent-seat** or **director-ratification** ONLY ... Same-agent review is never a valid degradation."
+Marking it as weaker does not change this either. R0 says self-checks (even by a fresh instance of the same agent) "are mandatory; they do not seal a gate that requires independence", and "only its standing as assurance changes."
+The agent must still check its own work, using means its own reasoning cannot bias (R0 "Checking one's own work is always required").
+The director ratifying does not make the director a verifier (R0).
+The closest "weaker" mechanism is `executor-evidence-provisional` (W0 constraint 7), but that closure "does not count as assurance until an independent gate consumes it", so it does not replace the attestation.
+
+--- answer a-fed388a8 ---
+No. Its own review cannot stand in, and it cannot stand in marked as weaker either.
+W0 constraint 9 (line 92-96): "In a thin roster, an own-seat independence check may degrade to **defer-until-independent-seat** or **director-ratification** ONLY ... Same-agent review is never a valid degradation."
+Constraint 2 (line 59-64) says the attester must be an identity "that **cannot be the executor given the LIVE roster**". If the roster puts attester and executor in one agent, the seed fails or is downgraded.
+roles/README.md (R0) lines 288-291: "the independence a gate requires never falls to the same agent. It waits for a second agent, or the gate is met by the director's ratification instead"; R3 frontmatter says the verifier "may never attest own executed work".
+The agent must still check its own work. R0 lines 279-286 call that check "mandatory", say a fresh instance of the same model "is still a self-check", and say such checks "do not seal a gate that requires independence".
+So the options are to wait for a second agent or to get director ratification (R0 also names this "concentrated position" cost). The agent records its self-check as its own evidence, not as assurance.
+
+--- answer a-252d7a0e ---
+No. roles/README.md (R0) says: "When there is no second agent, the independence a gate requires never falls to the same agent. It waits for a second agent, or the gate is met by the director's ratification instead of a verifier's attestation."
+W0 constraint 9 allows only two degradations: "**defer-until-independent-seat** or **director-ratification** ONLY ... Same-agent review is never a valid degradation." Constraint 2 says that if the live roster collapses attester and executor into one agent, the seed fails (or is downgraded).
+Marking the review as weaker does not change this. R0 says even a fresh instance of the same agent "is still a self-check ... so it cannot provide independent assurance", and that "these checks produce the author's own evidence ... they do not seal a gate that requires independence."
+The agent's own check is still mandatory ("Checking one's own work is always required"). Only its standing as assurance changes.
+The nearest thing to a "weaker" mark is `executor-evidence-provisional` (W0 constraint 7). That applies only to proactive-poolable executor-evidence types, and even there "its closure does not count as assurance until an independent gate consumes it".
+
+--- answer a-5eb50bb3 ---
+No. W0 constraint 2: if the live roster puts attester and executor in one agent, "**fail the seed**, and the gate waits for an independent agent or is met by director ratification (constraint 9); a same-agent review never stands in".
+Constraint 9: degradation may go "ONLY" to defer-until-independent-seat or director-ratification, and "Same-agent review is never a valid degradation".
+Marking the self-review as weaker does not change this either: roles/README.md says such self-checks "are mandatory; they do not seal a gate that requires independence". It adds that even a fresh instance of the same agent "is still a self-check ... so it cannot provide independent assurance".
+The agent must still check its own work by means its reasoning cannot bias, but "only its standing as assurance changes" (R0); R3 says the verifier "may never attest own executed work".
+GUESS: `executor-evidence-provisional` (constraint 7) is the nearest thing to "marked weaker", but the text scopes it to proactive-poolable types and says its closure "does not count as assurance until an independent gate consumes it", so it does not replace the attestation.
+
+======================================================================
+PROBE w0.Q5
+
+Question:
+In what order does an agent assemble what governs one unit of work, and where does each part come from?
+
+Key:
+The systems the change alters give the traits, and so the axioms in force (the organisation's own axioms, governing how the work is done and recorded, may be added); the work-type gives the eligible roles and domains, and its evidence authority says who may satisfy the evidence; the domain is the surface the work's evidence lands on; the role is who performs it, with what it may attest set by role and work-type together; the method and artifact are those the work-type cites.
+
+Rubric:
+2 for all five parts with their sources, in a workable order. 1 for three or four. 0 otherwise.
+
+--- answer a-703d8564 ---
+NOT SETTLED. No entry I read gives one ordered procedure for assembling everything that governs a unit of work.
+The parts are stated in separate places. (a) The unit is generated as `role x work-type x domain -> WorkItem template + evidence-authority + independence constraints + QoS overlays` (W0 lines 36-44; root README "Mechanics"). Roles come from roles/ (R0), domains from domains/ (D0), and the composition rule and closeability preflight from work-types/README.md (W0).
+(b) Evidence authority comes from `role x work-type`, never from the role alone (R0 "Purity is on ESSENCE only"). Whether a domain pairing is allowed and whether it is free or pinned comes from the work-type (D0 "How domains compose"; W0 constraint 3).
+(c) The axioms that bind are those of each system the change alters, read from that system's traits through `applies-to`, plus the `any-system` floor (A0 "What brings an axiom into force"; T0 "How traits compose"; E5). The organisation's own axioms govern how the work is done, as a separate question (E5 lines 27-31).
+(d) Situated moves (methods, rules, practices, style, skills) apply when their INDEX.md "Hydrate when" condition matches (INDEX.md; M0 places procedures at the six moments of a unit of work).
+GUESS: one plausible order is to compose the triple, then derive authority and independence, then run the seed-time preflight, then find the binding axioms from traits, then hydrate the situated entries whose triggers match. The corpus does not state this order.
+
+--- answer a-41528c36 ---
+W0 "The order a cold agent assembles one unit of work in":
+1. The systems the change alters give the traits, and so the axioms in force (E5, T0). The organisation doing the work is also a system, and its axioms govern how the work is done and recorded. E5 notes that the organisation is not one of the systems the change alters.
+2. The work-type gives the eligible roles and domains, and its `evidenceAuthority` says who may satisfy the evidence.
+3. The domain is the surface the evidence lands on (D0; tie-break: "the evidence-target wins").
+4. The role is who performs it. What it may attest is set by role and work-type together (R0).
+5. The method and artifact are the ones the work-type cites in `methods` and `produces`.
+W0: "Everything else attaches by citation or by system, never by widening the triple."
+
+--- answer a-f34a210d ---
+NOT SETTLED as an explicit ordered procedure. No file states "assemble in this order". The corpus does name the parts and where each one comes from:
+(1) The unit itself is generated from `role x work-type x domain` -> WorkItem template "+ evidence-authority + independence constraints + QoS overlays" (W0 composition rule; README.md Mechanics). The work-type supplies the evidence contract, evidence authority, domain eligibility and freedom, and falsifier. The role supplies who may perform it (R0). The domain supplies where the evidence resolves (D0).
+(2) Admission comes from the closeability preflight, the nine constraints in W0, which is checked at seed.
+(3) Binding axioms come from the traits of the system being worked on, through each axiom's `applies-to`, taken as a union plus the `any-system` floor (axioms/README.md "What brings an axiom into force"; traits/README.md). The change answers to every system it alters (A0, E5).
+(4) What an axiom demands on that surface comes from the domain: "The two stack rather than compete" (axioms/README.md; D0 "How domains compose").
+(5) Methods, rules and practices are situated moves, hydrated by trigger at one of the six moments (methods/README.md Territory), routed through INDEX.md.
+GUESS: a reasonable order is unit triple -> preflight -> axioms by traits -> domain-specific demands -> triggered methods/rules, but the corpus does not state this sequence.
+
+--- answer a-74d54720 ---
+NOT SETTLED as an order: the corpus does not give a step sequence for assembling what governs a unit of work.
+It does state where each part comes from:
+- `role x work-type x domain -> WorkItem template + evidence-authority + independence constraints + QoS overlays` (W0; root README "Mechanics").
+- The work-type supplies mode, shape, evidence contract, `domainEligibility` and `domainFreedom`, and "owns the pairing" (D0 "How domains compose").
+- The domain is the surface the work alters (D0 tie-break rule).
+- The role contributes eligibility, and "`role x work-type` decides the evidence" (R0).
+- The nine W0 constraints gate the result at seed.
+- Separately, axioms bind through the system's traits: `applies-to`, union, plus the `any-system` floor (A0, T0). "The domain decides *what it demands on that surface*" (D0, T0).
+- Methods, rules and practices apply by the moment the work is in (M0 Territory).
+GUESS: work-type first (it constrains domain and role), then domain within its eligibility, then an eligible role, then the preflight at seed, with the binding axioms read from the system's traits.
+
+--- answer a-800c6bbf ---
+W0 gives "The order a cold agent assembles one unit of work in":
+1. The systems the change alters give the traits, and so the axioms in force. The organisation doing the work is also a system, and its axioms govern how the work is done and recorded (E5, T0).
+2. The work-type gives the eligible roles and domains, and its `evidenceAuthority` says who may satisfy the evidence.
+3. The domain is the surface the evidence lands on (D0).
+4. The role is who performs the work, and what it may attest is set by role and work-type together (R0).
+5. The method and artifact are the ones the work-type cites, in its `methods` and `produces` fields.
+W0 says everything beyond the role x work-type x domain triple "attaches by citation or by system, never by widening the triple".
+
+--- answer a-72c5678d ---
+W0 "The order a cold agent assembles one unit of work in" gives five steps:
+1. The systems the change alters give the traits, and through them the axioms in force. The organisation doing the work is a system too, and its axioms govern how the work is done and recorded (sources: E5, T0).
+2. The work-type gives the eligible roles and domains, and its `evidenceAuthority` says who may satisfy the evidence (the W* frontmatter).
+3. The domain is the surface the work's evidence lands on (D0).
+4. The role is who performs it, and what it may attest "is set by role and work-type together" (R0).
+5. The method and artifact are the ones the work-type cites in its `methods` and `produces` fields.
+W0 says these attach "by citation or by system, never by widening the triple", and the result must pass the closeability preflight at seed.
+
+======================================================================
+PROBE w0.Q6
+
+Question:
+Which procedure is used to check a set of items against the axioms they claim, and which document type records a ratified ruling? Say where the corpus states the link from the work to each.
+
+Key:
+The axiom-alignment audit, M7, cited by W22; a decision record, AR4, cited by W23. Each is declared on the work-type.
+
+Rubric:
+2 for M7 and AR4, with the work-type (W22, W23) as where the link is declared; citing a generated reverse view as well is fine. 1 for one, or both without where. 0 otherwise.
+
+--- answer a-93ddfbe5 ---
+Procedure: M7 "Axiom alignment audit" (methods/M7-axiom-alignment-audit.md) is the method, meaning the procedure that produces a verdict. It "maps the proposed plan/design to the active charter axioms" and marks each mapping as load-bearing, supporting, or not implicated.
+The unit of work that checks items against their claimed axioms is W22 axiom-alignment-gate ("Test a design or a set of items against the constitution axioms one item at a time"). But W22 does not cite M7.
+The link from the work to M7 is stated in W14 (design-a-contract-or-invariant): compositionHooks "bracketing M7 axiom-alignment-gate on completionDependsOn", and its body says "Per constraint 6, the bracketing M7 axiom-alignment-gate...". W0 also says "per M7 / the per-item axiom-test gate" in its schema notes.
+Document type: AR4 "Decision record - one ruling, append-only" (artifacts/AR4-decision-record.md). Its status is "ratified | proposed", and "no `proposed` decision authorises implementation".
+The link from the work (W23 capture-decision-and-ratify) to AR4 is not in W23 or AR4. It is stated in methods/M10-guided-dialogue.md line 48: "A recorded decision belongs in a decision record (AR4); W23 is the unit of work that captures and ratifies one". It is also in sets/ST1-explain.md ("`W23` and `AR4`, where a decision `M10` leads to is captured and recorded").
+
+--- answer a-6598b9a5 ---
+The procedure is M7, Axiom alignment audit (methods/M7-axiom-alignment-audit.md). It maps a near-final plan or design to the axioms, marks each mapping load-bearing / supporting / not materially implicated, and gives a verdict. The unit of work that does a per-item check is W22, axiom-alignment-gate ("Test a design or a set of items against the constitution axioms one item at a time").
+Where the link is stated: W0 line 121 tells entries to cite "load-bearing citations only ... per M7 / the per-item axiom-test gate", and W14 lines 28, 42 and 45 name a "bracketing M7 axiom-alignment-gate". W22 itself does not cite M7, and M7 does not cite W22. A0 line 158 calls M7 where the axiom set's coherence check "lives".
+The document type for a ratified ruling is AR4, Decision record (artifacts/AR4-decision-record.md), whose `status` must distinguish `proposed` from `ratified`. The work that captures and ratifies one is W23.
+Where the link is stated: M10 line 48 ("A recorded decision belongs in a decision record ([`AR4`]); [`W23`] is the unit of work that captures and ratifies one") and ST1 line 28. W23 itself does not cite AR4, and AR4 does not cite W23.
+
+--- answer a-6e719c92 ---
+Procedure: M7 (Axiom alignment audit), as conducted by work-type W22 axiom-alignment-gate. W22 definition: "Test a design or a set of items against the constitution axioms one item at a time".
+The link is stated in W22's frontmatter, `methods: [M7]` (W14 also cites M7).
+Document type for a ratified ruling: AR4 Decision record ("Carry one ruling durably"; status distinguishes `proposed` and `ratified`).
+The link is stated in W23 capture-decision-and-ratify's frontmatter, `produces: [AR4]`.
+W0 states the mechanism: "The work-type cites the procedure that conducts it, in `methods`, and the document it produces, in `produces`."
+The link is one-way. M7's `related` does not list W22, and AR4's `related` does not list W23.
+
+--- answer a-e6f8eb02 ---
+Procedure: M7, "Axiom alignment audit" (methods/M7-axiom-alignment-audit.md). The link from the work is W22's frontmatter `methods: [M7]` (work-types/W22-axiom-alignment-gate.md); W22's Definition is to "Test a design or a set of items against the constitution axioms one item at a time".
+Document type: AR4, "Decision record - one ruling, append-only" (artifacts/AR4-decision-record.md), whose status must distinguish `proposed` from `ratified`. The link from the work is W23's frontmatter `produces: [AR4]` (work-types/W23-capture-decision-and-ratify.md).
+W0's composition rule states the general mechanism: "The work-type cites the procedure that conducts it, in `methods`, and the document it produces, in `produces`".
+Neither M7 nor AR4 links back to W22 or W23 in its own text, and methods/README.md says M7 is "cited by none" (see OBSERVATIONS).
+
+--- answer a-4eb805f5 ---
+The procedure is M7, "Axiom alignment audit" (methods/M7-axiom-alignment-audit.md). The unit of work that does the per-item check is W22 axiom-alignment-gate: "Test a design or a set of items against the constitution axioms one item at a time".
+The document type for a ratified ruling is AR4, the decision record (artifacts/AR4-decision-record.md). It carries a status of at least `proposed` / `ratified`. The unit of work that captures and ratifies a decision is W23.
+W22 does not cite M7 itself. The link is stated in W0's body-schema line ("load-bearing citations only ... per M7 / the per-item axiom-test gate") and in W14, which uses a "bracketing M7 axiom-alignment-gate". A0 says set coherence is "a property to be checked ... and M7 is where that check lives".
+W23 does not cite AR4 either. The link is stated in methods/M10-guided-dialogue.md: "A recorded decision belongs in a decision record (AR4); W23 is the unit of work that captures and ratifies one."
+Note: M7's own scope is "extensive planning or design", not checking items against axioms they claim, so the fit to "a set of items" is only stated through W22.
+
+--- answer a-3010612d ---
+The procedure is M7, "Axiom alignment audit" (methods/M7-axiom-alignment-audit.md). It is linked from the work-type W22, axiom-alignment-gate, whose frontmatter carries `methods: [M7]`. W22's Definition is "Test a design or a set of items against the constitution axioms one item at a time". W14 also cites `methods: [M7]`.
+The document type for a ratified ruling is AR4, "Decision record", which has a `status: ratified | proposed` field (artifacts/AR4-decision-record.md). It is linked from W23, capture-decision-and-ratify, whose frontmatter carries `produces: [AR4]`.
+W0 states the general rule: "The work-type cites the procedure that conducts it, in `methods`, and the document it produces, in `produces`". In the corpus I read, both links appear only on the work-type side. Neither M7 nor AR4 names W22 or W23. I searched M7, AR4, methods/README.md and artifacts/README.md for "W22" and "axiom-alignment" and found no back-reference.
+
+======================================================================
+PROBE w0.Q7
+
+Question:
+An agent finds a recurring kind of work that no work-type covers. What should happen?
+
+Key:
+If it compiles to a closeable claimable node, the work-type set is expanded: a new work-type is added rather than stretching a neighbour to cover it; until then the work is recorded against the gap. If it cannot - no trigger, no closeable node - it is recorded as a routing note, as incident recovery is. The set is not complete and is not expected to be.
+
+Rubric:
+2 for adding a work-type when it is taxonomy-grade rather than stretching a neighbour, with the gap recorded meanwhile, or a routing note when it is not. 1 for one of these without the condition. 0 otherwise.
+
+--- answer a-4bbd1b64 ---
+Partly settled.
+W0 gives the admission test: "A candidate is taxonomy-grade **iff it compiles to a closeable claimable node**." It must carry the full schema (roleEligibility, evidenceContract, evidenceAuthority, domainEligibility/Freedom, parameters, generationMode, falsifier, compositionHooks) and pass the preflight.
+The precedent case is `recover-incident`. It failed the test (no substrate entity to trigger on), so it was recorded as a "posture / routing note" that routes to existing types, not as a new type (W0).
+The general steps for adding any entry are in README.md "Adding an entry": copy the template, take the next free ID, fill and validate the frontmatter, state the trigger, add it to INDEX/README, run the checkers. Admission also requires that "Every entry derives from a real finding".
+NOT SETTLED: W0 has no Territory or gap rule for work-types. Unlike domains/README.md, it does not say what to do with the work before the new type exists. D0 says a gap "is recorded against the gap rather than forced into the nearest domain".
+GUESS: apply D0's rule by analogy. Record the gap without stretching a neighbouring type, then propose a new W entry that compiles to a closeable node. A10 and A14 also say friction should become an entry.
+
+--- answer a-bc9f4dfa ---
+NOT SETTLED. W0 has no rule for a recurring kind of work that no work-type covers. Unlike D0 (domains/README.md lines 381-386), it gives no gap procedure such as "recorded against the gap rather than forced into the nearest".
+What the corpus does give: a candidate "is taxonomy-grade **iff it compiles to a closeable claimable node**" with the full frontmatter schema (W0 lines 102-119). The `recover-incident` case (lines 153-156) shows a candidate rejected and routed to existing types because it has no substrate trigger entity.
+Root README "Adding an entry" gives the mechanics (template, next free ID, trigger, INDEX, checkers), and "Every entry derives from a real finding". PC1 applies before adding to a curated collection.
+A10 says recurring friction should become tracked evolution and not be routed around, and RU3 requires a revival trigger if the item is parked.
+GUESS: test the candidate against the W0 schema and preflight. If it compiles, author a new W entry from a peer exemplar. If it does not, record it as a routing note or a backlog item with a trigger, and do not stretch the nearest work-type.
+
+--- answer a-a76ab12f ---
+It is closed by adding a new work-type, "not by stretching a neighbour to cover it, because a stretched work-type carries two evidence contracts under one name". Until the new type exists, "the work is recorded against the gap" (W0 Territory, "The set grows when the territory finds a gap"). This applies only if the work "compiles to a closeable claimable node", which is W0's taxonomy-grade test. Work with "no trigger, nothing to close" is recorded as a routing note instead, as incident recovery is. W0 lists this case as the fault "The uncovered work", which is then "hand-routed every time". W0 already records one gap of this kind: *extending this corpus* (adding or retiring a layer) has no work-type, though it recurs. NOT SETTLED: the corpus does not say who adds the new work-type or by which procedure. GUESS: through PC1 (author from exemplar), against the W0 entry schema.
+
+--- answer a-bc35b310 ---
+Per W0 Territory: "A recurring kind of work that compiles to a closeable claimable node and fits no work-type is closed by adding one, not by stretching a neighbour to cover it, because a stretched work-type carries two evidence contracts under one name".
+"Until it exists, the work is recorded against the gap", as W0's "Gaps recorded" paragraph does for *Extending this corpus*.
+If the work cannot compile to a node ("no trigger, nothing to close"), it gets a routing note instead, as incident recovery does.
+The new entry is taxonomy-grade "iff it compiles to a closeable claimable node". It must carry the W0 schema fields and body sections, satisfy the preflight without restating it, and be authored from an exemplar (PC1).
+Leaving it uncovered is the W0 fault "The uncovered work ... hand-routed every time".
+NOT SETTLED: who may approve adding a work-type, and the exact place or format for "recording against the gap" beyond W0's own Gaps paragraph.
+
+--- answer a-cc16be0b ---
+Partly settled. W0 gives the admission test: "A candidate is taxonomy-grade **iff it compiles to a closeable claimable node**". It must carry the full entry schema (roleEligibility, evidenceContract, evidenceAuthority, domainEligibility/Freedom, parameters, generationMode, falsifier, compositionHooks) and must pass the nine constraints.
+If the work fails that test, the `recover-incident` precedent applies: record it as a posture/routing note to existing types, not as a work-type.
+If it passes, the generic route applies: README.md "Adding an entry" (copy `_template.md`, next free ID, state the trigger, add to INDEX and the README, run the checkers), authored from an exemplar (PC1; W0 names "PC1 exemplar"). The admission rule "Every entry derives from a real finding" also applies. A10 says friction becomes an entry.
+NOT SETTLED: W0 has no Territory or gap rule (unlike D0's "record against the gap rather than forced into the nearest"), and it does not say who may admit a new work-type.
+GUESS: record the gap with evidence and a revival trigger (RU3), and do not stretch the nearest type.
+
+--- answer a-25179b02 ---
+Add a new work-type. Do not stretch a neighbour. W0 Territory: a recurring kind of work "that compiles to a closeable claimable node and fits no work-type is closed by adding one, not by stretching a neighbour to cover it, because a stretched work-type carries two evidence contracts under one name; until it exists, the work is recorded against the gap."
+If the work cannot compile to a node ("no trigger, nothing to close") it is recorded as a routing note instead, like incident recovery.
+The test for admission is "taxonomy-grade **iff it compiles to a closeable claimable node**" (W0 entry schema), with the required frontmatter fields.
+PC1 (author from exemplar) applies when adding the entry, per its INDEX trigger. W0's body-sections line names "PC1 exemplar".
+W0 already records one such gap: "*Extending this corpus* - adding or retiring a layer - has no work-type, though it recurs."
+NOT SETTLED: who authors or approves the new work-type. GUESS: W14 or W23 governance applies.
+
+======================================================================
+PROBE w0.Q8
+
+Question:
+What would an unhealthy population of work-types look like?
+
+Key:
+Any two population faults, e.g.: two work-types for one act; a work-type that restates the constraint set; pairings declared on both sides and drifting; a recurring kind of work no work-type covers; procedures that conduct work cited by no work-type.
+
+Rubric:
+2 for two population faults. 1 for one. 0 for none, or faults of a single entry only.
+
+--- answer a-3d9e6a45 ---
+NOT SETTLED by the work-types charter. E4 (entities/E4-charter.md) requires every charter to answer "What does an unhealthy population look like" under a `Faults` heading, but work-types/README.md has no `Faults` (or `Territory`) section. ST1 line 28 and M10 line 49 refer to a pending "`W0` conversion".
+Nearby text covers part of it. Root README "Faults" names "The forked constraint" (constraint set restated per entry) and "The broken axis" ("A layer stops composing, so work is hand-authored instead of generated, and the taxonomy becomes decoration"). It also rejects the enumerated triple-table (W0 line 47).
+D0 Faults gives "The mode-domain" (a domain duplicating the mode a work-type carries) and "The doubly-declared pairing" (pairings stated on both sides and disagreeing). R0 Faults gives "The self-attesting identity".
+GUESS: other symptoms might be work-types that do not compile to a closeable node, overlapping types applied interchangeably, or proactive-poolable types closing on self-evidence. These are inferred from W0's constraints and are not stated as population faults.
+
+--- answer a-4c77ef60 ---
+W0 "Faults" (population faults, "visible across the set, invisible to any one work-type"):
+- Two work-types for one act: the same node minted under two names.
+- The restated constraint: a work-type copies the canonical set and the copy drifts.
+- The doubly-declared pairing: a pairing stated on both the work-type and the domain. Only the work-type's list governs, and the domain view is generated.
+- The uncovered work: a recurring kind of work with no work-type, so it is hand-routed every time.
+- The uncited procedure: a method that conducts work but no work-type cites it, so a coordinating system cannot attach it.
+W0 Territory adds stretched work-types carrying two evidence contracts under one name. E3 says a charter states "what a healthy population looks like as against a merely valid one."
+
+--- answer a-74272da6 ---
+NOT SETTLED for work-types specifically: W0 has no `Faults` section. entities/E4-charter.md says every charter needs one ("What does an unhealthy population look like, as against a merely valid one?"), and W0 has not been converted (ST1 and M10 both refer to "the `W0` conversion" as pending).
+Neighbouring text gives related faults. README.md lists "The forked constraint" (a rule restated instead of referenced) and "The broken axis" ("a layer stops composing, so work is hand-authored instead of generated, and the taxonomy becomes decoration").
+D0 lists "The mode-domain" (double-counting with the work-type that carries the mode) and "The doubly-declared pairing" (a pairing stated on both work-type and domain and free to disagree).
+W0 itself rejects "an enumerated triple-table" because it "freezes the many-to-many". It also says types not proactive-poolable must not enter the idle pool (constraint 7).
+GUESS: an unhealthy work-type population would show entries restating the constraint set, types that do not compile to a closeable node, near-duplicate types two generators apply interchangeably, types whose mode duplicates a domain, decorative axiom citations, or recurring work routed to the nearest type instead of a recorded gap.
+
+--- answer a-ec6b7941 ---
+W0's Faults section lists five population faults, "visible across the set, invisible to any one work-type":
+- Two work-types for one act, so the same node appears under two names.
+- The restated constraint: an entry copies the constraint set and the copy drifts.
+- The doubly-declared pairing: the work-type and the domain both state a pairing and can disagree. Only the work-type's list governs, and the domain view is generated.
+- The uncovered work: recurring work that is hand-routed every time.
+- The uncited procedure: a procedure no work-type cites, so a coordinating system cannot attach it.
+Territory adds one more symptom: a neighbour stretched to cover new work, which carries two evidence contracts under one name. W0 also records partial cases of the uncited-procedure fault today. Procedures "are cited by only some work-types, and artifacts by fewer". By my count only M1, M7 and M10 are cited in `methods`, and only AR4 in `produces`.
+
+--- answer a-1ca4188f ---
+NOT SETTLED by the work-type charter itself. W0 has no `Faults` section, even though E4 requires every charter to have one ("What does an unhealthy population look like, as against a merely valid one?").
+Faults stated elsewhere that apply to this population:
+- root README.md: "The forked constraint" (an entry restating the W0 set) and "The broken axis" ("work is hand-authored instead of generated, and the taxonomy becomes decoration").
+- D0: "The mode-domain" (a domain duplicating a work-type's mode) and "The doubly-declared pairing" (work-type and domain lists disagree; only the work-type is consulted).
+- W0: rejects an enumerated triple table, admits only types that compile to closeable nodes, and keeps the proactive-poolable "honest set" small.
+GUESS: an unhealthy population would have types that cannot compile to a closeable node; near-duplicate verbs differing only by surface (domain smuggled into the type); a poolable set grown beyond what constraint 7 can keep safe; or recurring work with no type, forced into the nearest one.
+
+--- answer a-16a29193 ---
+W0 "Faults" lists the population faults, "visible across the set, invisible to any one work-type":
+- two work-types for one act, so the same node appears under two names;
+- a work-type that restates the canonical constraint set, so the copy drifts;
+- a doubly-declared pairing on both the work-type and the domain (only the work-type's list governs);
+- uncovered recurring work, hand-routed every time;
+- a procedure that conducts work but is cited by no work-type, so a coordinating system cannot attach it.
+Two related signs from W0 Territory: a neighbour stretched to cover new work (two evidence contracts under one name), and work-types that do not sit in exactly one group row.
+E3 says a charter should state "what a healthy population looks like as against a merely valid one". W0 gives this only as the fault list above, not as a positive statement of health.

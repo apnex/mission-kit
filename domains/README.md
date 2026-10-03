@@ -63,7 +63,7 @@ Orthogonality of the domain axis is **partial**, and the taxonomy says so:
   domain is a constant function of the work-type (N=1), so the generator does
   not vary it. A type that names its own surface is substrate work, so pinned
   work lands on the substrate domains - D4, D5 and D6. Which work-types are pinned, and to which domain, is declared on
-  each work-type; the lists domains carry are not consulted.
+  each work-type; each domain entry shows a generated view of it.
 
 D4/D5/D6 remain first-class domains (not deletions) because they are still valid **free** targets - every one of them can be audited as a surface in its own right.\
 `domainFreedom` therefore lives on the **work-type**, not the domain.
@@ -86,7 +86,7 @@ This makes cross-surface composition deterministic for two independent generator
 **The work-type owns the pairing.**\
 Which domains a work-type may act on is declared on the work-type, and a pairing outside that list is rejected - constraint 3 of the canonical constraint set in [`W0`](../work-types/README.md), cited rather than restated.\
 Whether the domain is free or pinned is also a property of the work-type.\
-Domain entries carry lists of the work-types they admit; no rule consults those lists, and where they differ the work-type governs.
+Each domain entry shows the work-types that act on it, generated from the work-types' own lists, so the two cannot disagree.
 
 **Domains and traits are orthogonal.**\
 A domain is where work lands; a [trait](../traits/README.md) is a characteristic of the system being worked on, which decides whether axioms bind it.\
@@ -121,7 +121,7 @@ Population faults - visible across the set and invisible to any one domain.
 
 - **The mode-domain.** A domain that is really a mode of work - verification, review - double-counting with the work-type that already carries the mode.
 - **The indistinct pair.** Two domains with no difference in what their evidence resolves against. A domain earns its place by a distinct evidence contract, and without one the generator produces two names for the same work.
-- **The doubly-declared pairing.** The same pairing stated on both the work-type and the domain, free to disagree. Measured when this charter was converted, the two sides disagreed widely, every disagreement an omission on the domain side; only the work-type's list is consulted.
+- **The doubly-declared pairing.** The same pairing stated on both the work-type and the domain by hand, free to disagree. It once existed here - the two sides disagreed in 23 places - and the domain side is now generated from the work-types.
 - **The domain named after a tool.** A surface described by one organisation's particular tools rather than by what it is, so a different team cannot place its own work. Five of the seven current members do this in their own entries - every one but `delivery-code` and `product-data` names tools in its subject surface - and it is recorded rather than corrected here.
 - **The unresolved surface.** Work whose evidence lands somewhere no domain names, so two people place it differently. The territory exists to make these visible, and a visible one is closed by adding a domain; it records none today.
 

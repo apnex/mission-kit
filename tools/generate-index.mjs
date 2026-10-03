@@ -205,7 +205,7 @@ if (duplicated.length) {
 // cross-file reference is outside what any single-file contract can see. Checked here because
 // collect() is already the only inventory of which ids exist. Blocking is not onerous: the root
 // charter already requires a retired entry's pointers to be repaired in the same commit.
-const EDGE_FIELDS = ['related', 'supersedes', 'related-axioms'];
+const EDGE_FIELDS = ['related', 'supersedes', 'related-axioms', 'methods', 'produces'];
 function danglingEdges(entries) {
 	const known = new Set(entries.map((e) => e.id));
 	const out = [];
@@ -296,6 +296,14 @@ if (setProblems.length) {
 }
 
 const targets = [['INDEX.md', ledgerSections(entries)]];
+// Each domain entry carries the work-types that act on it, generated from the work-types' own
+// domainEligibility - the list that governs. A hand-kept copy on the domain disagreed with the
+// work-types in 23 places and was consulted by nothing; generating it makes disagreement impossible.
+for (const d of entries.filter((x) => x.category === 'domain' && /^D[1-9][0-9]*$/.test(x.id))) {
+	const slug = String(d.title).split(' - ')[0].trim();
+	const acting = entries.filter((w) => w.category === 'work-type' && /^W[1-9][0-9]*$/.test(w.id) && listOf(w.domainEligibility).includes(slug));
+	targets.push([d.rel, table(ordered(acting), path.dirname(d.rel))]);
+}
 // Each spanning set's own file carries a generated table of its members, from its members list.
 for (const e of entries.filter((x) => x.category === 'set' && !/^ST0$/.test(x.id)))
 	targets.push([e.rel, table(ordered(listOf(e.members).map((id) => byIdAll.get(id))), path.dirname(e.rel))]);

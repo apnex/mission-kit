@@ -25,6 +25,7 @@ parameters:
 generationMode: reactive-triggered
 falsifier: review after the decision, or no falsifiable concerns raised
 compositionHooks: dependsOn the design under review; brackets build/merge as an upstream gate
+methods: [M1]
 ---
 
 # W10 - adversarial-design-review-upstream

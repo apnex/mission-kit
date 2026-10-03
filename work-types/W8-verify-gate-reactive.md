@@ -18,6 +18,7 @@ parameters:
 generationMode: reactive-triggered
 falsifier: self-attestation, targetRef null with attestation-only evidence, or no load-bearing ref
 compositionHooks: brackets the target node; generative-on-FAIL - a FAIL grows a repair subgraph routing through arc-repair's supersession path (never bare-abandon a completion-gated child)
+methods: [M1]
 ---
 
 # W8 - verify-gate-reactive

@@ -25,7 +25,7 @@ A human with limited context, who may be reading cold, can understand what an ag
 | leading a human to understanding, then a decision | `M10` |
 
 **Related, not members.**\
-`W23` and `AR4`, where a decision `M10` leads to is captured and recorded; `W24`, the director's live walkthrough, which calls itself director-led and not agent-executable - whether `M10` conducts it is for the `W0` conversion.
+`W23` and `AR4`, where a decision `M10` leads to is captured and recorded; `W24`, the director's live walkthrough, which cites `M10` as the procedure that conducts it; it stays related rather than a member, being director-led.
 
 **Related, each with a tension to reconcile before it joins:** `K5` survey asks three questions a round, against one question at a time; `AR3` board offers many moves at once, against one decision at a time; `RU1` honest yield is triggered by sweeps and audits, not by any report.
 

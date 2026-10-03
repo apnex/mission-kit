@@ -27,6 +27,7 @@ falsifier: no acceptance tests/invariants, or axioms cited as decoration
 compositionHooks: >-
   bracketing M7 axiom-alignment-gate on completionDependsOn for extensive
   designs before any downstream build node claims against the design-of-record
+methods: [M7]
 ---
 
 # W14 - design-a-contract-or-invariant

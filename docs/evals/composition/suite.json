@@ -6,7 +6,7 @@
   "probes": [
     {
       "id": "P1",
-      "question": "You will work on a long-running service that holds persistent state, is operated by several cooperating agents, and has a language model making decisions on its critical path. Which axioms bind it, and how did you determine that?",
+      "question": "You will work on a long-running service that holds persistent state, is operated by several cooperating agents, and has a language model making decisions on its critical path. It is not driven by a declared specification it reconciles toward. Which axioms bind it, and how did you determine that?",
       "key": "A1, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14 - every axiom except A2. Traits stateful, multi-agent, llm-in-the-loop (autonomous adds nothing new), union of the axioms each trait brings via applies-to, plus the any-system floor A3 A4 A8 A9 A14. A2 binds only declarative systems.",
       "rubric": "2 for the exact set by the traits-plus-floor route (A2 stated as conditional on the unstated declarative trait is fine). 1 for at most two errors, or the right set without the trait route. 0 otherwise."
     },

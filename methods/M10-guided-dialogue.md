@@ -46,4 +46,4 @@ The evidence is for the guidance as a whole, from one human; no single step's sh
 
 Whenever a human must understand or decide, and especially when they have not followed the work.\
 A recorded decision belongs in a decision record ([`AR4`](../artifacts/AR4-decision-record.md)); [`W23`](../work-types/W23-capture-decision-and-ratify.md) is the unit of work that captures and ratifies one.\
-[`W24`](../work-types/W24-director-walkthrough.md), a live walkthrough the director leads, is the closest unit of work; whether this procedure conducts it is for the `W0` conversion, since `W24` calls itself director-led and not agent-executable.
+[`W24`](../work-types/W24-director-walkthrough.md), a live walkthrough the director leads, cites this procedure as the one that conducts it.
