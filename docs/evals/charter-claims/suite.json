@@ -42,7 +42,7 @@
     },
     {
       "id": "V7",
-      "question": "Does any machine-checkable contract in this corpus (a schema a validator runs, not a prose template) govern the documents a project writes using lifecycle types the corpus defines, such as a board, backlog or decision record? Should one?",
+      "question": "Does any machine-checkable contract in this corpus (a schema a validator runs, not a prose template) govern the documents a project writes using lifecycle types the corpus defines, such as a board, backlog or decision record? Is that absence inside the schemas set's claim?",
       "key": "None exists: the schemas cover catalogue entries, standing context, skill bodies, Question, ContextFrame and entry bodies; artifact types carry prose templates, not contracts; the board and backlog are checked only by code in tools/check-board.mjs. Machine-checkable shapes belong to the schemas set, which is for contracts validatable without a project runtime, so the absence is a gap within its scope.",
       "rubric": "2 for none exists, plus that it falls inside the schemas set's claim and is a gap. 1 for none exists alone. 0 otherwise."
     },
