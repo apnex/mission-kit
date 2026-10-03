@@ -115,7 +115,7 @@ This file described them a second time and the copy had already drifted, naming 
 
 | ID | Title | Hydrate when |
 |---|---|---|
-| [M0](methodology/README.md) | Methodology - how work is conducted, as against how artifacts are written | You are choosing how to run a review, audit or deferral, or you need to know whether a rule belongs here or in style |
+| [M0](methodology/README.md) | Methodology - procedures that produce a result of their own | You are choosing how to run a review, an audit or another procedure, or deciding whether guidance is a procedure, a rule, a practice or style |
 | [M1](methodology/M1-triangulated-review.md) | Triangulated review - minimum 4 independent inputs | You are reviewing a patch or design that ships to production or upstream |
 | [M2](methodology/M2-test-drive-docs-by-execution.md) | Test-drive docs by execution - run the steps, or have a cold reader reason with it | You are about to ship a document someone will act on - an operator workflow, or a charter, axiom or other reasoning document an agent will rely on |
 | [M3](methodology/M3-default-reject-honest-yield.md) | Default-reject discipline + honest yield reporting | You are running an improvement sweep, refactor programme or audit cycle |
@@ -124,6 +124,22 @@ This file described them a second time and the copy had already drifted, naming 
 | [M6](methodology/M6-author-from-exemplar.md) | Author from exemplar - read a peer instance before adding to a collection | You are about to add an entry to a curated collection |
 | [M7](methodology/M7-axiom-alignment-audit.md) | Axiom alignment audit - required gate for extensive planning/design | You are judging whether a design decision is anchored to a first principle |
 | [M8](methodology/M8-artifact-bootstrap.md) | Artifact bootstrap - enter the loop at its inlet, one ratified type at a time | You are adopting the artifact document set in a project that does not use it yet |
+
+---
+
+## Rules
+
+| ID | Title | Hydrate when |
+|---|---|---|
+| [RU0](rules/README.md) | Rules - how work is done, where a check could tell whether it was | You are adding or applying guidance on how work is done that leaves a trace a check could test |
+
+---
+
+## Practices
+
+| ID | Title | Hydrate when |
+|---|---|---|
+| [PC0](practices/README.md) | Practices - how work is done, where nothing afterwards could tell | You are adding or applying guidance on how work is done that leaves no trace a check could test |
 
 ---
 

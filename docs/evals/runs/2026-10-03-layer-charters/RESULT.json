@@ -1,0 +1,397 @@
+{
+  "created": "2026-10-03T08:06:19.593Z",
+  "seed": "c7659ed18f298625",
+  "corpora": [
+    {
+      "label": "before",
+      "path": "/tmp/opencode/evalc/c-aaafa8d6"
+    },
+    {
+      "label": "after",
+      "path": "/tmp/opencode/evalc/c-6c1d93cd"
+    }
+  ],
+  "readers": 3,
+  "probes": [
+    "layer-charters.H1",
+    "layer-charters.H2",
+    "layer-charters.H3",
+    "layer-charters.H4",
+    "layer-charters.H5",
+    "layer-charters.H6",
+    "layer-charters.H7"
+  ],
+  "max": 14,
+  "mean": {
+    "layer-charters.H1": {
+      "before": 1,
+      "after": 1.33
+    },
+    "layer-charters.H2": {
+      "before": 1,
+      "after": 2
+    },
+    "layer-charters.H3": {
+      "before": 1.67,
+      "after": 2
+    },
+    "layer-charters.H4": {
+      "before": 2,
+      "after": 2
+    },
+    "layer-charters.H5": {
+      "before": 2,
+      "after": 2
+    },
+    "layer-charters.H6": {
+      "before": 0,
+      "after": 2
+    },
+    "layer-charters.H7": {
+      "before": 2,
+      "after": 2
+    }
+  },
+  "total": {
+    "before": 9.67,
+    "after": 13.33
+  },
+  "rows": [
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-53893e",
+      "probe": "layer-charters.H1",
+      "score": 1,
+      "reason": "Gives rules/ with the trace reason but labels the placement a guess after declaring it not settled, capping it at 1."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-53893e",
+      "probe": "layer-charters.H2",
+      "score": 1,
+      "reason": "Identifies practices/ with the no-trace reason but labels the conclusion a guess and calls it not settled."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-53893e",
+      "probe": "layer-charters.H3",
+      "score": 1,
+      "reason": "Names methodology and M1 but gives neither accepted reason (that it produces a judgement, or that it governs how a review is conducted), only M1's territory placement."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-53893e",
+      "probe": "layer-charters.H4",
+      "score": 2,
+      "reason": "Style/ because it is a rule about the artifact judged by reading the output, with a harmless admission caveat."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-53893e",
+      "probe": "layer-charters.H5",
+      "score": 2,
+      "reason": "Correctly states the required trace for rules and the optional enforced-by tool."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-53893e",
+      "probe": "layer-charters.H6",
+      "score": 0,
+      "reason": "A guessed order with style before method, and a method test that would misfile M6 as a method rather than a practice."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-53893e",
+      "probe": "layer-charters.H7",
+      "score": 2,
+      "reason": "Handing over, cited as a recorded gap in M0 and E4."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-41deb3",
+      "probe": "layer-charters.H1",
+      "score": 1,
+      "reason": "Rules/ with the trace reason, but the conclusion is explicitly labelled a guess under NOT SETTLED, capping it at 1."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-41deb3",
+      "probe": "layer-charters.H2",
+      "score": 1,
+      "reason": "Arrives at practices/ with the no-trace reason but labels it a guess and says the question is not settled."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-41deb3",
+      "probe": "layer-charters.H3",
+      "score": 2,
+      "reason": "Methodology because it governs conduct, with M1 identified as covering it."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-41deb3",
+      "probe": "layer-charters.H4",
+      "score": 2,
+      "reason": "Style/ because heading case is a property of the artifact judged by reading the output."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-41deb3",
+      "probe": "layer-charters.H5",
+      "score": 2,
+      "reason": "Required trace and optional enforced-by are both given; the NOT SETTLED note concerns only other body requirements."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-41deb3",
+      "probe": "layer-charters.H6",
+      "score": 0,
+      "reason": "A guessed order that puts style before method, with a method test of 'named procedure bound to a situation' that would file M6 as a method rather than a practice."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-41deb3",
+      "probe": "layer-charters.H7",
+      "score": 2,
+      "reason": "Handing over, cited as recorded in M0 as having no procedure at all."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-2d398e",
+      "probe": "layer-charters.H1",
+      "score": 1,
+      "reason": "Reaches rules/ with the trace reason but labels the conclusion a guess and calls it not settled, which caps it at 1."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-2d398e",
+      "probe": "layer-charters.H2",
+      "score": 1,
+      "reason": "Practices/ with the no-trace reason, but the conclusion is labelled a guess under NOT SETTLED."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-2d398e",
+      "probe": "layer-charters.H3",
+      "score": 2,
+      "reason": "Methodology because it governs conduct and the evidence demanded before proceeding, with M1 named."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-2d398e",
+      "probe": "layer-charters.H4",
+      "score": 2,
+      "reason": "Style/ because it governs the artifact itself, judged by reading the output."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-2d398e",
+      "probe": "layer-charters.H5",
+      "score": 2,
+      "reason": "Required trace for rules and optional enforced-by tool are both correctly stated."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-2d398e",
+      "probe": "layer-charters.H6",
+      "score": 0,
+      "reason": "A guessed order that swaps method and style, with a named-procedure method test that would misfile M6 as a method."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-2d398e",
+      "probe": "layer-charters.H7",
+      "score": 2,
+      "reason": "Handing over, cited as recorded in M0 as having no procedure at all."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-b16265",
+      "probe": "layer-charters.H1",
+      "score": 2,
+      "reason": "Places it firmly in rules/ because the repository history either holds a credential or not, a trace a check could test; the guess concerns only a territory row."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-b16265",
+      "probe": "layer-charters.H2",
+      "score": 2,
+      "reason": "Places it firmly in practices/ on the no-trace reason; the NOT SETTLED concerns admission evidence, not the layer."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-b16265",
+      "probe": "layer-charters.H3",
+      "score": 2,
+      "reason": "Methodology because it produces a verdict of its own, with M1 named as the existing entry."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-b16265",
+      "probe": "layer-charters.H4",
+      "score": 2,
+      "reason": "Style/ because it governs the artifact's form judged by reading the output; NOT SETTLED concerns only admission."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-b16265",
+      "probe": "layer-charters.H5",
+      "score": 2,
+      "reason": "Required trace and optional enforcer named in enforced-by are both correctly given."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-b16265",
+      "probe": "layer-charters.H6",
+      "score": 2,
+      "reason": "All five questions in the correct order with the correct tests, stopping at the first yes."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-b16265",
+      "probe": "layer-charters.H7",
+      "score": 2,
+      "reason": "Handing over, recorded as a gap with no procedure, rule or practice."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-51db0c",
+      "probe": "layer-charters.H1",
+      "score": 1,
+      "reason": "States rules/ with the trace reason but then says the corpus does not rule on this case directly, which caps it at 1."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-51db0c",
+      "probe": "layer-charters.H2",
+      "score": 2,
+      "reason": "Practices/ with the explicit reason that the re-read leaves no trace in the record."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-51db0c",
+      "probe": "layer-charters.H3",
+      "score": 2,
+      "reason": "Methodology because following it produces a verdict of its own, with M1 named."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-51db0c",
+      "probe": "layer-charters.H4",
+      "score": 2,
+      "reason": "Style/ because it governs the artifact's form, judged by reading the output, and notes it is a predicate over text."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-51db0c",
+      "probe": "layer-charters.H5",
+      "score": 2,
+      "reason": "A rule must declare trace, a practice declares none, and a rule may optionally name an enforced-by tool."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-51db0c",
+      "probe": "layer-charters.H6",
+      "score": 2,
+      "reason": "All five steps in the correct order with the correct tests."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-51db0c",
+      "probe": "layer-charters.H7",
+      "score": 2,
+      "reason": "Handing over, recorded as empty in the methodology, rules and practices charters."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-ddae72",
+      "probe": "layer-charters.H1",
+      "score": 1,
+      "reason": "Gives rules/ with the trace reason, but marks the axiom step NOT SETTLED and rests excluding it on a guess, so the conclusion is hedged and capped at 1."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-ddae72",
+      "probe": "layer-charters.H2",
+      "score": 2,
+      "reason": "Places it in practices/ because nothing in the record afterwards shows the re-read happened."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-ddae72",
+      "probe": "layer-charters.H3",
+      "score": 2,
+      "reason": "Methodology because it produces a verdict of its own, and identifies M1 as covering it."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-ddae72",
+      "probe": "layer-charters.H4",
+      "score": 2,
+      "reason": "Style/ because it governs how an artifact is written, judged by reading the output; the guess concerns admission only."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-ddae72",
+      "probe": "layer-charters.H5",
+      "score": 2,
+      "reason": "Required trace and optional enforced-by tool both stated, with practices declaring no trace."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-ddae72",
+      "probe": "layer-charters.H6",
+      "score": 2,
+      "reason": "All five steps in the correct order with the correct tests."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-ddae72",
+      "probe": "layer-charters.H7",
+      "score": 2,
+      "reason": "Handing over, recorded as a gap across all three layers, with other moments correctly shown as covered."
+    }
+  ]
+}

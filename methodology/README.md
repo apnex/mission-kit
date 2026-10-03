@@ -1,21 +1,22 @@
 ---
 id: M0
 category: methodology
-title: Methodology - how work is conducted, as against how artifacts are written
+title: Methodology - procedures that produce a result of their own
 status: active
-hydrate-when: You are choosing how to run a review, audit or deferral, or you need to know whether a rule belongs here or in style
+hydrate-when: You are choosing how to run a review, an audit or another procedure, or deciding whether guidance is a procedure, a rule, a practice or style
 supersedes: []
-related: [S0, P0, K0, W0, E4]
+related: [S0, P0, K0, W0, E4, RU0, PC0]
 ---
 
 # Methodology - the how-you-operate layer
 
 ## Purpose
 
-Ways of working.\
-Named procedures for conducting work, each applying only in the situation it names and binding once you are in it.
+Procedures.\
+Named steps that **produce a result of their own** - a verdict, an artifact, a record - each applying only in the situation it names and binding once you are in it.
 
-A methodology entry governs **conduct**: the sequence you follow, the independence you require, the evidence you demand before you proceed.\
+A methodology entry is a procedure: following it yields something that would not exist otherwise, and how it is followed decides whether that result can be trusted.\
+Guidance that governs how work is done and produces nothing of its own is a rule, in [`rules/`](../rules/README.md), or a practice, in [`practices/`](../practices/README.md).\
 It is a *situated move* in the sense [`A0`](../axioms/README.md) draws - you reach for it when the work matches its trigger, unlike an axiom, which is in force whether you reach for it or not.\
 A procedure is declined by not being in its situation, never by deciding it does not apply once you are.
 
@@ -27,18 +28,19 @@ Without a named procedure the difference is discovered only after it has cost so
 
 ## Territory
 
-This set covers **the procedural decisions inside a unit of engineering work** - the points where how you proceed, rather than what you produce, decides whether the result can be trusted.
+This set covers **the procedures inside a unit of engineering work** - the points where a result is produced, and how it is produced decides whether it can be trusted.
 
-Those decisions fall at five moments, and the moments are the denominator.\
-Every member is placed by its own trigger, in exactly one moment.
+A unit of work has six moments, and they are the denominator for this set and for `rules/` and `practices/`, which use the same names: **entering**, **committing to a design**, **verifying**, **deciding what to keep**, **treating the record**, and **handing over**.\
+Every member is placed by its own trigger, in exactly one moment; procedures sit at four of the six.
 
 | Moment | The decision | Members |
 |---|---|---|
-| **Entering** | how to begin in an unfamiliar collection or system | [`M6`](M6-author-from-exemplar.md), [`M8`](M8-artifact-bootstrap.md) |
+| **Entering** | how to begin in an unfamiliar collection or system | [`M8`](M8-artifact-bootstrap.md) |
 | **Committing to a design** | whether a design is anchored before it is built | [`M7`](M7-axiom-alignment-audit.md) |
 | **Verifying** | what evidence is enough to believe the work is correct | [`M1`](M1-triangulated-review.md), [`M2`](M2-test-drive-docs-by-execution.md) |
-| **Deciding what to keep** | what lands, what is cut, and how a cut is recorded | [`M3`](M3-default-reject-honest-yield.md), [`M5`](M5-anti-amnesia-deferral.md) |
-| **After the fact** | how the record of past work is treated when policy changes | [`M4`](M4-frozen-history-rule.md) |
+| **Treating the record** | how content that must not remain in history is removed, with proof | `K1` history content scrub - arriving |
+
+`M3`, `M4` and `M5` are rules and move to `rules/`; `M6` is a practice and moves to `practices/`; `K1` is a procedure and moves here from `skills/` - all in Delta-1's stage 3.
 
 **Two thin moments, recorded rather than filled.**\
 *Handing over* - passing work in progress to another agent or a later session - has no procedure at all.\
@@ -54,23 +56,33 @@ The boundary of this set is the object the rule acts on.
 
 | If the rule governs | It belongs in | Because |
 | --- | --- | --- |
-| the process you follow | `methodology/` | the object is the conduct of work |
+| steps that produce a result of their own | `methodology/` | the object is the result, and how it is produced |
+| how work is done, leaving a trace a check could test | [`rules/`](../rules/README.md) | it produces nothing, and its record shows whether it was kept |
+| how work is done, leaving no trace | [`practices/`](../practices/README.md) | it produces nothing, and nothing afterwards shows whether it was followed |
 | the artifact you produce | [`style/`](../style/README.md) | the object is the text, and a reader judges it without watching you work |
 | the shape of a solution | [`patterns/`](../patterns/README.md) | the object is a design, reusable across processes |
 | a capability you execute | [`skills/`](../skills/README.md) | the object is a procedure with inputs and outputs, invoked rather than followed |
 | what must always hold | [`axioms/`](../axioms/README.md) | it is not declinable, so it is not a move |
 
-The discriminating question is what a reviewer would inspect to tell whether the rule was honoured.\
-If they would read the output, it is style.\
-If they would have to know how you arrived at it, it is methodology.
+**Placement**, the one statement of it, which `rules/` and `practices/` cite.\
+Ask in order, and stop at the first yes:
+
+1. **Is it a limit a system is built toward, in force for every system with the traits it names?** An axiom, in `axioms/`.
+2. **Does following it produce a result of its own** - a verdict, an artifact, a record? A procedure, here.
+3. **Does it govern how an artifact is written - its form, whatever the work was?** Style, in `style/`.
+4. **Does it leave a trace in the record of the work that a check could test?** A rule, in `rules/`.
+5. **Otherwise** a practice, in `practices/`.
+
+The first question is about a system's properties, not about how universal a ban sounds: *credentials are never committed* binds an action in a situation, and is a rule.\
+The style question is about the object, not checkability: *every deferral records its revival trigger* is visible in text and is still a rule, because it governs what the work records.
 
 ---
 
 ## What earns an entry
 
 A procedure earns one when following it and not following it produce measurably different work, and the difference has actually been observed.\
-A named practice that everyone already follows codifies nothing.\
-A practice nobody has run is a proposal, not a methodology.
+A named procedure that everyone already follows codifies nothing.\
+A procedure nobody has run is a proposal, not a methodology.
 
 Prefer strengthening an existing entry to adding a neighbour.\
 Two procedures differing only in the situation they name will be applied interchangeably, and the distinction they were minted for is lost on first use.\
@@ -80,20 +92,18 @@ Before adding one, ask whether it is a new primitive or a new composition of exi
 
 ## How the procedures compose
 
-Members cite each other, and the citations form a graph with a definite shape.
+Members cite each other and the rules and practices around them.
 
-**Two primitives carry the set.**\
-[`M1`](M1-triangulated-review.md) - independent inputs before a verdict - and [`M3`](M3-default-reject-honest-yield.md) - reject by default and report honestly what survived - are each cited by three other members.\
-Most procedures here specialise one of them: a particular kind of independence, or a particular discipline about what is kept.
-
-**One cluster is a single discipline seen three ways.**\
-[`M3`](M3-default-reject-honest-yield.md), [`M4`](M4-frozen-history-rule.md) and [`M5`](M5-anti-amnesia-deferral.md) cite one another and together govern work that does not land: reject it deliberately, record why with a condition for its return, and never rewrite the record afterwards.\
-Applied separately they leave gaps the others cover - a cut with no revival trigger is forgotten, and a deferral whose record can later be rewritten was never durable.
+**One primitive carries the set.**\
+[`M1`](M1-triangulated-review.md) - independent inputs before a verdict - is the independence the verifying procedures specialise.
 
 **Two members are compound.**\
 [`M7`](M7-axiom-alignment-audit.md) and [`M8`](M8-artifact-bootstrap.md) cite primitives and are cited by none.\
 They are assembled from other procedures rather than new primitives.
 
+**Rules hold what procedures record.**\
+The discipline about work that does not land - reject it deliberately, record it with a condition for its return, and never rewrite the record - was a cluster here, and is now rules: `M3`, `M5` and `M4` move to `rules/`.\
+A procedure that cuts or defers anything is held by them.
 ---
 
 ## Faults
@@ -101,7 +111,7 @@ They are assembled from other procedures rather than new primitives.
 Population faults only - each is visible across the set and invisible to any single procedure.\
 A failure mode of one procedure belongs in that procedure.
 
-- **The unenforceable procedure.** A sequence with no observable trace, so conformance can only be asserted. If nothing distinguishes a run that followed it, it is advice.
+- **The procedure that produces nothing.** Guidance filed here that yields no result of its own; it is a rule if it leaves a trace, and a practice if it does not.
 - **The style rule in process clothing.** A convention about the artifact filed here, where the people who write artifacts do not look for it.
 - **The procedure that is really a skill.** A named capability with inputs and outputs, filed as a way of working. It belongs in `skills/`, where it can be invoked.
 - **The ceremony.** A step retained because it is in the procedure, after the failure it guarded against became impossible. Procedures accrete; nothing prunes them unless the entry says what it is protecting against.
@@ -115,7 +125,7 @@ A failure mode of one procedure belongs in that procedure.
 <!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
 | ID | Title | Hydrate when |
 |---|---|---|
-| [M0](README.md) | Methodology - how work is conducted, as against how artifacts are written | You are choosing how to run a review, audit or deferral, or you need to know whether a rule belongs here or in style |
+| [M0](README.md) | Methodology - procedures that produce a result of their own | You are choosing how to run a review, an audit or another procedure, or deciding whether guidance is a procedure, a rule, a practice or style |
 | [M1](M1-triangulated-review.md) | Triangulated review - minimum 4 independent inputs | You are reviewing a patch or design that ships to production or upstream |
 | [M2](M2-test-drive-docs-by-execution.md) | Test-drive docs by execution - run the steps, or have a cold reader reason with it | You are about to ship a document someone will act on - an operator workflow, or a charter, axiom or other reasoning document an agent will rely on |
 | [M3](M3-default-reject-honest-yield.md) | Default-reject discipline + honest yield reporting | You are running an improvement sweep, refactor programme or audit cycle |

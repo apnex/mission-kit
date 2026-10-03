@@ -46,6 +46,8 @@ For a knowledge layer the directory, the prefix and the category value stand in 
 | `schemas/` | `SC` | `contract` | category is a different word |
 | `backlog/` | `MREQ` | `mission-required` | both a different word |
 | `work-types/` | `W` | `work-type` | singularised |
+| `rules/` | `RU` | `rule` | prefix irregular; `R` was taken |
+| `practices/` | `PC` | `practice` | prefix irregular; `P` was taken |
 
 Singularising a directory name yields the category for most layers and is wrong for two, which is precisely the kind of near-rule that produces a confident error.
 

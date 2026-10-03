@@ -1,0 +1,51 @@
+### layer-charters.H1
+NOT SETTLED. No charter covers it, because the corpus has no `rules/` layer: there is no directory and no `RU0` charter, and INDEX.md lists none.
+The schema does expect such a layer: `schemas/catalog-entry/v1alpha1/catalog-entry.schema.json` accepts category `rule` with prefix `RU`, and requires a `trace`, defined as "what in the record shows the rule was kept or broken. A rule earns its layer by leaving one; a practice leaves none."
+GUESS: it belongs in `rules/` (RU). A committed credential leaves an observable trace in repository history that a check could test, and `tools/check-enforcers.sh` calls `rules/` the place for "conduct rules (rules/, from Delta-1)".
+Among the layers that do exist, `methodology/README.md` gives a test: "If they would read the output, it is style. If they would have to know how you arrived at it, it is methodology." A reviewer finds a committed credential by reading the repository, so the nearest existing home is arguably `style/`, and S0 says that layer covers "Doc, commit, and naming conventions". GUESS: that fit is weak, because the proposal is about conduct, not about how text is written.
+It is not an axiom. `axioms/README.md` says an axiom is a standing limit on a system's architecture, and a tactical rule promoted because it matters is the fault "The situated move in axiom clothing".
+
+### layer-charters.H2
+NOT SETTLED. No `practices/` charter exists. The only text that defines a practice is the schema's `trace` description: "a practice leaves none" (catalog-entry.schema.json).
+GUESS: it belongs in `practices/` (PC). Re-reading the request leaves nothing in the record that shows it was done, so it cannot carry the `trace` a rule must declare.
+It does not fit `methodology/` well. `methodology/README.md` names the fault "The unenforceable procedure. A sequence with no observable trace ... If nothing distinguishes a run that followed it, it is advice", and adds "A named practice that everyone already follows codifies nothing."
+It is not style, because the step governs conduct, not the artifact (M0 boundary table).
+
+### layer-charters.H3
+It belongs in methodology, and an entry already covers it: `methodology/M1-triangulated-review.md`.
+M1's rule says: "require at least four genuinely independent inputs before reaching a verdict", and its trigger is "You are reviewing a patch or design that ships to production or upstream".
+It fits the layer because it governs conduct, "the independence you require, the evidence you demand before you proceed" (`methodology/README.md`, Purpose), and it sits under the Verifying moment in M0's Territory table.
+Under "Prefer strengthening an existing entry to adding a neighbour" (M0), the guidance should strengthen M1, not become a new entry.
+
+### layer-charters.H4
+It belongs in `style/`. It governs the artifact itself, which S0 describes as "judged by reading the output rather than by watching it being produced", and the M0 boundary table sends "the artifact you produce" to `style/`.
+No existing entry covers heading case. I checked S1-S14 by title in INDEX.md and searched style/ for "heading": S11 and S12 mention headings only in other contexts.
+It would also have to earn an entry. S0 says "A convention earns one when its absence has produced a real defect in a real artifact ... Aesthetic preference does not qualify." Heading case is a predicate a script can check, so S0's "Prefer a rule a script can hold" would favour giving it an enforcer.
+
+### layer-charters.H5
+A rule (`RU`) must declare `trace`. The catalog-entry schema's `allOf` requires it when the category is `rule` and the id matches `^RU[1-9][0-9]*$`. It must be a string of at least 20 characters stating "the observable trace a check could test".
+A practice (`PC`) has no such requirement, and the schema says "a practice leaves none".
+A rule may also declare `enforced-by`, which the schema calls optional: "Naming a tool that checks it is enforced-by's job, and is optional". When it is present, it must start with `tools/`, and `tools/check-enforcers.sh` checks `rules/RU*.md` so that the named tool exists.
+Both take the common fields: `id`, `category`, `title`, `status` and `hydrate-when` are required, and `related`, `supersedes` and the others are optional. The test file `schemas/tests/catalog-entry/catalog-entry.test.mjs` confirms this ("a rule must declare the trace a check could test").
+Caveat: this comes from the schema and tests only. Neither `rules/` nor `practices/` exists as a directory or charter in this corpus.
+
+### layer-charters.H6
+NOT SETTLED. No file gives an ordered decision procedure across all five, and no charter exists for methods (`methods/`), rules or practices.
+The text supplies pieces. A0 asks first whether the guidance is a standing commitment or a situated move: an axiom is "not declinable" and "in force whether you reach for it or not" (M0 table, A0).
+M0's boundary test then separates style from methodology: "what a reviewer would inspect ... If they would read the output, it is style. If they would have to know how you arrived at it, it is methodology."
+The schema separates rules from practices: a rule leaves an observable trace, and "a practice leaves none".
+GUESS at the order: (1) Is it always in force, not declinable? If yes, it is an axiom. (2) Is it judged by reading the artifact? If yes, it is style. (3) Is it a named procedure, a sequence that binds in a stated situation? If yes, it is a method. (4) Otherwise, does it leave an observable trace a check could test? If yes, it is a rule; if not, it is a practice.
+
+### layer-charters.H7
+Handing over: passing work in progress to another agent or to a later session.
+`methodology/README.md` (Territory) says: "*Handing over* - passing work in progress to another agent or a later session - has no procedure at all", and adds that "a lone agent hands over to its own next session."
+The text says only "no procedure". It does not mention rules or practices by name. But no rule or practice entries exist anywhere in this corpus, so nothing of either kind governs handover.
+M0 also calls "Committing to a design" thin, but that moment holds M7, so it is not ungoverned.
+
+### OBSERVATIONS
+- The schema (`category` enum: `method`, `rule`, `practice`; id prefixes `RU` and `PC`), `catalog-entry.test.mjs` (CATALOGUE_DIRS lists `methods`, `rules`, `practices`) and `tools/check-enforcers.sh` (globs `rules/RU*.md`) all refer to layers that do not exist. There are no directories, no `RU0`/`PC0` charters, no README Mechanics rows and no INDEX sections for them. This breaks the README's layer-admission costs and E2's "every category names a knowledge layer". Both `methodology` and `method` are valid categories during the pending "Delta-1" rename.
+- The schema's top-level `description` lists only eight categories ("axiom, style, methodology, role, pattern, domain, work-type or mission-required"), but its enum has seventeen.
+- README.md calls INDEX.md "the flat ledger across every category", but INDEX.md is grouped by layer.
+- The README Mechanics table lists `docs/`, which is absent from this corpus snapshot.
+- M1 is titled "minimum 4 independent inputs" and its rule says "at least four", but its rationale says "sometimes 3 is enough" and "below 3 the failure mode is predictable", so the floor is stated inconsistently.
+- E2 says "The three mechanism layers", but the README table lists four prefix-less layers (`bundles/`, `tools/`, `plugins/`, `docs/`).

@@ -47,7 +47,9 @@ The constraint set is authored once in the cross-axis reference and never forked
 | `R` | [`roles/`](roles/) | Who may attest, approve or decide. The M axis. |
 | `D` | [`domains/`](domains/) | Subject surfaces. The N axis. |
 | `W` | [`work-types/`](work-types/) | Units of work and their evidence contracts. |
-| `M` | [`methodology/`](methodology/) | How work is conducted: review, audit, deferral. |
+| `M` | [`methodology/`](methodology/) | Procedures that produce a result of their own: review, audit, bootstrap. |
+| `RU` | [`rules/`](rules/) | How work is done, where a check could tell: rules that leave a trace. |
+| `PC` | [`practices/`](practices/) | How work is done, where nothing afterwards could tell. |
 | `S` | [`style/`](style/) | How artifacts are written. |
 | `P` | [`patterns/`](patterns/) | Recurring solutions. |
 | `K` | [`skills/`](skills/) | Executable operator capability. |

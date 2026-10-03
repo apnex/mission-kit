@@ -1,0 +1,62 @@
+### layer-charters.H1
+It belongs in rules/ (RU0).
+methodology/README.md (M0), in its Placement section, uses this exact example: "*credentials are never committed* binds an action in a situation, and is a rule."
+It fails question 1 (an axiom). That question asks about "a limit a system is built toward", not "how universal a ban sounds".
+It produces no result of its own (fails Q2) and does not govern an artifact's form (fails Q3).
+It does leave a trace a check could test (Q4): the repository history shows whether a credential was committed.
+Per rules/README.md "Member shape", the entry must declare that `trace` in frontmatter. It may also name a tool in `enforced-by`.
+
+### layer-charters.H2
+It belongs in practices/ (PC0).
+Going through M0's placement order: it is not an axiom, it produces no result of its own, and it does not govern an artifact's form.
+It also leaves no trace: nothing in the record afterwards shows that the request was re-read. PC0 calls a practice "what is left" after those questions.
+Its moment is *verifying*. PC0 records that *verifying* "hold[s] no practice today", so no existing entry covers it.
+There is a condition on admitting it. PC0 says "A practice earns its place only by evidence that following it produces measurably different work", and it calls a habit without that evidence "a proposal" (Faults: "The unevidenced practice").
+NOT SETTLED: whether that evidence exists for this proposal. Without it, the corpus treats the proposal as not yet admissible.
+
+### layer-charters.H3
+It belongs in methodology/ (M0), because following it produces a result of its own: a verdict (M0 placement question 2, "a verdict, an artifact, a record").
+An entry already covers it: M1, methodology/M1-triangulated-review.md, "Triangulated review - minimum 4 independent inputs".
+M1 says: "require **at least four genuinely independent inputs** before reaching a verdict". Its trigger is "You are reviewing a patch or design that ships to production or upstream".
+M0 places M1 at the *verifying* moment and calls it the "one primitive" that "carries the set": the independence that the verifying procedures specialise.
+Per M0's "What earns an entry", the right move is to strengthen M1, not to add a neighbour ("Prefer strengthening an existing entry to adding a neighbour").
+
+### layer-charters.H4
+It belongs in style/ (S0).
+It governs how an artifact is written, "its form, whatever the work was", which is M0 placement question 3. M0's table says "the object is the text, and a reader judges it without watching you work".
+It is not a rule, even though it is checkable. M0 says "The style question is about the object, not checkability", and RU0 lists "The style rule in rule clothing" as a fault.
+S0 says to "Prefer a rule a script can hold". Sentence case can be stated as a predicate over headings, so the entry should ideally declare `enforced-by` with exactly one tool, which tools/check-enforcers.sh then verifies.
+S0 also requires that "its absence has produced a real defect in a real artifact". Aesthetic preference alone does not earn an entry.
+NOT SETTLED: whether that defect evidence exists. My search for "sentence case" found no existing S-entry for it.
+
+### layer-charters.H5
+A rule must declare `trace` in frontmatter: "the observable in the record that shows it was kept or broken, required by the catalogue contract" (rules/README.md, Member shape).
+The schema enforces this. In schemas/catalog-entry/v1alpha1/catalog-entry.schema.json, the allOf branch for category `rule` with an id matching `^RU[1-9][0-9]*$` requires `trace` (minLength 20).
+A practice "declares no `trace`; if it acquires one, it is a rule and moves" (practices/README.md, Member shape).
+A rule may optionally declare `enforced-by`, naming the tool that checks it (the pattern is `^tools/`), which tools/check-enforcers.sh holds to existing. The schema's description of `trace` says "Naming a tool that checks it is enforced-by's job, and is optional."
+RU0 adds: "a rule with no tool yet is still a rule, and is checked by reading the trace."
+
+### layer-charters.H6
+methodology/README.md (M0), Placement: "Ask in order, and stop at the first yes".
+1. Is it a limit a system is built toward, in force for every system with the traits it names? Then it is an axiom (axioms/).
+2. Does following it produce a result of its own (a verdict, an artifact, a record)? Then it is a procedure or method (methodology/).
+3. Does it govern how an artifact is written, its form whatever the work was? Then it is style (style/).
+4. Does it leave a trace in the record of the work that a check could test? Then it is a rule (rules/).
+5. Otherwise, it is a practice (practices/).
+rules/README.md and practices/README.md both cite this as the single statement of placement ("axiom, procedure, style, rule, practice, asked in that order").
+
+### layer-charters.H7
+The moment is *handing over*: passing work in progress to another agent, or to a later session.
+- No procedure: M0 says "*Handing over* ... has no procedure at all."
+- No rule: RU0 lists handing over among the moments that "hold no rule today", and notes that "A rule for handing over - *a handover record names what is unfinished* - would leave a trace, and none exists."
+- No practice: PC0 says "*Verifying*, *deciding what to keep* and *handing over* hold no practice today."
+Every other moment has at least one member. Entering has M8 and M6. Committing to a design has M7. Verifying has M1 and M2. Deciding what to keep has M3 and M5. Treating the record has K1, M4 and K2.
+
+### OBSERVATIONS
+- The migration is partly done. RU0 and PC0 have no members yet, and the files themselves still say "arriving ... in Delta-1's stage 3". M3, M4, M5 and M6 still sit in methodology/ with `category: methodology`, and K1 and K2 are still in skills/. INDEX.md therefore lists rules as methodology entries.
+- M1's body heading is "## Rule", but M0 classes M1 as a procedure. That word clashes with the new meaning of "rule". M1's `related` field also still points to M3, which is leaving for rules/.
+- M1 contradicts itself on the number of inputs. It says "Four is the empirical floor", then "sometimes 3 is enough", then "below 3 the failure mode is predictable", so it is unclear whether the floor is 3 or 4.
+- M0 frames the axiom boundary two ways. Placement question 1 says "a limit a system is built toward, in force for every system with the traits it names", while the table above it says "what must always hold ... it is not declinable". These are close but not the same test.
+- methodology/README.md has a markdown defect around line 106. The sentence "A procedure that cuts or defers anything is held by them." is followed directly by "---" with no blank line, so it renders as a setext H2 heading instead of a paragraph plus a horizontal rule.
+- M0's skills/ row ("a capability you execute ... invoked rather than followed") is not among the five placement questions. The question order alone does not say where skills or patterns fall.
+- H2 and H4 depend on admission evidence (a practice needs an observed difference, and a style entry needs a real defect). The corpus does not settle whether that evidence exists for either proposal.
