@@ -125,5 +125,36 @@ node "$tool" score --run "$run2" >/dev/null 2>&1
 q2=$(python3 -c "import json;print(json.load(open('$run2/RESULT.json'))['mean']['alpha.Q2']['ONLY'])")
 python3 -c "import sys;sys.exit(not float($q2)==0)" && ok "an unanswered probe scores 0" || no "an unanswered probe scores 0 (got $q2)"
 
+# A suite's own instructions replace the default answering rules, which would distort an answer
+# that is itself an artifact - a message written for a human.
+mkdir -p "$EVAL_SUITES_DIR/beta"
+cat > "$EVAL_SUITES_DIR/beta/suite.json" <<'EOF'
+{ "id": "beta", "mode": "corpus", "instructions": "WRITE-THE-MESSAGE-ITSELF",
+  "probes": [ { "id": "X1", "question": "Write it.", "key": "k", "rubric": "r" } ] }
+EOF
+node "$tool" prepare --suites beta --corpus ONLY="$tmp/newc" --readers 1 --out "$tmp/run3" >/dev/null
+p3=$(ls "$tmp/run3/prompts"/*.txt)
+if grep -q 'WRITE-THE-MESSAGE-ITSELF' "$p3" && ! grep -q 'Under eight sentences' "$p3"; then ok "suite instructions replace the default answering rules"; else no "suite instructions replace the default answering rules"; fi
+
+# An artifact suite replaces the default "cite files" instruction, cuts the reader's self-explanation
+# before the scorer sees it, and replaces the scorer's guess cap, which would penalise answers that
+# are required to label what was inferred.
+mkdir -p "$EVAL_SUITES_DIR/gamma"
+cat > "$EVAL_SUITES_DIR/gamma/suite.json" <<'EOF'
+{ "id": "gamma", "mode": "corpus", "instructions": "WRITE IT", "stripFrom": "CORPUS-SOURCES:",
+  "scorerInstructions": "SCORER-OVERRIDE",
+  "probes": [ { "id": "X1", "question": "Write it.", "key": "k", "rubric": "r" } ] }
+EOF
+node "$tool" prepare --suites gamma --corpus ONLY="$tmp/newc" --readers 1 --out "$tmp/run4" >/dev/null
+p4=$(ls "$tmp/run4/prompts"/*.txt)
+grep -q 'citing files and text' "$p4" && no "artifact suites drop the citing instruction" || ok "artifact suites drop the citing instruction"
+pid4=$(basename "$p4" .txt)
+printf '### gamma.X1\nDear reader, the message.\nCORPUS-SOURCES: E99 only-in-one-version\n' > "$tmp/run4/answers/$pid4.txt"
+node "$tool" blind --run "$tmp/run4" --seed s >/dev/null
+if grep -q 'E99' "$tmp/run4/scorers/gamma.txt"; then no "self-explanation is cut before the scorer"; else ok "self-explanation is cut before the scorer"; fi
+grep -q 'Dear reader, the message.' "$tmp/run4/scorers/gamma.txt" && ok "the message itself reaches the scorer" || no "the message itself reaches the scorer"
+if grep -q 'SCORER-OVERRIDE' "$tmp/run4/scorers/gamma.txt" && ! grep -q 'scores at most 1 unless' "$tmp/run4/scorers/gamma.txt"; then ok "scorer instructions replace the guess cap"; else no "scorer instructions replace the guess cap"; fi
+grep -q 'E99' "$tmp/run4/answers/$pid4.txt" && ok "the full answer is kept in answers/" || no "the full answer is kept in answers/"
+
 printf '%d passed, %d failed\n' "$pass" "$fail"
 [ "$fail" -eq 0 ]

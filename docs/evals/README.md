@@ -79,6 +79,7 @@ Every suite's keys are audited by a fresh reader before first use, and corrected
 |---|---|---|
 | `boundary-bypass` | the preamble ruled out one of the ruling's two outcomes; B3 dropped "adjust the interface"; B4 cited `C0`'s adjustment rule, which governs registered components and is itself an open question; "recorded" stated where the ruling says nothing | all four |
 | `work-layers` | the questions copied their target entries' wording, so they would measure text search; the director's `B24` wording had leaked into two probes; L6 quoted a sentence `W0` does not contain | questions reworded in plain terms; leaked wording removed; L6 keyed to `W0`'s actual text |
+| `explain` | the harness told readers to cite files while the suite forbade it; the scorer's guess cap would have penalised required labelling of inferred claims; readers' self-explanations would have unblinded a before-and-after run; X1 lacked a deadline and contradicted the preamble; X2 lacked the risk it asked for; X3 gave away its separating experiment and left a fact ambiguous; X4 required an order the goal does not; rubrics were too broad to interpret | harness: instructions, scorer instructions and a stripped self-explanation per suite, each tested; fixtures completed; rubrics gated on core properties and required to name failing properties |
 
 ---
 

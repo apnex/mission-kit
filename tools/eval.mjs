@@ -115,9 +115,13 @@ function readerPrompt(group, corpusPath, answerPath) {
 		lines.push("", "Answer using only that file, quoting it.");
 	} else {
 		lines.push(`You are an engineering agent who has just been given a knowledge corpus and nothing else. Read only files under ${corpusPath}. Its entry point is INDEX.md; open whatever you need.`);
-		lines.push("", "Answer using the corpus, citing files and text.");
+		if (!group.suites.some((x) => x.instructions)) lines.push("", "Answer using the corpus, citing files and text.");
 	}
-	lines.push(`If it does not settle something, say "NOT SETTLED" and label any guess "GUESS:". Never present a guess as if the text said it. Under eight sentences per question.`);
+	// A suite whose answers are artifacts in their own right - a message to a human, say - replaces
+	// the default answering instructions, which demand short cited answers that would distort it.
+	const custom = group.suites.find((x) => x.instructions);
+	if (custom) lines.push(custom.instructions);
+	else lines.push(`If it does not settle something, say "NOT SETTLED" and label any guess "GUESS:". Never present a guess as if the text said it. Under eight sentences per question.`);
 	lines.push("", "Do not edit any file except the one answer file named at the end. Do not run git.");
 	for (const s of group.suites) if (s.preamble) lines.push("", s.preamble);
 	lines.push("", "Questions:");
@@ -214,7 +218,14 @@ function cmdBlind(o) {
 		const parts = splitAnswers(fs.readFileSync(f, "utf8"), p.probes);
 		for (const probe of p.probes) {
 			if (!(probe in parts) || !parts[probe]) { absent.push({ pid: p.pid, probe }); continue; }
-			items.push({ item: "a-" + hex(`${seed}:${p.pid}:${probe}`, 8), pid: p.pid, probe, text: parts[probe] });
+			// A suite may name a marker after which the reader explains itself - which corpus entries
+			// shaped the answer. That text can name an entry only one corpus version has, so it would tell
+			// the scorer which version wrote the answer; it is cut here and stays in answers/.
+			const strip = loadSuite(probe.split(".")[0]).stripFrom;
+			let text = parts[probe];
+			if (strip && text.includes(strip)) text = text.slice(0, text.indexOf(strip)).trim();
+			if (!text) { absent.push({ pid: p.pid, probe }); continue; }
+			items.push({ item: "a-" + hex(`${seed}:${p.pid}:${probe}`, 8), pid: p.pid, probe, text });
 		}
 	}
 	const bySuite = new Map();
@@ -223,7 +234,7 @@ function cmdBlind(o) {
 		const suite = loadSuite(sid);
 		const lines = [
 			`You are scoring answers to a comprehension test against an answer key. Read only this file. Do not open any other file under ${run}.`,
-			"", "Score each answer 0, 1 or 2 against the probe's key and rubric. An answer that labels its conclusion a guess, or says the text does not settle it, scores at most 1 unless the rubric says otherwise. Judge the answer, not its length or confidence.",
+			"", suite.scorerInstructions ?? "Score each answer 0, 1 or 2 against the probe's key and rubric. An answer that labels its conclusion a guess, or says the text does not settle it, scores at most 1 unless the rubric says otherwise. Judge the answer, not its length or confidence.",
 			"", "You do not know which answers came from which reader or document version, and must not try to infer it.",
 			"", `Write one JSON object per line, for every answer id below and no others, to this file: ${path.join(run, "scores", sid + ".txt")}`,
 			'Each line exactly: {"item": "<answer id>", "score": 0|1|2, "reason": "<one sentence>"}', "When written, reply with only DONE.",
