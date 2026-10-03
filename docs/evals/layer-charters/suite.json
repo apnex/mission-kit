@@ -1,0 +1,50 @@
+{
+  "id": "layer-charters",
+  "mode": "corpus",
+  "group": "layer-charters",
+  "source": "Delta-1 stage 2: what RU0, PC0 and the rewritten M0 must let a cold agent decide. H3, H4 and H7 are controls the current M0 should answer.; keys corrected after independent review",
+  "probes": [
+    {
+      "id": "H1",
+      "question": "Someone proposes: credentials are never committed to the repository. Which layer of this corpus should hold that, and why?",
+      "key": "rules/ - it governs how work is done, produces nothing of its own, and leaves a trace a check could test: the repository's history either contains a credential or it does not. It is not style, because it governs what the work does, not how an artifact is written.",
+      "rubric": "2 for rules/ with the trace reason. 1 for rules/ without the trace reason, or for the conduct layer (methodology/methods) with an explicit note that a check could test it. 0 otherwise."
+    },
+    {
+      "id": "H2",
+      "question": "Someone proposes: before declaring a task done, re-read the original request once. Which layer should hold that, and why?",
+      "key": "practices/ - it governs how other work is done, produces nothing of its own, and leaves no trace a check could test afterwards.",
+      "rubric": "2 for practices/ with the no-trace reason. 1 for practices/ without it. 0 otherwise."
+    },
+    {
+      "id": "H3",
+      "question": "Some guidance says: before a patch ships to production, collect at least four genuinely independent kinds of input, compare them, and only then reach a judgement. Which layer holds it, and does an entry already cover it?",
+      "key": "The procedure layer - methods/, formerly methodology/ - because following it produces a result of its own, a judgement; it exists as M1, triangulated review. On the corpus before the change, the reason 'it governs how a review is conducted' is equally correct.",
+      "rubric": "2 for the procedure or conduct layer with either reason and M1. 1 for the layer without M1, or M1 without a reason. 0 otherwise. Naming it methodology/ is not an error."
+    },
+    {
+      "id": "H4",
+      "question": "Someone proposes: every heading in a document is written in sentence case. Which layer, and why?",
+      "key": "style/ - it is checkable from the artifact's text alone, without knowing anything about the work.",
+      "rubric": "2 for style/ with the reason that it governs the artifact itself - judged by reading the output, or a predicate over the text; a caveat that it may not earn an entry costs nothing. 1 for style/ alone. 0 otherwise."
+    },
+    {
+      "id": "H5",
+      "question": "What must an entry in rules/ declare that an entry in practices/ does not, and what may it declare optionally?",
+      "key": "A rule must declare its trace - the observable that shows the rule was kept or broken. It may name an enforcer, the tool that checks it, when one exists; a practice has no trace to declare.",
+      "rubric": "2 for the required trace and the optional enforcer. 1 for the trace alone. 0 otherwise."
+    },
+    {
+      "id": "H6",
+      "question": "Give the order of questions an agent asks to decide whether a piece of guidance is an axiom, a method, a style rule, a rule or a practice.",
+      "key": "In order, stopping at the first yes: is it in force regardless of situation (axiom); does following it produce a result of its own (method); does it govern how an artifact is written - its form, whatever the work was (style); does it leave a trace in the record of the work that a check could test (rule); otherwise practice.",
+      "rubric": "2 for all five steps in this order with these tests. 1 for an order or tests that would still file M1 as a method, M3, M4, M5 and K2 as rules, and M6 as a practice; or four of the five steps. 0 otherwise."
+    },
+    {
+      "id": "H7",
+      "question": "Which moment in a unit of work does the corpus record as a gap, with nothing at all governing it - no procedure, rule or practice?",
+      "key": "Handing over - passing work in progress to another agent or a later session, including a lone agent's own next session.",
+      "rubric": "2 for handing over, recorded as a gap. 1 for handing over without its being recorded as a gap. 0 otherwise."
+    }
+  ]
+}
