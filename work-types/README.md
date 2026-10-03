@@ -26,9 +26,9 @@ The kinds group by what the work does, and the groups are the denominator.
 
 | Group | What the work does | Members |
 |---|---|---|
-| **Build** | changes the product or the harness | `W1` build a slice, `W2` fix a bug, `W3` retire or hard-cut, `W5` author guard or falsifier tests |
+| **Build** | changes a system - the product, the harness, or the organisation's own machinery and knowledge | `W1` build a slice, `W2` fix a bug, `W3` retire or hard-cut, `W5` author guard or falsifier tests |
 | **Check** | produces evidence about work, its own or another's | `W4` validate locally, `W8` verify gate, `W9` audit a surface, `W10` adversarial design review, `W11` live probe, `W12` meta-validate by dogfooding, `W22` axiom-alignment gate |
-| **Land and ship** | moves work to where it runs | `W6` merge and land, `W7` publish or deploy, `W26` reset or converge the fleet |
+| **Land and ship** | moves a change to where it runs or is read | `W6` merge and land, `W7` publish or deploy, `W26` reset or converge the fleet |
 | **Approve and decide** | exercises authority over work | `W13` code-owner approve, `W23` capture and ratify a decision, `W24` director walkthrough |
 | **Design** | shapes work before it is built | `W14` design a contract or invariant, `W15` convene a council |
 | **Keep knowledge** | captures what work taught | `W16` bank an idea, `W17` author a closeout packet |
@@ -43,7 +43,11 @@ Work that cannot compile to a node - no trigger, nothing to close - is recorded 
 A new work-type is authored like any entry: from a peer exemplar ([`PC1`](../practices/PC1-author-from-exemplar.md)), against the entry schema below, landing through the gate; adding one changes how work is generated, so it is ratified by the director.
 
 **Gaps recorded.**\
-*Extending this corpus* - adding or retiring a layer - has no work-type, though it recurs.\
+*Changing the knowledge corpus* has no work-type for building, fixing, retiring or landing: every work-type in those groups excludes the knowledge domain, and `W16` only captures new capital.\
+Extending the corpus - adding or retiring a layer - is the recurring case.\
+*Changing the governance or coordination machinery* is covered only if the machinery's own codebase counts as the product codebase under the domains' rule that a change belongs where its diff lands; if it counts as its own domain, building and landing there is a gap too.\
+The domains set has not said which, and its answer settles this.\
+The domains charter's tie-break, applied to one such change, settles which.\
 Procedures that conduct work are cited by only some work-types, and artifacts by fewer; a work-type cites what it can name, and the rest are recorded rather than guessed.
 
 ---
