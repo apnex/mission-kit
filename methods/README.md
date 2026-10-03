@@ -31,23 +31,26 @@ Without a named procedure the difference is discovered only after it has cost so
 This set covers **the procedures inside a unit of engineering work** - the points where a result is produced, and how it is produced decides whether it can be trusted.
 
 A unit of work has six moments, and they are the denominator for this set and for `rules/` and `practices/`, which use the same names: **entering**, **committing to a design**, **verifying**, **deciding what to keep**, **treating the record**, and **handing over**.\
-Every member is placed by its own trigger, in exactly one moment; procedures sit at five of the six.
+Every member is placed by its own trigger, in exactly one moment; procedures sit at five of the six, and the sixth is a named gap.
 
 | Moment | The decision | Members |
 |---|---|---|
 | **Entering** | how to begin in an unfamiliar collection or system | [`M8`](M8-artifact-bootstrap.md) |
 | **Committing to a design** | whether a design is anchored before it is built | [`M7`](M7-axiom-alignment-audit.md) |
 | **Verifying** | what evidence is enough to believe the work is correct | [`M1`](M1-triangulated-review.md), [`M2`](M2-test-drive-docs-by-execution.md) |
-| **Treating the record** | how content that must not remain in history is removed, with proof | [`M9`](M9-history-content-scrub.md) |
+| **Deciding what to keep** | what lands, what is cut, and how the verdict is reached | **none - gap** |
+| **Treating the record** | how a record that is wrong is put right - content that must not remain removed with proof, a record that has drifted reconciled against the truth | [`M9`](M9-history-content-scrub.md) removes content; reconciling a drifted record has no procedure |
 | **Handing over** | how a human of limited context is led to understand the work and decide on it | [`M10`](M10-guided-dialogue.md) |
 
 Delta-1 moved the rules that sat here to [`rules/`](../rules/README.md) and a practice to [`practices/`](../practices/README.md), and brought `M9` in from `skills/`; the entries that moved remain here as superseded entries pointing to their successors.
 
-**Two thin moments, recorded rather than filled.**\
+**One empty moment and three thin ones, recorded rather than filled.**\
+*Deciding what to keep* holds no procedure: [`RU1`](../rules/RU1-default-reject-honest-yield.md) and [`RU3`](../rules/RU3-anti-amnesia-deferral.md) constrain what is kept and what a cut must record, but no method produces the verdict itself.\
+*Treating the record* holds `M9`, which removes; reconciling a record that has drifted from the truth is a work-type, [`W20`](../work-types/W20-reconcile-ledger.md), with no method conducting it.\
 *Handing over* holds `M10`, which hands understanding and decisions to a human; handing work in progress to another agent or a later session has no procedure at all.\
 Every reader of this corpus starts cold, so handover is the moment that condition bites hardest, and it applies to an agent working alone as much as to many: a lone agent hands over to its own next session.\
 *Committing to a design* holds only `M7`, which is scoped to extensive design and excludes a short local fix; a decision between those two has nothing proportionate.\
-Neither is a defect until something fails there, and both are where to look first when something does.
+None is a defect until something fails there, and each is where to look first when something does.
 
 ---
 
