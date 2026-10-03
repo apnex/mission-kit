@@ -16,7 +16,7 @@ The rule declares its enforcer in frontmatter and `check-enforcers.sh` verifies 
 | [`S14`](../style/S14-hydration-triggers-state-a-condition.md) | `s14-hydration-triggers.sh` | no, needs judgement |
 
 Every checker takes the same arguments, prints the same finding format, and honours the same exemption markers, which live once in [`lib/style-common.sh`](lib/style-common.sh).\
-Rules `S1`, `S3`, `S4`, `S5`, `S7`, `S9` and `S11` need judgement and have no enforcer; review those by reading.
+Rules `S1`, `S2`, `S3`, `S4`, `S5`, `S7`, `S9`, `S11` and `S15` need judgement and have no enforcer; review those by reading.
 
 A file opts out of one rule with a marker on its own line, so the exemption is explicit:
 ```
