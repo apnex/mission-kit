@@ -21,6 +21,11 @@ A charter answers *what is this population for, what belongs in it, how do its m
 Every knowledge layer's charter is its `<prefix>0` entry, held at `<directory>/README.md`.\
 A set with no charter is a directory listing: it can be checked for validity and never for completeness, because nothing states what the collection is for.
 
+**A charter holds the set's vision, and manages the set against it.**\
+The vision is what the set is for and what it claims to cover; the population is measured against it, as a programme is measured against its [vision](../artifacts/AR6-vision.md), and it is never cut to fit what the set holds today.\
+The rest of the charter is management: the territory shows where the population stands against the claim, the boundaries decide what enters and where the rest goes, the faults say how the set goes wrong, and changes to any of it are made under *Changing a charter*, below.\
+A claim no member yet fills is a gap - the distance between the population and its charter - and naming it is how gaps are found.
+
 A charter's content falls into three classes, and the classes are the point of this entry.
 
 - **Required.** Every charter answers these, because every set has them.
@@ -81,7 +86,7 @@ The `Faults` concern is for population faults alone.
 Requiring a territory is checkable; requiring a *good* one is not, and a poorly chosen territory passes every check while hiding the gaps it exists to expose.\
 So a territory carries two obligations beyond being present.
 
-- **It is derived from the population, not imposed on it.** The partition should be readable from the members themselves - their triggers, their subjects, the moments or risks they address - so that every existing member lands in it and lands in exactly one place. A member that fits nowhere, or fits everywhere, is evidence the partition is wrong.
+- **Its partition is derived from the population; its extent is set by purpose.** The axes should be readable from the members themselves - their triggers, their subjects, the moments or risks they address - so that every existing member lands in it and lands in exactly one place. A member that fits nowhere, or fits everywhere, is evidence the partition is wrong. How far the territory reaches is set by what the set is for, not by what it holds: a cell no member fills is kept and named as a gap, and removing it to match the population erases the gap it exposes.
 - **It shows a gap or argues that there is none.** A territory that names at least one real, checked absence has demonstrated that it can detect one. A territory that names none must say why the population is complete against it. A territory that can do neither is decoration, however complete it sounds.
 
 More than one partition is usually defensible, and choosing among them is a judgement this entry cannot make.\
