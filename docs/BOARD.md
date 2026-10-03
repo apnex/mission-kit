@@ -49,7 +49,7 @@ M5  bring the charters to E4                     4 of 13 applied, 9 remain      
              +- human evaluation                 session 2: restructured won 4 of 4
              +- placement drafted                   style, one practice, one method
              +- draft guidance tested on director   won 4 of 4
-             +- apply via Delta-2, revised             next                                   <- HERE
+             +- Delta-2                              ratified; stage 1 done                 <- HERE
          +- Delta-1                                  done
 ```
 

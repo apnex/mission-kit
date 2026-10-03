@@ -410,3 +410,17 @@ tools/check-landed.sh
 **Why it exists.**\
 A commit the gate refused, followed by a push that pushed nothing, was reported as landed, because the report rested on an echo that ran regardless.\
 Run it after every push; it exits non-zero on an uncommitted change, a commit the remote lacks, or a remote ahead.
+
+---
+
+## sets.test.sh
+
+Holds the spanning-set mechanism to its refusals: a set may gather only entries that exist and are active, must gather at least one, and its index is generated from its members, including a block-list form.
+
+```sh
+tools/sets.test.sh
+```
+
+**Why it exists.**\
+A set routes a reader to everything governing one situation; a set gathering a superseded or draft entry would route them to guidance not in force.\
+Each refusal was confirmed by an agent other than its author to turn the test red when removed.

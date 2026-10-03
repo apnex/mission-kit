@@ -16,7 +16,7 @@
     "id": {
       "description": "Stable address. An entry that cannot be cited cannot be referenced from another entry or from an agent's context.",
       "type": "string",
-      "pattern": "^(AR|MREQ|SC|RU|PC|A|S|M|R|K|W|D|P|C|E)-?[0-9]+$"
+      "pattern": "^(AR|MREQ|SC|RU|PC|ST|A|S|M|R|K|W|D|P|C|E|T)-?[0-9]+$"
     },
     "category": {
       "description": "The set that governs this entry. Selects the directory that owns it and the ID prefix it must carry, and is the member-side declaration of set membership described by E3. The governing charter is resolvable from it without a lookup: it is the entry whose id is that set's prefix followed by zero, at <directory>/README.md. A member states what it is; its charter states what the population owes itself, and this field is the only link between the two.",
@@ -37,7 +37,8 @@
         "artifact",
         "trait",
         "rule",
-        "practice"
+        "practice",
+        "set"
       ]
     },
     "title": {
@@ -192,6 +193,14 @@
       "description": "For a rule: the observable trace a check could test - what in the record shows the rule was kept or broken. A rule earns its layer by leaving one; a practice leaves none. Naming a tool that checks it is enforced-by's job, and is optional.",
       "type": "string",
       "minLength": 20
+    },
+    "members": {
+      "description": "For a set spanning layers: the entries it gathers. The set's territory gives membership its meaning, so the set declares it, not the member. Each must exist and be active, which the index generator checks.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
     }
   },
   "allOf": [
@@ -297,6 +306,41 @@
         "required": [
           "trace"
         ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "category": {
+            "const": "set"
+          },
+          "id": {
+            "pattern": "^ST[1-9][0-9]*$"
+          }
+        },
+        "required": [
+          "category",
+          "id"
+        ]
+      },
+      "then": {
+        "required": [
+          "members"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "members"
+        ]
+      },
+      "then": {
+        "properties": {
+          "category": {
+            "const": "set"
+          }
+        }
       }
     }
   ]

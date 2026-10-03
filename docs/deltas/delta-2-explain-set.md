@@ -1,7 +1,7 @@
 # Delta-2 - the explain set - a set spanning layers
 
 ```yaml
-status:       proposed, revision 4 - revision 3 reviewed and corrected; awaiting director ratification; no stage has run
+status:       ratified, revision 4 - stage 1 running
 row:          B38, B42
 intent:       docs/surveys/b38-director-communication-requirements.md
 evidence:     docs/evals/human/runs/moves-2-*, guidance-1-*; docs/evals/human/MATRIX.md

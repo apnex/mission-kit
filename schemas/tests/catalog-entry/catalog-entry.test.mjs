@@ -18,7 +18,7 @@ const ROOT = path.resolve(SCHEMAS, '..');
 
 // skills/ holds K* catalogue stubs alongside skill directories; only the stubs are entries,
 // and the directory bodies are filtered out below because they declare no id.
-const CATALOGUE_DIRS = ['axioms', 'style', 'methods', 'rules', 'practices', 'roles', 'patterns', 'domains', 'work-types', 'backlog', 'skills', 'schemas', 'entities', 'components', 'artifacts'];
+const CATALOGUE_DIRS = ['axioms', 'style', 'methods', 'sets', 'traits', 'rules', 'practices', 'roles', 'patterns', 'domains', 'work-types', 'backlog', 'skills', 'schemas', 'entities', 'components', 'artifacts'];
 
 const schema = JSON.parse(readFileSync(path.join(SCHEMAS, 'catalog-entry/v1alpha1/catalog-entry.schema.json'), 'utf8'));
 const validate = new Ajv2020({ allErrors: true, strict: false }).compile(schema);
@@ -104,3 +104,13 @@ test('the new prefixes are accepted, and a malformed one is refused', () => {
 	assert.equal(validate({ ...base, id: 'RUX1', category: 'rule', trace: 'the deferral record carries a revival trigger field' }), false, 'a malformed rule id must be refused');
 	assert.equal(validate({ ...base, id: 'M9', category: 'method' }), true, 'a method entry must be accepted');
 });
+
+// Delta-2 stage 1. A spanning set must declare members, and only a set may.
+test('a set must declare members, and only a set may', () => {
+	const set = { id: 'ST1', category: 'set', title: 't', status: 'active', 'hydrate-when': 'You are about to communicate with a human of limited context', related: ['ST0'] };
+	assert.equal(validate(set), false, 'a set with no members must be refused');
+	assert.equal(validate({ ...set, members: [] }), false, 'a set with an empty members list must be refused');
+	assert.equal(validate({ ...set, members: ['S15'] }), true, 'a set with members must be accepted');
+	assert.equal(validate({ id: 'S99', category: 'style', title: 't', status: 'active', 'hydrate-when': 'You are about to write a document someone will read', members: ['S1'] }), false, 'members on a non-set entry must be refused');
+});
+

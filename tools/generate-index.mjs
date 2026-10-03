@@ -44,9 +44,16 @@ function frontmatter(text) {
 	const m = text.match(/^---\n([\s\S]*?)\n---/);
 	if (!m) return null;
 	const out = {};
+	let key = null;
 	for (const raw of m[1].split('\n')) {
-		const kv = raw.replace(/\s+#.*$/, '').match(/^([A-Za-z][\w-]*):\s*(.*)$/);
-		if (!kv) continue;
+		const line = raw.replace(/\s+#.*$/, '');
+		// A block list - "members:" then "  - ID" lines - is read as the same [a, b] form an inline
+		// list takes, so a set's members cannot silently read as empty.
+		const item = line.match(/^\s+-\s+(.*)$/);
+		if (item && key) { out[key] = out[key] ? out[key].replace(/\]$/, `, ${item[1].trim()}]`).replace('[, ', '[') : `[${item[1].trim()}]`; continue; }
+		const kv = line.match(/^([A-Za-z][\w-]*):\s*(.*)$/);
+		if (!kv) { key = null; continue; }
+		key = kv[1];
 		out[kv[1]] = kv[2].trim().replace(/^["']|["']$/g, '');
 	}
 	return out;
@@ -267,7 +274,31 @@ if (wrongLayer.length) {
 }
 
 
+// A spanning set declares its members in its charter. Each must exist and be active: a set that
+// gathers a superseded or draft entry routes a reader to guidance no longer, or not yet, in force.
+const listOf = (v) => String(v ?? '').replace(/[[\]]/g, '').split(',').map((s) => s.trim()).filter(Boolean);
+const byIdAll = new Map(entries.map((e) => [e.id, e]));
+const setProblems = [];
+for (const e of entries.filter((x) => x.category === 'set' && !/^ST0$/.test(x.id))) {
+	const members = listOf(e.members);
+	if (!members.length) setProblems.push(`${e.rel}: a set with no members`);
+	for (const id of members) {
+		const m = byIdAll.get(id);
+		if (!m) setProblems.push(`${e.rel}: member ${id} is not an entry`);
+		else if (m.status !== 'active') setProblems.push(`${e.rel}: member ${id} is ${m.status}, not active`);
+	}
+}
+for (const e of entries.filter((x) => x.members !== undefined && x.category !== 'set')) setProblems.push(`${e.rel}: members is declared on a ${e.category}, not a set`);
+if (setProblems.length) {
+	for (const p of setProblems) console.error(`FAIL  set  ${p}`);
+	console.error(`\n${setProblems.length} set problem(s); a set may gather only active entries that exist.`);
+	process.exit(1);
+}
+
 const targets = [['INDEX.md', ledgerSections(entries)]];
+// Each spanning set's own file carries a generated table of its members, from its members list.
+for (const e of entries.filter((x) => x.category === 'set' && !/^ST0$/.test(x.id)))
+	targets.push([e.rel, table(ordered(listOf(e.members).map((id) => byIdAll.get(id))), path.dirname(e.rel))]);
 for (const dir of LAYERS) {
 	const readme = `${dir}/README.md`;
 	if (existsSync(path.join(ROOT, readme))) targets.push([readme, categoryTable(entries, dir)]);

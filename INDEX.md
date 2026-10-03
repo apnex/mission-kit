@@ -149,6 +149,14 @@ This file described them a second time and the copy had already drifted, naming 
 
 ---
 
+## Sets
+
+| ID | Title | Hydrate when |
+|---|---|---|
+| [ST0](sets/README.md) | Sets - charters of populations that span layers | You are gathering entries from several layers that govern one concern, or looking for everything that applies to one situation |
+
+---
+
 ## Style
 
 | ID | Title | Hydrate when |

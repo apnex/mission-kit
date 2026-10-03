@@ -50,6 +50,7 @@ The constraint set is authored once in the cross-axis reference and never forked
 | `M` | [`methods/`](methods/) | Procedures that produce a result of their own: review, audit, bootstrap. |
 | `RU` | [`rules/`](rules/) | How work is done, where a check could tell: rules that leave a trace. |
 | `PC` | [`practices/`](practices/) | How work is done, where nothing afterwards could tell. |
+| `ST` | [`sets/`](sets/) | Charters of populations that span layers, each declaring its members. |
 | `S` | [`style/`](style/) | How artifacts are written. |
 | `P` | [`patterns/`](patterns/) | Recurring solutions. |
 | `K` | [`skills/`](skills/) | Executable operator capability. |
