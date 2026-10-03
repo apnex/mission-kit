@@ -2,7 +2,7 @@
   "id": "design-rulings",
   "mode": "corpus",
   "group": "design-rulings",
-  "source": "B36 rulings, keyed before the corpus is amended",
+  "source": "B36 rulings, keyed before the corpus is amended; after the B36 run: R2 set in separate services, since inside one system containment already binds (E5 amended to say so); R5's rubric no longer requires a point the question does not ask",
   "preamble": "Each question describes its own system; facts from one question do not carry to another.",
   "probes": [
     {
@@ -13,7 +13,7 @@
     },
     {
       "id": "R2",
-      "question": "In a long-running service operated by several independent agents who hand work to each other, module A reaches into B's internals, and B reaches into C's internals, all undeclared. (1) You change something in A that only A uses. Does your change answer to C's axioms? (2) Instead, your change alters data that A takes from B and B itself takes from C. Does it now answer to C's axioms?",
+      "question": "Three separately deployed services, A, B and C, none containing another: A reaches into B's internals, and B reaches into C's internals, all undeclared. (1) You change something in A that only A uses. Does your change answer to C's axioms? (2) Instead, your change alters data that A takes from B and B itself takes from C. Does it now answer to C's axioms?",
       "key": "(1) No: the merge chains only through what the change can reach, and this change reaches nothing of C. (2) Yes, or at least it meets the condition under which the merge chains - the change reaches C through B.",
       "rubric": "2 for both cases with the reach reason (for case 2, 'it meets the chaining condition' counts). 1 for one case. 0 for 'always chains' or 'never chains'."
     },
@@ -33,7 +33,7 @@
       "id": "R5",
       "question": "While adding a small feature to component K, you notice K's internals tangle two concerns, and splitting them would give K's three consumers a cleaner interface. K's interface is not versioned. The split is within K's own duty. What do the axioms ask?",
       "key": "The new feature arrives as its own unit, composed with K, not bolted onto K. The split is encouraged as opportunistic improvement within K's duty - not mandated - including re-cutting K's seams and recomposing for its consumers; it is made as a change of its own, and since it changes K's interface, it answers to each consumer it alters.",
-      "rubric": "2 for the feature as a new unit, the split encouraged not mandated, and the consumers' axioms binding the interface change. 1 for two of the three. 0 for 'never modify K' or 'the split is required'."
+      "rubric": "2 for the split encouraged not mandated, and the consumers' axioms binding the interface change. 1 for one of the two. 0 for 'never modify K' or 'the split is required'. Mentioning the feature arriving as its own unit is credited, not required."
     },
     {
       "id": "R6",

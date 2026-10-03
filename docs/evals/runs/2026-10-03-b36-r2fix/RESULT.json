@@ -1,0 +1,662 @@
+{
+  "created": "2026-10-03T11:13:46.667Z",
+  "seed": "72367ba4ebc25d73",
+  "corpora": [
+    {
+      "label": "before",
+      "path": "/tmp/opencode/evalc/c-970475b8"
+    },
+    {
+      "label": "after",
+      "path": "/tmp/opencode/evalc/c-604d88dc"
+    }
+  ],
+  "readers": 3,
+  "probes": [
+    "design-rulings.R1",
+    "design-rulings.R2",
+    "design-rulings.R3",
+    "design-rulings.R4",
+    "design-rulings.R5",
+    "design-rulings.R6",
+    "system-boundary.S1",
+    "system-boundary.S2",
+    "system-boundary.S3",
+    "system-boundary.S4",
+    "system-boundary.S5",
+    "system-boundary.S6"
+  ],
+  "max": 24,
+  "mean": {
+    "design-rulings.R1": {
+      "before": 2,
+      "after": 2
+    },
+    "design-rulings.R2": {
+      "before": 2,
+      "after": 2
+    },
+    "design-rulings.R3": {
+      "before": 2,
+      "after": 2
+    },
+    "design-rulings.R4": {
+      "before": 2,
+      "after": 2
+    },
+    "design-rulings.R5": {
+      "before": 1.33,
+      "after": 1
+    },
+    "design-rulings.R6": {
+      "before": 2,
+      "after": 2
+    },
+    "system-boundary.S1": {
+      "before": 2,
+      "after": 2
+    },
+    "system-boundary.S2": {
+      "before": 1.33,
+      "after": 1.67
+    },
+    "system-boundary.S3": {
+      "before": 2,
+      "after": 2
+    },
+    "system-boundary.S4": {
+      "before": 2,
+      "after": 2
+    },
+    "system-boundary.S5": {
+      "before": 2,
+      "after": 1.67
+    },
+    "system-boundary.S6": {
+      "before": 2,
+      "after": 2
+    }
+  },
+  "total": {
+    "before": 22.66,
+    "after": 22.34
+  },
+  "rows": [
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-36b07b",
+      "probe": "design-rulings.R1",
+      "score": 2,
+      "reason": "Declares and honours the interface as inside scope and not optional, because the change alters what N reaches."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-36b07b",
+      "probe": "design-rulings.R2",
+      "score": 2,
+      "reason": "Answers no for case 1 and yes for case 2, both on the reach condition; the GUESS is about a side detail, not the conclusion."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-36b07b",
+      "probe": "design-rulings.R3",
+      "score": 2,
+      "reason": "Says stateful via the contained-part rule and that A1 binds because the service contains the changed module."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-36b07b",
+      "probe": "design-rulings.R4",
+      "score": 2,
+      "reason": "Says A1 binds the organisation's records, which pass T1, because the organisation doing the work is a system."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-36b07b",
+      "probe": "design-rulings.R5",
+      "score": 2,
+      "reason": "Calls the split encouraged, never mandated, beyond scope, and says the separate change answers to each consumer's axioms because the interface is unversioned."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-36b07b",
+      "probe": "design-rulings.R6",
+      "score": 2,
+      "reason": "Says all ten via adoption in advance; the lockfile caveat concerns a case the question does not contain and leaves the conclusion intact."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-013282",
+      "probe": "design-rulings.R1",
+      "score": 2,
+      "reason": "States the change owns the boundary because it alters what N reaches, so declaring and honouring the interface is in scope and not optional."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-013282",
+      "probe": "design-rulings.R2",
+      "score": 2,
+      "reason": "Answers no then yes, both resting on the condition that the merge chains only through what the change reaches."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-013282",
+      "probe": "design-rulings.R3",
+      "score": 2,
+      "reason": "Says stateful via the contained-part rule and that A1 binds the change through the containing service."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-013282",
+      "probe": "design-rulings.R4",
+      "score": 2,
+      "reason": "Says A1 binds the organisation's records, not the tool, because the organisation is a system that holds state in its records."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-013282",
+      "probe": "design-rulings.R5",
+      "score": 1,
+      "reason": "Calls the interface split encouraged and binds the consumers' axioms, but labels whether it becomes mandatory NOT SETTLED, which caps it at 1."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-013282",
+      "probe": "design-rulings.R6",
+      "score": 2,
+      "reason": "Says all ten via adoption in advance; the lockfile guess concerns a case the question does not contain."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-c164cb",
+      "probe": "design-rulings.R1",
+      "score": 2,
+      "reason": "States the change owns the boundary because it alters what N reaches, and must declare the interface and have N honour it."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-c164cb",
+      "probe": "design-rulings.R2",
+      "score": 2,
+      "reason": "Answers no then yes with the chaining-through-reach reason."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-c164cb",
+      "probe": "design-rulings.R3",
+      "score": 2,
+      "reason": "Says stateful via the contained-part rule and that A1 binds because altering the module alters the containing service."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-c164cb",
+      "probe": "design-rulings.R4",
+      "score": 2,
+      "reason": "Says A1 binds the team's records because the organisation is a system that holds state in records it relies on."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-c164cb",
+      "probe": "design-rulings.R5",
+      "score": 1,
+      "reason": "Calls the split encouraged not mandated and binds the consumers' axioms, but then labels whether it becomes mandatory NOT SETTLED, which caps it at 1."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-c164cb",
+      "probe": "design-rulings.R6",
+      "score": 2,
+      "reason": "Says all ten via adoption in advance; the semver aside is peripheral."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-bc4f5d",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor with the reason that the two compose through an unchanged, honoured contract, so the service's axioms do not bind."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-bc4f5d",
+      "probe": "system-boundary.S2",
+      "score": 2,
+      "reason": "Gives the correct union with the reason that changing the interface alters the service's contract."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-bc4f5d",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's full set with the reason that a change answers to every system containing what it modifies."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-bc4f5d",
+      "probe": "system-boundary.S4",
+      "score": 2,
+      "reason": "Gives the floor with the composition and separate-adoption reason."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-bc4f5d",
+      "probe": "system-boundary.S5",
+      "score": 2,
+      "reason": "Gives the union with the undeclared-boundary reason and the A3 fault, and says explicitly that its unsettled point does not affect the binding."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-bc4f5d",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Cites E5 Definition with the boundary, containment and composition through a declared contract."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-a91ec1",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor A3, A4, A8, A9, A14 and says the service is only composed with through an unchanged contract, so its axioms do not bind."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-a91ec1",
+      "probe": "system-boundary.S2",
+      "score": 1,
+      "reason": "Gets the correct set and reason but marks the conclusion as a GUESS that depends on the interface being unversioned, which caps it at 1."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-a91ec1",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's full set with the containment reason."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-a91ec1",
+      "probe": "system-boundary.S4",
+      "score": 2,
+      "reason": "Gives the floor with the reason that no consumer's contract is altered and each adoption is that consumer's change."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-a91ec1",
+      "probe": "system-boundary.S5",
+      "score": 2,
+      "reason": "Gives both sets binding as one system with a reason plus the A3 fault; its guess covers only whether the change owns the boundary, not the binding."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-a91ec1",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Cites E5 with the boundary, contain and compose, and traits against axioms."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-062ac0",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor and says the service is not altered because the contract is unchanged and honoured."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-062ac0",
+      "probe": "system-boundary.S2",
+      "score": 1,
+      "reason": "Gets the correct set and reason but says the question leaves unsettled (NOT SETTLED) whether the conclusion holds, which caps it at 1."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-062ac0",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's full set and cites the rule that a change answers to every containing system."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-062ac0",
+      "probe": "system-boundary.S4",
+      "score": 2,
+      "reason": "Gives the floor with the reason that consumers compose through an unchanged contract and their axioms bind only their own adoptions."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-062ac0",
+      "probe": "system-boundary.S5",
+      "score": 2,
+      "reason": "Gives both sets binding because of the undeclared dependency, and names the A3 fault."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-062ac0",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Cites E5 with the boundary, contain and compose."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-31a178",
+      "probe": "design-rulings.R1",
+      "score": 2,
+      "reason": "Requires declaring the interface and getting N onto it as a non-optional obligation, because the change alters N's contract-in-fact."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-31a178",
+      "probe": "design-rulings.R2",
+      "score": 2,
+      "reason": "Answers both cases correctly with the reach-based chaining condition; the GUESS is peripheral and leaves the conclusions as stated."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-31a178",
+      "probe": "design-rulings.R3",
+      "score": 2,
+      "reason": "Says stateful via 'a system has every trait any part it contains has' and that A1 binds because the change answers to the containing service."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-31a178",
+      "probe": "design-rulings.R4",
+      "score": 2,
+      "reason": "Says A1 binds the team's records because the organisation is a system in its own right that holds state."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-31a178",
+      "probe": "design-rulings.R5",
+      "score": 1,
+      "reason": "Covers encouragement and consumer binding but labels its conclusion a GUESS, and that guess partly makes the cleanup mandatory, which caps it at 1."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-31a178",
+      "probe": "design-rulings.R6",
+      "score": 2,
+      "reason": "Says all ten, because a declared range is adoption in advance."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-fa73ad",
+      "probe": "design-rulings.R1",
+      "score": 2,
+      "reason": "Requires declaring the interface and moving N onto it as owned scope, citing the rule that altering what an undeclared neighbour reaches makes the boundary the change's own."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-fa73ad",
+      "probe": "design-rulings.R2",
+      "score": 2,
+      "reason": "Answers no then yes, with the merge chaining only through what the change reaches."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-fa73ad",
+      "probe": "design-rulings.R3",
+      "score": 2,
+      "reason": "Says the service is stateful by the contained-part rule and that A1 binds because the change modifies the containing service."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-fa73ad",
+      "probe": "design-rulings.R4",
+      "score": 2,
+      "reason": "Says A1 binds the organisation's records, not the tool, because the organisation is a system holding state in its records."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-fa73ad",
+      "probe": "design-rulings.R5",
+      "score": 1,
+      "reason": "Covers consumer binding but labels 'encouraged rather than mandated' itself a GUESS after a NOT SETTLED, which caps it at 1."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-fa73ad",
+      "probe": "design-rulings.R6",
+      "score": 2,
+      "reason": "Says all ten, because a declared range is adoption in advance."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-75a528",
+      "probe": "design-rulings.R1",
+      "score": 2,
+      "reason": "Requires declaring the interface and moving N onto it as in-scope and not optional, because the change alters what N reaches."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-75a528",
+      "probe": "design-rulings.R2",
+      "score": 2,
+      "reason": "Answers no then yes on the reach condition; the GUESS only adds a separate direct-modification case."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-75a528",
+      "probe": "design-rulings.R3",
+      "score": 2,
+      "reason": "Says the service is stateful by the contained-part rule and that A1 binds the change through the containing system."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-75a528",
+      "probe": "design-rulings.R4",
+      "score": 2,
+      "reason": "Says A1 binds the team's records because the organisation is a system that holds state; the GUESS concerns only extra multi-agent axioms."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-75a528",
+      "probe": "design-rulings.R5",
+      "score": 1,
+      "reason": "Covers both encouragement and consumer binding but labels whether the split is required NOT SETTLED, which caps it at 1."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-75a528",
+      "probe": "design-rulings.R6",
+      "score": 2,
+      "reason": "Says all ten via adoption in advance; the lockfile guess concerns a case the question does not contain."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-34ec69",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor with the reason that the service composes through an unchanged declared interface and so is not altered."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-34ec69",
+      "probe": "system-boundary.S2",
+      "score": 1,
+      "reason": "Gets the correct set and reason but marks whether the conclusion holds as NOT SETTLED on versioning, which caps it at 1."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-34ec69",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's full set with the containment reason."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-34ec69",
+      "probe": "system-boundary.S4",
+      "score": 2,
+      "reason": "Gives the floor only with the composition reason: the contract is unchanged and each adoption is that consumer's own change."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-34ec69",
+      "probe": "system-boundary.S5",
+      "score": 2,
+      "reason": "Gives both sets binding with a reason plus the A3 fault; its guess covers only the scope of the declare duty, not the binding."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-34ec69",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Cites E5 and covers the boundary, contain and compose, and traits against axioms."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-0b935b",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor with the reason that the unchanged session interface leaves the service unaltered."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-0b935b",
+      "probe": "system-boundary.S2",
+      "score": 2,
+      "reason": "Gives the correct eleven-axiom union with the reason that the contract is changed, and states the conclusion without a guess label; only the versioned alternative is hedged."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-0b935b",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's full set with the containment reason from E5 and A0."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-0b935b",
+      "probe": "system-boundary.S4",
+      "score": 2,
+      "reason": "Gives the floor with the reason that the library composes through an unchanged versioned interface, so consumers are not altered."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-0b935b",
+      "probe": "system-boundary.S5",
+      "score": 2,
+      "reason": "Gives both sets binding as one merged system with a reason and identifies the undeclared dependency as an A3 fault."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-0b935b",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Cites E5 and explains the boundary, containment and composition through a declared contract."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-ba8da2",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor only and says the service is not altered because the declared interface is unchanged and honoured."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-ba8da2",
+      "probe": "system-boundary.S2",
+      "score": 2,
+      "reason": "Gives the correct union with the contract-change reason and reads the interface as unversioned without labelling the conclusion a guess."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-ba8da2",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's full set with the reason that a change answers to every system containing what it modifies."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-ba8da2",
+      "probe": "system-boundary.S4",
+      "score": 2,
+      "reason": "Gives the floor with the composition reason, and its conditions are stated without making the conclusion a guess."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-ba8da2",
+      "probe": "system-boundary.S5",
+      "score": 1,
+      "reason": "Gives both sets binding, a reason and the A3 fault, but labels the conclusion that the merge applies a GUESS, which caps it at 1."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-ba8da2",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Cites E5 with the boundary, declared-and-honoured separation, contain and compose."
+    }
+  ]
+}

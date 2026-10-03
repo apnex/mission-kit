@@ -80,7 +80,8 @@ Where one unit depends on another and nothing declares the boundary between them
 Declaring the boundary, and moving the dependency onto it, is what makes them two again.\
 This is not a third way of relating: two units that depend on each other with no declared contract, neither containing the other, cannot compose, and are treated as one.\
 The undeclared dependency is itself a fault against [`A3`](../axioms/A3-sovereign-composition.md), which requires units to interact only through declared contracts.\
-The merge chains only through what a change can reach: if A reaches into B and B into C, a change to A is one system with C only when it alters something B takes from C. A change that alters what an undeclared neighbour reaches into owns that boundary: declaring and honouring the interface is inside its scope, not optional.
+The merge chains only through what a change can reach: if A reaches into B and B into C, a change to A is one system with C only when it alters something B takes from C. That limit governs units in **different** systems; units inside one system need no chaining, because a change to any of them answers to the containing system, which has the traits of every part it contains.\
+A change that alters what an undeclared neighbour reaches into owns that boundary: declaring and honouring the interface is inside its scope, not optional.
 
 ---
 

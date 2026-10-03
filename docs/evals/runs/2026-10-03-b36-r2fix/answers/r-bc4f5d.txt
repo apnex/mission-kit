@@ -1,0 +1,49 @@
+### system-boundary.S1
+Only the launcher's axioms: A3, A4, A8, A9, A14 (the `any-system` floor row of the matrix in axioms/README.md).
+The launcher has no traits (no persistent state, one watched operator, no model), and entities/E5-system.md says "A one-shot script with no traits is a system, bound by the axioms every system carries"; traits/README.md says an `any-system` axiom "binds every system, whatever its traits".
+The two compose: E5 "A launcher that hands sessions to a service through a declared interface composes with it", and the interface is the only crossing, so it is declared and honoured.
+axioms/README.md: "A system it only composes with, through a contract the change leaves as it was, is not altered, and its axioms do not bind."
+So the service's A1, A5, A6, A7, A10, A13 do not bind this change.
+
+### system-boundary.S2
+The union of both systems' axioms: A1, A3, A4, A5, A6, A7, A8, A9, A10, A13, A14 (not A2, A11, A12).
+axioms/README.md: a change answers to "the system it modifies, every system containing it, and any system whose contract with it the change alters" - changing the declared session interface alters the service's contract, so the service is altered as well as the launcher.
+Service traits: stateful (T1, brings A1), multi-agent (T3, brings A5, A6, A7, A10, A13), autonomous (T4, brings A7, A10, A13), plus the floor A3, A4, A8, A9, A14.
+It is not declarative (no A2) and has no model in the loop (no A11, A12); the launcher adds only floor axioms.
+
+### system-boundary.S3
+The service's axioms: A1, A3, A4, A5, A6, A7, A8, A9, A10, A13, A14.
+E5: "A module inside a service is a system, and the service contains it, whether or not the module's interfaces are declared", and "changing a module changes the service it sits in".
+axioms/README.md: a change answers to the system it modifies "and every system containing it", so the module being stateless on its own does not matter.
+E5 "Why precision matters" names the failure this prevents: "a stateful system escapes its own axioms by being described as stateless modules, each of which passes on its own."
+
+### system-boundary.S4
+Only the library's axioms: the floor A3, A4, A8, A9, A14 (axioms/README.md: "a plain library takes `any-system`").
+E5: "Publishing a new version of an interface alters no consumer that has not adopted it; each adoption is a change to that consumer, and answers to that consumer's axioms."
+Here the interface and its behaviour are unchanged and each consumer adopts as its own separate change, so no consumer's contract is altered by your change, and their stateful and multi-agent axioms do not bind it.
+E5 warns that the opposite reading would make "the most-reused code ... carry the most obligations".
+Caveat from E5: a consumer with a declared version range ("any 2.x") is "adoption in advance", and a release inside the range would alter it - the question says none does this.
+
+### system-boundary.S5
+The union of both, as one merged system: A1, A3, A4, A5, A6, A7, A8, A9, A10, A13, A14.
+E5 Boundaries: "Where one unit depends on another and nothing declares the boundary between them ... they are one system, with the traits of both"; axioms/README.md says the same and adds that "the axioms either unit would bring all bind".
+Also wrong: "The undeclared dependency is itself a fault against A3, which requires units to interact only through declared contracts" (E5; A0 repeats it).
+E5 also says "A change that alters what an undeclared neighbour reaches into owns that boundary: declaring and honouring the interface is inside its scope, not optional".
+The fix is to move the service onto a declared interface, or change the interface to what the service legitimately needs (E5 "Declared against honoured", citing A3).
+NOT SETTLED: whether the log lines are part of the output the service parses; that decides whether the declare-the-interface duty falls on this change. It does not change the one-system binding, which depends only on the undeclared dependency.
+
+### system-boundary.S6
+It is defined in entities/E5-system.md (entry E5), under "Definition".
+"A system is a unit of engineering with a boundary: what is inside it, and the contracts through which anything outside reaches it."
+The boundary separates it from a neighbour "only where it is declared and honoured"; otherwise the two count as one system for deciding what a change answers to.
+Systems relate in exactly two ways: they contain one another or they compose through a declared contract. E5 also says a system is "Not a repository, a deployment unit or a process by definition" and "Not defined by size or by traits".
+E5 also says the organisation doing the work is a system, but its axioms are asked about separately from the product systems a change alters.
+entities/E6-component.md adds that a component is "a system seen as a part of a larger system that contains it."
+
+### OBSERVATIONS
+- Checked: the `applies-to` frontmatter of A1-A14 matches the applicability matrix in axioms/README.md and the "Axioms it brings into force" lists in T1, T3 and T4.
+- S3 rests on the A0 rule ("every system containing it"), not on trait inheritance. E5 and T0 state trait propagation only upward ("A system has every trait any part it contains has"), and a reader who uses only the trait rule could think a stateless module escapes its service's axioms.
+- S5 is underspecified: the question does not say whether the log lines are among the output the service parses. E5's one-system rule applies anyway, but its rule that the change "owns that boundary" depends on that fact.
+- E5's chaining sentence ("a change to A is one system with C only when it alters something B takes from C") suggests merging also depends on what the change reaches. The plain one-system rule above it does not say this, so the two sentences can be read differently.
+- The answers leave out the organisation's own axioms (E5 says the organisation is a system whose axioms govern how a change is made and recorded). They exist separately from the answers above.
+- INDEX.md tells readers to resolve links against a remote URL if there is no checkout; I read only the local corpus copy, as instructed.

@@ -1,0 +1,43 @@
+### design-rulings.R1
+N reaches T with no declared boundary, so for deciding what your change answers to, N and T are "one system, with the traits of both" (entities/E5-system.md, Boundaries), and the undeclared dependency "is itself a fault against A3".
+Because your change alters a function N calls, it alters N's contract-in-fact ("Behaviour another unit depends on without any declaration is a contract in fact ... a change to it reaches across", E5 Discriminators), so it answers to N as well as T (axioms/README.md: "a change answers to every system it alters").
+E5 is explicit about the obligation: "A change that alters what an undeclared neighbour reaches into owns that boundary: declaring and honouring the interface is inside its scope, not optional."
+So your change must declare an interface between T and N and get N using it; per E5 and A3 *Bypass as Signal*, you first evaluate the interface against T's duty, then either move N onto the interface or adjust the interface to what N legitimately needs.
+Until N uses the declared interface, the two remain one system (axioms/A3-sovereign-composition.md, Bypass as Signal).
+
+### design-rulings.R2
+(1) No. E5 Boundaries: "The merge chains only through what a change can reach: if A reaches into B and B into C, a change to A is one system with C only when it alters something B takes from C." A change only A uses alters nothing B takes from C, so C's axioms do not bind it. (A is still one system with B for this purpose, because A reaches into B with nothing declared, so B's traits count.)
+(2) Yes. The change alters something B takes from C, which is exactly the condition E5 names, so the merge chains through to C and the change answers to C's axioms. That limit is stated for "units in different systems", which fits three separately deployed services where none contains another.
+GUESS: if the altered data originates in C, the change probably modifies C directly anyway, which binds it to C's axioms on the plain A0 rule ("the system it modifies").
+
+### design-rulings.R3
+Yes, the service is stateful. T1's test ("write something it will later read back, and would anything act differently if that record were wrong") is met by that module, and "a system has every trait any part it contains has: a service with one stateful module is stateful" (traits/README.md; E5 Contain).
+Yes, A1 (applies-to: [stateful]) binds your change. A change answers to "the system it modifies, every system containing it" (axioms/README.md), and "a change to any of them answers to the containing system, which has the traits of every part it contains" (E5 Boundaries).
+E5 names the failure this rule prevents: "a stateful system escapes its own axioms by being described as stateless modules, each of which passes on its own."
+How far A1 pushes this particular change is set by its scope (A0): it may not move the service away from A1's limit, and it moves toward it only as far as what the change touches allows.
+
+### design-rulings.R4
+Yes, A1 binds the team's records of the work, not the tool. E5 says: "A stateless product built by a team that keeps records it relies on has A1 binding the team's records, not the product."
+The organisation is a system in its own right ("it holds state in its records, and is multi-agent where work passes between actors", E5), so the stateful trait comes from those relied-on records.
+A1 therefore governs how the work is done and recorded. It "is not one of the systems the change alters" (E5), so changes to the tool do not answer to A1 through the tool.
+The tool itself is stateless with no model, so on the stated facts it carries only the any-system axioms (A3, A4, A8, A9, A14; axioms/README.md matrix).
+
+### design-rulings.R5
+The feature itself must not add to the tangle: a change short of A3's limit "adds none of" the dual-purpose modules, and "new work never repeats a gap the axiom names" (axioms/A3-sovereign-composition.md Mandate; axioms/README.md).
+The split is explicitly encouraged: "within the unit's own duty, fix it, fracture it, re-cut its seams and recompose it so it makes better sense for every consumer downstream - as a change of its own, answering to every consumer whose interface it alters" (A3, Composable by Default). A0 adds that an agent who sees such an improvement "is expected to weigh doing it, not merely permitted to."
+If you do it, it is a separate change that records its yield, and because K's interface is unversioned it alters all three consumers, so that change answers to each consumer's axioms (A0; E5 on versioned contracts).
+If you do not do it, record the gap with its evidence and a revival trigger (RU3). "Either way the gap is recorded"; passing it silently is what A0 forbids.
+NOT SETTLED: whether adding a feature inside K "touches" the tangle enough to make an internal untangling mandatory ("work that touches a gap closes as much of it as the touch allows").
+GUESS: the internal cleanup the feature touches is mandated, while the interface re-cut that changes the consumers is the encouraged, separate change.
+
+### design-rulings.R6
+All ten consumers. E5: "A declared version range - any 2.x - is adoption in advance: a release within it alters every consumer bound by the range, whether or not the consumer's own files change."
+The usual protection, that a new version "alters no consumer that has not adopted it", does not apply, because a floating range has already adopted 2.4.
+Using only L's declared interface does not shield them, because 2.4 changes the behaviour that interface documents, which alters their contract (A0: "any system whose contract with it the change alters").
+So publishing 2.4 answers to the axioms of all ten consumers.
+
+### OBSERVATIONS
+- E5's chaining sentence ("a change to A is one system with C only when it alters something B takes from C") reads oddly in direction. A reaches into B, so A depends on B, and it is unclear how a change made in A alters what B takes from C. R2(2) repeats that wording, and I answered from the text without settling which unit the change lives in.
+- E5 says the organisation "is multi-agent where work passes between actors". For R1 and R3, "a service operated by several independent agents who hand work to each other" could make the service multi-agent (T3) or only the organisation. The corpus does not clearly separate the two cases, and neither answer depended on it.
+- A3 *Semantic Bit-Masking* says interfaces "are explicit, versioned contracts", yet E5 and A0 treat unversioned interfaces (R5) as legitimate and simply altered for every consumer. The tension is only implicit.
+- A0's "touches a gap" versus "beyond the scope" boundary does not settle whether an internal tangle inside the component being modified must be closed (R5).
