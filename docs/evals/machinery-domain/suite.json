@@ -1,0 +1,32 @@
+{
+  "id": "machinery-domain",
+  "mode": "corpus",
+  "group": "machinery-domain",
+  "source": "Director ruling A: the machinery's code belongs to the machinery domains, domains divide by engineered product. Keyed from the ruling after the member frontmatter was edited but before any reader ran; key reviewed independently. Review corrected Y1-Y4 rubrics and the Y2/Y4 wording; corpus contradictions it found in D0, D1, D3, D4-D6 Freedom and W0 were fixed before readers ran.",
+  "probes": [
+    {
+      "id": "Y1",
+      "question": "An engineer is adding a new gate type to the coordination machinery's source code. Which work-type and which domain? Name the entry IDs.",
+      "key": "W1 build-a-slice, D5 coordination-substrate: the machinery is an engineered product of the organisation, its domain holds its source, and W1 may act on it.",
+      "rubric": "2 for W1 and D5, whether or not an upstream W14 design node (architect) is also named. 1 for one of the two, or W14 alone on D5. 0 for D1 delivery-code as the domain."
+    },
+    {
+      "id": "Y2",
+      "question": "A bug in the code that enforces class-grants lets an unauthorised agent merge. An engineer will fix that code. Which work-type and which domain?",
+      "key": "W2 fix-a-bug-or-repair, D4 authority-governance: the code that enforces governance belongs to the governance domain, and W2 may act on it.",
+      "rubric": "2 for W2 and D4. 1 for one of the two, or D3 considered and rejected with a reason but no D4. 0 for D1 as the domain."
+    },
+    {
+      "id": "Y3",
+      "question": "Why are a product's records a separate domain from its code, while the coordination machinery's code and the state it holds share one domain?",
+      "key": "Domains divide by engineered product, each holding its source and live state together; a product splits only where work on one portion is proved differently and the split has been found needed. The shipped product's records needed it (migrations, repairs need their own proof); the machinery has not been split, and may be on the same terms.",
+      "rubric": "2 for by-product, with the split-only-where-proved-differently-and-needed reason; 'the records need a distinct evidence contract, before and after' counts as proved differently. 1 for either half. 0 otherwise."
+    },
+    {
+      "id": "Y4",
+      "question": "An engineer revises an existing entry in the knowledge corpus and fixes the checker that validates the corpus's entries. Which work-type and domain?",
+      "key": "W2 (fix) or W1 (build), on D6 knowledge-methodology; the knowledge corpus and its tools are one engineered product's source.",
+      "rubric": "2 for W1 or W2 (or one of each, for the two changes) with D6. 1 for D6 alone, or W16 with D6 noted as capture only. 0 otherwise."
+    }
+  ]
+}
