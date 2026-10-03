@@ -24,6 +24,12 @@ Every concern whose guidance spans two or more layers and has rules of its own.
 | Set | Concern |
 |---|---|
 | `ST1` | an agent leading a human of limited context to understand and decide |
+| *none - gap* | treating history: what may be removed from a record, and how a rewrite is justified and published - `RU2`, `RU4`, `M9` |
+| *none - gap* | deferring without forgetting: what is cut, and how it returns - `RU1`, `RU3`, `AR5` |
+| *none - gap* | independent verification: who may check work, how, and what a gate must prove - `M1`, `W8`, `K21`, `R3`, `A8` |
+
+One row holds a set; three are concerns whose guidance already spans layers and that no set gathers.\
+Each is a gap, named with the entries it would gather; a set is drafted for one when readers in that situation are shown to miss guidance that applies.
 
 ---
 
