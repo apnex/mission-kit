@@ -43,11 +43,10 @@ Work that cannot compile to a node - no trigger, nothing to close - is recorded 
 A new work-type is authored like any entry: from a peer exemplar ([`PC1`](../practices/PC1-author-from-exemplar.md)), against the entry schema below, landing through the gate; adding one changes how work is generated, so it is ratified by the director.
 
 **Gaps recorded.**\
-*Changing the knowledge corpus* has no work-type for building, fixing, retiring or landing: every work-type in those groups excludes the knowledge domain, and `W16` only captures new capital.\
-Extending the corpus - adding or retiring a layer - is the recurring case.\
-*Changing the governance or coordination machinery* is covered only if the machinery's own codebase counts as the product codebase under the domains' rule that a change belongs where its diff lands; if it counts as its own domain, building and landing there is a gap too.\
-The domains set has not said which, and its answer settles this.\
-The domains charter's tie-break, applied to one such change, settles which.\
+*Work on the knowledge corpus* is building on its domain, and has no work-type of its own.\
+Adding or revising an entry or a tool is a build slice, `W1`, or a fix, `W2`, where a defect has been filed.\
+Retiring an entry supersedes it - the entry keeps its ID as a stub - which is also a build slice; only deleting a surface outright, such as a whole layer or a tool, is a hard cut, `W3`.\
+Extending the corpus - adding or retiring a layer - recurs often enough that a work-type of its own may earn its place.\
 Procedures that conduct work are cited by only some work-types, and artifacts by fewer; a work-type cites what it can name, and the rest are recorded rather than guessed.
 
 ---

@@ -11,7 +11,7 @@ evidenceContract:
   - {kind: test-run, description: CI / tests green}
   - {kind: freeform, description: linked runbook refs}
 evidenceAuthority: executor-evidence
-domainEligibility: [delivery-code, tooling-harness, distribution]
+domainEligibility: [delivery-code, tooling-harness, distribution, authority-governance, coordination-substrate, knowledge-methodology]
 domainFreedom: free
 parameters:
   - {name: target, fills: the slice/design spec, bindingSource: provided-by-trigger}

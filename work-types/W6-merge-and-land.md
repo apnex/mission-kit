@@ -9,7 +9,7 @@ evidenceContract:
   - {kind: commit, description: merge commit}
   - {kind: freeform, description: branch-protection / review status}
 evidenceAuthority: executor-evidence
-domainEligibility: [delivery-code, tooling-harness, distribution]
+domainEligibility: [delivery-code, tooling-harness, distribution, authority-governance, coordination-substrate, knowledge-methodology]
 domainFreedom: free
 parameters:
   - {name: pr, fills: the approved PR, bindingSource: provided-by-trigger}

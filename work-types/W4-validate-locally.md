@@ -9,7 +9,7 @@ evidenceContract:
   - kind: test-run
     description: local test output + exact command/env
 evidenceAuthority: executor-evidence-provisional
-domainEligibility: [delivery-code, tooling-harness, distribution]
+domainEligibility: [delivery-code, tooling-harness, distribution, authority-governance, coordination-substrate, knowledge-methodology]
 domainFreedom: free
 parameters:
   - name: target

@@ -9,7 +9,7 @@ evidenceContract:
   - kind: test-run
     description: failing-before / passing-after or mutation proof
 evidenceAuthority: executor-evidence-provisional
-domainEligibility: [delivery-code, tooling-harness]
+domainEligibility: [delivery-code, tooling-harness, authority-governance, coordination-substrate, knowledge-methodology]
 domainFreedom: free
 parameters:
   - name: target

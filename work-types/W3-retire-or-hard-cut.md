@@ -10,7 +10,7 @@ evidenceContract:
   - {kind: commit, description: merged SHA}
   - {kind: freeform, description: reference scan + residual disposition}
 evidenceAuthority: executor-evidence
-domainEligibility: [delivery-code, distribution, tooling-harness, product-data]
+domainEligibility: [delivery-code, distribution, tooling-harness, product-data, authority-governance, coordination-substrate, knowledge-methodology]
 domainFreedom: free
 parameters:
   - {name: target, fills: the surface to retire, bindingSource: operator-supplied}

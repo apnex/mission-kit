@@ -9,7 +9,7 @@ evidenceContract:
   - {kind: freeform, description: release artifact + deploy log}
   - {kind: freeform, description: version/digest/SHA + rollback anchor}
 evidenceAuthority: executor-evidence
-domainEligibility: [distribution, tooling-harness, product-data]
+domainEligibility: [distribution, tooling-harness, product-data, authority-governance, coordination-substrate, knowledge-methodology]
 domainFreedom: free
 parameters:
   - {name: target, fills: the release + channel, bindingSource: provided-by-trigger}
