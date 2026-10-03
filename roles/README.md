@@ -11,7 +11,7 @@ related: [W0, D0, A3, A6, A13, E1, T0]
 
 ## Purpose
 
-Four roles, each defined as **essence + engagement-mode**, independent of domain and work-type so composability determines the aggregate.\
+Roles are defined as **essence + engagement-mode**, independent of domain and work-type so composability determines the aggregate.\
 Read `work-types/README.md` for the composition rule that combines these with the domain and work-type axes.
 
 A role is an **authority over work**, not a person.\
@@ -21,9 +21,9 @@ It says who may decide, build, assure or ratify, so that a unit of work can be c
 
 ## Territory
 
-This set covers **the authorities a unit of work needs, from the intent behind it to its ratification.**
+This set covers **every authority engineering work needs** - within a unit of work, from the intent behind it to its ratification, and across units, where work is chosen, run as a flow and kept.
 
-A unit of work passes through five positions, and each needs someone with authority to act at it.\
+A unit of work passes through five positions, and work across units adds three more; each needs someone with authority to act at it.\
 The positions are the denominator: a gap is a position with no role, or one that some organisations cannot fill.
 
 | Position | The authority it needs | Role |
@@ -33,9 +33,12 @@ The positions are the denominator: a gap is a position with no role, or one that
 | **Implementation** | to turn a design into a working, landed artifact | [`R2`](R2-engineer.md) engineer |
 | **Assurance** | to prove or refute a claim about work it did not do | [`R3`](R3-verifier.md) verifier |
 | **Ratification** | to accept the result as the organisation's own | [`R4`](R4-director.md) director |
+| *Across units:* **Direction** | to choose which work is done, in what order, and to change course | [`R4`](R4-director.md) director |
+| **Flow** | to seed, drive and repair a run of many units | [`R1`](R1-architect.md) architect, which holds the driver lease and is the eligible role for seeding, driving and repairing an arc |
+| **Curation** | to keep the durable knowledge and to delegate authority to the other roles | [`R4`](R4-director.md) director |
 
-No position lacks a role.\
-The director holds two, at either end, because intent and its acceptance are the same authority exercised before and after the work.
+No position lacks a role today; a new position the work turns out to need, with no role to hold it, would be a gap here, and the count of roles follows the positions rather than fixing them.\
+Within a unit the director holds two positions, at either end, because intent and its acceptance are the same authority exercised before and after the work.
 
 **Operating shipped work is not a gap.**\
 Landing, deploying, probing live behaviour, holding a production window and restoring a fleet are each work-types, and each names existing roles as eligible.\
