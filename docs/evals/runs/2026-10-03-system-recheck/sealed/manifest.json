@@ -1,0 +1,116 @@
+{
+  "created": "2026-10-03T01:45:11.936Z",
+  "suites": [
+    "system-boundary",
+    "axiom-direction"
+  ],
+  "readers": 3,
+  "corpora": [
+    {
+      "label": "before",
+      "path": "/tmp/opencode/evalc/c-961c22b7"
+    },
+    {
+      "label": "after",
+      "path": "/tmp/opencode/evalc/c-bf38540c"
+    }
+  ],
+  "prompts": [
+    {
+      "pid": "r-64f1e9",
+      "label": "before",
+      "group": "system",
+      "reader": 1,
+      "probes": [
+        "system-boundary.S1",
+        "system-boundary.S2",
+        "system-boundary.S3",
+        "system-boundary.S4",
+        "system-boundary.S5",
+        "system-boundary.S6",
+        "axiom-direction.Q1",
+        "axiom-direction.Q2"
+      ]
+    },
+    {
+      "pid": "r-ee9371",
+      "label": "before",
+      "group": "system",
+      "reader": 2,
+      "probes": [
+        "system-boundary.S1",
+        "system-boundary.S2",
+        "system-boundary.S3",
+        "system-boundary.S4",
+        "system-boundary.S5",
+        "system-boundary.S6",
+        "axiom-direction.Q1",
+        "axiom-direction.Q2"
+      ]
+    },
+    {
+      "pid": "r-0ccbb9",
+      "label": "before",
+      "group": "system",
+      "reader": 3,
+      "probes": [
+        "system-boundary.S1",
+        "system-boundary.S2",
+        "system-boundary.S3",
+        "system-boundary.S4",
+        "system-boundary.S5",
+        "system-boundary.S6",
+        "axiom-direction.Q1",
+        "axiom-direction.Q2"
+      ]
+    },
+    {
+      "pid": "r-f3e8d7",
+      "label": "after",
+      "group": "system",
+      "reader": 1,
+      "probes": [
+        "system-boundary.S1",
+        "system-boundary.S2",
+        "system-boundary.S3",
+        "system-boundary.S4",
+        "system-boundary.S5",
+        "system-boundary.S6",
+        "axiom-direction.Q1",
+        "axiom-direction.Q2"
+      ]
+    },
+    {
+      "pid": "r-b9a6b3",
+      "label": "after",
+      "group": "system",
+      "reader": 2,
+      "probes": [
+        "system-boundary.S1",
+        "system-boundary.S2",
+        "system-boundary.S3",
+        "system-boundary.S4",
+        "system-boundary.S5",
+        "system-boundary.S6",
+        "axiom-direction.Q1",
+        "axiom-direction.Q2"
+      ]
+    },
+    {
+      "pid": "r-601734",
+      "label": "after",
+      "group": "system",
+      "reader": 3,
+      "probes": [
+        "system-boundary.S1",
+        "system-boundary.S2",
+        "system-boundary.S3",
+        "system-boundary.S4",
+        "system-boundary.S5",
+        "system-boundary.S6",
+        "axiom-direction.Q1",
+        "axiom-direction.Q2"
+      ]
+    }
+  ]
+}

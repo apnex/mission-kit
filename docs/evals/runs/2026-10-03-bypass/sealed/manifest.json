@@ -1,0 +1,91 @@
+{
+  "created": "2026-10-03T01:40:36.924Z",
+  "suites": [
+    "boundary-bypass"
+  ],
+  "readers": 3,
+  "corpora": [
+    {
+      "label": "before",
+      "path": "/tmp/opencode/evalc/c-2f7e25ae"
+    },
+    {
+      "label": "after",
+      "path": "/tmp/opencode/evalc/c-dc7c2dd3"
+    }
+  ],
+  "prompts": [
+    {
+      "pid": "r-25653a",
+      "label": "before",
+      "group": "bypass",
+      "reader": 1,
+      "probes": [
+        "boundary-bypass.B1",
+        "boundary-bypass.B2",
+        "boundary-bypass.B3",
+        "boundary-bypass.B4"
+      ]
+    },
+    {
+      "pid": "r-1e7a43",
+      "label": "before",
+      "group": "bypass",
+      "reader": 2,
+      "probes": [
+        "boundary-bypass.B1",
+        "boundary-bypass.B2",
+        "boundary-bypass.B3",
+        "boundary-bypass.B4"
+      ]
+    },
+    {
+      "pid": "r-65f0c1",
+      "label": "before",
+      "group": "bypass",
+      "reader": 3,
+      "probes": [
+        "boundary-bypass.B1",
+        "boundary-bypass.B2",
+        "boundary-bypass.B3",
+        "boundary-bypass.B4"
+      ]
+    },
+    {
+      "pid": "r-54a871",
+      "label": "after",
+      "group": "bypass",
+      "reader": 1,
+      "probes": [
+        "boundary-bypass.B1",
+        "boundary-bypass.B2",
+        "boundary-bypass.B3",
+        "boundary-bypass.B4"
+      ]
+    },
+    {
+      "pid": "r-a8a3c2",
+      "label": "after",
+      "group": "bypass",
+      "reader": 2,
+      "probes": [
+        "boundary-bypass.B1",
+        "boundary-bypass.B2",
+        "boundary-bypass.B3",
+        "boundary-bypass.B4"
+      ]
+    },
+    {
+      "pid": "r-2dd191",
+      "label": "after",
+      "group": "bypass",
+      "reader": 3,
+      "probes": [
+        "boundary-bypass.B1",
+        "boundary-bypass.B2",
+        "boundary-bypass.B3",
+        "boundary-bypass.B4"
+      ]
+    }
+  ]
+}

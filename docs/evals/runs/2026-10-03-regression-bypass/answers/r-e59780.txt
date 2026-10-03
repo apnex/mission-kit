@@ -1,0 +1,14 @@
+### component-a3.C5
+A3 names your situation as a fault: "**God-Object Accretion** - "utils", "helpers", "managers" accumulate unrelated concerns."
+For a change that does not bring the system all the way to the limit, the Mandate says it "adds none of them, and removes what it touches", so your feature must not go into `utils`, which would add to a dual-purpose module and break the "**Law of One** - a module does exactly one thing".
+Instead, give the feature its own boundary: "a concern earns an internal boundary by being one concern".
+Build it "by composing existing units, never by modifying them" ("Composable by Default"), and have it reach other units "only through declared adapters and contracts" ("Air-Gap Principle").
+Do not promote it to a stable, depended-upon surface unless "a real consumer outside its origin needs it" ("Earned Exposure"). Doing so on anticipated reuse is the "Speculative Surface" fault.
+"Removes what it touches" also asks you to take apart the part of `utils` your change touches. How far that goes (only the concern you touch, or splitting the whole module) is NOT SETTLED.
+GUESS: pull the concerns your feature uses out of `utils` into single-concern units, and leave the parts you do not touch alone.
+How firmly A3 binds this change is deferred to `A0` ("How an axiom binds a change is stated in A0"), so it is NOT SETTLED by this file.
+
+### OBSERVATIONS
+- "removes what it touches" is ambiguous in scope. It could mean removing the whole god-object once your change touches it, or only the concerns your change touches.
+- There is a tension between "a new capability is assembled by composing existing units, never by modifying them" and "removes what it touches". Removing accretion from `utils` means modifying an existing unit.
+- The rules for how strongly an axiom binds a partial change, and the "one system" rule cited under Bypass as Signal, are both deferred to `A0` (README.md). That file was out of scope, so those points are unresolved here.

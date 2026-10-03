@@ -21,6 +21,7 @@ At the limit, god objects, spaghetti coupling and dual-purpose modules are struc
 - **Law of One** - a module does exactly one thing; "and"/"also" in its description is a violation.
 - **Air-Gap Principle** - units interact only through declared adapters and contracts; no unit reaches into another's internals or kernel.
 - **Earned Exposure** - a concern earns an internal boundary by being one concern; it earns promotion to a stable, depended-upon surface only when a real consumer outside its origin needs it. Boundaries are drawn on isolation; committed contracts are drawn on demand. Exposing a surface on anticipated rather than demonstrated reuse is premature abstraction paid at the boundary.
+- **Bypass as Signal** - a unit reaching past a declared interface is a fault in the consumer and a signal about the interface: it may mean the interface falls short of the component's duty, and the consumer has not signalled the change it needs. A detected bypass triggers an evaluation of the interface against the component's duty and its vision, ending in the consumer being moved onto the interface or the interface being adjusted. Until then the two remain one system for what a change answers to (`A0`).
 - **Semantic Bit-Masking** - interfaces are explicit, versioned contracts with bit-perfect message formats; both sides agree on the exact shape.
 - **Composable by Default** - a new capability is assembled by composing existing units, never by modifying them.
 - **Local Reasoning** - any unit is understandable, testable, and changeable in isolation, from its contract and inputs alone.
@@ -53,5 +54,5 @@ How an axiom binds a change is stated in [`A0`](README.md):
 2. All inter-module interaction passes through declared contracts; nothing reaches into another unit's internals.
 3. New capabilities arrive by composition, not by modifying existing units.
 4. Any module can be understood, tested, and changed in isolation from its contract alone.
-5. Boundary violations are detectable by review or tooling.
+5. Boundary violations are detectable by review or tooling, and each one detected is evaluated against the component's duty rather than only corrected in the consumer.
 6. Every stable, depended-upon surface traces to a real consumer that needed it; none exists on speculation alone.

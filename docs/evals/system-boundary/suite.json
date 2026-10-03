@@ -3,7 +3,7 @@
   "mode": "corpus",
   "group": "system",
   "source": "docs/audits/eval-SYS/KEY.md",
-  "preamble": "Two systems are used in this group's system-boundary questions:\n- The launcher is a small one-shot script. One operator runs it and watches it; it holds no state, has no model in the loop, and does not restart anything that dies. It is not part of the service, and no larger system containing both is declared.\n- The service is long-running and holds persistent state. Several agents operate it, each an independent actor handing work to the others, with no human in the synchronous loop and no model in the loop.",
+  "preamble": "Two systems are used in this group's system-boundary questions:\n- The launcher is a small one-shot script. One operator runs it and watches it; it holds no state, has no model in the loop, and does not restart anything that dies. It is not part of the service, and no larger system containing both is declared.\n- The service is long-running and holds persistent state. Several agents operate it, each an independent actor handing work to the others, with no human in the synchronous loop and no model in the loop. It is not driven by a declared specification it reconciles toward.",
   "probes": [
     {
       "id": "S1",

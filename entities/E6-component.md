@@ -14,9 +14,9 @@ related: [E5, AR1, C0, A3, A0]
 
 A **component** is a [system](E5-system.md) seen as a part of a larger system that contains it.\
 It has **one duty** at the altitude where it appears as a part, and it **exposes and consumes interfaces** - what it offers the parts around it, and what it relies on them for.\
-Its boundary is those interfaces, and it separates the component from its neighbours only where they are declared.\
+Its boundary is those interfaces, and it separates the component from a neighbour only where they are declared and that neighbour uses them.\
 A part whose interfaces are undeclared is still a component, but nothing separates it yet: for deciding what a change answers to, it is one system with whatever reaches into it or it reaches into ([`E5`](E5-system.md)).\
-Declaring its interfaces is what separates it.
+Declaring its interfaces, and its neighbours using them, is what separates it.
 
 Every component is a system; *component* names its place in a containing system, not a different kind of thing.\
 The same unit is a system when the question is which traits it has and which axioms bind it, and a component when the question is what it owes the whole it sits in.
@@ -41,7 +41,8 @@ The test for a second duty applies to the box: a purpose that needs "and" to sta
 **Boundary against directory.**\
 A component's directory addresses it - where its code and documents live.\
 Its boundary is its declared interfaces - what other parts may reach.\
-Code in another directory that reaches past the interface is not kept out by the directory; it has crossed the boundary, and with no declared interface there is no boundary to cross.
+Code in another directory that reaches past the interface is not kept out by the directory; it has crossed the boundary, and it stays one system with the component until it uses the interface.\
+A detected crossing is a signal about the interface as well as a fault in the consumer: [`A3`](../axioms/A3-sovereign-composition.md) states what it triggers.
 
 **A component against a registered component.**\
 The [`components/`](../components/README.md) layer registers components shareable enough to be used across systems rather than rebuilt.\

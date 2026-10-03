@@ -1,0 +1,238 @@
+{
+  "created": "2026-10-03T01:44:50.272Z",
+  "seed": "ccef97bdc2c6231a",
+  "corpora": [
+    {
+      "label": "before",
+      "path": "/tmp/opencode/evalc/c-2f7e25ae"
+    },
+    {
+      "label": "after",
+      "path": "/tmp/opencode/evalc/c-dc7c2dd3"
+    }
+  ],
+  "readers": 3,
+  "probes": [
+    "boundary-bypass.B1",
+    "boundary-bypass.B2",
+    "boundary-bypass.B3",
+    "boundary-bypass.B4"
+  ],
+  "max": 8,
+  "mean": {
+    "boundary-bypass.B1": {
+      "before": 1,
+      "after": 2
+    },
+    "boundary-bypass.B2": {
+      "before": 2,
+      "after": 2
+    },
+    "boundary-bypass.B3": {
+      "before": 1,
+      "after": 2
+    },
+    "boundary-bypass.B4": {
+      "before": 1,
+      "after": 2
+    }
+  },
+  "total": {
+    "before": 5,
+    "after": 8
+  },
+  "rows": [
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-25653a",
+      "probe": "boundary-bypass.B1",
+      "score": 1,
+      "reason": "Says yes with the binding reason and calls the bypass an A3 fault to close or record, with no interface evaluation or signal reading."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-25653a",
+      "probe": "boundary-bypass.B2",
+      "score": 2,
+      "reason": "Says O and not P: P composes through an unchanged declared contract so its own axioms do not bind, while O's undeclared reach binds it."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-25653a",
+      "probe": "boundary-bypass.B3",
+      "score": 1,
+      "reason": "Gives a hedged no ('by the most direct reading') with a not-settled caveat that it could be yes, and gives no reroute-or-adjust remedy."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-25653a",
+      "probe": "boundary-bypass.B4",
+      "score": 1,
+      "reason": "Treats the bypasses only as A3 faults to close or record against the consumers, with no evaluation of T's interface against its duty and vision."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-1e7a43",
+      "probe": "boundary-bypass.B1",
+      "score": 1,
+      "reason": "Says yes with the undeclared-reach binding reason and treats the bypass as an A3 fault to close or record, but never treats it as a signal triggering an evaluation of T's interface."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-1e7a43",
+      "probe": "boundary-bypass.B2",
+      "score": 2,
+      "reason": "Says O and not P, with both reasons: P composes through an unchanged contract, and O reaches T with no declared interface."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-1e7a43",
+      "probe": "boundary-bypass.B3",
+      "score": 1,
+      "reason": "Reaches no, but explicitly marks the conclusion as not settled and a guess, does not use the explicit declared-and-honoured text, and gives no reroute-or-adjust remedy."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-1e7a43",
+      "probe": "boundary-bypass.B4",
+      "score": 1,
+      "reason": "Classes the bypasses as A3 faults to close or record, with no evaluation of T's interface against its duty and no adjust outcome."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-65f0c1",
+      "probe": "boundary-bypass.B1",
+      "score": 1,
+      "reason": "Says yes with the binding reason but treats the bypass only as a fault to close or record, with no interface evaluation."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-65f0c1",
+      "probe": "boundary-bypass.B2",
+      "score": 2,
+      "reason": "Says O and not P: P reaches T through an unchanged declared interface, and O reaches with no declared interface, so it binds."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-65f0c1",
+      "probe": "boundary-bypass.B3",
+      "score": 1,
+      "reason": "Reaches no and mentions moving O onto the interface, but labels the conclusion not explicitly settled and misses the text stating that declaring while leaving the bypass separates nothing."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-65f0c1",
+      "probe": "boundary-bypass.B4",
+      "score": 1,
+      "reason": "Treats the bypasses only as A3 faults to close or record, grounded in A3 and A0, with no interface evaluation or adjust outcome."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-54a871",
+      "probe": "boundary-bypass.B1",
+      "score": 2,
+      "reason": "Says yes because the interface is reached past, and treats the bypass as a signal triggering an evaluation of the interface against duty and vision, ending in rerouting or adjustment; only a side question is left unsettled."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-54a871",
+      "probe": "boundary-bypass.B2",
+      "score": 2,
+      "reason": "Says O and not P, with the per-pair separation and the unchanged-contract reason for P, and the bypass reason for O."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-54a871",
+      "probe": "boundary-bypass.B3",
+      "score": 2,
+      "reason": "Says no on the declared-and-honoured ground and names moving the dependency onto the interface and the Bypass as Signal evaluation; the unsettled point is only a side question."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-54a871",
+      "probe": "boundary-bypass.B4",
+      "score": 2,
+      "reason": "Describes the interface evaluation against duty and vision with both outcomes, and says an adjusted interface answers to the consumers it alters."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-a8a3c2",
+      "probe": "boundary-bypass.B1",
+      "score": 2,
+      "reason": "Says yes because the declared interface is reached past, and cites Bypass as Signal: an evaluation against duty and vision ending in rerouting or adjustment."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-a8a3c2",
+      "probe": "boundary-bypass.B2",
+      "score": 2,
+      "reason": "Says O and not P: P only composes through an unaltered contract, and O's bypass makes it one system with T."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-a8a3c2",
+      "probe": "boundary-bypass.B3",
+      "score": 2,
+      "reason": "Says no because separation needs the boundary declared and honoured, and they stay one system until O is rerouted through the new interface."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-a8a3c2",
+      "probe": "boundary-bypass.B4",
+      "score": 2,
+      "reason": "Cites Bypass as Signal: an evaluation of the interface against duty and vision ending in rerouting or adjustment, with adjustments answering to the altered consumers."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-2dd191",
+      "probe": "boundary-bypass.B1",
+      "score": 2,
+      "reason": "Says yes on the declared-but-not-honoured ground and describes the bypass as a signal triggering an interface evaluation with both outcomes."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-2dd191",
+      "probe": "boundary-bypass.B2",
+      "score": 2,
+      "reason": "Says O and not P, with both reasons: P's contract is unaltered, and O's bypass keeps it one system with T."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-2dd191",
+      "probe": "boundary-bypass.B3",
+      "score": 2,
+      "reason": "Says no, because declaring the interface while leaving the bypass separates nothing, and says moving the dependency onto the interface plus the Bypass as Signal evaluation is what changes this."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-2dd191",
+      "probe": "boundary-bypass.B4",
+      "score": 2,
+      "reason": "Describes an evaluation of T's interface against duty and vision ending in the consumers being moved or the interface adjusted, and notes that an adjustment binds the altered consumers."
+    }
+  ]
+}

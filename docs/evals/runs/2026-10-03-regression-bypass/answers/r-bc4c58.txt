@@ -1,0 +1,61 @@
+### work-layers.L1
+Layer: methodology (`methodology/`), because this is a rule about how work is conducted, not about an artifact's text; M0 places "how a cut is recorded" under the "Deciding what to keep" moment (methodology/README.md, Territory table), and README.md Mechanics says `M` owns "How work is conducted: review, audit, deferral."
+It is already covered by M5 (methodology/M5-anti-amnesia-deferral.md): "When you defer, park, or cut a unit of work, record - at the moment of deferral - a concrete revival trigger: the observable condition under which the item should be reconsidered", and that trigger is "a required field, not an optional note."
+M5 also requires "Terminal is reopenable" and "Revival re-triages, it does not resume."
+Related entries apply M5 rather than duplicate it: AR5 (artifacts/AR5-backlog.md) is the document type whose "governing rule is M5", and MREQ-0 (backlog/README.md) requires every MREQ entry to carry a `revival-trigger` "per M5".
+So the team should cite or strengthen M5 rather than add a new entry; M0 says "Prefer strengthening an existing entry to adding a neighbour."
+
+### work-layers.L2
+Layer: skills (`skills/`, prefix K).
+K0 (skills/README.md): a skill "names a procedure with inputs, steps and an output, and it is expected to be executed largely as written", and it earns an entry when it is "executable, repeatable, and would otherwise be reconstructed from scratch by whoever needs it next."
+M0's boundary table says the same: "a capability you execute -> skills/ ... a procedure with inputs and outputs, invoked rather than followed", and M0 lists "The procedure that is really a skill" as a fault of filing one in methodology.
+This description already matches K3 substrate-audit (skills/K3-substrate-audit.md): a "five-pass meta-process" (Sweep, Triangulation, Promotion audit, Synthesis, Reconciliation) that writes a fixed layout (`00-summary.md`, `02-architecture.md`, ... `sources.md`) under `docs/<domain>/<substrate>/`.
+Per K0, a new skill would need two files, a `K*` stub plus a portable `SKILL.md` body.
+Per K0 and A11, any steps a script could do deterministically should be a tool, with the skill saying when to run it.
+GUESS: if it differs from K3 only in its target, extend K3 rather than add a neighbour.
+
+### work-layers.L3
+Layer: work-types (`work-types/`, prefix W). README.md Mechanics says `W` owns "Units of work and their evidence contracts", and the W0 entry schema has exactly these fields: `roleEligibility` (who), `domainEligibility`/`parameters.target` (what it may be pointed at), and `evidenceContract`/`falsifier` (what proof ends it).
+It is already covered by W10 adversarial-design-review-upstream (work-types/W10-adversarial-design-review-upstream.md): "A verifier red-teams a design before build or merge, producing a critique doc that raises specific, falsifiable failure hypotheses."
+Who: `roleEligibility: [verifier]`, `evidenceAuthority: verifier-attestation`, and the attester "cannot be the executor" (constraint 2).
+Target: `target` = "the design under review", `provided-by-trigger`, across all seven domains, `domainFreedom: free`.
+Proof: a single `kind:review` critique doc, with falsifier "review after the decision, or no falsifiable concerns raised."
+NOT SETTLED: whether a "proposal" that is not yet a design doc counts as W10's target; W10 only names "a design".
+Its trigger is "a design doc reaching the pre-build/pre-merge point."
+
+### work-layers.L4
+It is a methodology entry, and M1 Triangulated review (methodology/M1-triangulated-review.md) already covers it: "require at least four genuinely independent inputs before reaching a verdict", applied when "Reviewing patches or designs that ship to production or upstream."
+It is methodology because it governs conduct ("the independence you require", M0 Purpose), and M0's test applies: a reviewer "would have to know how you arrived at it".
+It is not a skill, because it is a discipline you follow, not a capability "invoked rather than followed" (M0 table; K0 "A skill that only describes is a methodology entry filed in the wrong layer").
+It is not a work-type, because it has no role/domain/evidence-contract shape that "compiles to a closeable claimable node" (W0).
+Work-types that gate risky changes do exist, such as W8 verify-gate-reactive and W13 code-owner-approve, and W0 constraint 9 says "Same-agent review is never a valid degradation".
+But the "several independent kinds of input" rule itself is M1; M0 calls M1 one of "Two primitives" of the set.
+One nuance: M1 sets the floor at four, but also says "The number isn't sacred (sometimes 3 is enough; sometimes 5 is needed)."
+
+### work-layers.L5
+It would go in methodology: M0 names the moment explicitly in its Territory section, so a procedure for it would be a new member placed at that moment.
+The corpus states the absence directly (methodology/README.md, "Two thin moments, recorded rather than filled"): "Handing over - passing work in progress to another agent or a later session - has no procedure at all."
+It adds that this applies "to an agent working alone as much as to many: a lone agent hands over to its own next session", and that it is "Neither ... a defect until something fails there", but it is "where to look first when something does."
+M0's Faults list names this gap class: "The unguarded moment."
+The principle exists at axiom level: A4 Zero-Loss Knowledge (axioms/A4-zero-loss-knowledge.md) requires that "A cold pickup from the record alone reproduces the same outputs as a warm actor ... zero decision context is lost at handover."
+I found no MREQ backlog entry for a handover procedure (searched backlog/ and the corpus for "handover|handoff|hand over").
+WorkGraph skills mention narrow handoffs (for example the K18 planning-to-go handoff), but none is a general handover procedure.
+GUESS: an entry should cite M0's moment, A4 as its anchor, and M5 for any parked parts.
+
+### work-layers.L6
+Methodology vs skill: M0 (methodology/README.md) states the test as what a reviewer would inspect, plus the object the rule acts on.
+Methodology governs "the process you follow", while a skill is "a capability you execute ... a procedure with inputs and outputs, invoked rather than followed."
+K0 (skills/README.md) gives the mirror test: "A methodology entry governs how you conduct work you are already doing; a skill is a capability you pick up to do a thing you could not otherwise do."
+Work-type: W0 (work-types/README.md) states "A candidate is taxonomy-grade iff it compiles to a closeable claimable node" with roleEligibility, evidenceContract, falsifier and so on.
+Hard pair: the corpus itself flags methodology/skill confusion, in the M0 fault "The procedure that is really a skill" and K0 "A skill that only describes is a methodology entry filed in the wrong layer."
+NOT SETTLED: methodology vs work-type. M0's boundary table lists style, patterns, skills and axioms but not work-types, and W0 does not contrast itself with M or K.
+An example where the two overlap is M1 (independent review) next to W8, W10 and W13 (independent review gates).
+GUESS: the separator is "a discipline applied inside work (M)" vs "a claimable unit with an evidence contract (W)", but no text states it.
+
+### OBSERVATIONS
+- M0's "What belongs here" table omits work-types entirely, so there is no written M-vs-W discriminator, even though M1/W8/W10/W13 and M7/W22 (axiom alignment audit vs axiom-alignment-gate) are obvious near-neighbours.
+- W0's entry schema says "Every work-type carries" `generatable`, but only 1 of the 26 W*.md files has a `generatable` field (grep `^generatable` across work-types/*.md); W10 and W9 lack it.
+- E2 refers to "The three mechanism layers", but README.md Mechanics lists four prefix-less layers (bundles, tools, plugins, docs). Also, `docs/` is linked there but does not exist in this corpus snapshot. And `docs/` holds "artifact instances", which does not fit INDEX.md's claim that prefix-less layers "hold mechanism".
+- K3's `docs/<domain>/<substrate>/` layout says it lists "00-summary.md, 02-architecture.md ...", but no `01-` file appears, and the SKILL.md description lists a slightly different set ("prober assessment"). This is minor, and I did not check it in depth.
+- K3 is titled a "substrate audit" for OSS substrates, and W9 audit-a-surface is a separate work-type. The corpus does not say how the skill and work-type compose; MREQ-9 ("binding between the work axes and the artifact layer") is adjacent but about artifacts.
+- INDEX.md says links resolve against a checkout or the GitHub raw URL. I read only the local snapshot, as the instructions said.

@@ -80,3 +80,11 @@ Every suite's keys are audited by a fresh reader before first use, and corrected
 | `boundary-bypass` | the preamble ruled out one of the ruling's two outcomes; B3 dropped "adjust the interface"; B4 cited `C0`'s adjustment rule, which governs registered components and is itself an open question; "recorded" stated where the ruling says nothing | all four |
 | `work-layers` | the questions copied their target entries' wording, so they would measure text search; the director's `B24` wording had leaked into two probes; L6 quoted a sentence `W0` does not contain | questions reworded in plain terms; leaked wording removed; L6 keyed to `W0`'s actual text |
 
+---
+
+## Suite edits
+
+| Suite | Edit | Why |
+|---|---|---|
+| `system-boundary` | the service is stated to be not declarative | the fixture left the declarative trait open, so careful readers correctly hedged `A2` and the rubric capped them. Found when the first regression check flagged S1, S2, S3 and S5; earlier hand scoring had passed the same hedge |
+

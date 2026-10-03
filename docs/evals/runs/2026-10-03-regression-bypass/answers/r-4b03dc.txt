@@ -1,0 +1,55 @@
+### work-layers.L1
+It belongs in the methodology layer. `methodology/README.md` (M0) puts "how a cut is recorded" in its "Deciding what to keep" moment, and its boundary test says a rule belongs there if a reviewer "would have to know how you arrived at it".
+It is already covered by `methodology/M5-anti-amnesia-deferral.md`: "When you defer, park, or cut a unit of work, record - at the moment of deferral - a concrete **revival trigger**", and that trigger is "a required field, not an optional note".
+Two neighbours apply the rule but do not own it. `artifacts/AR5-backlog.md` is the document type that holds such rows ("Its governing rule is M5 ... 'Later' is not a trigger"), and `backlog/README.md` (MREQ-0) applies M5 to the corpus's own deferred work.
+M0 also groups M5 with M3 and M4 as "a single discipline seen three ways", so the team should read all three together.
+A team that adds a new entry would duplicate M5. M0 says "Prefer strengthening an existing entry to adding a neighbour."
+
+### work-layers.L2
+It belongs in the skills layer (`K`). `skills/README.md` (K0) says a skill "names a procedure with inputs, steps and an output" and is "invoked, not followed". It says a capability earns an entry "when it is executable, repeatable, and would otherwise be reconstructed from scratch". M0's boundary table agrees: "a capability you execute -> skills/ ... a procedure with inputs and outputs, invoked rather than followed".
+Something very close already exists: `skills/K3-substrate-audit.md`, a "five-pass meta-process" (Sweep, Triangulation, Promotion audit, Synthesis, Reconciliation) with a fixed layout under `docs/<domain>/<substrate>/` (`00-summary.md`, `02-architecture.md`, ... `sources.md`). Its body lives in `skills/substrate-audit/`.
+K0 adds two limits. A skill used once, for one system, "is a runbook and belongs with that system". A skill whose steps a script could take "should be that script" (A11).
+It is not a work-type. `work-types/W9-audit-a-surface.md` defines a claimable unit of audit work with an evidence contract, not the capability that carries it out.
+GUESS: the team should extend K3 rather than add a neighbouring skill, unless their passes or layout differ in substance.
+
+### work-layers.L3
+It belongs in the work-types layer (`W`). `work-types/README.md` (W0) gives every work-type the fields being asked for: `roleEligibility` (who may do it), `domainEligibility`/`parameters` (what it may be pointed at), and `evidenceContract`/`evidenceAuthority`/`falsifier` (what proof closes it).
+It is already covered by `work-types/W10-adversarial-design-review-upstream.md`: "A verifier red-teams a design **before** build or merge".
+Who: `roleEligibility: [verifier]`, with `evidenceAuthority: verifier-attestation`, which needs an attester who "cannot be the executor" (constraint 2).
+Target: `target` = "the design under review", `provided-by-trigger`. It is eligible in all seven domains with `domainFreedom: free`.
+Proof: a `kind:review` "critique doc before build/merge with specific failure hypotheses". Falsifier: "review after the decision, or no falsifiable concerns raised".
+The related methodology is M7 (axiom alignment audit before implementation approval), and the gate is W22. Both concern design-time gates, but they test axiom anchoring, not red-teaming in general.
+
+### work-layers.L4
+It is a methodology entry, and `methodology/M1-triangulated-review.md` already covers it: "require **at least four genuinely independent inputs** before reaching a verdict", and its trigger is "reviewing a patch or design that ships to production or upstream".
+M0 says methodology governs "the independence you require, the evidence you demand before you proceed". It places M1 in the "Verifying" moment and calls it one of "Two primitives" that carry the set.
+It is not a skill. K0 says a skill is a capability with inputs and outputs that you invoke, while this is a rule about how you conduct a review you are already doing.
+It is not a work-type. W0 says a work-type is taxonomy-grade only "iff it compiles to a closeable claimable node". Review work-types such as W8 (verify-gate-reactive), W13 (code-owner-approve) and W15 (convene-a-council, "several lenses") are units of work that M1-style conduct could apply inside.
+M1 is a minimum and can bend: "The number isn't sacred (sometimes 3 is enough; sometimes 5 is needed)".
+
+### work-layers.L5
+GUESS: it would go in the methodology layer. The basis is that M0's territory table names this exact moment. The corpus does not say where a future entry must go.
+`methodology/README.md` records the gap: "*Handing over* - passing work in progress to another agent or a later session - has no procedure at all."
+It also says the gap bites hardest for agents: "Every reader of this corpus starts cold ... a lone agent hands over to its own next session."
+It does not treat the gap as a defect yet: "Neither is a defect until something fails there, and both are where to look first when something does." M0's fault "The unguarded moment" names this kind of gap.
+The nearest existing material is substrate-specific and does not fill the gap. `skills/K24-workgraph-recovery.md` covers stopped or failed arcs, and the handoff sections in `skills/workgraph-arc-operator/SKILL.md` and `skills/survey/SKILL.md` cover their own transitions.
+M5's "Revival re-triages, it does not resume" is about dormant deferred items, not a live handover. NOT SETTLED: whether it applies to a mid-task handover.
+
+### work-layers.L6
+Methodology vs skill: M0 asks what a reviewer would inspect. If "they would have to know how you arrived at it, it is methodology", and a skill is "a capability you execute ... invoked rather than followed". K0 adds: "A methodology entry governs how you conduct work you are already doing; a skill is a capability you pick up to do a thing you could not otherwise do."
+Work-type: W0 says "A candidate is taxonomy-grade **iff it compiles to a closeable claimable node**", with roles, domains, evidence contract and falsifier.
+NOT SETTLED: no single passage states a three-way test. M0's boundary table lists style, patterns, skills and axioms but leaves out work-types, and W0 does not compare itself with methodology or skills.
+Methodology vs skill is hard to separate, and both charters admit it. M0 lists the fault "The procedure that is really a skill", and K0 says "A skill that only describes is a methodology entry filed in the wrong layer". Yet K3 and K4 are written in the methodology shape ("## Rule", "When to apply"), and K4 calls itself a "discipline".
+Methodology vs work-type is also hard in one place. M7 (axiom alignment audit, a "gate" before implementation approval) and W22 (axiom-alignment-gate, a "per-item axiom-alignment check") cover nearly the same act.
+GUESS: the working separation is conduct (M) vs capability (K) vs a claimable unit with closure evidence (W). An entry can sit on more than one of these, as M7/W22 show.
+
+### OBSERVATIONS
+- `entities/E2-layer.md` says "The three mechanism layers". The charter `README.md` Mechanics table lists four unprefixed layers (`bundles/`, `tools/`, `plugins/`, `docs/`).
+- `README.md` lists and links a `docs/` layer, but this corpus has no `docs/` directory, so that link does not resolve here.
+- `work-types/README.md` constraint 2 says "Verifier-*held* gates use plain `kind:review`, never verifier-attestation". `W22` calls itself verifier-held but declares `evidenceAuthority: verifier-attestation`, and its body says both things.
+- M0's "What belongs here" table leaves out work-types, so the corpus does not say directly where methodology ends and work-types begin.
+- M1's title says "minimum 4", but its rationale says "sometimes 3 is enough". The floor is softer than the title says.
+- K3's artefact layout goes from `00-summary.md` to `02-architecture.md` with no `01-*` file. It may be intentional, but the text does not say.
+- K3 and K4 are skills written in the methodology body shape (Rule/Rationale/When to apply). K0 itself names that as a fault risk.
+- `work-types/README.md` and `M7` frontmatter have no `supersedes` field, which the other entries I read carry. I did not check whether the schema requires it.
+- `README.md` "Adding an entry" step 5 says to add the entry to `INDEX.md` by hand. `INDEX.md` says its entries region is generated ("do not edit by hand").

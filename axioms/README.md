@@ -115,7 +115,7 @@ An axiom that named domains would couple a stable invariant to a mutable taxonom
 **An axiom binds a system, and a change answers to every system it alters.**\
 That is the system it modifies, every system containing it, and any system whose contract with it the change alters.\
 A system it only composes with, through a contract the change leaves as it was, is not altered, and its axioms do not bind.\
-Where one unit depends on another and no boundary between them is declared, nothing shows the change is contained, so the two are one system with the traits of both, and the axioms either unit would bring all bind - and the undeclared dependency is itself a fault under [`A3`](A3-sovereign-composition.md).\
+Where one unit depends on another and no boundary between them is declared and honoured - none written, or one written and reached past - nothing shows the change is contained, so the two are one system with the traits of both, and the axioms either unit would bring all bind - and the undeclared dependency is itself a fault under [`A3`](A3-sovereign-composition.md).\
 *System*, *contain* and *compose* are defined in [`E5`](../entities/E5-system.md).
 
 ---

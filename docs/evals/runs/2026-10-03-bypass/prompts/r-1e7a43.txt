@@ -1,0 +1,27 @@
+You are an engineering agent who has just been given a knowledge corpus and nothing else. Read only files under /tmp/opencode/evalc/c-2f7e25ae. Its entry point is INDEX.md; open whatever you need.
+
+Answer using the corpus, citing files and text.
+If it does not settle something, say "NOT SETTLED" and label any guess "GUESS:". Never present a guess as if the text said it. Under eight sentences per question.
+
+Do not edit any file except the one answer file named at the end. Do not run git.
+
+In these questions, T is a component inside a service. Other components of the same service consume it. Unless a question says otherwise, the change it describes does not alter T's interface or its behaviour.
+
+Questions:
+
+### boundary-bypass.B1
+Component O ignores T's declared interface and calls T's internal functions directly. You change T's internals. Does your change answer to O's axioms? What does the corpus ask about O's bypass?
+
+### boundary-bypass.B2
+Component P uses T's declared interface. Component O bypasses it and calls T's internals. You change T's internals. Which of P and O does your change answer to?
+
+### boundary-bypass.B3
+T previously had no declared interface and O reached into it. You now declare an interface for T, but leave O's calls exactly as they were. Are T and O now two separate systems for deciding what a change answers to?
+
+### boundary-bypass.B4
+A check detects that several components bypass T's declared interface to reach T's internals. What does the corpus ask you to do?
+
+Write your answers to this file, and nothing else:
+  /home/apnex/taceng/mission-kit/docs/evals/runs/2026-10-03-bypass/answers/r-1e7a43.txt
+Put each answer under its heading exactly as given above (a line starting with ###), then a final heading `### OBSERVATIONS` noting anything ambiguous, inconsistent or wrong you met, or "none".
+When the file is written, reply with only the word DONE.

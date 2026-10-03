@@ -1,0 +1,25 @@
+You are an engineering agent who has just been given a knowledge corpus and nothing else. Read only files under /tmp/opencode/evalc/c-dc7c2dd3. Its entry point is INDEX.md; open whatever you need.
+
+Answer using the corpus, citing files and text.
+If it does not settle something, say "NOT SETTLED" and label any guess "GUESS:". Never present a guess as if the text said it. Under eight sentences per question.
+
+Do not edit any file except the one answer file named at the end. Do not run git.
+
+Questions:
+
+### component.C1
+You are fixing a bug in module X of a service. X calls module Y through Y's declared interface, and Y returns an error message so vague that it cost you twenty minutes to diagnose the bug; making it precise is a five-minute change to Y. Module Z, also in the service, keeps important state hidden in process memory; X does not use it, and fixing it is about two days. Your fix to X is written but not yet landed. What do the corpus's axioms ask about Y, and about Z?
+
+### component.C2
+In this corpus, what is a 'component', and how does it differ from a 'system'? Cite where it is defined, or say that it is not.
+
+### component.C3
+A component's code lives in parts/thing/. Code in parts/other/ reaches into parts/thing/'s internal functions directly; nothing declares an interface between them. Is the directory parts/thing/ the component's boundary? What, if anything, is wrong?
+
+### component.C4
+Inside a service, component P exposes a declared interface that component Q consumes. You change P's internals; the interface and its behaviour are unchanged. Which systems' axioms does your change answer to, is Q altered, and is Q a candidate for opportunistic improvement?
+
+Write your answers to this file, and nothing else:
+  /home/apnex/taceng/mission-kit/docs/evals/runs/2026-10-03-regression-bypass/answers/r-20a4b3.txt
+Put each answer under its heading exactly as given above (a line starting with ###), then a final heading `### OBSERVATIONS` noting anything ambiguous, inconsistent or wrong you met, or "none".
+When the file is written, reply with only the word DONE.

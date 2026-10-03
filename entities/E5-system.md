@@ -13,7 +13,7 @@ related: [A0, T0, A3, D0, AR1, E6]
 ## Definition
 
 A **system** is a unit of engineering with a **boundary**: what is inside it, and the contracts through which anything outside reaches it.\
-The boundary separates it from its neighbours only where it is **declared**; where one unit depends on another across a boundary nobody declared, the two are one system for deciding what a change answers to.
+The boundary separates it from a neighbour only where it is **declared and honoured** - written down, and the only way the neighbour reaches it; where one unit depends on another across a boundary nobody declared, or reaches past one that was declared, the two are one system for deciding what a change answers to.
 
 Traits describe a system, and axioms bind it.\
 A trait's test is applied to a system, never to a task, and an axiom is in force for a system rather than for a piece of work.
@@ -36,6 +36,11 @@ If one reaches the other with no declared contract and neither is part of the ot
 **A declared boundary against an assumed one.**\
 A declared boundary is one a reader can point at: an interface, a schema, a protocol, a published version, or an architecture that states the system's scope and its interfaces.\
 Behaviour another unit depends on without any declaration is a contract in fact, not a declared boundary - and a change to it reaches across.
+
+**Declared against honoured.**\
+A declared interface separates two units only for the neighbours that use it.\
+A unit that reaches past it - calling internals, parsing output the interface does not promise - stays one system with it, so declaring an interface and leaving the bypass in place separates nothing.\
+The separation is per pair: a neighbour that uses the interface composes with the unit, while one that bypasses it does not.
 
 **A system against a component.**\
 A [component](E6-component.md) is a system seen as a part of a containing system.\
@@ -63,7 +68,7 @@ A one-shot script with no traits is a system, bound by the axioms every system c
 
 **Not separated by an undeclared boundary.**\
 Where one unit depends on another and nothing declares the boundary between them, nothing shows that a change to one leaves the other unchanged, so for deciding what binds a change they are **one system, with the traits of both**.\
-Declaring the boundary is what makes them two again.\
+Declaring the boundary, and moving the dependency onto it, is what makes them two again.\
 This is not a third way of relating: two units that depend on each other with no declared contract, neither containing the other, cannot compose, and are treated as one.\
 The undeclared dependency is itself a fault against [`A3`](../axioms/A3-sovereign-composition.md), which requires units to interact only through declared contracts.
 

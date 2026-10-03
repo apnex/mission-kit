@@ -1,0 +1,14 @@
+### component-a3.C5
+The existing 'utils' module is a named fault: "God-Object Accretion - "utils", "helpers", "managers" accumulate unrelated concerns."
+For a change, the Mandate says: "a change short of it adds none of them, and removes what it touches" - so the feature must not be dropped into 'utils' (that would add to a dual-purpose module), and any part of 'utils' the change touches should be removed from it.
+The feature's concern belongs in its own unit: "a module does exactly one thing" (Law of One), and "a concern earns an internal boundary by being one concern".
+That unit should not be promoted to a stable, depended-upon surface unless "a real consumer outside its origin needs it" (Earned Exposure; Speculative Surface fault).
+It should interact with others "only through declared adapters and contracts" (Air-Gap Principle).
+NOT SETTLED: whether "removes what it touches" means extracting only the specific 'utils' parts the feature uses, or more; and how exactly an axiom binds a change, which the file defers: "How an axiom binds a change is stated in A0".
+GUESS: extract just the concerns in 'utils' that your feature calls or edits into their own single-concern units, and leave the rest of 'utils' untouched.
+
+### OBSERVATIONS
+- "removes what it touches" is ambiguous in scope (the touched lines, the touched concerns, or the whole touched module).
+- Possible tension: "Composable by Default - a new capability is assembled by composing existing units, never by modifying them" versus the Mandate's demand that a change remove the faults it touches, which requires modifying the existing 'utils' unit.
+- The binding rule for changes is deferred to A0 (README.md), which I was not permitted to read, so the strength of the obligation (must vs should) is not settled from this file.
+- Mandate line 16 mixes a limit state ("structurally impossible") with a per-change rule in one sentence; the per-change clause is easy to miss.

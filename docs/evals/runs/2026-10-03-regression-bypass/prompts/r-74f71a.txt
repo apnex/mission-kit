@@ -1,0 +1,41 @@
+You are an engineering agent who has just been given a knowledge corpus and nothing else. Read only files under /tmp/opencode/evalc/c-dc7c2dd3. Its entry point is INDEX.md; open whatever you need.
+
+Answer using the corpus, citing files and text.
+If it does not settle something, say "NOT SETTLED" and label any guess "GUESS:". Never present a guess as if the text said it. Under eight sentences per question.
+
+Do not edit any file except the one answer file named at the end. Do not run git.
+
+Two systems are used in this group's system-boundary questions:
+- The launcher is a small one-shot script. One operator runs it and watches it; it holds no state, has no model in the loop, and does not restart anything that dies. It is not part of the service, and no larger system containing both is declared.
+- The service is long-running and holds persistent state. Several agents operate it, each an independent actor handing work to the others, with no human in the synchronous loop and no model in the loop.
+
+Questions:
+
+### system-boundary.S1
+You change the launcher's log line format. Nothing crosses between the launcher and the service except a declared session interface, and that interface is unchanged. Which axioms does your change answer to?
+
+### system-boundary.S2
+You change how the launcher hands sessions to the service - the declared interface between them. Which axioms does your change answer to?
+
+### system-boundary.S3
+You change one module inside the service. The module on its own holds no state. Which axioms does your change answer to?
+
+### system-boundary.S4
+A small library - no state, no model - is separately owned and published. Ten systems depend on a declared, versioned interface to it, several of them stateful and multi-agent, and each adopts a new version as its own separate change. You change the library's internals; the interface and its behaviour are unchanged. Which axioms does your change answer to?
+
+### system-boundary.S5
+As in S1, you change the launcher's log line format. This time no interface between the launcher and the service is declared, and the service is known to parse some of the launcher's output. Which axioms does your change answer to, and is anything else wrong?
+
+### system-boundary.S6
+In this corpus, what is a 'system'? Cite where it is defined, or say that it is not.
+
+### axiom-direction.Q1
+You are adding a feature to a long-running service that holds persistent state and is operated by several cooperating agents. While working, you notice one component keeps important state only in process memory, invisible to the other agents. Your task does not mention it. Using the corpus, what - if anything - do its axioms ask of you about that component, and how should they shape the way you build your feature?
+
+### axiom-direction.Q2
+In your own words, and citing the corpus: when you change a system an axiom binds, what is the axiom for?
+
+Write your answers to this file, and nothing else:
+  /home/apnex/taceng/mission-kit/docs/evals/runs/2026-10-03-regression-bypass/answers/r-74f71a.txt
+Put each answer under its heading exactly as given above (a line starting with ###), then a final heading `### OBSERVATIONS` noting anything ambiguous, inconsistent or wrong you met, or "none".
+When the file is written, reply with only the word DONE.
