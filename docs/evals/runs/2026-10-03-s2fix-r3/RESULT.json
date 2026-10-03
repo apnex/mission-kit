@@ -1,0 +1,190 @@
+{
+  "created": "2026-10-03T11:43:32.102Z",
+  "seed": "e7405fb2e2b9a028",
+  "corpora": [
+    {
+      "label": "head",
+      "path": "/tmp/opencode/evalc/c-f9bcfd06"
+    }
+  ],
+  "readers": 3,
+  "probes": [
+    "system-boundary.S1",
+    "system-boundary.S2",
+    "system-boundary.S3",
+    "system-boundary.S4",
+    "system-boundary.S5",
+    "system-boundary.S6"
+  ],
+  "max": 12,
+  "mean": {
+    "system-boundary.S1": {
+      "head": 2
+    },
+    "system-boundary.S2": {
+      "head": 2
+    },
+    "system-boundary.S3": {
+      "head": 2
+    },
+    "system-boundary.S4": {
+      "head": 2
+    },
+    "system-boundary.S5": {
+      "head": 2
+    },
+    "system-boundary.S6": {
+      "head": 2
+    }
+  },
+  "total": {
+    "head": 12
+  },
+  "rows": [
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-4f7d16",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor A3, A4, A8, A9, A14 and says the service is not bound because the declared contract is unchanged."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-4f7d16",
+      "probe": "system-boundary.S2",
+      "score": 2,
+      "reason": "Gives the full key union with the reason that the change alters the contract with the service."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-4f7d16",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's full set and cites the containment rule as the reason."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-4f7d16",
+      "probe": "system-boundary.S4",
+      "score": 2,
+      "reason": "Gives the floor only, with the composition reason that each consumer's adoption is that consumer's own change; the version-range caveat is a stated condition, not a hedge on the conclusion."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-4f7d16",
+      "probe": "system-boundary.S5",
+      "score": 2,
+      "reason": "Says both units' axioms bind because nothing declares the boundary, and identifies the undeclared dependency as an A3 fault."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-4f7d16",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Correctly cites the E5 Definition, covering the boundary, containment and composition, and that traits describe a system while axioms bind it."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-4cc0b1",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor only, with the reason that the launcher composes through an unchanged declared interface, so the service's axioms do not bind."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-4cc0b1",
+      "probe": "system-boundary.S2",
+      "score": 2,
+      "reason": "Gives the full key set with the contract-altered reason; the flagged inference is about a trait detail, not the conclusion."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-4cc0b1",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's full set with the containment reason and rejects the stateless-module escape."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-4cc0b1",
+      "probe": "system-boundary.S4",
+      "score": 2,
+      "reason": "Gives the floor with the composition reason; the GUESS label applies only to a hypothetical outside the scenario, not to the conclusion."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-4cc0b1",
+      "probe": "system-boundary.S5",
+      "score": 2,
+      "reason": "Gives the full set because the units are one system with no declared boundary, and names the A3 fault and the contract-in-fact reading."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-4cc0b1",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Correctly cites the E5 Definition, covering the boundary declared and honoured, contain and compose, and traits versus axioms."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-893749",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor only, with the composition-through-an-unchanged-contract reason, and correctly separates out the organisation's axioms."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-893749",
+      "probe": "system-boundary.S2",
+      "score": 2,
+      "reason": "Gives the full key set with the reason that the change alters the unversioned contract the service depends on."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-893749",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's full set with the reason that a change answers to every system containing what it modifies."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-893749",
+      "probe": "system-boundary.S4",
+      "score": 2,
+      "reason": "Gives the floor only, with the composition and adoption reason; the caveat is a stated condition outside the scenario."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-893749",
+      "probe": "system-boundary.S5",
+      "score": 2,
+      "reason": "Gives the full union with the undeclared-boundary reason and names the A3 fault; the GUESS label applies only to a side remark about runtime breakage."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-893749",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Correctly cites E5, covering the boundary, contain and compose, and traits describing a system while axioms bind it."
+    }
+  ],
+  "consistentHedges": []
+}

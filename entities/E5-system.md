@@ -57,6 +57,7 @@ A directory places a component's documents; it is the boundary of neither the sy
 
 **A versioned contract changes only for the systems that adopt the new version.**\
 An interface is unversioned unless it declares versions a consumer can stay on; changing an unversioned interface alters every consumer at once, so the change answers to all of them immediately.\
+Adding versioning to an interface you are changing moves it toward `A3`'s limit and is encouraged, not required; if it is not done, the gap is recorded.\
 Publishing a new version of an interface alters no consumer that has not adopted it; each adoption is a change to that consumer, and answers to that consumer's axioms; the component is not altered by being adopted.\
 So a change to a shared component's interface reaches the systems that take it up, one adoption at a time - not everything that has ever depended on it.\
 A declared version range - *any 2.x* - is adoption in advance: a release within it alters every consumer bound by the range, whether or not the consumer's own files change.

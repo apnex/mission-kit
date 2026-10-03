@@ -1,0 +1,57 @@
+{
+  "created": "2026-10-03T11:41:18.774Z",
+  "suites": [
+    "system-boundary"
+  ],
+  "readers": 3,
+  "corpora": [
+    {
+      "label": "head",
+      "path": "/tmp/opencode/evalc/c-f9bcfd06"
+    }
+  ],
+  "prompts": [
+    {
+      "pid": "r-4f7d16",
+      "label": "head",
+      "group": "system",
+      "reader": 1,
+      "probes": [
+        "system-boundary.S1",
+        "system-boundary.S2",
+        "system-boundary.S3",
+        "system-boundary.S4",
+        "system-boundary.S5",
+        "system-boundary.S6"
+      ]
+    },
+    {
+      "pid": "r-4cc0b1",
+      "label": "head",
+      "group": "system",
+      "reader": 2,
+      "probes": [
+        "system-boundary.S1",
+        "system-boundary.S2",
+        "system-boundary.S3",
+        "system-boundary.S4",
+        "system-boundary.S5",
+        "system-boundary.S6"
+      ]
+    },
+    {
+      "pid": "r-893749",
+      "label": "head",
+      "group": "system",
+      "reader": 3,
+      "probes": [
+        "system-boundary.S1",
+        "system-boundary.S2",
+        "system-boundary.S3",
+        "system-boundary.S4",
+        "system-boundary.S5",
+        "system-boundary.S6"
+      ]
+    }
+  ]
+}
