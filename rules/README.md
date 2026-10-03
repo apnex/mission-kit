@@ -32,15 +32,22 @@ This set covers **the points in a unit of work where how it is done can be verif
 
 | Moment | What the rule holds | Members |
 |---|---|---|
+| **Entering** | what must be recorded or checked before work begins | **none - gap** |
+| **Committing to a design** | what a design must record before it is built | **none - gap** |
+| **Verifying** | what a claim of correctness must carry in the record | **none - gap** |
 | **Deciding what to keep** | what lands, what is cut, and that a cut is recorded with a condition for its return | [`RU1`](RU1-default-reject-honest-yield.md) default-reject and honest yield, [`RU3`](RU3-anti-amnesia-deferral.md) anti-amnesia deferral |
-| **Treating the record** | that what was recorded is not rewritten, and that rewriting history is justified when it happens | [`RU2`](RU2-frozen-history-rule.md) frozen history, [`RU4`](RU4-publishing-rewritten-history.md) publishing rewritten history |
+| **Treating the record** | that what was recorded is not rewritten, that rewriting history is justified when it happens, and what must never enter it | [`RU2`](RU2-frozen-history-rule.md) frozen history, [`RU4`](RU4-publishing-rewritten-history.md) publishing rewritten history |
+| **Handing over** | what a handover must record | **none - gap** |
 
-Every member sits in one row.\
-They came from `methodology/` and `skills/` in Delta-1.
+Every member sits in one row, and four rows hold none.\
+The members came from `methodology/` and `skills/` in Delta-1.
 
 **Gaps tested.**\
-*Entering*, *committing to a design*, *verifying* and *handing over* - four of `M0`'s six moments - hold no rule today; their guidance either produces a result, and is a method, or leaves no trace, and is a practice.\
-A rule for handing over - *a handover record names what is unfinished* - would leave a trace, and none exists.
+The empty rows are gaps, not moments where no rule can exist.\
+Guidance in the corpus that leaves a trace and has no rule entry, by moment: *Verifying:* claims record whether they were measured or inferred - stated in the vision and the standing context, and visible in every claim.\
+*Treating the record:* credentials are never committed - `M0`'s own example of a rule - and commit hygiene, no tool attribution and one concern per commit, which the standing context carries and every commit shows.\
+*Handing over:* a handover record names what is unfinished - a rule that would leave a trace, and none exists.\
+*Entering* and *committing to a design* have no checked candidate yet.
 
 ---
 
