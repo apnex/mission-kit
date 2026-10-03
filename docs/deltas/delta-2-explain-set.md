@@ -1,7 +1,7 @@
 # Delta-2 - the explain set - a set spanning layers
 
 ```yaml
-status:       ratified, revision 4 - stage 1 running
+status:       ratified, revision 4 - stages 1 and 2 done; stage 3, the human check, next
 row:          B38, B42
 intent:       docs/surveys/b38-director-communication-requirements.md
 evidence:     docs/evals/human/runs/moves-2-*, guidance-1-*; docs/evals/human/MATRIX.md
@@ -126,7 +126,8 @@ Each states its evidence: preferred by the director in the package, with the run
 ## 5. Exit criteria
 
 1. Each stage-1 mutant fails the gate, confirmed applied by an agent other than the author, and passes once corrected.
-2. `ST1`'s members are reviewed by a fresh agent against its territory and the director's goal before it lands; any member it finds misplaced is removed or the finding is ruled on by the director.
+2. `ST1`'s members are reviewed by a fresh agent against its territory and the director's goal before it lands; any member it finds misplaced is removed or the finding is ruled on by the director.\
+   *Applied at stage 2:* the review found `W24` director-led and not agent-executable, with no observed difference for it; it was moved to related, and `W23` and `AR4` added as related. Members: `S15`, `M10`.
 3. A fresh agent reviews the placement table against `M0`'s sequence and finds no line misplaced; the script then finds every line of the tested text in its assigned entry, and no text in either entry beyond the allowed additions.
 4. `tools/check-all.sh` passes.
 5. **The human check.**

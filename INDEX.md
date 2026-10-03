@@ -125,6 +125,7 @@ This file described them a second time and the copy had already drifted, naming 
 | [M7](methods/M7-axiom-alignment-audit.md) | Axiom alignment audit - required gate for extensive planning/design | active | You are judging whether a design decision is anchored to a first principle |
 | [M8](methods/M8-artifact-bootstrap.md) | Artifact bootstrap - enter the loop at its inlet, one ratified type at a time | active | You are adopting the artifact document set in a project that does not use it yet |
 | [M9](methods/M9-history-content-scrub.md) | History content scrub | active | You must remove content from history that is already committed |
+| [M10](methods/M10-guided-dialogue.md) | Guided dialogue - lead a human to understanding, then to a recorded decision | active | You need a human with limited context to understand something or decide something |
 
 ---
 
@@ -154,6 +155,7 @@ This file described them a second time and the copy had already drifted, naming 
 | ID | Title | Hydrate when |
 |---|---|---|
 | [ST0](sets/README.md) | Sets - charters of populations that span layers | You are gathering entries from several layers that govern one concern, or looking for everything that applies to one situation |
+| [ST1](sets/ST1-explain.md) | Explain - how an agent leads a human of limited context to understand and decide | You are about to communicate with a human who has limited context, to have them understand or decide something |
 
 ---
 
@@ -161,7 +163,7 @@ This file described them a second time and the copy had already drifted, naming 
 
 | ID | Title | Hydrate when |
 |---|---|---|
-| [S0](style/README.md) | Style - how artifacts are written, and which rules a script can hold | You are about to write or edit a document another agent will read, or you need to know whether a convention can be mechanically enforced |
+| [S0](style/README.md) | Style - how artifacts are written, and which rules a script can hold | You are about to write a document another agent will read or a message a human will read, or you need to know whether a convention can be mechanically enforced |
 | [S1](style/S1-prereqs-explicit-cluster-agnostic.md) | Prerequisites explicit + cluster-agnostic + assumes authenticated tooling | You are authoring a workflow document that drives shared infrastructure |
 | [S2](style/S2-runnable-commands-in-code-blocks.md) | Runnable workflow steps belong in code blocks | You are writing a document that asks the reader to execute a step |
 | [S3](style/S3-producer-consumer-doc-split.md) | Producer / consumer doc split | You are documenting a component that another repository consumes |
@@ -176,6 +178,7 @@ This file described them a second time and the copy had already drifted, naming 
 | [S12](style/S12-code-block-introducer-own-paragraph.md) | Code-block introducer is its own paragraph | You are about to introduce a code block with a sentence |
 | [S13](style/S13-plain-ascii-in-markdown.md) | Plain ASCII in markdown - typeable characters only | You are about to type a character you could not produce on a standard keyboard |
 | [S14](style/S14-hydration-triggers-state-a-condition.md) | Hydration triggers state a condition, not a topic | You are adding a catalogue entry, or reviewing one that has never routed anyone |
+| [S15](style/S15-message-to-a-human.md) | A message to a human - point first, one step, explained names, clear picks | You are about to write a message a human will read without the context you have |
 
 ---
 

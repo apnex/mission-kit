@@ -3,7 +3,7 @@ id: S0
 category: style
 title: Style - how artifacts are written, and which rules a script can hold
 status: active
-hydrate-when: You are about to write or edit a document another agent will read, or you need to know whether a convention can be mechanically enforced
+hydrate-when: You are about to write a document another agent will read or a message a human will read, or you need to know whether a convention can be mechanically enforced
 supersedes: []
 related: [M0, P0, K0, A4]
 ---
@@ -11,7 +11,8 @@ related: [M0, P0, K0, A4]
 # Style - the how-you-say-it layer
 
 Doc, commit, and naming conventions.\
-Rules about the artifact itself, judged by reading the output rather than by watching it being produced.
+Rules about the artifact itself, judged by reading the output rather than by watching it being produced.\
+The artifact is usually a document; [`S15`](S15-message-to-a-human.md) is the first rule for a message to a human, the first medium other than a document.
 
 Style is where [`A4`](../axioms/A4-zero-loss-knowledge.md) becomes operational.\
 If knowledge is an engineering product, its form is part of the product, and a convention that keeps a document diffable, searchable and unambiguous is a functional requirement rather than a preference.
@@ -57,7 +58,7 @@ If the rule can be stated as a predicate over the text, state it that way and wr
 <!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
 | ID | Title | Hydrate when |
 |---|---|---|
-| [S0](README.md) | Style - how artifacts are written, and which rules a script can hold | You are about to write or edit a document another agent will read, or you need to know whether a convention can be mechanically enforced |
+| [S0](README.md) | Style - how artifacts are written, and which rules a script can hold | You are about to write a document another agent will read or a message a human will read, or you need to know whether a convention can be mechanically enforced |
 | [S1](S1-prereqs-explicit-cluster-agnostic.md) | Prerequisites explicit + cluster-agnostic + assumes authenticated tooling | You are authoring a workflow document that drives shared infrastructure |
 | [S2](S2-runnable-commands-in-code-blocks.md) | Runnable workflow steps belong in code blocks | You are writing a document that asks the reader to execute a step |
 | [S3](S3-producer-consumer-doc-split.md) | Producer / consumer doc split | You are documenting a component that another repository consumes |
@@ -72,4 +73,5 @@ If the rule can be stated as a predicate over the text, state it that way and wr
 | [S12](S12-code-block-introducer-own-paragraph.md) | Code-block introducer is its own paragraph | You are about to introduce a code block with a sentence |
 | [S13](S13-plain-ascii-in-markdown.md) | Plain ASCII in markdown - typeable characters only | You are about to type a character you could not produce on a standard keyboard |
 | [S14](S14-hydration-triggers-state-a-condition.md) | Hydration triggers state a condition, not a topic | You are adding a catalogue entry, or reviewing one that has never routed anyone |
+| [S15](S15-message-to-a-human.md) | A message to a human - point first, one step, explained names, clear picks | You are about to write a message a human will read without the context you have |
 <!-- END GENERATED -->

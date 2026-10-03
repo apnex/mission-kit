@@ -424,3 +424,16 @@ tools/sets.test.sh
 **Why it exists.**\
 A set routes a reader to everything governing one situation; a set gathering a superseded or draft entry would route them to guidance not in force.\
 Each refusal was confirmed by an agent other than its author to turn the test red when removed.
+
+---
+
+## check-guidance-placement.sh
+
+Holds `M10` and `S15` to the communication guidance the director tested: every tested line appears, unreworded, in the entry the placement assigns it to.
+
+```sh
+tools/check-guidance-placement.sh
+```
+
+**Why it exists.**\
+The guidance was preferred as written; a later edit that quietly rewords it would carry the evidence's authority without the evidence.

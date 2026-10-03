@@ -64,6 +64,7 @@ run "entry bodies match their category" ./tools/check-entry-body.sh
 run "the board and the backlog agree" node tools/check-board.mjs
 run "applies-to names exactly the declared traits" node tools/check-traits.mjs
 run "superseded entries point at live successors" ./tools/check-moves.sh
+run "the tested communication guidance landed unreworded" ./tools/check-guidance-placement.sh
 run "index is derived, not typed" node tools/generate-index.mjs --check
 run "catalogue graph resolves" node tools/skill-graph.mjs
 run "entries conform to their contract" bash -c 'cd schemas && npm ci --silent >/dev/null 2>&1 || npm install --silent >/dev/null 2>&1; npm test --silent'

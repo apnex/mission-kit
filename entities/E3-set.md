@@ -48,6 +48,8 @@ Without a stated territory a gap is invisible, so an uncharted population can be
 The set is the population; the category is the member's claim about it.\
 They are not interchangeable for the same reason a layer and a category are not: a set may exist that no category names.
 
+> **AMENDED - a set spanning layers is the exception.** A layer's member names its set in `category`, without a lookup. A set whose members live in several layers declares them itself, in `sets/`, and a member reaches it through the ledger. The rule below holds for layers.
+
 **The charter is resolvable from the member, without a lookup.**\
 A knowledge layer's charter is the entry whose id is that set's prefix followed by zero, held at `<directory>/README.md`.\
 So an entry read in isolation names its set in `category`, and the rules that govern its population are one hop away rather than somewhere the reader must already know about.\

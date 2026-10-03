@@ -31,7 +31,7 @@ Without a named procedure the difference is discovered only after it has cost so
 This set covers **the procedures inside a unit of engineering work** - the points where a result is produced, and how it is produced decides whether it can be trusted.
 
 A unit of work has six moments, and they are the denominator for this set and for `rules/` and `practices/`, which use the same names: **entering**, **committing to a design**, **verifying**, **deciding what to keep**, **treating the record**, and **handing over**.\
-Every member is placed by its own trigger, in exactly one moment; procedures sit at four of the six.
+Every member is placed by its own trigger, in exactly one moment; procedures sit at five of the six.
 
 | Moment | The decision | Members |
 |---|---|---|
@@ -39,11 +39,12 @@ Every member is placed by its own trigger, in exactly one moment; procedures sit
 | **Committing to a design** | whether a design is anchored before it is built | [`M7`](M7-axiom-alignment-audit.md) |
 | **Verifying** | what evidence is enough to believe the work is correct | [`M1`](M1-triangulated-review.md), [`M2`](M2-test-drive-docs-by-execution.md) |
 | **Treating the record** | how content that must not remain in history is removed, with proof | [`M9`](M9-history-content-scrub.md) |
+| **Handing over** | how a human of limited context is led to understand the work and decide on it | [`M10`](M10-guided-dialogue.md) |
 
 Delta-1 moved the rules that sat here to [`rules/`](../rules/README.md) and a practice to [`practices/`](../practices/README.md), and brought `M9` in from `skills/`; the entries that moved remain here as superseded entries pointing to their successors.
 
 **Two thin moments, recorded rather than filled.**\
-*Handing over* - passing work in progress to another agent or a later session - has no procedure at all.\
+*Handing over* holds `M10`, which hands understanding and decisions to a human; handing work in progress to another agent or a later session has no procedure at all.\
 Every reader of this corpus starts cold, so handover is the moment that condition bites hardest, and it applies to an agent working alone as much as to many: a lone agent hands over to its own next session.\
 *Committing to a design* holds only `M7`, which is scoped to extensive design and excludes a short local fix; a decision between those two has nothing proportionate.\
 Neither is a defect until something fails there, and both are where to look first when something does.
@@ -135,4 +136,5 @@ A failure mode of one procedure belongs in that procedure.
 | [M7](M7-axiom-alignment-audit.md) | Axiom alignment audit - required gate for extensive planning/design | active | You are judging whether a design decision is anchored to a first principle |
 | [M8](M8-artifact-bootstrap.md) | Artifact bootstrap - enter the loop at its inlet, one ratified type at a time | active | You are adopting the artifact document set in a project that does not use it yet |
 | [M9](M9-history-content-scrub.md) | History content scrub | active | You must remove content from history that is already committed |
+| [M10](M10-guided-dialogue.md) | Guided dialogue - lead a human to understanding, then to a recorded decision | active | You need a human with limited context to understand something or decide something |
 <!-- END GENERATED -->
