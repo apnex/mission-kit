@@ -12,7 +12,7 @@ related: [SC1, SC6, A2, A8, E4]
 
 ## Purpose
 
-This set holds **contracts a machine can check**: each a schema that says what a valid instance of one kind of document looks like, validatable without importing a skill or a project's runtime.\
+This set holds **cross-project contracts a machine can check**: each a schema that says what a valid instance of one kind of document looks like, validatable without importing a skill or a project's runtime.\
 Prose states intent; a contract holds the part of it a machine can hold, so a malformed document is refused rather than read and believed.
 
 ---
@@ -25,12 +25,14 @@ The contracts divide by **whose instances they govern**, and that is the denomin
 |---|---|---|---|
 | **The corpus's own files** | documents this corpus is made of, held to their shape on every change | the gate, `tools/check-all.sh` | `SC1` catalogue frontmatter, `SC2` standing context, `SC3` skill bodies, `SC6` entry bodies |
 | **Process resources** | documents a process writes - a question, the context it is answered against - neutral of any one process | their semantic validators, and the schema suite | `SC4` Question, `SC5` ContextFrame |
+| **Lifecycle documents** | documents a project writes using a type this corpus defines - a board, a backlog, a decision record, a delta, a system architecture | none | **none - gap** |
 
-Every contract sits in one row.\
+Every contract sits in one row, and one row holds none.\
 `SC2` and `SC3` are portable too - a standing context or a skill body can live anywhere - but their instances are documents of the kind this corpus is made of.
 
 **Gaps the territory exposes.**\
 Structured files this corpus relies on that no contract governs, each checked only by hand-written code in a tool or not at all: the evaluation suites and their results, the human-evaluation suites, `catalog.json` itself, and `bundles/*.yaml`.\
+Lifecycle documents have no contract at all: the artifact types carry prose templates, and this corpus's own board and backlog are checked only by code in `tools/check-board.mjs`, so neither here nor in a consuming project can a machine refuse a malformed instance.\
 `SC4` and `SC5` have no consumer yet; they are contracts ahead of their process.
 
 ---
