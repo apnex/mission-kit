@@ -16,7 +16,25 @@ It is the ground truth the explain set's metric is derived from.
 
 ---
 
-## Status
+## Reframed by the director
 
-Restated as a list for the director to confirm, one step at a time.\
-No property is codified until the director confirms it.
+> I'm asking you to respect my limited context and capacity - and to guide me through any communication where you need me to 1) understand something or 2) decide something.
+> Precisely how you should do that is the design exercise, and rather than me prescribing your implementation, that is yours to own.
+> For instance: don't eliminate all narrative if it serves your goal, just do it in the right way.
+> In some sense - I'm asking you to apply the axioms to communication.
+
+---
+
+## Derived, and confirmed
+
+**Limit 1 - understand.**\
+The human ends up seeing what the agent sees on the point - nothing missing that matters, nothing extra - reached one confirmed step at a time, with depth available on request and never pushed (`A5`, `A12`, `A8`, `A4`).\
+Confirmed by the director.
+
+---
+
+## Added by the director
+
+> I like the concept of "choose your own adventure" - in that you could potentially offer 2 or 3 short descriptions of optional but relevant "follow on / deeper dive" concepts, topics or discussion flows from the current one - such that I could pick quickly and easily rather than describing a full sentence to you.
+
+> If it makes sense to do so for this agent->human communication evals - is to actually develop a process or tooling by which you eval the human, rather than an agent, and use that process to guide your design. Develop an example scenario or a system that can gather feedback from me in a structured way that I can just "execute" and this helps you progress the system further.
