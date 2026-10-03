@@ -1,0 +1,45 @@
+{
+  "id": "design-rulings",
+  "mode": "corpus",
+  "group": "design-rulings",
+  "source": "B36 rulings, keyed before the corpus is amended",
+  "preamble": "Each question describes its own system; facts from one question do not carry to another.",
+  "probes": [
+    {
+      "id": "R1",
+      "question": "In a long-running service operated by several independent agents who hand work to each other, module N calls internal functions of module T; no interface is declared between them. Your change to T alters a function N calls. What must your change do about N's undeclared reach?",
+      "key": "Declare an interface for what N reaches and move N onto it - inside the change's scope, because the change alters what N reaches; it is not merely recorded and not optional. Had the change not touched what N reaches, the gap would be recorded.",
+      "rubric": "2 for declaring and honouring the interface as in scope, with the reason that the change alters what N reaches. 1 for declaring it as optional or recommended, or recording it only. 0 otherwise."
+    },
+    {
+      "id": "R2",
+      "question": "In a long-running service operated by several independent agents who hand work to each other, module A reaches into B's internals, and B reaches into C's internals, all undeclared. (1) You change something in A that only A uses. Does your change answer to C's axioms? (2) Instead, your change alters data that A takes from B and B itself takes from C. Does it now answer to C's axioms?",
+      "key": "(1) No: the merge chains only through what the change can reach, and this change reaches nothing of C. (2) Yes, or at least it meets the condition under which the merge chains - the change reaches C through B.",
+      "rubric": "2 for both cases with the reach reason (for case 2, 'it meets the chaining condition' counts). 1 for one case. 0 for 'always chains' or 'never chains'."
+    },
+    {
+      "id": "R3",
+      "question": "In a long-running service operated by several independent agents who hand work to each other, one module writes records it later reads back and acts on; every other module is stateless. You change a stateless module. Is the service stateful, and does A1 bind your change?",
+      "key": "Yes: a system has a trait if it or any part it contains passes the trait's test, so the service is stateful; the change modifies the service, so A1 binds it.",
+      "rubric": "2 for both, with the contained-part rule (citing that a stateful system cannot escape by being described as stateless modules counts). 1 for the right answer without the rule. 0 otherwise."
+    },
+    {
+      "id": "R4",
+      "question": "A stateless command-line tool with no model in the loop is built by a team of several agents and a director, who hand work to one another and keep records of that work which they read back and rely on. Does A1 bind anything here? What?",
+      "key": "Yes: the organisation doing the work is itself a system with traits of its own; it holds state - records it writes, reads back and relies on - so A1 binds how the work is recorded, separately from the stateless tool.",
+      "rubric": "2 for A1 binding the organisation's records, with the organisation-is-a-system reason. 1 for binding without the reason. 0 for 'nothing binds'."
+    },
+    {
+      "id": "R5",
+      "question": "While adding a small feature to component K, you notice K's internals tangle two concerns, and splitting them would give K's three consumers a cleaner interface. K's interface is not versioned. The split is within K's own duty. What do the axioms ask?",
+      "key": "The new feature arrives as its own unit, composed with K, not bolted onto K. The split is encouraged as opportunistic improvement within K's duty - not mandated - including re-cutting K's seams and recomposing for its consumers; it is made as a change of its own, and since it changes K's interface, it answers to each consumer it alters.",
+      "rubric": "2 for the feature as a new unit, the split encouraged not mandated, and the consumers' axioms binding the interface change. 1 for two of the three. 0 for 'never modify K' or 'the split is required'."
+    },
+    {
+      "id": "R6",
+      "question": "Ten consumers depend on library L with a floating range, 'any 2.x', and use only L's declared interface. L publishes 2.4, which changes the behaviour that interface documents. Which consumers does publishing 2.4 alter?",
+      "key": "All ten: a declared range is adoption in advance, so a release within it alters every consumer bound by the range, and answers to their axioms.",
+      "rubric": "2 for all ten with the adoption-in-advance reason. 1 for all ten without it. 0 for none."
+    }
+  ]
+}
