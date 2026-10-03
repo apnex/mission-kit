@@ -10,7 +10,7 @@ revival-trigger: >
   checked or against what, OR a reader needs to weigh two entries differently and
   the corpus offers no basis for doing so
 related-axioms: [A4, A8, A14]
-related: [SC1, M4, MREQ-6]
+related: [SC1, RU2, MREQ-6]
 ---
 
 # MREQ-7 - a provenance and trust vocabulary
@@ -53,7 +53,7 @@ Provenance is the one load-bearing trust property with no mechanism at all, whic
 
 ## On revival
 
-Re-triage rather than resume, per [`M5`](../methodology/M5-anti-amnesia-deferral.md).
+Re-triage rather than resume, per [`RU3`](../rules/RU3-anti-amnesia-deferral.md).
 
 The first trigger is the direct one: a wrong entry found, with no record of when it was last believed correct.\
 The second is subtler and more likely to fire first.\

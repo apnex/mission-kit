@@ -5,7 +5,7 @@ title: Decision record - one ruling, append-only, with what it affects
 status: active
 hydrate-when: You are ruling on something that later work will be built on and must not be re-litigated
 supersedes: []
-related: [AR0, AR1, A4, A13, M4]
+related: [AR0, AR1, A4, A13, RU2]
 ---
 
 # AR4 - decision record

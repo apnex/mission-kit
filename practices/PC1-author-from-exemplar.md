@@ -1,14 +1,14 @@
 ---
-id: M6
-category: methodology
+id: PC1
+category: practice
 title: Author from exemplar - read a peer instance before adding to a collection
 status: active
 hydrate-when: You are about to add an entry to a curated collection
-supersedes: []
+supersedes: [M6]
 related: [M2, S1, A4, A14]
 ---
 
-# M6 - Author from exemplar
+# PC1 - Author from exemplar
 
 ## Rule
 

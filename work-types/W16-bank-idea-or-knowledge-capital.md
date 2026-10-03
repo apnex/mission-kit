@@ -17,7 +17,7 @@ parameters:
     bindingSource: discover-from-substrate
 generationMode: proactive-poolable
 falsifier: no source, no actionability, or duplicate of an existing ledger entry
-compositionHooks: proactive-poolable under constraint 7 - the banked entry carries an embedded revival trigger (M5 anti-amnesia) so a deferred insight self-resurfaces; idle-pool minting is bracketed per the idle-safety rule
+compositionHooks: proactive-poolable under constraint 7 - the banked entry carries an embedded revival trigger (RU3 anti-amnesia) so a deferred insight self-resurfaces; idle-pool minting is bracketed per the idle-safety rule
 ---
 
 # W16 - bank-idea-or-knowledge-capital

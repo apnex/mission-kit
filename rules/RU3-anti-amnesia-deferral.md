@@ -1,14 +1,15 @@
 ---
-id: M5
-category: methodology
+id: RU3
+category: rule
 title: Anti-amnesia deferral - every parked or cut item carries a revival trigger
 status: active
 hydrate-when: You are parking, cutting or marking won't-do on a unit of tracked work
-supersedes: []
-related: [M3, M4]
+supersedes: [M5]
+trace: every deferred, parked or cut item's record carries a revival trigger
+related: [RU1, RU2]
 ---
 
-# M5 - Anti-amnesia deferral
+# RU3 - Anti-amnesia deferral
 
 ## Rule
 

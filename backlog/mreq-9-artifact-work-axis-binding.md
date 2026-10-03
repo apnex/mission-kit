@@ -65,7 +65,7 @@ The artifact layer is the only ID-bearing layer with no stated relation to any o
 
 ## On revival
 
-Re-triage rather than resume, per [`M5`](../methodology/M5-anti-amnesia-deferral.md).
+Re-triage rather than resume, per [`RU3`](../rules/RU3-anti-amnesia-deferral.md).
 
 The first trigger is the cheapest and most likely: an author writing a work-type, reaching for the document it produces, and finding the corpus silent.\
 That moment distinguishes the three readings better than any amount of reasoning about them, because it produces a real case where the edge is either needed or not.

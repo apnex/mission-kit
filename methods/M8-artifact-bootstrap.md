@@ -1,11 +1,11 @@
 ---
 id: M8
-category: methodology
+category: method
 title: Artifact bootstrap - enter the loop at its inlet, one ratified type at a time
 status: active
 hydrate-when: You are adopting the artifact document set in a project that does not use it yet
 supersedes: []
-related: [M6, AR0, AR6, A13]
+related: [PC1, AR0, AR6, A13]
 ---
 
 # M8 - Artifact bootstrap
@@ -32,7 +32,7 @@ This is that first step, and nothing in it is new - every clause below is a rule
    restatement is a second authoritative copy free to drift from the first, and
    these entries change. Where a step here disagrees with the type it describes,
    the type wins and this document is wrong.
-5. **Author from a peer instance, per [`M6`](M6-author-from-exemplar.md).**
+5. **Author from a peer instance, per [`PC1`](../practices/PC1-author-from-exemplar.md).**
    Several artifact types ship no template deliberately, because a skeleton
    produces filled-in headings rather than a document. Take the devices, not the
    table of contents.

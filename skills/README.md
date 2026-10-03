@@ -13,7 +13,7 @@ related: [M0, P0, SC3, A11]
 Operator-level capabilities and reusable tooling.\
 A skill is *invoked*, not followed: it names a procedure with inputs, steps and an output, and it is expected to be executed largely as written.
 
-That is the boundary against [`M0`](../methodology/README.md).\
+That is the boundary against [`M0`](../methods/README.md).\
 A methodology entry governs how you conduct work you are already doing; a skill is a capability you pick up to do a thing you could not otherwise do.
 
 ---
@@ -70,8 +70,8 @@ A skill whose steps a script could take should be that script, per [`A11`](../ax
 | ID | Title | Status | Hydrate when |
 |---|---|---|---|
 | [K0](README.md) | Skills - executable capability, the stub-and-body split, and composition by edge | active | You are adding or invoking an executable capability, or you need to know why a skill is two files rather than one |
-| [K1](K1-history-content-scrub.md) | History content scrub | active | You must remove content from history that is already committed |
-| [K2](K2-publishing-rewritten-history.md) | Publishing rewritten history | active | You are about to force-push rewritten history that others may have consumed |
+| [K1](K1-history-content-scrub.md) | History content scrub | superseded | You have arrived by an old reference to K1, which has moved and is superseded by M9 |
+| [K2](K2-publishing-rewritten-history.md) | Publishing rewritten history | superseded | You have arrived by an old reference to K2, which has moved and is superseded by RU4 |
 | [K3](K3-substrate-audit.md) | substrate-audit - code-grounded substrate audit | active | You are auditing a substrate and must ground every claim in its source |
 | [K4](K4-research-artefacts.md) | research-artefacts - discipline for producing persistent research outputs | active | You are producing a research output that must survive the session that made it |
 | [K5](K5-survey.md) | survey - stakeholder-intent capture before design commitment | active | Direction is still open and you are about to commit to a design |

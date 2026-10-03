@@ -5,7 +5,7 @@ title: Backlog - deferred requests to run a future mission, each carrying a revi
 status: active
 hydrate-when: You are deferring or parking a unit of work and it must not quietly become forgetting
 supersedes: []
-related: [M5, AR5, A14]
+related: [RU3, AR5, A14]
 ---
 
 # Backlog - mission-required notes
@@ -15,7 +15,7 @@ Deferred **requests to run a future mission**, not the missions themselves.
 A `mission-required` (`MREQ-N`) entry captures work that is *known to be needed* but deliberately parked - so it is not silently lost.\
 It is distinct from the tactical `S`/`M`/`P`/`K` entries (which are situated moves you reach for) and from the axioms (standing invariants): an `MREQ` is a *pending unit of work with an armed revival condition*.
 
-Every entry MUST carry a `revival-trigger` (per [M5 - Anti-amnesia deferral](../methodology/M5-anti-amnesia-deferral.md)): the observable condition under which the item should be re-triaged.\
+Every entry MUST carry a `revival-trigger` (per [RU3 - Anti-amnesia deferral](../rules/RU3-anti-amnesia-deferral.md)): the observable condition under which the item should be re-triaged.\
 A deferral without a revival trigger is rejected the same way a malformed record is.
 
 **Revival re-triages, it does not resume.**\
@@ -50,7 +50,7 @@ id: MREQ-N
 category: mission-required
 title: One-line title - noun phrase, no period
 status: active            # see schemas/catalog-entry for the vocabulary
-fulfilment: deferred      # deferred | partial | done | wont-do (all reopenable per M5)
+fulfilment: deferred      # deferred | partial | done | wont-do (all reopenable per RU3)
 revival-trigger: >        # REQUIRED - the observable condition to re-triage
   ...
 related-axioms: []        # axioms the future mission bears on

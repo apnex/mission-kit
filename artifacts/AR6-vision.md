@@ -117,7 +117,7 @@ The last is mechanical and shares its gate with `AR1`, since both are living doc
 
 No template ships with this entry, for the reason given under `Required sections` and following [`AR1`](AR1-system-architecture.md)'s precedent: a fillable skeleton would contradict the rule that arrangement belongs to the programme, and would produce empty headings.
 
-Author from a peer instance instead, per [`M6`](../methodology/M6-author-from-exemplar.md).\
+Author from a peer instance instead, per [`PC1`](../practices/PC1-author-from-exemplar.md).\
 Take the devices, not the table of contents.
 
 **On a spine, later.**\

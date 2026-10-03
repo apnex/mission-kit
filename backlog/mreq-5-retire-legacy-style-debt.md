@@ -10,7 +10,7 @@ revival-trigger: >
   known-red one, OR the remaining debt falls small enough to clear in a diff a
   reviewer can actually read
 related-axioms: [A8, A10]
-related: [S0, M3]
+related: [S0, RU1]
 ---
 
 # MREQ-5 - retiring the legacy style debt
@@ -54,7 +54,7 @@ It is that `--all` is known-red, and a gate that always fails is a gate nobody r
 
 ## On revival
 
-Re-triage rather than resume, per [`M5`](../methodology/M5-anti-amnesia-deferral.md).
+Re-triage rather than resume, per [`RU3`](../rules/RU3-anti-amnesia-deferral.md).
 
 Whoever takes it should convert one rule per commit rather than one sweep, so each diff is reviewable on its own terms and a bad autofix is attributable.\
 `S13` is the bulk and the least risky; `S6` changes line structure and deserves the closest reading.

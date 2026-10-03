@@ -1,6 +1,6 @@
 ---
 id: M2
-category: methodology
+category: method
 title: Test-drive docs by execution - run the steps, or have a cold reader reason with it
 status: active
 hydrate-when: You are about to ship a document someone will act on - an operator workflow, or a charter, axiom or other reasoning document an agent will rely on

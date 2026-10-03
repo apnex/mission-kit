@@ -90,7 +90,7 @@ The mechanism that let both happen is untouched.
 
 ## On revival
 
-Re-triage rather than resume, per [`M5`](../methodology/M5-anti-amnesia-deferral.md).
+Re-triage rather than resume, per [`RU3`](../rules/RU3-anti-amnesia-deferral.md).
 
 This entry closed at the outcome its own last paragraph named as the cheapest honest one - no field at all - and it is worth noting that the option was written down before it was taken, because the analysis reached the answer one pass before the decision did.
 

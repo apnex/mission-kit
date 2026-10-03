@@ -14,7 +14,7 @@ revival-trigger: >
   re-check them against the missions observed by then.
 promoted-slice: M7
 related-axioms: [A3, A4, A11]
-related: [M5]
+related: [RU3]
 ---
 
 # MREQ-1 - Mission required: axiom-application methodology for non-code missions
@@ -22,7 +22,7 @@ related: [M5]
 ## What this is
 
 A **request to run a future mission**, not the mission itself.\
-Captured per M5 (anti-amnesia deferral) so it is not silently lost.\
+Captured per RU3 (anti-amnesia deferral) so it is not silently lost.\
 The mission is: define *how* the axioms are applied to missions whose deliverable is NOT code (design docs, governance decisions, distribution/architecture planning), WITHOUT diluting or damaging their code-mission applicability.
 
 **Partially picked up.**\
@@ -99,7 +99,7 @@ On revival, re-examine each against the missions actually observed by then - do 
 
 ## Suggested scope when picked up (indicative, re-triage)
 
-- Likely output: a small `methodology/` entry (the sequencing rule - finding #3),
+- Likely output: a small `methods/` entry (the sequencing rule - finding #3),
   possibly a second entry or a section for the domain-interpretation layer IF
   enough mission-types have been observed to enumerate domains non-speculatively.
 - The meta-work is itself governed by the axioms: establish reality (which

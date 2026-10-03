@@ -1,11 +1,11 @@
 ---
 id: M1
-category: methodology
+category: method
 title: Triangulated review - minimum 4 independent inputs
 status: active
 hydrate-when: You are reviewing a patch or design that ships to production or upstream
 supersedes: []
-related: [M2, M3]
+related: [M2, RU1]
 ---
 
 # M1 - Triangulated review

@@ -66,7 +66,7 @@ That is a better-informed deferral than the original, and it is what re-triage i
 
 ## On revival
 
-Re-triage rather than resume, per [`M5`](../methodology/M5-anti-amnesia-deferral.md).
+Re-triage rather than resume, per [`RU3`](../rules/RU3-anti-amnesia-deferral.md).
 
 The revival trigger is now narrower, because the count of instances has been shown not to settle the question.\
 It names the two answers that are missing rather than the evidence that is abundant.

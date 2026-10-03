@@ -5,7 +5,7 @@ title: substrate-audit - code-grounded substrate audit
 status: active
 hydrate-when: You are auditing a substrate and must ground every claim in its source
 supersedes: []
-related: [M1, M3]
+related: [M1, RU1]
 ---
 
 # K3 - substrate-audit

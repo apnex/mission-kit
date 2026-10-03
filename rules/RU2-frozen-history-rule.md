@@ -1,14 +1,15 @@
 ---
-id: M4
-category: methodology
+id: RU2
+category: rule
 title: Frozen-history rule
 status: active
 hydrate-when: You are making a policy change that would rewrite artifacts recorded before it
-supersedes: []
-related: [M3, K1]
+supersedes: [M4]
+trace: a design-record artifact's content at authorship is unchanged in history after later policy changes
+related: [RU1, M9]
 ---
 
-# M4 - Frozen-history rule
+# RU2 - Frozen-history rule
 
 ## Rule
 

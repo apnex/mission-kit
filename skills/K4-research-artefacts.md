@@ -5,7 +5,7 @@ title: research-artefacts - discipline for producing persistent research outputs
 status: active
 hydrate-when: You are producing a research output that must survive the session that made it
 supersedes: []
-related: [K3, M1, M3, S6]
+related: [K3, M1, RU1, S6]
 ---
 
 # K4 - research-artefacts

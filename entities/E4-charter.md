@@ -109,7 +109,7 @@ A passage that restates, introduces, or summarises what is already present is un
 They are questions a fresh reader holding only the charter must be able to answer, each with the answer it should reach.\
 They belong here rather than in the procedure that runs them, because what good looks like is specific to each set: a good axiom charter lets a reader find which kind of failure has no protector, and a good methodology charter lets a reader choose the procedure for the moment they are in.\
 No member can state them, so they are a set property.\
-[`M2`](../methodology/M2-test-drive-docs-by-execution.md) holds the procedure that runs them; this concern holds what they ask.
+[`M2`](../methods/M2-test-drive-docs-by-execution.md) holds the procedure that runs them; this concern holds what they ask.
 
 A charter's probes are derived from its population - from what members actually do - and never from the text of its latest revision, or they can only confirm that revision.\
 Weakening a probe is a change to the charter's standard and is as visible in review as weakening a claim.
@@ -149,7 +149,7 @@ Every edit is weighed for cost against quality.\
 Changing settled text has a real cost - it invalidates a reader's memory and puts reasoning at risk - so an edit is made when it advances the document, and a marginal one is not made.\
 An added passage is held to the same test as any growth: it answers a question the charter could not, and improves what a reader can do.
 
-A change that would alter what a reader decides is tested before it is ratified, by the procedure in [`M2`](../methodology/M2-test-drive-docs-by-execution.md), against the charter's probes and with the previous version as the comparison.\
+A change that would alter what a reader decides is tested before it is ratified, by the procedure in [`M2`](../methods/M2-test-drive-docs-by-execution.md), against the charter's probes and with the previous version as the comparison.\
 The author's own reading of old against new is not that test.\
 The previous version stays recoverable at its commit, so the record of what a charter said is never lost where the charter no longer says it.
 

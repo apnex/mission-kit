@@ -1,14 +1,14 @@
 ---
 id: M0
-category: methodology
-title: Methodology - procedures that produce a result of their own
+category: method
+title: Methods - procedures that produce a result of their own
 status: active
 hydrate-when: You are choosing how to run a review, an audit or another procedure, or deciding whether guidance is a procedure, a rule, a practice or style
 supersedes: []
 related: [S0, P0, K0, W0, E4, RU0, PC0]
 ---
 
-# Methodology - the how-you-operate layer
+# Methods - the how-you-operate layer
 
 ## Purpose
 
@@ -38,9 +38,9 @@ Every member is placed by its own trigger, in exactly one moment; procedures sit
 | **Entering** | how to begin in an unfamiliar collection or system | [`M8`](M8-artifact-bootstrap.md) |
 | **Committing to a design** | whether a design is anchored before it is built | [`M7`](M7-axiom-alignment-audit.md) |
 | **Verifying** | what evidence is enough to believe the work is correct | [`M1`](M1-triangulated-review.md), [`M2`](M2-test-drive-docs-by-execution.md) |
-| **Treating the record** | how content that must not remain in history is removed, with proof | `K1` history content scrub - arriving |
+| **Treating the record** | how content that must not remain in history is removed, with proof | [`M9`](M9-history-content-scrub.md) |
 
-`M3`, `M4` and `M5` are rules and move to `rules/`; `M6` is a practice and moves to `practices/`; `K1` is a procedure and moves here from `skills/` - all in Delta-1's stage 3.
+Delta-1 moved the rules that sat here to [`rules/`](../rules/README.md) and a practice to [`practices/`](../practices/README.md), and brought `M9` in from `skills/`; the entries that moved remain here as superseded entries pointing to their successors.
 
 **Two thin moments, recorded rather than filled.**\
 *Handing over* - passing work in progress to another agent or a later session - has no procedure at all.\
@@ -56,7 +56,7 @@ The boundary of this set is the object the rule acts on.
 
 | If the rule governs | It belongs in | Because |
 | --- | --- | --- |
-| steps that produce a result of their own | `methodology/` | the object is the result, and how it is produced |
+| steps that produce a result of their own | `methods/` | the object is the result, and how it is produced |
 | how work is done, leaving a trace a check could test | [`rules/`](../rules/README.md) | it produces nothing, and its record shows whether it was kept |
 | how work is done, leaving no trace | [`practices/`](../practices/README.md) | it produces nothing, and nothing afterwards shows whether it was followed |
 | the artifact you produce | [`style/`](../style/README.md) | the object is the text, and a reader judges it without watching you work |
@@ -102,7 +102,7 @@ Members cite each other and the rules and practices around them.
 They are assembled from other procedures rather than new primitives.
 
 **Rules hold what procedures record.**\
-The discipline about work that does not land - reject it deliberately, record it with a condition for its return, and never rewrite the record - was a cluster here, and is now rules: `M3`, `M5` and `M4` move to `rules/`.\
+The discipline about work that does not land - reject it deliberately, record it with a condition for its return, and never rewrite the record - was a cluster here, and is now rules: [`RU1`](../rules/RU1-default-reject-honest-yield.md), [`RU3`](../rules/RU3-anti-amnesia-deferral.md) and [`RU2`](../rules/RU2-frozen-history-rule.md).\
 A procedure that cuts or defers anything is held by them.
 ---
 
@@ -123,15 +123,16 @@ A failure mode of one procedure belongs in that procedure.
 ## Index
 
 <!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
-| ID | Title | Hydrate when |
-|---|---|---|
-| [M0](README.md) | Methodology - procedures that produce a result of their own | You are choosing how to run a review, an audit or another procedure, or deciding whether guidance is a procedure, a rule, a practice or style |
-| [M1](M1-triangulated-review.md) | Triangulated review - minimum 4 independent inputs | You are reviewing a patch or design that ships to production or upstream |
-| [M2](M2-test-drive-docs-by-execution.md) | Test-drive docs by execution - run the steps, or have a cold reader reason with it | You are about to ship a document someone will act on - an operator workflow, or a charter, axiom or other reasoning document an agent will rely on |
-| [M3](M3-default-reject-honest-yield.md) | Default-reject discipline + honest yield reporting | You are running an improvement sweep, refactor programme or audit cycle |
-| [M4](M4-frozen-history-rule.md) | Frozen-history rule | You are making a policy change that would rewrite artifacts recorded before it |
-| [M5](M5-anti-amnesia-deferral.md) | Anti-amnesia deferral - every parked or cut item carries a revival trigger | You are parking, cutting or marking won't-do on a unit of tracked work |
-| [M6](M6-author-from-exemplar.md) | Author from exemplar - read a peer instance before adding to a collection | You are about to add an entry to a curated collection |
-| [M7](M7-axiom-alignment-audit.md) | Axiom alignment audit - required gate for extensive planning/design | You are judging whether a design decision is anchored to a first principle |
-| [M8](M8-artifact-bootstrap.md) | Artifact bootstrap - enter the loop at its inlet, one ratified type at a time | You are adopting the artifact document set in a project that does not use it yet |
+| ID | Title | Status | Hydrate when |
+|---|---|---|---|
+| [M0](README.md) | Methods - procedures that produce a result of their own | active | You are choosing how to run a review, an audit or another procedure, or deciding whether guidance is a procedure, a rule, a practice or style |
+| [M1](M1-triangulated-review.md) | Triangulated review - minimum 4 independent inputs | active | You are reviewing a patch or design that ships to production or upstream |
+| [M2](M2-test-drive-docs-by-execution.md) | Test-drive docs by execution - run the steps, or have a cold reader reason with it | active | You are about to ship a document someone will act on - an operator workflow, or a charter, axiom or other reasoning document an agent will rely on |
+| [M3](M3-default-reject-honest-yield.md) | Default-reject discipline + honest yield reporting | superseded | You have arrived by an old reference to M3, which has moved and is superseded by RU1 |
+| [M4](M4-frozen-history-rule.md) | Frozen-history rule | superseded | You have arrived by an old reference to M4, which has moved and is superseded by RU2 |
+| [M5](M5-anti-amnesia-deferral.md) | Anti-amnesia deferral - every parked or cut item carries a revival trigger | superseded | You have arrived by an old reference to M5, which has moved and is superseded by RU3 |
+| [M6](M6-author-from-exemplar.md) | Author from exemplar - read a peer instance before adding to a collection | superseded | You have arrived by an old reference to M6, which has moved and is superseded by PC1 |
+| [M7](M7-axiom-alignment-audit.md) | Axiom alignment audit - required gate for extensive planning/design | active | You are judging whether a design decision is anchored to a first principle |
+| [M8](M8-artifact-bootstrap.md) | Artifact bootstrap - enter the loop at its inlet, one ratified type at a time | active | You are adopting the artifact document set in a project that does not use it yet |
+| [M9](M9-history-content-scrub.md) | History content scrub | active | You must remove content from history that is already committed |
 <!-- END GENERATED -->

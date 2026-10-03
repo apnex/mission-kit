@@ -380,3 +380,19 @@ This tool asks the human directly, in the cheapest form a human can answer: two 
 
 `eval-human.test.sh` holds that each pick is recorded as the version it was, the version with the move is not always shown in one position, and stopping early keeps what was answered.\
 Each was mutation-tested.
+
+---
+
+## check-moves.sh
+
+Holds every superseded entry to a live successor, and every live entry away from superseded ids.
+
+```sh
+tools/check-moves.sh
+```
+
+**Why it exists.**\
+Delta-1 moved seven entries to new ids, keeping each old one as a superseded pointer.\
+A move is only safe if each pointer reaches a successor that claims it, and no live guidance still cites the old id - otherwise a reader follows a citation to a dead end.
+
+**Run it when** an entry is superseded or moved; the gate runs it on every change.

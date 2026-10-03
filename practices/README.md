@@ -21,7 +21,7 @@ A practice earns its place only by evidence that following it produces measurabl
 
 ## Placement
 
-Placement is stated once, in [`M0`](../methodology/README.md): axiom, procedure, style, rule, practice, asked in that order.\
+Placement is stated once, in [`M0`](../methods/README.md): axiom, procedure, style, rule, practice, asked in that order.\
 A practice is what is left: it produces nothing of its own, does not govern an artifact's form, and leaves no trace a check could test.
 
 ---
@@ -32,9 +32,9 @@ This set covers **the points in a unit of work where judgement about how to proc
 
 | Moment | What the practice guides | Members |
 |---|---|---|
-| **Entering** | how to begin in an unfamiliar collection | `M6` author from exemplar - arriving |
+| **Entering** | how to begin in an unfamiliar collection | [`PC1`](PC1-author-from-exemplar.md) author from exemplar |
 
-`M6` moves here from `methodology/` in Delta-1's stage 3.
+`PC1` came from `methodology/` in Delta-1.
 
 **Gaps tested.**\
 *Verifying*, *deciding what to keep* and *handing over* hold no practice today.\
@@ -73,4 +73,5 @@ Placement and admission are separate questions: placement says guidance *is* a p
 | ID | Title | Hydrate when |
 |---|---|---|
 | [PC0](README.md) | Practices - how work is done, where nothing afterwards could tell | You are adding or applying guidance on how work is done that leaves no trace a check could test |
+| [PC1](PC1-author-from-exemplar.md) | Author from exemplar - read a peer instance before adding to a collection | You are about to add an entry to a curated collection |
 <!-- END GENERATED -->

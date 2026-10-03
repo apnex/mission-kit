@@ -5,7 +5,7 @@ title: arc-lifecycle - operate staged work as a sovereign FSM-gated state engine
 status: active
 hydrate-when: You are operating staged work whose gates must hold rather than be trusted
 supersedes: []
-related: [M5, M7, P3, P4, P5]
+related: [RU3, M7, P3, P4, P5]
 ---
 
 # K6 - arc-lifecycle
@@ -42,7 +42,7 @@ Four disciplines are load-bearing:
   `staked` (only cashed by a dependent), or `mixed`. Park/cut keys off
   payoff and runs a cascade over payoff-dependents; banked work is left
   live, staked peers are re-justified or co-parked.
-- **Anti-amnesia** (see [M5]): every parked/terminal item carries a
+- **Anti-amnesia** (see [RU3]): every parked/terminal item carries a
   schema-required revival trigger.
 - **Operate the engine, don't wrangle prose.** The store is a machine
   artifact; human/spec views are *generated* from it (see [P3]), so an

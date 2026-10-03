@@ -21,7 +21,7 @@ Separating rules from practices tells a reader which guidance can be verified af
 
 ## Placement
 
-Placement is stated once, in [`M0`](../methodology/README.md), and applies here unchanged: axiom, procedure, style, rule, practice, asked in that order.\
+Placement is stated once, in [`M0`](../methods/README.md), and applies here unchanged: axiom, procedure, style, rule, practice, asked in that order.\
 A rule is what reaches the fourth question: it produces nothing of its own, does not govern an artifact's form, and leaves a trace in the record a check could test.
 
 ---
@@ -32,11 +32,11 @@ This set covers **the points in a unit of work where how it is done can be verif
 
 | Moment | What the rule holds | Members |
 |---|---|---|
-| **Deciding what to keep** | what lands, what is cut, and that a cut is recorded with a condition for its return | `M3` default-reject and honest yield, `M5` anti-amnesia deferral - arriving |
-| **Treating the record** | that what was recorded is not rewritten, and that rewriting history is justified when it happens | `M4` frozen history, `K2` publishing rewritten history - arriving |
+| **Deciding what to keep** | what lands, what is cut, and that a cut is recorded with a condition for its return | [`RU1`](RU1-default-reject-honest-yield.md) default-reject and honest yield, [`RU3`](RU3-anti-amnesia-deferral.md) anti-amnesia deferral |
+| **Treating the record** | that what was recorded is not rewritten, and that rewriting history is justified when it happens | [`RU2`](RU2-frozen-history-rule.md) frozen history, [`RU4`](RU4-publishing-rewritten-history.md) publishing rewritten history |
 
-Every arriving member sits in one row.\
-The members move here from `methodology/` and `skills/` in Delta-1's stage 3.
+Every member sits in one row.\
+They came from `methodology/` and `skills/` in Delta-1.
 
 **Gaps tested.**\
 *Entering*, *committing to a design*, *verifying* and *handing over* - four of `M0`'s six moments - hold no rule today; their guidance either produces a result, and is a method, or leaves no trace, and is a practice.\
@@ -56,7 +56,7 @@ It names an enforcer in `enforced-by` when a tool checks it, and `tools/check-en
 - **Against style:** style governs the artifact's form; a rule governs what the work does or records. Both may be checked by a tool.
 - **Against practices:** both govern conduct; a practice leaves nothing to check.
 - **Against methods:** a method produces a result; a rule produces nothing and constrains how other work is done.
-- **With methods:** a method's steps may be held by rules - `M5` holds what any procedure records when it defers.
+- **With methods:** a method's steps may be held by rules - `RU3` holds what any procedure records when it defers.
 
 ---
 
@@ -75,4 +75,8 @@ It names an enforcer in `enforced-by` when a tool checks it, and `tools/check-en
 | ID | Title | Hydrate when |
 |---|---|---|
 | [RU0](README.md) | Rules - how work is done, where a check could tell whether it was | You are adding or applying guidance on how work is done that leaves a trace a check could test |
+| [RU1](RU1-default-reject-honest-yield.md) | Default-reject discipline + honest yield reporting | You are running an improvement sweep, refactor programme or audit cycle |
+| [RU2](RU2-frozen-history-rule.md) | Frozen-history rule | You are making a policy change that would rewrite artifacts recorded before it |
+| [RU3](RU3-anti-amnesia-deferral.md) | Anti-amnesia deferral - every parked or cut item carries a revival trigger | You are parking, cutting or marking won't-do on a unit of tracked work |
+| [RU4](RU4-publishing-rewritten-history.md) | Publishing rewritten history | You are about to force-push rewritten history that others may have consumed |
 <!-- END GENERATED -->

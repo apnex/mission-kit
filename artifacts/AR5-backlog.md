@@ -5,7 +5,7 @@ title: Backlog - the durable record of what was not done, each row with a trigge
 status: active
 hydrate-when: You are deferring, cutting or parking work and it must not become forgetting
 supersedes: []
-related: [AR0, AR3, M5, A14]
+related: [AR0, AR3, RU3, A14]
 ---
 
 # AR5 - backlog
@@ -19,7 +19,7 @@ The plan is reorderable and items may be dropped from it.\
 The record is append-only and nothing leaves it silently.\
 Keeping them as one document is the common failure: a plan that must also serve as the record cannot be reordered freely, and a record that must also serve as the plan accumulates until it is unreadable.
 
-Its governing rule is [`M5`](../methodology/M5-anti-amnesia-deferral.md): every parked or cut row carries a **revival trigger** naming an observable condition.\
+Its governing rule is [`RU3`](../rules/RU3-anti-amnesia-deferral.md): every parked or cut row carries a **revival trigger** naming an observable condition.\
 "Later" is not a trigger.
 
 **This type goes missing more readily than the others, and that is worth stating as a property.**\

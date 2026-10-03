@@ -1,10 +1,10 @@
 ---
 id: M7
-category: methodology
+category: method
 title: Axiom alignment audit - required gate for extensive planning/design
 status: active
 hydrate-when: You are judging whether a design decision is anchored to a first principle
-related: [M1, M5, M6, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, MREQ-1]
+related: [M1, RU3, PC1, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, MREQ-1]
 ---
 
 # M7 - Axiom alignment audit

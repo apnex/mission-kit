@@ -79,7 +79,7 @@ Scope and binding are different sets: a component the change newly depends on th
 Inside the scope, build at the limit or nearer to it than what was there: new work never repeats a gap the axiom names, and work that touches a gap closes as much of it as the touch allows.\
 **Beyond the scope, improvement is considered, never mandated.**\
 A gap or friction in a component [adjacent](../entities/E6-component.md) to what the change touches - one it stands on, or one that stands on it, through a declared interface - may be closed opportunistically when compounding learning supports it ([`A14`](A14-compounding-learning.md), *tangent discipline*): the payback is near, strongest where the work stands on the component; the yield is captured; and the cost does not significantly distract from the change's own goal.\
-A gap that fails that test - not adjacent, too little payback, or large enough to displace the goal - is recorded with its evidence and a revival trigger ([`M5`](../methodology/M5-anti-amnesia-deferral.md)) rather than closed, because larger choices of what work happens next are the director's ([`R4`](../roles/R4-director.md), [`AR3`](../artifacts/AR3-board.md)).\
+A gap that fails that test - not adjacent, too little payback, or large enough to displace the goal - is recorded with its evidence and a revival trigger ([`RU3`](../rules/RU3-anti-amnesia-deferral.md)) rather than closed, because larger choices of what work happens next are the director's ([`R4`](../roles/R4-director.md), [`AR3`](../artifacts/AR3-board.md)).\
 An opportunistic improvement is made as a change of its own, so its yield is captured and its cost is visible, and like any change it answers to every system it alters - if it changes a component's interface, its consumers are altered too, or for a versioned interface those that adopt it ([`E5`](../entities/E5-system.md)).\
 Either way the gap is recorded.\
 Passing it silently is what the axiom forbids; chasing the limit far from the change's goal is the *tangent sprawl* `A14` names.
@@ -153,7 +153,7 @@ Conjunctive means every axiom in force binds every change at once: a change that
 Composition therefore runs through the tags, not through a hierarchy.\
 There is deliberately **no apex axiom**.\
 A single umbrella under which the others are sub-conditions reads as a synthesis and behaves as a duplicate: it restates its constituents, so it can never fail independently of them, and an axiom that cannot fail on its own is not one.\
-The set's coherence is a property to be checked rather than an entry to be written, and [`M7`](../methodology/M7-axiom-alignment-audit.md) is where that check lives.
+The set's coherence is a property to be checked rather than an entry to be written, and [`M7`](../methods/M7-axiom-alignment-audit.md) is where that check lives.
 
 **Weight is uneven, and the unevenness is information.**\
 Measured across the corpus, the most-cited axiom is referenced from about six times as many files as the least.

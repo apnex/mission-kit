@@ -58,7 +58,7 @@ It solves the format question, which was never the open one.
 
 ## On revival
 
-Re-triage rather than resume, per [`M5`](../methodology/M5-anti-amnesia-deferral.md).
+Re-triage rather than resume, per [`RU3`](../rules/RU3-anti-amnesia-deferral.md).
 
 The two triggers are deliberately different in kind.\
 The size trigger is a leading indicator and fires while there is still time to design.\

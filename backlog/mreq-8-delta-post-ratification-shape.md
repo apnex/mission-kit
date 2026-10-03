@@ -56,7 +56,7 @@ It removes a claim the corpus could not support without adding one it cannot sup
 
 ## On revival
 
-Re-triage rather than resume, per [`M5`](../methodology/M5-anti-amnesia-deferral.md).
+Re-triage rather than resume, per [`RU3`](../rules/RU3-anti-amnesia-deferral.md).
 
 The first trigger is the one that settles the section question, because a second independent corpus is the only thing that can distinguish drift from evolution from a genuine second shape.\
 A further instance from the same programme cannot, however many there are - which is the lesson `MREQ-3` records under `AR0`'s `Coverage`, met here a second time.

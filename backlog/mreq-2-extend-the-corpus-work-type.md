@@ -43,6 +43,6 @@ It does not make the work claimable, which is the whole of what remains.
 
 ## On revival
 
-Re-triage rather than resume, per [`M5`](../methodology/M5-anti-amnesia-deferral.md).\
+Re-triage rather than resume, per [`RU3`](../rules/RU3-anti-amnesia-deferral.md).\
 By the time a third layer moves there will be three instances to generalise from, and the substrate question will have been ruled on either way.\
 Both are inputs this entry does not have.

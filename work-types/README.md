@@ -118,7 +118,7 @@ falsifier:            <the observation that turns the node FAIL, not prose>
 compositionHooks:     <dependsOn / completionDependsOn patterns>
 ```
 
-Body sections (M6 exemplar): `## Definition`, `## Evidence & closeability` (reference this file's constraint set - do not restate it), `## Generation` (mode + how idea-425/451/403 instantiate it), `## Axiom alignment` (load-bearing citations only - no decoration, per M7 / the per-item axiom-test gate), `## Origin`.
+Body sections (PC1 exemplar): `## Definition`, `## Evidence & closeability` (reference this file's constraint set - do not restate it), `## Generation` (mode + how idea-425/451/403 instantiate it), `## Axiom alignment` (load-bearing citations only - no decoration, per M7 / the per-item axiom-test gate), `## Origin`.
 
 ---
 

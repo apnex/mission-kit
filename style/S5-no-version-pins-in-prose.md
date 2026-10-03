@@ -5,7 +5,7 @@ title: No version pins in user-facing prose
 status: active
 hydrate-when: You are about to name a version, date or other point-in-time identifier in prose
 supersedes: []
-related: [S6, S7, S8, S9, M4]
+related: [S6, S7, S8, S9, RU2]
 ---
 
 # S5 - No version pins in user-facing prose
@@ -16,7 +16,7 @@ Don't hardcode specific versions, tag names, image SHAs, dates, or other point-i
 Use generic placeholders (`<your-tag>`, `<aorus.N>`, `<current>`) or reference a single source-of-truth file (a `VERSION` file, the `image:` tag in a `docker-compose.yml`, a renderable manifest).
 
 Exceptions for prose that is intrinsically about a specific version: release notes, migration narratives at the moment they're written, audit trails.\
-Those are point-in-time artifacts by design - and per [[M4]], they're frozen at authorship and not kept in the active-docs surface.
+Those are point-in-time artifacts by design - and per [[RU2]], they're frozen at authorship and not kept in the active-docs surface.
 
 ---
 

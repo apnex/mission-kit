@@ -59,7 +59,7 @@ Add the next as `2.` with its justification, rather than widening the test.
 
 Three cases are outside the rule rather than exceptions to it:
 
-- **The character is the subject.** The conversion table below, a rule that inventories emoji to strip, a test fixture, a doc about Unicode handling. Quoting a character is not using it. [[K1]] must name the glyphs it removes.
+- **The character is the subject.** The conversion table below, a rule that inventories emoji to strip, a test fixture, a doc about Unicode handling. Quoting a character is not using it. [[M9]] must name the glyphs it removes.
 - **It belongs to a proper noun.** A person's name, a place, a product spelled that way.
 - **The content is reproduced verbatim.** A third-party error message, an upstream file quoted as-is, a captured transcript. Altering it would misquote it.
 

@@ -59,7 +59,7 @@ The denominator is identified and not yet computable, which is a gap in the evid
 ## Use before build
 
 The registry is a catalogue, not a discipline.\
-The obligation to search it, to weigh closeness of fit, and to adjust or split an existing component rather than author a new one is a procedure, and procedures live in [`methodology/`](../methodology/README.md).\
+The obligation to search it, to weigh closeness of fit, and to adjust or split an existing component rather than author a new one is a procedure, and procedures live in [`methods/`](../methods/README.md).\
 Folding it in here would give this layer two concerns.
 
 What the layer does guarantee is that the search is possible: every component states its duty, its contract and its fit criteria, so closeness of fit can be judged without reading the implementation.

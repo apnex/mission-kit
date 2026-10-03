@@ -111,19 +111,20 @@ This file described them a second time and the copy had already drifted, naming 
 
 ---
 
-## Methodology
+## Methods
 
-| ID | Title | Hydrate when |
-|---|---|---|
-| [M0](methodology/README.md) | Methodology - procedures that produce a result of their own | You are choosing how to run a review, an audit or another procedure, or deciding whether guidance is a procedure, a rule, a practice or style |
-| [M1](methodology/M1-triangulated-review.md) | Triangulated review - minimum 4 independent inputs | You are reviewing a patch or design that ships to production or upstream |
-| [M2](methodology/M2-test-drive-docs-by-execution.md) | Test-drive docs by execution - run the steps, or have a cold reader reason with it | You are about to ship a document someone will act on - an operator workflow, or a charter, axiom or other reasoning document an agent will rely on |
-| [M3](methodology/M3-default-reject-honest-yield.md) | Default-reject discipline + honest yield reporting | You are running an improvement sweep, refactor programme or audit cycle |
-| [M4](methodology/M4-frozen-history-rule.md) | Frozen-history rule | You are making a policy change that would rewrite artifacts recorded before it |
-| [M5](methodology/M5-anti-amnesia-deferral.md) | Anti-amnesia deferral - every parked or cut item carries a revival trigger | You are parking, cutting or marking won't-do on a unit of tracked work |
-| [M6](methodology/M6-author-from-exemplar.md) | Author from exemplar - read a peer instance before adding to a collection | You are about to add an entry to a curated collection |
-| [M7](methodology/M7-axiom-alignment-audit.md) | Axiom alignment audit - required gate for extensive planning/design | You are judging whether a design decision is anchored to a first principle |
-| [M8](methodology/M8-artifact-bootstrap.md) | Artifact bootstrap - enter the loop at its inlet, one ratified type at a time | You are adopting the artifact document set in a project that does not use it yet |
+| ID | Title | Status | Hydrate when |
+|---|---|---|---|
+| [M0](methods/README.md) | Methods - procedures that produce a result of their own | active | You are choosing how to run a review, an audit or another procedure, or deciding whether guidance is a procedure, a rule, a practice or style |
+| [M1](methods/M1-triangulated-review.md) | Triangulated review - minimum 4 independent inputs | active | You are reviewing a patch or design that ships to production or upstream |
+| [M2](methods/M2-test-drive-docs-by-execution.md) | Test-drive docs by execution - run the steps, or have a cold reader reason with it | active | You are about to ship a document someone will act on - an operator workflow, or a charter, axiom or other reasoning document an agent will rely on |
+| [M3](methods/M3-default-reject-honest-yield.md) | Default-reject discipline + honest yield reporting | superseded | You have arrived by an old reference to M3, which has moved and is superseded by RU1 |
+| [M4](methods/M4-frozen-history-rule.md) | Frozen-history rule | superseded | You have arrived by an old reference to M4, which has moved and is superseded by RU2 |
+| [M5](methods/M5-anti-amnesia-deferral.md) | Anti-amnesia deferral - every parked or cut item carries a revival trigger | superseded | You have arrived by an old reference to M5, which has moved and is superseded by RU3 |
+| [M6](methods/M6-author-from-exemplar.md) | Author from exemplar - read a peer instance before adding to a collection | superseded | You have arrived by an old reference to M6, which has moved and is superseded by PC1 |
+| [M7](methods/M7-axiom-alignment-audit.md) | Axiom alignment audit - required gate for extensive planning/design | active | You are judging whether a design decision is anchored to a first principle |
+| [M8](methods/M8-artifact-bootstrap.md) | Artifact bootstrap - enter the loop at its inlet, one ratified type at a time | active | You are adopting the artifact document set in a project that does not use it yet |
+| [M9](methods/M9-history-content-scrub.md) | History content scrub | active | You must remove content from history that is already committed |
 
 ---
 
@@ -132,6 +133,10 @@ This file described them a second time and the copy had already drifted, naming 
 | ID | Title | Hydrate when |
 |---|---|---|
 | [RU0](rules/README.md) | Rules - how work is done, where a check could tell whether it was | You are adding or applying guidance on how work is done that leaves a trace a check could test |
+| [RU1](rules/RU1-default-reject-honest-yield.md) | Default-reject discipline + honest yield reporting | You are running an improvement sweep, refactor programme or audit cycle |
+| [RU2](rules/RU2-frozen-history-rule.md) | Frozen-history rule | You are making a policy change that would rewrite artifacts recorded before it |
+| [RU3](rules/RU3-anti-amnesia-deferral.md) | Anti-amnesia deferral - every parked or cut item carries a revival trigger | You are parking, cutting or marking won't-do on a unit of tracked work |
+| [RU4](rules/RU4-publishing-rewritten-history.md) | Publishing rewritten history | You are about to force-push rewritten history that others may have consumed |
 
 ---
 
@@ -140,6 +145,7 @@ This file described them a second time and the copy had already drifted, naming 
 | ID | Title | Hydrate when |
 |---|---|---|
 | [PC0](practices/README.md) | Practices - how work is done, where nothing afterwards could tell | You are adding or applying guidance on how work is done that leaves no trace a check could test |
+| [PC1](practices/PC1-author-from-exemplar.md) | Author from exemplar - read a peer instance before adding to a collection | You are about to add an entry to a curated collection |
 
 ---
 
@@ -183,8 +189,8 @@ This file described them a second time and the copy had already drifted, naming 
 | ID | Title | Status | Hydrate when |
 |---|---|---|---|
 | [K0](skills/README.md) | Skills - executable capability, the stub-and-body split, and composition by edge | active | You are adding or invoking an executable capability, or you need to know why a skill is two files rather than one |
-| [K1](skills/K1-history-content-scrub.md) | History content scrub | active | You must remove content from history that is already committed |
-| [K2](skills/K2-publishing-rewritten-history.md) | Publishing rewritten history | active | You are about to force-push rewritten history that others may have consumed |
+| [K1](skills/K1-history-content-scrub.md) | History content scrub | superseded | You have arrived by an old reference to K1, which has moved and is superseded by M9 |
+| [K2](skills/K2-publishing-rewritten-history.md) | Publishing rewritten history | superseded | You have arrived by an old reference to K2, which has moved and is superseded by RU4 |
 | [K3](skills/K3-substrate-audit.md) | substrate-audit - code-grounded substrate audit | active | You are auditing a substrate and must ground every claim in its source |
 | [K4](skills/K4-research-artefacts.md) | research-artefacts - discipline for producing persistent research outputs | active | You are producing a research output that must survive the session that made it |
 | [K5](skills/K5-survey.md) | survey - stakeholder-intent capture before design commitment | active | Direction is still open and you are about to commit to a design |

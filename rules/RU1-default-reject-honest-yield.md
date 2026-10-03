@@ -1,14 +1,15 @@
 ---
-id: M3
-category: methodology
+id: RU1
+category: rule
 title: Default-reject discipline + honest yield reporting
 status: active
 hydrate-when: You are running an improvement sweep, refactor programme or audit cycle
-supersedes: []
-related: [M1, M4]
+supersedes: [M3]
+trace: every summary of a triage, sweep or review leads with the delivered outcome - candidates considered, landed, and verified against asserted - before any narrative
+related: [M1, RU2]
 ---
 
-# M3 - Default-reject discipline + honest yield reporting
+# RU1 - Default-reject discipline + honest yield reporting
 
 ## Rule
 

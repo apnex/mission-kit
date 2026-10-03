@@ -1,6 +1,6 @@
 ---
 id: X0
-category: style          # style | methodology | pattern | skill
+category: style          # style | method | rule | practice | pattern | skill
 title: One-line title - imperative voice, no period
 status: active           # see schemas/catalog-entry for the vocabulary
 hydrate-when: You are about to <do the thing this entry governs>  # REQUIRED, a condition not a topic; see S14

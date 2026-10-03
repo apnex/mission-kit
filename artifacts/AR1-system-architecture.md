@@ -105,5 +105,5 @@ A drift gate that walks ratified decisions and checks absorption is what makes "
 
 No template ships with this entry, deliberately - a fillable skeleton would defeat the "organised as the system is organised" rule and produce empty headings.
 
-Author from a peer instance instead, per [`M6`](../methodology/M6-author-from-exemplar.md).\
+Author from a peer instance instead, per [`PC1`](../practices/PC1-author-from-exemplar.md).\
 Take the devices, not the table of contents.
