@@ -43,4 +43,3 @@ Each time the human has to ask what something means, or which option continues t
 | 2026-10-03 | what "Return" means | a Return pick names where it goes |
 | 2026-10-03 | is the only way to finish to keep continuing | each branch states its finish line |
 | 2026-10-03 | are you saying the changes have no effect | label what a table compared; no derived headline |
-| 2026-10-03 | what "Return" means, after the prefixes were introduced | a Return pick names where it goes |
