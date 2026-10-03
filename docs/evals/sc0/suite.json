@@ -1,0 +1,50 @@
+{
+  "id": "sc0",
+  "mode": "corpus",
+  "group": "sc0",
+  "source": "SC0 conversion to E4; derived from the population SC1-SC6, catalog.json and the current charter. Q1-Q3 are controls the current charter answers.",
+  "probes": [
+    {
+      "id": "Q1",
+      "question": "A resource in this corpus's schema convention needs to record observed runtime state - say, the last time it was checked. Where in the resource does that go?",
+      "key": "Not in spec, which holds only configuration that affects meaning or behaviour. A kind gains status only when a real reconciler needs observed state; until then the observation does not belong in the resource.",
+      "rubric": "2 for 'not in spec' and the status-only-with-a-reconciler rule. 1 for one of the two. 0 otherwise."
+    },
+    {
+      "id": "Q2",
+      "question": "A survey needs each question to carry its round number. Should the round be added as a field of the Question resource?",
+      "key": "No. Question is process-neutral; a composing process wraps a complete Question resource and keeps its own fields - round, ordinal - beside it, never injecting them.",
+      "rubric": "2 for no with the wrapper composition. 1 for no without it. 0 for yes."
+    },
+    {
+      "id": "Q3",
+      "question": "In what order must a consumer validate a resource, and why?",
+      "key": "Structural validation by JSON Schema first, then the semantic validator. The semantic validator checks invariants JSON Schema cannot express, and assumes input that has already passed the structural check.",
+      "rubric": "2 for the order with either reason - two stages because some invariants are beyond JSON Schema, or semantic checks assume structurally valid input. 1 for the order alone. 0 otherwise."
+    },
+    {
+      "id": "Q4",
+      "question": "Contracts in this set are not all of one kind. Name the kinds, say what separates them, and place each existing contract.",
+      "key": "Two kinds, separated by whose instances they govern: contracts for the corpus's own files - SC1 catalogue frontmatter, SC2 standing context, SC3 skill bodies, SC6 entry bodies - checked by the corpus's gate; and resource contracts for documents a process writes - SC4 Question, SC5 ContextFrame - the two kinds catalog.json lists as resources with semantic validators, with no consumer yet. SC2 and SC3 are portable as well; an answer saying so and still placing them with the corpus's own files is correct.",
+      "rubric": "2 for both kinds, a discriminator that places them correctly (whose instances, or corpus files against process resources), and each contract placed. 1 for the kinds with most placed. 0 otherwise."
+    },
+    {
+      "id": "Q5",
+      "question": "A new layer is added and its entries need two frontmatter fields no other layer uses. Is that a new schema, or a change to an existing one? Why?",
+      "key": "A change to SC1, catalog-entry: one contract covers all catalogue frontmatter, with per-category conditionals; a second frontmatter schema would be two contracts for one concern, free to drift.",
+      "rubric": "2 for extending SC1 with the one-contract-per-concern reason. 1 for SC1 without the reason. 0 for a new schema."
+    },
+    {
+      "id": "Q6",
+      "question": "Is there any structured file this corpus relies on that no contract in this set governs? Name one if so.",
+      "key": "Yes. Examples: the evaluation suites' suite.json and RESULT.json, the human-evaluation suites, schemas/catalog.json itself, and bundles/*.yaml - each checked only by hand-written code in a tool, or not at all.",
+      "rubric": "2 for naming one real ungoverned structured file with the reason it is ungoverned. 1 for 'yes' without a correct example. 0 for 'no'."
+    },
+    {
+      "id": "Q7",
+      "question": "What would an unhealthy population of contracts look like?",
+      "key": "Any two population faults, e.g.: a contract no check validates against; two contracts for one concern; two contracts that must agree drifting apart (SC6's categories against SC1's category list); a resource kind missing from catalog.json (EntryBody today); a contract with no consumer (SC4 and SC5 today); a structured file the corpus relies on that no contract governs.",
+      "rubric": "2 for two population faults. 1 for one. 0 for none, or faults of a single schema only."
+    }
+  ]
+}
