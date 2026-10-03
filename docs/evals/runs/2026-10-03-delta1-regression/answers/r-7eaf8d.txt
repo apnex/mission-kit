@@ -1,0 +1,13 @@
+### component-a3.C5
+The 'utils' module is a named fault: "God-Object Accretion - "utils", "helpers", "managers" accumulate unrelated concerns."
+For a change that does not reach the ideal, the Mandate says "a change short of it adds none of them, and removes what it touches", so your feature must not be added to 'utils'.
+Under the "Law of One" ("a module does exactly one thing"), the feature goes in a unit that owns only its concern, and "Composable by Default" says "a new capability is assembled by composing existing units, never by modifying them."
+Under "Earned Exposure", the new unit "earns an internal boundary by being one concern". It should not be promoted to "a stable, depended-upon surface" unless "a real consumer outside its origin needs it".
+If your change touches part of 'utils', "removes what it touches" asks you to take that part's accretion out as well.
+NOT SETTLED: how much "removes what it touches" covers (only the lines or concern you touch, or the whole module) and what "touches" means (editing it, or only calling it). The text does not say whether you must split 'utils' as a whole.
+GUESS: this means extracting only the concern your change actually edits or depends on, not refactoring the whole of 'utils'.
+
+### OBSERVATIONS
+- Possible inconsistency: the Mandate's "removes what it touches" requires changes to accreted code, but "Composable by Default" says new capability arrives "never by modifying" existing units. The file does not say which wins when a feature touches 'utils'.
+- "touches" is not defined (edits, calls, or depends on).
+- The file defers how an axiom binds a change to A0 ("How an axiom binds a change is stated in [`A0`](README.md)"), and Bypass as Signal also cites `A0`. That file was out of scope, so the binding rule could not be checked.

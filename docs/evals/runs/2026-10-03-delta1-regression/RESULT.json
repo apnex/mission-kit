@@ -1,0 +1,693 @@
+{
+  "created": "2026-10-03T08:35:34.543Z",
+  "seed": "a2e3e4d4a0808d23",
+  "corpora": [
+    {
+      "label": "head",
+      "path": "/tmp/opencode/evalc/c-8476dbeb"
+    }
+  ],
+  "readers": 3,
+  "probes": [
+    "composition.P1",
+    "composition.P2",
+    "composition.P3",
+    "composition.P4",
+    "composition.P5",
+    "composition.P6",
+    "composition.P7",
+    "system-boundary.S1",
+    "system-boundary.S2",
+    "system-boundary.S3",
+    "system-boundary.S4",
+    "system-boundary.S5",
+    "system-boundary.S6",
+    "axiom-direction.Q1",
+    "axiom-direction.Q2",
+    "component.C1",
+    "component.C2",
+    "component.C3",
+    "component.C4",
+    "component-a3.C5",
+    "boundary-bypass.B1",
+    "boundary-bypass.B2",
+    "boundary-bypass.B3",
+    "boundary-bypass.B4"
+  ],
+  "max": 48,
+  "mean": {
+    "composition.P1": {
+      "head": 2
+    },
+    "composition.P2": {
+      "head": 2
+    },
+    "composition.P3": {
+      "head": 2
+    },
+    "composition.P4": {
+      "head": 2
+    },
+    "composition.P5": {
+      "head": 2
+    },
+    "composition.P6": {
+      "head": 2
+    },
+    "composition.P7": {
+      "head": 2
+    },
+    "system-boundary.S1": {
+      "head": 2
+    },
+    "system-boundary.S2": {
+      "head": 1
+    },
+    "system-boundary.S3": {
+      "head": 2
+    },
+    "system-boundary.S4": {
+      "head": 1.67
+    },
+    "system-boundary.S5": {
+      "head": 2
+    },
+    "system-boundary.S6": {
+      "head": 2
+    },
+    "axiom-direction.Q1": {
+      "head": 2
+    },
+    "axiom-direction.Q2": {
+      "head": 2
+    },
+    "component.C1": {
+      "head": 2
+    },
+    "component.C2": {
+      "head": 2
+    },
+    "component.C3": {
+      "head": 2
+    },
+    "component.C4": {
+      "head": 2
+    },
+    "component-a3.C5": {
+      "head": 1.33
+    },
+    "boundary-bypass.B1": {
+      "head": 2
+    },
+    "boundary-bypass.B2": {
+      "head": 2
+    },
+    "boundary-bypass.B3": {
+      "head": 1.67
+    },
+    "boundary-bypass.B4": {
+      "head": 2
+    }
+  },
+  "total": {
+    "head": 45.67
+  },
+  "rows": [
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-976d80",
+      "probe": "composition.P1",
+      "score": 2,
+      "reason": "Exact set via trait tests and the floor, with A2 properly conditional on the declarative trait."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-976d80",
+      "probe": "composition.P2",
+      "score": 2,
+      "reason": "Correctly gives the floor only and correctly says A1 does not bind because applies-to alone decides and the domain citation only states what A1 demands where it binds."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-976d80",
+      "probe": "composition.P3",
+      "score": 2,
+      "reason": "Names W7, D7 and R2 correctly, and treats W11/W8 only as optional extras."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-976d80",
+      "probe": "composition.P4",
+      "score": 2,
+      "reason": "Exact set W8-W11 derived from work-type eligibility, explicitly not relying on D7's list."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-976d80",
+      "probe": "composition.P5",
+      "score": 2,
+      "reason": "Says no, prescribes unbiased self-checking that does not seal the gate, and defers to a second agent or director ratification without the director becoming a verifier."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-976d80",
+      "probe": "composition.P6",
+      "score": 2,
+      "reason": "Includes D3, a work-type route (W0, W1/W2), and a binding route (A0, T0, T1)."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-976d80",
+      "probe": "composition.P7",
+      "score": 2,
+      "reason": "Both grounded: work-type governs per D0 and W0 constraint 3, and applies-to governs per A0's only-field rule, which it correctly treats as settled by inference."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-7fdcfd",
+      "probe": "composition.P1",
+      "score": 2,
+      "reason": "Exact set derived by trait union plus the any-system floor, with A2 conditional on T2 and T4 correctly noted as adding nothing."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-7fdcfd",
+      "probe": "composition.P2",
+      "score": 2,
+      "reason": "Both parts correct: floor-only set, and A1 does not constrain since applies-to decides binding and the domain only says what it demands on that surface."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-7fdcfd",
+      "probe": "composition.P3",
+      "score": 2,
+      "reason": "Names W7, D7 and R2, and explicitly keeps W25 as a non-primary optional bracket."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-7fdcfd",
+      "probe": "composition.P4",
+      "score": 2,
+      "reason": "Exact set W8-W11 with the work-type frontmatter treated as authoritative and the domain list used only as a cross-check."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-7fdcfd",
+      "probe": "composition.P5",
+      "score": 2,
+      "reason": "Says no, self-checks by means reasoning cannot bias, notes this does not seal an independence gate, and defers or seeks director ratification with the director not becoming a verifier."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-7fdcfd",
+      "probe": "composition.P6",
+      "score": 2,
+      "reason": "Includes D3, W0 and candidate work-types, and binding entries A0, T0 and T1."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-7fdcfd",
+      "probe": "composition.P7",
+      "score": 2,
+      "reason": "Both grounded: work-type governs per D0 and W0 constraint 3, applies-to governs per A0's only-field statement."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-42963f",
+      "probe": "composition.P1",
+      "score": 2,
+      "reason": "Gives the exact thirteen-axiom set via the traits-plus-floor route, with A2 correctly stated as conditional on the unstated declarative trait."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-42963f",
+      "probe": "composition.P2",
+      "score": 2,
+      "reason": "Both parts correct with grounding in the A0 and D0 rules that applies-to decides binding and the domain citation does not bring A1 into force."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-42963f",
+      "probe": "composition.P3",
+      "score": 2,
+      "reason": "Names W7, D7 and R2, and mentions W25 only as an optional additional bracket, not in place of W7."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-42963f",
+      "probe": "composition.P4",
+      "score": 2,
+      "reason": "Exact set W8-W11 with the work-type entries explicitly authoritative per D0 and W0."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-42963f",
+      "probe": "composition.P5",
+      "score": 2,
+      "reason": "Says no, prescribes unbiased self-checks that are not assurance, and limits the gate to deferral or director ratification with the director not a verifier."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-42963f",
+      "probe": "composition.P6",
+      "score": 2,
+      "reason": "Includes D3, W0 with W1/W2, and binding entries A0, T0 and T1."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-42963f",
+      "probe": "composition.P7",
+      "score": 2,
+      "reason": "Both grounded: work-type governs per D0 and W0 constraint 3, and applies-to governs by A0's only-field rule, which it treats as settled."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-1ae42a",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the launcher's floor A3, A4, A8, A9, A14 with the reason that the service only composes through an unchanged contract."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-1ae42a",
+      "probe": "system-boundary.S2",
+      "score": 1,
+      "reason": "Gives the correct union with the contract-altered reason, but explicitly labels the conclusion a GUESS resting on a NOT SETTLED versioning question, which caps it at 1."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-1ae42a",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's full set with the containment reason, citing every system containing what the change modifies."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-1ae42a",
+      "probe": "system-boundary.S4",
+      "score": 1,
+      "reason": "Gives the floor with the composition reason, but labels its conclusion as resting on a GUESS that all dependents honour the interface, which caps it at 1."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-1ae42a",
+      "probe": "system-boundary.S5",
+      "score": 2,
+      "reason": "Says both bind (full set) because the undeclared parsed format is a contract in fact, and names the undeclared dependency as an A3 fault."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-1ae42a",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Cites E5 and covers the boundary, containment and composition through a declared contract, plus traits describe and axioms bind."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-1ae42a",
+      "probe": "axiom-direction.Q1",
+      "score": 2,
+      "reason": "Builds the feature the A1 way (shared durable backplane, stateless components), closes the gap where the change modifies the component, and otherwise records it with evidence and a revival trigger; its NOT SETTLED note is about a missing scenario fact, not its conclusion, so the cap does not apply."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-1ae42a",
+      "probe": "axiom-direction.Q2",
+      "score": 2,
+      "reason": "States that the axiom gives each change a direction toward an asymptotic limit rather than a pass/fail test, and cites both halves of the direction rule."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-569bca",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor and explains that the service composes through an unchanged interface, so its axioms do not bind."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-569bca",
+      "probe": "system-boundary.S2",
+      "score": 1,
+      "reason": "Gives the correct union with the contract-altered reason, but declares the binding of the service's axioms NOT SETTLED pending versioning, which caps it at 1."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-569bca",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's full set with the containment reason (a change answers to every system containing what it modifies)."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-569bca",
+      "probe": "system-boundary.S4",
+      "score": 2,
+      "reason": "Gives the floor with the reason that consumers only compose through an unchanged contract, and treats adoption as each consumer's own change."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-569bca",
+      "probe": "system-boundary.S5",
+      "score": 2,
+      "reason": "Says both bind with the contract-in-fact reason and names the A3 fault; the guess concerns only the remedy, not the conclusion asked for."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-569bca",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Cites E5 and covers the declared-and-honoured boundary, contain and compose, and traits describe and axioms bind."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-569bca",
+      "probe": "axiom-direction.Q1",
+      "score": 2,
+      "reason": "Requires the feature's own state to live in a perceivable durable backplane per A1 Mechanics and has the component's gap fixed opportunistically if adjacent or else recorded with evidence and a revival trigger, never passed silently; the NOT SETTLED note concerns a scenario fact, not the conclusion."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-569bca",
+      "probe": "axiom-direction.Q2",
+      "score": 2,
+      "reason": "Frames the axiom as a limit the system is built toward, where no change moves away from it and each change moves toward it as far as its scope allows, and explicitly rejects the pass/fail reading."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-0bbf2d",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor with the composition-through-unchanged-contract reason and excludes the service's axioms."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-0bbf2d",
+      "probe": "system-boundary.S2",
+      "score": 1,
+      "reason": "Gives the correct union with the contract-altered reason, but labels the conclusion a GUESS and calls versioning NOT SETTLED, which caps it at 1."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-0bbf2d",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's full set with the containment reason and correctly rejects the stateless-module escape."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-0bbf2d",
+      "probe": "system-boundary.S4",
+      "score": 2,
+      "reason": "Gives the floor with the composition reason and treats each consumer's adoption as that consumer's own change, with the condition stated rather than hedged."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-0bbf2d",
+      "probe": "system-boundary.S5",
+      "score": 2,
+      "reason": "Says both bind with the one-system/contract-in-fact reason and names the A3 fault; the guess concerns only how far the remedy must reach."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-0bbf2d",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Cites E5 and covers the boundary, both relations (contain and compose), and traits describe and axioms bind."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-0bbf2d",
+      "probe": "axiom-direction.Q1",
+      "score": 2,
+      "reason": "Builds the feature at or nearer the A1 limit with state in a shared durable store and records the out-of-scope gap with evidence and a revival trigger, closing it only where touched or adjacent."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-0bbf2d",
+      "probe": "axiom-direction.Q2",
+      "score": 2,
+      "reason": "Describes the axiom as a limit that sets a direction for every change, never away from it and toward it as far as scope allows, and rejects the conformance reading."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-e79df0",
+      "probe": "component.C1",
+      "score": 2,
+      "reason": "Treats Y as adjacent, optional and justified as a separate change, and Z as non-adjacent, recorded with evidence and a revival trigger and left to the director; the NOT SETTLED flags concern side questions, not the conclusion."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-e79df0",
+      "probe": "component.C2",
+      "score": 2,
+      "reason": "Cites E6 correctly with part of a containing system, one duty at its altitude, interfaces, every component being a system, and notes registration is narrower."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-e79df0",
+      "probe": "component.C3",
+      "score": 2,
+      "reason": "Says no, states the boundary is declared interfaces so the two are one system, and identifies the reach into internals as an A3 fault."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-e79df0",
+      "probe": "component.C4",
+      "score": 2,
+      "reason": "Names P and its containing systems, says Q is not altered because its contract is unchanged, and calls Q an adjacent candidate in the weaker direction."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-142406",
+      "probe": "component.C1",
+      "score": 2,
+      "reason": "Y is considered-not-mandated and justified by near payback and small cost as a change of its own, and Z is recorded with a revival trigger and left to the director; the hedges concern peripheral points."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-142406",
+      "probe": "component.C2",
+      "score": 2,
+      "reason": "Cites E6 with part of a containing system, one duty at that altitude, interfaces, the relation to system, and excludes registered components/ entries."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-142406",
+      "probe": "component.C3",
+      "score": 2,
+      "reason": "Says no, gives the declared-interface boundary reason with the one-system consequence, and names the reach into internals as an A3 fault."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-142406",
+      "probe": "component.C4",
+      "score": 2,
+      "reason": "Names P and the service, says Q is not altered, and treats Q as an adjacent candidate that is considered not mandated with less payback."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-1b3ac9",
+      "probe": "component.C1",
+      "score": 2,
+      "reason": "Y is optional and justified as its own change, and Z is recorded with a revival trigger rather than done, with the director selecting; the GUESS covers only a side issue about Y's contract."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-1b3ac9",
+      "probe": "component.C2",
+      "score": 2,
+      "reason": "Cites E6 with part of a containing system, one duty, interfaces, and the component-is-a-system relation, and excludes registered components from the definition."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-1b3ac9",
+      "probe": "component.C3",
+      "score": 2,
+      "reason": "Says no, grounds the boundary in declared interfaces with the one-system consequence, and names the undeclared dependency as an A3 Air-Gap fault; the GUESS is on a side point."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-1b3ac9",
+      "probe": "component.C4",
+      "score": 2,
+      "reason": "Names P and the service, says Q is not altered as the contract is unchanged, and treats Q as an adjacent candidate with less payback."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-7eaf8d",
+      "probe": "component-a3.C5",
+      "score": 1,
+      "reason": "Correctly grounds not adding to utils, the one-concern unit and removing what is touched, but gives the 'not the whole of utils' conclusion only as a GUESS and does not say the rest is recorded."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-5bd477",
+      "probe": "component-a3.C5",
+      "score": 1,
+      "reason": "Grounds keeping the feature out of utils in its own one-concern unit and removing what it touches, but labels the key point that the whole module need not be broken up as a GUESS and leaves out recording the remainder."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-6293f5",
+      "probe": "component-a3.C5",
+      "score": 2,
+      "reason": "From the text, says the feature goes in its own unit, adds nothing to utils, removes what it touches and does not have to refactor all of utils, and says the untouched remainder stays as known debt, which matches the key."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-cc102d",
+      "probe": "boundary-bypass.B1",
+      "score": 2,
+      "reason": "Answers yes because reaching past the interface keeps O and T one system, and treats the bypass as an A3 fault and signal triggering an interface evaluation ending in reroute or adjustment."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-cc102d",
+      "probe": "boundary-bypass.B2",
+      "score": 2,
+      "reason": "Answers O not P with both reasons: P uses an interface the change leaves as it was, and O reaches past it and so is one system with T."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-cc102d",
+      "probe": "boundary-bypass.B3",
+      "score": 2,
+      "reason": "Answers no with the honoured reason and the evaluate-then-reroute-or-adjust step; the NOT SETTLED note concerns a side question, not the conclusion."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-cc102d",
+      "probe": "boundary-bypass.B4",
+      "score": 2,
+      "reason": "Gives the interface evaluation against duty and vision with both outcomes, including the unsignalled change request, and notes that an adjusted interface binds to altered consumers."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-9654dc",
+      "probe": "boundary-bypass.B1",
+      "score": 2,
+      "reason": "Answers yes because a reached-past boundary keeps O and T one system, and treats the bypass as a signal triggering an interface evaluation ending in reroute or adjustment; the NOT SETTLED note concerns a side question, not the conclusion."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-9654dc",
+      "probe": "boundary-bypass.B2",
+      "score": 2,
+      "reason": "Answers O not P with both reasons: P's unchanged contract means it is not altered, and O's bypass makes it one system with T."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-9654dc",
+      "probe": "boundary-bypass.B3",
+      "score": 2,
+      "reason": "Answers no because a declared interface left bypassed separates nothing, and names moving O onto the interface or adjusting the interface."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-9654dc",
+      "probe": "boundary-bypass.B4",
+      "score": 2,
+      "reason": "Treats the bypass as a signal requiring evaluation of T's interface against duty and vision, ending in consumers moved onto the interface or the interface adjusted."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-f48aba",
+      "probe": "boundary-bypass.B1",
+      "score": 2,
+      "reason": "Answers yes with the declared-and-honoured reason and treats the bypass as a signal triggering evaluation of the interface against duty and vision with both outcomes."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-f48aba",
+      "probe": "boundary-bypass.B2",
+      "score": 2,
+      "reason": "Answers O not P, giving both reasons: O's bypass keeps it one system with T, and P composes through an unchanged contract so its axioms do not bind."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-f48aba",
+      "probe": "boundary-bypass.B3",
+      "score": 1,
+      "reason": "Answers no with the declared-and-honoured reason but omits rerouting O onto the interface or adjusting the interface."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-f48aba",
+      "probe": "boundary-bypass.B4",
+      "score": 2,
+      "reason": "Calls for evaluating T's interface against duty and vision with both outcomes, and notes that an adjusted interface answers to the consumers it alters."
+    }
+  ]
+}

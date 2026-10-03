@@ -1,0 +1,14 @@
+### component-a3.C5
+The 'utils' module is a named fault: "God-Object Accretion - "utils", "helpers", "managers" accumulate unrelated concerns."
+Your change must not add to it: "a change short of it adds none of them, and removes what it touches" - so the feature goes in its own unit owning one concern ("Law of One - a module does exactly one thing").
+If your change touches the utils module, the Mandate asks you to remove the part you touch; the text does not say how much of utils counts as "what it touches" - NOT SETTLED.
+The feature should be assembled by composing existing units: "a new capability is assembled by composing existing units, never by modifying them", interacting only "through declared adapters and contracts".
+It earns an internal boundary by being one concern, but should not be exposed as a stable surface without "a real consumer outside its origin" ("Earned Exposure"; fault "Speculative Surface").
+You are not asked to refactor all of utils if your change does not touch it: the change "removes what it touches", not everything. GUESS: an untouched remainder of utils stays as known debt.
+Exactly how an axiom binds a change is deferred to A0 ("How an axiom binds a change is stated in A0"), which I was not permitted to read - NOT SETTLED beyond the Mandate's sentence.
+
+### OBSERVATIONS
+- "removes what it touches" is ambiguous: it may mean remove the fault (the god object) wherever the change touches it, or only the specific portion touched; scope of "touches" is undefined.
+- Tension: "Composable by Default ... never by modifying them" conflicts with the Mandate requiring a change to remove god-object accretion it touches, which necessarily modifies an existing unit.
+- The binding rule for a change is delegated to A0 (README.md), outside this file, so the file alone does not fully settle how A3 binds an individual change.
+- "Bypass as Signal" cites `A0` for "what a change answers to", again outside the file.

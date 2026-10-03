@@ -1,0 +1,65 @@
+### work-layers.L1
+It belongs in the methodology layer (`methodology/`, prefix M): methodology/README.md (M0) says the layer governs "the process you follow", and its Territory table names the moment "Deciding what to keep - what lands, what is cut, and how a cut is recorded".
+It is already covered by M5 (methodology/M5-anti-amnesia-deferral.md): "When you defer, park, or cut a unit of work, record - at the moment of deferral - a concrete revival trigger: the observable condition under which the item should be reconsidered", made "a required field, not an optional note".
+M5 adds two corollaries: "Terminal is reopenable" and "Revival re-triages, it does not resume".
+The document side is also covered: artifacts/AR5-backlog.md says "Its governing rule is M5: every parked or cut row carries a revival trigger", and its acceptance falsifier rejects a trigger that is "a date or the word 'later'".
+backlog/README.md (MREQ-0) applies the same rule to the corpus's own deferred missions.
+So a new entry is not needed; M0 says "Prefer strengthening an existing entry to adding a neighbour."
+
+### work-layers.L2
+It belongs in the skills layer (`skills/`, prefix K).
+skills/README.md (K0) says a skill "names a procedure with inputs, steps and an output, and it is expected to be executed largely as written", and "A capability earns one when it is executable, repeatable, and would otherwise be reconstructed from scratch".
+M0's boundary table agrees: "a capability you execute -> skills/ ... the object is a procedure with inputs and outputs, invoked rather than followed", and M0 lists "The procedure that is really a skill" as a fault.
+The case also closely matches an existing skill, K3 substrate-audit (skills/K3-substrate-audit.md): a "five-pass meta-process" (Sweep, Triangulation, Promotion audit, Synthesis, Reconciliation) that writes a "fixed artefact layout" (00-summary.md, 02-architecture.md, ... sources.md).
+Per K0 it must be two files: a portable `SKILL.md` body in a directory and a `K*` stub, as K3 has with `skills/substrate-audit/`.
+K0 also warns that "A skill whose steps a script could take should be that script, per A11", and that one invoked once for one system "is a runbook and belongs with that system".
+
+### work-layers.L3
+It belongs in the work-types layer (`work-types/`, prefix W): W0 (work-types/README.md) says each entry carries `roleEligibility` (who may do it), `domainEligibility` (what it may be pointed at), `evidenceContract`/`evidenceAuthority`, and a `falsifier`, which are exactly the three things asked for.
+It is already covered by W10 adversarial-design-review-upstream (work-types/W10-adversarial-design-review-upstream.md): "A verifier red-teams a design before build or merge, producing a critique doc that raises specific, falsifiable failure hypotheses against it".
+Who: `roleEligibility: [verifier]`, with `evidenceAuthority: verifier-attestation`, which under W0 constraint 2 requires an attester who "cannot be the executor given the LIVE roster".
+What it may target: all seven domains (`domainFreedom: free`), with `target` = "the design under review", bound `provided-by-trigger`.
+What proof ends it: a single `kind: review` "critique doc before build/merge with specific failure hypotheses"; the falsifier is "review after the decision, or no falsifiable concerns raised".
+
+### work-layers.L4
+It is a methodology entry: M0 says a methodology entry governs "the independence you require, the evidence you demand before you proceed", and the M0 test is that a reviewer "would have to know how you arrived at it".
+It is already covered by M1 triangulated review (methodology/M1-triangulated-review.md): "require at least four genuinely independent inputs before reaching a verdict", triggered when "reviewing patches or designs that ship to production or upstream".
+M1 also excludes the single-author case: "Three inputs, all produced by the author" is its Bad example.
+It is not a skill, because it is followed, not invoked with inputs and outputs (K0, M0 table).
+There are related work-types that describe review as a claimable unit of work: W8 verify-gate-reactive and W13 code-owner-approve ("author == approver" is the falsifier).
+These say who may gate and what evidence closes the gate, not how many independent inputs the reviewer must collect, so the rule as described is M1.
+
+### work-layers.L5
+It would go in the methodology layer: M0 (methodology/README.md) names "Handing over - passing work in progress to another agent or a later session" as a moment in its territory.
+The corpus states the absence directly: handover "has no procedure at all", and "a lone agent hands over to its own next session".
+M0 says this is recorded on purpose: "Neither is a defect until something fails there, and both are where to look first when something does", and its Faults list names "The unguarded moment".
+Adjacent standing commitments exist but are not a procedure: A4 (axioms/A4-zero-loss-knowledge.md, `applies-to: [any-system]`) gives the success signal "A cold pickup from the record alone reproduces the same outputs as a warm actor ... zero decision context is lost at handover", and A7 requires "Hydrated Startup".
+There is no MREQ backlog entry for a handover procedure, so the gap is not armed with a revival trigger in backlog/ (measured: I listed all MREQ-1..10 titles).
+GUESS: M0's own "earns an entry" rule ("the difference has actually been observed") is why it has not been filled.
+
+### work-layers.L6
+Methodology against skill is stated in two places: M0 says "If they would have to know how you arrived at it, it is methodology" and "a capability you execute ... invoked rather than followed" is skills; K0 says "A methodology entry governs how you conduct work you are already doing; a skill is a capability you pick up to do a thing you could not otherwise do".
+Work-type: W0 defines work-types as "verb-families carrying the mode + shape of work", and "A candidate is taxonomy-grade iff it compiles to a closeable claimable node" (role eligibility, evidence contract, falsifier).
+NOT SETTLED: no single passage gives a three-way test; the work-type boundary against methodology and against skills is not written in M0's boundary table, K0 or W0.
+GUESS: the composed test is "does it compile to a claimable node with an evidence contract (work-type), or is it executed with inputs/outputs (skill), or followed as conduct (methodology)".
+Methodology against skill is the hard pair, and the corpus says so: M0 lists the fault "The procedure that is really a skill", and K0 says "A skill that only describes is a methodology entry filed in the wrong layer".
+Evidence it happens: K2 (skills/K2-publishing-rewritten-history.md) opens with "## Rule - Force-push of rewritten history is forbidden by default", and K3 also uses Rule/Rationale/When-to-apply sections, which is the methodology body shape.
+Methodology against work-type is also close: M1 against W8/W13, and M3 against W9 audit-a-surface, describe the same activity, as conduct and as a claimable node.
+
+### work-layers.L7
+M3 (methodology, "Deciding what to keep") is the trigger match ("running an improvement sweep"): default-reject, so land only what "delivers more value than it costs, measured concretely against the current state", and in the report "Lead every summary with the actual delivered outcome" (considered / landed / what was fixed / "verified vs. asserted") before any process narrative.
+M5 (methodology) governs the three cuts: each needs "a concrete revival trigger: the observable condition under which the item should be reconsidered", recorded at the moment of the cut; M4 (methodology) says the records of those cuts are not rewritten later, only bannered and cross-linked.
+AR5 backlog (artifacts) is where the cuts are recorded: rows with id, finding, evidence, state, trigger, "retired with a reason" rather than deleted, closed "in the same commit as the work that closed it"; if you present next moves, AR3 board (artifacts) requires `Held` items "scored on the same scale" and forbids a dropped item without its trigger being written back.
+For the two that land: M1 (methodology) asks for four independent inputs if they ship to production or upstream; W8 / W13 (work-types) give the independent gate (author != approver); W6 merge-and-land (work-types) is the landing, `executor-evidence` with a merge commit, and it "dependsOn the approving review/gate on the PR".
+For the report to the director: A13 (axioms) requires decision-shaped surfacing ("digest over dump, decision over status"), "never goes silently dark", and you must not narrow the option set or pre-empt a decision; R4 (roles) says `director-ratification` "cannot be satisfied by architect narrative".
+A14 (axioms) and W16 (work-types) require that what you learned is captured with source and revival trigger.
+NOT SETTLED: whether a sweep of this size also needs M7 (only for "extensive planning or design"), and which artifact type the report is (MREQ-9 records that the work-axis-to-artifact binding is missing).
+
+### OBSERVATIONS
+- M0's own boundary test ("If they would read the output, it is style") puts M3's "honest yield reporting" half (lead the summary with yield) in style, not methodology; M3 is filed whole in methodology.
+- K2 (and to a lesser degree K3, K1) are written as rules with Rule/Rationale/When-to-apply sections, which is the "procedure that is really a skill" fault in reverse (a rule filed as a skill), per K0 "A skill that only describes is a methodology entry filed in the wrong layer".
+- W0 cites "M7 guardrail #2" and R4 cites "M7 guardrail #8", but M7 has no numbered guardrails (searched M7 for "guardrail", "#2", "#8": only generic "guardrails" wording).
+- M0 says M3, M4 and M5 "cite one another", but by `related:` frontmatter M3 lists [M1, M4] and M4 lists [M3, K1]; neither cites M5. The "each cited by three other members" claim for M1 and M3 does hold by `related:`.
+- No passage gives a three-way methodology / skill / work-type test; M0's boundary table and K0 omit work-types.
+- INDEX.md tells readers to resolve links from a remote raw URL "otherwise"; this was not followed because the task limited reading to the local corpus.
+- The README Mechanics table lists a `docs/` layer, but no `docs/` directory exists in this corpus.

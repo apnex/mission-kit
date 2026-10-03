@@ -50,7 +50,7 @@ M5  bring the charters to E4                     4 of 13 applied, 9 remain      
              +- placement drafted                   style, one practice, one method
              +- draft guidance tested on director   won 4 of 4
              +- apply                               waits on Delta-1, then Delta-2         PARKED
-         +- Delta-1 run                              stages 1-3 done; stage 4 next          <- HERE
+         +- Delta-1 run                              stage 4 evaluated; one decision open   <- HERE
 ```
 
 **To return to, in order:** the human evaluation tool, then Delta-2 revised from its results; ratify Delta-1; the five remaining `B36` questions; the nine remaining charters.
