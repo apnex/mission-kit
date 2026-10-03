@@ -104,6 +104,10 @@ Reasoning that cannot be traced cannot be challenged, and reasoning that cannot 
 Prose states intent; machines hold the properties machines can hold.\
 What cannot be mechanised is named as such, so an unchecked rule is never mistaken for a checked one.
 
+**It prescribes how work is done.**\
+Judgement an agent cannot act on transfers as little as judgement it cannot reach, so beside the reasoning that decides what is right the corpus holds the procedures that carry it out, the units of work they conduct, and the rules and practices that hold inside them.\
+A procedure is held once, and reaches its reader whichever way that reader arrives: by recognising its situation, installed into an agent ahead of time, or attached to a unit of work by whatever coordinates it.
+
 Two further commitments are structural rather than stylistic.
 
 **It expects to be wrong, and is built to survive being corrected.**\
@@ -128,9 +132,15 @@ Content that would be wrong on a different project belongs to that project.
 Its writing rules exist because a document a cold agent cannot parse cannot carry judgement.\
 They are the delivery mechanism, never the payload, and a corpus whose most-cited layer was its formatting rules would have failed.
 
-**Not a process framework.**\
-It prescribes no ceremony, no cadence, no meeting, and no status ritual.\
-Where it prescribes a shape, the shape exists because its absence was observed to cost something specific.
+**Not a ceremony framework.**\
+It prescribes how work is done, and no ceremony, cadence, meeting or status ritual around the work.\
+A procedure earns its place by changing the work; a ritual that changes only the calendar does not.\
+Where it prescribes any shape, the shape exists because its absence was observed to cost something specific.
+
+> **AMENDED - this boundary read "Not a process framework."**\
+> It said: *it prescribes no ceremony, no cadence, no meeting, and no status ritual.*\
+> Read as a whole, "process framework" excluded prescribing how work is done, which the director has ruled is core content.\
+> The ceremony half of the boundary is kept unchanged; the procedure half is reversed, and stated positively under *What mission-kit is*.
 
 **Not an autonomy substitute.**\
 It amplifies a director's intent and never supplies it.\
