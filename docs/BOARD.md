@@ -55,7 +55,7 @@ A mandate breach is the commitment itself failing; a signal breach is a mechanic
 
 ## Triage ledger
 
-All thirty-seven rows, scored.\
+All thirty-nine rows, scored.\
 Held rows are [below](#held).
 
 | Row | Impact | Principle | Visible | Size | Milestone | One line |
@@ -93,6 +93,8 @@ Held rows are [below](#held).
 | **B35** | S2 | **A3 mandate** - A14 | agent | M | **M5** | `component` undefined in four senses; opportunistic improvement unstated; axiom wording inconsistent with the asymptote |
 | **B36** | S3 | **A3 mandate** | agent | S | **M5** | six design questions on boundaries, traits and adjacency, taken one at a time |
 | **B37** | S4 | A8 signal | agent | S | **M5** | five small defects found by baseline readers: `W22` authority, `M1` floor, `E2` count, root `README` on the index, `generatable` |
+| **B38** | S2 | **A13 mandate** - A4 | agent | M | **M5** | communication with a cold human is guided only in scattered pieces |
+| **B39** | S5 | A3 signal | adopter | S | **Held** | style cannot be scoped by medium |
 | **B20** | S5 | A3 signal | author | S | `DONE` | `M7` may be axiom-shaped in a methodology's place |
 | **B16** | S3 | **A8 mandate** | author | S | **M4** | the board drifted from itself within two commits, and the item meant to prevent that cited no row |
 | **B8** | S3 | **A2 mandate** | adopter | **L** | **Held** | `AR1` forbids the hand-authored current projection a bootstrap cannot avoid |
@@ -211,7 +213,8 @@ Every ID-bearing layer either has an observed consumer or a recorded reason it h
 | M5.5g | **Component defined, opportunistic improvement, axiom wording pass** - evaluate before and after | `B35` | `DONE` - **7 to 10 / 10**, approved; open questions to `B36` - [audit](audits/M5.5g-component-opportunistic-wording.md) |
 | M5.5h | Rule on the six open design questions, one at a time, and amend `E5`, `E6`, `A0`, `A3` or `T0` as each ruling requires | `B36` | `WIP` - 1 of 6: bypassed interface applied, 5 to 8 / 8, no regression - [audit](audits/M5.5h-01-bypassed-interface.md) |
 | M5.5i | Measure and correct the incidental defects the baseline readers found | `B37` | `TODO` |
-| M5.5j | **Delta-1, the work layers** - procedures stay in `methodology/`, practices and rules to a new `practices/`, prose skill `K1` in; packaged skills, WorkGraph skills and the `W0` citation deferred | `B24` | `WIP` - revision 2 proposed, awaiting ratification and the Q4 choice - [delta](deltas/delta-1-work-layers.md) |
+| M5.5j | **Delta-1, the work layers** - procedures stay in `methodology/`, practices and rules to a new `practices/`, prose skill `K1` in; packaged skills, WorkGraph skills and the `W0` citation deferred | `B24` | `WIP` - revision 4: rename and two layers ruled; awaiting ratification - [delta](deltas/delta-1-work-layers.md) |
+| M5.5k | **The explain set** - communication with a human of limited context, measured with live agents first, then designed as a set spanning layers | `B38` | `WIP` |
 | M5.6 | Rebuild the charter checker - fixed headings by name, free concerns by a declared location - and re-enable it | `B17` | `TODO` |
 | M5.7 | **Add a key review to `M2`** - a fresh reader audits the answer key against the population before any evaluator runs. Trigger fired at `D0`: three of seven answers wrong, caught before use | `B29` | `TODO` |
 
@@ -239,6 +242,7 @@ Rows on the record and not on the board, **scored on the same scale**, so declin
 
 | **B21** | **S2** | **A4 mandate** | Found by the `A0` trial, then corrected: first framed as defence against an adversary, which is out of scope. Scored high and held anyway, since adding an axiom changes the constitution and warrants its own audit. | **a lone agent ships a claim it corroborated itself and was wrong** |
 | **B22** | S4 | A9 signal | Found by the `A0` trial. A low citation count has two legitimate readings and one observation cannot separate them. | **a deployment fails in a way chaos validation would have caught** |
+| **B39** | S5 | A3 signal | Nested sets need generator support, and no medium-specific rule exists to fill one. | **the first style rule that applies to one medium only** |
 
 
 
