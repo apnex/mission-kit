@@ -29,6 +29,30 @@ Reconciliation is mechanized by [`tools/check-board.mjs`](../tools/check-board.m
 
 ---
 
+## Where we are
+
+The thread of the current conversation, so a reader can see how the active work connects to the ask that started it, and what is parked to return to.\
+Updated whenever the thread moves; the milestones below remain the plan.
+
+```text
+M5  bring the charters to E4                     4 of 13 applied, 9 remain        PAUSED
+ +- how the axis layers compose (B32)            done
+     +- axioms as asymptotes, system, component  done
+     +- six open design questions (B36)          1 of 6 done                      PARKED
+     +- evaluation harness                       built
+     +- how mission-kit says how to do work (B24)
+         +- Delta-1: methods, rules, practices   ready to ratify                  PARKED
+         +- the explain set (B38)
+             +- Delta-2                          withdrawn - needs a real metric  PARKED
+             +- communication limits             understand, decide: confirmed
+             +- moves                            eight, provisional
+             +- human evaluation tool            building now                     <- HERE
+```
+
+**To return to, in order:** the human evaluation tool, then Delta-2 revised from its results; ratify Delta-1; the five remaining `B36` questions; the nine remaining charters.
+
+---
+
 ## Triage scale
 
 Two orthogonal dimensions.\
