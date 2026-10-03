@@ -1,0 +1,238 @@
+{
+  "created": "2026-10-03T04:26:07.671Z",
+  "seed": "00cc81d7dac25f34",
+  "corpora": [
+    {
+      "label": "head",
+      "path": "/tmp/opencode/evalc/c-86aa6cad"
+    },
+    {
+      "label": "bare",
+      "path": "/tmp/opencode/evalc/c-8a9983aa"
+    }
+  ],
+  "readers": 3,
+  "probes": [
+    "explain.X1",
+    "explain.X2",
+    "explain.X3",
+    "explain.X4"
+  ],
+  "max": 8,
+  "mean": {
+    "explain.X1": {
+      "head": 2,
+      "bare": 2
+    },
+    "explain.X2": {
+      "head": 1.33,
+      "bare": 1.33
+    },
+    "explain.X3": {
+      "head": 2,
+      "bare": 2
+    },
+    "explain.X4": {
+      "head": 1.67,
+      "bare": 1.67
+    }
+  },
+  "total": {
+    "head": 7,
+    "bare": 7
+  },
+  "rows": [
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-80317a",
+      "probe": "explain.X1",
+      "score": 2,
+      "reason": "all hold"
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-80317a",
+      "probe": "explain.X2",
+      "score": 0,
+      "reason": "P6 and P7 fail: the logging bug gets a heading and three lines, and 'It is not related to retries' repeats the 'Unrelated' label."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-80317a",
+      "probe": "explain.X3",
+      "score": 2,
+      "reason": "all hold"
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-80317a",
+      "probe": "explain.X4",
+      "score": 2,
+      "reason": "all hold"
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-fc3095",
+      "probe": "explain.X1",
+      "score": 2,
+      "reason": "all hold"
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-fc3095",
+      "probe": "explain.X2",
+      "score": 2,
+      "reason": "all hold"
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-fc3095",
+      "probe": "explain.X3",
+      "score": 2,
+      "reason": "all hold"
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-fc3095",
+      "probe": "explain.X4",
+      "score": 2,
+      "reason": "all hold"
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-6392ed",
+      "probe": "explain.X1",
+      "score": 2,
+      "reason": "all hold"
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-6392ed",
+      "probe": "explain.X2",
+      "score": 2,
+      "reason": "all hold"
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-6392ed",
+      "probe": "explain.X3",
+      "score": 2,
+      "reason": "all hold"
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-6392ed",
+      "probe": "explain.X4",
+      "score": 1,
+      "reason": "P1 fails: the first two sentences restate the task and say only that an idea is needed, so why it matters (double charging) comes in the third sentence, and the subject does not say it either."
+    },
+    {
+      "label": "bare",
+      "reader": 1,
+      "pid": "r-c36f34",
+      "probe": "explain.X1",
+      "score": 2,
+      "reason": "all hold"
+    },
+    {
+      "label": "bare",
+      "reader": 1,
+      "pid": "r-c36f34",
+      "probe": "explain.X2",
+      "score": 1,
+      "reason": "P7 fails: the closing paragraph repeats the double-charge warning and offers as optional what next step 1 already commits to."
+    },
+    {
+      "label": "bare",
+      "reader": 1,
+      "pid": "r-c36f34",
+      "probe": "explain.X3",
+      "score": 2,
+      "reason": "all hold"
+    },
+    {
+      "label": "bare",
+      "reader": 1,
+      "pid": "r-c36f34",
+      "probe": "explain.X4",
+      "score": 2,
+      "reason": "all hold"
+    },
+    {
+      "label": "bare",
+      "reader": 2,
+      "pid": "r-fbe6b0",
+      "probe": "explain.X1",
+      "score": 2,
+      "reason": "all hold"
+    },
+    {
+      "label": "bare",
+      "reader": 2,
+      "pid": "r-fbe6b0",
+      "probe": "explain.X2",
+      "score": 2,
+      "reason": "all hold"
+    },
+    {
+      "label": "bare",
+      "reader": 2,
+      "pid": "r-fbe6b0",
+      "probe": "explain.X3",
+      "score": 2,
+      "reason": "all hold"
+    },
+    {
+      "label": "bare",
+      "reader": 2,
+      "pid": "r-fbe6b0",
+      "probe": "explain.X4",
+      "score": 2,
+      "reason": "all hold"
+    },
+    {
+      "label": "bare",
+      "reader": 3,
+      "pid": "r-d7c81c",
+      "probe": "explain.X1",
+      "score": 2,
+      "reason": "all hold"
+    },
+    {
+      "label": "bare",
+      "reader": 3,
+      "pid": "r-d7c81c",
+      "probe": "explain.X2",
+      "score": 1,
+      "reason": "P7 fails: the framing sentence 'Here is where the payment client retry work is' could be removed without loss."
+    },
+    {
+      "label": "bare",
+      "reader": 3,
+      "pid": "r-d7c81c",
+      "probe": "explain.X3",
+      "score": 2,
+      "reason": "all hold"
+    },
+    {
+      "label": "bare",
+      "reader": 3,
+      "pid": "r-d7c81c",
+      "probe": "explain.X4",
+      "score": 1,
+      "reason": "P7 fails: the closing line 'It is much cheaper to ask now than to refund a customer later' could be removed without loss."
+    }
+  ]
+}

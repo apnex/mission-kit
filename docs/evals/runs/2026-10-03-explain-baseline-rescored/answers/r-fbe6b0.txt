@@ -1,0 +1,111 @@
+### explain.X1
+Subject: Decision needed by Thursday - message queue library before the release
+
+I need you to pick one of three options for the service's message queue library by Thursday. I'll do the work for whichever you choose.
+
+Why this is coming up: the service crashed twice in the last month. Both crashes are in the logs, and both happened inside the current library (Q1), in the code that reconnects after a dropped connection. The alternative library (Q2) does not have that reconnection code, so that particular crash cannot happen there. That does not mean Q2 can't fail in other ways.
+
+The options:
+
+1. Keep Q1.
+   No work and no change before the release.
+   Risk: the crash we have seen twice this month can happen again, including around the release.
+
+2. Move to Q2 now.
+   About three days of work, done and tested before the release.
+   Risk: nobody has measured how fast Q2 is for this service. Its documentation says it is comparable to Q1, but we have not checked that. If it turns out slower, we would find out close to the release.
+
+3. Move to Q2 after the release.
+   The release ships on Q1, so the crash risk stays until then, and the move happens with no deadline.
+
+My recommendation is option 2, with a speed check as part of the testing. If Q2 turns out too slow for this service, I would stop and the release ships on Q1, so we would be no worse off than option 1. The cost of that path is about three days of my time that could otherwise go to release work.
+
+Why Thursday: the release is nine days away. The move takes about three days, and I need the rest of the time to test it. After Thursday, option 2 is no longer safe, and the choice is only between options 1 and 3.
+
+If I don't hear back by Thursday, I'll leave Q1 in place for the release and plan the move for afterwards (option 3).
+
+A one-line reply with the option number is enough.
+CORPUS-SOURCES: none
+
+### explain.X2
+Subject: Payment client retries - merged, but not safe to deploy yet
+
+Short version: the retry change is merged and its tests pass, but it is not deployed anywhere, and it should not be deployed until I have checked one thing that could cause customers to be charged twice.
+
+Where it stands:
+- Done: automatic retries are added to the payment client, merged, and the tests pass in continuous integration.
+- Not done: it is not deployed to staging or production.
+
+What I have not checked yet:
+- Which payment calls are safe to repeat. If a call that charges a customer is retried after it already went through, the customer could be charged twice. Until I have gone through the calls and confirmed which ones are safe, I can't say the change is safe to turn on.
+- Whether staging's configuration turns retries on. So I don't yet know what deploying to staging would actually do.
+
+Next steps, in order:
+1. Go through each payment call and mark whether it is safe to repeat. Make sure retries apply only to the safe ones.
+2. Check staging's configuration for retries.
+3. Then deploy to staging.
+
+Separately: while working on this I found an unrelated bug in request logging. I recorded it in the team backlog and did not fix it. It doesn't block this work.
+
+Nothing needed from you right now. If anyone asks to ship retries before step 1 is done, please hold it.
+CORPUS-SOURCES: none
+
+### explain.X3
+Subject: Flaky test - proposal: run a one-hour check before deciding whether to block the release
+
+My recommendation: don't decide yet. There's an experiment that settles the question in about an hour, and the release is two days out. I can start it now if you agree.
+
+The problem: a test fails about once in every thirty runs. It never fails when test jobs run one at a time. It only fails when two jobs run at the same moment.
+
+Two explanations fit everything we know so far, and I can't tell them apart from reasoning alone:
+
+1. A real race in the code. The code takes a lock, but I found one path that releases the lock before it writes. If two jobs hit that path together, one write could be lost. That would be a real bug in production, and it would be a reason to block the release.
+
+2. The test jobs colliding with each other. I read the test's setup code: every job uses the same fixed temporary directory. Two jobs running at once would trample each other's files. That would be a bug in the test only, and not a reason to block the release.
+
+The experiment: run the jobs at the same time, but give each its own temporary directory, about two hundred times. That takes about an hour.
+- If it still fails, the shared directory isn't the cause, and the race in the code is the likely explanation. I'd block the release.
+- If it never fails in two hundred runs, the shared directory is very likely the cause. At the current failure rate we'd expect several failures in two hundred runs, so zero would be strong evidence. Then I'd fix the test and not block.
+
+One caveat either way: a clean run tells us the test failures came from the shared directory. It does not prove that the early lock release is harmless. I'd like someone to review that code path before the release whichever way the experiment goes.
+
+Can you reply with go or no-go on the experiment? If I don't hear back, I'll run it anyway and send you the result.
+CORPUS-SOURCES: none
+
+### explain.X4
+Subject: Before you add the new payment event type - the idea of idempotency
+
+You'll be adding a new event type to the code that handles incoming payment events. There's one idea you need first, because getting it wrong means charging customers twice. It's called idempotency.
+
+The idea
+An operation is idempotent if doing it twice has the same effect as doing it once. Pressing a lift's call button is idempotent: pressing it five times still brings one lift. "Charge this customer 10 pounds" is not idempotent on its own: run it twice and they pay 20.
+
+Why it matters here
+Our system can deliver the same event to us more than once. This isn't a bug we can fix. It's normal for systems like this: if a delivery times out, the sender re-sends it, even if we already got the first one. So our code must assume any event may arrive twice. If we processed each delivery blindly, a repeated event would charge the customer a second time.
+
+How our code makes it safe
+Every event carries a unique id. When we process an event, in a single database transaction we:
+1. Check whether that id is already recorded. If it is, we skip the event - we've already handled it.
+2. Otherwise, make the charge and record the id.
+
+Two details matter:
+- The charge and the id record are in the same transaction, so either both happen or neither does. If they were separate, a crash between them would break things. Charge saved but id not recorded means the re-delivery charges again. Id recorded but charge not saved means the charge is lost.
+- The check only works if a repeated delivery carries the same id as the first one.
+
+What this means for your change
+1. Your new event type must go through the same check as the existing types. Don't add a separate path that charges without it.
+2. Its id must be identical every time that same event is delivered. Use the id that comes with the event from the sender, or one derived only from fields that never change between deliveries. Don't generate a fresh id when we receive it (for example a new random id or a timestamp). A fresh id makes every re-delivery look like a new event, and the check silently stops protecting us.
+3. Keep any charge or other side effect inside the same transaction as the id record.
+
+How to check you got it right
+Write a test that delivers the same event of your new type twice and asserts the customer is charged exactly once. If that test passes and your event goes through the existing check, you've done it safely.
+
+Happy to go through the existing handler with you before you start.
+CORPUS-SOURCES: none
+
+### OBSERVATIONS
+- The corpus at /tmp/opencode/evalc/c-8a9983aa contains only INDEX.md, which states "This corpus holds no entries." I confirmed this by listing the directory, which has one file. No corpus guidance was available, so every CORPUS-SOURCES line is "none".
+- My harness also loaded always-on standing context from outside the corpus (a workspace AGENTS.md and a ledger). I did not cite it as a corpus source. Its general claim-discipline habits (separating what was measured from what was inferred) may still have shaped the messages, so the baseline is not completely free of guidance.
+- X1: the facts do not say what happens if no decision arrives by Thursday. The fallback in the message (keep Q1 for the release, move afterwards) is my choice, not a given fact. The recommendation is also mine.
+- X3: the "zero failures in two hundred runs would be strong evidence" point assumes the failure rate under the experiment's concurrent conditions is at least the overall one-in-thirty rate. At exactly one in thirty, the chance of zero failures in 200 runs is about 0.1%. I computed that and did not measure it.
+- X4: the facts do not name the code, function or table that holds the check, so the message refers to "the existing check" rather than inventing names.

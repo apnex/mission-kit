@@ -90,4 +90,5 @@ Every suite's keys are audited by a fresh reader before first use, and corrected
 | Suite | Edit | Why |
 |---|---|---|
 | `system-boundary` | the service is stated to be not declarative | the fixture left the declarative trait open, so careful readers correctly hedged `A2` and the rubric capped them. Found when the first regression check flagged S1, S2, S3 and S5; earlier hand scoring had passed the same hedge |
+| `explain` | the stands-alone property required general engineering terms to be explained | corrected by director ruling: a competent cold reader is assumed to know general engineering terms; only system-specific names must be explained. The baseline was re-scored against the corrected key; the original run is unchanged |
 

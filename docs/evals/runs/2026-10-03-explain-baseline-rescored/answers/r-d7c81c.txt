@@ -1,0 +1,121 @@
+### explain.X1
+Subject: Decision needed by Thursday - message queue library change, before or after the release
+
+Hi,
+
+I need a decision from you by Thursday. It affects the release, so it is your call. I will do the work for whichever option you pick.
+
+The problem: our service crashed twice in the last month. Both crashes happened inside the third-party library we use for our message queue (call it Q1), in the part that reconnects after a network connection drops. Both are in the logs. An alternative library, Q2, does not have that reconnection code, so it should not crash in that way.
+
+Your three options:
+
+1. Keep Q1. No work and no risk to the release from changing things. But the crash cause stays, and we should expect more crashes like these.
+2. Move to Q2 now. It takes about three days of work. If you tell me by Thursday, I can finish and test it before the release in nine days. The risk: nobody has measured how much load Q2 can handle for our service. Its documentation says it performs about the same as Q1, but that is the vendor's claim and we have not tested it. If it is wrong, we find out close to the release.
+3. Move to Q2 after the release. The release ships on Q1, with the same crash risk as today, and it does not depend on a library we have not tested. I make the move afterwards, and I have time to measure Q2's performance first.
+
+My recommendation is option 3. Changing a core part of the service in the days before a release, based on an untested performance claim, puts the release at risk. The crash risk is one we already have. Option 2 is better if these crashes would hurt the release more than a performance problem would. You are better placed than I am to judge that.
+
+What I do not know: how much these two crashes affected users. I have only checked that they happened and where.
+
+If I do not hear from you by Thursday, there is no time to finish option 2 before the release, so the choice is then between options 1 and 3.
+
+A one-line reply with 1, 2 or 3 is enough. I am happy to talk it through if that helps.
+
+Thanks
+CORPUS-SOURCES: none
+
+### explain.X2
+Subject: Payment client retries - merged, not deployed, two checks needed before it is safe
+
+Hi, welcome back. Here is where the payment client retry work is.
+
+Short version: the code is merged, but it is not deployed and it is not yet safe to deploy. Two checks are outstanding, and one of them could lead to customers being charged twice.
+
+Done:
+- The retry change is merged.
+- Its automated tests pass in continuous integration.
+
+Not done:
+- It is not deployed to any environment, including staging.
+- I have not checked which payment calls are safe to repeat. This matters. If the client retries a call that is not safe to repeat, such as a charge, a customer could be charged twice. Until this is checked, I cannot say the change is safe.
+- I have not checked whether the staging configuration turns retries on. So I do not yet know what will happen when it is deployed there.
+
+Next steps, in this order:
+1. Go through each payment call and record whether it is safe to repeat. Make sure retries are off for any call that is not.
+2. Check the staging configuration.
+3. Only then deploy to staging and test there.
+
+Please do not let anyone deploy this before step 1 is done. Tell me if you want it reverted until then instead.
+
+Separately: while working on this I found an unrelated bug in request logging. I added it to the team backlog and did not fix it. It does not block the retry work.
+CORPUS-SOURCES: none
+
+### explain.X3
+Subject: Flaky test before the release - do not decide yet, a one-hour test will tell us
+
+Hi,
+
+Short version: I cannot yet tell you whether to block the release. One hour of testing can tell us, and we have two days, so I suggest we run that test first and decide after.
+
+What we know:
+- The test fails about once in every thirty runs.
+- It only fails when two test jobs run at the same time. It has never failed when jobs run one at a time.
+- The code under test takes a lock to stop two writers from colliding. But one path in that code releases the lock before it writes. That looks like a possible race.
+- I read the test's setup code. Every job uses the same fixed temporary folder. So two jobs running at the same time could also be colliding in that shared folder.
+
+Both explanations fit everything we have seen:
+A. A real race in the product code. This would matter in production: a write could be lost.
+B. Only the test setup is at fault: two jobs share one folder. That is a test problem, not a product problem.
+
+How to tell them apart: run the jobs at the same time, but give each its own folder, about 200 times. That takes about an hour.
+- If it still fails, the shared folder is not the cause, and the real race is the likely explanation. I would block the release, because losing writes is serious.
+- If it never fails in 200 runs, the shared folder was almost certainly the cause. At the current failure rate we would expect about six or seven failures in 200 runs, so zero failures is strong evidence. In that case I would not block.
+
+One caution: even if the folder turns out to be the cause, I have not proven that the lock path is safe. I only know that the test failure does not come from it. I would still want someone to look at that path after the release.
+
+Do you want me to start the hour-long run now? I will send you the result as soon as it finishes.
+CORPUS-SOURCES: none
+
+### explain.X4
+Subject: Before you add the new payment event type - idempotency, and the one check you must not skip
+
+Hi,
+
+Before you change the payment event handler, you need one idea: idempotency. It is what stops us from charging a customer twice.
+
+The idea
+
+An operation is idempotent if doing it twice has the same effect as doing it once. Pressing a lift call button is idempotent: press it five times and one lift comes. Paying a bill is not: pay it twice and you have paid twice.
+
+Why it matters here
+
+Our system can deliver the same payment event to us more than once. This is normal. Message systems often redeliver when they are not sure the first delivery got through. If we simply processed every event we received, a redelivered event would charge the customer a second time. So we have to make handling an event idempotent ourselves.
+
+How our code does it
+
+Every event has a unique id. When we process an event, we:
+1. Check whether that event's id is already recorded. If it is, we skip the event. It is a repeat.
+2. If not, we make the charge and record the id, in the same database transaction.
+
+The "same transaction" part is essential. A transaction either fully happens or does not happen at all. If the charge and the id record were saved separately, a crash between the two could leave a charge with no id record. The next delivery of the same event would then charge again. Because both are saved together, there is either a charge and its id, or neither.
+
+What this means for your new event type
+
+Two rules:
+
+1. It must go through the same check. Do not write a separate path that charges without checking and recording the id in the same transaction. A new path that skips this check is exactly how double charges happen.
+
+2. Its id must be the same every time that event is delivered. The check only works if a repeat delivery has the same id as the first one. So the id must come from the event itself, as set by whoever sends it. Do not create it when we receive the event. A random id, a timestamp, or a counter made on our side would be different on each delivery. Every repeat would then look new, and the customer would be charged again. If you are not sure where your event type's id comes from, ask before you continue.
+
+How to check your change
+
+Write a test that delivers the same new event twice and confirms that only one charge is made. If that test passes, your change is safe against redelivery.
+
+Ask me if anything here is unclear. It is much cheaper to ask now than to refund a customer later.
+CORPUS-SOURCES: none
+
+### OBSERVATIONS
+- The corpus at /tmp/opencode/evalc/c-8a9983aa contains only INDEX.md, which states "This corpus holds no entries." No corpus guidance was available, so every CORPUS-SOURCES line is "none". The messages were shaped by general practice and by the always-on standing context loaded into this session (claim discipline, e.g. stating what was not measured). That context is outside the corpus and is not cited as a source.
+- X1: the facts do not say how much the crashes affected users, or how long measuring Q2's throughput would take. The message names the first as unknown and does not assume the second.
+- X1: the recommendation (move after the release) is my own judgment from the facts given. The question did not ask for one.
+- X3: the "about six or seven expected failures in 200 runs" figure is inferred from the stated 1-in-30 rate. That rate covers all runs. The rate for concurrent runs alone may be higher, which would make zero failures even stronger evidence.

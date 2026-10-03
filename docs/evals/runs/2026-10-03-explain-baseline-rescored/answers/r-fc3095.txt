@@ -1,0 +1,119 @@
+### explain.X1
+Subject: Decision needed by Thursday - should we replace the message queue library before the release?
+
+Hi,
+
+I need you to pick one of three options by Thursday. If the answer is "move now", Thursday is the last day that leaves time to finish and test the move before the release, which is due in nine days.
+
+The problem: the service crashed twice in the last month. Both crashes are in the logs, and both happened inside the code of our message queue library (Q1) that reconnects after a dropped connection. An alternative library (Q2) does not have that reconnect code, so it cannot crash in that place. Moving to Q2 takes about three days of work, and I will do the work whichever option you choose.
+
+What we do not know: nobody has measured whether Q2 can handle this service's load. Its documentation says its speed is comparable to Q1's, but that is the vendor's claim, not something we have tested.
+
+The options:
+
+1. Keep Q1.
+   No work and no new risk from a change.
+   The crash we have seen twice in a month stays, including during and after the release.
+
+2. Move to Q2 now.
+   The release would ship without that crash.
+   It uses about three of the nine days, and the release would depend on a library whose speed we have not tested with this service. I would test its speed as part of the move. If it falls short, we would go back to Q1 for the release, and the time spent would be lost.
+
+3. Move to Q2 after the release.
+   No change goes in just before the release, and there is no time pressure on the move or the testing.
+   The release ships with the crash still possible.
+
+My lean, which is yours to overrule: option 2, on the condition that if the speed test falls short we release on Q1. That removes a crash we have actually seen, and the condition limits the cost of the unknown to a few days of my time. If a late change to the release worries you more than the crash, option 3 is the sensible alternative. I cannot tell you how much each crash affected customers, because I have not checked that.
+
+A one-word reply ("keep", "now" or "after") by Thursday is all I need.
+
+Thanks
+
+CORPUS-SOURCES: A13, AGENTS.md (5.1 Measured or inferred; 5.1 A caveat does not repair a headline; 5.4 A deadline is a reason to measure faster)
+
+### explain.X2
+Subject: Payment client retries - merged, but not safe to deploy yet
+
+Welcome back. Short version: the retry change is written and merged, but it is not deployed anywhere, and it should not be deployed until I finish two checks. One of them is about the risk of charging customers twice.
+
+Done:
+- Automatic retries for the payment client are merged.
+- Its tests pass in continuous integration.
+
+Not done yet:
+- It is not deployed to any environment.
+- I have not checked which payment calls are safe to repeat. This is the important one. If a call is retried after the first attempt actually went through, a customer could be charged twice. Until I have gone through each call, I cannot say retries are safe for any of them.
+- I have not checked whether the staging environment's configuration turns retries on. So I do not yet know whether deploying to staging would switch this behaviour on.
+
+Next, in this order: list which calls are safe to repeat and make sure retries apply only to those; then check the staging configuration; only then deploy to staging. I will send you the list of calls when it is done.
+
+Separately: while doing this I found an unrelated bug in request logging. I have recorded it in the team backlog and have not fixed it. Nothing is needed from you on it unless you want it prioritised.
+
+CORPUS-SOURCES: AGENTS.md (5.1 A caveat does not repair a headline; 5.1 Measured or inferred; 5.1 Liveness is not provable from a repository), A13, M5
+
+### explain.X3
+Subject: Flaky test - should it block the release? I suggest one hour of testing before we decide
+
+You need to decide whether this flaky test blocks the release, which is in two days. My suggestion is to run a one-hour experiment first, because right now the evidence fits two explanations equally well, and they lead to opposite answers.
+
+What we know:
+- The test fails about once in thirty runs.
+- It never fails when jobs run one at a time, only when two run at the same moment.
+- The code under test takes a lock, but one path releases the lock before it writes. That is a real gap in the code.
+- I read the test's setup code. Every job uses the same fixed temporary directory.
+
+The two explanations:
+1. A real race in the code. Two jobs get through that gap and one write is lost. If this is true, it is a release blocker: in production a write could be lost.
+2. The test jobs collide in the shared temporary directory. If this is true, the test is the problem, not the code, and it does not justify blocking the release.
+
+Both explain everything we have seen, including the "only when two run together" pattern. More reasoning will not tell them apart. An experiment will.
+
+The experiment: run the jobs at the same time, each with its own temporary directory, about two hundred times. It takes about an hour.
+- If it still fails, the shared directory was not the cause. Treat the race as real and block.
+- If it does not fail in two hundred runs, the shared directory is very likely the cause. At the current rate of one in thirty, two hundred clean runs would happen by chance only about one time in a thousand.
+
+One caution even if the experiment comes back clean: it shows this test's failures came from the directory. It does not show the early lock release is safe. That path may be a real bug that this test just does not exercise. I would not block the release on that alone, but it should be looked at, and it should not be closed because the test went green.
+
+If you want me to run the experiment, I can start it now and send you the result within the hour, well before the release.
+
+CORPUS-SOURCES: AGENTS.md (5.4 When two readings both survive the evidence, park and name what would settle it; 5.4 A deadline is a reason to measure faster; 5.2 Prefer orthogonality to repetition; 5.3 The join class), A13
+
+### explain.X4
+Subject: Before you add the new payment event type - how we avoid charging customers twice
+
+Hi,
+
+Before you add the new event type, there is one idea you need to understand, because getting it wrong can charge a customer twice. The idea is called idempotency.
+
+The problem it solves:
+The system that sends us payment events sometimes delivers the same event more than once. That is normal for this kind of system, not a bug we can fix on our side. If our code charged the customer every time an event arrived, a duplicate delivery would mean a duplicate charge.
+
+What idempotency means:
+An operation is idempotent if doing it twice has the same effect as doing it once. Pressing a lift button five times still calls the lift once. We need event handling to work like that: however many times the same event arrives, the customer is charged once.
+
+How our code does it:
+Every event carries a unique id. When we process an event, we do two things in the same database transaction:
+1. make the charge, and
+2. record the event's id.
+Before processing, we check whether that id is already recorded. If it is, we have handled this event before, so we skip it.
+
+Why "same transaction" matters:
+A transaction means both steps happen, or neither does. If we charged in one step and recorded the id in another, a crash between the two would leave a charge with no record. The next delivery of that event would not be recognised as a duplicate and would charge again. Keeping both in one transaction closes that gap.
+
+What this means for your new event type - two rules:
+
+1. It must go through the same check. Do not give it its own path to the charge. It has to use the existing "is this id already recorded?" check, and its id has to be recorded in the same transaction as its charge.
+
+2. Its id must be the same every time that event is delivered. This is the easy one to get wrong. The id has to come from the event itself, as sent to us, so that a second delivery of the same event carries the same id. If the id is something we create when the event arrives, such as a freshly generated random id or the time we received it, every delivery gets a different id, the check never finds a match, and duplicates get charged. If you are not sure the new event type has a field that stays the same across deliveries, stop and ask before going further.
+
+A good test for your change: deliver the same new event twice and check that there is exactly one charge.
+
+Happy to go through the existing code with you before you start.
+
+CORPUS-SOURCES: none
+
+### OBSERVATIONS
+- The corpus has no entry on writing messages to humans (decision requests, status updates, explanations, teaching). The closest guidance was A13 (decision-shaped surfacing, full option set, recommend without narrowing) and the claim-discipline rules in AGENTS.md section 5; S9's action-first principle is scoped to READMEs and I did not cite it.
+- The INDEX.md preamble tells the reader to resolve links against GitHub when no local checkout exists. For this eval, that conflicts with the instruction to read only the local corpus copy. I used only the local copy.
+- X1: the facts do not say how much the crashes affected customers, or how many days remain before Thursday. The message states the first as unknown and avoids assuming the second.
+- X3: the "one in a thousand" figure is my own calculation, not a given fact: (29/30)^200 is about 0.001, assuming runs are independent at the stated rate of 1 in 30.
