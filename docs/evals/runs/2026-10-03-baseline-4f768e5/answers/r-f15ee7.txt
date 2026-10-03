@@ -1,0 +1,65 @@
+# Answers - r-f15ee7
+
+Trait readings used throughout (from the trait tests, applied to the prompt's descriptions):
+- Launcher: no trait. Not stateful (`traits/T1-stateful.md`), not multi-agent since one operator is one actor (`traits/T3-multi-agent.md`), not autonomous because the operator watches it (`traits/T4-autonomous.md`: "would a human see it before the system acted on the failure?"), not declarative ("a script run once", `traits/T2-declarative.md`), no model (T5). So it carries the floor only.
+- Service: stateful (T1), multi-agent (T3), autonomous (T4), not llm-in-the-loop. Declarative is not stated in the prompt: NOT SETTLED; GUESS: not declarative, so `A2` is excluded below.
+- Floor (`any-system`): A3, A4, A8, A9, A14 (`axioms/README.md`, applicability matrix; matches each axiom's `applies-to` frontmatter).
+- Service set: floor + A1 (stateful) + A5, A6, A7, A10, A13 (multi-agent / autonomous) = A1, A3, A4, A5, A6, A7, A8, A9, A10, A13, A14. Tags bind by union (`axioms/README.md`: "Tags are alternatives, not a conjunction").
+
+### system-boundary.S1
+Only the launcher's floor axioms: A3, A4, A8, A9, A14.
+`axioms/README.md` says "a change answers to every system it alters. That is the system it modifies, every system containing it, and any system whose contract with it the change alters", and "A system it only composes with, through a contract the change leaves as it was, is not altered, and its axioms do not bind."
+The launcher and service compose through a declared interface (`entities/E5-system.md`: "A launcher that hands sessions to a service through a declared interface composes with it"), the interface is unchanged, and no containing system is declared.
+The launcher has no traits, and E5 says "A one-shot script with no traits is a system, bound by the axioms every system carries."
+
+### system-boundary.S2
+The union of both systems' axioms: A1, A3, A4, A5, A6, A7, A8, A9, A10, A13, A14 (plus A2 only if the service is declarative - NOT SETTLED).
+Changing the declared interface alters the service's contract with the launcher, so the service is "any system whose contract with it the change alters" (`axioms/README.md`), and the launcher is the system modified.
+Caveat: if the interface is versioned, E5 says "Publishing a new version of an interface alters no consumer that has not adopted it; each adoption is a change to that consumer" - then the launcher-side change answers to the floor and the service's adoption answers to the service's set.
+The prompt does not say whether the interface is versioned: NOT SETTLED which reading applies; GUESS: it is unversioned, so the union applies to this change.
+
+### system-boundary.S3
+The service's full set: A1, A3, A4, A5, A6, A7, A8, A9, A10, A13, A14 (A2 NOT SETTLED as above).
+E5: "A module inside a service is a system, and the service contains it, whether or not the module's interfaces are declared", and A0 says the change answers to "every system containing it".
+That the module alone holds no state does not help: E5 warns "a stateful system escapes its own axioms by being described as stateless modules, each of which passes on its own."
+
+### system-boundary.S4
+Only the library's own axioms, which is the floor: A3, A4, A8, A9, A14.
+The ten systems compose with the library through a declared, versioned interface that is unchanged, so they are not altered ("A system it only composes with, through a contract the change leaves as it was, is not altered", `axioms/README.md`).
+E5: "the component is not altered by being adopted", and each adoption "is a change to that consumer, and answers to that consumer's axioms" - those are the consumers' separate changes, not yours.
+E5 names this case directly: conflating it "a small shared library would carry the axioms of every system that uses it, and the most-reused code would carry the most obligations."
+
+### system-boundary.S5
+With no declared boundary and the service depending on the launcher's output, the two are "one system, with the traits of both" (`entities/E5-system.md`, Boundaries; restated in `axioms/README.md`), so the change answers to the union: A1, A3, A4, A5, A6, A7, A8, A9, A10, A13, A14 (A2 NOT SETTLED).
+Something else is wrong: "The undeclared dependency is itself a fault against A3" (E5; A3 mechanics "Air-Gap Principle - units interact only through declared adapters and contracts").
+The parsed output is "a contract in fact, not a declared boundary - and a change to it reaches across" (E5), so the log-format change can break the service.
+Because the change alters a consumer's (de facto) contract, that gap is inside its scope; A0 says "work that touches a gap closes as much of it as the touch allows" and "Passing it silently is what the axiom forbids".
+GUESS: the right move is to declare the interface (E5: "Declaring the boundary is what makes them two again"), or at least record the gap with a revival trigger per M5.
+
+### system-boundary.S6
+It is defined in `entities/E5-system.md`: "A system is a unit of engineering with a boundary: what is inside it, and the contracts through which anything outside reaches it."
+"The boundary separates it from its neighbours only where it is declared; where one unit depends on another across a boundary nobody declared, the two are one system for deciding what a change answers to."
+Systems relate in exactly two ways, contain and compose; a system is not a repository, deployment unit or process by definition, and not defined by size or traits.
+"Traits describe a system, and axioms bind it"; a component is "a system seen as a part of a larger system that contains it" (`entities/E6-component.md`).
+
+### axiom-direction.Q1
+The service is stateful and multi-agent, so A1 and A5 bind it; that component is short of A1 ("No functional unit possesses private, opaque, or transient truth"; fault "Hidden State Problem - state lives inside a process; other actors reason about a different reality").
+Whether you must fix it depends on scope (`axioms/README.md`): you must improve what your change touches - "what it modifies, what it newly depends on, and any consumer whose contract it alters" - and "Beyond the scope, improvement is considered, never mandated."
+If your feature newly depends on the component, it is touched but not altered, "so its gaps must not be built on" - do not read or rely on its hidden in-memory state.
+If it is adjacent (shares a declared interface, `entities/E6-component.md`), you may close the gap opportunistically under A14 tangent discipline, as a separate change; otherwise record it "with its evidence and a revival trigger (M5)", since what work happens next is the director's call (R4, AR3).
+Either way "the gap is recorded"; "Passing it silently is what the axiom forbids."
+For your own feature: "new work never repeats a gap the axiom names", so keep its state in the shared, durable, queryable backplane (A1 mechanics: "State is a physical object in the backplane, not a variable living inside a process"), visible to the other agents (A5).
+
+### axiom-direction.Q2
+An axiom is a direction, not a pass/fail test: it is "a load-bearing asymptote - a limit a system is built toward" (`axioms/README.md`).
+When you change a bound system it binds that change two ways at once: "No change may move the system away from the limit, and each change moves it toward the limit as far as the change's own scope allows."
+A system short of the limit is not wrong for that; "it is wrong for moving away from it."
+The CORRECTION banner in `axioms/README.md` retracts the earlier "hold or fail" wording, and the fault "The conformance reading" explains why: treated as pass/fail, "no change advances the system, and the gaps the axioms name become permanent."
+Gates fit this: they check that the change "moved the system no further from any limit in force, and repeated no gap it touched." Axioms in force also cannot be traded off against each other ("no axiom may be traded against another").
+
+### OBSERVATIONS
+- The prompt does not say whether the service is declarative or whether the launcher-service interface is versioned. Both change the answers (A2; S2 binding on change versus on adoption). I marked both NOT SETTLED.
+- `INDEX.md` says links resolve against a local checkout "otherwise fetch from" GitHub. I resolved everything inside the given corpus directory only.
+- A14 tangent discipline describes adjacency as one direction only ("the tangent sits under load-bearing infrastructure the main line will stand on"). `axioms/README.md` and `entities/E6-component.md` count both directions ("one it stands on, or one that stands on it"). E6 reconciles them explicitly ("the other direction is adjacency with less payback, not none"), so this reads as tension in wording rather than a contradiction.
+- S5: E5 treats an undeclared dependency as making the two units one system "for deciding what binds a change". It does not say whether the operator's supervision of the launcher half removes the service's autonomous trait from the merged system. I took the union rule ("traits of both") at its word.
+- `axioms/README.md` says "Thirteen of the fourteen axioms can bind a lone agent - every one except A6". This is consistent with the tags, because A5, A7, A10 and A13 can bind through llm-in-the-loop or autonomous. I noted it only because it is easy to misread.

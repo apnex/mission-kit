@@ -151,7 +151,7 @@ function cmdPrepare(o) {
 	const prompts = [];
 	for (const c of corpora) for (const g of groups.values()) for (let r = 1; r <= readers; r++) {
 		const pid = "r-" + hex(`${salt}:${c.label}:${g.id}:${r}`);
-		const answer = path.join(run, "answers", `${pid}.md`);
+		const answer = path.join(run, "answers", `${pid}.txt`);
 		fs.writeFileSync(path.join(run, "prompts", `${pid}.txt`), readerPrompt(g, c.path, answer));
 		prompts.push({ pid, label: c.label, group: g.id, reader: r, probes: g.suites.flatMap((s) => s.probes.map((p) => `${s.id}.${p.id}`)) });
 	}
@@ -162,13 +162,14 @@ function cmdPrepare(o) {
 	});
 	const order = shuffle(prompts, rng(salt));
 	fs.writeFileSync(path.join(run, "TASKS.md"), [
-		"# Reader tasks", "",
+		"<!-- GENERATED FILE by tools/eval.mjs prepare; do not edit by hand. -->", "# Reader tasks", "",
 		"Give each fresh agent exactly one line below, as its whole instruction. Order is shuffled.", "",
 		...order.map((p) => `- Read ${path.join(run, "prompts", p.pid + ".txt")} and follow it exactly. Read nothing else in ${run}.`), "",
 	].join("\n"));
 	process.stdout.write(`${run}\t${prompts.length} reader prompts\n`);
 }
 
+// Answers are agents' evidence, kept as .txt so no style rule ever rewrites what was scored.
 // --- answers and scores ------------------------------------------------------------------------
 function splitAnswers(text, probeIds) {
 	const out = {};
@@ -187,9 +188,9 @@ function splitAnswers(text, probeIds) {
 function cmdStatus(o) {
 	const run = path.resolve(String(o.run ?? die("status needs --run")));
 	const m = readJSON(path.join(run, "sealed", "manifest.json"));
-	const missing = m.prompts.filter((p) => !fs.existsSync(path.join(run, "answers", `${p.pid}.md`)));
+	const missing = m.prompts.filter((p) => !fs.existsSync(path.join(run, "answers", `${p.pid}.txt`)));
 	process.stdout.write(`answers: ${m.prompts.length - missing.length}/${m.prompts.length}\n`);
-	for (const p of missing) process.stdout.write(`  missing answers/${p.pid}.md\n`);
+	for (const p of missing) process.stdout.write(`  missing answers/${p.pid}.txt\n`);
 	if (fs.existsSync(path.join(run, "sealed", "blind.json"))) {
 		const b = readJSON(path.join(run, "sealed", "blind.json"));
 		for (const s of b.suites) {
@@ -208,8 +209,8 @@ function cmdBlind(o) {
 	const items = [];
 	const absent = [];
 	for (const p of m.prompts) {
-		const f = path.join(run, "answers", `${p.pid}.md`);
-		if (!fs.existsSync(f)) die(`answers/${p.pid}.md missing - run status`);
+		const f = path.join(run, "answers", `${p.pid}.txt`);
+		if (!fs.existsSync(f)) die(`answers/${p.pid}.txt missing - run status`);
 		const parts = splitAnswers(fs.readFileSync(f, "utf8"), p.probes);
 		for (const probe of p.probes) {
 			if (!(probe in parts) || !parts[probe]) { absent.push({ pid: p.pid, probe }); continue; }
@@ -282,7 +283,8 @@ function cmdScore(o) {
 	for (const l of labels) total[l] = +probes.reduce((a, pr) => a + (mean[pr][l] ?? 0), 0).toFixed(2);
 	const result = { created: new Date().toISOString(), seed: b.seed, corpora: m.corpora, readers: m.readers, probes, max: probes.length * 2, mean, total, rows };
 	writeJSON(path.join(run, "RESULT.json"), result);
-	const md = ["# Result", "", `Readers per corpus: ${m.readers}. Scored blind by a separate agent; mapping in \`sealed/\`.`, "",
+	// Generated, so style exempts it: the defect, if any, belongs to this tool, not to a hand edit.
+	const md = ["<!-- GENERATED FILE by tools/eval.mjs score; do not edit by hand. -->", "# Result", "", `Readers per corpus: ${m.readers}. Scored blind by a separate agent; mapping in \`sealed/\`.`, "",
 		`| Probe | ${labels.join(" | ")} |`, `|---|${labels.map(() => "---").join("|")}|`,
 		...probes.map((pr) => `| ${pr} | ${labels.map((l) => mean[pr][l]).join(" | ")} |`),
 		`| **Total / ${result.max}** | ${labels.map((l) => `**${total[l]}**`).join(" | ")} |`, ""];

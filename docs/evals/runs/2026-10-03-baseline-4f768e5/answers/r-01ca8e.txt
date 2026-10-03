@@ -1,0 +1,28 @@
+### component.C1
+Y is not in your change's scope. `axioms/README.md` (A0) says "A change touches what it modifies, what it newly depends on, and any consumer whose contract it alters". X already called Y, so the fix neither modifies Y nor newly depends on it.
+Y is adjacent, though. X consumes Y's declared interface, which makes Y the component the work "stands on" (`entities/E6-component.md`, *Adjacent against nearby*). So A0's opportunistic rule applies: "may be closed opportunistically when compounding learning supports it ([`A14`] tangent discipline)". That support needs near payback, the yield captured, and a cost that "does not significantly distract".
+The 20-minute diagnosis against a 5-minute fix meets that test well, and A14 asks for "Friction -> root cause, never workaround". So the axioms invite fixing Y but do not require it ("considered, never mandated"). If you do it, A0 says to make it "as a change of its own" and not inside the X fix. Either way, "the gap is recorded".
+Z is nearby but not adjacent, because X does not use it (E6: no shared declared interface). It also fails the cost test, at two days. A0 says such a gap "is recorded with its evidence and a revival trigger ([`M5`])", not closed, because choosing larger work is the director's call (R4, AR3). Passing it by silently "is what the axiom forbids".
+Z's hidden in-memory state is A1's "Hidden State Problem" (`axioms/A1-sovereign-state-transparency.md`). A1 binds the service, and so your change, only if the service passes the `stateful` test in T1. The question does not say whether it does, so that point is NOT SETTLED.
+
+### component.C2
+It is defined in `entities/E6-component.md`: "A **component** is a [system] seen as a part of a larger system that contains it." It has "**one duty** at the altitude where it appears as a part", and it "exposes and consumes interfaces". Its boundary is those interfaces, and they separate it from its neighbours only where they are declared.
+It is not a different kind of thing from a system. E6 says "Every component is a system; *component* names its place in a containing system". `entities/E5-system.md` defines a system as "a unit of engineering with a **boundary**", which traits describe and axioms bind.
+The difference is the question you are asking. Traits, axioms, and what a change answers to are system questions. "Duty, interfaces, neighbours and blast radius" are component questions, which "only have answers relative to the whole it is part of". A system that nothing contains is not a component.
+E6 also says a component is not a file, module, package, repository, deployable, SysML part, or registered `components/` entry by definition.
+
+### component.C3
+No, the directory is not the boundary. E6, *Boundary against directory*, says "A component's directory addresses it ... Its boundary is its declared interfaces." It adds: "with no declared interface there is no boundary to cross." E5 also says a directory "is the boundary of neither the system nor the component."
+What is wrong: `parts/thing/` is still a component, but "nothing separates it yet" (E6). For deciding what a change answers to, `thing` and `other` are "one system, with the traits of both" (E5, *Boundaries*). So a change to `thing`'s internals reaches `other` (E6 blast-radius row).
+The undeclared reach-in is "itself a fault against A3" (E5). It breaks A3's Air-Gap Principle: "no unit reaches into another's internals". The remedy the text names is declaring the interface: "Declaring its interfaces is what separates it" (E6).
+
+### component.C4
+Your change answers to P and to every system that contains P, including the service. A0 says "That is the system it modifies, every system containing it, and any system whose contract with it the change alters". E5 says "changing a module changes the service it sits in".
+Q is not altered. A0 says "A system it only composes with, through a contract the change leaves as it was, is not altered, and its axioms do not bind." E6's blast-radius row agrees: a change reaches "an adjacent component only if the interface between them changes". Q is also not "touched", because the change does not alter Q's contract (A0).
+Q is adjacent to P because they share a declared interface. A0 counts both directions ("one it stands on, or one that stands on it"), so Q can be improved opportunistically if it passes the A14 test. But Q stands on P, not P on Q. E6 calls this the direction with "less payback, not none", so the case for working on Q is weaker. If you skip it, record any gap you saw with a revival trigger (A0, M5).
+
+### OBSERVATIONS
+- C1: The corpus does not say whether making Y's error message more precise changes Y's interface. If a consumer relies on the message text, it is "a contract in fact" (E5), and the fix would then alter those consumers (A0). The text does not settle this.
+- C1: T1 defines `stateful` as owning *persistent* state. State held only "in process memory" may not meet that test, so whether A1 applies to Z depends on facts the question leaves out.
+- A0 ("A gap or friction in a component adjacent ... may be closed") and A14 ("adjacency ... payback scales with proximity") describe adjacency slightly differently: A14 uses only the direction the main line stands on. E6 reconciles the two, but A14 read alone suggests the reverse direction (C4's Q) does not count.
+- The corpus INDEX.md says to fetch from GitHub when there is no checkout. I used only the local corpus, as the instructions require.

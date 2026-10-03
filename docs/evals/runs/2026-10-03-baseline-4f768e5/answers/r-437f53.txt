@@ -1,0 +1,13 @@
+### component-a3.C5
+The 'utils' module is a named fault: "**God-Object Accretion** - "utils", "helpers", "managers" accumulate unrelated concerns."
+For a change, the Mandate says "a change short of it adds none of them, and removes what it touches", so your feature must not be added to 'utils', and if your change touches 'utils', it should remove that god-object property from what it touches.
+Your feature should be its own unit: "a module does exactly one thing; "and"/"also" in its description is a violation", and "a concern earns an internal boundary by being one concern".
+Build it by composition: "a new capability is assembled by composing existing units, never by modifying them", and interact only "through declared adapters and contracts".
+Do not expose the feature as a stable contract in advance: it "earns promotion to a stable, depended-upon surface only when a real consumer outside its origin needs it".
+NOT SETTLED: how much of 'utils' "removes what it touches" requires you to clean up (only the part you touch, or the whole module), and whether you must do anything to 'utils' if your change does not touch it. The file says the binding rule is "stated in [`A0`](README.md)", which I did not read.
+GUESS: you leave untouched parts of 'utils' alone, and you extract only the concern you actually edit.
+
+### OBSERVATIONS
+- "removes what it touches" is ambiguous. "What" can mean the touched god object as a whole or only the touched part of it.
+- Possible conflict: "removes what it touches" means you change an existing unit (for example, you extract a concern from 'utils'). But "Composable by Default" says capabilities come "never by modifying" existing units. The file does not say which rule wins when a change touches an accretion bucket.
+- The file says how an axiom binds a change is in A0. A0 was outside the permitted reading, so the binding strength (must or should) is not settled from A3 alone.

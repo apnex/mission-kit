@@ -57,7 +57,7 @@ run = sys.argv[1]
 m = json.load(open(f"{run}/sealed/manifest.json"))
 for p in m["prompts"]:
     q2 = "two" if p["label"] == "NEWLABEL" else "three"
-    open(f"{run}/answers/{p['pid']}.md", "w").write(f"### alpha.Q1\none\n\n### alpha.Q2\n{q2}\n\n### OBSERVATIONS\nnone\n")
+    open(f"{run}/answers/{p['pid']}.txt", "w").write(f"### alpha.Q1\none\n\n### alpha.Q2\n{q2}\n\n### OBSERVATIONS\nnone\n")
 PY
 node "$tool" status --run "$run" >/dev/null 2>&1 && ok "status passes when every answer is present" || no "status passes when every answer is present"
 
@@ -112,7 +112,7 @@ node "$tool" compare --base "$run/RESULT.json:NEWLABEL" --head "$run/RESULT.json
 run2="$tmp/run2"
 node "$tool" prepare --suites alpha --corpus ONLY="$tmp/newc" --readers 1 --out "$run2" >/dev/null
 pid=$(ls "$run2/prompts" | sed 's/\.txt$//')
-printf '### alpha.Q1\none\n' > "$run2/answers/$pid.md"
+printf '### alpha.Q1\none\n' > "$run2/answers/$pid.txt"
 node "$tool" blind --run "$run2" --seed s >/dev/null
 python3 - "$run2" <<'PY'
 import json, sys, re

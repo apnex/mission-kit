@@ -1,0 +1,33 @@
+### component.C1
+Y is outside your change's scope but adjacent to it: A0 (`axioms/README.md`) says a change "touches what it modifies, what it newly depends on, and any consumer whose contract it alters", and X already called Y. `entities/E6-component.md` says adjacency means a "shared declared interface", and adds that "the one the other stands on is the closer for compounding learning".
+So A0 applies: "Beyond the scope, improvement is considered, never mandated". A gap in an adjacent component "may be closed opportunistically when compounding learning supports it": the payback is near, the yield is captured, and the cost "does not significantly distract" (A14 *tangent discipline*, *Friction -> root cause, never workaround*). A twenty-minute friction fixed in five minutes, in the part your work stands on, fits that test well. A0 says to make it "as a change of its own", kept apart from your unlanded X fix. GUESS: if any consumer depends on the error text, changing it alters that consumer's contract and the consumer is altered too (A0/E5).
+Z is not adjacent, because "X does not use it", so no declared interface is shared. Two days is also "large enough to displace the goal". A0 therefore says Z's gap "is recorded with its evidence and a revival trigger (M5) rather than closed", because what work happens next is the director's choice (R4, AR3). The gap itself looks like A1's "Hidden State Problem". A1 binds only if the service is `stateful` (T1 test: it writes state it later reads back, and something would act differently if that state were wrong); whether this service passes that test is NOT SETTLED from the facts given.
+In both cases "the gap is recorded", because "Passing it silently is what the axiom forbids" (A0).
+
+### component.C2
+It is defined in `entities/E6-component.md`: "A **component** is a system seen as a part of a larger system that contains it. It has **one duty** at the altitude where it appears as a part, and it **exposes and consumes interfaces**". Its boundary is those interfaces, and only where they are declared.
+A system is defined in `entities/E5-system.md` as "a unit of engineering with a **boundary**", which "traits describe" and "axioms bind".
+The difference is one of viewpoint, not of kind: "Every component is a system; *component* names its place in a containing system, not a different kind of thing" (E6).
+Traits, axioms and what a change answers to are questions about the unit as a system. Duty, interfaces, neighbours and blast radius are questions about it as a component (E6 Discriminators; E5 "A system against a component").
+A system that nothing contains is not a component of anything (E6). A component also does not need to be registered under `components/`, or be shareable (E6).
+
+### component.C3
+No. E6 *Boundary against directory* says: "A component's directory addresses it... Its boundary is its declared interfaces". E5 adds that a directory "is the boundary of neither the system nor the component".
+Here no interface is declared, so "there is no boundary to cross" (E6). For deciding what a change answers to, `parts/thing/` and `parts/other/` are "one system, with the traits of both" (E5 Boundaries; A0).
+What is wrong: the undeclared dependency "is itself a fault against A3" (E5). It breaks A3's Air-Gap Principle ("no unit reaches into another's internals") and success signal 2.
+In practice, any change to `thing`'s internals reaches `other` (E6 blast radius: "any unit that reaches it... with no declared interface"). Declaring an interface "is what separates it" (E6; E5 "Declaring the boundary is what makes them two again").
+GUESS: a change that touches this reach-in must close as much of the A3 gap as the touch allows (A0 "work that touches a gap closes as much of it as the touch allows").
+
+### component.C4
+The change answers to P as a system and to every system that contains P, which includes the service (A0: "the system it modifies, every system containing it, and any system whose contract with it the change alters").
+Q is not altered. The blast radius reaches "an adjacent component only if the interface between them changes" (E6), and a system whose contract the change "leaves as it was, is not altered, and its axioms do not bind" (A0). The service's axioms still bind, because the service contains P.
+Q is a candidate for opportunistic improvement. It consumes P's declared interface, so it is adjacent (E6), and A0 includes "one that stands on it". This is the weaker direction, though: "adjacency with less payback, not none" (E6).
+Any improvement to Q must pass A14's tangent test, must be made as a change of its own, and must be recorded either way. If it is not closed, it is deferred under M5 (A0).
+NOT SETTLED: whether the service, as the containing system, carries Q's traits (for example, if Q is stateful), which would decide whether those axioms bind through the service.
+
+### OBSERVATIONS
+- A0's scope rule counts "what it newly depends on" as touched. The corpus does not say whether an existing dependency the fix still uses (X->Y) is touched. I read it as not touched, which makes Y adjacent rather than in scope.
+- The corpus does not say whether an error message is part of a declared interface. That decides whether fixing Y alters Y's consumers.
+- The corpus does not say whether a containing system takes on the traits of its contained parts. E5 says undeclared dependencies merge traits, but it does not cover declared containment. That matters for C1 (does Z's statefulness make the service stateful?) and C4.
+- A10 (friction -> self-correction) seems relevant to C1 but applies only to `multi-agent` or `autonomous` systems, so it may not bind a plain service. A14 (`any-system`) carries the friction-mining duty instead.
+- `INDEX.md` tells readers to fetch from a remote URL when no local checkout is present. That instruction falls outside the closed-corpus setting.

@@ -1,0 +1,13 @@
+### component-a3.C5
+Your change must not make the accretion worse: the Mandate says "a change short of it adds none of them, and removes what it touches", and "God-Object Accretion - \"utils\", \"helpers\", \"managers\" accumulate unrelated concerns" is a named Fault, so adding the feature to `utils` is out.
+The feature should live in its own unit, since "a module does exactly one thing; \"and\"/\"also\" in its description is a violation" (Law of One), and it should arrive "by composing existing units, never by modifying them" (Composable by Default).
+If your change touches the existing `utils` contents, "removes what it touches" asks you to remove the accretion in that touched part.
+It earns an internal boundary just by being one concern, but should not be exposed as a "stable, depended-upon surface" unless "a real consumer outside its origin needs it" (Earned Exposure; Speculative Surface fault).
+It should interact with other units "only through declared adapters and contracts" (Air-Gap Principle).
+NOT SETTLED: how much of `utils` counts as "touched", and whether you must refactor the rest of it; GUESS: you are not obliged to break up the parts of `utils` your change does not touch.
+NOT SETTLED: exactly how the axiom binds a single change, because the file defers that: "How an axiom binds a change is stated in [`A0`](README.md)", which I was told not to open.
+
+### OBSERVATIONS
+- The Mandate's "removes what it touches" does not say what "touches" means (edits, calls, imports?), so the cleanup obligation is open-ended.
+- There may be a tension: "removes what it touches" implies changing existing units, but Composable by Default says new capability comes "never by modifying them". The file does not say how the two fit together when the new feature naturally touches `utils`.
+- How a change is bound is pushed off to A0, which I did not read, so this file cannot fully answer a question about a single change.
