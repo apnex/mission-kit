@@ -22,7 +22,8 @@ report() { printf 'FAIL  %-12s %s\n' "$1" "$2"; fail=$((fail + 1)); }
 # Every rule that declares an enforcer must have one, and every per-rule tool must belong to a
 # rule. The link between a rule and its mechanism was prose-only, which is how six rules came to
 # be enforced by one file holding six duties.
-for entry in style/S*.md; do
+# Style rules and conduct rules (rules/, from Delta-1) both may name an enforcer; when they do, it must exist.
+for entry in style/S*.md rules/RU*.md; do
 	[ -f "$entry" ] || continue
 	tool=$(awk 'FNR==1 && !/^---$/{exit} FNR==1{next} /^---$/{exit}
 	            /^enforced-by:/{sub(/^enforced-by:[[:space:]]*/, ""); print; exit}' "$entry")

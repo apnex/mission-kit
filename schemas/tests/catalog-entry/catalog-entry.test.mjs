@@ -18,7 +18,8 @@ const ROOT = path.resolve(SCHEMAS, '..');
 
 // skills/ holds K* catalogue stubs alongside skill directories; only the stubs are entries,
 // and the directory bodies are filtered out below because they declare no id.
-const CATALOGUE_DIRS = ['axioms', 'style', 'methodology', 'roles', 'patterns', 'domains', 'work-types', 'backlog', 'skills', 'schemas', 'entities', 'components', 'artifacts'];
+// 'methodology' stays until Delta-1 renames it to 'methods'; listing both keeps entries validated through the rename.
+const CATALOGUE_DIRS = ['axioms', 'style', 'methodology', 'methods', 'rules', 'practices', 'roles', 'patterns', 'domains', 'work-types', 'backlog', 'skills', 'schemas', 'entities', 'components', 'artifacts'];
 
 const schema = JSON.parse(readFileSync(path.join(SCHEMAS, 'catalog-entry/v1alpha1/catalog-entry.schema.json'), 'utf8'));
 const validate = new Ajv2020({ allErrors: true, strict: false }).compile(schema);
@@ -87,4 +88,20 @@ test('purged bookkeeping fields are rejected, not merely absent', () => {
 		const probe = { id: 'A0', category: 'axiom', title: 't', status: 'active', 'applies-to': ['x'], related: ['A1'], [banned]: 'x' };
 		assert.equal(validate(probe), false, `schema must reject the field ${banned}`);
 	}
+});
+
+// Delta-1 stage 1. Each probe is the defect the new layers must refuse; each was removed from the
+// schema once to confirm this test goes red without it.
+test('a rule must declare the trace a check could test', () => {
+	const rule = { id: 'RU1', category: 'rule', title: 't', status: 'active', 'hydrate-when': 'You are about to defer a unit of tracked work', related: ['A4'] };
+	assert.equal(validate(rule), false, 'a rule with no trace must be refused');
+	assert.equal(validate({ ...rule, trace: 'the deferral record carries a revival trigger field' }), true, 'a rule with a trace must be accepted');
+	assert.equal(validate({ ...rule, trace: 'short' }), false, 'a trace too short to state an observation must be refused');
+});
+
+test('the new prefixes are accepted, and a malformed one is refused', () => {
+	const base = { title: 't', status: 'active', 'hydrate-when': 'You are about to author a new entry in a collection', related: ['A4'] };
+	assert.equal(validate({ ...base, id: 'PC1', category: 'practice' }), true, 'PC1 practice must be accepted');
+	assert.equal(validate({ ...base, id: 'RUX1', category: 'rule', trace: 'the deferral record carries a revival trigger field' }), false, 'a malformed rule id must be refused');
+	assert.equal(validate({ ...base, id: 'M9', category: 'method' }), true, 'a method entry must be accepted');
 });
