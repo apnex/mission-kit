@@ -1,0 +1,68 @@
+{
+  "id": "charter-claims",
+  "mode": "corpus",
+  "group": "charter-claims",
+  "source": "Recheck of ten applied charters against E4 'a charter holds the set's vision'. Keys derived from the population and the three reviewer reports, before any charter is edited. Key reviewed by a fresh agent before any reader ran; V3, V5, V7, V8 and V10 corrected; V8 narrowed to the knowledge corpus because machinery code may resolve to delivery-code under D0's tie-break.",
+  "probes": [
+    {
+      "id": "V1",
+      "question": "A set's charter claims a scope that no current member fills. Should the charter narrow its claim to what its members cover? And is stating that scope all a charter does?",
+      "key": "No: a charter holds the set's vision - what it is for and claims to cover - and is never cut to fit current holdings; an unfilled claim is a gap and is named. It is not all a charter does: it also manages the set against that claim - territory, boundaries (what enters, where the rest goes), faults, and how changes are made.",
+      "rubric": "2 for no with the gap reasoning, and naming at least one management concern beyond the vision. 1 for no with the gap reasoning alone. 0 otherwise."
+    },
+    {
+      "id": "V2",
+      "question": "Is there a method (a procedure that produces a result of its own) for deciding what lands and what is cut from a piece of work?",
+      "key": "No: deciding what to keep holds no method. RU1 (default-reject, honest yield) and RU3 (anti-amnesia deferral) govern it, but they are rules, not procedures. It is an unfilled moment - a gap.",
+      "rubric": "2 for no method, with RU1 or RU3 identified as rules rather than methods. 1 for no method alone. 0 if RU1/RU3 (or old M3/M5) are named as the method."
+    },
+    {
+      "id": "V3",
+      "question": "At which moments of a unit of work does no rule apply today? Name one piece of guidance in the corpus that leaves a trace in the record but has no rule entry.",
+      "key": "No rule at entering, committing to a design, verifying, handing over. Unheld trace-leaving guidance, for example: labelling claims measured or inferred (verifying; standing context, VISION); no tool attribution or one concern per commit (commit hygiene, standing context); credentials never committed (M0's own example); or any other real guidance in the corpus that leaves a trace in the record and has no rule entry. RU0's hypothetical handover rule does not count: it does not exist.",
+      "rubric": "2 for at least three of the four empty moments plus one unheld candidate. 1 for one of the two parts. 0 otherwise."
+    },
+    {
+      "id": "V4",
+      "question": "At which moments of a unit of work does no practice apply today?",
+      "key": "Every moment but entering: committing to a design, verifying, deciding what to keep, treating the record, handing over. Only PC1, at entering, exists.",
+      "rubric": "2 for all five. 1 for three or four. 0 otherwise."
+    },
+    {
+      "id": "V5",
+      "question": "Do the roles cover authorities that are not about a single unit of work? Name one such authority and which role holds it, if any.",
+      "key": "Yes: authorities above a single unit include choosing and changing direction, curation and delegation (the director, R4), and running a multi-unit arc (the architect, per W18/W19/W21 roleEligibility). A real above-unit authority shown to have no holder is also correct: it would be a gap. The roles are not complete by count.",
+      "rubric": "2 for one above-unit authority with the role that holds it, or a real one correctly shown to have no holder. 1 for the authority without holder or argument. 0 for an answer that the four roles cover everything because there are four."
+    },
+    {
+      "id": "V6",
+      "question": "Would adding an eighth domain contradict the domains charter?",
+      "key": "No: the set claims every surface a unit of work's evidence can resolve against and is not expected to be complete; the current number is a count, not the claim.",
+      "rubric": "2 for no, with the claim-not-count reason. 1 for no alone. 0 for yes."
+    },
+    {
+      "id": "V7",
+      "question": "Does any machine-checkable contract in this corpus (a schema a validator runs, not a prose template) govern the documents a project writes using lifecycle types the corpus defines, such as a board, backlog or decision record? Should one?",
+      "key": "None exists: the schemas cover catalogue entries, standing context, skill bodies, Question, ContextFrame and entry bodies; artifact types carry prose templates, not contracts; the board and backlog are checked only by code in tools/check-board.mjs. Machine-checkable shapes belong to the schemas set, which is for contracts validatable without a project runtime, so the absence is a gap within its scope.",
+      "rubric": "2 for none exists, plus that it falls inside the schemas set's claim and is a gap. 1 for none exists alone. 0 otherwise."
+    },
+    {
+      "id": "V8",
+      "question": "Which work-type covers revising or retiring an existing entry in the knowledge corpus?",
+      "key": "None: the build, fix, retire and land work-types (W1, W2, W3, W5, W6, W7, W26) exclude knowledge-methodology in domainEligibility. W16 captures new capital, not revision; review work-types (W8, W9, W10) check but do not change. W0 already records extending the corpus as a gap; revising and retiring entries sit in the same gap.",
+      "rubric": "2 for none, with the domain exclusion or W0's recorded gap. 1 for none alone, or for W16 with the note that it only captures new capital. 0 for naming W1, W2 or W3 as covering it."
+    },
+    {
+      "id": "V9",
+      "question": "Besides explaining to a human, name a concern whose guidance spans two or more layers and could be gathered as a set, with members from at least two layers.",
+      "key": "Any of: treating history (RU2, RU4, M9); deferring without forgetting (RU3, RU1, AR5); independent verification (M1, W8, K21, R3, A8); or another real cross-layer concern with real members.",
+      "rubric": "2 for a concern with real members from at least two layers. 1 for a plausible concern without correct members. 0 otherwise."
+    },
+    {
+      "id": "V10",
+      "question": "Which axiom protects a system against a hostile actor or untrusted input?",
+      "key": "None has it as its mandate. The axiom charter today says malice is out of scope because collaborating agents act in good faith; that reason covers collaborators, not hostile outsiders or untrusted input, which fall within the axioms' purpose of keeping a system aligned with its intent. Against the current corpus a reader may quote the exclusion: that measures the charter, not the reader. A2's incidental security language is not a mandate.",
+      "rubric": "2 for no axiom with that mandate, plus either calling it a gap or noting the good-faith reason covers collaborators but not outsiders. 1 for no axiom alone, or for quoting the exclusion without that distinction. 0 for naming an axiom as the protector."
+    }
+  ]
+}
