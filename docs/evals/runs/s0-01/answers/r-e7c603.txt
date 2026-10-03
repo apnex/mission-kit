@@ -1,0 +1,53 @@
+### s0.Q1
+The corpus names this as a fault and forbids it. style/README.md (S0), "Faults": "**The forked enforcer.** Two tools holding one rule, disagreeing at the edges. This is why a rule names exactly one."
+S0 "Enforced and unenforced rules": "An enforced rule declares `enforced-by` in its frontmatter naming exactly one tool ... One rule, one tool, and that tool owns both the check and the fix, so a rule cannot be reported by one implementation and refused by another." tools/README.md repeats this.
+So the fix is to pick one tool, have the rule's `enforced-by` name it, and retire the other tool.
+tools/check-enforcers.sh holds the pairing: a rule must name a tool that exists, and a per-rule tool (`tools/s<N>-*`) that no rule claims is reported as "orphan tool".
+NOT SETTLED: the corpus does not say how to choose which of the two tools survives. It also does not say that check-enforcers detects a second tool when that tool is not named `s<N>-*`.
+
+### s0.Q2
+No. S0 "What earns an entry": "A convention earns one when its absence has produced a real defect in a real artifact, and a reader can be shown the difference. Aesthetic preference does not qualify, and neither does a rule that only holds inside one document."
+S0 also frames style as functional: "a convention that keeps a document diffable, searchable and unambiguous is a functional requirement rather than a preference" (linked to A4).
+A heading-capitalisation rule could earn an entry only if someone shows a real defect caused by its absence. Personal preference is not enough. S0 also says to prefer a predicate a script can hold.
+
+### s0.Q3
+No, not by default. S0: "Style is gated on changed files rather than on the whole corpus. The corpus carries debt that predates the checkers, so gating the diff blocks new debt and converts the rest opportunistically as sections are edited."
+tools/check-all.sh runs the style checkers only on changed `.md` files by default: committed against origin/main (or `--since REF`), plus staged, unstaged and untracked files. If no markdown changed, it reports PASS for style.
+`tools/check-all.sh --all` runs style over the whole corpus, but only when someone asks for it.
+The non-style gates in check-all (structure, enforcers, index, schemas, and so on) are not limited to the diff. Also, the `*.test.sh` tool tests run "unconditional[ly]" over fixtures.
+S0 lists a full sweep as a fault: "The corpus-wide sweep. Converting all legacy debt in one commit".
+
+### s0.Q4
+Held by a tool (from the `enforced-by` frontmatter and the tools/README.md table): S6 one sentence per line (`tools/s6-one-sentence-per-line.mjs`), S8 code-block comments (`tools/s8-code-block-comments.sh`), S10 horizontal rule between H2 sections (`tools/s10-section-rules.sh`), S12 code-block introducer on its own paragraph (`tools/s12-code-block-introducer.sh`), S13 plain ASCII (`tools/s13-plain-ascii.sh`) and S14 hydration triggers state a condition (`tools/s14-hydration-triggers.sh`).
+Checked only by reading: tools/README.md says "Rules `S1`, `S2`, `S3`, `S4`, `S5`, `S7`, `S9`, `S11` and `S15` need judgement and have no enforcer; review those by reading." Examples are S2 runnable commands in code blocks, S5 no version pins in prose, S11 backticks for identifiers and S15 message to a human. None of these has an `enforced-by` line.
+Note: S8 and S14 have tools, but tools/README.md marks their fix as "no, needs judgement". So these tools check the rule but cannot fix the text.
+
+### s0.Q5
+No style entry covers comments in source code. The closest is S8, but it covers comments "inside code blocks" in documents ("Code-block comments are for what-the-line-does, not prose substitutes"), and its examples are markdown code blocks in workflow docs.
+Source-code comments appear in skills/write-discoverable-code/SKILL.md (K27), which says, for example, "One-line doc comment on every export" and "Write the plain-words phrase in the doc comment". K27 is a skill, not a style rule.
+Where a new rule would go: methods/README.md (M0) "Placement", question 3, says "Does it govern how an artifact is written - its form, whatever the work was? Style, in `style/`". S0 covers "Doc, commit, and naming conventions" and "Rules about the artifact itself". So a rule about comment form would go in `style/` as a new S entry.
+To be admitted, it must show a real defect (S0 "What earns an entry"). If a predicate can express it, it should name exactly one enforcer in `enforced-by`.
+GUESS: source files are artifacts under M0's definition, so style/ applies. But all current style rules and checkers target markdown (check-all only passes `*.md` files to style checkers), so a source-code checker would also need changes to the gate.
+
+### s0.Q6
+No. It is a rule, and it already exists as RU3. RU3's frontmatter `trace` says: "every deferred, parked or cut item's record carries a revival trigger".
+M0 "Placement" uses this as its own example: "The style question is about the object, not checkability: *every deferral records its revival trigger* is visible in text and is still a rule, because it governs what the work records."
+rules/README.md: "Against style: style governs the artifact's form; a rule governs what the work does or records." The proposal should be merged into RU3 or cited from it, not filed as a duplicate.
+
+### s0.Q7
+S0's "Faults" section lists the signs of an unhealthy population:
+- unfalsifiable conventions phrased as qualities ("be clear", "be concise") with no predicate;
+- orphaned rules that nobody enforces and nobody reviews, "which teaches readers that the layer is decorative";
+- forked enforcers, where two tools hold one rule and disagree at the edges;
+- corpus-wide sweeps that hide real changes in an unreviewable diff.
+Also from S0 "What earns an entry": entries admitted for aesthetic preference, or rules that hold only inside one document.
+Other faults named elsewhere: M0 names "The style rule in process clothing" (filed under methods), and rules/README.md names "The style rule in rule clothing". tools/README.md names the "unread-checker fault" ("Five checkers existed and nothing ran any of them").
+Healthy signs, implied by contrast: each rule either names exactly one real tool or is openly marked as reviewed by reading.
+
+### OBSERVATIONS
+- S0 says the enforcing tool "owns both the check and the fix", but tools/README.md marks S8 and S14 as having no fix ("needs judgement"). So the "owns the fix" claim is not true for every enforced rule.
+- S0 says "The remaining rules need judgement". This suggests enforced rules need no judgement, but S8 and S14 are enforced and still need judgement to fix.
+- tools/check-enforcers.sh scans `rules/RU*.md` for `enforced-by`, but the orphan-tool check only looks under `style/${rule}-*.md` for `tools/s[0-9]*-*`. A rule's enforcer outside that naming scheme would not get the reverse check. It also cannot detect a forked enforcer that is not named `s<N>-*`.
+- tools/README.md says "Changed means committed against the base plus staged plus unstaged". check-all.sh also includes untracked files, so the README description is behind the script. check-all.sh also repeats the comment "Committed against the base, plus staged, plus unstaged."
+- tools/README.md says "Five checkers existed and nothing ran any of them", but there are now six per-rule checkers. This probably describes the past, but it is unclear.
+- check-all.sh only finds style checkers named `s[0-9]*-*.sh` or `.mjs`, and only passes markdown files. A non-markdown style rule (for example, source comments) would not be gated without changes.

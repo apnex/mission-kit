@@ -1,0 +1,58 @@
+### s0.Q1
+The corpus names this as a population fault: "The forked enforcer. Two tools holding one rule, disagreeing at the edges. This is why a rule names exactly one." (style/README.md, Faults).
+The remedy is stated under Enforcement boundary: "An enforced rule names exactly one tool ... One rule, one tool, and that tool owns both the check and the fix, so a rule cannot be reported by one implementation and refused by another."
+The pairing is declared in each rule's `enforced-by` frontmatter, and `tools/check-enforcers.sh` checks it in both directions: a rule naming a missing tool fails, and so does a per-rule tool (`tools/sN-*`) that no rule claims.
+So the fix is to collapse to one sovereign tool, named in the rule's `enforced-by`, and remove the other.
+Limit: check-enforcers.sh matches one tool per rule-number prefix and one `enforced-by` line per rule, so it would catch a second `tools/sN-*` file. It would not catch a second checker living under another name, for example inside a general script. NOT SETTLED whether anything detects that case. GUESS: only review would catch it.
+
+### s0.Q2
+No, not on that basis.
+style/README.md "What earns an entry" requires all three of these: it governs form; "Its absence produced a real defect in a real artifact, and a reader can be shown the difference. Aesthetic preference does not qualify."; and it holds across artifacts.
+Heading capitalisation governs form and could hold across artifacts, but a preference fails criterion 2.
+It would qualify only if the proposer could show a real defect that inconsistent capitalisation caused, with a before and after a reader could see.
+The charter also says to "Prefer a rule a script can hold", and capitalisation could be stated as a predicate. That helps how the rule would be enforced, but it does not replace the defect requirement.
+
+### s0.Q3
+No, not by default.
+style/README.md: "Style is gated on changed files rather than on the whole corpus. The corpus carries debt that predates the checkers, so gating the diff blocks new debt and converts the rest as sections are edited."
+tools/check-all.sh runs the per-rule checkers (s6 s8 s10 s12 s13 s14) only on changed `.md` files. Those are files committed against the base (`--since REF`, default `origin/main`), plus staged, unstaged and untracked files. If no markdown changed, the style step passes.
+A whole-corpus run is available through `tools/check-all.sh --all`. CI (.github/workflows/check.yml) does not use it; it runs `--since` the PR base or the push predecessor.
+Non-markdown files are never style-checked. The other, non-style gates in check-all.sh (index generation check, schema tests, enforcer pairing and so on) are not restricted to the diff. The tools' own `*.test.sh` files also run every time, against fixtures.
+The charter also lists converting all debt in one commit as a fault ("The corpus-wide sweep").
+
+### s0.Q4
+Held by a tool (the "Held by" column in the style/README.md index, generated from `enforced-by` in each rule's frontmatter, which I confirmed in the files): S6 `tools/s6-one-sentence-per-line.mjs`, S8 `tools/s8-code-block-comments.sh`, S10 `tools/s10-section-rules.sh`, S12 `tools/s12-code-block-introducer.sh`, S13 `tools/s13-plain-ascii.sh`, S14 `tools/s14-hydration-triggers.sh`. That is six rules.
+Checked only by reading ("reading" in the index, no `enforced-by`): S1 prerequisites, S2 runnable steps in code blocks, S3 producer/consumer split, S4 four-journey README, S5 no version pins, S7 alternative paths in separate blocks, S9 action-first README, S11 identifiers in backticks, S15 message to a human. That is nine rules.
+This agrees with the charter: "nine of its fifteen rules are held only by reading" (Axiom alignment).
+The charter treats the reading-only group as a stated property rather than a backlog: "some conventions are about whether a sentence earns its place, and no script settles that."
+
+### s0.Q5
+There is no style rule for comments in source code.
+style/README.md "Gaps tested": "Source code has no style rule either; naming code so plain-text search finds it is held by a skill, K27, rather than by this set."
+S8 governs comments, but only "Comments inside code blocks" in documents, for example markdown workflow docs. It does not cover source files.
+K27's body (skills/write-discoverable-code/SKILL.md) already gives guidance on source comments, for example "One-line doc comment on every export" written with the plain-words search phrase. A team should check whether that covers its need first.
+Where a new rule goes depends on the Skills neighbour question in style/README.md: "Is it a capability applied while working, or a property judged in the result?" A property judged by reading the finished source, which meets the three admission criteria, would be a style rule in `style/`. Under the Territory table, source code would then be a new medium with its own row.
+GUESS: the "unscoped medium" fault says one rule for a medium sits as a row, and "a second is the point at which a medium earns a sub-set of its own". So a first source-code rule would be a row, and a second source-code rule would need a sub-set. NOT SETTLED whether "a second" means a second rule for the same medium or a second non-document medium alongside S15.
+
+### s0.Q6
+No. It is a rule, and it already exists as RU3 (rules/RU3-anti-amnesia-deferral.md, `trace: every deferred, parked or cut item's record carries a revival trigger`).
+style/README.md Neighbours says it outright: "A revival trigger on a deferred item is a rule, though it is visible in text."
+methods/README.md placement agrees: "every deferral records its revival trigger is visible in text and is still a rule, because it governs what the work records".
+The separating question is about the object, not about whether it can be checked: style governs how the artifact reads, and this governs what the work must record.
+Filing it in style would be the charter's "work rule in style clothing" fault.
+
+### s0.Q7
+style/README.md "Faults" lists five:
+(1) the forked enforcer: two tools hold one rule and disagree at the edges;
+(2) the orphaned rule: a convention that nobody enforces and nobody reviews, "which teaches readers that the layer is decorative";
+(3) the unscoped medium: rules for a non-document medium scattered among document rules with nothing grouping them;
+(4) the work rule in style clothing: a convention that governs what the work does or records, filed where rule-appliers will not look;
+(5) the corpus-wide sweep: all legacy debt converted in one commit, so no one can review the diff and a real change can hide inside it.
+The criteria in "What earns an entry" imply other warning signs: rules admitted on aesthetic preference, and rules that live inside one document. NOT SETTLED as named faults. GUESS: they would count as unhealthy.
+
+### OBSERVATIONS
+- The S0 index states the split between tool-held and reading-only rules, and it agrees with each rule's `enforced-by` frontmatter and the "nine of fifteen" claim. I found no inconsistency there.
+- tools/check-enforcers.sh only detects orphan tools that follow the `tools/s<N>-*` naming. A forked enforcer inside a differently named script would not be caught, so the "exactly one tool" guarantee is narrower than the charter's prose implies.
+- The "unscoped medium" fault is ambiguous: it is unclear whether "a second" means a second rule for one medium or a second non-document medium.
+- "The corpus-wide sweep" is listed under Faults, but it describes a single bad commit rather than a population property. E4 (entities/E4-charter.md) says Faults is "for population faults alone".
+- tools/check-all.sh shows check-charter-shape.sh as suspended ("tracked as B17"), so charter shape is not currently gated.

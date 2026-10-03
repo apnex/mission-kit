@@ -1,0 +1,461 @@
+{
+  "created": "2026-10-03T21:45:23.298Z",
+  "suites": [
+    "s0",
+    "layer-charters",
+    "work-layers",
+    "explain-routing",
+    "system-boundary"
+  ],
+  "readers": 3,
+  "corpora": [
+    {
+      "label": "before",
+      "path": "/tmp/opencode/evalc-s0b/c-08e8e2bd"
+    },
+    {
+      "label": "after",
+      "path": "/tmp/opencode/evalc-s0a2/c-9a877681"
+    }
+  ],
+  "prompts": [
+    {
+      "pid": "r-e9a3a7",
+      "label": "before",
+      "group": "s0",
+      "reader": 1,
+      "probes": [
+        "s0.Q1",
+        "s0.Q2",
+        "s0.Q3",
+        "s0.Q4",
+        "s0.Q5",
+        "s0.Q6",
+        "s0.Q7"
+      ]
+    },
+    {
+      "pid": "r-5802ad",
+      "label": "before",
+      "group": "s0",
+      "reader": 2,
+      "probes": [
+        "s0.Q1",
+        "s0.Q2",
+        "s0.Q3",
+        "s0.Q4",
+        "s0.Q5",
+        "s0.Q6",
+        "s0.Q7"
+      ]
+    },
+    {
+      "pid": "r-2f56e0",
+      "label": "before",
+      "group": "s0",
+      "reader": 3,
+      "probes": [
+        "s0.Q1",
+        "s0.Q2",
+        "s0.Q3",
+        "s0.Q4",
+        "s0.Q5",
+        "s0.Q6",
+        "s0.Q7"
+      ]
+    },
+    {
+      "pid": "r-fd4008",
+      "label": "before",
+      "group": "layer-charters",
+      "reader": 1,
+      "probes": [
+        "layer-charters.H1",
+        "layer-charters.H2",
+        "layer-charters.H3",
+        "layer-charters.H4",
+        "layer-charters.H5",
+        "layer-charters.H6",
+        "layer-charters.H7"
+      ]
+    },
+    {
+      "pid": "r-f239ac",
+      "label": "before",
+      "group": "layer-charters",
+      "reader": 2,
+      "probes": [
+        "layer-charters.H1",
+        "layer-charters.H2",
+        "layer-charters.H3",
+        "layer-charters.H4",
+        "layer-charters.H5",
+        "layer-charters.H6",
+        "layer-charters.H7"
+      ]
+    },
+    {
+      "pid": "r-cd1c14",
+      "label": "before",
+      "group": "layer-charters",
+      "reader": 3,
+      "probes": [
+        "layer-charters.H1",
+        "layer-charters.H2",
+        "layer-charters.H3",
+        "layer-charters.H4",
+        "layer-charters.H5",
+        "layer-charters.H6",
+        "layer-charters.H7"
+      ]
+    },
+    {
+      "pid": "r-eeed43",
+      "label": "before",
+      "group": "layers",
+      "reader": 1,
+      "probes": [
+        "work-layers.L1",
+        "work-layers.L2",
+        "work-layers.L3",
+        "work-layers.L4",
+        "work-layers.L5",
+        "work-layers.L6",
+        "work-layers.L7"
+      ]
+    },
+    {
+      "pid": "r-dd8453",
+      "label": "before",
+      "group": "layers",
+      "reader": 2,
+      "probes": [
+        "work-layers.L1",
+        "work-layers.L2",
+        "work-layers.L3",
+        "work-layers.L4",
+        "work-layers.L5",
+        "work-layers.L6",
+        "work-layers.L7"
+      ]
+    },
+    {
+      "pid": "r-3a0d8c",
+      "label": "before",
+      "group": "layers",
+      "reader": 3,
+      "probes": [
+        "work-layers.L1",
+        "work-layers.L2",
+        "work-layers.L3",
+        "work-layers.L4",
+        "work-layers.L5",
+        "work-layers.L6",
+        "work-layers.L7"
+      ]
+    },
+    {
+      "pid": "r-5d3c71",
+      "label": "before",
+      "group": "explain-routing",
+      "reader": 1,
+      "probes": [
+        "explain-routing.Q1",
+        "explain-routing.Q2",
+        "explain-routing.Q3",
+        "explain-routing.Q4",
+        "explain-routing.Q5",
+        "explain-routing.Q6"
+      ]
+    },
+    {
+      "pid": "r-d8467c",
+      "label": "before",
+      "group": "explain-routing",
+      "reader": 2,
+      "probes": [
+        "explain-routing.Q1",
+        "explain-routing.Q2",
+        "explain-routing.Q3",
+        "explain-routing.Q4",
+        "explain-routing.Q5",
+        "explain-routing.Q6"
+      ]
+    },
+    {
+      "pid": "r-e11434",
+      "label": "before",
+      "group": "explain-routing",
+      "reader": 3,
+      "probes": [
+        "explain-routing.Q1",
+        "explain-routing.Q2",
+        "explain-routing.Q3",
+        "explain-routing.Q4",
+        "explain-routing.Q5",
+        "explain-routing.Q6"
+      ]
+    },
+    {
+      "pid": "r-dd1ce9",
+      "label": "before",
+      "group": "system",
+      "reader": 1,
+      "probes": [
+        "system-boundary.S1",
+        "system-boundary.S2",
+        "system-boundary.S3",
+        "system-boundary.S4",
+        "system-boundary.S5",
+        "system-boundary.S6"
+      ]
+    },
+    {
+      "pid": "r-33a4c0",
+      "label": "before",
+      "group": "system",
+      "reader": 2,
+      "probes": [
+        "system-boundary.S1",
+        "system-boundary.S2",
+        "system-boundary.S3",
+        "system-boundary.S4",
+        "system-boundary.S5",
+        "system-boundary.S6"
+      ]
+    },
+    {
+      "pid": "r-6d0e51",
+      "label": "before",
+      "group": "system",
+      "reader": 3,
+      "probes": [
+        "system-boundary.S1",
+        "system-boundary.S2",
+        "system-boundary.S3",
+        "system-boundary.S4",
+        "system-boundary.S5",
+        "system-boundary.S6"
+      ]
+    },
+    {
+      "pid": "r-609418",
+      "label": "after",
+      "group": "s0",
+      "reader": 1,
+      "probes": [
+        "s0.Q1",
+        "s0.Q2",
+        "s0.Q3",
+        "s0.Q4",
+        "s0.Q5",
+        "s0.Q6",
+        "s0.Q7"
+      ]
+    },
+    {
+      "pid": "r-df4f88",
+      "label": "after",
+      "group": "s0",
+      "reader": 2,
+      "probes": [
+        "s0.Q1",
+        "s0.Q2",
+        "s0.Q3",
+        "s0.Q4",
+        "s0.Q5",
+        "s0.Q6",
+        "s0.Q7"
+      ]
+    },
+    {
+      "pid": "r-74ba19",
+      "label": "after",
+      "group": "s0",
+      "reader": 3,
+      "probes": [
+        "s0.Q1",
+        "s0.Q2",
+        "s0.Q3",
+        "s0.Q4",
+        "s0.Q5",
+        "s0.Q6",
+        "s0.Q7"
+      ]
+    },
+    {
+      "pid": "r-2cec8a",
+      "label": "after",
+      "group": "layer-charters",
+      "reader": 1,
+      "probes": [
+        "layer-charters.H1",
+        "layer-charters.H2",
+        "layer-charters.H3",
+        "layer-charters.H4",
+        "layer-charters.H5",
+        "layer-charters.H6",
+        "layer-charters.H7"
+      ]
+    },
+    {
+      "pid": "r-b8cddd",
+      "label": "after",
+      "group": "layer-charters",
+      "reader": 2,
+      "probes": [
+        "layer-charters.H1",
+        "layer-charters.H2",
+        "layer-charters.H3",
+        "layer-charters.H4",
+        "layer-charters.H5",
+        "layer-charters.H6",
+        "layer-charters.H7"
+      ]
+    },
+    {
+      "pid": "r-34cf15",
+      "label": "after",
+      "group": "layer-charters",
+      "reader": 3,
+      "probes": [
+        "layer-charters.H1",
+        "layer-charters.H2",
+        "layer-charters.H3",
+        "layer-charters.H4",
+        "layer-charters.H5",
+        "layer-charters.H6",
+        "layer-charters.H7"
+      ]
+    },
+    {
+      "pid": "r-96d644",
+      "label": "after",
+      "group": "layers",
+      "reader": 1,
+      "probes": [
+        "work-layers.L1",
+        "work-layers.L2",
+        "work-layers.L3",
+        "work-layers.L4",
+        "work-layers.L5",
+        "work-layers.L6",
+        "work-layers.L7"
+      ]
+    },
+    {
+      "pid": "r-1bfc93",
+      "label": "after",
+      "group": "layers",
+      "reader": 2,
+      "probes": [
+        "work-layers.L1",
+        "work-layers.L2",
+        "work-layers.L3",
+        "work-layers.L4",
+        "work-layers.L5",
+        "work-layers.L6",
+        "work-layers.L7"
+      ]
+    },
+    {
+      "pid": "r-f553ce",
+      "label": "after",
+      "group": "layers",
+      "reader": 3,
+      "probes": [
+        "work-layers.L1",
+        "work-layers.L2",
+        "work-layers.L3",
+        "work-layers.L4",
+        "work-layers.L5",
+        "work-layers.L6",
+        "work-layers.L7"
+      ]
+    },
+    {
+      "pid": "r-e0826c",
+      "label": "after",
+      "group": "explain-routing",
+      "reader": 1,
+      "probes": [
+        "explain-routing.Q1",
+        "explain-routing.Q2",
+        "explain-routing.Q3",
+        "explain-routing.Q4",
+        "explain-routing.Q5",
+        "explain-routing.Q6"
+      ]
+    },
+    {
+      "pid": "r-732762",
+      "label": "after",
+      "group": "explain-routing",
+      "reader": 2,
+      "probes": [
+        "explain-routing.Q1",
+        "explain-routing.Q2",
+        "explain-routing.Q3",
+        "explain-routing.Q4",
+        "explain-routing.Q5",
+        "explain-routing.Q6"
+      ]
+    },
+    {
+      "pid": "r-c25feb",
+      "label": "after",
+      "group": "explain-routing",
+      "reader": 3,
+      "probes": [
+        "explain-routing.Q1",
+        "explain-routing.Q2",
+        "explain-routing.Q3",
+        "explain-routing.Q4",
+        "explain-routing.Q5",
+        "explain-routing.Q6"
+      ]
+    },
+    {
+      "pid": "r-d60540",
+      "label": "after",
+      "group": "system",
+      "reader": 1,
+      "probes": [
+        "system-boundary.S1",
+        "system-boundary.S2",
+        "system-boundary.S3",
+        "system-boundary.S4",
+        "system-boundary.S5",
+        "system-boundary.S6"
+      ]
+    },
+    {
+      "pid": "r-165995",
+      "label": "after",
+      "group": "system",
+      "reader": 2,
+      "probes": [
+        "system-boundary.S1",
+        "system-boundary.S2",
+        "system-boundary.S3",
+        "system-boundary.S4",
+        "system-boundary.S5",
+        "system-boundary.S6"
+      ]
+    },
+    {
+      "pid": "r-1102d5",
+      "label": "after",
+      "group": "system",
+      "reader": 3,
+      "probes": [
+        "system-boundary.S1",
+        "system-boundary.S2",
+        "system-boundary.S3",
+        "system-boundary.S4",
+        "system-boundary.S5",
+        "system-boundary.S6"
+      ]
+    }
+  ]
+}

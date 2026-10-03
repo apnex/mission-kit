@@ -35,7 +35,7 @@ The thread of the current conversation, so a reader can see how the active work 
 Updated whenever the thread moves; the milestones below remain the plan.
 
 ```text
-M5  bring the charters to E4                     6 of 12 applied; S0 next         <- HERE
+M5  bring the charters to E4                     6 of 12 applied; S0 awaiting review <- HERE
  +- how the axis layers compose (B32)            done
      +- axioms as asymptotes, system, component  done
      +- six open design questions (B36)          done
@@ -239,7 +239,7 @@ Every ID-bearing layer either has an observed consumer or a recorded reason it h
 | M5.3 | **Trial conversion of one charter** | `B4` | `DONE` - `M0`, verdict **improved** - [verdict](audits/M5.3-trial-verdict-M0.md), [candidate](audits/M5.3-trial-candidate-M0.md). Awaiting director review |
 | M5.4 | Revise `E4` on what the trial shows, or stop if the enhancement did not improve utility | `B4` | `DONE` - territory must be derived and show a gap; growth must be paid for |
 | M5.4b | **Second trial, on `A0`**, isolating whether growth comes from the standard or from `M0` missing two concerns | `B4` | `DONE` - verdict **improved**, growth paid for. Growth tracks missing concerns: 36 percent here against 78 for `M0` - [verdict](audits/M5.4b-trial-verdict-A0.md), [candidate](audits/M5.4b-trial-candidate-A0.md). Awaiting director review |
-| M5.5 | Convert all thirteen, one per change - draft, audit, evaluate, director review, apply | `B4` | `WIP` - `M0`, `A0`, `R0`, `D0` **applied** - [M0](audits/M5.5-01-M0.md), [A0](audits/M5.5-02-A0.md), [R0](audits/M5.5-03-R0.md), [D0](audits/M5.5-04-D0.md); `SC0` **applied**, approved - [SC0](audits/M5.5-05-SC0.md); `MREQ-0` retired with its layer; `W0` **applied**, approved - [W0](audits/M5.5-06-W0.md); 6 remain |
+| M5.5 | Convert all thirteen, one per change - draft, audit, evaluate, director review, apply | `B4` | `WIP` - `M0`, `A0`, `R0`, `D0` **applied** - [M0](audits/M5.5-01-M0.md), [A0](audits/M5.5-02-A0.md), [R0](audits/M5.5-03-R0.md), [D0](audits/M5.5-04-D0.md); `SC0` **applied**, approved - [SC0](audits/M5.5-05-SC0.md); `MREQ-0` retired with its layer; `W0` **applied**, approved - [W0](audits/M5.5-06-W0.md); `S0` evaluated 14 / 14, awaiting review - [S0](audits/M5.5-07-S0.md); 5 remain after it |
 | M5.5b | Revisit the compositional split behind the work axes when conversion reaches `R0`, `D0` and `W0` | `B24` | `DONE` - in the `W0` conversion |
 | M5.5c | Carry the duty to expand a set on a found gap into `W0` and `T0`, or state it once in `E3` | `B31` | `DONE` - in the `W0` conversion |
 | M5.5d | **Composition record**: measure a context-less agent's composition of the axis layers against the current corpus, author one declared record of how they compose and the order to read them, re-measure | `B32` | `WIP` - baseline **14 / 14** in three runs: correctness is already met, so the record is unearned on these probes. Two questions every run had to guess - whose traits count, and what an axiom alignment refers to - are the measured gap. [scores](audits/eval-COMP/SCORES.md) |

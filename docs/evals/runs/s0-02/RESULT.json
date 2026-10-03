@@ -1,0 +1,1927 @@
+{
+  "created": "2026-10-03T21:53:50.005Z",
+  "seed": "d53096c053cc1f1c",
+  "corpora": [
+    {
+      "label": "before",
+      "path": "/tmp/opencode/evalc-s0b/c-08e8e2bd"
+    },
+    {
+      "label": "after",
+      "path": "/tmp/opencode/evalc-s0a2/c-9a877681"
+    }
+  ],
+  "readers": 3,
+  "probes": [
+    "s0.Q1",
+    "s0.Q2",
+    "s0.Q3",
+    "s0.Q4",
+    "s0.Q5",
+    "s0.Q6",
+    "s0.Q7",
+    "layer-charters.H1",
+    "layer-charters.H2",
+    "layer-charters.H3",
+    "layer-charters.H4",
+    "layer-charters.H5",
+    "layer-charters.H6",
+    "layer-charters.H7",
+    "work-layers.L1",
+    "work-layers.L2",
+    "work-layers.L3",
+    "work-layers.L4",
+    "work-layers.L5",
+    "work-layers.L6",
+    "work-layers.L7",
+    "explain-routing.Q1",
+    "explain-routing.Q2",
+    "explain-routing.Q3",
+    "explain-routing.Q4",
+    "explain-routing.Q5",
+    "explain-routing.Q6",
+    "system-boundary.S1",
+    "system-boundary.S2",
+    "system-boundary.S3",
+    "system-boundary.S4",
+    "system-boundary.S5",
+    "system-boundary.S6"
+  ],
+  "max": 66,
+  "mean": {
+    "s0.Q1": {
+      "before": 2,
+      "after": 2
+    },
+    "s0.Q2": {
+      "before": 2,
+      "after": 2
+    },
+    "s0.Q3": {
+      "before": 2,
+      "after": 2
+    },
+    "s0.Q4": {
+      "before": 2,
+      "after": 2
+    },
+    "s0.Q5": {
+      "before": 1,
+      "after": 2
+    },
+    "s0.Q6": {
+      "before": 2,
+      "after": 2
+    },
+    "s0.Q7": {
+      "before": 2,
+      "after": 2
+    },
+    "layer-charters.H1": {
+      "before": 2,
+      "after": 2
+    },
+    "layer-charters.H2": {
+      "before": 2,
+      "after": 2
+    },
+    "layer-charters.H3": {
+      "before": 2,
+      "after": 2
+    },
+    "layer-charters.H4": {
+      "before": 2,
+      "after": 2
+    },
+    "layer-charters.H5": {
+      "before": 2,
+      "after": 2
+    },
+    "layer-charters.H6": {
+      "before": 2,
+      "after": 2
+    },
+    "layer-charters.H7": {
+      "before": 1.67,
+      "after": 2
+    },
+    "work-layers.L1": {
+      "before": 2,
+      "after": 2
+    },
+    "work-layers.L2": {
+      "before": 2,
+      "after": 2
+    },
+    "work-layers.L3": {
+      "before": 2,
+      "after": 2
+    },
+    "work-layers.L4": {
+      "before": 2,
+      "after": 2
+    },
+    "work-layers.L5": {
+      "before": 2,
+      "after": 2
+    },
+    "work-layers.L6": {
+      "before": 2,
+      "after": 2
+    },
+    "work-layers.L7": {
+      "before": 2,
+      "after": 2
+    },
+    "explain-routing.Q1": {
+      "before": 2,
+      "after": 2
+    },
+    "explain-routing.Q2": {
+      "before": 2,
+      "after": 2
+    },
+    "explain-routing.Q3": {
+      "before": 2,
+      "after": 2
+    },
+    "explain-routing.Q4": {
+      "before": 2,
+      "after": 2
+    },
+    "explain-routing.Q5": {
+      "before": 2,
+      "after": 2
+    },
+    "explain-routing.Q6": {
+      "before": 2,
+      "after": 2
+    },
+    "system-boundary.S1": {
+      "before": 2,
+      "after": 2
+    },
+    "system-boundary.S2": {
+      "before": 2,
+      "after": 2
+    },
+    "system-boundary.S3": {
+      "before": 2,
+      "after": 2
+    },
+    "system-boundary.S4": {
+      "before": 1.67,
+      "after": 2
+    },
+    "system-boundary.S5": {
+      "before": 2,
+      "after": 2
+    },
+    "system-boundary.S6": {
+      "before": 2,
+      "after": 2
+    }
+  },
+  "total": {
+    "before": 64.34,
+    "after": 66
+  },
+  "rows": [
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-e9a3a7",
+      "probe": "s0.Q1",
+      "score": 2,
+      "reason": "Names the forked-enforcer fault and one rule one tool owning both check and fix; the guess is about a detection gap, not the conclusion."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-e9a3a7",
+      "probe": "s0.Q2",
+      "score": 2,
+      "reason": "Says no and gives the real-defect test; the not-settled note is about a specific capitalisation ruling, not the conclusion."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-e9a3a7",
+      "probe": "s0.Q3",
+      "score": 2,
+      "reason": "Says style is gated on changed files and gives the pre-existing-debt reason."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-e9a3a7",
+      "probe": "s0.Q4",
+      "score": 2,
+      "reason": "Lists S6, S8, S10, S12, S13, S14 as tool-held and the nine reading rules correctly, with none misplaced."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-e9a3a7",
+      "probe": "s0.Q5",
+      "score": 1,
+      "reason": "Says there is no style rule and places K27 and S8 correctly, but does not say a source-comment rule would be a second single-medium rule that makes a sub-set by medium due."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-e9a3a7",
+      "probe": "s0.Q6",
+      "score": 2,
+      "reason": "Says no, it is a rule (RU3), because it governs what the work records rather than the artifact's form."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-e9a3a7",
+      "probe": "s0.Q7",
+      "score": 2,
+      "reason": "Names orphaned rule, forked enforcer and corpus-wide sweep as population faults; the unfalsifiable convention earns nothing extra."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-5802ad",
+      "probe": "s0.Q1",
+      "score": 2,
+      "reason": "Names the forked-enforcer fault and the one-rule-one-tool remedy with the tool owning check and fix."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-5802ad",
+      "probe": "s0.Q2",
+      "score": 2,
+      "reason": "Says no on preference and makes evidence of a real defect the admission test."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-5802ad",
+      "probe": "s0.Q3",
+      "score": 2,
+      "reason": "Says style is gated on changed files and gives the reason that gating the diff blocks new debt and converts the rest as sections are edited."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-5802ad",
+      "probe": "s0.Q4",
+      "score": 2,
+      "reason": "Both groups are correct, and S15 is kept under reading with the correct caveat about check-guidance-placement.sh."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-5802ad",
+      "probe": "s0.Q5",
+      "score": 1,
+      "reason": "Says there is no style rule and places S8 and K27 correctly, but omits the second-medium sub-set point."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-5802ad",
+      "probe": "s0.Q6",
+      "score": 2,
+      "reason": "Says no, it is a rule (RU3), because it governs what the work records, not the artifact's form."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-5802ad",
+      "probe": "s0.Q7",
+      "score": 2,
+      "reason": "Names orphaned rule, forked enforcer and corpus-wide sweep as population faults; the unfalsifiable convention earns nothing but does not remove credit."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-2f56e0",
+      "probe": "s0.Q1",
+      "score": 2,
+      "reason": "States one rule one tool owning check and fix and names the forked-enforcer fault; the guess concerns only a side question."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-2f56e0",
+      "probe": "s0.Q2",
+      "score": 2,
+      "reason": "Says no and gives the real-defect-in-a-real-artifact test with aesthetic preference excluded."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-2f56e0",
+      "probe": "s0.Q3",
+      "score": 2,
+      "reason": "Says style is gated on changed files and gives the legacy-debt reason."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-2f56e0",
+      "probe": "s0.Q4",
+      "score": 2,
+      "reason": "Both groups are correct, with S15 correctly placed under reading."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-2f56e0",
+      "probe": "s0.Q5",
+      "score": 1,
+      "reason": "Says there is no style rule and places S8 and K27 correctly, but omits the second-medium sub-set point."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-2f56e0",
+      "probe": "s0.Q6",
+      "score": 2,
+      "reason": "Says no, it is a rule (RU3), because it governs what the work records."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-2f56e0",
+      "probe": "s0.Q7",
+      "score": 2,
+      "reason": "Names orphaned rule, forked enforcer, corpus-wide sweep and misfiling as population faults."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-fd4008",
+      "probe": "layer-charters.H1",
+      "score": 2,
+      "reason": "Places it in rules/ because it leaves a trace in the commit history that a check could test."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-fd4008",
+      "probe": "layer-charters.H2",
+      "score": 2,
+      "reason": "Places it in practices/ because a re-read leaves no trace in the record."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-fd4008",
+      "probe": "layer-charters.H3",
+      "score": 2,
+      "reason": "Names methods/ because it produces a verdict and identifies M1 triangulated review."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-fd4008",
+      "probe": "layer-charters.H4",
+      "score": 2,
+      "reason": "Places it in style/ as governing artifact form judged by reading the output, statable as a predicate over the text."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-fd4008",
+      "probe": "layer-charters.H5",
+      "score": 2,
+      "reason": "States trace is required and enforced-by may optionally name a tool."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-fd4008",
+      "probe": "layer-charters.H6",
+      "score": 2,
+      "reason": "Gives all five steps in the correct order (axiom, method, style, rule, practice) with matching tests."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-fd4008",
+      "probe": "layer-charters.H7",
+      "score": 1,
+      "reason": "Arrives at handing over as the recorded gap but labels the conclusion NOT SETTLED and a GUESS, which caps it at 1."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-f239ac",
+      "probe": "layer-charters.H1",
+      "score": 2,
+      "reason": "Places it in rules/ and names the repository history as the testable trace."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-f239ac",
+      "probe": "layer-charters.H2",
+      "score": 2,
+      "reason": "Places it in practices/ because re-reading leaves nothing in the record to show it happened."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-f239ac",
+      "probe": "layer-charters.H3",
+      "score": 2,
+      "reason": "Names methods/ because it produces a verdict and identifies M1 as covering it."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-f239ac",
+      "probe": "layer-charters.H4",
+      "score": 2,
+      "reason": "Places it in style/ as governing the artifact itself judged by reading the output; the NOT SETTLED applies only to admission."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-f239ac",
+      "probe": "layer-charters.H5",
+      "score": 2,
+      "reason": "States trace is required and enforced-by is optional."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-f239ac",
+      "probe": "layer-charters.H6",
+      "score": 2,
+      "reason": "Gives all five steps in the correct order with matching tests, though it omits most directory names."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-f239ac",
+      "probe": "layer-charters.H7",
+      "score": 2,
+      "reason": "Identifies the agent and next-session part of handing over as recorded with no procedure, rule or practice."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-cd1c14",
+      "probe": "layer-charters.H1",
+      "score": 2,
+      "reason": "Places it in rules/ with the trace reason; the GUESS concerns only the moment."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-cd1c14",
+      "probe": "layer-charters.H2",
+      "score": 2,
+      "reason": "Places it in practices/ with the no-trace reason; the admission caveat and GUESS do not hedge the layer conclusion."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-cd1c14",
+      "probe": "layer-charters.H3",
+      "score": 2,
+      "reason": "Names methods/ because following it produces a verdict, and identifies M1 as the existing entry."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-cd1c14",
+      "probe": "layer-charters.H4",
+      "score": 2,
+      "reason": "Places it in style/ as a rule about the artifact itself judged by reading the output."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-cd1c14",
+      "probe": "layer-charters.H5",
+      "score": 2,
+      "reason": "States trace is required and an enforced-by tool is optional."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-cd1c14",
+      "probe": "layer-charters.H6",
+      "score": 2,
+      "reason": "Gives all five steps in the correct order with matching tests."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-cd1c14",
+      "probe": "layer-charters.H7",
+      "score": 2,
+      "reason": "Identifies handing over of work in progress to another agent or later session as the recorded gap with no procedure, rule or practice."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-eeed43",
+      "probe": "work-layers.L1",
+      "score": 2,
+      "reason": "Places it in rules/ and names RU3 (formerly M5) as already covering it."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-eeed43",
+      "probe": "work-layers.L2",
+      "score": 2,
+      "reason": "Answers skills/ with K0's invoked-not-followed reason and points to K3."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-eeed43",
+      "probe": "work-layers.L3",
+      "score": 2,
+      "reason": "Places it in work-types/ and names W10 with its fields."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-eeed43",
+      "probe": "work-layers.L4",
+      "score": 2,
+      "reason": "Classifies it as a methodology entry and names M1 as covering it."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-eeed43",
+      "probe": "work-layers.L5",
+      "score": 2,
+      "reason": "Maps method, rule and practice by kind and cites the gap recorded in M0, RU0 and PC0, which the rubric treats as a correct answer and not a hedge."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-eeed43",
+      "probe": "work-layers.L6",
+      "score": 2,
+      "reason": "Gives all three tests with citations to methods/, skills/ and work-types/ READMEs."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-eeed43",
+      "probe": "work-layers.L7",
+      "score": 2,
+      "reason": "Names RU1 and RU3 in rules/ with their requirements; the extra entries are not errors."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-dd8453",
+      "probe": "work-layers.L1",
+      "score": 2,
+      "reason": "Places it in rules/ citing M0 and names RU3 as covering it, with AR5 as the document side."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-dd8453",
+      "probe": "work-layers.L2",
+      "score": 2,
+      "reason": "Answers skills/ with K0's invoked capability reason and identifies K3 as existing."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-dd8453",
+      "probe": "work-layers.L3",
+      "score": 2,
+      "reason": "Places it in work-types/ and identifies W10 as covering it."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-dd8453",
+      "probe": "work-layers.L4",
+      "score": 2,
+      "reason": "Places it in methods/ and names M1, noting W8 and W13."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-dd8453",
+      "probe": "work-layers.L5",
+      "score": 2,
+      "reason": "Its not-settled framing is the depends-on-kind answer, which maps each kind to its layer with the recorded gap and so earns full credit under the rubric."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-dd8453",
+      "probe": "work-layers.L6",
+      "score": 2,
+      "reason": "Gives the method, skill and work-type tests from M0, K0 and W0, with citations."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-dd8453",
+      "probe": "work-layers.L7",
+      "score": 2,
+      "reason": "Names RU1 and RU3 in rules/ with default-reject, yield-first reporting and a revival trigger per cut."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-3a0d8c",
+      "probe": "work-layers.L1",
+      "score": 2,
+      "reason": "Places it in rules/ citing M0 and names RU3 with its trace, plus AR5."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-3a0d8c",
+      "probe": "work-layers.L2",
+      "score": 2,
+      "reason": "Answers skills/ with the invoked-capability reason from K0 and M0, citing K3."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-3a0d8c",
+      "probe": "work-layers.L3",
+      "score": 2,
+      "reason": "Places it in work-types/ and names W10 as already covering it."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-3a0d8c",
+      "probe": "work-layers.L4",
+      "score": 2,
+      "reason": "Classifies it as a methodology entry and names M1 as covering it."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-3a0d8c",
+      "probe": "work-layers.L5",
+      "score": 2,
+      "reason": "Maps each guidance kind to methods/, rules/ or practices/ and cites the gap recorded in M0, RU0 and PC0."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-3a0d8c",
+      "probe": "work-layers.L6",
+      "score": 2,
+      "reason": "States all three tests from M0, K0 and W0 with quotes."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-3a0d8c",
+      "probe": "work-layers.L7",
+      "score": 2,
+      "reason": "Names RU1 and RU3 in rules/, with default-reject, a yield-first report and a revival trigger on each cut."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-5d3c71",
+      "probe": "explain-routing.Q1",
+      "score": 2,
+      "reason": "Names ST1, S15 (point first, explained names, where you are, one question and picks) and M10 (confirmed steps, decision frame, recorded) with what each asks."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-5d3c71",
+      "probe": "explain-routing.Q2",
+      "score": 2,
+      "reason": "Names ST1 with members S15 (point first, where you are, explained names) and M10 (finish line, steps remaining, one step per message) with what each asks."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-5d3c71",
+      "probe": "explain-routing.Q3",
+      "score": 2,
+      "reason": "Names ST1, S15 (conclusion first, narrative only where it is evidence) and M10 (understand limit, depth never pushed) with what each asks."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-5d3c71",
+      "probe": "explain-routing.Q4",
+      "score": 2,
+      "reason": "Names ST1, M10 (finish line, one confirmed step at a time, confirm it landed) and S15 (point first, one step, explained names, Explore pick) with what each asks."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-5d3c71",
+      "probe": "explain-routing.Q5",
+      "score": 2,
+      "reason": "Names S15 (decision frame, options as Continue picks, decision in first line) and M10 (one decision per message, none hidden, record it) with what each asks."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-5d3c71",
+      "probe": "explain-routing.Q6",
+      "score": 2,
+      "reason": "Names M10 (one decision at a time, one per message, understanding first, record each) and S15 (one step and question, decision frame, where you are) with what each asks."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-d8467c",
+      "probe": "explain-routing.Q1",
+      "score": 2,
+      "reason": "Names ST1 routing to S15 (point first, explained names, picks, decision frame) and M10 (one confirmed step at a time, decision recorded) with what each asks."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-d8467c",
+      "probe": "explain-routing.Q2",
+      "score": 2,
+      "reason": "Names ST1, M10 (finish line, one step per message, depth on request) and S15 (point first, where you are, explained names, picks) with what each asks; the not-settled note is peripheral."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-d8467c",
+      "probe": "explain-routing.Q3",
+      "score": 2,
+      "reason": "Names ST1, S15 (conclusion first, narrative as evidence, explained names) and M10 (understand limit, one confirmed step at a time) with what each asks."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-d8467c",
+      "probe": "explain-routing.Q4",
+      "score": 2,
+      "reason": "Names ST1, M10 (finish line, one step per message, confirm each step lands) and S15 (explained names, point first, one question, Explore picks) with what each asks."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-d8467c",
+      "probe": "explain-routing.Q5",
+      "score": 2,
+      "reason": "Names S15 (decision frame, Continue picks, point first) and M10 (one decision per message, none hidden, record it) with what each asks."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-d8467c",
+      "probe": "explain-routing.Q6",
+      "score": 2,
+      "reason": "Names M10 (one decision at a time, understanding first, record each) and S15 (where you are, decision frame, one question at the end) with what each asks."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-e11434",
+      "probe": "explain-routing.Q1",
+      "score": 2,
+      "reason": "Names ST1 leading to S15 (point first, one step and question, explained names, picks) and M10 (understanding, decision frame, recorded) with what each asks; the not-settled note concerns bad-news specifics, not the routing conclusion."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-e11434",
+      "probe": "explain-routing.Q2",
+      "score": 2,
+      "reason": "Names ST1, S15 (point first, where you are, explained names) and M10 (finish line, steps remaining, one step per message) with what each asks."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-e11434",
+      "probe": "explain-routing.Q3",
+      "score": 2,
+      "reason": "Names ST1, S15 (conclusion first, narrative only where it carries understanding, one question with picks) and M10 (understand limit, confirmed steps) with what each asks."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-e11434",
+      "probe": "explain-routing.Q4",
+      "score": 2,
+      "reason": "Names ST1, M10 (finish line, one step per message, check each step landed) and S15 (explained names, one question, Continue/Explore/Return picks) with what each asks."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-e11434",
+      "probe": "explain-routing.Q5",
+      "score": 2,
+      "reason": "Names ST1, S15 (decision frame, options as Continue picks) and M10 (one decision per message, none hidden, answer with a pick, record it) with what each asks."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-e11434",
+      "probe": "explain-routing.Q6",
+      "score": 2,
+      "reason": "Names ST1, M10 (one decision per message, understanding first, steps remaining, record) and S15 (decision frame, where you are) with what each asks."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-dd1ce9",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor A3, A4, A8, A9, A14 as the launcher's only axioms, with the reason that the service is composed with through an unchanged contract; the stated assumption is a condition, not a hedge."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-dd1ce9",
+      "probe": "system-boundary.S2",
+      "score": 2,
+      "reason": "Gives the correct union set, with the contract-altered reason."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-dd1ce9",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's set, with the containment reason."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-dd1ce9",
+      "probe": "system-boundary.S4",
+      "score": 2,
+      "reason": "Gives the floor, with the reasons that consumers are unaltered and each adoption is a separate change; the caveats are stated conditions."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-dd1ce9",
+      "probe": "system-boundary.S5",
+      "score": 2,
+      "reason": "Gives all eleven axioms with the undeclared-boundary reason and the A3 fault; the GUESS covers only an extra remark about parser breakage."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-dd1ce9",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Cites E5 with boundary, declared-and-honoured separation, and both contain and compose."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-33a4c0",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor with the reason that the service only composes through an unchanged declared interface."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-33a4c0",
+      "probe": "system-boundary.S2",
+      "score": 2,
+      "reason": "Gives exactly the eleven-axiom union, with the reason that the change alters the contract the service depends on."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-33a4c0",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's set, with the containment reason from A0 and E5."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-33a4c0",
+      "probe": "system-boundary.S4",
+      "score": 1,
+      "reason": "Reaches the floor with the composition reason, but explicitly labels its trait determination, which the floor conclusion rests on, a GUESS."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-33a4c0",
+      "probe": "system-boundary.S5",
+      "score": 2,
+      "reason": "Gives both sets combined with the one-system reason, and names the A3 fault."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-33a4c0",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Cites E5 and explains boundary, containment and composition through declared contracts."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-6d0e51",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor with the composition-through-unchanged-contract reason."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-6d0e51",
+      "probe": "system-boundary.S2",
+      "score": 2,
+      "reason": "Gives the correct set of both systems' axioms, with the contract-altered reason."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-6d0e51",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's full set, with the reason that a change answers to every system containing what it modifies."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-6d0e51",
+      "probe": "system-boundary.S4",
+      "score": 2,
+      "reason": "Gives the floor, with the reason that it composes through an unchanged contract and each adoption is the consumer's own change."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-6d0e51",
+      "probe": "system-boundary.S5",
+      "score": 2,
+      "reason": "Gives the correct union with the one-system reason, plus the A3 fault."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-6d0e51",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Cites E5 with boundary, declared separation, and contain or compose."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-609418",
+      "probe": "s0.Q1",
+      "score": 2,
+      "reason": "Names the forked-enforcer fault and one rule one tool owning check and fix; the not-settled note concerns only which tool to keep."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-609418",
+      "probe": "s0.Q2",
+      "score": 2,
+      "reason": "Says no and gives the real-defect criterion with aesthetic preference excluded."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-609418",
+      "probe": "s0.Q3",
+      "score": 2,
+      "reason": "Says style is gated on changed files and gives the legacy-debt reason."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-609418",
+      "probe": "s0.Q4",
+      "score": 2,
+      "reason": "Both groups are correct and complete, with none misplaced."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-609418",
+      "probe": "s0.Q5",
+      "score": 2,
+      "reason": "Says there is no style rule and that a source-comment rule would be the second non-document medium rule, which makes a medium sub-set due."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-609418",
+      "probe": "s0.Q6",
+      "score": 2,
+      "reason": "Says no, it is a rule (RU3), because it governs what the work records, not the object's form."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-609418",
+      "probe": "s0.Q7",
+      "score": 2,
+      "reason": "Names all five population faults from the key."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-df4f88",
+      "probe": "s0.Q1",
+      "score": 2,
+      "reason": "States one rule one tool owning check and fix and names the forked-enforcer fault; the not-settled note concerns only which tool survives."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-df4f88",
+      "probe": "s0.Q2",
+      "score": 2,
+      "reason": "Says no and gives the real-defect criterion with aesthetic preference excluded."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-df4f88",
+      "probe": "s0.Q3",
+      "score": 2,
+      "reason": "Says style is gated on changed files and gives the legacy-debt reason."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-df4f88",
+      "probe": "s0.Q4",
+      "score": 2,
+      "reason": "Both groups are correct and complete, with none misplaced."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-df4f88",
+      "probe": "s0.Q5",
+      "score": 2,
+      "reason": "Says there is no style rule and that its arrival would be the second non-document medium rule and trigger grouping into a sub-set."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-df4f88",
+      "probe": "s0.Q6",
+      "score": 2,
+      "reason": "Says no, it is a rule, because it governs what the work records, and cites RU3."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-df4f88",
+      "probe": "s0.Q7",
+      "score": 2,
+      "reason": "Names several population faults, including forked enforcer, orphaned rule, unscoped medium, misfiled work rule and corpus-wide sweep."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-74ba19",
+      "probe": "s0.Q1",
+      "score": 2,
+      "reason": "Names the forked-enforcer fault and one rule one tool owning check and fix; the guess is a side note on detection."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-74ba19",
+      "probe": "s0.Q2",
+      "score": 2,
+      "reason": "Says no and gives the real-defect test with aesthetic preference excluded."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-74ba19",
+      "probe": "s0.Q3",
+      "score": 2,
+      "reason": "Says style is gated on changed files and gives the legacy-debt reason with conversion as sections are edited."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-74ba19",
+      "probe": "s0.Q4",
+      "score": 2,
+      "reason": "Both groups are correct and complete, with none misplaced."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-74ba19",
+      "probe": "s0.Q5",
+      "score": 2,
+      "reason": "Says there is no style rule and that a new one would be the second rule for a non-document medium, making a sub-set due."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-74ba19",
+      "probe": "s0.Q6",
+      "score": 2,
+      "reason": "Says no, it is a rule (RU3), because it governs what the work does or records rather than how the artifact reads."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-74ba19",
+      "probe": "s0.Q7",
+      "score": 2,
+      "reason": "Names all five population faults from the key."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-2cec8a",
+      "probe": "layer-charters.H1",
+      "score": 2,
+      "reason": "Places it in rules/ with the trace reason; the NOT SETTLED/GUESS applies only to the moment, not the layer conclusion."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-2cec8a",
+      "probe": "layer-charters.H2",
+      "score": 2,
+      "reason": "Places it in practices/ because re-reading leaves nothing in the record a check could test."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-2cec8a",
+      "probe": "layer-charters.H3",
+      "score": 2,
+      "reason": "Names methods/ with the verdict reason and identifies M1."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-2cec8a",
+      "probe": "layer-charters.H4",
+      "score": 2,
+      "reason": "Places it in style/ because it governs artifact form judged by reading the output; the GUESS concerns only grain and admission caveats cost nothing."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-2cec8a",
+      "probe": "layer-charters.H5",
+      "score": 2,
+      "reason": "States trace is required and enforced-by is optional."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-2cec8a",
+      "probe": "layer-charters.H6",
+      "score": 2,
+      "reason": "Gives all five steps in the correct order with matching tests."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-2cec8a",
+      "probe": "layer-charters.H7",
+      "score": 2,
+      "reason": "Identifies handing over as the only moment all three layers list as a gap."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-b8cddd",
+      "probe": "layer-charters.H1",
+      "score": 2,
+      "reason": "Places it in rules/ and gives the trace reason that repository content or history is a record a check could test."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-b8cddd",
+      "probe": "layer-charters.H2",
+      "score": 2,
+      "reason": "Places it in practices/ with the no-trace reason and states the layer is settled, leaving only admission unsettled."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-b8cddd",
+      "probe": "layer-charters.H3",
+      "score": 2,
+      "reason": "Names methods/ with the result-of-its-own reason and identifies M1."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-b8cddd",
+      "probe": "layer-charters.H4",
+      "score": 2,
+      "reason": "Places it in style/ as governing artifact form judged by reading output, noting it is a predicate over text; NOT SETTLED applies only to admission."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-b8cddd",
+      "probe": "layer-charters.H5",
+      "score": 2,
+      "reason": "States trace is required and enforced-by is optional."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-b8cddd",
+      "probe": "layer-charters.H6",
+      "score": 2,
+      "reason": "Gives all five steps in the correct order with matching tests."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-b8cddd",
+      "probe": "layer-charters.H7",
+      "score": 2,
+      "reason": "Identifies handing over of work in progress as the gap that no procedure, rule or practice governs."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-34cf15",
+      "probe": "layer-charters.H1",
+      "score": 2,
+      "reason": "Places it in rules/ with the trace reason (repository history shows whether a credential was committed); the GUESS concerns only the moment, not the layer."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-34cf15",
+      "probe": "layer-charters.H2",
+      "score": 2,
+      "reason": "Places it in practices/ with the no-trace reason; the GUESS concerns only the moment."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-34cf15",
+      "probe": "layer-charters.H3",
+      "score": 2,
+      "reason": "Names methods/ with the verdict reason and identifies M1."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-34cf15",
+      "probe": "layer-charters.H4",
+      "score": 2,
+      "reason": "Places it in style/ as governing artifact form judged by reading the output; GUESSes concern only grain and checker feasibility."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-34cf15",
+      "probe": "layer-charters.H5",
+      "score": 2,
+      "reason": "States trace is required for a rule and not for a practice, and enforced-by is optional."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-34cf15",
+      "probe": "layer-charters.H6",
+      "score": 2,
+      "reason": "Gives all five steps in the correct order with matching tests."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-34cf15",
+      "probe": "layer-charters.H7",
+      "score": 2,
+      "reason": "Identifies handing over to another agent or later session as recorded with no procedure, rule or practice."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-96d644",
+      "probe": "work-layers.L1",
+      "score": 2,
+      "reason": "Places it in rules/ with the M0 reason and names RU3 as the covering entry."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-96d644",
+      "probe": "work-layers.L2",
+      "score": 2,
+      "reason": "Answers skills/ with K0's invoked-not-followed reason and cites K3 as an example; the caveat concerns M0's list, not the conclusion."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-96d644",
+      "probe": "work-layers.L3",
+      "score": 2,
+      "reason": "Places it in work-types/ and names W10 with its roles, target and evidence."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-96d644",
+      "probe": "work-layers.L4",
+      "score": 2,
+      "reason": "Classifies it as a methodology entry and names M1, noting work-types cite it."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-96d644",
+      "probe": "work-layers.L5",
+      "score": 2,
+      "reason": "Maps each kind of guidance to methods/, rules/ or practices/ and cites the gap recorded in M0, RU0 and PC0, which the rubric counts as placement working as designed."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-96d644",
+      "probe": "work-layers.L6",
+      "score": 2,
+      "reason": "States the method, skill and work-type tests, each cited to its README."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-96d644",
+      "probe": "work-layers.L7",
+      "score": 2,
+      "reason": "Names RU1 and RU3 in rules with their requirements, plus relevant extras."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-1bfc93",
+      "probe": "work-layers.L1",
+      "score": 2,
+      "reason": "Places it in rules/ via the M0 placement test and names RU3 as already covering it."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-1bfc93",
+      "probe": "work-layers.L2",
+      "score": 2,
+      "reason": "Answers skills/ with K0's invoked-not-followed reason and identifies K3."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-1bfc93",
+      "probe": "work-layers.L3",
+      "score": 2,
+      "reason": "Places it in work-types/ and names W10 as already covering it."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-1bfc93",
+      "probe": "work-layers.L4",
+      "score": 2,
+      "reason": "Classifies it as a methodology entry and names M1 triangulated review as covering it."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-1bfc93",
+      "probe": "work-layers.L5",
+      "score": 2,
+      "reason": "Grounds the placement in M0's handing-over moment and the RU0 handover-record example, and cites the recorded gap."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-1bfc93",
+      "probe": "work-layers.L6",
+      "score": 2,
+      "reason": "Gives the method (M0), skill (M0/K0) and work-type (W0) tests, each with a citation."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-1bfc93",
+      "probe": "work-layers.L7",
+      "score": 2,
+      "reason": "Names RU1 and RU3 in rules/ with default-reject, a yield-first summary and revival triggers."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-f553ce",
+      "probe": "work-layers.L1",
+      "score": 2,
+      "reason": "Places it in rules/ and names RU3 as the existing entry, noting M5 as the superseded pointer."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-f553ce",
+      "probe": "work-layers.L2",
+      "score": 2,
+      "reason": "Answers skills/ with the invoked capability-with-inputs-and-output reason and identifies K3; the not-settled note is about one sub-test only."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-f553ce",
+      "probe": "work-layers.L3",
+      "score": 2,
+      "reason": "Places it in work-types/ and names W10 as the existing entry."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-f553ce",
+      "probe": "work-layers.L4",
+      "score": 2,
+      "reason": "Classifies it as a method and names M1, with W8 citing it."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-f553ce",
+      "probe": "work-layers.L5",
+      "score": 2,
+      "reason": "Maps each guidance kind to its layer and quotes the recorded gap in M0, RU0 and PC0; the guess concerns only a side point."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-f553ce",
+      "probe": "work-layers.L6",
+      "score": 2,
+      "reason": "States the M0, K0 and W0 tests with quoted citations."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-f553ce",
+      "probe": "work-layers.L7",
+      "score": 2,
+      "reason": "Names RU1 and RU3 in the rules layer with default-reject, yield-first reporting and revival triggers."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-e0826c",
+      "probe": "explain-routing.Q1",
+      "score": 2,
+      "reason": "Names ST1, S15 (point first, one step and question, explained names, Continue/Explore/Return picks) and M10 (confirmed steps, decision frame) with what each asks."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-e0826c",
+      "probe": "explain-routing.Q2",
+      "score": 2,
+      "reason": "Names ST1, S15 (point first, where you are, explained names, references on one line) and M10 (finish line, one step per message, depth never pushed) with what each asks."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-e0826c",
+      "probe": "explain-routing.Q3",
+      "score": 2,
+      "reason": "Names ST1 routing to S15 (cause on the first line, narrative only where it is evidence) and M10 (nothing missing, nothing extra, depth offered) with what each asks."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-e0826c",
+      "probe": "explain-routing.Q4",
+      "score": 2,
+      "reason": "Names ST1, M10 (understand limit, confirm each step has landed) and S15 (explain unseen names, one step per message, Explore picks) with what each asks."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-e0826c",
+      "probe": "explain-routing.Q5",
+      "score": 2,
+      "reason": "Names ST1, S15 (decision frame, options as Continue picks) and M10 (one decision per message, none hidden, record it) with what each asks."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-e0826c",
+      "probe": "explain-routing.Q6",
+      "score": 2,
+      "reason": "Names ST1, M10 (one decision at a time in S15's frame, understanding first, record) and S15 (one question, where you are, Return pick) with what each asks."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-732762",
+      "probe": "explain-routing.Q1",
+      "score": 2,
+      "reason": "Names ST1 routing to S15 (conclusion first, one question, explained names, decision frame) and M10 (one step and decision per message, recorded) with what each asks."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-732762",
+      "probe": "explain-routing.Q2",
+      "score": 2,
+      "reason": "Names ST1, M10 (finish line, one step per message, depth never pushed) and S15 (conclusion first, where you are, explained names) with what each asks."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-732762",
+      "probe": "explain-routing.Q3",
+      "score": 2,
+      "reason": "Names ST1 routing to S15 (cause first, narrative where it is evidence) and M10 (understand limit, confirmed steps, depth on request) with what each asks."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-732762",
+      "probe": "explain-routing.Q4",
+      "score": 2,
+      "reason": "Names ST1 routing to M10 (understand limit, confirm it landed, depth never pushed) and S15 (one step and question, explained names, Explore picks) with what each asks."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-732762",
+      "probe": "explain-routing.Q5",
+      "score": 2,
+      "reason": "Names ST1 routing to S15 (decision frame, Continue picks, deadline as why now) and M10 (one decision per message, none hidden, record it) with what each asks."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-732762",
+      "probe": "explain-routing.Q6",
+      "score": 2,
+      "reason": "Names ST1 routing to M10 (one decision per message, understanding first, record each) and S15 (one step and question, decision frame, where you are) with what each asks."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-c25feb",
+      "probe": "explain-routing.Q1",
+      "score": 2,
+      "reason": "Names ST1, S15 (point first, one step and question, explained names, picks) and M10 (one confirmed step at a time, depth never pushed) with what each asks."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-c25feb",
+      "probe": "explain-routing.Q2",
+      "score": 2,
+      "reason": "Names ST1 routing to S15 (conclusion first, where you are, explained names) and M10 (finish line, steps remaining, one step per message) with what each asks."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-c25feb",
+      "probe": "explain-routing.Q3",
+      "score": 2,
+      "reason": "Names S15 (cause first, narrative only where it carries understanding) and M10 (nothing missing, nothing extra, depth never pushed) with ST1 routing to both."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-c25feb",
+      "probe": "explain-routing.Q4",
+      "score": 2,
+      "reason": "Names M10 (confirmed steps, confirm understanding landed, depth never pushed) and S15 (point first, one step, explained names) via ST1 with what each asks."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-c25feb",
+      "probe": "explain-routing.Q5",
+      "score": 2,
+      "reason": "Names S15's decision frame and Continue picks and M10 steps 4 and 5 (one decision per message, none hidden, record it) with what each asks."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-c25feb",
+      "probe": "explain-routing.Q6",
+      "score": 2,
+      "reason": "Names M10 (one decision at a time, record each) and S15 (one question, decision frame, where you are) with what each asks; the guess concerns the ordering of decisions, not which entries apply."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-d60540",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor as the launcher's only axioms and explicitly excludes the service's axioms because the contract is unchanged."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-d60540",
+      "probe": "system-boundary.S2",
+      "score": 2,
+      "reason": "Gives the correct eleven axioms, with the reason that the unversioned contract is altered."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-d60540",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's eleven axioms, with the containment reason."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-d60540",
+      "probe": "system-boundary.S4",
+      "score": 2,
+      "reason": "Gives the floor, with the reason that the unchanged contract leaves consumers unaltered and each adoption is a separate change."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-d60540",
+      "probe": "system-boundary.S5",
+      "score": 2,
+      "reason": "Gives the union because nothing declares the boundary, and identifies the undeclared dependency as an A3 fault."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-d60540",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Cites E5 with boundary, contain and compose, and traits describe while axioms bind."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-165995",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor and states the service is not altered because the declared interface is unchanged."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-165995",
+      "probe": "system-boundary.S2",
+      "score": 2,
+      "reason": "Gives the correct eleven axioms, with the reason that the change alters the service's contract."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-165995",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's full set, with the containment reason."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-165995",
+      "probe": "system-boundary.S4",
+      "score": 2,
+      "reason": "Gives the floor with the composition and separate-adoption reasons."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-165995",
+      "probe": "system-boundary.S5",
+      "score": 2,
+      "reason": "Says both sets bind because the undeclared dependency makes them one system, and names the A3 fault."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-165995",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Cites E5 with boundary, declared separation, and contain and compose."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-1102d5",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor and excludes the service's axioms because its contract is unchanged."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-1102d5",
+      "probe": "system-boundary.S2",
+      "score": 2,
+      "reason": "Gives the correct union set, with the contract-altered reason."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-1102d5",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's full set, citing A0's every-system-containing-it rule."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-1102d5",
+      "probe": "system-boundary.S4",
+      "score": 2,
+      "reason": "Gives the floor with the composition reason; the GUESS label covers only a version-range edge case the question excludes, not the conclusion."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-1102d5",
+      "probe": "system-boundary.S5",
+      "score": 2,
+      "reason": "Gives the correct union with the one-system and contract-in-fact reasoning, plus the A3 fault."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-1102d5",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Cites E5 correctly with boundary, declared separation, contain and compose, and traits and axioms."
+    }
+  ],
+  "consistentHedges": [
+    {
+      "probe": "s0.Q1",
+      "label": "before",
+      "hedged": 2,
+      "readers": 3
+    },
+    {
+      "probe": "s0.Q1",
+      "label": "after",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "s0.Q2",
+      "label": "before",
+      "hedged": 2,
+      "readers": 3
+    },
+    {
+      "probe": "s0.Q5",
+      "label": "before",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "s0.Q5",
+      "label": "after",
+      "hedged": 2,
+      "readers": 3
+    },
+    {
+      "probe": "layer-charters.H1",
+      "label": "after",
+      "hedged": 2,
+      "readers": 3
+    },
+    {
+      "probe": "layer-charters.H2",
+      "label": "before",
+      "hedged": 2,
+      "readers": 3
+    },
+    {
+      "probe": "layer-charters.H2",
+      "label": "after",
+      "hedged": 2,
+      "readers": 3
+    },
+    {
+      "probe": "layer-charters.H4",
+      "label": "after",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "work-layers.L5",
+      "label": "before",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "work-layers.L5",
+      "label": "after",
+      "hedged": 2,
+      "readers": 3
+    },
+    {
+      "probe": "work-layers.L7",
+      "label": "before",
+      "hedged": 2,
+      "readers": 3
+    },
+    {
+      "probe": "work-layers.L7",
+      "label": "after",
+      "hedged": 2,
+      "readers": 3
+    },
+    {
+      "probe": "explain-routing.Q1",
+      "label": "before",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "explain-routing.Q1",
+      "label": "after",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "explain-routing.Q2",
+      "label": "before",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "explain-routing.Q2",
+      "label": "after",
+      "hedged": 2,
+      "readers": 3
+    },
+    {
+      "probe": "explain-routing.Q3",
+      "label": "before",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "explain-routing.Q3",
+      "label": "after",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "explain-routing.Q4",
+      "label": "before",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "explain-routing.Q4",
+      "label": "after",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "explain-routing.Q5",
+      "label": "before",
+      "hedged": 2,
+      "readers": 3
+    },
+    {
+      "probe": "explain-routing.Q5",
+      "label": "after",
+      "hedged": 2,
+      "readers": 3
+    },
+    {
+      "probe": "explain-routing.Q6",
+      "label": "before",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "explain-routing.Q6",
+      "label": "after",
+      "hedged": 3,
+      "readers": 3
+    }
+  ]
+}

@@ -1,0 +1,403 @@
+You are scoring answers to a comprehension test against an answer key. Read only this file. Do not open any other file under /home/apnex/taceng/mission-kit/docs/evals/runs/s0-02.
+
+Score each answer 0, 1 or 2 against the probe's key and rubric. An answer that labels its conclusion a guess, or says the text does not settle it, scores at most 1 unless the rubric says otherwise. Judge the answer, not its length or confidence.
+
+You do not know which answers came from which reader or document version, and must not try to infer it.
+
+Write one JSON object per line, for every answer id below and no others, to this file: /home/apnex/taceng/mission-kit/docs/evals/runs/s0-02/scores/s0.txt
+Each line exactly: {"item": "<answer id>", "score": 0|1|2, "reason": "<one sentence>"}
+When written, reply with only DONE.
+
+======================================================================
+PROBE s0.Q1
+
+Question:
+Two tools both check the same style rule and disagree at the edges. What does the corpus say?
+
+Key:
+One rule, one tool: a rule names exactly one enforcer, which owns both the check and the fix; two tools holding one rule is the forked-enforcer fault.
+
+Rubric:
+2 for one rule one tool with the fault. 1 for one rule one tool alone. 0 otherwise.
+
+--- answer a-80277103 ---
+The corpus names this as a fault: "**The forked enforcer.** Two tools holding one rule, disagreeing at the edges. This is why a rule names exactly one." (style/README.md, Faults).
+The remedy is structural: "An enforced rule declares `enforced-by` in its frontmatter naming exactly one tool ... One rule, one tool, and that tool owns both the check and the fix, so a rule cannot be reported by one implementation and refused by another." (style/README.md, "Enforced and unenforced rules"; repeated in tools/README.md).
+`tools/check-enforcers.sh` verifies the rule-to-tool pairing in both directions (a named tool that does not exist, or a per-rule tool no rule claims).
+So the answer is: pick the one tool the rule's `enforced-by` names and remove the duplicate check from the other.
+NOT SETTLED: the corpus gives no procedure for deciding which edge-case behaviour is correct; GUESS: the rule entry's text is the arbiter and the named enforcer is corrected to match it.
+
+--- answer a-d35e1a25 ---
+The corpus names this as a fault: style/README.md, Faults, "The forked enforcer. Two tools holding one rule, disagreeing at the edges. This is why a rule names exactly one."
+The Enforcement boundary section says "An enforced rule names exactly one tool", and "One rule, one tool, and that tool owns both the check and the fix, so a rule cannot be reported by one implementation and refused by another."
+The pairing is checked by tools/check-enforcers.sh "in both directions: a rule naming a tool that does not exist fails, and so does a per-rule tool no rule claims."
+So the fix is to collapse to the single tool named in the rule's `enforced-by` frontmatter and retire the other.
+NOT SETTLED: the corpus does not say which of the two tools should survive if neither is yet the declared one.
+GUESS: keep the one named in `enforced-by` (or name one there), and port any edge cases worth keeping into it.
+
+--- answer a-19da060b ---
+The corpus names this exact case as a fault. style/README.md (S0), Faults: "The forked enforcer. Two tools holding one rule, disagreeing at the edges. This is why a rule names exactly one."
+The remedy is in S0 "Enforced and unenforced rules": an enforced rule "declares `enforced-by` in its frontmatter naming exactly one tool", and "One rule, one tool, and that tool owns both the check and the fix, so a rule cannot be reported by one implementation and refused by another."
+tools/check-enforcers.sh holds the pairing both ways: a named tool must exist and be executable, and each per-rule tool `tools/s[0-9]*-*` must be claimed by a rule.
+tools/lib/style-common.sh records the history: restating shared logic "was how the S6 boundary rule came to exist in four places that disagreed."
+So: pick the one tool the rule's `enforced-by` names, and remove or delegate the other check.
+Limit: check-enforcers.sh only looks at tools named `tools/s<N>-*`, so a second checker under another name is not detected (see OBSERVATIONS for a live S13 case).
+
+--- answer a-28c17620 ---
+The corpus names this as a fault. `style/README.md` (S0), Faults: "The forked enforcer. Two tools holding one rule, disagreeing at the edges. This is why a rule names exactly one."
+The remedy is in S0 "Enforced and unenforced rules": an enforced rule "declares `enforced-by` in its frontmatter naming exactly one tool ... One rule, one tool, and that tool owns both the check and the fix, so a rule cannot be reported by one implementation and refused by another." `tools/README.md` lines 5-7 say the same.
+`tools/check-enforcers.sh` holds the pairing. Any per-rule tool matching `tools/s[0-9]*-*` that the rule's `enforced-by` line does not name is reported as "orphan tool". So a second `s6-*` checker would fail the gate.
+The fix is to keep one tool, retire the other, and make the remaining tool own both check and fix.
+GUESS: a second checker named outside the `s<N>-` pattern would not be caught by `check-enforcers.sh`, because it only globs that pattern.
+
+--- answer a-3ea9d859 ---
+The corpus names this as a fault: style/README.md, Faults, "The forked enforcer. Two tools holding one rule, disagreeing at the edges. This is why a rule names exactly one."
+The remedy is under "Enforcement boundary": "An enforced rule names exactly one tool ... One rule, one tool, and that tool owns both the check and the fix, so a rule cannot be reported by one implementation and refused by another."
+The pairing is declared in each rule's `enforced-by` frontmatter, and tools/check-enforcers.sh checks it both ways: a rule naming a missing tool fails, and so does a per-rule tool (`tools/s[0-9]*-*`) that no rule claims.
+tools/format-markdown.sh shows the same principle: it is "An alias, not an implementation", running each per-rule tool's --fix, because "The previous version restated four rules inline, and one of them was not idempotent."
+So the corpus says: keep one tool as the rule's sole enforcer, and retire the other or turn it into a delegating alias.
+It does NOT SETTLE which of the two tools to keep.
+GUESS: keep the tool the rule's `enforced-by` already names, and adjust it to whichever edge behaviour the rule text supports.
+
+--- answer a-6dae08ce ---
+The corpus names this as a fault and rules it out by design. style/README.md, Faults: "The forked enforcer. Two tools holding one rule, disagreeing at the edges. This is why a rule names exactly one."
+Enforcement boundary: "An enforced rule names exactly one tool ... One rule, one tool, and that tool owns both the check and the fix, so a rule cannot be reported by one implementation and refused by another."
+The pairing is declared in each rule's `enforced-by` frontmatter, and tools/check-enforcers.sh checks it in both directions: a rule naming a tool that does not exist fails, and so does a per-rule tool that no rule claims (tools/README.md, check-enforcers.sh).
+So the fix is to fold the check into the single tool the rule names and remove the second one.
+GUESS: if the second tool were a per-rule `sN-*` script that no rule claims, check-enforcers.sh would flag it as an orphan. A second tool with any other name might not be caught.
+
+======================================================================
+PROBE s0.Q2
+
+Question:
+Someone proposes a style rule because they prefer a certain heading capitalisation. Does it earn an entry?
+
+Key:
+No, not on preference: a convention earns an entry when its absence produced a real defect in a real artifact and the difference can be shown; aesthetic preference does not qualify.
+
+Rubric:
+2 for no with the real-defect test. 1 for no alone. 0 otherwise.
+
+--- answer a-4aeba5a8 ---
+No.
+style/README.md, "What earns an entry": "A convention earns one when its absence has produced a real defect in a real artifact, and a reader can be shown the difference. Aesthetic preference does not qualify, and neither does a rule that only holds inside one document."
+A heading-capitalisation preference with no observed defect is aesthetic preference.
+It could earn an entry only if someone shows a real defect its absence caused; the charter then says to prefer stating it as a predicate and writing the tool ("Prefer a rule a script can hold").
+
+--- answer a-eea94489 ---
+No. S0 "What earns an entry": "A convention earns one when its absence has produced a real defect in a real artifact, and a reader can be shown the difference. Aesthetic preference does not qualify".
+A preference about heading capitalisation is an aesthetic preference by the proposer's own description, so it does not earn an entry.
+It could only qualify if someone showed a real defect that came from inconsistent capitalisation. In that case S0 says "Prefer a rule a script can hold" and to state it as a predicate and write the tool.
+NOT SETTLED: the corpus has no ruling on heading capitalisation specifically.
+
+--- answer a-1653410a ---
+No. style/README.md, "What earns an entry", requires all three conditions to hold. Condition 2 says: "Its absence produced a real defect in a real artifact, and a reader can be shown the difference. Aesthetic preference does not qualify."
+A heading-capitalisation preference with no defect behind it fails that condition.
+It would only qualify if someone could show a real defect, and the rule would also have to hold across artifacts (condition 3).
+The Purpose section explains why: a convention earns a place by keeping artifacts "diffable, searchable and unambiguous", which "is a functional requirement rather than a preference".
+
+--- answer a-6a9fe320 ---
+No, not on preference alone. style/README.md, "What earns an entry": "A convention earns one when its absence has produced a real defect in a real artifact, and a reader can be shown the difference. Aesthetic preference does not qualify, and neither does a rule that only holds inside one document."
+To earn an entry, the proposer would have to show a real defect that inconsistent capitalisation caused.
+If it is admitted, S0 says to "Prefer a rule a script can hold" and to state it as a predicate and write the tool.
+GUESS: heading capitalisation is easy to state as a predicate, so it could be enforced, but being checkable is not the admission test. Evidence of a defect is.
+
+--- answer a-3ef56f0c ---
+No.
+style/README.md, "What earns an entry", requires all three criteria to hold, and criterion 2 is "Its absence produced a real defect in a real artifact, and a reader can be shown the difference. Aesthetic preference does not qualify."
+A heading-capitalisation preference fails criterion 2 as stated.
+It could earn an entry only if someone showed a real defect that the missing rule caused (for example a search or diff failure), and showed that the rule holds across artifacts (criterion 3).
+If it did earn one, the README says to prefer a rule a script can hold: "state it that way and write the tool".
+
+--- answer a-5d38a63c ---
+No. style/README.md, "What earns an entry", requires all three conditions, and condition 2 is "Its absence produced a real defect in a real artifact, and a reader can be shown the difference. Aesthetic preference does not qualify."
+A preference for a heading capitalisation, with no defect shown, fails condition 2 even though it would pass condition 1 (it governs form).
+It would also have to hold "across artifacts, not inside one document" (condition 3).
+If a real defect could be shown, the README adds "Prefer a rule a script can hold", stating it as a predicate and writing the tool.
+
+======================================================================
+PROBE s0.Q3
+
+Question:
+Does the style gate check every file in the corpus on each change?
+
+Key:
+No: style is gated on changed files, because legacy debt predates the checkers; gating the diff blocks new debt and converts the rest as sections are edited.
+
+Rubric:
+2 for changed files with the reason. 1 for changed files alone. 0 otherwise.
+
+--- answer a-0780690a ---
+No, not by default.
+style/README.md: "Style is gated on changed files rather than on the whole corpus. The corpus carries debt that predates the checkers, so gating the diff blocks new debt and converts the rest opportunistically."
+tools/README.md (check-all.sh): `tools/check-all.sh` checks "style over files changed against origin/main"; "Changed means committed against the base plus staged plus unstaged".
+A whole-corpus run exists but is opt-in: `tools/check-all.sh --all` ("style over the whole corpus").
+The script only gathers markdown (`grep '\.md$'` in tools/check-all.sh), so non-markdown files are not style-gated at all.
+Other, non-style gates in check-all.sh (index, structure, enforcers, schemas, etc.) run regardless of what changed.
+
+--- answer a-11cf95a1 ---
+No, not by default. S0: "Style is gated on changed files rather than on the whole corpus. The corpus carries debt that predates the checkers, so gating the diff blocks new debt".
+`tools/check-all.sh` lines 15-20 and 103-119: the style checkers run only on `.md` files changed against `origin/main` (or `--since REF`). That means committed, staged, unstaged and untracked changes, and `.md` files only. If nothing changed, the style step passes with "no markdown changed".
+`--all` runs style over every `.md` file in the corpus, but it is opt-in.
+The other gates in `check-all.sh` are not limited to the diff: structure, enforcers, entry bodies, index, schema and standing context. The `*.test.sh` tool tests are not limited either; they run "unconditional" over fixtures (lines 74-80).
+
+--- answer a-32e95363 ---
+No, not by default. style/README.md, Enforcement boundary: "Style is gated on changed files rather than on the whole corpus. The corpus carries debt that predates the checkers, so gating the diff blocks new debt and converts the rest as sections are edited."
+tools/README.md (check-all.sh) agrees. `tools/check-all.sh` checks files changed against origin/main, and "changed" means committed plus staged plus unstaged. `--all` checks the whole corpus, and `--since REF` changes the base.
+CI calls `tools/check-all.sh --since <base>` (.github/workflows/check.yml), so CI is also diff-scoped.
+Only the style checks are diff-scoped. Other gates in check-all.sh, such as entry contracts and the tests, run whatever changed (tools/check-all.sh comments).
+
+--- answer a-a1d8e02b ---
+No, not by default.
+style/README.md, "Enforcement boundary": "Style is gated on changed files rather than on the whole corpus. The corpus carries debt that predates the checkers, so gating the diff blocks new debt and converts the rest as sections are edited."
+tools/check-all.sh does this: by default it runs the per-rule style checkers (s6 s8 s10 s12 s13 s14) only on `.md` files changed against `origin/main`, or against `--since REF` (committed, staged, unstaged and untracked). A whole-corpus run needs `--all`.
+.github/workflows/check.yml runs `tools/check-all.sh --since <base>`, so CI also gates only the diff.
+If no markdown changed, the style step reports PASS without running a checker.
+The non-style gates in check-all.sh (structure, enforcers, index, schemas and others) are not limited to changed files, and the tools' own `*.test.sh` tests run unconditionally.
+Only the reading-held rules are reviewed by a person, and the corpus does not say how much of the corpus a review covers.
+
+--- answer a-0a162cb2 ---
+No, not by default. style/README.md: "Style is gated on changed files rather than on the whole corpus. The corpus carries debt that predates the checkers, so gating the diff blocks new debt and converts the rest as sections are edited."
+tools/check-all.sh confirms it: "s6 s8 s10 s12 s13 s14 one sovereign checker per style rule, on changed files only"; by default it gates markdown changed against origin/main (committed, staged, unstaged and untracked).
+A whole-corpus run exists only as an option: `tools/check-all.sh --all` ("style over the whole corpus").
+Also, only the six tool-held rules are run at all; the nine reading-only rules are not checked by the gate on any file.
+Non-style gates in check-all.sh (structure, enforcers, index, schemas, etc.) are not scoped to changed files.
+
+--- answer a-b17c737b ---
+No. style/README.md: "Style is gated on changed files rather than on the whole corpus... gating the diff blocks new debt and converts the rest opportunistically as sections are edited."
+tools/check-all.sh confirms this. The default runs the per-rule checkers (s6 s8 s10 s12 s13 s14) "on changed files only". "Changed" means committed against the base, plus staged, unstaged and untracked files, filtered to `\.md$`.
+A whole-corpus run exists only as an opt-in flag: `tools/check-all.sh --all`.
+CI (.github/workflows/check.yml) runs `tools/check-all.sh --since <base>`, so CI is diff-only too.
+Non-style gates in check-all.sh do run whole-corpus on every change: structure, enforcers, index, schema tests and similar. Non-markdown files are never style-gated.
+
+======================================================================
+PROBE s0.Q4
+
+Question:
+Which style rules are held by a tool, and which are checked only by reading? Name at least three of each.
+
+Key:
+Held by a tool: S6, S8, S10, S12, S13, S14. By reading: S1, S2, S3, S4, S5, S7, S9, S11, S15.
+
+Rubric:
+2 for at least three correct in each group and none misplaced. Placing S15 under a tool is misplaced: check-guidance-placement.sh holds its tested wording, not messages. 1 for one group right. 0 otherwise.
+
+--- answer a-c10b9ed2 ---
+Held by a tool, each with an `enforced-by` line in its frontmatter and listed in `tools/README.md` lines 9-16:
+S6 one sentence per line (`tools/s6-one-sentence-per-line.mjs`), S8 code-block comments (`tools/s8-code-block-comments.sh`), S10 horizontal rule between sections (`tools/s10-section-rules.sh`), S12 code-block introducer (`tools/s12-code-block-introducer.sh`), S13 plain ASCII (`tools/s13-plain-ascii.sh`), S14 hydration triggers (`tools/s14-hydration-triggers.sh`).
+For S8 and S14 the tool checks but has no fix ("no, needs judgement").
+Checked only by reading, from `tools/README.md` line 19: "Rules `S1`, `S2`, `S3`, `S4`, `S5`, `S7`, `S9`, `S11` and `S15` need judgement and have no enforcer; review those by reading." Examples: S1 prerequisites explicit, S5 no version pins in prose, S11 backticks for identifiers, S15 message to a human.
+None of those nine files has an `enforced-by` line (measured by grep).
+
+--- answer a-9e1bd1a2 ---
+Held by a tool (style/README.md Index "Held by" column, from each rule's `enforced-by`): S6 one sentence per line (`tools/s6-one-sentence-per-line.mjs`), S8 code-block comments (`tools/s8-code-block-comments.sh`), S10 horizontal rules between sections (`tools/s10-section-rules.sh`), S12 code-block introducer (`tools/s12-code-block-introducer.sh`), S13 plain ASCII (`tools/s13-plain-ascii.sh`) and S14 hydration triggers (`tools/s14-hydration-triggers.sh`).
+Checked only by reading: S1, S2, S3, S4, S5, S7, S9, S11 and S15. Examples are S5 (no version pins in prose), S11 (identifiers in backticks) and S15 (a message to a human).
+tools/README.md says the same: "Rules S1, S2, S3, S4, S5, S7, S9, S11 and S15 need judgement and have no enforcer; review those by reading." That is nine of fifteen, which matches style/README.md Axiom alignment.
+The tools for S8 and S14 can check but cannot fix ("no, needs judgement").
+
+--- answer a-70547d9d ---
+Held by a tool (each declares `enforced-by` in frontmatter; table in tools/README.md):
+- S6 one sentence per line - `tools/s6-one-sentence-per-line.mjs` (has a fix)
+- S8 code-block comments - `tools/s8-code-block-comments.sh` (check only, "needs judgement")
+- S10 horizontal rule between H2 sections - `tools/s10-section-rules.sh` (fix)
+- S12 code-block introducer own paragraph - `tools/s12-code-block-introducer.sh` (fix)
+- S13 plain ASCII - `tools/s13-plain-ascii.sh` (fix)
+- S14 hydration triggers state a condition - `tools/s14-hydration-triggers.sh` (check only)
+Checked only by reading: tools/README.md: "Rules `S1`, `S2`, `S3`, `S4`, `S5`, `S7`, `S9`, `S11` and `S15` need judgement and have no enforcer; review those by reading." (e.g. S2 runnable commands in code blocks, S5 no version pins in prose, S11 identifiers in backticks, S15 message to a human).
+
+--- answer a-6c570935 ---
+Held by a tool (each declares `enforced-by` in its frontmatter):
+S6 one sentence per line -> tools/s6-one-sentence-per-line.mjs
+S8 code-block comments -> tools/s8-code-block-comments.sh
+S10 horizontal rule between sections -> tools/s10-section-rules.sh
+S12 code-block introducer -> tools/s12-code-block-introducer.sh
+S13 plain ASCII -> tools/s13-plain-ascii.sh
+S14 hydration triggers -> tools/s14-hydration-triggers.sh
+Checked only by reading (no `enforced-by`): S1, S2, S3, S4, S5, S7, S9, S11, S15. S0 calls this "a stated property of the layer, not a backlog".
+One caveat on S15: tools/check-guidance-placement.sh checks that S15's tested wording "landed unreworded". It does not check whether messages follow S15, so S15 still counts as a reading-only rule.
+
+--- answer a-effb5e73 ---
+Held by a tool (from the "Held by" column in style/README.md, which is generated from each rule's `enforced-by`; I confirmed these in the member frontmatter): S6 one sentence per line (`tools/s6-one-sentence-per-line.mjs`), S8 code-block comments (`tools/s8-code-block-comments.sh`), S10 horizontal rules between sections (`tools/s10-section-rules.sh`), S12 code-block introducer (`tools/s12-code-block-introducer.sh`), S13 plain ASCII (`tools/s13-plain-ascii.sh`), S14 hydration triggers (`tools/s14-hydration-triggers.sh`).
+Checked only by reading: S1 prerequisites explicit, S2 runnable steps in code blocks, S3 producer/consumer doc split, S4 four-journey README, S5 no version pins in prose, S7 alternative paths in separate blocks, S9 action-first README, S11 identifiers in backticks, S15 message to a human.
+That gives six held by tools and nine held by reading, which matches "nine of its fifteen rules are held only by reading" (style/README.md, Axiom alignment).
+The README calls the reading-held set "a stated property of the layer, not a backlog".
+
+--- answer a-e014a3cf ---
+Held by a tool (style/README.md Index, "Held by" column, matching each member's `enforced-by` frontmatter): S6 one sentence per line (`tools/s6-one-sentence-per-line.mjs`), S8 code-block comments (`tools/s8-code-block-comments.sh`), S10 horizontal rule between sections (`tools/s10-section-rules.sh`), S12 code-block introducer (`tools/s12-code-block-introducer.sh`), S13 plain ASCII (`tools/s13-plain-ascii.sh`), S14 hydration triggers (`tools/s14-hydration-triggers.sh`).
+Held only by reading ("reading" in the same column, no `enforced-by`): S1 prerequisites explicit, S2 runnable steps in code blocks, S3 producer/consumer split, S4 four-journey README, S5 no version pins, S7 alternative paths in separate blocks, S9 action-first README, S11 identifiers in backticks, S15 message to a human.
+That is six and nine, matching the README's "nine of its fifteen rules are held only by reading".
+The README says the reading-only set "is a stated property of the layer, not a backlog".
+
+======================================================================
+PROBE s0.Q5
+
+Question:
+A team wants a style rule for comments in source code. Is there one, and where would it go?
+
+Key:
+No style rule covers source-code comments today. S15 is already a single-medium style rule (messages to a human), so a source-comment rule would be the second, which is what makes sub-sets of style by medium due. Acceptable mentions: K27 (a skill) covers doc comments; S8 is about comments in markdown code blocks, not source files. Calling K27 or S8 the style rule for source comments is wrong.
+
+Rubric:
+2 for no style rule today, plus: it would be a second single-medium rule and so make a sub-set by medium due. 1 for no style rule today alone, or with K27/S8 correctly placed. 0 if K27 or S8 is named as the style rule, or otherwise.
+
+--- answer a-e534f7cc ---
+There is no style rule for comments in source code. S8 covers comments only "inside code blocks" in documents (`style/S8-code-block-comments-not-prose.md`, Rule section, with markdown/bash examples). Its tool checks markdown.
+The nearest guidance is the skill K27 `write-discoverable-code` (`skills/write-discoverable-code/SKILL.md`), which says "One-line doc comment on every export" and "Write the plain-words phrase in the doc comment". That is skill content, not a style entry.
+Where it would go: M0 Placement, question 3: "Does it govern how an artifact is written - its form, whatever the work was? Style, in `style/`." M0's table also says "the artifact you produce | `style/`". So a comment-form rule would be a new S entry.
+It must still pass S0 "What earns an entry" (a real defect, shown) and, if possible, be stated as a predicate with one enforcing tool.
+GUESS: S0 calls itself "Doc, commit, and naming conventions" and all current members are about documents or messages, so source code is in scope but not yet occupied. The team should also check K27 for overlap before adding a neighbour.
+
+--- answer a-36c637c6 ---
+There is no style rule for comments in source code.
+style/README.md, Territory, "Gaps tested": "Source code has no style rule either; naming code so plain-text search finds it is held by a skill, K27, rather than by this set."
+S8 covers comments inside code blocks in markdown documents (`# ...`, `// ...` in a doc's code block), not comments in source files.
+K27's body (skills/write-discoverable-code/SKILL.md) gives some guidance on source comments, for example "One-line doc comment on every export" and "Write the plain-words phrase in the doc comment". It is a skill, not a style rule.
+Where it would go: in style/, because it governs how an artifact reads (M0 placement, question 3). The README says source code "would be a new medium, and so the second rule for a medium other than documents; that is the point at which the set's medium rules are due to be grouped as a sub-set" (see Faults, "The unscoped medium").
+It still has to pass the three earn criteria, including a real observed defect.
+The neighbours table also sends it to Skills instead if it is "a capability applied while working" and not "a property judged in the result".
+
+--- answer a-b398c410 ---
+There is no style rule for comments in source code.
+The nearest is S8, but it governs "Comments inside code blocks (`# ...`, `// ...`, `-- ...`)" in markdown docs (style/S8-code-block-comments-not-prose.md), not comments in source files.
+Code comment guidance does exist as a skill, not a style rule: K27 write-discoverable-code (skills/write-discoverable-code/SKILL.md) covers "doc comments", e.g. "One-line doc comment on every export".
+Where a new one would go: style/, because methods/README.md placement question 3 is "Does it govern how an artifact is written - its form, whatever the work was? Style", and the style charter scopes itself to "Doc, commit, and naming conventions" / "Rules about the artifact itself".
+It must still earn an entry: a real defect from its absence, not preference (style/README.md), and should be stated as a predicate with a tool if possible.
+GUESS: if the rule is really about searchability of names and doc comments, extending K27 may fit better than a new S-entry; the corpus does not rule on that overlap (NOT SETTLED).
+
+--- answer a-10cd46a2 ---
+There is no style rule for comments in source code. S8 covers comments inside markdown code blocks ("Comments inside code blocks (`# ...`, `// ...`, `-- ...`)"), in documentation, not in source files. Every style checker gates only `.md` files (tools/check-all.sh).
+The nearest guidance is the skill K27 / skills/write-discoverable-code/SKILL.md (e.g. "One-line doc comment on every export"). That is a skill, not a style entry.
+Where it would go: methods/README.md (M0) placement question 3 says a rule that governs "how an artifact is written - its form" is style, in `style/`. S0 covers "Doc, commit, and naming conventions" and "Rules about the artifact itself".
+To be admitted, it still has to pass S0's test: a real defect in a real artifact.
+NOT SETTLED: whether source code counts as an "artifact" for the style layer. S0 says the artifact is "usually a document", and no style entry covers source code today. GUESS: yes, by M0 question 3.
+
+--- answer a-aa837762 ---
+There is no style rule for comments in source code. style/README.md, Territory, "Gaps tested": "Source code has no style rule either; naming code so plain-text search finds it is held by a skill, K27, rather than by this set."
+S8 is about comments inside code blocks in documents, not in source files. Its rule says the comments explain what an adjacent line in a markdown code block does.
+If the team added one, it would go in style/ as a new medium. The same passage says that would be "the second rule for a medium other than documents; that is the point at which the set's medium rules are due to be grouped as a sub-set". S15 line 42 and the Faults entry "The unscoped medium" say the same.
+It would also have to pass "What earns an entry" (a real defect, holds across artifacts).
+NOT SETTLED: the corpus gives no name or layout for that sub-set.
+
+--- answer a-55d0ffc8 ---
+There is no style rule for comments in source code. style/README.md, Territory, "Gaps tested": "Source code has no style rule either; naming code so plain-text search finds it is held by a skill, K27, rather than by this set."
+S8 is about comments, but only "Comments inside code blocks" in documents (style/S8-code-block-comments-not-prose.md), not source files.
+Where it would go: the README says source code "would be a new medium, and so the second rule for a medium other than documents; that is the point at which the set's medium rules are due to be grouped as a sub-set" (see Faults, "The unscoped medium").
+So it would go in style/ (it governs form judged by reading the output), and its arrival would trigger grouping S15 and it into a medium sub-set.
+It would still need to pass "What earns an entry": a real defect shown, not preference.
+NOT SETTLED: the sub-set's name or location is not given. GUESS: if the guidance is really a capability applied while writing code, the Neighbours test ("a capability applied while working, or a property judged in the result?") could place it in a skill alongside K27 instead.
+
+======================================================================
+PROBE s0.Q6
+
+Question:
+Someone proposes: every deferred item's record must carry a revival trigger. Is that a style rule?
+
+Key:
+No: it governs what the work must record, not how an artifact is written, so it is a rule (rules/); style governs an artifact's form whatever the work was.
+
+Rubric:
+2 for no, rule, with the reason. 1 for no alone. 0 otherwise.
+
+--- answer a-239102db ---
+No. It is a rule, and it already exists as RU3 (`rules/RU3-anti-amnesia-deferral.md`, with `trace: every deferred, parked or cut item's record carries a revival trigger`).
+M0 Placement says so directly: "The style question is about the object, not checkability: *every deferral records its revival trigger* is visible in text and is still a rule, because it governs what the work records."
+RU0 "Boundaries": "style governs the artifact's form; a rule governs what the work does or records."
+Filing it as style would be the opposite of RU0's fault "The style rule in rule clothing". It would also duplicate RU3.
+
+--- answer a-38a6fd2e ---
+No. It is a rule, and it already exists as RU3 (rules/RU3-anti-amnesia-deferral.md). RU3's trace field reads: "every deferred, parked or cut item's record carries a revival trigger".
+style/README.md, Neighbours, Rules row: "Does it govern the artifact's form, or what the work must do or record? A revival trigger on a deferred item is a rule, though it is visible in text."
+Filing it under style would be the fault "The work rule in style clothing ... a convention filed here that governs what the work does or records rather than how the artifact reads".
+
+--- answer a-5f23b354 ---
+No, it is a rule. style/README.md, Neighbours: "A revival trigger on a deferred item is a rule, though it is visible in text."
+methods/README.md (the single placement statement) says: "every deferral records its revival trigger is visible in text and is still a rule, because it governs what the work records."
+It already exists as RU3 (rules/RU3-anti-amnesia-deferral.md), whose trace is "every deferred, parked or cut item's record carries a revival trigger".
+Filing it in style would be the fault "The work rule in style clothing" (style/README.md, Faults).
+
+--- answer a-ababf0c6 ---
+No, it is a rule, and it already exists as RU3 (rules/RU3-anti-amnesia-deferral.md), whose `trace` is "every deferred, parked or cut item's record carries a revival trigger".
+methods/README.md (M0) gives this exact example: "The style question is about the object, not checkability: *every deferral records its revival trigger* is visible in text and is still a rule, because it governs what the work records."
+rules/README.md: "style governs the artifact's form; a rule governs what the work does or records". It also lists "The style rule in rule clothing" as a fault, which is the reverse misfiling.
+So the proposal duplicates RU3. It should strengthen RU3, not become a new style entry.
+
+--- answer a-46064919 ---
+No, it is a rule, and it already exists as RU3.
+methods/README.md, Placement: "The style question is about the object, not checkability: *every deferral records its revival trigger* is visible in text and is still a rule, because it governs what the work records."
+Placement question 2 also notes guidance that "only *requires* a record to carry something - a field, a reason - produces nothing itself, and is a rule."
+rules/RU3-anti-amnesia-deferral.md declares exactly this: `trace: every deferred, parked or cut item's record carries a revival trigger`.
+Filing it in style would be "The style rule in rule clothing" in reverse; the proposal should cite or strengthen RU3, not mint a new entry.
+
+--- answer a-a987e3be ---
+No. It is a rule, and it already exists as RU3 (rules/RU3-anti-amnesia-deferral.md, "every parked or cut item carries a revival trigger").
+style/README.md, Neighbours: "A revival trigger on a deferred item is a rule, though it is visible in text."
+methods/README.md, Placement: "every deferral records its revival trigger is visible in text and is still a rule, because it governs what the work records". The style question "is about the object, not checkability".
+rules/README.md confirms that RU3 sits at "Deciding what to keep".
+To file it under style would be the fault "The work rule in style clothing" (style/README.md, Faults).
+
+======================================================================
+PROBE s0.Q7
+
+Question:
+What would an unhealthy population of style rules look like?
+
+Key:
+Any two population faults: two tools holding one rule; a rule nobody enforces or reviews; rules for one medium scattered with no scope; a convention filed as style that governs the work rather than the text; legacy debt converted in one sweep. A single rule's own defect (for example a rule phrased as a quality with no predicate) is a member fault, not a population fault.
+
+Rubric:
+2 for two population faults from the key or equivalent. 1 for one. 0 for none. A single rule's own defect, such as an unfalsifiable rule, earns nothing.
+
+--- answer a-c5bf0d91 ---
+style/README.md, Faults, lists the unhealthy shapes:
+forked enforcers (two tools holding one rule, disagreeing at the edges);
+orphaned rules (a convention nobody enforces and nobody reviews, "which teaches readers that the layer is decorative");
+an unscoped medium (rules for a non-document medium scattered among the document rules with nothing grouping them);
+work rules in style clothing (conventions that govern what the work does or records rather than how the artifact reads);
+and the corpus-wide sweep (converting all legacy debt in one commit, an unreviewable diff hiding a real change).
+"What earns an entry" implies another: rules that rest on aesthetic preference with no real defect behind them, or that apply inside only one document.
+The Axiom alignment section notes a standing weakness: nine of fifteen are held only by reading, "so their hold is as strong as the review that reads for them".
+
+--- answer a-c053f5a1 ---
+style/README.md, Faults, lists five unhealthy shapes:
+(1) The forked enforcer: two tools hold one rule and disagree at the edges.
+(2) The orphaned rule: nobody enforces it and nobody reviews it, which "teaches readers that the layer is decorative".
+(3) The unscoped medium: rules for a non-document medium scattered among the document rules, with nothing grouping them.
+(4) The work rule in style clothing: a rule about what the work does or records, filed where authors applying rules will not look.
+(5) The corpus-wide sweep: all legacy debt converted in one commit that nobody can review.
+"What earns an entry" adds another: entries based on aesthetic preference rather than a real defect. Axiom alignment notes a current weakness: nine of fifteen rules are held only by reading, so they are only as strong as the review.
+
+--- answer a-677a9a95 ---
+style/README.md, Faults, lists four:
+the unfalsifiable convention ("be clear", "be concise", no predicate; cited only when someone already disagrees);
+the orphaned rule (nobody enforces it and nobody reviews it, "which teaches readers that the layer is decorative");
+the forked enforcer (two tools on one rule, disagreeing at the edges);
+the corpus-wide sweep (all legacy debt converted in one commit, an unreviewable diff that hides a real change).
+From "What earns an entry", the population would also be unhealthy if it admitted aesthetic-preference rules or rules that hold only inside one document.
+check-enforcers.sh adds two more: a broken promise (`enforced-by` names a tool that does not exist) and an orphan tool that no rule claims.
+
+--- answer a-67c9355d ---
+style/README.md, Faults, lists the population faults:
+- the forked enforcer: two tools hold one rule and disagree at the edges;
+- the orphaned rule: nobody enforces it and nobody reviews it, "which teaches readers that the layer is decorative";
+- the unscoped medium: rules for non-document media are scattered among the document rules with nothing that groups them;
+- the work rule in style clothing: a rule that governs what the work does or records is filed as style;
+- the corpus-wide sweep: all legacy debt is converted in one unreviewable commit.
+The earn criteria imply further unhealthy signs: rules based on aesthetic preference, and rules that hold inside one document only.
+"Axiom alignment" names a current weakness: with nine of fifteen rules held only by reading, "their hold is as strong as the review that reads for them".
+
+--- answer a-419cbbdf ---
+style/README.md lists the population faults:
+- "The unfalsifiable convention" - rules phrased as qualities ("be clear") with no predicate, cited only in disputes.
+- "The orphaned rule" - nobody enforces it and nobody reviews it, teaching readers the layer is decorative.
+- "The forked enforcer" - two tools holding one rule, disagreeing at the edges.
+- "The corpus-wide sweep" - converting all legacy debt in one unreviewable commit that hides real changes.
+Also implied by the admission test: rules admitted for aesthetic preference or that only hold inside one document (style/README.md "What earns an entry").
+Neighbouring charters add misfiling: "The style rule in rule clothing" (rules/README.md) and "The style rule in process clothing" (methods/README.md) - form conventions living where writers do not look.
+
+--- answer a-34982a3f ---
+S0 Faults lists four signs:
+(1) "The unfalsifiable convention" - rules phrased as qualities ("be clear") with no predicate, cited only when people already disagree.
+(2) "The orphaned rule" - nobody enforces it and nobody reviews it, which teaches readers "that the layer is decorative".
+(3) "The forked enforcer" - two tools on one rule, disagreeing at the edges.
+(4) "The corpus-wide sweep" - all legacy debt converted in one unreviewable commit that hides a real change.
+From S0 "What earns an entry", two more signs: entries based on aesthetic preference, and rules that "only hold inside one document". `tools/README.md` line 55 adds an unread checker: "Five checkers existed and nothing ran any of them".

@@ -1,0 +1,50 @@
+### system-boundary.S1
+Only the launcher's axioms, which are the floor: A3, A4, A8, A9, A14 (axioms/README.md applicability matrix, `any-system` row; each file's `applies-to: [any-system]` frontmatter agrees).
+The launcher has no traits: no state (T1), no model (T5), one operator watching and nothing restarted, so not autonomous (T4 test: "would a human see it before the system acted on the failure?"), and a script driven by one operator is not multiple independent actors (T3: "One actor using several tools is not multi-agent").
+E5 Boundaries: "A one-shot script with no traits is a system, bound by the axioms every system carries."
+The launcher and service compose (E5: "A launcher that hands sessions to a service through a declared interface composes with it").
+A0: "A system it only composes with, through a contract the change leaves as it was, is not altered, and its axioms do not bind."
+So the service's axioms (A1, A5, A6, A7, A10, A13) do not bind this change.
+
+### system-boundary.S2
+The launcher's floor axioms plus the service's axioms: A1, A3, A4, A5, A6, A7, A8, A9, A10, A13, A14 (eleven; not A2, A11, A12).
+A0: a change answers to "any system whose contract with it the change alters", and E5: "changing an unversioned interface alters every consumer at once, so the change answers to all of them immediately."
+The service is stateful (A1), multi-agent (A5, A6, A7, A10, A13) and autonomous (A7, A10, A13); it is not declarative (no A2) and has no model in the loop (no A11, A12) - per the axiom frontmatter `applies-to` tags and the A0 matrix.
+E5 adds: "Adding versioning to an interface you are changing moves it toward A3's limit and is encouraged, not required; if it is not done, the gap is recorded."
+So if you do not add versioning, you must record that gap.
+
+### system-boundary.S3
+The service's eleven axioms: A1, A3, A4, A5, A6, A7, A8, A9, A10, A13, A14.
+A0: a change answers to "the system it modifies, every system containing it"; E5: "A module inside a service is a system, and the service contains it, whether or not the module's interfaces are declared."
+E5 Discriminators: "changing a module changes the service it sits in."
+The module being stateless on its own does not help: E5 "Why precision matters" warns against "a stateful system escap[ing] its own axioms by being described as stateless modules, each of which passes on its own."
+The module alone would carry only the floor (A3, A4, A8, A9, A14), which the service's set already includes.
+
+### system-boundary.S4
+Only the library's own axioms, the floor: A3, A4, A8, A9, A14 (A0 matrix: "a plain library takes `any-system`").
+The interface and its behaviour are unchanged, so no consumer's contract is altered, and A0 says a system you only compose with through an unchanged contract "is not altered, and its axioms do not bind."
+E5: "Publishing a new version of an interface alters no consumer that has not adopted it; each adoption is a change to that consumer, and answers to that consumer's axioms; the component is not altered by being adopted."
+E5 "Why precision matters" names this exact case as the error to avoid: "a small shared library would carry the axioms of every system that uses it."
+Caveat from E5: a consumer that declares a version range ("any 2.x") has adopted in advance, and "a release within it alters every consumer bound by the range". The question says each consumer adopts as a separate change, so this caveat does not apply here.
+
+### system-boundary.S5
+The union of both systems' axioms: A1, A3, A4, A5, A6, A7, A8, A9, A10, A13, A14 (not A2, A11, A12).
+E5 Boundaries: "Where one unit depends on another and nothing declares the boundary between them ... they are one system, with the traits of both"; A0 says the same and adds "the axioms either unit would bring all bind."
+E5: "Behaviour another unit depends on without any declaration is a contract in fact, not a declared boundary - and a change to it reaches across."
+What else is wrong: the undeclared dependency "is itself a fault against A3, which requires units to interact only through declared contracts" (E5; A0 says the same).
+And the fix falls to you: E5 says "A change that alters what an undeclared neighbour reaches into owns that boundary: declaring and honouring the interface is inside its scope, not optional."
+In practice, a log-format change that the service parses may also break the service (A3 Faults: "Logic Leakage - a change in one area causes unexpected failure in another").
+
+### system-boundary.S6
+It is defined in entities/E5-system.md: "A system is a unit of engineering with a boundary: what is inside it, and the contracts through which anything outside reaches it."
+A boundary separates two units only where it is "declared and honoured"; where a dependency crosses an undeclared boundary, or reaches past a declared one, "the two are one system for deciding what a change answers to."
+Systems relate in exactly two ways, contain and compose; "Traits describe a system, and axioms bind it."
+E5 Boundaries says a system is not a repository, deployment unit or process by definition, and is not defined by size or by traits.
+E6 defines a component as "a system seen as a part of a larger system that contains it", and A0 and T0 defer to E5 for the term.
+
+### OBSERVATIONS
+- Applying "no traits" to the launcher is my inference, not stated text. The prompt does not say "not multi-agent", and T3 counts "a human reviewing an agent's output" as multi-agent. I read the launcher as a script plus one operator, which is one actor using a tool, so not multi-agent.
+- E5 says the organisation doing the work is also a system, with its own axioms that "govern how the change is made and recorded", and that it is not one of the systems the change alters. The answers above therefore leave out the organisation's axioms. A reader who counts them would give a longer list for every question.
+- There is a mild tension in S2. A3 Mechanics ("Semantic Bit-Masking") says interfaces are "explicit, versioned contracts", so an unversioned interface is an A3 gap, and A0 says "work that touches a gap closes as much of it as the touch allows". E5 explicitly makes versioning "encouraged, not required", and A0 limits "the touch" to "the part the change already alters to do its own work". These can be reconciled, but only by reading A0's qualifier closely. A3's "Speculative Surface" fault also pulls against adding versioning before consumers need it.
+- E5's version-range rule says a release within the range "alters every consumer bound by the range" even when the interface and its behaviour are unchanged, as in S4. Read literally, an internals-only release would then bind every range-bound consumer, which conflicts with E5's own warning about shared libraries. The text does not settle which reading wins: NOT SETTLED.
+- I checked the A0 applicability matrix against each axiom's `applies-to` frontmatter, and they agree.
