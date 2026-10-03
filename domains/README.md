@@ -23,30 +23,34 @@ It is what makes two pieces of work comparable - a verification of the release c
 
 This set covers **the surfaces an engineering organisation's work lands on** - every place a unit of work's evidence can resolve.
 
-The surfaces group by which part of the organisation they belong to, and those parts are the denominator a gap is checked against.
+The surfaces group by which part of the organisation they belong to, and those parts are the denominator a gap is checked against.\
+Each part is an engineered product: the shipped product, and equally the organisation's own toolchain, control plane and knowledge, which are designed, built, tested and shipped like it.\
+A part's domain holds its source and its live state together.\
+A part splits into more than one domain only where work on one portion is proved differently and the split has been found needed - the shipped product's delivery and its records have both been split out this way, and a part not yet split may be on the same terms.\
+One product's source and live state are therefore one domain's evidence, not two contracts; a domain is stretched when it holds two products, or a portion whose work has been found to need its own proof.
 
 | Part | Where evidence resolves | Domain |
 |---|---|---|
 | **The product** | its source - code, changes, tests - and the data it holds, live | [`D1`](D1-delivery-code.md) delivery-code, [`D7`](D7-product-data.md) product-data |
 | **Its delivery** | released artifacts, how they reach consumers, and the estate they roll out to | [`D2`](D2-distribution.md) distribution |
-| **The toolchain** | the harness that builds, launches and hosts the work | [`D3`](D3-tooling-harness.md) tooling-harness |
-| **The control plane** | who holds authority, and how work is coordinated | [`D4`](D4-authority-governance.md) authority-governance, [`D5`](D5-coordination-substrate.md) coordination-substrate |
-| **The knowledge** | what the organisation durably knows | [`D6`](D6-knowledge-methodology.md) knowledge-methodology |
+| **The toolchain** | the harness that builds, launches and hosts the work - its source and its live sessions | [`D3`](D3-tooling-harness.md) tooling-harness |
+| **The control plane** | who holds authority, and how work is coordinated - the source of each machinery and the state it holds | [`D4`](D4-authority-governance.md) authority-governance, [`D5`](D5-coordination-substrate.md) coordination-substrate |
+| **The knowledge** | what the organisation durably knows - its entries and the tools that check them | [`D6`](D6-knowledge-methodology.md) knowledge-methodology |
 
 Every domain sits in exactly one row.\
-Two rows hold two domains, each because the evidence differs.\
-The product's source resolves against code and CI, and its data against the records themselves, before and after.\
-A ruling resolves against a decision record, and a coordination change against the state of the work itself.
+Two rows hold two domains, for different reasons.\
+The product splits because the evidence differs: its source resolves against code and CI, and its data against the records themselves, before and after.\
+The control plane holds two because it is two machineries, each an engineered product: a ruling, and a change to the code that enforces rulings, resolve to authority; a coordination change, to its code or to the state of the work itself, resolves to coordination.
 
 **The set grows when the territory finds a gap.**\
 This set is not complete and is not expected to be.\
-A surface work lands on that no domain resolves is closed by adding a domain with its own evidence contract, not by stretching a neighbour to cover it, because a stretched domain holds two evidence contracts under one name.\
+A surface work lands on that no domain resolves is closed by adding a domain with its own evidence contract, not by stretching a neighbour to cover it, because a stretched domain holds two surfaces' evidence under one name.\
 Until the new domain exists, the work is recorded against the gap rather than forced into the nearest domain.\
 A gap that fits none of the parts above means the parts are incomplete too, and the part is added with the domain.\
 `product-data` entered this way: work on a product's records - applying a schema migration, repairing bad records - had no domain, since `delivery-code` holds the source and `distribution` the estate, and neither holds the records.
 
 **Gaps tested and not found.**\
-*Infrastructure* - provisioned machines and networks - is covered, by the same evidence rule as everything else: provisioning code in the product's codebase is `delivery-code`, in the harness it is `tooling-harness`, and the rolled-out estate is `distribution`.\
+*Infrastructure* - provisioned machines and networks - is covered, by the same evidence rule as everything else: provisioning code in the product's codebase is `delivery-code`, in the harness it is `tooling-harness`, in the control plane or the knowledge it is that part's domain, and the rolled-out estate is `distribution`.\
 That is the difference from data: applying infrastructure changes the estate, which `distribution` covers, and applying a migration changes the records, which `product-data` covers.\
 *Incidents* are not a surface at all; see below.
 
@@ -65,7 +69,7 @@ Orthogonality of the domain axis is **partial**, and the taxonomy says so:
   work lands on the substrate domains - D4, D5 and D6. Which work-types are pinned, and to which domain, is declared on
   each work-type; each domain entry shows a generated view of it.
 
-D4/D5/D6 remain first-class domains (not deletions) because they are still valid **free** targets - every one of them can be audited as a surface in its own right.\
+D4/D5/D6 remain first-class domains (not deletions) because they are still valid **free** targets - every one of them can be audited as a surface in its own right, and built, fixed, retired and shipped, because each is an engineered product with source of its own.\
 `domainFreedom` therefore lives on the **work-type**, not the domain.
 
 ---
@@ -133,7 +137,7 @@ Population faults - visible across the set and invisible to any one domain.
 | ID | Title | Hydrate when |
 |---|---|---|
 | [D0](README.md) | Domains - the N axis (subject-surfaces, bimodal freedom) | You are placing a piece of work on the domain axis and need the subject surfaces |
-| [D1](D1-delivery-code.md) | delivery-code - the product/service codebase | You are changing the product or service codebase itself |
+| [D1](D1-delivery-code.md) | delivery-code - the shipped product's codebase | You are changing the codebase of the product the organisation ships |
 | [D2](D2-distribution.md) | distribution - release channels and the rollout plane | You are changing how a release reaches its consumers |
 | [D3](D3-tooling-harness.md) | tooling-harness - the launch/runtime harness | You are changing the harness that launches or hosts the runtime |
 | [D4](D4-authority-governance.md) | authority-governance - the governance/authority substrate | You are changing who holds authority or how governance is enforced |

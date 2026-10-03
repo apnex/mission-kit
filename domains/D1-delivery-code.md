@@ -1,10 +1,10 @@
 ---
 id: D1
 category: domain
-title: delivery-code - the product/service codebase
+title: delivery-code - the shipped product's codebase
 status: active
-hydrate-when: You are changing the product or service codebase itself
-subjectSurface: the shipped product/service codebase - features, fixes, the delivered artifact
+hydrate-when: You are changing the codebase of the product the organisation ships
+subjectSurface: the shipped product's codebase - features, fixes, the delivered artifact; not the organisation's own harness, control plane or knowledge, which are domains of their own
 evidenceResolvesAgainst: source files, PRs, commits, CI/test runs on the product repo
 related: [D0]
 ---
@@ -12,13 +12,14 @@ related: [D0]
 # D1 - delivery-code
 
 ## Subject-surface
-The product/service codebase: the features, fixes, and shipped artifact.\
+The codebase of the product the organisation ships: the features, fixes, and shipped artifact.\
+The organisation's own harness, control plane and knowledge are engineered products too, and each is its own domain.\
 Evidence resolves against source files, PRs, commits, and CI/test runs on the product repo.
 
 ---
 
 ## Freedom
-A **free** discriminating domain for object-level build/ship/assurance types - a `build-a-slice` or `verify-gate` genuinely chooses this surface vs distribution or tooling.
+A **free** discriminating domain for object-level build/ship/assurance types - a `build-a-slice` or `verify-gate` genuinely chooses this surface vs distribution, tooling, or the organisation's own control plane and knowledge.
 
 ---
 

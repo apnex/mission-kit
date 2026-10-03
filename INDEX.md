@@ -67,7 +67,7 @@ This file described them a second time and the copy had already drifted, naming 
 | ID | Title | Hydrate when |
 |---|---|---|
 | [D0](domains/README.md) | Domains - the N axis (subject-surfaces, bimodal freedom) | You are placing a piece of work on the domain axis and need the subject surfaces |
-| [D1](domains/D1-delivery-code.md) | delivery-code - the product/service codebase | You are changing the product or service codebase itself |
+| [D1](domains/D1-delivery-code.md) | delivery-code - the shipped product's codebase | You are changing the codebase of the product the organisation ships |
 | [D2](domains/D2-distribution.md) | distribution - release channels and the rollout plane | You are changing how a release reaches its consumers |
 | [D3](domains/D3-tooling-harness.md) | tooling-harness - the launch/runtime harness | You are changing the harness that launches or hosts the runtime |
 | [D4](domains/D4-authority-governance.md) | authority-governance - the governance/authority substrate | You are changing who holds authority or how governance is enforced |

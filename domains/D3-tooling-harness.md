@@ -4,7 +4,7 @@ category: domain
 title: tooling-harness - the launch/runtime harness
 status: active
 hydrate-when: You are changing the harness that launches or hosts the runtime
-subjectSurface: the launch/runtime harness - ois/pi/claude launchers, prompt-handlers, dev tooling
+subjectSurface: the launch/runtime harness - ois/pi/claude launchers, prompt-handlers, the developer tooling that launches and hosts the work
 evidenceResolvesAgainst: harness source/config, launcher behavior, prompt-handler tables, live seat/session state
 related: [D0]
 ---
@@ -12,7 +12,7 @@ related: [D0]
 # D3 - tooling-harness
 
 ## Subject-surface
-The launch/runtime harness: ois/pi/claude launchers, prompt-handlers, and dev tooling.\
+The launch/runtime harness: ois/pi/claude launchers, prompt-handlers, and the developer tooling that launches and hosts the work.\
 Evidence resolves against harness source/config, launcher behavior, prompt-handler tables, and live seat/session state.
 
 ---

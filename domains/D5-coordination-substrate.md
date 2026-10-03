@@ -4,22 +4,22 @@ category: domain
 title: coordination-substrate - the WorkGraph/lifecycle/messaging machinery
 status: active
 hydrate-when: You are changing the machinery that coordinates work between agents
-subjectSurface: the WorkGraph / lifecycle / messaging machinery as subject - blueprints, gates, leases, the queue
-evidenceResolvesAgainst: WorkItem/blueprint state, driver leases, stint projections, gate/completion state, before/after graph topology
+subjectSurface: the WorkGraph / lifecycle / messaging machinery as subject - its source, and the blueprints, gates, leases and queue it runs
+evidenceResolvesAgainst: the machinery's source files, PRs, commits and CI; WorkItem/blueprint state, driver leases, stint projections, gate/completion state, before/after graph topology
 related: [D0]
 ---
 
 # D5 - coordination-substrate
 
 ## Subject-surface
-The WorkGraph/lifecycle/messaging machinery treated as a subject: blueprints, gates, leases, the queue.\
-Evidence resolves against WorkItem/blueprint state, driver leases, stint projections, gate/completion state, and before/after graph topology.
+The WorkGraph/lifecycle/messaging machinery treated as a subject: its source, and the blueprints, gates, leases and queue it runs.\
+Evidence resolves against the machinery's source files, PRs, commits and CI, and against WorkItem/blueprint state, driver leases, stint projections, gate/completion state, and before/after graph topology.
 
 ---
 
 ## Freedom
-**Pinned** for coordination-mode types (`seed`, `drive-an-arc`, `reconcile- ledger`, `arc-repair`, `convene-council`, `author-closeout`, `backstop`) - the type names this surface.\
-Still a **free** target of `audit-a-surface` / `verify-gate` (you can audit the graph itself).
+**Pinned** for the coordination-mode types, whose type names this surface; **free** for the types that act on any surface, including those that build and ship the machinery's source.\
+Which work-types act on this surface, pinned or free, is declared on each work-type, and the table below is generated from those declarations; this section does not repeat the list.
 
 ---
 
@@ -37,6 +37,13 @@ Generated from each work-type's `domainEligibility`, the list that governs.
 <!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
 | ID | Title | Hydrate when |
 |---|---|---|
+| [W1](../work-types/W1-build-a-slice.md) | build-a-slice - implement a scoped increment | You are scoping the implementation of a bounded increment |
+| [W2](../work-types/W2-fix-a-bug-or-repair.md) | fix-a-bug-or-repair - resolve a filed defect | You are resolving a defect that has already been filed |
+| [W3](../work-types/W3-retire-or-hard-cut.md) | retire-or-hard-cut - delete a surface with disposition | You are deleting a surface and must say what happens to what depended on it |
+| [W4](../work-types/W4-validate-locally.md) | validate-locally - self-check a fresh artifact | You have a fresh artifact and are self-checking it before anyone else sees it |
+| [W5](../work-types/W5-author-guard-or-falsifier-tests.md) | author-guard-or-falsifier-tests - add a test that can fail | You are adding a test that is able to fail |
+| [W6](../work-types/W6-merge-and-land.md) | merge-and-land - land an approved change on canonical main | You are landing an approved change on the canonical branch |
+| [W7](../work-types/W7-publish-deploy-or-canonicalize.md) | publish-deploy-or-canonicalize - ship to the estate/channel | You are shipping something to the estate or a release channel |
 | [W8](../work-types/W8-verify-gate-reactive.md) | verify-gate-reactive - independently gate a build/change | You are gating a build or change that you did not author |
 | [W9](../work-types/W9-audit-a-surface.md) | audit-a-surface - bounded adversarial sweep of a surface | You are sweeping a bounded surface adversarially rather than reviewing a diff |
 | [W10](../work-types/W10-adversarial-design-review-upstream.md) | adversarial-design-review-upstream - critique a design before build/merge | You are critiquing a design before it is built or merged |
