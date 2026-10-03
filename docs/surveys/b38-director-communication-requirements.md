@@ -48,3 +48,4 @@ Confirmed by the director.
 - **What they dropped that matters: traceability.** Keep the body plain, and say once, in a line or a pick, where the thing is recorded.
 - **A defect in one rewrite:** a request for the director to act sat inside an optional pick. A request for action is never optional depth.
 - **A defect in the agent's picks, named by the director:** *"I can't tell which of the 3 picks you've just offered does that."* Picks must mark which one continues the main work; the rest are side branches.
+- **Picks carry a one-word prefix, from the director:** *"each option to be prefixed with a suitable single word"* - giving a *continue exploring this chamber, or exit to the next* feel. Adopted: **Continue** for the main path onward, **Explore** for a side chamber deeper on the current point, **Return** for the map or a parked item.
