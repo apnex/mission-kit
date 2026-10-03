@@ -293,6 +293,18 @@ function cmdScore(o) {
 	const total = {};
 	for (const l of labels) total[l] = +probes.reduce((a, pr) => a + (mean[pr][l] ?? 0), 0).toFixed(2);
 	const result = { created: new Date().toISOString(), seed: b.seed, corpora: m.corpora, readers: m.readers, probes, max: probes.length * 2, mean, total, rows };
+	// A probe where most readers of one corpus hedge - mark it not settled, or guess - points first at an
+	// ambiguity in the corpus, not at the key. Twice in this corpus a consistent hedge was filed as a key
+	// defect and was in fact the source failing to say which of two rules governs. Listed beside the
+	// scores so the source is checked before the key is blamed.
+	const HEDGE = /NOT SETTLED|GUESS:/;
+	const hedges = [];
+	for (const pr of probes) for (const l of labels) {
+		const ps = m.prompts.filter((p) => p.label === l && p.probes.includes(pr));
+		const n = ps.filter((p) => { const f = path.join(run, "answers", `${p.pid}.txt`); return fs.existsSync(f) && HEDGE.test(splitAnswers(fs.readFileSync(f, "utf8"), p.probes)[pr] ?? ""); }).length;
+		if (ps.length && n * 2 > ps.length) hedges.push({ probe: pr, label: l, hedged: n, readers: ps.length });
+	}
+	result.consistentHedges = hedges;
 	writeJSON(path.join(run, "RESULT.json"), result);
 	// Generated, so style exempts it: the defect, if any, belongs to this tool, not to a hand edit.
 	const md = ["<!-- GENERATED FILE by tools/eval.mjs score; do not edit by hand. -->", "# Result", "", `Readers per corpus: ${m.readers}. Scored blind by a separate agent; mapping in \`sealed/\`.`, "",
@@ -303,7 +315,9 @@ function cmdScore(o) {
 		"## What this measures", "",
 		`- Agents reading a corpus, scored against keys an author wrote, by agents of the same family: one measurement family, not ${m.readers} independent ones, and not a human judgement.`,
 		"- Every reader also received the harness's always-on context, so a comparison against no corpus is confounded; a comparison between two corpora is not.",
-		`- ${m.readers} readers per corpus: a difference of one reader on one probe moves its mean by ${(2 / m.readers).toFixed(2)}.`, ""];
+		`- ${m.readers} readers per corpus: a difference of one reader on one probe moves its mean by ${(2 / m.readers).toFixed(2)}.`, "",
+		"## Consistent hedges - check the source before the key", "",
+		...(hedges.length ? hedges.map((h) => `- ${h.probe} (${h.label}): ${h.hedged} of ${h.readers} readers marked it not settled or guessed. Presume the corpus fails to say which rule governs until shown otherwise.`) : ["- none"]), ""];
 	fs.writeFileSync(path.join(run, "RESULT.md"), md.join("\n"));
 	process.stdout.write(md.join("\n"));
 }

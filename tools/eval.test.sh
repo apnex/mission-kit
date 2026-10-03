@@ -157,5 +157,17 @@ grep -q 'Dear reader, the message.' "$tmp/run4/scorers/gamma.txt" && ok "the mes
 if grep -q 'SCORER-OVERRIDE' "$tmp/run4/scorers/gamma.txt" && ! grep -q 'scores at most 1 unless' "$tmp/run4/scorers/gamma.txt"; then ok "scorer instructions replace the guess cap"; else no "scorer instructions replace the guess cap"; fi
 grep -q 'E99' "$tmp/run4/answers/$pid4.txt" && ok "the full answer is kept in answers/" || no "the full answer is kept in answers/"
 
+# A probe most readers hedge on is listed as a consistent hedge, so its source is checked first.
+mkdir -p "$EVAL_SUITES_DIR/delta"
+printf '%s\n' '{ "id": "delta", "mode": "corpus", "probes": [ { "id": "D1", "question": "q", "key": "k", "rubric": "r" }, { "id": "D2", "question": "q", "key": "k", "rubric": "r" } ] }' > "$EVAL_SUITES_DIR/delta/suite.json"
+node "$tool" prepare --suites delta --corpus ONLY="$tmp/newc" --readers 3 --out "$tmp/run5" >/dev/null
+n=0; for f in "$tmp/run5/prompts"/*.txt; do n=$((n+1)); pid=$(basename "$f" .txt)
+	if [ $n -le 2 ]; then d1="it depends. NOT SETTLED which rule wins."; else d1="clear answer"; fi
+	printf '### delta.D1\n%s\n\n### delta.D2\nclear\n' "$d1" > "$tmp/run5/answers/$pid.txt"; done
+node "$tool" blind --run "$tmp/run5" --seed h >/dev/null
+grep -oE '^--- answer a-[0-9a-f]+ ---$' "$tmp/run5/scorers/delta.txt" | sed -E 's/^--- answer (a-[0-9a-f]+) ---$/{"item": "\1", "score": 1}/' > "$tmp/run5/scores/delta.txt"
+node "$tool" score --run "$tmp/run5" >/dev/null 2>&1
+if grep -q 'delta.D1 (ONLY): 2 of 3' "$tmp/run5/RESULT.md" && ! sed -n '/Consistent hedges/,$p' "$tmp/run5/RESULT.md" | grep -q 'delta.D2'; then ok "a probe most readers hedge on is flagged, and only that one"; else no "a probe most readers hedge on is flagged, and only that one"; fi
+
 printf '%d passed, %d failed\n' "$pass" "$fail"
 [ "$fail" -eq 0 ]

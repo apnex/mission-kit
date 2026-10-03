@@ -59,6 +59,8 @@ Its job is to change what a reader can decide, so it is tested by giving fresh r
 8. **Read what the readers found, not only how they scored.** Fresh readers
    flag defects the author cannot see, including defects outside the document
    under test - in the members it governs, or in what it cites.
+   **When most readers hedge on one probe, look for an ambiguity in the document before blaming the key.**
+   A consistent hedge usually means the text does not say which of two rules governs; `tools/eval.mjs` lists such probes beside every result.
 
 Compare old against new, never the new version alone.\
 Some findings appear only in the old version's runs, because a clearer document can suppress a question worth asking.

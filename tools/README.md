@@ -437,3 +437,6 @@ tools/check-guidance-placement.sh
 
 **Why it exists.**\
 The guidance was preferred as written; a later edit that quietly rewords it would carry the evidence's authority without the evidence.
+
+Every result also lists **consistent hedges** - probes where most readers of one corpus marked the answer not settled or guessed - so an ambiguity in the corpus is looked for before the key is blamed.\
+It is a prompt to check, not a verdict: readers sometimes hedge a side point and still answer correctly.
