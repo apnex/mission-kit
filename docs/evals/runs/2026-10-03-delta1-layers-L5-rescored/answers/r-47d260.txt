@@ -1,0 +1,63 @@
+### layer-charters.H1
+`rules/`. `methods/README.md` (M0, Placement) handles this exact example: "*credentials are never committed* binds an action in a situation, and is a rule."
+The same passage says the first placement question "is about a system's properties, not about how universal a ban sounds". So the absolute wording does not make it an axiom.
+It produces nothing of its own, so it is not a method. It does not govern an artifact's form, so it is not style.
+It leaves a trace a check could test, which is question 4: "Does it leave a trace in the record of the work that a check could test? A rule". The trace would be the commit history.
+No existing RU entry covers it. M9 (`methods/M9-history-content-scrub.md`) only covers removing a credential after it has been committed ("Rotate first, then scrub").
+GUESS: an entry would need a `trace` such as "no commit in history contains a live credential". It could name a secret-scanner in `enforced-by` if one exists under `tools/`.
+
+### layer-charters.H2
+`practices/`, if it is admitted at all. Placement (M0): re-reading is not an axiom and produces no verdict, artifact or record. It does not govern an artifact's form.
+Re-reading leaves nothing in the record, so question 4 fails and it falls to "Otherwise a practice" (M0 step 5; `practices/README.md`: "leaves no trace: nothing in the record afterwards shows whether it was followed").
+Admission is a separate question. `practices/README.md` says "A practice earns its place only by evidence that following it produces measurably different work" and "The unevidenced practice ... is a proposal".
+So the corpus places it in practices, but an entry is earned only once a difference in the work has been observed. Whether that evidence exists is NOT SETTLED.
+GUESS: it sits at the "verifying" moment, which `practices/README.md` lists as holding no practice today.
+If it were reworded to require a recorded check against the request, it would leave a trace and become a rule ("if it acquires one, it is a rule and moves").
+
+### layer-charters.H3
+`methods/`, because following it produces a result of its own: a verdict (M0 Placement question 2, "a verdict, an artifact, a record").
+An entry already covers it: M1, `methods/M1-triangulated-review.md`, "Triangulated review - minimum 4 independent inputs".
+M1 says: "require at least four genuinely independent inputs before reaching a verdict". Its hydrate-when is "You are reviewing a patch or design that ships to production or upstream".
+M1 also stresses reconciling the inputs ("force the reviewer to reconcile multiple framings ... The reconciliation is where real bugs surface"). That matches "compare them".
+`methods/README.md` places M1 in the "Verifying" moment and calls it the "One primitive" that "carries the set".
+M0 says "Prefer strengthening an existing entry to adding a neighbour", so a new entry would be wrong.
+
+### layer-charters.H4
+`style/`. It governs how an artifact is written, "its form, whatever the work was" (M0 Placement question 3). Style is checked before the rule question (question 4).
+`style/README.md`: "Rules about the artifact itself, judged by reading the output rather than by watching it being produced."
+M0 says the style question "is about the object, not checkability". Heading case is purely about the text's form.
+No existing S entry covers heading case: I searched the corpus for "sentence case" and found nothing.
+`style/README.md` sets an admission bar: "A convention earns one when its absence has produced a real defect in a real artifact ... Aesthetic preference does not qualify". It also prefers a script-held predicate.
+Whether sentence case clears that bar is NOT SETTLED. GUESS: it is stateable as a predicate over headings, so it could carry `enforced-by` with a tool.
+
+### layer-charters.H5
+Required: a `trace` in frontmatter. `rules/README.md` Member shape: "A rule declares its `trace` in frontmatter: the observable in the record that shows it was kept or broken, required by the catalogue contract."
+The schema confirms this. `schemas/catalog-entry/v1alpha1/catalog-entry.schema.json` makes `trace` required when category is `rule` with id `^RU[1-9][0-9]*$`, and gives `minLength: 20`.
+Optional: `enforced-by`, naming the tool that checks it (pattern `^tools/`), which `tools/check-enforcers.sh` holds to existing. A rule with no tool "is still a rule, and is checked by reading the trace". The schema's `trace` description says naming a tool "is enforced-by's job, and is optional".
+A practice "declares no `trace`; if it acquires one, it is a rule and moves" (`practices/README.md`). It states the situation, the guidance and the evidence instead.
+The schema does not appear to forbid `trace` on a practice; that prohibition is stated only in prose.
+
+### layer-charters.H6
+From `methods/README.md` (M0) Placement, "Ask in order, and stop at the first yes":
+1. Is it a limit a system is built toward, in force for every system with the traits it names? Then it is an axiom (`axioms/`).
+2. Does following it produce a result of its own (a verdict, an artifact, a record)? Then it is a method or procedure (`methods/`).
+3. Does it govern how an artifact is written, its form, whatever the work was? Then it is style (`style/`).
+4. Does it leave a trace in the record of the work that a check could test? Then it is a rule (`rules/`).
+5. Otherwise it is a practice (`practices/`).
+`rules/README.md` and `practices/README.md` cite this order ("axiom, procedure, style, rule, practice"). Note that this differs from the order the question lists them in (style comes before rule).
+
+### layer-charters.H7
+Handing over: passing work in progress to another agent or a later session.
+`methods/README.md`: "*Handing over* ... has no procedure at all."
+`rules/README.md`: handing over holds no rule, and "A rule for handing over - *a handover record names what is unfinished* - would leave a trace, and none exists."
+`practices/README.md`: "*Verifying*, *deciding what to keep* and *handing over* hold no practice today."
+It is the only one of the six moments with no member in any of the three layers. Verifying has M1/M2, deciding what to keep has RU1/RU3, entering has M8/PC1, committing to a design has M7, and treating the record has M9/RU2/RU4.
+Axiom A4 does mention handovers ("zero decision context is lost at handover"), but an axiom is not a procedure, rule or practice.
+
+### OBSERVATIONS
+- `practices/README.md` "Gaps tested" lists only verifying, deciding what to keep and handing over as holding no practice. Its own territory table lists only Entering (PC1), so committing to a design and treating the record also hold no practice. The gap list is incomplete. By contrast, the `rules/README.md` gap list (entering, committing, verifying, handing over) is consistent with its table.
+- Superseded methods (M3-M6) are still physically present in `methods/`. The README explains this, but all entries keep a "## Rule" heading, including M1 (a method) and PC1 (a practice), which blurs the layer vocabulary.
+- `methods/README.md` line ~106-107: a horizontal rule `---` follows a paragraph with no blank line. In markdown this can render as a setext H2 heading of the preceding paragraph rather than a rule.
+- The catalogue schema enforces `trace` as required for rules but does not reject `trace` on practices. "A practice declares no trace" is prose-only.
+- M1's body says "The number isn't sacred (sometimes 3 is enough...)" while its title and rule say "minimum 4". The rationale also says "below 3 the failure mode is predictable". The floor is internally inconsistent: is it 3 or 4?
+- INDEX.md says links should resolve to GitHub `main` when no checkout is present. This corpus copy may differ from `main`, and I used only the local copy.

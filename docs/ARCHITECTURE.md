@@ -106,9 +106,9 @@ The others bind only where their declared domain is present, and this corpus is 
 
 | Axiom | In force via | How this shape serves it | Where it falls short |
 |---|---|---|---|
-| **A3** Sovereign Composition | `any-system` | Sixteen layers, one concern each, cited by prefix and never merged. Composition is by edge and citation rather than by nesting. | The components layer holds one entry, so composition is asserted more than exercised. |
+| **A3** Sovereign Composition | `any-system` | Sixteen knowledge layers, one concern each, cited by prefix and never merged. Composition is by edge and citation rather than by nesting. | The components layer holds one entry, so composition is asserted more than exercised. |
 | **A4** Zero-Loss Knowledge | `any-system` | Corrections are retained under banners; deferrals carry revival triggers; claims distinguish measured from inferred. | Rulings live in commit messages rather than a register (`B15`), so rationale is recoverable only by reading history. |
-| **A8** Gated Recursive Integrity | `any-system` | Sixteen checkers gate every change, and the corpus's own author is refused by them. | Enforcement covers structure and style; it cannot reach whether an entry's reasoning is correct. |
+| **A8** Gated Recursive Integrity | `any-system` | Every checker in `tools/check-all.sh` gates every change, and the corpus's own author is refused by them. | Enforcement covers structure and style; it cannot reach whether an entry's reasoning is correct. |
 | **A9** Chaos-Validated Deployment | `any-system` | Guards are proven by mutation rather than assumed - a mutant that should fail is run and observed to fail. | Applied per-change by discipline, not by a standing harness. No mechanism forces a new guard to be mutation-tested. |
 | **A14** Compounding Learning | `any-system` | Friction surfaced during work becomes an entry or a backlog row; the backlog is a first-class artifact. | The corpus cannot measure whether a lesson stopped recurring, because it cannot observe its own adopters. |
 
@@ -127,7 +127,7 @@ These three are the finding.
 
 ## 5. The anchored core
 
-Sixteen sovereign directories, one duty each.\
+Twenty sovereign directories, one duty each: sixteen knowledge layers, three mechanism layers, and `docs/`.\
 **A layer that holds knowledge takes an ID prefix and appears in the ledger; a layer that holds mechanism takes none.**\
 That split is the load-bearing rule of this section.
 
@@ -139,10 +139,13 @@ That split is the load-bearing rule of this section.
 | `roles/` | `R` | who may attest, approve or decide | the M axis of work composition | `A` |
 | `domains/` | `D` | subject surfaces work acts on | the N axis of work composition | `A` |
 | `work-types/` | `W` | units of work and their evidence contracts | the composition rule and closeability preflight | `A`, `R`, `D` |
-| `methodology/` | `M` | how work is conducted | procedures: review, audit, deferral, bootstrap | `A`, `AR` |
+| `methods/` | `M` | procedures that produce a result of their own | procedures: review, audit, bootstrap, history scrub | `A`, `AR`, `RU` |
+| `rules/` | `RU` | how work is done, where a check could tell | rules, each declaring the trace that shows it was kept | `A`, `M` |
+| `practices/` | `PC` | how work is done, where nothing afterwards could tell | practices, admitted on observed evidence | `A`, `M` |
 | `style/` | `S` | how artifacts are written | writing rules, each paired with an enforcer | `A` |
 | `patterns/` | `P` | recurring solution shapes | shapes to build to | `A` |
 | `skills/` | `K` | executable operator capability | invocable procedures with declared edges | `A`, `M` |
+| `traits/` | `T` | characteristics of a system that decide which axioms bind it | the `applies-to` vocabulary, each with a test | `A` |
 | `entities/` | `E` | what a thing is - definition, never mechanism | precise terms the corpus leans on | `A` |
 | `components/` | `C` | sovereign shareable substrates | a registry of units to use rather than rebuild | `A`, `AR` |
 | `artifacts/` | `AR` | engineering document types | shapes with acceptance falsifiers | `A`, `M` |
@@ -235,7 +238,7 @@ Nothing is preloaded; nothing is resident.
 
 ## 8. Verification
 
-**Sixteen checkers, run as one gate.**\
+**Every checker, run as one gate.**\
 A claim about this corpus is proved by running them, not by reading it.
 
 | Class | Holds |
@@ -284,10 +287,10 @@ Structural risks only, here.
 ## 10. Mechanics, rationale, and consequence
 
 **Mechanics.**\
-Sixteen sovereign layers, one duty each, split by whether their contents state what must be true or do something.\
+Twenty sovereign directories, one duty each, split by whether their contents state what must be true or do something.\
 Every ID-bearing entry carries machine-checked frontmatter, a stable identity, and a routing condition.\
 Derived surfaces are generated from the entries.\
-Sixteen checkers gate every change and refuse it on any failure.
+Every checker in the gate runs on every change and refuses it on any failure.
 
 **Rationale.**\
 The reader starts cold and retains nothing, so a rule must be findable from a situation rather than from prior knowledge, citable so a decision can name what it rests on, and held by a machine wherever a machine can hold it.\

@@ -39,3 +39,14 @@ Whether that is the change working or the change regressing is a question about 
 
 - Controls no lower after than before: **fails on `L5`**.
 - New probes higher after than before: `layer-charters` rose on five of seven; **`L7`, the assemble probe, scored 2 in both** - the before corpus already let readers assemble the rules that govern a sweep, under their old names.
+
+---
+
+## Director ruling, after the scores
+
+The director ruled `L5`'s drop the change working as intended: on the after corpus, an answer that the layer depends on the guidance's kind, mapping each kind to its layer with the recorded gap, is correct.\
+The rubric was corrected and the same answers re-scored blind, `docs/evals/runs/2026-10-03-delta1-layers-L5-rescored`: **21.66 before, 28 of 28 after, no regressions.**\
+The key changed after the scores were seen; that is recorded here and in the suite's `source`, so a reader can weigh it.
+
+`docs/ARCHITECTURE.md` brought to the to-state: `methods/`, `rules/`, `practices/` and the missing `traits/` row in the anchored core; layer counts corrected; checker counts replaced by a reference to the gate, since a count recorded in a second place rots.
+

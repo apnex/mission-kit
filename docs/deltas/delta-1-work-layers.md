@@ -1,7 +1,7 @@
 # Delta-1 - the work layers - a horizontal layer change
 
 ```yaml
-status:       ratified, revision 4 - stage 1 running
+status:       complete - all four stages run; evaluation 21.66 to 28 of 28 after the director's L5 ruling; docs/audits/delta-1/
 row:          B24
 intent:       docs/surveys/b24-work-layers-survey.md
 from-state:   docs/ARCHITECTURE.md, at 719351d

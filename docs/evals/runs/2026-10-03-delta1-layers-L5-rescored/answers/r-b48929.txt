@@ -1,0 +1,56 @@
+### layer-charters.H1
+NOT SETTLED. This corpus has no layer whose charter names "never commit credentials" or anything like it, and no `rules/` layer exists (README.md Mechanics table lists A, R, D, W, M, S, P, K, E, C, AR, T, MREQ, SC plus mechanism layers).
+It is not an axiom: axioms/README.md says an axiom is a "load-bearing asymptote" binding every change, and warns against "The situated move in axiom clothing. A tactical rule promoted for importance rather than for being always-in-force."
+The discriminator in methodology/README.md is "what a reviewer would inspect to tell whether the rule was honoured. If they would read the output, it is style. If they would have to know how you arrived at it, it is methodology."
+A reviewer can check this by reading the commits, so by that test it leans to `style/`, whose charter says it covers "Doc, commit, and naming conventions" and prefers "a rule a script can hold" (style/README.md).
+But style is framed as "how artifacts are written", and a leaked credential is a security defect, not a writing convention, so the fit is poor.
+The only related entry is K1 (skills/K1-history-content-scrub.md), which covers removing a credential after it was committed ("Rotate it first"), not preventing the commit.
+GUESS: `style/` by the reviewer test, ideally with an enforcing scanner named in `enforced-by`; the corpus does not have a clean home for a conduct rule that leaves a checkable trace.
+
+### layer-charters.H2
+By the object test this is `methodology/`: methodology/README.md says "If the rule governs the process you follow, it belongs in methodology/", and a reviewer "would have to know how you arrived at it" to judge it, since re-reading leaves nothing in the output.
+It would sit at the "Verifying" moment ("what evidence is enough to believe the work is correct").
+But the same charter's Faults warn against "The unenforceable procedure. A sequence with no observable trace, so conformance can only be asserted. If nothing distinguishes a run that followed it, it is advice."
+A single re-read leaves no observable trace, so by that fault it is advice, not a methodology entry.
+The charter also says an entry earns its place only when following it and not following it "produce measurably different work, and the difference has actually been observed", and "A named practice that everyone already follows codifies nothing."
+NOT SETTLED: the corpus has no layer for traceless guidance; methodology is the nearest home and its own charter says this kind of thing does not qualify.
+GUESS: it does not earn an entry here unless an observed failure shows it changes the result.
+
+### layer-charters.H3
+`methodology/` holds it, and M1 already covers it: methodology/M1-triangulated-review.md, "require at least four genuinely independent inputs before reaching a verdict", triggered when "reviewing a patch or design that ships to production or upstream".
+M1 names the canonical four for a code patch (upstream baseline, prior-version intent and review, archaeology, community signal) and says "Verdict draws on tensions surfaced between those four", which matches comparing them before judging.
+methodology/README.md places M1 at the "Verifying" moment and calls it one of "Two primitives" of the set.
+The charter says "Prefer strengthening an existing entry to adding a neighbour", so the proposal should not become a new entry.
+
+### layer-charters.H4
+`style/`. A heading's case is a property of the artifact, and methodology/README.md says "If they would read the output, it is style"; style/README.md defines the layer as "Rules about the artifact itself, judged by reading the output".
+It is also mechanically checkable, and style/README.md says "Prefer a rule a script can hold", with an enforced rule declaring `enforced-by` naming exactly one tool, verified by tools/check-enforcers.sh.
+Admission is not automatic: "A convention earns one when its absence has produced a real defect in a real artifact... Aesthetic preference does not qualify."
+NOT SETTLED whether sentence-case headings meet that bar; no entry S1-S14 covers heading case.
+GUESS: as stated it reads as aesthetic preference and would be rejected unless a real defect caused by inconsistent heading case is shown.
+
+### layer-charters.H5
+NOT SETTLED. This corpus has no `rules/` or `practices/` directory (the README.md Mechanics table and INDEX.md list neither), so it says nothing about what their entries must declare.
+The closest analogue is style/README.md: "An enforced rule declares `enforced-by` in its frontmatter naming exactly one tool", while other style rules "need judgement and are reviewed by reading", which makes `enforced-by` optional within style.
+GUESS: a rules/ entry would have to declare something like a checkable trace or check, with `enforced-by` optional; this is not stated anywhere in the corpus.
+
+### layer-charters.H6
+Partly settled, from axioms/README.md and methodology/README.md.
+1. Is it in force whether or not you reach for it, and not declinable? If so, it is an axiom (A0: "An axiom is a standing commitment"; a situated move is something "you reach for when a specific task touches its domain"; M0 table: "what must always hold -> axioms/, it is not declinable").
+2. Otherwise it is a situated move. What object does it act on? The process you follow goes to methodology; the artifact you produce goes to style; the shape of a solution goes to patterns; a capability you execute goes to skills (M0 table).
+3. Tie-breaker between method and style: "what a reviewer would inspect... If they would read the output, it is style. If they would have to know how you arrived at it, it is methodology" (M0).
+NOT SETTLED: the corpus has no "rule" or "practice" layer, so it gives no question that separates those two. M0's "unenforceable procedure" fault (no observable trace means "it is advice") hints that whether a trace exists is the dividing line.
+GUESS: after step 3, ask whether a check could tell afterwards whether it was followed: rule if yes, practice if no.
+
+### layer-charters.H7
+"Handing over" - "passing work in progress to another agent or a later session - has no procedure at all" (methodology/README.md, Territory, "Two thin moments, recorded rather than filled").
+The charter notes it bites hardest because every reader starts cold, and "a lone agent hands over to its own next session."
+The other thin moment, "Committing to a design", is not empty: it holds M7, which is scoped to extensive design only.
+The text says "no procedure"; it does not mention rules or practices, because this corpus has no such layers.
+
+### OBSERVATIONS
+- The questions mention `rules/`, `practices/`, "rule" and "practice" as layers, and this corpus has neither. Its process layer is `methodology/` (M prefix), so H5 cannot be answered and H6 only in part.
+- methodology/README.md uses "practice" loosely ("A named practice that everyone already follows", "A practice nobody has run is a proposal") without defining it as a category.
+- Conduct guidance whose compliance shows in the output, such as a credentials ban, falls between the M0 discriminator (output means style) and the style charter's framing ("how artifacts are written", "doc, commit, and naming conventions"). No layer clearly owns it.
+- M0's "unenforceable procedure" fault says traceless sequences are "advice", but no layer is named to hold advice. Methodology's object test sends such guidance to methodology, and its own fault list rejects it.
+- M1's title says "minimum 4", but its rationale says "sometimes 3 is enough" and that "below 3" is where failure becomes predictable. The text does not settle whether the floor is 3 or 4.

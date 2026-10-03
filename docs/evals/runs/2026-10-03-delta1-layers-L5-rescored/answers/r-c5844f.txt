@@ -1,0 +1,49 @@
+### layer-charters.H1
+NOT SETTLED cleanly; the corpus has no layer for security or repository-hygiene rules (README.md "Mechanics" table lists axioms, roles, domains, work-types, methodology, style, patterns, skills, entities, components, artifacts, traits, backlog, schemas).
+The nearest test is methodology/README.md "What belongs here": "If they would read the output, it is style. If they would have to know how you arrived at it, it is methodology." A committed credential is visible in the repository itself, and style/README.md describes its layer as "Doc, commit, and naming conventions ... judged by reading the output", so by that test it lands in style/.
+It is not an axiom: axioms/README.md says S/M/P/K entries are "situated moves" and names the fault "The situated move in axiom clothing. A tactical rule promoted for importance rather than for being always-in-force."
+S0 also says "Prefer a rule a script can hold", and README.md says "A rule that becomes mechanically checkable moves into a script", so the entry should declare `enforced-by` naming one tool.
+GUESS: a credential rule fits style poorly, because style is about how artifacts are written. A reader could reasonably argue it needs a layer this corpus does not have.
+
+### layer-charters.H2
+methodology/, because the object is the conduct of work and not the artifact. A reviewer could not tell from the output whether you re-read the request; they "would have to know how you arrived at it" (methodology/README.md). It falls at the "Verifying" moment in M0's Territory table.
+But M0 makes admission doubtful. Its "What earns an entry" requires that following and not following "produce measurably different work, and the difference has actually been observed". Its first fault is "The unenforceable procedure. A sequence with no observable trace ... If nothing distinguishes a run that followed it, it is advice."
+So this proposal goes in methodology if it goes anywhere. As stated, it would probably be rejected as advice unless someone can show evidence of an observed difference and an observable trace.
+
+### layer-charters.H3
+methodology/, and yes: M1 already covers it (methodology/M1-triangulated-review.md, "Triangulated review - minimum 4 independent inputs").
+Its trigger is "You are reviewing a patch or design that ships to production or upstream". Its rule is "require at least four genuinely independent inputs before reaching a verdict". The comparison step is its Rationale: inputs "force the reviewer to reconcile multiple framings of the same surface. The reconciliation is where real bugs surface."
+M0 places M1 at the "Verifying" moment. M0's "Prefer strengthening an existing entry to adding a neighbour" means this guidance should not become a new entry.
+
+### layer-charters.H4
+style/. The rule governs the artifact, and S0 says style is "judged by reading the output rather than by watching it being produced". M0's table says the artifact you produce belongs in `style/` "because the object is the text".
+No existing entry covers heading case. I searched style/*.md for "heading" and "sentence case"; only S11 and S12 mention headings, and neither is about case.
+Admission is doubtful. S0 says "A convention earns one when its absence has produced a real defect in a real artifact ... Aesthetic preference does not qualify". Heading case looks like aesthetic preference unless someone can show a defect.
+If admitted, it is a predicate over text, so S0's "Prefer a rule a script can hold" applies, with `enforced-by` naming exactly one tool checked by tools/check-enforcers.sh.
+
+### layer-charters.H5
+NOT SETTLED. This corpus has no rules/ or practices/ directory. Neither appears in the README.md layer table or in INDEX.md, and no file defines what either must declare.
+The nearest text is style/README.md: "An enforced rule declares `enforced-by` in its frontmatter naming exactly one tool". Style rules that need judgement carry no such field.
+GUESS: a rules/ entry must declare how a check could tell whether it was honoured. It may optionally declare an `enforced-by` tool. A practices/ entry declares neither, because nothing afterwards could detect it. Nothing in this corpus states this.
+
+### layer-charters.H6
+NOT SETTLED for the five-way split. "Rule" and "practice" are not layers here, and no single ordered question list exists.
+What the text does give:
+(1) Is it always in force, not declinable? If yes, it is an axiom (axioms/README.md "Standing commitment, not situated move"; M0 table: "what must always hold -> axioms/, it is not declinable, so it is not a move").
+(2) Otherwise, what object does it act on? Ask "what a reviewer would inspect to tell whether the rule was honoured": reading the output means style/, and needing to know how you arrived means methodology/ (M0).
+M0's table also routes a solution shape to patterns/ and an invoked capability with inputs and outputs to skills/.
+GUESS: a rule-versus-practice step would come after the methodology/style step and ask whether a check could tell that it was followed. M0's "unenforceable procedure" fault points that way, but the corpus states no such step.
+
+### layer-charters.H7
+"Handing over": passing work in progress to another agent or a later session. methodology/README.md, Territory: "*Handing over* ... has no procedure at all."
+M0 says this is the moment where the condition that "Every reader of this corpus starts cold" bites hardest. It applies even to a lone agent, which "hands over to its own next session".
+The other thin moment, "Committing to a design", does hold M7, so it is not empty. M0 records both "rather than filled".
+Note: this corpus says only "no procedure". It does not mention rules or practices, because it has no such layers.
+
+### OBSERVATIONS
+- Questions H5, H6 and part of H7 assume rules/ and practices/ layers. This corpus does not have them: it has methodology/ (prefix M) and style/ (prefix S) only.
+- README.md calls INDEX.md "the flat ledger across every category", but INDEX.md is grouped into one section per layer.
+- The README.md layer table links `docs/` (docs/README.md), but this corpus has no docs/ directory.
+- M1 is internally inconsistent about its floor. The rule says "Four is the empirical floor", while the Rationale says "sometimes 3 is enough" and "below 3 the failure mode is predictable".
+- M0 says M1 and M3 "are each cited by three other members". I did not verify that count.
+- My session context carried a different INDEX.md and AGENTS.md (with layers named Methods, Rules and Practices). I did not use them, as instructed. The answers rely only on files under /tmp/opencode/evalc/c-567ea8db.

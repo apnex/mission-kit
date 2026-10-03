@@ -1,0 +1,768 @@
+{
+  "created": "2026-10-03T08:45:51.513Z",
+  "seed": "7c7aaeca92c421d7",
+  "corpora": [
+    {
+      "label": "before",
+      "path": "/tmp/opencode/evalc/c-567ea8db"
+    },
+    {
+      "label": "after",
+      "path": "/tmp/opencode/evalc/c-8476dbeb"
+    }
+  ],
+  "readers": 3,
+  "probes": [
+    "work-layers.L1",
+    "work-layers.L2",
+    "work-layers.L3",
+    "work-layers.L4",
+    "work-layers.L5",
+    "work-layers.L6",
+    "work-layers.L7",
+    "layer-charters.H1",
+    "layer-charters.H2",
+    "layer-charters.H3",
+    "layer-charters.H4",
+    "layer-charters.H5",
+    "layer-charters.H6",
+    "layer-charters.H7"
+  ],
+  "max": 28,
+  "mean": {
+    "work-layers.L1": {
+      "before": 2,
+      "after": 2
+    },
+    "work-layers.L2": {
+      "before": 2,
+      "after": 2
+    },
+    "work-layers.L3": {
+      "before": 2,
+      "after": 2
+    },
+    "work-layers.L4": {
+      "before": 2,
+      "after": 2
+    },
+    "work-layers.L5": {
+      "before": 2,
+      "after": 2
+    },
+    "work-layers.L6": {
+      "before": 2,
+      "after": 2
+    },
+    "work-layers.L7": {
+      "before": 2,
+      "after": 2
+    },
+    "layer-charters.H1": {
+      "before": 0.33,
+      "after": 2
+    },
+    "layer-charters.H2": {
+      "before": 0,
+      "after": 2
+    },
+    "layer-charters.H3": {
+      "before": 1.33,
+      "after": 2
+    },
+    "layer-charters.H4": {
+      "before": 2,
+      "after": 2
+    },
+    "layer-charters.H5": {
+      "before": 1,
+      "after": 2
+    },
+    "layer-charters.H6": {
+      "before": 1,
+      "after": 2
+    },
+    "layer-charters.H7": {
+      "before": 2,
+      "after": 2
+    }
+  },
+  "total": {
+    "before": 21.66,
+    "after": 28
+  },
+  "rows": [
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-072cd0",
+      "probe": "work-layers.L1",
+      "score": 2,
+      "reason": "Places it in methodology/ and names M5 as the existing entry, consistent with the corpus read."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-072cd0",
+      "probe": "work-layers.L2",
+      "score": 2,
+      "reason": "Places it in skills/ on the invoked-not-followed test, citing K0, M0 and K3."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-072cd0",
+      "probe": "work-layers.L3",
+      "score": 2,
+      "reason": "Places it in work-types/ and identifies W10 as the existing entry."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-072cd0",
+      "probe": "work-layers.L4",
+      "score": 2,
+      "reason": "Calls it a methodology entry and names M1 as the existing entry; the guess concerns only the meaning of 'risky'."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-072cd0",
+      "probe": "work-layers.L5",
+      "score": 2,
+      "reason": "Places it in methodology/ and cites M0's recorded handing-over gap, which M0 says was recorded rather than filled."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-072cd0",
+      "probe": "work-layers.L6",
+      "score": 2,
+      "reason": "States the methodology and skill tests from M0 and K0 and the work-type test from W0, all cited."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-072cd0",
+      "probe": "work-layers.L7",
+      "score": 2,
+      "reason": "Names M3 and M5 in methodology/ with their requirements; the other entries are relevant extras."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-42e51f",
+      "probe": "work-layers.L1",
+      "score": 2,
+      "reason": "Places it in methodology/ and names M5 as the existing entry, consistent with the corpus read."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-42e51f",
+      "probe": "work-layers.L2",
+      "score": 2,
+      "reason": "Places it in skills/ because it is invoked with inputs, steps and an output, and cites K3 as the precedent."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-42e51f",
+      "probe": "work-layers.L3",
+      "score": 2,
+      "reason": "Places it in work-types/ and identifies W10 as the existing entry."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-42e51f",
+      "probe": "work-layers.L4",
+      "score": 2,
+      "reason": "Calls it a methodology entry, names M1, and correctly separates it from W8 and W13."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-42e51f",
+      "probe": "work-layers.L5",
+      "score": 2,
+      "reason": "Places it in methodology/ and cites M0's recorded handing-over gap."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-42e51f",
+      "probe": "work-layers.L6",
+      "score": 2,
+      "reason": "Cites all three tests (M0, K0, W0); the hedge covers only a combined three-way test, not the individual tests."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-42e51f",
+      "probe": "work-layers.L7",
+      "score": 2,
+      "reason": "Names M3 and M5 in methodology/ with their requirements; the other entries are relevant extras."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-e74bce",
+      "probe": "work-layers.L1",
+      "score": 2,
+      "reason": "Places it in methodology/ and names M5 as the existing entry, consistent with the corpus read."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-e74bce",
+      "probe": "work-layers.L2",
+      "score": 2,
+      "reason": "Firmly places it in skills/ on the invoked-capability reason; the hedge concerns only whether it is distinct from K3, not the layer."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-e74bce",
+      "probe": "work-layers.L3",
+      "score": 2,
+      "reason": "Places it in work-types/ and identifies W10 as the existing entry."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-e74bce",
+      "probe": "work-layers.L4",
+      "score": 2,
+      "reason": "Calls it a methodology entry and names M1 as the existing entry."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-e74bce",
+      "probe": "work-layers.L5",
+      "score": 2,
+      "reason": "Places it in methodology/ and cites M0's recorded handing-over gap."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-e74bce",
+      "probe": "work-layers.L6",
+      "score": 2,
+      "reason": "States the methodology and skill tests from M0 and K0 and the work-type test from W0, all cited."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-e74bce",
+      "probe": "work-layers.L7",
+      "score": 2,
+      "reason": "Names M3 and M5 in methodology/ with their requirements; the other entries are relevant extras."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-c5844f",
+      "probe": "layer-charters.H1",
+      "score": 0,
+      "reason": "Guesses style/ and never names rules/."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-c5844f",
+      "probe": "layer-charters.H2",
+      "score": 0,
+      "reason": "Places it in methodology/, not practices/."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-c5844f",
+      "probe": "layer-charters.H3",
+      "score": 1,
+      "reason": "Names methodology/ and M1 but gives no reason why the guidance belongs in that layer."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-c5844f",
+      "probe": "layer-charters.H4",
+      "score": 2,
+      "reason": "Names style/ because the rule governs the artifact and is judged by reading the output."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-c5844f",
+      "probe": "layer-charters.H5",
+      "score": 1,
+      "reason": "Guesses a required check and an optional enforced-by under NOT SETTLED, so the cap of 1 applies."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-c5844f",
+      "probe": "layer-charters.H6",
+      "score": 1,
+      "reason": "Gives the axiom and style steps and guesses a later trace step for rule versus practice, but uses an object test for method and is labelled NOT SETTLED."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-c5844f",
+      "probe": "layer-charters.H7",
+      "score": 2,
+      "reason": "Names handing over as having no procedure, recorded rather than filled."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-de85d4",
+      "probe": "layer-charters.H1",
+      "score": 1,
+      "reason": "Labels methodology a guess but notes that a checker could test the rule, which the rubric allows for 1."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-de85d4",
+      "probe": "layer-charters.H2",
+      "score": 0,
+      "reason": "Places it in methodology/ and says no practices/ layer exists."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-de85d4",
+      "probe": "layer-charters.H3",
+      "score": 2,
+      "reason": "Names methodology/ because it governs conduct, and cites M1."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-de85d4",
+      "probe": "layer-charters.H4",
+      "score": 2,
+      "reason": "Names style/ because a reviewer checks it by reading the output; the GUESS covers only admission."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-de85d4",
+      "probe": "layer-charters.H5",
+      "score": 1,
+      "reason": "Guesses a required trace and an optional enforced-by under NOT SETTLED, so the cap of 1 applies."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-de85d4",
+      "probe": "layer-charters.H6",
+      "score": 1,
+      "reason": "Gives the axiom and style tests and guesses a trace test for rule versus practice, but uses an object test for method and is labelled NOT SETTLED."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-de85d4",
+      "probe": "layer-charters.H7",
+      "score": 2,
+      "reason": "Names handing over as a gap recorded rather than filled; the inference caveat covers only the absence of rule and practice layers."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-b48929",
+      "probe": "layer-charters.H1",
+      "score": 0,
+      "reason": "Guesses style/ and says no rules/ layer exists."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-b48929",
+      "probe": "layer-charters.H2",
+      "score": 0,
+      "reason": "Places it in methodology/ or nowhere, never practices/."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-b48929",
+      "probe": "layer-charters.H3",
+      "score": 1,
+      "reason": "Names methodology/ and M1 but gives no reason why the guidance belongs in that layer."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-b48929",
+      "probe": "layer-charters.H4",
+      "score": 2,
+      "reason": "Names style/ because heading case is a property of the artifact, judged by reading the output."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-b48929",
+      "probe": "layer-charters.H5",
+      "score": 1,
+      "reason": "Guesses a required checkable trace and an optional enforced-by under NOT SETTLED, so the cap of 1 applies."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-b48929",
+      "probe": "layer-charters.H6",
+      "score": 1,
+      "reason": "Gives the axiom, style, rule-by-trace and practice-otherwise steps in order, but uses an object test for method and guesses the rule/practice step under NOT SETTLED."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-b48929",
+      "probe": "layer-charters.H7",
+      "score": 2,
+      "reason": "Names handing over as a thin moment recorded rather than filled, with no procedure."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-5ad385",
+      "probe": "work-layers.L1",
+      "score": 2,
+      "reason": "Places it in rules/ citing M0 and RU0, and names RU3 as the existing entry."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-5ad385",
+      "probe": "work-layers.L2",
+      "score": 2,
+      "reason": "Places it in skills/ on the invoked-capability reason; the unsettled point is whether to widen K3, not the layer."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-5ad385",
+      "probe": "work-layers.L3",
+      "score": 2,
+      "reason": "Places it in work-types/ and identifies W10; the design-versus-proposal caveat is peripheral."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-5ad385",
+      "probe": "work-layers.L4",
+      "score": 2,
+      "reason": "Places it in methods/ and names M1 as the existing entry."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-5ad385",
+      "probe": "work-layers.L5",
+      "score": 2,
+      "reason": "Maps each kind of guidance to methods, rules or practices, citing RU0's handover-record example and the gaps recorded in M0 and PC0."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-5ad385",
+      "probe": "work-layers.L6",
+      "score": 2,
+      "reason": "States the method test (M0), the skill test (K0) and the work-type test (W0), each with a citation."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-5ad385",
+      "probe": "work-layers.L7",
+      "score": 2,
+      "reason": "Names RU1 and RU3 in rules/ with their requirements; the other entries are relevant extras."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-2b2edb",
+      "probe": "work-layers.L1",
+      "score": 2,
+      "reason": "Places it in rules/ via M0's placement test and names RU3 as the existing entry."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-2b2edb",
+      "probe": "work-layers.L2",
+      "score": 2,
+      "reason": "Places it in skills/ on the invoked-capability reason; the guess is about a side point, not the layer."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-2b2edb",
+      "probe": "work-layers.L3",
+      "score": 2,
+      "reason": "Places it in work-types/ and identifies W10 as the existing entry."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-2b2edb",
+      "probe": "work-layers.L4",
+      "score": 2,
+      "reason": "Calls it a methodology entry and names M1, also noting W8 as the unit of work in which it applies."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-2b2edb",
+      "probe": "work-layers.L5",
+      "score": 2,
+      "reason": "Maps each kind of guidance to methods, rules or practices, citing the gaps recorded in M0, RU0 and PC0, which is the placement working as designed."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-2b2edb",
+      "probe": "work-layers.L6",
+      "score": 2,
+      "reason": "States the method, skill and work-type tests with citations to M0, K0 and W0."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-2b2edb",
+      "probe": "work-layers.L7",
+      "score": 2,
+      "reason": "Names RU1 and RU3 in rules/ with their requirements; the other entries are relevant extras."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-247898",
+      "probe": "work-layers.L1",
+      "score": 2,
+      "reason": "Places it in rules/ and names RU3 as the existing entry, consistent with the corpus read, with AR5 and MREQ-0 as supporting extras."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-247898",
+      "probe": "work-layers.L2",
+      "score": 2,
+      "reason": "Places it in skills/ and explicitly makes invoked-rather-than-followed the deciding reason."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-247898",
+      "probe": "work-layers.L3",
+      "score": 2,
+      "reason": "Places it in work-types/ and identifies W10, mapping who, target and proof to its fields."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-247898",
+      "probe": "work-layers.L4",
+      "score": 2,
+      "reason": "Places it in methods/ and names M1, noting W8 and W13 as the related work-types."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-247898",
+      "probe": "work-layers.L5",
+      "score": 2,
+      "reason": "Maps each kind of guidance to its layer and cites the handover gap recorded in M0, RU0 and PC0."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-247898",
+      "probe": "work-layers.L6",
+      "score": 2,
+      "reason": "States the method, skill and work-type tests with citations to M0, K0 and W0."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-247898",
+      "probe": "work-layers.L7",
+      "score": 2,
+      "reason": "Names RU1 and RU3 in rules/ with their requirements; the other entries are relevant extras."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-e325f8",
+      "probe": "layer-charters.H1",
+      "score": 2,
+      "reason": "Names rules/ and says the repository history shows whether a credential was committed; the GUESS covers only the moment."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-e325f8",
+      "probe": "layer-charters.H2",
+      "score": 2,
+      "reason": "Names practices/ and says nothing in the record afterwards shows the re-read happened."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-e325f8",
+      "probe": "layer-charters.H3",
+      "score": 2,
+      "reason": "Names methods/ because following it produces a verdict, and cites M1."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-e325f8",
+      "probe": "layer-charters.H4",
+      "score": 2,
+      "reason": "Names style/ because the rule governs the form of the text, judged without watching the work."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-e325f8",
+      "probe": "layer-charters.H5",
+      "score": 2,
+      "reason": "States that trace is required and enforced-by is optional, and cites the charter and the schema."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-e325f8",
+      "probe": "layer-charters.H6",
+      "score": 2,
+      "reason": "Gives all five steps in the key's order with the key's tests."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-e325f8",
+      "probe": "layer-charters.H7",
+      "score": 2,
+      "reason": "Names handing over and shows that it is recorded as empty across procedures, rules and practices."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-47d260",
+      "probe": "layer-charters.H1",
+      "score": 2,
+      "reason": "Names rules/ and says the commit history is a trace a check could test; the GUESS covers only the wording of the trace."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-47d260",
+      "probe": "layer-charters.H2",
+      "score": 2,
+      "reason": "Names practices/ with the no-trace reason; the NOT SETTLED covers only admission evidence, not placement."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-47d260",
+      "probe": "layer-charters.H3",
+      "score": 2,
+      "reason": "Names methods/ because following it produces a verdict, and cites M1."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-47d260",
+      "probe": "layer-charters.H4",
+      "score": 2,
+      "reason": "Names style/ because the rule governs the form of the artifact; the NOT SETTLED covers only admission."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-47d260",
+      "probe": "layer-charters.H5",
+      "score": 2,
+      "reason": "States that trace is required and enforced-by is optional, and cites the charter and the schema."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-47d260",
+      "probe": "layer-charters.H6",
+      "score": 2,
+      "reason": "Gives all five steps in the key's order with the key's tests."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-47d260",
+      "probe": "layer-charters.H7",
+      "score": 2,
+      "reason": "Names handing over and shows that it is recorded as empty across procedures, rules and practices."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-1d43ec",
+      "probe": "layer-charters.H1",
+      "score": 2,
+      "reason": "Names rules/ and says the commit history is a testable trace; the GUESS covers only whether an entry already exists."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-1d43ec",
+      "probe": "layer-charters.H2",
+      "score": 2,
+      "reason": "Names practices/ and says the re-read leaves nothing in the record that a check could test."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-1d43ec",
+      "probe": "layer-charters.H3",
+      "score": 2,
+      "reason": "Names methods/ because following it produces a verdict, and cites M1."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-1d43ec",
+      "probe": "layer-charters.H4",
+      "score": 2,
+      "reason": "Names style/ because heading case is the form of the text, judged by reading the output."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-1d43ec",
+      "probe": "layer-charters.H5",
+      "score": 2,
+      "reason": "States that trace is required and enforced-by is optional, and cites the charter and the schema."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-1d43ec",
+      "probe": "layer-charters.H6",
+      "score": 2,
+      "reason": "Gives all five steps in the key's order with the key's tests."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-1d43ec",
+      "probe": "layer-charters.H7",
+      "score": 2,
+      "reason": "Names handing over and shows that it is recorded as empty across procedures, rules and practices."
+    }
+  ]
+}
