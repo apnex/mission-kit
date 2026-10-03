@@ -1,0 +1,48 @@
+### design-rulings.R1
+Your change must declare an interface between T and N and move N onto it, or adjust it to fit. This is part of the change's scope, not optional: E5 Boundaries says "A change that alters what an undeclared neighbour reaches into owns that boundary: declaring and honouring the interface is inside its scope, not optional."
+"Honouring" means N must actually use the interface. E5 *Declared against honoured* says "declaring an interface and leaving the bypass in place separates nothing".
+Before deciding which way to fix it, check the interface against T's duty. A3 *Bypass as Signal* says this ends "in the consumer being moved onto the interface or the interface being adjusted".
+N is a consumer whose contract you are changing, so it is in your scope (A0: "any consumer whose contract it alters"). Both modules sit inside one service, so the change answers to that service's axioms, and the service has every trait of every module in it (E5 *Contain*; A0 "every system containing it").
+Versioning the new interface is "encouraged, not required; if it is not done, the gap is recorded" (E5, versioned-contract discriminator).
+
+### design-rulings.R2
+(1) No. E5 Boundaries: "if A reaches into B and B into C, a change to A is one system with C only when it alters something B takes from C". A change used only by A alters nothing B takes from C.
+The change does still answer to B as well as A. A reaches into B with no declared boundary, so "for deciding what binds a change they are one system, with the traits of both" (E5; A0 "What brings an axiom into force").
+(2) Yes. The change alters something B takes from C, which is exactly the condition E5 gives for chaining through to C. So A, B and C count as one system for this change, and C's axioms bind it along with A's and B's.
+Each undeclared dependency is also a fault under A3, and E5 says a change that alters what an undeclared neighbour reaches into "owns that boundary".
+
+### design-rulings.R3
+Yes, the service is stateful. The writing module passes T1's test: "Does the system write something it will later read back, and would anything act differently if that record were wrong?" (traits/T1-stateful.md).
+A service "has every trait any part it contains has", so one stateful module makes the whole service stateful (E5 *Contain*; T0 "How traits compose": "a service with one stateful module is stateful").
+Yes, A1 binds your change. A1 has `applies-to: [stateful]`, and "a change answers to every system it alters", which includes "every system containing it" (A0). Changing the stateless module therefore changes the stateful service.
+E5 "Why precision matters" rules out the opposite reading: "a stateful system escapes its own axioms by being described as stateless modules".
+What A1 asks of you depends on your scope (A0): do not move the service away from A1's limit, close any A1 gap in the part you alter, and do not repeat a gap. It does not require you to restructure the stateful module.
+
+### design-rulings.R4
+Yes. A1 binds the team, meaning the organisation that does the work and its records. It does not bind the tool.
+E5 says: "The organisation doing the work is a system", and "A stateless product built by a team that keeps records it relies on has `A1` binding the team's records, not the product."
+The team's records pass T1's test, because the team writes them, reads them back and acts on them.
+The tool fails T1, so A1 is not in force for it. E5 also says the organisation's axioms "govern how the change is made and recorded, and are not one of the systems the change alters".
+Beyond the question asked: work passes between independent actors, so the team is also multi-agent (T3). That puts A5, A6, A7, A10 and A13 in force for the team. The floor axioms (A3, A4, A8, A9, A14) bind both the tool and the team (A0 applicability matrix).
+
+### design-rulings.R5
+The axioms encourage the split but do not require it, and either way the tangle must be recorded.
+A0: "*As much as the touch allows* means the part the change already alters to do its own work; restructuring beyond that, even inside the same component, is the encouraged improvement below, not a requirement."
+What your feature must do: avoid moving K away from A3's limit, add no new tangling, and remove any tangling in the part it does alter (A0; A3 Mandate: "a change short of it adds none of them, and removes what it touches").
+A3 *Composable by Default* encourages exactly this kind of split: "within the unit's own duty, fix it, fracture it, re-cut its seams ... as a change of its own, answering to every consumer whose interface it alters".
+Because K's interface is unversioned, the split would change all three consumers at once and answer to all three of their axioms (E5: "changing an unversioned interface alters every consumer at once"). Adding versioning at the same time is encouraged.
+If you do not split, record the gap with its evidence and a revival trigger (A0; RU3): "Either way the gap is recorded. Passing it silently is what the axiom forbids."
+
+### design-rulings.R6
+Publishing 2.4 alters all ten consumers.
+E5: "A declared version range - *any 2.x* - is adoption in advance: a release within it alters every consumer bound by the range, whether or not the consumer's own files change."
+Using only L's declared interface does not protect them, because 2.4 changes the very behaviour that interface documents. That alters each consumer's contract with L (A0: "any system whose contract with it the change alters").
+So publishing 2.4 answers to the axioms of all ten consumers as well as L's.
+NOT SETTLED: whether a lockfile that pins an exact resolved version, inside a floating range, counts as being "bound by the range". GUESS: a consumer whose lockfile actually prevents it from resolving 2.4 has not adopted 2.4.
+
+### OBSERVATIONS
+- T1 is slightly inconsistent. Its definition requires state "that something else treats as authoritative", but its test only asks whether "anything" would act differently. In R3 the module reads back its own records, so it passes the test, but "something else" in the definition could be read as excluding self-consumption.
+- A0's improvement passage is unclear for changes inside one component. It sends restructuring "inside the same component" to "the encouraged improvement below", but that passage only talks about adjacent components and A14's tangent test, which is defined by adjacency. So it is unclear whether the tangent test (adjacency, payback, cost) applies to restructuring the same component, as in R5.
+- R2(2) does not say which unit the change sits in. E5's chaining rule ("alters something B takes from C") settles the answer regardless.
+- "Operated by several independent agents" (R1, R3) could make the service itself multi-agent, or could describe only the organisation (E5's organisation section). Neither answer depends on which reading is right.
+- R6: the corpus does not discuss whether a minor release that changes documented behaviour breaks semantic-versioning expectations. E5 treats any release inside the range as adopted, whatever it contains.

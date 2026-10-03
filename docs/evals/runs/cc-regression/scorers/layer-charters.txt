@@ -1,0 +1,194 @@
+You are scoring answers to a comprehension test against an answer key. Read only this file. Do not open any other file under /home/apnex/taceng/mission-kit/docs/evals/runs/cc-regression.
+
+Score each answer 0, 1 or 2 against the probe's key and rubric. An answer that labels its conclusion a guess, or says the text does not settle it, scores at most 1 unless the rubric says otherwise. Judge the answer, not its length or confidence.
+
+You do not know which answers came from which reader or document version, and must not try to infer it.
+
+Write one JSON object per line, for every answer id below and no others, to this file: /home/apnex/taceng/mission-kit/docs/evals/runs/cc-regression/scores/layer-charters.txt
+Each line exactly: {"item": "<answer id>", "score": 0|1|2, "reason": "<one sentence>"}
+When written, reply with only DONE.
+
+======================================================================
+PROBE layer-charters.H1
+
+Question:
+Someone proposes: credentials are never committed to the repository. Which layer of this corpus should hold that, and why?
+
+Key:
+rules/ - it governs how work is done, produces nothing of its own, and leaves a trace a check could test: the repository's history either contains a credential or it does not. It is not style, because it governs what the work does, not how an artifact is written.
+
+Rubric:
+2 for rules/ with the trace reason. 1 for rules/ without the trace reason, or for the conduct layer (methodology/methods) with an explicit note that a check could test it. 0 otherwise.
+
+--- answer a-d0c73e2d ---
+It belongs in `rules/`. `methods/README.md` (M0) uses this exact case to explain placement: "The first question is about a system's properties, not about how universal a ban sounds: *credentials are never committed* binds an action in a situation, and is a rule." It is not an axiom (question 1), it produces no result of its own (question 2), it does not govern an artifact's form (question 3), and it "leave[s] a trace in the record of the work that a check could test" (question 4). `rules/README.md` (RU0) confirms this under "Gaps tested": "*Treating the record:* credentials are never committed - `M0`'s own example of a rule". So its moment is *treating the record*. No rule entry holds it yet. RU0 lists it as guidance "that leaves a trace and has no rule entry". If someone added it, it would have to declare a `trace` (RU0 "Member shape").
+
+--- answer a-40c88a36 ---
+Rules (`rules/`, charter RU0).
+methods/README.md (M0) Placement says to ask in order: axiom, procedure, style, rule, practice. It then uses this exact case: "*credentials are never committed* binds an action in a situation, and is a rule". It is not an axiom because "The first question is about a system's properties, not about how universal a ban sounds".
+It produces nothing of its own and does not govern an artifact's form. It does leave a trace a check could test: the commit history shows whether a credential was committed.
+rules/README.md lists it under "Gaps tested" at the moment *Treating the record*: "credentials are never committed - `M0`'s own example of a rule". So no RU entry holds it yet.
+An entry would have to declare a `trace` in frontmatter (rules/README.md "Member shape"; the SC1 schema requires `trace` for RU1+).
+
+--- answer a-6ce737b4 ---
+It belongs in rules/ (RU). methods/README.md (M0) gives placement as five ordered questions and uses this as its own example: "*credentials are never committed* binds an action in a situation, and is a rule". It is not an axiom, because question 1 asks about "a limit a system is built toward" and not about "how universal a ban sounds". It produces no result of its own and does not govern an artifact's form. It leaves a trace a check could test, because every commit shows it. rules/README.md confirms this under "Gaps tested": "*Treating the record:* credentials are never committed - `M0`'s own example of a rule". So it is a candidate for the "Treating the record" moment, and no RU entry holds it yet. As a rule entry it must declare a `trace` (rules/README.md "Member shape").
+
+======================================================================
+PROBE layer-charters.H2
+
+Question:
+Someone proposes: before declaring a task done, re-read the original request once. Which layer should hold that, and why?
+
+Key:
+practices/ - it governs how other work is done, produces nothing of its own, and leaves no trace a check could test afterwards.
+
+Rubric:
+2 for practices/ with the no-trace reason. 1 for practices/ without it. 0 otherwise.
+
+--- answer a-6be69a1a ---
+It belongs in practices/ (PC). By M0's order: it is not an axiom, it produces no verdict, artifact or record, and it does not govern an artifact's form. A re-read leaves nothing in the record, so question 4 (trace) gets "no" and question 5 makes it "a practice". practices/README.md defines a practice as guidance that "leaves no trace: nothing in the record afterwards shows whether it was followed". The nearest moment is "Verifying", and practices/README.md lists that row as "none - gap". Placement is not admission, though. PC0 says admission "takes observed evidence" that following it changes the work, and "A practice is not minted to fill an empty moment". GUESS: the moment is Verifying (it could also be read as Handing over). The corpus does not say which.
+
+--- answer a-2a68f074 ---
+Practices (`practices/`, charter PC0).
+Under M0's order it is not an axiom. It produces no result of its own, so it is not a procedure. It does not govern an artifact's form, so it is not style. Re-reading a request leaves nothing in the record that a check could test, so it is not a rule. That leaves "Otherwise a practice" (methods/README.md, Placement step 5).
+PC0 defines a practice as guidance that "leaves no trace: nothing in the record afterwards shows whether it was followed".
+Placement is not admission, though. PC0 "Member shape" says a practice "is admitted when a difference in the work has been observed", so it needs observed evidence before it gets an entry.
+GUESS: it would sit at the *Verifying* moment. Possibly it belongs at *Handing over* instead; the corpus does not place this case (NOT SETTLED).
+
+--- answer a-1549d88b ---
+Most likely `practices/`. Using M0's ordered questions: it is not an axiom, and it produces no verdict, artifact or record of its own. It does not govern an artifact's form. A single re-read leaves nothing in the record that a check could test, so it reaches question 5: "Otherwise a practice" (methods/README.md). PC0 defines a practice as guidance that "leaves no trace: nothing in the record afterwards shows whether it was followed" (practices/README.md). GUESS: its moment is *verifying*, and practices/README.md marks that row "none - gap". Placement does not mean it gets an entry. PC0 says "admission says whether it has earned an entry, which takes observed evidence", and "A practice is not minted to fill an empty moment". NOT SETTLED whether it has earned an entry, because the corpus records no evidence for it. If the re-read had to be recorded (for example, a checklist field), it would leave a trace and would become a rule.
+
+======================================================================
+PROBE layer-charters.H3
+
+Question:
+Some guidance says: before a patch ships to production, collect at least four genuinely independent kinds of input, compare them, and only then reach a judgement. Which layer holds it, and does an entry already cover it?
+
+Key:
+The procedure layer - methods/, formerly methodology/ - because following it produces a result of its own, a judgement; it exists as M1, triangulated review. On the corpus before the change, the reason 'it governs how a review is conducted' is equally correct.
+
+Rubric:
+2 for the procedure or conduct layer with either reason and M1. 1 for the layer without M1, or M1 without a reason. 0 otherwise. Naming it methodology/ is not an error.
+
+--- answer a-63be9202 ---
+It belongs in `methods/`. Following it produces a result of its own, a verdict ("only then reach a judgement"), so it stops at M0's question 2 ("A procedure, here"). An entry already covers it: `methods/M1-triangulated-review.md` (M1, "Triangulated review - minimum 4 independent inputs"). M1 says: "require **at least four genuinely independent inputs** before reaching a verdict". Its trigger is "You are reviewing a patch or design that ships to production or upstream". M1 also says that reconciling the inputs "is where real bugs surface". This matches "compare them". M0 places M1 at the *verifying* moment and calls it the primitive that "carries the set". So the proposal should strengthen M1 and not add a neighbour (M0: "Prefer strengthening an existing entry to adding a neighbour").
+
+--- answer a-6dd38479 ---
+It belongs in methods/ (M). Following it produces a result of its own, a verdict, which is M0's question 2 ("A procedure, here"). Yes, an entry already covers it: M1 "Triangulated review - minimum 4 independent inputs". M1 requires "at least four genuinely independent inputs before reaching a verdict". Its hydrate-when is "You are reviewing a patch or design that ships to production or upstream". M0 places M1 in the "Verifying" moment and calls it "the independence the verifying procedures specialise", the one primitive the set rests on. Add to M1 rather than create a new entry, because M0 says "Prefer strengthening an existing entry to adding a neighbour".
+
+--- answer a-7a7759d2 ---
+Methods (`methods/`). Following it produces a result of its own, a verdict, which is M0 Placement question 2.
+An entry already covers it: M1, "Triangulated review - minimum 4 independent inputs" (methods/M1-triangulated-review.md). It says: "require **at least four genuinely independent inputs** before reaching a verdict". Its trigger is "You are reviewing a patch or design that ships to production or upstream".
+M0 puts M1 at the *Verifying* moment and calls it the "one primitive" carrying the set.
+Per M0 "What earns an entry" ("Prefer strengthening an existing entry to adding a neighbour"), the guidance should go into M1 rather than become a new entry.
+
+======================================================================
+PROBE layer-charters.H4
+
+Question:
+Someone proposes: every heading in a document is written in sentence case. Which layer, and why?
+
+Key:
+style/ - it is checkable from the artifact's text alone, without knowing anything about the work.
+
+Rubric:
+2 for style/ with the reason that it governs the artifact itself - judged by reading the output, or a predicate over the text; a caveat that it may not earn an entry costs nothing. 1 for style/ alone. 0 otherwise.
+
+--- answer a-e6eee750 ---
+It belongs in style/ (S). It governs how an artifact is written, "its form, whatever the work was" (M0 question 3). style/README.md says "A style rule governs an artifact's form, and is judged by reading the output". It fits the Document medium at the "section" grain, or possibly the "token" grain. No current member (S1-S15) covers heading case. Placement alone does not earn an entry. S0 also requires that "Its absence produced a real defect in a real artifact" and that it "holds across artifacts". S0 says "Prefer a rule a script can hold", and heading case can be stated as a predicate over the text, so it would probably name an `enforced-by` tool. Aesthetic preference alone "does not qualify".
+
+--- answer a-a2a0c14c ---
+It belongs in `style/`. It governs an artifact's form "whatever the work was", so it stops at M0's question 3. S0 says "A style rule governs an artifact's form, and is judged by reading the output rather than by watching it being produced" (style/README.md). It fits the Document medium in S0's territory. GUESS: its grain is "section" or "token", because the table has no heading grain. No current S-entry covers heading case. S0's "What earns an entry" also requires that "Its absence produced a real defect in a real artifact ... Aesthetic preference does not qualify", and that "It holds across artifacts". NOT SETTLED whether sentence-case headings meet that bar, because the corpus cites no such defect. S0 also prefers a script to hold it, and heading case can be stated as a predicate.
+
+--- answer a-972802ff ---
+Style (`style/`, charter S0). It governs how an artifact is written, its form, whatever the work was. That is M0 Placement question 3, and S0 says "A style rule governs an artifact's form, and is judged by reading the output".
+It is checked on the finished text, not by watching the work, which is how S0's neighbour test separates style from rules and practices.
+No existing S entry covers heading case. S0's territory places it in the Document medium (GUESS: at the "section" grain).
+Admission needs more than placement. S0 "What earns an entry" requires that "Its absence produced a real defect in a real artifact" ("Aesthetic preference does not qualify") and that it holds across artifacts.
+S0 also prefers a rule a script can hold, and heading case can be stated as a predicate over the text.
+
+======================================================================
+PROBE layer-charters.H5
+
+Question:
+What must an entry in rules/ declare that an entry in practices/ does not, and what may it declare optionally?
+
+Key:
+A rule must declare its trace - the observable that shows the rule was kept or broken. It may name an enforcer, the tool that checks it, when one exists; a practice has no trace to declare.
+
+Rubric:
+2 for the required trace and the optional enforcer. 1 for the trace alone. 0 otherwise.
+
+--- answer a-57a26b25 ---
+A rule must declare `trace` in frontmatter: "the observable in the record that shows it was kept or broken, required by the catalogue contract" (rules/README.md, "Member shape"). The schema enforces this. In `schemas/catalog-entry/v1alpha1/catalog-entry.schema.json`, if `category` is `rule` and the id matches `^RU[1-9][0-9]*$`, then `trace` is required (minLength 20). A practice "declares no `trace`; if it acquires one, it is a rule and moves" (practices/README.md). The optional field is `enforced-by`: "It names an enforcer in `enforced-by` when a tool checks it". `tools/check-enforcers.sh` checks that the named tool exists. "A rule with no tool yet is still a rule, and is checked by reading the trace" (RU0). The schema's `trace` description agrees: "Naming a tool that checks it is enforced-by's job, and is optional". The value must match `^tools/`.
+
+--- answer a-44f11338 ---
+A rule must declare `trace` in frontmatter: "the observable in the record that shows it was kept or broken, required by the catalogue contract" (rules/README.md, Member shape). In the SC1 schema, `trace` is required when category is `rule` and the id matches `^RU[1-9][0-9]*$`, with minLength 20.
+A practice "declares no `trace`; if it acquires one, it is a rule and moves" (practices/README.md).
+Optionally, a rule may name an enforcer in `enforced-by`, which must match `^tools/`. `tools/check-enforcers.sh` checks that the named tool exists. The schema's `trace` description says "Naming a tool that checks it is enforced-by's job, and is optional".
+The other common fields (`supersedes`, `related`) are optional for both layers.
+
+--- answer a-3669d59d ---
+A rules/ entry must declare `trace` in its frontmatter: "the observable in the record that shows it was kept or broken, required by the catalogue contract" (rules/README.md "Member shape"). schemas/catalog-entry/v1alpha1/catalog-entry.schema.json enforces this: when `category` is `rule` and `id` matches `^RU[1-9][0-9]*$`, `trace` is required (minLength 20). A practice "declares no `trace`; if it acquires one, it is a rule and moves" (practices/README.md). Optionally, a rule may name the tool that checks it in `enforced-by` (pattern `^tools/`), and `tools/check-enforcers.sh` checks that the tool exists. The schema's `trace` description says "Naming a tool that checks it is enforced-by's job, and is optional". A rule with no tool "is still a rule, and is checked by reading the trace".
+
+======================================================================
+PROBE layer-charters.H6
+
+Question:
+Give the order of questions an agent asks to decide whether a piece of guidance is an axiom, a method, a style rule, a rule or a practice.
+
+Key:
+In order, stopping at the first yes: is it in force regardless of situation (axiom); does following it produce a result of its own (method); does it govern how an artifact is written - its form, whatever the work was (style); does it leave a trace in the record of the work that a check could test (rule); otherwise practice.
+
+Rubric:
+2 for all five steps in this order with these tests. 1 for an order or tests that would still file M1 as a method, M3, M4, M5 and K2 as rules, and M6 as a practice; or four of the five steps. 0 otherwise.
+
+--- answer a-bc836f26 ---
+methods/README.md (M0) says to ask the questions in order and stop at the first yes:
+1. Is it a limit a system is built toward, in force for every system with the traits it names? -> axiom (axioms/).
+2. Does following it produce a result of its own (a verdict, an artifact, a record)? -> method (methods/). Guidance that only requires a record to carry something is not a method; it is a rule.
+3. Does it govern how an artifact is written, its form, whatever the work was? -> style (style/).
+4. Does it leave a trace in the record of the work that a check could test? -> rule (rules/).
+5. Otherwise -> practice (practices/).
+rules/README.md, practices/README.md and style/README.md all cite this as "axiom, procedure, style, rule, practice, asked in that order".
+
+--- answer a-7b120d5c ---
+From methods/README.md (M0) Placement. Ask in order and stop at the first yes:
+1. Is it a limit a system is built toward, in force for every system with the traits it names? Then it is an axiom.
+2. Does following it produce a result of its own (a verdict, an artifact, a record)? Then it is a procedure, a method.
+3. Does it govern how an artifact is written, its form, whatever the work was? Then it is style.
+4. Does it leave a trace in the record of the work that a check could test? Then it is a rule.
+5. Otherwise it is a practice.
+RU0, PC0 and S0 all cite this one statement rather than restating their own.
+
+--- answer a-69e1fa06 ---
+`methods/README.md` (M0, "Placement") states the order once, and RU0 and PC0 cite it. Ask in order and stop at the first yes:
+1. Is it a limit a system is built toward, in force for every system with the traits it names? Then it is an axiom (`axioms/`).
+2. Does following it produce a result of its own (a verdict, an artifact, a record)? Then it is a procedure/method (`methods/`). Guidance that only requires a record to carry something is a rule.
+3. Does it govern how an artifact is written, its form, whatever the work was? Then it is style (`style/`).
+4. Does it leave a trace in the record of the work that a check could test? Then it is a rule (`rules/`).
+5. Otherwise it is a practice (`practices/`).
+
+======================================================================
+PROBE layer-charters.H7
+
+Question:
+Which moment in a unit of work does the corpus record as a gap, with nothing at all governing it - no procedure, rule or practice?
+
+Key:
+Handing over - passing work in progress to another agent or a later session, including a lone agent's own next session.
+
+Rubric:
+2 for handing over, recorded as a gap. 1 for handing over without its being recorded as a gap. 0 otherwise.
+
+--- answer a-d381e6fb ---
+Handing over work in progress to another agent or to a later session. M0 says: "*Handing over* holds `M10`, which hands understanding and decisions to a human; handing work in progress to another agent or a later session has no procedure at all". rules/README.md lists "Handing over" as "none - gap" ("a handover record names what is unfinished - a rule that would leave a trace, and none exists"). practices/README.md also lists "Handing over" as "none - gap". M0 says this is where being cold matters most: "a lone agent hands over to its own next session". Note: if you read only the three moment tables, every moment has at least one member in some layer. Handing over is non-empty only because of M10, which covers handover to a human. So the moment with nothing governing it is the agent-to-agent or agent-to-later-session handover.
+
+--- answer a-de7cc1de ---
+Handing work in progress to another agent or a later session. M0 says this "has no procedure at all" (methods/README.md). RU0's *Handing over* row is "none - gap", with the untaken candidate "a handover record names what is unfinished ... none exists". PC0's *Handing over* row is also "none - gap".
+M10 covers handing over only to a human of limited context, not to an agent or a later session.
+M0 also says this is where the gap bites hardest: "a lone agent hands over to its own next session".
+Read at the level of whole moments, no moment is empty in all three tables. Every moment has at least one member somewhere: *Deciding what to keep* has RU1 and RU3, and *Handing over* has M10. So the fully empty gap is only the agent-or-session part of handing over.
+
+--- answer a-26edec06 ---
+Read strictly by moment, the three territory tables leave no moment empty in all three layers. Entering has M8 and PC1. Committing to a design has M7. Verifying has M1 and M2. Deciding what to keep has RU1 and RU3. Treating the record has M9, RU2 and RU4. Handing over has M10. The gap with nothing governing it is part of *handing over*: handing work in progress to another agent or to a later session. M0 says this "has no procedure at all", and adds "a lone agent hands over to its own next session" (methods/README.md). `rules/README.md` marks Handing over "none - gap" ("a handover record names what is unfinished - a rule that would leave a trace, and none exists"). `practices/README.md` also marks it "none - gap" with "no checked candidate yet". M10 covers only handover to a human. NOT SETTLED whether the question means this sub-case or a whole moment, because no whole moment is empty in all three layers.

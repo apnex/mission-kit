@@ -1,0 +1,594 @@
+{
+  "created": "2026-10-03T22:37:14.344Z",
+  "seed": "72025d61f2c58645",
+  "corpora": [
+    {
+      "label": "before",
+      "path": "/tmp/opencode/evcc-b/c-288600c6"
+    },
+    {
+      "label": "after",
+      "path": "/tmp/opencode/evcc-a/c-5e1579ad"
+    }
+  ],
+  "readers": 3,
+  "probes": [
+    "charter-claims.V1",
+    "charter-claims.V2",
+    "charter-claims.V3",
+    "charter-claims.V4",
+    "charter-claims.V5",
+    "charter-claims.V6",
+    "charter-claims.V7",
+    "charter-claims.V8",
+    "charter-claims.V9",
+    "charter-claims.V10"
+  ],
+  "max": 20,
+  "mean": {
+    "charter-claims.V1": {
+      "before": 2,
+      "after": 2
+    },
+    "charter-claims.V2": {
+      "before": 2,
+      "after": 2
+    },
+    "charter-claims.V3": {
+      "before": 2,
+      "after": 2
+    },
+    "charter-claims.V4": {
+      "before": 2,
+      "after": 2
+    },
+    "charter-claims.V5": {
+      "before": 2,
+      "after": 2
+    },
+    "charter-claims.V6": {
+      "before": 2,
+      "after": 2
+    },
+    "charter-claims.V7": {
+      "before": 1,
+      "after": 2
+    },
+    "charter-claims.V8": {
+      "before": 1,
+      "after": 2
+    },
+    "charter-claims.V9": {
+      "before": 2,
+      "after": 2
+    },
+    "charter-claims.V10": {
+      "before": 1.67,
+      "after": 2
+    }
+  },
+  "total": {
+    "before": 17.67,
+    "after": 20
+  },
+  "rows": [
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-4cb9cb",
+      "probe": "charter-claims.V1",
+      "score": 2,
+      "reason": "Says no, says the empty part is recorded as a gap rather than cut, and names required concerns beyond scope such as Boundaries and Faults."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-4cb9cb",
+      "probe": "charter-claims.V2",
+      "score": 2,
+      "reason": "Says there is no method and identifies RU1 and RU3 as rules, not procedures."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-4cb9cb",
+      "probe": "charter-claims.V3",
+      "score": 2,
+      "reason": "Names all four empty moments and a real unheld candidate (no tool attribution in commits)."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-4cb9cb",
+      "probe": "charter-claims.V4",
+      "score": 2,
+      "reason": "Names all five moments with no practice."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-4cb9cb",
+      "probe": "charter-claims.V5",
+      "score": 2,
+      "reason": "Names above-unit authorities (choosing what work happens next, curation) held by the director (R4)."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-4cb9cb",
+      "probe": "charter-claims.V6",
+      "score": 2,
+      "reason": "Says no because the set grows and is not expected to be complete, and states that the numbers are counts, not rules."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-4cb9cb",
+      "probe": "charter-claims.V7",
+      "score": 1,
+      "reason": "Correctly says none exists but claims SC0 does not record it, so it misses the in-scope gap."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-4cb9cb",
+      "probe": "charter-claims.V8",
+      "score": 1,
+      "reason": "Gives none with the domain exclusion but labels its conclusion NOT SETTLED, which caps it at 1."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-4cb9cb",
+      "probe": "charter-claims.V9",
+      "score": 2,
+      "reason": "Names history rewriting with real members from methods and rules (M9, RU2, RU4)."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-4cb9cb",
+      "probe": "charter-claims.V10",
+      "score": 2,
+      "reason": "Says no axiom has the mandate and notes the good-faith exclusion is stated for collaborating agents only."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-135a73",
+      "probe": "charter-claims.V1",
+      "score": 2,
+      "reason": "Says no, gives the reasoning that an unfilled part is recorded as a gap, and names concerns beyond scope such as Boundaries and Faults."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-135a73",
+      "probe": "charter-claims.V2",
+      "score": 2,
+      "reason": "Says there is no method and identifies RU1 and RU3 as rules rather than procedures; the guess covers only a side point."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-135a73",
+      "probe": "charter-claims.V3",
+      "score": 2,
+      "reason": "Names all four empty moments and a real unheld candidate (no tool attribution in commits)."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-135a73",
+      "probe": "charter-claims.V4",
+      "score": 2,
+      "reason": "Names all five moments with no practice."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-135a73",
+      "probe": "charter-claims.V5",
+      "score": 2,
+      "reason": "Names a real above-unit authority (minting a layer, choosing what work happens next) and its holder, the director (R4); its hedge concerns set scope, not the authority and holder."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-135a73",
+      "probe": "charter-claims.V6",
+      "score": 2,
+      "reason": "Says no because the set is not expected to be complete, and treats the stated numbers as counts to update."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-135a73",
+      "probe": "charter-claims.V7",
+      "score": 1,
+      "reason": "Correctly says no contract exists but does not place the absence inside the schemas set's claim as a gap."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-135a73",
+      "probe": "charter-claims.V8",
+      "score": 1,
+      "reason": "Gives none with the domain exclusion but labels its conclusion NOT SETTLED, which caps it at 1."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-135a73",
+      "probe": "charter-claims.V9",
+      "score": 2,
+      "reason": "Names treating history with real members from methods and rules (M9, RU2, RU4)."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-135a73",
+      "probe": "charter-claims.V10",
+      "score": 2,
+      "reason": "Says no axiom has the mandate and separates external hostile input from collaborating agents under the exclusion."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-83519e",
+      "probe": "charter-claims.V1",
+      "score": 2,
+      "reason": "Says no, says the unfilled part is recorded as a checked gap, and names further concerns including Boundaries and Faults."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-83519e",
+      "probe": "charter-claims.V2",
+      "score": 2,
+      "reason": "Says there is no method and identifies RU1 and RU3 as rules that produce nothing of their own."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-83519e",
+      "probe": "charter-claims.V3",
+      "score": 2,
+      "reason": "Names all four empty moments and real unheld candidates (credentials never committed, no tool attribution)."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-83519e",
+      "probe": "charter-claims.V4",
+      "score": 2,
+      "reason": "Names all five moments with no practice."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-83519e",
+      "probe": "charter-claims.V5",
+      "score": 2,
+      "reason": "Names an above-unit authority (choosing the next move from the board) and its holder, the director (R4)."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-83519e",
+      "probe": "charter-claims.V6",
+      "score": 2,
+      "reason": "Says no because the set grows and is not expected to be complete, and notes only the hard counts would go stale."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-83519e",
+      "probe": "charter-claims.V7",
+      "score": 1,
+      "reason": "Correctly says none exists but holds that SC0's territory does not cover it, so it misses the in-scope gap."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-83519e",
+      "probe": "charter-claims.V8",
+      "score": 1,
+      "reason": "Gives none with the domain exclusion but labels its conclusion NOT SETTLED, which caps it at 1."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-83519e",
+      "probe": "charter-claims.V9",
+      "score": 2,
+      "reason": "Names treating history with real members from two layers (M9, RU2, RU4)."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-83519e",
+      "probe": "charter-claims.V10",
+      "score": 1,
+      "reason": "Says no axiom has the mandate and quotes the exclusion without separating collaborators from outsiders."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-190bd9",
+      "probe": "charter-claims.V1",
+      "score": 2,
+      "reason": "Says no with the never-cut and named-gap reasoning, and names management concerns such as territory, boundaries, faults and changes."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-190bd9",
+      "probe": "charter-claims.V2",
+      "score": 2,
+      "reason": "Says there is no method, cites the gap row, and identifies RU1 and RU3 as rules, not methods."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-190bd9",
+      "probe": "charter-claims.V3",
+      "score": 2,
+      "reason": "Names the four moments with no rule entry, holds at least three as having no rule at all, and gives a real unheld candidate."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-190bd9",
+      "probe": "charter-claims.V4",
+      "score": 2,
+      "reason": "Names all five moments with no practice."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-190bd9",
+      "probe": "charter-claims.V5",
+      "score": 2,
+      "reason": "Names Direction, Flow and Curation, each with the role that holds it."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-190bd9",
+      "probe": "charter-claims.V6",
+      "score": 2,
+      "reason": "Says no because the set is not complete and is not expected to be; the guess covers only a side point."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-190bd9",
+      "probe": "charter-claims.V7",
+      "score": 2,
+      "reason": "Says none exists and cites SC0's territory row recording it as a gap."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-190bd9",
+      "probe": "charter-claims.V8",
+      "score": 2,
+      "reason": "Says none, citing W0's recorded gap and the domain exclusion measured from frontmatter."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-190bd9",
+      "probe": "charter-claims.V9",
+      "score": 2,
+      "reason": "Names independent verification with real members from five layers."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-190bd9",
+      "probe": "charter-claims.V10",
+      "score": 2,
+      "reason": "Says no axiom has the mandate, calls it a gap inside the territory, and treats A2 as incidental."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-e39fd1",
+      "probe": "charter-claims.V1",
+      "score": 2,
+      "reason": "Says no with the never-cut and named-gap reasoning, and names territory, boundaries, faults and changes as management."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-e39fd1",
+      "probe": "charter-claims.V2",
+      "score": 2,
+      "reason": "Says there is no method, cites the gap, and identifies RU1 and RU3 as rules, not methods."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-e39fd1",
+      "probe": "charter-claims.V3",
+      "score": 2,
+      "reason": "Names all four empty moments and a real unheld candidate (labelling claims measured or inferred)."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-e39fd1",
+      "probe": "charter-claims.V4",
+      "score": 2,
+      "reason": "Names all five moments with no practice."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-e39fd1",
+      "probe": "charter-claims.V5",
+      "score": 2,
+      "reason": "Names Direction, Flow and Curation, each with the role that holds it."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-e39fd1",
+      "probe": "charter-claims.V6",
+      "score": 2,
+      "reason": "Says no and quotes the claim covering every surface however many that proves to be, so the count is not the claim."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-e39fd1",
+      "probe": "charter-claims.V7",
+      "score": 2,
+      "reason": "Says none exists and cites SC0's territory row recording it as a gap."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-e39fd1",
+      "probe": "charter-claims.V8",
+      "score": 2,
+      "reason": "Says none, citing W0's recorded gap and the knowledge-methodology domain exclusion."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-e39fd1",
+      "probe": "charter-claims.V9",
+      "score": 2,
+      "reason": "Names independent verification with real members from several layers (M1, W8, K21, R3, A8)."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-e39fd1",
+      "probe": "charter-claims.V10",
+      "score": 2,
+      "reason": "Says no axiom has the mandate, calls it a recorded gap, and treats A2 as incidental."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-34d924",
+      "probe": "charter-claims.V1",
+      "score": 2,
+      "reason": "Says no with the never-cut and named-gap reasoning, and names boundaries, faults and changes as management concerns."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-34d924",
+      "probe": "charter-claims.V2",
+      "score": 2,
+      "reason": "Says there is no method and identifies RU1 and RU3 as rules, with M3 and M5 superseded."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-34d924",
+      "probe": "charter-claims.V3",
+      "score": 2,
+      "reason": "Names all four empty moments and a real unheld candidate (labelling claims measured or inferred)."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-34d924",
+      "probe": "charter-claims.V4",
+      "score": 2,
+      "reason": "Names all five moments with no practice."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-34d924",
+      "probe": "charter-claims.V5",
+      "score": 2,
+      "reason": "Names Direction, held by R4, along with Flow and Curation and their holders."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-34d924",
+      "probe": "charter-claims.V6",
+      "score": 2,
+      "reason": "Says no, quotes the claim covering every surface however many that proves to be, and calls N=7 a current count, not a cap."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-34d924",
+      "probe": "charter-claims.V7",
+      "score": 2,
+      "reason": "Says none exists and that SC0 claims this row in its territory and records it as a gap."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-34d924",
+      "probe": "charter-claims.V8",
+      "score": 2,
+      "reason": "Says none, citing W0's recorded gap and W3's domain exclusion."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-34d924",
+      "probe": "charter-claims.V9",
+      "score": 2,
+      "reason": "Names independent verification with real members from five layers."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-34d924",
+      "probe": "charter-claims.V10",
+      "score": 2,
+      "reason": "Says no axiom has the mandate and calls it a recorded gap."
+    }
+  ],
+  "consistentHedges": [
+    {
+      "probe": "charter-claims.V5",
+      "label": "before",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "charter-claims.V6",
+      "label": "after",
+      "hedged": 2,
+      "readers": 3
+    },
+    {
+      "probe": "charter-claims.V7",
+      "label": "before",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "charter-claims.V7",
+      "label": "after",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "charter-claims.V8",
+      "label": "before",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "charter-claims.V10",
+      "label": "before",
+      "hedged": 3,
+      "readers": 3
+    }
+  ]
+}

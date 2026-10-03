@@ -1,0 +1,59 @@
+### s0.Q1
+The corpus names this exact case as a fault: style/README.md, Faults: "The forked enforcer. Two tools holding one rule, disagreeing at the edges. This is why a rule names exactly one."
+The remedy is in the Enforcement boundary section: "An enforced rule names exactly one tool ... One rule, one tool, and that tool owns both the check and the fix, so a rule cannot be reported by one implementation and refused by another."
+The pairing is declared in each rule's `enforced-by` frontmatter and verified by tools/check-enforcers.sh, which fails if a rule names a non-existent tool or if a per-rule tool (tools/s[0-9]*-*) is claimed by no rule.
+So the answer is to collapse to one tool, which the rule names in `enforced-by`, and retire the other.
+Limit: check-enforcers.sh catches an unclaimed `sN-*` tool, but I found nothing that would catch a second checker for the same rule that is named differently or lives elsewhere. NOT SETTLED whether such a fork would be detected mechanically. GUESS: it would not be.
+
+### s0.Q2
+No, not on preference. style/README.md, "What earns an entry", says all three conditions must hold, and condition 2 is "Its absence produced a real defect in a real artifact, and a reader can be shown the difference. Aesthetic preference does not qualify."
+Heading capitalisation does govern form (condition 1), and it could hold across artifacts (condition 3), but a preference fails condition 2.
+It could be reconsidered only if someone shows a real defect caused by the missing rule. The text then says to prefer stating it as a predicate and writing the tool ("Prefer a rule a script can hold").
+
+### s0.Q3
+No, not by default. style/README.md, Enforcement boundary: "Style is gated on changed files rather than on the whole corpus. The corpus carries debt that predates the checkers, so gating the diff blocks new debt and converts the rest opportunistically."
+tools/check-all.sh does this. By default it runs the per-rule checkers only over markdown changed against `origin/main`: committed, staged, unstaged and untracked. `--since REF` changes the base, and `--all` runs style over the whole corpus.
+The non-style gates in check-all.sh (structure, enforcers, index, schemas and others) are not limited to changed files.
+The Faults list also names converting everything at once as an anti-pattern: "The corpus-wide sweep."
+
+### s0.Q4
+Held by a tool (from the generated Index "Held by" column in style/README.md, which matches each rule's `enforced-by` frontmatter):
+- S6 one sentence per line, `tools/s6-one-sentence-per-line.mjs`
+- S8 code-block comments, `tools/s8-code-block-comments.sh`
+- S10 horizontal rule between sections, `tools/s10-section-rules.sh`
+- S12 code-block introducer, `tools/s12-code-block-introducer.sh`
+- S13 plain ASCII, `tools/s13-plain-ascii.sh`
+- S14 hydration triggers, `tools/s14-hydration-triggers.sh`
+
+Held only by reading: S1, S2, S3, S4, S5, S7, S9, S11 and S15, for example S5 (no version pins), S11 (identifiers in backticks) and S15 (message to a human).
+That makes 6 held by a tool and 9 by reading, which matches the Axiom alignment line "nine of its fifteen rules are held only by reading".
+
+### s0.Q5
+There is none. style/README.md, Territory, lists "Code | comments | what a comment in source code says and how | none - gap", and adds: "Code comments: no style rule; S8 covers comments in code blocks inside documents, not in source files."
+It would go in style/, because the territory explicitly claims code comments ("a medium with no member is a gap, not a reason to narrow the claim").
+It would still have to pass "What earns an entry": it governs form, a real defect is shown, and it holds across artifacts.
+The text also says this would be "the second rule for a medium other than documents, which is the point at which the set's medium rules are due to be grouped as sub-sets" (see the Faults entry "The unscoped medium"). So adding it should come with a sub-set for the code medium.
+NOT SETTLED: the corpus does not say what such a sub-set looks like or what it is named.
+
+### s0.Q6
+No, it is a rule. style/README.md, Neighbours (Rules row): "A revival trigger on a deferred item is a rule, though it is visible in text."
+methods/README.md (M0) says the same: "every deferral records its revival trigger is visible in text and is still a rule, because it governs what the work records."
+The rule already exists as rules/RU3-anti-amnesia-deferral.md, whose trace is "every deferred, parked or cut item's record carries a revival trigger" (it supersedes M5).
+Filing it under style would be the fault "The work rule in style clothing" (style/README.md, Faults).
+
+### s0.Q7
+style/README.md, Faults, lists the unhealthy shapes:
+- forked enforcers (two tools for one rule, disagreeing at the edges);
+- orphaned rules ("A convention nobody enforces and nobody reviews, which teaches readers that the layer is decorative");
+- unscoped media (rules for a non-document medium scattered among the document rules with no sub-set);
+- work rules in style clothing (conventions about what the work does or records, filed as style);
+- corpus-wide sweeps (all legacy debt converted in one unreviewable commit).
+From "What earns an entry", another sign is rules admitted on aesthetic preference with no real defect behind them, or rules that hold only inside one document.
+Axiom alignment names current weaknesses that point the same way: 9 of 15 rules are held only by reading, and three claimed media (commit messages, code names, code comments) have no rule at all.
+
+### OBSERVATIONS
+- tools/README.md (around line 63) says "Changed means committed against the base plus staged plus unstaged", but tools/check-all.sh also includes untracked files (`git ls-files --others`). The README is out of date on this point.
+- tools/check-all.sh has a duplicated, partly superseded comment ("Committed against the base, plus staged, plus unstaged." followed by the longer version that adds untracked).
+- check-enforcers.sh enforces that each tool is claimed and that each claimed tool exists. Going by the code I read, it does not detect two differently named checkers for one rule, so "one rule, one tool" is only partly enforced mechanically.
+- The generated Index leaves "Held by" blank for S0. That is reasonable for a charter, but the column does not say so.
+- The prompt-supplied INDEX.md (from GitHub) and the corpus INDEX.md agreed on the style section. I relied only on the corpus copy.

@@ -1,0 +1,51 @@
+### sc0.Q1
+Not in `spec`: schemas/README.md "Resource convention" says "`spec` holds all configuration that affects entity meaning or behaviour" and "Runtime observations do not belong in `spec`."
+It goes in `status`, but only conditionally: "A kind only gains `status` when a real reconciler needs observed state."
+So if a real reconciler consumes the last-checked time, the kind gains a `status` block and the observation goes there.
+If no reconciler needs it, the text implies the kind should not gain `status` at all, and it does not say where else the value should live - NOT SETTLED.
+GUESS: absent a reconciler, the observation belongs outside the resource (for example in the process that does the checking), not in `metadata.annotations`, since `metadata` is described as "portable identity and machine-oriented labels or annotations", not observed state.
+
+### sc0.Q2
+No.
+schemas/README.md "Composition": a process "composes or snapshots a complete `Question` resource and owns its process-specific fields beside it. It must not inject process fields into the Question resource."
+The worked example is exactly this case: a future `SurveyQuestion` whose `spec` holds `question:` (the full Question resource) beside `survey:` with `round: 1`, `ordinal: 1`, `intentDimension`.
+The stated reason: "This wrapper boundary keeps the neutral resource closed and prevents Survey evolution from changing the Question contract."
+SC4 is described as "process-neutral" (INDEX/README index row), which a survey-only field would break.
+
+### sc0.Q3
+Structural (JSON Schema) validation first, then semantic validation.
+schemas/README.md "Validation": "A consumer must run structural validation before semantic validation, because each semantic validator assumes the shape the schema guarantees - it reads fields without first checking they exist."
+JSON Schema validates structure; the semantic validators (e.g. `question.validator.mjs`, `context-frame.validator.mjs`, mapped in `catalog.json`) check invariants Draft 2020-12 cannot express, such as unique option IDs or min <= max selections.
+The README also notes consumers can preload every schema in `catalog.json` to resolve absolute URN references, and that `default` annotations do not mutate instances, so nothing should rely on defaults being filled in.
+
+### sc0.Q4
+schemas/README.md "Territory" divides contracts "by whose instances they govern, and that is the denominator", into three kinds.
+(1) The corpus's own files - documents this corpus is made of, checked on every change by `tools/check-all.sh`: `SC1` catalogue frontmatter, `SC2` standing context, `SC3` skill bodies, `SC6` entry bodies.
+(2) Process resources - documents a process writes, neutral of any one process, checked by their semantic validators and the schema suite: `SC4` Question, `SC5` ContextFrame.
+(3) Lifecycle documents - documents a project writes using a type this corpus defines (board, backlog, decision record, delta, system architecture), checked by nothing, and with no member: "none - gap".
+The README notes `SC2` and `SC3` are portable too, but sit in row 1 because their instances are documents of the kind this corpus is made of.
+
+### sc0.Q5
+A change to the existing contract `SC1`, not a new schema.
+schemas/README.md "Boundaries and composition": "one concern, one contract - catalogue frontmatter is one schema with per-category conditions, not a schema per layer."
+The schema already works that way: `catalog-entry.schema.json` carries an `allOf` of `if`/then per-category conditions, so the new layer's fields would be another conditional branch.
+A second schema would produce the "Two contracts for one concern" fault ("each authoritative, free to drift").
+If the new layer is a new category, `SC1`'s category list and `SC6`'s categories must also stay in agreement, which the README says is held together by a test.
+
+### sc0.Q6
+Yes.
+schemas/README.md "Territory", "Gaps the territory exposes", names: "the evaluation suites and their results, the human-evaluation suites, `catalog.json` itself, and `bundles/*.yaml`", each "checked only by hand-written code in a tool or not at all".
+One example: `bundles/*.yaml` (e.g. `bundles/workgraph-arc.yaml`).
+It also names lifecycle documents, including this corpus's own board and backlog, which are checked only by code in `tools/check-board.mjs`.
+
+### sc0.Q7
+schemas/README.md "Faults" lists the shapes: the unchecked contract (a schema no check validates against, so it "reads as enforced and holds nothing"); two contracts for one concern; the drifting pair (two contracts that must agree with nothing holding them together); the unmapped resource (a kind missing from `catalog.json`, `EntryBody` today); the contract ahead of its consumer (`SC4` and `SC5` today, per `A3`'s earned exposure); and the ungoverned file.
+So an unhealthy population would have many schemas that are unenforced, duplicated or out of step with each other, resource kinds a consumer cannot resolve, speculative contracts nobody uses, and relied-on structured files with no contract.
+Going by its own Faults list, the current population already shows three of these: unmapped (`EntryBody`), ahead of consumer (`SC4`, `SC5`), and ungoverned files (`catalog.json`, `bundles/*.yaml`, eval suites, lifecycle documents).
+
+### OBSERVATIONS
+- The `resources` array in schemas/catalog.json maps only `Question` and `ContextFrame`. The README names only `EntryBody` as unmapped (`entry-body.json` does use the `apiVersion: schemas.mission-kit/v1alpha1` / `kind: EntryBody` envelope). The `schemas` array tags the SC1/SC2/SC3 schemas `role: "resource"` too, but they are frontmatter contracts and do not use the envelope. That leaves it unclear whether they also count as "unmapped resources".
+- The "Lifecycle documents" row says "Checked by: none", but the same section says the corpus's own board and backlog are checked by `tools/check-board.mjs` (and `tools/check-all.sh` runs it as "the board and the backlog agree"). That is consistent only if "none" means "no contract", not "no check".
+- Q1: the convention only says where runtime state goes once a reconciler exists. It does not say where observed state goes before one exists.
+- The SC0 frontmatter `related` lists `[SC1, SC6, A2, A8, E4]` but leaves out `SC2`-`SC5`. Harmless, but uneven.
+- The README says `SC4`/`SC5` are "checked by their semantic validators, and the schema suite", and that suite runs in `check-all.sh`. So in practice the gate checks them like the row-1 contracts. The "Checked by" column separates them less cleanly than the table suggests.

@@ -1,0 +1,62 @@
+### charter-claims.V1
+No. `entities/E4-charter.md` says the scope claim is the set's vision, and the population "is never cut to fit what the set holds today". It goes on: "A claim no member yet fills is a gap - the distance between the population and its charter - and naming it is how gaps are found."
+On territory it also says: "a cell no member fills is kept and named as a gap, and removing it to match the population erases the gap it exposes."
+Stating the scope is not all a charter does. E4: "A charter holds the set's vision, and manages the set against it." The management part covers territory (where the population stands against the claim), boundaries (what enters and where everything else goes), composition, faults, a generated index, and changes made under "Changing a charter".
+E4 also lists conditional concerns that apply only when the property is present: kinds, member shape, placement, enforcement boundary, sub-sets, axiom alignment and probes.
+
+### charter-claims.V2
+No. `methods/README.md` (M0) territory row "Deciding what to keep | what lands, what is cut, and how the verdict is reached | none - gap".
+M0 says: "Deciding what to keep holds no procedure: RU1 and RU3 constrain what is kept and what a cut must record, but no method produces the verdict itself."
+RU1 (default-reject, honest yield) and RU3 (anti-amnesia deferral) are rules, not methods (`rules/README.md`, row "Deciding what to keep").
+GUESS: the nearest things in the corpus are the AR3 board, where the director selects among moves, and RU1's default-reject bar. Neither is a verdict-producing procedure.
+
+### charter-claims.V3
+`rules/README.md` (RU0) Territory has no rule entry at four moments: Entering, Committing to a design, Verifying, and Handing over (each "none - gap"). Only "Deciding what to keep" (RU1, RU3) and "Treating the record" (RU2, RU4) have members.
+Strictly, a missing rule entry is not the same as no rule applying. RU0's "Gaps tested" names traced guidance that does apply at Verifying: "claims record whether they were measured or inferred - stated in the vision and the standing context". That guidance appears in `AGENTS.md` section 5.1 "Measured or inferred".
+So at Entering, Committing to a design and Handing over no rule applies at all. For Handing over, RU0 says: "a rule that would leave a trace, and none exists".
+One piece of guidance with a trace but no rule entry: "claims record whether they were measured or inferred" (RU0, Verifying). Others RU0 names: "credentials are never committed", and commit hygiene (no tool attribution, one concern per commit; `AGENTS.md` section 6).
+
+### charter-claims.V4
+Per `practices/README.md` (PC0) Territory, no practice applies at Committing to a design, Verifying, Deciding what to keep, Treating the record, or Handing over (each "none - gap"). Only Entering has a member, PC1 author from exemplar.
+PC0 adds that Verifying and Treating the record have candidates in the standing context that leave no trace: "distrust corroboration you produced", "check the splits that favour you" and "read before you overwrite" (`AGENTS.md` sections 5.2 and 5.5). None of these has a practice entry.
+PC0 says Committing to a design, Deciding what to keep and Handing over "have no checked candidate yet". It also says a practice "is not minted to fill an empty moment".
+
+### charter-claims.V5
+Yes. `roles/README.md` (R0) Territory covers "every authority engineering work needs - within a unit of work ... and across units, where work is chosen, run as a flow and kept".
+There are three across-unit positions: Direction ("to choose which work is done, in what order, and to change course") is held by R4 director. Flow ("to seed, drive and repair a run of many units") is held by R1 architect, "which holds the driver lease". Curation ("to keep the durable knowledge and to delegate authority to the other roles") is held by R4 director.
+R0: "No position lacks a role today."
+
+### charter-claims.V6
+No, not as such. `domains/README.md` (D0) says "The set grows when the territory finds a gap. This set is not complete and is not expected to be". It also cites `product-data` (D7) as a domain that "entered this way".
+It would contradict D0 if the eighth domain broke D0's conditions. A new domain must close a real surface no domain resolves and carry "its own evidence contract". It must not be a mode-domain (e.g. verification) or an "indistinct pair" (see D0 Faults).
+D0 also says the unresolved-surface fault "records none today", and its infrastructure and incident cases were "tested and not found". So an eighth domain added now would need a newly found gap first.
+GUESS: without such a gap it would be Speculative Surface under A3 (`entities/E3-set.md`, README "Adding and retiring a layer"). That would breach the spirit of the charter, though no sentence forbids it.
+
+### charter-claims.V7
+No. `schemas/README.md` (SC0) Territory row "Lifecycle documents | documents a project writes using a type this corpus defines - a board, a backlog, a decision record, a delta, a system architecture | none | none - gap".
+SC0: "the artifact types carry prose templates, and this corpus's own board and backlog are checked only by code in tools/check-board.mjs, so neither here nor in a consuming project can a machine refuse a malformed instance." check-board.mjs is a hand-written tool for this corpus's own docs/BOARD.md and docs/BACKLOG.md, not a schema.
+Whether one should exist is NOT SETTLED. SC0 records the absence as a gap, and the root README "Checkable" property ("What can be verified by a script is verified by a script") leans toward yes. But AR0 says gaps are "recorded as gaps rather than filled speculatively", and AR1 and AR6 deliberately ship no template because "a fillable skeleton would ... produce empty headings".
+GUESS: a narrow contract for the machine-holdable part of board and backlog (the row and citation rules check-board.mjs already enforces) is the most defensible place to start. A full section-shape schema for every type would conflict with AR1 and AR6.
+
+### charter-claims.V8
+None. `work-types/README.md` (W0) "Gaps recorded": "Changing the knowledge corpus has no work-type for building, fixing, retiring or landing: every work-type in those groups excludes the knowledge domain, and W16 only captures new capital."
+I measured this from frontmatter: none of W1, W2, W3 (retire-or-hard-cut), W5, W6 or W7 includes knowledge-methodology in domainEligibility. W16 is pinned to knowledge-methodology but only captures new capital. W8, W9 and W12 can check the knowledge domain but do not change it.
+W0 says such work "is recorded against the gap, as a row in the project's backlog (AR5)" until a work-type is added.
+
+### charter-claims.V9
+Independent verification: who may check work, how, and what a gate must prove. `sets/README.md` (ST0) Territory names this as a "none - gap" concern gathering M1 (methods), W8 (work-types), K21 (skills), R3 (roles) and A8 (axioms), which is five layers.
+ST0 names two other cross-layer gaps: "treating history" (RU2, RU4, M9) and "deferring without forgetting" (RU1, RU3, AR5).
+ST0: "a set is drafted for one when readers in that situation are shown to miss guidance that applies."
+
+### charter-claims.V10
+None. `axioms/README.md` (A0): "A second gap: nothing protects a system against a hostile actor or untrusted input."
+A0 says the case is inside the territory ("a subverted system is not aligned with its own intent"). A2 "names manual configuration a security fault, but no axiom has protection against hostility as its mandate".
+It is "recorded, not filled". `axioms/A2-isomorphic-specification.md` line 30 is the nearest text: "Manual configuration is a security and fidelity fault".
+
+### OBSERVATIONS
+- `work-types/README.md` "Gaps recorded" has two adjacent sentences that contradict each other: "The domains set has not said which, and its answer settles this." and then "The domains charter's tie-break, applied to one such change, settles which."
+- `work-types/README.md` describes the Build group as changing "the organisation's own machinery and knowledge". Yet every Build work-type (W1, W2, W3, W5) excludes knowledge-methodology in its frontmatter, as W0's own gap note admits.
+- `artifacts/README.md` line 13 says each document type comes "each with a schema". This conflicts with `schemas/README.md`, which says lifecycle documents have no contract and only prose templates, and with AR1 and AR6, which ship no template at all.
+- The root `README.md` layer table lists `docs/` ("This corpus's own artifact instances"), but no `docs/` directory exists in this corpus copy. So check-board.mjs has nothing to check here.
+- E3 and E4 cite "thirteen charters". The current INDEX lists 16 layer charters (`<prefix>0`). This reads as history but is not marked as point-in-time.
+- V3 wording: RU0 says "no rule entry", which is not the same as "no rule applies", because standing-context guidance with a trace applies at Verifying.

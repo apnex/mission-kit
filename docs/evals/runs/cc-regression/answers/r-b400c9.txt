@@ -1,0 +1,37 @@
+### design-rulings.R1
+N and T have no declared boundary, so for deciding what binds your change they are one system with the traits of both (entities/E5-system.md, Boundaries: "for deciding what binds a change they are one system, with the traits of both"). Your change alters what N reaches into, so it owns that boundary. E5 says: "A change that alters what an undeclared neighbour reaches into owns that boundary: declaring and honouring the interface is inside its scope, not optional."
+So the change must declare an interface on T and get N onto it. Declaring the interface and leaving the bypass in place "separates nothing" (E5, Declared against honoured).
+The undeclared reach is an A3 fault (axioms/A3-sovereign-composition.md, Air-Gap Principle). Under A3 "Bypass as Signal", you first evaluate the interface against T's duty. Then either N moves onto the interface, or the interface is adjusted to what N legitimately needs (E5; A3).
+Your change also answers to N, as a consumer whose contract it alters (axioms/README.md: a change touches "any consumer whose contract it alters"). Both modules are inside the service anyway, so the change answers to the service's axioms too.
+
+### design-rulings.R2
+(1) No. E5 Boundaries: "The merge chains only through what a change can reach: if A reaches into B and B into C, a change to A is one system with C only when it alters something B takes from C." A change that only A uses alters nothing B takes from C, so C's axioms do not bind it. (A and B are still one system for this change, because of A's undeclared reach into B.)
+(2) Yes. The change alters something B takes from C, which is exactly the condition E5 states. So A's change is one system with C and answers to C's axioms. The undeclared reaches are A3 faults, and the change owns the boundaries it alters (E5: "declaring and honouring the interface is inside its scope, not optional").
+
+### design-rulings.R3
+Yes, the service is stateful. The record-keeping module passes T1's test ("write something it will later read back, and would anything act differently if that record were wrong?", traits/T1-stateful.md). E5 says "A system has every trait any part it contains has."
+Yes, A1 binds your change. A1 applies to stateful systems (axioms/A1-sovereign-state-transparency.md, applies-to: [stateful]). A change answers to "the system it modifies, every system containing it" (axioms/README.md), and the service contains the stateless module.
+E5 names the escape this rule closes: "a stateful system escapes its own axioms by being described as stateless modules, each of which passes on its own."
+How far the change must move toward A1 is set by its scope: what it touches, and closing gaps "as much as the touch allows" (axioms/README.md).
+
+### design-rulings.R4
+Yes, A1 binds the team (the organisation), not the tool. E5 says: "The organisation doing the work is a system." It also says: "A stateless product built by a team that keeps records it relies on has A1 binding the team's records, not the product."
+The CLI is stateless, so nothing makes it stateful, and A1 does not bind changes to it. A1 governs how the team keeps and relies on its records of the work. E5: "the organisation's axioms govern how the change is made and recorded, and are not one of the systems the change alters."
+The team is also multi-agent (T3: work crosses between independent actors), so A5, A6, A7, A10 and A13 bind the team too. A1 comes from the stateful trait only.
+
+### design-rulings.R5
+The split is not required. A0 limits the required part to what the change touches, closed "as much as the touch allows", which "means the part the change already alters to do its own work; restructuring beyond that, even inside the same component, is the encouraged improvement below, not a requirement" (axioms/README.md).
+The feature itself must not repeat or deepen the tangle: "new work never repeats a gap the axiom names". A3: "a change short of it adds none of them, and removes what it touches."
+You are expected to weigh the split, not merely permitted to do it. A3 "Composable by Default" encourages it: "within the unit's own duty, fix it, fracture it, re-cut its seams and recompose it so it makes better sense for every consumer downstream".
+If you do it, do it as a separate change. K's interface is unversioned, so the split alters all three consumers at once and "answers to all of them immediately" (E5). Adding versioning at the same time is "encouraged, not required; if it is not done, the gap is recorded."
+Either way, record the gap. If you do not do the split, record it with its evidence and a revival trigger (RU3). A0 says: "Passing it silently is what the axiom forbids."
+
+### design-rulings.R6
+All ten. E5: "A declared version range - any 2.x - is adoption in advance: a release within it alters every consumer bound by the range, whether or not the consumer's own files change."
+2.4 changes the behaviour that L's declared interface documents, so it is an interface change. Using only the declared interface does not protect the consumers. They compose with L through exactly that contract, and the contract changed (axioms/README.md: a change answers to "any system whose contract with it the change alters").
+So publishing 2.4 answers to all ten consumers' axioms. A consumer pinned to an exact version would not have adopted it, but none here is.
+
+### OBSERVATIONS
+- E5 has a tension that R2(1) exposes. The Boundaries text says a unit that depends on another across an undeclared boundary is "one system, with the traits of both", which seems to make an A-only change answer to B's axioms. But the chaining sentence says merges extend only "through what a change can reach". The corpus does not say clearly whether a change to A that alters nothing B exposes still carries B's traits. GUESS: yes, because the A-B merge is unconditional and only the extension to C is conditional.
+- Several prompts use "operated by several independent agents who hand work to each other". It is ambiguous whether that makes the service itself multi-agent (T3: work crosses actors "inside the system") or only the organisation (E5). It did not affect these answers.
+- In R5, it is unclear whether the A14/A0 "tangent discipline" test, which is written for adjacent components, also applies to restructuring inside the touched component itself. A0 calls that restructuring "the encouraged improvement below", which points to the same weighing. The text is not explicit.

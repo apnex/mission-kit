@@ -1,0 +1,52 @@
+### s0.Q1
+The corpus names this as a fault: style/README.md, Faults, "The forked enforcer. Two tools holding one rule, disagreeing at the edges. This is why a rule names exactly one."
+The Enforcement boundary section says "An enforced rule names exactly one tool" and "One rule, one tool, and that tool owns both the check and the fix, so a rule cannot be reported by one implementation and refused by another."
+The pairing is declared in each rule's `enforced-by` frontmatter and checked by tools/check-enforcers.sh: a rule naming a missing tool fails, and a per-rule tool (tools/s[0-9]*-*) that no rule claims fails as an "orphan tool".
+So the remedy is to collapse to one tool, the one named in the rule's `enforced-by`, and remove the other.
+NOT SETTLED: the corpus does not say how to choose which of the two tools survives.
+Caveat (measured, from reading check-enforcers.sh): it only matches tools by the `sN-` filename prefix, so a second checker not named that way would not be caught as an orphan.
+
+### s0.Q2
+No. style/README.md, "What earns an entry", needs all three conditions, and condition 2 says "Its absence produced a real defect in a real artifact, and a reader can be shown the difference. Aesthetic preference does not qualify."
+A preference for a heading capitalisation is aesthetic preference unless someone can point to a real artifact where its absence caused a defect.
+It would pass condition 1 (it governs form) and could pass condition 3 (holds across artifacts), but failing condition 2 is enough.
+If a real defect were shown, the charter adds "Prefer a rule a script can hold", so capitalisation, being a predicate over text, should come with a tool.
+
+### s0.Q3
+No, not by default. style/README.md, Enforcement boundary: "Style is gated on changed files rather than on the whole corpus. The corpus carries debt that predates the checkers, so gating the diff blocks new debt and converts the rest opportunistically as sections are edited."
+tools/check-all.sh runs the per-rule checkers (s6 s8 s10 s12 s13 s14) on changed markdown only: committed against `origin/main` (or `--since REF`), plus staged, unstaged and untracked files; with no changed markdown the style step passes.
+A whole-corpus run exists only by asking for it: `tools/check-all.sh --all`.
+Also, only the six tool-held rules are checked at all; the nine reading-only rules are not gated by any script.
+Non-style gates in check-all.sh (structure, enforcers, index, schemas, etc.) are not diff-scoped.
+
+### s0.Q4
+Held by a tool (from the generated "Held by" column of the style/README.md index and each rule's `enforced-by`; all six tool files exist in tools/):
+S6 one sentence per line - tools/s6-one-sentence-per-line.mjs; S8 code-block comments - tools/s8-code-block-comments.sh; S10 horizontal rule between sections - tools/s10-section-rules.sh; S12 code-block introducer own paragraph - tools/s12-code-block-introducer.sh; S13 plain ASCII - tools/s13-plain-ascii.sh; S14 hydration triggers state a condition - tools/s14-hydration-triggers.sh.
+Held only by reading: S1 prerequisites explicit, S2 runnable steps in code blocks, S3 producer/consumer doc split, S4 four-journey README, S5 no version pins in prose, S7 alternative paths in separate blocks, S9 action-first README, S11 identifiers in backticks, S15 message to a human.
+That is 6 tool-held and 9 reading-only, matching the charter's "nine of its fifteen rules are held only by reading" (Axiom alignment).
+The charter says the reading-only set is "a stated property of the layer, not a backlog".
+
+### s0.Q5
+There is none. style/README.md, Territory table: Code / comments - "none - gap", and "Code comments: no style rule; `S8` covers comments in code blocks inside documents, not in source files."
+It would go in the style layer (style/), in the Code medium row, comments grain - the charter claims "code - its names and its comments" as territory.
+It would still have to earn entry: govern form, show a real defect from its absence, hold across artifacts (What earns an entry), and preferably name one enforcing tool.
+The charter adds that such a rule "would be the second rule for a medium other than documents, which is the point at which the set's medium rules are due to be grouped as sub-sets" (Faults, "The unscoped medium").
+NOT SETTLED: the corpus does not specify the sub-set's name, location or structure.
+
+### s0.Q6
+No - it is a rule, not a style rule. style/README.md, Neighbours, Rules row: "Does it govern the artifact's form, or what the work must do or record? A revival trigger on a deferred item is a rule, though it is visible in text."
+It already exists as RU3 (rules/RU3-anti-amnesia-deferral.md), trace "every deferred, parked or cut item's record carries a revival trigger".
+Filing it in style would be the fault "The work rule in style clothing ... where an author applying rules will not look for it."
+
+### s0.Q7
+style/README.md, Faults, lists the unhealthy shapes: the forked enforcer (two tools holding one rule, disagreeing at the edges); the orphaned rule (nobody enforces and nobody reviews it, teaching readers the layer is decorative); the unscoped medium (rules for a non-document medium scattered among document rules with nothing grouping them); the work rule in style clothing (a rule about what work does or records, filed as style); the corpus-wide sweep (converting all legacy debt in one unreviewable commit).
+From "What earns an entry", an unhealthy population would also include rules justified by aesthetic preference with no real defect, or rules scoped to one document.
+The Axiom alignment section names current shortfalls: nine of fifteen rules held only by reading, and three claimed media (commit messages, code names, code comments) with no rule.
+GUESS: the charter does not call those shortfalls "unhealthy" in so many words; it says reading-only rules are a stated property, not a backlog.
+
+### OBSERVATIONS
+- tools/README.md (Style gating paragraph) says "Changed means committed against the base plus staged plus unstaged", but tools/check-all.sh also includes untracked files (`git ls-files --others`). The README is stale on this.
+- tools/check-all.sh repeats the comment line "Committed against the base, plus staged, plus unstaged." twice (an earlier version left in); tools/check-enforcers.sh likewise repeats the "six rules came to be enforced by one file holding six duties" sentence in two comments.
+- tools/check-enforcers.sh finds orphan tools only by the `tools/s[0-9]*-*` filename glob, so a second checker for a rule with another name would not be flagged; the forked-enforcer guard is narrower than the charter's wording implies.
+- The charter says a tool "owns both the check and the fix"; I did not verify that each of the six tools has a fix mode (NOT-CLAIMED). check-all.sh calls only the .mjs tool with `--check`.
+- style/README.md says reading-only rules are "not a backlog", while its Axiom alignment section frames the same nine as falling short of A4; a mild tension, not a contradiction.

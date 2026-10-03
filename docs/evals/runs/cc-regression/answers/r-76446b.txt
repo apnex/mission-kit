@@ -1,0 +1,62 @@
+### sc0.Q1
+Not in `spec`: schemas/README.md (SC0), "Resource convention", says "Runtime observations do not belong in `spec`. A kind only gains `status` when a real reconciler needs observed state."
+So the designated home is a top-level `status` block, and only once a real reconciler needs it.
+No kind has one today: question.schema.json and context-frame.schema.json are `additionalProperties: false` with only apiVersion/kind/metadata/spec, so a `status` field would currently fail validation.
+SC5 confirms the stance for ContextFrame: "observed state remain[s] outside the resource."
+If there is no reconciler, the observation belongs outside the resource, for example in whatever process record sits beside it (SC0 "Composition").
+NOT SETTLED: whether `metadata.annotations` may hold it as a stopgap. The metadata schema only says annotations are "Non-identifying string metadata that is not respondent-visible specification".
+GUESS: annotations are not the intended place, because that would get around the rule that `status` is added only for a reconciler.
+
+### sc0.Q2
+No.
+SC4 says `Question` "contains no Survey, round, Director, interpretation, or outcome-axis semantics" and "a composing process owns placement such as round and ordinal."
+SC0 "Composition" says a process "must not inject process fields into the Question resource", and its example `SurveyQuestion` wraps a complete Question under `spec.question` with `spec.survey.round: 1` beside it.
+SC0 gives the reason: "This wrapper boundary keeps the neutral resource closed and prevents Survey evolution from changing the Question contract."
+The schema enforces this mechanically: `spec` and the root are `additionalProperties: false` (question.schema.json).
+
+### sc0.Q3
+Structural validation (JSON Schema) comes first, then semantic validation (the per-kind `*.validator.mjs`).
+SC0 "Validation" gives the reason: "each semantic validator assumes the shape the schema guarantees - it reads fields without first checking they exist."
+JSON Schema checks structure, and the semantic validators check invariants that "JSON Schema Draft 2020-12 cannot express" (unique option IDs, cardinality bounds, duplicate scope/givens/terms).
+To resolve absolute URN `$ref`s without importing Survey, a consumer can first preload every schema listed in `catalog.json`.
+`catalog.json` maps each resource's apiVersion/kind to its `schemaId` and `semanticValidator`.
+
+### sc0.Q4
+SC0 "Territory" divides the contracts "by whose instances they govern":
+(1) The corpus's own files: documents the corpus is made of, checked by the gate `tools/check-all.sh`. Members: SC1 catalogue frontmatter, SC2 standing context, SC3 skill bodies, SC6 entry bodies.
+(2) Process resources: documents a process writes, neutral of any one process, checked by their semantic validators and the schema suite. Members: SC4 Question, SC5 ContextFrame.
+(3) Lifecycle documents: documents a project writes using a type the corpus defines (board, backlog, decision record, delta, system architecture). Checker: none. Members: "none - gap".
+SC0 notes that SC2 and SC3 are portable too, but their instances are corpus-kind documents, so they sit in row 1.
+SC0 is the charter and is not one of the contracts.
+
+### sc0.Q5
+It is a change to the existing contract, SC1 (catalog-entry.schema.json), not a new schema.
+SC0 "Boundaries and composition" says: "one concern, one contract - catalogue frontmatter is one schema with per-category conditions, not a schema per layer."
+A second frontmatter schema would be the fault SC0 names "Two contracts for one concern ... free to drift".
+In practice: add the new category to the `category` enum and a prefix to the `id` pattern, and add the two properties (the root is `additionalProperties: false`, so they must be declared).
+Then add an `allOf` if/then that requires them for that category, as already done for axiom `applies-to`, component `sovereignty` and rule `trace`.
+SC0 also says SC6's categories and SC1's category list "are held together by a test", so expect to touch SC6's declaration (entry-body.json) too if the layer's body shape should be governed. SC6 says an absent category is "ungoverned by design".
+
+### sc0.Q6
+Yes.
+SC0 "Territory" lists "the evaluation suites and their results, the human-evaluation suites, `catalog.json` itself, and `bundles/*.yaml`" as structured files no contract governs.
+It also lists lifecycle documents: the corpus's own board and backlog are "checked only by code in `tools/check-board.mjs`".
+Example: `schemas/catalog.json`, which every consumer preloads, has no schema of its own.
+
+### sc0.Q7
+SC0 "Faults" describes it:
+- unchecked contracts, which read as enforced but no check validates against them;
+- two contracts for one concern;
+- drifting pairs that must agree with nothing holding them together;
+- unmapped resources missing from `catalog.json` ("`EntryBody` is one today");
+- contracts ahead of their consumer, maintained on speculation ("`SC4` and `SC5` today");
+- ungoverned files whose "shape is whatever the last writer chose".
+SC0 "Boundaries" adds one more sign: tools re-implementing a contract by hand (`check-standing-context.sh` vs SC2), which can drift from it.
+Taken together, the current population already shows three of these faults (unmapped EntryBody, SC4/SC5 with no consumer, several ungoverned files), plus an empty Territory row.
+
+### OBSERVATIONS
+- SC0 says the gate checks only row 1 (SC1/2/3/6) and puts SC4/SC5 under "the schema suite". But tools/check-all.sh line 70 runs `npm test`, and package.json's `test` script includes the question and context-frame tests, so the gate exercises SC4/SC5 as well. The "Checked by" column understates this.
+- The EntryBody resource (entry-body.json, `kind: EntryBody`) uses the resource envelope but is absent from `catalog.json` "resources". SC0 admits this as a fault. Its schema is listed under "schemas", and the entry-body test resolves it from there.
+- SC1-SC6 all carry `related: []`, while SC0 lists related entries. SC1 does not point to SC6 even though SC0 says they must agree.
+- SC1-SC3 and SC5-SC6 entry bodies begin with a lowercase sentence fragment repeating the title (for example "the frontmatter every catalogue entry must satisfy."). This looks like generated text.
+- Q1 is partly unsettled: the text says where observed state does not go (`spec`) and where it would go (`status`, once there is a reconciler), but not what to do in between. It is also silent on whether annotations are acceptable.

@@ -1,0 +1,55 @@
+### layer-charters.H1
+Rules (`rules/`, charter RU0).
+methods/README.md (M0) Placement says to ask in order: axiom, procedure, style, rule, practice. It then uses this exact case: "*credentials are never committed* binds an action in a situation, and is a rule". It is not an axiom because "The first question is about a system's properties, not about how universal a ban sounds".
+It produces nothing of its own and does not govern an artifact's form. It does leave a trace a check could test: the commit history shows whether a credential was committed.
+rules/README.md lists it under "Gaps tested" at the moment *Treating the record*: "credentials are never committed - `M0`'s own example of a rule". So no RU entry holds it yet.
+An entry would have to declare a `trace` in frontmatter (rules/README.md "Member shape"; the SC1 schema requires `trace` for RU1+).
+
+### layer-charters.H2
+Practices (`practices/`, charter PC0).
+Under M0's order it is not an axiom. It produces no result of its own, so it is not a procedure. It does not govern an artifact's form, so it is not style. Re-reading a request leaves nothing in the record that a check could test, so it is not a rule. That leaves "Otherwise a practice" (methods/README.md, Placement step 5).
+PC0 defines a practice as guidance that "leaves no trace: nothing in the record afterwards shows whether it was followed".
+Placement is not admission, though. PC0 "Member shape" says a practice "is admitted when a difference in the work has been observed", so it needs observed evidence before it gets an entry.
+GUESS: it would sit at the *Verifying* moment. Possibly it belongs at *Handing over* instead; the corpus does not place this case (NOT SETTLED).
+
+### layer-charters.H3
+Methods (`methods/`). Following it produces a result of its own, a verdict, which is M0 Placement question 2.
+An entry already covers it: M1, "Triangulated review - minimum 4 independent inputs" (methods/M1-triangulated-review.md). It says: "require **at least four genuinely independent inputs** before reaching a verdict". Its trigger is "You are reviewing a patch or design that ships to production or upstream".
+M0 puts M1 at the *Verifying* moment and calls it the "one primitive" carrying the set.
+Per M0 "What earns an entry" ("Prefer strengthening an existing entry to adding a neighbour"), the guidance should go into M1 rather than become a new entry.
+
+### layer-charters.H4
+Style (`style/`, charter S0). It governs how an artifact is written, its form, whatever the work was. That is M0 Placement question 3, and S0 says "A style rule governs an artifact's form, and is judged by reading the output".
+It is checked on the finished text, not by watching the work, which is how S0's neighbour test separates style from rules and practices.
+No existing S entry covers heading case. S0's territory places it in the Document medium (GUESS: at the "section" grain).
+Admission needs more than placement. S0 "What earns an entry" requires that "Its absence produced a real defect in a real artifact" ("Aesthetic preference does not qualify") and that it holds across artifacts.
+S0 also prefers a rule a script can hold, and heading case can be stated as a predicate over the text.
+
+### layer-charters.H5
+A rule must declare `trace` in frontmatter: "the observable in the record that shows it was kept or broken, required by the catalogue contract" (rules/README.md, Member shape). In the SC1 schema, `trace` is required when category is `rule` and the id matches `^RU[1-9][0-9]*$`, with minLength 20.
+A practice "declares no `trace`; if it acquires one, it is a rule and moves" (practices/README.md).
+Optionally, a rule may name an enforcer in `enforced-by`, which must match `^tools/`. `tools/check-enforcers.sh` checks that the named tool exists. The schema's `trace` description says "Naming a tool that checks it is enforced-by's job, and is optional".
+The other common fields (`supersedes`, `related`) are optional for both layers.
+
+### layer-charters.H6
+From methods/README.md (M0) Placement. Ask in order and stop at the first yes:
+1. Is it a limit a system is built toward, in force for every system with the traits it names? Then it is an axiom.
+2. Does following it produce a result of its own (a verdict, an artifact, a record)? Then it is a procedure, a method.
+3. Does it govern how an artifact is written, its form, whatever the work was? Then it is style.
+4. Does it leave a trace in the record of the work that a check could test? Then it is a rule.
+5. Otherwise it is a practice.
+RU0, PC0 and S0 all cite this one statement rather than restating their own.
+
+### layer-charters.H7
+Handing work in progress to another agent or a later session. M0 says this "has no procedure at all" (methods/README.md). RU0's *Handing over* row is "none - gap", with the untaken candidate "a handover record names what is unfinished ... none exists". PC0's *Handing over* row is also "none - gap".
+M10 covers handing over only to a human of limited context, not to an agent or a later session.
+M0 also says this is where the gap bites hardest: "a lone agent hands over to its own next session".
+Read at the level of whole moments, no moment is empty in all three tables. Every moment has at least one member somewhere: *Deciding what to keep* has RU1 and RU3, and *Handing over* has M10. So the fully empty gap is only the agent-or-session part of handing over.
+
+### OBSERVATIONS
+- H7: none of the three territory tables shows a moment that is empty in all three. The fully ungoverned gap shows up only inside M0's prose about the *Handing over* row (agent or session handover), not as a row of its own.
+- M1 conflicts with itself. Its title and Rule say "minimum 4" and "at least four", but its Rationale says "The number isn't sacred (sometimes 3 is enough...)" and "below 3 the failure mode is predictable". That implies a floor of 3, not 4.
+- M1's and PC1's bodies are headed "## Rule", though M1 is a method and PC1 is a practice. This blurs the layer vocabulary the charters work hard to separate.
+- Methods and practices both claim *Entering* as "how to begin in an unfamiliar collection" (M8 in methods, PC1 in practices). This is consistent with the placement split, but the wording is nearly identical.
+- methods/README.md has no `---` separator line before "## Faults" (the "---" is attached directly after a paragraph line), unlike the other sections. This is minor.
+- The schema's `enforced-by` description talks about "this rule" and is used by style entries as well as `rules/`. "Rule" therefore means two things: a style rule and an RU rule.
