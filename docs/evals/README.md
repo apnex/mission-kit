@@ -54,3 +54,29 @@ The scorer is independent of the author of the change and blind to version; it i
 
 The `R0`, `D0`, `M0` and `A0` charter evaluations in `docs/audits/` are not yet suites.\
 Their keys were written for the charters as they stood, and at least one answer is now false - `D0`'s product-data probe predates `D7` - so migrating them means re-deriving each key, not copying it.
+
+---
+
+## The regression rule
+
+Decided before any comparison is run, so it cannot be chosen after the numbers are seen.
+
+`compare` runs at tolerance 0, so every drop is reported.\
+A reported drop is then classified by reading the scorer's reasons:
+
+- **A regression** if the drop traces to text the change altered, or to a reading the change made possible. The change is corrected before it lands.
+- **Noise** only if the text the probe depends on is unchanged and the scorer's reasons are hedges of a kind the baseline already shows. With three readers, one reader moving one point moves a mean by 0.33.
+
+Every classification is recorded with the run, so a reader can check it.
+
+---
+
+## Key reviews
+
+Every suite's keys are audited by a fresh reader before first use, and corrected before any reader runs.
+
+| Suite | Review found | Corrected |
+|---|---|---|
+| `boundary-bypass` | the preamble ruled out one of the ruling's two outcomes; B3 dropped "adjust the interface"; B4 cited `C0`'s adjustment rule, which governs registered components and is itself an open question; "recorded" stated where the ruling says nothing | all four |
+| `work-layers` | the questions copied their target entries' wording, so they would measure text search; the director's `B24` wording had leaked into two probes; L6 quoted a sentence `W0` does not contain | questions reworded in plain terms; leaked wording removed; L6 keyed to `W0`'s actual text |
+

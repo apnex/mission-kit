@@ -1,0 +1,33 @@
+{
+  "id": "boundary-bypass",
+  "mode": "corpus",
+  "group": "bypass",
+  "source": "director ruling under B36 (bypassed interface)",
+  "preamble": "In these questions, T is a component inside a service. Other components of the same service consume it. Unless a question says otherwise, the change it describes does not alter T's interface or its behaviour.",
+  "probes": [
+    {
+      "id": "B1",
+      "question": "Component O ignores T's declared interface and calls T's internal functions directly. You change T's internals. Does your change answer to O's axioms? What does the corpus ask about O's bypass?",
+      "key": "Yes. A boundary separates two units only where it is declared and honoured; O reaching past the interface keeps T and O one system for deciding what a change answers to. The bypass is an A3 fault and also a signal: it triggers an evaluation of T's interface against T's duty and vision, ending in O being rerouted onto the interface or the interface being adjusted.",
+      "rubric": "2 for yes with the declared-and-honoured reason, plus treating the bypass as a signal that triggers an interface evaluation (not only a fault in O). 1 for yes with only one of those, or for the signal without the binding. 0 for 'no - the interface is declared, so O is separate'."
+    },
+    {
+      "id": "B2",
+      "question": "Component P uses T's declared interface. Component O bypasses it and calls T's internals. You change T's internals. Which of P and O does your change answer to?",
+      "key": "O, not P. O's bypass keeps O and T one system for binding; P composes through a declared contract the change leaves unchanged, so P is not altered and its axioms do not bind.",
+      "rubric": "2 for O-not-P with both reasons. 1 for the right split without the reasons, or one reason. 0 for both or neither."
+    },
+    {
+      "id": "B3",
+      "question": "T previously had no declared interface and O reached into it. You now declare an interface for T, but leave O's calls exactly as they were. Are T and O now two separate systems for deciding what a change answers to?",
+      "key": "No. A boundary separates two units only where declared and honoured, and O still bypasses it, so they remain one system for binding. The bypass is a signal: evaluate the interface against T's duty and vision, then reroute O onto it or adjust the interface; until one lands, the bypass remains an A3 fault.",
+      "rubric": "2 for no, the honoured reason, and reroute-or-adjust (recording is optional credit). 1 for no with only one of the others. 0 for 'yes, declaring it separates them'."
+    },
+    {
+      "id": "B4",
+      "question": "A check detects that several components bypass T's declared interface to reach T's internals. What does the corpus ask you to do?",
+      "key": "Treat the bypass as a signal, not only as faults in the consumers: evaluate T's interface against T's duty and vision. Either the consumers are wrong and are rerouted onto the interface, or the interface falls short of T's duty - the consumers have an unsignalled change request - and the interface is adjusted. An adjusted interface alters its consumers, so their axioms bind that change.",
+      "rubric": "2 for the interface evaluation against duty and vision with both outcomes. 1 for only 'fix the consumers' grounded in A3, or only 'adjust the interface'. 0 for no action, or for forking or replacing T. Splitting T because the evaluation finds a second duty counts as adjusting the interface."
+    }
+  ]
+}
