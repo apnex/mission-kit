@@ -46,7 +46,9 @@ A before-and-after run passes two `--corpus` options to one `prepare`, so both v
 ## What a result can and cannot claim
 
 Readers and scorers are agents of one model family unless a run states otherwise, so agreement across them is one measurement family, not several.\
-The scorer is independent of the author of the change and blind to version; it is not independent of the key, which the author wrote and a fresh reader reviewed.
+The scorer is independent of the author of the change and blind to version; it is not independent of the key, which the author wrote and a fresh reader reviewed.\
+**Every reader also receives the harness's always-on context** - the workspace `AGENTS.md` and the ledger fetched from `main` - whatever corpus it is handed (`B40`).\
+Comparisons between two corpora are fair, since both arms carry it; a claim that a corpus helps against no corpus is confounded by it, and an after-run is taken before its change reaches `main`, or the control receives the change through the ledger.
 
 ---
 

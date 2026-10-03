@@ -1,0 +1,111 @@
+### explain.X1
+Subject: Decision needed by Thursday - message queue library, before the release
+
+I need you to pick one of three options by Thursday. Thursday is the latest date that still lets a move be finished and tested before the release in nine days.
+
+The problem: our service has crashed twice in the last month. Both crashes are in the logs, and both happened inside the message queue library we use (Q1), in its code for reconnecting after a network connection drops. An alternative library, Q2, does not have that reconnection code, so that particular crash cannot happen with it. Moving to Q2 takes about three days of work.
+
+The one thing nobody knows: whether Q2 can handle our service's load. Its documentation says its speed is comparable to Q1, but nobody has measured it on our service. That is a claim, not a result.
+
+The options:
+
+1. Keep Q1. No work and no new risk from a change. The reconnection crash stays, and we should expect it to keep happening at roughly the rate we have seen, including around the release.
+
+2. Move now. The known crash goes away before the release. The cost is three days of work and the change landing about a week before release, so if Q2 turns out to be too slow, we find out late. I would measure Q2's speed as part of testing, before release, so we would know before shipping - and if it falls short, we can stay on Q1 for the release.
+
+3. Move after the release. The release ships on the library we already know, crash included. The change then happens without release pressure, and there is time to measure Q2 properly first.
+
+My recommendation is option 2, provided you are comfortable with a fallback: if my speed test shows a problem, we abandon the move and release on Q1. Without that fallback, I would choose option 3. Keeping Q1 indefinitely leaves a known, recurring crash in place.
+
+This is your call because it is a trade between release risk and stability, and you own the release. I will do the work for whichever option you choose. A one-line reply with 1, 2 or 3 is enough.
+
+CORPUS-SOURCES: none
+
+### explain.X2
+Subject: Payment client retries - merged, not deployed, two checks outstanding before it is safe to deploy
+
+Short version: the retry change is written and merged, but it is not ready to switch on. Two things I have not checked could lead to a customer being charged twice.
+
+Done:
+- Automatic retries for the payment client are merged.
+- Its tests pass in continuous integration.
+
+Not done:
+- It is not deployed anywhere, including staging.
+- I have not checked whether staging's configuration turns retries on. So I cannot yet say what will happen when it reaches staging.
+- I have not checked which payment calls are safe to repeat. This is the important one. If a call that is not safe to repeat gets retried - for example, a charge that actually went through but whose reply was lost - the customer could be charged twice. The passing tests do not tell us anything about this.
+
+Next steps, in order:
+1. Go through each payment call and decide whether it is safe to repeat. Retries should be allowed only on the ones that are.
+2. Check staging's configuration so we know whether retries will be on when it is deployed there.
+3. Only then deploy to staging.
+
+Separately: while working on this I found an unrelated bug in request logging. I recorded it in the team backlog and did not fix it. It does not block this work.
+
+I would like you to know about the double-charge risk before anyone deploys this. If you want, I can make the calls safe to repeat the next thing I do.
+
+CORPUS-SOURCES: none
+
+### explain.X3
+Subject: Flaky test - I recommend a one-hour experiment before we decide whether to block the release
+
+You need to decide whether to block the release. My suggestion: don't decide yet. There is a one-hour experiment that should answer the question, and the release is two days away, so we have time to run it.
+
+What we know:
+- The test fails about once in every thirty runs.
+- It never fails when test jobs run one at a time. It fails only when two jobs run at the same moment.
+- The code under test takes a lock. But one path releases the lock before it writes, which means another job could get in between. I found this by reading the code; I have not seen it actually happen.
+- I also read the test's setup. Every job uses the same fixed temporary directory, so two jobs running at the same moment share it and can interfere with each other's files.
+
+Two explanations fit those facts, and I can't tell them apart by reasoning:
+A. A real bug in the code: the early lock release lets two writes collide. If this is it, a write can be lost in production.
+B. A bug in the test only: the two jobs collide in the shared directory. If this is it, the product is fine and only the test needs fixing.
+
+It could also be both.
+
+The experiment: run the jobs at the same moment about two hundred times, but give each job its own directory. That removes explanation B and leaves A. It takes about an hour.
+- If it still fails (at our current rate we would expect around six or seven failures in two hundred runs), the race in the code is real. I would block the release, because a lost write is data loss.
+- If it doesn't fail at all, the shared directory is the likely cause. At a 1-in-30 rate, getting zero failures in two hundred runs by luck would be very unlikely, roughly 1 in 900. In that case I would not block. We should fix the test, and still look at the early lock release separately, because it looks wrong even if this test isn't catching it.
+
+One caveat: giving each job its own directory also changes timing a little, so a clean run is strong evidence, not proof.
+
+If you'd rather not wait an hour, the cautious choice is to block, because the cost of being wrong is lost writes. I can start the experiment now if you agree.
+
+CORPUS-SOURCES: none
+
+### explain.X4
+Subject: Before you add the new payment event type - how we avoid charging customers twice
+
+Welcome. Before you change the payment event code, there is one idea you need: idempotency. It is what keeps a customer from being charged twice.
+
+The problem
+Our system can deliver the same event to us more than once. This isn't a bug we can fix; the systems that send us events can retry, for example when they didn't get our reply in time. If we process an event that charges a customer and then it arrives again, processing it again would charge them a second time.
+
+The idea
+An operation is idempotent if doing it twice has the same effect as doing it once. Pressing a lift call button is idempotent: pressing it five times still calls one lift. Charging a card is not idempotent by itself - every charge takes money. So we make the event handling idempotent by remembering what we have already done.
+
+How our code does it
+Every event carries a unique id. When we process an event:
+1. Check whether its id is already recorded. If it is, we have already handled this event, so we skip it.
+2. If not, make the charge and record the id - in the same database transaction.
+
+The "same transaction" part matters. A transaction means both steps happen or neither does. If we recorded the id separately, a crash between the two steps would leave either a charge with no record (so a redelivery charges again) or a record with no charge (so the customer is never charged). Keeping them together rules out both.
+
+What this means for your new event type
+Two rules:
+
+1. Send it through the same check. Don't write a separate path that charges without checking and recording the id. Any path that skips the check brings back double charging.
+
+2. Its id must be the same every time that event is delivered. The check only works if a redelivered event has the same id as the original. So the id has to come from the event itself, as set by whoever sent it. Don't make one up when it arrives - for example a fresh random id, or the time we received it - because a redelivery would get a different id, pass the check, and charge again.
+
+A good test for your change: deliver the same event twice and confirm the customer is charged exactly once.
+
+If you are unsure where the new event's id comes from, ask before writing the code - that is the part most likely to go wrong.
+
+CORPUS-SOURCES: none
+
+### OBSERVATIONS
+The corpus at /tmp/opencode/evalc/c-8a9983aa contains only INDEX.md, which states "This corpus holds no entries." I listed the directory to check that the index and the directory agree; they do (INDEX.md is the only file). So no corpus entry shaped any answer, and every CORPUS-SOURCES line is "none".
+X1: the prompt does not give the crashes' impact on users or today's date, so the message names neither. The recommendation (move now, with fallback to Q1 if the speed test fails) is my own judgment, not a given fact.
+X3: the "about six or seven failures in two hundred runs" and "roughly 1 in 900" figures are my calculations from the stated 1-in-30 rate ((29/30)^200 is about 0.0011). They assume the failure rate under concurrency stays the same once directories are separated.
+X4: the prompt does not say where event ids come from, so the message tells the reader to get the id from the sender's event data and to ask if unsure, rather than naming a specific field.

@@ -1,0 +1,25 @@
+You are an engineering agent who has just been given a knowledge corpus and nothing else. Read only files under /tmp/opencode/evalc/c-86aa6cad. Its entry point is INDEX.md; open whatever you need.
+Each question asks you to write a message to a human. Your answer to each question is the message itself - exactly the text the human would receive, with nothing before it. You may consult the corpus first for guidance on how to communicate. Do not put citations or corpus IDs in the message unless the human would need them. Do not start any line of the message with ###. After each message, on its own line, write CORPUS-SOURCES: followed by the corpus entries, if any, that shaped it.
+
+Do not edit any file except the one answer file named at the end. Do not run git.
+
+The human receiving each message has not followed the work, has limited time and context, and may be reading it cold - with no memory of earlier conversations. They are competent, but are not a specialist in the system concerned unless a question says otherwise.
+
+Questions:
+
+### explain.X1
+Decision. You investigated whether a service should move its message queue from library Q1 to library Q2, and you will do the work for whichever option is chosen. Facts: the service crashed twice in the last month inside Q1's code for reconnecting after a dropped connection - both crashes are in the logs; Q2 has no such code; moving takes about three days; a product release is due in nine days; you need an answer by Thursday so a move could be finished and tested before the release; nobody has measured Q2's throughput for this service, though its documentation claims it is comparable. The options are: keep Q1; move now; move after the release. The person who must decide is the product lead, who owns the release and does not know the service's internals. Write the message asking them to decide.
+
+### explain.X2
+Status update. Your task was to add automatic retries to a payment client. Facts: the retry change is merged; its tests pass in continuous integration; it is not deployed anywhere yet; you have not checked whether the staging environment's configuration turns retries on; if retries are on for a call that is not safe to repeat, a customer could be charged twice, and you have not checked which calls are safe; while working you found an unrelated bug in request logging, which you recorded in the team's backlog but did not fix. The person reading is your manager, back from two weeks away. Write the update.
+
+### explain.X3
+Reasoning through a complex topic. A test fails about once in thirty runs. Facts: it never fails when jobs run one at a time, only when two run at the same moment; the code it tests takes a lock, but one path releases the lock before it writes; you read the test's setup code, and it uses one fixed temporary directory for every job; two explanations fit - a real race in the code, or the jobs colliding in that shared directory; the experiment that would separate them - running the jobs concurrently with separate directories, about two hundred times - takes an hour; the release is in two days; if the race is real, a write can be lost. The reader is a teammate who must decide whether to block the release. Write the message.
+
+### explain.X4
+Teaching a concept. A new teammate must change the code that handles incoming payment events, adding a new event type, and has never met the idea of idempotency. Facts: the system can deliver the same event twice; processing an event twice would charge a customer twice; the code prevents this by recording each event's unique id in the same database transaction as the charge, and skipping any id already recorded; a new event type must go through the same check, and must have an id that is the same every time that event is delivered. Write the message that teaches them the concept well enough to make the change safely.
+
+Write your answers to this file, and nothing else:
+  /home/apnex/taceng/mission-kit/docs/evals/runs/2026-10-03-explain-baseline/answers/r-6392ed.txt
+Put each answer under its heading exactly as given above (a line starting with ###), then a final heading `### OBSERVATIONS` noting anything ambiguous, inconsistent or wrong you met, or "none".
+When the file is written, reply with only the word DONE.

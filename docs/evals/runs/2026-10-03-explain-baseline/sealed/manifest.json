@@ -1,0 +1,91 @@
+{
+  "created": "2026-10-03T04:01:16.506Z",
+  "suites": [
+    "explain"
+  ],
+  "readers": 3,
+  "corpora": [
+    {
+      "label": "head",
+      "path": "/tmp/opencode/evalc/c-86aa6cad"
+    },
+    {
+      "label": "bare",
+      "path": "/tmp/opencode/evalc/c-8a9983aa"
+    }
+  ],
+  "prompts": [
+    {
+      "pid": "r-80317a",
+      "label": "head",
+      "group": "explain",
+      "reader": 1,
+      "probes": [
+        "explain.X1",
+        "explain.X2",
+        "explain.X3",
+        "explain.X4"
+      ]
+    },
+    {
+      "pid": "r-fc3095",
+      "label": "head",
+      "group": "explain",
+      "reader": 2,
+      "probes": [
+        "explain.X1",
+        "explain.X2",
+        "explain.X3",
+        "explain.X4"
+      ]
+    },
+    {
+      "pid": "r-6392ed",
+      "label": "head",
+      "group": "explain",
+      "reader": 3,
+      "probes": [
+        "explain.X1",
+        "explain.X2",
+        "explain.X3",
+        "explain.X4"
+      ]
+    },
+    {
+      "pid": "r-c36f34",
+      "label": "bare",
+      "group": "explain",
+      "reader": 1,
+      "probes": [
+        "explain.X1",
+        "explain.X2",
+        "explain.X3",
+        "explain.X4"
+      ]
+    },
+    {
+      "pid": "r-fbe6b0",
+      "label": "bare",
+      "group": "explain",
+      "reader": 2,
+      "probes": [
+        "explain.X1",
+        "explain.X2",
+        "explain.X3",
+        "explain.X4"
+      ]
+    },
+    {
+      "pid": "r-d7c81c",
+      "label": "bare",
+      "group": "explain",
+      "reader": 3,
+      "probes": [
+        "explain.X1",
+        "explain.X2",
+        "explain.X3",
+        "explain.X4"
+      ]
+    }
+  ]
+}
