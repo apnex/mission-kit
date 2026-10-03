@@ -135,15 +135,20 @@ const headingOf = (dir) => dir[0].toUpperCase() + dir.slice(1);
 
 // Status is emitted only where some row is not active. Nearly every entry is, so a column
 // restating it is ballast in a file that loads into every session.
-function table(entries, linkFrom) {
+// Enforcement is emitted only in a layer's own table, and only where some member names an
+// enforcer. The member's enforced-by is the one declaration; this column is its reverse view, so
+// a charter can say which rules a script holds without keeping a second list that drifts. The
+// ledger omits it: it loads into every session and routes by condition, not by enforcement.
+function table(entries, linkFrom, { enforcement = false } = {}) {
 	const withStatus = entries.some((e) => e.status !== 'active');
-	const head = withStatus
-		? ['| ID | Title | Status | Hydrate when |', '|---|---|---|---|']
-		: ['| ID | Title | Hydrate when |', '|---|---|---|'];
+	const withEnforcer = enforcement && entries.some((e) => e['enforced-by']);
+	const cols = ['ID', 'Title', ...(withStatus ? ['Status'] : []), ...(withEnforcer ? ['Held by'] : []), 'Hydrate when'];
+	const head = [`| ${cols.join(' | ')} |`, `|${cols.map(() => '---').join('|')}|`];
 	const rows = entries.map((e) => {
 		const href = linkFrom ? path.relative(linkFrom, e.rel) : e.rel;
 		const cells = [`[${e.id}](${href})`, cell(e.title)];
 		if (withStatus) cells.push(cell(e.status));
+		if (withEnforcer) cells.push(e['enforced-by'] ? `\`${cell(e['enforced-by'])}\`` : (/0$/.test(e.id) ? '' : 'reading'));
 		cells.push(cell(e['hydrate-when']));
 		return `| ${cells.join(' | ')} |`;
 	});
@@ -162,7 +167,7 @@ function ledgerSections(entries) {
 }
 
 function categoryTable(entries, dir) {
-	return table(ordered(entries.filter((e) => e.dir === dir)), dir);
+	return table(ordered(entries.filter((e) => e.dir === dir)), dir, { enforcement: true });
 }
 
 // Replace the delimited region, or report that the file does not opt in.
