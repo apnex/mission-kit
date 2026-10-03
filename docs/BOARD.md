@@ -46,7 +46,7 @@ M5  bring the charters to E4                     4 of 13 applied, 9 remain      
              +- Delta-2                          withdrawn - needs a real metric  PARKED
              +- communication limits             understand, decide: confirmed
              +- moves                            eight, provisional
-             +- human evaluation tool            building now                     <- HERE
+             +- human evaluation tool            built; first session waiting for the director  <- HERE
 ```
 
 **To return to, in order:** the human evaluation tool, then Delta-2 revised from its results; ratify Delta-1; the five remaining `B36` questions; the nine remaining charters.

@@ -360,3 +360,23 @@ Suites and runs live in [`docs/evals/`](../docs/evals/README.md).
 
 `eval.test.sh` holds its behaviour: no version label reaches a reader or scorer, an unscored or doubly-scored answer refuses the result, and a regression fails the comparison.\
 Each refusal was mutation-tested - removed from the tool to confirm the test goes red.
+
+---
+
+## eval-human.mjs
+
+Measures a communication change on the human it is for, by asking them to pick between two versions of a message.
+
+```sh
+node tools/eval-human.mjs run docs/evals/human/<suite>
+node tools/eval-human.mjs summary docs/evals/human/runs/<run>
+```
+
+**Why it exists.**\
+An agent judging an agent's message is one measurement family, and it scored messages as good that the human they were written for found hard to use.\
+This tool asks the human directly, in the cheapest form a human can answer: two versions, random order, one key.
+
+**Run it when** a change to how agents communicate with a human needs evidence, and the human can spare a few minutes.
+
+`eval-human.test.sh` holds that each pick is recorded as the version it was, the version with the move is not always shown in one position, and stopping early keeps what was answered.\
+Each was mutation-tested.
