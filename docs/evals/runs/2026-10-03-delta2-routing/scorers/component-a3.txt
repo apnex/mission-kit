@@ -1,0 +1,35 @@
+You are scoring answers to a comprehension test against an answer key. Read only this file. Do not open any other file under /home/apnex/taceng/mission-kit/docs/evals/runs/2026-10-03-delta2-routing.
+
+Score each answer 0, 1 or 2 against the probe's key and rubric. An answer that labels its conclusion a guess, or says the text does not settle it, scores at most 1 unless the rubric says otherwise. Judge the answer, not its length or confidence.
+
+You do not know which answers came from which reader or document version, and must not try to infer it.
+
+Write one JSON object per line, for every answer id below and no others, to this file: /home/apnex/taceng/mission-kit/docs/evals/runs/2026-10-03-delta2-routing/scores/component-a3.txt
+Each line exactly: {"item": "<answer id>", "score": 0|1|2, "reason": "<one sentence>"}
+When written, reply with only DONE.
+
+======================================================================
+PROBE component-a3.C5
+
+Question:
+You are adding a small feature to a service that already contains a 'utils' module accumulating unrelated concerns. What does A3 ask of your change?
+
+Key:
+The feature is built as its own one-concern unit and adds nothing to the accretion module - the change does not move the system away from A3's limit; the existing accretion is not something this change must fully remove; what the change touches it cleans up, and the rest is recorded.
+
+Rubric:
+2 for that, grounded in the file's own text. 1 for avoiding the module but framing A3 as already failed or pass/fail, or the right answer labelled the reader's own inference. 0 for 'the system fails A3', or 'remove the module first', or 'already violated, nothing applies'.
+
+--- answer a-f269592c ---
+The 'utils' module is a named fault: "God-Object Accretion - "utils", "helpers", "managers" accumulate unrelated concerns."
+A3 asks that your change not add to it: "a change short of it adds none of them, and removes what it touches" - so the new feature must not be dropped into 'utils' as another unrelated concern, and per the "Law of One" it belongs in a unit that "does exactly one thing".
+It should arrive by composition: "a new capability is assembled by composing existing units, never by modifying them", interacting only "through declared adapters and contracts" (Air-Gap Principle).
+The new concern "earns an internal boundary by being one concern", but should not be exposed as a stable surface unless "a real consumer outside its origin needs it" (Earned Exposure).
+If your change touches 'utils', "removes what it touches" asks you to remove the accreted concern(s) you touch; NOT SETTLED is how far that goes (only the parts you touch, versus splitting the whole module), and the file defers "How an axiom binds a change" to A0, which I did not read.
+GUESS: A3 does not require you to refactor all of 'utils' for a small unrelated feature - only to avoid adding to it and to clean up the parts your change actually touches.
+
+--- answer a-1535e063 ---
+A3 names the existing module as a fault: "God-Object Accretion - "utils", "helpers", "managers" accumulate unrelated concerns." The Mandate binds a change that falls short of the limit: it "adds none of them, and removes what it touches". So your feature must not go into `utils`, and any part of `utils` that your change touches should be separated out rather than left mixed. The feature goes into its own unit, because "a module does exactly one thing" (Law of One) and "a concern earns an internal boundary by being one concern" (Earned Exposure). Assemble it by composition, because "a new capability is assembled by composing existing units, never by modifying them", and have it interact only "through declared adapters and contracts" (Air-Gap Principle). Do not promote the new unit to a stable, depended-upon surface until "a real consumer outside its origin needs it"; doing so earlier is the "Speculative Surface" fault. NOT SETTLED: how much of `utils` counts as "what it touches". GUESS: only the concerns your change reads or modifies, not a full decomposition of the module.
+
+--- answer a-eacef7fb ---
+A3 names this exact shape as a fault: "God-Object Accretion - "utils", "helpers", "managers" accumulate unrelated concerns." For a change that falls short of the ideal, the Mandate says "a change short of it adds none of them, and removes what it touches", where "them" means "god objects, spaghetti coupling and dual-purpose modules". So your feature must not go into `utils`, and if your change touches part of `utils`, A3 asks you to remove that god-object part, for example by moving the concern you touch into its own single-concern unit. Under "Law of One" the feature gets its own module that "does exactly one thing", and under "Composable by Default" it should be "assembled by composing existing units, never by modifying them". Under "Earned Exposure" the new unit "earns an internal boundary by being one concern", but it must not be promoted to "a stable, depended-upon surface" until "a real consumer outside its origin needs it" (otherwise it is a "Speculative Surface"). NOT SETTLED: whether you must split up the parts of `utils` your change does not touch. The text binds only "what it touches", and says "How an axiom binds a change is stated in A0", which I was not allowed to read. GUESS: the untouched remainder of `utils` is out of scope for your change.

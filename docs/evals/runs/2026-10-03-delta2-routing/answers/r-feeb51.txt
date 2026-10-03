@@ -1,0 +1,13 @@
+### component-a3.C5
+The 'utils' module is a named fault: "God-Object Accretion - "utils", "helpers", "managers" accumulate unrelated concerns."
+A3 asks that your change not add to it: "a change short of it adds none of them, and removes what it touches" - so the new feature must not be dropped into 'utils' as another unrelated concern, and per the "Law of One" it belongs in a unit that "does exactly one thing".
+It should arrive by composition: "a new capability is assembled by composing existing units, never by modifying them", interacting only "through declared adapters and contracts" (Air-Gap Principle).
+The new concern "earns an internal boundary by being one concern", but should not be exposed as a stable surface unless "a real consumer outside its origin needs it" (Earned Exposure).
+If your change touches 'utils', "removes what it touches" asks you to remove the accreted concern(s) you touch; NOT SETTLED is how far that goes (only the parts you touch, versus splitting the whole module), and the file defers "How an axiom binds a change" to A0, which I did not read.
+GUESS: A3 does not require you to refactor all of 'utils' for a small unrelated feature - only to avoid adding to it and to clean up the parts your change actually touches.
+
+### OBSERVATIONS
+- "removes what it touches" is ambiguous in scope: whether touching one function in 'utils' obliges extracting just that concern or dismantling the module.
+- Tension: "Composable by Default" says new capability arrives "never by modifying" existing units, yet the Mandate asks a change to remove the faults it touches, which requires modifying the existing 'utils' unit. The file does not reconcile these.
+- The binding rule for how an axiom applies to a change is delegated to A0 (README.md), which was out of scope, so the strength of the obligation is NOT SETTLED from this file alone.
+- Bypass as Signal cites `A0` for "what a change answers to", while the frontmatter `related` lists only A8; minor inconsistency in cross-references.

@@ -1,0 +1,241 @@
+You are scoring answers to a comprehension test against an answer key. Read only this file. Do not open any other file under /home/apnex/taceng/mission-kit/docs/evals/runs/2026-10-03-delta2-routing.
+
+Score each answer 0, 1 or 2 against the probe's key and rubric. An answer that labels its conclusion a guess, or says the text does not settle it, scores at most 1 unless the rubric says otherwise. Judge the answer, not its length or confidence.
+
+You do not know which answers came from which reader or document version, and must not try to infer it.
+
+Write one JSON object per line, for every answer id below and no others, to this file: /home/apnex/taceng/mission-kit/docs/evals/runs/2026-10-03-delta2-routing/scores/composition.txt
+Each line exactly: {"item": "<answer id>", "score": 0|1|2, "reason": "<one sentence>"}
+When written, reply with only DONE.
+
+======================================================================
+PROBE composition.P1
+
+Question:
+You will work on a long-running service that holds persistent state, is operated by several cooperating agents, and has a language model making decisions on its critical path. Which axioms bind it, and how did you determine that?
+
+Key:
+A1, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14 - every axiom except A2. Traits stateful, multi-agent, llm-in-the-loop (autonomous adds nothing new), union of the axioms each trait brings via applies-to, plus the any-system floor A3 A4 A8 A9 A14. A2 binds only declarative systems.
+
+Rubric:
+2 for the exact set by the traits-plus-floor route (A2 stated as conditional on the unstated declarative trait is fine). 1 for at most two errors, or the right set without the trait route. 0 otherwise.
+
+--- answer a-7f7f571c ---
+Method: axioms/README.md (A0) says "An axiom is in force for a system if, and only if, that system's architecture satisfies at least one of the axiom's applies-to tags" and that tags "are alternatives, not a conjunction"; traits/README.md (T0) says obligations are "the union of every axiom any of its traits brings into force, plus every axiom on the floor".
+I applied the trait tests: T1 stateful (persistent state), T3 multi-agent (several cooperating agents), T5 llm-in-the-loop (model on the critical path), then read each axiom's applies-to frontmatter and cross-checked against the A0 applicability matrix and the T1/T3/T5 "Axioms it brings into force" sections (all agree).
+Floor (any-system): A3, A4, A8, A9, A14. stateful: A1. multi-agent: A5, A6, A7, A10, A13. llm-in-the-loop: A5, A11, A12.
+Result: A1, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14 - thirteen axioms.
+A2 (applies-to: [declarative]) is NOT SETTLED: the question does not say whether the service reconciles toward a declared spec (T2 test).
+Whether it is autonomous (T4) is also not stated, but it would add nothing: A7, A10, A13 are already in force via multi-agent.
+
+--- answer a-b9597776 ---
+Traits: stateful (T1 test: "writes something it will later read back"), multi-agent (T3: "two or more independent actors coordinate over shared substrate"), llm-in-the-loop (T5: "would the system decide or act differently if the model's output were different"); a long-running service operated by agents very likely also passes T4 autonomous, and it is not declarative unless it reconciles toward a declaration (T2).
+Rule: axioms/README.md (A0) "An axiom is in force for a system if, and only if, that system's architecture satisfies at least one of the axiom's applies-to tags", and traits/README.md (T0) "a system's obligations are the union of every axiom any of its traits brings into force, plus every axiom on the floor".
+Floor (any-system): A3, A4, A8, A9, A14; stateful: A1; multi-agent: A5, A6, A7, A10, A13; llm-in-the-loop: A5, A11, A12; autonomous adds nothing new (A7, A10, A13).
+Result: A1 and A3-A14 - thirteen axioms; A2 binds only if the service is declarative (T2), which the question does not settle.
+I determined this from each axiom's `applies-to` frontmatter (axioms/A*.md line 7), which A0 says "is the only field that does" decide binding, cross-checked against the A0 applicability matrix and the T1/T3/T5 "Axioms it brings into force" lists, which all agree.
+
+--- answer a-396d052c ---
+Thirteen axioms bind it: A1, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14. A2 does not bind, because nothing says the service is declarative.
+Method: axioms/README.md (A0) says "An axiom is in force for a system if, and only if, that system's architecture satisfies at least one of the axiom's applies-to tags", and traits/README.md (T0) says obligations are "the union of every axiom any of its traits brings into force, plus every axiom on the floor".
+I applied the trait tests. Persistent state passes T1 stateful (A1). Several cooperating agents pass T3 multi-agent (A5, A6, A7, A10, A13). A model on the critical path passes T5 llm-in-the-loop (A5, A11, A12). The floor, any-system, adds A3, A4, A8, A9 and A14.
+I checked those lists against each axiom's `applies-to` frontmatter and against the A0 applicability matrix, and they agree.
+Whether "long-running" makes it T4 autonomous is NOT SETTLED by the question, but it changes nothing: A7, A10 and A13 already bind through multi-agent.
+Per A0 and entities/E5-system.md, a change also answers to any system containing this one, and to any system whose contract the change alters.
+
+======================================================================
+PROBE composition.P2
+
+Question:
+You will work on a stateless command-line text formatter, run by one person, with no model in the loop, written as an ordinary script. Which axioms bind it? Separately: the delivery-code domain entry cites A1 in its axiom alignment - does A1 constrain your work on this formatter's codebase?
+
+Key:
+The floor only - A3, A4, A8, A9, A14. No: applies-to alone decides whether an axiom binds, A1 binds stateful systems only; a domain's citation says what an axiom demands on that surface where it binds.
+
+Rubric:
+2 for both parts. 1 for one. 0 for neither.
+
+--- answer a-918591e2 ---
+The formatter fails every trait test: not stateful (T1 "Not stateful: a pure function"), not declarative (T2 "Not declarative: a script run once"), not multi-agent (T3 "a single agent working alone"), not autonomous (T4 "an interactive session" - a person runs it), not llm-in-the-loop (T5).
+So only the floor binds: A3, A4, A8, A9, A14 (A0 matrix: "a plain library takes any-system"; E5: "A one-shot script with no traits is a system, bound by the axioms every system carries").
+A1 does not constrain this work: A0 says "applies-to answers whether an axiom binds, and it is the only field that does", and A1's applies-to is [stateful], which the formatter lacks.
+D1's citation of A1 states what A1 demands on the delivery-code surface when it binds; D0/A0 say "a domain entry cites the axioms it must satisfy" and "applies-to decides whether ... the domain decides what it demands on that surface".
+Traits are tested on the system, not the task (E5: "A trait's test is applied to a system, never to a task"), so my being an LLM agent does not make the formatter llm-in-the-loop (T5: "built with model assistance ... The model was in the authoring loop").
+Caveat: if the formatter shares an undeclared boundary with a stateful system, E5/A0 make them "one system, with the traits of both", and A1 would then bind.
+
+--- answer a-ebb29dd3 ---
+Traits: T1 lists "a pure function, a stateless request handler" as not stateful; T2 lists "a script run once" as not declarative; T3 says "a single agent working alone" is not multi-agent; T5 not met (no model). T4: GUESS: not autonomous, since a person running it interactively would see a failure (T4 test) - the question does not state this outright.
+So only the floor binds: A3, A4, A8, A9, A14 (A0 matrix: "a plain library takes any-system"; E5: "A one-shot script with no traits is a system, bound by the axioms every system carries").
+A1 does not constrain this formatter: A1's applies-to is [stateful], and A0 says "applies-to answers whether an axiom binds, and it is the only field that does".
+D1's "Axiom alignment: A1" is the domain citing what it must satisfy on that surface (D0: "A domain cites the axioms it must satisfy"; "the domain decides what it demands on that surface"), and D1's text is about the work taxonomy ("node truth binds to real code artifacts (PR/commit/CI), not prose"), not about the system being worked on.
+T0/D0: "Traits and domains are orthogonal"; "The same domain can be worked on in a stateful system or a stateless one."
+
+--- answer a-bd1a79eb ---
+Only the floor binds it: A3, A4, A8, A9 and A14 (A0 matrix row `any-system`). A0 says "a plain library takes any-system", and E5 says "A one-shot script with no traits is a system, bound by the axioms every system carries".
+The formatter fails every trait test. It is not T1 (stateless), not T2 (T2 lists "a script run once" as not declarative), not T3 (one actor), not T4 (a person is present when it runs), and not T5 (no model).
+No, A1 does not constrain this work. A1's `applies-to` is `[stateful]`, and A0 says "applies-to answers *whether* an axiom binds, and it is the only field that does", while the domain axis only says what an axiom "then demands on a particular subject surface". domains/README.md and T0 repeat this: "applies-to decides whether an axiom binds, and the domain decides what it demands on that surface".
+So the citation in D1 can describe what A1 demands on delivery-code only for a system it already binds. It cannot bring A1 into force for a stateless formatter.
+GUESS: D1's A1 note ("node truth binds to real code artifacts (PR/commit/CI)") concerns how the work-tracking substrate records work items, not the product being built.
+The exception, from A0/E5: if your change altered a stateful system's contract, or depended on one with no declared boundary, that system's axioms (A1 included) would bind the change.
+
+======================================================================
+PROBE composition.P3
+
+Question:
+You must apply an already-merged schema migration to a production database. Which work-type, which domain, and which role? Name the entry IDs.
+
+Key:
+W7 publish-deploy-or-canonicalize, D7 product-data, engineer (R2). Applying a landed change to production is the deploy act; the records are what it alters. W25 backstop is credited only as an additional bracketing node, never in place of W7.
+
+Rubric:
+2 for all three. 1 for two. 0 otherwise; W25 in place of W7 counts as an error.
+
+--- answer a-065be78f ---
+Work-type W7 publish-deploy-or-canonicalize. Domain D7 product-data. Role R2 engineer.
+D7 says "A schema migration is the canonical split: writing it is `delivery-code`, and applying it to the records is `product-data` - as `merge-and-land` and `publish-deploy` split the git plane from the artifact plane". The D0 tie-break says that for "applying a migration" the domain is "the state the action changes".
+W7 has `domainEligibility: [distribution, tooling-harness, product-data]` and `roleEligibility: [engineer]`. It also has `dependsOn the landed change (W6 merge-and-land)`, and the merge is already done.
+W7's falsifier is "live artifact mismatch or rollback path absent", so you need a rollback anchor.
+D7's axiom alignment cites A9: the migration must be "proven against interruption and concurrent writes in a sandbox, with a restore point, before it touches real records".
+Optionally, W25 backstop-a-prod-window or W11 run-a-live-probe-or-smoke can bracket the work, but the corpus does not require either for this case.
+
+--- answer a-8b3e543b ---
+Work-type W7 (publish-deploy-or-canonicalize), domain D7 (product-data), role R2 (engineer).
+D7: "A schema migration is the canonical split: writing it is delivery-code, and applying it to the records is product-data - as merge-and-land and publish-deploy split the git plane from the artifact plane." D0 tie-break: for "an action on live state with no diff - ... applying a migration ... it is the state the action changes".
+W7: "Ship a landed change to the estate/channel", compositionHooks "dependsOn the landed change (W6 merge-and-land)", domainEligibility [distribution, tooling-harness, product-data], roleEligibility [engineer], evidenceAuthority executor-evidence, falsifier "live artifact mismatch or rollback path absent".
+D7 also cites A9: a production migration "is proven against interruption and concurrent writes in a sandbox, with a restore point, before it touches real records".
+Note: W7's own body speaks of release artifacts and never mentions data; the mapping to "applying a migration" rests on D7's text plus W7's domainEligibility (inferred, but well supported).
+
+--- answer a-94220d3b ---
+Work-type W7 publish-deploy-or-canonicalize; domain D7 product-data; role R2 engineer.
+D7: "A schema migration is the canonical split: writing it is delivery-code, and applying it to the records is product-data"; D0 tie-break: for an action on live state "applying a migration ... it is the state the action changes".
+W7 `domainEligibility: [distribution, tooling-harness, product-data]`, `roleEligibility: [engineer]`, and `compositionHooks: dependsOn the landed change (W6 merge-and-land)` - matching an already-merged migration; D7's freeForTypes also lists publish-deploy-or-canonicalize.
+D7 also cites A9: the migration "is proven against interruption and concurrent writes in a sandbox, with a restore point, before it touches real records", and W7's falsifier includes "rollback path absent".
+GUESS: a production window might additionally warrant W25 backstop-a-prod-window and a W11 live probe, but the question asks for the applying work, which is W7 x D7 x R2.
+
+======================================================================
+PROBE composition.P4
+
+Question:
+Which work-types may a verifier perform on product-data? List them, and say which entries you treated as authoritative.
+
+Key:
+W8, W9, W10, W11 - roleEligibility includes verifier and domainEligibility includes product-data. The work-type entries are authoritative; domain-side lists are not consulted.
+
+Rubric:
+2 for the exact set with the work-type entries as authority. 1 for at most one error, or the set read from the domain list without noting the work-type governs. 0 otherwise.
+
+--- answer a-243f9c0f ---
+W8 verify-gate-reactive, W9 audit-a-surface, W10 adversarial-design-review-upstream, W11 run-a-live-probe-or-smoke.
+Authoritative: each work-type's own frontmatter - roleEligibility includes verifier AND domainEligibility includes product-data. D0: "Which domains a work-type may act on is declared on the work-type ... where they differ the work-type governs"; W0 constraint 3 ("DomainEligibility gates the pairing").
+Excluded: W12 (verifier-eligible, product-data not in its domainEligibility), W13/W22 (pinned authority-governance), W20/W25 (pinned coordination-substrate), W16 (pinned knowledge-methodology); W2, W3, W7 (engineer only), W14 (architect only) accept product-data but not verifier.
+Cross-check (non-authoritative): D7 freeForTypes lists exactly W2, W3, W7, W8, W9, W10, W11, W14 by name, so it agrees here; R3's engagement-mode list also names these four among others.
+
+--- answer a-689a29ac ---
+A verifier on product-data may do W8 verify-gate-reactive, W9 audit-a-surface, W10 adversarial-design-review-upstream and W11 run-a-live-probe-or-smoke.
+Each of these has `verifier` in `roleEligibility` and `product-data` in `domainEligibility`.
+I excluded the others. W2, W3 and W7 allow only the engineer, and W14 allows only the architect. W12 and W13 do allow the verifier, but W12's domain list excludes product-data and W13 is pinned to authority-governance. W16, W20, W22 and W25 are pinned to other domains.
+Authoritative: the work-type frontmatter (`roleEligibility`, `domainEligibility`) under W0 constraint 3 ("a `(work-type x domain)` outside the type's `domainEligibility` is rejected"). D0 says "Domain entries carry lists of the work-types they admit; no rule consults those lists, and where they differ the work-type governs".
+D7's `freeForTypes` list and R3's engagement-mode list are not authoritative. D7's list happens to match here.
+
+--- answer a-643b4d8f ---
+W8 verify-gate-reactive, W9 audit-a-surface, W10 adversarial-design-review-upstream, W11 run-a-live-probe-or-smoke.
+Method: intersect `roleEligibility` containing verifier with `domainEligibility` containing product-data across work-types/W*.md frontmatter; other verifier-eligible types fail on domain (W12 lacks product-data; W13, W22 pinned authority-governance; W16 pinned knowledge-methodology; W20, W25 pinned coordination-substrate).
+Authoritative: the work-type frontmatter, because D0 says "Which domains a work-type may act on is declared on the work-type ... where they differ the work-type governs", and W0 constraint 3 rejects pairings outside `domainEligibility`.
+D7's freeForTypes, which "no rule consults", happens to agree (it lists those four plus the engineer/architect types W2, W3, W7, W14).
+Role eligibility is the permissive gate (W0 constraint 1); R3's engagement-mode prose list was not treated as authoritative.
+
+======================================================================
+PROBE composition.P5
+
+Question:
+You are the only agent. You have just built a change. Can you perform verify-gate-reactive on it yourself? If not, what do you do instead?
+
+Key:
+No - W8 gates work the verifier did not author; an organisation of one cannot hold assurance. Instead: self-check by means the author's reasoning cannot bias (mechanical checks, tests, validate-locally, a fresh sub-agent as strongest self-check, still not assurance), and the gate waits for a second agent or is met by director ratification. The director does not become a verifier.
+
+Rubric:
+2 for no, unbiased self-checking, not assurance, and defer-or-ratify. 1 for no with a partial instead. 0 for yes, or 'the director verifies it'.
+
+--- answer a-8dc69f1b ---
+No. W8's falsifier includes "self-attestation", R3 says the verifier "may never attest own executed work", and R0 says "The same identity may not be both the executor and the independent verifier of one piece of work".
+Instead, first do your own check anyway. R0 says "Checking one's own work is always required", using means your own reasoning cannot bias: a mechanism that fails when the work is wrong, a fresh reader, a measurement. For example, W4 validate-locally or W5 tests, whose evidence is `executor-evidence-provisional`. Present it as your own evidence, not as assurance.
+For the gate itself, W0 constraint 9 allows only two ways out: "defer-until-independent-seat or director-ratification ONLY", and "Same-agent review is never a valid degradation". R0 agrees: the gate "waits for a second agent, or the gate is met by the director's ratification", where ratification needs a DirectorSignal/Decision/Confirmation or a documented delegation (R0).
+W0 constraint 2 also says a seed whose roster collapses attester and executor must "fail the seed or downgrade to `kind:review`". See OBSERVATIONS for how that fits with constraint 9.
+
+--- answer a-44002d52 ---
+No. W8's hydrate-when is "gating a build or change that you did not author", its falsifier includes "self-attestation", and R0 says "The same identity may not be both the executor and the independent verifier of one piece of work".
+Instead: run your own mandatory self-check - W4 validate-locally (engineer, `executor-evidence-provisional`, "does not count as assurance until an independent gate consumes it"), using means your reasoning cannot bias (R0: "a mechanism that fails when the work is wrong, a fresh reader holding only the work").
+Then the independence requirement either waits for a second agent or is met by director ratification: W0 constraint 9 "may degrade to defer-until-independent-seat or director-ratification ONLY ... Same-agent review is never a valid degradation"; R0 "It waits for a second agent, or the gate is met by the director's ratification instead of a verifier's attestation".
+A fresh instance of yourself is still a self-check and "cannot provide independent assurance" (R0).
+
+--- answer a-61a01529 ---
+No. W8's hydrate-when is "gating a build or change that you did not author", its falsifier includes "self-attestation", and R3 "may never attest own executed work". R0: "The same identity may not be both the executor and the independent verifier of one piece of work."
+Instead (W0 constraint 9, cited by R0): the independence check may degrade "to defer-until-independent-seat or director-ratification ONLY ... Same-agent review is never a valid degradation." R0: "It waits for a second agent, or the gate is met by the director's ratification instead of a verifier's attestation; the director does not become a verifier."
+You still must check your own work (R0: "Checking one's own work is always required"), e.g. W4 validate-locally (executor-evidence-provisional) using unbiased means - "a mechanism that fails when the work is wrong, a fresh reader holding only the work, a measurement in place of a re-reading" - but that evidence does not seal a gate requiring independence.
+
+======================================================================
+PROBE composition.P6
+
+Question:
+Using the ledger's 'Hydrate when' column, list the entries you would read before changing the harness that launches agents for a service that holds persistent state. Say why each matched.
+
+Key:
+Must include: D3 tooling-harness; a work-type route (any work-type entry, or W0); a binding route (any trait entry, T0, or A0).
+
+Rubric:
+2 for all three groups. 1 for D3 plus one group, or D3 alone. 0 for no D3.
+
+--- answer a-85114fc9 ---
+- D3 tooling-harness: "You are changing the harness that launches or hosts the runtime". This is a direct match.
+- D0: "You are placing a piece of work on the domain axis". You need it for the tie-break: the domain is the surface you alter, so D3 rather than the service's domains.
+- W0: "You are classifying a unit of work and need the composition rule". This is how you pick a work-type for D3, such as W1, W2 or W3.
+- E5 system: "You are deciding which systems' axioms a change answers to, or what counts as the system you are working on". E5's own example is "A launcher that hands sessions to a service through a declared interface composes with it", so the service's axioms bind only if the change alters that contract or no declared boundary exists.
+- E6 component: "You are deciding what a change can reach ... or which neighbouring parts count as adjacent". The service is the adjacent party.
+- A0 and T0: "which axioms bind the system in front of you" and "whether an axiom applies to the system you are working on".
+- T1 stateful: "deciding whether your system holds state that something else depends on being true". It applies to the service, and possibly to the harness. Likewise T3 and T4, because the harness launches agents and may run unattended. A2/AR2 apply if you also declare the change.
+
+--- answer a-c5f80467 ---
+- D3 tooling-harness: "You are changing the harness that launches or hosts the runtime" - exact match; it is the domain (D0 tie-break: the domain is the surface altered).
+- D0: "You are placing a piece of work on the domain axis" - I am placing this work, and need the tie-break rule.
+- W0: "You are classifying a unit of work and need the composition rule" - to pick the role x work-type x domain triple.
+- E5: "You are deciding which systems' axioms a change answers to, or what counts as the system you are working on" - whether the stateful service's axioms reach a harness change (E5: "A launcher that hands sessions to a service through a declared interface composes with it", and composed systems' axioms do not bind unless the contract changes).
+- A0 ("which axioms bind the system in front of you") and T0 ("whether an axiom applies to the system you are working on").
+- T1: "deciding whether your system holds state that something else depends on being true" - the service holds persistent state; must decide whether that is the harness's system. T3/T5 (and T4) similarly match because the harness launches agents (actors, models, possibly unattended) - GUESS: those traits likely apply to the harness system, not stated.
+- E6: "deciding what a change can reach" - adjacency/blast radius. Work-type rows (W1 build-a-slice, W2 fix-a-bug) and R2 match depending on the change, which is NOT SETTLED by the question.
+
+--- answer a-8a412752 ---
+D3 tooling-harness - "You are changing the harness that launches or hosts the runtime" (exact match).
+D0 and W0 - you are placing the work on the domain axis and classifying a unit of work.
+A0, T0 - you are deciding which axioms bind the system in front of you; T1 - "deciding whether your system holds state that something else depends on being true" (the service does; whether the harness does is the question).
+E5 - "deciding which systems' axioms a change answers to, or what counts as the system": E5's own example is "A launcher that hands sessions to a service through a declared interface composes with it", so the service's A1 binds only if the change alters that contract or the boundary is undeclared; E6 - "deciding what a change can reach".
+T3 and T5 - a harness launching agents raises whether multiple actors and model cognition are in the system under change; T4 likewise if it runs unattended.
+AR2 delta - "about to change a system and need the change declared and its landing provable"; R2 engineer and W1 build-a-slice if you are building the increment.
+GUESS: A7 is cited by D3's axiom alignment, but its trigger (failure/stall behaviour) matches only if the change touches that.
+
+======================================================================
+PROBE composition.P7
+
+Question:
+(a) A domain entry's list of work-types and a work-type's list of domains disagree. Which governs, and where does the corpus say so? (b) A trait entry lists the axioms it brings into force. If that list disagreed with an axiom's applies-to field, which would govern, and where does the corpus say so?
+
+Key:
+(a) The work-type - W0 constraint 3; D0 says domain lists are not consulted. (b) The axiom's applies-to - A0: applies-to is the only field that decides binding; inference from it is fully grounded.
+
+Rubric:
+2 for both grounded. 1 for one. 0 for neither.
+
+--- answer a-40f3f3b2 ---
+(a) The work-type governs. domains/README.md (D0) "How domains compose" says: "Which domains a work-type may act on is declared on the work-type ... Domain entries carry lists of the work-types they admit; no rule consults those lists, and where they differ the work-type governs."
+D0's bimodal section says the same ("the lists domains carry are not consulted"), and so does its fault "The doubly-declared pairing" ("only the work-type's list is consulted"). W0 constraint 3 enforces it.
+(b) The axiom's `applies-to` field governs. axioms/README.md (A0) says: "`applies-to` answers *whether* an axiom binds, and it is the only field that does". T0 says "An axiom names the traits it governs in its `applies-to` field".
+No passage addresses a disagreement between a trait entry's "Axioms it brings into force" list and `applies-to` in the explicit way D0 does for domains. So the ruling is inferred from "the only field that does", not stated as a conflict rule.
+tools/check-traits.mjs checks only that the applies-to enum equals the set of declared traits. It does not check the per-trait axiom lists, so nothing mechanical prevents such a drift.
+
+--- answer a-d2c1a0fe ---
+(a) The work-type's list governs. domains/README.md (D0), "How domains compose": "Domain entries carry lists of the work-types they admit; no rule consults those lists, and where they differ the work-type governs"; also D0 bimodal section "the lists domains carry are not consulted" and W0 constraint 3.
+(b) The axiom's `applies-to` governs. axioms/README.md (A0): "applies-to answers whether an axiom binds, and it is the only field that does"; T0 also says "An axiom names the traits it governs in its applies-to field".
+No explicit tie-break sentence for trait-list vs applies-to conflicts exists analogous to D0's; the answer follows from A0's "only field" statement. tools/check-traits.mjs only checks the applies-to enum against declared trait names, not the per-trait axiom lists (measured: all five trait lists currently agree with applies-to).
+
+--- answer a-59ff15cc ---
+(a) The work-type's list governs. domains/README.md (D0), "How domains compose": "Domain entries carry lists of the work-types they admit; no rule consults those lists, and where they differ the work-type governs." Also D0 bimodal section ("the lists domains carry are not consulted") and fault "The doubly-declared pairing ... only the work-type's list is consulted"; W0 constraint 3 gates on the work-type's domainEligibility.
+(b) The axiom's applies-to field governs. axioms/README.md (A0): "applies-to answers whether an axiom binds, and it is the only field that does." T0 corroborates: "An axiom names the traits it governs in its applies-to field". No text says explicitly "if the trait's list disagrees, applies-to wins", so that exact conflict rule is inferred from "the only field that does", not stated verbatim. (Measured: the trait lists currently agree with every axiom's applies-to.)
