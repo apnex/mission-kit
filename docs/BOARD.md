@@ -47,7 +47,10 @@ M5  bring the charters to E4                     4 of 13 applied, 9 remain      
              +- communication limits             understand, decide: confirmed
              +- moves                            eight, provisional
              +- human evaluation                 session 2: restructured won 4 of 4
-             +- where the moves live in the corpus  next                                   <- HERE
+             +- placement drafted                   style, one practice, one method
+             +- draft guidance tested on director   won 4 of 4
+             +- apply                               waits on Delta-1, then Delta-2         PARKED
+         +- Delta-1 run                              stage 1 of 4                           <- HERE
 ```
 
 **To return to, in order:** the human evaluation tool, then Delta-2 revised from its results; ratify Delta-1; the five remaining `B36` questions; the nine remaining charters.
@@ -80,7 +83,7 @@ A mandate breach is the commitment itself failing; a signal breach is a mechanic
 
 ## Triage ledger
 
-All forty-one rows, scored.\
+All forty-two rows, scored.\
 Held rows are [below](#held).
 
 | Row | Impact | Principle | Visible | Size | Milestone | One line |
@@ -122,6 +125,7 @@ Held rows are [below](#held).
 | **B39** | S5 | A3 signal | adopter | S | **Held** | style cannot be scoped by medium |
 | **B40** | **S2** | **A8 mandate** | author | S | **M5** | every eval reader also gets the harness's AGENTS.md and the main ledger; corpus-against-nothing claims are confounded |
 | **B41** | S4 | A14 signal | agent | S | **Held** | M5 may push agents to over-report deferrals in status messages |
+| **B42** | S3 | **A14 mandate** | director | S | **M5** | communication moves have package evidence only; grow by isolated pairs and the friction log |
 | **B20** | S5 | A3 signal | author | S | `DONE` | `M7` may be axiom-shaped in a methodology's place |
 | **B16** | S3 | **A8 mandate** | author | S | **M4** | the board drifted from itself within two commits, and the item meant to prevent that cited no row |
 | **B8** | S3 | **A2 mandate** | adopter | **L** | **Held** | `AR1` forbids the hand-authored current projection a bootstrap cannot avoid |
@@ -240,9 +244,10 @@ Every ID-bearing layer either has an observed consumer or a recorded reason it h
 | M5.5g | **Component defined, opportunistic improvement, axiom wording pass** - evaluate before and after | `B35` | `DONE` - **7 to 10 / 10**, approved; open questions to `B36` - [audit](audits/M5.5g-component-opportunistic-wording.md) |
 | M5.5h | Rule on the six open design questions, one at a time, and amend `E5`, `E6`, `A0`, `A3` or `T0` as each ruling requires | `B36` | `WIP` - 1 of 6: bypassed interface applied, 5 to 8 / 8, no regression - [audit](audits/M5.5h-01-bypassed-interface.md) |
 | M5.5i | Measure and correct the incidental defects the baseline readers found | `B37` | `TODO` |
-| M5.5j | **Delta-1, the work layers** - procedures stay in `methodology/`, practices and rules to a new `practices/`, prose skill `K1` in; packaged skills, WorkGraph skills and the `W0` citation deferred | `B24` | `WIP` - revision 4: rename and two layers ruled; awaiting ratification - [delta](deltas/delta-1-work-layers.md) |
+| M5.5j | **Delta-1, the work layers** - procedures stay in `methodology/`, practices and rules to a new `practices/`, prose skill `K1` in; packaged skills, WorkGraph skills and the `W0` citation deferred | `B24` | `WIP` - revision 4 **ratified**; stage 1 running - [delta](deltas/delta-1-work-layers.md) |
 | M5.5k | **The explain set** - communication with a human of limited context, measured with live agents first, then designed as a set spanning layers | `B38` | `WIP` - baseline re-scored after ruling: 7.0 with and without the corpus, no gap; Delta-2 revision 2 gathers and authors nothing - [delta](deltas/delta-2-explain-set.md) |
 | M5.5l | State the always-on-context confound in every evaluation result, and take after-runs before a change reaches `main` | `B40` | `WIP` - stated in `docs/evals/README.md` |
+| M5.5m | Grow the communication-moves matrix: isolated pairs in short sessions, and the live friction log | `B42` | `TODO` |
 | M5.6 | Rebuild the charter checker - fixed headings by name, free concerns by a declared location - and re-enable it | `B17` | `TODO` |
 | M5.7 | **Add a key review to `M2`** - a fresh reader audits the answer key against the population before any evaluator runs. Trigger fired at `D0`: three of seven answers wrong, caught before use | `B29` | `TODO` |
 

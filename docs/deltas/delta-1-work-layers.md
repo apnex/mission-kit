@@ -1,7 +1,7 @@
 # Delta-1 - the work layers - a horizontal layer change
 
 ```yaml
-status:       proposed, revision 4 - rename and Q4 ruled; awaiting ratification; no stage has run
+status:       ratified, revision 4 - stage 1 running
 row:          B24
 intent:       docs/surveys/b24-work-layers-survey.md
 from-state:   docs/ARCHITECTURE.md, at 719351d
