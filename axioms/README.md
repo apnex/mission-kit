@@ -77,6 +77,7 @@ It is not advice you weigh against deadlines; once your architecture is in scope
 A change touches what it modifies, what it newly depends on, and any consumer whose contract it alters; code that merely sits beside it, in the same file or module, is not touched.\
 Scope and binding are different sets: a component the change newly depends on through a declared interface is touched but not altered, so its gaps must not be built on, and its axioms do not bind the change.\
 Inside the scope, build at the limit or nearer to it than what was there: new work never repeats a gap the axiom names, and work that touches a gap closes as much of it as the touch allows.\
+*As much as the touch allows* means the part the change already alters to do its own work; restructuring beyond that, even inside the same component, is the encouraged improvement below, not a requirement.\
 **Beyond the scope, improvement is encouraged, never mandated.**\
 An agent that sees how to bring an adjacent component nearer its limit, within that component's duty, is expected to weigh doing it, not merely permitted to.\
 A gap or friction in a component [adjacent](../entities/E6-component.md) to what the change touches - one it stands on, or one that stands on it, through a declared interface - may be closed opportunistically when compounding learning supports it ([`A14`](A14-compounding-learning.md), *tangent discipline*): the payback is near, strongest where the work stands on the component; the yield is captured; and the cost does not significantly distract from the change's own goal.\

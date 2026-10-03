@@ -1,0 +1,42 @@
+### design-rulings.R1
+Your change has to deal with N's reach: it must declare an interface for what N legitimately needs from T and get N using it. Leaving the bypass in place is not an option. E5 (entities/E5-system.md, Boundaries) says: "A change that alters what an undeclared neighbour reaches into owns that boundary: declaring and honouring the interface is inside its scope, not optional."
+A0 (axioms/README.md) says a change touches "any consumer whose contract it alters", so N is in scope, and a change must close as much of a touched gap as "the touch allows".
+A3 (Air-Gap Principle, Bypass as Signal) says the undeclared reach is a fault. Fixing it starts with checking the interface against T's duty. It ends one of two ways: N moves onto the interface, or the interface is adjusted to what N legitimately needs (E5, "Declared against honoured").
+N and T are modules in one service, so the change answers to the service's axioms whatever happens. Those include A3 (any-system) and, because the service is multi-agent, A5/A6/A7/A10/A13 (E5 Contain; A0 applicability matrix).
+Until the interface is declared and honoured, N and T count as one system with the traits of both (E5 Boundaries; A0 "What brings an axiom into force").
+
+### design-rulings.R2
+(1) No. E5 Boundaries says: "The merge chains only through what a change can reach: if A reaches into B and B into C, a change to A is one system with C only when it alters something B takes from C." A change used only by A alters nothing B takes from C. So C's axioms do not bind. B's still do, because A and B are merged by the undeclared reach (E5: "one system, with the traits of both").
+(2) Yes. The change alters data that B takes from C, which is exactly the condition in that sentence. So A, B and C count as one system for this change, and C's axioms bind it along with A's and B's (A0: "the axioms either unit would bring all bind").
+
+### design-rulings.R3
+Yes, the service is stateful, and A1 binds your change. The writer module passes the T1 test (traits/T1-stateful.md): "Does the system write something it will later read back, and would anything act differently if that record were wrong?"
+T0 says: "a service with one stateful module is stateful, so a stateful system cannot escape its axioms by being described as stateless parts". E5 Contain says: "A system has every trait any part it contains has."
+A1 applies-to [stateful], so A1 is in force for the service. A0 says "a change answers to every system it alters. That is the system it modifies, every system containing it...". So a change to the stateless module answers to the service, and therefore to A1.
+In practice A1 binds as a limit to work toward (A0): the change must not move the service away from A1's limit, for example by giving the module hidden or private state. It should move toward the limit as far as its own scope allows.
+
+### design-rulings.R4
+Yes, A1 binds, but it binds the team's records, not the tool. E5 says: "The organisation doing the work is a system... A stateless product built by a team that keeps records it relies on has `A1` binding the team's records, not the product."
+The tool itself is stateless, has no model in the loop, and is not multi-agent, so as far as the text shows it carries only the any-system floor: A3, A4, A8, A9, A14 (A0 applicability matrix).
+The organisation is stateful (it reads back records it relies on, per the T1 test) and multi-agent (work passes between actors, per E5). So A1, and also A5/A6/A7/A10/A13, govern how the work is done and recorded.
+E5 says these questions are asked separately: the organisation's axioms "govern how the change is made and recorded, and are not one of the systems the change alters".
+
+### design-rulings.R5
+Doing the split is encouraged but not required. You are expected to weigh it. A0 says: "*As much as the touch allows* means the part the change already alters to do its own work; restructuring beyond that, even inside the same component, is the encouraged improvement below, not a requirement." It also says an agent that sees such an improvement "is expected to weigh doing it, not merely permitted to."
+What is required: the feature must not deepen the tangle ("new work never repeats a gap the axiom names"). Your feature must also close whatever part of the gap it already alters (A0; A3 Law of One / dual-purpose modules).
+A3 (Composable by Default) endorses splitting K within its own duty: "fix it, fracture it, re-cut its seams and recompose it ... as a change of its own, answering to every consumer whose interface it alters".
+K's interface is not versioned, so the split alters all three consumers directly, and it answers to each consumer's axioms (A0; E5's adoption-only rule covers only versioned contracts).
+If you do the split, make it its own change. If you do not, record the gap with its evidence and a revival trigger (RU3). A0 says "Either way the gap is recorded", and passing the gap silently is forbidden.
+
+### design-rulings.R6
+Publishing 2.4 alters all ten consumers. E5 says: "A declared version range - *any 2.x* - is adoption in advance: a release within it alters every consumer bound by the range, whether or not the consumer's own files change."
+The fact that they use only the declared interface does not protect them, because 2.4 changes the behaviour that interface documents. A0 counts "any consumer whose contract it alters" as touched and altered, and E6's blast-radius row says an adjacent component is reached when "the interface between them changes".
+So the release answers to L's axioms and to each of the ten consumers' axioms (A0: "a change answers to every system it alters").
+NOT SETTLED: whether a consumer whose range is pinned to an earlier resolved version, for example by a lockfile, still counts as "bound by the range". GUESS: the text would treat it as not having adopted 2.4.
+
+### OBSERVATIONS
+- A0 and E5 seem to set different requirements for an undeclared neighbour. A0 limits the mandatory work to "the part the change already alters to do its own work". E5 says that declaring and honouring the interface for an undeclared neighbour "is inside its scope, not optional", which can mean more work than the change itself needs. I read E5 as a specific case that A0 allows, but neither text says how they relate.
+- E5 Boundaries places the "owns that boundary" sentence directly after the sentence saying chaining limits govern units in different systems, while "units inside one system need no chaining". So it is unclear whether the ownership duty also applies between modules inside one service (R1). I assumed it does, because A3's Air-Gap rule applies to modules regardless.
+- E5's chaining sentence covers a change to A altering "something B takes from C". It does not say whether altering data A takes from B, where that data originated in C, always counts as altering what B takes from C. R2(2) depends on reading the question's wording as meeting that condition.
+- E5's version-range rule does not address lockfiles or resolved pins (R6).
+- INDEX.md tells readers to fetch from a remote URL when there is no local checkout. Inside an isolated corpus copy that instruction is not applicable.

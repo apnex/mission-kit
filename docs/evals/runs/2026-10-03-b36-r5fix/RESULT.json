@@ -1,0 +1,662 @@
+{
+  "created": "2026-10-03T11:24:59.722Z",
+  "seed": "f3318317ad9fee97",
+  "corpora": [
+    {
+      "label": "before",
+      "path": "/tmp/opencode/evalc/c-b716ffba"
+    },
+    {
+      "label": "after",
+      "path": "/tmp/opencode/evalc/c-dd6146f9"
+    }
+  ],
+  "readers": 3,
+  "probes": [
+    "design-rulings.R1",
+    "design-rulings.R2",
+    "design-rulings.R3",
+    "design-rulings.R4",
+    "design-rulings.R5",
+    "design-rulings.R6",
+    "component.C1",
+    "component.C2",
+    "component.C3",
+    "component.C4",
+    "axiom-direction.Q1",
+    "axiom-direction.Q2"
+  ],
+  "max": 24,
+  "mean": {
+    "design-rulings.R1": {
+      "before": 2,
+      "after": 2
+    },
+    "design-rulings.R2": {
+      "before": 2,
+      "after": 2
+    },
+    "design-rulings.R3": {
+      "before": 2,
+      "after": 2
+    },
+    "design-rulings.R4": {
+      "before": 2,
+      "after": 2
+    },
+    "design-rulings.R5": {
+      "before": 1.67,
+      "after": 2
+    },
+    "design-rulings.R6": {
+      "before": 2,
+      "after": 2
+    },
+    "component.C1": {
+      "before": 2,
+      "after": 2
+    },
+    "component.C2": {
+      "before": 2,
+      "after": 2
+    },
+    "component.C3": {
+      "before": 2,
+      "after": 2
+    },
+    "component.C4": {
+      "before": 2,
+      "after": 2
+    },
+    "axiom-direction.Q1": {
+      "before": 1.67,
+      "after": 1.67
+    },
+    "axiom-direction.Q2": {
+      "before": 2,
+      "after": 2
+    }
+  },
+  "total": {
+    "before": 23.34,
+    "after": 23.67
+  },
+  "rows": [
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-c29ee8",
+      "probe": "design-rulings.R1",
+      "score": 2,
+      "reason": "Declaring and honouring the interface is in scope and not optional, with the reason that the change alters what the undeclared neighbour reaches."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-c29ee8",
+      "probe": "design-rulings.R2",
+      "score": 2,
+      "reason": "Answers both cases correctly with the chaining-through-reach reason."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-c29ee8",
+      "probe": "design-rulings.R3",
+      "score": 2,
+      "reason": "Service is stateful by the contained-part rule and A1 binds the change through the containing service; the guess is on a side question."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-c29ee8",
+      "probe": "design-rulings.R4",
+      "score": 2,
+      "reason": "Says A1 binds the team's records because the organisation is a system whose records pass the stateful test."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-c29ee8",
+      "probe": "design-rulings.R5",
+      "score": 2,
+      "reason": "The split is encouraged and not required, and as a separate change it answers to each consumer's axioms; the unsettled point covers only the touched part."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-c29ee8",
+      "probe": "design-rulings.R6",
+      "score": 2,
+      "reason": "All ten, because a declared range is adoption in advance."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-a3cd12",
+      "probe": "design-rulings.R1",
+      "score": 2,
+      "reason": "States declaring the interface and moving N onto it is part of the change and not optional, because the change alters what N reaches."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-a3cd12",
+      "probe": "design-rulings.R2",
+      "score": 2,
+      "reason": "Answers both cases correctly, with case 2 meeting the stated chaining condition."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-a3cd12",
+      "probe": "design-rulings.R3",
+      "score": 2,
+      "reason": "Answers both yes, citing the contained-part rule and that the system cannot escape by being described as stateless parts."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-a3cd12",
+      "probe": "design-rulings.R4",
+      "score": 2,
+      "reason": "Says A1 binds the team's records because the organisation is a system that holds state in its records."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-a3cd12",
+      "probe": "design-rulings.R5",
+      "score": 1,
+      "reason": "Gets the consumers binding right but then says the text does not settle whether the split is required, which undercuts the encouraged-not-mandated conclusion."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-a3cd12",
+      "probe": "design-rulings.R6",
+      "score": 2,
+      "reason": "All ten, because consumers adopted in advance through the range."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-2e99b0",
+      "probe": "design-rulings.R1",
+      "score": 2,
+      "reason": "Treats declaring and honouring the interface as inside the change's scope and not optional, grounded in the change altering what N reaches."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-2e99b0",
+      "probe": "design-rulings.R2",
+      "score": 2,
+      "reason": "Answers both cases correctly with the reach reason; the unsettled point does not affect the conclusion."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-2e99b0",
+      "probe": "design-rulings.R3",
+      "score": 2,
+      "reason": "Answers both yes, citing the contained-part rule and that the change answers to the containing service."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-2e99b0",
+      "probe": "design-rulings.R4",
+      "score": 2,
+      "reason": "Says A1 binds the team's records because the organisation is itself a system that holds state."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-2e99b0",
+      "probe": "design-rulings.R5",
+      "score": 2,
+      "reason": "The split beyond the touched part is encouraged, not mandated, and as a separate change it answers to all three consumers."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-2e99b0",
+      "probe": "design-rulings.R6",
+      "score": 2,
+      "reason": "All ten, because the 2.x range is adoption in advance."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-16e8f7",
+      "probe": "component.C1",
+      "score": 2,
+      "reason": "Y is encouraged-not-mandated and passes the tangent test as a separate change, and Z is recorded with a revival trigger and left to the director; the GUESS is on a side point."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-16e8f7",
+      "probe": "component.C2",
+      "score": 2,
+      "reason": "Correct E6 citation giving part of a containing system, one duty at its altitude, interfaces, and the component-is-a-system relation."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-16e8f7",
+      "probe": "component.C3",
+      "score": 2,
+      "reason": "Says no, gives the declared-interface reason with the one-system consequence, and identifies the A3 fault."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-16e8f7",
+      "probe": "component.C4",
+      "score": 2,
+      "reason": "Covers P and containing systems, Q unaltered, and Q as an adjacent candidate with less payback subject to the tangent test."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-f0c734",
+      "probe": "component.C1",
+      "score": 2,
+      "reason": "Treats Y as outside scope, not mandated but justified by the tangent test and done as its own change, and Z as recorded with evidence and a revival trigger for the director; the NOT SETTLED note concerns a side point only."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-f0c734",
+      "probe": "component.C2",
+      "score": 2,
+      "reason": "Correct E6 citation with part, one duty at altitude, interfaces, and every component being a system distinguished by the question asked."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-f0c734",
+      "probe": "component.C3",
+      "score": 2,
+      "reason": "Says no, gives declared interfaces as the boundary with the two being one system meanwhile, and names the A3 fault; the NOT SETTLED note is about interface design only."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-f0c734",
+      "probe": "component.C4",
+      "score": 2,
+      "reason": "Covers P and the service, Q unaltered with its contract unchanged, and Q as an encouraged-not-mandated adjacent candidate with less payback."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-008221",
+      "probe": "component.C1",
+      "score": 2,
+      "reason": "Y is to be weighed and optionally fixed as a separate change, justified by adjacency and near payback, and Z is recorded with a revival trigger with selection left to the director."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-008221",
+      "probe": "component.C2",
+      "score": 2,
+      "reason": "Correct E6 citation with all definitional elements and the relation to system, and excludes registration in components/."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-008221",
+      "probe": "component.C3",
+      "score": 2,
+      "reason": "Says no, gives the declared-interface boundary and one-system consequence, and identifies the A3 fault."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-008221",
+      "probe": "component.C4",
+      "score": 2,
+      "reason": "Covers P, the service and anything above it, Q unaltered, and Q as an adjacent candidate in the weaker direction."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-40150f",
+      "probe": "axiom-direction.Q1",
+      "score": 2,
+      "reason": "Builds the feature the A1 way with durable queryable state, and has the component gap recorded with evidence and a revival trigger or closed opportunistically, never passed silently."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-40150f",
+      "probe": "axiom-direction.Q2",
+      "score": 2,
+      "reason": "Describes the axiom as a direction toward an asymptote, never backwards and forward with every step, and explicitly not a checkbox."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-089a70",
+      "probe": "axiom-direction.Q1",
+      "score": 1,
+      "reason": "The substance matches the key, but the answer marks parts NOT SETTLED and a GUESS, which caps it at 1."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-089a70",
+      "probe": "axiom-direction.Q2",
+      "score": 2,
+      "reason": "Says the axiom gives the change a direction toward a limit that both blocks regression and requires forward movement within scope."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-5892a3",
+      "probe": "axiom-direction.Q1",
+      "score": 2,
+      "reason": "Puts the feature's state in the shared durable backplane, closes the gap as far as the touch allows when touched, and otherwise records it with evidence and a revival trigger."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-5892a3",
+      "probe": "axiom-direction.Q2",
+      "score": 2,
+      "reason": "Calls the axiom an asymptote the system is built toward, with each change moving toward it as far as its scope allows."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-f44f2c",
+      "probe": "design-rulings.R1",
+      "score": 2,
+      "reason": "Requires declaring an interface and moving N onto it as non-optional in-scope work, because the change alters N's reach."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-f44f2c",
+      "probe": "design-rulings.R2",
+      "score": 2,
+      "reason": "Answers both cases correctly, tying case 2 to meeting the chaining condition."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-f44f2c",
+      "probe": "design-rulings.R3",
+      "score": 2,
+      "reason": "Answers both yes, citing the contained-part rule and that the change answers to the containing stateful service."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-f44f2c",
+      "probe": "design-rulings.R4",
+      "score": 2,
+      "reason": "Says A1 binds the team's records because the organisation doing the work is a stateful system."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-f44f2c",
+      "probe": "design-rulings.R5",
+      "score": 2,
+      "reason": "The split is encouraged and not required, and it answers to each consumer's axioms because K's interface is unversioned."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-f44f2c",
+      "probe": "design-rulings.R6",
+      "score": 2,
+      "reason": "All ten, because a declared range is adoption in advance."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-f35811",
+      "probe": "design-rulings.R1",
+      "score": 2,
+      "reason": "Requires the interface be declared and N moved onto it as part of the change's scope, with the reason that the change alters N's reach."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-f35811",
+      "probe": "design-rulings.R2",
+      "score": 2,
+      "reason": "Gets both cases right with the reasoning that the merge chains only when the change alters what B takes from C."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-f35811",
+      "probe": "design-rulings.R3",
+      "score": 2,
+      "reason": "Answers both yes, citing the contained-part rule; the guess is on an unrelated trait."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-f35811",
+      "probe": "design-rulings.R4",
+      "score": 2,
+      "reason": "Says A1 binds the team's records because the organisation is a system of its own that holds state."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-f35811",
+      "probe": "design-rulings.R5",
+      "score": 2,
+      "reason": "The full split is encouraged rather than required, and as its own change it answers to each consumer's axioms."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-f35811",
+      "probe": "design-rulings.R6",
+      "score": 2,
+      "reason": "All ten, because a declared range is adoption in advance; the lockfile guess is a side point."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-0e4b58",
+      "probe": "design-rulings.R1",
+      "score": 2,
+      "reason": "Declares the interface and moves N onto it as in-scope and not optional, because the change alters what N reaches."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-0e4b58",
+      "probe": "design-rulings.R2",
+      "score": 2,
+      "reason": "Answers no for case 1 and yes for case 2, both on the reach condition; the guess covers only a side point."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-0e4b58",
+      "probe": "design-rulings.R3",
+      "score": 2,
+      "reason": "Answers both questions yes, citing that a system has every trait of any part it contains."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-0e4b58",
+      "probe": "design-rulings.R4",
+      "score": 2,
+      "reason": "Says A1 binds the team's records because the organisation is a system holding state in its records."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-0e4b58",
+      "probe": "design-rulings.R5",
+      "score": 2,
+      "reason": "The full split is encouraged, not required, and as a separate change it answers to each of the three consumers."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-0e4b58",
+      "probe": "design-rulings.R6",
+      "score": 2,
+      "reason": "All ten, because a declared range is adoption in advance."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-8a9743",
+      "probe": "component.C1",
+      "score": 2,
+      "reason": "Y may be fixed as its own change because it is adjacent and passes the tangent test without being mandated, and Z is recorded with a revival trigger rather than done."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-8a9743",
+      "probe": "component.C2",
+      "score": 2,
+      "reason": "Correct E6 citation covering part of a containing system, one duty at its altitude, interfaces, and the relation to system."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-8a9743",
+      "probe": "component.C3",
+      "score": 2,
+      "reason": "Says no, bases the boundary on declared interfaces making the two one system, and identifies the A3 fault."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-8a9743",
+      "probe": "component.C4",
+      "score": 2,
+      "reason": "Covers P, the service and anything containing it, Q unaltered, and Q as an adjacent lower-payback candidate to weigh rather than an obligation."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-856e2d",
+      "probe": "component.C1",
+      "score": 2,
+      "reason": "Y is not required but justified and done as its own change, and Z is recorded with a revival trigger and not done; the NOT SETTLED item is peripheral."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-856e2d",
+      "probe": "component.C2",
+      "score": 2,
+      "reason": "Cites E6 correctly with part-of-containing-system, one duty at its altitude, interfaces, and every component being a system, and excludes registration."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-856e2d",
+      "probe": "component.C3",
+      "score": 2,
+      "reason": "Says no, explains that without a declared interface the two are one system, and names the A3 fault."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-856e2d",
+      "probe": "component.C4",
+      "score": 2,
+      "reason": "Covers P and the service, Q unaltered since no contract changed, and Q as an adjacent candidate encouraged but not required with lower payback."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-3c382d",
+      "probe": "component.C1",
+      "score": 2,
+      "reason": "States nothing obliges a Y fix but the tangent test justifies it as a separate change, and Z is recorded with evidence and a revival trigger for the director; GUESS and NOT SETTLED cover side points."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-3c382d",
+      "probe": "component.C2",
+      "score": 2,
+      "reason": "Cites E6 with the part, duty, interface elements and the component-is-a-system relation, and notes registration is not part of the definition."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-3c382d",
+      "probe": "component.C3",
+      "score": 2,
+      "reason": "Says no, states the boundary is declared interfaces so the two are one system, and names the A3 Air-Gap fault."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-3c382d",
+      "probe": "component.C4",
+      "score": 2,
+      "reason": "Names P and containing systems including the service, says Q is not altered because its contract is unchanged, and calls Q an adjacent candidate in the lower-payback direction."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-0b39d1",
+      "probe": "axiom-direction.Q1",
+      "score": 1,
+      "reason": "The substance matches the key (feature toward the limit, gap closed where touched or recorded), but the answer says the corpus alone cannot decide which branch applies, which caps it at 1."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-0b39d1",
+      "probe": "axiom-direction.Q2",
+      "score": 2,
+      "reason": "Says the axiom is a direction to build toward, requiring no backward movement and forward movement as far as the change's scope allows."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-72dcb4",
+      "probe": "axiom-direction.Q1",
+      "score": 2,
+      "reason": "Builds the feature toward A1 with durable backplane state, closes the gap as far as the touch allows when touched, and otherwise records it with a revival trigger."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-72dcb4",
+      "probe": "axiom-direction.Q2",
+      "score": 2,
+      "reason": "Frames the axiom as an asymptote giving each change a direction: never away from the limit, and toward it as far as scope allows."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-9f0027",
+      "probe": "axiom-direction.Q1",
+      "score": 2,
+      "reason": "Builds the feature with durable queryable state per A1 and records the untouched gap with a revival trigger, or closes it where touched, never passing it silently."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-9f0027",
+      "probe": "axiom-direction.Q2",
+      "score": 2,
+      "reason": "States the axiom is a limit built toward, with no movement away and forward movement as far as the change's scope allows, and rejects the pass/fail reading."
+    }
+  ]
+}
