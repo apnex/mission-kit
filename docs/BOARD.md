@@ -126,7 +126,7 @@ Held rows are [below](#held).
 | **B40** | **S2** | **A8 mandate** | author | S | **M5** | every eval reader also gets the harness's AGENTS.md and the main ledger; corpus-against-nothing claims are confounded |
 | **B41** | S4 | A14 signal | agent | S | **Held** | M5 may push agents to over-report deferrals in status messages |
 | **B42** | S3 | **A14 mandate** | director | S | **M5** | communication moves have package evidence only; grow by isolated pairs and the friction log |
-| **B43** | S3 | A3 signal | agent | S | **Held** | `K0` and one placement edge stale after Delta-1 |
+| **B43** | S3 | A3 signal | agent | S | `DONE` | `K0` and one placement edge stale after Delta-1 |
 | **B44** | S2 | **A14 mandate** | director | S | `DONE` | lessons captured as notes recurred; four absorbed into mechanism |
 | **B20** | S5 | A3 signal | author | S | `DONE` | `M7` may be axiom-shaped in a methodology's place |
 | **B16** | S3 | **A8 mandate** | author | S | **M4** | the board drifted from itself within two commits, and the item meant to prevent that cited no row |
@@ -279,7 +279,6 @@ Rows on the record and not on the board, **scored on the same scale**, so declin
 | **B22** | S4 | A9 signal | Found by the `A0` trial. A low citation count has two legitimate readings and one observation cannot separate them. | **a deployment fails in a way chaos validation would have caught** |
 | **B39** | S5 | A3 signal | Nested sets need generator support, and no medium-specific rule exists to fill one. | **the first style rule that applies to one medium only** |
 | **B41** | S4 | A14 signal | Two readers in one run; a harm finding from n = 2 is a lead, not a result. | **the explain after-run shows the same, or a director reports a status update padded with deferrals** |
-| **B43** | S3 | A3 signal | Delta-1's fence forbids corrections during the move. | **Delta-1 lands** |
 
 
 

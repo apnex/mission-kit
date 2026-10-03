@@ -68,7 +68,7 @@ The boundary of this set is the object the rule acts on.
 Ask in order, and stop at the first yes:
 
 1. **Is it a limit a system is built toward, in force for every system with the traits it names?** An axiom, in `axioms/`.
-2. **Does following it produce a result of its own** - a verdict, an artifact, a record? A procedure, here.
+2. **Does following it produce a result of its own** - a verdict, an artifact, a record? A procedure, here. Guidance that only *requires* a record to carry something - a field, a reason - produces nothing itself, and is a rule.
 3. **Does it govern how an artifact is written - its form, whatever the work was?** Style, in `style/`.
 4. **Does it leave a trace in the record of the work that a check could test?** A rule, in `rules/`.
 5. **Otherwise** a practice, in `practices/`.

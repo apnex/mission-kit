@@ -5,7 +5,7 @@ title: Skills - executable capability, the stub-and-body split, and composition 
 status: active
 hydrate-when: You are adding or invoking an executable capability, or you need to know why a skill is two files rather than one
 supersedes: []
-related: [M0, P0, SC3, A11]
+related: [M0, RU0, PC0, P0, SC3, A11]
 ---
 
 # Skills - the how-you-do-it layer
@@ -14,7 +14,8 @@ Operator-level capabilities and reusable tooling.\
 A skill is *invoked*, not followed: it names a procedure with inputs, steps and an output, and it is expected to be executed largely as written.
 
 That is the boundary against [`M0`](../methods/README.md).\
-A methodology entry governs how you conduct work you are already doing; a skill is a capability you pick up to do a thing you could not otherwise do.
+A method is a procedure held as guidance, the single source of its content; a skill packages a procedure so an agent can install and invoke it, and earns its packaging where scripts or assets make it necessary.\
+Guidance that governs how work is done without producing anything is a rule or a practice, never a skill.
 
 ---
 
@@ -48,7 +49,7 @@ Skills compose into operator-facing roles through [`bundles/`](../bundles/README
 
 A capability earns one when it is executable, repeatable, and would otherwise be reconstructed from scratch by whoever needs it next.
 
-A skill that only describes is a methodology entry filed in the wrong layer.\
+A skill that only describes is a method, rule or practice filed in the wrong layer, as `M9` was before it moved.\
 A skill invoked once, for one system, is a runbook and belongs with that system.\
 A skill whose steps a script could take should be that script, per [`A11`](../axioms/A11-cognitive-minimalism.md), with the skill reduced to when to run it.
 
