@@ -1,0 +1,53 @@
+### sc0.Q1
+It goes in a `status` block, never in `spec`. schemas/README.md "Resource convention": "Runtime observations do not belong in `spec`. A kind only gains `status` when a real reconciler needs observed state." `metadata` is not the place either: it "holds portable identity and machine-oriented labels or annotations", and `spec` "holds all configuration that affects entity meaning or behaviour".
+No current kind has `status`. question.schema.json is `additionalProperties: false` with only apiVersion/kind/metadata/spec, so today such a field would fail validation (measured: I read the schema).
+So adding it means a contract change to that kind, and that change is only justified once a real reconciler needs the observed state.
+SC5-context-frame.md also says "observed state remain[s] outside the resource".
+
+### sc0.Q2
+No. SC4-question.md: "It contains no Survey, round, Director, interpretation, or outcome-axis semantics" and "a composing process owns placement such as round and ordinal."
+schemas/README.md "Composition": a process "must not inject process fields into the Question resource". It should wrap a complete Question and keep its own fields beside it, as in the `SurveyQuestion` example with `spec.survey.round: 1` next to `spec.question`.
+The stated reason: "This wrapper boundary keeps the neutral resource closed and prevents Survey evolution from changing the Question contract."
+
+### sc0.Q3
+Structural validation (JSON Schema) comes first, then semantic validation. schemas/README.md "Validation": "A consumer must run structural validation before semantic validation."
+The corpus says what each layer does: JSON Schema "validates structure", and the semantic validators check "ordered-array invariants that JSON Schema Draft 2020-12 cannot express" (unique option IDs, cardinality bounds, constraint references, and so on).
+NOT SETTLED: the text does not say why the order matters.
+GUESS: the semantic validators assume the shape is already valid. question.validator.mjs reads `constraint.optionIds` and calls `conflicts.get(...)` without checking that they exist, so malformed input could crash it or give a wrong answer rather than a clean rejection.
+
+### sc0.Q4
+schemas/README.md "Territory" splits contracts "by whose instances they govern", giving two kinds.
+(1) "The corpus's own files": documents this corpus is made of, checked by the gate `tools/check-all.sh`. These are SC1 catalogue frontmatter, SC2 standing context, SC3 skill bodies and SC6 entry bodies.
+(2) "Process resources": documents a process writes, neutral of any one process, checked by their semantic validators and the schema suite. These are SC4 Question and SC5 ContextFrame.
+"Every contract sits in one row". SC2 and SC3 are portable, but they are placed in row 1 because their instances are documents of the kind this corpus is made of.
+SC0 is the charter (README.md), not a contract.
+
+### sc0.Q5
+It is a change to an existing contract, SC1 (catalog-entry). schemas/README.md "Boundaries and composition": "one concern, one contract - catalogue frontmatter is one schema with per-category conditions, not a schema per layer."
+catalog-entry.schema.json already does this through `allOf` if/then blocks keyed on `category` (axiom, work-type, component, rule, set, and others), and it is `additionalProperties: false`. So the new fields must be declared there, and the new category must be added to the `category` enum.
+Writing a separate schema would create the "Two contracts for one concern" fault in "Faults" ("each authoritative, free to drift").
+GUESS (not stated for this case): if the layer's bodies are governed, SC6's declaration also needs the category, because SC6's categories and SC1's list "are held together by a test".
+
+### sc0.Q6
+Yes. schemas/README.md "Territory > Gaps the territory exposes" names them: "the evaluation suites and their results, the human-evaluation suites, `catalog.json` itself, and `bundles/*.yaml`", each "checked only by hand-written code in a tool or not at all".
+One example: `bundles/*.yaml` (the `bundles/` directory exists in the corpus).
+Another is `schemas/catalog.json` itself. The schema suite depends on it to load every schema (tests/support/question-validation.mjs reads it), yet no schema governs its shape.
+
+### sc0.Q7
+schemas/README.md "Faults" lists six faults:
+- "The unchecked contract": no check validates against it, so it "reads as enforced and holds nothing".
+- "Two contracts for one concern": both authoritative, free to drift.
+- "The drifting pair": two contracts that must agree, with nothing holding them together.
+- "The unmapped resource": a kind missing from `catalog.json` (EntryBody today).
+- "The contract ahead of its consumer": a contract no process uses (SC4 and SC5 today).
+- "The ungoverned file": a structured file the corpus relies on with no contract, "so its shape is whatever the last writer chose".
+Also relevant: a tool that re-implements a contract by hand (check-standing-context.sh against SC2) can drift from it, and the contract is authoritative.
+An unhealthy population would show many of these at once. By the charter's own account, the current set already has at least two (unmapped EntryBody; SC4 and SC5 with no consumer) plus the ungoverned files in Q6.
+
+### OBSERVATIONS
+- schemas/README.md "Layout" is incomplete. It shows only catalog.json, common/, context-frame/, question/ and tests/{context-frame,question,support}. It omits catalog-entry/, entry-body/, skill/ and standing-context/, and the tests directories for them, which all exist on disk.
+- EntryBody uses the apiVersion/kind envelope (entry-body.schema.json requires both) but is missing from catalog.json "resources". The charter admits this as a fault, but it contradicts "catalog.json maps resource identity to schema identity". catalog-entry, standing-context and skill have role "resource" under "schemas" but no envelope and no resources row. So "resource" means two different things in catalog.json.
+- The required order of structural then semantic validation is stated without a reason.
+- The `description` in catalog-entry.schema.json lists only eight categories, including "methodology", but the enum has seventeen and uses "method". The description is stale.
+- SC1, SC2 and SC3 each start their summary sentence in lowercase ("the frontmatter ..."), apparently generated from the title.
+- SC4 and SC5 say their content "Moved here from the schemas charter, SC0, when it was converted to E4". The charter's frontmatter still says `category: contract`, which is the same category as its members.

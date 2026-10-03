@@ -1,0 +1,441 @@
+{
+  "created": "2026-10-03T12:02:20.786Z",
+  "seed": "b56e3746e190a890",
+  "corpora": [
+    {
+      "label": "before",
+      "path": "/tmp/opencode/evalc/c-96cc85c7"
+    },
+    {
+      "label": "after",
+      "path": "/tmp/opencode/evalc/c-4b29b30f"
+    }
+  ],
+  "readers": 3,
+  "probes": [
+    "sc0.Q1",
+    "sc0.Q2",
+    "sc0.Q3",
+    "sc0.Q4",
+    "sc0.Q5",
+    "sc0.Q6",
+    "sc0.Q7"
+  ],
+  "max": 14,
+  "mean": {
+    "sc0.Q1": {
+      "before": 2,
+      "after": 2
+    },
+    "sc0.Q2": {
+      "before": 2,
+      "after": 2
+    },
+    "sc0.Q3": {
+      "before": 1,
+      "after": 2
+    },
+    "sc0.Q4": {
+      "before": 0.33,
+      "after": 2
+    },
+    "sc0.Q5": {
+      "before": 1.67,
+      "after": 2
+    },
+    "sc0.Q6": {
+      "before": 2,
+      "after": 2
+    },
+    "sc0.Q7": {
+      "before": 1,
+      "after": 2
+    }
+  },
+  "total": {
+    "before": 10,
+    "after": 14
+  },
+  "rows": [
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-4d98fc",
+      "probe": "sc0.Q1",
+      "score": 2,
+      "reason": "States firmly that observed state is not in spec and that status is gained only when a real reconciler needs it; the NOT SETTLED note concerns only the shape of status."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-4d98fc",
+      "probe": "sc0.Q2",
+      "score": 2,
+      "reason": "Says no and describes the wrapper that holds the complete Question beside the process's own round field."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-4d98fc",
+      "probe": "sc0.Q3",
+      "score": 1,
+      "reason": "Gets the order right but says the reason is not settled and offers it only as a guess."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-4d98fc",
+      "probe": "sc0.Q4",
+      "score": 1,
+      "reason": "Places every contract correctly under a secondary split (corpus's own documents versus process-neutral resources), but labels the answer NOT SETTLED and guesses that the wrong envelope/frontmatter split is the main one."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-4d98fc",
+      "probe": "sc0.Q5",
+      "score": 1,
+      "reason": "Chooses to extend SC1, but offers the anti-fork, one-contract reason only as a guess."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-4d98fc",
+      "probe": "sc0.Q6",
+      "score": 2,
+      "reason": "Names catalog.json and bundles/*.yaml and explains that no schema in the set governs them."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-4d98fc",
+      "probe": "sc0.Q7",
+      "score": 1,
+      "reason": "Lists several population faults, but labels the answer NOT SETTLED and presents the faults as guesses."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-ce85fe",
+      "probe": "sc0.Q1",
+      "score": 2,
+      "reason": "States 'not in spec' and that a status block is allowed only once a real reconciler consumes it."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-ce85fe",
+      "probe": "sc0.Q2",
+      "score": 2,
+      "reason": "Says no and describes wrapping a complete Question with process fields such as round kept beside it, never injected."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-ce85fe",
+      "probe": "sc0.Q3",
+      "score": 1,
+      "reason": "Gets the order right but labels the reason NOT SETTLED and gives it only as a guess."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-ce85fe",
+      "probe": "sc0.Q4",
+      "score": 0,
+      "reason": "Uses an envelope-versus-frontmatter discriminator that wrongly groups SC6 with SC4 and SC5, and labels the answer NOT SETTLED."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-ce85fe",
+      "probe": "sc0.Q5",
+      "score": 2,
+      "reason": "Chooses to extend SC1 using its per-category conditionals and gives the anti-drift reason against splitting one mechanism into copies."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-ce85fe",
+      "probe": "sc0.Q6",
+      "score": 2,
+      "reason": "Names bundles/*.yaml and catalog.json as ungoverned and explains that no schema covers them, with only a referential check or convention applied."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-ce85fe",
+      "probe": "sc0.Q7",
+      "score": 1,
+      "reason": "Offers population faults such as catalog drift and contracts with no consumer, but labels the answer NOT SETTLED and presents them as guesses."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-999746",
+      "probe": "sc0.Q1",
+      "score": 2,
+      "reason": "Gives 'not in spec' and the status-only-with-a-real-reconciler rule as firm conclusions."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-999746",
+      "probe": "sc0.Q2",
+      "score": 2,
+      "reason": "Says no and describes the wrapper that keeps the whole Question beside spec.survey.round."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-999746",
+      "probe": "sc0.Q3",
+      "score": 1,
+      "reason": "Gets the structural-then-semantic order right but says the text does not settle why and offers the reason only as a guess."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-999746",
+      "probe": "sc0.Q4",
+      "score": 0,
+      "reason": "Uses an envelope-versus-frontmatter split rather than whose instances are governed, places SC6 with SC4 and SC5, and labels the taxonomy NOT SETTLED."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-999746",
+      "probe": "sc0.Q5",
+      "score": 2,
+      "reason": "Chooses to extend SC1 using its per-category conditionals and gives the anti-drift reason against forking the mechanism."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-999746",
+      "probe": "sc0.Q6",
+      "score": 2,
+      "reason": "Names bundles/*.yaml and catalog.json and explains that no schema governs them, with only a skill-name check applied."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-999746",
+      "probe": "sc0.Q7",
+      "score": 1,
+      "reason": "Offers population faults such as schemas missing from catalog.json and ungoverned files, but labels the answer NOT SETTLED and presents them as guesses."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-be95be",
+      "probe": "sc0.Q1",
+      "score": 2,
+      "reason": "Gives both 'not in spec' and the rule that a kind gains status only once a real reconciler needs it; the guess concerns only the shape of status."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-be95be",
+      "probe": "sc0.Q2",
+      "score": 2,
+      "reason": "Says no and describes composing the complete Question inside a wrapper that carries round beside it."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-be95be",
+      "probe": "sc0.Q3",
+      "score": 2,
+      "reason": "Gives structural then semantic order, because semantic validators assume the shape the schema guarantees and check invariants beyond JSON Schema."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-be95be",
+      "probe": "sc0.Q4",
+      "score": 2,
+      "reason": "Names both kinds by whose instances they govern and places SC1, SC2, SC3 and SC6 with the corpus's own files and SC4 and SC5 with the process resources."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-be95be",
+      "probe": "sc0.Q5",
+      "score": 2,
+      "reason": "Chooses to extend SC1 and cites one concern, one contract, plus the drift fault."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-be95be",
+      "probe": "sc0.Q6",
+      "score": 2,
+      "reason": "Names bundles/*.yaml and gives the reason: no contract governs it, so it is checked only by hand-written code or not at all."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-be95be",
+      "probe": "sc0.Q7",
+      "score": 2,
+      "reason": "Names several population faults, including the unchecked contract, the drifting pair and the unmapped resource."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-65ab3e",
+      "probe": "sc0.Q1",
+      "score": 2,
+      "reason": "States 'not in spec' and that status may be added only when a real reconciler consumes it, with the observation otherwise outside the resource."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-65ab3e",
+      "probe": "sc0.Q2",
+      "score": 2,
+      "reason": "Says no and describes the SurveyQuestion wrapper holding the full Question with round under spec.survey."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-65ab3e",
+      "probe": "sc0.Q3",
+      "score": 2,
+      "reason": "Gives the order and the reason that semantic validators assume the shape the schema guarantees."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-65ab3e",
+      "probe": "sc0.Q4",
+      "score": 2,
+      "reason": "Names both kinds by whose instances they govern and places every contract correctly."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-65ab3e",
+      "probe": "sc0.Q5",
+      "score": 2,
+      "reason": "Chooses to extend SC1 and cites one concern, one contract, with a second schema being two contracts free to drift."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-65ab3e",
+      "probe": "sc0.Q6",
+      "score": 2,
+      "reason": "Names bundles/*.yaml and catalog.json and explains that no schema governs them."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-65ab3e",
+      "probe": "sc0.Q7",
+      "score": 2,
+      "reason": "Names several population faults, including the unchecked contract, two contracts for one concern, and the unmapped resource."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-03b8d2",
+      "probe": "sc0.Q1",
+      "score": 2,
+      "reason": "Gives both 'not in spec' and the status-only-with-a-reconciler rule as firm conclusions; the guess covers only a supplementary point."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-03b8d2",
+      "probe": "sc0.Q2",
+      "score": 2,
+      "reason": "Says no and gives the wrapper pattern, with the complete Question in spec.question and round and ordinal in spec.survey."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-03b8d2",
+      "probe": "sc0.Q3",
+      "score": 2,
+      "reason": "Gives the order and the reason that semantic validators assume the schema-guaranteed shape."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-03b8d2",
+      "probe": "sc0.Q4",
+      "score": 2,
+      "reason": "Names both kinds by whose instances they govern and places every contract correctly."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-03b8d2",
+      "probe": "sc0.Q5",
+      "score": 2,
+      "reason": "Chooses to extend SC1 and gives the one-concern-one-contract reason, naming the two-contracts-for-one-concern fault."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-03b8d2",
+      "probe": "sc0.Q6",
+      "score": 2,
+      "reason": "Names bundles/*.yaml and gives the reason: it is checked only by hand-written code or not at all."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-03b8d2",
+      "probe": "sc0.Q7",
+      "score": 2,
+      "reason": "Names six population faults, including the unmapped resource and the contract ahead of its consumer."
+    }
+  ],
+  "consistentHedges": [
+    {
+      "probe": "sc0.Q1",
+      "label": "before",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "sc0.Q1",
+      "label": "after",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "sc0.Q3",
+      "label": "before",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "sc0.Q4",
+      "label": "before",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "sc0.Q5",
+      "label": "before",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "sc0.Q5",
+      "label": "after",
+      "hedged": 2,
+      "readers": 3
+    },
+    {
+      "probe": "sc0.Q7",
+      "label": "before",
+      "hedged": 3,
+      "readers": 3
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+### sc0.Q1
+Not in `spec`. schemas/README.md "Resource convention": "`spec` holds all configuration that affects entity meaning or behaviour" and "Runtime observations do not belong in `spec`. A kind only gains `status` when a real reconciler needs observed state."
+So the answer has two parts. If a real reconciler needs that observed state, the kind gains a `status` section. If none does, the kind gets no `status` and the observation has no home in the resource.
+`metadata` is not the place either: it holds "portable identity and machine-oriented labels or annotations" (same section).
+NOT SETTLED: the shape of a `status` block. No existing schema defines one (I found no `status` in question.schema.json or context-frame.schema.json, and both set `additionalProperties: false`).
+
+### sc0.Q2
+No. schemas/README.md "Composition": "A process composes or snapshots a complete `Question` resource and owns its process-specific fields beside it. It must not inject process fields into the Question resource."
+Its example is a `SurveyQuestion` wrapper whose `spec.survey.round: 1` sits next to `spec.question`. "This wrapper boundary keeps the neutral resource closed and prevents Survey evolution from changing the Question contract."
+SC4-question.md agrees: Question "contains no Survey, round, Director, interpretation, or outcome-axis semantics", and "a composing process owns placement such as round and ordinal."
+
+### sc0.Q3
+Structural validation (JSON Schema) comes first, then semantic validation. schemas/README.md "Validation": "A consumer must run structural validation before semantic validation."
+The README splits the work: "JSON Schema validates structure", and the semantic validators check invariants "that JSON Schema Draft 2020-12 cannot express" (unique option IDs, cardinality bounds, references to constraints, duplicate scope or givens or terms).
+Why: NOT SETTLED. The text states the order but gives no reason for it.
+GUESS, from reading the source: the semantic validators assume the structure is already valid. question.validator.mjs `canonicalConstraintKey` spreads `constraint.optionIds` without checking it. `validateQuestionSemantics` returns `[]` (no issues) for any `spec.response.type` other than "Choice". So a malformed resource run through semantics alone could crash or pass with nothing checked.
+
+### sc0.Q4
+schemas/README.md "Territory" splits the contracts "by whose instances they govern".
+(1) The corpus's own files: documents this corpus is made of, checked by the gate `tools/check-all.sh`. Members: SC1 catalogue frontmatter, SC2 standing context, SC3 skill bodies, SC6 entry bodies.
+(2) Process resources: "documents a process writes - a question, the context it is answered against - neutral of any one process". These are checked by their semantic validators and the schema suite. Members: SC4 Question and SC5 ContextFrame.
+"Every contract sits in one row." SC2 and SC3 are portable, but they stay in row 1 because "their instances are documents of the kind this corpus is made of."
+SC0 itself is the charter (category `contract`), not a contract.
+
+### sc0.Q5
+It is a change to an existing schema, SC1 (catalog-entry). schemas/README.md "Boundaries and composition": "one concern, one contract - catalogue frontmatter is one schema with per-category conditions, not a schema per layer."
+The "Faults" section names the alternative as a defect: "Two contracts for one concern. Two schemas for one kind of document, each authoritative, free to drift."
+catalog-entry.schema.json already has this shape. It sets `additionalProperties: false`, so new fields must be declared there or they fail validation. It has a `category` enum and per-category `if`/`then` blocks (for example `"const": "axiom"`).
+The change also means adding the new category to SC1's enum. If the new layer's bodies are governed, it is an edit to SC6's entry-body.json too ("adding a category is an edit to a JSON file", SC6-entry-body.md). README says SC6 and SC1 categories "are held together by a test."
+
+### sc0.Q6
+Yes. schemas/README.md "Territory", "Gaps the territory exposes", lists structured files "that no contract governs": "the evaluation suites and their results, the human-evaluation suites, `catalog.json` itself, and `bundles/*.yaml`."
+One example is `bundles/*.yaml` (the corpus has bundles/nanoprobe.yaml, sysml-modelling.yaml, workgraph-arc.yaml). Another is schemas/catalog.json, which has no schema of its own.
+
+### sc0.Q7
+schemas/README.md "Faults" lists six kinds:
+(1) the unchecked contract, which no check runs against;
+(2) two contracts for one concern;
+(3) the drifting pair: contracts that must agree, with nothing holding them together;
+(4) the unmapped resource: a kind missing from `catalog.json` ("`EntryBody` is one today");
+(5) the contract ahead of its consumer ("`SC4` and `SC5` today");
+(6) the ungoverned file, "whose shape is whatever the last writer chose".
+The "Boundaries" section adds one more: a tool that re-implements a contract by hand (`check-standing-context.sh` against SC2) "can drift", and the contract stays authoritative.
+
+### OBSERVATIONS
+- The README "Layout" tree shows only common/, context-frame/, question/, and tests/{context-frame,question,support}. It leaves out catalog-entry/, standing-context/, skill/, entry-body/ and their test directories, all of which exist.
+- "The unmapped resource" says `EntryBody` "is one today". That is true: catalog.json `resources` lists only Question and ContextFrame, although entry-body.json has `kind: EntryBody`. The schemas for EntryBody, catalog-entry, standing-context and skill are listed under `schemas` with role "resource".
+- The catalog-entry.schema.json description lists categories "axiom, style, methodology, role, pattern, domain, work-type or mission-required". Its `category` enum says "method", not "methodology", and also includes skill, contract, entity, component, artifact, trait, rule, practice and set. The description is stale.
+- The README states the structural-before-semantic order with "must" but gives no reason (see Q3).
+- The README calls the resource convention "Kubernetes-like" and reserves `status`. Its own resource (EntryBody) and the other resources are not all covered by `catalog.json`, so "preload every schema listed in catalog.json" resolves the schemas but not the kind-to-validator mapping for EntryBody.

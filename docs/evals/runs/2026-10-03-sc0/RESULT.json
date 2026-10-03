@@ -1,0 +1,441 @@
+{
+  "created": "2026-10-03T11:57:28.844Z",
+  "seed": "c84de971b131923a",
+  "corpora": [
+    {
+      "label": "before",
+      "path": "/tmp/opencode/evalc/c-c76032e7"
+    },
+    {
+      "label": "after",
+      "path": "/tmp/opencode/evalc/c-419c2cc8"
+    }
+  ],
+  "readers": 3,
+  "probes": [
+    "sc0.Q1",
+    "sc0.Q2",
+    "sc0.Q3",
+    "sc0.Q4",
+    "sc0.Q5",
+    "sc0.Q6",
+    "sc0.Q7"
+  ],
+  "max": 14,
+  "mean": {
+    "sc0.Q1": {
+      "before": 2,
+      "after": 2
+    },
+    "sc0.Q2": {
+      "before": 2,
+      "after": 2
+    },
+    "sc0.Q3": {
+      "before": 1,
+      "after": 1
+    },
+    "sc0.Q4": {
+      "before": 0.33,
+      "after": 2
+    },
+    "sc0.Q5": {
+      "before": 2,
+      "after": 2
+    },
+    "sc0.Q6": {
+      "before": 2,
+      "after": 2
+    },
+    "sc0.Q7": {
+      "before": 1,
+      "after": 2
+    }
+  },
+  "total": {
+    "before": 10.33,
+    "after": 13
+  },
+  "rows": [
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-dd04cc",
+      "probe": "sc0.Q1",
+      "score": 2,
+      "reason": "Gives not-in-spec and that a status block is added only once a real reconciler needs it."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-dd04cc",
+      "probe": "sc0.Q2",
+      "score": 2,
+      "reason": "Answers no with the wrapper composition keeping round beside a complete Question."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-dd04cc",
+      "probe": "sc0.Q3",
+      "score": 1,
+      "reason": "Gives the correct order but marks the reason not settled and a guess, capping the score at 1."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-dd04cc",
+      "probe": "sc0.Q4",
+      "score": 0,
+      "reason": "Says the kinds are not settled and guesses envelope/frontmatter/fragment groupings that split SC6 from the corpus-file contracts, missing the key's discriminator."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-dd04cc",
+      "probe": "sc0.Q5",
+      "score": 2,
+      "reason": "Extends SC1 with per-category conditionals and gives the free-to-drift forking reason."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-dd04cc",
+      "probe": "sc0.Q6",
+      "score": 2,
+      "reason": "Names catalog.json and bundles/*.yaml with the reason that no schema governs them and only tool code checks bundles."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-dd04cc",
+      "probe": "sc0.Q7",
+      "score": 1,
+      "reason": "Says the matter is not settled and offers population faults only as guesses, capping the score at 1."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-54f167",
+      "probe": "sc0.Q1",
+      "score": 2,
+      "reason": "Gives not-in-spec and status only when a reconciler needs it, otherwise outside the resource."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-54f167",
+      "probe": "sc0.Q2",
+      "score": 2,
+      "reason": "Answers no and describes the SurveyQuestion wrapper holding the whole Question beside the round."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-54f167",
+      "probe": "sc0.Q3",
+      "score": 1,
+      "reason": "Gives the correct order and a source-based mechanism, but explicitly says the text does not settle the why, which caps the score at 1."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-54f167",
+      "probe": "sc0.Q4",
+      "score": 1,
+      "reason": "Reaches the correct two kinds and placement but labels it a guess the text does not state, capping the score at 1."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-54f167",
+      "probe": "sc0.Q5",
+      "score": 2,
+      "reason": "Extends SC1 as the one frontmatter contract and cites the forked-constraint drift risk of splitting."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-54f167",
+      "probe": "sc0.Q6",
+      "score": 2,
+      "reason": "Names catalog.json and bundles/*.yaml, explaining they are checked only by partial tests or tool code."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-54f167",
+      "probe": "sc0.Q7",
+      "score": 1,
+      "reason": "Says the matter is not settled and labels each population fault a guess, capping the score at 1."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-856dc1",
+      "probe": "sc0.Q1",
+      "score": 2,
+      "reason": "Gives not-in-spec and status only once a reconciler exists, with the observation outside the resource until then; the guess is on a side point only."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-856dc1",
+      "probe": "sc0.Q2",
+      "score": 2,
+      "reason": "Answers no and describes wrapping a complete Question beside the process's round field."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-856dc1",
+      "probe": "sc0.Q3",
+      "score": 1,
+      "reason": "Gives the correct order but labels the reason not settled and a guess, capping the score at 1."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-856dc1",
+      "probe": "sc0.Q4",
+      "score": 0,
+      "reason": "Uses envelope versus frontmatter shape as the discriminator, grouping SC6 with SC4 and SC5, which does not match the key."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-856dc1",
+      "probe": "sc0.Q5",
+      "score": 2,
+      "reason": "Extends SC1 as the single contract for all entry frontmatter, citing that splitting would fork copies free to drift."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-856dc1",
+      "probe": "sc0.Q6",
+      "score": 2,
+      "reason": "Names bundles/*.yaml and catalog.json, explaining no schema governs them and a tool checks only skill names."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-856dc1",
+      "probe": "sc0.Q7",
+      "score": 1,
+      "reason": "Says the matter is not settled and offers population faults only as guesses, capping the score at 1."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-70eb52",
+      "probe": "sc0.Q1",
+      "score": 2,
+      "reason": "Gives not-in-spec and the status-only-with-a-reconciler rule; the unsettled and guessed parts are side points."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-70eb52",
+      "probe": "sc0.Q2",
+      "score": 2,
+      "reason": "Answers no with the composing wrapper owning round beside the full Question."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-70eb52",
+      "probe": "sc0.Q3",
+      "score": 1,
+      "reason": "Gives the correct order but declares the reason not settled and offers it only as a guess, which caps the score at 1."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-70eb52",
+      "probe": "sc0.Q4",
+      "score": 2,
+      "reason": "Names both kinds with the correct discriminator and places all six contracts correctly."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-70eb52",
+      "probe": "sc0.Q5",
+      "score": 2,
+      "reason": "Extends SC1 citing one concern, one contract and the drift fault of a second schema."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-70eb52",
+      "probe": "sc0.Q6",
+      "score": 2,
+      "reason": "Names catalog.json as a relied-on file no schema validates."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-70eb52",
+      "probe": "sc0.Q7",
+      "score": 2,
+      "reason": "Lists six population faults including the unchecked contract and the ungoverned file."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-310cf6",
+      "probe": "sc0.Q1",
+      "score": 2,
+      "reason": "States observed state is not in spec and that a kind gains status only when a real reconciler needs it."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-310cf6",
+      "probe": "sc0.Q2",
+      "score": 2,
+      "reason": "Answers no and states a process wraps a complete Question and keeps its own fields beside it."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-310cf6",
+      "probe": "sc0.Q3",
+      "score": 1,
+      "reason": "Gives the correct order but marks the reason not settled and a guess, capping the score at 1."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-310cf6",
+      "probe": "sc0.Q4",
+      "score": 2,
+      "reason": "Names corpus-file and process-resource kinds with the whose-instances discriminator and places every contract correctly."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-310cf6",
+      "probe": "sc0.Q5",
+      "score": 2,
+      "reason": "Extends SC1 citing one concern, one contract and the drift fault of a second schema."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-310cf6",
+      "probe": "sc0.Q6",
+      "score": 2,
+      "reason": "Names bundles/*.yaml and catalog.json as structured files no contract governs."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-310cf6",
+      "probe": "sc0.Q7",
+      "score": 2,
+      "reason": "Lists multiple population faults including the unchecked contract, two contracts for one concern and the unmapped resource."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-72156e",
+      "probe": "sc0.Q1",
+      "score": 2,
+      "reason": "Gives both not-in-spec and the status-only-with-a-reconciler rule, noting no home in the resource otherwise."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-72156e",
+      "probe": "sc0.Q2",
+      "score": 2,
+      "reason": "Answers no with the wrapper composition and no injection of process fields."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-72156e",
+      "probe": "sc0.Q3",
+      "score": 1,
+      "reason": "Gives the correct order but states the why is not settled and guesses it, capping the score at 1."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-72156e",
+      "probe": "sc0.Q4",
+      "score": 2,
+      "reason": "Names both kinds by whose instances they govern and places SC1, SC2, SC3, SC6 and SC4, SC5 correctly."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-72156e",
+      "probe": "sc0.Q5",
+      "score": 2,
+      "reason": "Extends SC1 citing one concern, one contract and the two-contracts-for-one-concern fault."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-72156e",
+      "probe": "sc0.Q6",
+      "score": 2,
+      "reason": "Names bundles/*.yaml and catalog.json as relied-on structured files that no contract governs."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-72156e",
+      "probe": "sc0.Q7",
+      "score": 2,
+      "reason": "Lists six population faults including two contracts for one concern and the drifting pair."
+    }
+  ],
+  "consistentHedges": [
+    {
+      "probe": "sc0.Q1",
+      "label": "before",
+      "hedged": 2,
+      "readers": 3
+    },
+    {
+      "probe": "sc0.Q1",
+      "label": "after",
+      "hedged": 2,
+      "readers": 3
+    },
+    {
+      "probe": "sc0.Q3",
+      "label": "before",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "sc0.Q3",
+      "label": "after",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "sc0.Q4",
+      "label": "before",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "sc0.Q5",
+      "label": "before",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "sc0.Q7",
+      "label": "before",
+      "hedged": 3,
+      "readers": 3
+    }
+  ]
+}

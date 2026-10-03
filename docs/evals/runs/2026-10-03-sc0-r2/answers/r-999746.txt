@@ -1,0 +1,60 @@
+### sc0.Q1
+Not in `spec`: schemas/README.md "Resource convention" says "Runtime observations do not belong in `spec`. A kind only gains `status` when a real reconciler needs observed state."
+So the place is a top-level `status` block, and only once a real reconciler exists to need it.
+It also does not belong in `metadata`, which "holds portable identity and machine-oriented labels or annotations" (README; resource-metadata.schema.json describes it as "non-specification metadata").
+No kind has `status` today: question.schema.json and context-frame.schema.json set `additionalProperties: false` at the top level, so a `status` field would currently fail validation, and the ContextFrame section adds that "observed state remain[s] outside the resource".
+Adding `status` would therefore be a schema change to that kind, justified by a named reconciler.
+GUESS: a "last checked" timestamp with no reconciler consuming it would not qualify, and should be kept by the process that does the checking.
+
+### sc0.Q2
+No.
+schemas/README.md "Question": "It contains no Survey, round, Director, interpretation, or outcome-axis semantics" and "a composing process owns placement such as round and ordinal."
+"Composition" says a process "must not inject process fields into the Question resource", and gives a `SurveyQuestion` wrapper example with `spec.question` (the whole Question) beside `spec.survey.round`.
+The stated reason: "This wrapper boundary keeps the neutral resource closed and prevents Survey evolution from changing the Question contract."
+question.schema.json enforces this mechanically with `additionalProperties: false` on the resource and on `spec`.
+
+### sc0.Q3
+Structural validation first, then semantic validation: schemas/README.md "Validation" says "A consumer must run structural validation before semantic validation."
+Structural means JSON Schema (resolved by preloading every schema in `catalog.json`); semantic means the per-kind validator in `catalog.json` `semanticValidator` (question.validator.mjs, context-frame.validator.mjs).
+The README explains what each layer covers: semantic validators check "ordered-array invariants that JSON Schema Draft 2020-12 cannot express" (unique option IDs, cardinality bounds, satisfiability; duplicate scope, givens and terms).
+It does NOT SETTLE why the order is mandatory.
+GUESS: the semantic validators assume an instance that is already well-formed, so their verdict on malformed input is not meaningful. The Question validator does guard defensively (`Array.isArray(response?.options) ? ... : []`), which would silently treat a malformed array as empty rather than flag it.
+
+### sc0.Q4
+The corpus never states a taxonomy of contract kinds, so the naming below is NOT SETTLED. It is assembled from distinctions the files do draw.
+(1) Enveloped resources: the Kubernetes-like `apiVersion`/`kind`/`metadata`/`spec` convention of schemas/README.md. These are Question (SC4) and ContextFrame (SC5), each of which also has a semantic validator registered under `resources` in catalog.json, and EntryBody (SC6), which uses the envelope but has no semantic validator. It is enforced by `tools/check-entry-body.sh` instead, and is absent from catalog.json `resources`.
+(2) Frontmatter contracts: plain objects with no envelope, validating the YAML frontmatter of a markdown file. These are catalog-entry (SC1), standing-context (SC2, self-declared through its own `schema` field) and skill (SC3, deliberately carrying "no catalogue placement").
+(3) Fragments: catalog.json gives `role: fragment` to resource-metadata and choice-response, as against `role: resource`. Fragments are referenced, not validated on their own, and have no SC entry.
+SC6 also differs from SC1 in what it governs: an entry's body sections rather than its frontmatter ("SC1 governs frontmatter and stops at the closing marker; this governs everything below it").
+GUESS: the dividing line between (1) and (2) is whether the instance is a standalone data document or metadata attached to a prose file.
+
+### sc0.Q5
+It is a change to an existing schema, SC1 catalog-entry, not a new schema.
+Root README.md "What admission costs", step 4: an ID-bearing layer requires "Entry of its contents into the contract in schemas/". The intended move is to extend the existing contract.
+catalog-entry.schema.json already handles layer-specific fields this way. For example, `sovereignty` is required only for components, `trace` only for rules and `members` only for sets, each scoped by `allOf` if/then on `category` and `id`.
+The change would add the new category to the `category` enum and its prefix to the `id` pattern, declare the two properties (needed because `additionalProperties: false`), and add an if/then requiring them for that category.
+SC6 gives the analogous reason for its own one-resource design: splitting per category "would fork the mechanism into copies free to drift".
+GUESS: if the layer's body shape is also governed, a new entry in entry-body.json (and its `category` enum) is needed too, which again is an edit, not a new schema.
+
+### sc0.Q6
+Yes.
+The bundle YAML files (`bundles/*.yaml`) are relied on by consumers, which resolve a role by reading their `skills:` list (bundles/README.md). No schema in catalog.json governs them, and the README says bundles "are managed by convention on filename". The only check is that `tools/skill-graph.mjs` verifies each `skills:` entry names a real skill.
+Another: `schemas/catalog.json` itself, which consumers use to resolve schemas and semantic validators, has no schema governing its own shape.
+(Measured by listing schemas/ and reading catalog.json; I did not search for every structured file in the corpus.)
+
+### sc0.Q7
+NOT SETTLED for this set: schemas/README.md (SC0) has no `Faults` section, though entry-body.json `spec.charters` requires every charter to carry "Territory", "What earns an entry", "Faults" and "Index". SC0 has only "Contracts", which is the index region.
+E4-charter.md defines the missing question: "What does an unhealthy population look like, as against a merely valid one? ... Every member can be valid while the set is wrong."
+tools/check-charter-shape.sh reports such gaps as advisory only ("Tracked as B4"), so this is known debt rather than a silent omission.
+GUESS, drawn from neighbouring text: an unhealthy population would have contracts that fork a mechanism per category (the drift SC6 warns against), schemas missing from catalog.json, process fields leaking into neutral resources, `status` added without a reconciler, SC entries whose stub points at a schema that does not exist, and structured files the corpus relies on that no contract governs.
+
+### OBSERVATIONS
+- SC0 (schemas/README.md) lacks the charter sections Territory, What earns an entry and Faults that entry-body.json requires of every charter. The advisory check-charter-shape.sh would flag this.
+- The schemas/README.md "Layout" tree omits catalog-entry/, standing-context/, skill/ and entry-body/, all of which exist.
+- catalog.json `resources` lists Question and ContextFrame but not EntryBody, although EntryBody uses the same `apiVersion`/`kind` envelope.
+- README "Validation" says the contract does not use JSON Schema `default` as implicit configuration, yet entry-body.schema.json gives `ordered` a `"default": true`, and standing-context.schema.json's `required-sections` says "Defaults are applied when absent".
+- In catalog-entry.schema.json, the top-level description lists "methodology" and "mission-required" among a short list of categories. The enum has `method`, plus nine more categories (skill, contract, entity, component, artifact, trait, rule, practice, set) that the description does not mention.
+- entry-body.schema.json's `spec.charters` object has none of the field descriptions its `categories` items have, and `charters` is not required.
+- The SC0 frontmatter `related` names SC1 and SC6 but not SC2-SC5.
+- bundles/README.md "Current bundles" lists two bundles, but three exist (workgraph-arc.yaml is missing from the table). Its entries list (`A`, `S`, `M`, `R`, `D`, `W`, `P`, `K`) is also short of the current prefixes.
+- The README never says why structural validation must come before semantic validation.

@@ -1,0 +1,62 @@
+### sc0.Q1
+Not in `spec`, and not in `metadata`. schemas/README.md "Resource convention" says: "Runtime observations do not belong in `spec`. A kind only gains `status` when a real reconciler needs observed state." `metadata` is limited to "portable identity and machine-oriented labels or annotations", and labels/annotations "must not carry text that a respondent needs" (README "Question"; common/v1alpha1/resource-metadata.schema.json).
+So the observation goes in a top-level `status` block. That block is allowed only once a real reconciler consumes it, and it has to be added to the kind's schema first.
+Today no kind has one. question.schema.json and context-frame.schema.json both set `additionalProperties: false` at the top level, and tests/question/question-sovereignty.test.mjs ("Question has no observed status contract") and context-frame-sovereignty.test.mjs assert that `status` is absent. So a "last checked" field would currently be rejected.
+ContextFrame states the same exclusion directly: "observed state remain[s] outside the resource" (README "ContextFrame").
+NOT SETTLED: the shape of a `status` block. No schema defines one.
+
+### sc0.Q2
+No. schemas/README.md "Question": "It contains no Survey, round, Director, interpretation, or outcome-axis semantics", and "a composing process owns placement such as round and ordinal."
+"Composition" says a process "must not inject process fields into the Question resource". It should wrap a complete Question and keep its own fields beside it, e.g. a future `SurveyQuestion` with `spec.question` (the whole Question) and `spec.survey.round` / `ordinal`.
+The stated reason is that "This wrapper boundary keeps the neutral resource closed and prevents Survey evolution from changing the Question contract."
+This is enforced: `additionalProperties: false` on the Question and its `spec`, plus the "Question schema contains no Survey-specific vocabulary" test in tests/question/question-sovereignty.test.mjs.
+NOT SETTLED: `SurveyQuestion` is only an example ("a future"). It has no schema or catalog.json entry yet.
+
+### sc0.Q3
+Structural (JSON Schema) validation first, semantic validation second: "A consumer must run structural validation before semantic validation" (schemas/README.md "Validation").
+For resolving references, a consumer "can preload every schema listed in `catalog.json` to resolve absolute URN references without importing Survey" (same section).
+The reason for the order is NOT SETTLED by the text. The README states the rule but not its justification.
+What the text does show is that the semantic validators only check "ordered-array invariants that JSON Schema Draft 2020-12 cannot express". That means they add to structural validation rather than replace it.
+The code shows why skipping the order fails silently (measured). `validateQuestionSemantics` returns `[]` unless `spec.response.type === "Choice"`. Both validators also substitute `[]` for missing or non-array fields (`Array.isArray(...) ? ... : []` in question.validator.mjs and context-frame.validator.mjs). So a malformed resource can produce zero semantic issues.
+GUESS: the order exists because semantic checks assume a structurally valid shape. Run on their own, they read as a pass on garbage.
+
+### sc0.Q4
+NOT SETTLED as a charter statement. SC0 never names kinds of contract, although E4 (entities/E4-charter.md, "Conditional") requires a "Kinds" answer "when members come in more than one sort".
+What the files show (inferred from reading them):
+(a) Envelope resources, which use the `apiVersion`/`kind`/`metadata`/`spec` convention: SC4 Question, SC5 ContextFrame, SC6 EntryBody.
+(b) Bare frontmatter contracts, which are flat objects validating the YAML header of a markdown file and have no envelope: SC1 catalog-entry, SC2 standing-context, SC3 skill.
+A second split cuts across (a). SC4 and SC5 have semantic validators registered under catalog.json `resources`. SC6 has none and is not listed there; it governs one declaration (entry-body.json) and is enforced by `tools/check-entry-body.sh` (SC6-entry-body.md).
+catalog.json also separates `role: fragment` (resource-metadata, choice-response) from `role: resource`. Fragments are not SC entries. SC1-SC3 are tagged "resource" even though they do not follow the resource convention.
+SC0 is the charter, not a contract.
+
+### sc0.Q5
+A change to the existing SC1 catalog-entry contract, not a new schema.
+root README.md "Adding and retiring a layer", admission cost 4: "Entry of its contents into the contract in schemas/, if the layer is ID-bearing". SC1 is "the frontmatter every catalogue entry must satisfy".
+The schema already handles fields used by a single layer inside itself, as conditional properties plus `allOf` if/then rules. Examples: `sovereignty`/`internalisation-trigger` for components, `trace` for rules, `members` for sets, `applies-to` for axioms.
+Because `additionalProperties: false`, the change is mandatory: unknown fields fail validation. The new category must also be added to the `category` enum and its prefix to the `id` pattern.
+SC6 gives the parallel reasoning for bodies: one resource covers all categories "because ... splitting it would fork the mechanism into copies free to drift".
+NOT SETTLED: whether such a change requires a version bump beyond `v1alpha1`.
+
+### sc0.Q6
+Yes. One is bundles/*.yaml (e.g. bundles/nanoprobe.yaml).
+bundles/README.md says bundles are "managed by convention on filename" and must carry "no harness-specific field". No schema in catalog.json covers them.
+`tools/skill-graph.mjs` only checks that each `skills:` entry names a real skill, which is a referential check, not a contract.
+Another is schemas/catalog.json itself. It has no `$schema` and no catalog entry, so the file that maps resource identity to schema identity is ungoverned.
+Also, by SC6's own words, categories missing from entry-body.json (e.g. rule, method, style) have ungoverned bodies "by design".
+
+### sc0.Q7
+NOT SETTLED by SC0. schemas/README.md has no `Faults` section, and it also lacks the other charter headings listed in entry-body.json `spec.charters` (Territory, What earns an entry, Index).
+The general standard is in E4: a population fault is "visible only across the set - a member admitted for importance rather than fit, two members restating one rule, a population that has stopped being searched". Faults are about what a set looks like "as against a merely valid one".
+GUESS, applied to contracts and partly visible already: catalog.json and the SC entries drifting apart (SC6's EntryBody kind is missing from `resources`); the README Layout listing only 3 of 7 schema directories; one rule duplicated in two contracts; a contract with no consumer or enforcer; process fields leaking into neutral resources; or rules held in prose that a schema could hold.
+
+### OBSERVATIONS
+- SC0 (schemas/README.md) lacks the required charter headings Territory, What earns an entry, Faults and Index from entry-body.json `spec.charters`, and it answers no "Kinds" question.
+- E4 lists `Purpose` as a required fixed heading, but entry-body.json `spec.charters.sections` omits Purpose and includes "What earns an entry", which E4 does not fix. The declaration and its definition disagree.
+- The SC0 "Layout" tree lists only common/, context-frame/, question/ and tests/. It omits catalog-entry/, standing-context/, skill/ and entry-body/, and the tests/ listing omits their test directories. It also uses non-ASCII box-drawing characters (S13 says code blocks are not automatically exempt).
+- SC0's "Resource convention" describes every entity as an apiVersion/kind/metadata/spec resource, but SC1-SC3 are bare frontmatter objects, and catalog.json still tags them `role: resource`.
+- catalog.json `resources` lists Question and ContextFrame but not EntryBody, even though entry-body.json uses the resource envelope.
+- The catalog-entry.schema.json description names categories "axiom, style, methodology, role, pattern, domain, work-type or mission-required". That is stale against its own enum ("method", not "methodology", and many categories missing).
+- SC1-SC6 stubs all have empty `related: []`, and each begins its body with a lowercase sentence fragment.
+- The bundles/README.md "Current bundles" table omits workgraph-arc.yaml, and its list of entry prefixes is stale.
+- tools/check-charter-shape.sh cites tracking "B4", which this corpus's ledger does not list.
+- entry-body.schema.json uses a JSON Schema `default` (`ordered: true`), while SC0 says the contract does not use `default` as implicit configuration.

@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:mission-kit:schemas:catalog-entry:catalog-entry:v1alpha1",
   "title": "Mission Kit catalogue entry frontmatter v1alpha1",
-  "description": "Frontmatter contract for an ID-prefixed Mission Kit entry: axiom, style, methodology, role, pattern, domain, work-type or mission-required. Every property either changes how an agent acts on the entry or addresses the entry. Archival bookkeeping is excluded by construction: additionalProperties is false, so a reintroduced added, provenance, source-tele or retrieved field fails validation rather than accumulating unread.",
+  "description": "Frontmatter contract for every ID-prefixed Mission Kit entry, whatever its category; the categories are the category enum below. Every property either changes how an agent acts on the entry or addresses the entry. Archival bookkeeping is excluded by construction: additionalProperties is false, so a reintroduced added, provenance, source-tele or retrieved field fails validation rather than accumulating unread.",
   "type": "object",
   "additionalProperties": false,
   "required": [

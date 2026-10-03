@@ -1,0 +1,59 @@
+### sc0.Q1
+Not in `spec`: schemas/README.md (SC0) "Resource convention" says "Runtime observations do not belong in `spec`" and "A kind only gains `status` when a real reconciler needs observed state."
+So observed state such as a last-checked time goes in a `status` block, and only once a real reconciler exists that needs it.
+No kind has one today; SC5 adds that "observed state remain[s] outside the resource" for ContextFrame.
+The Question schema sets `additionalProperties: false` at top level with only apiVersion/kind/metadata/spec, so a `status` field would currently fail validation (measured in question/v1alpha1/question.schema.json).
+GUESS: if no reconciler exists yet, record the observation outside the resource entirely.
+NOT SETTLED: the shape of a `status` block; no contract defines one.
+
+### sc0.Q2
+No. SC4-question.md says Question "contains no Survey, round, Director, interpretation, or outcome-axis semantics", and that "a composing process owns placement such as round and ordinal."
+SC0 "Composition" says a process "must not inject process fields into the Question resource" and gives the pattern: a wrapper such as `SurveyQuestion` whose `spec.question` holds the complete Question and `spec.survey` holds `round: 1`, `ordinal`, `intentDimension`.
+Stated reason: "This wrapper boundary keeps the neutral resource closed and prevents Survey evolution from changing the Question contract."
+Mechanically, `spec` has `additionalProperties: false` in question.schema.json, so a `round` field would be rejected anyway.
+
+### sc0.Q3
+Structural (JSON Schema) validation first, then semantic validation (SC0 "Validation").
+The reason given: "each semantic validator assumes the shape the schema guarantees - it reads fields without first checking they exist."
+Semantic validators exist because they check things JSON Schema Draft 2020-12 cannot express, e.g. unique option IDs and satisfiable cardinality for Question, and duplicate scope, givens and terms for ContextFrame.
+catalog.json maps each resource kind to both its `schemaId` and its `semanticValidator`, and consumers can preload every schema it lists to resolve URN references.
+
+### sc0.Q4
+SC0 "Territory" divides contracts "by whose instances they govern".
+(1) The corpus's own files: documents this corpus is made of, checked on every change by the gate `tools/check-all.sh`. These are SC1 (catalogue frontmatter), SC2 (standing context), SC3 (skill bodies) and SC6 (entry bodies).
+(2) Process resources: documents a process writes, neutral of any one process, checked by their semantic validators and the schema suite. These are SC4 (Question) and SC5 (ContextFrame).
+SC0 notes SC2 and SC3 are portable too, but "their instances are documents of the kind this corpus is made of", so they sit in row 1.
+SC0 itself is the charter (README.md), not a contract.
+
+### sc0.Q5
+A change to an existing one, SC1 catalog-entry.
+SC0 "Boundaries and composition": "one concern, one contract - catalogue frontmatter is one schema with per-category conditions, not a schema per layer."
+The schema already works this way (measured): category-specific fields such as `trace`, `members` and `sovereignty` are optional properties, made required by `allOf` if/then clauses keyed on category and ID.
+A second schema would be the "Two contracts for one concern" fault in SC0 "Faults".
+The same edit also has to add the category to SC1's `category` enum and its prefix to the `id` pattern, because `additionalProperties: false` refuses undeclared fields.
+GUESS: if the layer's bodies are governed too, add it to SC6's entry-body.json. SC0 says SC6's categories and SC1's category list "are held together by a test".
+
+### sc0.Q6
+Yes. SC0 "Territory" ("Gaps the territory exposes") lists: "the evaluation suites and their results, the human-evaluation suites, `catalog.json` itself, and `bundles/*.yaml`". Each is "checked only by hand-written code in a tool or not at all".
+One example is `bundles/*.yaml` (the corpus does have a `bundles/` directory).
+SC0 "Faults" names this "The ungoverned file", one "whose shape is whatever the last writer chose".
+
+### sc0.Q7
+SC0 "Faults" lists six:
+- an unchecked contract, which reads as enforced and holds nothing;
+- two contracts for one concern, free to drift;
+- a drifting pair of contracts that must agree, with nothing holding them together;
+- an unmapped resource missing from `catalog.json`;
+- a contract ahead of its consumer, maintained on speculation;
+- an ungoverned file the corpus relies on.
+SC0 says two of these are present today: EntryBody is unmapped, and SC4 and SC5 have no consumer.
+Also relevant, from "Boundaries": a tool that re-implements a contract by hand (`check-standing-context.sh` against SC2) can drift from it, and the contract is authoritative.
+
+### OBSERVATIONS
+- catalog.json "schemas" gives the SC1, SC2 and SC3 frontmatter schemas `role: "resource"`. But they are not apiVersion/kind envelopes, so "resource" means something different here than in the SC0 resource convention. They also have no entry under "resources".
+- EntryBody (SC6) uses the apiVersion/kind envelope and its schema is listed in catalog.json "schemas", but it is missing from "resources". SC0 admits this as a fault ("The unmapped resource"). SC6 also has no semantic validator, while SC0 says the catalogue maps each resource to "its semantic validator".
+- SC0 says `catalog.json` is itself ungoverned, yet it is the file consumers are told to preload. Its shape has no contract.
+- SC0's frontmatter `related` lists SC1, SC6, A2, A8 and E4, but every member entry SC1-SC6 has `related: []`.
+- The SC1-SC3 bodies start with a lower-case sentence ("the frontmatter every catalogue entry must satisfy.") that looks generated from the title.
+- SC4 and SC5 say their sections "Moved here from the schemas charter, SC0, when it was converted to E4". That is only a provenance note, but it is the only hint of the conversion.
+- check-all.sh says "check-charter-shape.sh is SUSPENDED", so any charter-shape check of SC0 does not run.

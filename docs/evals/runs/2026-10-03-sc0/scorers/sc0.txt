@@ -1,0 +1,401 @@
+You are scoring answers to a comprehension test against an answer key. Read only this file. Do not open any other file under /home/apnex/taceng/mission-kit/docs/evals/runs/2026-10-03-sc0.
+
+Score each answer 0, 1 or 2 against the probe's key and rubric. An answer that labels its conclusion a guess, or says the text does not settle it, scores at most 1 unless the rubric says otherwise. Judge the answer, not its length or confidence.
+
+You do not know which answers came from which reader or document version, and must not try to infer it.
+
+Write one JSON object per line, for every answer id below and no others, to this file: /home/apnex/taceng/mission-kit/docs/evals/runs/2026-10-03-sc0/scores/sc0.txt
+Each line exactly: {"item": "<answer id>", "score": 0|1|2, "reason": "<one sentence>"}
+When written, reply with only DONE.
+
+======================================================================
+PROBE sc0.Q1
+
+Question:
+A resource in this corpus's schema convention needs to record observed runtime state - say, the last time it was checked. Where in the resource does that go?
+
+Key:
+Not in spec, which holds only configuration that affects meaning or behaviour. A kind gains status only when a real reconciler needs observed state; until then the observation does not belong in the resource.
+
+Rubric:
+2 for 'not in spec' and the status-only-with-a-reconciler rule. 1 for one of the two. 0 otherwise.
+
+--- answer a-39910db7 ---
+It goes in a `status` block, never in `spec`. schemas/README.md "Resource convention": "Runtime observations do not belong in `spec`. A kind only gains `status` when a real reconciler needs observed state." `metadata` is not the place either: it "holds portable identity and machine-oriented labels or annotations", and `spec` "holds all configuration that affects entity meaning or behaviour".
+No current kind has `status`. question.schema.json is `additionalProperties: false` with only apiVersion/kind/metadata/spec, so today such a field would fail validation (measured: I read the schema).
+So adding it means a contract change to that kind, and that change is only justified once a real reconciler needs the observed state.
+SC5-context-frame.md also says "observed state remain[s] outside the resource".
+
+--- answer a-e815557e ---
+Not in `spec`. schemas/README.md "Resource convention": "`spec` holds all configuration that affects entity meaning or behaviour" and "Runtime observations do not belong in `spec`. A kind only gains `status` when a real reconciler needs observed state."
+So the answer has two parts. If a real reconciler needs that observed state, the kind gains a `status` section. If none does, the kind gets no `status` and the observation has no home in the resource.
+`metadata` is not the place either: it holds "portable identity and machine-oriented labels or annotations" (same section).
+NOT SETTLED: the shape of a `status` block. No existing schema defines one (I found no `status` in question.schema.json or context-frame.schema.json, and both set `additionalProperties: false`).
+
+--- answer a-b15c522b ---
+Not in `spec`: schemas/README.md (Resource convention) says "Runtime observations do not belong in `spec`. A kind only gains `status` when a real reconciler needs observed state."
+So the designated home is a top-level `status` stanza beside `spec`, but only once a real reconciler exists to need it.
+No current kind has one: question.schema.json and context-frame.schema.json are `additionalProperties: false` at the top level with only apiVersion/kind/metadata/spec, and tests/question/question-sovereignty.test.mjs asserts "Question has no observed status contract" and rejects a `status` field.
+Until then it stays outside the resource; the ContextFrame section says "answers, and observed state remain outside the resource."
+Whether `metadata.annotations` may hold it is NOT SETTLED (resource-metadata.schema.json only calls annotations "non-identifying string metadata"). GUESS: no, because that would bring observed state into the resource by another route.
+For catalogue-entry frontmatter (SC1) a "last verified" field is explicitly deferred work in backlog/mreq-7-provenance-and-trust-vocabulary.md and is currently refused by `additionalProperties: false`.
+
+--- answer a-c550afad ---
+Not in `spec`: schemas/README.md (SC0), "Resource convention", says "Runtime observations do not belong in `spec`. A kind only gains `status` when a real reconciler needs observed state."
+So observed state such as a last-checked time goes in a top-level `status` stanza, and only once a real reconciler needs it.
+It does not go in `metadata` either, which "holds portable identity and machine-oriented labels or annotations".
+Neither existing resource has that stanza today: question.schema.json and context-frame.schema.json are `additionalProperties: false` at the top level, and tests/question/question-sovereignty.test.mjs asserts "Question has no observed status contract" (the context-frame sovereignty test asserts the same).
+SC0 also says of ContextFrame that "observed state remain[s] outside the resource".
+So for Question or ContextFrame now, the observation lives outside the resource, for example in a composing wrapper, until a reconciler justifies adding `status` to that kind.
+
+--- answer a-29a6ae5c ---
+Not in `spec`: schemas/README.md (SC0), "Resource convention", says "Runtime observations do not belong in `spec`" and "A kind only gains `status` when a real reconciler needs observed state."
+So the slot for observed state is a top-level `status`, and that slot exists only once a real reconciler needs it.
+No kind has a `status` today. The Question schema (question/v1alpha1/question.schema.json) is `additionalProperties: false` at the top level with only apiVersion/kind/metadata/spec, so adding `status` means changing the contract, not just writing the field.
+SC5-context-frame.md also says "observed state remain[s] outside the resource" for ContextFrame.
+If no reconciler exists, the text says it does not go in the resource at all. It does not say where it goes instead: NOT SETTLED.
+GUESS: `metadata.annotations` is not the place either, because the resource-metadata schema calls annotations "non-identifying string metadata". A last-checked time kept there would be runtime state in disguise.
+
+--- answer a-2bceeb15 ---
+Not in `spec`. schemas/README.md (SC0), "Resource convention", says: "`spec` holds all configuration that affects entity meaning or behaviour" and "Runtime observations do not belong in `spec`. A kind only gains `status` when a real reconciler needs observed state."
+So observed state such as a last-checked time goes in a `status` block, and that block is added only once a real reconciler needs it.
+No existing kind has one: question.schema.json and context-frame.schema.json both set `additionalProperties: false` at the top level and list only apiVersion/kind/metadata/spec, so adding `status` means changing the schema.
+It also does not belong in `metadata`. That holds "portable identity and machine-oriented labels or annotations" (SC0), and the ContextFrame section lists "observed state" among the things that "remain outside the resource".
+NOT SETTLED: the shape of a `status` block. No schema in the set defines one.
+
+======================================================================
+PROBE sc0.Q2
+
+Question:
+A survey needs each question to carry its round number. Should the round be added as a field of the Question resource?
+
+Key:
+No. Question is process-neutral; a composing process wraps a complete Question resource and keeps its own fields - round, ordinal - beside it, never injecting them.
+
+Rubric:
+2 for no with the wrapper composition. 1 for no without it. 0 for yes.
+
+--- answer a-c37ef616 ---
+No.
+SC0 says `Question` "contains no Survey, round, Director, interpretation, or outcome-axis semantics", and that "a composing process owns placement such as round and ordinal".
+Under "Composition" it says a process "must not inject process fields into the Question resource", and it gives a `SurveyQuestion` wrapper that carries `spec.question` (the whole Question) next to `spec.survey.round` and `ordinal`.
+The stated reason is that "this wrapper boundary keeps the neutral resource closed and prevents Survey evolution from changing the Question contract".
+The schema enforces this mechanically: `spec` and the root are `additionalProperties: false`, and question-sovereignty.test.mjs forbids Survey vocabulary in the schema.
+Putting it in a label or annotation would also be injection into the resource, which the "must not inject" rule covers.
+
+--- answer a-b16cb748 ---
+No. SC0, "Question": "It contains no Survey, round, Director, interpretation, or outcome-axis semantics" and "`metadata.name` identifies a Question, while a composing process owns placement such as round and ordinal."
+"Composition" says a process "must not inject process fields into the Question resource". It shows a `SurveyQuestion` wrapper holding the whole Question under `spec.question` and the round under `spec.survey.round`. This "keeps the neutral resource closed and prevents Survey evolution from changing the Question contract."
+The schema enforces this mechanically: question.schema.json has `additionalProperties: false` on both the root and `spec`.
+Putting it in a label or annotation is also ruled out if respondents see the round, because "Labels and annotations must not carry text that a respondent needs in order to answer correctly."
+NOT SETTLED: the `SurveyQuestion` kind is described only as "a future" one. No schema for it exists in schemas/ or catalog.json.
+
+--- answer a-2b6ce5c9 ---
+No. SC4-question.md: "It contains no Survey, round, Director, interpretation, or outcome-axis semantics" and "a composing process owns placement such as round and ordinal."
+schemas/README.md "Composition": a process "must not inject process fields into the Question resource". It should wrap a complete Question and keep its own fields beside it, as in the `SurveyQuestion` example with `spec.survey.round: 1` next to `spec.question`.
+The stated reason: "This wrapper boundary keeps the neutral resource closed and prevents Survey evolution from changing the Question contract."
+
+--- answer a-9c1939c0 ---
+No.
+SC0 "Composition" says: "A process composes or snapshots a complete `Question` resource and owns its process-specific fields beside it. It must not inject process fields into the Question resource."
+It gives the example of a future `SurveyQuestion` whose `spec.survey.round: 1` sits next to `spec.question` (the full Question). It also says this wrapper "prevents Survey evolution from changing the Question contract."
+SC4-question.md agrees: Question "contains no Survey, round, Director, interpretation, or outcome-axis semantics", and "a composing process owns placement such as round and ordinal."
+It also could not be added mechanically: question.schema.json sets `additionalProperties: false` on `spec`.
+
+--- answer a-85f2083b ---
+No. schemas/README.md "Composition": "A process composes or snapshots a complete `Question` resource and owns its process-specific fields beside it. It must not inject process fields into the Question resource."
+Its example is a `SurveyQuestion` wrapper whose `spec.survey.round: 1` sits next to `spec.question`. "This wrapper boundary keeps the neutral resource closed and prevents Survey evolution from changing the Question contract."
+SC4-question.md agrees: Question "contains no Survey, round, Director, interpretation, or outcome-axis semantics", and "a composing process owns placement such as round and ordinal."
+
+--- answer a-8b79b17f ---
+No.
+schemas/README.md (Question): "It contains no Survey, round, Director, interpretation, or outcome-axis semantics" and "a composing process owns placement such as round and ordinal."
+The Composition section says a process "must not inject process fields into the Question resource". Instead it wraps a complete Question beside its own fields, e.g. `spec.question` plus `spec.survey.round: 1` in a future `SurveyQuestion`.
+The stated reason is that "This wrapper boundary keeps the neutral resource closed and prevents Survey evolution from changing the Question contract."
+The schema also enforces this mechanically: `spec` is `additionalProperties: false`, so a `round` field fails structural validation.
+Note that `SurveyQuestion` is described as "future". No schema for it exists in schemas/ or in catalog.json, so it would have to be authored first.
+
+======================================================================
+PROBE sc0.Q3
+
+Question:
+In what order must a consumer validate a resource, and why?
+
+Key:
+Structural validation by JSON Schema first, then the semantic validator. The semantic validator checks invariants JSON Schema cannot express, and assumes input that has already passed the structural check.
+
+Rubric:
+2 for the order with either reason - two stages because some invariants are beyond JSON Schema, or semantic checks assume structurally valid input. 1 for the order alone. 0 otherwise.
+
+--- answer a-6f9a51ec ---
+Structural validation first (JSON Schema), then semantic validation. SC0 "Validation": "A consumer must run structural validation before semantic validation."
+SC0 gives the split, not the reason for the order: JSON Schema checks structure, and the semantic validators check invariants that "JSON Schema Draft 2020-12 cannot express" (unique option IDs, cardinality bounds, constraints that reference real options, and duplicate boundaries, givens or terms in a ContextFrame).
+The reason for the order is NOT SETTLED by the text.
+GUESS: the semantic validators assume input that is already well-formed. For example, question.validator.mjs reads `constraint.optionIds` and `conflicts.get(...)` without checking them, so running it on malformed input could crash or give misleading results instead of a clean rejection.
+
+--- answer a-9a8a4b49 ---
+Run structural validation (JSON Schema, using the schema in catalog.json) first, then the semantic validator: "A consumer must run structural validation before semantic validation" (schemas/README.md, Validation).
+The two layers do different work. JSON Schema "validates structure", and the semantic validators check "ordered-array invariants that JSON Schema Draft 2020-12 cannot express", such as unique option IDs, min <= max <= available options, and satisfiable constraints.
+The README does not state why that order is required, so the "why" is NOT SETTLED by the text.
+GUESS (grounded in reading question.validator.mjs): the semantic validator dereferences fields without guards, e.g. `constraint.optionIds` and `conflicts.get(left).add(right)`. On malformed input it could throw or report nonsense, so it is only meaningful on an input already known to have the declared shape.
+Related guidance: preload every schema listed in catalog.json so absolute URN `$ref`s resolve without importing Survey. Do not rely on JSON Schema `default`, because defaults "do not mutate resource instances".
+
+--- answer a-ce998630 ---
+Structural validation (JSON Schema) comes first, then semantic validation. schemas/README.md "Validation": "A consumer must run structural validation before semantic validation."
+The README splits the work: "JSON Schema validates structure", and the semantic validators check invariants "that JSON Schema Draft 2020-12 cannot express" (unique option IDs, cardinality bounds, references to constraints, duplicate scope or givens or terms).
+Why: NOT SETTLED. The text states the order but gives no reason for it.
+GUESS, from reading the source: the semantic validators assume the structure is already valid. question.validator.mjs `canonicalConstraintKey` spreads `constraint.optionIds` without checking it. `validateQuestionSemantics` returns `[]` (no issues) for any `spec.response.type` other than "Choice". So a malformed resource run through semantics alone could crash or pass with nothing checked.
+
+--- answer a-2e9c88ab ---
+Structural validation (JSON Schema, via the schema `catalog.json` maps to the resource's apiVersion/kind) runs first, then the semantic validator: SC0 says "A consumer must run structural validation before semantic validation."
+Consumers can preload every schema in `catalog.json` so absolute URN `$ref`s resolve.
+The prose gives no reason for the order, so the "why" is NOT SETTLED by the text.
+The source shows the mechanism: semantic validators assume structure and fail open on malformed input.
+`validateQuestionSemantics` in question/v1alpha1/question.validator.mjs returns `[]` whenever `spec.response.type !== "Choice"`.
+Both validators also replace non-array fields with `[]` (`Array.isArray(...) ? ... : []`).
+So a semantic pass alone would report a structurally broken resource as clean.
+The semantic layer only adds the invariants SC0 says Draft 2020-12 "cannot express", such as unique option IDs and satisfiable cardinality.
+
+--- answer a-c091d35d ---
+Structural validation (JSON Schema) comes first, then semantic validation. schemas/README.md "Validation": "A consumer must run structural validation before semantic validation."
+The corpus says what each layer does: JSON Schema "validates structure", and the semantic validators check "ordered-array invariants that JSON Schema Draft 2020-12 cannot express" (unique option IDs, cardinality bounds, constraint references, and so on).
+NOT SETTLED: the text does not say why the order matters.
+GUESS: the semantic validators assume the shape is already valid. question.validator.mjs reads `constraint.optionIds` and calls `conflicts.get(...)` without checking that they exist, so malformed input could crash it or give a wrong answer rather than a clean rejection.
+
+--- answer a-1ef4f684 ---
+Structural validation (JSON Schema) comes first, then semantic validation (the kind's `semanticValidator` in catalog.json). SC0, "Validation": "A consumer must run structural validation before semantic validation."
+The stated division of labour: "JSON Schema validates structure", and the semantic validators check "ordered-array invariants that JSON Schema Draft 2020-12 cannot express" (unique option IDs, satisfiable cardinality, duplicate scope, givens and terms).
+NOT SETTLED: the text gives the order without stating why.
+GUESS: the semantic validators assume input that is already structurally valid. For example, question.validator.mjs reads `option.id` and `constraint.optionIds` without checking their types, so on malformed input it could throw or report misleading issues.
+SC0 also says consumers "can preload every schema listed in `catalog.json` to resolve absolute URN references", which structural validation of the `$ref` fragments needs.
+
+======================================================================
+PROBE sc0.Q4
+
+Question:
+Contracts in this set are not all of one kind. Name the kinds, say what separates them, and place each existing contract.
+
+Key:
+Two kinds, separated by whose instances they govern: contracts for the corpus's own files - SC1 catalogue frontmatter, SC2 standing context, SC3 skill bodies, SC6 entry bodies - checked by the corpus's gate; and resource contracts for documents a process writes - SC4 Question, SC5 ContextFrame - the two kinds catalog.json lists as resources with semantic validators, with no consumer yet. SC2 and SC3 are portable as well; an answer saying so and still placing them with the corpus's own files is correct.
+
+Rubric:
+2 for both kinds, a discriminator that places them correctly (whose instances, or corpus files against process resources), and each contract placed. 1 for the kinds with most placed. 0 otherwise.
+
+--- answer a-37b523b6 ---
+schemas/README.md "Territory" splits the contracts "by whose instances they govern".
+(1) The corpus's own files: documents this corpus is made of, checked by the gate `tools/check-all.sh`. Members: SC1 catalogue frontmatter, SC2 standing context, SC3 skill bodies, SC6 entry bodies.
+(2) Process resources: "documents a process writes - a question, the context it is answered against - neutral of any one process". These are checked by their semantic validators and the schema suite. Members: SC4 Question and SC5 ContextFrame.
+"Every contract sits in one row." SC2 and SC3 are portable, but they stay in row 1 because "their instances are documents of the kind this corpus is made of."
+SC0 itself is the charter (category `contract`), not a contract.
+
+--- answer a-a6a941e4 ---
+schemas/README.md "Territory" splits contracts "by whose instances they govern", giving two kinds.
+(1) "The corpus's own files": documents this corpus is made of, checked by the gate `tools/check-all.sh`. These are SC1 catalogue frontmatter, SC2 standing context, SC3 skill bodies and SC6 entry bodies.
+(2) "Process resources": documents a process writes, neutral of any one process, checked by their semantic validators and the schema suite. These are SC4 Question and SC5 ContextFrame.
+"Every contract sits in one row". SC2 and SC3 are portable, but they are placed in row 1 because their instances are documents of the kind this corpus is made of.
+SC0 is the charter (README.md), not a contract.
+
+--- answer a-59023298 ---
+SC0 "Territory" splits the contracts "by whose instances they govern".
+(1) The corpus's own files: the documents this corpus is made of, checked by the gate `tools/check-all.sh` on every change. Members: SC1 catalogue frontmatter, SC2 standing context, SC3 skill bodies, SC6 entry bodies.
+(2) Process resources: documents a process writes, neutral of any one process, checked by their semantic validators and the schema suite. Members: SC4 Question, SC5 ContextFrame.
+SC0 notes that SC2 and SC3 are portable too, but they stay in row 1 because their instances are documents of the kind this corpus is made of.
+A second axis exists but is not treated as a "kind" of contract. catalog.json tags each schema file with `role: fragment` (resource-metadata, choice-response) or `role: resource`. Only Question and ContextFrame are mapped under `resources`.
+
+--- answer a-6b3b0690 ---
+NOT SETTLED: SC0 never names kinds of contract, even though E4 makes a "Kinds" section conditionally required "when members come in more than one sort".
+Two distinctions can be read from the files themselves.
+(1) catalog.json `role`: "fragment" (resource-metadata, choice-response; these are only `$ref`'d) versus "resource" (question, context-frame, catalog-entry, standing-context, skill, entry-body).
+(2) Shape: enveloped resources with `apiVersion: schemas.mission-kit/v1alpha1`, `kind`, `metadata`, `spec` (SC4 Question, SC5 ContextFrame, SC6 EntryBody) versus frontmatter contracts, which are bare objects with no envelope and validate a markdown document's YAML header (SC1 catalog-entry, SC2 standing-context, SC3 skill; their titles say "frontmatter").
+A third split: only Question and ContextFrame appear under catalog.json `resources` with a `semanticValidator`. EntryBody is enveloped but is not listed there, and its enforcement is `tools/check-entry-body.sh` (SC6).
+GUESS: the useful kinds are "envelope resource with semantic validator" (SC4, SC5), "envelope resource enforced by a corpus tool" (SC6), "frontmatter contract" (SC1, SC2, SC3) and "fragment" (common metadata, choice-response). The fragments carry no SC ID.
+
+--- answer a-50d97499 ---
+The charter (schemas/README.md) never names kinds, so the taxonomy is NOT SETTLED as stated text. What follows is read from the files.
+(1) Envelope resources: Kubernetes-like objects with apiVersion/kind/metadata/spec, as described under "Resource convention". These are SC4 Question, SC5 ContextFrame and SC6 EntryBody.
+Within that group, Question and ContextFrame are process-neutral entity definitions with semantic validators registered under `resources` in catalog.json. EntryBody is a corpus-governance declaration (entry-body.json), enforced by tools/check-entry-body.sh, and it is not registered under `resources`.
+(2) Frontmatter contracts: flat objects validating the YAML frontmatter of a markdown document, with no envelope. These are SC1 catalog-entry (ID-bearing entries), SC2 standing-context (an always-on AGENTS.md that "declares its own instance rules") and SC3 skill (a portable SKILL.md that "carries no catalogue placement").
+(3) Fragments: catalog.json gives them `"role": "fragment"` and they carry no SC ID. They are common/resource-metadata and question/choice-response.
+SC0 is the charter itself (category `contract`, but it defines the set). catalog.json's own `role` field separates only fragment from resource, and it labels the frontmatter contracts "resource" even though they do not follow the resource convention.
+
+--- answer a-abc429c1 ---
+NOT SETTLED: SC0 names no kinds and has no Kinds section, although E4 (entities/E4-charter.md) makes "Kinds" a required concern when "members come in more than one sort".
+The measured distinctions are these.
+(a) catalog.json marks each schema `"role": "fragment"` (resource-metadata, choice-response; these have no SC entry) or `"role": "resource"`.
+(b) Some contracts use the apiVersion/kind/metadata/spec envelope from SC0's "Resource convention": SC4 Question, SC5 ContextFrame and SC6 EntryBody.
+Others are bare frontmatter objects with no envelope: SC1 catalog-entry, SC2 standing-context and SC3 skill.
+(c) Among the envelope resources, only Question and ContextFrame appear in catalog.json `resources` with a `semanticValidator`; EntryBody is enforced by tools/check-entry-body.sh instead.
+GUESS: the intended kinds may be "process-neutral domain resources" (SC4, SC5) against "corpus-governance contracts" that check files in this repo (SC1, SC2, SC3, SC6), with fragments as building blocks; the text does not say this.
+SC0 is the charter, not a contract.
+
+======================================================================
+PROBE sc0.Q5
+
+Question:
+A new layer is added and its entries need two frontmatter fields no other layer uses. Is that a new schema, or a change to an existing one? Why?
+
+Key:
+A change to SC1, catalog-entry: one contract covers all catalogue frontmatter, with per-category conditionals; a second frontmatter schema would be two contracts for one concern, free to drift.
+
+Rubric:
+2 for extending SC1 with the one-contract-per-concern reason. 1 for SC1 without the reason. 0 for a new schema.
+
+--- answer a-a00d5679 ---
+It is a change to an existing contract, SC1 (catalog-entry). schemas/README.md "Boundaries and composition": "one concern, one contract - catalogue frontmatter is one schema with per-category conditions, not a schema per layer."
+catalog-entry.schema.json already does this through `allOf` if/then blocks keyed on `category` (axiom, work-type, component, rule, set, and others), and it is `additionalProperties: false`. So the new fields must be declared there, and the new category must be added to the `category` enum.
+Writing a separate schema would create the "Two contracts for one concern" fault in "Faults" ("each authoritative, free to drift").
+GUESS (not stated for this case): if the layer's bodies are governed, SC6's declaration also needs the category, because SC6's categories and SC1's list "are held together by a test".
+
+--- answer a-88cde365 ---
+It is a change to the existing SC1 catalog-entry contract, not a new schema.
+The root README.md ("Adding and retiring a layer", step 4) makes "Entry of its contents into the contract in schemas/, if the layer is ID-bearing" part of admitting a layer.
+catalog-entry.schema.json is already the single contract for every ID-prefixed entry. It handles layer-specific fields as optional properties plus per-category `allOf` if/then requirements, e.g. component requires `sovereignty`, rule requires `trace` and set requires `members`.
+Its `id` pattern and `category` enum enumerate the prefixes and categories, and `additionalProperties: false` means a new layer's entries fail validation until SC1 is extended.
+The same reasoning appears in SC6: "splitting it would fork the mechanism into copies free to drift". It also matches the root README fault "The forked constraint".
+Whether this needs a new version (v1alpha2) or an in-place edit to v1alpha1 is NOT SETTLED. GUESS: in place, since adding optional properties does not invalidate existing entries.
+If the layer also prescribes a body shape, SC6's entry-body.json (and its schema's `category` enum) needs a matching edit.
+
+--- answer a-84fd20c3 ---
+It is a change to the existing contract SC1 (catalog-entry.schema.json), not a new schema.
+The root README, "Adding and retiring a layer", lists among admission costs: "Entry of its contents into the contract in schemas/, if the layer is ID-bearing."
+The catalog-entry schema already handles fields used by only one layer inside the one contract: `sovereignty` and `internalisation-trigger` (components), `trace` (rules) and `members` (sets), each added to `properties` and required through an `allOf` if/then keyed on `category` and `id`.
+The change must also extend the `category` enum and the `id` prefix pattern. Without that, `additionalProperties: false` means the new fields, the new category and the new prefix would all fail validation.
+SC6 gives the same reasoning for its own single resource: splitting per category "would fork the mechanism into copies free to drift". The root README's "forked constraint" fault names the same risk.
+NOT SETTLED: whether such an addition needs a new version (beyond v1alpha1). No versioning policy is stated.
+
+--- answer a-a6cbc7f4 ---
+It is a change to an existing schema, SC1 (catalog-entry). schemas/README.md "Boundaries and composition": "one concern, one contract - catalogue frontmatter is one schema with per-category conditions, not a schema per layer."
+The "Faults" section names the alternative as a defect: "Two contracts for one concern. Two schemas for one kind of document, each authoritative, free to drift."
+catalog-entry.schema.json already has this shape. It sets `additionalProperties: false`, so new fields must be declared there or they fail validation. It has a `category` enum and per-category `if`/`then` blocks (for example `"const": "axiom"`).
+The change also means adding the new category to SC1's enum. If the new layer's bodies are governed, it is an edit to SC6's entry-body.json too ("adding a category is an edit to a JSON file", SC6-entry-body.md). README says SC6 and SC1 categories "are held together by a test."
+
+--- answer a-4c7cb805 ---
+A change to the existing contract SC1 (catalog-entry.schema.json), not a new schema.
+SC0 "Boundaries and composition": "one concern, one contract - catalogue frontmatter is one schema with per-category conditions, not a schema per layer". A second schema would be the "Two contracts for one concern" fault in SC0 "Faults".
+Mechanically: the schema has `additionalProperties: false`, so the new fields must be declared as properties. A layer-specific requirement goes in the `allOf` if/then block keyed on category and id pattern, like `trace` for rules or `sovereignty` for components. The new category goes in the `category` enum and its prefix in the `id` pattern.
+If the layer's bodies are also governed, SC6's categories must agree with SC1's category list, which SC0 says "a test" holds together.
+
+--- answer a-eadf2ffb ---
+It is a change to an existing contract, SC1 (catalog-entry/v1alpha1/catalog-entry.schema.json), not a new schema.
+The root README, "Adding and retiring a layer", lists "Entry of its contents into the contract in schemas/, if the layer is ID-bearing" as one of the costs of admitting a layer.
+SC1 describes itself as "the frontmatter every catalogue entry must satisfy".
+It already holds layer-specific fields with per-category `if/then` clauses (for example `trace` required for `RU`, `members` for `ST`, `sovereignty` for `C`).
+It is `additionalProperties: false`, so the two new fields fail validation until they are added there, along with the new `category` enum value and `id` prefix.
+SC6 states the same reasoning for body shape: one resource "rather than one per category, because ... splitting it would fork the mechanism into copies free to drift". The root README's Faults section names this "the forked constraint".
+GUESS: the new fields would get their own `if/then` clause keyed on the new category, following the RU/ST/C precedent.
+
+======================================================================
+PROBE sc0.Q6
+
+Question:
+Is there any structured file this corpus relies on that no contract in this set governs? Name one if so.
+
+Key:
+Yes. Examples: the evaluation suites' suite.json and RESULT.json, the human-evaluation suites, schemas/catalog.json itself, and bundles/*.yaml - each checked only by hand-written code in a tool, or not at all.
+
+Rubric:
+2 for naming one real ungoverned structured file with the reason it is ungoverned. 1 for 'yes' without a correct example. 0 for 'no'.
+
+--- answer a-e9027c02 ---
+Yes. Example: schemas/catalog.json itself. SC0 says it "maps resource identity to schema identity and its semantic validator", and consumers preload from it. No schema in catalog.json governs its own shape (`catalogVersion`, `schemas[].role`, `resources[]`), and no SC entry covers it.
+Other examples: bundles/*.yaml. bundles/README.md says they are "managed by convention on filename" and tools/skill-graph.mjs checks only that each `skills:` entry names a real skill; no SC contract governs them.
+Partial cases: skills/arc-lifecycle/assets/workgraph-lifecycle-v1.json and workgraph-skill-selection-v1.json declare `$schema` (the JSON Schema meta-schema) but live outside schemas/ and are not in catalog.json.
+The SC6 charters shape is also only loosely governed. In entry-body.schema.json, `charters` has no `default`/`enum` constraints and is not required.
+
+--- answer a-0daf38b0 ---
+Yes. schemas/README.md "Territory > Gaps the territory exposes" names them: "the evaluation suites and their results, the human-evaluation suites, `catalog.json` itself, and `bundles/*.yaml`", each "checked only by hand-written code in a tool or not at all".
+One example: `bundles/*.yaml` (the `bundles/` directory exists in the corpus).
+Another is `schemas/catalog.json` itself. The schema suite depends on it to load every schema (tests/support/question-validation.mjs reads it), yet no schema governs its shape.
+
+--- answer a-dd4f9fd1 ---
+Yes. schemas/README.md "Territory", "Gaps the territory exposes", lists structured files "that no contract governs": "the evaluation suites and their results, the human-evaluation suites, `catalog.json` itself, and `bundles/*.yaml`."
+One example is `bundles/*.yaml` (the corpus has bundles/nanoprobe.yaml, sysml-modelling.yaml, workgraph-arc.yaml). Another is schemas/catalog.json, which has no schema of its own.
+
+--- answer a-bf8ae954 ---
+Yes.
+SC0 "Territory", "Gaps the territory exposes", names them: "the evaluation suites and their results, the human-evaluation suites, `catalog.json` itself, and `bundles/*.yaml`".
+`bundles/` exists, holding nanoprobe.yaml, sysml-modelling.yaml and workgraph-arc.yaml. One example: `catalog.json`, which consumers rely on to preload schemas and which no schema validates.
+
+--- answer a-4527587c ---
+Yes.
+schemas/catalog.json itself has no schema: catalog.json lists none for it, and its only checks are the partial assertions in tests/question/question-sovereignty.test.mjs ("schema catalog uniquely maps every declared ID to a portable file").
+The bundle files (bundles/*.yaml) are another case.
+bundles/README.md says they are "managed by convention on filename", and tools/skill-graph.mjs checks only that each `skills:` entry names a real skill.
+No contract governs their `name`/`description`/`skills` shape or the "no harness-specific field" rule.
+Also, SC6's own declaration does not govern every category: its enum covers only axiom, entity, component, artifact and trait. It calls the rest "ungoverned by design ... a stated gap rather than a silent one", so that gap is deliberate.
+
+--- answer a-c1436bea ---
+Yes. The clearest example is the bundle files, bundles/*.yaml (e.g. nanoprobe.yaml, with `name`, `description`, `skills:`).
+bundles/README.md says they are "managed by convention on filename". No schema in schemas/ or entry in catalog.json governs them. tools/skill-graph.mjs only checks that each `skills:` entry names a real skill.
+schemas/catalog.json is another: it is the structured map every consumer is told to preload, yet no schema validates it.
+Bodies of categories other than axiom/entity/component/artifact/trait (and charters) are also outside SC6. SC6 calls that "ungoverned by design ... a stated gap rather than a silent one."
+
+======================================================================
+PROBE sc0.Q7
+
+Question:
+What would an unhealthy population of contracts look like?
+
+Key:
+Any two population faults, e.g.: a contract no check validates against; two contracts for one concern; two contracts that must agree drifting apart (SC6's categories against SC1's category list); a resource kind missing from catalog.json (EntryBody today); a contract with no consumer (SC4 and SC5 today); a structured file the corpus relies on that no contract governs.
+
+Rubric:
+2 for two population faults. 1 for one. 0 for none, or faults of a single schema only.
+
+--- answer a-8881d4ab ---
+schemas/README.md "Faults" lists six faults:
+- "The unchecked contract": no check validates against it, so it "reads as enforced and holds nothing".
+- "Two contracts for one concern": both authoritative, free to drift.
+- "The drifting pair": two contracts that must agree, with nothing holding them together.
+- "The unmapped resource": a kind missing from `catalog.json` (EntryBody today).
+- "The contract ahead of its consumer": a contract no process uses (SC4 and SC5 today).
+- "The ungoverned file": a structured file the corpus relies on with no contract, "so its shape is whatever the last writer chose".
+Also relevant: a tool that re-implements a contract by hand (check-standing-context.sh against SC2) can drift from it, and the contract is authoritative.
+An unhealthy population would show many of these at once. By the charter's own account, the current set already has at least two (unmapped EntryBody; SC4 and SC5 with no consumer) plus the ungoverned files in Q6.
+
+--- answer a-c05bb827 ---
+NOT SETTLED for this set. schemas/README.md (SC0) has no `Faults` section; its headings are Contracts, Resource convention, Question, ContextFrame, Composition, Validation and Layout.
+E4 makes Faults required ("What does an unhealthy population look like, as against a merely valid one?"), and entry-body.json's `charters` shape requires Territory, What earns an entry, Faults and Index. SC0 lacks all except a generated index.
+tools/check-charter-shape.sh would flag this, but it is advisory and exits zero.
+GUESS, derived from corpus-wide faults (root README "Faults") applied to contracts:
+- a contract whose prose restates a schema rule, so the two drift (forked constraint), or whose schema `description` has gone stale against its own enum;
+- schemas present on disk but missing from catalog.json or the test script (unread checker);
+- process-specific fields leaking into neutral resources;
+- frontmatter and envelope contracts mixed with no stated kind, so a consumer cannot tell which convention applies;
+- several per-category schemas where one resource should hold the concern.
+
+--- answer a-74041a60 ---
+NOT SETTLED by SC0: schemas/README.md has no `Faults` section. entry-body.json `spec.charters` requires one of every charter ("Territory", "What earns an entry", "Faults", "Index"), and SC0 carries only the Index (as "Contracts").
+E4 defines what the section is for. Population faults are "visible only across the set", such as "a member admitted for importance rather than fit, two members restating one rule, a population that has stopped being searched". E3 adds that with no territory, a population "can be audited for validity and never for completeness".
+GUESS, applying those definitions and the root README Faults to this set: two contracts restating one rule (the "forked constraint"); a structured file the corpus depends on that no contract governs (see Q6); process fields leaking into neutral resources against the Composition rule; catalog.json drifting from the schema files or the SC entries; and a contract whose enforcer or test nothing runs (the "unread checker").
+In practice that would show up as package.json `test` missing a contract's suite, or a schema in catalog.json with no SC entry, or the reverse.
+
+--- answer a-2b84d2df ---
+NOT SETTLED for this set: SC0 has no `Faults` section.
+entry-body.json `charters` and E4 both require one, and tools/check-charter-shape.sh would report it missing.
+E4 gives generic population faults: "a member admitted for importance rather than fit, two members restating one rule, a population that has stopped being searched". It also notes that every member can be valid while the set is wrong.
+GUESS, applying those to contracts: two contracts holding the same rule (the "forked constraint" in the root README).
+GUESS: a structured file the corpus relies on that no contract governs and no charter declares as a gap.
+GUESS: catalog.json, the SC entries and SC0's Layout drifting apart (EntryBody is already missing from `resources`, and Layout omits four schema directories).
+GUESS: process fields leaking into neutral resources, and contracts with no test that runs them (the root README's "unread checker").
+
+--- answer a-b4945244 ---
+schemas/README.md "Faults" lists six kinds:
+(1) the unchecked contract, which no check runs against;
+(2) two contracts for one concern;
+(3) the drifting pair: contracts that must agree, with nothing holding them together;
+(4) the unmapped resource: a kind missing from `catalog.json` ("`EntryBody` is one today");
+(5) the contract ahead of its consumer ("`SC4` and `SC5` today");
+(6) the ungoverned file, "whose shape is whatever the last writer chose".
+The "Boundaries" section adds one more: a tool that re-implements a contract by hand (`check-standing-context.sh` against SC2) "can drift", and the contract stays authoritative.
+
+--- answer a-8c476f0d ---
+E4-charter.md defines Faults as "What does an unhealthy population look like, as against a merely valid one?" It says only population faults belong there: "visible only across the set".
+SC0 "Faults" lists six:
+the unchecked contract (no check validates against it);
+two contracts for one concern;
+the drifting pair (contracts that must agree, with nothing holding them together);
+the unmapped resource (a kind missing from catalog.json; "`EntryBody` is one today");
+the contract ahead of its consumer ("`SC4` and `SC5` today");
+and the ungoverned file (a structured file the corpus relies on that no contract governs).
+SC0 "Boundaries" adds one drift risk: tools that re-implement a contract by hand, such as `check-standing-context.sh` against SC2.
