@@ -1,7 +1,7 @@
 # Delta-2 - the explain set - a set spanning layers
 
 ```yaml
-status:       proposed, revision 2 - director decisions taken; awaiting ratification; no stage has run
+status:       revision 2 withdrawn from ratification - its premise rested on an instrument that does not measure communication with a human; no stage has run
 row:          B38
 intent:       director rulings under B38
 from-state:   docs/ARCHITECTURE.md, at 3d55cc6
@@ -24,8 +24,14 @@ No set charters them, so no territory states the moments they cover or the momen
 | first scorer | 7.00 / 8 | 7.00 / 8 |
 | second scorer | 7.00 / 8 | 6.67 / 8 |
 
-The scorers agreed exactly on 23 of 24 answers.\
-Agents of this family already write well for a cold human, with or without the corpus; what failed is scattered - three of six status updates longer than needed, one giving an unrelated bug more than a line.\
+The scorers agreed exactly on 23 of 24 answers.
+> **CORRECTION - this read: *agents of this family already write well for a cold human, with or without the corpus.***\
+> The instrument cannot support that.\
+> It scores the absence of six or seven defects the author chose, judged by agents of the same family that wrote the messages; it does not measure whether a human can act on the message, and no human judged any of it.\
+> The director, the human the set exists for, reports clear gaps.\
+> What the scores do support is narrower: on the author's checklist, scored by agents, the corpus made no difference.
+
+On that checklist, the misses were scattered - three of six status updates longer than needed, one giving an unrelated bug more than a line.\
 Every arm also carried the harness's always-on doctrine (`B40`), which may be doing work a truly empty control would expose.
 
 **So this delta gathers, and authors nothing.**\
