@@ -1,0 +1,56 @@
+{
+  "id": "w0",
+  "mode": "corpus",
+  "group": "w0",
+  "source": "W0 conversion to E4, with the B24, B33 and B31 rulings. Q1 and Q2 are controls the current W0 answers; Q3 is answered with D0's help.",
+  "probes": [
+    {
+      "id": "Q1",
+      "question": "What is a work-type's closeability preflight, and may a work-type entry restate the constraints it must satisfy?",
+      "key": "The seed-time projection of W0's canonical constraint set; a work-type satisfies the constraints and never restates them - they are authored once, in W0.",
+      "rubric": "2 for both. 1 for one. 0 otherwise."
+    },
+    {
+      "id": "Q2",
+      "question": "Is recovering from an incident a work-type?",
+      "key": "No. There is no incident entity for a trigger to fire on; once machine-visible an incident is a bug. It routes through fix-a-bug-or-repair or arc-repair, and the friction it surfaces is banked as an idea.",
+      "rubric": "2 for no with the route. 1 for no alone. 0 otherwise."
+    },
+    {
+      "id": "Q3",
+      "question": "What does it mean for a work-type to be 'pinned' rather than 'free' on the domain axis?",
+      "key": "Pinned: the work-type names its own surface, so its domain is a constant of the type and the generator does not vary it; free: the domain is a discriminating choice among the type's eligible domains.",
+      "rubric": "2 for both. 1 for one. 0 otherwise."
+    },
+    {
+      "id": "Q4",
+      "question": "Only one agent is available. It built a change that needs an independent verifier's attestation. Can its own review stand in, perhaps marked as weaker?",
+      "key": "No. Same-agent review is never a valid degradation: the gate waits for an independent agent or is met by director ratification. The agent still self-checks by unbiased means, and that self-check never seals the gate.",
+      "rubric": "2 for no, with wait-or-ratify ('fail the seed and route to director ratification' counts). 1 for no without the alternative. 0 for yes, or for a downgrade to plain review counting as the check."
+    },
+    {
+      "id": "Q5",
+      "question": "In what order does an agent assemble what governs one unit of work, and where does each part come from?",
+      "key": "The systems the change alters give the traits, and so the axioms in force (the organisation's own axioms, governing how the work is done and recorded, may be added); the work-type gives the eligible roles and domains, and its evidence authority says who may satisfy the evidence; the domain is the surface the work's evidence lands on; the role is who performs it, with what it may attest set by role and work-type together; the method and artifact are those the work-type cites.",
+      "rubric": "2 for all five parts with their sources, in a workable order. 1 for three or four. 0 otherwise."
+    },
+    {
+      "id": "Q6",
+      "question": "Which procedure is used to check a set of items against the axioms they claim, and which document type records a ratified ruling? Say where the corpus states the link from the work to each.",
+      "key": "The axiom-alignment audit, M7, cited by W22; a decision record, AR4, cited by W23. Each is declared on the work-type.",
+      "rubric": "2 for M7 and AR4, with the work-type (W22, W23) as where the link is declared; citing a generated reverse view as well is fine. 1 for one, or both without where. 0 otherwise."
+    },
+    {
+      "id": "Q7",
+      "question": "An agent finds a recurring kind of work that no work-type covers. What should happen?",
+      "key": "If it compiles to a closeable claimable node, the work-type set is expanded: a new work-type is added rather than stretching a neighbour to cover it; until then the work is recorded against the gap. If it cannot - no trigger, no closeable node - it is recorded as a routing note, as incident recovery is. The set is not complete and is not expected to be.",
+      "rubric": "2 for adding a work-type when it is taxonomy-grade rather than stretching a neighbour, with the gap recorded meanwhile, or a routing note when it is not. 1 for one of these without the condition. 0 otherwise."
+    },
+    {
+      "id": "Q8",
+      "question": "What would an unhealthy population of work-types look like?",
+      "key": "Any two population faults, e.g.: two work-types for one act; a work-type that restates the constraint set; pairings declared on both sides and drifting; a recurring kind of work no work-type covers; procedures that conduct work cited by no work-type.",
+      "rubric": "2 for two population faults. 1 for one. 0 for none, or faults of a single entry only."
+    }
+  ]
+}
