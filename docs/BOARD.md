@@ -35,7 +35,7 @@ The thread of the current conversation, so a reader can see how the active work 
 Updated whenever the thread moves; the milestones below remain the plan.
 
 ```text
-M5  bring the charters to E4                     5 of 13 applied; MREQ-0 next     <- HERE
+M5  bring the charters to E4                     5 of 12 applied; W0 next         <- HERE
  +- how the axis layers compose (B32)            done
      +- axioms as asymptotes, system, component  done
      +- six open design questions (B36)          done
@@ -85,7 +85,7 @@ A mandate breach is the commitment itself failing; a signal breach is a mechanic
 
 ## Triage ledger
 
-All forty-four rows, scored.\
+All fifty-four rows, scored; `B45` to `B54` came from the retired `backlog/` layer.\
 Held rows are [below](#held).
 
 | Row | Impact | Principle | Visible | Size | Milestone | One line |
@@ -204,12 +204,12 @@ An adopter reading `AR4` can point at a conformant instance in this corpus.
 Ten of sixteen layers have no observed consumer.\
 This milestone tests whether composition is structural or theoretical.
 
-| # | Item | Row |
-|---|---|---|
-| M3.1 | Amend `MREQ-9` to the broader finding, and rule on the third reading now that `M8` cites an `AR` type | `B13` |
-| M3.2 | Instance-check `AR3` against this board and record what it surfaced | `B9` |
-| M3.4 | Align `M7`'s trigger with its title, so an author reaches it without already asking about anchoring | `B25` |
-| M3.3 | Rule on `backlog/` versus `AR5` - keep both, migrate, or split by concern, without breaking `MREQ` citations | `B14` |
+| # | Item | Row | Status |
+|---|---|---|---|
+| M3.1 | Amend `MREQ-9` to the broader finding, and rule on the third reading now that `M8` cites an `AR` type | `B13` | `TODO` |
+| M3.2 | Instance-check `AR3` against this board and record what it surfaced | `B9` | `TODO` |
+| M3.4 | Align `M7`'s trigger with its title, so an author reaches it without already asking about anchoring | `B25` | `TODO` |
+| M3.3 | Rule on `backlog/` versus `AR5` - keep both, migrate, or split by concern, without breaking `MREQ` citations | `B14` | `DONE` - `backlog/` retired |
 
 **Exit criteria.**\
 Every ID-bearing layer either has an observed consumer or a recorded reason it has none.
@@ -239,7 +239,7 @@ Every ID-bearing layer either has an observed consumer or a recorded reason it h
 | M5.3 | **Trial conversion of one charter** | `B4` | `DONE` - `M0`, verdict **improved** - [verdict](audits/M5.3-trial-verdict-M0.md), [candidate](audits/M5.3-trial-candidate-M0.md). Awaiting director review |
 | M5.4 | Revise `E4` on what the trial shows, or stop if the enhancement did not improve utility | `B4` | `DONE` - territory must be derived and show a gap; growth must be paid for |
 | M5.4b | **Second trial, on `A0`**, isolating whether growth comes from the standard or from `M0` missing two concerns | `B4` | `DONE` - verdict **improved**, growth paid for. Growth tracks missing concerns: 36 percent here against 78 for `M0` - [verdict](audits/M5.4b-trial-verdict-A0.md), [candidate](audits/M5.4b-trial-candidate-A0.md). Awaiting director review |
-| M5.5 | Convert all thirteen, one per change - draft, audit, evaluate, director review, apply | `B4` | `WIP` - `M0`, `A0`, `R0`, `D0` **applied** - [M0](audits/M5.5-01-M0.md), [A0](audits/M5.5-02-A0.md), [R0](audits/M5.5-03-R0.md), [D0](audits/M5.5-04-D0.md); `SC0` **applied**, approved - [SC0](audits/M5.5-05-SC0.md); 8 remain |
+| M5.5 | Convert all thirteen, one per change - draft, audit, evaluate, director review, apply | `B4` | `WIP` - `M0`, `A0`, `R0`, `D0` **applied** - [M0](audits/M5.5-01-M0.md), [A0](audits/M5.5-02-A0.md), [R0](audits/M5.5-03-R0.md), [D0](audits/M5.5-04-D0.md); `SC0` **applied**, approved - [SC0](audits/M5.5-05-SC0.md); `MREQ-0` retired with its layer; 7 remain |
 | M5.5b | Revisit the compositional split behind the work axes when conversion reaches `R0`, `D0` and `W0` | `B24` | `TODO` |
 | M5.5c | Carry the duty to expand a set on a found gap into `W0` and `T0`, or state it once in `E3` | `B31` | `TODO` |
 | M5.5d | **Composition record**: measure a context-less agent's composition of the axis layers against the current corpus, author one declared record of how they compose and the order to read them, re-measure | `B32` | `WIP` - baseline **14 / 14** in three runs: correctness is already met, so the record is unearned on these probes. Two questions every run had to guess - whose traits count, and what an axiom alignment refers to - are the measured gap. [scores](audits/eval-COMP/SCORES.md) |
@@ -279,6 +279,14 @@ Rows on the record and not on the board, **scored on the same scale**, so declin
 
 | **B21** | **S2** | **A4 mandate** | Found by the `A0` trial, then corrected: first framed as defence against an adversary, which is out of scope. Scored high and held anyway, since adding an axiom changes the constitution and warrants its own audit. | **a lone agent ships a claim it corroborated itself and was wrong** |
 | **B22** | S4 | A9 signal | Found by the `A0` trial. A low citation count has two legitimate readings and one observation cannot separate them. | **a deployment fails in a way chaos validation would have caught** |
+| **B45** | S4 | - | Formerly MREQ-1; carried from the retired `backlog/` layer with its trigger. | **Pick up the remaining guide layers when EITHER (a) a third non-code mission (design/governance/planning) is about to start and would benefit from disciplined axiom use beyond the M** |
+| **B46** | S4 | - | Formerly MREQ-2; carried from the retired `backlog/` layer with its trigger. | **a third layer is added or retired, OR corpus-extension work needs to be claimed on the coordination substrate rather than performed by hand** |
+| **B47** | S4 | - | Formerly MREQ-3; carried from the retired `backlog/` layer with its trigger. | **a programme states how a component specification binds upward to the duty its architecture declares, OR two programmes agree on where the boundary with code sits, OR an AR1 instanc** |
+| **B49** | S4 | - | Formerly MREQ-5; carried from the retired `backlog/` layer with its trigger. | **a contributor or CI needs `check-all.sh --all` as a real gate rather than a known-red one, OR the remaining debt falls small enough to clear in a diff a reviewer can actually read** |
+| **B50** | S4 | - | Formerly MREQ-6; carried from the retired `backlog/` layer with its trigger. | **the ledger passes roughly 250 entries or 50 KB, OR an agent loads it in full and still fails to route to an entry whose trigger matched what it was doing** |
+| **B51** | S4 | - | Formerly MREQ-7; carried from the retired `backlog/` layer with its trigger. | **an entry is found to be wrong or stale and nothing records when it was last checked or against what, OR a reader needs to weigh two entries differently and the corpus offers no bas** |
+| **B52** | S4 | - | Formerly MREQ-8; carried from the retired `backlog/` layer with its trigger. | **a second programme is observed carrying standalone delta documents through to closeout, OR a delta is closed and a reader cannot tell from the type whether its to-state was reached** |
+| **B53** | S4 | - | Formerly MREQ-9; carried from the retired `backlog/` layer with its trigger. | **a work-type is authored or revised and its author cannot state which artifact type the work produces, OR an artifact type is admitted that no work-type can be composed to produce, ** |
 | **B39** | S5 | A3 signal | Nested sets need generator support, and no medium-specific rule exists to fill one. | **the first style rule that applies to one medium only** |
 | **B41** | S4 | A14 signal | Two readers in one run; a harm finding from n = 2 is a lead, not a result. | **the explain after-run shows the same, or a director reports a status update padded with deferrals** |
 

@@ -150,7 +150,6 @@ That split is the load-bearing rule of this section.
 | `components/` | `C` | sovereign shareable substrates | a registry of units to use rather than rebuild | `A`, `AR` |
 | `artifacts/` | `AR` | engineering document types | shapes with acceptance falsifiers | `A`, `M` |
 | `schemas/` | `SC` | machine-verifiable entity contracts | JSON Schema, validatable without a runtime | nothing - contracts are self-contained |
-| `backlog/` | `MREQ` | deferred requests to run a future mission | parked work with armed revival conditions | `A`, `M` |
 
 ### Mechanism layers - no prefix, no ledger entry
 

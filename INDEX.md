@@ -281,24 +281,6 @@ This file described them a second time and the copy had already drifted, naming 
 
 ---
 
-## Backlog
-
-| ID | Title | Hydrate when |
-|---|---|---|
-| [MREQ-0](backlog/README.md) | Backlog - deferred requests to run a future mission, each carrying a revival trigger | You are deferring or parking a unit of work and it must not quietly become forgetting |
-| [MREQ-1](backlog/mreq-1-axiom-application-methodology.md) | Axiom-application methodology for non-code missions | You are applying axioms to a mission that produces no code |
-| [MREQ-2](backlog/mreq-2-extend-the-corpus-work-type.md) | Work-type for extending the corpus itself | You are adding or retiring a layer and want the work claimable rather than hand-run |
-| [MREQ-3](backlog/mreq-3-component-design-spec-altitude.md) | The component design and specification altitude | You need to specify one component's configuration and implementation and find no artifact type for it |
-| [MREQ-4](backlog/mreq-4-derive-the-layer-set.md) | Deriving the layer set rather than declaring it in the generator | You are adding or renaming a layer and find the index generator must be edited before it will see it |
-| [MREQ-5](backlog/mreq-5-retire-legacy-style-debt.md) | Retiring the legacy style debt that keeps the whole-corpus gate red | You need the whole-corpus style gate to be green rather than known-red before you can trust it |
-| [MREQ-6](backlog/mreq-6-ledger-retrieval-strategy.md) | The retrieval strategy for a ledger that outgrows always-on context | You are deciding how the ledger reaches an agent once it no longer fits comfortably in always-on context |
-| [MREQ-7](backlog/mreq-7-provenance-and-trust-vocabulary.md) | A provenance and trust vocabulary for an agent-maintained corpus | You need to know when an entry was last verified or who asserted it, and the corpus does not record either |
-| [MREQ-8](backlog/mreq-8-delta-post-ratification-shape.md) | The post-ratification half of a delta, and whether its required sections are two shapes | You are recording what a delta produced after it was ratified and find the type specifies only its opening |
-| [MREQ-9](backlog/mreq-9-artifact-work-axis-binding.md) | The binding between the work axes and the artifact layer | You are composing a unit of work and cannot tell from the corpus which document type it is supposed to produce |
-| [MREQ-10](backlog/mreq-10-recurrence-tier-evidence.md) | The evidence a recurrence tier rests on, in a corpus that bars naming it | You are about to add a field that counts how widely something outside this corpus has adopted something inside it |
-
----
-
 ## Schemas
 
 | ID | Title | Hydrate when |

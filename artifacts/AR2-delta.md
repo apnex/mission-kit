@@ -43,7 +43,7 @@ Opens between selection and execution, and closes after it.\
 The board proposes and triages candidate moves, the director selects one, and the delta is what the selected move becomes before any work starts - but it is not finished at that point, only ratified.\
 It stays open across the work it declares and terminates in a statement of whether its to-state was reached.
 
-The post-ratification half of a delta is not yet specified here, and the gap is recorded rather than guessed at, under [`MREQ-8`](../backlog/mreq-8-delta-post-ratification-shape.md).
+The post-ratification half of a delta is not yet specified here, and the gap is recorded rather than guessed at.
 
 ---
 

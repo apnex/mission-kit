@@ -70,7 +70,7 @@ It is amended by ratified rulings like any other living document, and it outlive
 
 The concern is well attested, and where it is met it is usually met as sections of some other document rather than as one of its own.\
 Where it has been carried as a document, no section shape recurs.\
-Prescribing a spine from a single instance would fix the type to that instance, which is [`MREQ-3`](../backlog/mreq-3-component-design-spec-altitude.md)'s parked objection applied at a different altitude, and `AR0`'s admission rule bars it.
+Prescribing a spine from a single instance would fix the type to that instance's parked objection applied at a different altitude, and `AR0`'s admission rule bars it.
 
 What is required is that these **devices** are present and findable.\
 How they are arranged belongs to the programme.

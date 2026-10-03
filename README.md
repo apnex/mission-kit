@@ -58,7 +58,6 @@ The constraint set is authored once in the cross-axis reference and never forked
 | `C` | [`components/`](components/README.md) | Sovereign shareable substrates to be used rather than rebuilt. |
 | `AR` | [`artifacts/`](artifacts/README.md) | Engineering document types, each with an acceptance falsifier. |
 | `T` | [`traits/`](traits/README.md) | Characteristics of the system being worked on, which decide which axioms bind it. |
-| `MREQ` | [`backlog/`](backlog/) | Deferred requirements, each carrying a revival trigger. |
 | - | [`bundles/`](bundles/README.md) | Skills composed into operator-facing roles, by declared edge rather than by name. |
 | `SC` | [`schemas/`](schemas/) | Machine-verifiable entity contracts, validatable without importing a runtime. |
 | - | [`tools/`](tools/README.md) | The scripts that hold the corpus to its own rules. |

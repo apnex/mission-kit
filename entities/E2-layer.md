@@ -44,7 +44,6 @@ For a knowledge layer the directory, the prefix and the category value stand in 
 | `axioms/` | `A` | `axiom` | singularised |
 | `skills/` | `K` | `skill` | prefix irregular; `S` was taken |
 | `schemas/` | `SC` | `contract` | category is a different word |
-| `backlog/` | `MREQ` | `mission-required` | both a different word |
 | `work-types/` | `W` | `work-type` | singularised |
 | `rules/` | `RU` | `rule` | prefix irregular; `R` was taken |
 | `practices/` | `PC` | `practice` | prefix irregular; `P` was taken |

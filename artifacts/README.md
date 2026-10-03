@@ -186,7 +186,7 @@ Gaps are recorded as gaps rather than filled speculatively, which would be Specu
 **Known gap: the component altitude.**\
 `AR1` is one system at one instant.\
 The configuration and implementation detail of a single component or duty inside it sits below that altitude and above code, and has no type.\
-It is deferred rather than guessed, under [`MREQ-3`](../backlog/mreq-3-component-design-spec-altitude.md).
+It is deferred rather than guessed.
 
 That deferral has since been re-triaged and **held**, which is the more instructive outcome.\
 **Instance count is not shape evidence.**\
