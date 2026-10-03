@@ -1,0 +1,159 @@
+You are scoring answers to a comprehension test against an answer key. Read only this file. Do not open any other file under /home/apnex/taceng/mission-kit/docs/evals/runs/2026-10-03-b36.
+
+Score each answer 0, 1 or 2 against the probe's key and rubric. An answer that labels its conclusion a guess, or says the text does not settle it, scores at most 1 unless the rubric says otherwise. Judge the answer, not its length or confidence.
+
+You do not know which answers came from which reader or document version, and must not try to infer it.
+
+Write one JSON object per line, for every answer id below and no others, to this file: /home/apnex/taceng/mission-kit/docs/evals/runs/2026-10-03-b36/scores/boundary-bypass.txt
+Each line exactly: {"item": "<answer id>", "score": 0|1|2, "reason": "<one sentence>"}
+When written, reply with only DONE.
+
+======================================================================
+PROBE boundary-bypass.B1
+
+Question:
+Component O ignores T's declared interface and calls T's internal functions directly. You change T's internals. Does your change answer to O's axioms? What does the corpus ask about O's bypass?
+
+Key:
+Yes. A boundary separates two units only where it is declared and honoured; O reaching past the interface keeps T and O one system for deciding what a change answers to. The bypass is an A3 fault and also a signal: it triggers an evaluation of T's interface against T's duty and vision, ending in O being rerouted onto the interface or the interface being adjusted.
+
+Rubric:
+2 for yes with the declared-and-honoured reason, plus treating the bypass as a signal that triggers an interface evaluation (not only a fault in O). 1 for yes with only one of those, or for the signal without the binding. 0 for 'no - the interface is declared, so O is separate'.
+
+--- answer a-7e48bfd4 ---
+Yes. A declared interface separates two units only where it is "declared and honoured"; "A unit that reaches past it - calling internals ... - stays one system with it" (entities/E5-system.md, Definition and "Declared against honoured"). So for deciding what your change answers to, T and O are one system "with the traits of both, and the axioms either unit would bring all bind" (axioms/README.md, "What brings an axiom into force"; E6 blast radius row: a change reaches "any unit that reaches it ... with no declared interface"). The change also answers to the containing service (A0: "every system containing it").
+On the bypass itself, A3 "Bypass as Signal" calls it "a fault in the consumer and a signal about the interface". A detected bypass "triggers an evaluation of the interface against the component's duty and its vision, ending in the consumer being moved onto the interface or the interface being adjusted" (axioms/A3-sovereign-composition.md). E5 also says "A change that alters what an undeclared neighbour reaches into owns that boundary: declaring and honouring the interface is inside its scope, not optional" (E5, Boundaries).
+NOT SETTLED: whether that "owns that boundary" clause, worded for an "undeclared neighbour", covers a neighbour that bypasses a declared interface. GUESS: it does, because A0 treats "none written, or one written and reached past" as the same case.
+
+--- answer a-ee8c2030 ---
+Yes. `entities/E5-system.md` (Declared against honoured) says "A unit that reaches past it - calling internals ... - stays one system with it", and `axioms/README.md` (A0, "What brings an axiom into force") says that where a boundary is "one written and reached past ... the two are one system with the traits of both, and the axioms either unit would bring all bind". So a change to T's internals answers to O's axioms as well as T's. It also answers to the service, which contains T: A0 says a change answers to "every system containing it". About the bypass itself, `axioms/A3-sovereign-composition.md` (Bypass as Signal) calls it "a fault in the consumer and a signal about the interface". It says a detected bypass "triggers an evaluation of the interface against the component's duty and its vision, ending in the consumer being moved onto the interface or the interface being adjusted". A3 adds "Until then the two remain one system for what a change answers to". If your change does not fix the bypass, A0 says a gap the change passes is "recorded with its evidence and a revival trigger (RU3)", because "Passing it silently is what the axiom forbids". NOT SETTLED: whether changing internals that O calls counts as "touching" the gap, which would oblige you to close as much of it as the touch allows (A0 line 79).
+
+--- answer a-8cd3677c ---
+Yes. A boundary separates two units only where it is "declared and honoured"; O "reaches past" T's declared interface, so "the two are one system for deciding what a change answers to" (entities/E5-system.md, Definition and "Declared against honoured": "A unit that reaches past it - calling internals ... - stays one system with it").
+axioms/README.md ("What brings an axiom into force") says that in this case the two are "one system with the traits of both, and the axioms either unit would bring all bind". So a change to T's internals answers to O's axioms. It also answers to the containing service's axioms, because a change answers to "every system containing it".
+On the bypass itself, axioms/A3-sovereign-composition.md ("Bypass as Signal") calls it "a fault in the consumer and a signal about the interface". A detected bypass "triggers an evaluation of the interface against the component's duty and its vision". That evaluation ends with "the consumer being moved onto the interface or the interface being adjusted". Until then the two stay one system (A3 Air-Gap Principle: "no unit reaches into another's internals").
+
+--- answer a-f6c4a87b ---
+Yes. O reaches past T's declared interface, so T and O are one system for deciding what a change answers to. E5 "Declared against honoured" says: "A unit that reaches past it - calling internals ... - stays one system with it". The A0 charter (axioms/README.md) says that where no boundary is "declared and honoured - none written, or one written and reached past ... the two are one system with the traits of both, and the axioms either unit would bring all bind". The change also answers to the service that contains T (A0: "every system containing it").
+On the bypass, A3 "Bypass as Signal" says it is "a fault in the consumer and a signal about the interface". A detected bypass "triggers an evaluation of the interface against the component's duty and its vision, ending in the consumer being moved onto the interface or the interface being adjusted".
+Whether this change has to close the bypass is NOT SETTLED in so many words. GUESS: O's dependence on T's internals is a "contract in fact" (E5), and your change alters it, so O counts as touched. A0 then says the change "closes as much of [the gap] as the touch allows", and anything left over is recorded with a revival trigger (RU3).
+
+--- answer a-f18ebc6c ---
+Yes. A declared interface "separates two units only for the neighbours that use it", and "A unit that reaches past it - calling internals ... - stays one system with it" (entities/E5-system.md, "Declared against honoured"). axioms/README.md (A0) says the same: where a boundary is "one written and reached past ... the two are one system with the traits of both, and the axioms either unit would bring all bind". So your change to T's internals answers to O's axioms too. axioms/A3-sovereign-composition.md ("Bypass as Signal") says the bypass "is a fault in the consumer and a signal about the interface". A detected bypass "triggers an evaluation of the interface against the component's duty and its vision". That evaluation ends with "the consumer being moved onto the interface or the interface being adjusted", and until then "the two remain one system for what a change answers to". NOT SETTLED: whether fixing the bypass is mandatory inside your change. E5 says a change "that alters what an undeclared neighbour reaches into owns that boundary", but O's interface is declared and bypassed, not undeclared.
+
+--- answer a-cd009a12 ---
+Yes. E5 (entities/E5-system.md, Definition) says that where one unit "reaches past one that was declared, the two are one system for deciding what a change answers to". A0 (axioms/README.md) agrees: with no boundary "declared and honoured - none written, or one written and reached past", the two are "one system with the traits of both, and the axioms either unit would bring all bind". So your change to T's internals answers to O's axioms too. On the bypass itself, the corpus calls it "a fault in the consumer and a signal about the interface" (A3, *Bypass as Signal*; E6, *Boundary against directory*). It asks that the bypass trigger "an evaluation of the interface against the component's duty and its vision", ending in one of two ways: "the consumer being moved onto the interface or the interface being adjusted" (A3; E5, *Declared against honoured*). A3 adds: "Until then the two remain one system for what a change answers to". NOT SETTLED: whether your internals change must itself do that fix. E5 *Boundaries* says a change that "alters what an undeclared neighbour reaches into owns that boundary", but O is a neighbour of a declared interface, not an undeclared one (see OBSERVATIONS).
+
+======================================================================
+PROBE boundary-bypass.B2
+
+Question:
+Component P uses T's declared interface. Component O bypasses it and calls T's internals. You change T's internals. Which of P and O does your change answer to?
+
+Key:
+O, not P. O's bypass keeps O and T one system for binding; P composes through a declared contract the change leaves unchanged, so P is not altered and its axioms do not bind.
+
+Rubric:
+2 for O-not-P with both reasons. 1 for the right split without the reasons, or one reason. 0 for both or neither.
+
+--- answer a-49a7acf9 ---
+It answers to O, not to P (and also to the containing service, through containment).
+E5 says "The separation is per pair: a neighbour that uses the interface composes with the unit, while one that bypasses it does not."
+P composes with T through a contract the change leaves unchanged, and A0 says such a system "is not altered, and its axioms do not bind" (axioms/README.md). E6's blast-radius row agrees: an adjacent component is reached "only if the interface between them changes".
+O bypasses T, so O and T are one system, and O's traits and axioms bind the change (E5; A0).
+P's own axioms are excluded, but P is in the same service, and that service's axioms bind as the system containing T (A0: "every system containing it").
+
+--- answer a-0b719ab6 ---
+O, but not P. E5 says "The separation is per pair: a neighbour that uses the interface composes with the unit, while one that bypasses it does not." A0 says "A system it only composes with, through a contract the change leaves as it was, is not altered, and its axioms do not bind". The interface is unchanged here, so P's axioms do not bind. O is one system with T through its bypass (E5; A3 Bypass as Signal), so O's axioms bind. The change also answers to T itself and to the containing service (A0: "the system it modifies, every system containing it"). E6's blast-radius row agrees: the change reaches "any unit that reaches it ... with no declared interface", and reaches an adjacent component "only if the interface between them changes".
+
+--- answer a-872616bf ---
+Your change answers to O, not to P as a separate system. E5 says "The separation is per pair: a neighbour that uses the interface composes with the unit, while one that bypasses it does not" (entities/E5-system.md). A0 says a system "it only composes with, through a contract the change leaves as it was, is not altered, and its axioms do not bind" (axioms/README.md). P composes through T's interface, which is unchanged, so P's own axioms do not bind. O bypasses the interface, so O is one system with T and its axioms bind. The change also answers to "every system containing it" (A0), meaning the service. E5 says a containing system "has every trait any part it contains has", so P's traits reach the change through the service anyway (see OBSERVATIONS).
+
+--- answer a-8311356a ---
+O, not P. E5 *Declared against honoured*: "The separation is per pair: a neighbour that uses the interface composes with the unit, while one that bypasses it does not." A0: "A system it only composes with, through a contract the change leaves as it was, is not altered, and its axioms do not bind". The interface is unchanged, so P is not bound as P. O stays one system with T (A3 *Bypass as Signal*; E6 Blast radius row: "any unit that reaches it ... with no declared interface"). The change also answers to T and to the service that contains it (A0: "every system containing it"). Caveat: E5 says "A system has every trait any part it contains has". So P's traits can still bind through the containing service, but not through P (see OBSERVATIONS).
+
+--- answer a-fbf5b617 ---
+It answers to O and not to P, and to the service that contains both. E5 says: "The separation is per pair: a neighbour that uses the interface composes with the unit, while one that bypasses it does not."
+P composes with T through a contract the change leaves unchanged. A0 says: "A system it only composes with, through a contract the change leaves as it was, is not altered, and its axioms do not bind." E6's blast-radius row agrees: an adjacent component is reached "only if the interface between them changes".
+O bypasses the interface, so it is one system with T, and O's axioms bind (A0, E5).
+The change also answers to the containing service (A0, "every system containing it"). P sits inside that service too. Whether P's traits then reach the change through the service's traits is NOT SETTLED.
+
+--- answer a-43ce55b5 ---
+It answers to O, not to P. E5 says "The separation is per pair: a neighbour that uses the interface composes with the unit, while one that bypasses it does not" (entities/E5-system.md, "Declared against honoured"). For P: "A system it only composes with, through a contract the change leaves as it was, is not altered, and its axioms do not bind" (axioms/README.md). For O: T and O stay one system, so O's axioms bind (A0; E5). Either way the change still answers to T and to the service that contains it (A0: "every system containing it").
+
+======================================================================
+PROBE boundary-bypass.B3
+
+Question:
+T previously had no declared interface and O reached into it. You now declare an interface for T, but leave O's calls exactly as they were. Are T and O now two separate systems for deciding what a change answers to?
+
+Key:
+No. A boundary separates two units only where declared and honoured, and O still bypasses it, so they remain one system for binding. The bypass is a signal: evaluate the interface against T's duty and vision, then reroute O onto it or adjust the interface; until one lands, the bypass remains an A3 fault.
+
+Rubric:
+2 for no, the honoured reason, and reroute-or-adjust (recording is optional credit). 1 for no with only one of the others. 0 for 'yes, declaring it separates them'.
+
+--- answer a-6028636c ---
+No. E5: "declaring an interface and leaving the bypass in place separates nothing" (entities/E5-system.md, "Declared against honoured"). E5 Boundaries: "Declaring the boundary, and moving the dependency onto it, is what makes them two again". E6: "Declaring its interfaces, and its neighbours using them, is what separates it" (entities/E6-component.md, Definition). A3 says they remain one system "Until then", meaning until O is moved onto the interface or the interface is adjusted (axioms/A3-sovereign-composition.md, "Bypass as Signal").
+NOT SETTLED: whether the change that declares the interface must also migrate O in that same change. GUESS: A0's rule that "work that touches a gap closes as much of it as the touch allows", and E5's "owns that boundary" clause, both point toward yes. At minimum, the remaining bypass must be recorded rather than passed over silently (A0, RU3).
+
+--- answer a-82f10a2f ---
+No. They are still one system. E5 says "declaring an interface and leaving the bypass in place separates nothing" (entities/E5-system.md, "Declared against honoured"). E6 says the interface separates T from a neighbour "only where they are declared and that neighbour uses them", and "Declaring its interfaces, and its neighbours using them, is what separates it" (entities/E6-component.md). E5 "Boundaries" adds: "Declaring the boundary, and moving the dependency onto it, is what makes them two again." To separate them, O must be moved onto the interface, or the interface must be adjusted to what O legitimately needs and O must then use it (A3 "Bypass as Signal"; E5).
+
+--- answer a-5e7497c9 ---
+No. E5 says "declaring an interface and leaving the bypass in place separates nothing". E5 Boundaries says "Declaring the boundary, and moving the dependency onto it, is what makes them two again". `entities/E6-component.md` says "Declaring its interfaces, and its neighbours using them, is what separates it." T and O therefore stay one system with the traits of both. What changes is the kind of fault. Before, it was an undeclared dependency (E5: "itself a fault against A3"). Now O's calls reach past a declared interface, which is a bypass under A3's Bypass as Signal and triggers the interface evaluation described there. GUESS: under A0's rule that "work that touches a gap closes as much of it as the touch allows", a change that declares the interface should move O onto it, or record why it did not (RU3). The text does not say this for this exact case.
+
+--- answer a-23c0679c ---
+No. E5 says "declaring an interface and leaving the bypass in place separates nothing". E6 says the boundary "separates the component from a neighbour only where they are declared and that neighbour uses them", and that crossing code "stays one system with the component until it uses the interface".
+E5 (Boundaries) states the condition for becoming two systems: "Declaring the boundary, and moving the dependency onto it, is what makes them two again". Only the first half of that has happened.
+What changes is that O's calls are now a bypass of a declared interface. Under A3 "Bypass as Signal", a detected bypass is a fault in O and triggers the interface evaluation.
+GUESS: declaring the interface is still worthwhile, because it makes the bypass detectable (A3 success signal 5), even though it does not yet separate T from O.
+
+--- answer a-5aa5469b ---
+No. For deciding what a change answers to, they are still one system. E5 says: "declaring an interface and leaving the bypass in place separates nothing." E5 Boundaries says: "Declaring the boundary, and moving the dependency onto it, is what makes them two again." E6 says: "Declaring its interfaces, and its neighbours using them, is what separates it."
+They are still separate units in the containment sense. E5 says "A module inside a service is a system ... whether or not the module's interfaces are declared". That sense does not separate them for binding.
+Because a declared interface now exists, O's calls are a bypass as A3 defines it: a consumer fault, and a trigger for evaluating the interface (A3 "Bypass as Signal").
+
+--- answer a-b0332f07 ---
+No. E5 *Declared against honoured*: "declaring an interface and leaving the bypass in place separates nothing". E6 Definition: "Declaring its interfaces, and its neighbours using them, is what separates it". E5 *Boundaries*: "Declaring the boundary, and moving the dependency onto it, is what makes them two again." So T and O are still one system with the traits of both. O's calls have also changed category: they were an undeclared dependency, and are now a bypass of a declared interface. That is an A3 fault, and it triggers A3's evaluation (move O onto the interface, or adjust the interface). NOT SETTLED: whether the change that declares the interface must also move O. GUESS: A0's "work that touches a gap closes as much of it as the touch allows" points that way, but no text says so for this case.
+
+======================================================================
+PROBE boundary-bypass.B4
+
+Question:
+A check detects that several components bypass T's declared interface to reach T's internals. What does the corpus ask you to do?
+
+Key:
+Treat the bypass as a signal, not only as faults in the consumers: evaluate T's interface against T's duty and vision. Either the consumers are wrong and are rerouted onto the interface, or the interface falls short of T's duty - the consumers have an unsignalled change request - and the interface is adjusted. An adjusted interface alters its consumers, so their axioms bind that change.
+
+Rubric:
+2 for the interface evaluation against duty and vision with both outcomes. 1 for only 'fix the consumers' grounded in A3, or only 'adjust the interface'. 0 for no action, or for forking or replacing T. Splitting T because the evaluation finds a second duty counts as adjusting the interface.
+
+--- answer a-0658fcf7 ---
+A3 Bypass as Signal treats each bypass as "a fault in the consumer and a signal about the interface: it may mean the interface falls short of the component's duty". It asks for "an evaluation of the interface against the component's duty and its vision", ending in each consumer "being moved onto the interface or the interface being adjusted". A3 Success signal 5 says each detected violation is "evaluated against the component's duty rather than only corrected in the consumer". So you should not only patch the consumers. Until this is resolved, each bypassing component stays one system with T for what a change answers to (A3; E5; A0). If the work falls outside the current change's scope, A0 says to record it "with its evidence and a revival trigger (RU3)" and not close it there. Larger choices of what work comes next belong to the director (R4, AR3). NOT SETTLED: whether several bypassers change the procedure. GUESS: several consumers bypassing T is stronger evidence that the interface falls short of T's duty, so adjusting the interface becomes more likely.
+
+--- answer a-2f19c68a ---
+Treat each detected bypass as A3's "Bypass as Signal" directs. It is a fault in each consumer and also a signal that "the interface falls short of the component's duty, and the consumer has not signalled the change it needs" (axioms/A3-sovereign-composition.md). Evaluate T's interface "against the component's duty and its vision". End with each consumer "moved onto the interface or the interface being adjusted". A3 success signal 5 says each detected violation is "evaluated against the component's duty rather than only corrected in the consumer". So do not simply patch the consumers. E6 also says "A detected crossing is a signal about the interface as well as a fault in the consumer". Until each bypass is resolved, each bypassing component stays one system with T for what a change answers to (A3; E5).
+NOT SETTLED: the corpus says nothing specific about several bypassers. GUESS: several bypassers make it more likely that the interface falls short of T's duty.
+
+--- answer a-d7cb1586 ---
+A3 "Bypass as Signal" treats each bypass as a fault in that consumer and as a signal that the interface "may ... fall short of the component's duty". The consumer "has not signalled the change it needs".
+The required action is an evaluation of T's interface "against the component's duty and its vision". It ends with each consumer moved onto the interface, or with the interface adjusted.
+A3 success signal 5 adds that each detected violation "is evaluated against the component's duty rather than only corrected in the consumer". So silently patching the consumers alone is not what the corpus asks for.
+Until that is resolved, T and each bypassing component remain one system for what a change answers to (A3; E5).
+If the interface is adjusted, the change alters the contract of every consumer that uses it, such as P. Their axioms then bind, or for a versioned interface only on adoption (A0; E5).
+NOT SETTLED: whether several bypassers count as stronger evidence that the interface falls short, and who decides between moving consumers and adjusting the interface. GUESS: several independent bypasses point toward the interface, and the decision is an architect call on system shape (R1). This is not stated for this case.
+
+--- answer a-7994b35b ---
+Treat each bypass as "a fault in the consumer and a signal about the interface": the interface "may ... fall short of the component's duty" (axioms/A3-sovereign-composition.md, "Bypass as Signal"). The detection "triggers an evaluation of the interface against the component's duty and its vision". The evaluation ends with each consumer "moved onto the interface or the interface being adjusted". A3 success signal 5 says each detected violation "is evaluated against the component's duty rather than only corrected in the consumer". So do not only patch the consumers. Until each bypass is resolved, every bypassing component is one system with T for what a change answers to (A3; E5). The bypasses are also A3 faults: "The undeclared dependency is itself a fault against A3" (E5 "Boundaries"; A0). NOT SETTLED: who runs the evaluation, when, and whether it must be done now or can be recorded with a revival trigger (A0's RU3 route for gaps outside a change's scope). GUESS: several consumers bypassing T is stronger evidence that the interface falls short than a single bypass is.
+
+--- answer a-2651d16b ---
+A3 "Bypass as Signal" treats each detected bypass as a fault in that consumer and also as a signal that the interface "may ... fall short of the component's duty".
+It asks you to evaluate T's interface "against the component's duty and its vision". That ends with each consumer moved onto the interface, or with the interface adjusted.
+A3 success signal 5 says each detected bypass "is evaluated against the component's duty rather than only corrected in the consumer". Until that is resolved, each bypassing component stays one system with T (A3, citing A0).
+Under A0, if this work falls outside your change's scope, record it with its evidence and a revival trigger (RU3) rather than passing it silently. An interface adjustment is its own change, and it answers to every consumer it alters (or, for a versioned interface, to each one that adopts it) (A0, E5).
+That several bypasses make the shortfall reading stronger is NOT SETTLED. GUESS: several independent bypasses point more toward the interface than toward any one consumer.
+Who runs the evaluation, and when, is NOT SETTLED.
+
+--- answer a-450c8b9c ---
+Treat each bypass as "a fault in the consumer and a signal about the interface: it may mean the interface falls short of the component's duty" (A3, *Bypass as Signal*; E6 *Boundary against directory*). The detection "triggers an evaluation of the interface against the component's duty and its vision". The evaluation ends with each consumer "moved onto the interface" or "the interface being adjusted" to what consumers "legitimately need" (A3; E5 *Declared against honoured*). A3 Success signal 5 asks that each detected violation be "evaluated against the component's duty rather than only corrected in the consumer". So the corpus asks you not to simply fix each consumer. Until the bypasses are resolved, each bypassing component stays one system with T for what a change answers to (A3; A0). GUESS: several bypasses point more strongly to an interface shortfall than one does, but the corpus says nothing about how many bypasses there are. NOT SETTLED: who must run the evaluation, and when. If it is outside the current change's scope, A0 suggests recording it with evidence and a revival trigger (RU3), but A0 says that about gaps in general, not bypasses.

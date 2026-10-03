@@ -1,0 +1,413 @@
+{
+  "created": "2026-10-03T11:04:54.308Z",
+  "seed": "e7b430dc5f6d483a",
+  "corpora": [
+    {
+      "label": "head",
+      "path": "/tmp/opencode/evalc/c-1b923dc5"
+    }
+  ],
+  "readers": 3,
+  "probes": [
+    "system-boundary.S1",
+    "system-boundary.S2",
+    "system-boundary.S3",
+    "system-boundary.S4",
+    "system-boundary.S5",
+    "system-boundary.S6",
+    "axiom-direction.Q1",
+    "axiom-direction.Q2",
+    "design-rulings.R1",
+    "design-rulings.R2",
+    "design-rulings.R3",
+    "design-rulings.R4",
+    "design-rulings.R5",
+    "design-rulings.R6"
+  ],
+  "max": 28,
+  "mean": {
+    "system-boundary.S1": {
+      "head": 2
+    },
+    "system-boundary.S2": {
+      "head": 2
+    },
+    "system-boundary.S3": {
+      "head": 2
+    },
+    "system-boundary.S4": {
+      "head": 2
+    },
+    "system-boundary.S5": {
+      "head": 2
+    },
+    "system-boundary.S6": {
+      "head": 2
+    },
+    "axiom-direction.Q1": {
+      "head": 2
+    },
+    "axiom-direction.Q2": {
+      "head": 2
+    },
+    "design-rulings.R1": {
+      "head": 2
+    },
+    "design-rulings.R2": {
+      "head": 1.67
+    },
+    "design-rulings.R3": {
+      "head": 2
+    },
+    "design-rulings.R4": {
+      "head": 2
+    },
+    "design-rulings.R5": {
+      "head": 1
+    },
+    "design-rulings.R6": {
+      "head": 2
+    }
+  },
+  "total": {
+    "head": 26.67
+  },
+  "rows": [
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-8ab15a",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor only, and explains that the unchanged declared interface means the service's axioms do not bind."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-8ab15a",
+      "probe": "system-boundary.S2",
+      "score": 2,
+      "reason": "States the exact union set with the contract-altered reason; the versioning caveat is a side condition and the headline is asserted firmly."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-8ab15a",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's full set with the containment reason ('every system containing it')."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-8ab15a",
+      "probe": "system-boundary.S4",
+      "score": 2,
+      "reason": "Gives the floor only, with the composition-through-unchanged-contract reason and adoption as a separate consumer change."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-8ab15a",
+      "probe": "system-boundary.S5",
+      "score": 2,
+      "reason": "Says both bind with the full set and the one-system reason, and names the A3 fault; the guess concerns only a side point about runtime breakage."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-8ab15a",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Cites E5 correctly and covers the boundary, containment and composition."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-8ab15a",
+      "probe": "axiom-direction.Q1",
+      "score": 2,
+      "reason": "Builds the feature toward the A1 limit by keeping its state in the shared backplane and repeating no gap, and closes the component gap where touched or records it with evidence and a revival trigger otherwise."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-8ab15a",
+      "probe": "axiom-direction.Q2",
+      "score": 2,
+      "reason": "States the axiom is an asymptote the system is built toward, with no change moving away and each change moving toward it as far as scope allows."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-cb1a6a",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor A3, A4, A8, A9, A14 only, with the reason that the service is only composed with through an unchanged contract."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-cb1a6a",
+      "probe": "system-boundary.S2",
+      "score": 2,
+      "reason": "States the exact union set with the contract-altered reason; the versioning caveat is a stated condition and does not hedge the headline conclusion."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-cb1a6a",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's full set with the containment reason and notes A1 binds despite the stateless module."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-cb1a6a",
+      "probe": "system-boundary.S4",
+      "score": 2,
+      "reason": "Gives the library's floor only, with the composition reason and that each adoption is the consumer's own change."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-cb1a6a",
+      "probe": "system-boundary.S5",
+      "score": 2,
+      "reason": "Says both bind with the full set and a reason, and names the A3 fault; the labelled guess concerns only how far the remediation reaches, not the axiom set or the fault."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-cb1a6a",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Cites E5 correctly with the boundary definition and both relations, contain and compose."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-cb1a6a",
+      "probe": "axiom-direction.Q1",
+      "score": 2,
+      "reason": "Frames A1 as an asymptote the feature moves toward, keeps the feature's state perceivable to other agents, and closes the gap where touched or records it with evidence and a revival trigger (RU3)."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-cb1a6a",
+      "probe": "axiom-direction.Q2",
+      "score": 2,
+      "reason": "Gives the axiom as a direction toward a limit, never backwards and forward with every step as far as scope allows, and rejects the conformance reading."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-84d13e",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor only, with the composition-through-unchanged-contract reason, and explicitly excludes the service's axioms."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-84d13e",
+      "probe": "system-boundary.S2",
+      "score": 2,
+      "reason": "States the exact union set with the reason that the change alters the contract the service depends on."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-84d13e",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's full set with the containment reason from A0 and E5."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-84d13e",
+      "probe": "system-boundary.S4",
+      "score": 2,
+      "reason": "Gives the floor only, with the unchanged-contract and adoption-is-the-consumer's-change reason; the version-range caveat is a condition and does not hedge the conclusion."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-84d13e",
+      "probe": "system-boundary.S5",
+      "score": 2,
+      "reason": "Says both bind with the full set because of the undeclared boundary, and names the undeclared dependency as an A3 fault."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-84d13e",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Cites E5 correctly and explains the boundary, containment and composition through a declared contract."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-84d13e",
+      "probe": "axiom-direction.Q1",
+      "score": 2,
+      "reason": "Feature is built toward the limit with durable, queryable state, and the gap is closed where touched or recorded with evidence and a revival trigger; the NOT SETTLED note concerns scenario facts, not the conclusion."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-84d13e",
+      "probe": "axiom-direction.Q2",
+      "score": 2,
+      "reason": "Describes the axiom as a limit built toward, ruling out regression and obliging movement toward it within the change's scope, rather than a pass/fail test."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-372e5d",
+      "probe": "design-rulings.R1",
+      "score": 2,
+      "reason": "States that declaring and honouring the interface is inside the change's scope, not optional, because the change alters what the undeclared neighbour reaches."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-372e5d",
+      "probe": "design-rulings.R2",
+      "score": 2,
+      "reason": "Answers no for case 1 and yes for case 2, both with the reach-chaining reason; the hedge concerns where the change sits, not the conclusions."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-372e5d",
+      "probe": "design-rulings.R3",
+      "score": 2,
+      "reason": "Service is stateful by the contained-part rule and A1 binds the change because it modifies the containing service, citing the stateless-modules escape."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-372e5d",
+      "probe": "design-rulings.R4",
+      "score": 2,
+      "reason": "A1 binds the organisation's records, with the organisation treated as a stateful system distinct from the tool."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-372e5d",
+      "probe": "design-rulings.R5",
+      "score": 1,
+      "reason": "Covers consumers binding the interface change but leaves encouraged-versus-mandated unsettled with a guess toward mandated, and omits the feature as its own unit."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-372e5d",
+      "probe": "design-rulings.R6",
+      "score": 2,
+      "reason": "All ten, citing the declared range as adoption in advance."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-f3c9f6",
+      "probe": "design-rulings.R1",
+      "score": 2,
+      "reason": "Declares the interface and moves N onto it as in scope, not optional, because the change alters what N reaches; the only hedge is on commit granularity, not on the conclusion."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-f3c9f6",
+      "probe": "design-rulings.R2",
+      "score": 1,
+      "reason": "Case 2 is correct with the reach reason, but case 1 is muddied by asserting that C's trait-brought axioms bind the change through the containing service, contrary to the key's plain no."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-f3c9f6",
+      "probe": "design-rulings.R3",
+      "score": 2,
+      "reason": "Gives stateful and A1 binding with the contained-part rule; the hedge concerns A1's concrete demands, not the conclusion."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-f3c9f6",
+      "probe": "design-rulings.R4",
+      "score": 2,
+      "reason": "A1 binds the organisation's records, with the reason that the organisation is itself a stateful system separate from the stateless tool."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-f3c9f6",
+      "probe": "design-rulings.R5",
+      "score": 1,
+      "reason": "Covers the consumers binding the interface change and the split as encouraged (conditionally mandated if touched), but never says the feature arrives as its own composed unit."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-f3c9f6",
+      "probe": "design-rulings.R6",
+      "score": 2,
+      "reason": "All ten, with the declared range as adoption in advance; lockfile hedges are peripheral to the conclusion."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-72a0a1",
+      "probe": "design-rulings.R1",
+      "score": 2,
+      "reason": "Requires declaring the interface and moving N onto it as in scope, not optional, grounded in the change altering what N reaches."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-72a0a1",
+      "probe": "design-rulings.R2",
+      "score": 2,
+      "reason": "Answers no for case 1 and yes for case 2 with the chaining-through-reach reason; the guess only restates the question's own premise."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-72a0a1",
+      "probe": "design-rulings.R3",
+      "score": 2,
+      "reason": "Applies the contained-part rule to make the service stateful and concludes A1 binds the change via the containing system."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-72a0a1",
+      "probe": "design-rulings.R4",
+      "score": 2,
+      "reason": "A1 binds the team's records because the organisation doing the work is a system whose records pass the stateful test."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-72a0a1",
+      "probe": "design-rulings.R5",
+      "score": 1,
+      "reason": "Gets the split as encouraged not mandated and the consumers binding the interface change, but omits the feature arriving as its own composed unit."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-72a0a1",
+      "probe": "design-rulings.R6",
+      "score": 2,
+      "reason": "All ten, with the adoption-in-advance reason for a release inside the declared range."
+    }
+  ]
+}

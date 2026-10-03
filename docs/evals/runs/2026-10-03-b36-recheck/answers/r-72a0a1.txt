@@ -1,0 +1,49 @@
+### design-rulings.R1
+N depends on T with no declared boundary, so for deciding what your change answers to, N and T are "one system, with the traits of both" (entities/E5-system.md, Boundaries; axioms/README.md: "the two are one system with the traits of both, and the axioms either unit would bring all bind"). Your change alters a function N calls, so N is a consumer whose contract you alter, and N is touched (axioms/README.md: "A change touches ... any consumer whose contract it alters").
+E5 states the obligation directly: "A change that alters what an undeclared neighbour reaches into owns that boundary: declaring and honouring the interface is inside its scope, not optional."
+So your change must declare an interface between T and N, and N must actually use it. Declaring it and leaving N's bypass in place "separates nothing" (E5, Declared against honoured).
+To decide the interface, evaluate it against T's duty. Then either move N onto the interface, or adjust the interface to what N legitimately needs (E5; axioms/A3-sovereign-composition.md, Bypass as Signal).
+Until that is done, the change answers to N's axioms as well as T's. The undeclared reach is itself an A3 fault (E5, Boundaries).
+
+### design-rulings.R2
+(1) No. E5 says "The merge chains only through what a change can reach: if A reaches into B and B into C, a change to A is one system with C only when it alters something B takes from C" (entities/E5-system.md, Boundaries). A change that only A uses alters nothing B takes from C, so C's axioms do not bind it.
+(2) Yes. The change alters something B takes from C, which is the condition E5 names, so for this change A, B and C are one system and C's axioms bind it.
+Under the same E5 sentence, this change also "owns that boundary": declaring and honouring the interfaces it reaches across is inside its scope, not optional.
+GUESS: the question does not say which unit the change is made in. I read it as a change whose effect reaches what B takes from C, which is the case E5 names.
+
+### design-rulings.R3
+Yes, the service is stateful. The module writes records it reads back and acts on, which passes the T1 test: "Does the system write something it will later read back, and would anything act differently if that record were wrong?" (traits/T1-stateful.md).
+A system has every trait of any part it contains. A module inside a service is contained "whether or not the module's interfaces are declared" (entities/E5-system.md, Contain; traits/README.md: "a service with one stateful module is stateful").
+A1 applies-to [stateful] (axioms/A1-sovereign-state-transparency.md), so A1 is in force for the service.
+A change answers to "the system it modifies, every system containing it" (axioms/README.md). The service contains the stateless module you change, so A1 binds your change.
+E5 names the opposite reading as a fault: "a stateful system escapes its own axioms by being described as stateless modules, each of which passes on its own."
+How far the change must move toward A1 is set by its scope. It must not move the service away from the limit, and it must close gaps it touches as far as the touch allows (axioms/README.md).
+
+### design-rulings.R4
+Yes. A1 binds the team's records, not the tool.
+E5 states this case almost word for word: "A stateless product built by a team that keeps records it relies on has `A1` binding the team's records, not the product" (entities/E5-system.md).
+The organisation doing the work is a system. Its records pass the T1 test because they are written, read back and relied on (traits/T1-stateful.md), so A1 binds how the work is done and recorded.
+The tool itself is stateless, so A1 is not in force for it, and none of the axioms on the tool's systems comes from A1.
+E5 says the two are asked separately: "which systems a change answers to is a question about the product's systems; the organisation's axioms govern how the change is made and recorded."
+
+### design-rulings.R5
+The feature work must not deepen the tangle: "new work never repeats a gap the axiom names, and work that touches a gap closes as much of it as the touch allows" (axioms/README.md). Two concerns in one unit is an A3 fault (axioms/A3-sovereign-composition.md, Law of One).
+The full split goes beyond what the feature needs. A3 encourages it but does not mandate it: "within the unit's own duty, fix it, fracture it, re-cut its seams and recompose it so it makes better sense for every consumer downstream - as a change of its own" (A3, Composable by Default; axioms/README.md: "Beyond the scope, improvement is encouraged, never mandated"). An agent who sees it is "expected to weigh doing it".
+If you do it, do it as a separate change. K's interface is not versioned, so the split alters all three consumers, and the split answers to each consumer's axioms (axioms/README.md, opportunistic improvement).
+If you do not do it, record the gap with evidence and a revival trigger (rules/RU3). "Either way the gap is recorded" (axioms/README.md).
+NOT SETTLED: whether the feature "touches" the tangle depends on whether it modifies the tangled code, and the question does not say. The opportunistic-improvement test (axioms/A14) is also worded for "adjacent" components, not for the component you are already changing.
+
+### design-rulings.R6
+All ten.
+E5 says: "A declared version range - *any 2.x* - is adoption in advance: a release within it alters every consumer bound by the range, whether or not the consumer's own files change" (entities/E5-system.md, A versioned contract changes only for the systems that adopt the new version).
+All ten declare "any 2.x", and 2.4 is inside that range, so publishing 2.4 alters each of them.
+Using only L's declared interface does not protect them, because 2.4 changes the behaviour that interface documents. So the contract between L and each consumer is altered (axioms/README.md: a change answers to "any system whose contract with it the change alters").
+The release therefore answers to all ten consumers' axioms.
+GUESS: if some consumers pin an exact resolved version (for example with a lockfile), they might adopt 2.4 only when they re-resolve. The question gives no such pinning, and the corpus does not discuss lockfiles.
+
+### OBSERVATIONS
+- E5 has an unconditional rule and a conditional rule that do not obviously fit together. The unconditional rule: where one unit depends on another with no declared boundary, "they are one system". The conditional rule: the merge "chains only through what a change can reach". E5 does not say whether the A-B merge is also conditional on the change, for example whether a change in A that touches nothing A takes from B still makes A one system with B. R2(1) asks only about C, so this did not decide an answer.
+- R2(2) does not say which unit the change is made in. E5's chaining sentence is written for "a change to A".
+- axioms/README.md uses "adjacent component" for opportunistic improvement, and E6 defines adjacency between two components. Neither says how to treat improving the internals of the same component the change already modifies (R5). A3's Composable by Default covers this case, but A0 does not cross-reference it in those terms.
+- "Touched" is defined at the level of "what it modifies", with code "that merely sits beside it, in the same file or module" excluded. It is unclear how that applies to a tangle inside the very module being modified.
+- R6: the corpus does not say whether a minor release that changes documented behaviour is itself a fault against A3's "explicit, versioned contracts". It settles only who is altered.

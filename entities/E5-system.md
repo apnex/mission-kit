@@ -20,8 +20,15 @@ A trait's test is applied to a system, never to a task, and an axiom is in force
 
 Systems relate in exactly two ways.
 
-- **Contain.** A system can be made of systems. A module inside a service is a system, and the service contains it, whether or not the module's interfaces are declared.
+- **Contain.** A system can be made of systems. A module inside a service is a system, and the service contains it, whether or not the module's interfaces are declared. A system has every trait any part it contains has.
 - **Compose.** Two systems work together through a declared contract, and neither contains the other. A launcher that hands sessions to a service through a declared interface composes with it.
+
+---
+
+**The organisation doing the work is a system.**\
+Its agents, director, records and checks have traits like any system - it holds state in its records, and is multi-agent where work passes between actors - so axioms bind how the work is done, separately from what is built.\
+A stateless product built by a team that keeps records it relies on has `A1` binding the team's records, not the product.\
+The two are asked separately: which systems a change answers to is a question about the product's systems; the organisation's axioms govern how the change is made and recorded, and are not one of the systems the change alters.
 
 ---
 
@@ -40,7 +47,8 @@ Behaviour another unit depends on without any declaration is a contract in fact,
 **Declared against honoured.**\
 A declared interface separates two units only for the neighbours that use it.\
 A unit that reaches past it - calling internals, parsing output the interface does not promise - stays one system with it, so declaring an interface and leaving the bypass in place separates nothing.\
-The separation is per pair: a neighbour that uses the interface composes with the unit, while one that bypasses it does not.
+The separation is per pair: a neighbour that uses the interface composes with the unit, while one that bypasses it does not.\
+A bypass ends one of two ways, after the interface is evaluated against the component's duty: the consumer is moved onto the interface, or the interface is adjusted to what the consumer legitimately needs ([`A3`](../axioms/A3-sovereign-composition.md)).
 
 **A system against a component.**\
 A [component](E6-component.md) is a system seen as a part of a containing system.\
@@ -49,7 +57,8 @@ A directory places a component's documents; it is the boundary of neither the sy
 
 **A versioned contract changes only for the systems that adopt the new version.**\
 Publishing a new version of an interface alters no consumer that has not adopted it; each adoption is a change to that consumer, and answers to that consumer's axioms; the component is not altered by being adopted.\
-So a change to a shared component's interface reaches the systems that take it up, one adoption at a time - not everything that has ever depended on it.
+So a change to a shared component's interface reaches the systems that take it up, one adoption at a time - not everything that has ever depended on it.\
+A declared version range - *any 2.x* - is adoption in advance: a release within it alters every consumer bound by the range, whether or not the consumer's own files change.
 
 **A system against a domain.**\
 A [domain](../domains/README.md) is the surface a piece of work lands on - the codebase, the records, the estate.\
@@ -70,7 +79,8 @@ A one-shot script with no traits is a system, bound by the axioms every system c
 Where one unit depends on another and nothing declares the boundary between them, nothing shows that a change to one leaves the other unchanged, so for deciding what binds a change they are **one system, with the traits of both**.\
 Declaring the boundary, and moving the dependency onto it, is what makes them two again.\
 This is not a third way of relating: two units that depend on each other with no declared contract, neither containing the other, cannot compose, and are treated as one.\
-The undeclared dependency is itself a fault against [`A3`](../axioms/A3-sovereign-composition.md), which requires units to interact only through declared contracts.
+The undeclared dependency is itself a fault against [`A3`](../axioms/A3-sovereign-composition.md), which requires units to interact only through declared contracts.\
+The merge chains only through what a change can reach: if A reaches into B and B into C, a change to A is one system with C only when it alters something B takes from C. A change that alters what an undeclared neighbour reaches into owns that boundary: declaring and honouring the interface is inside its scope, not optional.
 
 ---
 

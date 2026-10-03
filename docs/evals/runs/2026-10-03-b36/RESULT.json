@@ -1,0 +1,556 @@
+{
+  "created": "2026-10-03T11:01:24.803Z",
+  "seed": "15eb5eda07fffe23",
+  "corpora": [
+    {
+      "label": "before",
+      "path": "/tmp/opencode/evalc/c-9da99ccc"
+    },
+    {
+      "label": "after",
+      "path": "/tmp/opencode/evalc/c-c0e53f78"
+    }
+  ],
+  "readers": 3,
+  "probes": [
+    "design-rulings.R1",
+    "design-rulings.R2",
+    "design-rulings.R3",
+    "design-rulings.R4",
+    "design-rulings.R5",
+    "design-rulings.R6",
+    "boundary-bypass.B1",
+    "boundary-bypass.B2",
+    "boundary-bypass.B3",
+    "boundary-bypass.B4"
+  ],
+  "max": 20,
+  "mean": {
+    "design-rulings.R1": {
+      "before": 1,
+      "after": 2
+    },
+    "design-rulings.R2": {
+      "before": 1,
+      "after": 2
+    },
+    "design-rulings.R3": {
+      "before": 2,
+      "after": 2
+    },
+    "design-rulings.R4": {
+      "before": 1,
+      "after": 2
+    },
+    "design-rulings.R5": {
+      "before": 1,
+      "after": 1
+    },
+    "design-rulings.R6": {
+      "before": 1,
+      "after": 2
+    },
+    "boundary-bypass.B1": {
+      "before": 2,
+      "after": 2
+    },
+    "boundary-bypass.B2": {
+      "before": 2,
+      "after": 2
+    },
+    "boundary-bypass.B3": {
+      "before": 1,
+      "after": 2
+    },
+    "boundary-bypass.B4": {
+      "before": 2,
+      "after": 2
+    }
+  },
+  "total": {
+    "before": 14,
+    "after": 19
+  },
+  "rows": [
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-d966b5",
+      "probe": "design-rulings.R1",
+      "score": 1,
+      "reason": "Says the change should declare and migrate only as far as scope allows and leaves whether that is required NOT SETTLED."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-d966b5",
+      "probe": "design-rulings.R2",
+      "score": 1,
+      "reason": "Case 2 is correct, but case 1 is only 'mostly no' and labelled NOT SETTLED, which caps the score."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-d966b5",
+      "probe": "design-rulings.R3",
+      "score": 2,
+      "reason": "Stateful service with the stateless-modules escape warning cited, and A1 binding the change through the containing system."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-d966b5",
+      "probe": "design-rulings.R4",
+      "score": 1,
+      "reason": "A1 binds the team's records, but the organisation-is-a-system reason is labelled NOT SETTLED and a guess."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-d966b5",
+      "probe": "design-rulings.R5",
+      "score": 1,
+      "reason": "Consumers bound by the interface change is correct and the split is treated as non-mandatory if untouched, but it omits the feature as a new unit and suggests the split may be required."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-d966b5",
+      "probe": "design-rulings.R6",
+      "score": 1,
+      "reason": "Literal reading is none and all ten appears only as a hedged guess, so the answer does not commit to adoption in advance."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-fbc60e",
+      "probe": "design-rulings.R1",
+      "score": 1,
+      "reason": "Leaves the obligation NOT SETTLED and guesses a partial declaration with the rest recorded, rather than ruling it in scope."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-fbc60e",
+      "probe": "design-rulings.R2",
+      "score": 1,
+      "reason": "Case 2 is correct with the reach reason, but case 1 is left NOT SETTLED and leans toward yes."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-fbc60e",
+      "probe": "design-rulings.R3",
+      "score": 2,
+      "reason": "Stateful via the contained module, citing that a stateful system cannot escape by being described as stateless modules, and A1 binds through containment."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-fbc60e",
+      "probe": "design-rulings.R4",
+      "score": 1,
+      "reason": "A1 binds the team's records, but the organisation-is-a-system reason is left NOT SETTLED as a guess."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-fbc60e",
+      "probe": "design-rulings.R5",
+      "score": 1,
+      "reason": "The split is not mandated and the consumers' axioms bind the interface change, but it misses the feature arriving as its own unit."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-fbc60e",
+      "probe": "design-rulings.R6",
+      "score": 1,
+      "reason": "Headline reads none, and all ten as declared acceptance appears only as a labelled guess."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-63e723",
+      "probe": "design-rulings.R1",
+      "score": 1,
+      "reason": "Labels the required extent NOT SETTLED and guesses, allowing the gap to be recorded instead of mandating the interface as in scope."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-63e723",
+      "probe": "design-rulings.R2",
+      "score": 1,
+      "reason": "Case 2 is correct, but case 1 is labelled NOT SETTLED with a guessed no, which caps the score."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-63e723",
+      "probe": "design-rulings.R3",
+      "score": 2,
+      "reason": "Cites the stateless-modules escape warning for the service being stateful and concludes that A1 binds the change."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-63e723",
+      "probe": "design-rulings.R4",
+      "score": 1,
+      "reason": "A1 binds the team's records, but the answer marks as NOT SETTLED whether the organisation is a system."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-63e723",
+      "probe": "design-rulings.R5",
+      "score": 1,
+      "reason": "Split considered never mandated and consumers bound by the unversioned interface change, but no feature-as-new-unit."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-63e723",
+      "probe": "design-rulings.R6",
+      "score": 1,
+      "reason": "Headline reads none and only a labelled guess reaches all ten, which caps the score."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-dc34dc",
+      "probe": "boundary-bypass.B1",
+      "score": 2,
+      "reason": "Answers yes with the declared-and-honoured reason and the bypass-as-signal evaluation; the guess concerns only whether this change must close the gap."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-dc34dc",
+      "probe": "boundary-bypass.B2",
+      "score": 2,
+      "reason": "Answers O-not-P with both reasons; the unsettled point is only about traits flowing through the containing service."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-dc34dc",
+      "probe": "boundary-bypass.B3",
+      "score": 1,
+      "reason": "Answers no with the honoured reason and notes the evaluation trigger, but does not give the reroute-or-adjust resolution."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-dc34dc",
+      "probe": "boundary-bypass.B4",
+      "score": 2,
+      "reason": "Gives the evaluation against duty and vision with both outcomes, and notes that an interface adjustment answers to the consumers it alters."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-d4262a",
+      "probe": "boundary-bypass.B1",
+      "score": 2,
+      "reason": "Answers yes with the declared-and-honoured reason and treats the bypass as a signal that triggers an interface evaluation against duty and vision."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-d4262a",
+      "probe": "boundary-bypass.B2",
+      "score": 2,
+      "reason": "Answers O-not-P, giving both reasons: O's bypass keeps it one system with T, and P composes through an unchanged contract so its axioms do not bind."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-d4262a",
+      "probe": "boundary-bypass.B3",
+      "score": 1,
+      "reason": "Answers no with the honoured reason and mentions the evaluation, but does not give the reroute-or-adjust outcome."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-d4262a",
+      "probe": "boundary-bypass.B4",
+      "score": 2,
+      "reason": "Gives the evaluation against duty and vision with both outcomes, and notes that an adjusted interface binds its consumers."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-c32215",
+      "probe": "boundary-bypass.B1",
+      "score": 2,
+      "reason": "Answers yes because a boundary written and reached past leaves one system, and describes the bypass as a signal triggering an interface evaluation with reroute-or-adjust outcomes."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-c32215",
+      "probe": "boundary-bypass.B2",
+      "score": 2,
+      "reason": "Answers O-not-P with both reasons: the unchanged contract means P is not bound, and the bypass makes O one system with T."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-c32215",
+      "probe": "boundary-bypass.B3",
+      "score": 1,
+      "reason": "Answers no with the honoured reason and mentions the interface evaluation, but never gives the adjust outcome, and moving O appears only inside a labelled guess."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-c32215",
+      "probe": "boundary-bypass.B4",
+      "score": 2,
+      "reason": "Gives the interface evaluation against duty and vision with both outcomes and warns against only patching consumers."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-392072",
+      "probe": "design-rulings.R1",
+      "score": 2,
+      "reason": "States that declaring and honouring the interface is part of the change and not optional, because the change alters what N reaches into."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-392072",
+      "probe": "design-rulings.R2",
+      "score": 2,
+      "reason": "Both cases are correct with the reach-based chaining rule, and the guess concerns only the A-B merge."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-392072",
+      "probe": "design-rulings.R3",
+      "score": 2,
+      "reason": "Cites the contained-part rule and the escape warning, and concludes that A1 binds the change via the containing service."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-392072",
+      "probe": "design-rulings.R4",
+      "score": 2,
+      "reason": "A1 binds the team's records, because the organisation is a system holding state in its records."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-392072",
+      "probe": "design-rulings.R5",
+      "score": 1,
+      "reason": "Covers split encouraged not mandated and consumers bound by the interface change, but omits the feature arriving as a new unit."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-392072",
+      "probe": "design-rulings.R6",
+      "score": 2,
+      "reason": "All ten with the adoption-in-advance reason, and the lockfile NOT SETTLED is peripheral."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-c538b5",
+      "probe": "design-rulings.R1",
+      "score": 2,
+      "reason": "Declares the interface and moves N onto it as inside scope and not optional, because the change alters what N reaches."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-c538b5",
+      "probe": "design-rulings.R2",
+      "score": 2,
+      "reason": "Both cases are correct with the chains-only-through-reach reason, and the guess concerns only a peripheral detail."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-c538b5",
+      "probe": "design-rulings.R3",
+      "score": 2,
+      "reason": "Cites the rule that a system has every trait any part it contains has, and concludes that A1 binds the change, with only a peripheral NOT SETTLED."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-c538b5",
+      "probe": "design-rulings.R4",
+      "score": 2,
+      "reason": "A1 binds the team's records, citing E5 that the organisation doing the work is a system."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-c538b5",
+      "probe": "design-rulings.R5",
+      "score": 1,
+      "reason": "The split is encouraged not mandated and the consumers' axioms bind, but the feature is not described as arriving as its own composed unit."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-c538b5",
+      "probe": "design-rulings.R6",
+      "score": 2,
+      "reason": "All ten with the adoption-in-advance reason, and the lockfile guess is peripheral."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-efa6fe",
+      "probe": "design-rulings.R1",
+      "score": 2,
+      "reason": "Declaring and honouring the interface is stated as in scope and not optional, grounded in the change altering what N reaches."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-efa6fe",
+      "probe": "design-rulings.R2",
+      "score": 2,
+      "reason": "Both cases are correct with the reach-based chaining rule, and the guess is peripheral."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-efa6fe",
+      "probe": "design-rulings.R3",
+      "score": 2,
+      "reason": "Applies the contained-part trait rule and concludes that A1 binds, and the NOT SETTLED concerns only what A1 concretely demands."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-efa6fe",
+      "probe": "design-rulings.R4",
+      "score": 2,
+      "reason": "A1 binds the team's records because the organisation doing the work is a system that holds state."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-efa6fe",
+      "probe": "design-rulings.R5",
+      "score": 1,
+      "reason": "Split encouraged not mandated and consumers bound are both present, but the feature is not framed as a new composed unit."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-efa6fe",
+      "probe": "design-rulings.R6",
+      "score": 2,
+      "reason": "All ten, with the declared range as adoption in advance."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-a6cb0e",
+      "probe": "boundary-bypass.B1",
+      "score": 2,
+      "reason": "Answers yes with the declared-and-honoured reason and the bypass as a fault and signal triggering an interface evaluation; the unsettled point is peripheral."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-a6cb0e",
+      "probe": "boundary-bypass.B2",
+      "score": 2,
+      "reason": "Answers O-not-P with both the unchanged-contract and one-system reasons; the caveat about the containing service is peripheral."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-a6cb0e",
+      "probe": "boundary-bypass.B3",
+      "score": 2,
+      "reason": "Answers no with the honoured reason and explicitly names moving O onto the interface or adjusting the interface."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-a6cb0e",
+      "probe": "boundary-bypass.B4",
+      "score": 2,
+      "reason": "Gives the evaluation against duty and vision ending in rerouting consumers or adjusting the interface, and does not stop at fixing consumers."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-d581e8",
+      "probe": "boundary-bypass.B1",
+      "score": 2,
+      "reason": "Answers yes because reaching past the interface keeps one system, and gives the A3 signal-triggered interface evaluation with both outcomes."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-d581e8",
+      "probe": "boundary-bypass.B2",
+      "score": 2,
+      "reason": "Answers O and not P as a separate system, with both reasons; the note about traits reaching through the service does not reverse the split."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-d581e8",
+      "probe": "boundary-bypass.B3",
+      "score": 2,
+      "reason": "Answers no with the honoured reason and states separation requires moving O onto the interface or adjusting it."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-d581e8",
+      "probe": "boundary-bypass.B4",
+      "score": 2,
+      "reason": "Gives the signal-triggered evaluation against duty and vision with both outcomes, not just consumer fixes."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-a52ab6",
+      "probe": "boundary-bypass.B1",
+      "score": 2,
+      "reason": "Answers yes on the declared-and-honoured ground and treats the bypass as a signal triggering an interface evaluation ending in reroute or adjustment; the guess concerns only a side clause."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-a52ab6",
+      "probe": "boundary-bypass.B2",
+      "score": 2,
+      "reason": "Answers O-not-P, citing the unchanged contract for P and the one-system bypass for O."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-a52ab6",
+      "probe": "boundary-bypass.B3",
+      "score": 2,
+      "reason": "Answers no because declaring while leaving the bypass separates nothing, and names reroute-or-adjust as the resolution, with recording also covered."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-a52ab6",
+      "probe": "boundary-bypass.B4",
+      "score": 2,
+      "reason": "Treats the bypasses as a signal requiring evaluation against duty and vision, ending in consumers being moved or the interface adjusted."
+    }
+  ]
+}

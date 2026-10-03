@@ -1,0 +1,14 @@
+### component-a3.C5
+Do not add the feature to `utils`: A3 names this exact shape as a fault, "God-Object Accretion - "utils", "helpers", "managers" accumulate unrelated concerns", and the Mandate says "a change short of it adds none of them, and removes what it touches."
+Build the feature as its own unit and compose it in: "a new capability is assembled by composing existing units, never by bolting it onto one", and under the "Law of One", "a module does exactly one thing".
+If your change touches the part of `utils` you depend on, the Mandate's "removes what it touches" asks you to separate that concern out, not leave it entangled.
+That cleanup is allowed and encouraged, but "as a change of its own, answering to every consumer whose interface it alters" ("fix it, fracture it, re-cut its seams and recompose it").
+The new unit gets an internal boundary because it is one concern, but it should not become a stable shared surface yet: "it earns promotion to a stable, depended-upon surface only when a real consumer outside its origin needs it."
+NOT SETTLED: how much of `utils` counts as "what it touches" (only code you edit, or code you call), and whether you must restructure all of `utils` or only the concerns your change touches.
+GUESS: only the concerns your change touches, because the text speaks of a change "short of" the limit, not one that reaches it.
+
+### OBSERVATIONS
+- "removes what it touches" (Mandate) and "as a change of its own" (Composable by Default) do not say clearly whether the cleanup goes in the feature change or in a separate change; it is ambiguous whether "of its own" means a separate commit/change or only that the improvement must answer for itself.
+- Success signal 3 says "New capabilities arrive by composition, not by modifying existing units", but Composable by Default encourages modifying existing units ("fix it, fracture it, re-cut its seams"). These can be read together (modifying to improve a unit is fine, modifying to add a capability is not), but the signal's wording alone contradicts the mechanic.
+- "touches" is not defined.
+- The file points to `A0` (README.md) for how an axiom binds a change; I did not open it, as instructed, so that binding rule is not checked here.

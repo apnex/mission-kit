@@ -1,0 +1,59 @@
+### work-layers.L1
+This belongs in the rules layer (`rules/`, prefix RU). `methods/README.md` (M0) Placement, question 2, says: "Guidance that only *requires* a record to carry something - a field, a reason - produces nothing itself, and is a rule". It then gives this exact case: "*every deferral records its revival trigger* is visible in text and is still a rule, because it governs what the work records."
+Yes, it is already covered. `rules/RU3-anti-amnesia-deferral.md` says: "When you defer, park, or cut a unit of work, record - at the moment of deferral - a concrete **revival trigger**". Its trace is "every deferred, parked or cut item's record carries a revival trigger". It also says "Revival re-triages, it does not resume."
+RU3 supersedes the old `methods/M5`, which now points to it. RU3 is applied by `artifacts/AR5-backlog.md` (rows need a revival trigger, and "'Later' is not a trigger") and by `backlog/README.md` (MREQ-0).
+RU3 says "defer, park, or cut" and "won't do" but never says "abandoned". GUESS: abandoned work is covered as a cut or won't-do.
+
+### work-layers.L2
+It belongs in the skills layer (`skills/`, prefix K). `skills/README.md` (K0) says a skill "is *invoked*, not followed: it names a procedure with inputs, steps and an output". It also says a capability earns an entry "when it is executable, repeatable, and would otherwise be reconstructed from scratch by whoever needs it next".
+`methods/README.md` (M0) agrees: "a capability you execute" goes in `skills/` because "the object is a procedure with inputs and outputs, invoked rather than followed". Its fault list names "The procedure that is really a skill".
+This capability already exists as `skills/K3-substrate-audit.md`. It is "a **five-pass meta-process**" (Sweep, Triangulation, Promotion audit, Synthesis, Reconciliation) with "a fixed artefact layout" (`00-summary.md` ... `sources.md`). Its body, templates and references are in `skills/substrate-audit/`.
+K0 says a skill "earns its packaging where scripts or assets make it necessary", and K3 ships templates and references, so it meets that test. K0 also gives a limit: "A skill whose steps a script could take should be that script, per A11".
+
+### work-layers.L3
+It belongs in the work-types layer (`work-types/`, prefix W). `README.md` says this layer holds "Units of work and their evidence contracts". `work-types/README.md` (W0) says an entry carries `roleEligibility`, `domainEligibility`, `evidenceContract` and `falsifier`, which match "who", "what it may be pointed at" and "what proof ends it".
+It is already covered by `work-types/W10-adversarial-design-review-upstream.md`: "A verifier red-teams a design **before** build or merge".
+Who may do it: `roleEligibility: [verifier]`, with `evidenceAuthority: verifier-attestation`. The attester "**cannot be the executor** given the live roster", and if the roster collapses it falls back to plain `kind:review`.
+What it may target: all seven domains, with `domainFreedom: free`. The `target` is "the design under review", bound `provided-by-trigger`.
+What ends it: a single `kind:review`, which is a "critique doc before build/merge with specific failure hypotheses". It fails if "review after the decision, or no falsifiable concerns raised".
+
+### work-layers.L4
+It is a methodology entry, and it already exists: `methods/M1-triangulated-review.md`, "require **at least four genuinely independent inputs** before reaching a verdict". Its trigger is "reviewing a patch or design that ships to production or upstream".
+M0 says M1 is the set's one primitive: "independent inputs before a verdict - is the independence the verifying procedures specialise". It sits at the "Verifying" moment.
+It is a method and not a skill because, by M0 question 2, following it "produce[s] a result of its own" (a verdict). It has no packaged scripts or assets of the kind K0 says a skill needs.
+It is not a work-type, because it is not a claimable unit of work with an evidence contract (W0). The gating work-types (for example W8 verify-gate, W13 code-owner-approve) are where it would be applied. GUESS: those work-types would use M1, but no text links them.
+Note that M1 asks for a floor of four inputs, not just "several": "Four is the empirical floor", although the body also says "sometimes 3 is enough".
+
+### work-layers.L5
+The corpus names this exact gap. `methods/README.md` (M0) says: "*Handing over* holds `M10`, which hands understanding and decisions to a human; handing work in progress to another agent or a later session has no procedure at all." It adds: "a lone agent hands over to its own next session", and that this gap is "where to look first when something does" fail.
+`rules/README.md` (RU0) says: "A rule for handing over - *a handover record names what is unfinished* - would leave a trace, and none exists." `practices/README.md` (PC0) says: "*handing over* hold[s] no practice today."
+Where the guidance goes depends on its form, by M0's Placement test. A procedure that produces a handover record goes in `methods/`. A requirement that a record carry something (for example, what is unfinished) goes in `rules/`. Guidance that leaves no trace goes in `practices/`. NOT SETTLED which of these the guidance should be.
+`axioms/A4-zero-loss-knowledge.md` gives the standard to meet: "A cold pickup from the record alone reproduces the same outputs as a warm actor".
+GUESS: `skills/K24` workgraph-recovery covers only stopped or failed WorkGraph arcs, not general agent-to-agent or session-to-session handover.
+
+### work-layers.L6
+Method: M0 Placement question 2 asks, "Does following it produce a result of its own - a verdict, an artifact, a record?" `README.md` describes the layer as "Procedures that produce a result of their own".
+Skill: K0 says "A skill is *invoked*, not followed". It also says "A method is a procedure held as guidance, the single source of its content; a skill packages a procedure so an agent can install and invoke it, and earns its packaging where scripts or assets make it necessary." M0's table agrees: "a procedure with inputs and outputs, invoked rather than followed".
+Work-type: W0 says "A candidate is taxonomy-grade **iff it compiles to a closeable claimable node**", with roleEligibility, evidenceContract, evidenceAuthority and falsifier. That is a unit of work, not a way of doing it.
+Method versus skill is the hard pair, because both are procedures that produce results, and the difference is packaging and invocation. The corpus shows this by moving M9: M0 "brought `M9` in from `skills/`", K0 cites it as a skill "filed in the wrong layer, as `M9` was before it moved", and `skills/K1` is superseded by M9.
+NOT SETTLED: no single ordered test covers all three. M0's five-question ladder never asks about skills or work-types, and I found no text that contrasts a method with a work-type directly.
+
+### work-layers.L7
+1. `rules/RU1` (rules), default-reject and honest yield: reject by default, and land only what "delivers more value than it costs, measured concretely against the current state". Lead the report with yield ("how many candidates considered, how many landed, what concrete bugs were fixed, what was verified vs. asserted"), and put narrative after it.
+2. `rules/RU3` (rules) and `artifacts/AR5` (artifacts): record an observable revival trigger for each of the three cuts at the moment you cut it. Record each cut as a backlog row (id, finding, evidence, state, trigger that is not "later" or a date), retired and not deleted. A cut item that is really a deferred mission request goes in `backlog/` (MREQ-0).
+3. `rules/RU2` (rules): do not later rewrite the design records of what you considered. Correct them with a status banner and a cross-link.
+4. `methods/M1` (methods): if the two landed changes ship to production or upstream, review each with at least four independent inputs. `work-types/W6` (work-types): landing on canonical main needs an already-approved PR, a merge commit and a branch-protection or review-status record. GUESS: `work-types/W9` applies if the sweep is an adversarial audit of a surface.
+5. Report to the director with `style/S15` (style) and `methods/M10` (methods), which are gathered by `sets/ST1` (sets). S15 requires the conclusion first, one question at the end, unseen IDs explained, a separate labelled recommendation, and two or three picks. If the director must decide, M10 requires the understanding first, then one decision per message with every option costed (including doing nothing), and the decision recorded (AR4/W23).
+6. `axioms/A13` (axioms; `applies-to: [multi-agent, autonomous]`, see traits T3/T4): surface something "decision-shaped" rather than status, never "go silently dark", and never narrow the options. `roles/R4` (roles): director ratification "cannot be satisfied by architect narrative".
+ST1 itself notes that "`RU1` honest yield is triggered by sweeps and audits, not by any report". GUESS: a yield line as S15's "point first" satisfies both.
+
+### OBSERVATIONS
+- `README.md` calls INDEX.md "the flat ledger across every category", but INDEX.md is grouped by layer.
+- `README.md` "Adding an entry" step 5 says to add the entry to INDEX.md and the category README by hand. Both say "do not edit by hand", and README's own success signals say indexes are generated.
+- `entities/E2` says there are "three mechanism layers", but README's table lists four layers with no prefix (bundles, tools, plugins, docs). Also, `docs/` does not exist in this corpus snapshot.
+- README says methods own "review, audit, bootstrap", but audit is also a skill (K3) and a work-type (W9), which blurs the boundary between layers.
+- M0's placement ladder has no question for skills or work-types, although its own table routes to `skills/`.
+- M1 is titled "minimum 4", but its body says "sometimes 3 is enough". M1 (a method) and K3 (a skill stub) both use a "## Rule" heading.
+- K0 says the stub "points at the body", but K3 repeats the procedure in full, which is a possible forked copy. K3's layout lists `05-coverage.md`, but there is no template for it, and there is a `02-code-trace` template that the layout does not list.
+- The substrate-audit body names a specific repository (`apnex/kate`), which is K0's "unportable skill" fault.
+- ST1 records a tension: RU1's trigger does not cover reports to a human.

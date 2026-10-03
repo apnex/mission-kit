@@ -1,0 +1,63 @@
+### work-layers.L1
+It belongs in the rules layer (`rules/`, prefix RU). The placement ladder in methods/README.md (M0) says "Guidance that only *requires* a record to carry something - a field, a reason - produces nothing itself, and is a rule", and gives this exact case: "*every deferral records its revival trigger* is visible in text and is still a rule, because it governs what the work records."
+It is already covered by rules/RU3-anti-amnesia-deferral.md: "When you defer, park, or cut a unit of work, record - at the moment of deferral - a concrete **revival trigger**: the observable condition under which the item should be reconsidered", with trace "every deferred, parked or cut item's record carries a revival trigger".
+rules/README.md (RU0) puts RU3 at the "Deciding what to keep" moment.
+The record that holds those triggers is the backlog artifact type, artifacts/AR5-backlog.md ("Its governing rule is RU3"; a trigger that is "a date or the word 'later'" fails its acceptance falsifier). backlog/README.md (MREQ-0) applies the same rule to this corpus's own deferred missions.
+The old location methods/M5 is superseded and points to RU3.
+
+### work-layers.L2
+It belongs in the skills layer (`skills/`, prefix K).
+skills/README.md (K0): a skill "is *invoked*, not followed: it names a procedure with inputs, steps and an output". It also says a skill "earns its packaging where scripts or assets make it necessary", and it earns an entry when it is "executable, repeatable, and would otherwise be reconstructed from scratch". A fixed output layout implies templates, which are assets.
+methods/README.md (M0) agrees in its boundary table: "a capability you execute | skills/ | the object is a procedure with inputs and outputs, invoked rather than followed". Its fault list names "The procedure that is really a skill".
+Something close already exists: skills/K3-substrate-audit.md is a "five-pass meta-process" (Sweep, Triangulation, Promotion audit, Synthesis, Reconciliation) with a "fixed artefact layout" (00-summary.md ... sources.md), shipped with templates under skills/substrate-audit/. So the first step is to check whether K3 already fits (M0: "Prefer strengthening an existing entry to adding a neighbour").
+Caveat: M0's five-question placement ladder leaves out skills, so a literal reading of its question 2 ("produce a result of its own") would send this to methods/. Only K0's packaging test sends it to skills (see OBSERVATIONS).
+
+### work-layers.L3
+It belongs in the work-types layer (`work-types/`, prefix W). README.md describes that layer as "Units of work and their evidence contracts", and work-types/README.md (W0) gives the schema fields that match your three needs: `roleEligibility` (who), `domainEligibility`/`parameters` (what it may be pointed at), and `evidenceContract`/`evidenceAuthority`/`falsifier` (what proof ends it).
+It is already covered by work-types/W10-adversarial-design-review-upstream.md: "A verifier red-teams a design **before** build or merge, producing a critique doc that raises specific, falsifiable failure hypotheses".
+Who: `roleEligibility: [verifier]`, with `evidenceAuthority: verifier-attestation`, which needs an attester who "cannot be the executor" given the live roster (W0 constraint 2).
+What it may be pointed at: a `target` ("the design under review", `provided-by-trigger`) in any of the seven domains (`domainFreedom: free`).
+What ends it: a `kind: review` critique doc delivered before the build/merge decision. Its falsifier is "review after the decision, or no falsifiable concerns raised".
+
+### work-layers.L4
+By the corpus's placement test it is a methodology entry. M0 question 2 asks "Does following it produce a result of its own - a verdict...?", and a review produces a verdict.
+It is already covered by methods/M1-triangulated-review.md: "require **at least four genuinely independent inputs** before reaching a verdict" (upstream baseline, prior intent and review, archaeology, community signal). Its trigger is "reviewing a patch or design that ships to production or upstream".
+M0 calls M1 the primitive that "carries the set" ("independent inputs before a verdict").
+The "never a single reviewer" half (independence of the reviewing *identity*, not of the inputs) is not in M1. It lives in the work-type layer: W0 constraints 2, 8 and 9 ("Same-agent review is never a valid degradation") and W8 verify-gate-reactive / W13 code-owner-approve.
+It is not a skill: K0 says a skill earns packaging "where scripts or assets make it necessary", and there are none here.
+GUESS: "risky changes" maps onto M1's "ships to production or upstream" trigger, but the corpus does not equate the two.
+
+### work-layers.L5
+It sits at the "handing over" moment, one of the six moments in methods/README.md (M0). The layer depends on the guidance's shape: a procedure that produces a handover result goes in methods/; a requirement that the record carry something goes in rules/; guidance with no trace goes in practices/ (M0 placement ladder).
+The corpus records the absence explicitly. M0: "handing work in progress to another agent or a later session has no procedure at all... a lone agent hands over to its own next session", and "Neither is a defect until something fails there, and both are where to look first when something does."
+rules/README.md (RU0): "A rule for handing over - *a handover record names what is unfinished* - would leave a trace, and none exists." practices/README.md (PC0): handing over "hold[s] no practice today".
+Related, but not handover guidance: axioms/A4 (a "cold pickup from the record alone reproduces the same outputs as a warm actor"), traits/T1 (notes kept for a next session are persistent state), traits/T3 (handing to your own next session is "one actor across time"), and K24 workgraph-recovery (only for stopped WorkGraph arcs).
+GUESS: the gap has no MREQ backlog entry or revival trigger of its own; M0's "where to look first when something [fails]" is the nearest thing.
+
+### work-layers.L6
+Methods: "steps that **produce a result of their own** - a verdict, an artifact, a record" (methods/README.md, M0). Skills: "*invoked*, not followed... a procedure with inputs, steps and an output". K0 adds: "A method is a procedure held as guidance, the single source of its content; a skill packages a procedure so an agent can install and invoke it, and earns its packaging where scripts or assets make it necessary" (skills/README.md).
+Work-types: "A candidate is taxonomy-grade **iff it compiles to a closeable claimable node**", which carries roleEligibility, evidenceContract, falsifier and so on (work-types/README.md, W0). So a work-type says what unit of work is done, by whom and with what closing evidence, not how.
+Method against skill is the hard pair. Both produce results, so the only discriminator is packaging (scripts/assets) and "invoked vs followed". The corpus shows the confusion: M9 was moved from skills (K1) to methods, K0 names "A skill that only describes is a method, rule or practice filed in the wrong layer", and M0 names "The procedure that is really a skill" as a fault.
+M0's placement ladder (axiom, procedure, style, rule, practice) does not mention skills or work-types at all.
+Method against work-type: NOT SETTLED as an explicit test. No charter states that boundary (for example W9 audit-a-surface against M1 or K3). GUESS: a work-type is the claimable unit, and a method or skill is how you carry it out.
+
+### work-layers.L7
+Rules - rules/RU1-default-reject-honest-yield.md (trigger: "running an improvement sweep"): reject by default, and land a candidate only if it "delivers more value than it costs, measured concretely against the current state". Lead every summary with the yield ("candidates considered, landed, and verified against asserted") before any narrative. rules/RU3-anti-amnesia-deferral.md: each of the three cuts records an observable revival trigger at cut time, stays reopenable, and is re-triaged on revival, not resumed.
+Artifacts - artifacts/AR5-backlog.md: record the three cuts as backlog rows (id, finding, evidence, state, revival trigger), retired with a reason rather than deleted, and "closed in the same commit as the work that closed it". A trigger that is a date or "later" fails its falsifier. backlog/README.md (MREQ-0) applies only if a cut is a deferred mission in this corpus itself.
+Landing the two - methods/M1-triangulated-review.md (four independent inputs) if they ship to production or upstream; an independent gate by someone who did not author the change (work-types/W8 or W13, under W0 constraints 2/8/9); then work-types/W6-merge-and-land.md (pre-approved PR; merge commit plus branch-protection/review evidence; falsifier "branch not merged to canonical main").
+Reporting - sets/ST1-explain.md gathers style/S15-message-to-a-human.md (point first, which here means the yield line; explain unfamiliar IDs; decision frame with options, costs and a separate recommendation; end with Continue/Explore/Return picks) and methods/M10-guided-dialogue.md (one step per message; if a decision is asked, record it in AR4).
+axioms/A13 (applies-to multi-agent, autonomous) and roles/R4-director.md: send the director a decision-shaped digest, not status chatter; never go "silently dark" on a decision the director is owed; never synthesize their ratification. style/S0 conventions (S6, S11, S13) apply if the report is markdown.
+rules/RU2-frozen-history-rule.md applies only if a policy change would tempt you to rewrite earlier design records.
+NOT SETTLED: whether the cuts need director ratification (AR5 says only that closing is bound to "a fix, a ruling, or an explicit cut"). ST1 notes RU1 is "triggered by sweeps and audits, not by any report"; this is a sweep, so it applies here.
+
+### OBSERVATIONS
+- README.md "Adding an entry" step 5 says to add the entry to INDEX.md by hand, but INDEX.md's entry region is marked "Run tools/generate-index.mjs; do not edit by hand". README.md also calls INDEX.md "the flat ledger", but it is grouped by layer.
+- README.md says "a relocated entry keeps its ID, and only a replaced one is superseded". But the Delta-1 relocations (M3->RU1, M5->RU3, M4->RU2, M6->PC1, K1->M9, K2->RU4) moved content "unchanged" and still got new IDs and supersession.
+- entities/E2-layer.md says "The three mechanism layers", but README.md lists four layers with no prefix (bundles/, tools/, plugins/, docs/). docs/ does not exist in this corpus, so the evidence citations in S15 and M10 (docs/evals/human/...) cannot be resolved here.
+- M0's placement ladder ("axiom, procedure, style, rule, practice") leaves out skills and work-types, but its own boundary table includes skills. A literal reading would place any procedural skill in methods/.
+- skills/K4-research-artefacts.md is filed as a skill but is "four non-negotiable disciplines" with a "## Rule" heading and no output of its own. Under M0/K0 it reads more like a rule or practice. GUESS, not settled.
+- methods/M1 is titled "minimum 4 independent inputs" but its body says "sometimes 3 is enough" and that the predictable failure begins "below 3". The floor is inconsistent.
+- work-types/README.md cites "M7 guardrail #2" and roles/R4 cites "M7 guardrail #8", but methods/M7 has no numbered guardrails.
+- skills/K3's artefact layout lists 05-coverage.md, which has no template under skills/substrate-audit/templates/. The templates directory has 02-code-trace.md.tmpl, which the layout does not list.
+- rules/README.md and practices/README.md say members "came from `methodology/`", but the directory is methods/. backlog/README.md still calls tactical entries "S/M/P/K" and leaves out RU and PC.
+- The handover gap is recorded in M0, RU0 and PC0 prose, but it has no backlog row or MREQ with a revival trigger, which RU3/AR5 would require of a deferral.

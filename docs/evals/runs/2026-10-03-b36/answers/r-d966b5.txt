@@ -1,0 +1,42 @@
+### design-rulings.R1
+N and T are one system for deciding what your change answers to. E5 (Boundaries) says "Where one unit depends on another and nothing declares the boundary between them ... they are one system, with the traits of both". A0 (line 118) says the same and adds that "the undeclared dependency is itself a fault under A3".
+Your change alters behaviour N depends on, which E5 calls "a contract in fact, not a declared boundary - and a change to it reaches across". So the change alters N and answers to N's axioms as well as T's. E6's blast-radius row also includes "any unit that reaches it ... with no declared interface".
+The undeclared reach is an A3 gap that your change touches (A3 Air-Gap Principle: "no unit reaches into another's internals"). A0 says "work that touches a gap closes as much of it as the touch allows" and "new work never repeats a gap the axiom names". E5 gives the remedy: "Declaring the boundary, and moving the dependency onto it, is what makes them two again". So the change must not deepen N's reach, should declare an interface for what N uses and move N onto it as far as its scope allows, and must not pass the gap silently (A0: "Passing it silently is what the axiom forbids").
+NOT SETTLED: how much closure "as the touch allows" requires in this case, for example whether you must migrate N within the same change.
+
+### design-rulings.R2
+(1) Mostly no, but one route is NOT SETTLED. A is one system with B (E5 Boundaries), and B is one system with C. E5 says separation "is per pair", and the E6 blast radius covers units "that reach it, or that it reaches" directly. A change only A uses does not alter C, so nothing in the text makes C's axioms bind it on C's own account. The corpus does not say whether the one-system collapse is transitive across A-B-C. It also leaves a containment route open: the service contains all three modules and the change answers to "every system containing it" (A0 line 116). GUESS: through that route, any trait C gives the service binds the change anyway.
+(2) Yes. The change now alters a contract in fact that originates at C and crosses the undeclared B-C boundary. A0 says a change answers to "any system whose contract with it the change alters", and where no boundary is declared "the axioms either unit would bring all bind".
+
+### design-rulings.R3
+Yes, the service is stateful. The T1 test applies to a system, never a task (E5: "A trait's test is applied to a system"). The service writes records it later reads back and acts on: "Does the system write something it will later read back, and would anything act differently if that record were wrong?" E5's "Why precision matters" names the opposite reading as the failure: "a stateful system escapes its own axioms by being described as stateless modules, each of which passes on its own."
+A1 is tagged `stateful`, so it is in force for the service. A0 says a change answers to "the system it modifies, every system containing it", so A1 binds your change to the stateless module. In practice that means the change must not move the service away from A1: for example, it must add no private, hidden or transient truth ("No functional unit possesses private, opaque, or transient truth"). It should move toward A1 as far as its scope allows.
+
+### design-rulings.R4
+A1 does not bind the tool. It is stateless, so it fails the T1 test, and A0 says axioms bind only systems whose traits match their `applies-to` tags. A1 is tagged `stateful`.
+A1 does bind the team's work system: the records the agents and director write, read back and rely on. T1 counts "a ledger ... a memory an agent writes to and reads back across sessions" as state. Work also crosses between independent actors, so that system is also multi-agent (T3).
+So A1 applies to changes to that record-keeping and coordination system: its records must stay in one place others can query, durable and not hidden in any one actor (A1 Mandate and Success signals).
+NOT SETTLED: the corpus never says outright that a team's work-tracking counts as a "system" in E5's sense. GUESS: it does, since E5 defines a system as "a unit of engineering with a boundary". Traits are tested on systems, not tasks, so building the tool does not make the tool stateful.
+
+### design-rulings.R5
+A3 binds K (`any-system`). The tangle goes against A3's Law of One and Local Reasoning, even though the split stays within K's duty. Your feature must not add to the tangle (A0: "new work never repeats a gap the axiom names").
+Whether you must split depends on whether the feature touches the tangled code. A0 says "A change touches what it modifies", and code that merely sits beside it "is not touched". If the feature touches it, you must close the gap as far as the touch allows. If not, the split is "considered, never mandated", under A14's tangent discipline: payback near, yield captured, and cost that "does not significantly distract".
+A split that changes K's interface alters all three consumers, because the interface is not versioned (A0 line 83; E6 blast radius). So it answers to their axioms and should be made "as a change of its own".
+If you do not split, record the gap with evidence and a revival trigger (RU3). A0: "Either way the gap is recorded".
+NOT SETTLED: the question does not say whether the feature modifies the tangled code. Also note A3's "Semantic Bit-Masking" asks for versioned interfaces, so the unversioned interface is itself a gap.
+
+### design-rulings.R6
+E5 says "Publishing a new version of an interface alters no consumer that has not adopted it; each adoption is a change to that consumer". So publishing alone, read literally, alters none of the ten.
+2.4 does change the contract those consumers use, because it changes behaviour the declared interface documents. A0 says a change answers to "any system whose contract with it the change alters".
+NOT SETTLED: the corpus never discusses floating version ranges, so it does not say whether "any 2.x" counts as adopting 2.4 in advance or whether adoption happens only when a consumer next resolves its dependencies.
+GUESS: each consumer is altered when its build first resolves to 2.4. With a floating range and no lock, that could be all ten with no action on their side. Consumers held on an earlier 2.x by a lock are not altered until they update.
+GUESS: changing documented behaviour inside 2.x defeats the versioning that E5's adoption rule relies on.
+
+### OBSERVATIONS
+- The corpus does not say whether the one-system collapse is transitive (A reaches B and B reaches C: are A and C one system?). E5 says separation is "per pair" but does not rule on chains.
+- Floating version ranges and lockfiles are not covered. E5's "adoption" assumes a consumer explicitly takes up a version.
+- A0 line 78 says a component newly depended on "through a declared interface is touched but not altered". Line 77 says a consumer whose contract is altered is touched. The text does not settle whether a touched gap in an altered consumer must be closed by the change, or only recorded.
+- In A0, "Either way the gap is recorded" sits in the beyond-scope paragraph. Whether the recording duty also covers in-scope gaps that the change only partly closes is not stated.
+- A3's "Semantic Bit-Masking" says interfaces are versioned contracts. E5 and E6 treat both versioned and unversioned interfaces as declared boundaries, so it is unclear whether an unversioned declared interface fully satisfies A3.
+- The corpus does not say explicitly whether a team's work records are a "system" with traits, apart from the product it builds.
+- E5 says a containing system has the traits of its parts only by implication (the "stateless modules" warning). No sentence states that the traits of contained modules roll up to the containing system.

@@ -38,7 +38,7 @@ Updated whenever the thread moves; the milestones below remain the plan.
 M5  bring the charters to E4                     4 of 13 applied, 9 remain        PAUSED
  +- how the axis layers compose (B32)            done
      +- axioms as asymptotes, system, component  done
-     +- six open design questions (B36)          1 of 6 done                      PARKED
+     +- six open design questions (B36)          done
      +- evaluation harness                       built
      +- how mission-kit says how to do work (B24)
          +- Delta-1: methods, rules, practices   ready to ratify                  PARKED
@@ -121,7 +121,7 @@ Held rows are [below](#held).
 | **B33** | S3 | A8 signal | agent | S | **M5** | `W0` constraints 2 and 9 contradict on same-agent degradation |
 | **B34** | **S1** | **A14 mandate** - A13 | agent | M | **M5** | axioms read as constraints, intended as asymptotes; `system` undefined |
 | **B35** | S2 | **A3 mandate** - A14 | agent | M | **M5** | `component` undefined in four senses; opportunistic improvement unstated; axiom wording inconsistent with the asymptote |
-| **B36** | S3 | **A3 mandate** | agent | S | **M5** | six design questions on boundaries, traits and adjacency, taken one at a time |
+| **B36** | S3 | **A3 mandate** | agent | S | `DONE` | six design questions on boundaries, traits and adjacency, taken one at a time |
 | **B37** | S4 | A8 signal | agent | S | **M5** | five small defects found by baseline readers: `W22` authority, `M1` floor, `E2` count, root `README` on the index, `generatable` |
 | **B38** | S2 | **A13 mandate** - A4 | agent | M | `DONE` | communication with a cold human is guided only in scattered pieces |
 | **B39** | S5 | A3 signal | adopter | S | **Held** | style cannot be scoped by medium |
@@ -246,7 +246,7 @@ Every ID-bearing layer either has an observed consumer or a recorded reason it h
 | M5.5e | Resolve the constraint 2 / constraint 9 contradiction in the `W0` conversion | `B33` | `TODO` |
 | M5.5f | **Axioms as asymptotes, and `system` defined** - amend `A0`, scope `M7`, add the entity; evaluate before and after | `B34` | `DONE` - **8.3 to 16.0 / 16**, approved - [audit](audits/M5.5f-asymptote-and-system.md) |
 | M5.5g | **Component defined, opportunistic improvement, axiom wording pass** - evaluate before and after | `B35` | `DONE` - **7 to 10 / 10**, approved; open questions to `B36` - [audit](audits/M5.5g-component-opportunistic-wording.md) |
-| M5.5h | Rule on the six open design questions, one at a time, and amend `E5`, `E6`, `A0`, `A3` or `T0` as each ruling requires | `B36` | `WIP` - 1 of 6: bypassed interface applied, 5 to 8 / 8, no regression - [audit](audits/M5.5h-01-bypassed-interface.md) |
+| M5.5h | Rule on the six open design questions, one at a time, and amend `E5`, `E6`, `A0`, `A3` or `T0` as each ruling requires | `B36` | `DONE` - six of six ruled and applied - [audit](audits/M5.5h-02-design-rulings.md) |
 | M5.5i | Measure and correct the incidental defects the baseline readers found | `B37` | `TODO` |
 | M5.5j | **Delta-1, the work layers** - procedures stay in `methodology/`, practices and rules to a new `practices/`, prose skill `K1` in; packaged skills, WorkGraph skills and the `W0` citation deferred | `B24` | `DONE` - all four stages; 21.66 to 28 / 28 - [delta](deltas/delta-1-work-layers.md), [audits](audits/delta-1/) |
 | M5.5k | **The explain set** - communication with a human of limited context, measured with live agents first, then designed as a set spanning layers | `B38` | `DONE` - Delta-2: `M10`, `S15`, `ST1`; human check 6 of 6 - [audits](audits/delta-2/) |

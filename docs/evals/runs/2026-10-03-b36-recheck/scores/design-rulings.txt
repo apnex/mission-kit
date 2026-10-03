@@ -1,0 +1,18 @@
+{"item": "a-e444ffee", "score": 2, "reason": "Declares the interface and moves N onto it as in scope, not optional, because the change alters what N reaches; the only hedge is on commit granularity, not on the conclusion."}
+{"item": "a-262cdef7", "score": 2, "reason": "States that declaring and honouring the interface is inside the change's scope, not optional, because the change alters what the undeclared neighbour reaches."}
+{"item": "a-a6a62a00", "score": 2, "reason": "Requires declaring the interface and moving N onto it as in scope, not optional, grounded in the change altering what N reaches."}
+{"item": "a-24988925", "score": 1, "reason": "Case 2 is correct with the reach reason, but case 1 is muddied by asserting that C's trait-brought axioms bind the change through the containing service, contrary to the key's plain no."}
+{"item": "a-bd68c72a", "score": 2, "reason": "Answers no for case 1 and yes for case 2, both with the reach-chaining reason; the hedge concerns where the change sits, not the conclusions."}
+{"item": "a-c3929ed2", "score": 2, "reason": "Answers no for case 1 and yes for case 2 with the chaining-through-reach reason; the guess only restates the question's own premise."}
+{"item": "a-59b5d231", "score": 2, "reason": "Service is stateful by the contained-part rule and A1 binds the change because it modifies the containing service, citing the stateless-modules escape."}
+{"item": "a-0c1fa7f7", "score": 2, "reason": "Gives stateful and A1 binding with the contained-part rule; the hedge concerns A1's concrete demands, not the conclusion."}
+{"item": "a-4762537d", "score": 2, "reason": "Applies the contained-part rule to make the service stateful and concludes A1 binds the change via the containing system."}
+{"item": "a-885d2329", "score": 2, "reason": "A1 binds the organisation's records, with the reason that the organisation is itself a stateful system separate from the stateless tool."}
+{"item": "a-5ee6c3bf", "score": 2, "reason": "A1 binds the team's records because the organisation doing the work is a system whose records pass the stateful test."}
+{"item": "a-51178f83", "score": 2, "reason": "A1 binds the organisation's records, with the organisation treated as a stateful system distinct from the tool."}
+{"item": "a-2a75f3ae", "score": 1, "reason": "Covers the consumers binding the interface change and the split as encouraged (conditionally mandated if touched), but never says the feature arrives as its own composed unit."}
+{"item": "a-4a8edd3e", "score": 1, "reason": "Covers consumers binding the interface change but leaves encouraged-versus-mandated unsettled with a guess toward mandated, and omits the feature as its own unit."}
+{"item": "a-e5d672a2", "score": 1, "reason": "Gets the split as encouraged not mandated and the consumers binding the interface change, but omits the feature arriving as its own composed unit."}
+{"item": "a-6eeb0802", "score": 2, "reason": "All ten, with the declared range as adoption in advance; lockfile hedges are peripheral to the conclusion."}
+{"item": "a-7b73f9e5", "score": 2, "reason": "All ten, citing the declared range as adoption in advance."}
+{"item": "a-2152c850", "score": 2, "reason": "All ten, with the adoption-in-advance reason for a release inside the declared range."}

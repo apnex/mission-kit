@@ -1,0 +1,34 @@
+You are an engineering agent who has just been given a knowledge corpus and nothing else. Read only files under /tmp/opencode/evalc/c-c0e53f78. Its entry point is INDEX.md; open whatever you need.
+
+Answer using the corpus, citing files and text.
+If it does not settle something, say "NOT SETTLED" and label any guess "GUESS:". Never present a guess as if the text said it. Under eight sentences per question.
+
+Do not edit any file except the one answer file named at the end. Do not run git.
+
+Questions:
+
+### work-layers.L1
+A team wants every abandoned or postponed task to say what event should bring it back. Where in this corpus does guidance like that belong - which layer - and does something already cover it?
+
+### work-layers.L2
+Someone wants to add a repeatable capability that, given a repository, works through a fixed sequence of passes and emits a set of audit documents in a fixed layout. Which layer does it belong in, and why?
+
+### work-layers.L3
+Someone wants to pin down a kind of work - red-teaming a proposal before anyone implements it - including who is allowed to do it, what it may be pointed at, and what proof ends it. Which layer, and does something already cover it?
+
+### work-layers.L4
+A team wants a rule for checking risky changes: never trust a single reviewer, gather several independent kinds of input before deciding. Is that a methodology entry, a skill, or a work-type? Does something already cover it?
+
+### work-layers.L5
+Suppose an agent must stop mid-task and someone else - or the same agent tomorrow, with no memory - must continue. If guidance for that transition were written, where would it go? Does the corpus say anything about its absence?
+
+### work-layers.L6
+State, from the corpus, the test that separates a methodology entry, a skill and a work-type. Is any pair of them hard to tell apart? Cite the text.
+
+### work-layers.L7
+You are running a sweep of candidate improvements. You will land two, cut three, and then report the outcome to the project's director. Assemble, from the corpus, everything that governs how you do this - each entry, which layer it is in, and what it requires of you.
+
+Write your answers to this file, and nothing else:
+  /home/apnex/taceng/mission-kit/docs/evals/runs/2026-10-03-b36-regression/answers/r-dcf648.txt
+Put each answer under its heading exactly as given above (a line starting with ###), then a final heading `### OBSERVATIONS` noting anything ambiguous, inconsistent or wrong you met, or "none".
+When the file is written, reply with only the word DONE.

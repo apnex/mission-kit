@@ -1,0 +1,107 @@
+{
+  "created": "2026-10-03T11:02:07.281Z",
+  "suites": [
+    "system-boundary",
+    "axiom-direction",
+    "design-rulings"
+  ],
+  "readers": 3,
+  "corpora": [
+    {
+      "label": "head",
+      "path": "/tmp/opencode/evalc/c-1b923dc5"
+    }
+  ],
+  "prompts": [
+    {
+      "pid": "r-8ab15a",
+      "label": "head",
+      "group": "system",
+      "reader": 1,
+      "probes": [
+        "system-boundary.S1",
+        "system-boundary.S2",
+        "system-boundary.S3",
+        "system-boundary.S4",
+        "system-boundary.S5",
+        "system-boundary.S6",
+        "axiom-direction.Q1",
+        "axiom-direction.Q2"
+      ]
+    },
+    {
+      "pid": "r-cb1a6a",
+      "label": "head",
+      "group": "system",
+      "reader": 2,
+      "probes": [
+        "system-boundary.S1",
+        "system-boundary.S2",
+        "system-boundary.S3",
+        "system-boundary.S4",
+        "system-boundary.S5",
+        "system-boundary.S6",
+        "axiom-direction.Q1",
+        "axiom-direction.Q2"
+      ]
+    },
+    {
+      "pid": "r-84d13e",
+      "label": "head",
+      "group": "system",
+      "reader": 3,
+      "probes": [
+        "system-boundary.S1",
+        "system-boundary.S2",
+        "system-boundary.S3",
+        "system-boundary.S4",
+        "system-boundary.S5",
+        "system-boundary.S6",
+        "axiom-direction.Q1",
+        "axiom-direction.Q2"
+      ]
+    },
+    {
+      "pid": "r-372e5d",
+      "label": "head",
+      "group": "design-rulings",
+      "reader": 1,
+      "probes": [
+        "design-rulings.R1",
+        "design-rulings.R2",
+        "design-rulings.R3",
+        "design-rulings.R4",
+        "design-rulings.R5",
+        "design-rulings.R6"
+      ]
+    },
+    {
+      "pid": "r-f3c9f6",
+      "label": "head",
+      "group": "design-rulings",
+      "reader": 2,
+      "probes": [
+        "design-rulings.R1",
+        "design-rulings.R2",
+        "design-rulings.R3",
+        "design-rulings.R4",
+        "design-rulings.R5",
+        "design-rulings.R6"
+      ]
+    },
+    {
+      "pid": "r-72a0a1",
+      "label": "head",
+      "group": "design-rulings",
+      "reader": 3,
+      "probes": [
+        "design-rulings.R1",
+        "design-rulings.R2",
+        "design-rulings.R3",
+        "design-rulings.R4",
+        "design-rulings.R5",
+        "design-rulings.R6"
+      ]
+    }
+  ]
+}

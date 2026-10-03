@@ -90,6 +90,7 @@ A trait states an observable test, not a description.\
 ## How traits compose
 
 **A system has as many traits as it has, and they do not exclude one another.**\
+It has every trait any part it contains has: a service with one stateful module is stateful, so a stateful system cannot escape its axioms by being described as stateless parts ([`E5`](../entities/E5-system.md)).\
 A single agent that persists memory, runs unattended, and reasons with a model has three traits.
 
 **Traits bind by union.**\

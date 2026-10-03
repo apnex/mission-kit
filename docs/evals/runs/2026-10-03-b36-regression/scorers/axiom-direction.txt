@@ -1,0 +1,81 @@
+You are scoring answers to a comprehension test against an answer key. Read only this file. Do not open any other file under /home/apnex/taceng/mission-kit/docs/evals/runs/2026-10-03-b36-regression.
+
+Score each answer 0, 1 or 2 against the probe's key and rubric. An answer that labels its conclusion a guess, or says the text does not settle it, scores at most 1 unless the rubric says otherwise. Judge the answer, not its length or confidence.
+
+You do not know which answers came from which reader or document version, and must not try to infer it.
+
+Write one JSON object per line, for every answer id below and no others, to this file: /home/apnex/taceng/mission-kit/docs/evals/runs/2026-10-03-b36-regression/scores/axiom-direction.txt
+Each line exactly: {"item": "<answer id>", "score": 0|1|2, "reason": "<one sentence>"}
+When written, reply with only DONE.
+
+======================================================================
+PROBE axiom-direction.Q1
+
+Question:
+You are adding a feature to a long-running service that holds persistent state and is operated by several cooperating agents. While working, you notice one component keeps important state only in process memory, invisible to the other agents. Your task does not mention it. Using the corpus, what - if anything - do its axioms ask of you about that component, and how should they shape the way you build your feature?
+
+Key:
+A1 sets a limit the change moves toward: the new feature adds no hidden state and is built the A1 way; the component's gap is outside the task, so it is recorded with evidence and a revival trigger (not silently passed, not silently fixed), unless the change touches it, in which case it closes what the touch allows.
+
+Rubric:
+2 for the feature built toward the limit plus the gap recorded (or closed where touched). 1 for recognising A1 and recording the gap but framing the feature only as 'do not violate'. 0 for 'the task does not mention it, so nothing', or A1 as pure pass/fail.
+
+--- answer a-9c1429b7 ---
+The component sits inside a stateful, multi-agent service, so A1 binds and so does A5 (via multi-agent). The component is short of both limits. A1: "No functional unit possesses private, opaque, or transient truth"; its faults are "Hidden State Problem - state lives inside a process" and "Ephemeral Truth Loss".
+What you owe it depends on scope (A0). Your change "touches what it modifies, what it newly depends on, and any consumer whose contract it alters", and "code that merely sits beside it ... is not touched".
+If you touch the component, you must close "as much of [the gap] as the touch allows". If you depend on it, "its gaps must not be built on".
+If you do not touch it, "improvement is encouraged, never mandated". If it is adjacent and A14's tangent discipline supports it, you may close it as a change of its own. Otherwise you record it with evidence and a revival trigger (RU3), because what work happens next is the director's call (R4, AR3).
+Either way "the gap is recorded", and "Passing it silently is what the axiom forbids".
+For your feature: "new work never repeats a gap the axiom names". So any state the feature holds goes where every authorised actor can query it and where it survives a restart, not in process memory. The other axioms in force (A3, A4, A6, A7, A8, A9, A10, A13, A14) bind it at the same time (A0: "conjunctive in force").
+
+--- answer a-0d22918b ---
+The service is stateful, multi-agent and autonomous, so A1 and A5 apply. An important state held only in process memory, invisible to other agents, is A1's named "Hidden State Problem" ("No functional unit possesses private, opaque, or transient truth"). It is also an A5 parity gap.
+Your feature must not repeat that gap. A0: "new work never repeats a gap the axiom names". So the feature's own state goes into shared, durable, queryable state, not process memory (A1 Mechanics, Success signal 2).
+If the feature touches the component, A0 says "work that touches a gap closes as much of it as the touch allows". Touching means modifying it or altering its contract. If you only newly depend on it through a declared interface, it is "touched but not altered, so its gaps must not be built on". In that case, do not rely on that hidden state.
+If you do not touch it, closing the gap is "encouraged, never mandated". You may close it as a separate change if it is adjacent and passes A14's tangent discipline. Otherwise you record it "with its evidence and a revival trigger (RU3)", because larger choices of work belong to the director (R4, AR3).
+"Either way the gap is recorded. Passing it silently is what the axiom forbids" (A0).
+NOT SETTLED: the question does not say whether your feature touches or is adjacent to the component, so the corpus does not say which branch applies.
+
+--- answer a-574aa752 ---
+The service is stateful, so A1 binds it: "No functional unit possesses private, opaque, or transient truth" (axioms/A1-sovereign-state-transparency.md); the component is A1's "Hidden State Problem" fault, and as the service is multi-agent, A5's Perceptual Parity is relevant too.
+A0's direction rule: inside your change's scope, "new work never repeats a gap the axiom names", so any state your feature holds must be durable and queryable by other agents, not in process memory (axioms/README.md).
+If your feature touches the component, "work that touches a gap closes as much of it as the touch allows"; if you only newly depend on it, it is "touched but not altered, so its gaps must not be built on" - do not make your feature rely on its hidden state.
+Beyond scope, fixing it is "encouraged, never mandated"; if it is adjacent (shares a declared interface, entities/E6-component.md), you may fix it as a separate change under A14 tangent discipline, if the payback is near and it does not distract much from your goal.
+Otherwise record it with evidence and a revival trigger (RU3), because "Passing it silently is what the axiom forbids" and "Either way the gap is recorded."
+The service is not wrong for being short of the limit; it would be wrong only if your change moved it further away (A0, "Standing commitment").
+
+======================================================================
+PROBE axiom-direction.Q2
+
+Question:
+In your own words, and citing the corpus: when you change a system an axiom binds, what is the axiom for?
+
+Key:
+A limit (asymptote) the system is built toward: no change may move the system away from it, and each change moves toward it as far as its scope allows.
+
+Rubric:
+2 for a direction or limit to move toward with each change. 1 for both readings, or improvement as secondary. 0 for only a constraint not to break.
+
+--- answer a-9e2cb4c4 ---
+An axiom is a direction, not a pass/fail test. A0 calls it "a load-bearing asymptote - a limit a system is built toward to stay aligned with its architecture's intent", and a system "is not wrong for being short of it; it is wrong for moving away from it."
+So when I change a bound system, the axiom tells me two things at once: "No change may move the system away from the limit, and each change moves it toward the limit as far as the change's own scope allows."
+In practice: do not repeat a gap the axiom names, close what my change touches as far as the touch allows, and record (not silently pass) gaps beyond my scope.
+A0 names the opposite reading as a fault: "The conformance reading", under which "no change advances the system, and the gaps the axioms name become permanent". The CORRECTION banner in A0 records the director ruling for the asymptote reading.
+Every axiom in force binds every change, and none can be traded against another: "a regression with thirteen consolations, not partial progress".
+A gate checks the reachable part of this: "that the change moved the system no further from any limit in force, and repeated no gap it touched."
+
+--- answer a-b7d30e21 ---
+An axiom is not a pass/fail test. It is a limit to steer by: "a load-bearing asymptote - a limit a system is built toward to stay aligned with its architecture's intent" (A0 "Standing commitment").
+A system is not wrong for falling short of the limit. It is wrong for moving away from it.
+So when you change a system the axiom binds, the axiom sets the direction of the change, in two parts. "No change may move the system away from the limit, and each change moves it toward the limit as far as the change's own scope allows". A0 sums this up as "never backwards, and forward with every step".
+A0 retains, under a correction banner, the old reading of axioms as invariants that hold or fail. It names that reading as a fault, "The conformance reading": if axioms are pass/fail, either nothing is owed or nothing moves, and the gaps become permanent.
+A gate only checks the part of the rule it can check: the change moved the system "no further from any limit in force, and repeated no gap it touched" (A0).
+Axioms act together: "no axiom may be traded against another" (A0 "How the set composes").
+
+--- answer a-adb848f4 ---
+An axiom is "a load-bearing asymptote - a limit a system is built toward" (axioms/README.md, "Standing commitment, not situated move").
+In my words: it tells each change which way to point, not whether the system passes a test.
+It binds in two directions: "No change may move the system away from the limit, and each change moves it toward the limit as far as the change's own scope allows."
+A system is "not wrong for being short of it; it is wrong for moving away from it."
+A0's correction banner rejects the pass/fail reading, and its "conformance reading" fault explains why: with that reading, "no change advances the system, and the gaps the axioms name become permanent."
+A gate only checks the direction rule: that the change "moved the system no further from any limit in force, and repeated no gap it touched."
