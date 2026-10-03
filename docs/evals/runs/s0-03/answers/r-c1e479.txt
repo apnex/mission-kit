@@ -1,0 +1,57 @@
+### s0.Q1
+The corpus names this as a fault. `style/README.md` *Faults*: "**The forked enforcer.** Two tools holding one rule, disagreeing at the edges. This is why a rule names exactly one."
+The *Enforcement boundary* section gives the remedy: "An enforced rule names exactly one tool, and `tools/check-enforcers.sh` verifies the pairing in both directions ... One rule, one tool, and that tool owns both the check and the fix, so a rule cannot be reported by one implementation and refused by another."
+So the fix is to make one tool the rule's `enforced-by` enforcer and retire the second tool or merge it into the first.
+NOT SETTLED: which of the two tools survives. The corpus gives no tie-break.
+NOT SETTLED: whether `check-enforcers.sh` would detect the fork. It fails "a per-rule tool no rule claims", which catches a second tool only if that tool counts as "per-rule". `tools/` is not in this corpus, so I could not read the checker.
+
+### s0.Q2
+No. `style/README.md` *What earns an entry*, criterion 2: "Its absence produced a real defect in a real artifact, and a reader can be shown the difference. Aesthetic preference does not qualify."
+All three criteria must hold ("All three must hold"), so preference alone fails.
+It could qualify only if someone shows a real defect in a real artifact that the capitalisation caused, and the rule also holds across artifacts (criterion 3).
+If it did qualify, the README says "Prefer a rule a script can hold", and heading capitalisation could probably be written as a predicate over the text.
+
+### s0.Q3
+No, not for style. `style/README.md` *Enforcement boundary*: "Style is gated on changed files rather than on the whole corpus. The corpus carries debt that predates the checkers, so gating the diff blocks new debt and converts the rest opportunistically as sections are edited."
+`.github/workflows/check.yml` agrees: "Style is gated on the diff, so the base commit has to be present to diff against". It runs `tools/check-all.sh --since <base>`, where the base is the PR base branch or the push's predecessor, with a fallback to `origin/main`.
+The *Faults* list also warns against the opposite approach: "**The corpus-wide sweep.** Converting all legacy debt in one commit".
+NOT SETTLED: whether the non-style checks inside `check-all.sh` (enforcer pairing, schemas) run over the whole corpus. `tools/check-all.sh` is not in this corpus.
+
+### s0.Q4
+The source is the *Held by* column of the index in `style/README.md`, which is generated from each rule's `enforced-by` frontmatter.
+Held by a tool (6): S6 `tools/s6-one-sentence-per-line.mjs`, S8 `tools/s8-code-block-comments.sh`, S10 `tools/s10-section-rules.sh`, S12 `tools/s12-code-block-introducer.sh`, S13 `tools/s13-plain-ascii.sh`, S14 `tools/s14-hydration-triggers.sh`. I checked the `enforced-by` field in each of these six files, and they match the index.
+Checked only by reading (9): S1 prerequisites, S2 runnable steps in code blocks, S3 producer/consumer split, S4 four-journey README, S5 no version pins, S7 alternative paths in separate blocks, S9 action-first README, S11 backticks for identifiers, S15 message to a human.
+This matches *Axiom alignment*: "nine of its fifteen rules are held only by reading".
+The README says the reading-only rules are "a stated property of the layer, not a backlog".
+NOT SETTLED: whether the tools exist and work. `tools/` is not in this corpus.
+
+### s0.Q5
+There is none. `style/README.md` *Territory* lists Code / comments as "**none - gap**".
+*Gaps tested*: "*Code comments:* no style rule; `S8` covers comments in code blocks inside documents, not in source files."
+It would go in `style/`. The territory explicitly claims "code - its names and its comments", and the README says "a medium with no member is a gap, not a reason to narrow the claim."
+It must still meet the three entry criteria, including "a real defect in a real artifact".
+Structurally, "A first rule for any of these would be the second rule for a medium other than documents" (S15 is the first), and that "is the point at which the set's medium rules are due to be grouped as sub-sets". See *The unscoped medium* under Faults.
+GUESS: an ID such as S16. The corpus does not assign one.
+
+### s0.Q6
+No, it is a rule. `style/README.md` *Neighbours* (Rules row): "A revival trigger on a deferred item is a rule, though it is visible in text."
+`methods/README.md` (M0) line 78: "*every deferral records its revival trigger* is visible in text and is still a rule, because it governs what the work records."
+The rule already exists as RU3 in `rules/RU3-anti-amnesia-deferral.md`: "every parked or cut item carries a revival trigger". M5 is superseded by RU3.
+Filing it in style would be the fault "**The work rule in style clothing.**" (`style/README.md` *Faults*).
+
+### s0.Q7
+The *Faults* list in `style/README.md` describes it:
+- Forked enforcers: two tools holding one rule and disagreeing at the edges.
+- Orphaned rules: "A convention nobody enforces and nobody reviews, which teaches readers that the layer is decorative."
+- Unscoped media: rules for a non-document medium scattered among the document rules with no sub-set grouping them.
+- Work rules in style clothing: conventions about what the work does or records, filed where authors applying style will not look.
+- Corpus-wide sweeps: one unreviewable commit that hides a real change.
+From the entry criteria, it would also include rules that exist only because someone preferred them (fails criterion 2), or that apply inside a single document (fails criterion 3).
+*Axiom alignment* names current weak points: nine of fifteen rules are held only by reading, and three claimed media (commit messages, code names, code comments) have no rule.
+
+### OBSERVATIONS
+- `style/README.md` links `tools/check-enforcers.sh`, and the index names six `tools/*` enforcers. `check.yml` calls `tools/check-all.sh`. There is no `tools/` directory in this corpus. That link is broken here, and I could not read any enforcement claim against the code that is supposed to enforce it.
+- `INDEX.md` says "Run tools/generate-index.mjs", which is also missing from the corpus.
+- The fork detection in `check-enforcers.sh` ("a per-rule tool no rule claims") seems to catch a second tool only if that tool counts as per-rule. A shared or general linter that also checks the rule could still fork it undetected. I inferred this and did not verify it.
+- The "nine of fifteen" count in *Axiom alignment* is a hand-written number that repeats the generated *Held by* column. It matches now, but it can drift when a rule gains a tool.
+- `INDEX.md` says links resolve against a local checkout, "otherwise fetch from" GitHub. That points outside the corpus I was restricted to, so I did not follow it.

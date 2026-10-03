@@ -1,0 +1,58 @@
+### layer-charters.H1
+It goes in rules/ (RU). methods/README.md (M0) uses this exact example: "The first question is about a system's properties, not about how universal a ban sounds: *credentials are never committed* binds an action in a situation, and is a rule."
+Running M0's placement questions in order: it is not a limit a system is built toward (Q1, so not an axiom). It produces no result of its own (Q2, so not a method). It does not govern an artifact's form (Q3, so not style). It does leave a trace a check could test (Q4), because the repository history shows whether a credential was committed.
+rules/README.md (RU0) defines a rule as guidance that "leaves a trace a check could test".
+An entry would therefore have to declare a `trace` in frontmatter (catalog-entry schema; RU0 "Member shape").
+I found no existing rule for this. RU1-RU4 are about yield, frozen history, deferral and force-push.
+
+### layer-charters.H2
+Placement says practices/ (PC). It produces nothing of its own, does not govern an artifact's form, and leaves no trace: nothing in the record shows that the request was re-read. PC0 describes a practice as "what is left" after M0's five questions (practices/README.md).
+It would sit at the *verifying* moment. PC0 lists that moment as a gap: "*Verifying*, *deciding what to keep* and *handing over* hold no practice today."
+Placement is not the same as admission. PC0 says "A practice is not minted to fill a moment: it is admitted when a difference in the work has been observed," and also says an unevidenced habit "is a proposal".
+Whether this proposal has earned an entry is NOT SETTLED, because the corpus holds no evidence that it changes the work.
+GUESS: if someone required a recorded "re-read done" note, it would gain a trace and become a rule ("if it acquires one, it is a rule and moves", PC0).
+
+### layer-charters.H3
+It is in methods/ (M). Following it produces a result of its own, a verdict, so it is a procedure under M0's question 2.
+An entry already covers it: M1, "Triangulated review - minimum 4 independent inputs" (methods/M1-triangulated-review.md). Its trigger is "You are reviewing a patch or design that ships to production or upstream."
+M1's rule says: "require **at least four genuinely independent inputs** before reaching a verdict". It names four canonical inputs: the upstream baseline, prior-version intent plus review, archaeology, and community signal.
+M0 places M1 at the *Verifying* moment and calls it "One primitive carries the set".
+M1 also qualifies the number: "The number isn't sacred (sometimes 3 is enough; sometimes 5 is needed)". The "at least four" in the proposal is firmer than M1's own rationale.
+
+### layer-charters.H4
+It goes in style/ (S). M0's question 3 asks "Does it govern how an artifact is written - its form, whatever the work was?" Heading case is a property of the text alone.
+S0 says style is "Rules about the artifact itself, judged by reading the output rather than by watching it being produced."
+It reaches style before the rule question (Q4), even though a script could check it. M0 says "The style question is about the object, not checkability".
+To earn an entry, S0 requires that "its absence has produced a real defect in a real artifact"; "Aesthetic preference does not qualify". S0 also prefers rules that a script can hold, stated in `enforced-by`.
+I found no existing entry on sentence case (my grep for "sentence case" across the corpus returned nothing). Whether this proposal has the defect evidence it needs is NOT SETTLED.
+
+### layer-charters.H5
+A rule must declare `trace` in frontmatter: "the observable in the record that shows it was kept or broken, required by the catalogue contract" (rules/README.md, "Member shape").
+The schema makes this required for category `rule` with id `RU[1-9]...` (schemas/catalog-entry/v1alpha1/catalog-entry.schema.json, the if/then block with `required: ["trace"]`).
+A practice "declares no `trace`; if it acquires one, it is a rule and moves" (practices/README.md).
+`enforced-by` is optional. A rule names the tool there "when a tool checks it", and `tools/check-enforcers.sh` checks that the tool exists. "a rule with no tool yet is still a rule, and is checked by reading the trace" (RU0). The schema `trace` description agrees: naming a tool "is enforced-by's job, and is optional."
+
+### layer-charters.H6
+The order is stated once, in methods/README.md (M0), "Ask in order, and stop at the first yes":
+1. Is it a limit a system is built toward, in force for every system with the traits it names? If yes, it is an axiom.
+2. Does following it produce a result of its own (a verdict, an artifact, a record)? If yes, it is a procedure, which is a method.
+3. Does it govern how an artifact is written, its form, whatever the work was? If yes, it is style.
+4. Does it leave a trace in the record of the work that a check could test? If yes, it is a rule.
+5. Otherwise, it is a practice.
+RU0 and PC0 cite this order ("axiom, procedure, style, rule, practice, asked in that order").
+
+### layer-charters.H7
+Taken literally, no moment out of the six is completely empty. Entering has M8 and PC1. Committing to a design has M7. Verifying has M1 and M2. Deciding what to keep has RU1 and RU3. Treating the record has M9, RU2 and RU4. Handing over has M10.
+The gap the corpus records is in *handing over*. M0 says M10 "hands understanding and decisions to a human; handing work in progress to another agent or a later session has no procedure at all."
+RU0 adds that no rule covers it: "A rule for handing over - *a handover record names what is unfinished* - would leave a trace, and none exists."
+PC0 lists *handing over* as holding no practice.
+So the case with no procedure, rule or practice is handing over work in progress to another agent or a later session. The handover moment as a whole is not empty, because M10 covers handover to a human.
+
+### OBSERVATIONS
+- H7 asks for a moment with "nothing at all governing it". Read strictly, the corpus has no such moment, because M10 covers handing over to a human. The fully ungoverned gap is a sub-case of a moment (agent or session handover), not a whole moment.
+- practices/README.md "Gaps tested" lists only verifying, deciding what to keep and handing over as holding no practice. Its own table shows that *committing to a design* and *treating the record* hold no practice either, so that gap list is incomplete.
+- RU0 says "four of `M0`'s six moments" hold no rule, and names entering, committing to a design, verifying and handing over. That matches its table.
+- M1's title and trigger say "minimum 4", but its rationale says "sometimes 3 is enough". The floor is softer than the headline suggests.
+- M1's "When to apply" includes any high-cost review and self-review, which is wider than its `hydrate-when` (production or upstream patches and designs).
+- The schema requires `trace` only for ids matching `RU[1-9]...`, so RU0 (the charter) is exempt. That is consistent, but the prose in RU0 does not mention the exemption.
+- The README "Adding an entry" step 5 says to add an entry to INDEX.md by hand. INDEX.md and README "Faults" say the index is generated and must not be edited by hand.

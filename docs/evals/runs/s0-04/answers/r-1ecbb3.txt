@@ -1,0 +1,57 @@
+### explain-routing.Q1
+ST1 (sets/ST1-explain.md) is the routing set for "communicate with a human who has limited context". Its two members are S15 and M10, and it records that "Bad news and teaching were each tested in one pair; no move is isolated", so it has no entry specific to bad news.
+S15 (style/S15-message-to-a-human.md): "Point first: the first line is the conclusion", so the slip goes first. Also: one step and one question, asked at the end; show where you are; explain any name the director has not seen; give a decision frame if you ask for a decision; end with Continue/Explore/Return picks.
+M10 (methods/M10-guided-dialogue.md): the director should see "what you see on the point - nothing missing that matters, nothing extra". If a decision follows, ask for it in S15's frame, including "doing nothing", and record it.
+A13 (axioms/A13-director-intent-amplification.md): "never goes silently dark on an action or decision the Director is owed - under-surfacing is as much a fault as over-surfacing". Surface "decision over status".
+S0 (style/README.md) routes "a message a human will read" to S15.
+AGENTS.md (standing context, no ID) asks you to state whether claims are measured or inferred, and says "A caveat does not repair a headline".
+NOT SETTLED: nothing in the corpus addresses tone or framing for delivering bad news.
+
+### explain-routing.Q2
+ST1 routes this case to S15 and M10.
+M10 applies "especially when they have not followed the work". It asks you to know the finish line and say how many steps remain, give one confirmed step per message, and keep depth "available on request and never pushed".
+S15: point first; "Show where you are: the step, and the finish line"; explain unseen names or leave them out; put references on one line. "Leave out what you did when it does not change what the human understands or decides".
+A13: "Status-chatter, ceremony, how-to ... never reach the Director; what reaches the Director is decision-shaped". Prefer "digest over dump, decision over status", but never go silently dark.
+S0 routes the message to S15.
+GUESS: A13 suggests a pure progress update should either be shaped around what the director must judge or not be sent. The corpus does not say this about updates directly.
+
+### explain-routing.Q3
+ST1 routes this case to S15 and M10.
+S15: the first line is the conclusion (the cause). "Use narrative only where it carries understanding - for instance when the path you took is the evidence". Explain unseen names, and end with picks.
+M10 understand limit: one confirmed step at a time, with nothing missing that matters and nothing extra. Depth is offered, not pushed.
+A13 applies because you are consuming the director's attention: economize it, but do not under-surface.
+AGENTS.md (no ID): "Source settles mechanism ... Before stating why something behaves as it does, read the code". Also: "Separate observation from explanation when sending", and state measured vs inferred. When two readings both survive the evidence, park the question and name what would settle it.
+NOT SETTLED: no entry is specific to answering a "why" question.
+
+### explain-routing.Q4
+ST1 routes this case to M10 (understanding) and S15 (message form). ST1 notes that "teaching" was tested in only one pair.
+M10's understand limit: the director "ends up seeing what you see on the point", "reached one confirmed step at a time". Step 1: know the finish line and say how many steps remain. Step 3: confirm that each step has landed.
+S15: one step per message, and explain system-specific names or leave them out ("General engineering terms may be assumed"). Use Explore picks to offer more depth.
+A13 applies: spend the director's attention on what they need.
+NOT SETTLED: no entry addresses preparing a human to retell a concept to others.
+GUESS: make the confirmed understanding something the director can restate in their own words.
+
+### explain-routing.Q5
+S15 decision frame: "what is being decided; why now; the options, each with its cost, including doing nothing; a recommendation, labelled and kept separate; then ask for a pick". The deadline is the "why now". "Each option is a Continue pick naming it", and a request to act is never hidden in an optional pick.
+M10 step 4: one decision per message, with every real option and its cost included and "none is hidden". Step 5: record the decision and its reasoning, and say where in one line.
+A13: never "reworks the option set, narrows the choices, nor pre-empts the decision". A preference lean may appear only as a "labeled tie-break input". The decide act stays the director's.
+AR4 and W23: the decision is recorded as a ruling with authority and refuted alternatives, and ratified only by a director signal.
+ST1 routes this case to S15 and M10, and flags K5 (three questions per round) and AR3 (many moves at once) as being in tension with one-decision-at-a-time.
+AGENTS.md (no ID): "A deadline is a reason to measure faster, or to state exactly what went unmeasured".
+
+### explain-routing.Q6
+M10: "one decision at a time" and "Ask for one decision per message". Step 3: if a decision depends on understanding, establish that understanding first and confirm it. Step 5: record each decision and its reasoning.
+S15: one question per message, in the decision frame, with picks. "Return (back to something parked - name it)" can bring back the parked second decision.
+ST1 routes this case to M10 and S15. It names AR3's "many moves at once" as in tension with "one decision at a time".
+A13: do not pre-empt the second decision by assuming the answer to the first.
+AR4: one ruling per record. The record has `amends`/`supersedes` fields and requires that "a proposal is [not] cited as authority for work already done". W23: each decision is ratified only by the director.
+NOT SETTLED: no entry says explicitly how to sequence two dependent decisions.
+GUESS: ask the first, record it, then ask the second in a new message that cites the first record.
+
+### OBSERVATIONS
+- S15 says "End with two or three picks" and "each option is a Continue pick". Three options plus "doing nothing" makes four Continue picks before Explore/Return, so in Q5 the two instructions conflict.
+- A13 says status-chatter never reaches the director, yet M10 and S15 cover progress messages. For Q2 the corpus does not say whether a progress update is legitimate at all.
+- ST1 admits gaps: bad news and teaching were each tested in only one pair, and the evaluation procedure is not an entry. Q1 and Q4 rest on general guidance only.
+- The rules on measured vs inferred, deadlines and "why" claims are in AGENTS.md, which has no entry ID, so they cannot be cited by ID.
+- S5 (no dates in prose) is triggered by naming a date, which a slip message might do. Its rule targets user-facing docs, though, so whether it applies to a message is ambiguous.
+- S6 is triggered by "markdown prose that someone else will read". It is unclear whether a chat message to the director counts.

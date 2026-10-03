@@ -1,0 +1,60 @@
+### s0.Q1
+The corpus names this as a fault: style/README.md (S0), Faults: "The forked enforcer. Two tools holding one rule, disagreeing at the edges. This is why a rule names exactly one."
+The remedy is in the same file under "Enforced and unenforced rules": an enforced rule declares `enforced-by` naming exactly one tool, and "One rule, one tool, and that tool owns both the check and the fix, so a rule cannot be reported by one implementation and refused by another."
+tools/check-enforcers.sh holds the pairing in both directions: no rule may name a missing tool, and no `tools/s[0-9]*-*` tool may go unclaimed.
+tools/s6-one-sentence-per-line.mjs gives the history: its boundary definition "previously existed four times in three languages and the copies disagreed twice in one day".
+tools/format-markdown.sh is "An alias, not an implementation", so it calls the per-rule tools in --fix mode and does not restate the rules.
+GUESS: the fix is to collapse the second checker into the one tool the rule names, or make it call that tool.
+See OBSERVATIONS: a live case of this fault exists for S13, and check-enforcers.sh cannot see it.
+
+### s0.Q2
+No.
+style/README.md, "What earns an entry": "A convention earns one when its absence has produced a real defect in a real artifact, and a reader can be shown the difference. Aesthetic preference does not qualify, and neither does a rule that only holds inside one document."
+A preference for one heading capitalisation is aesthetic preference, so it fails this test.
+GUESS: the proposal could qualify if the proposer showed a real defect that the capitalisation caused, for example a search miss. Even then S0 says "Prefer a rule a script can hold" and to state it as a predicate and write the tool.
+
+### s0.Q3
+No. By default it checks only the markdown files that changed.
+style/README.md: "Style is gated on changed files rather than on the whole corpus. The corpus carries debt that predates the checkers, so gating the diff blocks new debt and converts the rest opportunistically as sections are edited."
+tools/check-all.sh does this. It collects `.md` files from four sources: files changed against `origin/main` (or `--since REF`), unstaged changes, staged changes, and untracked files. Deleted files are excluded (`--diff-filter=d`). If no markdown changed, the style step reports PASS.
+A whole-corpus run is opt-in with `tools/check-all.sh --all`. A per-rule tool run with no file arguments also defaults to every markdown file (`style_files` in tools/lib/style-common.sh).
+The non-style gates (structure, enforcers, index, schemas and others) run on every invocation, and the tools' `*.test.sh` behaviour tests run "unconditionally".
+Not every file is checked by every rule: a file can opt out of one rule with `<!-- style-check: allow SN -->`, and a file with a "GENERATED FILE" marker opts out of all of them (style_exempt).
+
+### s0.Q4
+Six rules declare an `enforced-by` tool in their frontmatter (I found this by grepping style/ for `enforced-by`):
+S6 -> tools/s6-one-sentence-per-line.mjs, S8 -> tools/s8-code-block-comments.sh, S10 -> tools/s10-section-rules.sh, S12 -> tools/s12-code-block-introducer.sh, S13 -> tools/s13-plain-ascii.sh, S14 -> tools/s14-hydration-triggers.sh. This matches the check-all.sh header line "s6 s8 s10 s12 s13 s14 one sovereign checker per style rule".
+Nine rules declare no enforcer, so they are checked only by reading: S1 (prerequisites explicit), S2 (runnable steps in code blocks), S3 (producer/consumer doc split), S4 (four-journey README), S5 (no version pins in prose), S7 (alternative paths in separate blocks), S9 (action-first README), S11 (identifiers in backticks), S15 (message to a human).
+S0 calls this "a stated property of the layer, not a backlog".
+Even the enforced rules are not fully mechanical. S8 and S14 have no --fix because they "need a decision, not a substitution" (format-markdown.sh). The S14 tool says its marker list "is a proxy for the discriminator the entry states, not a substitute".
+
+### s0.Q5
+There is no style rule for comments in source code.
+The nearest rule is S8 (style/S8-code-block-comments-not-prose.md). It covers comments "inside code blocks" in documents, and its examples are all fenced blocks in markdown. Its tool reads only markdown fences, and check-all.sh passes only `.md` files to the style tools.
+Source-code doc comments are covered by a skill, not by a style rule: K27, skills/write-discoverable-code/SKILL.md ("One-line doc comment on every export", "Write the plain-words phrase in the doc comment").
+Where a new rule would go: the M0 placement test (methods/README.md), question 3, "Does it govern how an artifact is written - its form, whatever the work was? Style, in `style/`". S0 also says style covers "Doc, commit, and naming conventions" and "Rules about the artifact itself".
+To be accepted it must meet S0's "What earns an entry" test (a real defect, shown to a reader), and S0 prefers a rule a script can hold.
+NOT SETTLED: whether style/ is meant to cover source files. S0 says only that "The artifact is usually a document", and the current gate would never check a source file.
+GUESS: if a team wants a rule only for its own codebase, S0's exclusion of "a rule that only holds inside one document" suggests it belongs in that project rather than in this corpus.
+
+### s0.Q6
+No. It is a rule, and it already exists as RU3 (rules/RU3-anti-amnesia-deferral.md), with `trace: every deferred, parked or cut item's record carries a revival trigger`.
+methods/README.md (M0) uses nearly this exact example: "The style question is about the object, not checkability: *every deferral records its revival trigger* is visible in text and is still a rule, because it governs what the work records."
+M0 placement question 2 says the same: "Guidance that only *requires* a record to carry something - a field, a reason - produces nothing itself, and is a rule."
+The proposal is therefore a duplicate of RU3 (formerly M5), not a new style entry.
+
+### s0.Q7
+style/README.md, "Faults", lists four population faults:
+an unfalsifiable convention ("be clear", "be concise", no predicate, so it is cited only when someone already disagrees);
+an orphaned rule (nobody enforces it and nobody reviews it, "which teaches readers that the layer is decorative");
+a forked enforcer (two tools hold one rule and disagree at the edges);
+a corpus-wide sweep (all legacy debt converted in one commit, "hiding a real change inside it").
+The "What earns an entry" section adds two more signs: entries that rest on aesthetic preference, or rules that hold only inside one document.
+methods/README.md adds the reverse misfiling: "The style rule in process clothing", meaning a convention about the artifact filed in methods/.
+check-enforcers.sh adds two mechanical signs: a rule naming a tool that does not exist ("a broken promise") and an unclaimed tool ("orphaned").
+
+### OBSERVATIONS
+1. There is a live forked enforcer for S13. tools/s13-plain-ascii.sh exempts the Box Drawing block: its grep skips U+2500-257F, matching S13's "Box drawing" exception. tools/check-standing-context.sh (the "plain ASCII (S13)" section) flags every non-ASCII character with `[^\x00-\x7F]`. The two tools disagree on box drawing, which is exactly S0's forked-enforcer fault. check-enforcers.sh cannot detect it, because it only pairs tools named `tools/s[0-9]*-*`. The one-tool-per-rule guarantee is therefore enforced only for tools that follow that naming convention.
+2. S0 says check-enforcers verifies that "a tool no rule claims is orphaned". The script only checks tools/s[0-9]*-*, and only against style/S*.md, even though it also scans rules/RU*.md for `enforced-by`. A tool that enforces an RU rule could therefore never be detected as orphaned.
+3. check-all.sh's comment block repeats one passage almost word for word ("Committed against the base, plus staged, plus unstaged ..." appears twice), which looks like an edit residue. The style gate also checks only `.md`, so the scope of style/ beyond markdown is unclear (see Q5).
+4. check-all.sh notes that check-charter-shape.sh is suspended (tracked as B17), so charter shape is not gated at present.

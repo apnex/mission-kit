@@ -1,0 +1,68 @@
+### s0.Q1
+The corpus names this fault "The forked enforcer": "Two tools holding one rule, disagreeing at the edges. This is why a rule names exactly one." (style/README.md, Faults).
+The Enforcement boundary section says: "An enforced rule names exactly one tool ... One rule, one tool, and that tool owns both the check and the fix, so a rule cannot be reported by one implementation and refused by another." (style/README.md; tools/README.md says the same).
+The pairing is checked by tools/check-enforcers.sh: "a rule naming a tool that does not exist is a broken promise / a per-rule tool that no rule claims is orphaned".
+So the fix is to keep one tool, the one named in the rule's `enforced-by` frontmatter, and remove the other.
+NOT SETTLED: the corpus does not say which of the two tools to keep, and check-enforcers.sh checks only `tools/s[0-9]*-*` files, so it may not catch a second checker named some other way.
+GUESS: keep the tool named in the rule's `enforced-by` and fold any edge cases from the other one into it.
+
+### s0.Q2
+No.
+style/README.md, "What earns an entry", says all three criteria must hold, and criterion 2 is: "Its absence produced a real defect in a real artifact, and a reader can be shown the difference. Aesthetic preference does not qualify."
+The Purpose section also says form earns a rule only when it keeps an artifact "diffable, searchable and unambiguous", which makes it "a functional requirement rather than a preference".
+A rule could still qualify if someone shows a real defect that heading capitalisation caused, and it would also need to hold across artifacts (criterion 3).
+
+### s0.Q3
+No, not by default.
+style/README.md: "Style is gated on changed files rather than on the whole corpus. The corpus carries debt that predates the checkers, so gating the diff blocks new debt and converts the rest opportunistically."
+tools/check-all.sh runs the per-rule checkers "on changed files only". Here "changed" means committed against origin/main (or `--since REF`), plus staged, unstaged and untracked `.md` files. If no markdown changed, it reports PASS.
+A whole-corpus run is possible with `tools/check-all.sh --all`.
+The non-style gates in check-all.sh (structure, enforcers, index, schemas and others) are not limited to changed files.
+The Faults section explains why the default is not a full sweep: "The corpus-wide sweep ... producing a diff no one can review".
+
+### s0.Q4
+Held by a tool, from the `enforced-by` frontmatter and the "Held by" column in style/README.md:
+- S6 by `tools/s6-one-sentence-per-line.mjs`
+- S8 by `tools/s8-code-block-comments.sh`
+- S10 by `tools/s10-section-rules.sh`
+- S12 by `tools/s12-code-block-introducer.sh`
+- S13 by `tools/s13-plain-ascii.sh`
+- S14 by `tools/s14-hydration-triggers.sh`
+
+Checked only by reading ("Held by: reading"): S1, S2, S3, S4, S5, S7, S9, S11 and S15. tools/README.md gives the same list: "need judgement and have no enforcer; review those by reading".
+That is 6 held by a tool and 9 by reading, which matches "nine of its fifteen rules are held only by reading" (style/README.md, Axiom alignment).
+
+### s0.Q5
+There is no such rule.
+style/README.md, Territory, lists Code / comments as "**none - gap**", and "Gaps tested" says: "Code comments: no style rule; `S8` covers comments in code blocks inside documents, not in source files."
+It would go in the style layer, because the Territory claims "the form of every artifact a reader meets: ... code - its names and its comments".
+It would fill the Code / comments row of that table.
+The corpus also says that a first rule for a medium other than documents "would be the second rule for a medium other than documents, which is the point at which the set's medium rules are due to be grouped as sub-sets" (see "The unscoped medium" under Faults). So adding it should start a code sub-set.
+It must still meet all three criteria in "What earns an entry", including a real defect that the rule's absence caused.
+NOT SETTLED: how the sub-set would be laid out or named.
+
+### s0.Q6
+No. It is a rule, and it already exists as RU3.
+style/README.md, Neighbours: "A revival trigger on a deferred item is a rule, though it is visible in text."
+RU3 (rules/RU3-anti-amnesia-deferral.md) has the frontmatter `trace: every deferred, parked or cut item's record carries a revival trigger`, which matches the proposal.
+rules/README.md says a rule "governs what the work does or records", while style "governs the artifact's form".
+If it were filed as style, it would be the fault "The work rule in style clothing ... where an author applying rules will not look for it" (style/README.md, Faults).
+
+### s0.Q7
+The style/README.md Faults section describes it:
+- forked enforcers: two tools hold one rule and disagree at the edges.
+- orphaned rules: "A convention nobody enforces and nobody reviews, which teaches readers that the layer is decorative."
+- unscoped media: rules for one medium are scattered among the document rules with nothing grouping them.
+- work rules in style clothing: conventions about what the work does or records, filed where rule-appliers will not look.
+- a corpus-wide sweep: one unreviewable commit that hides a real change.
+
+From "What earns an entry", also unhealthy: rules based on aesthetic preference, rules with no real defect behind them, and rules that apply only inside one document.
+From "Enforcement boundary" and "Axiom alignment": a rule that could be stated as a predicate but has no tool, or a rule that names a tool which does not exist. A reading-only rule is only as strong as the review that reads for it.
+GUESS: a population where most rules are reading-only and nobody reviews for them would be a broad version of the orphaned-rule fault.
+
+### OBSERVATIONS
+- style/README.md and tools/README.md say each enforcing tool "owns both the check and the fix", but the tools/README.md table lists the Fix for S8 and S14 as "no, needs judgement". Those two tools check but do not fix, so the claim does not hold for them.
+- In tools/check-all.sh the comment "Committed against the base, plus staged, plus unstaged" appears twice, and the second copy adds "plus untracked". tools/README.md (around line 63) still says "committed against the base plus staged plus unstaged", without untracked files. This is small prose drift from the script's real behaviour.
+- style/README.md says the enforcer pairing is verified "in both directions". check-enforcers.sh finds orphan tools only if they match `tools/s[0-9]*-*`, so a second checker for a rule with any other name would get past it. This matters for the forked-enforcer fault.
+- RU3 has hard-wrapped multi-line bullets and blockquotes (lines 21-27, 50-63), which looks like S6 legacy debt. This fits the stated changed-files-only gating.
+- The "Gaps tested" sentence, "A first rule for any of these would be the second rule for a medium other than documents", is accurate only because S15 is already one rule for the message medium. The wording is easy to misread.

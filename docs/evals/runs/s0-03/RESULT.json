@@ -1,0 +1,423 @@
+{
+  "created": "2026-10-03T22:05:25.899Z",
+  "seed": "ba1cf8a858b371d1",
+  "corpora": [
+    {
+      "label": "before",
+      "path": "/tmp/opencode/evalc-s0b/c-08e8e2bd"
+    },
+    {
+      "label": "after",
+      "path": "/tmp/opencode/evalc-s0a3/c-66805452"
+    }
+  ],
+  "readers": 3,
+  "probes": [
+    "s0.Q1",
+    "s0.Q2",
+    "s0.Q3",
+    "s0.Q4",
+    "s0.Q5",
+    "s0.Q6",
+    "s0.Q7"
+  ],
+  "max": 14,
+  "mean": {
+    "s0.Q1": {
+      "before": 1.67,
+      "after": 2
+    },
+    "s0.Q2": {
+      "before": 2,
+      "after": 2
+    },
+    "s0.Q3": {
+      "before": 2,
+      "after": 2
+    },
+    "s0.Q4": {
+      "before": 2,
+      "after": 2
+    },
+    "s0.Q5": {
+      "before": 1,
+      "after": 2
+    },
+    "s0.Q6": {
+      "before": 2,
+      "after": 2
+    },
+    "s0.Q7": {
+      "before": 2,
+      "after": 2
+    }
+  },
+  "total": {
+    "before": 12.67,
+    "after": 14
+  },
+  "rows": [
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-325083",
+      "probe": "s0.Q1",
+      "score": 2,
+      "reason": "Names the forked-enforcer fault and the one-rule-one-tool remedy with check and fix owned by that tool."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-325083",
+      "probe": "s0.Q2",
+      "score": 2,
+      "reason": "Says no and cites the real-defect test that excludes aesthetic preference; the guess is about a hypothetical, not the conclusion."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-325083",
+      "probe": "s0.Q3",
+      "score": 2,
+      "reason": "Says style is gated on changed files and gives the legacy-debt reason."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-325083",
+      "probe": "s0.Q4",
+      "score": 2,
+      "reason": "Lists S6, S8, S10, S12, S13, S14 as tool-held and the other nine, including S15, as reading-only, with none misplaced."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-325083",
+      "probe": "s0.Q5",
+      "score": 1,
+      "reason": "Says there is no style rule and places K27 and S8 correctly, but does not mention the second-medium-rule sub-set trigger."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-325083",
+      "probe": "s0.Q6",
+      "score": 2,
+      "reason": "Says no, it is a rule, because it governs what the work records rather than the artifact's form."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-325083",
+      "probe": "s0.Q7",
+      "score": 2,
+      "reason": "Names orphaned rule, forked enforcer and corpus-wide sweep; the unfalsifiable convention earns nothing but at least two population faults remain."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-889fc7",
+      "probe": "s0.Q1",
+      "score": 1,
+      "reason": "Quotes the fault and one rule one tool, but labels its own conclusion about the fix a GUESS, which caps the score at 1."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-889fc7",
+      "probe": "s0.Q2",
+      "score": 2,
+      "reason": "Says no and quotes the real-defect test; the guess is about a hypothetical, not the conclusion."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-889fc7",
+      "probe": "s0.Q3",
+      "score": 2,
+      "reason": "Says only changed markdown is checked and gives the legacy-debt reason."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-889fc7",
+      "probe": "s0.Q4",
+      "score": 2,
+      "reason": "Both groups correct with S15 under reading and none misplaced."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-889fc7",
+      "probe": "s0.Q5",
+      "score": 1,
+      "reason": "Says there is no style rule today and places S8 and K27 correctly, but omits that it would be the second single-medium rule triggering sub-sets."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-889fc7",
+      "probe": "s0.Q6",
+      "score": 2,
+      "reason": "Says no, it is a rule, because it governs what the work records."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-889fc7",
+      "probe": "s0.Q7",
+      "score": 2,
+      "reason": "Names orphaned rule, forked enforcer and corpus-wide sweep, which is at least two population faults."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-f2d648",
+      "probe": "s0.Q1",
+      "score": 2,
+      "reason": "Names the forked-enforcer fault and states one rule one tool owning both check and fix."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-f2d648",
+      "probe": "s0.Q2",
+      "score": 2,
+      "reason": "Says no because no real defect is shown and aesthetic preference does not qualify."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-f2d648",
+      "probe": "s0.Q3",
+      "score": 2,
+      "reason": "Says changed files only with the legacy-debt reason."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-f2d648",
+      "probe": "s0.Q4",
+      "score": 2,
+      "reason": "Six tool-held rules and at least three reading-only rules correctly placed, with S15 under reading."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-f2d648",
+      "probe": "s0.Q5",
+      "score": 1,
+      "reason": "Hedges the absence of a rule as NOT SETTLED and places K27 and S8 correctly, but omits the sub-set trigger."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-f2d648",
+      "probe": "s0.Q6",
+      "score": 2,
+      "reason": "Says no, it is a rule, because it governs what the work records, not the artifact's form."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-f2d648",
+      "probe": "s0.Q7",
+      "score": 2,
+      "reason": "Names orphaned rule, forked enforcer and corpus-wide sweep, which is at least two population faults."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-c1e479",
+      "probe": "s0.Q1",
+      "score": 2,
+      "reason": "Names the forked-enforcer fault and one rule one tool; the unsettled points are peripheral to the conclusion."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-c1e479",
+      "probe": "s0.Q2",
+      "score": 2,
+      "reason": "Says no and cites the real-defect criterion that excludes aesthetic preference."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-c1e479",
+      "probe": "s0.Q3",
+      "score": 2,
+      "reason": "Says style is gated on the diff with the legacy-debt reason; the unsettled point is about non-style checks."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-c1e479",
+      "probe": "s0.Q4",
+      "score": 2,
+      "reason": "Both groups correct with none misplaced; the unsettled point concerns tool existence, not the classification."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-c1e479",
+      "probe": "s0.Q5",
+      "score": 2,
+      "reason": "Says there is no rule and that, with S15 first, it would be the second single-medium rule, making sub-sets due."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-c1e479",
+      "probe": "s0.Q6",
+      "score": 2,
+      "reason": "Says no, it is a rule, because it governs what the work records."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-c1e479",
+      "probe": "s0.Q7",
+      "score": 2,
+      "reason": "Names several population faults including forked enforcer, orphaned rule, unscoped medium, work rule in style clothing and corpus-wide sweep."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-54ec76",
+      "probe": "s0.Q1",
+      "score": 2,
+      "reason": "States one rule one tool owning check and fix and names the forked-enforcer fault; the guess concerns only a tie-break, not the conclusion."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-54ec76",
+      "probe": "s0.Q2",
+      "score": 2,
+      "reason": "Says no with the real-defect criterion and its exclusion of aesthetic preference."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-54ec76",
+      "probe": "s0.Q3",
+      "score": 2,
+      "reason": "Says changed files only and gives the reason that legacy debt predates the checkers."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-54ec76",
+      "probe": "s0.Q4",
+      "score": 2,
+      "reason": "Both groups correct with S15 under reading and none misplaced."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-54ec76",
+      "probe": "s0.Q5",
+      "score": 2,
+      "reason": "Says there is no rule today and that it would be the second non-document medium rule, making sub-sets by medium due."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-54ec76",
+      "probe": "s0.Q6",
+      "score": 2,
+      "reason": "Says no, it is a rule, and contrasts rules governing what work records with style governing form."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-54ec76",
+      "probe": "s0.Q7",
+      "score": 2,
+      "reason": "Names forked enforcers, orphaned rules, unscoped media, work rules in style clothing and the corpus-wide sweep."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-aa644b",
+      "probe": "s0.Q1",
+      "score": 2,
+      "reason": "Gives one rule one tool with check and fix and names the forked-enforcer fault; the unsettled point is a side issue."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-aa644b",
+      "probe": "s0.Q2",
+      "score": 2,
+      "reason": "Says no and applies the real-defect criterion that excludes aesthetic preference."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-aa644b",
+      "probe": "s0.Q3",
+      "score": 2,
+      "reason": "Says style is gated on changed files with the pre-existing-debt reason."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-aa644b",
+      "probe": "s0.Q4",
+      "score": 2,
+      "reason": "Both groups correct with S15 under reading and none misplaced."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-aa644b",
+      "probe": "s0.Q5",
+      "score": 2,
+      "reason": "Says there is no rule and that it would be the second medium rule after S15, making sub-sets due."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-aa644b",
+      "probe": "s0.Q6",
+      "score": 2,
+      "reason": "Says no, it is a rule, because it governs what the work records rather than the artifact's form."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-aa644b",
+      "probe": "s0.Q7",
+      "score": 2,
+      "reason": "Names all five population faults from the key."
+    }
+  ],
+  "consistentHedges": [
+    {
+      "probe": "s0.Q1",
+      "label": "after",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "s0.Q2",
+      "label": "before",
+      "hedged": 2,
+      "readers": 3
+    },
+    {
+      "probe": "s0.Q5",
+      "label": "before",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "s0.Q5",
+      "label": "after",
+      "hedged": 2,
+      "readers": 3
+    }
+  ]
+}

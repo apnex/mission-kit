@@ -1,0 +1,61 @@
+### s0.Q1
+The corpus names this as a fault, "The forked enforcer": "Two tools holding one rule, disagreeing at the edges. This is why a rule names exactly one." (style/README.md, Faults).
+The remedy is structural: "An enforced rule declares `enforced-by` in its frontmatter naming exactly one tool ... One rule, one tool, and that tool owns both the check and the fix, so a rule cannot be reported by one implementation and refused by another." (style/README.md, "Enforced and unenforced rules").
+tools/format-markdown.sh shows the pattern applied: it is "An alias, not an implementation" that calls each per-rule tool in --fix mode, "so a rule's fix has exactly one definition and it lives with that rule. The previous version restated four rules inline, and one of them was not idempotent."
+So the fix is to collapse to one sovereign tool named in the rule's `enforced-by`, and make any other tool call it rather than restate it.
+tools/check-enforcers.sh holds the rule-to-tool pairing (no missing enforcer, no orphan `tools/sN-*` tool), but it does not detect a second, differently named tool reimplementing the same rule; that part stays with review.
+
+### s0.Q2
+No.
+style/README.md, "What earns an entry": "A convention earns one when its absence has produced a real defect in a real artifact, and a reader can be shown the difference. Aesthetic preference does not qualify, and neither does a rule that only holds inside one document."
+A preference for a heading capitalisation, with no real defect behind it, fails that test.
+If a real defect could be shown, the same section says to "Prefer a rule a script can hold" and state it as a predicate with a tool, and capitalisation could be written that way.
+GUESS: capitalisation could only earn an entry if someone showed a concrete harm, such as anchor links or searches breaking. The corpus does not discuss capitalisation.
+
+### s0.Q3
+No, not by default.
+style/README.md: "Style is gated on changed files rather than on the whole corpus. The corpus carries debt that predates the checkers, so gating the diff blocks new debt and converts the rest opportunistically as sections are edited."
+tools/check-all.sh does this: by default the style checkers run over markdown changed against `origin/main` (committed, staged, unstaged and untracked). With no changes it reports "no markdown changed" and PASS. `--since REF` changes the base, and `--all` runs style "over the whole corpus".
+Only markdown (`\.md$`) is gated for style.
+The non-style gates in check-all.sh (structure, enforcers, entry bodies, index, schemas and so on) and the tools' own `*.test.sh` tests run unconditionally.
+A one-commit conversion of all the legacy debt is itself named as a fault, "The corpus-wide sweep" (style/README.md).
+
+### s0.Q4
+Held by a tool (frontmatter `enforced-by`): S6 one sentence per line (tools/s6-one-sentence-per-line.mjs), S8 code-block comments (tools/s8-code-block-comments.sh), S10 horizontal rule between sections (tools/s10-section-rules.sh), S12 code-block introducer (tools/s12-code-block-introducer.sh), S13 plain ASCII (tools/s13-plain-ascii.sh), and S14 hydration triggers (tools/s14-hydration-triggers.sh).
+Checked only by reading (no `enforced-by`): S1 prerequisites explicit, S2 runnable steps in code blocks, S3 producer/consumer split, S4 four-journey README, S5 no version pins, S7 alternative paths in separate blocks, S9 action-first README, S11 backticks for identifiers, and S15 message to a human.
+style/README.md: "The remaining rules need judgement and are reviewed by reading. That is a stated property of the layer, not a backlog."
+Within the tool-held set, tools/format-markdown.sh says S8 and S14 have no --fix ("need a decision, not a substitution"). Those two tools check but do not fix.
+
+### s0.Q5
+There is no style rule for comments in source code.
+S8 is only about comments "inside code blocks" in markdown documents (style/S8-code-block-comments-not-prose.md, Rule). Its examples are bash blocks in a workflow doc.
+The nearest guidance is the skill K27 write-discoverable-code (skills/write-discoverable-code/SKILL.md, section 3): "One-line doc comment on every export" and "Write the plain-words phrase in the doc comment". That is a skill, not a style rule.
+Placement: methods/README.md asks, in order, "Does it govern how an artifact is written - its form, whatever the work was? Style, in `style/`." A comment convention governs the form of an artifact, so it would go in style/ as a new S-entry.
+style/README.md's scope supports this: "Rules about the artifact itself ... The artifact is usually a document", so a document is not the only artifact style can govern.
+To earn the entry, it must show a real defect in a real artifact. Ideally it would be a predicate held by one tool named in `enforced-by` (style/README.md).
+GUESS: a project-specific comment convention might instead belong in that project's own rules file. The corpus does not settle where the line between corpus style and project convention falls for source code.
+
+### s0.Q6
+No, it is a rule, and it already exists as RU3 (rules/RU3-anti-amnesia-deferral.md, trace "every deferred, parked or cut item's record carries a revival trigger").
+methods/README.md uses this exact case: "The style question is about the object, not checkability: *every deferral records its revival trigger* is visible in text and is still a rule, because it governs what the work records."
+The same file's placement question 2 adds: "Guidance that only *requires* a record to carry something - a field, a reason - produces nothing itself, and is a rule."
+rules/README.md: "Against style: style governs the artifact's form; a rule governs what the work does or records."
+Filing it under style would be the inverse of the fault "The style rule in rule clothing" (rules/README.md). The corpus does not name that inverse case.
+
+### s0.Q7
+style/README.md "Faults" lists four:
+"The unfalsifiable convention": a rule phrased as a quality ("be clear", "be concise") with no predicate, "cited only when someone already disagrees".
+"The orphaned rule": nobody enforces it and nobody reviews it, "which teaches readers that the layer is decorative".
+"The forked enforcer": two tools hold one rule and disagree at the edges.
+"The corpus-wide sweep": all legacy debt converted in one unreviewable commit that hides a real change.
+The earning criteria imply two more: entries for aesthetic preference, and rules that only hold inside one document (style/README.md, "What earns an entry").
+Neighbouring charters name misfiling: "The style rule in rule clothing" (rules/README.md) and "The style rule in process clothing" (methods/README.md). Both describe style rules filed outside style/, where writers do not look.
+Mechanically, a broken `enforced-by` promise or an orphan tool is what tools/check-enforcers.sh reports.
+
+### OBSERVATIONS
+- style/README.md says the one tool "owns both the check and the fix". But tools/format-markdown.sh says S8 and S14 have no --fix, so "owns the fix" does not hold for every enforced rule.
+- style/README.md describes the layer as "Doc, commit, and naming conventions". No style entry covers commit conventions, and naming guidance for code lives in skill K27 rather than in style/.
+- tools/check-enforcers.sh finds orphan tools only by the `tools/s[0-9]*-*` filename pattern. It cannot catch a second tool reimplementing a rule under another name (the forked-enforcer fault), and it does not check orphan tools for rules/RU entries.
+- tools/check-all.sh repeats a comment line ("Committed against the base, plus staged, plus unstaged.") in a near-duplicate block.
+- The style gate covers only changed `.md` files, so a style rule for source-code comments would get no gate coverage through check-all.sh as written.
+- check-all.sh notes that check-charter-shape.sh is suspended (tracked as B17). This is not style-specific.

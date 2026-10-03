@@ -22,25 +22,29 @@ Without the set, each author settles form afresh, and the same defect is fixed i
 
 ## Territory
 
-This set covers **the form of an artifact a reader meets**, at every grain from a single character to the split between documents, and in each medium the corpus writes in.
+This set covers **the form of every artifact a reader meets**: documents, messages to a human, commit messages, and code - its names and its comments.\
+The claim is set by what the set is for, not by what it holds today; a medium with no member is a gap, not a reason to narrow the claim.
 
-| Grain | What the rule holds | Members |
-|---|---|---|
-| **Token** | how a single name, character or identifier is written | [`S5`](S5-no-version-pins-in-prose.md) no version pins in prose, [`S11`](S11-technical-identifiers-use-backticks.md) identifiers in backticks, [`S13`](S13-plain-ascii-in-markdown.md) plain ASCII |
-| **Line** | how prose is broken into lines | [`S6`](S6-one-sentence-per-line.md) one sentence per line |
-| **Code block** | what goes in a block, and how it is introduced and commented | [`S2`](S2-runnable-commands-in-code-blocks.md) runnable steps in blocks, [`S7`](S7-alternative-paths-separate-blocks.md) alternative paths in separate blocks, [`S8`](S8-code-block-comments-not-prose.md) comments say what the line does, [`S12`](S12-code-block-introducer-own-paragraph.md) introducer in its own paragraph |
-| **Section** | how a long document is divided | [`S10`](S10-horizontal-rule-between-h2-sections.md) horizontal rule between top-level sections |
-| **Document type** | what one kind of document must carry or put first | [`S1`](S1-prereqs-explicit-cluster-agnostic.md) workflow prerequisites, [`S4`](S4-four-journey-readme.md) four-journey README, [`S9`](S9-action-first-readme-structure.md) action-first README, [`S14`](S14-hydration-triggers-state-a-condition.md) catalogue hydration triggers |
-| **Between documents** | which content goes in which document | [`S3`](S3-producer-consumer-doc-split.md) producer and consumer docs split |
-| **Message** | the form of a message to a human, the one medium here other than a document | [`S15`](S15-message-to-a-human.md) a message to a human |
+| Medium | Grain | What the rule holds | Members |
+|---|---|---|---|
+| **Document** | token | how a single name, character or identifier is written | [`S5`](S5-no-version-pins-in-prose.md) no version pins in prose, [`S11`](S11-technical-identifiers-use-backticks.md) identifiers in backticks, [`S13`](S13-plain-ascii-in-markdown.md) plain ASCII |
+| | line | how prose is broken into lines | [`S6`](S6-one-sentence-per-line.md) one sentence per line |
+| | code block | what goes in a block, and how it is introduced and commented | [`S2`](S2-runnable-commands-in-code-blocks.md) runnable steps in blocks, [`S7`](S7-alternative-paths-separate-blocks.md) alternative paths in separate blocks, [`S8`](S8-code-block-comments-not-prose.md) comments say what the line does, [`S12`](S12-code-block-introducer-own-paragraph.md) introducer in its own paragraph |
+| | section | how a long document is divided | [`S10`](S10-horizontal-rule-between-h2-sections.md) horizontal rule between top-level sections |
+| | document type | what one kind of document must carry or put first | [`S1`](S1-prereqs-explicit-cluster-agnostic.md) workflow prerequisites, [`S4`](S4-four-journey-readme.md) four-journey README, [`S9`](S9-action-first-readme-structure.md) action-first README, [`S14`](S14-hydration-triggers-state-a-condition.md) catalogue hydration triggers |
+| | between documents | which content goes in which document | [`S3`](S3-producer-consumer-doc-split.md) producer and consumer docs split |
+| **Message to a human** | whole message | what comes first, how much one message carries, how names and choices are put | [`S15`](S15-message-to-a-human.md) a message to a human |
+| **Commit message** | whole message | how a commit says what problem it solves | **none - gap** |
+| **Code** | names | how a function, type, file or constant is named | **none - gap** |
+| | comments | what a comment in source code says and how | **none - gap** |
 
-Every member sits in one row.\
-Fourteen of the fifteen are about documents; `S15` is the only rule for another medium.
+Every member sits in one row, and three rows hold none.
 
 **Gaps tested.**\
-*Commit messages* are an artifact a reader meets, and no style rule governs their form; the always-on standing context carries commit hygiene instead.\
-*Source code* has no style rule either; naming code so plain-text search finds it is held by a skill, [`K27`](../skills/K27-write-discoverable-code.md), rather than by this set.\
-Either would be a new medium, and so the second rule for a medium other than documents; that is the point at which the set's medium rules are due to be grouped as a sub-set (see *The unscoped medium* under Faults).
+*Commit messages:* no style rule; the always-on standing context carries commit hygiene, which a style rule would hold as form.\
+*Code names:* no style rule; a skill, [`K27`](../skills/K27-write-discoverable-code.md), guides naming for plain-text search while code is written, and a style rule would state what the finished name must satisfy.\
+*Code comments:* no style rule; `S8` covers comments in code blocks inside documents, not in source files.\
+A first rule for any of these would be the second rule for a medium other than documents, which is the point at which the set's medium rules are due to be grouped as sub-sets (see *The unscoped medium* under Faults).
 
 ---
 
@@ -99,7 +103,8 @@ The corpus carries debt that predates the checkers, so gating the diff blocks ne
 ## Axiom alignment
 
 The set serves `A4`: form that keeps knowledge searchable and diffable is part of not losing it.\
-It falls short where nine of its fifteen rules are held only by reading, so their hold is as strong as the review that reads for them.
+It falls short where nine of its fifteen rules are held only by reading, so their hold is as strong as the review that reads for them.\
+It falls short further where three media it claims - commit messages, code names, code comments - carry knowledge with no rule for their form.
 
 ---
 

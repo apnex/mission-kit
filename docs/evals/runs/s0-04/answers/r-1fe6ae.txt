@@ -1,0 +1,34 @@
+### layer-charters.H1
+`rules/`. `methods/README.md` (M0), Placement, uses this exact case: "*credentials are never committed* binds an action in a situation, and is a rule." It is not an axiom because "The first question is about a system's properties, not about how universal a ban sounds". It produces no result of its own (not a method), does not govern an artifact's form (not style), and it "leave[s] a trace in the record of the work that a check could test" (question 4), here the commit history. As a rule it must declare a `trace` in frontmatter (`rules/README.md`, Member shape). No existing rule covers it: `rules/` holds RU1-RU4 only. `M9` covers *removing* a leaked credential after the fact ("Rotate first, then scrub"), which is a procedure, not the preventive ban.
+
+### layer-charters.H2
+`practices/`. Under M0's placement order, it is not a limit on a system (not an axiom). It produces no verdict or artifact of its own (not a method), and it does not govern an artifact's form (not style). Re-reading leaves nothing in the record that shows it happened, so it fails question 4. "Otherwise a practice" (`methods/README.md`). `practices/README.md` defines a practice as guidance that "leaves no trace: nothing in the record afterwards shows whether it was followed". It would sit at the *verifying* moment, which PC0 records as holding no practice today. Placement is not admission: "A practice earns its place only by evidence that following it produces measurably different work" (PC0 Purpose and Member shape). Without that observed evidence it is "a proposal".
+
+### layer-charters.H3
+`methods/`, because following it produces a result of its own, a verdict ("Does following it produce a result of its own - a verdict, an artifact, a record? A procedure", M0 Placement). Yes, an entry already covers it: `methods/M1-triangulated-review.md`, "Triangulated review - minimum 4 independent inputs". M1 says "require **at least four genuinely independent inputs** before reaching a verdict". Its hydrate-when is "You are reviewing a patch or design that ships to production or upstream". M0's Territory places M1 at the *Verifying* moment and calls it the "one primitive" that "carries the set". So a new entry would duplicate it; M0 says "Prefer strengthening an existing entry to adding a neighbour."
+
+### layer-charters.H4
+`style/`. M0 placement question 3 is: "Does it govern how an artifact is written - its form, whatever the work was? Style". `style/README.md` describes the layer as "Rules about the artifact itself, judged by reading the output". Admission is a separate test, and it is strict: "A convention earns one when its absence has produced a real defect in a real artifact ... Aesthetic preference does not qualify" (S0, What earns an entry). Sentence case is easy to state as a predicate, so S0 would want a script that holds it, declared in `enforced-by` ("Prefer a rule a script can hold"). No existing style entry covers heading case. I searched `style/` for "heading" and found only S11 and S12, which deal with other matters. Whether it has earned an entry is NOT SETTLED: that depends on evidence of a real defect, and the proposal does not give any.
+
+### layer-charters.H5
+A rule must declare `trace`: "the observable in the record that shows it was kept or broken, required by the catalogue contract" (`rules/README.md`, Member shape). The schema enforces this. `schemas/catalog-entry/v1alpha1/catalog-entry.schema.json` requires `trace` when `category` is `rule` and the id matches `^RU[1-9][0-9]*$`, with `minLength: 20`. A practice "declares no `trace`; if it acquires one, it is a rule and moves" (`practices/README.md`). Optionally, a rule may name an enforcer in `enforced-by` when a tool checks it. The value must match `^tools/`, and `tools/check-enforcers.sh` holds that tool to existing. "Naming a tool that checks it is enforced-by's job, and is optional" (schema `trace` description). A rule with no tool "is still a rule, and is checked by reading the trace" (RU0).
+
+### layer-charters.H6
+From `methods/README.md` (M0) Placement: "Ask in order, and stop at the first yes":
+1. Is it a limit a system is built toward, in force for every system with the traits it names? Then it is an axiom (`axioms/`).
+2. Does following it produce a result of its own - a verdict, an artifact, a record? Then it is a method (`methods/`). Guidance that only requires a record to carry something is not a method; it is a rule.
+3. Does it govern how an artifact is written, its form, whatever the work was? Then it is style (`style/`).
+4. Does it leave a trace in the record of the work that a check could test? Then it is a rule (`rules/`).
+5. Otherwise it is a practice (`practices/`).
+RU0 and PC0 both cite this as "axiom, procedure, style, rule, practice, asked in that order".
+
+### layer-charters.H7
+Handing over work in progress to another agent or a later session. M0 Territory: "handing work in progress to another agent or a later session has no procedure at all". RU0: *handing over* holds no rule, and "A rule for handing over - *a handover record names what is unfinished* - would leave a trace, and none exists". PC0: "*Verifying*, *deciding what to keep* and *handing over* hold no practice today." Strictly, the *handing over* moment as a whole is not empty. It holds `M10`, but M10 covers handing understanding and decisions to a human. So the part with nothing governing it is agent/session handover. M0 notes it "applies to an agent working alone as much as to many: a lone agent hands over to its own next session." None of the six moments is empty across all three layers (entering: M8, PC1; design: M7; verifying: M1, M2; keep: RU1, RU3; record: M9, RU2, RU4; handing over: M10).
+
+### OBSERVATIONS
+- H7 assumes one moment has nothing governing it. Taken over whole moments, the tables show none is completely empty, because handing over holds M10. The fully ungoverned gap is the agent-to-agent/later-session part of handing over.
+- M1's title and opening say "minimum 4" / "at least four", but its Rationale says "The number isn't sacred (sometimes 3 is enough; sometimes 5 is needed)" and "below 3 the failure mode is predictable". That gives two different floors, 4 and 3.
+- M1 is a method, but its first body section is headed "## Rule". That is inconsistent with the layer split, where "rule" now names the `rules/` layer.
+- `rules/README.md` and `practices/README.md` say members "came from `methodology/`", but no `methodology/` directory exists; the layer is `methods/`. This is probably an old name.
+- M0's placement step 2 is labelled "a procedure" and step 3 "Style". The question's wording "style rule" overlaps with the separate "rule" layer, which could confuse readers. RU0's "Against style" boundary addresses this.
+- INDEX.md says links resolve against a GitHub URL when no local checkout exists. This eval corpus is a local copy, so I resolved them locally.
