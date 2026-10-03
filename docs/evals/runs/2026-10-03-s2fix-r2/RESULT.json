@@ -1,0 +1,203 @@
+{
+  "created": "2026-10-03T11:39:23.559Z",
+  "seed": "a02bcf02d9207a28",
+  "corpora": [
+    {
+      "label": "head",
+      "path": "/tmp/opencode/evalc/c-28832d19"
+    }
+  ],
+  "readers": 3,
+  "probes": [
+    "system-boundary.S1",
+    "system-boundary.S2",
+    "system-boundary.S3",
+    "system-boundary.S4",
+    "system-boundary.S5",
+    "system-boundary.S6"
+  ],
+  "max": 12,
+  "mean": {
+    "system-boundary.S1": {
+      "head": 2
+    },
+    "system-boundary.S2": {
+      "head": 2
+    },
+    "system-boundary.S3": {
+      "head": 2
+    },
+    "system-boundary.S4": {
+      "head": 2
+    },
+    "system-boundary.S5": {
+      "head": 2
+    },
+    "system-boundary.S6": {
+      "head": 2
+    }
+  },
+  "total": {
+    "head": 12
+  },
+  "rows": [
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-7778b6",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor A3, A4, A8, A9, A14 with the reason that the service is only composed with through an unchanged contract."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-7778b6",
+      "probe": "system-boundary.S2",
+      "score": 2,
+      "reason": "Gives the exact union set because the unversioned interface change alters the service now; the hedge applies only to the separate versioning question."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-7778b6",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's full set citing that a change answers to every system containing it."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-7778b6",
+      "probe": "system-boundary.S4",
+      "score": 2,
+      "reason": "Gives the floor only with the composition and separate-adoption reason; the caveats are stated conditions, not hedges on the conclusion."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-7778b6",
+      "probe": "system-boundary.S5",
+      "score": 2,
+      "reason": "Says both bind as one system with a reason and identifies the undeclared dependency as an A3 fault; the guess concerns only parser breakage."
+    },
+    {
+      "label": "head",
+      "reader": 1,
+      "pid": "r-7778b6",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Cites E5 Definition correctly, covering boundary, declared-and-honoured separation, and containment and composition."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-76334b",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor only, reasoning that the launcher composes with the service through an unchanged declared interface so the service's axioms do not bind."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-76334b",
+      "probe": "system-boundary.S2",
+      "score": 2,
+      "reason": "Gives the exact union set with the contract-altered reason; the guess is limited to whether versioning must be added, not to which axioms bind."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-76334b",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's full set with the containment reason and correctly notes the module alone would carry only the floor."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-76334b",
+      "probe": "system-boundary.S4",
+      "score": 2,
+      "reason": "Gives the floor only with the composition reason and states that consumers' axioms bind their own adoption changes."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-76334b",
+      "probe": "system-boundary.S5",
+      "score": 2,
+      "reason": "Gives the union set because the parsed format is a contract in fact with no declared boundary, and names the A3 fault."
+    },
+    {
+      "label": "head",
+      "reader": 2,
+      "pid": "r-76334b",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Cites E5's definition correctly, covering boundary, containment and composition."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-88ab0b",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor only with the composition-through-unchanged-contract reason, explicitly excluding the service's axioms."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-88ab0b",
+      "probe": "system-boundary.S2",
+      "score": 2,
+      "reason": "Gives the exact union set with the reason that the unversioned contract change alters the service; the NOT SETTLED note concerns a side question about versioning, not the conclusion."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-88ab0b",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's full set with the containment reason that a change answers to every system containing what it modifies."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-88ab0b",
+      "probe": "system-boundary.S4",
+      "score": 2,
+      "reason": "Gives the library's floor only, reasoning that consumers compose through an unchanged declared versioned interface and each adoption is that consumer's change."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-88ab0b",
+      "probe": "system-boundary.S5",
+      "score": 2,
+      "reason": "Says both systems' axioms bind because the undeclared dependency makes them one system, and names the undeclared dependency as an A3 fault."
+    },
+    {
+      "label": "head",
+      "reader": 3,
+      "pid": "r-88ab0b",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Cites E5 Definition correctly with boundary, and notes that systems relate only by containing or composing."
+    }
+  ],
+  "consistentHedges": [
+    {
+      "probe": "system-boundary.S2",
+      "label": "head",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "system-boundary.S5",
+      "label": "head",
+      "hedged": 2,
+      "readers": 3
+    }
+  ]
+}

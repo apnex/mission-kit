@@ -2,7 +2,7 @@
   "id": "system-boundary",
   "mode": "corpus",
   "group": "system",
-  "source": "docs/audits/eval-SYS/KEY.md",
+  "source": "docs/audits/eval-SYS/KEY.md; S2 and S5 fixtures completed after readers, read sentence by sentence, hedged on facts the fixtures omitted (versioning; which lines are parsed)",
   "preamble": "Two systems are used in this group's system-boundary questions:\n- The launcher is a small one-shot script. One operator runs it and watches it; it holds no state, has no model in the loop, and does not restart anything that dies. It is not part of the service, and no larger system containing both is declared.\n- The service is long-running and holds persistent state. Several agents operate it, each an independent actor handing work to the others, with no human in the synchronous loop and no model in the loop. It is not driven by a declared specification it reconciles toward.",
   "probes": [
     {
@@ -13,7 +13,7 @@
     },
     {
       "id": "S2",
-      "question": "You change how the launcher hands sessions to the service - the declared interface between them. Which axioms does your change answer to?",
+      "question": "You change how the launcher hands sessions to the service - the declared interface between them, which is not versioned. Which axioms does your change answer to?",
       "key": "Both - A1, A3, A4, A5, A6, A7, A8, A9, A10, A13, A14. The change alters the contract the service depends on.",
       "rubric": "2 for that set with either reason (contract changed, or service's receiving side modified). 1 for 'both' with at most one axiom wrong or no reason. 0 for the floor only."
     },
@@ -31,7 +31,7 @@
     },
     {
       "id": "S5",
-      "question": "As in S1, you change the launcher's log line format. This time no interface between the launcher and the service is declared, and the service is known to parse some of the launcher's output. Which axioms does your change answer to, and is anything else wrong?",
+      "question": "As in S1, you change the launcher's log line format. This time no interface between the launcher and the service is declared, and the service parses the very log lines you change. Which axioms does your change answer to, and is anything else wrong?",
       "key": "Both bind - A1, A3, A4, A5, A6, A7, A8, A9, A10, A13, A14 - because nothing declared shows the change is contained (or: the parsed format is a contract in fact). The undeclared dependency is itself an A3 fault.",
       "rubric": "2 for both bind with a reason plus the fault. 1 for either alone. 0 for the floor only."
     },

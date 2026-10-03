@@ -1,0 +1,370 @@
+{
+  "created": "2026-10-03T11:36:25.707Z",
+  "seed": "2c870e71e24a9ace",
+  "corpora": [
+    {
+      "label": "before",
+      "path": "/tmp/opencode/evalc/c-7c857e42"
+    },
+    {
+      "label": "after",
+      "path": "/tmp/opencode/evalc/c-a605a47b"
+    }
+  ],
+  "readers": 3,
+  "probes": [
+    "system-boundary.S1",
+    "system-boundary.S2",
+    "system-boundary.S3",
+    "system-boundary.S4",
+    "system-boundary.S5",
+    "system-boundary.S6"
+  ],
+  "max": 12,
+  "mean": {
+    "system-boundary.S1": {
+      "before": 2,
+      "after": 2
+    },
+    "system-boundary.S2": {
+      "before": 1.33,
+      "after": 1.33
+    },
+    "system-boundary.S3": {
+      "before": 2,
+      "after": 2
+    },
+    "system-boundary.S4": {
+      "before": 2,
+      "after": 2
+    },
+    "system-boundary.S5": {
+      "before": 1.67,
+      "after": 1.67
+    },
+    "system-boundary.S6": {
+      "before": 2,
+      "after": 2
+    }
+  },
+  "total": {
+    "before": 11,
+    "after": 11
+  },
+  "rows": [
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-1456cb",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor with the reason that the launcher composes with the service through an unchanged, honoured interface."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-1456cb",
+      "probe": "system-boundary.S2",
+      "score": 1,
+      "reason": "Correct set and reason, but the answer marks the point NOT SETTLED and labels its conclusion a GUESS, capping it at 1."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-1456cb",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's full set with the containment reason that the containing service's axioms bind."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-1456cb",
+      "probe": "system-boundary.S4",
+      "score": 2,
+      "reason": "Gives the floor with the reason that consumers compose through an unchanged versioned contract and each adoption is the consumer's own change."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-1456cb",
+      "probe": "system-boundary.S5",
+      "score": 2,
+      "reason": "Both bind as one system with no declared boundary, plus the A3 fault, and the binding is stated to hold either way."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-1456cb",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Cites E5 with boundary, contain and compose, and traits describe while axioms bind."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-7b79b6",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor with the reason that the interface is unchanged and is the only crossing, so the service is not altered."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-7b79b6",
+      "probe": "system-boundary.S2",
+      "score": 2,
+      "reason": "Correct set with the contract-altered reason, committed to under a stated condition rather than labelled a guess."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-7b79b6",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's full set with the containment reason that a change answers to every system containing what it modifies."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-7b79b6",
+      "probe": "system-boundary.S4",
+      "score": 2,
+      "reason": "Gives the floor with the reason that no consumer's contract is altered and each adoption is a separate change."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-7b79b6",
+      "probe": "system-boundary.S5",
+      "score": 1,
+      "reason": "Names both bind and the A3 fault, but puts the one-system merge under a GUESS label, capping it at 1."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-7b79b6",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Cites E5 with boundary, declared-and-honoured separation, and contain and compose relations."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-918f45",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor A3, A4, A8, A9, A14 with the reason that the service only composes through an unchanged contract."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-918f45",
+      "probe": "system-boundary.S2",
+      "score": 1,
+      "reason": "Correct eleven axioms with the reason, but the answer says the facts do not settle it and labels the conclusion a GUESS, capping it at 1."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-918f45",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's full set with the containment reason and notes that the module's statelessness gives no exemption."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-918f45",
+      "probe": "system-boundary.S4",
+      "score": 2,
+      "reason": "Gives the floor with the composition reason that adoption is each consumer's change and the library is not altered."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-918f45",
+      "probe": "system-boundary.S5",
+      "score": 2,
+      "reason": "Both bind as one system, plus the A3 fault; the NOT SETTLED point concerns only whether this change owns the declaration, not the binding."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-918f45",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Cites E5 with boundary, contain and compose, and traits describe while axioms bind."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-e00000",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor with the reason that the service composes through an unchanged contract and so does not bind."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-e00000",
+      "probe": "system-boundary.S2",
+      "score": 2,
+      "reason": "Correct set with the contract-altered reason; the unversioned assumption is a stated condition and the conclusion is committed."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-e00000",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's full set with the containment reason from A0 and E5."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-e00000",
+      "probe": "system-boundary.S4",
+      "score": 2,
+      "reason": "Gives the floor with the composition reason and that each adoption answers to that consumer's axioms."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-e00000",
+      "probe": "system-boundary.S5",
+      "score": 2,
+      "reason": "Both bind with the undeclared-boundary and contract-in-fact reasons, plus the A3 fault."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-e00000",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Cites E5 with boundary, contain and compose, and traits and axioms."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-c21994",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor with the composition-through-unchanged-contract reason and explicitly excludes the service's axioms."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-c21994",
+      "probe": "system-boundary.S2",
+      "score": 1,
+      "reason": "Correct set with the contract-altered reason, but the conclusion is explicitly labelled NOT SETTLED and GUESS, which caps it at 1."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-c21994",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's full set with the every-containing-system reason."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-c21994",
+      "probe": "system-boundary.S4",
+      "score": 2,
+      "reason": "Gives the floor with the composition reason; the version-range caveat is a stated condition, not a hedge."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-c21994",
+      "probe": "system-boundary.S5",
+      "score": 1,
+      "reason": "Names both bind and the A3 fault, but labels the binding conclusion itself a GUESS, capping it at 1."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-c21994",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Cites E5 with boundary, contain and compose, and traits describe while axioms bind."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-66da4d",
+      "probe": "system-boundary.S1",
+      "score": 2,
+      "reason": "Gives the floor with the composition reason; the organisation remark is correctly kept separate."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-66da4d",
+      "probe": "system-boundary.S2",
+      "score": 1,
+      "reason": "Correct union with the contract-altered reason, but the conclusion is labelled NOT SETTLED and GUESS, capping it at 1."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-66da4d",
+      "probe": "system-boundary.S3",
+      "score": 2,
+      "reason": "Gives the service's full set with the containment reason and correctly excludes A2, A11, A12."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-66da4d",
+      "probe": "system-boundary.S4",
+      "score": 2,
+      "reason": "Gives the floor with the composition reason and assigns the consumers' axioms to their own adoption changes; the range note is a stated condition."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-66da4d",
+      "probe": "system-boundary.S5",
+      "score": 2,
+      "reason": "Both bind as one system with no declared boundary, plus the A3 fault; the guess covers only whether the boundary work is in scope, not the binding."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-66da4d",
+      "probe": "system-boundary.S6",
+      "score": 2,
+      "reason": "Cites E5 with boundary, contain and compose, and traits and axioms."
+    }
+  ],
+  "consistentHedges": [
+    {
+      "probe": "system-boundary.S2",
+      "label": "before",
+      "hedged": 2,
+      "readers": 3
+    },
+    {
+      "probe": "system-boundary.S2",
+      "label": "after",
+      "hedged": 2,
+      "readers": 3
+    },
+    {
+      "probe": "system-boundary.S5",
+      "label": "before",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "system-boundary.S5",
+      "label": "after",
+      "hedged": 2,
+      "readers": 3
+    }
+  ]
+}

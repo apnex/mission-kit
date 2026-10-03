@@ -1,0 +1,44 @@
+### system-boundary.S1
+The change answers only to the launcher's axioms, which are the floor: A3, A4, A8, A9, A14.
+The launcher has no traits: it holds no state, has one operator, has a human watching it (T4 test: "would a human see it before the system acted on the failure?"), and has no model. E5 Boundaries says "A one-shot script with no traits is a system, bound by the axioms every system carries". The floor is the axioms tagged `any-system` (axioms/README.md matrix; frontmatter of A3, A4, A8, A9, A14 checked).
+The service does not bind. A0 says "A system it only composes with, through a contract the change leaves as it was, is not altered, and its axioms do not bind". E5 gives this exact example: "A launcher that hands sessions to a service through a declared interface composes with it". The boundary is declared and honoured, because nothing else crosses it.
+
+### system-boundary.S2
+The change answers to the union of both systems' axioms: A1, A3, A4, A5, A6, A7, A8, A9, A10, A13, A14. It does not answer to A2, A11 or A12.
+A0 says a change answers to "any system whose contract with it the change alters", and changing the declared interface alters the service's contract.
+The service is stateful (T1), giving A1. It is multi-agent (T3, "work crosses from one independent actor to another"), giving A5, A6, A7, A10, A13. It is autonomous (T4), giving A7, A10, A13 again. It also takes the floor. It is not declarative (no A2) and has no model in the loop (no A11, A12) (A0 matrix).
+I have assumed the interface is unversioned, because the question does not say. E5: "changing an unversioned interface alters every consumer at once". If it were versioned, the service would be altered only when it adopted the new version, and that adoption would be its own change answering to the service's axioms.
+
+### system-boundary.S3
+The change answers to the service's axioms: A1, A3, A4, A5, A6, A7, A8, A9, A10, A13, A14.
+E5 says "A module inside a service is a system, and the service contains it, whether or not the module's interfaces are declared". It also says "A system has every trait any part it contains has".
+A0 says a change answers to "the system it modifies, every system containing it". E5 Discriminators adds "changing a module changes the service it sits in".
+The module having no state on its own gives no exemption. E5 "Why precision matters" names exactly that escape as the failure: "a stateful system escapes its own axioms by being described as stateless modules".
+
+### system-boundary.S4
+The change answers only to the library's own axioms, which are the floor: A3, A4, A8, A9, A14.
+The library has no traits. The interface and its behaviour do not change, so no consumer's contract is altered. Under A0, the consumers are composed with and not altered, so "its axioms do not bind".
+E5 also says "Publishing a new version of an interface alters no consumer that has not adopted it; each adoption is a change to that consumer, and answers to that consumer's axioms". It warns against the opposite reading: "a small shared library would carry the axioms of every system that uses it".
+One caveat comes from E5: a declared version range ("any 2.x") counts as adoption in advance. Here each consumer adopts separately, so that does not apply.
+
+### system-boundary.S5
+The change answers to A1, A3, A4, A5, A6, A7, A8, A9, A10, A13, A14. This is the union of launcher and service, the same set as S2 and S3.
+E5 says "Where one unit depends on another and nothing declares the boundary between them ... they are one system, with the traits of both". A0 says the same thing: "the axioms either unit would bring all bind".
+Something else is wrong. The undeclared dependency "is itself a fault against A3, which requires units to interact only through declared contracts" (E5; A3 Air-Gap Principle).
+E5 also says the change now owns the problem: "A change that alters what an undeclared neighbour reaches into owns that boundary: declaring and honouring the interface is inside its scope, not optional". E5 calls output the service parses without any declaration "a contract in fact, not a declared boundary - and a change to it reaches across".
+That makes the log line format a real contract, and changing it can break the service.
+
+### system-boundary.S6
+Yes, it is defined, in entities/E5-system.md (ledger ID E5).
+Definition: "A system is a unit of engineering with a boundary: what is inside it, and the contracts through which anything outside reaches it." The boundary separates it from a neighbour "only where it is declared and honoured".
+"Traits describe a system, and axioms bind it". Systems relate in exactly two ways, contain and compose.
+E5 Boundaries also says what a system is not. It is not a repository, a deployment unit or a process. It is not defined by size or traits. It is not separated from another unit by an undeclared boundary.
+E5 also says "The organisation doing the work is a system". E6 defines a component as "a system seen as a part of a larger system that contains it".
+
+### OBSERVATIONS
+- S2: the corpus answer depends on whether the session interface is versioned (E5), and the question does not say. I assumed it is unversioned.
+- E5 says the organisation doing the work is itself a system. Its axioms "govern how the change is made and recorded", and they are kept apart from the product systems a change answers to. My answers cover only the product systems. A full answer might also name the organisation's axioms, but E5 says to ask that question separately.
+- S2: the corpus does not say which system the interface itself belongs to. This does not matter here, because both sides bind either way.
+- E5's "merge chains" sentence (Boundaries) is dense and easy to misread. It was not needed for these cases.
+- The A0 applicability matrix agrees with the axioms' `applies-to` frontmatter. I checked all fourteen.
+- A0 says "Scope and binding are different sets": a component the change depends on is touched but not altered. That fits S1/S4. Still, "touched" and "altered" are close in meaning and a reader could confuse them.

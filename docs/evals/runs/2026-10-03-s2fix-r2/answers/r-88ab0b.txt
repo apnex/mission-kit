@@ -1,0 +1,52 @@
+Basis used throughout (all measured by reading the corpus at /tmp/opencode/evalc/c-28832d19):
+- axioms/README.md (A0), "What brings an axiom into force": "An axiom binds a system, and a change answers to every system it alters. That is the system it modifies, every system containing it, and any system whose contract with it the change alters. A system it only composes with, through a contract the change leaves as it was, is not altered, and its axioms do not bind."
+- Applicability matrix in A0, confirmed against each axiom's `applies-to` frontmatter: any-system = A3, A4, A8, A9, A14; stateful = A1; declarative = A2; multi-agent = A5, A6, A7, A10, A13; autonomous = A7, A10, A13; llm-in-the-loop = A5, A11, A12. Tags bind by union (A0; traits/README.md "Traits bind by union").
+- Launcher: has no traits (not stateful per T1, not declarative per T2 "a script run once", not multi-agent per T3, not autonomous per T4 since the operator watches it, not llm-in-the-loop per T5). E5 Boundaries: "A one-shot script with no traits is a system, bound by the axioms every system carries." So launcher = A3, A4, A8, A9, A14.
+- Service: stateful (T1), multi-agent (T3), autonomous (T4); not declarative, not llm-in-the-loop. So service = A1, A3, A4, A5, A6, A7, A8, A9, A10, A13, A14 (not A2, A11, A12).
+
+### system-boundary.S1
+A3, A4, A8, A9, A14 only - the floor (`any-system`) axioms that bind the launcher.
+E5 "Compose": "A launcher that hands sessions to a service through a declared interface composes with it", and the boundary is declared and honoured because nothing else crosses.
+A0: "A system it only composes with, through a contract the change leaves as it was, is not altered, and its axioms do not bind" - so none of the service's axioms (A1, A5, A6, A7, A10, A13) bind.
+E5 also notes the organisation doing the work is itself a system whose axioms "govern how the change is made and recorded, and are not one of the systems the change alters"; those are a separate question and not part of this answer.
+
+### system-boundary.S2
+The union of both systems: A1, A3, A4, A5, A6, A7, A8, A9, A10, A13, A14 (not A2, A11, A12).
+A0: a change answers to "any system whose contract with it the change alters"; E5: "changing an unversioned interface alters every consumer at once, so the change answers to all of them immediately."
+So the service is altered, and its traits (stateful, multi-agent, autonomous) bring their axioms in alongside the launcher's floor axioms.
+A3 Mechanics ("Semantic Bit-Masking") says interfaces are "explicit, versioned contracts", so the unversioned interface is a gap this change touches; A0 requires closing it "as much as the touch allows".
+NOT SETTLED: whether adding versioning falls within "the part the change already alters" (mandatory) or beyond it (encouraged only). GUESS: it is at least to be recorded with a revival trigger (RU3) if not done.
+
+### system-boundary.S3
+The service's full set: A1, A3, A4, A5, A6, A7, A8, A9, A10, A13, A14.
+A0: a change answers to "every system containing it"; E5 "Contain": "A module inside a service is a system, and the service contains it, whether or not the module's interfaces are declared. A system has every trait any part it contains has."
+The module being stateless does not matter: E5 "Why precision matters" warns that otherwise "a stateful system escapes its own axioms by being described as stateless modules, each of which passes on its own."
+E5 Boundaries: units inside one system need no chaining, "because a change to any of them answers to the containing system".
+
+### system-boundary.S4
+A3, A4, A8, A9, A14 only - the library's floor axioms; none of the ten consumers' axioms bind.
+The library has no traits, and A0's matrix says "a plain library takes `any-system`".
+The consumers compose with it through a declared, versioned interface that the change leaves unchanged, so per A0 they "are not altered, and [their] axioms do not bind".
+E5: "Publishing a new version of an interface alters no consumer that has not adopted it; each adoption is a change to that consumer, and answers to that consumer's axioms; the component is not altered by being adopted."
+E5 "Why precision matters" names this exact case: otherwise "the most-reused code would carry the most obligations."
+Caveat from E5: a declared version range ("any 2.x") is adoption in advance, and a release inside it alters every consumer bound by the range; the question says each adopts separately, so this does not apply here.
+
+### system-boundary.S5
+The union of both systems: A1, A3, A4, A5, A6, A7, A8, A9, A10, A13, A14.
+The service depends on the log lines with no declared boundary, so E5 Boundaries applies: "they are one system, with the traits of both"; A0 says the same ("the axioms either unit would bring all bind").
+E5: "Behaviour another unit depends on without any declaration is a contract in fact, not a declared boundary - and a change to it reaches across."
+Also wrong: "The undeclared dependency is itself a fault against A3" (E5; A3 Air-Gap Principle: "units interact only through declared adapters and contracts").
+And the change owns that fault: "A change that alters what an undeclared neighbour reaches into owns that boundary: declaring and honouring the interface is inside its scope, not optional" (E5 Boundaries).
+
+### system-boundary.S6
+It is defined in entities/E5-system.md, "Definition": "A system is a unit of engineering with a boundary: what is inside it, and the contracts through which anything outside reaches it."
+The boundary separates it from a neighbour "only where it is declared and honoured"; otherwise the two are one system for deciding what a change answers to.
+Traits describe a system and axioms bind it; systems relate only by containing or composing (E5).
+E5 Boundaries: it is not a repository, deployment unit or process by definition, and not defined by size or traits.
+E6 adds that a component is "a system seen as a part of a larger system that contains it".
+
+### OBSERVATIONS
+- E5 says a release within a declared version range "alters every consumer bound by the range, whether or not the consumer's own files change", while A0 says a system composing "through a contract the change leaves as it was, is not altered". For an internals-only release with interface and behaviour unchanged inside a range, the two texts pull in opposite directions; this is NOT SETTLED. It did not affect S4 because the question states each consumer adopts separately.
+- A0 says a change must close a gap it touches "as much as the touch allows" and A3 says interfaces should be versioned, but nothing settles whether changing an unversioned interface (S2) requires versioning it.
+- The service's autonomy (T4) and multi-agent (T3) traits both bring A7, A10 and A13, so they are double-covered. This is consistent with union binding and is not a defect.
+- In S1 the operator watches the launcher's log lines. The corpus treats that reader as part of the organisation system (E5) rather than as a system the change alters, but it does not say explicitly whether a human consumer of output counts as a "consumer whose contract it alters" (A0 scope). GUESS: not, since the question declares no such contract.

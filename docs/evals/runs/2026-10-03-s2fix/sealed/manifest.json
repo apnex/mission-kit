@@ -1,0 +1,103 @@
+{
+  "created": "2026-10-03T11:33:37.835Z",
+  "suites": [
+    "system-boundary"
+  ],
+  "readers": 3,
+  "corpora": [
+    {
+      "label": "before",
+      "path": "/tmp/opencode/evalc/c-7c857e42"
+    },
+    {
+      "label": "after",
+      "path": "/tmp/opencode/evalc/c-a605a47b"
+    }
+  ],
+  "prompts": [
+    {
+      "pid": "r-1456cb",
+      "label": "before",
+      "group": "system",
+      "reader": 1,
+      "probes": [
+        "system-boundary.S1",
+        "system-boundary.S2",
+        "system-boundary.S3",
+        "system-boundary.S4",
+        "system-boundary.S5",
+        "system-boundary.S6"
+      ]
+    },
+    {
+      "pid": "r-7b79b6",
+      "label": "before",
+      "group": "system",
+      "reader": 2,
+      "probes": [
+        "system-boundary.S1",
+        "system-boundary.S2",
+        "system-boundary.S3",
+        "system-boundary.S4",
+        "system-boundary.S5",
+        "system-boundary.S6"
+      ]
+    },
+    {
+      "pid": "r-918f45",
+      "label": "before",
+      "group": "system",
+      "reader": 3,
+      "probes": [
+        "system-boundary.S1",
+        "system-boundary.S2",
+        "system-boundary.S3",
+        "system-boundary.S4",
+        "system-boundary.S5",
+        "system-boundary.S6"
+      ]
+    },
+    {
+      "pid": "r-e00000",
+      "label": "after",
+      "group": "system",
+      "reader": 1,
+      "probes": [
+        "system-boundary.S1",
+        "system-boundary.S2",
+        "system-boundary.S3",
+        "system-boundary.S4",
+        "system-boundary.S5",
+        "system-boundary.S6"
+      ]
+    },
+    {
+      "pid": "r-c21994",
+      "label": "after",
+      "group": "system",
+      "reader": 2,
+      "probes": [
+        "system-boundary.S1",
+        "system-boundary.S2",
+        "system-boundary.S3",
+        "system-boundary.S4",
+        "system-boundary.S5",
+        "system-boundary.S6"
+      ]
+    },
+    {
+      "pid": "r-66da4d",
+      "label": "after",
+      "group": "system",
+      "reader": 3,
+      "probes": [
+        "system-boundary.S1",
+        "system-boundary.S2",
+        "system-boundary.S3",
+        "system-boundary.S4",
+        "system-boundary.S5",
+        "system-boundary.S6"
+      ]
+    }
+  ]
+}
