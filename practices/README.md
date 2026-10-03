@@ -33,12 +33,19 @@ This set covers **the points in a unit of work where judgement about how to proc
 | Moment | What the practice guides | Members |
 |---|---|---|
 | **Entering** | how to begin in an unfamiliar collection | [`PC1`](PC1-author-from-exemplar.md) author from exemplar |
+| **Committing to a design** | how to weigh a design before committing to it | **none - gap** |
+| **Verifying** | how to judge whether evidence in hand is worth anything | **none - gap** |
+| **Deciding what to keep** | how to judge what is worth keeping | **none - gap** |
+| **Treating the record** | how to handle a record before changing it | **none - gap** |
+| **Handing over** | how to leave work so the next reader can pick it up | **none - gap** |
 
-`PC1` came from `methodology/` in Delta-1.
+`PC1` came from `methodology/` in Delta-1.\
+Every member sits in one row, and five rows hold none.
 
 **Gaps tested.**\
-*Verifying*, *deciding what to keep* and *handing over* hold no practice today.\
-A practice is not minted to fill a moment: it is admitted when a difference in the work has been observed.
+Each empty row is a gap, not a moment where no practice can exist.\
+*Verifying* and *treating the record* have candidates in the standing context that leave no trace: *distrust corroboration you produced*, *check the splits that favour you*, and *read before you overwrite*.\
+*Committing to a design*, *deciding what to keep* and *handing over* have no checked candidate yet.
 
 ---
 
@@ -46,7 +53,8 @@ A practice is not minted to fill a moment: it is admitted when a difference in t
 
 A practice states the situation, the guidance, and the evidence that following it changes the work.\
 It declares no `trace`; if it acquires one, it is a rule and moves.\
-Placement and admission are separate questions: placement says guidance *is* a practice; admission says whether it has earned an entry, which takes observed evidence.
+Placement and admission are separate questions: placement says guidance *is* a practice; admission says whether it has earned an entry, which takes observed evidence.\
+A practice is not minted to fill an empty moment: it is admitted when a difference in the work has been observed, and until then the moment stays named as a gap.
 
 ---
 
