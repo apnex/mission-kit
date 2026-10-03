@@ -11,7 +11,7 @@ related: [W0, R0, A1, A3, A5, T0]
 
 ## Purpose
 
-Seven **subject-surfaces**: a domain names *what a node's evidence resolves against*.\
+Domains are **subject-surfaces**: a domain names *what a node's evidence resolves against*, and the set claims every surface work's evidence can land on, however many that proves to be.\
 The work-*mode* is carried by the work-type, never by the domain - a mode-domain (e.g. `verification`) would double-count with the mode-encoding work-type (`verify-gate` *is* verification) and break orthogonality.
 
 A domain answers one question about a unit of work: *where does its evidence land?*\
