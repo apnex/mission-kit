@@ -38,3 +38,13 @@ Confirmed by the director.
 > I like the concept of "choose your own adventure" - in that you could potentially offer 2 or 3 short descriptions of optional but relevant "follow on / deeper dive" concepts, topics or discussion flows from the current one - such that I could pick quickly and easily rather than describing a full sentence to you.
 
 > If it makes sense to do so for this agent->human communication evals - is to actually develop a process or tooling by which you eval the human, rather than an agent, and use that process to guide your design. Develop an example scenario or a system that can gather feedback from me in a structured way that I can just "execute" and this helps you progress the system further.
+
+---
+
+## Learned in the human evaluation
+
+- **Session 2 result:** the director chose the restructured message over the agent's real message in 4 of 4 pairs - two asking for understanding, two for a decision (`docs/evals/human/runs/moves-2-2026-10-03-6d6f1f`).
+- **What the rewrites changed, measured:** about two thirds shorter; no internal IDs or commit hashes, against 43; one question per message, at the end; three follow-on picks each; the point or decision first.
+- **What they dropped that matters: traceability.** Keep the body plain, and say once, in a line or a pick, where the thing is recorded.
+- **A defect in one rewrite:** a request for the director to act sat inside an optional pick. A request for action is never optional depth.
+- **A defect in the agent's picks, named by the director:** *"I can't tell which of the 3 picks you've just offered does that."* Picks must mark which one continues the main work; the rest are side branches.
