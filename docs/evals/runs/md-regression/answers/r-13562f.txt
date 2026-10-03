@@ -1,0 +1,43 @@
+### design-rulings.R1
+Your change has to declare and honour the interface between N and T. That work is in your change's scope and is not optional. E5 Boundaries says: "A change that alters what an undeclared neighbour reaches into owns that boundary: declaring and honouring the interface is inside its scope, not optional."
+Until that is done, N and T count as "one system, with the traits of both" (E5; A0 "What brings an axiom into force"), so your change answers to N's axioms as well as T's. The undeclared reach is also a fault against A3 (Air-Gap Principle: "no unit reaches into another's internals").
+How it ends: first evaluate the interface against T's duty, then either move N onto the interface or adjust the interface to what N legitimately needs (E5 "Declared against honoured"; A3 "Bypass as Signal").
+Declaring an interface while N keeps bypassing it "separates nothing" (E5).
+Both modules sit inside one service, so your change also answers to the service's axioms, because a change answers to every system that contains what it modifies (A0).
+
+### design-rulings.R2
+(1) No. E5 Boundaries says: "The merge chains only through what a change can reach: if A reaches into B and B into C, a change to A is one system with C only when it alters something B takes from C." A change that only A uses alters nothing B takes from C, so C's axioms do not bind it.
+It still answers to B's axioms, because A's undeclared reach into B makes A and B one system with the traits of both (E5; A0).
+(2) Yes. The change now alters something B takes from C, which is exactly the condition E5 gives for the merge to chain. So the change is one system with C and answers to C's axioms as well.
+
+### design-rulings.R3
+Yes, the service is stateful. The module that writes records and later reads them back to act on them passes T1's test ("Does the system write something it will later read back, and would anything act differently if that record were wrong?"). Also, "A system has every trait any part it contains has" (E5 Contain; T0 "How traits compose").
+Yes, A1 binds your change (A1 applies-to: [stateful]). A change answers to "the system it modifies, every system containing it" (A0), and the service contains the stateless module you changed.
+E5 names the failure this rule prevents: "a stateful system escapes its own axioms by being described as stateless modules".
+How much A1 asks of this change depends on its scope (A0): the change must not move the service away from A1's limit, and must close any A1 gap only as far as its own touch allows.
+
+### design-rulings.R4
+Yes. A1 binds the team's records of the work, not the tool. E5 says: "A stateless product built by a team that keeps records it relies on has `A1` binding the team's records, not the product."
+The reason is that "The organisation doing the work is a system": its records are written, read back and relied on, so the organisation is stateful under T1 (E5).
+The tool itself is stateless, so A1 does not bind it or the changes made to it. A1 governs "how the change is made and recorded", not which product systems the change alters (E5).
+(The team also hands work between actors, so it is multi-agent under T3 and its multi-agent axioms bind too, but the question only asks about A1.)
+
+### design-rulings.R5
+The axioms ask you to weigh the split. They encourage it but do not require it, unless your feature already alters the tangled code. A3 Composable by Default says improving a unit "within the unit's own duty" is encouraged: "fix it, fracture it, re-cut its seams and recompose it ... as a change of its own, answering to every consumer whose interface it alters".
+A0 says only "the part the change already alters to do its own work" is required, and "restructuring beyond that, even inside the same component, is the encouraged improvement ... not a requirement". An agent who sees the improvement "is expected to weigh doing it, not merely permitted to".
+If you do it, make it a separate change. K's interface is unversioned, so the change alters all three consumers at once and answers to all of them immediately. Adding versioning is encouraged but not required, and if you do not add it, the gap is recorded (E5).
+If you do not do it, record the gap with its evidence and a revival trigger (RU3). A0: "Either way the gap is recorded", and passing it silently is forbidden.
+Whether to do it now follows A14's tangent test: the payback is near, the yield is captured, and the cost does not distract from the feature (A0).
+
+### design-rulings.R6
+Publishing 2.4 alters all ten consumers. E5 says: "A declared version range - *any 2.x* - is adoption in advance: a release within it alters every consumer bound by the range, whether or not the consumer's own files change."
+2.4 also changes the behaviour the declared interface documents, so it changes the contract each consumer relies on. Using only the declared interface does not protect them (A0: a change answers to "any system whose contract with it the change alters").
+The rule that "Publishing a new version of an interface alters no consumer that has not adopted it" (E5) does not help here, because the floating range counts as having adopted it already.
+So publishing 2.4 answers to all ten consumers' axioms.
+
+### OBSERVATIONS
+- E5's chaining limit ("a change to A is one system with C only when it alters something B takes from C") is said to govern "units in different systems". But by E5's own undeclared-boundary rule, A and B are already one system, and so are B and C. Read literally, that would make A, B and C a single system. The text settles the chaining question explicitly, but how it fits the "one system" merge (is the merge transitive or not?) is not reconciled.
+- R2(2): the phrase "your change in A alters data B takes from C" is odd, since a change made only in A cannot usually alter what B takes from C. I applied the E5 condition as the question states it.
+- R5: the corpus does not say how to tell whether the tangle falls inside "the part the change already alters to do its own work". So whether this split is required or only encouraged depends on facts the question does not give.
+- R6: the corpus does not say whether changing documented behaviour inside a minor version (any 2.x) is itself a fault, for example against semver or A3's "explicit, versioned contracts". It only says who is altered.
+- INDEX.md tells readers to fetch from a remote URL when no local checkout exists. That conflicts with this task's rule to read only local files. I used only local files.

@@ -1,0 +1,60 @@
+### explain-routing.Q1
+INDEX.md routes communicating with a human of limited context to ST1 (sets/ST1-explain.md), the explain set, whose members are S15 and M10 ("members: [S15, M10]").
+S15 (style/S15-message-to-a-human.md) asks that the first line is "the conclusion, or the decision being asked for" (so: the slip itself), one step and one question at the end, any unseen system name explained or left out, and two or three Continue/Explore/Return picks.
+M10 (methods/M10-guided-dialogue.md) asks that the director "ends up seeing what you see on the point - nothing missing that matters, nothing extra", with the finish line known and steps counted, one step per message.
+A13 (axioms/A13-director-intent-amplification.md) matches "about to consume the director's attention": surface "decision over status", never "go silently dark on an action or decision the Director is owed", and never narrow their options.
+S0 (style/README.md) matches "a message a human will read" and points to S15 as the only rule for that medium.
+NOT SETTLED: nothing specific to bad news exists; ST1 records "Bad news and teaching were each tested in one pair; no move is isolated".
+GUESS: if the slip forces a choice (re-scope, accept the delay), S15's decision frame applies, including "doing nothing" as an option.
+
+### explain-routing.Q2
+ST1 is the set to open; it states M10 applies "especially when they have not followed the work" (M10, When to apply).
+S15 asks for point first, "Show where you are: the step, and the finish line", names explained or omitted, references in one line, and "Use narrative only where it carries understanding ... Leave out what you did when it does not change what the human understands or decides."
+M10 asks for understanding reached "one confirmed step at a time, with depth available on request and never pushed", one step per message, and saying how many steps remain.
+A13 cautions that "Status-chatter, ceremony, how-to ... never reach the Director; what reaches the Director is decision-shaped" (Attention Leak fault), while also forbidding going silently dark.
+S0 routes the message medium to S15.
+RU1 (rules/RU1-default-reject-honest-yield.md) asks you to lead with delivered outcome, but only if the update summarises a sweep, refactor programme or audit; ST1 lists it as related with the tension "honest yield is triggered by sweeps and audits, not by any report".
+NOT SETTLED: whether a plain progress update to the director should be sent at all under A13 versus held for a gate point; GUESS: send it only as a gate-aligned digest.
+
+### explain-routing.Q3
+ST1, via S15 and M10, governs the form: S15's first line is the conclusion (the cause), one question at the end, names explained, and narrative only "where the path you took is the evidence".
+M10 asks that the director sees what you see "nothing missing that matters, nothing extra", with depth offered on request (Explore pick) rather than pushed.
+A13 applies because you are consuming director attention: answer in "digest over dump" form.
+S0 routes the message to S15.
+No entry ID covers the epistemics of a causal answer; the standing context AGENTS.md (no entry ID) asks "state whether it was measured or inferred", "Source settles mechanism", and "Separate observation from explanation when sending".
+AR4's provenance tags ([MEASURED]/[ARGUED]/[OPEN]) are for decision records, not messages; GUESS: borrowing that distinction in the answer fits the corpus's intent but is not stated for messages.
+
+### explain-routing.Q4
+ST1 territory: "leading a human to understanding" is M10, and "the form of any message to a human" is S15.
+M10's understand limit: the director "ends up seeing what you see on the point - nothing missing that matters, nothing extra - reached one confirmed step at a time"; know the finish line, one step per message, confirm each step lands (step 3 and A8 in its rationale).
+S15: point first, one step per message, explain any system-specific name or leave it out ("General engineering terms may be assumed"), show the step and finish line, end with Continue/Explore/Return picks.
+A13 applies as attention economy, and S0 routes to S15.
+K28 (skills/K28-asd-ste100-verifier.md) applies only if the material is documentation for a non-native English reader; GUESS: not this case.
+NOT SETTLED: nothing addresses preparing the director to re-explain to others; ST1 says teaching "was tested in one pair" only.
+
+### explain-routing.Q5
+S15 decision frame: "what is being decided; why now; the options, each with its cost, including doing nothing; a recommendation, labelled and kept separate; then ask for a pick", and "each option is a Continue pick naming it".
+So three options plus doing nothing; S15 caps picks at "two or three", which conflicts with four options - NOT SETTLED how to reconcile (see OBSERVATIONS).
+M10 step 4: one decision per message, none hidden, and checking completeness against the real options; step 5: record the decision and reasoning and say where in one line.
+A13: "never reworks the option set, narrows the choices, nor pre-empts the decision"; any lean is "a labeled tie-break input"; the decision is non-delegable.
+W23 and AR4 (related in ST1) capture and ratify the decision: AR4 requires the ruling, refuted alternatives, named costs, status and authority.
+The deadline belongs in S15's "why now"; NOT SETTLED beyond that - no entry addresses deadlines in director messages.
+AR3 (board) and K5 (survey) are related to ST1 with recorded tensions (many moves at once; three questions a round) and do not govern a single three-option ask.
+
+### explain-routing.Q6
+M10 is central: "Decide: one decision at a time", step 4 "Ask for one decision per message", and step 3 "If a decision depends on understanding, establish the understanding first, and confirm it has landed".
+So ask the first decision alone, record it (step 5), then frame the second in light of the first; M10 step 1 says to know the finish line and state how many steps remain (here, two decisions).
+S15: each message carries one question, in the decision frame, with options as Continue picks and a Return pick naming anything parked.
+A13: do not pre-empt the second decision or narrow its options based on an assumed first answer.
+AR4/W23: each ruling is separately recorded and ratified; AR4's "amends"/"supersedes" fields express a later ruling's relation to an earlier one.
+ST1 notes AR3's board "offers many moves at once, against one decision at a time" and K5's dependent second round of three questions as unreconciled tensions; GUESS: K5's Round 2 depending on Round 1 is the closest corpus analogue but is for design intent capture, not director decisions.
+NOT SETTLED: M10 speaks of decisions depending on understanding, not on a prior decision explicitly.
+
+### OBSERVATIONS
+- S15 says "End with two or three picks" and that when asking for a decision "each option is a Continue pick naming it", plus options must include "doing nothing"; with three real options plus doing nothing plus Explore/Return the pick count exceeds three. The two instructions conflict for Q5.
+- ST1's "Related, not members" mentions W24, but W24 is absent from its frontmatter `related` list.
+- ST1 records bad-news and teaching guidance as weakly tested (one pair each), and no entry covers deadlines, progress updates or causal explanations to the director specifically.
+- RU1's honest-yield rule reads like it could govern any progress report, but its trigger is limited to sweeps/audits; ST1 flags this tension itself.
+- The claim-discipline guidance most relevant to Q3 lives in AGENTS.md, which carries no entry ID and is not in the INDEX ledger.
+- S6 (one sentence per line) is triggered by "markdown prose that someone else will read"; whether a chat message to a human counts is unclear.
+- INDEX.md says to resolve links against a checkout or fetch from GitHub main; I used only the local corpus as instructed.

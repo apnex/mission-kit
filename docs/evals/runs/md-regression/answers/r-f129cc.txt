@@ -1,0 +1,47 @@
+### system-boundary.S1
+A3, A4, A8, A9 and A14: the launcher's floor set, and nothing from the service.
+The launcher has none of the traits: it holds no state (T1), one operator uses it as a tool, so it is not multi-agent (T3: "One actor using several tools is not multi-agent"), the operator watches it, so it fails T4's test, it is not declarative (T2), and it has no model (T5); so only the `any-system` row applies (axioms/README.md, Applicability matrix; frontmatter `applies-to: [any-system]` on A3, A4, A8, A9, A14).
+The launcher and the service compose through a declared contract (entities/E5-system.md: "A launcher that hands sessions to a service through a declared interface composes with it").
+axioms/README.md: "A system it only composes with, through a contract the change leaves as it was, is not altered, and its axioms do not bind."
+The organisation's own axioms govern how the change is made and recorded, and are asked about separately from the product systems the change alters (E5, "The organisation doing the work is a system").
+
+### system-boundary.S2
+A1, A3, A4, A5, A6, A7, A8, A9, A10, A13 and A14: the launcher's floor set together with the service's whole set (not A2, A11 or A12).
+A change answers to "any system whose contract with it the change alters" (axioms/README.md, "What brings an axiom into force"). E5 adds: "changing an unversioned interface alters every consumer at once, so the change answers to all of them immediately."
+The service is stateful (T1, so A1), multi-agent (T3, so A5, A6, A7, A10, A13) and autonomous (T4, so A7, A10, A13). It is not declarative (no A2) and has no model (no A11 or A12).
+E5 says adding versioning to the interface "is encouraged, not required; if it is not done, the gap is recorded."
+
+### system-boundary.S3
+The service's whole set: A1, A3, A4, A5, A6, A7, A8, A9, A10, A13 and A14.
+E5: "A module inside a service is a system, and the service contains it", and "a change to any of them answers to the containing system, which has the traits of every part it contains."
+axioms/README.md: a change answers to "the system it modifies, every system containing it".
+The module having no state of its own does not matter. E5 names that escape as the failure: "a stateful system escapes its own axioms by being described as stateless modules".
+The module alone would carry only the floor set (A3, A4, A8, A9, A14), but that set is already part of the service's.
+
+### system-boundary.S4
+Only the library's own floor set: A3, A4, A8, A9 and A14. The library has no traits (axioms/README.md: "a plain library takes `any-system`").
+None of the ten consumers is altered, because the versioned contract and its behaviour are unchanged. E5: "Publishing a new version of an interface alters no consumer that has not adopted it; each adoption is a change to that consumer, and answers to that consumer's axioms".
+E5, "Why precision matters", rules out the opposite reading: otherwise "a small shared library would carry the axioms of every system that uses it".
+One caveat comes from E5: "A declared version range - any 2.x - is adoption in advance: a release within it alters every consumer bound by the range". The question says each consumer adopts as its own separate change, so I assume no ranges.
+NOT SETTLED: if a consumer did declare a range, the corpus does not say whether a release that changes internals only "alters" that consumer, since A0 says a contract "the change leaves as it was" does not alter.
+
+### system-boundary.S5
+A1, A3, A4, A5, A6, A7, A8, A9, A10, A13 and A14: the union of both units' traits, because for binding the launcher and service are one system.
+E5: "Where one unit depends on another and nothing declares the boundary between them ... they are one system, with the traits of both". axioms/README.md says the same thing: "the axioms either unit would bring all bind".
+What else is wrong: the undeclared dependency "is itself a fault against A3" (E5; A3 Air-Gap Principle: "units interact only through declared adapters and contracts"). Parsing log lines is a "contract in fact, not a declared boundary - and a change to it reaches across" (E5).
+Your change also owns the fix: "A change that alters what an undeclared neighbour reaches into owns that boundary: declaring and honouring the interface is inside its scope, not optional" (E5).
+GUESS: changing the format without that work would probably break the service's parser, which is A3's "Logic Leakage" fault.
+
+### system-boundary.S6
+It is defined in entities/E5-system.md, under "Definition".
+"A system is a unit of engineering with a boundary: what is inside it, and the contracts through which anything outside reaches it."
+"The boundary separates it from a neighbour only where it is declared and honoured"; otherwise the two units "are one system for deciding what a change answers to."
+Systems relate in exactly two ways, contain and compose. Traits describe a system and axioms bind it. A system is "Not a repository, a deployment unit or a process by definition" and "Not defined by size or by traits".
+entities/E6-component.md adds that a component is "a system seen as a part of a larger system that contains it."
+
+### OBSERVATIONS
+- The question set calls the launcher and the service "two systems". Under E5, in S5 (no declared interface) they are one system for binding, so whether they are two depends on the case.
+- E5's version-range rule ("a release within it alters every consumer bound by the range") seems to conflict with A0's "a contract the change leaves as it was ... is not altered" when a release within a range changes internals only. The corpus does not settle which rule wins (see S4).
+- There is a small tension between A0 and E5. A0 says work that touches a gap "closes as much of it as the touch allows", and A3's mechanics call for "explicit, versioned contracts". But E5 says that adding versioning to an interface you change is "encouraged, not required". I followed E5, the more specific text, in S2.
+- Inference, not stated in the corpus: I treated "one operator runs it and watches it" as not multi-agent (one actor using a tool) and not autonomous (a human sees a failure).
+- INDEX.md says to fetch missing files from a GitHub URL. I did not, because I was told to read only the local corpus.

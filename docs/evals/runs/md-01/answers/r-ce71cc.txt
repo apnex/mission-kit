@@ -1,0 +1,37 @@
+### machinery-domain.Y1
+Work-type W1 (build-a-slice), domain D5 (coordination-substrate).
+D5's subjectSurface is "the WorkGraph / lifecycle / messaging machinery as subject - its source, and the blueprints, gates, leases and queue it runs" (domains/D5-coordination-substrate.md), and its Freedom section says it is "free for the types that act on any surface, including those that build and ship the machinery's source".
+W1 is "implement one scoped increment against a given slice/design spec" (work-types/W1-build-a-slice.md), and its domainEligibility lists coordination-substrate, so the pairing passes constraint 3 of W0.
+domains/README.md (D0) also says "a coordination change, to its code or to the state of the work itself, resolves to coordination", and its tie-break rule puts the work where the diff lands.
+If the gate type first needs a design of record, that earlier node would be W14 (design-a-contract-or-invariant), which also allows D5. W1 says it "dependsOn its design/spec node".
+
+### machinery-domain.Y2
+Work-type W2 (fix-a-bug-or-repair), domain D4 (authority-governance).
+D4's subjectSurface is "the source of the machinery that enforces it, and SEAL, CODEOWNERS, decisions, class-grants, axioms-as-law" (domains/D4-authority-governance.md).
+D0 says "a ruling, and a change to the code that enforces rulings, resolve to authority" (domains/README.md, Territory).
+The merge is only the symptom. The tie-break rule says "the domain is the surface the work alters", and here that is the class-grant enforcement code, not coordination or delivery.
+W2's domainEligibility includes authority-governance, and it is free there (work-types/W2-fix-a-bug-or-repair.md).
+Caveat from the text: W2 is reactive-triggered and "dependsOn a filed bug entity", so it applies once the bug is filed. The question does not say whether it has been filed.
+
+### machinery-domain.Y3
+D0 says each part of the organisation is an engineered product, and "A part's domain holds its source and its live state together" (domains/README.md, Territory).
+A part splits into more than one domain "only where work on one portion is proved differently and the split has been found needed". The product's records were split this way: "The product's source resolves against code and CI, and its data against the records themselves, before and after."
+D7 states the distinct evidence contract: "delivery-code holds the product's source; this domain holds what that source has written", and applying a migration is product-data while writing it is delivery-code (domains/D7-product-data.md).
+D0 records how the split happened: product-data "entered" because work on records "had no domain", so it was added as a gap and not by stretching a neighbour.
+For the control plane, D0 says "a coordination change, to its code or to the state of the work itself, resolves to coordination", and adds that "a part not yet split may be on the same terms".
+So the corpus's reason is that no one has yet found the coordination split necessary. It does not give a principle that says the split is wrong.
+NOT SETTLED: the corpus does not explain why coordination state is not "proved differently" from its code. D5 already lists "before/after graph topology" as evidence, which looks like D7's "records before and after".
+
+### machinery-domain.Y4
+Domain: D6 (knowledge-methodology), for both parts. Its subjectSurface covers mission-kit entries, and its evidence is "mission-kit entries and the tools that check them" (domains/D6-knowledge-methodology.md). D0 also lists "its entries and the tools that check them".
+Work-type: NOT SETTLED. No work-type names revising an existing corpus entry.
+W16 does not fit: its evidence is "idea/doc created with source + revival trigger" and it is for capturing new capital, not revising an entry.
+W0 records only adding a layer (W1) and retiring one (W3) as knowledge-domain work, under "Gaps recorded" (work-types/README.md).
+GUESS: W1 build-a-slice for the entry revision and the checker change, since both are a scoped increment and W1 allows knowledge-methodology. If the checker defect is a filed bug, the checker fix is W2, which also allows knowledge-methodology. That could mean two nodes rather than one.
+
+### OBSERVATIONS
+- The coordination question (Y3) has a weak spot. D0 justifies the D1/D7 split by different evidence, but D5 already holds evidence of both kinds, source/CI and before/after graph topology, under one domain. The only reason D0 gives is "not yet found needed".
+- No work-type covers revising an existing knowledge entry. W0's recorded gap names only adding or retiring a layer.
+- W2 needs a filed bug entity. Neither Y2 nor Y4 says a bug was filed, so it is unclear whether W2 or W1 applies before filing.
+- Typos with stray spaces: D3 "transport- neutral", D4 "Decision/ Confirmation", W0 "machine- visible".
+- D0 Faults says five of the seven domains name tools in their subject surface, for example D3 "ois/pi/claude launchers" and D5 "WorkGraph". The corpus records this as known and has not corrected it.

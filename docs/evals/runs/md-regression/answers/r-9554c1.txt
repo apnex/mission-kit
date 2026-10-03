@@ -1,0 +1,63 @@
+### w0.Q1
+work-types/README.md (W0), "The canonical constraint set (= the closeability preflight)": "The `closeabilityPreflight` of a work-type is exactly the seed-time projection of this set". The set is nine constraints, e.g. strict evidence authority, roster-aware independence, domain eligibility, a required falsifier, a repair path for completion-gated seeds, idle-pool gating, author != approver, and bounded degradation. "A generated node that cannot pass this preflight at seed is not admitted."
+No, an entry may not restate them: "a work-type does not restate them, it *satisfies* them", and the Purpose section says "the constraint set is authored here once and never forked per entry (M7 guardrail #2)". The entry schema says the `## Evidence & closeability` body section must "reference this file's constraint set - do not restate it". The Faults section lists "The restated constraint" as a population fault because "the copy drifts from the one source".
+Entries may still name which constraint carries the weight for them. For example, W8 says "Load-bearing here: constraint 2".
+
+### w0.Q2
+No. W0, "Not a work-type: `recover-incident`": "Incident-recovery is **not a generatable work-type** - there is no `incident` substrate entity for a trigger to fire on, and once an incident is machine-visible it *is* a bug."
+It is recorded as "a posture / routing note". An incident goes through `fix-a-bug-or-repair` (W2) or `arc-repair` (W21), and the friction it surfaces is harvested through `bank-idea-or-knowledge-capital` (W16).
+domains/README.md agrees: "*Incidents* are not a surface at all".
+
+### w0.Q3
+`domainFreedom` is a field on the work-type, not on the domain (domains/README.md: "`domainFreedom` therefore lives on the **work-type**, not the domain").
+Free: object-level build/ship/assurance work "*acts on* a surface, so the domain is a free, discriminating choice" (domains/README.md, "Bimodal freedom").
+Pinned: "meta/substrate work whose *type names its own surface*: the domain is a constant function of the work-type (N=1), so the generator does not vary it". Pinned work lands on D4, D5 or D6.
+W0 constraint 3 says the same: "`domainFreedom: pinned` means the generator does not vary the domain", and the schema says `domainEligibility` is "a single value when pinned".
+Examples: W22, W23 and W24 are pinned to `authority-governance`, W16 to `knowledge-methodology`, and the arc work-types W17-W21 and W25 to `coordination-substrate`.
+W0 calls the `aggregate > sum` claim "honestly `pinned` for the meta third", meaning it holds only partly there.
+
+### w0.Q4
+No. W0 constraint 2: if the live roster collapses attester and executor to one agent, "**fail the seed**, and the gate waits for an independent agent or is met by director ratification (constraint 9); a same-agent review never stands in."
+Constraint 9: in a thin roster, an independence check "may degrade to **defer-until-independent-seat** or **director-ratification** ONLY ... Same-agent review is never a valid degradation." It also may not route to the architect when the architect is, or could be, the executor.
+So the only options are to wait for an independent agent or to get director ratification. Marking the self-review as weaker is not allowed.
+Constraint 7's `executor-evidence-provisional` does not help here. It belongs to a work-type's declared authority, and that closure "does not count as assurance until an independent gate consumes it".
+Note that W8 and W10 contain wording that seems to allow a fallback to plain `kind:review` (see OBSERVATIONS). The canonical W0 text governs.
+
+### w0.Q5
+W0, "The order a cold agent assembles one unit of work in":
+1. The systems the change alters give the traits, and so the axioms in force (E5, T0). The organisation doing the work is a system too, and its axioms govern how the work is done and recorded.
+2. The work-type gives the eligible roles and domains, and its `evidenceAuthority` says who may satisfy the evidence.
+3. The domain is the surface the work's evidence lands on (D0).
+4. The role is who performs the work. What it may attest is set by role and work-type together (R0).
+5. The method and artifact are the ones the work-type cites, in its `methods` and `produces` fields.
+W0 says: "Everything else attaches by citation or by system, never by widening the triple". The canonical constraint set / closeability preflight in W0 then has to pass at seed.
+
+### w0.Q6
+Procedure: M7, the axiom alignment audit (methods/M7-axiom-alignment-audit.md). It is conducted by the work-type W22 axiom-alignment-gate. W22 defines the work as testing "a design or a set of items against the constitution axioms one item at a time".
+The link is stated in W22's frontmatter, `methods: [M7]`. W14 also cites `methods: [M7]`.
+Document type: AR4, the decision record (artifacts/AR4-decision-record.md: "Carry one ruling durably"; its status distinguishes `proposed` from `ratified`). The work that produces one is W23 capture-decision-and-ratify, linked by W23's frontmatter `produces: [AR4]`. methods/M10-guided-dialogue.md line 48 restates this: "[`W23`] is the unit of work that captures and ratifies one".
+W0 states the general mechanism: "The work-type cites the procedure that conducts it, in `methods`, and the document it produces, in `produces`."
+Neither M7 nor AR4 names W22 or W23 back. The link is stated only from the work-type side.
+
+### w0.Q7
+W0, Territory: "A recurring kind of work that compiles to a closeable claimable node and fits no work-type is closed by adding one, not by stretching a neighbour to cover it". The reason given is that a stretched work-type carries two evidence contracts under one name.
+Until the new work-type exists, the work is recorded against the gap as a row in the project's backlog (AR5).
+The new work-type is authored from a peer exemplar (PC1), against the W0 entry schema, and lands through the gate. Because it changes how work is generated, the director ratifies it.
+If the work cannot compile to a node (no trigger, nothing to close), it is recorded as a routing note instead, the way incident recovery is.
+The Faults section names leaving the gap unfixed as "The uncovered work" (hand-routed every time).
+
+### w0.Q8
+W0, Faults ("visible across the set, invisible to any one work-type"):
+- **Two work-types for one act.** A generator could mint the same node under two names.
+- **The restated constraint.** An entry copies the canonical constraint set, and the copy drifts.
+- **The doubly-declared pairing.** A domain pairing is declared on both the work-type and the domain, and the two can disagree. Only the work-type's list governs.
+- **The uncovered work.** A recurring kind of work has no work-type, so it is hand-routed every time.
+- **The uncited procedure.** A procedure that conducts work is cited by no work-type, so it cannot be attached.
+Related: a work-type stretched over a neighbour's work, which carries "two evidence contracts under one name" (Territory). Also, every work-type must sit in exactly one Territory group row.
+
+### OBSERVATIONS
+- W8 (Evidence & closeability) says that if the roster collapses attester and executor, "the seed fails or downgrades to `kind:review`". W10 says "with a collapsed roster this falls back to plain `kind:review`". Both conflict with W0 constraints 2 and 9, which say same-agent review never stands in and allow only defer or director-ratification.
+- W22 declares `evidenceAuthority: verifier-attestation`, but its compositionHooks say "plain kind:review, not verifier-attestation per README constraint 2". These are in tension within the same entry. W0 constraint 2 says verifier-held gates "use plain `kind:review`, never verifier-attestation", which makes W22's authority value look inconsistent with it.
+- W22's hydrate-when / INDEX row says "a single item", but its Definition says "a design or a set of items ... one item at a time". This is minor. M7 is framed as an audit of planning/design artifacts rather than item sets.
+- The links W22->M7 and W23->AR4 are one-directional. M7 and AR4 do not name the work-types that cite them.
+- W0 lists `methods` as an optional field. The "Gaps recorded" section admits that procedure citations are incomplete, so "The uncited procedure" fault is knowingly present.

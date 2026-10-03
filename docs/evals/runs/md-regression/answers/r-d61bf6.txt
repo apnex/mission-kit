@@ -1,0 +1,50 @@
+### layer-charters.H1
+The rules layer (`rules/`). methods/README.md (M0) uses this exact case to anchor its placement order: "*credentials are never committed* binds an action in a situation, and is a rule" - it is not an axiom, because question 1 asks about "a limit a system is built toward", "not about how universal a ban sounds".
+It also produces nothing of its own (question 2), and it does not govern an artifact's form (question 3). It leaves a trace a check could test (question 4): the repository's commit content shows whether it was kept.
+rules/README.md (RU0) lists it under the *Treating the record* moment as a gap: "credentials are never committed - `M0`'s own example of a rule". No RU entry exists for it yet; the moment's members are RU2 and RU4 only.
+An entry would have to declare a `trace` in frontmatter (see H5).
+
+### layer-charters.H2
+The practices layer (`practices/`). Through M0's order: it is not an axiom; it produces no verdict, artifact or record; it does not govern an artifact's form; and re-reading leaves nothing in the record a check could test. That means question 5, "Otherwise a practice" (methods/README.md).
+practices/README.md (PC0): a practice "leaves no trace: nothing in the record afterwards shows whether it was followed".
+It would sit at the *Verifying* moment, which PC0 lists as "none - gap". GUESS: it could also be read as a *Handing over* moment, but the "before declaring done" check reads as verifying.
+Placement is not admission. PC0 says a practice "earns its place only by evidence that following it produces measurably different work", and "is not minted to fill an empty moment". So it belongs in practices/, but it gets an entry only once that difference has been observed.
+
+### layer-charters.H3
+The methods layer (`methods/`). It produces a result of its own, a verdict, so it stops at M0's question 2 (methods/README.md).
+Yes, an entry already covers it: M1, "Triangulated review - minimum 4 independent inputs" (methods/M1-triangulated-review.md). M1 says "require **at least four genuinely independent inputs** before reaching a verdict", and the verdict "draws on tensions surfaced between those four". Its hydrate-when is "You are reviewing a patch or design that ships to production or upstream".
+M0 places M1 at the *Verifying* moment and calls it "the independence the verifying procedures specialise".
+Add to M1 rather than create a neighbour: M0 says "Prefer strengthening an existing entry to adding a neighbour".
+
+### layer-charters.H4
+The style layer (`style/`). It governs how an artifact is written, "its form, whatever the work was". That is M0's question 3, and it is reached before the rule question. S0 (style/README.md) says a style rule "governs an artifact's form, and is judged by reading the output".
+S0 notes that checkability does not decide this: style and rules "may be checked by a tool", and the object (the text) is what decides it.
+In S0's territory it would be a Document rule. GUESS: at the section or token grain; S0 has no grain named for headings.
+No existing S entry covers heading case (I searched the corpus for "sentence case"/"sentence-case" and found nothing). Admission also requires S0's tests: "Its absence produced a real defect in a real artifact ... Aesthetic preference does not qualify", and "It holds across artifacts". Whether heading case passes the defect test is NOT SETTLED.
+S0 prefers "a rule a script can hold", and heading case could be stated as a predicate over the text.
+
+### layer-charters.H5
+Required: a rule must declare `trace` in frontmatter. rules/README.md: "A rule declares its `trace` in frontmatter: the observable in the record that shows it was kept or broken, required by the catalogue contract". The schema enforces this: schemas/catalog-entry/v1alpha1/catalog-entry.schema.json requires `trace` when category is `rule` and the id matches `^RU[1-9][0-9]*$`.
+Optional: `enforced-by`, which names the tool that checks the rule (the schema pattern is `^tools/`). `tools/check-enforcers.sh` holds that tool to existing. The schema's `trace` description: "Naming a tool that checks it is enforced-by's job, and is optional".
+A practice "declares no `trace`; if it acquires one, it is a rule and moves" (practices/README.md).
+
+### layer-charters.H6
+From methods/README.md (M0), "Ask in order, and stop at the first yes":
+1. Is it a limit a system is built toward, in force for every system with the traits it names? -> axiom.
+2. Does following it produce a result of its own (a verdict, an artifact, a record)? -> method (procedure). Guidance that only requires a record to carry something is a rule.
+3. Does it govern how an artifact is written, its form whatever the work was? -> style.
+4. Does it leave a trace in the record of the work that a check could test? -> rule.
+5. Otherwise -> practice.
+rules/README.md and practices/README.md cite this same statement: "axiom, procedure, style, rule, practice, asked in that order".
+
+### layer-charters.H7
+Handing over, specifically handing work in progress to another agent or a later session. methods/README.md: "handing work in progress to another agent or a later session has no procedure at all". rules/README.md lists *Handing over* as "none - gap" ("a handover record names what is unfinished - a rule that would leave a trace, and none exists"). practices/README.md also lists *Handing over* as "none - gap".
+M0 stresses that "handover is the moment that condition bites hardest", and that "a lone agent hands over to its own next session".
+Caveat: if you read the three tables strictly, no moment of the six is completely empty. M10 sits in *Handing over*, but it covers only leading a human of limited context to understand and decide. Agent-to-agent or session-to-session handover is the part that nothing governs.
+
+### OBSERVATIONS
+- The three charters' territory tables each have empty rows. Taken together, every one of the six moments has at least one member in some layer, so "a moment with nothing at all governing it" exists only at sub-moment level (agent/session handover). M0's text says this outright, but the tables alone would mislead.
+- M1's body heading is "## Rule", and it says "The number isn't sacred (sometimes 3 is enough...)". That conflicts with its title "minimum 4" and with the corpus's own method/rule distinction: M1 produces a verdict, so it is a method, not a rule.
+- M1 also says "the floor matters because below 3 the failure mode is predictable", while its stated floor is four. Within M1 the threshold is inconsistent.
+- INDEX.md says to resolve links against a checkout "otherwise fetch from" the GitHub raw URL. That points outside the given corpus and could disagree with it.
+- The rules charter says the credentials and commit-hygiene rules are carried by "the standing context" but have no RU entry. So the corpus's own exemplar rule sits outside the rules layer.

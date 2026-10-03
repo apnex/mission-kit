@@ -1,0 +1,275 @@
+You are scoring answers to a comprehension test against an answer key. Read only this file. Do not open any other file under /home/apnex/taceng/mission-kit/docs/evals/runs/md-02.
+
+Score each answer 0, 1 or 2 against the probe's key and rubric. An answer that labels its conclusion a guess, or says the text does not settle it, scores at most 1 unless the rubric says otherwise. Judge the answer, not its length or confidence.
+
+You do not know which answers came from which reader or document version, and must not try to infer it.
+
+Write one JSON object per line, for every answer id below and no others, to this file: /home/apnex/taceng/mission-kit/docs/evals/runs/md-02/scores/charter-claims.txt
+Each line exactly: {"item": "<answer id>", "score": 0|1|2, "reason": "<one sentence>"}
+When written, reply with only DONE.
+
+======================================================================
+PROBE charter-claims.V1
+
+Question:
+A set's charter claims a scope that no current member fills. Should the charter narrow its claim to what its members cover? And is stating that scope all a charter does?
+
+Key:
+No: a charter holds the set's vision - what it is for and claims to cover - and is never cut to fit current holdings; an unfilled claim is a gap and is named. It is not all a charter does: it also manages the set against that claim - territory, boundaries (what enters, where the rest goes), faults, and how changes are made.
+
+Rubric:
+2 for no with the gap reasoning, and naming at least one management concern beyond the vision. 1 for no with the gap reasoning alone. 0 otherwise.
+
+--- answer a-0966dd0f ---
+No, it should not narrow. `entities/E4-charter.md` says the vision "is what the set is for and what it claims to cover; the population is measured against it ... and it is never cut to fit what the set holds today", and "A claim no member yet fills is a gap - the distance between the population and its charter - and naming it is how gaps are found." On territory it adds: "How far the territory reaches is set by what the set is for, not by what it holds: a cell no member fills is kept and named as a gap, and removing it to match the population erases the gap it exposes."
+Stating scope is not all a charter does. E4 says "The rest of the charter is management", and lists required concerns: Purpose, Territory, Boundaries, Composition, Faults and Index. It also lists conditional ones: Kinds, Member shape, Placement, Enforcement boundary, Sub-sets, Axiom alignment and Probes.
+The territory must also "show a gap or argue that there is none" (E4), and `entities/E3-set.md` adds admission, retirement, naming and placement as set-level duties.
+
+--- answer a-9cda3c40 ---
+No, it should not narrow. `entities/E4-charter.md` says the vision "is what the set is for and what it claims to cover; the population is measured against it ... and it is never cut to fit what the set holds today", and "A claim no member yet fills is a gap ... naming it is how gaps are found".
+It also says a territory's "extent is set by purpose, not by what it holds: a cell no member fills is kept and named as a gap, and removing it to match the population erases the gap it exposes."
+And no, stating the scope is not all a charter does. E4 says "The rest of the charter is management": the territory shows where the population stands against the claim, the boundaries decide what enters and where the rest goes, the faults say how the set goes wrong, and changes go through *Changing a charter*.
+The required concerns are Purpose, Territory, Boundaries, Composition, Faults and Index. Conditional concerns (Kinds, Member shape, Placement, Enforcement boundary, Sub-sets, Axiom alignment, Probes) apply when the property is present (E4 tables; see also `entities/E3-set.md`, "A set states what a member cannot").
+
+--- answer a-4ee72237 ---
+No. entities/E4-charter.md says the vision "is what the set is for and what it claims to cover; the population is measured against it ... and it is never cut to fit what the set holds today". It also says "A claim no member yet fills is a gap - the distance between the population and its charter - and naming it is how gaps are found". It adds that "a cell no member fills is kept and named as a gap, and removing it to match the population erases the gap it exposes". Stating the scope is not all a charter does: "A charter holds the set's vision, and manages the set against it". The management covers territory (where the population stands against the claim), boundaries (what enters and where the rest goes), faults (how the set goes wrong), and changes made under "Changing a charter". The required concerns are Purpose, Territory, Boundaries, Composition, Faults and Index, plus conditional concerns such as Kinds, Member shape, Enforcement boundary and Probes (E4 tables).
+
+======================================================================
+PROBE charter-claims.V2
+
+Question:
+Is there a method (a procedure that produces a result of its own) for deciding what lands and what is cut from a piece of work?
+
+Key:
+No: deciding what to keep holds no method. RU1 (default-reject, honest yield) and RU3 (anti-amnesia deferral) govern it, but they are rules, not procedures. It is an unfilled moment - a gap.
+
+Rubric:
+2 for no method, with RU1 or RU3 identified as rules rather than methods. 1 for no method alone. 0 if RU1/RU3 (or old M3/M5) are named as the method.
+
+--- answer a-0679c34d ---
+No. In `methods/README.md` (M0), the Territory row **Deciding what to keep** ("what lands, what is cut, and how the verdict is reached") lists "**none - gap**".
+M0 explains: "*Deciding what to keep* holds no procedure: RU1 and RU3 constrain what is kept and what a cut must record, but no method produces the verdict itself."
+So `rules/RU1-default-reject-honest-yield.md` and `rules/RU3-anti-amnesia-deferral.md` apply here, but they are rules and not methods.
+
+--- answer a-e74f8d1d ---
+No. `methods/README.md` (M0), Territory table: "Deciding what to keep | what lands, what is cut, and how the verdict is reached | none - gap".
+M0 explains this: "`RU1` and `RU3` constrain what is kept and what a cut must record, but no method produces the verdict itself."
+Those two entries are rules (`rules/README.md`, row "Deciding what to keep"), not methods. They produce nothing of their own.
+The artifacts `AR3` board and `AR5` backlog (`artifacts/README.md`) are document types, not procedures.
+
+--- answer a-6a6a8ccc ---
+No. methods/README.md (M0) Territory lists the moment "Deciding what to keep - what lands, what is cut, and how the verdict is reached" as "none - gap". It explains: "RU1 and RU3 constrain what is kept and what a cut must record, but no method produces the verdict itself". RU1 (default-reject, honest yield) and RU3 (anti-amnesia deferral) are rules, not methods. So the corpus has rules that constrain the decision, but no procedure that produces it.
+
+======================================================================
+PROBE charter-claims.V3
+
+Question:
+At which moments of a unit of work does no rule apply today? Name one piece of guidance in the corpus that leaves a trace in the record but has no rule entry.
+
+Key:
+No rule at entering, committing to a design, verifying, handing over. Unheld trace-leaving guidance, for example: labelling claims measured or inferred (verifying; standing context, VISION); no tool attribution or one concern per commit (commit hygiene, standing context); credentials never committed (M0's own example); or any other real guidance in the corpus that leaves a trace in the record and has no rule entry. RU0's hypothetical handover rule does not count: it does not exist.
+
+Rubric:
+2 for at least three of the four empty moments plus one unheld candidate. 1 for one of the two parts. 0 otherwise.
+
+--- answer a-d5dc52d4 ---
+In `rules/README.md` (RU0), four of the six moments have no rule: **Entering**, **Committing to a design**, **Verifying** and **Handing over** (each "none - gap"). Deciding what to keep has RU1 and RU3. Treating the record has RU2 and RU4.
+One example from RU0's "Gaps tested": "*Verifying:* claims record whether they were measured or inferred - stated in the vision and the standing context, and visible in every claim". This leaves a trace, but there is no rule entry for it.
+RU0 names two more: "credentials are never committed", and commit hygiene (no tool attribution, one concern per commit). Both fall under *Treating the record*, a moment that does have rules, but neither one has its own entry.
+
+--- answer a-2658ae6e ---
+In `rules/README.md` (RU0), Territory, four moments have no rule: Entering, Committing to a design, Verifying and Handing over ("four rows hold none"). Only "Deciding what to keep" (RU1, RU3) and "Treating the record" (RU2, RU4) have members.
+One example of guidance that leaves a trace but has no rule entry, from RU0 "Gaps tested": under Verifying, "claims record whether they were measured or inferred - stated in the vision and the standing context, and visible in every claim."
+RU0 names others too: "credentials are never committed" and commit hygiene ("no tool attribution and one concern per commit") under Treating the record, and "a handover record names what is unfinished" under Handing over.
+RU0 says Entering and Committing to a design "have no checked candidate yet."
+
+--- answer a-02211efd ---
+rules/README.md (RU0) Territory has no rule at four of the six moments: Entering, Committing to a design, Verifying, and Handing over (each "none - gap"). Only Deciding what to keep (RU1, RU3) and Treating the record (RU2, RU4) have members. Under "Gaps tested", RU0 names guidance that leaves a trace but has no rule entry. For Verifying: "claims record whether they were measured or inferred - stated in the vision and the standing context, and visible in every claim". (It also names, for Treating the record, "credentials are never committed" and commit hygiene, meaning no tool attribution and one concern per commit. For Handing over, a handover record that names what is unfinished.)
+
+======================================================================
+PROBE charter-claims.V4
+
+Question:
+At which moments of a unit of work does no practice apply today?
+
+Key:
+Every moment but entering: committing to a design, verifying, deciding what to keep, treating the record, handing over. Only PC1, at entering, exists.
+
+Rubric:
+2 for all five. 1 for three or four. 0 otherwise.
+
+--- answer a-d869fdfe ---
+practices/README.md (PC0) Territory has no practice at five of the six moments: Committing to a design, Verifying, Deciding what to keep, Treating the record, and Handing over (each "none - gap"). Only Entering holds a member, PC1 author from exemplar. PC0 notes candidates without entries for Verifying and Treating the record: "distrust corroboration you produced", "check the splits that favour you" and "read before you overwrite". It also notes that the other three gap moments "have no checked candidate yet".
+
+--- answer a-be22cb61 ---
+In `practices/README.md` (PC0), Territory, five moments have no practice: Committing to a design, Verifying, Deciding what to keep, Treating the record and Handing over ("five rows hold none").
+Only Entering has a member, `PC1` author from exemplar.
+PC0 names candidates from the standing context for Verifying and Treating the record ("distrust corroboration you produced", "check the splits that favour you", "read before you overwrite"). It says the other three "have no checked candidate yet."
+PC0 also says a practice "is not minted to fill an empty moment", so these stay gaps until someone observes a difference in the work.
+
+--- answer a-ec0ef3dc ---
+In `practices/README.md` (PC0), five of the six moments have no practice: **Committing to a design**, **Verifying**, **Deciding what to keep**, **Treating the record** and **Handing over**. Only **Entering** has one (`PC1` author from exemplar).
+PC0 notes that *Verifying* and *treating the record* have candidates in the standing context that leave no trace ("distrust corroboration you produced", "check the splits that favour you", "read before you overwrite"). It says the other three "have no checked candidate yet".
+PC0 also says "A practice is not minted to fill an empty moment". A gap stays named until a difference in the work has been observed.
+
+======================================================================
+PROBE charter-claims.V5
+
+Question:
+Do the roles cover authorities that are not about a single unit of work? Name one such authority and which role holds it, if any.
+
+Key:
+Yes: authorities above a single unit include choosing and changing direction, curation and delegation (the director, R4), and running a multi-unit arc (the architect, per W18/W19/W21 roleEligibility). A real above-unit authority shown to have no holder is also correct: it would be a gap. The roles are not complete by count.
+
+Rubric:
+2 for one above-unit authority with the role that holds it, or a real one correctly shown to have no holder. 1 for the authority without holder or argument. 0 for an answer that the four roles cover everything because there are four.
+
+--- answer a-a0456bd3 ---
+Yes. `roles/README.md` (R0) claims "every authority engineering work needs - within a unit of work ... and across units, where work is chosen, run as a flow and kept". Its territory has three across-unit positions.
+**Direction** ("to choose which work is done, in what order, and to change course") is held by `R4` director. **Flow** ("to seed, drive and repair a run of many units") is held by `R1` architect, "which holds the driver lease". **Curation** ("to keep the durable knowledge and to delegate authority to the other roles") is held by `R4` director.
+So one example is Curation, which the director holds. `roles/R4-director.md` gives the director's essence as "ratification & curation authority; the delegator whose authority the other roles act under".
+
+--- answer a-017e0399 ---
+Yes. `roles/README.md` (R0), Territory, claims "every authority engineering work needs - within a unit of work ... and across units, where work is chosen, run as a flow and kept".
+There are three positions across units. Direction ("to choose which work is done, in what order, and to change course") is held by `R4` director. Flow ("to seed, drive and repair a run of many units") is held by `R1` architect, "which holds the driver lease". Curation ("to keep the durable knowledge and to delegate authority to the other roles") is held by `R4` director.
+Example: Direction, held by the director.
+R0 says "No position lacks a role today."
+
+--- answer a-9517fd83 ---
+Yes. roles/README.md (R0) Territory covers authority "within a unit of work ... and across units, where work is chosen, run as a flow and kept". It lists three positions that span units: Direction ("to choose which work is done, in what order, and to change course") is held by R4 director. Flow ("to seed, drive and repair a run of many units") is held by R1 architect, "which holds the driver lease". Curation ("to keep the durable knowledge and to delegate authority to the other roles") is held by R4 director. Example answer: Direction, held by the director (R4).
+
+======================================================================
+PROBE charter-claims.V6
+
+Question:
+Would adding an eighth domain contradict the domains charter?
+
+Key:
+No: the set claims every surface a unit of work's evidence can resolve against and is not expected to be complete; the current number is a count, not the claim.
+
+Rubric:
+2 for no, with the claim-not-count reason. 1 for no alone. 0 for yes.
+
+--- answer a-70e6990c ---
+No, as long as the domain is added the way the charter says. `domains/README.md` (D0) says "the set claims every surface work's evidence can land on, however many that proves to be" and "This set is not complete and is not expected to be."
+D0 also says a surface no domain covers "is closed by adding a domain with its own evidence contract, not by stretching a neighbour", and gives `product-data` (D7) as a domain that entered this way.
+It would contradict D0 if the eighth domain broke one of D0's Faults. These are a mode-domain, an "indistinct pair" with an existing domain, or a domain named after a tool. It would also contradict D0 if the domain did not sit in a Part ("A gap that fits none of the parts above means the parts are incomplete too, and the part is added with the domain").
+Two other files would need updates: `work-types/README.md` hard-codes "DOMAINS (N=7)", and every relevant work-type's `domainEligibility` would have to list the new domain.
+
+--- answer a-8ba0a09b ---
+No, not by itself. `domains/README.md` (D0) says the set "claims every surface work's evidence can land on, however many that proves to be". It also says "**The set grows when the territory finds a gap.** This set is not complete and is not expected to be", and gives `product-data` (D7) as a domain that entered this way.
+The charter sets conditions, though. The new domain must close a real surface with "its own evidence contract, not by stretching a neighbour". It must not be a mode-domain or an "indistinct pair" (Faults). It must sit in a part row, and if no part fits, "the part is added with the domain".
+An eighth domain that breaks those conditions would contradict the charter. One that meets them would not.
+Some counts would go stale and need updating: `work-types/README.md` says "DOMAINS (N=7)", and D0's Faults say "Five of the seven current members".
+
+--- answer a-7077acd1 ---
+No, provided the new domain closes a real gap with its own evidence contract. domains/README.md (D0) says: "The set grows when the territory finds a gap. This set is not complete and is not expected to be". It also says a surface no domain resolves "is closed by adding a domain with its own evidence contract, not by stretching a neighbour". D7 product-data is cited as having entered this way. An eighth domain would conflict with D0 only if it showed one of its listed faults: a mode-domain (e.g. "verification"), an "indistinct pair" with no distinct evidence contract, or a domain named after a tool. D0 says a gap that fits none of its parts also requires adding the part.
+
+======================================================================
+PROBE charter-claims.V7
+
+Question:
+Does any machine-checkable contract in this corpus (a schema a validator runs, not a prose template) govern the documents a project writes using lifecycle types the corpus defines, such as a board, backlog or decision record? Should one?
+
+Key:
+None exists: the schemas cover catalogue entries, standing context, skill bodies, Question, ContextFrame and entry bodies; artifact types carry prose templates, not contracts; the board and backlog are checked only by code in tools/check-board.mjs. Machine-checkable shapes belong to the schemas set, which is for contracts validatable without a project runtime, so the absence is a gap within its scope.
+
+Rubric:
+2 for none exists, plus that it falls inside the schemas set's claim and is a gap. 1 for none exists alone. 0 otherwise.
+
+--- answer a-fa9a5dc1 ---
+No. schemas/README.md (SC0) Territory lists "Lifecycle documents - documents a project writes using a type this corpus defines - a board, a backlog, a decision record, a delta, a system architecture", checked by "none", members "none - gap". It adds: "the artifact types carry prose templates, and this corpus's own board and backlog are checked only by code in tools/check-board.mjs, so neither here nor in a consuming project can a machine refuse a malformed instance". On "should one": SC0 claims this within its territory and names it a gap, and its Purpose says a contract exists "so a malformed document is refused rather than read and believed". By E4, a named gap is a claim that no member fills yet. But no text orders one to be built, and SC0 lists "the contract ahead of its consumer" (A3 earned exposure) as a fault, so whether to build one now is NOT SETTLED. GUESS: this corpus's own board and backlog are consumers already, so a contract would probably not be speculative.
+
+--- answer a-2a434741 ---
+No such contract exists. In `schemas/README.md` (SC0), Territory, the "Lifecycle documents" row (a board, a backlog, a decision record, a delta, a system architecture) is "Checked by: none", "Members: none - gap".
+SC0 says: "the artifact types carry prose templates, and this corpus's own board and backlog are checked only by code in `tools/check-board.mjs`, so neither here nor in a consuming project can a machine refuse a malformed instance."
+`SC6` governs the body sections of the artifact *type entries* in the corpus, not the documents a project writes.
+Whether one should exist: NOT SETTLED. SC0 records the absence as a gap but does not decide to fill it. Its fault "The contract ahead of its consumer" (A3 earned exposure) warns against writing contracts on speculation.
+GUESS: yes, starting with the board and backlog, because `tools/check-board.mjs` already shows a consumer and a hand-written check that a schema would replace.
+
+--- answer a-d0e9a91e ---
+No. In `schemas/README.md` (SC0), the **Lifecycle documents** row ("a board, a backlog, a decision record, a delta, a system architecture") has "Checked by: none" and "**none - gap**".
+SC0 adds: "Lifecycle documents have no contract at all: the artifact types carry prose templates, and this corpus's own board and backlog are checked only by code in `tools/check-board.mjs`, so neither here nor in a consuming project can a machine refuse a malformed instance."
+Should one exist? The charter claims this territory and names the absence as a gap. Under E4, a gap is kept and measured against, not removed. But no file in the corpus says the contract should be built now.
+SC0 also lists "The contract ahead of its consumer" as a fault (A3's earned exposure). AR0 says gaps are "recorded as gaps rather than filled speculatively".
+So whether one should be authored is NOT SETTLED. GUESS: the corpus would favour one once a consuming process is shown to need it, for the same reason a set is drafted only when readers are shown to miss guidance.
+
+======================================================================
+PROBE charter-claims.V8
+
+Question:
+Which work-type covers revising or retiring an existing entry in the knowledge corpus?
+
+Key:
+Since director ruling A: revising an entry is W1 build-a-slice, or W2 fix-a-bug where a defect is filed, on D6 knowledge-methodology. Retiring an entry supersedes it - the entry keeps its ID as a stub - which is W1 too; W3 retire-or-hard-cut is a hard cut, not a deprecation shim, and fits only deleting a surface outright. W16 only captures new capital. Before the ruling the answer was none; the run cc-01 scored that state.
+
+Rubric:
+2 for W1 or W2 to revise on D6, with retiring correctly placed (W1 superseding, or W3 only for outright deletion). 1 for one half, or D6 without a correct work-type, or W16 noted as capture only. 0 for none.
+
+--- answer a-a612961f ---
+None of its own. work-types/README.md (W0) "Gaps recorded" says: "Work on the knowledge corpus is building on its domain, and has no work-type of its own". It continues: "Adding or revising an entry or a tool is a build slice, W1, or a fix, W2, where a defect has been filed". It also says: "Retiring an entry supersedes it - the entry keeps its ID as a stub - which is also a build slice; only deleting a surface outright, such as a whole layer or a tool, is a hard cut, W3". So revising means W1 (or W2 if a defect has been filed), and retiring an entry means W1, not W3, despite W3's title "retire-or-hard-cut".
+
+--- answer a-f1c7ad13 ---
+None has its own work-type. `work-types/README.md` (W0), "Gaps recorded", says: "Work on the knowledge corpus is building on its domain, and has no work-type of its own."
+Revising an entry is "a build slice, `W1`, or a fix, `W2`, where a defect has been filed."
+"Retiring an entry supersedes it - the entry keeps its ID as a stub - which is also a build slice". Only "deleting a surface outright, such as a whole layer or a tool, is a hard cut, `W3`."
+W0 adds that "adding or retiring a layer" may later earn its own work-type.
+
+--- answer a-f0dcceee ---
+No work-type is dedicated to this. `work-types/README.md` (W0), "Gaps recorded", says: "*Work on the knowledge corpus* is building on its domain, and has no work-type of its own."
+Revising an entry is `W1` build-a-slice, or `W2` fix-a-bug-or-repair "where a defect has been filed".
+Retiring an entry "supersedes it - the entry keeps its ID as a stub - which is also a build slice" (`W1`).
+Only "deleting a surface outright, such as a whole layer or a tool, is a hard cut, `W3`". W0 adds that a work-type of its own for extending the corpus "may earn its place".
+
+======================================================================
+PROBE charter-claims.V9
+
+Question:
+Besides explaining to a human, name a concern whose guidance spans two or more layers and could be gathered as a set, with members from at least two layers.
+
+Key:
+Any of: treating history (RU2, RU4, M9); deferring without forgetting (RU3, RU1, AR5); independent verification (M1, W8, K21, R3, A8); or another real cross-layer concern with real members.
+
+Rubric:
+2 for a concern with real members from at least two layers. 1 for a plausible concern without correct members. 0 otherwise.
+
+--- answer a-f4f2aa07 ---
+Independent verification. `sets/README.md` (ST0) lists it in its Territory as "*none - gap* | independent verification: who may check work, how, and what a gate must prove - `M1`, `W8`, `K21`, `R3`, `A8`".
+Those members come from five layers: methods (M1), work-types (W8), skills (K21), roles (R3) and axioms (A8).
+ST0 also names two other gaps: "treating history" (`RU2`, `RU4`, `M9`, across rules and methods) and "deferring without forgetting" (`RU1`, `RU3`, `AR5`, across rules and artifacts).
+ST0 says a set is drafted for one of these "when readers in that situation are shown to miss guidance that applies".
+
+--- answer a-15af5e65 ---
+Deferring without forgetting: what is cut, and how it comes back. `sets/README.md` (ST0) Territory names this as "none - gap", with members `RU1`, `RU3` and `AR5`.
+These come from two layers: rules (`RU1` default-reject and honest yield, `RU3` anti-amnesia deferral) and artifacts (`AR5` backlog).
+ST0 also lists treating history (`RU2`, `RU4`, `M9`: rules and methods) and independent verification (`M1`, `W8`, `K21`, `R3`, `A8`).
+ST0 says a set is drafted for one of these "when readers in that situation are shown to miss guidance that applies."
+
+--- answer a-1008f803 ---
+Independent verification: who may check work, how, and what a gate must prove. sets/README.md (ST0) Territory lists it as a gap ("none - gap") with members M1 (methods), W8 (work-types), K21 (skills), R3 (roles) and A8 (axioms). ST0 lists two other such concerns. Treating history covers RU2 and RU4 (rules) and M9 (methods). Deferring without forgetting covers RU1 and RU3 (rules) and AR5 (artifacts). ST0 says a set is drafted for one of these "when readers in that situation are shown to miss guidance that applies".
+
+======================================================================
+PROBE charter-claims.V10
+
+Question:
+Which axiom protects a system against a hostile actor or untrusted input?
+
+Key:
+None has it as its mandate. The axiom charter today says malice is out of scope because collaborating agents act in good faith; that reason covers collaborators, not hostile outsiders or untrusted input, which fall within the axioms' purpose of keeping a system aligned with its intent. Against the current corpus a reader may quote the exclusion: that measures the charter, not the reader. A2's incidental security language is not a mandate.
+
+Rubric:
+2 for no axiom with that mandate, plus either calling it a gap or noting the good-faith reason covers collaborators but not outsiders. 1 for no axiom alone, or for quoting the exclusion without that distinction. 0 for naming an axiom as the protector.
+
+--- answer a-22c57118 ---
+None. axioms/README.md (A0) Territory records: "A second gap: nothing protects a system against a hostile actor or untrusted input". It explains that "The good-faith assumption does not reach an outsider, or input no collaborator vouches for". It also notes that "A2 names manual configuration a security fault, but no axiom has protection against hostility as its mandate". It says the gap "is recorded, not filled".
+
+--- answer a-8598087a ---
+None. `axioms/README.md` (A0), Territory: "A second gap: nothing protects a system against a hostile actor or untrusted input."
+It continues: "[`A2`] names manual configuration a security fault, but no axiom has protection against hostility as its mandate. It is recorded, not filled".
+A0 gives the reason: "The good-faith assumption does not reach an outsider, or input no collaborator vouches for".
+The nearest text is `axioms/A2-isomorphic-specification.md`: "Manual configuration is a security and fidelity fault", plus its success signal on "negative and adversarial/chaos paths". This is incidental, not a mandate.
+
+--- answer a-76d89c20 ---
+None. `axioms/README.md` (A0) says: "**A second gap: nothing protects a system against a hostile actor or untrusted input.**"
+It continues: "`A2` names manual configuration a security fault, but no axiom has protection against hostility as its mandate. It is recorded, not filled".
+The nearest text is `axioms/A2-isomorphic-specification.md`: "Manual configuration is a security and fidelity fault". This is a fault inside A2, not A2's mandate.

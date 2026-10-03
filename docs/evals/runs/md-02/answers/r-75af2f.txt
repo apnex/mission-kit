@@ -1,0 +1,38 @@
+### machinery-domain.Y1
+Work-type W1 (build-a-slice), domain D5 (coordination-substrate).
+D5's subjectSurface is "the WorkGraph / lifecycle / messaging machinery as subject - its source, and the blueprints, gates, leases and queue it runs", and its evidence resolves against "the machinery's source files, PRs, commits and CI" (domains/D5-coordination-substrate.md).
+D5 "Freedom" says it is "free for the types that act on any surface, including those that build and ship the machinery's source", and W1's domainEligibility includes coordination-substrate (work-types/W1-build-a-slice.md).
+D0's tie-break puts the domain where the diff lands: "For a code change, the surface it alters is where its diff lands" (domains/README.md).
+W1 is "An engineer implements one scoped increment against a given slice/design spec", so it needs a spec node first ("dependsOn its design/spec node") and is bracketed by a verify-gate (W8).
+If the new gate type's contract is not yet designed, that preceding design node would be W14 on D5, but that is a separate unit, not this one.
+
+### machinery-domain.Y2
+Work-type W2 (fix-a-bug-or-repair), domain D4 (authority-governance).
+D0 says of the control plane: "a ruling, and a change to the code that enforces rulings, resolve to authority" (domains/README.md).
+D4's subjectSurface names "the source of the machinery that enforces it, and SEAL, CODEOWNERS, decisions, class-grants", and W2's domainEligibility includes authority-governance.
+The merge is only the symptom; under the D0 tie-break "the evidence-target wins: the domain is the surface the work alters", so it is not D5 (coordination) and not W6 (merge-and-land).
+Caveat: W2 is "resolve a filed defect" and "dependsOn a filed bug entity" (work-types/W2-fix-a-bug-or-repair.md); the question does not say a bug was filed.
+If no bug entity is filed, the corpus does not directly settle the work-type for unfiled code fixes outside the knowledge corpus. NOT SETTLED for that case; GUESS: file the bug first (W0's incident note says a machine-visible incident "is a bug"), then W2, or treat it as W1 by analogy with W0's corpus rule.
+
+### machinery-domain.Y3
+The governing rule is in domains/README.md Territory: "A part's domain holds its source and its live state together. A part splits into more than one domain only where work on one portion is proved differently and the split has been found needed."
+The product was split: "its source resolves against code and CI, and its data against the records themselves, before and after", and product-data "entered this way" as a recorded gap (applying a migration or repairing records had no domain, since D1 holds source and D2 the estate).
+D7 restates the canonical split: "writing it is delivery-code, and applying it to the records is product-data" (domains/D7-product-data.md).
+The control plane has two domains for a different reason: "it is two machineries, each an engineered product", and within coordination "a coordination change, to its code or to the state of the work itself, resolves to coordination".
+So the coordination machinery's code and state stay in D5 because no split has been found needed; D0 says "a part not yet split may be on the same terms".
+The corpus does not give a positive argument that D5's code and state are proved the same way; D5's own evidence list names different evidence for each (source/CI vs WorkItem state, leases, graph topology). See OBSERVATIONS.
+
+### machinery-domain.Y4
+Domain D6 (knowledge-methodology): D0 places "its entries and the tools that check them" in D6, and D6's evidence resolves against "mission-kit entries and the tools that check them" (domains/D6-knowledge-methodology.md).
+Work-type W1 (build-a-slice), or W2 for any part where a defect has been filed: work-types/README.md "Gaps recorded" says "Work on the knowledge corpus is building on its domain, and has no work-type of its own. Adding or revising an entry or a tool is a build slice, W1, or a fix, W2, where a defect has been filed."
+So revising the entry is W1; fixing the checker is W2 if a bug against it is filed, otherwise W1.
+It is not W16: that is pinned to D6 but is for capturing new reusable capital "with source + revival trigger", and W0 says corpus work has no work-type of its own.
+NOT SETTLED: whether the entry revision and the checker fix are one node or two. GUESS: one W1 slice on D6 if nothing is filed, because both are on one domain and one type covers both.
+
+### OBSERVATIONS
+- D0 says the product split because "the evidence differs" between source (code/CI) and records, yet D5 lists equally different evidence for its source (source files, PRs, CI) and its state (WorkItem state, leases, graph topology). So "evidence differs" alone does not explain why D5 was not split. The real discriminator is "the split has been found needed", which is historical, not a principle. D0 half-admits this ("a part not yet split may be on the same terms").
+- W2 requires a filed bug entity, but the "adding or revising ... is W1, or W2 where a defect has been filed" rule is stated only for the knowledge corpus (W0 Gaps recorded). For an unfiled bug in D4/D5 code, the corpus gives no explicit rule.
+- W1's hydrate-when says "scoping the implementation of a bounded increment", but its definition is about implementing. The trigger wording is slightly off from the act.
+- W16 is pinned to knowledge-methodology and its "Keep knowledge" group overlaps with "revising an entry" (W1 per W0). The boundary between banking capital and revising a corpus entry is stated only in W0's gap note, not in W16.
+- D5's title and subjectSurface name a specific tool (WorkGraph); D0's Faults section records this itself ("The domain named after a tool").
+- INDEX.md links resolve against a remote repository; I resolved them only within the given corpus directory.

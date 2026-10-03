@@ -1,0 +1,25 @@
+You are an engineering agent who has just been given a knowledge corpus and nothing else. Read only files under /tmp/opencode/evmd-a2/c-c3e24b08. Its entry point is INDEX.md; open whatever you need.
+
+Answer using the corpus, citing files and text.
+If it does not settle something, say "NOT SETTLED" and label any guess "GUESS:". Never present a guess as if the text said it. Under eight sentences per question.
+
+Do not edit any file except the one answer file named at the end. Do not run git.
+
+Questions:
+
+### machinery-domain.Y1
+An engineer is adding a new gate type to the coordination machinery's source code. Which work-type and which domain? Name the entry IDs.
+
+### machinery-domain.Y2
+A bug in the code that enforces class-grants lets an unauthorised agent merge. An engineer will fix that code. Which work-type and which domain?
+
+### machinery-domain.Y3
+Why are a product's records a separate domain from its code, while the coordination machinery's code and the state it holds share one domain?
+
+### machinery-domain.Y4
+An engineer revises an existing entry in the knowledge corpus and fixes the checker that validates the corpus's entries. Which work-type and domain?
+
+Write your answers to this file, and nothing else:
+  /home/apnex/taceng/mission-kit/docs/evals/runs/md-02/answers/r-75af2f.txt
+Put each answer under its heading exactly as given above (a line starting with ###), then a final heading `### OBSERVATIONS` noting anything ambiguous, inconsistent or wrong you met, or "none".
+When the file is written, reply with only the word DONE.

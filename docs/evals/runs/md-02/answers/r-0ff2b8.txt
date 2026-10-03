@@ -1,0 +1,36 @@
+### machinery-domain.Y1
+Work-type W1 (build-a-slice), domain D5 (coordination-substrate). The domain is free here, not pinned.
+D0 (domains/README.md, Territory) says "a coordination change, to its code or to the state of the work itself, resolves to coordination". The D5 subjectSurface is "the WorkGraph / lifecycle / messaging machinery as subject - its source, and the blueprints, gates, leases and queue it runs".
+D5 Freedom says it is "free for the types that act on any surface, including those that build and ship the machinery's source". W1's domainEligibility lists coordination-substrate.
+The D0 tie-break rule puts a code change "where its diff lands", and here that is the machinery's source.
+W1 (compositionHooks) says the slice is "bracketed by a verify-gate" and "dependsOn its design/spec node". If the gate's contract still needs designing, that earlier node would be W14 on D5.
+GUESS: the tests for the new gate could be a separate W5 node on D5. The corpus does not require this.
+
+### machinery-domain.Y2
+Work-type W2 (fix-a-bug-or-repair), domain D4 (authority-governance).
+D0 Territory: "a ruling, and a change to the code that enforces rulings, resolve to authority". The D4 subjectSurface is "the source of the machinery that enforces it, and SEAL, CODEOWNERS, decisions, class-grants".
+W2 lists authority-governance in its domainEligibility. Its trigger is "a filed bug entity" ("You are resolving a defect that has already been filed").
+The fact that the bad outcome was an unauthorised merge does not move the work to D5, and it does not make it W6. D0's tie-break says "the evidence-target wins: the domain is the surface the work alters", and the work alters the code that enforces class-grants.
+NOT SETTLED: if no bug has been filed yet, W2's trigger is missing. GUESS: file the bug first, or treat the work as W1 on D4 (W0 Gaps uses W1 for changes where no defect has been filed).
+
+### machinery-domain.Y3
+D0 Territory: "A part's domain holds its source and its live state together", and a part splits "only where work on one portion is proved differently and the split has been found needed".
+The product split "because the evidence differs: its source resolves against code and CI, and its data against the records themselves, before and after" (D0, and D7 Freedom: "writing it is delivery-code, and applying it to the records is product-data").
+In the control plane, the corpus counts machineries, not portions: "it is two machineries, each an engineered product". Each machinery keeps its code and its state in one domain, because "One product's source and live state are therefore one domain's evidence, not two contracts".
+So coordination code and coordination state are one product's source and live state. D5's evidenceResolvesAgainst lists both the source files and CI and the "WorkItem/blueprint state ... before/after graph topology".
+The corpus also says the asymmetry may not last: "a part not yet split may be on the same terms".
+The text supports this reading: what triggered the product split is that the split was "found needed", not some principle that applies only to products.
+
+### machinery-domain.Y4
+Work-type W1 (build-a-slice), or W2 (fix-a-bug-or-repair) for any part where a defect has been filed. Domain D6 (knowledge-methodology), free.
+W0 (work-types/README.md, Gaps recorded): "Work on the knowledge corpus is building on its domain, and has no work-type of its own. Adding or revising an entry or a tool is a build slice, W1, or a fix, W2, where a defect has been filed."
+D0 Territory gives the knowledge part's evidence as "its entries and the tools that check them". The D6 evidenceResolvesAgainst is "mission-kit entries and the tools that check them". So both the entry and the checker are D6.
+It is not W16. W16 is pinned to D6, but it means capturing new capital ("idea/doc created with source + revival trigger"), not revising an entry or fixing a tool.
+NOT SETTLED: whether this is one node or two. GUESS: if a bug was filed against the checker, that part is W2 and the entry revision is W1, both on D6.
+
+### OBSERVATIONS
+- Y3: D0 says a part splits where "work on one portion is proved differently". D5's own evidence list already separates source/PRs/CI from "before/after graph topology" state, and that is the same code-versus-records difference that justified D7. So the line between D5 and D7 rests on whether a split was "found needed", not on a clear evidence rule. D0 hedges this ("a part not yet split may be on the same terms").
+- Y2: D0 says enforcement code is authority (D4) by what it does. The corpus never says where the class-grant enforcement code physically lives. If it lives inside the coordination machinery's codebase, "where its diff lands" (tie-break) and "the code that enforces rulings resolve to authority" could pull different ways. I applied the explicit D0 sentence.
+- W2 requires an already-filed bug. The corpus never says how to classify a defect fix that has no filed bug, except by implication through W0's "W1, or a fix, W2, where a defect has been filed".
+- D0 Faults admits that five of the seven domains name tools in their subject surface (for example D3 "ois/pi/claude launchers"). This is recorded as a fault and not fixed.
+- In D1, the title in this corpus ("the shipped product's codebase") differs from the D1 title I was given in my standing context ("the product/service codebase"). I did not use that outside context to answer.

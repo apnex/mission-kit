@@ -1,0 +1,32 @@
+### machinery-domain.Y1
+Work-type W1 (build-a-slice), domain D5 (coordination-substrate).
+D5's subjectSurface is "the WorkGraph / lifecycle / messaging machinery as subject - its source, and the blueprints, gates, leases and queue it runs", and its Freedom section says it is "free for the types that act on any surface, including those that build and ship the machinery's source" (domains/D5-coordination-substrate.md).
+D0 says "a coordination change, to its code or to the state of the work itself, resolves to coordination" (domains/README.md, Territory).
+W1's domainEligibility includes coordination-substrate with domainFreedom: free, so the pairing passes constraint 3 of W0 (work-types/W1-build-a-slice.md; work-types/README.md).
+W1 assumes a bounded `target` (a slice/design spec, provided-by-trigger). If no design exists yet for the gate type, a W14 design node comes first (W1 compositionHooks: "dependsOn its design/spec node").
+
+### machinery-domain.Y2
+Work-type W2 (fix-a-bug-or-repair), domain D4 (authority-governance).
+D0: "a ruling, and a change to the code that enforces rulings, resolve to authority" (domains/README.md, Territory). D4's subjectSurface names "the source of the machinery that enforces it, and SEAL, CODEOWNERS, decisions, class-grants" (domains/D4-authority-governance.md).
+D0's tie-break rule says "the domain is the surface the work alters" and "for a code change, the surface it alters is where its diff lands". The diff lands in the class-grant enforcement code, so the domain is D4, even though the symptom shows up as a merge.
+W2's domainEligibility includes authority-governance (work-types/W2-fix-a-bug-or-repair.md).
+W2's trigger is a filed `bug` entity ("resolve a filed defect"). If nobody has filed the bug yet, it needs to be filed first. The question does not say whether it was filed.
+
+### machinery-domain.Y3
+The corpus's rule: "A part's domain holds its source and its live state together. A part splits into more than one domain only where work on one portion is proved differently and the split has been found needed" (domains/README.md, Territory).
+The product went through that split. Its "source resolves against code and CI, and its data against the records themselves, before and after". product-data was added because work on records "had no domain, since `delivery-code` holds the source and `distribution` the estate, and neither holds the records" (domains/README.md). D7 calls this "a different evidence contract", with the schema migration as "the canonical split: writing it is `delivery-code`, and applying it to the records is `product-data`" (domains/D7-product-data.md).
+The coordination machinery has not been split. D0 says "a part not yet split may be on the same terms", and D5 lists both source/PR/CI evidence and WorkItem/lease/topology state evidence under one domain.
+So the asymmetry comes from history (the need for a split was found for the product and not yet for coordination). The corpus does not argue that coordination state is proved the same way as coordination code.
+NOT SETTLED whether coordination state should eventually be split out. GUESS: D5's own two evidence lists (CI vs before/after graph topology) look like the same kind of difference that justified D7, so a split may be found needed later.
+
+### machinery-domain.Y4
+Domain: D6 (knowledge-methodology). Its evidenceResolvesAgainst is "mission-kit entries and the tools that check them", and D0's Knowledge row reads "its entries and the tools that check them" (domains/D6-knowledge-methodology.md; domains/README.md). Both the entry revision and the checker fix land there, so one domain covers both.
+Work-type: NOT SETTLED. No work-type is specifically for revising an existing entry. W16 does not fit, because its evidence is a new "idea/doc created with source + revival trigger" and its falsifier includes "duplicate of an existing ledger entry" (work-types/W16-bank-idea-or-knowledge-capital.md).
+W1 (build-a-slice) and W2 (fix-a-bug-or-repair) both list knowledge-methodology with domainFreedom free, and W0 places both in the "Build" group, which "changes a system - ... the organisation's own machinery and knowledge" (work-types/README.md).
+GUESS: the checker fix is W2 if a bug was filed against it (otherwise W1), and the entry revision is W1. These are two concerns, and they probably compile to two nodes rather than one.
+
+### OBSERVATIONS
+- D0's rule that a domain holds "its source and its live state together" unless a split is "found needed" makes the D7/D5 asymmetry rest on history, not on a stated principle. D5 lists two evidence contracts of different kinds (source/CI vs state/topology), which seems to conflict with D0's statement that "a domain is stretched when it holds ... a portion whose work has been found to need its own proof".
+- The work-type taxonomy has no type for revising an existing knowledge entry. W0's "Gaps recorded" covers adding or retiring a layer (W1/W3) but not editing an entry, so Y4 has to be guessed.
+- W2's trigger needs a filed bug entity. Questions phrased as "a bug" do not say whether one was filed.
+- Y2 involves two surfaces: the effect (an unauthorised merge) is on the coordination/git side and the code is in governance. D0's tie-break settles it, but only if the class-grant enforcement code is part of the governance machinery's source and not the coordination machinery's. D4 implies this by listing class-grants, but no file says which codebase holds that code.

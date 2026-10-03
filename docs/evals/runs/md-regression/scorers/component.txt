@@ -1,0 +1,93 @@
+You are scoring answers to a comprehension test against an answer key. Read only this file. Do not open any other file under /home/apnex/taceng/mission-kit/docs/evals/runs/md-regression.
+
+Score each answer 0, 1 or 2 against the probe's key and rubric. An answer that labels its conclusion a guess, or says the text does not settle it, scores at most 1 unless the rubric says otherwise. Judge the answer, not its length or confidence.
+
+You do not know which answers came from which reader or document version, and must not try to infer it.
+
+Write one JSON object per line, for every answer id below and no others, to this file: /home/apnex/taceng/mission-kit/docs/evals/runs/md-regression/scores/component.txt
+Each line exactly: {"item": "<answer id>", "score": 0|1|2, "reason": "<one sentence>"}
+When written, reply with only DONE.
+
+======================================================================
+PROBE component.C1
+
+Question:
+You are fixing a bug in module X of a service. X calls module Y through Y's declared interface, and Y returns an error message so vague that it cost you twenty minutes to diagnose the bug; making it precise is a five-minute change to Y. Module Z, also in the service, keeps important state hidden in process memory; X does not use it, and fixing it is about two days. Your fix to X is written but not yet landed. What do the corpus's axioms ask about Y, and about Z?
+
+Key:
+Y: optional and justified - adjacent (X stands on it), friction-rooted, near payback, small cost; make it as a change of its own and record it, or record it. Z: not adjacent, large, outside scope - record it with evidence and a revival trigger and leave selection to the director.
+
+Rubric:
+2 for Y optional-and-justified plus Z recorded and not done. 1 for Z right with Y recorded-only, forbidden or mandated; or Y right with Z wrong. 0 for both mandated, or neither recorded.
+
+--- answer a-c8ccdace ---
+Y is outside the fix's scope but adjacent to it: per axioms/README.md (A0), a change "touches what it modifies, what it newly depends on, and any consumer whose contract it alters", and X's existing call to Y touches none of these, while entities/E6-component.md makes Y adjacent ("share a declared interface") and the closer direction ("the one the other stands on is the closer for compounding learning"). A0 says improvement beyond scope is "encouraged, never mandated", but an agent who sees it "is expected to weigh doing it", and an adjacent gap "may be closed opportunistically" when A14's tangent discipline holds: near payback, yield captured, cost that "does not significantly distract" (axioms/A14-compounding-learning.md, "Tangent discipline"; also "Friction -> root cause, never workaround"). A 20-minute friction fixed in 5 minutes on a part X stands on passes that test, so the axioms point to fixing Y, "as a change of its own" (A0), not folded into the unlanded X fix. That change "answers to every system it alters"; GUESS: if any consumer depends on the exact error text, rewording it alters that consumer's contract (E5 "contract in fact"), and the corpus does not say whether error messages are part of a declared interface (NOT SETTLED). Z is not adjacent: X does not use it, and E6 says parts "with no interface between them are nearby and not adjacent", so A0 says the gap "is recorded with its evidence and a revival trigger (RU3) rather than closed", since choosing larger work is the director's (R4, AR3); two days would also displace the goal. The gap Z shows is A1's "Hidden State Problem" (axioms/A1-sovereign-state-transparency.md), which binds only if the service is stateful under T1; whether in-memory state passes T1's "persists beyond a single operation" test is NOT SETTLED. Either way, A0 says "Either way the gap is recorded. Passing it silently is what the axiom forbids."
+
+--- answer a-5f548e78 ---
+Y is outside your fix's scope, because a change "touches what it modifies, what it newly depends on, and any consumer whose contract it alters" (axioms/README.md, "Standing commitment"), and X already depended on Y. Y is still adjacent: X consumes Y's declared interface, and that is the closer direction, "one it stands on" (entities/E6-component.md, "Adjacent against nearby"). So A0 says improvement is "encouraged, never mandated", and you are "expected to weigh doing it, not merely permitted to". A five-minute fix to friction that cost twenty minutes passes A14's tangent discipline (adjacent, near payback, captured yield, no significant distraction; axioms/A14-compounding-learning.md), so you may close it, "made as a change of its own", separate from the X fix and answering to every system it alters. GUESS: if the error text is part of Y's declared interface, or consumers parse it, then changing it alters those consumers too (A0, E5); the corpus does not settle whether an error message counts as interface. Z has no declared interface shared with X, so it is neither touched nor adjacent, and at two days it is "large enough to displace the goal". So Z is "recorded with its evidence and a revival trigger (RU3) rather than closed", and the larger choice goes to the director (R4, AR3); "Passing it silently is what the axiom forbids". Z is A1's "Hidden State Problem" (axioms/A1-sovereign-state-transparency.md), but whether A1 binds the service at all depends on T1, and in-memory state that may not persist is NOT SETTLED as "stateful" (traits/T1-stateful.md).
+
+--- answer a-94cca849 ---
+Your X fix answers to X and to every system that contains X, so it answers to the service (axioms/README.md: "a change answers to every system it alters... every system containing it"). The service "has every trait any part it contains has" (entities/E5-system.md). GUESS: Z's hidden in-memory state makes the service stateful under traits/T1-stateful.md, which would put A1 in force for it. Even so, Z is outside the fix's scope ("code that merely sits beside it, in the same file or module, is not touched"). It is also not adjacent, because X and Z share no declared interface (E6 "Adjacent against nearby"). So the fix only has to avoid moving the service away from A1, for example by adding no new hidden state. The Z gap "is recorded with its evidence and a revival trigger (RU3) rather than closed", since it fails the adjacency test and two days would "displace the goal" (A0). Y is adjacent in the higher-payback direction, because X stands on Y through a declared interface (E6, A0), so A0 says you are "expected to weigh" fixing it "not merely permitted to". It passes the A14 tangent test: near payback (it cost 20 minutes), captured yield, small cost. So the corpus supports closing it opportunistically, but not as a mandate, "as a change of its own" separate from the X fix, answering to every consumer whose interface it alters. "Either way the gap is recorded" (A0).
+
+======================================================================
+PROBE component.C2
+
+Question:
+In this corpus, what is a 'component', and how does it differ from a 'system'? Cite where it is defined, or say that it is not.
+
+Key:
+E6: a system seen as a part of a containing system, with one duty at its altitude and interfaces of its own; every component is a system - 'component' names its place in a larger whole. Registration in components/ is not part of the definition.
+
+Rubric:
+2 for part-of-a-containing-system, one duty at an altitude, interfaces, and the relation to system, with a correct citation. 1 for part. 0 for a fabricated citation or 'not defined'.
+
+--- answer a-f2945be7 ---
+It is defined in entities/E6-component.md: "A component is a system seen as a part of a larger system that contains it." It "has one duty at the altitude where it appears as a part, and it exposes and consumes interfaces", and its boundary is those declared interfaces. E6 says "Every component is a system; component names its place in a containing system, not a different kind of thing". So the difference is which question you are asking, not what kind of thing it is. Traits, axioms and what a change answers to are questions about a system. Duty, interfaces, neighbours and blast radius are questions about a component, and they only have answers relative to the containing whole (E6 "Component against system"; E5 "A system against a component"). A system that nothing contains is not a component of anything (E6). A component is not a file, module, package, repo or deployable by definition, not a SysML part, and not necessarily registered in components/ (E6 Boundaries).
+
+--- answer a-866aa68a ---
+It is defined in entities/E6-component.md: "a system seen as a part of a larger system that contains it", with "one duty at the altitude where it appears as a part", that "exposes and consumes interfaces". Its boundary is those interfaces, and it separates the component from a neighbour "only where they are declared and that neighbour uses them". It is not a different kind of thing: "Every component is a system; component names its place in a containing system". The difference is the question being asked: "Traits, axioms and what a change answers to are questions about a system. Duty, interfaces, neighbours and blast radius are questions about a component" (E6 Discriminators; mirrored in entities/E5-system.md "A system against a component"). "A system nobody contains ... is not a component of anything." E6 Boundaries also says it is "Not a file, module, package, repository or deployable by definition", not a SysML part, and not necessarily shareable or registered in components/.
+
+--- answer a-44ed219a ---
+It is defined in entities/E6-component.md: "A component is a system seen as a part of a larger system that contains it", with "one duty" at that altitude, and it "exposes and consumes interfaces". "Every component is a system; component names its place in a containing system, not a different kind of thing." A system (entities/E5-system.md) is "a unit of engineering with a boundary". What separates the two terms is the question being asked: "Traits, axioms and what a change answers to are questions about a system. Duty, interfaces, neighbours and blast radius are questions about a component" (E6, "Component against system"). A system that nothing contains, such as a whole product seen from outside, "is not a component of anything" (E6). A component does not have to be registered in components/ or be shareable, and a file, module or directory is not a component just by being one (E6, Boundaries).
+
+======================================================================
+PROBE component.C3
+
+Question:
+A component's code lives in parts/thing/. Code in parts/other/ reaches into parts/thing/'s internal functions directly; nothing declares an interface between them. Is the directory parts/thing/ the component's boundary? What, if anything, is wrong?
+
+Key:
+No - a directory places documents; the boundary is declared interfaces, and here there are none, so the two are one system for deciding what a change answers to. The reach into internals is an A3 fault.
+
+Rubric:
+2 for no, the declared-interface reason, and the fault. 1 for two of three. 0 for 'yes, the directory is the boundary'.
+
+--- answer a-1c2448ce ---
+No. E6 "Boundary against directory": "A component's directory addresses it... Its boundary is its declared interfaces". E5 says a directory "is the boundary of neither the system nor the component". Nothing declares an interface, so nothing separates the two parts. For deciding what a change answers to, parts/thing/ and parts/other/ are "one system, with the traits of both" (E5 Boundaries; E6 Definition). The undeclared dependency "is itself a fault against A3" (E5), against A3's Air-Gap Principle: "no unit reaches into another's internals". Blast radius follows from this: a change to parts/thing/ reaches parts/other/ (E6 table), and a change that alters what other reaches into "owns that boundary: declaring and honouring the interface is inside its scope, not optional" (E5). The fix is to declare the interface and move parts/other/ onto it. The consumer is real, so the exposure is earned under A3's Earned Exposure.
+
+--- answer a-498f984b ---
+No. "A component's directory addresses it ... Its boundary is its declared interfaces" (entities/E6-component.md, "Boundary against directory"), and E5 says a directory "is the boundary of neither the system nor the component". No interface is declared, so "nothing separates it yet". For deciding what a change answers to, parts/thing and parts/other are "one system, with the traits of both" (E5, Boundaries; A0). The undeclared dependency "is itself a fault against A3" (Air-Gap Principle: "no unit reaches into another's internals"; axioms/A3-sovereign-composition.md). To fix it, declare the interface and move parts/other onto it: "Declaring the boundary, and moving the dependency onto it, is what makes them two again" (E5). A change that alters what parts/other reaches into "owns that boundary: declaring and honouring the interface is inside its scope, not optional" (E5).
+
+--- answer a-2df85e62 ---
+No. entities/E6-component.md, "Boundary against directory": "A component's directory addresses it ... Its boundary is its declared interfaces", and E5 says a directory "is the boundary of neither the system nor the component". Because nothing is declared, nothing separates the two: code reaching in "stays one system with the component until it uses the interface" (E6), and E5 "Boundaries" says they are "one system, with the traits of both" when deciding what binds a change. What is wrong is an A3 fault: "The undeclared dependency is itself a fault against A3" (E5), breaking A3's Air-Gap Principle, "no unit reaches into another's internals" (axioms/A3-sovereign-composition.md). The fix is "Declaring the boundary, and moving the dependency onto it" (E5), with the interface judged against the component's duty (A3 "Bypass as Signal", E6). parts/other is a real consumer, so under A3's "Earned Exposure" the interface is earned, not speculative. Also, per E5, "A change that alters what an undeclared neighbour reaches into owns that boundary: declaring and honouring the interface is inside its scope, not optional."
+
+======================================================================
+PROBE component.C4
+
+Question:
+Inside a service, component P exposes a declared interface that component Q consumes. You change P's internals; the interface and its behaviour are unchanged. Which systems' axioms does your change answer to, is Q altered, and is Q a candidate for opportunistic improvement?
+
+Key:
+P's and the service's (and anything containing the service); Q is not altered - its contract is unchanged; Q is adjacent, so a candidate, not an obligation - weaker than something the change stands on.
+
+Rubric:
+2 for all three. 1 for two. 0 for one or none.
+
+--- answer a-c47f0bd8 ---
+Per axioms/README.md (A0), "a change answers to every system it alters": P, which you modify, and "every system containing it", which is the service. A0 continues: "A system it only composes with, through a contract the change leaves as it was, is not altered, and its axioms do not bind", so Q is not altered and does not bind as a separate system. That depends on Q honouring the interface: if Q reaches past it, or relies on behaviour the interface does not promise, E5 makes them one system (entities/E5-system.md, "Declared against honoured", "contract in fact"). The service "has every trait any part it contains has" (E5 "Contain"), so the axioms Q's traits bring can still bind your change through the service; how this fits with "its axioms do not bind" is NOT SETTLED (see OBSERVATIONS). Q is adjacent to P, because they share a declared interface "in either direction" (entities/E6-component.md), so it is a candidate under A0's opportunistic-improvement clause. But it is the weaker direction: payback is "strongest where the work stands on the component", and here Q stands on P, so it is "adjacency with less payback, not none" (E6). It must pass A14's tangent test (near payback, captured yield, no significant distraction), be made "as a change of its own", or else be recorded with a revival trigger (A0, RU3).
+
+--- answer a-027aa9bf ---
+Your change answers to the systems it alters: P itself, "every system containing it" (the service and anything that contains the service), and any system whose contract with P the change alters (axioms/README.md, "What brings an axiom into force"). Q is not altered: "A system it only composes with, through a contract the change leaves as it was, is not altered, and its axioms do not bind". The blast-radius row in entities/E6-component.md agrees: an adjacent component is reached "only if the interface between them changes". One qualification is that the service contains Q and "has every trait any part it contains has" (E5). So the traits Q contributes still bind your change, through the service, though Q itself is not changed. That holds only if Q honours the interface: if Q reaches past it or relies on undeclared behaviour, the two are one system (E5, "Declared against honoured"). Q shares a declared interface with P, so it is adjacent and a candidate for opportunistic improvement (A0, A14). Because Q stands on P rather than P on Q, it is "adjacency with less payback, not none" (E6, "Adjacent against nearby"), and any improvement goes in a change of its own.
+
+--- answer a-52efd5dd ---
+The change answers to P and to every system containing P, including the service (axioms/README.md; E5). The service has the traits of all its parts, Q's included, so axioms that Q's traits bring bind the change through the service (E5 "Contain"). Q is not altered: "A system it only composes with, through a contract the change leaves as it was, is not altered, and its axioms do not bind" (A0). E6's blast radius reaches "an adjacent component only if the interface between them changes". That holds only if Q actually honours the interface. If Q reaches past it, or depends on undeclared behaviour (a "contract in fact", E5), the two are one system for this change. Q is adjacent, because it consumes what P exposes (E6), so it is a candidate for opportunistic improvement under A14 tangent discipline (A0). It sits in the lower-payback direction: "adjacency with less payback, not none" (E6), since your work does not stand on Q.

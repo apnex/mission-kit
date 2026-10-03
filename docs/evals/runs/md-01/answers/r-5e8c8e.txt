@@ -1,0 +1,38 @@
+### charter-claims.V1
+No, the charter should not narrow its claim. entities/E4-charter.md says "A charter holds the set's vision, and manages the set against it", and the population "is never cut to fit what the set holds today". It adds: "A claim no member yet fills is a gap ... and naming it is how gaps are found". It also says "a cell no member fills is kept and named as a gap, and removing it to match the population erases the gap it exposes". Stating scope is not all a charter does. E4 says "The rest of the charter is management": territory, boundaries, composition, faults and changes made under "Changing a charter". Its required concerns are Purpose, Territory, Boundaries, Composition, Faults and Index, and it lists conditional concerns too (Kinds, Member shape, Placement, Enforcement boundary, Sub-sets, Axiom alignment, Probes).
+
+### charter-claims.V2
+No. methods/README.md (M0) lists the Territory moment "Deciding what to keep | what lands, what is cut, and how the verdict is reached | **none - gap**". It goes on: "RU1 and RU3 constrain what is kept and what a cut must record, but no method produces the verdict itself". RU1 (default-reject and honest yield) and RU3 (anti-amnesia deferral) are rules, not methods (rules/README.md).
+
+### charter-claims.V3
+rules/README.md (RU0) has four moments with "none - gap": Entering, Committing to a design, Verifying, and Handing over. Rules exist only at Deciding what to keep (RU1, RU3) and Treating the record (RU2, RU4). One example of guidance that leaves a trace but has no rule entry: "claims record whether they were measured or inferred". RU0 says it is "stated in the vision and the standing context, and visible in every claim" (see VISION.md and AGENTS.md "Measured or inferred"). RU0 names other examples too: "credentials are never committed" (M0's example of a rule), and commit hygiene, meaning no tool attribution and one concern per commit (AGENTS.md section 6).
+
+### charter-claims.V4
+practices/README.md (PC0) shows five moments with "none - gap": Committing to a design, Verifying, Deciding what to keep, Treating the record, and Handing over. Only Entering has a member, PC1 (author from exemplar). PC0 notes that Verifying and Treating the record have candidates in the standing context that are not entries: "distrust corroboration you produced", "check the splits that favour you", "read before you overwrite". It says the other three have "no checked candidate yet".
+
+### charter-claims.V5
+Yes. roles/README.md (R0) says the territory covers authorities "within a unit of work ... and across units, where work is chosen, run as a flow and kept". The across-units positions are Direction, Flow and Curation. Direction ("to choose which work is done, in what order, and to change course") is held by R4 director. Flow ("to seed, drive and repair a run of many units") is held by R1 architect, "which holds the driver lease". Curation ("to keep the durable knowledge and to delegate authority to the other roles") is held by R4 director. R0 says "No position lacks a role today".
+
+### charter-claims.V6
+No, not in itself. domains/README.md (D0) says "The set grows when the territory finds a gap. This set is not complete and is not expected to be". The charter sets conditions. The new domain must close a surface "that no domain resolves" and must come "with its own evidence contract, not by stretching a neighbour". It also needs a distinct evidence contract, or it falls into the "indistinct pair" fault. If it fits none of the existing parts, "the part is added with the domain". product-data (D7) is the example of a domain that "entered this way". An eighth domain that duplicated an existing surface's evidence, or that encoded a work mode ("The mode-domain" fault), would contradict the charter.
+
+### charter-claims.V7
+No. schemas/README.md (SC0) lists "Lifecycle documents | documents a project writes using a type this corpus defines - a board, a backlog, a decision record, a delta, a system architecture | none | **none - gap**". It adds: "the artifact types carry prose templates, and this corpus's own board and backlog are checked only by code in tools/check-board.mjs, so neither here nor in a consuming project can a machine refuse a malformed instance". Should one exist? Per E4, the claim stays in the territory as a named gap. The corpus does not say whether it should be built now: NOT SETTLED. Earned exposure (A3) and SC0's fault "The contract ahead of its consumer" argue against building contracts on speculation. AR1 and AR6 also say they ship no template on purpose ("a fillable skeleton would ... produce empty headings"). GUESS: a contract is justified for the board and backlog, which already have templates and a hand-written checker that can drift (SC0 "Against tools/"), but not for AR1 or AR6.
+
+### charter-claims.V8
+NOT SETTLED. No work-type covers revising or retiring a single entry. work-types/README.md (W0) "Gaps recorded" covers layers only: "Extending the knowledge corpus - adding or retiring a layer - is work on the knowledge domain - W1 to add, W3 to retire - but ... a work-type of its own may earn its place". W1, W2 and W3 all list knowledge-methodology in domainEligibility, and D6 says it is "free for the types that ... build, retire and ship the corpus". GUESS: revising an entry would be W1 build-a-slice, or W2 fix-a-bug-or-repair when the defect has been filed. Retiring an entry would be W3 retire-or-hard-cut. But W3 is "a hard cut, not a deprecation shim", and the corpus retires entries by keeping them with a flipped status ("A replaced entry keeps its ID and flips status", README.md). So W3 does not fit cleanly.
+
+### charter-claims.V9
+Independent verification. sets/README.md (ST0) lists it as a gap: "independent verification: who may check work, how, and what a gate must prove". The members would be M1 (methods), W8 (work-types), K21 (skills), R3 (roles) and A8 (axioms). ST0 names two other cross-layer gaps: "treating history" (RU2, RU4, M9) and "deferring without forgetting" (RU1, RU3, AR5).
+
+### charter-claims.V10
+None. axioms/README.md (A0) records it as a gap: "A second gap: nothing protects a system against a hostile actor or untrusted input". It says "A2 names manual configuration a security fault, but no axiom has protection against hostility as its mandate", and the gap is "recorded, not filled".
+
+### OBSERVATIONS
+- artifacts/README.md (AR0) opens with "The document types an engineering lifecycle produces, each with a schema". schemas/README.md says lifecycle documents have no contract, only prose templates, and AR1 and AR6 ship no template at all. Those two statements conflict.
+- README.md links `docs/README.md` in its layer table, but this corpus copy has no `docs/` directory.
+- README.md "Adding an entry" step 5 says to add the entry to INDEX.md and to the category README. Both indexes are marked "generated ... do not edit by hand", and README's own fault "The typed index" warns against hand-maintained ledgers.
+- W0's "W3 to retire" guidance is about layers. W3 defines a hard cut, which does not match how the corpus retires entries (by supersession, keeping the ID).
+- E3 and E4 say "thirteen charters". The corpus now has sixteen ID-bearing layer charters (A, R, D, W, M, RU, PC, ST, S, P, K, E, C, AR, T, SC). That figure may be historical, but nothing labels it that way.
+- W0 hard-codes "DOMAINS (N=7)" and "K~=26". These counts go stale as soon as a domain or work-type is added.
+- In methods/README.md, a "---" line comes directly after a text line with no blank line between them (end of "How the procedures compose"). In Markdown this may render as a setext heading instead of a rule.

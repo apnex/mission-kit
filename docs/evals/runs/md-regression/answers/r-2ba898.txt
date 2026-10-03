@@ -1,0 +1,30 @@
+### layer-charters.H1
+The rules layer (`rules/`). methods/README.md (M0) gives the placement order and says outright: "*credentials are never committed* binds an action in a situation, and is a rule". That also rules out axioms, because "The first question is about a system's properties, not about how universal a ban sounds". It produces nothing of its own and does not govern an artifact's form. It does leave a trace a check could test, since the commit record shows whether a credential went in (question 4). rules/README.md (RU0) lists it as a tested gap under *Treating the record*: "credentials are never committed - `M0`'s own example of a rule". So no RU entry holds it yet. As a rule it has to declare a `trace` in its frontmatter.
+
+### layer-charters.H2
+The practices layer (`practices/`). Using M0's order: it is not an axiom and produces no result of its own. It does not govern an artifact's form. It leaves no trace, because nothing in the record shows that a re-read happened. That makes it question 5, "Otherwise a practice" (methods/README.md). PC0 (practices/README.md) defines a practice as guidance that "leaves no trace: nothing in the record afterwards shows whether it was followed". It would sit at the *Verifying* moment, which PC0 lists as "none - gap". PC0 also says placement is not admission: it needs "observed evidence" that following it changes the work, and "A practice is not minted to fill an empty moment". GUESS: if the task record had to log the re-read, that would leave a trace and it would become a rule.
+
+### layer-charters.H3
+The methods layer (`methods/`). It produces a result of its own, a judgement/verdict, which is M0's question 2 (methods/README.md). An entry already covers it: M1, methods/M1-triangulated-review.md, "Triangulated review - minimum 4 independent inputs". Its hydrate-when reads "You are reviewing a patch or design that ships to production or upstream". Its text: "require at least four genuinely independent inputs before reaching a verdict", and "the reconciliation is where real bugs surface". M0 places M1 at the *Verifying* moment and calls it "One primitive carries the set".
+
+### layer-charters.H4
+The style layer (`style/`). It governs how an artifact is written, "its form, whatever the work was" (M0 question 3). S0 (style/README.md) says "A style rule governs an artifact's form, and is judged by reading the output". No existing S entry covers heading case. GUESS: it fits the Document medium at the "section" or "token" grain. S0 says admission also needs a real defect caused by the rule's absence ("Aesthetic preference does not qualify") and that the rule holds across artifacts. NOT SETTLED: whether any such defect exists. S0 also says "Prefer a rule a script can hold", and heading case can be checked as a predicate.
+
+### layer-charters.H5
+A rule must declare `trace` in its frontmatter: "the observable in the record that shows it was kept or broken, required by the catalogue contract" (rules/README.md, Member shape). The schema makes this mandatory for category rule and sets minLength 20 (schemas/catalog-entry/v1alpha1/catalog-entry.schema.json). A practice "declares no `trace`; if it acquires one, it is a rule and moves" (practices/README.md). Optionally, a rule may name a tool in `enforced-by` (pattern `^tools/`) when a tool checks it. `tools/check-enforcers.sh` makes sure that tool exists. The schema says naming a tool "is optional". A rule with no tool "is still a rule, and is checked by reading the trace".
+
+### layer-charters.H6
+From methods/README.md (M0, "Placement"), asked in order, stopping at the first yes:
+1. Is it a limit a system is built toward, in force for every system with the traits it names? Then it is an axiom.
+2. Does following it produce a result of its own (a verdict, an artifact, a record)? Then it is a method/procedure. Merely requiring a record to carry something is not enough.
+3. Does it govern how an artifact is written, its form, whatever the work was? Then it is style.
+4. Does it leave a trace in the record of the work that a check could test? Then it is a rule.
+5. Otherwise it is a practice.
+
+### layer-charters.H7
+Handing work in progress to another agent, or to a later session. M0 (methods/README.md): "handing work in progress to another agent or a later session has no procedure at all". M10 covers only handover to a human of limited context. RU0 marks *Handing over* "none - gap": "a handover record names what is unfinished - a rule that would leave a trace, and none exists". PC0 also marks *Handing over* "none - gap". Strictly, no moment row is empty in all three tables, because Handing over holds M10. The agent/session handover is the part that nothing covers. M0 adds that "a lone agent hands over to its own next session".
+
+### OBSERVATIONS
+- H7 assumes there is a moment that nothing governs. Read row by row, every one of the six moments has at least one member somewhere. *Deciding what to keep* has no method but does have RU1/RU3. *Handing over* has M10. Only the sub-case of agent-to-agent or cross-session handover is empty in all three layers. So the answer depends on how "moment" is read.
+- M0 says "procedures sit at five of the six, and the sixth is a named gap". But its table also calls *Treating the record* partial: "reconciling a drifted record has no procedure". The text then says "One empty moment and three thin ones", which is consistent but needs careful reading.
+- INDEX.md tells readers to fetch from a remote raw URL when there is no local checkout. That is outside the "read only this corpus" scope. I did not fetch it.

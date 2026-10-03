@@ -1,0 +1,830 @@
+{
+  "created": "2026-10-03T23:08:32.521Z",
+  "seed": "39a74e7f415f0309",
+  "corpora": [
+    {
+      "label": "before",
+      "path": "/tmp/opencode/evmd-b/c-577d7b04"
+    },
+    {
+      "label": "after",
+      "path": "/tmp/opencode/evmd-a/c-17359eeb"
+    }
+  ],
+  "readers": 3,
+  "probes": [
+    "machinery-domain.Y1",
+    "machinery-domain.Y2",
+    "machinery-domain.Y3",
+    "machinery-domain.Y4",
+    "charter-claims.V1",
+    "charter-claims.V2",
+    "charter-claims.V3",
+    "charter-claims.V4",
+    "charter-claims.V5",
+    "charter-claims.V6",
+    "charter-claims.V7",
+    "charter-claims.V8",
+    "charter-claims.V9",
+    "charter-claims.V10"
+  ],
+  "max": 28,
+  "mean": {
+    "machinery-domain.Y1": {
+      "before": 0.67,
+      "after": 2
+    },
+    "machinery-domain.Y2": {
+      "before": 0.67,
+      "after": 2
+    },
+    "machinery-domain.Y3": {
+      "before": 1,
+      "after": 2
+    },
+    "machinery-domain.Y4": {
+      "before": 1,
+      "after": 1
+    },
+    "charter-claims.V1": {
+      "before": 2,
+      "after": 2
+    },
+    "charter-claims.V2": {
+      "before": 2,
+      "after": 2
+    },
+    "charter-claims.V3": {
+      "before": 2,
+      "after": 2
+    },
+    "charter-claims.V4": {
+      "before": 2,
+      "after": 2
+    },
+    "charter-claims.V5": {
+      "before": 2,
+      "after": 2
+    },
+    "charter-claims.V6": {
+      "before": 2,
+      "after": 2
+    },
+    "charter-claims.V7": {
+      "before": 1.33,
+      "after": 1.67
+    },
+    "charter-claims.V8": {
+      "before": 0,
+      "after": 1
+    },
+    "charter-claims.V9": {
+      "before": 2,
+      "after": 2
+    },
+    "charter-claims.V10": {
+      "before": 2,
+      "after": 2
+    }
+  },
+  "total": {
+    "before": 20.67,
+    "after": 25.67
+  },
+  "rows": [
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-9f03e4",
+      "probe": "machinery-domain.Y1",
+      "score": 0,
+      "reason": "Its final guess is W1 x D1, putting the work in delivery-code, which the rubric scores 0."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-9f03e4",
+      "probe": "machinery-domain.Y2",
+      "score": 0,
+      "reason": "Its guessed answer is W2 x D1, putting the work in delivery-code, which the rubric scores 0."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-9f03e4",
+      "probe": "machinery-domain.Y3",
+      "score": 1,
+      "reason": "Gives the distinct-evidence reason for the product split but rejects the machinery premise, omits by-product and labels its conclusion a guess."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-9f03e4",
+      "probe": "machinery-domain.Y4",
+      "score": 1,
+      "reason": "Assigns D6 to the revision but says no work-type exists, which earns the rubric's D6-alone credit."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-4db36b",
+      "probe": "machinery-domain.Y1",
+      "score": 1,
+      "reason": "Names W1 and guesses D5 but treats W1 x D5 as a rejected gap and labels the domain NOT SETTLED, so it is capped at 1."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-4db36b",
+      "probe": "machinery-domain.Y2",
+      "score": 1,
+      "reason": "Reaches W2 x D4 but only as a GUESS recorded against a claimed gap, labelled NOT SETTLED, so it is capped at 1."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-4db36b",
+      "probe": "machinery-domain.Y3",
+      "score": 1,
+      "reason": "Explains the product split by distinct evidence but denies the machinery premise and misses the by-product principle, so it gets one half."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-4db36b",
+      "probe": "machinery-domain.Y4",
+      "score": 1,
+      "reason": "Assigns D6 with no work-type (a recorded gap) and leaves the checker NOT SETTLED, which earns the D6-alone credit."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-63fa10",
+      "probe": "machinery-domain.Y1",
+      "score": 1,
+      "reason": "Names W1 and guesses D5 but calls the pairing a recorded gap and labels it NOT SETTLED, so it is capped at 1."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-63fa10",
+      "probe": "machinery-domain.Y2",
+      "score": 1,
+      "reason": "Names W2 and guesses D4 but claims W2 x D4 is ineligible and labels it NOT SETTLED, so it is capped at 1."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-63fa10",
+      "probe": "machinery-domain.Y3",
+      "score": 1,
+      "reason": "Gives the distinct-evidence reason for the product split but denies the machinery shares one domain and omits the by-product principle."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-63fa10",
+      "probe": "machinery-domain.Y4",
+      "score": 1,
+      "reason": "Assigns D6 to the revision with no work-type and guesses D3 for the checker, which earns only the D6-alone credit."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-88b426",
+      "probe": "charter-claims.V1",
+      "score": 2,
+      "reason": "Says no, keeps the claim as a named gap, and names management concerns: territory, boundaries, faults and changes."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-88b426",
+      "probe": "charter-claims.V2",
+      "score": 2,
+      "reason": "Says there is no method and identifies RU1 and RU3 as rules, not methods."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-88b426",
+      "probe": "charter-claims.V3",
+      "score": 2,
+      "reason": "Names all four empty moments and gives a real unheld candidate (measured-or-inferred labelling)."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-88b426",
+      "probe": "charter-claims.V4",
+      "score": 2,
+      "reason": "Names all five moments that have no practice."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-88b426",
+      "probe": "charter-claims.V5",
+      "score": 2,
+      "reason": "Names above-unit authorities with their holders, for example Direction held by R4."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-88b426",
+      "probe": "charter-claims.V6",
+      "score": 2,
+      "reason": "Says no with the claim-not-count reason; the GUESS label applies only to a side note."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-88b426",
+      "probe": "charter-claims.V7",
+      "score": 1,
+      "reason": "Correctly says none exists, but labels whether one should exist as NOT SETTLED, which caps the score."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-88b426",
+      "probe": "charter-claims.V8",
+      "score": 0,
+      "reason": "Answers none, which the rubric scores 0."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-88b426",
+      "probe": "charter-claims.V9",
+      "score": 2,
+      "reason": "Names independent verification with real members from several layers (M1, W8, K21, R3, A8)."
+    },
+    {
+      "label": "before",
+      "reader": 1,
+      "pid": "r-88b426",
+      "probe": "charter-claims.V10",
+      "score": 2,
+      "reason": "Says no axiom has that mandate and calls it a recorded gap."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-a93cf5",
+      "probe": "charter-claims.V1",
+      "score": 2,
+      "reason": "Says no with the gap reasoning and names management concerns: territory, boundaries, faults and changes."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-a93cf5",
+      "probe": "charter-claims.V2",
+      "score": 2,
+      "reason": "Says there is no method and identifies RU1 and RU3 as rules, with M3/M5 as superseded pointers."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-a93cf5",
+      "probe": "charter-claims.V3",
+      "score": 2,
+      "reason": "Names all four empty moments and gives a real unheld candidate (measured-or-inferred labelling)."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-a93cf5",
+      "probe": "charter-claims.V4",
+      "score": 2,
+      "reason": "Names all five moments that have no practice."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-a93cf5",
+      "probe": "charter-claims.V5",
+      "score": 2,
+      "reason": "Names above-unit authorities (Direction, Flow, Curation) with their holders, R4 and R1."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-a93cf5",
+      "probe": "charter-claims.V6",
+      "score": 2,
+      "reason": "Says no with the claim-not-count reason; the GUESS label applies only to a side note, not the conclusion."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-a93cf5",
+      "probe": "charter-claims.V7",
+      "score": 1,
+      "reason": "Correctly says none exists, but answers whether one should exist as NOT SETTLED, which caps the score."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-a93cf5",
+      "probe": "charter-claims.V8",
+      "score": 0,
+      "reason": "Answers none, which the rubric scores 0."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-a93cf5",
+      "probe": "charter-claims.V9",
+      "score": 2,
+      "reason": "Names independent verification with real members from several layers (M1, W8, K21, R3, A8)."
+    },
+    {
+      "label": "before",
+      "reader": 2,
+      "pid": "r-a93cf5",
+      "probe": "charter-claims.V10",
+      "score": 2,
+      "reason": "Says no axiom has that mandate and quotes it as a recorded gap."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-8c0ccf",
+      "probe": "charter-claims.V1",
+      "score": 2,
+      "reason": "Says no with the gap reasoning and names management concerns (territory, boundaries, faults, changes) beyond the vision."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-8c0ccf",
+      "probe": "charter-claims.V2",
+      "score": 2,
+      "reason": "Says there is no method and identifies RU1 and RU3 as rules, not a method."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-8c0ccf",
+      "probe": "charter-claims.V3",
+      "score": 2,
+      "reason": "Names all four empty moments and gives a real unheld candidate (measured-or-inferred labelling)."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-8c0ccf",
+      "probe": "charter-claims.V4",
+      "score": 2,
+      "reason": "Names all five moments that have no practice."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-8c0ccf",
+      "probe": "charter-claims.V5",
+      "score": 2,
+      "reason": "Names above-unit authorities (Direction, Flow, Curation) with their holders, R4 and R1."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-8c0ccf",
+      "probe": "charter-claims.V6",
+      "score": 2,
+      "reason": "Says no because the set is not expected to be complete; the GUESS label applies only to a side tension."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-8c0ccf",
+      "probe": "charter-claims.V7",
+      "score": 2,
+      "reason": "Says none exists and that it is a gap in a claimed territory; it hedges only on whether a full schema should be admitted now."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-8c0ccf",
+      "probe": "charter-claims.V8",
+      "score": 0,
+      "reason": "Answers none, which the rubric scores 0."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-8c0ccf",
+      "probe": "charter-claims.V9",
+      "score": 2,
+      "reason": "Names independent verification with real members from several layers (M1, W8, K21, R3, A8)."
+    },
+    {
+      "label": "before",
+      "reader": 3,
+      "pid": "r-8c0ccf",
+      "probe": "charter-claims.V10",
+      "score": 2,
+      "reason": "Says no axiom has that mandate and calls it a recorded gap, noting A2's security language is not a mandate."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-c1ec63",
+      "probe": "machinery-domain.Y1",
+      "score": 2,
+      "reason": "Names W1 and D5 firmly, with an optional upstream W14 design node, which the rubric permits."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-c1ec63",
+      "probe": "machinery-domain.Y2",
+      "score": 2,
+      "reason": "Names W2 and D4 firmly and correctly applies the tie-break to the enforcement code rather than the merge symptom."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-c1ec63",
+      "probe": "machinery-domain.Y3",
+      "score": 2,
+      "reason": "States that a part's domain holds source and live state together, splitting only where it is proved differently and found needed, and that the machinery has not been split."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-c1ec63",
+      "probe": "machinery-domain.Y4",
+      "score": 1,
+      "reason": "Names D6 for both changes, but W1/W2 are offered only as a GUESS with the work-type NOT SETTLED, so it is capped at 1."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-ce71cc",
+      "probe": "machinery-domain.Y1",
+      "score": 2,
+      "reason": "Names W1 and D5 as the answer, and mentions W14 only as a possible upstream node, which the rubric allows."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-ce71cc",
+      "probe": "machinery-domain.Y2",
+      "score": 2,
+      "reason": "Names W2 and D4 firmly, with correct grounding that the enforcement code belongs to authority-governance."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-ce71cc",
+      "probe": "machinery-domain.Y3",
+      "score": 2,
+      "reason": "States the engineered-product rule (source and live state together) and the proved-differently-and-needed split condition, and says the machinery split has not been found needed."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-ce71cc",
+      "probe": "machinery-domain.Y4",
+      "score": 1,
+      "reason": "Names D6 firmly, but W1/W2 appear only as a GUESS with the work-type marked NOT SETTLED, so it is capped at 1."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-1b7b19",
+      "probe": "machinery-domain.Y1",
+      "score": 2,
+      "reason": "States W1 and D5 as the conclusion; the GUESS label covers only the optional W14 upstream node, not the answer itself."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-1b7b19",
+      "probe": "machinery-domain.Y2",
+      "score": 2,
+      "reason": "Names W2 and D4 firmly; the NOT SETTLED note covers only the unfiled-bug precondition, not the work-type or domain."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-1b7b19",
+      "probe": "machinery-domain.Y3",
+      "score": 2,
+      "reason": "Quotes the by-part source-and-state rule and the split-only-where-proved-differently-and-needed condition, and applies both halves correctly."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-1b7b19",
+      "probe": "machinery-domain.Y4",
+      "score": 1,
+      "reason": "Names D6 firmly, but W1/W2 are given only as a GUESS under NOT SETTLED, so it is capped at 1."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-40541e",
+      "probe": "charter-claims.V1",
+      "score": 2,
+      "reason": "Says no with the gap reasoning and names management concerns: territory, boundaries, faults and changes."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-40541e",
+      "probe": "charter-claims.V2",
+      "score": 2,
+      "reason": "Says there is no method and identifies RU1 and RU3 as rules, not methods."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-40541e",
+      "probe": "charter-claims.V3",
+      "score": 2,
+      "reason": "Names all four empty moments and gives a real unheld candidate (measured-or-inferred labelling)."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-40541e",
+      "probe": "charter-claims.V4",
+      "score": 2,
+      "reason": "Names all five moments that have no practice."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-40541e",
+      "probe": "charter-claims.V5",
+      "score": 2,
+      "reason": "Names above-unit authorities with their holders, for example Direction held by R4."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-40541e",
+      "probe": "charter-claims.V6",
+      "score": 2,
+      "reason": "Says no, because the set claims every surface however many that proves to be and is not expected to be complete."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-40541e",
+      "probe": "charter-claims.V7",
+      "score": 2,
+      "reason": "Says none exists and that the charter keeps the claim as a gap; it hedges only on building one now."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-40541e",
+      "probe": "charter-claims.V8",
+      "score": 1,
+      "reason": "Gives W1/W2 and W3 on D6, but labels the conclusion a GUESS and NOT SETTLED, which caps the score at 1."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-40541e",
+      "probe": "charter-claims.V9",
+      "score": 2,
+      "reason": "Names independent verification with real members from several layers (M1, W8, K21, R3, A8)."
+    },
+    {
+      "label": "after",
+      "reader": 1,
+      "pid": "r-40541e",
+      "probe": "charter-claims.V10",
+      "score": 2,
+      "reason": "Says no axiom has that mandate, calls it a gap, and notes A2's adjacent text is not a mandate."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-5e8c8e",
+      "probe": "charter-claims.V1",
+      "score": 2,
+      "reason": "Says no with the gap reasoning and names management concerns such as territory, boundaries, composition and faults."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-5e8c8e",
+      "probe": "charter-claims.V2",
+      "score": 2,
+      "reason": "Says there is no method and identifies RU1 and RU3 as rules, not methods."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-5e8c8e",
+      "probe": "charter-claims.V3",
+      "score": 2,
+      "reason": "Names all four empty moments and gives a real unheld candidate (measured-or-inferred labelling)."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-5e8c8e",
+      "probe": "charter-claims.V4",
+      "score": 2,
+      "reason": "Names all five moments that have no practice."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-5e8c8e",
+      "probe": "charter-claims.V5",
+      "score": 2,
+      "reason": "Names above-unit authorities (Direction, Flow, Curation) with their holders, R4 and R1."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-5e8c8e",
+      "probe": "charter-claims.V6",
+      "score": 2,
+      "reason": "Says no, because the set is not complete and is expected to grow when the territory finds a gap, so the count is not the claim."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-5e8c8e",
+      "probe": "charter-claims.V7",
+      "score": 2,
+      "reason": "Says none exists and that the claim stays in the territory as a named gap; it hedges only on build timing."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-5e8c8e",
+      "probe": "charter-claims.V8",
+      "score": 1,
+      "reason": "Gives W1/W2 and W3 on the knowledge domain, but labels the conclusion a GUESS and NOT SETTLED, which caps the score at 1."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-5e8c8e",
+      "probe": "charter-claims.V9",
+      "score": 2,
+      "reason": "Names independent verification with real members from several layers (M1, W8, K21, R3, A8)."
+    },
+    {
+      "label": "after",
+      "reader": 2,
+      "pid": "r-5e8c8e",
+      "probe": "charter-claims.V10",
+      "score": 2,
+      "reason": "Says no axiom has that mandate and records it as a gap."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-a06046",
+      "probe": "charter-claims.V1",
+      "score": 2,
+      "reason": "Says no with the gap reasoning and names management concerns: territory, boundaries, composition, faults and changes."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-a06046",
+      "probe": "charter-claims.V2",
+      "score": 2,
+      "reason": "Says there is no method and identifies RU1 and RU3 as rules, not methods."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-a06046",
+      "probe": "charter-claims.V3",
+      "score": 2,
+      "reason": "Names all four empty moments and gives a real unheld candidate (measured-or-inferred labelling)."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-a06046",
+      "probe": "charter-claims.V4",
+      "score": 2,
+      "reason": "Names all five moments that have no practice."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-a06046",
+      "probe": "charter-claims.V5",
+      "score": 2,
+      "reason": "Names an above-unit authority (Direction) and its holder, the director R4."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-a06046",
+      "probe": "charter-claims.V6",
+      "score": 2,
+      "reason": "Says no, citing the claim over every surface however many it proves to be and the incomplete set."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-a06046",
+      "probe": "charter-claims.V7",
+      "score": 1,
+      "reason": "Correctly says none exists, but answers whether one should exist as NOT SETTLED instead of affirming a gap inside the schemas set's claim."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-a06046",
+      "probe": "charter-claims.V8",
+      "score": 1,
+      "reason": "Gives W1/W2 to revise and W3 to retire on knowledge-methodology, but labels this a GUESS and NOT SETTLED, which caps the score at 1."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-a06046",
+      "probe": "charter-claims.V9",
+      "score": 2,
+      "reason": "Names independent verification with real members from several layers (M1, W8, K21, R3, A8)."
+    },
+    {
+      "label": "after",
+      "reader": 3,
+      "pid": "r-a06046",
+      "probe": "charter-claims.V10",
+      "score": 2,
+      "reason": "Says no axiom has that mandate and quotes it as a recorded gap."
+    }
+  ],
+  "consistentHedges": [
+    {
+      "probe": "machinery-domain.Y1",
+      "label": "before",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "machinery-domain.Y2",
+      "label": "before",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "machinery-domain.Y3",
+      "label": "before",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "machinery-domain.Y3",
+      "label": "after",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "machinery-domain.Y4",
+      "label": "before",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "machinery-domain.Y4",
+      "label": "after",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "charter-claims.V6",
+      "label": "before",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "charter-claims.V7",
+      "label": "before",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "charter-claims.V7",
+      "label": "after",
+      "hedged": 3,
+      "readers": 3
+    },
+    {
+      "probe": "charter-claims.V8",
+      "label": "after",
+      "hedged": 3,
+      "readers": 3
+    }
+  ]
+}
