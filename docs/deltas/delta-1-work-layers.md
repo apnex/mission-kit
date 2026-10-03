@@ -1,7 +1,7 @@
 # Delta-1 - the work layers - a horizontal layer change
 
 ```yaml
-status:       proposed, revision 2 - awaiting director ratification; no stage has run
+status:       proposed, revision 3 - rename ruled; awaiting ratification and the Q4 choice; no stage has run
 row:          B24
 intent:       docs/surveys/b24-work-layers-survey.md
 from-state:   docs/ARCHITECTURE.md, at 719351d
@@ -29,7 +29,7 @@ If the stages stall, a target-state `AR1` is authored from this section.
 
 | Layer | Holds | Prefix | Category |
 |---|---|---|---|
-| `methodology/` | procedures: steps that produce a result of their own | `M` | `methodology` |
+| `methods/`, titled **Methods** - renamed from `methodology/` | procedures: steps that produce a result of their own | `M` | `method` |
 | `practices/` | practices and rules: what governs how other work is done | `PC` | `practice` |
 | `skills/` | packages of a procedure, unchanged in this delta | `K` | `skill` |
 | `work-types/` | units of work, unchanged in this delta | `W` | `work-type` |
@@ -52,7 +52,7 @@ Within `practices/`: **a rule leaves an observable trace** a check could test - 
 | `M6` author from exemplar | no - governs authoring | no - reading a peer leaves no trace | practice | `practices/` |
 | `M7` axiom alignment audit | yes - an audit artifact | - | procedure | stays `M7` |
 | `M8` artifact bootstrap | yes - the first artifacts | - | procedure | stays `M8` |
-| `K1` history content scrub | yes - rewritten history and its proof | - | procedure | `methodology/` |
+| `K1` history content scrub | yes - rewritten history and its proof | - | procedure | `methods/` |
 | `K2` publishing rewritten history | no - governs force-push | yes - a named justification exists | rule | `practices/` |
 
 `M6` is a practice, as the survey classified it.\
@@ -80,8 +80,9 @@ The rest of this delta is written for A; B changes stage 1 and the prefixes only
 
 ## 1. The fence
 
+- **Rename:** `methodology/` to `methods/`, category `methodology` to `method` across every entry in it, the charter titled *Methods*; every path, link and category reference in the corpus updated.
 - **Charters:** `PC0` authored; `M0` rewritten for procedures, and its use of "practice" to mean procedure corrected; `E2`'s layer table; the root `README.md` layer table.
-- **Mechanism:** the schema - `practice` added to the category enum, `PC` to the ID pattern, `kind` with values `rule` and `practice` required of practice entries, and `enforced-by` required when `kind: rule`; `practices` added to the schema test's catalogue directories; whatever `check-structure.sh` and `generate-index.mjs` need for a new layer.
+- **Mechanism:** the schema - `method` replacing `methodology` and `practice` added in the category enum, `PC` to the ID pattern, `kind` with values `rule` and `practice` required of practice entries, and `enforced-by` required when `kind: rule`; `practices` added to the schema test's catalogue directories; whatever `check-structure.sh` and `generate-index.mjs` need for a new layer.
 - **Moves:** `M3`, `M4`, `M5`, `M6`, `K2` to `practices/`; `K1` to `methodology/`.
 - **References:** every `related` edge, link and ID mention that names a moved entry, retargeted to its successor.
 - **Architecture:** `docs/ARCHITECTURE.md`, including the layer counts outside section 5.
@@ -99,7 +100,9 @@ The rest of this delta is written for A; B changes stage 1 and the prefixes only
 **How an entry moves.**\
 IDs are never reused, so a moved entry takes a new ID and declares `supersedes` with the old one.\
 The old file stays at its old path: same category, `status: superseded`, a `hydrate-when` stating the condition of arriving by an old link, and a one-line body naming the successor.\
-Every outside link to the old path still resolves, one hop from the content.\
+The superseded entry is kept because the root charter requires it - *a replaced entry keeps its ID and flips `status`* - and because this corpus's own frozen records cite the moved IDs: 65 files in `docs/` and 57 commit messages, which `M4` forbids rewriting.\
+It is not kept for downstream links; the director ruled those are not a reason to carry legacy.\
+A superseded entry moved by the rename lives at its new path in `methods/`, not its old one.\
 The moved body is copied unedited.
 
 ---
@@ -113,7 +116,7 @@ The moved body is copied unedited.
 | practices and rules (Q4) | **proves** the director's choice between A and B |
 | the vision amended (Q3) | already absorbed, `719351d` |
 | work-types cite their procedures (Q6) | **defers** to the `W0` conversion |
-| `methodology` renamed `method` | **not proposed** - recorded under `B24` as *might*, not ruled; see named costs |
+| `methodology/` renamed `methods/` | **proves** - ruled by the director: downstream breakage is not a reason to carry legacy |
 
 **Deferred, each with an observable trigger:**
 
@@ -153,7 +156,7 @@ Ratification of the delta and of each stage is the director's; the executor eval
 
 ## 6. Named costs and non-claims
 
-- **No rename.** The generator requires a charter's title to begin with its directory's name, so retitling `methodology/` "Methods" fails the gate; renaming the directory breaks every outside link with no redirect. Both are available later, with those costs, if the director rules the rename.
+- **Every outside link into `methodology/` breaks.** Ruled acceptable: downstream breakage is not a reason to carry legacy.
 - **A redirect stub costs one hop**, and adds a superseded row to the ledger.
 - **The skills layer still holds procedures as source** in every packaged skill until that deferral is taken.
 - **`practices/` starts with five members**, one of them a practice.
@@ -175,7 +178,7 @@ Ratification of the delta and of each stage is the director's; the executor eval
 | Must-fix | Answer |
 |---|---|
 | `K3` is packaged - seven templates - and moving it duplicates the procedure | `K3` stays; deferred with every packaged skill |
-| retitling to "Methods" and category `method` break the generator and schema; the rename was recorded as *might* | rename dropped from the delta and from the rulings column |
+| retitling to "Methods" and category `method` break the generator and schema; the rename was recorded as *might* | revision 2 dropped it; revision 3 restores it as a ruling, renaming the directory so title and directory agree, and puts the enum and every reference in the fence |
 | the `PR` prefix fails the ID pattern, is unchecked by the schema test, and means *pull request* 98 times | prefix `PC`, unused anywhere; ID pattern, enum, catalogue directories and the root layer table in the fence, with a mutation proof |
 | Q4 relabelled `M6`, used a shape test every methodology entry passes, and altered `E3`'s list | test written down; `M6` a practice, as surveyed; `E3`'s own list applied, finding one differing rule; Q4 presented as a director choice |
 | a rewritten `K0` would contradict the prose skills that stay | `K0` is not rewritten in this delta |
