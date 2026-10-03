@@ -48,7 +48,7 @@ Every axiom sits in exactly one row.\
 The partition is derived rather than imposed: of the thirty-five relations axioms declare to one another, fifteen fall within a row, about three times the five an arbitrary split into rows of these sizes would place there.
 
 **A gap the territory exposes: nothing protects an agent against its own error.**\
-Collaborating agents are assumed to act in good faith, so malice is out of scope.\
+Collaborating agents are assumed to act in good faith, and that assumption is about collaborators only.\
 Accidental misalignment is not, and an organisation of one has no second actor: the agent most likely to be wrong is the agent doing the work.\
 A confident inference reported as measured, a claim corroborated because it was wanted, an instrument checking its own output - each is defended in this corpus by standing doctrine and by independence that needs a second actor.\
 Neither is an axiom, so the protection most load-bearing for an agent working alone has no first principle.\
@@ -56,6 +56,11 @@ Thirteen of the fourteen axioms can bind a lone agent - every one except `A6`, w
 
 That is recorded as a gap, not filled.\
 An axiom earns its place by forbidding something the others permit, and whether this is a new axiom or a property one of the existing fourteen should state - [`A8`](A8-gated-recursive-integrity.md)'s refusal to promote unproven work and [`A4`](A4-zero-loss-knowledge.md)'s refusal to lose reasoning are nearest - is a question for the set.
+
+**A second gap: nothing protects a system against a hostile actor or untrusted input.**\
+The good-faith assumption does not reach an outsider, or input no collaborator vouches for, and a subverted system is not aligned with its own intent, so this is inside the territory.\
+[`A2`](A2-isomorphic-specification.md) names manual configuration a security fault, but no axiom has protection against hostility as its mandate.\
+It is recorded, not filled, on the same terms as the first.
 
 **A gap tested and not found.**\
 Cost looks absent from the row titles and is not: it is the whole mandate of [`A11`](A11-cognitive-minimalism.md) and [`A12`](A12-precision-context-engineering.md), and five more axioms cite it.
