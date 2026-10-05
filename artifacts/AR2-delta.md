@@ -89,7 +89,7 @@ A reading of zero proven at the outset is correct, not alarming.
 
 ## Template
 
-An instance lives at `docs/DELTAS/DELTA-<N>.md`, relative to the component root - the fixed upper-case name [`AR0`](README.md) requires of every instance.
+An instance lives at `docs/DELTAS/DELTA-<N>.md`, relative to the component root, where `N` counts up from 1 in the order deltas are opened and is never reused - the fixed upper-case name [`AR0`](README.md) requires of every instance.
 
 ```markdown
 # Delta-N - <name> - <shape>

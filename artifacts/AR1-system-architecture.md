@@ -104,7 +104,7 @@ A drift gate that walks ratified decisions and checks absorption is what makes "
 
 ## Template
 
-An instance lives at `docs/ARCHITECTURE.md` or `docs/ARCHITECTURE-TARGET.md`, relative to the component root - the fixed upper-case name [`AR0`](README.md) requires of every instance.
+An instance lives at `docs/ARCHITECTURE.md` for the `current` instant and `docs/ARCHITECTURE-TARGET.md` for the `target` instant, relative to the component root - the fixed upper-case name [`AR0`](README.md) requires of every instance.
 
 No template ships with this entry, deliberately - a fillable skeleton would defeat the "organised as the system is organised" rule and produce empty headings.
 
