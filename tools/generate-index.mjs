@@ -145,7 +145,10 @@ function table(entries, linkFrom, { enforcement = false } = {}) {
 	// The same reverse view for an axiom's applies-to: which systems' traits bring it into force,
 	// declared once on the axiom and shown here so the charter need keep no applicability matrix.
 	const withApplies = enforcement && entries.some((e) => e['applies-to']);
-	const cols = ['ID', 'Title', ...(withStatus ? ['Status'] : []), ...(withEnforcer ? ['Held by'] : []), ...(withApplies ? ['Binds'] : []), 'Hydrate when'];
+	// And for an artifact type's instance-path: where every project puts an instance, declared on
+	// the type and shown here, so the artifacts charter keeps the rule and names no member.
+	const withPath = enforcement && entries.some((e) => e['instance-path']);
+	const cols = ['ID', 'Title', ...(withStatus ? ['Status'] : []), ...(withEnforcer ? ['Held by'] : []), ...(withApplies ? ['Binds'] : []), ...(withPath ? ['Lives at'] : []), 'Hydrate when'];
 	const head = [`| ${cols.join(' | ')} |`, `|${cols.map(() => '---').join('|')}|`];
 	const rows = entries.map((e) => {
 		const href = linkFrom ? path.relative(linkFrom, e.rel) : e.rel;
@@ -153,6 +156,7 @@ function table(entries, linkFrom, { enforcement = false } = {}) {
 		if (withStatus) cells.push(cell(e.status));
 		if (withEnforcer) cells.push(e['enforced-by'] ? `\`${cell(e['enforced-by'])}\`` : (/0$/.test(e.id) ? '' : 'reading'));
 		if (withApplies) cells.push(e['applies-to'] ? cell(String(e['applies-to']).replace(/[[\]]/g, '')) : '');
+		if (withPath) cells.push(e['instance-path'] ? String(e['instance-path']).replace(/[[\]]/g, '').split(',').map((x) => `\`${x.trim()}\``).join(', ') : '');
 		cells.push(cell(e['hydrate-when']));
 		return `| ${cells.join(' | ')} |`;
 	});

@@ -91,6 +91,14 @@ test('purged bookkeeping fields are rejected, not merely absent', () => {
 
 // Delta-1 stage 1. Each probe is the defect the new layers must refuse; each was removed from the
 // schema once to confirm this test goes red without it.
+test('an artifact type must declare where its instances live', () => {
+	const t = { id: 'AR9', category: 'artifact', title: 't', status: 'active', 'hydrate-when': 'You are about to write a document of this type', related: ['AR0'] };
+	assert.equal(validate(t), false, 'an artifact type with no instance-path must be refused');
+	assert.equal(validate({ ...t, 'instance-path': ['docs/BOARD.md'] }), true, 'an upper-case fixed path must be accepted');
+	assert.equal(validate({ ...t, 'instance-path': ['docs/board.md'] }), false, 'a lower-case name must be refused');
+	assert.equal(validate({ ...t, 'instance-path': ['docs/DELTAS/DELTA-<N>.md'] }), true, 'a numbered pattern must be accepted');
+});
+
 test('a rule must declare the trace a check could test', () => {
 	const rule = { id: 'RU1', category: 'rule', title: 't', status: 'active', 'hydrate-when': 'You are about to defer a unit of tracked work', related: ['A4'] };
 	assert.equal(validate(rule), false, 'a rule with no trace must be refused');
