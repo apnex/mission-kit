@@ -65,13 +65,13 @@ Flat, until there is reason to subdivide.
 | [`ARCHITECTURE.md`](ARCHITECTURE.md) | [`AR1`](../artifacts/AR1-system-architecture.md) | this corpus stated at one altitude, instant `current` |
 | [`BOARD.md`](BOARD.md) | [`AR3`](../artifacts/AR3-board.md) | the triaged legal next moves, for director selection |
 | [`BACKLOG.md`](BACKLOG.md) | [`AR5`](../artifacts/AR5-backlog.md) | findings about this corpus, each with evidence and a revival trigger |
+| [`DECISIONS.md`](DECISIONS.md) | [`AR4`](../artifacts/AR4-decision-record.md) | the director's rulings, each classified general or project, with the entries a general ruling must be stated in |
 | [`audits/`](audits/) | - | evidence produced by auditing this corpus against its own standards, cited from the board |
 | [`investigations/`](investigations/) | - | dated analyses of a set's population against its charter's end state, scope and growth policy: a proposed partition, where members sit, and the gaps found, each gap carried to the backlog |
 
 The vision is not in this directory by design - [`AR0`](../artifacts/README.md) anchors it at the component root, which for this corpus is [`../VISION.md`](../VISION.md).
 
-Absent, and known to be: a decision register, which is row `B15`.\
-This corpus prescribes [`AR4`](../artifacts/AR4-decision-record.md) to its adopters and keeps its own rulings in commit messages, which is the same defect `B1` recorded one altitude up.
+
 
 ---
 

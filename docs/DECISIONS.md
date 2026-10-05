@@ -1,0 +1,1035 @@
+# mission-kit - decision register
+
+The director's rulings on mission-kit, one record per ruling.\
+An [`AR4`](../artifacts/AR4-decision-record.md) instance in its register form, held by the corpus that publishes the type.
+
+---
+
+## Status
+
+**Authority.**\
+The director, for every row; rows are drafted by agents.\
+**Backfilled 2026-10-04** from the audits, the backlog, the board, the surveys, the deltas and commit messages, oldest first.\
+**The classification of each row - general or project - is the drafting agent's and awaits the director's confirmation.**
+
+**Kinds.**
+
+- **general** - a rule true for any project using the corpus. It belongs in the product, and `affects` names the entries that must state it; `absorbed` says whether they do.
+- **project** - a decision about mission-kit's own work. It stays in this record and affects no entry.
+
+**Status.**\
+`ratified` for a ruling in force, `proposed` for one not yet ruled, `superseded by` for one replaced.\
+A ruling is changed only by a later row that `supersedes` or `amends` it, never by editing the row.
+
+**Checked by** `tools/check-decisions.mjs`: ids unique and in order, every general row names entries that exist, every project row names none, every lineage reference resolves.\
+Whether an entry actually states a ruling is checked by reading, not by script.
+
+**Absorbed during the backfill.**\
+`0020` was applied in five places and stated in none; the root README now states it.
+
+**Known defects of the backfill.**
+
+- Rows with no recorded alternative fail `AR4`'s first falsifier; their bodies say so.
+- `0008` is contested: a later change, approved within the vision recheck, named protection against hostile actors as a gap the axioms should close, which this ruling places out of scope.
+
+---
+
+## Decision records
+
+| id | date | ruling | kind | authority | status | lineage | affects | absorbed |
+|---|---|---|---|---|---|---|---|---|
+| 0001 | 2026-07-05 | A14 Compounding Learning is ratified as an axiom: take the path of greatest learning, treating learning as invested, compounding capital. | general | director | ratified | - | `axioms/A14-compounding-learning.md` | yes |
+| 0002 | 2026-07-25 | Mission-kit skills are a living upstream: references to owned upstream are living pointers and are never SHA-pinned; immutable content-addressing is kept for irreversible external effects. | general | director | ratified | - | `skills/workgraph-arc-operator/SKILL.md` | yes |
+| 0003 | 2026-08-22 | Recurrence-tier evidence (MREQ-10, now B54) is won't-do: artifact entries stop tracking recurrence, because a corpus cannot measure its own uptake. | project | director | ratified | - | - | - |
+| 0004 | 2026-09-02 | VISION.md is ratified as the corpus's own vision, stated as terminal state. | project | director | ratified | - | - | - |
+| 0005 | 2026-09-14 | Set becomes its own entity rather than a property of the layer entity. | general | director | ratified | - | `entities/E3-set.md`, `entities/E2-layer.md` | yes |
+| 0006 | 2026-10-02 | Growth of a charter must be paid for: added size is acceptable only where it materially advances E4 and improves the charter's quality and efficacy. | general | director | ratified | - | `entities/E4-charter.md`, `methods/M11-change-a-charter.md` | yes |
+| 0007 | 2026-10-02 | A charter should expose the weight and balance of its items. | general | director | ratified | - | `entities/E4-charter.md` | yes |
+| 0008 | 2026-10-02 | Malice is out of scope by design: collaborating agents are assumed to act in good faith, and defending against accidental misalignment, including an agent's own error, is in scope. | general | director | ratified | - | `axioms/README.md` | contested |
+| 0009 | 2026-10-02 | Mission-kit is an operating system for a single agent as much as for a multi-agent system; for a lone agent the actor most likely to be wrong is itself. | general | director | ratified | - | `README.md` | yes |
+| 0010 | 2026-10-02 | An organisation is one agent or many, operating with mission-kit; the word is defined in the charter rather than the vision revised. | general | director | ratified | - | `README.md` | yes |
+| 0011 | 2026-10-02 | Improvements to existing charter words are permitted where they advance the document toward its best form in context, weighed for cost against quality on the same paid-for test as additions. | general | director | ratified | - | `methods/M11-change-a-charter.md`, `entities/E4-charter.md` | yes |
+| 0012 | 2026-10-02 | A board instance is not the product; an artifact type describing boards for any project is, so procedures meant for every project must not be written into a board. | project | director | ratified | - | - | - |
+| 0013 | 2026-10-02 | A board can and should cite corpus content; what does not belong in an instance is content intended for every project, so the test is the intended reader, not the kind of content. | project | director | ratified | amends 0012 | - | - |
+| 0014 | 2026-10-02 | Multi-tag axiom binding: any one of an axiom's applicability tags suffices for it to bind. | general | director | ratified | - | `traits/README.md`, `axioms/README.md` | yes |
+| 0015 | 2026-10-02 | Applicability tags name characteristics of the system being worked on and get their own layer, traits, prefix T. | general | director | ratified | - | `traits/README.md`, `README.md` | yes |
+| 0016 | 2026-10-02 | A lone agent must check its own work by means its reasoning cannot bias; a fresh sub-agent with no shared context is the strongest such self-check and is still a self-check, not independent assurance. | general | director | ratified | - | `roles/README.md` | yes |
+| 0017 | 2026-10-02 | Any cited online address must be proven empirically, by fetching it, not to be a hallucination. | general | director | ratified | - | `roles/README.md` | yes |
+| 0018 | 2026-10-03 | The product-data gap is closed by option B, a seventh domain, D7 product-data. | project | director | ratified | - | - | - |
+| 0019 | 2026-10-03 | Domains, work-types and traits are under-defined collections: when a gap is determined it is on us to expand them, closing it with a new member rather than stretching a neighbour. | general | director | ratified | - | `domains/README.md`, `work-types/README.md`, `traits/README.md`, `entities/E4-charter.md` | yes |
+| 0020 | 2026-10-03 | Each relationship between the axis layers is declared once, on the side whose meaning includes it, and reverse views are generated, never hand-kept (the director's rule 1). | general | director | ratified | - | `README.md` | yes |
+| 0021 | 2026-10-03 | Objective: a context-less agent can read the corpus and compose the context it needs from deterministic tags, definitions and triggers. | general | director | ratified | - | `README.md` | yes |
+| 0022 | 2026-10-03 | Q-A: axioms bind systems; a change answers to the system it modifies and every system containing it, but not one it only composes with unless it changes their contract; where no boundary is declared, both bind. | general | director | ratified | - | `axioms/README.md`, `entities/E5-system.md` | yes |
+| 0023 | 2026-10-03 | An axiom's mandate is an asymptote: no change may move a system away from it, each change moves toward it as far as its scope allows, a gap outside the scope is recorded with a revival trigger and selection left to the director; M7's caution governs reasoning about facts; a system entity is approved. | general | director | ratified | - | `axioms/README.md`, `methods/M7-axiom-alignment-audit.md`, `entities/E5-system.md` | yes |
+| 0024 | 2026-10-03 | Opportunistic improvement to adjacent or related components is considered, not mandated, and judged by compounding learning. | general | director | ratified | - | `axioms/README.md`, `axioms/A14-compounding-learning.md` | yes |
+| 0025 | 2026-10-03 | Axiom wording is made consistent with the asymptote reading across all fourteen axioms. | general | director | ratified | - | `axioms/A1-sovereign-state-transparency.md`, `axioms/A2-isomorphic-specification.md`, `axioms/A3-sovereign-composition.md`, `axioms/A4-zero-loss-knowledge.md`, `axioms/A5-perceptual-parity.md`, `axioms/A6-frictionless-agentic-collaboration.md`, `axioms/A7-resilient-agentic-operations.md`, `axioms/A8-gated-recursive-integrity.md`, `axioms/A9-chaos-validated-deployment.md`, `axioms/A10-autopoietic-evolution.md`, `axioms/A11-cognitive-minimalism.md`, `axioms/A12-precision-context-engineering.md`, `axioms/A13-director-intent-amplification.md`, `axioms/A14-compounding-learning.md` | yes |
+| 0026 | 2026-10-03 | Component is defined alongside system, so that between them they set duty, interfaces, blast radius and change. | general | director | ratified | - | `entities/E6-component.md`, `entities/E5-system.md` | yes |
+| 0027 | 2026-10-03 | A boundary separates two units only where declared and honoured; a unit reaching past a declared interface stays one system with it, and a detected bypass is a signal triggering evaluation of the interface against the component's duty and vision, ending in rerouting the consumer or adjusting the interface. | general | director | ratified | amends 0022 | `entities/E5-system.md`, `entities/E6-component.md`, `axioms/A3-sovereign-composition.md`, `axioms/README.md` | yes |
+| 0028 | 2026-10-03 | Undeclared neighbour (A): a change that alters what an undeclared neighbour reaches into owns that boundary, so declaring and honouring the interface is in its scope; adjacency is not widened. | general | director | ratified | - | `entities/E5-system.md` | yes |
+| 0029 | 2026-10-03 | Merge transitivity (A): the undeclared-boundary merge chains only through what the change can reach. | general | director | ratified | - | `entities/E5-system.md` | yes |
+| 0030 | 2026-10-03 | Container traits (A): a system has a trait if it, or any part it contains, passes the trait's test. | general | director | ratified | - | `entities/E5-system.md`, `traits/README.md` | yes |
+| 0031 | 2026-10-03 | Q-B (A): the organisation doing the work is a system with traits of its own; its axioms bind how work is done, asked separately from what a product change answers to. | general | director | ratified | - | `entities/E5-system.md` | yes |
+| 0032 | 2026-10-03 | A3 (A, strengthened by the director): a new capability is never bolted onto an existing unit, and improving a unit toward its limit within its duty, including fracturing it, re-cutting its seams and recomposing, is explicitly encouraged, not mandated. | general | director | ratified | - | `axioms/A3-sovereign-composition.md`, `axioms/README.md` | yes |
+| 0033 | 2026-10-03 | A declared floating version range is adoption in advance: a release within it alters every consumer bound by the range. | general | director | ratified | - | `entities/E5-system.md` | yes |
+| 0034 | 2026-10-03 | 'As much as the touch allows' (A): a change must close only the part of a gap its own work already alters; restructuring beyond that, even in the same component, is encouraged, not required. | general | director | ratified | amends 0024 | `axioms/README.md` | yes |
+| 0035 | 2026-10-03 | Changing an unversioned interface does not oblige adding versioning (A): doing so is encouraged, and otherwise the gap is recorded. | general | director | ratified | - | `entities/E5-system.md` | yes |
+| 0036 | 2026-10-03 | Four kinds of how-to-do-work content are distinct - procedures, practices, rules and units of work - and a skill is packaging, not a kind of content. | general | director | ratified | - | `README.md`, `methods/README.md` | yes |
+| 0037 | 2026-10-03 | A procedure is the single source of its content and reaches a cold agent by trigger, an installed agent and a coordinating system; a skill exists only where tooling makes packaging necessary; humans are not the primary consumer. | general | director | ratified | - | `skills/README.md`, `methods/README.md` | yes |
+| 0038 | 2026-10-03 | The vision is amended before any layer change: mission-kit prescribes how work is done, and 'not a process framework' becomes 'not a ceremony framework'. | project | director | ratified | amends 0004 | - | - |
+| 0039 | 2026-10-03 | Q6 ratified: a work-type cites the procedures that conduct it, and the reverse view is generated. | general | director | ratified | - | `work-types/README.md`, `schemas/catalog-entry/v1alpha1/catalog-entry.schema.json` | yes |
+| 0040 | 2026-10-03 | Rename methodology/ to methods/ (category method). | project | director | ratified | - | - | - |
+| 0041 | 2026-10-03 | Downstream breakage is not a reason to carry legacy. | general | director | ratified | - | `README.md`, `methods/M13-change-a-set.md` | yes |
+| 0042 | 2026-10-03 | Q4: practices and rules are two layers, rules/ (RU) and practices/ (PC), to keep the separation simple, even with one practice. | general | director | ratified | - | `README.md`, `rules/README.md`, `practices/README.md` | yes |
+| 0043 | 2026-10-03 | Communication with a human is designed now, as a set spanning layers rather than a layer, for a human with limited context who may be cold. | project | director | ratified | - | - | - |
+| 0044 | 2026-10-03 | Charters of populations spanning layers live in a sets/ layer (ST), whose charter declares its members. | general | director | ratified | - | `sets/README.md`, `entities/E4-charter.md`, `README.md` | yes |
+| 0045 | 2026-10-03 | A competent cold reader is assumed to know general engineering terms; only system-specific names must be explained. | general | director | ratified | - | `style/S15-message-to-a-human.md` | yes |
+| 0046 | 2026-10-03 | Guide the human through any communication needing them to understand or decide: progressive disclosure, the point first, one question at a time, depth on request; the implementation is the agent's to design. | general | director | ratified | - | `methods/M10-guided-dialogue.md`, `style/S15-message-to-a-human.md` | yes |
+| 0047 | 2026-10-03 | End a message with two or three short follow-on picks, each prefixed with one word - Continue, Explore, Return - marking which continues the main work. | general | director | ratified | - | `style/S15-message-to-a-human.md` | yes |
+| 0048 | 2026-10-03 | Communication changes are evaluated on the human, through a process the director can run, rather than by agents scoring agents. | project | director | ratified | - | - | - |
+| 0049 | 2026-10-03 | Delta-1 revision 4 is ratified, to run before the explain guidance lands (option C). | project | director | ratified | - | - | - |
+| 0050 | 2026-10-03 | Delta-1's L5 drop is the change working as intended, so the rubric is corrected after the scores. | project | director | ratified | - | - | - |
+| 0051 | 2026-10-03 | backlog/ does not survive as a layer: its ten MREQ entries become rows B45-B54, full text kept in docs/requests/. | project | director | ratified | - | - | - |
+| 0052 | 2026-10-04 | Constraint 2/9 (A): same-agent review is never a valid degradation; with no second agent the gate waits or the director ratifies. | general | director | ratified | - | `work-types/README.md`, `roles/README.md` | yes |
+| 0053 | 2026-10-04 | Composition (A): a unit of work stays role x work-type x domain; the work-type cites the method that conducts it and the artifact it produces; axioms come from the systems altered; W0 states the reading order once. | general | director | ratified | - | `work-types/README.md` | yes |
+| 0054 | 2026-10-04 | A territory claims scope, not holdings: the style set should cover commit messages, code names and code comments, and a missing member does not invalidate the claim - that is how gaps are found. | general | director | ratified | - | `style/README.md` | yes |
+| 0055 | 2026-10-04 | A charter holds its set's vision and manages the set against it: a territory's partition comes from the population but its extent from purpose, so an unfilled claim is a gap, never a reason to cut the claim. | general | director | superseded by 0065 | - | `entities/E4-charter.md` | yes |
+| 0056 | 2026-10-04 | Ruling A: the organisation's coordination and governance machinery and its knowledge corpus are engineered products, each domain holding its source and live state; a part splits only where work on a portion is proved differently and the split has been found needed. | general | director | ratified | - | `domains/README.md`, `work-types/README.md` | yes |
+| 0057 | 2026-10-04 | The corpus carries no legacy: a moved or retired entry leaves no stub, takes a new id, and non-reuse is held by check-id-reuse from git history. | general | director | ratified | amends 0041 | `README.md`, `methods/M13-change-a-set.md` | yes |
+| 0058 | 2026-10-04 | P1 Path A / Path B moves to style as S16, under a new identifier with no stub. | project | director | ratified | - | - | - |
+| 0059 | 2026-10-04 | Gate, evidence and substrate are defined as entities before the K0 charter is converted. | project | director | ratified | - | - | - |
+| 0060 | 2026-10-04 | A gate has one meaning, in three kinds by who judges. | general | director | ratified | - | `entities/E7-gate.md` | yes |
+| 0061 | 2026-10-04 | A gate's verdict is binary: extra results map to pass or fail, no verdict is an absence, and an exception is the director's override. | general | director | ratified | - | `entities/E7-gate.md`, `methods/M7-axiom-alignment-audit.md`, `work-types/README.md` | yes |
+| 0062 | 2026-10-04 | Director ratification in place of an absent independent agent is the gate decided by the director, a recorded change of kind; the director does not become a verifier. | general | director | ratified | amends 0052 | `entities/E7-gate.md`, `roles/README.md` | yes |
+| 0063 | 2026-10-04 | Evidence (A): a verdict is never evidence; evidence is what a judge receives. | general | director | ratified | - | `entities/E8-evidence.md` | yes |
+| 0064 | 2026-10-04 | Substrate (A): substrate means the coordination substrate only; every other sense is replaced and the substrate-audit skill is renamed repo-audit. | general | director | ratified | - | `entities/E9-substrate.md`, `skills/repo-audit/SKILL.md` | yes |
+| 0065 | 2026-10-04 | A charter is an asymptote: it states end state, scope and growth policy; partitions and gaps belong to dated investigations, gaps become backlog rows weighed by the board, and a charter does not name its members. | general | director | ratified | supersedes 0055 | `entities/E4-charter.md`, `entities/E3-set.md` | yes |
+| 0066 | 2026-10-04 | Fork owners are not contacted before a history rewrite - contacting them is rude and not the safeguard; a fork holding no rewritten commit is untouched, one that does is a reason to defer. | general | director | ratified | - | `rules/RU4-publishing-rewritten-history.md` | yes |
+| 0067 | 2026-10-04 | Eval runs and their results polluted the published repo: runs are local working material, never published, and history is purged of them as a defect. | project | director | ratified | - | - | - |
+| 0068 | 2026-10-04 | A provenance record in another repository pinning a rewritten commit is external and out of scope for the purge. | project | director | ratified | - | - | - |
+| 0069 | 2026-10-04 | A charter must not know it is being investigated: no link to or passage naming an investigation; the dependency runs one way. | general | director | ratified | amends 0065 | `entities/E4-charter.md` | yes |
+| 0070 | 2026-10-04 | Probes that ask for a gap or partition charters no longer hold are retired, each kept with its question and reason; the class ruling later retires H7, k0 Q5, k0 Q6 and L5. | project | director | ratified | - | - | - |
+| 0071 | 2026-10-04 | A charter is a vision applied to its set (AR6's devices) plus operating instructions; Purpose becomes Vision and Operation joins the fixed headings; members need not know their set. | general | director | ratified | amends 0065 | `entities/E4-charter.md`, `entities/E3-set.md`, `schemas/SC6-entry-body.md` | yes |
+| 0072 | 2026-10-04 | Operating a charter (changing its text, M11) is distinct from operating the set it governs (changing its population, M13). | general | director | ratified | amends 0071 | `methods/M13-change-a-set.md`, `entities/E4-charter.md`, `methods/M11-change-a-charter.md` | yes |
+| 0073 | 2026-10-04 | Close M5: finish what an agent can do now, hold what needs the director (B42), close the milestone. | project | director | ratified | - | - | - |
+
+---
+
+## Records
+
+### 0001
+
+**Ruling.**\
+A14 Compounding Learning is ratified as an axiom: take the path of greatest learning, treating learning as invested, compounding capital.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** general - an axiom binding every adopting system
+
+**Source.**\
+`[V, commit 80e7294 (subject: 'Director-ratified 2026-07-05')]`
+
+### 0002
+
+**Ruling.**\
+Mission-kit skills are a living upstream: references to owned upstream are living pointers and are never SHA-pinned; immutable content-addressing is kept for irreversible external effects.
+
+**Alternatives refuted.** exact SHA-pinned effect inputs (fe56a2f)
+
+**Kind.** general - a rule for any agent referencing the corpus
+
+**Lineage.** fe56a2f inverted the rule to 'effect inputs are exact' (agent change, not a recorded ruling)
+
+**Source.**\
+`[V, commit c1e96cc]`
+
+### 0003
+
+**Ruling.**\
+Recurrence-tier evidence (MREQ-10, now B54) is won't-do: artifact entries stop tracking recurrence, because a corpus cannot measure its own uptake.
+
+**Alternatives refuted.** keep the two-tier recurrence field; name the evidence sample
+
+**Kind.** project - disposition of one of mission-kit's own deferred requests
+
+**Source.**\
+`[V, commit aa5e9b6; docs/BACKLOG.md B54; docs/requests/mreq-10-recurrence-tier-evidence.md]`
+
+### 0004
+
+**Ruling.**\
+VISION.md is ratified as the corpus's own vision, stated as terminal state.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** project - mission-kit's own vision, not a rule for adopters
+
+**Source.**\
+`[V, commit c78743e]`
+
+### 0005
+
+**Ruling.**\
+Set becomes its own entity rather than a property of the layer entity.
+
+**Alternatives refuted.** fold set into E2 layer as a property
+
+**Kind.** general - defines a term every charter and adopter uses
+
+**Source.**\
+`[V, commit 24e3e0b ('Q2 ruled'); docs/BOARD.md 'Decisions required' Q2]`
+
+### 0006
+
+**Ruling.**\
+Growth of a charter must be paid for: added size is acceptable only where it materially advances E4 and improves the charter's quality and efficacy.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** general - a rule for writing any charter
+
+**Source.**\
+`[V, commit be3c443; commit 10641c9 ('the director's criterion'); docs/audits/M5.4b-trial-verdict-A0.md]`
+
+### 0007
+
+**Ruling.**\
+A charter should expose the weight and balance of its items.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** general - a rule for any charter
+
+**Source.**\
+`[V, commit 10641c9 ('per the director's earlier observation'); undated observation, recorded here at its first citation]`
+
+### 0008
+
+**Ruling.**\
+Malice is out of scope by design: collaborating agents are assumed to act in good faith, and defending against accidental misalignment, including an agent's own error, is in scope.
+
+**Alternatives refuted.** treat the gap as defence against an adversary
+
+**Kind.** general - sets the scope of the axiom set for every adopter; not yet absorbed: stated only in docs/investigations/axioms-2026-10-04.md, no product entry
+
+**Lineage.** the A0 trial's 'no axiom protects against an adversary'
+
+**Source.**\
+`[V, commit b318b85; docs/BACKLOG.md B21; docs/audits/M5.4b-trial-verdict-A0.md ('Corrected after director review')]`
+
+### 0009
+
+**Ruling.**\
+Mission-kit is an operating system for a single agent as much as for a multi-agent system; for a lone agent the actor most likely to be wrong is itself.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** general - states who the corpus serves
+
+**Source.**\
+`[V, commit b318b85 ('The second ruling'); docs/BACKLOG.md B21, B23]`
+
+### 0010
+
+**Ruling.**\
+An organisation is one agent or many, operating with mission-kit; the word is defined in the charter rather than the vision revised.
+
+**Alternatives refuted.** revise VISION.md to name the lone agent; mint an entity for organisation
+
+**Kind.** general - definition every reader relies on
+
+**Lineage.**\
+B23's proposed remedy, a vision revision
+
+**Source.**\
+`[V, commit adf823a; docs/BACKLOG.md B23]`
+
+### 0011
+
+**Ruling.**\
+Improvements to existing charter words are permitted where they advance the document toward its best form in context, weighed for cost against quality on the same paid-for test as additions.
+
+**Alternatives refuted.** preserve every original sentence verbatim
+
+**Kind.** general - rule for changing any charter
+
+**Lineage.** the M5.3/M5.4b trials' verbatim-preservation rule
+
+**Source.**\
+`[V, commit 50a9114]`
+
+### 0012
+
+**Ruling.**\
+A board instance is not the product; an artifact type describing boards for any project is, so procedures meant for every project must not be written into a board.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** project - governs where mission-kit places its own content; stated in docs/README.md
+
+**Source.**\
+`[V, commit a1e44d5]`
+
+### 0013
+
+**Ruling.**\
+A board can and should cite corpus content; what does not belong in an instance is content intended for every project, so the test is the intended reader, not the kind of content.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** project - governs mission-kit's own instance/product split; stated in docs/README.md
+
+**Lineage.** a1e44d5's wording 'an instance holds no product content'
+
+**Source.**\
+`[V, commit 056e9e9]`
+
+### 0014
+
+**Ruling.**\
+Multi-tag axiom binding: any one of an axiom's applicability tags suffices for it to bind.
+
+**Alternatives refuted.** all tags must be satisfied
+
+**Kind.** general - binding rule for every adopting system
+
+**Source.**\
+`[V, commit cda5228; docs/BACKLOG.md B26; docs/audits/M5.5-02-A0.md section 1.3]`
+
+### 0015
+
+**Ruling.**\
+Applicability tags name characteristics of the system being worked on and get their own layer, traits, prefix T.
+
+**Alternatives refuted.** fold into domains; fold into entities
+
+**Kind.** general - adds a layer to the product structure
+
+**Source.**\
+`[V, commit f4fbb56]`
+
+### 0016
+
+**Ruling.**\
+A lone agent must check its own work by means its reasoning cannot bias; a fresh sub-agent with no shared context is the strongest such self-check and is still a self-check, not independent assurance.
+
+**Alternatives refuted.** a lone agent cannot verify its own work (the original R0 key); a fresh sub-agent counts as an independent identity
+
+**Kind.** general - rule for any agent working alone
+
+**Source.**\
+`[V, commit a624c7f; docs/audits/M5.5-03-R0.md section 3b; docs/audits/eval-R0/SCORES.md; docs/BACKLOG.md B21, B29]`
+
+### 0017
+
+**Ruling.**\
+Any cited online address must be proven empirically, by fetching it, not to be a hallucination.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** general - self-check rule for any agent
+
+**Source.**\
+`[V, commit 687d94e ('Director's example of a strong self-check')]`
+
+### 0018
+
+**Ruling.**\
+The product-data gap is closed by option B, a seventh domain, D7 product-data.
+
+**Alternatives refuted.** option A: leave the gap recorded and the set unchanged
+
+**Kind.** project - a one-off admission to mission-kit's domain set
+
+**Source.**\
+`[V, docs/audits/M5.5-04-D0.md section 7; commit 0e37a43]`
+
+### 0019
+
+**Ruling.**\
+Domains, work-types and traits are under-defined collections: when a gap is determined it is on us to expand them, closing it with a new member rather than stretching a neighbour.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** general - growth rule for sets in the product
+
+**Source.**\
+`[V, docs/audits/M5.5-04-D0.md section 7; commit 0e37a43; docs/BACKLOG.md B31]`
+
+### 0020
+
+**Ruling.**\
+Each relationship between the axis layers is declared once, on the side whose meaning includes it, and reverse views are generated, never hand-kept (the director's rule 1).
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** general - structural rule for the corpus; not yet absorbed: applied per relationship (domains, style Held-by, schema 'methods') but stated as a general rule in no product entry
+
+**Source.**\
+`[V, commit 2142704; docs/BACKLOG.md B32; docs/surveys/b24-work-layers-survey.md ('director rule 1')]`
+
+### 0021
+
+**Ruling.**\
+Objective: a context-less agent can read the corpus and compose the context it needs from deterministic tags, definitions and triggers.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** general - acceptance objective for the whole product
+
+**Source.**\
+`[V, commit 2142704; docs/BACKLOG.md B32]`
+
+### 0022
+
+**Ruling.**\
+Q-A: axioms bind systems; a change answers to the system it modifies and every system containing it, but not one it only composes with unless it changes their contract; where no boundary is declared, both bind.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** general - binding rule for every adopting system
+
+**Source.**\
+`[V, commit b0ae880; docs/BACKLOG.md B32; docs/audits/eval-SYS/KEY.md]`
+
+### 0023
+
+**Ruling.**\
+An axiom's mandate is an asymptote: no change may move a system away from it, each change moves toward it as far as its scope allows, a gap outside the scope is recorded with a revival trigger and selection left to the director; M7's caution governs reasoning about facts; a system entity is approved.
+
+**Alternatives refuted.** axioms as invariants or constraints a change must not fail
+
+**Kind.** general - how every axiom binds
+
+**Source.**\
+`[V, commits b0ae880, b7c30f4; docs/BACKLOG.md B34; docs/audits/M5.5f-asymptote-and-system.md; docs/audits/eval-AXDIR/KEY.md]`
+
+### 0024
+
+**Ruling.**\
+Opportunistic improvement to adjacent or related components is considered, not mandated, and judged by compounding learning.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** general - rule for any change
+
+**Source.**\
+`[V, commit 5d67080; docs/BACKLOG.md B35; docs/audits/M5.5g-component-opportunistic-wording.md section 1; docs/audits/eval-COMPONENT/KEY.md]`
+
+### 0025
+
+**Ruling.**\
+Axiom wording is made consistent with the asymptote reading across all fourteen axioms.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** general - wording of every axiom
+
+**Source.**\
+`[V, commit 5d67080; docs/BACKLOG.md B35; docs/audits/M5.5g-component-opportunistic-wording.md section 1]`
+
+### 0026
+
+**Ruling.**\
+Component is defined alongside system, so that between them they set duty, interfaces, blast radius and change.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** general - definition used across the product
+
+**Source.**\
+`[V, commit 5d67080; docs/BACKLOG.md B35; docs/audits/M5.5g-component-opportunistic-wording.md section 1]`
+
+### 0027
+
+**Ruling.**\
+A boundary separates two units only where declared and honoured; a unit reaching past a declared interface stays one system with it, and a detected bypass is a signal triggering evaluation of the interface against the component's duty and vision, ending in rerouting the consumer or adjusting the interface.
+
+**Alternatives refuted.** declaration alone makes them two systems
+
+**Kind.** general - system-boundary rule
+
+**Lineage.** the Q-A ruling's 'where no boundary is declared, both bind' (amends: declared is no longer sufficient)
+
+**Source.**\
+`[V, commits e0e05bb, 428bcd2; docs/BACKLOG.md B36; docs/audits/M5.5h-01-bypassed-interface.md section 1]`
+
+### 0028
+
+**Ruling.**\
+Undeclared neighbour (A): a change that alters what an undeclared neighbour reaches into owns that boundary, so declaring and honouring the interface is in its scope; adjacency is not widened.
+
+**Alternatives refuted.** widen adjacency to dependence in fact
+
+**Kind.** general - system-boundary rule
+
+**Source.**\
+`[V, commit 0670795; docs/BACKLOG.md B36 (history at d08b657); docs/audits/M5.5h-02-design-rulings.md; docs/audits/M5.5g-component-opportunistic-wording.md P-4]`
+
+### 0029
+
+**Ruling.**\
+Merge transitivity (A): the undeclared-boundary merge chains only through what the change can reach.
+
+**Alternatives refuted.** one undeclared reach merges a whole estate; the merge is strictly pairwise
+
+**Kind.** general - system-boundary rule
+
+**Source.**\
+`[V, commit dc1db13; docs/BACKLOG.md B36 (history at d08b657); docs/audits/M5.5h-02-design-rulings.md; docs/audits/M5.5g-component-opportunistic-wording.md P-1]`
+
+### 0030
+
+**Ruling.**\
+Container traits (A): a system has a trait if it, or any part it contains, passes the trait's test.
+
+**Alternatives refuted.** traits are tested on the whole only
+
+**Kind.** general - trait-binding rule
+
+**Source.**\
+`[V, commit 8933c68; docs/BACKLOG.md B36 (history at d08b657); docs/audits/M5.5h-02-design-rulings.md; docs/audits/M5.5g-component-opportunistic-wording.md P-2]`
+
+### 0031
+
+**Ruling.**\
+Q-B (A): the organisation doing the work is a system with traits of its own; its axioms bind how work is done, asked separately from what a product change answers to.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** general - system-binding rule
+
+**Source.**\
+`[V, commit 7929a4e; docs/BACKLOG.md B36 (history at d08b657); docs/audits/M5.5h-02-design-rulings.md]`
+
+### 0032
+
+**Ruling.**\
+A3 (A, strengthened by the director): a new capability is never bolted onto an existing unit, and improving a unit toward its limit within its duty, including fracturing it, re-cutting its seams and recomposing, is explicitly encouraged, not mandated.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** general - axiom mechanics
+
+**Lineage.**\
+A3's 'composing existing units, never by modifying them'
+
+**Source.**\
+`[V, commit d08b657; docs/BACKLOG.md B36; docs/audits/M5.5h-02-design-rulings.md]`
+
+### 0033
+
+**Ruling.**\
+A declared floating version range is adoption in advance: a release within it alters every consumer bound by the range.
+
+**Alternatives refuted.** each resolved upgrade is a separate change
+
+**Kind.** general - system-boundary rule
+
+**Source.**\
+`[V, commit 724d7ce; docs/audits/M5.5h-02-design-rulings.md; docs/audits/M5.5g-component-opportunistic-wording.md P-5]`
+
+### 0034
+
+**Ruling.**\
+'As much as the touch allows' (A): a change must close only the part of a gap its own work already alters; restructuring beyond that, even in the same component, is encouraged, not required.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** general - scope rule for any change
+
+**Lineage.** amends the opportunistic-improvement ruling of 5d67080
+
+**Source.**\
+`[V, commit 7c2ebc2; docs/BACKLOG.md B36; docs/audits/M5.5h-02-design-rulings.md]`
+
+### 0035
+
+**Ruling.**\
+Changing an unversioned interface does not oblige adding versioning (A): doing so is encouraged, and otherwise the gap is recorded.
+
+**Alternatives refuted.** changing the interface requires adding versioning
+
+**Kind.** general - interface-change rule
+
+**Source.**\
+`[V, commit a32fb4e; docs/BACKLOG.md B36]`
+
+### 0036
+
+**Ruling.**\
+Four kinds of how-to-do-work content are distinct - procedures, practices, rules and units of work - and a skill is packaging, not a kind of content.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** general - layer structure of the product
+
+**Source.**\
+`[V, commits 4eb1588, 3ba835b; docs/surveys/b24-work-layers-survey.md Q1]`
+
+### 0037
+
+**Ruling.**\
+A procedure is the single source of its content and reaches a cold agent by trigger, an installed agent and a coordinating system; a skill exists only where tooling makes packaging necessary; humans are not the primary consumer.
+
+**Alternatives refuted.** the skill body as the content source
+
+**Kind.** general - layer rule for methods and skills
+
+**Source.**\
+`[V, commits 4eb1588, 3ba835b; docs/surveys/b24-work-layers-survey.md Q2, Q5]`
+
+### 0038
+
+**Ruling.**\
+The vision is amended before any layer change: mission-kit prescribes how work is done, and 'not a process framework' becomes 'not a ceremony framework'.
+
+**Alternatives refuted.** leave the vision unchanged
+
+**Kind.** project - mission-kit's own vision
+
+**Lineage.**\
+VISION.md 'Not a process framework'
+
+**Source.**\
+`[V, commits 4eb1588, 3ba835b, bac8b35; docs/surveys/b24-work-layers-survey.md Q3]`
+
+### 0039
+
+**Ruling.**\
+Q6 ratified: a work-type cites the procedures that conduct it, and the reverse view is generated.
+
+**Alternatives refuted.** a procedure names the work-types it serves
+
+**Kind.** general - composition rule
+
+**Source.**\
+`[V, commit bac8b35; docs/surveys/b24-work-layers-survey.md Q6 (delegated, then ratified); docs/BACKLOG.md B24 history]`
+
+### 0040
+
+**Ruling.**\
+Rename methodology/ to methods/ (category method).
+
+**Alternatives refuted.** keep methodology/
+
+**Kind.** project - a one-off rename of a mission-kit layer
+
+**Source.**\
+`[V, commit 8fba49b; docs/deltas/delta-1-work-layers.md; docs/BACKLOG.md B24 history]`
+
+### 0041
+
+**Ruling.**\
+Downstream breakage is not a reason to carry legacy.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** general - identity rule for any entry move
+
+**Source.**\
+`[V, commit 8fba49b; docs/deltas/delta-1-work-layers.md lines 94, 109, 149]`
+
+### 0042
+
+**Ruling.**\
+Q4: practices and rules are two layers, rules/ (RU) and practices/ (PC), to keep the separation simple, even with one practice.
+
+**Alternatives refuted.** one layer with a declared kind
+
+**Kind.** general - layer structure of the product
+
+**Lineage.** resolves the B24 survey's contradictory Q4 pick
+
+**Source.**\
+`[V, commit 8bbafa8; docs/deltas/delta-1-work-layers.md 'Q4 - two layers, ruled']`
+
+### 0043
+
+**Ruling.**\
+Communication with a human is designed now, as a set spanning layers rather than a layer, for a human with limited context who may be cold.
+
+**Alternatives refuted.** defer it; make it a layer (explain/)
+
+**Kind.** project - decision to start mission-kit work (B38)
+
+**Source.**\
+`[V, commit 8bbafa8; docs/BACKLOG.md B38]`
+
+### 0044
+
+**Ruling.**\
+Charters of populations spanning layers live in a sets/ layer (ST), whose charter declares its members.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** general - layer structure of the product
+
+**Source.**\
+`[V, commits 4f16698 ('two director decisions are open'), 80b4dbe ('as ruled'); docs/deltas/delta-2-explain-set.md]`
+
+### 0045
+
+**Ruling.**\
+A competent cold reader is assumed to know general engineering terms; only system-specific names must be explained.
+
+**Alternatives refuted.** every term must be explained (the explain key)
+
+**Kind.** general - rule for writing to a human
+
+**Source.**\
+`[V, commit 80b4dbe; docs/evals/README.md 'Suite edits' (explain)]`
+
+### 0046
+
+**Ruling.**\
+Guide the human through any communication needing them to understand or decide: progressive disclosure, the point first, one question at a time, depth on request; the implementation is the agent's to design.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** general - rule for any agent addressing a human
+
+**Source.**\
+`[V, commits 540e64b, eee321c; docs/surveys/b38-director-communication-requirements.md (verbatim, reframed, Limit 1 confirmed)]`
+
+### 0047
+
+**Ruling.**\
+End a message with two or three short follow-on picks, each prefixed with one word - Continue, Explore, Return - marking which continues the main work.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** general - rule for any agent addressing a human
+
+**Source.**\
+`[V, commits eee321c, fe58e32, 8e14b5c; docs/surveys/b38-director-communication-requirements.md 'Added by the director', 'Learned in the human evaluation']`
+
+### 0048
+
+**Ruling.**\
+Communication changes are evaluated on the human, through a process the director can run, rather than by agents scoring agents.
+
+**Alternatives refuted.** agent-scored rubric
+
+**Kind.** project - how mission-kit measures its own changes
+
+**Source.**\
+`[V, commit eee321c; docs/surveys/b38-director-communication-requirements.md 'Added by the director']`
+
+### 0049
+
+**Ruling.**\
+Delta-1 revision 4 is ratified, to run before the explain guidance lands (option C).
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** project - sequencing of mission-kit's own work
+
+**Source.**\
+`[V, commit 36263e0; docs/BACKLOG.md B24 history at 3305087 ('as ruled (option C)')]`
+
+### 0050
+
+**Ruling.**\
+Delta-1's L5 drop is the change working as intended, so the rubric is corrected after the scores.
+
+**Alternatives refuted.** treat it as a regression
+
+**Kind.** project - scoring of mission-kit's own evaluation
+
+**Source.**\
+`[V, commit 69230da; docs/audits/delta-1/stage-4.md 'Director ruling, after the scores'; docs/deltas/delta-1-work-layers.md]`
+
+### 0051
+
+**Ruling.** backlog/ does not survive as a layer: its ten MREQ entries become rows B45-B54, full text kept in docs/requests/.
+
+**Alternatives refuted.** keep both backlog/ and AR5; split by concern
+
+**Kind.** project - mission-kit's own records and structure
+
+**Source.**\
+`[V, commit ccfc8b9; docs/BACKLOG.md B14; docs/BOARD.md Q3, M3.3; docs/requests/README.md]`
+
+### 0052
+
+**Ruling.**\
+Constraint 2/9 (A): same-agent review is never a valid degradation; with no second agent the gate waits or the director ratifies.
+
+**Alternatives refuted.** downgrade the attestation to kind:review
+
+**Kind.** general - canonical constraint set
+
+**Source.**\
+`[V, commit 0ad8f73; docs/BACKLOG.md B33; docs/audits/M5.5-06-W0.md]`
+
+### 0053
+
+**Ruling.**\
+Composition (A): a unit of work stays role x work-type x domain; the work-type cites the method that conducts it and the artifact it produces; axioms come from the systems altered; W0 states the reading order once.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** general - composition rule
+
+**Source.**\
+`[V, commit 3305087; docs/BACKLOG.md B24; docs/audits/M5.5-06-W0.md]`
+
+### 0054
+
+**Ruling.**\
+A territory claims scope, not holdings: the style set should cover commit messages, code names and code comments, and a missing member does not invalidate the claim - that is how gaps are found.
+
+**Alternatives refuted.** drop the claim because no member holds it
+
+**Kind.** general - scope of a product set
+
+**Source.**\
+`[V, commit dc30885; docs/audits/M5.5-07-S0.md 'Correction - territory claims scope, not holdings']`
+
+### 0055
+
+**Ruling.**\
+A charter holds its set's vision and manages the set against it: a territory's partition comes from the population but its extent from purpose, so an unfilled claim is a gap, never a reason to cut the claim.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** general - rule for every charter
+
+**Lineage.**\
+E4's 'a territory must earn itself' (derived from the population and shows a gap), from be3c443
+
+**Source.**\
+`[V, commit da79bd8; docs/audits/M5.5-07a-vision-recheck.md]`
+
+### 0056
+
+**Ruling.**\
+Ruling A: the organisation's coordination and governance machinery and its knowledge corpus are engineered products, each domain holding its source and live state; a part splits only where work on a portion is proved differently and the split has been found needed.
+
+**Alternatives refuted.** the machinery's code is the product codebase, covered by W1 and W6
+
+**Kind.** general - domain placement rule
+
+**Source.**\
+`[V, commit 6260d9d; docs/audits/M5.5-07b-machinery-domain.md; docs/audits/M5.5-07a-vision-recheck.md 'Parked'; docs/evals/README.md 'Suite edits']`
+
+### 0057
+
+**Ruling.**\
+The corpus carries no legacy: a moved or retired entry leaves no stub, takes a new id, and non-reuse is held by check-id-reuse from git history.
+
+**Alternatives refuted.** keep superseded stubs to occupy old ids
+
+**Kind.** general - identity rule for every entry
+
+**Lineage.**\
+Delta-1's 'old ids stay as superseded pointers' and 8fba49b's 'superseded entries are still kept'
+
+**Source.**\
+`[V, commits 498c1c0, 9be5e8b; docs/audits/M5.5-08-P0.md 'The six earlier stubs removed'; docs/evals/README.md 'Suite edits' (charter-claims V8)]`
+
+### 0058
+
+**Ruling.**\
+P1 Path A / Path B moves to style as S16, under a new identifier with no stub.
+
+**Alternatives refuted.** keep P1 in patterns
+
+**Kind.** project - a one-off member move
+
+**Source.**\
+`[V, commit 4c2d75f; docs/audits/M5.5-08-P0.md 'P1 moved to style as S16'; docs/evals/README.md 'Suite edits' (p0)]`
+
+### 0059
+
+**Ruling.**\
+Gate, evidence and substrate are defined as entities before the K0 charter is converted.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** project - sequencing of mission-kit's own work
+
+**Source.**\
+`[V, docs/audits/M5.5-09a-gate.md trigger]`
+
+### 0060
+
+**Ruling.**\
+A gate has one meaning, in three kinds by who judges.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** general - definition of gate
+
+**Source.**\
+`[V, commits 0a6c301, 04893f6; docs/audits/M5.5-09a-gate.md ruling (1)]`
+
+### 0061
+
+**Ruling.**\
+A gate's verdict is binary: extra results map to pass or fail, no verdict is an absence, and an exception is the director's override.
+
+**Alternatives refuted.** four-label verdicts (M7); FAIL/blocked
+
+**Kind.** general - definition of gate verdict
+
+**Source.**\
+`[V, commits 0a6c301, 04893f6; docs/audits/M5.5-09a-gate.md ruling (2)]`
+
+### 0062
+
+**Ruling.**\
+Director ratification in place of an absent independent agent is the gate decided by the director, a recorded change of kind; the director does not become a verifier.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** general - gate rule
+
+**Lineage.** the constraint 2/9 ruling's 'the gate waits or the director ratifies'
+
+**Source.**\
+`[V, commits 0a6c301, 04893f6; docs/audits/M5.5-09a-gate.md ruling (3)]`
+
+### 0063
+
+**Ruling.**\
+Evidence (A): a verdict is never evidence; evidence is what a judge receives.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** general - definition of evidence
+
+**Source.**\
+`[V, commits f225224, be2bea3; docs/audits/M5.5-09b-evidence.md]`
+
+### 0064
+
+**Ruling.**\
+Substrate (A): substrate means the coordination substrate only; every other sense is replaced and the substrate-audit skill is renamed repo-audit.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** general - definition of substrate
+
+**Source.**\
+`[V, commits 8e43c70, a293b1c; docs/audits/M5.5-09c-substrate.md; docs/evals/README.md 'Suite edits' (work-layers)]`
+
+### 0065
+
+**Ruling.**\
+A charter is an asymptote: it states end state, scope and growth policy; partitions and gaps belong to dated investigations, gaps become backlog rows weighed by the board, and a charter does not name its members.
+
+**Alternatives refuted.** pre-declared partitions and gaps in the charter
+
+**Kind.** general - rule for every charter
+
+**Lineage.** the vision-recheck ruling's split territory obligation and E4's 'a territory must earn itself'
+
+**Source.**\
+`[V, commits 1a862fe, e81e9db; docs/audits/M5.5-13-charter-asymptote.md 'The rulings']`
+
+### 0066
+
+**Ruling.**\
+Fork owners are not contacted before a history rewrite - contacting them is rude and not the safeguard; a fork holding no rewritten commit is untouched, one that does is a reason to defer.
+
+**Alternatives refuted.** notify fork owners
+
+**Kind.** general - rule for publishing rewritten history
+
+**Lineage.**\
+RU4's earlier owner-notification safeguard
+
+**Source.**\
+`[V, commit 99d59a4; docs/audits/history-purge-2026-10-04.md 'Harm test']`
+
+### 0067
+
+**Ruling.**\
+Eval runs and their results polluted the published repo: runs are local working material, never published, and history is purged of them as a defect.
+
+**Alternatives refuted.** keep runs under docs/evals/runs/ in git
+
+**Kind.** project - mission-kit's own repository hygiene
+
+**Source.**\
+`[V, commit 4cd6a6b; docs/audits/history-purge-2026-10-04.md justification]`
+
+### 0068
+
+**Ruling.**\
+A provenance record in another repository pinning a rewritten commit is external and out of scope for the purge.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** project - scope call about an external repo
+
+**Source.**\
+`[V, docs/audits/history-purge-2026-10-04.md 'Harm test', External references]`
+
+### 0069
+
+**Ruling.**\
+A charter must not know it is being investigated: no link to or passage naming an investigation; the dependency runs one way.
+
+**Alternatives refuted.** charters link their investigations (d20536d)
+
+**Kind.** general - rule for every charter
+
+**Lineage.** the asymptote application's charter-to-investigation links (07bf0ef, d20536d)
+
+**Source.**\
+`[V, commit b0c032b; docs/audits/M5.5-13-charter-asymptote.md 'Addendum - charters do not know their investigations']`
+
+### 0070
+
+**Ruling.**\
+Probes that ask for a gap or partition charters no longer hold are retired, each kept with its question and reason; the class ruling later retires H7, k0 Q5, k0 Q6 and L5.
+
+**Alternatives refuted.** re-key them and keep scoring
+
+**Kind.** project - mission-kit's own eval suites
+
+**Source.**\
+`[V, commit 48c756f; docs/audits/M5.5-13-charter-asymptote.md 'Ruled'; docs/audits/M5.5-14-charter-frame.md; commits 6557ea6, 650684c; docs/evals/README.md 'Retired probes']`
+
+### 0071
+
+**Ruling.**\
+A charter is a vision applied to its set (AR6's devices) plus operating instructions; Purpose becomes Vision and Operation joins the fixed headings; members need not know their set.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** general - rule for every charter
+
+**Lineage.**\
+E4's 'a charter holds the set's vision' paragraph (da79bd8)
+
+**Source.**\
+`[V, commit 0e65c98; docs/audits/M5.5-14-charter-frame.md 'The ruling']`
+
+### 0072
+
+**Ruling.**\
+Operating a charter (changing its text, M11) is distinct from operating the set it governs (changing its population, M13).
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** general - rule for every set
+
+**Lineage.** the frame's 'changed by M11' for the set
+
+**Source.**\
+`[V, commit 5568551; docs/audits/M5.5-14-charter-frame.md 'Addendum'; docs/evals/README.md 'Suite edits' (charter-frame)]`
+
+### 0073
+
+**Ruling.**\
+Close M5: finish what an agent can do now, hold what needs the director (B42), close the milestone.
+
+**Alternatives refuted.** none recorded - this backfilled record fails `AR4`'s first falsifier until one is supplied
+
+**Kind.** project - milestone closure
+
+**Source.**\
+`[V, docs/audits/M5.5-14-charter-frame.md 'Closing M5'; commit 5b4ba53]`
