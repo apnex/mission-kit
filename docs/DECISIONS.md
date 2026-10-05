@@ -10,7 +10,8 @@ An [`AR4`](../artifacts/AR4-decision-record.md) instance in its register form, h
 **Authority.**\
 The director, for every row; rows are drafted by agents.\
 **Backfilled 2026-10-04** from the audits, the backlog, the board, the surveys, the deltas and commit messages, oldest first.\
-**The classification of each row - general or project - is the drafting agent's and awaits the director's confirmation.**
+**The classification of each row - general or project - was drafted by an agent and confirmed by the director on 2026-10-05, for rows `0001`-`0075`.**\
+Attribution is inferred, not recorded, for `0003`, `0009` and `0039`; the director confirmed them with the rest.
 
 **Kinds.**
 
