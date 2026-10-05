@@ -118,6 +118,7 @@ Whether an entry actually states a ruling is checked by reading, not by script.
 | 0074 | 2026-10-04 | Commit messages are not a conformant carrier for this corpus's rulings: a history rewrite changes their ids, and a commit cannot be superseded or amended by itself; they may cite a ruling's id. | project | director | ratified | - | - | - |
 | 0075 | 2026-10-05 | The good-faith assumption covers collaborating agents only: a collaborator's malice is out of the axioms' scope, while a hostile outsider and untrusted input are inside it. | general | director | ratified | amends 0008 | `axioms/README.md` | yes |
 | 0076 | 2026-10-05 | Every structured document has one fixed name and location, in upper case: VISION.md at the component root; docs/ARCHITECTURE.md, ARCHITECTURE-TARGET.md, BOARD.md, BACKLOG.md, DECISIONS.md (or DECISIONS/<NNNN>.md), and DELTAS/DELTA-<N>.md. | general | director | ratified | - | `artifacts/README.md` | yes |
+| 0077 | 2026-10-05 | Each artifact type declares the fixed path of its instances in `instance-path`, required by the catalogue contract; the artifacts charter states the rule and its index shows the paths in a generated column, naming no type itself. | general | director | ratified | amends 0076 | `artifacts/README.md`, `schemas/catalog-entry/v1alpha1/catalog-entry.schema.json`, `tools/generate-index.mjs` | yes |
 
 ---
 
@@ -1085,3 +1086,19 @@ The director ruled fixed upper-case names; the target-architecture name, the per
 
 **Source.**\
 `[V, director ruling 2026-10-05; docs/BACKLOG.md B2, B7]`
+
+### 0077
+
+**Ruling.**\
+Each artifact type declares the fixed path of its instances; the charter keeps only the rule.
+
+**Alternatives refuted.**\
+A table of paths in the artifacts charter, as `0076` was first applied - refuted because the name is a fact about the type, so it belongs on the type (`0020`), and a charter names no member (`0065`).
+
+**Kind.** general - it fixes where the instance name of any artifact type is declared.
+
+**Lineage.**\
+Amends `0076`'s application, not its rule.
+
+**Source.**\
+`[V, director ruling 2026-10-05; artifacts/AR1-AR6 frontmatter]`
