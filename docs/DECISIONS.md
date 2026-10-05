@@ -30,7 +30,7 @@ Whether an entry actually states a ruling is checked by reading, not by script.
 **Known defects of the backfill.**
 
 - Rows with no recorded alternative fail `AR4`'s first falsifier; their bodies say so.
-- `0008` is contested: a later change, approved within the vision recheck, named protection against hostile actors as a gap the axioms should close, which this ruling places out of scope.
+- `0008` was contested: a later change, approved within the vision recheck, named protection against hostile actors as a gap, which `0008` read alone placed out of scope. The director ruled on 2026-10-05 that the good-faith assumption covers collaborators only (`0075`).
 
 ---
 
@@ -45,7 +45,7 @@ Whether an entry actually states a ruling is checked by reading, not by script.
 | 0005 | 2026-09-14 | Set becomes its own entity rather than a property of the layer entity. | general | director | ratified | - | `entities/E3-set.md`, `entities/E2-layer.md` | yes |
 | 0006 | 2026-10-02 | Growth of a charter must be paid for: added size is acceptable only where it materially advances E4 and improves the charter's quality and efficacy. | general | director | ratified | - | `entities/E4-charter.md`, `methods/M11-change-a-charter.md` | yes |
 | 0007 | 2026-10-02 | A charter should expose the weight and balance of its items. | general | director | ratified | - | `entities/E4-charter.md` | yes |
-| 0008 | 2026-10-02 | Malice is out of scope by design: collaborating agents are assumed to act in good faith, and defending against accidental misalignment, including an agent's own error, is in scope. | general | director | ratified | - | `axioms/README.md` | contested |
+| 0008 | 2026-10-02 | Malice is out of scope by design: collaborating agents are assumed to act in good faith, and defending against accidental misalignment, including an agent's own error, is in scope. | general | director | ratified | - | `axioms/README.md` | yes |
 | 0009 | 2026-10-02 | Mission-kit is an operating system for a single agent as much as for a multi-agent system; for a lone agent the actor most likely to be wrong is itself. | general | director | ratified | - | `README.md` | yes |
 | 0010 | 2026-10-02 | An organisation is one agent or many, operating with mission-kit; the word is defined in the charter rather than the vision revised. | general | director | ratified | - | `README.md` | yes |
 | 0011 | 2026-10-02 | Improvements to existing charter words are permitted where they advance the document toward its best form in context, weighed for cost against quality on the same paid-for test as additions. | general | director | ratified | - | `methods/M11-change-a-charter.md`, `entities/E4-charter.md` | yes |
@@ -112,6 +112,7 @@ Whether an entry actually states a ruling is checked by reading, not by script.
 | 0072 | 2026-10-04 | Operating a charter (changing its text, M11) is distinct from operating the set it governs (changing its population, M13). | general | director | ratified | amends 0071 | `methods/M13-change-a-set.md`, `entities/E4-charter.md`, `methods/M11-change-a-charter.md` | yes |
 | 0073 | 2026-10-04 | Close M5: finish what an agent can do now, hold what needs the director (B42), close the milestone. | project | director | ratified | - | - | - |
 | 0074 | 2026-10-04 | Commit messages are not a conformant carrier for this corpus's rulings: a history rewrite changes their ids, and a commit cannot be superseded or amended by itself; they may cite a ruling's id. | project | director | proposed | - | - | - |
+| 0075 | 2026-10-05 | The good-faith assumption covers collaborating agents only: a collaborator's malice is out of the axioms' scope, while a hostile outsider and untrusted input are inside it. | general | director | ratified | amends 0008 | `axioms/README.md` | yes |
 
 ---
 
@@ -1047,3 +1048,19 @@ Commit messages as the carrier - refuted by the history purge of 2026-10-04, whi
 
 **Source.**\
 `[V, docs/audits/history-purge-2026-10-04.md; docs/BACKLOG.md B15]`
+
+### 0075
+
+**Ruling.**\
+The good-faith assumption covers collaborating agents only: a collaborator's malice is out of the axioms' scope, while a hostile outsider and untrusted input are inside it.
+
+**Alternatives refuted.**\
+`0008` read alone, with malice wholly out of scope and the hostile-actor gap removed - refuted because a system that accepts outside input can be subverted with no collaborator acting in bad faith.
+
+**Kind.** general - it sets the axioms' scope for every adopter.
+
+**Lineage.**\
+Amends `0008`; resolves the conflict with the hostile-actor gap the vision recheck added.
+
+**Source.**\
+`[V, director ruling 2026-10-05 on the register review; docs/BACKLOG.md B56; docs/investigations/axioms-2026-10-04.md]`

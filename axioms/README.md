@@ -53,7 +53,8 @@ This is recorded so the next reader does not rediscover the question: reclaiming
 ## Territory
 
 **Scope.**\
-This set covers **the limits a system is built toward to stay aligned with its own intent** - the ones where moving away makes a system wrong in a way more effort elsewhere cannot repair.
+This set covers **the limits a system is built toward to stay aligned with its own intent** - the ones where moving away makes a system wrong in a way more effort elsewhere cannot repair.\
+Collaborating agents are assumed to act in good faith, so defending against a collaborator's malice is outside it; a hostile outsider, and input no collaborator vouches for, are inside it, because a system subverted from outside is no longer aligned with its own intent.
 
 **Growth policy.**\
 Uncapped.\
