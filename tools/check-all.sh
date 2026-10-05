@@ -9,6 +9,7 @@
 #   check-tool-docs            the tool index matches the tools beside it
 #   check-entry-body           every entry carries the body sections its category declares
 #   generate-index --check     the ledger and category tables match the entries
+#   check-decisions            the decision register's ids, kinds, lineage and affects paths hold
 #   check-id-reuse             no current entry holds an id retired in history
 #   skill-graph                every catalogue edge resolves and the graph is acyclic
 #   schema tests               every entry conforms to its contract
@@ -60,6 +61,7 @@ run "rules and enforcers are paired" ./tools/check-enforcers.sh
 run "tool index matches the directory" ./tools/check-tool-docs.sh
 run "entry bodies match their category" ./tools/check-entry-body.sh
 run "the board and the backlog agree" node tools/check-board.mjs
+run "the decision register is well formed" node tools/check-decisions.mjs
 run "applies-to names exactly the declared traits" node tools/check-traits.mjs
 run "a retired id is never issued again" node tools/check-id-reuse.mjs
 run "the tested communication guidance landed unreworded" ./tools/check-guidance-placement.sh

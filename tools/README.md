@@ -359,6 +359,24 @@ Each was mutation-tested.
 
 ---
 
+## check-decisions.mjs
+
+Holds the decision register, `docs/DECISIONS.md`, to the shape `AR4` requires of it.
+
+```sh
+node tools/check-decisions.mjs
+```
+
+**Why it exists.**\
+A ruling is changed only by a later row, so the register is trustworthy only if every row can be addressed, ordered and traced.\
+It checks that ids are unique and in order, every row has a kind, authority and status, lineage names earlier rows, a general ruling names entries that exist, and a project decision names none.\
+It does not check that an entry states its ruling: that is read, because matching words would report a cheaper reading as absorption.\
+Mutation-tested on a duplicated id and a missing affected path.
+
+**Run it when** you add or change a row; the gate runs it on every change.
+
+---
+
 ## check-id-reuse.mjs
 
 Holds that an id, once retired, is never issued again, and that every `supersedes` value names a retired id.
