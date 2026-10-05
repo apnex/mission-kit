@@ -6,6 +6,7 @@ status: active
 hydrate-when: You need to state where a system is or where it is going, and have the two be comparable
 supersedes: []
 related: [AR0, AR2, AR3, A2, A3, A4]
+instance-path: [docs/ARCHITECTURE.md, docs/ARCHITECTURE-TARGET.md]
 ---
 
 # AR1 - system architecture
@@ -102,6 +103,8 @@ A drift gate that walks ratified decisions and checks absorption is what makes "
 ---
 
 ## Template
+
+An instance lives at `docs/ARCHITECTURE.md` or `docs/ARCHITECTURE-TARGET.md`, relative to the component root - the fixed upper-case name [`AR0`](README.md) requires of every instance.
 
 No template ships with this entry, deliberately - a fillable skeleton would defeat the "organised as the system is organised" rule and produce empty headings.
 

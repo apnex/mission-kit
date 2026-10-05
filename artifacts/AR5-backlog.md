@@ -6,6 +6,7 @@ status: active
 hydrate-when: You are deferring, cutting or parking work and it must not become forgetting
 supersedes: []
 related: [AR0, AR3, RU3, A14]
+instance-path: [docs/BACKLOG.md]
 ---
 
 # AR5 - backlog
@@ -83,6 +84,8 @@ The trigger test is the one that carries the weight: a condition someone could o
 ---
 
 ## Template
+
+An instance lives at `docs/BACKLOG.md`, relative to the component root - the fixed upper-case name [`AR0`](README.md) requires of every instance.
 
 ```markdown
 # <system> - backlog

@@ -198,23 +198,17 @@ A shape imposed on an unlike system produces empty headings; an address left uns
 **The document tree lives at the root of the scope of the component it describes.**
 
 **Every instance has one fixed name and location, in upper case.**\
-A reader arriving at any component finds each document at the same path without searching, and two projects cannot name one type two ways.
+A reader arriving at any component finds each document at the same path without searching, and two projects cannot name one type two ways.\
+Each type declares its path in `instance-path`, which the catalogue contract requires of every type; the *Lives at* column of the index below is generated from those declarations, so the paths are stated once, on the types.
 
 ```text
 <component root>/
-  VISION.md                      AR6 vision - the enduring purpose of THIS component
-  docs/
-    ARCHITECTURE.md              AR1 system architecture, instant current
-    ARCHITECTURE-TARGET.md       AR1 system architecture, instant target
-    BOARD.md                     AR3 board
-    BACKLOG.md                   AR5 backlog
-    DECISIONS.md                 AR4 decision register
-    DECISIONS/<NNNN>.md          AR4, where a programme keeps one file per ruling instead of a register
-    DELTAS/DELTA-<N>.md          AR2 delta; N counts up from 1 and is never reused
+  VISION.md          the enduring purpose of THIS component
+  docs/              every other instance, at the name its type declares
 ```
 
-A component holds the documents it needs and omits the rest; a document it does hold is at this path, under this name.\
-The title inside the document carries the component's name and the delta's subject; the filename carries neither.
+A component holds the documents it needs and omits the rest; a document it does hold is at its declared path, under its declared name.\
+The title inside the document carries the component's name and any subject; the filename carries neither.
 
 Three consequences of placement, and the first is the point of the rule.
 
@@ -262,13 +256,13 @@ Given a box in an anchored core, a reader reaches that component's vision by con
 ## Index
 
 <!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
-| ID | Title | Hydrate when |
-|---|---|---|
-| [AR0](README.md) | Artifacts - the engineering lifecycle loop, and what earns a document type | You are deciding which engineering document a piece of work needs, or whether a shape deserves to be a type |
-| [AR1](AR1-system-architecture.md) | System architecture - one system, one altitude, one instant | You need to state where a system is or where it is going, and have the two be comparable |
-| [AR2](AR2-delta.md) | Delta - a declared, gated transition between two architecture states | You are about to change a system and need the change declared and its landing provable |
-| [AR3](AR3-board.md) | Board - the triaged graph of legal next moves, for director selection | You are deciding what to do next and want the choice reasoned rather than taken under local pressure |
-| [AR4](AR4-decision-record.md) | Decision record - one ruling, append-only, with what it affects | You are ruling on something that later work will be built on and must not be re-litigated |
-| [AR5](AR5-backlog.md) | Backlog - the durable record of what was not done, each row with a trigger | You are deferring, cutting or parking work and it must not become forgetting |
-| [AR6](AR6-vision.md) | Vision - the enduring purpose a programme is measured against | You need to say why a programme exists and what it must never become, and no document holds it |
+| ID | Title | Lives at | Hydrate when |
+|---|---|---|---|
+| [AR0](README.md) | Artifacts - the engineering lifecycle loop, and what earns a document type |  | You are deciding which engineering document a piece of work needs, or whether a shape deserves to be a type |
+| [AR1](AR1-system-architecture.md) | System architecture - one system, one altitude, one instant | `docs/ARCHITECTURE.md`, `docs/ARCHITECTURE-TARGET.md` | You need to state where a system is or where it is going, and have the two be comparable |
+| [AR2](AR2-delta.md) | Delta - a declared, gated transition between two architecture states | `docs/DELTAS/DELTA-<N>.md` | You are about to change a system and need the change declared and its landing provable |
+| [AR3](AR3-board.md) | Board - the triaged graph of legal next moves, for director selection | `docs/BOARD.md` | You are deciding what to do next and want the choice reasoned rather than taken under local pressure |
+| [AR4](AR4-decision-record.md) | Decision record - one ruling, append-only, with what it affects | `docs/DECISIONS.md`, `docs/DECISIONS/<NNNN>.md` | You are ruling on something that later work will be built on and must not be re-litigated |
+| [AR5](AR5-backlog.md) | Backlog - the durable record of what was not done, each row with a trigger | `docs/BACKLOG.md` | You are deferring, cutting or parking work and it must not become forgetting |
+| [AR6](AR6-vision.md) | Vision - the enduring purpose a programme is measured against | `VISION.md` | You need to say why a programme exists and what it must never become, and no document holds it |
 <!-- END GENERATED -->

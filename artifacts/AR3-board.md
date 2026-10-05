@@ -6,6 +6,7 @@ status: active
 hydrate-when: You are deciding what to do next and want the choice reasoned rather than taken under local pressure
 supersedes: []
 related: [AR0, AR1, AR2, AR5, A13, A14]
+instance-path: [docs/BOARD.md]
 ---
 
 # AR3 - board
@@ -88,6 +89,8 @@ It is mechanically checkable and should be.\
 ---
 
 ## Template
+
+An instance lives at `docs/BOARD.md`, relative to the component root - the fixed upper-case name [`AR0`](README.md) requires of every instance.
 
 ```markdown
 # <system> - board

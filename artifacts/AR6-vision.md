@@ -6,6 +6,7 @@ status: active
 hydrate-when: You need to say why a programme exists and what it must never become, and no document holds it
 supersedes: []
 related: [AR0, AR1, AR3, A13, A14]
+instance-path: [VISION.md]
 ---
 
 # AR6 - vision
@@ -114,6 +115,8 @@ The last is mechanical and shares its gate with `AR1`, since both are living doc
 ---
 
 ## Template
+
+An instance lives at `VISION.md`, relative to the component root - the fixed upper-case name [`AR0`](README.md) requires of every instance.
 
 No template ships with this entry, for the reason given under `Required sections` and following [`AR1`](AR1-system-architecture.md)'s precedent: a fillable skeleton would contradict the rule that arrangement belongs to the programme, and would produce empty headings.
 

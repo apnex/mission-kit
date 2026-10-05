@@ -6,6 +6,7 @@ status: active
 hydrate-when: You are ruling on something that later work will be built on and must not be re-litigated
 supersedes: []
 related: [AR0, AR1, A4, A13, RU2]
+instance-path: [docs/DECISIONS.md, docs/DECISIONS/<NNNN>.md]
 ---
 
 # AR4 - decision record
@@ -130,6 +131,8 @@ A register row and a standalone file fail and pass these identically, which is t
 ---
 
 ## Template
+
+An instance lives at `docs/DECISIONS.md` or `docs/DECISIONS/<NNNN>.md`, relative to the component root - the fixed upper-case name [`AR0`](README.md) requires of every instance.
 
 Two carriers, both conformant.\
 Choose by how many rulings the programme expects, not by preference.
