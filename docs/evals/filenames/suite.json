@@ -1,0 +1,26 @@
+{
+  "id": "filenames",
+  "mode": "corpus",
+  "group": "filenames",
+  "source": "Director ruling: fixed, upper-case names and locations for structured documents. Keyed before AR0 changes.",
+  "probes": [
+    {
+      "id": "N1",
+      "question": "An agent arrives at a project that uses this corpus. Where exactly does it find the project's board, backlog, decision register and current architecture?",
+      "key": "At fixed paths under the component root: docs/BOARD.md, docs/BACKLOG.md, docs/DECISIONS.md, docs/ARCHITECTURE.md; the vision is VISION.md at the root itself.",
+      "rubric": "2 for all four paths exact, plus VISION.md at the root. 1 for two or three exact. 0 otherwise."
+    },
+    {
+      "id": "N2",
+      "question": "A project has both a current and a target system architecture, and has run three deltas. What are the files called?",
+      "key": "docs/ARCHITECTURE.md is the current instant and docs/ARCHITECTURE-TARGET.md the target; deltas are docs/DELTAS/DELTA-1.md, DELTA-2.md, DELTA-3.md, numbered in order and never reused.",
+      "rubric": "2 for both architecture files and the delta pattern. 1 for one of the two. 0 otherwise."
+    },
+    {
+      "id": "N3",
+      "question": "A team wants to call its board docs/roadmap.md. Is that conformant?",
+      "key": "No: the names and locations are fixed and upper case - docs/BOARD.md - so any reader finds it without searching; arrangement of other content in docs/ is the project's own.",
+      "rubric": "2 for no, with the fixed name and its reason. 1 for no alone. 0 otherwise."
+    }
+  ]
+}
