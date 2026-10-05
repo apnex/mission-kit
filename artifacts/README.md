@@ -197,13 +197,26 @@ A shape imposed on an unlike system produces empty headings; an address left uns
 
 **The document tree lives at the root of the scope of the component it describes.**
 
+**Every instance has one fixed name and location, in upper case.**\
+A reader arriving at any component finds each document at the same path without searching, and two projects cannot name one type two ways.
+
 ```text
 <component root>/
-  VISION.md          the enduring purpose of THIS component
-  docs/              every other artifact instance
+  VISION.md                      AR6 vision - the enduring purpose of THIS component
+  docs/
+    ARCHITECTURE.md              AR1 system architecture, instant current
+    ARCHITECTURE-TARGET.md       AR1 system architecture, instant target
+    BOARD.md                     AR3 board
+    BACKLOG.md                   AR5 backlog
+    DECISIONS.md                 AR4 decision register
+    DECISIONS/<NNNN>.md          AR4, where a programme keeps one file per ruling instead of a register
+    DELTAS/DELTA-<N>.md          AR2 delta; N counts up from 1 and is never reused
 ```
 
-Three consequences, and the first is the point of the rule.
+A component holds the documents it needs and omits the rest; a document it does hold is at this path, under this name.\
+The title inside the document carries the component's name and the delta's subject; the filename carries neither.
+
+Three consequences of placement, and the first is the point of the rule.
 
 **Placement is scope-relative, never repository-relative.**\
 A sovereign repository and a nested subsystem take the same rule, because both are systems and the document tree is addressed by the directory at the system's root.\
@@ -215,9 +228,9 @@ Two visions in one repository are not a conflict; they are two systems, and the 
 The vision is the one document an arriving reader needs before they know anything about the project, including where its documentation is kept, so it is the one that cannot be behind a directory they would have to guess.\
 Everything else is reachable once that is found.
 
-**Arrangement inside `docs/` is the component's own.**\
-Flat or subdivided by concern are both conformant.\
-What the rule fixes is the anchor and the tree root; below that, a component organises as it is organised, which is the same principle that keeps templates out of several of these entries.
+**Arrangement of anything else inside `docs/` is the component's own.**\
+Flat or subdivided by concern are both conformant for documents this layer defines no type for.\
+What the rule fixes is the anchor, the tree root and the instance names above; below that, a component organises as it is organised, which is the same principle that keeps templates out of several of these entries.
 
 **Why prescribe here at all.**\
 Discoverability is not a convention that can be left to each adopter, because its whole value is being true before you have read anything.\
