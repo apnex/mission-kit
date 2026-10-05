@@ -117,6 +117,7 @@ Whether an entry actually states a ruling is checked by reading, not by script.
 | 0073 | 2026-10-04 | Close M5: finish what an agent can do now, hold what needs the director (B42), close the milestone. | project | director | ratified | - | - | - |
 | 0074 | 2026-10-04 | Commit messages are not a conformant carrier for this corpus's rulings: a history rewrite changes their ids, and a commit cannot be superseded or amended by itself; they may cite a ruling's id. | project | director | ratified | - | - | - |
 | 0075 | 2026-10-05 | The good-faith assumption covers collaborating agents only: a collaborator's malice is out of the axioms' scope, while a hostile outsider and untrusted input are inside it. | general | director | ratified | amends 0008 | `axioms/README.md` | yes |
+| 0076 | 2026-10-05 | Every structured document has one fixed name and location, in upper case: VISION.md at the component root; docs/ARCHITECTURE.md, ARCHITECTURE-TARGET.md, BOARD.md, BACKLOG.md, DECISIONS.md (or DECISIONS/<NNNN>.md), and DELTAS/DELTA-<N>.md. | general | director | ratified | - | `artifacts/README.md` | yes |
 
 ---
 
@@ -621,7 +622,7 @@ Rename methodology/ to methods/ (category method).
 **Kind.** project - a one-off rename of a mission-kit layer
 
 **Source.**\
-`[V, commit 8fba49b; docs/deltas/delta-1-work-layers.md; docs/BACKLOG.md B24 history]`
+`[V, commit 8fba49b; docs/DELTAS/DELTA-1.md; docs/BACKLOG.md B24 history]`
 
 ### 0041
 
@@ -633,7 +634,7 @@ Downstream breakage is not a reason to carry legacy.
 **Kind.** general - identity rule for any entry move
 
 **Source.**\
-`[V, commit 8fba49b; docs/deltas/delta-1-work-layers.md lines 94, 109, 149]`
+`[V, commit 8fba49b; docs/DELTAS/DELTA-1.md lines 94, 109, 149]`
 
 ### 0042
 
@@ -647,7 +648,7 @@ Q4: practices and rules are two layers, rules/ (RU) and practices/ (PC), to keep
 **Lineage.** resolves the B24 survey's contradictory Q4 pick
 
 **Source.**\
-`[V, commit 8bbafa8; docs/deltas/delta-1-work-layers.md 'Q4 - two layers, ruled']`
+`[V, commit 8bbafa8; docs/DELTAS/DELTA-1.md 'Q4 - two layers, ruled']`
 
 ### 0043
 
@@ -671,7 +672,7 @@ Charters of populations spanning layers live in a sets/ layer (ST), whose charte
 **Kind.** general - layer structure of the product
 
 **Source.**\
-`[V, commits 4f16698 ('two director decisions are open'), 80b4dbe ('as ruled'); docs/deltas/delta-2-explain-set.md]`
+`[V, commits 4f16698 ('two director decisions are open'), 80b4dbe ('as ruled'); docs/DELTAS/DELTA-2.md]`
 
 ### 0045
 
@@ -743,7 +744,7 @@ Delta-1's L5 drop is the change working as intended, so the rubric is corrected 
 **Kind.** project - scoring of mission-kit's own evaluation
 
 **Source.**\
-`[V, commit 69230da; docs/audits/delta-1/stage-4.md 'Director ruling, after the scores'; docs/deltas/delta-1-work-layers.md]`
+`[V, commit 69230da; docs/audits/delta-1/stage-4.md 'Director ruling, after the scores'; docs/DELTAS/DELTA-1.md]`
 
 ### 0051
 
@@ -1068,3 +1069,19 @@ Amends `0008`; resolves the conflict with the hostile-actor gap the vision reche
 
 **Source.**\
 `[V, director ruling 2026-10-05 on the register review; docs/BACKLOG.md B56; docs/investigations/axioms-2026-10-04.md]`
+
+### 0076
+
+**Ruling.**\
+Every structured document has one fixed name and location, in upper case, with no ambiguity.
+
+**Alternatives refuted.**\
+Leaving names to each project - refuted because an arriving agent then searches for each document, and two projects already named the same type the same way by convention only.
+
+**Kind.** general - it fixes where any project's instances live.
+
+**Lineage.**\
+The director ruled fixed upper-case names; the target-architecture name, the per-ruling directory and the delta pattern are the drafting agent's application of it, and close `B7`'s delta naming question.
+
+**Source.**\
+`[V, director ruling 2026-10-05; docs/BACKLOG.md B2, B7]`

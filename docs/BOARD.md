@@ -36,15 +36,12 @@ Updated whenever the thread moves; the milestones below remain the plan.
 
 ```text
 M5  bring the charters to E4                     DONE
- +- charters: E4, then asymptote, then frame     done - vision + operation, M11 M12 M13
- +- terms defined: gate, evidence, substrate     done - E7 E8 E9
- +- eval runs purged from published history      done
- +- open items                                   d, i, l closed; m held for a director session
-next: M2 hold what we prescribe (WIP), then M3, M4  <- HERE
+M2  hold what we prescribe                       DONE - decision register, fixed upper-case names
+next: M3 make composition real, then M4 conventions and enforcement  <- HERE
 ```
 
-**M5 complete.**\
-The next milestone in plan order is M2, already in progress.
+**M2 and M5 complete.**\
+The next milestone in plan order is M3.
 
 **To return to:** the communication-moves matrix (`B42`), when the director has a session; Delta-2 stays withdrawn until it has a real metric.
 
@@ -171,7 +168,7 @@ One set states its territory, and a gap in that set is demonstrably findable.
 
 ---
 
-## M2 - hold what we prescribe - `WIP`
+## M2 - hold what we prescribe - `DONE`
 
 Close the gap between what the corpus tells adopters to do and what it does.
 
@@ -182,7 +179,7 @@ Close the gap between what the corpus tells adopters to do and what it does.
 | M2.3 | `docs/ARCHITECTURE.md` as an `AR1` instance | `B1` | `DONE` |
 | M2.4 | This board as an `AR3` instance | `B1`, `B9` | `DONE` |
 | M2.5 | A decision register, and a ruling on whether commit messages are a conformant `AR4` carrier | `B15` | `DONE` - [register](DECISIONS.md); commit messages ruled not a conformant carrier (`0074`) |
-| M2.6 | Canonical instance filenames, decided per-entry or as one table | `B2` | `TODO` |
+| M2.6 | Canonical instance filenames, decided per-entry or as one table | `B2` | `DONE` - fixed upper-case names in `AR0` (`0076`) |
 
 **Exit criteria.**\
 Every artifact type this corpus prescribes is either held by it or has a recorded reason it is not.\
@@ -213,7 +210,7 @@ Every ID-bearing layer either has an observed consumer or a recorded reason it h
 |---|---|---|
 | M4.1 | Rule on `CSSA`/`TSSA` - keep, drop "conventionally", or promote as `E` entities | `B10` |
 | M4.2 | Mechanize the board-record contract: every item cites a live row, every open row is on the board or in Held, milestone order matches the plan | `B16` `DONE` |
-| M4.3 | `AR2` instance naming and ordinal scheme | `B7` |
+| M4.3 | `AR2` instance naming and ordinal scheme | `B7` `DONE` - with M2.6 (`0076`) |
 | M4.4 | Retry network checks with backoff on 5xx, so throttling is told apart from a broken address | `B27` |
 | M4.5 | Check every external address in the corpus, and make placeholders unmistakable | `B30` |
 
@@ -239,7 +236,7 @@ Every ID-bearing layer either has an observed consumer or a recorded reason it h
 | M5.5g | **Component defined, opportunistic improvement, axiom wording pass** - evaluate before and after | `B35` | `DONE` - **7 to 10 / 10**, approved; open questions to `B36` - [audit](audits/M5.5g-component-opportunistic-wording.md) |
 | M5.5h | Rule on the six open design questions, one at a time, and amend `E5`, `E6`, `A0`, `A3` or `T0` as each ruling requires | `B36` | `DONE` - six of six ruled and applied - [audit](audits/M5.5h-02-design-rulings.md) |
 | M5.5i | Measure and correct the incidental defects the baseline readers found | `B37` | `DONE` - see `B37` |
-| M5.5j | **Delta-1, the work layers** - procedures stay in `methodology/`, practices and rules to a new `practices/`, prose skill `K1` in; packaged skills, WorkGraph skills and the `W0` citation deferred | `B24` | `DONE` - all four stages; 21.66 to 28 / 28 - [delta](deltas/delta-1-work-layers.md), [audits](audits/delta-1/) |
+| M5.5j | **Delta-1, the work layers** - procedures stay in `methodology/`, practices and rules to a new `practices/`, prose skill `K1` in; packaged skills, WorkGraph skills and the `W0` citation deferred | `B24` | `DONE` - all four stages; 21.66 to 28 / 28 - [delta](DELTAS/DELTA-1.md), [audits](audits/delta-1/) |
 | M5.5k | **The explain set** - communication with a human of limited context, measured with live agents first, then designed as a set spanning layers | `B38` | `DONE` - Delta-2: `M10`, `S15`, `ST1`; human check 6 of 6 - [audits](audits/delta-2/) |
 | M5.5l | State the always-on-context confound in every evaluation result, and take after-runs before a change reaches `main` | `B40` | `DONE` - see `B40` |
 | M5.6 | Rebuild the charter checker - fixed headings by name, free concerns by a declared location - and re-enable it | `B17` | `DONE` - fixed headings held by `check-entry-body.sh` from `SC6`; free concerns held by review |
