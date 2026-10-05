@@ -181,7 +181,7 @@ Close the gap between what the corpus tells adopters to do and what it does.
 | M2.2 | `docs/BACKLOG.md` as an `AR5` instance | `B1` | `DONE` |
 | M2.3 | `docs/ARCHITECTURE.md` as an `AR1` instance | `B1` | `DONE` |
 | M2.4 | This board as an `AR3` instance | `B1`, `B9` | `DONE` |
-| M2.5 | A decision register, and a ruling on whether commit messages are a conformant `AR4` carrier | `B15` | `DONE` - [register](DECISIONS.md); commit messages are not a conformant carrier |
+| M2.5 | A decision register, and a ruling on whether commit messages are a conformant `AR4` carrier | `B15` | `DONE` - [register](DECISIONS.md); commit-message carrier proposed as no, awaiting ruling (`0074`) |
 | M2.6 | Canonical instance filenames, decided per-entry or as one table | `B2` | `TODO` |
 
 **Exit criteria.**\

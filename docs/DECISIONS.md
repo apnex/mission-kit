@@ -111,6 +111,7 @@ Whether an entry actually states a ruling is checked by reading, not by script.
 | 0071 | 2026-10-04 | A charter is a vision applied to its set (AR6's devices) plus operating instructions; Purpose becomes Vision and Operation joins the fixed headings; members need not know their set. | general | director | ratified | amends 0065 | `entities/E4-charter.md`, `entities/E3-set.md`, `schemas/SC6-entry-body.md` | yes |
 | 0072 | 2026-10-04 | Operating a charter (changing its text, M11) is distinct from operating the set it governs (changing its population, M13). | general | director | ratified | amends 0071 | `methods/M13-change-a-set.md`, `entities/E4-charter.md`, `methods/M11-change-a-charter.md` | yes |
 | 0073 | 2026-10-04 | Close M5: finish what an agent can do now, hold what needs the director (B42), close the milestone. | project | director | ratified | - | - | - |
+| 0074 | 2026-10-04 | Commit messages are not a conformant carrier for this corpus's rulings: a history rewrite changes their ids, and a commit cannot be superseded or amended by itself; they may cite a ruling's id. | project | director | proposed | - | - | - |
 
 ---
 
@@ -1033,3 +1034,16 @@ Close M5: finish what an agent can do now, hold what needs the director (B42), c
 
 **Source.**\
 `[V, docs/audits/M5.5-14-charter-frame.md 'Closing M5'; commit 5b4ba53]`
+
+### 0074
+
+**Ruling.**\
+Proposed by the drafting agent, not yet ruled: commit messages are not a conformant carrier for this corpus's rulings.
+
+**Alternatives refuted.**\
+Commit messages as the carrier - refuted by the history purge of 2026-10-04, which gave 126 commits new ids, so rulings cited by commit id moved.
+
+**Kind.** project - how mission-kit keeps its own record.
+
+**Source.**\
+`[V, docs/audits/history-purge-2026-10-04.md; docs/BACKLOG.md B15]`
