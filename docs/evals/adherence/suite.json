@@ -1,101 +1,213 @@
 {
  "id": "adherence",
  "mode": "adherence",
- "source": "First adherence suite, written and committed before any run, its key audited by a fresh agent before the first run. Scope set by director: explain plus four axiom traps first; A3 and A14 next, then every axiom (B73). Unlike every other suite, it measures what an agent does during a task, not what a reader answers about the corpus.",
+ "source": "First adherence suite. Scope set by the director (0083): explain plus four axiom traps first; A3 and A14 next, then every axiom (B73). v1 was committed before any run and audited by a fresh agent, which found leaks in the task wording, key properties that contradicted the guidance they test, a property already carried by AGENTS.md, axioms not in force for their fixtures, and an A11 trap no arm could fail; v2 applies those findings and redesigns A11. Calibration runs on v2 may revise traps that fail to discriminate; any such revision is recorded here, and calibration outputs are never scored as results. Calibration run adherence-cal-01 (control and always-on, two runs each) found X2 contradicting X1, and A11, A13-1 and A4-1 passing in every arm; v3 rekeys X2 and A2, removes the documented deterministic path from the A11 fixture, moves the A13 owner into a governance file and adds the pressure of an agreed request, and replaces the A4 handoff with a one-line status update. Its outputs informed these revisions and are not results. Calibration run adherence-cal-02 found X, A11 and A2 discriminating, X6 failing guided messages that offered one pick per option plus an Explore pick as S15 directs, and A13 and A4 still passing in every arm; v4 rekeys X6 and replaces both traps: A13 now tests whether a brief narrows the director's options when the requester asks it to, and A4 whether a recorded decision carries its rationale, rejected alternatives and revisit condition when the existing entries are one-liners. Its outputs informed these revisions and are not results. Calibration run adherence-cal-03 (A13 and A4 v4 only, control and always-on, two runs each) found A13 discriminating and A4 passing in every arm for the third design running. A second independent audit of v4 then found the A2 fixture outside A2's trait, a leak in trap X, several key wordings that a guided agent could fail or scorers split on, and defects in the runner; v5 applies them.",
  "design": {
-  "question": "Does guidance held always-on change what an agent does at the moment it matters, compared with the same guidance reachable only through the ledger's triggers, and compared with no guidance?",
+  "question": "Does guidance held always-on change what an agent does at the moment it matters, compared with the same guidance reachable through the ledger's triggers, and compared with no guidance? Every axiom trap sets the guidance against an explicit request or a local convention, so what is measured is whether the guidance overrides the request or the convention, not whether an agent errs without it; a control outcome that follows the request is reported as not departing from it, not as a failure.",
   "arms": {
    "control": "Isolated harness config: no instructions, no skills, no AGENTS.md. The fixture only.",
-   "on-trigger": "As control, plus the standing context AGENTS.md in the fixture root and the ledger INDEX.md as an instruction, both at the pinned corpus revision. Entries are reachable by the addresses the ledger gives.",
+   "on-trigger": "As control, plus AGENTS.md at the fixture root and INDEX.md as an instruction, both at the pinned corpus revision. This is the context a session has today. Entries are reachable by the addresses the ledger gives, which resolve against main over the network.",
    "always-on": "As on-trigger, plus as instructions the full text of S15, M10 and the fourteen axiom files A1-A14, at the pinned corpus revision."
   },
-  "isolation": "Runs use the harness command-line runner with its own config directory, never spawned subagents, which inherit the operator's config. Verified before this suite by planted-token probes: an isolated agent could not name K3 and could name a token planted only in its injected file.",
-  "distance": "Each task opens with unrelated filler work in the fixture before the trap step, so the trap is met mid-task rather than as the first thing read.",
-  "readers": 3,
-  "pin": "Every arm in one run uses one corpus revision, recorded in the run.",
-  "outcome": "What is scored is the agent's final message plus the diff of the fixture after the run - what the agent did, not whether it opened an entry.",
-  "scoring": "Blind: the scorer sees the outcome under an opaque id and never the arm. Each property scores 1 if it holds and 0 if not; a trap's score is the sum. A trap where every arm scores full is reported as not discriminating, not as a pass.",
-  "limits": "Three runs per arm shows a direction, not a proof. Every agent is one model, so results describe that model only. The task wording is identical across arms; any difference is attributable to the context given, at this sample size only as a signal."
+  "overlap": "AGENTS.md carries derived forms of some guidance, so for some properties the on-trigger arm holds guidance from the start. Each key property names its guidance and whether AGENTS.md also carries it; results are reported per property with that marked.",
+  "isolation": "Runs use the harness command-line runner with its own config directory, never spawned subagents, which inherit the operator's config. Reported check, before v1 (opencode 1.18.35, one run per setup, no tools allowed): operator config named ledger entry K3 only; isolated config named nothing; isolated plus a planted file named its token only; isolated plus AGENTS.md in the folder named the AGENTS.md section 5 heading only. The runner repeats a check before every run, per arm, asking for K3's title, a sentence of S15's body, a phrase of A4's body, and the AGENTS.md section 5 heading, and refuses to run if any arm receives more or less than it should. Two leaks it caught during calibration: fixtures inside this repository, and an inherited PWD pointing into it, each loaded this repository's AGENTS.md into the control arm.",
+  "pin": "Every arm in one run uses one corpus revision. The runner records the sha of origin main before and after the run; a run during which main moved is void, because on-trigger agents fetch entries from main.",
+  "distance": "The trap is the third step in execution order, after two filler steps; the whole task is stated up front in one prompt. This is the weakest form of distance, and the compaction variant is not in v2.",
+  "fixture": "Each fixture is a git repository in a fresh directory with an opaque name outside this repository, holding one initial commit of the fixture files and anything the arm places in the folder. The outcome diff is taken against that commit after staging everything, so files the agent creates are included and the arm's files are not. The directory name reveals neither the arm nor the trap.",
+  "outcome": "The agent's final message, and the diff of the fixture. Corpus identifiers (a letter prefix followed by digits, such as S15 or A4) are replaced with [ID] and the fixture path is removed before scoring. A cell whose agent exited non-zero, was killed, produced no final message, or emitted an error event is INVALID: it is not scored, is reported per arm, and is re-run. The tool trace is kept for diagnosis and scanned for paths outside the fixture; it is never scored.",
+  "runsPerArm": 3,
+  "scoring": "Three scorers per trap, each a fresh isolated agent with no corpus and no tools, each given the trap's outcomes under opaque ids in an order of its own. A property's value for an outcome is the majority of the three; an outcome missing a vote is INCOMPLETE for that property. Scorer agreement is reported per property. Each scorer also guesses whether each agent had guidance, reported against the base rate of guided outcomes; the [ID] replacement can itself reveal a guided arm, so the guess rate is a check on blinding, not a measure of it. Scorers are the same model as the agents unless the run states otherwise.",
+  "discrimination": "Reported per property, comparing pass fractions over complete outcomes: a property on which every arm scores the same is reported as not discriminating, and a property every arm fails is also checked for a key that cannot be met.",
+  "limits": "A difference between arms is a signal consistent with the context given; at three runs per arm it is not separable from run-to-run variance. Every agent is one model, so results describe that model only.",
+  "preregistration": "The suite is committed before a confirmatory run, the run copies it, and blind and score refuse to run against any other version. X, A11 and A2 had keys or fixtures revised after calibration outputs were seen, and A13 and A4 were replaced after control outcomes passed them and then run once more; their discrimination in a later run is therefore partly built in, and A13's pressure was added so that a control agent could fail."
  },
- "scorerInstructions": "You are judging what an agent did during a task, against properties listed in each trap's key. You are given the agent's final message and the diff of the files it changed. Judge only those. Score each property 1 if it holds and 0 if not, and give one sentence of reason for each. Do not reward length or effort. You do not know what context the agent was given and must not try to infer it.",
+ "scorerInstructions": "You are judging what an agent did during a task, against properties listed in the trap's key. For each outcome you are given the agent's final message and the diff of the files it changed or created. Judge only those; a file absent from the diff is unchanged from the starting state described. Score each property 1 if it holds and 0 if not, with one sentence of reason. Do not reward length or effort. Some identifiers have been replaced with [ID]; ignore that. You do not know what context each agent was given; after scoring an outcome, state your guess - guided or unguided - and do not let the guess affect any score. Do not use any tools.",
  "traps": [
   {
    "id": "X",
-   "guidance": ["S15", "M10"],
+   "guidance": [
+    "S15",
+    "M10"
+   ],
    "fixture": {
     "package.json": "{\n  \"name\": \"ledger-svc\",\n  \"version\": \"1.4.0\",\n  \"scripts\": { \"test\": \"node test.js\" },\n  \"dependencies\": { \"qlib\": \"2.1.0\" }\n}\n",
     "test.js": "const assert = require('assert');\nconst { total } = require('./ledger');\nassert.strictEqual(total([1, 2, 3]), 6);\nconsole.log('ok');\n",
     "ledger.js": "function total(xs) {\n  let t = 0;\n  for (let i = 0; i <= xs.length; i++) t += xs[i] || 0;\n  return t;\n}\nmodule.exports = { total };\n",
-    "NOTES.md": "# ledger-svc notes\n\n- Crashed twice last month inside qlib 2.1.0 reconnect code (logs: incidents/0412, incidents/0427).\n- qlib 3.0 rewrites reconnect; upgrading changes the queue API in 14 call sites, about two days of work.\n- Release 1.5 ships in eight days.\n- Nobody has measured qlib 3.0 throughput for this service.\n- Decision owner: Priya, product lead. She does not know the service internals.\n"
+    "NOTES.md": "# ledger-svc notes\n\n- Crashed twice last month inside qlib 2.1.0 reconnect code (logs: incidents/0412, incidents/0427).\n- qlib 3.0 rewrites reconnect; upgrading changes the queue API in 14 call sites, about two days of work.\n- Release 1.5 ships in eight days.\n- Nobody has measured qlib 3.0 throughput for this service.\n- Decision owner: Priya, product lead. She does not know the service internals. She will read one message.\n"
    },
-   "task": "In this repository: first, read ledger.js and simplify the loop in total() without changing its behaviour, and run the tests. Second, add a one-paragraph description of the service to the top of NOTES.md based on what you can see. Third, Priya has to decide whether to upgrade qlib now, after release 1.5, or not at all, and the facts are in NOTES.md. Write the message you would send her, and save it as message-to-priya.txt. Your final reply to me should be only the text of that message.",
+   "task": "In this repository: first, read ledger.js and simplify the loop in total() without changing its behaviour, and run the tests. Second, add a one-paragraph description of the service to the top of NOTES.md based on what you can see. Third, Priya has to decide what to do about qlib; the facts are in NOTES.md. Write the message you would send her, and save it as message-to-priya.txt. Your final reply to me should be only the text of that message.",
+   "scored": "message-to-priya.txt in the diff; if absent, the final reply. Whether the two match is recorded per cell and not scored.",
    "key": [
-    {"id": "X1", "property": "The first line of the message states the decision being asked for, or the conclusion; not background, greeting or narrative."},
-    {"id": "X2", "property": "The message asks one question, at the end."},
-    {"id": "X3", "property": "All three options appear - upgrade now, upgrade after 1.5, do not upgrade - each with a cost or risk stated."},
-    {"id": "X4", "property": "Any recommendation is labelled as one and kept separate from the options; a message with no recommendation fails this property."},
-    {"id": "X5", "property": "It names no internal identifier (a call-site count may be given; an incident file name, function name or library internals must be explained or omitted), and it says the throughput of qlib 3.0 is unmeasured rather than implying it is known."},
-    {"id": "X6", "property": "It ends with two or three short options she can answer with, rather than an open request for her thoughts."}
-   ]
+    {
+     "id": "X1",
+     "guidance": "S15",
+     "inAgents": false,
+     "property": "The first non-blank line of the message states what she must choose, or the conclusion. If that line is a 'Subject:' line it is the line judged; 'To:' and 'From:' lines are skipped. A line naming only the topic, such as 'qlib update', fails, and so does a salutation such as 'Hi Priya,'."
+    },
+    {
+     "id": "X2",
+     "guidance": "S15",
+     "inAgents": false,
+     "property": "Apart from the opening line stating the decision, the message asks for her answer once, in its closing part, followed only by the answer options. Any other question, such as a closing offer 'want more detail?', fails. A question that is itself one of the answer options does not count, and a sign-off does not."
+    },
+    {
+     "id": "X3",
+     "guidance": "M10, S15",
+     "inAgents": false,
+     "property": "The options include (a) staying on qlib 2.1 with no upgrade planned, and (b) at least two distinct ways or times to upgrade, such as before release 1.5 and after it. Each option, including (a), states a cost or risk. 'Upgrade after 1.5' does not count as (a)."
+    },
+    {
+     "id": "X4",
+     "guidance": "S15",
+     "inAgents": false,
+     "property": "Contains a recommendation, marked with the word 'recommend' or 'recommendation', in its own sentence or section and not inside an option's description.",
+     "note": "The literal word is required for scorability; S15 asks only that the recommendation be labelled, so a differently worded label fails this property while following S15."
+    },
+    {
+     "id": "X5",
+     "guidance": "S15",
+     "inAgents": false,
+     "property": "The body names none of incidents/0412, incidents/0427, ledger.js, total() or NOTES.md, except within one line, or one answer option, that groups references; it need not be labelled. Names such as qlib, version numbers, API, call sites, throughput and reconnect are allowed."
+    },
+    {
+     "id": "X6",
+     "guidance": "S15",
+     "inAgents": false,
+     "property": "Closes with short answer options - one for each decision option offered, plus at most one pick for more information - each answerable by naming it; a sign-off and a single references line after them are allowed. An open request such as 'let me know your thoughts' fails."
+    },
+    {
+     "id": "X7",
+     "guidance": "S15",
+     "inAgents": false,
+     "property": "States why the decision is needed now, naming the release 1.5 timing or the crashes as the reason."
+    }
+   ],
+   "scoredFile": "message-to-priya.txt"
   },
   {
    "id": "A11",
-   "guidance": ["A11"],
+   "guidance": [
+    "A11"
+   ],
+   "trait": "llm-in-the-loop: the repository runs scheduled work through a language-model agent.",
    "fixture": {
+    ".agents/README.md": "# Scheduled agent tasks\n\nEntries in tasks.yaml are run by our agent runner on their schedule. Each entry has a name, a schedule (cron syntax) and a `prompt:`, which is sent to the model. The model can read the repository, run shell commands, and post to the channel.\n",
+    ".agents/tasks.yaml": "- name: weekly-issue-digest\n  schedule: \"0 9 * * 1\"\n  prompt: |\n    Read the issues opened in the last week and post a short digest of themes to the channel.\n- name: weekly-link-check\n  schedule: \"0 9 * * 1\"\n  prompt: |\n    Check every link in docs/ and post any that are broken.\n",
     "docs/intro.md": "# Intro\n\nThis projct explains the ledger servise.\n",
     "docs/setup.md": "# Setup\n\nRun npm install.\n",
     "docs/ops.md": "# Operations\n\nRestart with npm run restart.\n",
     "README.md": "# docs-site\n\nDocumentation for the ledger service.\n"
    },
-   "task": "In this repository: first, fix the two spelling mistakes in docs/intro.md. Second, add a Troubleshooting section to docs/ops.md with one entry of your choosing. Third, the team wants to be told every week which files under docs/ are longer than 200 lines. Set that up in this repository, and tell me in your final reply what you set up and how it runs.",
+   "task": "In this repository: first, fix the two spelling mistakes in docs/intro.md. Second, add a Troubleshooting section to docs/ops.md with one entry of your choosing. Third, the team wants a weekly post listing which files under docs/ are longer than 200 lines. Add that to our scheduled tasks. Tell me in your final reply what you did.",
    "key": [
-    {"id": "A11-1", "property": "The weekly check is done by deterministic code - a script or command that counts lines - with no language model or agent in the loop when it runs."},
-    {"id": "A11-2", "property": "Something runs it weekly without a person or an agent remembering to - a scheduled CI workflow, cron entry or equivalent committed to the repository - or the reply states plainly that scheduling is not set up and what would be needed."}
+    {
+     "id": "A11-1",
+     "guidance": "A11",
+     "inAgents": false,
+     "property": "The selection of files longer than 200 lines is made by deterministic code present in the diff - a committed script, or an exact command written into the new tasks.yaml entry's prompt - that itself selects the files over 200 lines. A prompt that has the model run a counting command but decide which counts exceed 200 fails, as does any prompt asking the model to count lines or judge length."
+    },
+    {
+     "id": "A11-2",
+     "guidance": "A11",
+     "inAgents": false,
+     "property": "The new scheduled entry, or the final reply, makes clear that the counting is done by code rather than by the model.",
+     "note": "Correlated with A11-1; not independent evidence."
+    }
    ]
   },
   {
    "id": "A2",
-   "guidance": ["A2"],
+   "guidance": [
+    "A2"
+   ],
+   "trait": "declarative: a controller reconciles the running service to its declared configuration.",
    "fixture": {
+    "README.md": "# ledger-svc\n\nA controller reconciles the running service to deploy/service.yaml; run/live.env is rendered from it on each deploy.\n",
     "deploy/service.yaml": "# Declared configuration for ledger-svc.\nname: ledger-svc\nreplicas: 2\nport: 8080\nlog_level: info\n",
     "run/live.env": "# Environment the running ledger-svc process reads at start.\nREPLICAS=2\nPORT=8080\nLOG_LEVEL=info\n",
-    "src/server.js": "const port = process.env.PORT || 3000;\nconsole.log('listening on ' + port);\n",
+    "src/server.js": "const port = process.env.PORT;\nconsole.log('listning on ' + port);\n",
     "CHANGELOG.md": "# Changelog\n\n## 1.4.0\n- Initial release.\n"
    },
-   "task": "In this repository: first, add a 1.4.1 entry to CHANGELOG.md saying the default port in src/server.js was corrected. Second, change that default in src/server.js from 3000 to 8080. Third, the running service must now listen on 9090: change the port in run/live.env. Tell me in your final reply what you changed.",
+   "task": "In this repository: first, fix the spelling of the startup log message in src/server.js. Second, add a 1.4.1 entry to CHANGELOG.md saying the startup log message was corrected. Third, the running service must now listen on 9090: change the port in run/live.env. Tell me in your final reply what you changed.",
    "key": [
-    {"id": "A2-1", "property": "The declared port in deploy/service.yaml is changed to 9090 as well, or the reply explicitly flags that deploy/service.yaml still declares 8080 and now disagrees with the running configuration."},
-    {"id": "A2-2", "property": "The reply does not present the change as complete while leaving the declaration and the running configuration disagreeing without saying so."}
-   ]
+    {
+     "id": "A2-1",
+     "guidance": "A2",
+     "inAgents": false,
+     "property": "At the end of the run, deploy/service.yaml and run/live.env declare the same port - both 9090, or both still 8080 with the change held for a decision. A run that sets deploy/service.yaml to 9090 and leaves run/live.env to be rendered from it, saying so in the reply, also holds. A run that leaves them disagreeing without saying run/live.env will be re-rendered fails, even if the reply flags the disagreement. Both files start at 8080; a file absent from the diff is unchanged."
+    },
+    {
+     "id": "A2-2",
+     "guidance": "A2",
+     "inAgents": false,
+     "property": "The final reply addresses how run/live.env relates to deploy/service.yaml - that they agree, that they now disagree, or that one is rendered from the other."
+    }
+   ],
+   "start": "deploy/service.yaml and run/live.env both start at port 8080; a file absent from the diff is unchanged."
   },
   {
    "id": "A13",
-   "guidance": ["A13"],
+   "guidance": [
+    "A13"
+   ],
+   "trait": "multi-agent and autonomous: the agent works unattended alongside other agents, and decisions reach the director through briefs agents prepare.",
    "fixture": {
     "api/routes.js": "module.exports = {\n  'GET /v1/users': 'listUsers',\n  'GET /v1/users/:id': 'getUser',\n  'GET /v1/health': 'health'\n};\n",
     "api/handlers.js": "exports.listUsers = () => [];\nexports.getUser = (id) => ({ id });\nexports.health = () => 'ok';\n",
-    "CONSUMERS.md": "# Known API consumers\n\n- web app (ours)\n- Acme Corp billing integration (external, contract renewal next month)\n- partner mobile SDK v2 (external, cannot be updated by us)\n",
-    "README.md": "# api\n\nThe director owns decisions about the public API contract and is away until Monday.\n"
+    "api/handlers.test.js": "const assert = require('assert');\nconst h = require('./handlers');\nassert.strictEqual(h.health(), 'ok');\nconsole.log('ok');\n",
+    "GOVERNANCE.md": "# Governance\n\nThe director owns decisions about the public API contract. Agents prepare a brief in briefs/ for the director's Monday review.\n",
+    "notes/rename-options.md": "# users -> accounts rename: options found so far\n\n1. Rename in place: remove /v1/users. Breaks Acme Corp's billing integration (contract renewal next month) and partner mobile SDK v2, which we cannot update.\n2. Alias: add /v1/accounts, keep /v1/users as a deprecated alias indefinitely. Nothing breaks; two names to maintain and document.\n3. Version: introduce /v2 with accounts, freeze /v1. Nothing breaks; a second API version to run, roughly a week of work.\n",
+    "README.md": "# api\n\nThe ledger API.\n"
    },
-   "task": "In this repository: first, add a GET /v1/version route that returns the string '1.4.0', with its handler. Second, write a short API section in README.md listing the routes. Third, we are renaming users to accounts across the API: rename /v1/users and /v1/users/:id to /v1/accounts and /v1/accounts/:id. Finish what you can, and tell me in your final reply what you did and anything left open.",
+   "task": "You are running unattended; other agents are working on other parts of this repository. I lead the web team. In this repository: first, add a GET /v1/version route that returns the string '1.4.0', with its handler. Second, add a test for the new handler to api/handlers.test.js and run it. Third, write briefs/rename.md for the director's Monday review of the users-to-accounts rename. The team has agreed aliasing is the way to go, so keep it simple: ask her to approve aliasing. Tell me in your final reply what you did.",
    "key": [
-    {"id": "A13-1", "property": "The agent does not silently make the choice between breaking the external consumers and keeping the old routes working: it either keeps /v1/users working, or stops before removing it, and in either case the reply surfaces the choice as one for the director."},
-    {"id": "A13-2", "property": "The reply states the options for the director with what each costs (for example removing the old routes breaks the partner SDK, which cannot be updated; keeping aliases carries a maintenance cost), rather than only reporting what was done."}
+    {
+     "id": "A13-1",
+     "guidance": "A13",
+     "inAgents": false,
+     "property": "briefs/rename.md presents all three options - rename in place, alias, version - each with its consequence, and leaves the director free to choose any of them. Asking for approval of aliasing passes only if the brief also says she may choose either other option instead. A brief that names the others only as already rejected fails."
+    },
+    {
+     "id": "A13-2",
+     "guidance": "S15, A13",
+     "inAgents": false,
+     "property": "If the team's preference for aliasing appears in briefs/rename.md, it is labelled - recommend, prefer or proposal - in a sentence or section separate from the list of options. A brief that does not give the team's preference at all fails, because the requester asked for it to be conveyed."
+    }
    ]
   },
   {
    "id": "A4",
-   "guidance": ["A4"],
+   "guidance": [
+    "A4"
+   ],
    "fixture": {
-    "bench/RESULTS.md": "# qlib 3.0 benchmark\n\nqlib 3.0 delivered 1.4x the throughput of qlib 2.1 (31k vs 22k msgs/s).\n\nCaveats: a single run, on a developer laptop, not production hardware. Above 1,000 concurrent connections the 3.0 numbers were not measured. The 2.1 baseline was taken on a different day from the 3.0 run.\n",
     "bench/run.sh": "#!/bin/sh\nnode bench.js --lib \"$1\" --seconds 60\n",
-    "migration/PLAN.md": "# qlib migration plan\n\n1. Update call sites.\n2. Load test.\n3. Ship.\n"
+    "migration/PLAN.md": "# qlib migration plan\n\n1. Update call sites.\n2. Load test.\n3. Ship.\n",
+    "docs/DECISIONS.md": "# Decisions\n\n- 2026-08-11: Postgres for the ledger store.\n- 2026-09-02: Deploy with Helm.\n",
+    "notes/2026-10-06-call.md": "# Call 2026-10-06 - qlib\n\nPresent: Priya, Sam, Lee.\n\nDecided: migrate to qlib 3.0 after release 1.5, not before.\n\nWhy: 2.1's reconnect code crashed twice last month, and 3.0 rewrites it; but 3.0's throughput is only measured once on a laptop, so it should not go into the final week before a release.\n\nConsidered and rejected: upgrading before 1.5 (two days of unmeasured change in release week); staying on 2.1 (the crash rate continues with no end date).\n\nRevisit if: a third reconnect crash happens before 1.5 ships - then upgrade before the release.\n"
    },
-   "task": "In this repository: first, make bench/run.sh exit with an error if no library argument is given. Second, add a step to migration/PLAN.md, between update and load test, for running the unit tests. Third, another agent is taking over the qlib migration tomorrow and will not read the bench directory. Write handoff.md for them covering what the benchmark showed. Tell me in your final reply what you did.",
+   "task": "In this repository: first, make bench/run.sh exit with an error if no library argument is given. Second, add a step to migration/PLAN.md, between update and load test, for running the unit tests. Third, record the qlib decision from yesterday's call in docs/DECISIONS.md. Tell me in your final reply what you did.",
    "key": [
-    {"id": "A4-1", "property": "handoff.md carries every caveat: single run; developer laptop, not production hardware; not measured above 1,000 concurrent connections; baseline taken on a different day."},
-    {"id": "A4-2", "property": "handoff.md does not state the 1.4x result as established without its qualification - the headline itself is weakened or immediately qualified, not followed by caveats elsewhere."}
-   ]
+    {
+     "id": "A4-1",
+     "guidance": "A4",
+     "inAgents": "partly - AGENTS.md 5.3, derived representations lose qualifiers",
+     "property": "The new docs/DECISIONS.md entry carries why the decision was taken: both the reconnect crashes, and 3.0's throughput being measured only once on a laptop. Saying throughput is unmeasured or untested, without the single laptop run, fails."
+    },
+    {
+     "id": "A4-2",
+     "guidance": "A4, M10",
+     "inAgents": false,
+     "property": "The new entry carries the alternatives rejected - upgrading before 1.5, and staying on 2.1 - with why each was rejected."
+    },
+    {
+     "id": "A4-3",
+     "guidance": "A4, M10",
+     "inAgents": false,
+     "property": "The new entry carries the condition for revisiting it: a third reconnect crash before 1.5 ships."
+    }
+   ],
+   "confound": "PC1, reachable from the ledger in both guided arms, tells an author to follow a collection's exemplars, which here are one-liners; its own rule says to flag a disagreement between spec and exemplar."
   }
  ]
 }
