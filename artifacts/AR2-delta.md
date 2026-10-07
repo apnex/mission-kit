@@ -15,6 +15,12 @@ instance-path: [docs/DELTAS/DELTA-<N>.md]
 
 Declare one transition between two states of [`AR1`](AR1-system-architecture.md), and make its landing provable rather than reportable.
 
+**A delta closes part of the gap between where a system is and where its ratified decisions say it should be.**\
+The target is the current architecture plus every ratified decision not yet built ([`AR1`](AR1-system-architecture.md)); the gap is those decisions, and the decision record marks each one's absorption as pending until it is built ([`AR4`](AR4-decision-record.md)).\
+A decision that can be built in one change needs no delta; a decision that cannot - many changes, staged, each provable before the next depends on it - is built under a delta, whose to-state is the decision absorbed.\
+The board ([`AR3`](AR3-board.md)) chooses which part of the gap to close next; the delta marches the system across it.\
+In a project running this loop, a structural change no delta declares is drift.
+
 A delta is the only place **sequencing** lives.\
 The architecture is timeless at both instants, so build order, staging and "what lands when" belong here and nowhere else.\
 An architecture that grows a stage column has absorbed delta content, and it relocates.
@@ -58,13 +64,14 @@ The post-ratification half of a delta is not yet specified here, and the gap is 
 - **Coverage map.** Which ratified decisions this delta *proves* and which it *defers* - the from-to statement in mechanical form.
 - **Verification targets.** What the harness must exercise for the criteria to be checkable.
 - **Named costs and non-claims.** What this transition explicitly does not demonstrate.
+- **Adversarial review.** Before ratification, an agent that did not draft the delta reviews it against its from-state, its to-state's decisions and the system, and tries to break it - a missing fence, a criterion two readers could read differently, a decision it claims to prove and does not. The reviewer, the findings and the disposition of each are recorded here. The findings are evidence for the director's ratification ([`E8`](../entities/E8-evidence.md)); the review informs and blocks nothing, so it is not itself a [gate](../entities/E7-gate.md), and a reviewer's recommendation is a conclusion, not evidence.
 
 ---
 
 ## Authority
 
 Authored by the architect or engineer who will execute it.\
-Selected by the director from the board.\
+Selected by the director from the board, and ratified by the director after its adversarial review.\
 Its exit criteria are evaluated by whoever holds verification authority for the work type - never by the executor alone, where the criteria carry assurance weight.
 
 ---
@@ -78,6 +85,8 @@ An instance is unacceptable if:
 - coverage is weighted to produce a percentage of completion;
 - the anti-scope fence is absent;
 - it names no from-state or no to-state;
+- its to-state names no ratified decision it builds;
+- it was ratified without an adversarial review by an agent that did not draft it, or a finding carries no disposition;
 - a criterion is evaluated by the party who executed the work it certifies, on a delta whose closure counts as assurance.
 
 **Progress against the target is measured, never reported.**\
@@ -113,6 +122,7 @@ An instance lives at `docs/DELTAS/DELTA-<N>.md`, relative to the component root,
 ## 5. Binary exit criteria
 ## 6. Named costs and non-claims
 ## 7. The anti-scope fence
+## Adversarial review     <- reviewer, findings, disposition of each; before ratification
 ```
 
 A delta's *shape* - a vertical end-to-end slice, a horizontal layer, a repair - is a property of the transition, not a governance class.\

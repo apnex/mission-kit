@@ -65,6 +65,8 @@ affects:    [<paths that must absorb it>]
 Superseding retires a record; amending leaves it live and changes part of it.\
 Collapsing them loses which prior rulings are still standing.
 
+A ruling whose absorption is pending is the gap between the current architecture and the target; where it cannot be absorbed in one change, it names the delta ([`AR2`](AR2-delta.md)) that is building it.
+
 `affects` is **one** way to make absorption checkable.\
 A record naming a document creates an obligation on that document, and a gate can walk it.
 
