@@ -120,6 +120,7 @@ Whether an entry actually states a ruling is checked by reading, not by script.
 | 0076 | 2026-10-05 | Every structured document has one fixed name and location, in upper case: VISION.md at the component root; docs/ARCHITECTURE.md, ARCHITECTURE-TARGET.md, BOARD.md, BACKLOG.md, DECISIONS.md (or DECISIONS/<NNNN>.md), and DELTAS/DELTA-<N>.md. | general | director | ratified | - | `artifacts/README.md` | yes |
 | 0077 | 2026-10-05 | Each artifact type declares the fixed path of its instances in `instance-path`, required by the catalogue contract; the artifacts charter states the rule and its index shows the paths in a generated column, naming no type itself. | general | director | ratified | amends 0076 | `artifacts/README.md`, `schemas/catalog-entry/v1alpha1/catalog-entry.schema.json`, `tools/generate-index.mjs` | yes |
 | 0078 | 2026-10-05 | A backlog row's scores are declared once, on the row; the board's triage ledger and held list are generated from the record, holding is read from the plan, and a ruled decision leaves the board. | general | director | ratified | - | `artifacts/AR3-board.md`, `artifacts/AR5-backlog.md`, `tools/check-board.mjs` | yes |
+| 0079 | 2026-10-05 | Work-types declare the artifact types they produce: W14 a target architecture, W16 and W20 backlog entries, W23 a decision record; each artifact type shows its producers in a generated section, and the types no work-type produces are a recorded gap. | general | director | ratified | - | `work-types/W14-design-a-contract-or-invariant.md`, `work-types/W16-bank-idea-or-knowledge-capital.md`, `work-types/W20-reconcile-ledger.md`, `tools/generate-index.mjs` | yes |
 
 ---
 
@@ -1120,3 +1121,19 @@ The common scale - a mandate breach ranks with the second-highest impact, a sign
 
 **Source.**\
 `[V, director ruling 2026-10-05; M3.2 instance check of AR3]`
+
+### 0079
+
+**Ruling.**\
+The mapping of work-types to the artifact types they produce, drafted by the agent and confirmed by the director.
+
+**Alternatives refuted.**\
+Artifacts as a fourth composition axis, and the two layers kept independent - both refuted by `0053`, which chose the `produces` field.
+
+**Kind.** general - it is how any project learns which work makes which document.
+
+**Lineage.**\
+Applies `0053`; closes `B13` and `B53`.
+
+**Source.**\
+`[V, director confirmation 2026-10-05]`

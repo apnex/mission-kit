@@ -1,0 +1,20 @@
+{
+  "id": "produces",
+  "mode": "corpus",
+  "group": "produces",
+  "source": "M3.1: work-types declare produces; artifact types show the reverse view generated. Keyed before the change was evaluated; drafted alongside it. R2 re-keyed after produces-01: it asked for the backlog record of the gap, which lives in docs/ and is unreachable from the product by design.",
+  "probes": [
+    {
+      "id": "R1",
+      "question": "Which unit of work produces a project's backlog entries, and where would you look to find out?",
+      "key": "W16 bank an idea and W20 reconcile a ledger produce AR5 backlog entries; the AR5 entry lists them in a generated Produced by section, built from each work-type's produces field.",
+      "rubric": "2 for W16 and W20 with the generated section or the produces field. 1 for one work-type or the mechanism alone. 0 otherwise."
+    },
+    {
+      "id": "R2",
+      "question": "Which work-type produces a board?",
+      "key": "None: no work-type produces an AR3 board - selecting the next moves has no work-type, and AR3's generated Produced by section is empty.",
+      "rubric": "2 for none, from the empty Produced by section or the absence of any produces field naming AR3. 1 for none, hedged. 0 for naming a work-type."
+    }
+  ]
+}

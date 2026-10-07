@@ -34,11 +34,12 @@ Updated whenever the thread moves; the milestones below remain the plan.
 ```text
 M5  bring the charters to E4                     DONE
 M2  hold what we prescribe                       DONE - decision register, fixed upper-case names
-next: M3 make composition real, then M4 conventions and enforcement  <- HERE
+M3  make composition real                        DONE - board generated from the record, M7 trigger, produces
+next: M4 conventions and enforcement             <- HERE
 ```
 
-**M2 and M5 complete.**\
-The next milestone in plan order is M3.
+**M2, M3 and M5 complete.**\
+The next milestone in plan order is M4.
 
 **To return to:** the communication-moves matrix (`B42`), when the director has a session; Delta-2 stays withdrawn until it has a real metric.
 
@@ -83,7 +84,6 @@ Every open row, scored on the row and ordered on the common scale; generated, ne
 | `B30` | S3 | A8 signal | M4.5 | External addresses outside `AGENTS.md` are checked by nothing, and placeholder links look real. |
 | `B70` | S3 | A8 signal | held | `W22`, and three peers, declare `evidenceAuthority: verifier-attestation` while `W0` constraint 2 says verifier-held gates use plain `kind:review`. |
 | `B12` | S4 | A14 signal | held | The recovery methodology for a brownfield vision is unwritten and its reasoning is untested. |
-| `B13` | S4 | A3 signal | M3.1 | The artifact layer's composition with the work axes is unresolved, and the finding was filed too narrowly. |
 | `B19` | S4 | A14 signal | held | Methodology has nothing proportionate for a small design decision. |
 | `B22` | S4 | A9 signal | held | `A9` binds every system unconditionally and is the least exercised axiom in the corpus. |
 | `B41` | S4 | A14 signal | held | `M5` may push agents to over-report deferred items in messages to humans. |
@@ -95,7 +95,6 @@ Every open row, scored on the row and ordered on the common scale; generated, ne
 | `B50` | S4 | A14 signal | held | The retrieval strategy for a ledger that outgrows always-on context. |
 | `B51` | S4 | A14 signal | held | A provenance and trust vocabulary for an agent-maintained corpus. |
 | `B52` | S4 | A14 signal | held | The post-ratification half of a delta, and whether its required sections are two shapes. |
-| `B53` | S4 | A14 signal | M3.1 | The binding between the work axes and the artifact layer. |
 | `B55` | S4 | A14 signal | held | Gaps the `AR0` investigation of 2026-10-04 found in `artifacts/`. |
 | `B56` | S4 | A14 signal | held | Gaps the `A0` investigation of 2026-10-04 found in `axioms/`. |
 | `B57` | S4 | A14 signal | held | Gaps the `C0` investigation of 2026-10-04 found in `components/`. |
@@ -111,6 +110,7 @@ Every open row, scored on the row and ordered on the common scale; generated, ne
 | `B67` | S4 | A14 signal | held | Gaps the `S0` investigation of 2026-10-04 found in `style/`. |
 | `B68` | S4 | A14 signal | held | Gaps the `T0` investigation of 2026-10-04 found in `traits/`. |
 | `B69` | S4 | A14 signal | held | Gaps the `W0` investigation of 2026-10-04 found in `work-types/`. |
+| `B71` | S4 | A3 signal | held | No work-type produces a board, a delta or a vision. |
 | `B10` | S5 | A4 signal | M4.1 | `CSSA`/`TSSA` is one downstream programme's vocabulary presented as a corpus convention. |
 | `B39` | S5 | A3 signal | held | Style cannot be scoped by medium. |
 <!-- END GENERATED: ledger -->
@@ -155,14 +155,14 @@ An adopter reading `AR4` can point at a conformant instance in this corpus.
 
 ---
 
-## M3 - make composition real - `WIP`
+## M3 - make composition real - `DONE`
 
 Ten of sixteen layers have no observed consumer.\
 This milestone tests whether composition is structural or theoretical.
 
 | # | Item | Row | Status |
 |---|---|---|---|
-| M3.1 | Amend `B53` (formerly `MREQ-9`) to the broader finding, and rule on the third reading now that `M8` cites an `AR` type | `B13` | `TODO` |
+| M3.1 | Amend `B53` (formerly `MREQ-9`) to the broader finding, and rule on the third reading now that `M8` cites an `AR` type | `B13` | `DONE` - `produces` applied; reverse view generated (`0079`) |
 | M3.2 | Instance-check `AR3` against this board and record what it surfaced | `B9` | `DONE` - ledger and held generated from the record |
 | M3.3 | Rule on `backlog/` versus `AR5` - keep both, migrate, or split by concern, without breaking `MREQ` citations | `B14` | `DONE` - `backlog/` retired |
 | M3.4 | Align `M7`'s trigger with its title, so an author reaches it without already asking about anchoring | `B25` | `DONE` - trigger matches the title |
@@ -258,6 +258,7 @@ Open rows no live item cites, with their scores and the condition that would rev
 | `B67` | S4 | A14 signal | Gaps the `S0` investigation of 2026-10-04 found in `style/`. | each gap's own trigger, as stated in the investigation; OR the next investigation of this set, which re-triages all of them. |
 | `B68` | S4 | A14 signal | Gaps the `T0` investigation of 2026-10-04 found in `traits/`. | each gap's own trigger, as stated in the investigation; OR the next investigation of this set, which re-triages all of them. |
 | `B69` | S4 | A14 signal | Gaps the `W0` investigation of 2026-10-04 found in `work-types/`. | each gap's own trigger, as stated in the investigation; OR the next investigation of this set, which re-triages all of them. |
+| `B71` | S4 | A3 signal | No work-type produces a board, a delta or a vision. | one of these is done as claimed work on the coordination substrate, or a project asks which work-type authors one. |
 | `B39` | S5 | A3 signal | Style cannot be scoped by medium. | FIRED and moved: `S15` is the first single-medium rule; one rule does not earn a sub-set. TRIGGER: a second single-medium style rule. Nested sets need generator support, shared with `B38`'s set spanning layers. |
 <!-- END GENERATED: held -->
 
