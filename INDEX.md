@@ -118,7 +118,7 @@ This file described them a second time and the copy had already drifted, naming 
 | [M0](methods/README.md) | Methods - procedures that produce a result of their own | You are choosing how to run a review, an audit or another procedure, or deciding whether guidance is a procedure, a rule, a practice or style |
 | [M1](methods/M1-triangulated-review.md) | Triangulated review - minimum 4 independent inputs | You are reviewing a patch or design that ships to production or upstream |
 | [M2](methods/M2-test-drive-docs-by-execution.md) | Test-drive docs by execution - run the steps, or have a cold reader reason with it | You are about to ship a document someone will act on - an operator workflow, or a charter, axiom or other reasoning document an agent will rely on |
-| [M7](methods/M7-axiom-alignment-audit.md) | Axiom alignment audit - required gate for extensive planning/design | You are judging whether a design decision is anchored to a first principle |
+| [M7](methods/M7-axiom-alignment-audit.md) | Axiom alignment audit - required gate for extensive planning/design | You are about to implement a design that changes shared procedure, governance, coordination or anything other agents will rely on |
 | [M8](methods/M8-artifact-bootstrap.md) | Artifact bootstrap - enter the loop at its inlet, one ratified type at a time | You are adopting the artifact document set in a project that does not use it yet |
 | [M9](methods/M9-history-content-scrub.md) | History content scrub | You must remove content from history that is already committed |
 | [M10](methods/M10-guided-dialogue.md) | Guided dialogue - lead a human to understanding, then to a recorded decision | You need a human with limited context to understand something or decide something |

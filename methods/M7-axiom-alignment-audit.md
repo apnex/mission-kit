@@ -3,7 +3,7 @@ id: M7
 category: method
 title: Axiom alignment audit - required gate for extensive planning/design
 status: active
-hydrate-when: You are judging whether a design decision is anchored to a first principle
+hydrate-when: You are about to implement a design that changes shared procedure, governance, coordination or anything other agents will rely on
 related: [M1, RU3, PC1, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14]
 ---
 
@@ -35,7 +35,7 @@ Run an axiom alignment audit when any of these are true:
 - the work is extensive enough to require council input, Director approval, a blueprint, a verifier gate, or a closeout packet;
 - the work touches multiple roles or changes what future agents will perceive as normal procedure.
 
-A short local bugfix does not require a standalone audit unless it changes operating doctrine or a reusable seam other work relies on.\
+A short local fix - a bug, a typo, a wording correction - does not require a standalone audit unless it changes operating doctrine or a reusable seam other work relies on.\
 When unsure, run the audit.\
 The cost is small; the missed-gate cost is compounding drift.
 
