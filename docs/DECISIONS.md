@@ -121,6 +121,7 @@ Whether an entry actually states a ruling is checked by reading, not by script.
 | 0077 | 2026-10-05 | Each artifact type declares the fixed path of its instances in `instance-path`, required by the catalogue contract; the artifacts charter states the rule and its index shows the paths in a generated column, naming no type itself. | general | director | ratified | amends 0076 | `artifacts/README.md`, `schemas/catalog-entry/v1alpha1/catalog-entry.schema.json`, `tools/generate-index.mjs` | yes |
 | 0078 | 2026-10-05 | A backlog row's scores are declared once, on the row; the board's triage ledger and held list are generated from the record, holding is read from the plan, and a ruled decision leaves the board. | general | director | ratified | - | `artifacts/AR3-board.md`, `artifacts/AR5-backlog.md`, `tools/check-board.mjs` | yes |
 | 0079 | 2026-10-05 | Work-types declare the artifact types they produce: W14 a target architecture, W16 and W20 backlog entries, W23 a decision record; each artifact type shows its producers in a generated section, and the types no work-type produces are a recorded gap. | general | director | ratified | - | `work-types/W14-design-a-contract-or-invariant.md`, `work-types/W16-bank-idea-or-knowledge-capital.md`, `work-types/W20-reconcile-ledger.md`, `tools/generate-index.mjs` | yes |
+| 0080 | 2026-10-05 | A current architecture's structural sections are generated from the system's own source where structure can be read from it; its reasoning sections stay authored. | general | director | ratified | - | `artifacts/AR1-system-architecture.md`, `tools/generate-architecture.mjs` | yes |
 
 ---
 
@@ -1137,3 +1138,16 @@ Applies `0053`; closes `B13` and `B53`.
 
 **Source.**\
 `[V, director confirmation 2026-10-05]`
+
+### 0080
+
+**Ruling.**\
+Derive the current architecture's structure by generating it from the system's own source.
+
+**Alternatives refuted.**\
+A baseline written once and changed only by deltas - not chosen, because it changes how all work runs; generating and routing every structural change through a delta - deferred to `B72`.
+
+**Kind.** general - it widens how any project may derive its current projection.
+
+**Source.**\
+`[V, director ruling 2026-10-05; docs/BACKLOG.md B8]`

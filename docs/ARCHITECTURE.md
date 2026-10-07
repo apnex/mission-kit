@@ -8,10 +8,12 @@ Ratifying a decision that changes the shape without building it creates that div
 Written in the present tense of a system that exists.\
 It contains no plan, estimate, migration or progress report; those belong to a delta and to the board.
 
-**This document fails `AR1`'s own acceptance falsifier, and does so structurally.**\
-`AR1` requires a current projection to be derived from the exit criteria of completed transitions and never hand-authored.\
-This corpus has run no transitions, so that source does not exist and this document is hand-authored.\
-The defect was predicted before it was met and is recorded as `B8`; it is stated here rather than concealed, because an architecture that hid its own non-conformance would be the drifted specification this corpus exists to prevent.
+**The structure is derived; the reasoning is authored.**\
+`AR1` forbids a hand-authored current projection, because a hand-written statement of where a system is drifts from it.\
+For a corpus the running system is the repository, so the structural sections - the layers, their duties and populations, what each draws on, and what the gate holds - are generated from the corpus by `tools/generate-architecture.mjs`, and the gate fails when they are stale.\
+The reasoning sections - identity, justification, axiom alignment, risks - remain authored, and say why the structure is as it is.
+
+---
 
 ## 1. Status and authority
 
@@ -32,7 +34,7 @@ Per-section maturity, because one status across nine sections either overstates 
 | 3. Justification chain | approved | an axiom changes applicability |
 | 4. Axiom alignment | **provisional** | any axiom tension below is discharged or worsens |
 | 5. The anchored core | approved | a layer is added, retired, or changes duty |
-| 6. Entity model and interfaces | **provisional** | `B5` lands and `set` becomes a defined term |
+| 6. Entity model and interfaces | approved | an entity the model names is redefined |
 | 7. Run time | approved | the entry lifecycle changes |
 | 8. Verification | approved | a checker is added or a rule loses its enforcer |
 | 9. Risks and owed | **provisional** | reviewed whenever `BACKLOG.md` is triaged |
@@ -127,43 +129,45 @@ These three are the finding.
 
 ## 5. The anchored core
 
-Twenty sovereign directories, one duty each: sixteen knowledge layers, three mechanism layers, and `docs/`.\
-**A layer that holds knowledge takes an ID prefix and appears in the ledger; a layer that holds mechanism takes none.**\
+Sovereign directories, one duty each.\
+**A layer that holds knowledge takes an ID prefix and appears in the ledger; a layer that holds mechanism or instances takes none.**\
 That split is the load-bearing rule of this section.
 
 ### Knowledge layers - ID-bearing, indexed, citable
 
-| Layer | Prefix | Duty | Exposes | Consumes |
+Generated from the root README's layer table and each layer's charter.
+
+<!-- BEGIN GENERATED: architecture-layers. Run tools/generate-architecture.mjs; do not edit by hand. -->
+| Layer | Prefix | Duty, from its charter | Members | Draws on, from its charter |
 |---|---|---|---|---|
-| `axioms/` | `A` | first principles: why a design is correct rather than merely working | standing commitments, tagged by applicability | nothing - the root of the chain |
-| `roles/` | `R` | who may attest, approve or decide | the M axis of work composition | `A` |
-| `domains/` | `D` | subject surfaces work acts on | the N axis of work composition | `A` |
-| `work-types/` | `W` | units of work and their evidence contracts | the composition rule and closeability preflight | `A`, `R`, `D` |
-| `methods/` | `M` | procedures that produce a result of their own | procedures: review, audit, bootstrap, history scrub | `A`, `AR`, `RU` |
-| `rules/` | `RU` | how work is done, where a check could tell | rules, each declaring the trace that shows it was kept | `A`, `M` |
-| `practices/` | `PC` | how work is done, where nothing afterwards could tell | practices, admitted on observed evidence | `A`, `M` |
-| `style/` | `S` | how artifacts are written | writing rules, each paired with an enforcer | `A` |
-| `patterns/` | `P` | recurring solution shapes | shapes to build to | `A` |
-| `skills/` | `K` | executable operator capability | invocable procedures with declared edges | `A`, `M` |
-| `traits/` | `T` | characteristics of a system that decide which axioms bind it | the `applies-to` vocabulary, each with a test | `A` |
-| `entities/` | `E` | what a thing is - definition, never mechanism | precise terms the corpus leans on | `A` |
-| `components/` | `C` | sovereign shareable units | a registry of units to use rather than rebuild | `A`, `AR` |
-| `artifacts/` | `AR` | engineering document types | shapes with acceptance falsifiers | `A`, `M` |
-| `schemas/` | `SC` | machine-verifiable entity contracts | JSON Schema, validatable without a runtime | nothing - contracts are self-contained |
+| `axioms/` | `A` | standing commitments, what brings one into force, and how they compose | 14 | `SC`, `W`, `R`, `D`, `E`, `T` |
+| `roles/` | `R` | the M axis (pure essence + type-determined authority) | 4 | `W`, `D`, `A`, `E`, `T` |
+| `domains/` | `D` | the N axis (subject-surfaces, bimodal freedom) | 7 | `W`, `R`, `A`, `T` |
+| `work-types/` | `W` | the composition rule, the canonical closeability preflight, and the entry schema | 26 | `R`, `D`, `T`, `E`, `A` |
+| `methods/` | `M` | procedures that produce a result of their own | 9 | `S`, `P`, `K`, `W`, `E`, `RU`, `PC` |
+| `rules/` | `RU` | how work is done, where a check could tell whether it was | 4 | `M`, `PC`, `S`, `A`, `E` |
+| `practices/` | `PC` | how work is done, where nothing afterwards could tell | 1 | `M`, `RU`, `S`, `A`, `E` |
+| `sets/` | `ST` | charters of populations that span layers | 1 | `E` |
+| `style/` | `S` | how artifacts are written, and which rules a script can hold | 16 | `M`, `P`, `K`, `A` |
+| `patterns/` | `P` | recurring solution shapes, and what separates one from a single good design | 4 | `M`, `S`, `C`, `A` |
+| `skills/` | `K` | executable capability, the stub-and-body split, and composition by edge | 26 | `M`, `RU`, `PC`, `P`, `SC`, `A` |
+| `entities/` | `E` | precise definitions of load-bearing terms, and what earns one | 9 | `M`, `SC`, `A` |
+| `components/` | `C` | sovereign shareable units to be used rather than rebuilt | 1 | `P`, `M`, `A` |
+| `artifacts/` | `AR` | the engineering lifecycle loop, and what earns a document type | 6 | `A`, `W` |
+| `traits/` | `T` | characteristics of a system that decide which axioms bind it | 5 | `A`, `D`, `E` |
+| `schemas/` | `SC` | machine-verifiable entity contracts, validatable without a project runtime | 6 | `A`, `E` |
+<!-- END GENERATED: architecture-layers -->
 
-### Mechanism layers - no prefix, no ledger entry
+### Mechanism layers and the instance layer - no prefix, no ledger entry
 
-| Layer | Duty | Exposes | Consumes |
-|---|---|---|---|
-| `tools/` | hold the corpus to its own rules | sixteen checkers and two generators | every layer, as input |
-| `bundles/` | compose skills into operator roles by declared edge | role definitions | `K` |
-| `plugins/` | operator artifacts that run inside a specific agent host | host-specific surfaces | `K`, `M` |
-
-### Instance layer - the single exception
-
+<!-- BEGIN GENERATED: architecture-other-layers. Run tools/generate-architecture.mjs; do not edit by hand. -->
 | Layer | Duty |
 |---|---|
-| `docs/` | this corpus's own artifact instances, at the address [`AR0`](../artifacts/README.md) prescribes |
+| `bundles/` | Skills composed into operator-facing roles, by declared edge rather than by name. |
+| `tools/` | The scripts that hold the corpus to its own rules. 28 scripts. |
+| `plugins/` | Operator-facing artifacts that run inside a specific agent host. |
+| `docs/` | This corpus's own artifact instances, held where [`AR0`](artifacts/README.md) says an instance lives. |
+<!-- END GENERATED: architecture-other-layers -->
 
 **Why `docs/` is not a contradiction.**\
 Every other layer holds types.\
@@ -203,7 +207,7 @@ That is what makes a layer retirable.
 | `SC3` skill | portable skill frontmatter | `skill-graph.mjs` |
 
 **`category` is the set-membership pointer**, in everything but name - the schemas key on it, the body-shape declaration keys on it, and the conditionals key on it.\
-It is a set reference that resolves to nothing a reader can open, which is `B5`.
+It resolves to the layer's charter, the entry whose id is the layer's prefix followed by zero ([`E3`](../entities/E3-set.md), [`E4`](../entities/E4-charter.md)).
 
 ---
 
@@ -240,15 +244,26 @@ Nothing is preloaded; nothing is resident.
 **Every checker, run as one gate.**\
 A claim about this corpus is proved by running them, not by reading it.
 
-| Class | Holds |
+<!-- BEGIN GENERATED: architecture-checks. Run tools/generate-architecture.mjs; do not edit by hand. -->
+| The gate holds | By |
 |---|---|
-| Structure | every directory documented and carrying a README; the tool index matching the directory |
-| Identity | IDs unique, resolvable, never duplicated |
-| Contract | frontmatter valid against `SC1`; body sections valid against `SC6` |
-| Derivation | every generated region regenerable and byte-identical - the index is derived, never typed |
-| Graph | every citation resolves; the skill graph is acyclic; bundle edges resolve |
-| Style | six rules, each with a paired enforcer, each auto-fixable or explicitly not |
-| Pairing | every rule that claims enforcement has an enforcer, checked by `check-enforcers.sh` |
+| repository structure is documented | `check-structure.sh` |
+| rules and enforcers are paired | `check-enforcers.sh` |
+| tool index matches the directory | `check-tool-docs.sh` |
+| entry bodies match their category | `check-entry-body.sh` |
+| the board and the backlog agree | `check-board.mjs` |
+| the decision register is well formed | `check-decisions.mjs` |
+| applies-to names exactly the declared traits | `check-traits.mjs` |
+| a retired id is never issued again | `check-id-reuse.mjs` |
+| the tested communication guidance landed unreworded | `check-guidance-placement.sh` |
+| index is derived, not typed | `generate-index.mjs` |
+| the current architecture's structure is derived | `generate-architecture.mjs` |
+| catalogue graph resolves | `skill-graph.mjs` |
+| entries conform to their contract | `schemas test suite` |
+| standing-context template holds | `check-standing-context.sh` |
+| this repo's own standing context holds | `check-standing-context.sh` |
+| every changed markdown file keeps the style rules a script can hold | the `s*` tools, on changed files |
+<!-- END GENERATED: architecture-checks -->
 
 **Two disciplines the harness cannot hold, applied by hand.**
 
@@ -268,18 +283,11 @@ Structural risks only, here.
 
 | Risk | Consequence | Held by |
 |---|---|---|
-| **Set-level properties are unstated.** All four claimed properties are per-entry; nothing is claimed or checked about the corpus as a whole. | No set can detect its own gaps, imbalance, or redundancy. Three findings this session sat on this axis. | `B3`, `B4`, `B5`, `B6` |
-| **Ten of sixteen layers have no observed consumer.** | Composition may be theoretical. A layer nothing cites cannot be shown to be load-bearing. | `B13` |
-| **No decision register.** Rulings live in commit messages. | Rationale is recoverable only by reading history, and `AR4` is prescribed to adopters while unheld here. | `B15` |
-| **The corpus cannot observe its own adopters.** | Its central success measures are unmeasurable from inside. | `T3`, `MREQ-10` |
-| **Instance coverage is incomplete.** | Vision and backlog exist; architecture is this document; no board. `AR3` remains the only type never checked against an instance. | `B1`, `B9` |
+| **The corpus cannot observe its own adopters.** | Its central success measures are unmeasurable from inside. | `B54` |
+| **Most changes run without a delta.** | The loop `AR0` prescribes - target, delta, derived current - is followed for structure by generation, not by declared transitions; deltas cover two changes of many. | `B72` |
+| **No work-type produces a board, a delta or a vision.** | Those artifacts cannot be claimed as work. | `B71` |
 
-**Owed and not yet designed.**
-
-- A **board**, which is the next position in the loop and the artifact that would rank everything above.
-- A **decision register**, and a ruling on whether commit messages are a conformant carrier.
-- A **set entity**, on which four of the five structural risks depend.
-- A **territory statement** for every set, without which completeness is unaskable.
+Every artifact type this corpus prescribes and applies to itself is held at its fixed name in `docs/`.
 
 ---
 
