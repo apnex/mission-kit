@@ -4,11 +4,8 @@ The live, triaged, prioritised set of **legal next moves**, for director selecti
 
 An [`AR3`](../artifacts/AR3-board.md) instance.\
 [`BACKLOG.md`](BACKLOG.md) is the **record** - append-and-close, every row evidenced, nothing deleted.\
-This is the **plan** - mutable, reorderable, short.\
-They are maintained together and checked against each other.
-
-> **Opened** from the backlog's fifteen rows, after the corpus authored its own vision and architecture.\
-> This is the first board this corpus has held, and `AR3` is the only artifact type never previously checked against an instance.
+This is the **plan** - the milestones, their order and the decisions they wait on.\
+Each row's scores live on the row; the [triage ledger](#triage-ledger) and the [held](#held) list below are generated from the record by [`tools/check-board.mjs`](../tools/check-board.mjs), so the plan cannot disagree with the record about a score or a holding.
 
 ---
 
@@ -19,11 +16,11 @@ They exist so the plan can move fast without the record losing fidelity.
 
 1. **Every board item cites a `B` row.** A finding with no row is not ready for the board - it gets a row first, with cited evidence, per the backlog's own admission rule.
 2. **Closing a board item closes its `B` row in the same commit.** Never one without the other.
-3. **A `B` row whose revival trigger has not fired is NOT on the board.** It is listed under [Held](#held) and **scored on the same scale**, so that not choosing it is a visible judgement rather than an omission.
+3. **An open row no live item cites is held.** Holding is read from the plan, not declared: the [held](#held) list is generated, each row with its scores and revival trigger, so that not choosing it is a visible judgement rather than an omission. A row whose trigger fires returns to triage and is planned or re-held.
 4. **The board is reorderable and items may be dropped.** A dropped item is not deleted: its `B` row is rewritten with the reason as a revival trigger. Explicit deferral is permitted; silence is not.
 5. **A move ships with the mechanism that would catch its absence**, where one is possible. A rule with no enforcer is recorded as unenforced rather than presented as held.
 
-Reconciliation is mechanized by [`tools/check-board.mjs`](../tools/check-board.mjs), which refuses any change that breaks this contract.
+[`tools/check-board.mjs`](../tools/check-board.mjs) holds rules 1 and 3 and the generated views; rules 2, 4 and 5 are held by review.
 
 **Status vocabulary:** `TODO` - `WIP` - `BLOCKED` - `DONE` - `DROPPED`
 
@@ -65,7 +62,8 @@ Two orthogonal dimensions.\
 **Principle breach** - which standing commitment is violated, and whether the breach is of its **mandate** or of an **enforcement signal**.\
 A mandate breach is the commitment itself failing; a signal breach is a mechanic of it going unheld.
 
-**Visible** - `adopter` - `author` - `agent` - `internal` **Size** - `S` few lines - `M` half a day - `L` structural
+**The common scale.**\
+To order on the higher of the two, a mandate breach ranks as `S2` and a signal breach as `S4`; ties go to the mandate breach, then to the higher impact.
 
 > **Ordering rule.** The two scales disagree, and the disagreement is the information. `B5` is `S4` by impact - nothing is broken today - and an **`A3` mandate breach**, because the corpus composes sixteen layers while leaving the term that governs composition undefined. It ranks above several `S2` items on that basis alone. Collapsing the scales would have hidden that, and would have sorted this board by how loudly each item complains.
 
@@ -73,79 +71,50 @@ A mandate breach is the commitment itself failing; a signal breach is a mechanic
 
 ## Triage ledger
 
-All fifty-four rows, scored; `B45` to `B54` came from the retired `backlog/` layer.\
-Held rows are [below](#held).
+Every open row, scored on the row and ordered on the common scale; generated, never edited by hand.
 
-| Row | Impact | Principle | Visible | Size | Milestone | One line |
-|---|---|---|---|---|---|---|
-| **B5** | S4 | **A3 mandate** | author | **L** | **M1** `DONE` | `set` is undefined while sixteen layers compose by it; four other rows depend on it |
-| **B4** | S2 | **A3 mandate** - A4 | author | M | **M5** | thirteen charters, thirteen shapes; admission appears in 5 of 13, body shape in 0 |
-| **B3** | S4 | **A14 mandate** | author | M | **M1** `DONE` | no set declares its territory, so no set can find its own gaps |
-| **B6** | S2 | A3 signal | agent | S | **M1** `DONE` | a member cannot name its own canonical name or its governing set |
-| **B15** | **S1** | **A4 mandate** | adopter | M | **M2** | `AR4` prescribed to adopters and unheld here; rulings live only in commit messages |
-| **B2** | S2 | A2 signal | adopter | S | **M2** | no canonical instance filenames; only `VISION.md` is prescribed, and only by illustration |
-| **B11** | S2 | **A0 mandate** | adopter | S | **DONE** | `AR6` told authors to use a peer instance the corpus did not contain |
-| **B1** | **S1** | **A2 mandate** | adopter | M | **M2** | prescribes a document set it does not hold - vision, backlog, architecture now land |
-| **B13** | S4 | A3 signal | author | S | **M3** | `MREQ-9` filed too narrowly; the layer had no procedural surface at all, not just no work-types |
-| **B9** | S3 | **A8 mandate** | author | M | **M3** | `AR3` never instance-checked; `AR5` discharged by writing one |
-| **B14** | S4 | A3 signal | author | **L** | **M3** | `backlog/` and `AR5` are two objects wearing one word |
-| **B10** | S5 | A4 signal | adopter | S | **M4** | `CSSA`/`TSSA` is one programme's vocabulary presented as convention |
-| **B7** | S4 | A2 signal | adopter | M | **M4** | `AR2` has no instance naming or ordinal scheme |
-| **B17** | S1 | **A8 mandate** | author | M | **M5** | a checker enforcing a superseded standard, suspended rather than left misreporting |
-| **B18** | S4 | **A4 mandate** | agent | M | **Held** | no procedure for handing over work in progress |
-| **B19** | S4 | A14 signal | author | S | **Held** | nothing proportionate for a small design decision |
-| **B21** | **S2** | **A4 mandate** | agent | **L** | **Held** | no axiom states the property that protects an agent against its own error |
-| **B23** | S2 | **A13 mandate** | agent | S | `DONE` | organisation now defined as one agent or many; lone agent named a primary reader |
-| **B24** | S3 | **A3 mandate** | author | **L** | `DONE` | the compositional split behind the work axes has not been revisited since sets were defined |
-| **B22** | S4 | A9 signal | author | S | **Held** | `A9` binds every system and is the least exercised axiom |
-| **B25** | S2 | A13 signal | agent | S | **M3** | `M7`'s trigger is narrower than its title, so nothing routes an author to it unprompted |
-| **B26** | S2 | **A3 mandate** | adopter | S | `DONE` | multi-tag binding ambiguous in every revision; ruled any-tag |
-| **B27** | S3 | **A8 signal** | author | S | **M4** | network check fails under throttling, inviting `--no-network`, which would hide a real break |
-| **B28** | S2 | **A3 mandate** | adopter | M | `DONE` | applicability tags were undefined vocabulary; now the `traits/` layer |
-| **B29** | S2 | **A8 mandate** | author | S | **M5** | an evaluation key is the author's opinion; a wrong one yields a confident wrong result |
-| **B30** | S3 | **A8 signal** | adopter | S | **M4** | external addresses outside AGENTS.md are unchecked; placeholder links look real |
-| **B31** | S3 | A10 signal | adopter | S | `DONE` | the duty to expand a set on a found gap is stated for domains only, not work-types, traits or sets in general |
-| **B32** | **S2** | **A12 mandate** - A3 | agent | M | **M5** | no record states how the axis layers compose; a context-less agent assembles it from four charters |
-| **B33** | S3 | A8 signal | agent | S | `DONE` | `W0` constraints 2 and 9 contradict on same-agent degradation |
-| **B34** | **S1** | **A14 mandate** - A13 | agent | M | **M5** | axioms read as constraints, intended as asymptotes; `system` undefined |
-| **B35** | S2 | **A3 mandate** - A14 | agent | M | **M5** | `component` undefined in four senses; opportunistic improvement unstated; axiom wording inconsistent with the asymptote |
-| **B36** | S3 | **A3 mandate** | agent | S | `DONE` | six design questions on boundaries, traits and adjacency, taken one at a time |
-| **B37** | S4 | A8 signal | agent | S | **M5** | five small defects found by baseline readers: `W22` authority, `M1` floor, `E2` count, root `README` on the index, `generatable` |
-| **B38** | S2 | **A13 mandate** - A4 | agent | M | `DONE` | communication with a cold human is guided only in scattered pieces |
-| **B39** | S5 | A3 signal | adopter | S | **Held** | style cannot be scoped by medium |
-| **B40** | **S2** | **A8 mandate** | author | S | **M5** | every eval reader also gets the harness's AGENTS.md and the main ledger; corpus-against-nothing claims are confounded |
-| **B41** | S4 | A14 signal | agent | S | **Held** | M5 may push agents to over-report deferrals in status messages |
-| **B42** | S3 | **A14 mandate** | director | S | **M5** | communication moves have package evidence only; grow by isolated pairs and the friction log |
-| **B43** | S3 | A3 signal | agent | S | `DONE` | `K0` and one placement edge stale after Delta-1 |
-| **B44** | S2 | **A14 mandate** | director | S | `DONE` | lessons captured as notes recurred; four absorbed into mechanism |
-| **B20** | S5 | A3 signal | author | S | `DONE` | `M7` may be axiom-shaped in a methodology's place |
-| **B16** | S3 | **A8 mandate** | author | S | **M4** | the board drifted from itself within two commits, and the item meant to prevent that cited no row |
-| **B8** | S3 | **A2 mandate** | adopter | **L** | **Held** | `AR1` forbids the hand-authored current projection a bootstrap cannot avoid |
-| **B12** | S4 | A14 signal | author | M | **Held** | recovery methodology unwritten; its reasoning is untested |
-
-`DONE` marks a closed item.\
-**Bold principle** = mandate breach, which is what lifts an item above its impact score.
-
----
-
-## What the triage found
-
-Three things the scoring surfaced that reading the backlog did not.
-
-**`B5` was the keystone and did not look like one - discharged in `M1`.**\
-By impact it is `S4` - nothing is broken and no adopter is blocked.\
-By principle it is an `A3` mandate breach, because the corpus composes sixteen layers, nests sets inside `docs/`, and leaves the governing term undefined.\
-`B3`, `B4` and `B6` each resolved readily once `set` existed and were half-guesses without it.\
-Four rows collapsed into one move, which is the case for the two-signal device made on first use rather than argued: `B5` would have sorted near the bottom on impact alone.
-
-**`B1` and `B15` are the same defect at two altitudes.**\
-Both are the corpus prescribing what it does not hold.\
-`B1` is discharged by this commit; `B15` is the residue, and it is the more embarrassing half - a decision register is prescribed to every adopter while this corpus keeps its rulings in commit messages.
-
-**`B8` is `Held` deliberately, and the reason is a real one.**\
-It is an `A2` mandate breach with no available remedy: a bootstrap has no completed transitions to derive a current projection from.\
-Ranking it high would put an unsolvable item at the top of the board.\
-Its trigger is the first delta, which makes it solvable rather than merely urgent.
+<!-- BEGIN GENERATED: ledger. Run tools/check-board.mjs --write; do not edit by hand. -->
+| Row | Impact | Principle | Planned in | Finding |
+|---|---|---|---|---|
+| `B21` | S2 | A4 mandate | held | No axiom states the property that protects an agent against its own error. |
+| `B8` | S3 | A2 mandate | M4.6 | `AR1` forbids the hand-authored current projection that a brownfield adopter cannot avoid. |
+| `B18` | S4 | A4 mandate | held | Methodology has no procedure for handing over work in progress. |
+| `B25` | S2 | A13 signal | M3.4 | `M7`'s trigger is narrower than its title. |
+| `B27` | S3 | A8 signal | M4.4 | The full gate's network check fails under GitHub throttling while passing in isolation. |
+| `B30` | S3 | A8 signal | M4.5 | External addresses outside `AGENTS.md` are checked by nothing, and placeholder links look real. |
+| `B70` | S3 | A8 signal | held | `W22`, and three peers, declare `evidenceAuthority: verifier-attestation` while `W0` constraint 2 says verifier-held gates use plain `kind:review`. |
+| `B12` | S4 | A14 signal | held | The recovery methodology for a brownfield vision is unwritten and its reasoning is untested. |
+| `B13` | S4 | A3 signal | M3.1 | The artifact layer's composition with the work axes is unresolved, and the finding was filed too narrowly. |
+| `B19` | S4 | A14 signal | held | Methodology has nothing proportionate for a small design decision. |
+| `B22` | S4 | A9 signal | held | `A9` binds every system unconditionally and is the least exercised axiom in the corpus. |
+| `B41` | S4 | A14 signal | held | `M5` may push agents to over-report deferred items in messages to humans. |
+| `B42` | S4 | A14 signal | held | The communication moves have package evidence only. |
+| `B45` | S4 | A14 signal | held | Axiom-application methodology for non-code missions. |
+| `B46` | S4 | A14 signal | held | Work-type for extending the corpus itself. |
+| `B47` | S4 | A14 signal | held | The component design and specification altitude. |
+| `B49` | S4 | A14 signal | held | Retiring the legacy style debt that keeps the whole-corpus gate red. |
+| `B50` | S4 | A14 signal | held | The retrieval strategy for a ledger that outgrows always-on context. |
+| `B51` | S4 | A14 signal | held | A provenance and trust vocabulary for an agent-maintained corpus. |
+| `B52` | S4 | A14 signal | held | The post-ratification half of a delta, and whether its required sections are two shapes. |
+| `B53` | S4 | A14 signal | M3.1 | The binding between the work axes and the artifact layer. |
+| `B55` | S4 | A14 signal | held | Gaps the `AR0` investigation of 2026-10-04 found in `artifacts/`. |
+| `B56` | S4 | A14 signal | held | Gaps the `A0` investigation of 2026-10-04 found in `axioms/`. |
+| `B57` | S4 | A14 signal | held | Gaps the `C0` investigation of 2026-10-04 found in `components/`. |
+| `B58` | S4 | A14 signal | held | Gaps the `E0` investigation of 2026-10-04 found in `entities/`. |
+| `B59` | S4 | A14 signal | held | Gaps the `M0` investigation of 2026-10-04 found in `methods/`. |
+| `B60` | S4 | A14 signal | held | Gaps the `P0` investigation of 2026-10-04 found in `patterns/`. |
+| `B61` | S4 | A14 signal | held | Gaps the `PC0` investigation of 2026-10-04 found in `practices/`. |
+| `B62` | S4 | A14 signal | held | Gaps the `R0` investigation of 2026-10-04 found in `roles/`. |
+| `B63` | S4 | A14 signal | held | Gaps the `RU0` investigation of 2026-10-04 found in `rules/`. |
+| `B64` | S4 | A14 signal | held | Gaps the `SC0` investigation of 2026-10-04 found in `schemas/`. |
+| `B65` | S4 | A14 signal | held | Gaps the `ST0` investigation of 2026-10-04 found in `sets/`. |
+| `B66` | S4 | A14 signal | held | Gaps the `K0` investigation of 2026-10-04 found in `skills/`. |
+| `B67` | S4 | A14 signal | held | Gaps the `S0` investigation of 2026-10-04 found in `style/`. |
+| `B68` | S4 | A14 signal | held | Gaps the `T0` investigation of 2026-10-04 found in `traits/`. |
+| `B69` | S4 | A14 signal | held | Gaps the `W0` investigation of 2026-10-04 found in `work-types/`. |
+| `B10` | S5 | A4 signal | M4.1 | `CSSA`/`TSSA` is one downstream programme's vocabulary presented as a corpus convention. |
+| `B39` | S5 | A3 signal | held | Style cannot be scoped by medium. |
+<!-- END GENERATED: ledger -->
 
 ---
 
@@ -158,7 +127,7 @@ Everything in `M1` is one delta and should not be split.
 |---|---|---|---|
 | M1.1 | Author `E3 - set`: what a set owns, what a member owes it, how a parent registers a child and delegates | `B5` | `DONE` - `E3` exists, `E2` cross-references it, contract passes |
 | M1.2 | Require a **territory statement** on every set - the denominator without which a gap is undetectable | `B3` | `DONE` - `E3` requires it; `C0` carries the first one |
-| M1.3 | Declare the charter shape, and check it the way `SC6` checks member bodies | `B4` | `DONE` - declared in `spec.charters`, checked by `check-charter-shape.sh`, mutation-proven. Advisory until the 30-section debt clears |
+| M1.3 | Declare the charter shape, and check it the way `SC6` checks member bodies | `B4` | `DONE` - declared in `spec.charters`, checked by `check-entry-body.sh`, mutation-proven. Advisory until the 30-section debt clears |
 | M1.4 | Give a member a resolvable pointer to its governing set | `B6` | `DONE` - `category` now names the set and the contract states how its charter resolves |
 
 **Exit criteria.**\
@@ -187,17 +156,17 @@ An adopter reading `AR4` can point at a conformant instance in this corpus.
 
 ---
 
-## M3 - make composition real - `TODO`
+## M3 - make composition real - `WIP`
 
 Ten of sixteen layers have no observed consumer.\
 This milestone tests whether composition is structural or theoretical.
 
 | # | Item | Row | Status |
 |---|---|---|---|
-| M3.1 | Amend `MREQ-9` to the broader finding, and rule on the third reading now that `M8` cites an `AR` type | `B13` | `TODO` |
-| M3.2 | Instance-check `AR3` against this board and record what it surfaced | `B9` | `TODO` |
-| M3.4 | Align `M7`'s trigger with its title, so an author reaches it without already asking about anchoring | `B25` | `TODO` |
+| M3.1 | Amend `B53` (formerly `MREQ-9`) to the broader finding, and rule on the third reading now that `M8` cites an `AR` type | `B13` | `TODO` |
+| M3.2 | Instance-check `AR3` against this board and record what it surfaced | `B9` | `DONE` - ledger and held generated from the record |
 | M3.3 | Rule on `backlog/` versus `AR5` - keep both, migrate, or split by concern, without breaking `MREQ` citations | `B14` | `DONE` - `backlog/` retired |
+| M3.4 | Align `M7`'s trigger with its title, so an author reaches it without already asking about anchoring | `B25` | `TODO` |
 
 **Exit criteria.**\
 Every ID-bearing layer either has an observed consumer or a recorded reason it has none.
@@ -206,13 +175,14 @@ Every ID-bearing layer either has an observed consumer or a recorded reason it h
 
 ## M4 - conventions and enforcement - `TODO`
 
-| # | Item | Row |
-|---|---|---|
-| M4.1 | Rule on `CSSA`/`TSSA` - keep, drop "conventionally", or promote as `E` entities | `B10` |
-| M4.2 | Mechanize the board-record contract: every item cites a live row, every open row is on the board or in Held, milestone order matches the plan | `B16` `DONE` |
-| M4.3 | `AR2` instance naming and ordinal scheme | `B7` `DONE` - with M2.6 (`0076`) |
-| M4.4 | Retry network checks with backoff on 5xx, so throttling is told apart from a broken address | `B27` |
-| M4.5 | Check every external address in the corpus, and make placeholders unmistakable | `B30` |
+| # | Item | Row | Status |
+|---|---|---|---|
+| M4.1 | Rule on `CSSA`/`TSSA` - keep, drop "conventionally", or promote as `E` entities | `B10` | `TODO` |
+| M4.2 | Mechanize the board-record contract: every item cites a live row, every open row is on the board or in Held, milestone order matches the plan | `B16` | `DONE` |
+| M4.3 | `AR2` instance naming and ordinal scheme | `B7` | `DONE` - with M2.6 (`0076`) |
+| M4.4 | Retry network checks with backoff on 5xx, so throttling is told apart from a broken address | `B27` | `TODO` |
+| M4.5 | Check every external address in the corpus, and make placeholders unmistakable | `B30` | `TODO` |
+| M4.6 | Derive `docs/ARCHITECTURE.md`'s current projection from the completed deltas, or record exactly what stops it | `B8` | `TODO` |
 
 ---
 
@@ -243,7 +213,7 @@ Every ID-bearing layer either has an observed consumer or a recorded reason it h
 | M5.7 | **Add a key review to `M2`** - a fresh reader audits the answer key against the population before any evaluator runs. Trigger fired at `D0`: three of seven answers wrong, caught before use | `B29` | `DONE` - in `M2` rule 1 |
 
 **How each charter is converted is product, not plan, and lives in the corpus.**\
-The editing rule is [`E4`](../entities/E4-charter.md) section *Changing a charter*; the evaluation that tests each conversion is [`M2`](../methodology/M2-test-drive-docs-by-execution.md).\
+The editing rule is [`E4`](../entities/E4-charter.md) section *Changing a charter*; the evaluation that tests each conversion is [`M2`](../methods/M2-test-drive-docs-by-execution.md).\
 This milestone records which charters are done, not how.
 
 **Exit criteria.**\
@@ -254,65 +224,48 @@ The charter checker tests fixed headings by name and free concerns by declared l
 
 ## Held
 
-Rows on the record and not on the board, **scored on the same scale**, so declining them is visible.
+Open rows no live item cites, with their scores and the condition that would revive each; generated from the record.
 
-| Row | Impact | Principle | Why held | Revival trigger |
+<!-- BEGIN GENERATED: held. Run tools/check-board.mjs --write; do not edit by hand. -->
+| Row | Impact | Principle | Finding | Revival trigger |
 |---|---|---|---|---|
-| **B8** | S3 | **A2 mandate** | No available remedy. A bootstrap has no completed transitions to derive a current projection from, so the rule is unsatisfiable rather than unsatisfied. Ranking it would put an unsolvable item first. | **this corpus runs its first delta**, at which point a derived projection becomes possible and the rule is testable |
-| **B12** | S4 | A14 signal | Its reasoning has not survived contact with a repository. Writing it now would be authoring a procedure from one un-run prompt, which is the shape-from-one-instance error the corpus has already made twice. | **the first external brownfield adopter reports back** |
+| `B21` | S2 | A4 mandate | No axiom states the property that protects an agent against its own error. | a lone agent ships a claim it corroborated itself and was wrong, or the axiom set is next audited. Whether this is a new axiom or a property an existing one should state - `A8`'s gating and `A4`'s zero-loss are the nearest - is a question for the set. |
+| `B18` | S4 | A4 mandate | Methodology has no procedure for handing over work in progress. | a handover loses information that a procedure would have preserved, or `M5` converts `M0` and the gap becomes a stated thinness. |
+| `B70` | S3 | A8 signal | `W22`, and three peers, declare `evidenceAuthority: verifier-attestation` while `W0` constraint 2 says verifier-held gates use plain `kind:review`. | either is documented, or a gate is refused on the distinction. |
+| `B12` | S4 | A14 signal | The recovery methodology for a brownfield vision is unwritten and its reasoning is untested. | the first external brownfield adopter reports back. Waiting is deliberate - their run is the only evidence available and costs nothing. |
+| `B19` | S4 | A14 signal | Methodology has nothing proportionate for a small design decision. | a small design decision fails in a way an anchoring check would have caught. |
+| `B22` | S4 | A9 signal | `A9` binds every system unconditionally and is the least exercised axiom in the corpus. | a deployment fails in a way chaos validation would have caught, or `A9` is cited as the reason a change was refused. |
+| `B41` | S4 | A14 signal | `M5` may push agents to over-report deferred items in messages to humans. | the explain suite's after-run shows the same, or a director reports a status update padded with deferrals. |
+| `B42` | S4 | A14 signal | The communication moves have package evidence only. | for each session: the director has five minutes, or the friction log gains three rows. |
+| `B45` | S4 | A14 signal | Axiom-application methodology for non-code missions. | Pick up the remaining guide layers when EITHER (a) a third non-code mission (design/governance/planning) is about to start and would benefit from disciplined axiom use beyond the M7 audit gate, OR (b) a second observed instance of "axiom-laundered wrong conclusion" occurs (an axiom-decorated decision that later proved factually unfounded). Re-triage on revival - do not resume assumptions below; re-check them against the missions observed by then. |
+| `B46` | S4 | A14 signal | Work-type for extending the corpus itself. | a third layer is added or retired, OR corpus-extension work needs to be claimed on the coordination substrate rather than performed by hand |
+| `B47` | S4 | A14 signal | The component design and specification altitude. | a programme states how a component specification binds upward to the duty its architecture declares, OR two programmes agree on where the boundary with code sits, OR an AR1 instance is blocked because a component's duty cannot be stated without implementation detail the architecture must not carry |
+| `B49` | S4 | A14 signal | Retiring the legacy style debt that keeps the whole-corpus gate red. | a contributor or CI needs `check-all.sh --all` as a real gate rather than a known-red one, OR the remaining debt falls small enough to clear in a diff a reviewer can actually read |
+| `B50` | S4 | A14 signal | The retrieval strategy for a ledger that outgrows always-on context. | the ledger passes roughly 250 entries or 50 KB, OR an agent loads it in full and still fails to route to an entry whose trigger matched what it was doing |
+| `B51` | S4 | A14 signal | A provenance and trust vocabulary for an agent-maintained corpus. | an entry is found to be wrong or stale and nothing records when it was last checked or against what, OR a reader needs to weigh two entries differently and the corpus offers no basis for doing so |
+| `B52` | S4 | A14 signal | The post-ratification half of a delta, and whether its required sections are two shapes. | a second programme is observed carrying standalone delta documents through to closeout, OR a delta is closed and a reader cannot tell from the type whether its to-state was reached, OR two deltas in one programme are found to bind to each other such that one inherits the other's fence |
+| `B55` | S4 | A14 signal | Gaps the `AR0` investigation of 2026-10-04 found in `artifacts/`. | each gap's own trigger, as stated in the investigation; OR the next investigation of this set, which re-triages all of them. |
+| `B56` | S4 | A14 signal | Gaps the `A0` investigation of 2026-10-04 found in `axioms/`. | each gap's own trigger, as stated in the investigation; OR the next investigation of this set, which re-triages all of them. |
+| `B57` | S4 | A14 signal | Gaps the `C0` investigation of 2026-10-04 found in `components/`. | each gap's own trigger, as stated in the investigation; OR the next investigation of this set, which re-triages all of them. |
+| `B58` | S4 | A14 signal | Gaps the `E0` investigation of 2026-10-04 found in `entities/`. | each gap's own trigger, as stated in the investigation; OR the next investigation of this set, which re-triages all of them. |
+| `B59` | S4 | A14 signal | Gaps the `M0` investigation of 2026-10-04 found in `methods/`. | each gap's own trigger, as stated in the investigation; OR the next investigation of this set, which re-triages all of them. |
+| `B60` | S4 | A14 signal | Gaps the `P0` investigation of 2026-10-04 found in `patterns/`. | each gap's own trigger, as stated in the investigation; OR the next investigation of this set, which re-triages all of them. |
+| `B61` | S4 | A14 signal | Gaps the `PC0` investigation of 2026-10-04 found in `practices/`. | each gap's own trigger, as stated in the investigation; OR the next investigation of this set, which re-triages all of them. |
+| `B62` | S4 | A14 signal | Gaps the `R0` investigation of 2026-10-04 found in `roles/`. | each gap's own trigger, as stated in the investigation; OR the next investigation of this set, which re-triages all of them. |
+| `B63` | S4 | A14 signal | Gaps the `RU0` investigation of 2026-10-04 found in `rules/`. | each gap's own trigger, as stated in the investigation; OR the next investigation of this set, which re-triages all of them. |
+| `B64` | S4 | A14 signal | Gaps the `SC0` investigation of 2026-10-04 found in `schemas/`. | each gap's own trigger, as stated in the investigation; OR the next investigation of this set, which re-triages all of them. |
+| `B65` | S4 | A14 signal | Gaps the `ST0` investigation of 2026-10-04 found in `sets/`. | each gap's own trigger, as stated in the investigation; OR the next investigation of this set, which re-triages all of them. |
+| `B66` | S4 | A14 signal | Gaps the `K0` investigation of 2026-10-04 found in `skills/`. | each gap's own trigger, as stated in the investigation; OR the next investigation of this set, which re-triages all of them. |
+| `B67` | S4 | A14 signal | Gaps the `S0` investigation of 2026-10-04 found in `style/`. | each gap's own trigger, as stated in the investigation; OR the next investigation of this set, which re-triages all of them. |
+| `B68` | S4 | A14 signal | Gaps the `T0` investigation of 2026-10-04 found in `traits/`. | each gap's own trigger, as stated in the investigation; OR the next investigation of this set, which re-triages all of them. |
+| `B69` | S4 | A14 signal | Gaps the `W0` investigation of 2026-10-04 found in `work-types/`. | each gap's own trigger, as stated in the investigation; OR the next investigation of this set, which re-triages all of them. |
+| `B39` | S5 | A3 signal | Style cannot be scoped by medium. | FIRED and moved: `S15` is the first single-medium rule; one rule does not earn a sub-set. TRIGGER: a second single-medium style rule. Nested sets need generator support, shared with `B38`'s set spanning layers. |
+<!-- END GENERATED: held -->
 
-| **B18** | S4 | **A4 mandate** | Found by the `M0` trial and not yet triaged. Authoring a handover procedure from one observed absence would repeat the shape-from-one-instance error. | **a handover loses information a procedure would have kept** |
-| **B19** | S4 | A14 signal | Found by the `M0` trial. A thin moment is not a failure until something fails at it. | **a small design decision fails in a way an anchoring check would have caught** |
-
-| **B21** | **S2** | **A4 mandate** | Found by the `A0` trial, then corrected: first framed as defence against an adversary, which is out of scope. Scored high and held anyway, since adding an axiom changes the constitution and warrants its own audit. | **a lone agent ships a claim it corroborated itself and was wrong** |
-| **B22** | S4 | A9 signal | Found by the `A0` trial. A low citation count has two legitimate readings and one observation cannot separate them. | **a deployment fails in a way chaos validation would have caught** |
-| **B45** | S4 | - | Formerly MREQ-1; carried from the retired `backlog/` layer with its trigger. | **Pick up the remaining guide layers when EITHER (a) a third non-code mission (design/governance/planning) is about to start and would benefit from disciplined axiom use beyond the M** |
-| **B46** | S4 | - | Formerly MREQ-2; carried from the retired `backlog/` layer with its trigger. | **a third layer is added or retired, OR corpus-extension work needs to be claimed on the coordination substrate rather than performed by hand** |
-| **B47** | S4 | - | Formerly MREQ-3; carried from the retired `backlog/` layer with its trigger. | **a programme states how a component specification binds upward to the duty its architecture declares, OR two programmes agree on where the boundary with code sits, OR an AR1 instanc** |
-| **B49** | S4 | - | Formerly MREQ-5; carried from the retired `backlog/` layer with its trigger. | **a contributor or CI needs `check-all.sh --all` as a real gate rather than a known-red one, OR the remaining debt falls small enough to clear in a diff a reviewer can actually read** |
-| **B50** | S4 | - | Formerly MREQ-6; carried from the retired `backlog/` layer with its trigger. | **the ledger passes roughly 250 entries or 50 KB, OR an agent loads it in full and still fails to route to an entry whose trigger matched what it was doing** |
-| **B51** | S4 | - | Formerly MREQ-7; carried from the retired `backlog/` layer with its trigger. | **an entry is found to be wrong or stale and nothing records when it was last checked or against what, OR a reader needs to weigh two entries differently and the corpus offers no bas** |
-| **B52** | S4 | - | Formerly MREQ-8; carried from the retired `backlog/` layer with its trigger. | **a second programme is observed carrying standalone delta documents through to closeout, OR a delta is closed and a reader cannot tell from the type whether its to-state was reached** |
-| **B53** | S4 | - | Formerly MREQ-9; carried from the retired `backlog/` layer with its trigger. | **a work-type is authored or revised and its author cannot state which artifact type the work produces, OR an artifact type is admitted that no work-type can be composed to produce, ** |
-| **B39** | S5 | A3 signal | Nested sets need generator support, and no medium-specific rule exists to fill one. | **the first style rule that applies to one medium only** |
-| **B41** | S4 | A14 signal | Two readers in one run; a harm finding from n = 2 is a lead, not a result. | **the explain after-run shows the same, or a director reports a status update padded with deferrals** |
-
-
-
-All are deferrals of evidence or of authority, not of appetite.\
-Neither is blocked on effort.
-
-
-| **B55** | S4 | A14 signal | Territory gaps moved out of the `AR0` charter by the charter-as-asymptote ruling; none has a consumer yet, and a charter does not rank its own gaps. | **any one gap's trigger in the investigation, or the next investigation of this set** |
-| **B56** | S4 | A14 signal | Territory gaps moved out of the `A0` charter by the charter-as-asymptote ruling; none has a consumer yet, and a charter does not rank its own gaps. | **any one gap's trigger in the investigation, or the next investigation of this set** |
-| **B57** | S4 | A14 signal | Territory gaps moved out of the `C0` charter by the charter-as-asymptote ruling; none has a consumer yet, and a charter does not rank its own gaps. | **any one gap's trigger in the investigation, or the next investigation of this set** |
-| **B58** | S4 | A14 signal | Territory gaps moved out of the `E0` charter by the charter-as-asymptote ruling; none has a consumer yet, and a charter does not rank its own gaps. | **any one gap's trigger in the investigation, or the next investigation of this set** |
-| **B59** | S4 | A14 signal | Territory gaps moved out of the `M0` charter by the charter-as-asymptote ruling; none has a consumer yet, and a charter does not rank its own gaps. | **any one gap's trigger in the investigation, or the next investigation of this set** |
-| **B60** | S4 | A14 signal | Territory gaps moved out of the `P0` charter by the charter-as-asymptote ruling; none has a consumer yet, and a charter does not rank its own gaps. | **any one gap's trigger in the investigation, or the next investigation of this set** |
-| **B61** | S4 | A14 signal | Territory gaps moved out of the `PC0` charter by the charter-as-asymptote ruling; none has a consumer yet, and a charter does not rank its own gaps. | **any one gap's trigger in the investigation, or the next investigation of this set** |
-| **B62** | S4 | A14 signal | Territory gaps moved out of the `R0` charter by the charter-as-asymptote ruling; none has a consumer yet, and a charter does not rank its own gaps. | **any one gap's trigger in the investigation, or the next investigation of this set** |
-| **B63** | S4 | A14 signal | Territory gaps moved out of the `RU0` charter by the charter-as-asymptote ruling; none has a consumer yet, and a charter does not rank its own gaps. | **any one gap's trigger in the investigation, or the next investigation of this set** |
-| **B64** | S4 | A14 signal | Territory gaps moved out of the `SC0` charter by the charter-as-asymptote ruling; none has a consumer yet, and a charter does not rank its own gaps. | **any one gap's trigger in the investigation, or the next investigation of this set** |
-| **B65** | S4 | A14 signal | Territory gaps moved out of the `ST0` charter by the charter-as-asymptote ruling; none has a consumer yet, and a charter does not rank its own gaps. | **any one gap's trigger in the investigation, or the next investigation of this set** |
-| **B66** | S4 | A14 signal | Territory gaps moved out of the `K0` charter by the charter-as-asymptote ruling; none has a consumer yet, and a charter does not rank its own gaps. | **any one gap's trigger in the investigation, or the next investigation of this set** |
-| **B67** | S4 | A14 signal | Territory gaps moved out of the `S0` charter by the charter-as-asymptote ruling; none has a consumer yet, and a charter does not rank its own gaps. | **any one gap's trigger in the investigation, or the next investigation of this set** |
-| **B68** | S4 | A14 signal | Territory gaps moved out of the `T0` charter by the charter-as-asymptote ruling; none has a consumer yet, and a charter does not rank its own gaps. | **any one gap's trigger in the investigation, or the next investigation of this set** |
-| **B69** | S4 | A14 signal | Territory gaps moved out of the `W0` charter by the charter-as-asymptote ruling; none has a consumer yet, and a charter does not rank its own gaps. | **any one gap's trigger in the investigation, or the next investigation of this set** |
-
-| **B42** | S4 | A14 signal | Needs short live sessions with the director; not something an agent can finish alone. Moved out of M5 when it closed. | **the director schedules a human-evaluation session** |
-| **B70** | S3 | A8 signal | Two readings survive and the corpus cannot separate them. | **bug-249 or the attestation check is documented, or a gate is refused on the distinction** |
 ---
 
 ## Decisions required
 
-Three, each naming exactly what it blocks.\
-Each is a director ruling that cannot be derived from the corpus.
+None open.\
+A decision is entered here when a move cannot proceed without a director ruling, naming what it blocks; once ruled it moves to [`DECISIONS.md`](DECISIONS.md) and leaves this list.
 
-| # | Question | Blocks |
-|---|---|---|
-| **Q1** | **Are commit messages a conformant `AR4` carrier?** `AR4` admits a register form and requires a ruling to be separately addressable, dated and superseded. A commit is dated and addressable by sha and is not separately supersedable. | `M2.5`, and therefore `B15` |
-| **Q2** | **Does `set` become an `E` entity, or a property of the existing `layer` entity?** `E2` defines `layer` and cannot express nesting; sets nest and can be smaller than a layer. Making `set` separate risks two terms for one thing; folding it in risks `E2` owning two concerns. | all of `M1`, and therefore `B3`, `B4`, `B5`, `B6` |
-| **Q3** | **Does `backlog/` survive as a layer?** Retiring it demotes ten routable, citable entries into table rows and breaks live citations from `AR0`, `AR2` and `MREQ-9`. Keeping it leaves two objects wearing one word. | `M3.3`, and therefore `B14` |
-
-**Q2 is the one to answer first.**\
-It gates the entire keystone milestone, and `M1` cannot start without it.

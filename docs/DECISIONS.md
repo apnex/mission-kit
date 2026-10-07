@@ -119,6 +119,7 @@ Whether an entry actually states a ruling is checked by reading, not by script.
 | 0075 | 2026-10-05 | The good-faith assumption covers collaborating agents only: a collaborator's malice is out of the axioms' scope, while a hostile outsider and untrusted input are inside it. | general | director | ratified | amends 0008 | `axioms/README.md` | yes |
 | 0076 | 2026-10-05 | Every structured document has one fixed name and location, in upper case: VISION.md at the component root; docs/ARCHITECTURE.md, ARCHITECTURE-TARGET.md, BOARD.md, BACKLOG.md, DECISIONS.md (or DECISIONS/<NNNN>.md), and DELTAS/DELTA-<N>.md. | general | director | ratified | - | `artifacts/README.md` | yes |
 | 0077 | 2026-10-05 | Each artifact type declares the fixed path of its instances in `instance-path`, required by the catalogue contract; the artifacts charter states the rule and its index shows the paths in a generated column, naming no type itself. | general | director | ratified | amends 0076 | `artifacts/README.md`, `schemas/catalog-entry/v1alpha1/catalog-entry.schema.json`, `tools/generate-index.mjs` | yes |
+| 0078 | 2026-10-05 | A backlog row's scores are declared once, on the row; the board's triage ledger and held list are generated from the record, holding is read from the plan, and a ruled decision leaves the board. | general | director | ratified | - | `artifacts/AR3-board.md`, `artifacts/AR5-backlog.md`, `tools/check-board.mjs` | yes |
 
 ---
 
@@ -1102,3 +1103,20 @@ Amends `0076`'s application, not its rule.
 
 **Source.**\
 `[V, director ruling 2026-10-05; artifacts/AR1-AR6 frontmatter]`
+
+### 0078
+
+**Ruling.**\
+Scores live on the record row and the board's ledger and held list are generated.
+
+**Alternatives refuted.**\
+Correcting the board by hand - refuted because the instance check found the board's typed copies of scores and holdings disagreeing with the record on fifteen rows, the drift rule `0020` predicts.
+
+**Kind.** general - it fixes where any project's board reads its scores.
+
+**Lineage.**\
+Applies `0020` to the board.\
+The common scale - a mandate breach ranks with the second-highest impact, a signal with the fourth - is the drafting agent's application.
+
+**Source.**\
+`[V, director ruling 2026-10-05; M3.2 instance check of AR3]`
