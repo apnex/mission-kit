@@ -110,6 +110,7 @@ Every open row, scored on the row and ordered on the common scale; generated, ne
 | `B68` | S4 | A14 signal | held | Gaps the `T0` investigation of 2026-10-04 found in `traits/`. |
 | `B69` | S4 | A14 signal | held | Gaps the `W0` investigation of 2026-10-04 found in `work-types/`. |
 | `B71` | S4 | A3 signal | held | No work-type produces a board, a delta or a vision. |
+| `B73` | S4 | A14 signal | held | No guidance in this corpus is measured for adherence, only for comprehension. |
 | `B10` | S5 | A4 signal | M4.1 | `CSSA`/`TSSA` is one downstream programme's vocabulary presented as a corpus convention. |
 | `B39` | S5 | A3 signal | held | Style cannot be scoped by medium. |
 <!-- END GENERATED: ledger -->
@@ -258,6 +259,7 @@ Open rows no live item cites, with their scores and the condition that would rev
 | `B68` | S4 | A14 signal | Gaps the `T0` investigation of 2026-10-04 found in `traits/`. | each gap's own trigger, as stated in the investigation; OR the next investigation of this set, which re-triages all of them. |
 | `B69` | S4 | A14 signal | Gaps the `W0` investigation of 2026-10-04 found in `work-types/`. | each gap's own trigger, as stated in the investigation; OR the next investigation of this set, which re-triages all of them. |
 | `B71` | S4 | A3 signal | No work-type produces a board, a delta or a vision. | one of these is done as claimed work on the coordination substrate, or a project asks which work-type authors one. |
+| `B73` | S4 | A14 signal | No guidance in this corpus is measured for adherence, only for comprehension. | The first adherence run is scored: write `A3` and `A14` traps next, then the remaining axioms, each key committed and audited before its run |
 | `B39` | S5 | A3 signal | Style cannot be scoped by medium. | FIRED and moved: `S15` is the first single-medium rule; one rule does not earn a sub-set. TRIGGER: a second single-medium style rule. Nested sets need generator support, shared with `B38`'s set spanning layers. |
 <!-- END GENERATED: held -->
 
