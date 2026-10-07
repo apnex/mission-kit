@@ -124,6 +124,7 @@ Whether an entry actually states a ruling is checked by reading, not by script.
 | 0080 | 2026-10-05 | A current architecture's structural sections are generated from the system's own source where structure can be read from it; its reasoning sections stay authored. | general | director | ratified | - | `artifacts/AR1-system-architecture.md`, `tools/generate-architecture.mjs` | yes |
 | 0081 | 2026-10-05 | A delta closes part of the gap between the current architecture and the target, the target being the current plus every ratified decision not yet built; a delta is opened when a ratified decision cannot be built in one change, and is adversarially reviewed by an agent that did not draft it before the director ratifies it. | general | director | ratified | - | `artifacts/AR2-delta.md`, `artifacts/AR1-system-architecture.md`, `artifacts/AR4-decision-record.md` | yes |
 | 0082 | 2026-10-05 | The delta loop is for projects that use the corpus, not for mission-kit's own development; its two deltas stay as the record of the changes they declared. | project | director | ratified | - | - | - |
+| 0083 | 2026-10-07 | Every axiom is to carry an adherence trap - a task that observes whether an agent acts on it - with the explain guidance and A11, A2, A13 and A4 first, then A3 and A14, then the rest. | project | director | ratified | - | - | - |
 
 ---
 
@@ -1180,3 +1181,17 @@ Running the loop on mission-kit to hold what it prescribes - refuted by the dire
 
 **Source.**\
 `[V, director ruling 2026-10-05; docs/BACKLOG.md B72]`
+
+### 0083
+
+**Ruling.**\
+Every axiom is to carry an adherence trap, beginning with the explain guidance and four axioms, then `A3` and `A14`.
+
+**Alternatives refuted.**\
+Deciding what is held always-on by argument alone - refuted because no suite measured adherence, only comprehension.\
+All seven candidate traps in the first run - not chosen, to answer the two always-on candidates, explain and the axioms, first.
+
+**Kind.** project - how mission-kit measures its own guidance.
+
+**Source.**\
+`[V, director ruling 2026-10-07; docs/BACKLOG.md B73; docs/evals/adherence/suite.json]`
