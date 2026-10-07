@@ -218,14 +218,16 @@ Exit status is non-zero if any entry is missing a declared section or carries th
 Holds the board and the backlog to the contract that binds them.
 
 ```sh
-node tools/check-board.mjs
+node tools/check-board.mjs            # check
+node tools/check-board.mjs --write    # regenerate the board's ledger and held list
 ```
 
 **Why it exists.**\
 `docs/BOARD.md` is the plan and `docs/BACKLOG.md` is the record, and the board states a five-rule contract between them.\
 Until this tool every rule was prose.\
 Within two commits of the board being written it carried a milestone out of plan order, a finding arguing that a closed row was still open, and an item citing no row at all - and that item was the one whose duty was to mechanise this contract.\
-A person found all three by asking.
+A person found all three by asking.\
+It also generates the board's triage ledger and held list from the scores and states on the backlog rows, because the instance check of `AR3` found the board's hand copies disagreeing with the record on fifteen rows; it fails when the generated views are out of date, which was mutation-tested.
 
 **On its first run it found a fourth that the manual pass missed**: an item in an open milestone still citing a row that had closed when its requirement landed.\
 That is the argument for a script over a careful reader, made by the script.
