@@ -79,7 +79,6 @@ Every open row, scored on the row and ordered on the common scale; generated, ne
 | `B21` | S2 | A4 mandate | held | No axiom states the property that protects an agent against its own error. |
 | `B8` | S3 | A2 mandate | M4.6 | `AR1` forbids the hand-authored current projection that a brownfield adopter cannot avoid. |
 | `B18` | S4 | A4 mandate | held | Methodology has no procedure for handing over work in progress. |
-| `B25` | S2 | A13 signal | M3.4 | `M7`'s trigger is narrower than its title. |
 | `B27` | S3 | A8 signal | M4.4 | The full gate's network check fails under GitHub throttling while passing in isolation. |
 | `B30` | S3 | A8 signal | M4.5 | External addresses outside `AGENTS.md` are checked by nothing, and placeholder links look real. |
 | `B70` | S3 | A8 signal | held | `W22`, and three peers, declare `evidenceAuthority: verifier-attestation` while `W0` constraint 2 says verifier-held gates use plain `kind:review`. |
