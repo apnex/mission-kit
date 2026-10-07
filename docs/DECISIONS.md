@@ -122,6 +122,8 @@ Whether an entry actually states a ruling is checked by reading, not by script.
 | 0078 | 2026-10-05 | A backlog row's scores are declared once, on the row; the board's triage ledger and held list are generated from the record, holding is read from the plan, and a ruled decision leaves the board. | general | director | ratified | - | `artifacts/AR3-board.md`, `artifacts/AR5-backlog.md`, `tools/check-board.mjs` | yes |
 | 0079 | 2026-10-05 | Work-types declare the artifact types they produce: W14 a target architecture, W16 and W20 backlog entries, W23 a decision record; each artifact type shows its producers in a generated section, and the types no work-type produces are a recorded gap. | general | director | ratified | - | `work-types/W14-design-a-contract-or-invariant.md`, `work-types/W16-bank-idea-or-knowledge-capital.md`, `work-types/W20-reconcile-ledger.md`, `tools/generate-index.mjs` | yes |
 | 0080 | 2026-10-05 | A current architecture's structural sections are generated from the system's own source where structure can be read from it; its reasoning sections stay authored. | general | director | ratified | - | `artifacts/AR1-system-architecture.md`, `tools/generate-architecture.mjs` | yes |
+| 0081 | 2026-10-05 | A delta closes part of the gap between the current architecture and the target, the target being the current plus every ratified decision not yet built; a delta is opened when a ratified decision cannot be built in one change, and is adversarially reviewed by an agent that did not draft it before the director ratifies it. | general | director | ratified | - | `artifacts/AR2-delta.md`, `artifacts/AR1-system-architecture.md`, `artifacts/AR4-decision-record.md` | yes |
+| 0082 | 2026-10-05 | The delta loop is for projects that use the corpus, not for mission-kit's own development; its two deltas stay as the record of the changes they declared. | project | director | ratified | - | - | - |
 
 ---
 
@@ -1151,3 +1153,30 @@ A baseline written once and changed only by deltas - not chosen, because it chan
 
 **Source.**\
 `[V, director ruling 2026-10-05; docs/BACKLOG.md B8]`
+
+### 0081
+
+**Ruling.**\
+A delta marches a system across part of the gap between its current architecture and the ratified decisions not yet built; it is reviewed adversarially before ratification.
+
+**Alternatives refuted.**\
+Requiring a delta whenever a check sees the derived structure change - refuted because it triggers on change after the fact rather than on the target, inverting the delta's purpose; and an adversarial review found it both too broad and easy to bypass.\
+A full target architecture authored ahead of the rulings - refuted as speculative.
+
+**Kind.** general - it is how any project runs the loop.
+
+**Source.**\
+`[V, director rulings 2026-10-05; the review of the withdrawn DELTA-3 draft]`
+
+### 0082
+
+**Ruling.**\
+The delta loop is for downstream projects, not mission-kit's own development.
+
+**Alternatives refuted.**\
+Running the loop on mission-kit to hold what it prescribes - refuted by the director: the loop was never intended for the corpus's own development.
+
+**Kind.** project - how mission-kit itself is developed.
+
+**Source.**\
+`[V, director ruling 2026-10-05; docs/BACKLOG.md B72]`

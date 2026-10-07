@@ -82,7 +82,6 @@ Every open row, scored on the row and ordered on the common scale; generated, ne
 | `B27` | S3 | A8 signal | M4.4 | The full gate's network check fails under GitHub throttling while passing in isolation. |
 | `B30` | S3 | A8 signal | M4.5 | External addresses outside `AGENTS.md` are checked by nothing, and placeholder links look real. |
 | `B70` | S3 | A8 signal | held | `W22`, and three peers, declare `evidenceAuthority: verifier-attestation` while `W0` constraint 2 says verifier-held gates use plain `kind:review`. |
-| `B72` | S3 | A2 signal | held | Most structural changes to this corpus run without a delta. |
 | `B12` | S4 | A14 signal | held | The recovery methodology for a brownfield vision is unwritten and its reasoning is untested. |
 | `B19` | S4 | A14 signal | held | Methodology has nothing proportionate for a small design decision. |
 | `B22` | S4 | A9 signal | held | `A9` binds every system unconditionally and is the least exercised axiom in the corpus. |
@@ -231,7 +230,6 @@ Open rows no live item cites, with their scores and the condition that would rev
 | `B21` | S2 | A4 mandate | No axiom states the property that protects an agent against its own error. | a lone agent ships a claim it corroborated itself and was wrong, or the axiom set is next audited. Whether this is a new axiom or a property an existing one should state - `A8`'s gating and `A4`'s zero-loss are the nearest - is a question for the set. |
 | `B18` | S4 | A4 mandate | Methodology has no procedure for handing over work in progress. | a handover loses information that a procedure would have preserved, or `M5` converts `M0` and the gap becomes a stated thinness. |
 | `B70` | S3 | A8 signal | `W22`, and three peers, declare `evidenceAuthority: verifier-attestation` while `W0` constraint 2 says verifier-held gates use plain `kind:review`. | either is documented, or a gate is refused on the distinction. |
-| `B72` | S3 | A2 signal | Most structural changes to this corpus run without a delta. | a structural change is found that a declared delta would have caught, or the director rules that structural changes carry a delta. |
 | `B12` | S4 | A14 signal | The recovery methodology for a brownfield vision is unwritten and its reasoning is untested. | the first external brownfield adopter reports back. Waiting is deliberate - their run is the only evidence available and costs nothing. |
 | `B19` | S4 | A14 signal | Methodology has nothing proportionate for a small design decision. | a small design decision fails in a way an anchoring check would have caught. |
 | `B22` | S4 | A9 signal | `A9` binds every system unconditionally and is the least exercised axiom in the corpus. | a deployment fails in a way chaos validation would have caught, or `A9` is cited as the reason a change was refused. |

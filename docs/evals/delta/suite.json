@@ -1,0 +1,26 @@
+{
+  "id": "delta",
+  "mode": "corpus",
+  "group": "delta",
+  "source": "Director ruling C: a delta closes part of the gap between current and target, the target being ratified decisions not yet built; adversarial review before ratification. Drafted alongside the change, not before; not independently reviewed.",
+  "probes": [
+    {
+      "id": "D1",
+      "question": "In a project using this corpus, what is a delta for, and when is one opened?",
+      "key": "To march the system across part of the gap between its current architecture and its target - the ratified decisions not yet built. One is opened when a ratified decision cannot be built in one change; its to-state is that decision absorbed. The board chooses which part of the gap to close next.",
+      "rubric": "2 for closing the gap to the target, opened when a ratified decision cannot be built in one change. 1 for one half. 0 otherwise."
+    },
+    {
+      "id": "D2",
+      "question": "A project's director ratifies every decision and the team builds each in the same change. Does it need a target architecture document, and does it need deltas?",
+      "key": "Neither: the target is the current architecture plus ratified decisions not yet built, so with none pending it equals the current and no separate document or delta is needed until a decision cannot be built at once.",
+      "rubric": "2 for neither, with the reason. 1 for one correct with reason. 0 otherwise."
+    },
+    {
+      "id": "D3",
+      "question": "What must happen to a delta before the director ratifies it?",
+      "key": "An agent that did not draft it reviews it adversarially - against its from-state, its decisions and the system - and the reviewer, findings and each finding's disposition are recorded in the delta; the findings are evidence for the director, not a gate.",
+      "rubric": "2 for an independent adversarial review recorded with dispositions, as evidence. 1 for review without independence or recording. 0 otherwise."
+    }
+  ]
+}

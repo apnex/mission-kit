@@ -284,10 +284,10 @@ Structural risks only, here.
 | Risk | Consequence | Held by |
 |---|---|---|
 | **The corpus cannot observe its own adopters.** | Its central success measures are unmeasurable from inside. | `B54` |
-| **Most changes run without a delta.** | The loop `AR0` prescribes - target, delta, derived current - is followed for structure by generation, not by declared transitions; deltas cover two changes of many. | `B72` |
 | **No work-type produces a board, a delta or a vision.** | Those artifacts cannot be claimed as work. | `B71` |
 
-Every artifact type this corpus prescribes and applies to itself is held at its fixed name in `docs/`.
+Every artifact type this corpus prescribes and applies to itself is held at its fixed name in `docs/`.\
+The delta loop is for projects that use the corpus, not for its own development (`0082`); its two deltas are the record of the changes they declared, and with every ratified decision built there is no separate target.
 
 ---
 
