@@ -165,7 +165,7 @@ This milestone tests whether composition is structural or theoretical.
 | M3.1 | Amend `B53` (formerly `MREQ-9`) to the broader finding, and rule on the third reading now that `M8` cites an `AR` type | `B13` | `TODO` |
 | M3.2 | Instance-check `AR3` against this board and record what it surfaced | `B9` | `DONE` - ledger and held generated from the record |
 | M3.3 | Rule on `backlog/` versus `AR5` - keep both, migrate, or split by concern, without breaking `MREQ` citations | `B14` | `DONE` - `backlog/` retired |
-| M3.4 | Align `M7`'s trigger with its title, so an author reaches it without already asking about anchoring | `B25` | `TODO` |
+| M3.4 | Align `M7`'s trigger with its title, so an author reaches it without already asking about anchoring | `B25` | `DONE` - trigger matches the title |
 
 **Exit criteria.**\
 Every ID-bearing layer either has an observed consumer or a recorded reason it has none.
