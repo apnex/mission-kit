@@ -21,7 +21,7 @@ An architecture states a destination but chooses nothing.\
 Without a board the next move is chosen implicitly, item by item, under whatever pressure is loudest - which is not a risk of that fault but the fault itself, running by default.
 
 It is a **graph, not a list**.\
-Moves depend on each other, and a move whose dependency is unmet is not legal yet.
+Moves depend on each other, and a move whose dependency is unmet is not legal yet; a move that depends on another names it, so its legality can be read from the board.
 
 ---
 
@@ -34,11 +34,11 @@ It consumes the gap between the two [`AR1`](AR1-system-architecture.md) instants
 
 ## Required sections
 
-- **The triage scale.** The dimensions each candidate is scored on, and the rule for ordering when they disagree.
-- **The triage ledger.** Every candidate, scored, with its evidence cited.
+- **The triage scale.** The dimensions each candidate is scored on, the common scale that makes them comparable, and the rule for ordering when they disagree.
+- **The triage ledger.** Every open record row, with its scores, ordered on the common scale. Scores are declared on the record row ([`AR5`](AR5-backlog.md)) and the ledger is generated from them; a score typed on the board is a second copy, free to disagree.
 - **Ordered milestones.** The moves grouped and sequenced, each carrying a status.
-- **Held.** Open records whose revival trigger has not fired - **scored on the same scale**, so that not choosing them is a visible judgement rather than an omission.
-- **Decisions required.** The questions that block work, each naming exactly what it blocks.
+- **Held.** Open records no live item cites - **scored on the same scale**, with each one's revival trigger, so that not choosing them is a visible judgement rather than an omission. Holding is read from the plan, so the list is generated too. A row whose trigger fires returns to triage and is planned or held again.
+- **Decisions required.** The open questions that block work, each naming exactly what it blocks; a question leaves the list when it is ruled, and its ruling goes to the decision record ([`AR4`](AR4-decision-record.md)).
 - **The contract with the record.** How board items bind to backlog rows.
 
 ### Two signals, and the higher wins
@@ -50,7 +50,9 @@ Score every candidate on **at least two orthogonal dimensions**:
 - **principle breach** - which standing commitment it violates, and whether the breach is of the commitment's mandate or of an enforcement signal.
 
 **Order on the higher of the two.**\
-Do not collapse them into one score.
+Do not collapse them into one score.\
+To compare them, a mandate breach ranks with the second-highest impact and a signal breach with the fourth; ties go to the mandate breach, then to the higher impact.\
+A board whose impact scale has a different number of levels states its own placement, and states it once.
 
 They measure different things: impact is what hurts today, principle breach is what will keep costing after today's pain is gone.\
 **Where they disagree, the disagreement is information** - collapsing the scales destroys exactly the signal that prevents shortest-path ordering.\
@@ -78,11 +80,13 @@ An instance is unacceptable if:
 - an item cites no record row;
 - a deferred item was dropped without its reason being written back as a revival trigger - explicit deferral is permitted, silence is not;
 - `Held` items are listed but not scored, so the comparison is asserted rather than shown;
-- a `Decisions required` entry does not name what it blocks;
+- a `Decisions required` entry does not name what it blocks, or stays listed after it is ruled;
+- a score or a holding is typed on the board rather than generated from the record;
+- a move depends on another and does not name it;
 - the board and the record disagree about any item's state.
 
 **The last is the board-record invariant, and this entry owns it.**\
-Stated once: every record row naming a board milestone must exist on the board, and every board item must cite a live row.\
+Stated once: every board item cites a record row that exists, every open row is either cited by a live item or held, and every score the board shows is the record's.\
 It is mechanically checkable and should be.\
 [`AR5`](AR5-backlog.md) cites this rule rather than restating it, because a constraint written in two places reads as authoritative in both and drifts silently in one.
 
@@ -95,7 +99,7 @@ An instance lives at `docs/BOARD.md`, relative to the component root - the fixed
 ```markdown
 # <system> - board
 
-## The contract between board and record
+## The contract with the record
 ## Triage scale          <- dimensions + the higher-of-two ordering rule
 ## Triage ledger         <- every candidate, scored, evidence cited
 ## <M0..Mn>              <- ordered milestones, each with a status

@@ -50,6 +50,7 @@ A row's minimum shape:
 | --- | --- |
 | `id` | stable, never reused, so the board and other records can cite it |
 | finding | what is actually true, stated so it can be scored |
+| scores | the row's impact and principle breach, on the board's triage scale - declared here, once, and read by the board ([`AR3`](AR3-board.md)) |
 | evidence | a citation, not an assertion - file and line, or the command run |
 | state | open, parked, retired |
 | revival trigger | required unless closed; an observable condition |
