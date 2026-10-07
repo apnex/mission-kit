@@ -1,0 +1,20 @@
+{
+  "id": "m7-trigger",
+  "mode": "corpus",
+  "group": "m7-trigger",
+  "source": "B25: M7's trigger narrower than its title. Keyed before the trigger is changed.",
+  "probes": [
+    {
+      "id": "T1",
+      "question": "You have drafted a design that changes how agents hand work to one another, and you are about to start implementing it. Is anything required first, and which entry says so?",
+      "key": "Yes: an axiom alignment audit, M7 - required before implementing a design that changes shared procedure, coordination or anything other agents will rely on.",
+      "rubric": "2 for M7 as required before implementation. 1 for M7 named as optional or without 'before implementation'. 0 otherwise."
+    },
+    {
+      "id": "T2",
+      "question": "You are fixing a one-line typo in a tool's help text. Do you need an axiom alignment audit?",
+      "key": "No: a short local fix that changes no operating doctrine or reusable seam does not require M7's audit.",
+      "rubric": "2 for no, citing the local-fix exemption. 1 for no alone. 0 for yes."
+    }
+  ]
+}
