@@ -92,6 +92,17 @@ It is mechanically checkable and should be.\
 
 ---
 
+## Produced by
+
+Generated from each work-type's `produces`; a type no work-type produces shows an empty table.
+
+<!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
+| ID | Title | Hydrate when |
+|---|---|---|
+<!-- END GENERATED -->
+
+---
+
 ## Template
 
 An instance lives at `docs/BOARD.md`, relative to the component root - the fixed upper-case name [`AR0`](README.md) requires of every instance.

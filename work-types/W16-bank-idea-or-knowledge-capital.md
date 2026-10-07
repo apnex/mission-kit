@@ -10,6 +10,7 @@ evidenceContract:
     description: idea/doc created with source + revival trigger
 evidenceAuthority: executor-evidence
 domainEligibility: [knowledge-methodology]
+produces: [AR5]
 domainFreedom: pinned
 parameters:
   - name: target

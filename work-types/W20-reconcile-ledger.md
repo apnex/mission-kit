@@ -10,6 +10,7 @@ evidenceContract:
     description: before/after entity states, script/query output, reopen reasons
 evidenceAuthority: executor-evidence
 domainEligibility: [coordination-substrate]
+produces: [AR5]
 domainFreedom: pinned
 parameters:
   - name: target

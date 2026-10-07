@@ -84,6 +84,19 @@ The trigger test is the one that carries the weight: a condition someone could o
 
 ---
 
+## Produced by
+
+Generated from each work-type's `produces`; a type no work-type produces shows an empty table.
+
+<!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
+| ID | Title | Hydrate when |
+|---|---|---|
+| [W16](../work-types/W16-bank-idea-or-knowledge-capital.md) | bank-idea-or-knowledge-capital - capture reusable capital | You have reusable capital in hand and are capturing it |
+| [W20](../work-types/W20-reconcile-ledger.md) | reconcile-ledger - reconcile entity/backlog state vs truth | Entity or backlog state has diverged from truth and you are reconciling it |
+<!-- END GENERATED -->
+
+---
+
 ## Template
 
 An instance lives at `docs/BACKLOG.md`, relative to the component root - the fixed upper-case name [`AR0`](README.md) requires of every instance.

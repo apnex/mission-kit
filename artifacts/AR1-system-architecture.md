@@ -102,6 +102,17 @@ A drift gate that walks ratified decisions and checks absorption is what makes "
 
 ---
 
+## Produced by
+
+Generated from each work-type's `produces`; a type no work-type produces shows an empty table.
+
+<!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
+| ID | Title | Hydrate when |
+|---|---|---|
+<!-- END GENERATED -->
+
+---
+
 ## Template
 
 An instance lives at `docs/ARCHITECTURE.md` for the `current` instant and `docs/ARCHITECTURE-TARGET.md` for the `target` instant, relative to the component root - the fixed upper-case name [`AR0`](README.md) requires of every instance.

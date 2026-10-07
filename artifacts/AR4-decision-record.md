@@ -130,6 +130,18 @@ A register row and a standalone file fail and pass these identically, which is t
 
 ---
 
+## Produced by
+
+Generated from each work-type's `produces`; a type no work-type produces shows an empty table.
+
+<!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
+| ID | Title | Hydrate when |
+|---|---|---|
+| [W23](../work-types/W23-capture-decision-and-ratify.md) | capture-decision-and-ratify - record + ratify a decision | You are recording a decision and having it ratified |
+<!-- END GENERATED -->
+
+---
+
 ## Template
 
 An instance lives at `docs/DECISIONS.md` in the register form, or at `docs/DECISIONS/<NNNN>.md`, one file per ruling numbered by its id, relative to the component root - the fixed upper-case name [`AR0`](README.md) requires of every instance.

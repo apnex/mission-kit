@@ -327,6 +327,12 @@ for (const t of entries.filter((x) => x.category === 'trait' && /^T[1-9][0-9]*$/
 	const binding = entries.filter((a) => a.category === 'axiom' && /^A[1-9][0-9]*$/.test(a.id) && listOf(a['applies-to']).includes(slug));
 	targets.push([t.rel, table(ordered(binding), path.dirname(t.rel))]);
 }
+// Each artifact type carries the work-types that produce it, generated from their produces field -
+// the side whose meaning includes the relation. Generated into the type's own file.
+for (const t of entries.filter((x) => x.category === 'artifact' && /^AR[1-9][0-9]*$/.test(x.id))) {
+	const by = entries.filter((w) => w.category === 'work-type' && listOf(w.produces).includes(t.id));
+	targets.push([t.rel, table(ordered(by), path.dirname(t.rel))]);
+}
 // Each spanning set's own file carries a generated table of its members, from its members list.
 for (const e of entries.filter((x) => x.category === 'set' && !/^ST0$/.test(x.id)))
 	targets.push([e.rel, table(ordered(listOf(e.members).map((id) => byIdAll.get(id))), path.dirname(e.rel))]);
