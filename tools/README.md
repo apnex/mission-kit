@@ -379,6 +379,24 @@ Mutation-tested on a duplicated id and a missing affected path.
 
 ---
 
+## generate-architecture.mjs
+
+Generates the structural sections of `docs/ARCHITECTURE.md` from the corpus.
+
+```sh
+node tools/generate-architecture.mjs           # regenerate
+node tools/generate-architecture.mjs --check   # fail if stale
+```
+
+**Why it exists.**\
+`AR1` forbids a hand-authored current projection, and this corpus's was hand-authored and stale.\
+For a corpus the running system is the repository, so the layers, each one's duty and population, what each draws on, and what the gate holds are read from the root README, the charters, the directories and `check-all.sh`.\
+The reasoning sections stay authored.
+
+**Run it when** a layer, a charter's title or `related`, or the gate changes; the gate runs `--check` on every change.
+
+---
+
 ## check-id-reuse.mjs
 
 Holds that an id, once retired, is never issued again, and that every `supersedes` value names a retired id.

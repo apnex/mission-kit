@@ -9,6 +9,7 @@
 #   check-tool-docs            the tool index matches the tools beside it
 #   check-entry-body           every entry carries the body sections its category declares
 #   generate-index --check     the ledger and category tables match the entries
+#   generate-architecture      the architecture's structural sections match the corpus
 #   check-decisions            the decision register's ids, kinds, lineage and affects paths hold
 #   check-id-reuse             no current entry holds an id retired in history
 #   skill-graph                every catalogue edge resolves and the graph is acyclic
@@ -66,6 +67,7 @@ run "applies-to names exactly the declared traits" node tools/check-traits.mjs
 run "a retired id is never issued again" node tools/check-id-reuse.mjs
 run "the tested communication guidance landed unreworded" ./tools/check-guidance-placement.sh
 run "index is derived, not typed" node tools/generate-index.mjs --check
+run "the current architecture's structure is derived" node tools/generate-architecture.mjs --check
 run "catalogue graph resolves" node tools/skill-graph.mjs
 run "entries conform to their contract" bash -c 'cd schemas && npm ci --silent >/dev/null 2>&1 || npm install --silent >/dev/null 2>&1; npm test --silent'
 run "standing-context template holds" ./tools/check-standing-context.sh $network_flag _template-standing-context.md
