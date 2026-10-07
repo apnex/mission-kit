@@ -341,6 +341,31 @@ Each refusal was mutation-tested - removed from the tool to confirm the test goe
 
 ---
 
+## adherence.mjs
+
+Measures whether an agent doing a task acts on guidance, by running the same task with no guidance, with today's guidance, and with the guidance always in context.
+
+```sh
+node tools/adherence.mjs run    --out docs/evals/runs/<id> [--traps X,A2] [--runs 3]
+node tools/adherence.mjs run    --resume docs/evals/runs/<id>
+node tools/adherence.mjs blind  --run docs/evals/runs/<id>
+node tools/adherence.mjs score  --run docs/evals/runs/<id>
+node tools/adherence.mjs status --run docs/evals/runs/<id>
+```
+
+**Why it exists.**\
+Every other suite asks a reader about the corpus, which measures comprehension.\
+Whether an agent acts on guidance in the middle of a task can only be seen by running agents, and agents spawned from a session inherit that session's context, which would contaminate a no-guidance arm.
+
+**It calls agents, unlike `eval.mjs`.**\
+It drives the opencode command-line runner with a config directory of its own per arm, in workspaces outside any directory holding a rules file, and checks before every run that each arm receives exactly the guidance it should.\
+It is harness-specific by necessity; the suite in [`docs/evals/adherence/`](../docs/evals/adherence/suite.json) is not.
+
+**Run it when** deciding whether guidance should be held always-on, or after changing guidance that agents are expected to act on mid-task.\
+A run of a suite with uncommitted edits is marked calibration and is never a result.
+
+---
+
 ## eval-human.mjs
 
 Measures a communication change on the human it is for, by asking them to pick between two versions of a message.

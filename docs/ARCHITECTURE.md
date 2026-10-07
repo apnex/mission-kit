@@ -164,7 +164,7 @@ Generated from the root README's layer table and each layer's charter.
 | Layer | Duty |
 |---|---|
 | `bundles/` | Skills composed into operator-facing roles, by declared edge rather than by name. |
-| `tools/` | The scripts that hold the corpus to its own rules. 28 scripts. |
+| `tools/` | The scripts that hold the corpus to its own rules. 29 scripts. |
 | `plugins/` | Operator-facing artifacts that run inside a specific agent host. |
 | `docs/` | This corpus's own artifact instances, held where [`AR0`](artifacts/README.md) says an instance lives. |
 <!-- END GENERATED: architecture-other-layers -->
