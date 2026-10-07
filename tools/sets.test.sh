@@ -26,7 +26,9 @@ draft=$(grep -l '^status: draft' */*.md 2>/dev/null | head -1 | xargs -r awk '/^
 refuses() { # label, members-frontmatter, expected message
 	mk "$2"
 	if ! grep -qF "$(printf '%b' "$2" | head -1)" "$fx"; then no "$1 (fixture did not apply)"; return; fi
-	out=$(node tools/generate-index.mjs 2>&1); if printf '%s' "$out" | grep -qF "$3"; then ok "$1"; else no "$1"; fi
+	# Herestring, not a pipe: grep -q exits on the first match, and under pipefail the writer killed by
+	# SIGPIPE makes the pipeline fail, so a correct refusal intermittently read as absent.
+	out=$(node tools/generate-index.mjs 2>&1); if grep -qF "$3" <<< "$out"; then ok "$1"; else no "$1"; fi
 }
 refuses "a member that is not an entry is refused" 'members: [S999]\n' 'member S999 is not an entry'
 refuses "a superseded member is refused" 'members: [PC99]\n' 'member PC99 is superseded'

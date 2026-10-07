@@ -1,0 +1,550 @@
+
+=== repository structure is documented ===
+
+structure: every top-level directory is documented and self-describing.
+PASS  repository structure is documented
+
+=== rules and enforcers are paired ===
+
+enforcers: every rule names a real tool, and every tool is claimed by a rule.
+PASS  rules and enforcers are paired
+
+=== tool index matches the directory ===
+
+tool docs: every documented tool exists, and every tool is documented.
+PASS  tool index matches the directory
+
+=== entry bodies match their category ===
+
+entry bodies: 35 entr(ies) across artifact axiom component entity trait carry their declared sections, in order; 16 charter(s) carry the charter headings.
+PASS  entry bodies match their category
+
+=== the board and the backlog agree ===
+clean: 39 item(s) across 5 milestone(s) reconcile with 70 backlog row(s); 31 held, generated.
+PASS  the board and the backlog agree
+
+=== the decision register is well formed ===
+78 rulings; 59 general, 19 project.
+the register is well formed.
+PASS  the decision register is well formed
+
+=== applies-to names exactly the declared traits ===
+clean: 5 trait(s) and the floor match the applies-to vocabulary exactly.
+PASS  applies-to names exactly the declared traits
+
+=== a retired id is never issued again ===
+155 current ids, 27 retired in history.
+no retired id is reissued.
+PASS  a retired id is never issued again
+
+=== the tested communication guidance landed unreworded ===
+placement: all 17 tested lines are in their assigned entries.
+PASS  the tested communication guidance landed unreworded
+
+=== index is derived, not typed ===
+
+155 entries, 30 generated region(s), 0 file(s) without markers.
+all generated regions are current.
+PASS  index is derived, not typed
+
+=== catalogue graph resolves ===
+skill graph — derived levels (L = longest prerequisite/composes path from a root):
+
+  L0  arc-lifecycle
+  L0  asd-ste100-verifier
+  L0  repo-audit
+  L0  research-artefacts
+  L0  survey
+  L0  sysml-literacy
+  L0  workgraph-arc-operator
+  L0  workgraph-arc-participant
+  L0  workgraph-arc-planning
+  L0  write-discoverable-code
+  L1  model-a-classification   (prereq:sysml-literacy)
+  L1  model-a-component   (prereq:sysml-literacy)
+  L1  model-a-constraint   (prereq:sysml-literacy)
+  L1  model-a-dependency-graph   (prereq:sysml-literacy)
+  L1  model-a-state-machine   (prereq:sysml-literacy)
+  L1  model-a-workflow   (prereq:sysml-literacy)
+  L1  sysml-skill-evaluator   (prereq:sysml-literacy)
+  L1  sysml-skill-tester   (prereq:sysml-literacy)
+  L1  workgraph-arc-closeout   (prereq:workgraph-arc-operator)
+  L1  workgraph-blueprint-author   (prereq:workgraph-arc-operator)
+  L1  workgraph-lease-discipline   (prereq:workgraph-arc-operator)
+  L1  workgraph-pr-delivery   (prereq:workgraph-arc-operator)
+  L1  workgraph-recovery   (prereq:workgraph-arc-operator)
+  L1  workgraph-verification-gates   (prereq:workgraph-arc-operator)
+  L2  model-an-arc   (prereq:sysml-literacy, composes:model-a-state-machine, composes:model-a-workflow, composes:model-a-component, composes:model-a-dependency-graph, composes:model-a-constraint, composes:model-a-classification)
+  L2  sysml-skill-builder   (prereq:sysml-literacy, composes:model-a-component, composes:model-a-workflow)
+
+PASS — 26 skills, graph acyclic, all edges + bundle entries resolve, composes-vs-model holds, WorkGraph lifecycle/selection conforms.
+PASS  catalogue graph resolves
+
+=== entries conform to their contract ===
+✔ the catalogue is non-empty, so a passing run is not vacuous (7.484454ms)
+✔ frontmatter conforms: axioms/A1-sovereign-state-transparency.md (4.113009ms)
+✔ frontmatter conforms: axioms/A10-autopoietic-evolution.md (0.996264ms)
+✔ frontmatter conforms: axioms/A11-cognitive-minimalism.md (0.350912ms)
+✔ frontmatter conforms: axioms/A12-precision-context-engineering.md (0.624392ms)
+✔ frontmatter conforms: axioms/A13-director-intent-amplification.md (0.334873ms)
+✔ frontmatter conforms: axioms/A14-compounding-learning.md (0.494089ms)
+✔ frontmatter conforms: axioms/A2-isomorphic-specification.md (1.613729ms)
+✔ frontmatter conforms: axioms/A3-sovereign-composition.md (1.465325ms)
+✔ frontmatter conforms: axioms/A4-zero-loss-knowledge.md (2.356432ms)
+✔ frontmatter conforms: axioms/A5-perceptual-parity.md (0.454802ms)
+✔ frontmatter conforms: axioms/A6-frictionless-agentic-collaboration.md (0.198672ms)
+✔ frontmatter conforms: axioms/A7-resilient-agentic-operations.md (0.165487ms)
+✔ frontmatter conforms: axioms/A8-gated-recursive-integrity.md (1.206883ms)
+✔ frontmatter conforms: axioms/A9-chaos-validated-deployment.md (0.171174ms)
+✔ frontmatter conforms: axioms/README.md (0.205507ms)
+✔ frontmatter conforms: style/README.md (0.159895ms)
+✔ frontmatter conforms: style/S1-prereqs-explicit-cluster-agnostic.md (0.166316ms)
+✔ frontmatter conforms: style/S10-horizontal-rule-between-h2-sections.md (0.245874ms)
+✔ frontmatter conforms: style/S11-technical-identifiers-use-backticks.md (0.749136ms)
+✔ frontmatter conforms: style/S12-code-block-introducer-own-paragraph.md (0.644229ms)
+✔ frontmatter conforms: style/S13-plain-ascii-in-markdown.md (0.277978ms)
+✔ frontmatter conforms: style/S14-hydration-triggers-state-a-condition.md (0.147887ms)
+✔ frontmatter conforms: style/S15-message-to-a-human.md (0.141214ms)
+✔ frontmatter conforms: style/S16-path-a-path-b-workflow-paths.md (0.159705ms)
+✔ frontmatter conforms: style/S2-runnable-commands-in-code-blocks.md (0.139609ms)
+✔ frontmatter conforms: style/S3-producer-consumer-doc-split.md (0.140325ms)
+✔ frontmatter conforms: style/S4-four-journey-readme.md (0.141234ms)
+✔ frontmatter conforms: style/S5-no-version-pins-in-prose.md (0.141299ms)
+✔ frontmatter conforms: style/S6-one-sentence-per-line.md (0.146474ms)
+✔ frontmatter conforms: style/S7-alternative-paths-separate-blocks.md (0.14237ms)
+✔ frontmatter conforms: style/S8-code-block-comments-not-prose.md (0.14226ms)
+✔ frontmatter conforms: style/S9-action-first-readme-structure.md (0.13749ms)
+✔ frontmatter conforms: methods/M1-triangulated-review.md (0.126774ms)
+✔ frontmatter conforms: methods/M10-guided-dialogue.md (0.127485ms)
+✔ frontmatter conforms: methods/M11-change-a-charter.md (0.144053ms)
+✔ frontmatter conforms: methods/M12-investigate-a-set.md (0.143434ms)
+✔ frontmatter conforms: methods/M13-change-a-set.md (0.138832ms)
+✔ frontmatter conforms: methods/M2-test-drive-docs-by-execution.md (0.133577ms)
+✔ frontmatter conforms: methods/M7-axiom-alignment-audit.md (0.261653ms)
+✔ frontmatter conforms: methods/M8-artifact-bootstrap.md (0.142985ms)
+✔ frontmatter conforms: methods/M9-history-content-scrub.md (9.996752ms)
+✔ frontmatter conforms: methods/README.md (0.177953ms)
+✔ frontmatter conforms: sets/README.md (0.224121ms)
+✔ frontmatter conforms: sets/ST1-explain.md (0.272692ms)
+✔ frontmatter conforms: traits/README.md (0.144626ms)
+✔ frontmatter conforms: traits/T1-stateful.md (0.133759ms)
+✔ frontmatter conforms: traits/T2-declarative.md (0.141293ms)
+✔ frontmatter conforms: traits/T3-multi-agent.md (0.13171ms)
+✔ frontmatter conforms: traits/T4-autonomous.md (0.134177ms)
+✔ frontmatter conforms: traits/T5-llm-in-the-loop.md (0.131705ms)
+✔ frontmatter conforms: rules/README.md (0.19842ms)
+✔ frontmatter conforms: rules/RU1-default-reject-honest-yield.md (0.207816ms)
+✔ frontmatter conforms: rules/RU2-frozen-history-rule.md (0.147228ms)
+✔ frontmatter conforms: rules/RU3-anti-amnesia-deferral.md (0.139675ms)
+✔ frontmatter conforms: rules/RU4-publishing-rewritten-history.md (0.131543ms)
+✔ frontmatter conforms: practices/PC1-author-from-exemplar.md (0.121788ms)
+✔ frontmatter conforms: practices/README.md (0.129887ms)
+✔ frontmatter conforms: roles/R1-architect.md (0.165456ms)
+✔ frontmatter conforms: roles/R2-engineer.md (0.129929ms)
+✔ frontmatter conforms: roles/R3-verifier.md (0.121227ms)
+✔ frontmatter conforms: roles/R4-director.md (0.131225ms)
+✔ frontmatter conforms: roles/README.md (0.193414ms)
+✔ frontmatter conforms: patterns/P2-node-label-gate-cross-component-contracts.md (1.201818ms)
+✔ frontmatter conforms: patterns/P3-twin-parity-by-generation.md (0.151651ms)
+✔ frontmatter conforms: patterns/P4-neutral-core-tenant-composition.md (0.125425ms)
+✔ frontmatter conforms: patterns/P5-verbs-as-data-surface.md (0.11404ms)
+✔ frontmatter conforms: patterns/README.md (0.108319ms)
+✔ frontmatter conforms: domains/D1-delivery-code.md (0.344807ms)
+✔ frontmatter conforms: domains/D2-distribution.md (0.10944ms)
+✔ frontmatter conforms: domains/D3-tooling-harness.md (0.10973ms)
+✔ frontmatter conforms: domains/D4-authority-governance.md (0.125312ms)
+✔ frontmatter conforms: domains/D5-coordination-substrate.md (0.120235ms)
+✔ frontmatter conforms: domains/D6-knowledge-methodology.md (0.125215ms)
+✔ frontmatter conforms: domains/D7-product-data.md (0.12233ms)
+✔ frontmatter conforms: domains/README.md (0.122444ms)
+✔ frontmatter conforms: work-types/README.md (0.230283ms)
+✔ frontmatter conforms: work-types/W1-build-a-slice.md (0.239425ms)
+✔ frontmatter conforms: work-types/W10-adversarial-design-review-upstream.md (0.176734ms)
+✔ frontmatter conforms: work-types/W11-run-a-live-probe-or-smoke.md (0.119447ms)
+✔ frontmatter conforms: work-types/W12-meta-validate-dogfood.md (0.113856ms)
+✔ frontmatter conforms: work-types/W13-code-owner-approve.md (0.109785ms)
+✔ frontmatter conforms: work-types/W14-design-a-contract-or-invariant.md (0.111283ms)
+✔ frontmatter conforms: work-types/W15-convene-a-council.md (0.111429ms)
+✔ frontmatter conforms: work-types/W16-bank-idea-or-knowledge-capital.md (0.121485ms)
+✔ frontmatter conforms: work-types/W17-author-closeout-packet.md (0.123931ms)
+✔ frontmatter conforms: work-types/W18-seed-a-blueprint-arc.md (0.115775ms)
+✔ frontmatter conforms: work-types/W19-drive-an-arc.md (0.116415ms)
+✔ frontmatter conforms: work-types/W2-fix-a-bug-or-repair.md (0.2002ms)
+✔ frontmatter conforms: work-types/W20-reconcile-ledger.md (0.131809ms)
+✔ frontmatter conforms: work-types/W21-arc-repair.md (0.127136ms)
+✔ frontmatter conforms: work-types/W22-axiom-alignment-gate.md (0.124653ms)
+✔ frontmatter conforms: work-types/W23-capture-decision-and-ratify.md (0.176634ms)
+✔ frontmatter conforms: work-types/W24-director-walkthrough.md (0.130016ms)
+✔ frontmatter conforms: work-types/W25-backstop-a-prod-window.md (0.159066ms)
+✔ frontmatter conforms: work-types/W26-reset-or-converge-the-fleet.md (0.125582ms)
+✔ frontmatter conforms: work-types/W3-retire-or-hard-cut.md (0.123499ms)
+✔ frontmatter conforms: work-types/W4-validate-locally.md (0.136795ms)
+✔ frontmatter conforms: work-types/W5-author-guard-or-falsifier-tests.md (0.121507ms)
+✔ frontmatter conforms: work-types/W6-merge-and-land.md (0.120395ms)
+✔ frontmatter conforms: work-types/W7-publish-deploy-or-canonicalize.md (0.119164ms)
+✔ frontmatter conforms: work-types/W8-verify-gate-reactive.md (0.124646ms)
+✔ frontmatter conforms: work-types/W9-audit-a-surface.md (0.118862ms)
+✔ frontmatter conforms: skills/K10-model-a-component.md (0.136598ms)
+✔ frontmatter conforms: skills/K11-sysml-skill-builder.md (0.120484ms)
+✔ frontmatter conforms: skills/K12-sysml-skill-tester.md (0.117412ms)
+✔ frontmatter conforms: skills/K13-model-a-dependency-graph.md (0.118336ms)
+✔ frontmatter conforms: skills/K14-model-a-constraint.md (0.121354ms)
+✔ frontmatter conforms: skills/K15-model-a-classification.md (0.121354ms)
+✔ frontmatter conforms: skills/K16-model-an-arc.md (0.12667ms)
+✔ frontmatter conforms: skills/K17-sysml-skill-evaluator.md (0.118883ms)
+✔ frontmatter conforms: skills/K18-workgraph-arc-operator.md (0.116845ms)
+✔ frontmatter conforms: skills/K19-workgraph-blueprint-author.md (0.11913ms)
+✔ frontmatter conforms: skills/K20-workgraph-lease-discipline.md (2.626903ms)
+✔ frontmatter conforms: skills/K21-workgraph-verification-gates.md (0.16582ms)
+✔ frontmatter conforms: skills/K22-workgraph-pr-delivery.md (0.133366ms)
+✔ frontmatter conforms: skills/K23-workgraph-arc-closeout.md (0.127653ms)
+✔ frontmatter conforms: skills/K24-workgraph-recovery.md (0.123631ms)
+✔ frontmatter conforms: skills/K25-workgraph-arc-participant.md (0.430024ms)
+✔ frontmatter conforms: skills/K26-workgraph-arc-planning.md (0.139046ms)
+✔ frontmatter conforms: skills/K27-write-discoverable-code.md (0.129569ms)
+✔ frontmatter conforms: skills/K28-asd-ste100-verifier.md (0.123515ms)
+✔ frontmatter conforms: skills/K3-repo-audit.md (0.120332ms)
+✔ frontmatter conforms: skills/K4-research-artefacts.md (0.117766ms)
+✔ frontmatter conforms: skills/K5-survey.md (0.124225ms)
+✔ frontmatter conforms: skills/K6-arc-lifecycle.md (0.119963ms)
+✔ frontmatter conforms: skills/K7-sysml-literacy.md (0.121876ms)
+✔ frontmatter conforms: skills/K8-model-a-state-machine.md (0.123458ms)
+✔ frontmatter conforms: skills/K9-model-a-workflow.md (0.120972ms)
+✔ frontmatter conforms: skills/README.md (0.12199ms)
+✔ frontmatter conforms: schemas/README.md (0.122956ms)
+✔ frontmatter conforms: schemas/SC1-catalog-entry.md (0.123108ms)
+✔ frontmatter conforms: schemas/SC2-standing-context.md (0.123314ms)
+✔ frontmatter conforms: schemas/SC3-skill.md (0.124035ms)
+✔ frontmatter conforms: schemas/SC4-question.md (0.124485ms)
+✔ frontmatter conforms: schemas/SC5-context-frame.md (0.118393ms)
+✔ frontmatter conforms: schemas/SC6-entry-body.md (0.116356ms)
+✔ frontmatter conforms: entities/E1-sovereign-hierarchy.md (0.119271ms)
+✔ frontmatter conforms: entities/E2-layer.md (0.127541ms)
+✔ frontmatter conforms: entities/E3-set.md (0.12503ms)
+✔ frontmatter conforms: entities/E4-charter.md (0.126661ms)
+✔ frontmatter conforms: entities/E5-system.md (0.118083ms)
+✔ frontmatter conforms: entities/E6-component.md (0.132439ms)
+✔ frontmatter conforms: entities/E7-gate.md (0.126137ms)
+✔ frontmatter conforms: entities/E8-evidence.md (0.117812ms)
+✔ frontmatter conforms: entities/E9-substrate.md (0.122712ms)
+✔ frontmatter conforms: entities/README.md (0.357039ms)
+✔ frontmatter conforms: components/C1-agp.md (0.275757ms)
+✔ frontmatter conforms: components/README.md (0.196428ms)
+✔ frontmatter conforms: artifacts/AR1-system-architecture.md (0.526617ms)
+✔ frontmatter conforms: artifacts/AR2-delta.md (0.289068ms)
+✔ frontmatter conforms: artifacts/AR3-board.md (0.135984ms)
+✔ frontmatter conforms: artifacts/AR4-decision-record.md (0.159873ms)
+✔ frontmatter conforms: artifacts/AR5-backlog.md (0.129916ms)
+✔ frontmatter conforms: artifacts/AR6-vision.md (0.126277ms)
+✔ frontmatter conforms: artifacts/README.md (0.149101ms)
+✔ purged bookkeeping fields are rejected, not merely absent (0.649059ms)
+✔ an artifact type must declare where its instances live (0.583505ms)
+✔ a rule must declare the trace a check could test (0.329476ms)
+✔ the new prefixes are accepted, and a malformed one is refused (0.324586ms)
+✔ a set must declare members, and only a set may (0.397549ms)
+✔ representative ContextFrame resources have no semantic violations (19.961239ms)
+✔ semantic validation rejects an exact duplicate included boundary (1.277476ms)
+✔ semantic validation rejects an exact duplicate excluded boundary (1.407011ms)
+✔ semantic validation rejects the same statement across scope boundaries (4.071879ms)
+✔ semantic validation rejects duplicate given text within one classification (1.153073ms)
+✔ semantic validation rejects duplicate given text across classifications (0.707121ms)
+✔ semantic validation rejects a duplicate term even when its meaning differs (1.119795ms)
+✔ duplicate comparison preserves exact authored string values without normalization (5.944083ms)
+✔ semantic issues identify the exact duplicate or conflicting member (1.710957ms)
+✔ ContextFrame owns only the shared Kubernetes-shaped resource envelope (6.485393ms)
+✔ every ContextFrame boundary exposes only its ratified property set (0.779192ms)
+✔ ContextFrame contract surfaces contain no process-specific vocabulary (1.773294ms)
+▶ ContextFrame rejects process-specific fields at every semantic boundary
+  ✔ survey (6.351231ms)
+  ✔ round (1.568315ms)
+  ✔ question (3.446947ms)
+  ✔ ordinal (1.304095ms)
+  ✔ director (1.347787ms)
+  ✔ generation (1.563083ms)
+  ✔ model (1.301216ms)
+  ✔ response (0.988511ms)
+  ✔ interpretation (0.87777ms)
+  ✔ answer (0.933532ms)
+✔ ContextFrame rejects process-specific fields at every semantic boundary (24.058105ms)
+✔ ContextFrame catalog binding is unique and portable (0.497246ms)
+✔ ContextFrame catalog semantic-validator binding is importable and exact (14.62077ms)
+✔ representative complete and minimal ContextFrame resources validate (7.21291ms)
+▶ ContextFrame selects the shared resource API and exact kind
+  ✔ different API version (0.865943ms)
+  ✔ different kind (0.541357ms)
+✔ ContextFrame selects the shared resource API and exact kind (2.609235ms)
+✔ ContextFrame reuses the shared resource-metadata contract (0.531176ms)
+▶ ContextFrame requires every ratified specification field
+  ✔ subject (1.21832ms)
+  ✔ purpose (0.656432ms)
+  ✔ scope (1.000508ms)
+  ✔ givens (1.015781ms)
+  ✔ synopsis (2.251148ms)
+  ✔ terms (0.378776ms)
+✔ ContextFrame requires every ratified specification field (9.390389ms)
+▶ scope requires both exact boundary collections
+  ✔ included (0.770109ms)
+  ✔ excluded (0.33375ms)
+✔ scope requires both exact boundary collections (2.676942ms)
+✔ subject enforces the exact 1 to 160 character bound (0.639172ms)
+✔ purpose enforces the exact 1 to 1000 character bound (0.527193ms)
+✔ synopsis enforces the exact 1 to 320 character bound (0.699834ms)
+▶ authored scalar wording cannot be whitespace-only
+  ✔ subject (0.425589ms)
+  ✔ purpose (0.27432ms)
+  ✔ synopsis (0.288169ms)
+✔ authored scalar wording cannot be whitespace-only (1.765364ms)
+✔ included scope enforces 1 to 16 ordered boundaries (0.714656ms)
+✔ excluded scope enforces 0 to 16 ordered boundaries (3.070796ms)
+✔ scope boundaries enforce the exact 1 to 280 character bound (0.479533ms)
+✔ givens enforce 0 to 24 ordered records (0.560391ms)
+▶ each given has an exact classification and 1 to 500 characters of text
+  ✔ fact (3.48383ms)
+  ✔ assumption (0.318386ms)
+  ✔ constraint (0.25865ms)
+  ✔ unknown classification (0.326859ms)
+  ✔ text over 500 characters (0.666041ms)
+  ✔ whitespace-only text (0.365211ms)
+✔ each given has an exact classification and 1 to 500 characters of text (6.924417ms)
+▶ given records require only classification and text
+  ✔ missing classification (0.596392ms)
+  ✔ missing text (0.311275ms)
+  ✔ unknown field (0.818726ms)
+✔ given records require only classification and text (2.508233ms)
+✔ terms enforce 0 to 16 ordered records (0.575943ms)
+▶ term records enforce exact term and meaning bounds
+  ✔ maximum valid bounds (2.95898ms)
+  ✔ term over 80 characters (0.692016ms)
+  ✔ meaning over 280 characters (0.889638ms)
+  ✔ whitespace-only term (0.406079ms)
+  ✔ whitespace-only meaning (0.439994ms)
+✔ term records enforce exact term and meaning bounds (18.243335ms)
+▶ term records require only term and meaning
+  ✔ missing term (0.432749ms)
+  ✔ missing meaning (0.335351ms)
+  ✔ unknown field (0.402249ms)
+✔ term records require only term and meaning (1.928985ms)
+✔ entry-body schema is registered in the catalog (2.284148ms)
+✔ the declaration conforms to its schema (5.336252ms)
+✔ every governed category is one the catalogue entry contract admits (0.60498ms)
+✔ no category is declared twice (0.453709ms)
+✔ every governed category states why its shape is what it is (0.624994ms)
+✔ Choice supports one permitted selection (6.425876ms)
+✔ Choice supports multiple selections and explicit incompatibility (15.124739ms)
+✔ Choice requires explicit label and meaning for every option (1.27938ms)
+✔ Choice requires a positive selection cardinality (2.101032ms)
+✔ Choice requires at least two alternatives (0.632965ms)
+✔ Choice bounds an immediately presented answer set to sixteen alternatives (5.770031ms)
+✔ Choice rejects undeclared constraint types (1.019784ms)
+✔ Choice rejects unknown fields instead of treating them as extensions (4.251554ms)
+✔ Choice rejects an unknown response field (0.78013ms)
+✔ Choice rejects an unknown constraint field (1.034776ms)
+✔ valid Choice resources have no semantic violations (11.896991ms)
+✔ Choice semantic validation reports paths relative to its sovereign contract (25.19603ms)
+✔ semantic validation rejects duplicate option IDs (3.746605ms)
+✔ semantic validation rejects an inverted cardinality range (0.895ms)
+✔ semantic validation rejects maximum cardinality above option count (0.686393ms)
+✔ semantic validation rejects redundant constraints on a single-choice question (1.719432ms)
+✔ semantic validation rejects constraint references to absent options (2.718501ms)
+✔ semantic validation rejects equivalent duplicate constraints (1.191946ms)
+✔ semantic validation accepts a constrained Choice with a possible minimum selection (23.447073ms)
+✔ semantic validation rejects a Choice with no possible answer (3.167366ms)
+✔ Question owns only the Kubernetes-shaped resource envelope (3.608755ms)
+✔ Question schema contains no Survey-specific vocabulary (0.513508ms)
+✔ Question has no observed status contract (0.548103ms)
+▶ Question rejects answer and influence fields from every closed boundary
+  ✔ status (0.422198ms)
+  ✔ answer (0.340713ms)
+  ✔ selection (0.804526ms)
+  ✔ recommendation (0.641402ms)
+  ✔ preselected (0.663388ms)
+  ✔ default (0.973009ms)
+✔ Question rejects answer and influence fields from every closed boundary (7.809553ms)
+✔ Question exposes a discriminated response extension seam (0.717016ms)
+✔ schema catalog uniquely maps every declared ID to a portable file (1.068945ms)
+✔ a closed Kubernetes-shaped Question resource validates (6.832441ms)
+✔ Question rejects a different API version (0.904182ms)
+✔ Question rejects a different resource kind (1.611642ms)
+✔ Question requires a stable metadata name (0.640154ms)
+✔ Question rejects an unknown root field (0.674446ms)
+✔ Question rejects an unknown metadata field (1.643166ms)
+✔ Question rejects an unknown spec field (0.680673ms)
+✔ Question requires exact respondent-facing prompt text (0.647946ms)
+✔ Question rejects a whitespace-only prompt (1.475303ms)
+✔ Question rejects a whitespace-only instruction (1.302462ms)
+✔ Question rejects a whitespace-only option label (0.78371ms)
+✔ Question rejects a whitespace-only option meaning (0.503632ms)
+✔ skill bodies were found, so a passing run is not vacuous (4.547488ms)
+✔ body conforms: arc-lifecycle (6.522742ms)
+✔ description routes: arc-lifecycle (1.92708ms)
+✔ body conforms: asd-ste100-verifier (1.531184ms)
+✔ description routes: asd-ste100-verifier (1.048758ms)
+✔ body conforms: model-a-classification (0.650726ms)
+✔ description routes: model-a-classification (1.310087ms)
+✔ body conforms: model-a-component (0.398323ms)
+✔ description routes: model-a-component (1.594028ms)
+✔ body conforms: model-a-constraint (1.035113ms)
+✔ description routes: model-a-constraint (0.676466ms)
+✔ body conforms: model-a-dependency-graph (0.283354ms)
+✔ description routes: model-a-dependency-graph (0.386129ms)
+✔ body conforms: model-a-state-machine (0.560947ms)
+✔ description routes: model-a-state-machine (0.391998ms)
+✔ body conforms: model-a-workflow (0.26725ms)
+✔ description routes: model-a-workflow (0.377356ms)
+✔ body conforms: model-an-arc (0.294923ms)
+✔ description routes: model-an-arc (0.383521ms)
+✔ body conforms: repo-audit (0.517475ms)
+✔ description routes: repo-audit (0.96724ms)
+✔ body conforms: research-artefacts (0.518178ms)
+✔ description routes: research-artefacts (0.589774ms)
+✔ body conforms: survey (0.354112ms)
+✔ description routes: survey (0.562797ms)
+✔ body conforms: sysml-literacy (0.374926ms)
+✔ description routes: sysml-literacy (0.715516ms)
+✔ body conforms: sysml-skill-builder (0.304923ms)
+✔ description routes: sysml-skill-builder (0.358826ms)
+✔ body conforms: sysml-skill-evaluator (0.543204ms)
+✔ description routes: sysml-skill-evaluator (0.367709ms)
+✔ body conforms: sysml-skill-tester (0.238144ms)
+✔ description routes: sysml-skill-tester (0.682866ms)
+✔ body conforms: workgraph-arc-closeout (0.31865ms)
+✔ description routes: workgraph-arc-closeout (0.479918ms)
+✔ body conforms: workgraph-arc-operator (0.560418ms)
+✔ description routes: workgraph-arc-operator (0.727527ms)
+✔ body conforms: workgraph-arc-participant (0.281121ms)
+✔ description routes: workgraph-arc-participant (0.41793ms)
+✔ body conforms: workgraph-arc-planning (0.21556ms)
+✔ description routes: workgraph-arc-planning (0.408324ms)
+✔ body conforms: workgraph-blueprint-author (0.237154ms)
+✔ description routes: workgraph-blueprint-author (0.542674ms)
+✔ body conforms: workgraph-lease-discipline (1.223541ms)
+✔ description routes: workgraph-lease-discipline (0.327298ms)
+✔ body conforms: workgraph-pr-delivery (3.156452ms)
+✔ description routes: workgraph-pr-delivery (0.512629ms)
+✔ body conforms: workgraph-recovery (0.258062ms)
+✔ description routes: workgraph-recovery (0.379473ms)
+✔ body conforms: workgraph-verification-gates (0.238643ms)
+✔ description routes: workgraph-verification-gates (0.367466ms)
+✔ body conforms: write-discoverable-code (0.486516ms)
+✔ description routes: write-discoverable-code (0.286295ms)
+✔ the contract rejects what it is meant to reject (0.514127ms)
+unknown format "uri" ignored in schema at path "#/properties/knowledge-base"
+unknown format "uri" ignored in schema at path "#/properties/knowledge-base"
+✔ the document declares frontmatter, so the contract is discoverable (2.187257ms)
+✔ frontmatter conforms: _template-standing-context.md (1.412092ms)
+✔ the contract rejects what it is meant to reject (0.971314ms)
+ℹ tests 340
+ℹ suites 0
+ℹ pass 340
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1423.208813
+PASS  entries conform to their contract
+
+=== standing-context template holds ===
+
+clean: 1 document(s).
+PASS  standing-context template holds
+
+=== this repo's own standing context holds ===
+
+clean: 1 document(s).
+PASS  this repo's own standing context holds
+
+=== eval-human behaves ===
+  ok    each pick is recorded as the version it was
+  ok    the recorded order matches what was shown
+  ok    the move's version is not always in one position
+  ok    every item is answered and the run is complete
+  ok    stopping early keeps answers and marks the run incomplete
+  ok    an invalid key is asked again, not recorded
+  ok    summary reports wins per move
+7 passed, 0 failed
+PASS  eval-human behaves
+
+=== eval behaves ===
+  ok    export copies the corpus and drops docs/
+  ok    export path carries no version word
+  ok    prepare refuses a corpus containing docs/
+  ok    one prompt per corpus per reader
+  ok    reader prompts carry no corpus label
+  ok    status fails while answers are missing
+  ok    status passes when every answer is present
+  ok    scorer prompt carries no label and no reader id
+  ok    every answer reaches the scorer
+  ok    score refuses an unscored answer
+  ok    score refuses an answer scored twice
+  ok    score refuses a score outside 0..2
+  ok    score accepts a complete, valid set
+  ok    unblinding returns each score to its corpus
+  ok    every result states what it measures
+  ok    compare passes an improvement
+  ok    compare fails a regression
+  ok    compare honours a stated tolerance
+  ok    an unanswered probe scores 0
+  ok    suite instructions replace the default answering rules
+  ok    artifact suites drop the citing instruction
+  ok    self-explanation is cut before the scorer
+  ok    the message itself reaches the scorer
+  ok    scorer instructions replace the guess cap
+  ok    the full answer is kept in answers/
+  ok    a probe most readers hedge on is flagged, and only that one
+26 passed, 0 failed
+PASS  eval behaves
+
+=== s6-one-sentence-per-line behaves ===
+  ok    metadata-block: 3 metadata line(s) survive the fix
+  ok    metadata-then-prose: 1 metadata line(s) survive the fix
+  ok    idempotence: a second fix run changes nothing
+  ok    prose: two sentences on one line are still split with a hard break
+  ok    bold lead-in: a bold sentence opener is treated as prose and split
+
+s6: 6 behaviour check(s) hold.
+PASS  s6-one-sentence-per-line behaves
+
+=== sets behaves ===
+  FAIL  a member that is not an entry is refused
+  ok    a superseded member is refused
+  ok    a draft member is refused
+  ok    an empty members list is refused
+  ok    a block-list member is read, and refused if superseded
+  ok    a valid set's index is generated from its members
+  ok    removing a member removes it from the index
+6 passed, 1 failed
+FAIL  sets behaves
+
+7 changed markdown file(s) against origin/main
+
+=== S10 ===
+
+clean: 7 file(s), rule S10.
+PASS  S10
+
+=== S12 ===
+
+clean: 7 file(s), rule S12.
+PASS  S12
+
+=== S13 ===
+
+clean: 7 file(s), rule S13.
+PASS  S13
+
+=== S14 ===
+
+clean: 7 file(s), rule S14.
+PASS  S14
+
+=== S8 ===
+
+clean: 7 file(s), rule S8.
+PASS  S8
+
+=== S6 ===
+
+clean: 7 file(s), rule S6.
+PASS  S6
+
+FAILED: sets behaves
