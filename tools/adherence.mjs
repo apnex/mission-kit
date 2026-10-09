@@ -238,7 +238,8 @@ async function pool(items, n, fn) {
 	await Promise.all(Array.from({ length: Math.max(1, n) }, async () => { while (q.length) await fn(q.shift()); }));
 }
 
-// Asked with tools forbidden, for four things each arm should or should not hold. The S15 and A4
+// Asked with tools forbidden, for four things each arm should or should not hold. Answers are
+// matched on their text, not on line numbering, which one model dropped in a correct answer. The S15 and A4
 // probes ask for body text a title cannot suggest, so an agent holding only the ledger cannot
 // produce them by inference.
 async function isolationCheck(run, arm, fam, armDir) {
@@ -249,7 +250,7 @@ async function isolationCheck(run, arm, fam, armDir) {
 	const ev = path.join(run, "isolation", `${arm}.${fam}.jsonl`);
 	await agent({ armDir, cwd: dir, prompt: q, model, eventsFile: ev, timeoutMs: 5 * 60 * 1000, readOnly: true });
 	const t = finalTextOf(ev);
-	const got = { index: /repo-audit/i.test(t), s15: /sub-set/i.test(t.split("\n").find((l) => /^\s*2\)/.test(l)) ?? "") && /second|earn|one rule/i.test(t), a4: /collective ram/i.test(t), agents: /engineering doctrine/i.test(t) };
+	const got = { index: /repo-audit/i.test(t), s15: /sub-set/i.test(t) && /second|earn|one rule/i.test(t), a4: /collective ram/i.test(t), agents: /engineering doctrine/i.test(t) };
 	const want = { control: [false, false, false, false], "on-trigger": [true, false, false, true], "always-on": [true, true, true, true] }[arm];
 	let ok = [got.index, got.s15, got.a4, got.agents].every((v, i) => v === want[i]) && /\S/.test(t);
 	// A guided agent must also be able to reach an entry the ledger points to, by fetching it.
