@@ -82,6 +82,7 @@ Every open row, scored on the row and ordered on the common scale; generated, ne
 | `B27` | S3 | A8 signal | M4.4 | The full gate's network check fails under GitHub throttling while passing in isolation. |
 | `B30` | S3 | A8 signal | M4.5 | External addresses outside `AGENTS.md` are checked by nothing, and placeholder links look real. |
 | `B70` | S3 | A8 signal | held | `W22`, and three peers, declare `evidenceAuthority: verifier-attestation` while `W0` constraint 2 says verifier-held gates use plain `kind:review`. |
+| `B76` | S3 | A12 signal | held | With today's guidance, a Gemini agent can spend a whole task fetching ledger entries. |
 | `B12` | S4 | A14 signal | held | The recovery methodology for a brownfield vision is unwritten and its reasoning is untested. |
 | `B19` | S4 | A14 signal | held | Methodology has nothing proportionate for a small design decision. |
 | `B22` | S4 | A9 signal | held | `A9` binds every system unconditionally and is the least exercised axiom in the corpus. |
@@ -112,6 +113,7 @@ Every open row, scored on the row and ordered on the common scale; generated, ne
 | `B71` | S4 | A3 signal | held | No work-type produces a board, a delta or a vision. |
 | `B73` | S4 | A14 signal | held | No guidance in this corpus is measured for adherence, only for comprehension. |
 | `B74` | S4 | A13 signal | held | `S15` gives two counts for a decision message's picks that cannot both hold. |
+| `B75` | S4 | A14 signal | held | The `A4` adherence trap depends on the real date. |
 | `B10` | S5 | A4 signal | M4.1 | `CSSA`/`TSSA` is one downstream programme's vocabulary presented as a corpus convention. |
 | `B39` | S5 | A3 signal | held | Style cannot be scoped by medium. |
 <!-- END GENERATED: ledger -->
@@ -232,6 +234,7 @@ Open rows no live item cites, with their scores and the condition that would rev
 | `B21` | S2 | A4 mandate | No axiom states the property that protects an agent against its own error. | a lone agent ships a claim it corroborated itself and was wrong, or the axiom set is next audited. Whether this is a new axiom or a property an existing one should state - `A8`'s gating and `A4`'s zero-loss are the nearest - is a question for the set. |
 | `B18` | S4 | A4 mandate | Methodology has no procedure for handing over work in progress. | a handover loses information that a procedure would have preserved, or `M5` converts `M0` and the gap becomes a stated thinness. |
 | `B70` | S3 | A8 signal | `W22`, and three peers, declare `evidenceAuthority: verifier-attestation` while `W0` constraint 2 says verifier-held gates use plain `kind:review`. | either is documented, or a gate is refused on the distinction. |
+| `B76` | S3 | A12 signal | With today's guidance, a Gemini agent can spend a whole task fetching ledger entries. | The ledger's reading instructions are next changed, or a second run repeats the pattern |
 | `B12` | S4 | A14 signal | The recovery methodology for a brownfield vision is unwritten and its reasoning is untested. | the first external brownfield adopter reports back. Waiting is deliberate - their run is the only evidence available and costs nothing. |
 | `B19` | S4 | A14 signal | Methodology has nothing proportionate for a small design decision. | a small design decision fails in a way an anchoring check would have caught. |
 | `B22` | S4 | A9 signal | `A9` binds every system unconditionally and is the least exercised axiom in the corpus. | a deployment fails in a way chaos validation would have caught, or `A9` is cited as the reason a change was refused. |
@@ -262,6 +265,7 @@ Open rows no live item cites, with their scores and the condition that would rev
 | `B71` | S4 | A3 signal | No work-type produces a board, a delta or a vision. | one of these is done as claimed work on the coordination substrate, or a project asks which work-type authors one. |
 | `B73` | S4 | A14 signal | No guidance in this corpus is measured for adherence, only for comprehension. | The first adherence run is scored: write `A3` and `A14` traps next, then the remaining axioms, each key committed and audited before its run |
 | `B74` | S4 | A13 signal | `S15` gives two counts for a decision message's picks that cannot both hold. | `S15` is next changed, or a reader or scorer splits on the pick count again |
+| `B75` | S4 | A14 signal | The `A4` adherence trap depends on the real date. | The suite is next revised: drop the relative date, then re-run `A4` alone |
 | `B39` | S5 | A3 signal | Style cannot be scoped by medium. | FIRED and moved: `S15` is the first single-medium rule; one rule does not earn a sub-set. TRIGGER: a second single-medium style rule. Nested sets need generator support, shared with `B38`'s set spanning layers. |
 <!-- END GENERATED: held -->
 
