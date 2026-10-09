@@ -128,6 +128,7 @@ Whether an entry actually states a ruling is checked by reading, not by script.
 | 0084 | 2026-10-09 | The adherence suite runs agents on three model families - Claude, Gemini and GPT - across all three context arms, and each outcome is scored by the two families that did not produce it. | project | director | ratified | - | - | - |
 | 0085 | 2026-10-10 | The explain guidance is measured in the standing evaluation suite by agent judges across families in every run, and the director's human-judged evaluation periodically calibrates those judges. | project | director | ratified | - | - | - |
 | 0086 | 2026-10-10 | The standing evaluation suite design, draft v3, is ratified as written, including the author's choices it lists: the digest arm, the misreading register, a gate that blocks unless overruled, a full run at each milestone close, and calibration of explain judges every second full run. | project | director | ratified | - | - | - |
+| 0087 | 2026-10-10 | The universal part of agent evaluation is a component in its own repository, apnex/agent-evals, used by mission-kit and zorg; mission-kit's standing suite keeps its scenarios, keys and results here and uses that component, and a component entry is admitted only once it is usable. | project | director | ratified | - | - | - |
 
 ---
 
@@ -1239,3 +1240,17 @@ Ratifying with the author's choices amended, or walking through a part first - o
 
 **Source.**\
 `[V, director ruling 2026-10-10; docs/evals/standing/DESIGN.md v3]`
+
+### 0087
+
+**Ruling.**\
+Agent evaluation's universal part lives in `apnex/agent-evals`; mission-kit is one project using it.
+
+**Alternatives refuted.**\
+A top-level folder inside mission-kit - refuted by `C0`, which holds a component's definition and reference but never its implementation.\
+Keeping the runner as a mission-kit tool - refuted because it can then never be universal, and zorg's copy keeps drifting.
+
+**Kind.** project - where mission-kit's evaluation machinery lives.
+
+**Source.**\
+`[V, director rulings 2026-10-10; components/README.md Vision and Territory; zorg evals/tools/run-agents.mjs header]`
