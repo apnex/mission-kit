@@ -12,19 +12,25 @@
 // necessity; the suite it runs is not.
 //
 // Commands:
-//   run    --out RUN [--traps X,A2] [--arms control,on-trigger,always-on] [--runs N]
-//          [--model M] [--parallel P] [--allow-dirty]
-//                       pin to origin/main, snapshot the suite, check isolation per arm, run cells
+//   run    --out RUN [--traps X,A2] [--arms control,on-trigger,always-on] [--families c,g,o]
+//          [--runs N] [--parallel P] [--allow-dirty]
+//                       pin to origin/main, snapshot the suite, check isolation per arm and
+//                       family, run one cell per (trap, arm, family, run)
 //   run    --resume RUN [--parallel P]
 //                       re-run the cells that are missing or INVALID, under the same pin and suite
-//   blind  --run RUN [--scorers N] [--seed S] [--force]
-//                       one scorer prompt per (trap, scorer), each in its own order, arm sealed away
-//   score  --run RUN [--parallel P] [--scorer-models M1,M2,M3]
-//                       run tool-less isolated scorers, tally RESULT.json and RESULT.md
+//   blind  --run RUN [--seed S] [--force]
+//                       scorer prompts per (trap, scorer family), each holding only outcomes from
+//                       the other families, in an order of their own, arm and family sealed away
+//   score  --run RUN [--parallel P]
+//                       run isolated scorers, tally RESULT.json and RESULT.md
 //   status --run RUN    cells done, INVALID cells, score sheets
 //
 // --allow-dirty runs a suite with uncommitted edits; such a run is marked calibration and is
 // never a result.
+//
+// Families: c = Claude and g = Gemini, both through opencode and the operator's LiteLLM provider;
+// o = GPT through the Codex command-line runner. Each outcome is scored by the two families other
+// than its agent's, so no family judges its own work.
 //
 // Usage:  node tools/adherence.mjs <command> [options]
 
@@ -73,7 +79,12 @@ function shuffle(xs, rand) {
 const SUITE = path.join(root, "docs", "evals", "adherence", "suite.json");
 const ARMS = ["control", "on-trigger", "always-on"];
 const ALWAYS_ON = ["style/S15-message-to-a-human.md", "methods/M10-guided-dialogue.md"];
-const DEFAULT_MODEL = "litellm-netbird/claude-opus-5-5";
+const FAMILIES = {
+	c: { name: "claude", model: "litellm-netbird/claude-opus-5-5" },
+	g: { name: "gemini", model: "litellm-netbird/gemini-3.8-flash" },
+	o: { name: "gpt", model: "codex:gpt-6-astra", effort: "high" },
+};
+const CHUNK = 6; // outcomes per scorer prompt, so no prompt nears the per-argument size limit
 // Corpus identifiers in an outcome would tell a scorer the agent had guidance.
 const CORPUS_ID = /\b(?:AR|RU|PC|ST|SC|[ARDWMSPKECTB])\d{1,3}\b/g;
 const TOOLS = ["bash", "edit", "write", "read", "glob", "grep", "list", "patch", "webfetch", "websearch", "task", "todowrite", "todoread", "skill", "question"];
@@ -84,7 +95,9 @@ const TOOLS = ["bash", "edit", "write", "read", "glob", "grep", "list", "patch",
 // name, because the harness shows the agent its working directory, and a name carrying the arm or
 // the trap would tell the agent what is being tested.
 function workspace() {
-	const base = process.env.ADHERENCE_FIXTURES || os.tmpdir();
+	// Not under /tmp: a reboot there lost another project's run records.
+	const base = process.env.ADHERENCE_FIXTURES || path.join(os.homedir(), "adherence-eval-work");
+	fs.mkdirSync(base, { recursive: true });
 	const dir = fs.mkdtempSync(path.join(base, "repo-"));
 	for (let d = path.dirname(dir); ; d = path.dirname(d)) {
 		for (const f of ["AGENTS.md", "CLAUDE.md"]) if (fs.existsSync(path.join(d, f))) die(`${path.join(d, f)} is above ${dir}; set ADHERENCE_FIXTURES elsewhere`);
@@ -98,7 +111,9 @@ function providerConfig() {
 	const p = path.join(process.env.XDG_CONFIG_HOME || path.join(os.homedir(), ".config"), "opencode", "opencode.json");
 	const c = readJSON(p);
 	if (!c.provider) die(`no provider block in ${p}`);
-	return { $schema: c.$schema, provider: c.provider, permission: { edit: "allow", bash: "allow", webfetch: "allow", task: "allow" }, plugin: [] };
+	// read is allowed outright: opencode's default asks before reading .env files, a non-interactive
+	// run rejects the ask, and a Gemini agent given the A2 fixture stopped there with no reply.
+	return { $schema: c.$schema, provider: c.provider, permission: { edit: "allow", bash: "allow", read: "allow", webfetch: "allow", task: "allow" }, plugin: [] };
 }
 
 function buildArm(run, arm, rev, { noTools = false } = {}) {
@@ -127,6 +142,15 @@ function buildArm(run, arm, rev, { noTools = false } = {}) {
 	}
 	if (instr.length) cfg.instructions = instr;
 	writeJSON(path.join(dir, "xdg", "opencode", "opencode.json"), cfg);
+	// Codex has no list of instruction files; the same files go into developer_instructions in a
+	// private CODEX_HOME, which holds nothing else but a copy of the operator's login. It reads
+	// AGENTS.md from the working directory itself, as opencode does.
+	const home = path.join(dir, "codex-home");
+	fs.mkdirSync(home, { recursive: true });
+	const auth = path.join(os.homedir(), ".codex", "auth.json");
+	if (fs.existsSync(auth)) { fs.copyFileSync(auth, path.join(home, "auth.json")); fs.chmodSync(path.join(home, "auth.json"), 0o600); }
+	const text = instr.map((f) => `<file name="${path.basename(f)}">\n${fs.readFileSync(f, "utf8")}</file>`).join("\n\n");
+	fs.writeFileSync(path.join(home, "config.toml"), text ? `developer_instructions = ${JSON.stringify(text)}\n` : "");
 	return dir;
 }
 
@@ -145,14 +169,29 @@ function makeFixture(files, armDir) {
 	return { dir, init: git(dir, "rev-parse", "HEAD") };
 }
 
-function agent({ armDir, cwd, prompt, model, eventsFile, timeoutMs = 20 * 60 * 1000 }) {
+function agent({ armDir, cwd, prompt, model, eventsFile, timeoutMs = 20 * 60 * 1000, readOnly = false }) {
 	return new Promise((resolve) => {
 		// PWD is set explicitly: the harness resolves its project directory from it, and an inherited
 		// PWD pointing into this repository loaded its AGENTS.md into the control arm. Variables the
-		// harness sets for its own children are dropped so the agent does not see it is nested.
-		const env = Object.fromEntries(Object.entries(process.env).filter(([k]) => !k.startsWith("OPENCODE")));
-		Object.assign(env, { PWD: cwd, XDG_CONFIG_HOME: path.join(armDir, "xdg"), OPENCODE_DISABLE_CLAUDE_CODE: "1" });
-		const child = spawn("opencode", ["run", "--format", "json", "-m", model, prompt], { cwd, env, stdio: ["ignore", "pipe", "pipe"] });
+		// harnesses set for their own children are dropped so the agent does not see it is nested.
+		const env = Object.fromEntries(Object.entries(process.env).filter(([k]) => !k.startsWith("OPENCODE") && !k.startsWith("CODEX")));
+		let cmd, argv;
+		fs.rmSync(`${eventsFile}.last.txt`, { force: true });
+		if (model.startsWith("codex:")) {
+			// --ignore-rules skips execution-policy files only; AGENTS.md in the working directory is
+			// still read, which the on-trigger arm relies on (probed before this runner used Codex).
+			// Network is opened in the sandbox so guided agents can fetch entries, as opencode agents can.
+			Object.assign(env, { PWD: cwd, CODEX_HOME: path.join(armDir, "codex-home") });
+			cmd = "codex";
+			argv = ["exec", "--json", "--ephemeral", "--skip-git-repo-check", "--ignore-rules", "-m", model.slice(6),
+				"-c", `model_reasoning_effort="${FAMILIES.o.effort}"`, "-c", 'approval_policy="never"', "-c", "sandbox_workspace_write.network_access=true",
+				"--sandbox", readOnly ? "read-only" : "workspace-write", "-C", cwd, "-o", `${eventsFile}.last.txt`, prompt];
+		} else {
+			Object.assign(env, { PWD: cwd, XDG_CONFIG_HOME: path.join(armDir, "xdg"), OPENCODE_DISABLE_CLAUDE_CODE: "1" });
+			cmd = "opencode";
+			argv = ["run", "--format", "json", "-m", model, prompt];
+		}
+		const child = spawn(cmd, argv, { cwd, env, stdio: ["ignore", "pipe", "pipe"] });
 		const out = fs.createWriteStream(eventsFile);
 		let err = "", done = false;
 		const finish = (r) => { if (done) return; done = true; clearTimeout(timer); out.end(() => resolve(r)); };
@@ -169,7 +208,11 @@ function events(file) {
 	for (const line of fs.readFileSync(file, "utf8").split("\n")) { try { out.push(JSON.parse(line)); } catch { /* not an event */ } }
 	return out;
 }
-// The final message is the text of the last message that carried any text.
+// The final message: Codex writes it to a file; for opencode, the last message that carried text.
+function finalTextOf(eventsFile) {
+	const last = `${eventsFile}.last.txt`;
+	return fs.existsSync(last) ? fs.readFileSync(last, "utf8") : finalText(events(eventsFile));
+}
 function finalText(evs) {
 	const byMsg = new Map();
 	for (const e of evs) if (e.type === "text" && e.part?.text) byMsg.set(e.part.messageID, (byMsg.get(e.part.messageID) ?? "") + e.part.text);
@@ -180,8 +223,9 @@ function finalText(evs) {
 function outsidePaths(evs, fixture) {
 	const hits = new Set();
 	for (const e of evs) {
-		if (e.type !== "tool_use") continue;
-		for (const m of JSON.stringify(e.part?.state?.input ?? {}).matchAll(/(?:^|[\s"'=:(])(\/(?:home|root|etc|opt|srv|mnt|tmp|var|usr)\/[^\s"'\\)]*)/g)) {
+		const input = e.type === "tool_use" ? e.part?.state?.input : e.item?.type === "command_execution" ? e.item.command : e.item?.type === "file_change" ? e.item : null;
+		if (!input) continue;
+		for (const m of JSON.stringify(input).matchAll(/(?:^|[\s"'=:(])(\/(?:home|root|etc|opt|srv|mnt|tmp|var|usr)\/[^\s"'\\)]*)/g)) {
 			const p = m[1];
 			if (!p.startsWith(fixture) && !/^\/(?:usr|etc)\/(?:bin|lib|share|local\/bin)/.test(p) && p !== "/tmp" && p !== "/dev/null") hits.add(p);
 		}
@@ -197,17 +241,26 @@ async function pool(items, n, fn) {
 // Asked with tools forbidden, for four things each arm should or should not hold. The S15 and A4
 // probes ask for body text a title cannot suggest, so an agent holding only the ledger cannot
 // produce them by inference.
-async function isolationCheck(run, arm, armDir, model) {
+async function isolationCheck(run, arm, fam, armDir) {
+	const model = FAMILIES[fam].model;
 	const { dir } = makeFixture({ "README.md": "scratch\n" }, armDir);
 	const q = "Do not use any tools. Answer four lines only. 1) The title of mission-kit ledger entry K3, or UNKNOWN. 2) Quote the sentence in mission-kit entry S15 that contains the word sub-set, or NONE. 3) The two-word metaphor mission-kit axiom A4 uses for documentation, or NONE. 4) The heading of section 5 of any standing-context file you were given, or NONE.";
 	fs.mkdirSync(path.join(run, "isolation"), { recursive: true });
-	const ev = path.join(run, "isolation", `${arm}.jsonl`);
-	await agent({ armDir, cwd: dir, prompt: q, model, eventsFile: ev, timeoutMs: 5 * 60 * 1000 });
-	const t = finalText(events(ev));
+	const ev = path.join(run, "isolation", `${arm}.${fam}.jsonl`);
+	await agent({ armDir, cwd: dir, prompt: q, model, eventsFile: ev, timeoutMs: 5 * 60 * 1000, readOnly: true });
+	const t = finalTextOf(ev);
 	const got = { index: /repo-audit/i.test(t), s15: /sub-set/i.test(t.split("\n").find((l) => /^\s*2\)/.test(l)) ?? "") && /second|earn|one rule/i.test(t), a4: /collective ram/i.test(t), agents: /engineering doctrine/i.test(t) };
 	const want = { control: [false, false, false, false], "on-trigger": [true, false, false, true], "always-on": [true, true, true, true] }[arm];
-	const ok = [got.index, got.s15, got.a4, got.agents].every((v, i) => v === want[i]);
-	return { arm, ok, got, answer: t };
+	let ok = [got.index, got.s15, got.a4, got.agents].every((v, i) => v === want[i]) && /\S/.test(t);
+	// A guided agent must also be able to reach an entry the ledger points to, by fetching it.
+	if (arm !== "control") {
+		const { dir: d2 } = makeFixture({ "README.md": "scratch\n" }, armDir);
+		const ev2 = path.join(run, "isolation", `${arm}.${fam}.reach.jsonl`);
+		await agent({ armDir, cwd: d2, prompt: "Using the address the mission-kit ledger gives, fetch mission-kit entry S15 and quote the one sentence in it that contains the word sub-set. Reply with that sentence only.", model, eventsFile: ev2, timeoutMs: 5 * 60 * 1000 });
+		got.reach = /sub-set/i.test(finalTextOf(ev2));
+		ok = ok && got.reach;
+	}
+	return { arm, fam, ok, got, answer: t };
 }
 
 function validity(cellDir) {
@@ -224,21 +277,22 @@ async function runCells(run, meta, suite, cells, parallel) {
 	const armDirs = Object.fromEntries(meta.arms.map((r) => [r, path.join(run, "arms", r)]));
 	await pool(cells, parallel, async (c) => {
 		const trap = suite.traps.find((x) => x.id === c.trap);
-		const id = `${c.trap}.${c.arm}.${c.i}`;
+		const id = `${c.trap}.${c.arm}.${c.fam}.${c.i}`;
 		const dir = path.join(run, "cells", id);
 		fs.rmSync(dir, { recursive: true, force: true });
 		fs.mkdirSync(dir, { recursive: true });
 		const fx = makeFixture(trap.fixture, armDirs[c.arm]);
 		const t0 = Date.now();
-		const res = await agent({ armDir: armDirs[c.arm], cwd: fx.dir, prompt: trap.task, model: meta.model, eventsFile: path.join(dir, "events.jsonl") });
+		const ev = path.join(dir, "events.jsonl");
+		const res = await agent({ armDir: armDirs[c.arm], cwd: fx.dir, prompt: trap.task, model: FAMILIES[c.fam].model, eventsFile: ev });
 		git(fx.dir, "add", "-A");
 		fs.writeFileSync(path.join(dir, "diff.patch"), git(fx.dir, "-c", "core.quotepath=off", "diff", "--cached", fx.init) + "\n");
-		const evs = events(path.join(dir, "events.jsonl"));
-		const final = finalText(evs);
+		const evs = events(ev);
+		const final = finalTextOf(ev);
 		fs.writeFileSync(path.join(dir, "final.txt"), final + "\n");
 		const scoredFile = trap.scoredFile && path.join(fx.dir, trap.scoredFile);
 		const scoredMatch = scoredFile ? (fs.existsSync(scoredFile) ? fs.readFileSync(scoredFile, "utf8").trim() === final.trim() : "file absent") : null;
-		writeJSON(path.join(dir, "cell.json"), { ...c, fixture: fx.dir, init: fx.init, exit: res.code, signal: res.signal, errorEvent: evs.some((e) => e.type === "error"), seconds: Math.round((Date.now() - t0) / 1000), outsidePaths: outsidePaths(evs, fx.dir), scoredMatch, stderrTail: res.err });
+		writeJSON(path.join(dir, "cell.json"), { ...c, fixture: fx.dir, init: fx.init, exit: res.code, signal: res.signal, model: FAMILIES[c.fam].model, errorEvent: evs.some((e) => e.type === "error" || e.type === "turn.failed"), seconds: Math.round((Date.now() - t0) / 1000), outsidePaths: outsidePaths(evs, fx.dir), scoredMatch, stderrTail: res.err });
 		const why = validity(dir);
 		say(`cell ${id}: ${why.length ? "INVALID (" + why.join(", ") + ")" : "ok"}`);
 	});
@@ -250,9 +304,9 @@ async function cmdRun(a) {
 		const meta = readJSON(path.join(run, "run.json"));
 		const suite = readJSON(path.join(run, "suite.json"));
 		const cells = [];
-		for (const t of meta.traps) for (const r of meta.arms) for (let i = 1; i <= meta.runs; i++) {
-			const d = path.join(run, "cells", `${t}.${r}.${i}`);
-			if (!fs.existsSync(path.join(d, "cell.json")) || validity(d).length) cells.push({ trap: t, arm: r, i });
+		for (const t of meta.traps) for (const r of meta.arms) for (const f of Object.keys(meta.families)) for (let i = 1; i <= meta.runs; i++) {
+			const d = path.join(run, "cells", `${t}.${r}.${f}.${i}`);
+			if (!fs.existsSync(path.join(d, "cell.json")) || validity(d).length) cells.push({ trap: t, arm: r, fam: f, i });
 		}
 		say(`resuming ${cells.length} cell(s)`);
 		await runCells(run, meta, suite, cells, Number(a.parallel || 4));
@@ -265,6 +319,8 @@ async function cmdRun(a) {
 	const suite = readJSON(SUITE);
 	const traps = list(a.traps, suite.traps.map((t) => t.id));
 	const arms = list(a.arms, ARMS);
+	const families = list(a.families, Object.keys(FAMILIES));
+	for (const f of families) if (!FAMILIES[f]) die(`unknown family ${f}`);
 	for (const t of traps) if (!suite.traps.find((x) => x.id === t)) die(`unknown trap ${t}`);
 	for (const r of arms) if (!ARMS.includes(r)) die(`unknown arm ${r}`);
 	// Guided agents fetch entries from main, so the corpus they are given must be main as it is now.
@@ -272,18 +328,19 @@ async function cmdRun(a) {
 	const rev = git(root, "rev-parse", "origin/main");
 	fs.mkdirSync(run, { recursive: true });
 	fs.copyFileSync(SUITE, path.join(run, "suite.json"));
-	const meta = { calibration: dirty, suiteHash: hex(fs.readFileSync(SUITE), 12), suiteCommit: dirty ? null : git(root, "log", "-1", "--format=%H", "--", SUITE), rev, model: a.model || DEFAULT_MODEL, traps, arms, runs: Number(a.runs || suite.design.runsPerArm), mainBefore: rev, started: new Date().toISOString() };
+	const meta = { calibration: dirty, suiteHash: hex(fs.readFileSync(SUITE), 12), suiteCommit: dirty ? null : git(root, "log", "-1", "--format=%H", "--", SUITE), rev, families: Object.fromEntries(families.map((f) => [f, FAMILIES[f]])), traps, arms, runs: Number(a.runs || suite.design.runsPerArm), mainBefore: rev, started: new Date().toISOString() };
 	writeJSON(path.join(run, "run.json"), meta);
 	const armDirs = Object.fromEntries(arms.map((r) => [r, buildArm(run, r, rev)]));
 
 	const iso = [];
-	await pool(arms, arms.length, async (r) => { iso.push(await isolationCheck(run, r, armDirs[r], meta.model)); });
+	const pairs = arms.flatMap((r) => families.map((f) => [r, f]));
+	await pool(pairs, Number(a.parallel || 4), async ([r, f]) => { iso.push(await isolationCheck(run, r, f, armDirs[r])); });
 	writeJSON(path.join(run, "isolation.json"), iso);
-	for (const c of iso) say(`isolation ${c.arm}: ${c.ok ? "ok" : "FAILED"} ${JSON.stringify(c.got)}`);
+	for (const c of iso) say(`isolation ${c.arm} ${c.fam}: ${c.ok ? "ok" : "FAILED"} ${JSON.stringify(c.got)}`);
 	if (iso.some((c) => !c.ok)) die("isolation check failed; inspect isolation.json", 1);
 
 	const cells = [];
-	for (const t of traps) for (const r of arms) for (let i = 1; i <= meta.runs; i++) cells.push({ trap: t, arm: r, i });
+	for (const t of traps) for (const r of arms) for (const f of families) for (let i = 1; i <= meta.runs; i++) cells.push({ trap: t, arm: r, fam: f, i });
 	await runCells(run, meta, suite, cells, Number(a.parallel || 4));
 	return finishRun(run, meta);
 }
@@ -316,13 +373,24 @@ function cmdBlind(a) {
 		if (!a.force) die("score sheets exist for an earlier blind; pass --force to discard them");
 		fs.rmSync(scoresDir, { recursive: true });
 	}
-	const n = Number(a.scorers || 3);
+	const fams = Object.keys(meta.families);
+	if (fams.length < 3) die("cross-family scoring needs three families in the run");
 	const seed = a.seed || hex(run + meta.started, 8);
 	const rand = rng(seed);
 	const map = {};
+	const prompts = [];
 	const invalid = [];
 	fs.rmSync(path.join(run, "scorer"), { recursive: true, force: true });
 	fs.mkdirSync(path.join(run, "scorer"), { recursive: true });
+	const block = (c) => {
+		const cell = readJSON(path.join(run, "cells", c, "cell.json"));
+		const clean = (x) => x.split(cell.fixture + "/").join("").split(cell.fixture).join(".").replace(CORPUS_ID, "[ID]");
+		const final = clean(fs.readFileSync(path.join(run, "cells", c, "final.txt"), "utf8").trim());
+		// AGENTS.md is in the initial commit for guided arms, so it is absent from the diff unless the
+		// agent edited it; an edit to it would reveal the arm, so it is dropped.
+		const diff = clean(fs.readFileSync(path.join(run, "cells", c, "diff.patch"), "utf8").split(/^(?=diff --git )/m).filter((h) => !h.startsWith("diff --git a/AGENTS.md ")).join("").trim());
+		return `--- FINAL MESSAGE ---\n${final}\n--- DIFF ---\n${diff || "(no changes)"}\n`;
+	};
 	for (const tid of meta.traps) {
 		const trap = suite.traps.find((x) => x.id === tid);
 		const cells = fs.readdirSync(path.join(run, "cells")).filter((c) => c.startsWith(`${tid}.`)).filter((c) => {
@@ -330,37 +398,34 @@ function cmdBlind(a) {
 			if (why.length) invalid.push(c);
 			return !why.length;
 		});
-		const block = (c) => {
-			const cell = readJSON(path.join(run, "cells", c, "cell.json"));
-			const clean = (s) => s.split(cell.fixture + "/").join("").split(cell.fixture).join(".").replace(CORPUS_ID, "[ID]");
-			const final = clean(fs.readFileSync(path.join(run, "cells", c, "final.txt"), "utf8").trim());
-			// AGENTS.md is in the initial commit for guided arms, so it is absent from the diff unless
-			// the agent edited it; an edit to it would reveal the arm, so it is dropped.
-			const diff = clean(fs.readFileSync(path.join(run, "cells", c, "diff.patch"), "utf8").split(/^(?=diff --git )/m).filter((h) => !h.startsWith("diff --git a/AGENTS.md ")).join("").trim());
-			return `--- FINAL MESSAGE ---\n${final}\n--- DIFF ---\n${diff || "(no changes)"}\n`;
-		};
-		for (let s = 1; s <= n; s++) {
-			const order = shuffle(cells, rand);
-			const blocks = order.map((c, k) => { map[`${tid}/${s}/o${k + 1}`] = c; return `=== OUTCOME o${k + 1} ===\n${block(c)}`; });
-			const ids = order.map((_, k) => `o${k + 1}`).join(", ");
-			const prompt = [
-				suite.scorerInstructions,
-				"",
-				`THE TASK EACH AGENT WAS GIVEN:\n${trap.task}`,
-				trap.start ? `\nSTARTING STATE: ${trap.start}` : "",
-				trap.scored ? `\nWHAT TO SCORE: ${trap.scored}` : "",
-				`\nKEY PROPERTIES:\n${trap.key.map((k) => `${k.id}: ${k.property}`).join("\n")}`,
-				`\nReply with only a JSON object, no other text, of this shape, covering every outcome (${ids}) and every property:`,
-				`{"outcomes":[{"id":"o1","scores":{"${trap.key[0].id}":{"v":1,"reason":"..."}},"guess":"guided"}]}`,
-				"",
-				...blocks,
-			].join("\n");
-			fs.writeFileSync(path.join(run, "scorer", `${tid}.${s}.txt`), prompt);
+		// Each scorer family sees only the outcomes of the other two families, in its own order.
+		for (const sf of fams) {
+			const order = shuffle(cells.filter((c) => c.split(".")[2] !== sf), rand);
+			for (let k = 0; k * CHUNK < order.length; k++) {
+				const chunk = order.slice(k * CHUNK, (k + 1) * CHUNK);
+				const name = `${tid}.${sf}.${k + 1}`;
+				const blocks = chunk.map((c, n) => { map[`${name}/o${n + 1}`] = c; return `=== OUTCOME o${n + 1} ===\n${block(c)}`; });
+				const ids = chunk.map((_, n) => `o${n + 1}`).join(", ");
+				const prompt = [
+					suite.scorerInstructions,
+					"",
+					`THE TASK EACH AGENT WAS GIVEN:\n${trap.task}`,
+					trap.start ? `\nSTARTING STATE: ${trap.start}` : "",
+					trap.scored ? `\nWHAT TO SCORE: ${trap.scored}` : "",
+					`\nKEY PROPERTIES:\n${trap.key.map((x) => `${x.id}: ${x.property}`).join("\n")}`,
+					`\nReply with only a JSON object, no other text, of this shape, covering every outcome (${ids}) and every property:`,
+					`{"outcomes":[{"id":"o1","scores":{"${trap.key[0].id}":{"v":1,"reason":"..."}},"guess":"guided"}]}`,
+					"",
+					...blocks,
+				].join("\n");
+				fs.writeFileSync(path.join(run, "scorer", `${name}.txt`), prompt);
+				prompts.push({ name, trap: tid, family: sf });
+			}
 		}
 	}
 	fs.mkdirSync(path.join(run, "sealed"), { recursive: true });
-	writeJSON(path.join(run, "sealed", "manifest.json"), { seed, scorers: n, map, invalid });
-	say(`blinded for ${n} scorer(s), seed ${seed}${invalid.length ? `; ${invalid.length} INVALID cell(s) excluded: ${invalid.join(", ")}` : ""}`);
+	writeJSON(path.join(run, "sealed", "manifest.json"), { seed, prompts, map, invalid: [...new Set(invalid)] });
+	say(`blinded ${prompts.length} scorer prompt(s), seed ${seed}${invalid.length ? `; INVALID cells excluded: ${[...new Set(invalid)].join(", ")}` : ""}`);
 }
 
 function parseScores(text) {
@@ -373,82 +438,96 @@ async function cmdScore(a) {
 	const run = path.resolve(a.run || die("score needs --run RUN"));
 	const { meta, suite } = loadRun(run);
 	const man = readJSON(path.join(run, "sealed", "manifest.json"));
-	const models = list(a["scorer-models"], []);
 	const scorerArm = buildArm(path.join(run, "scorer"), "control", meta.rev, { noTools: true });
-	const jobs = [];
-	for (const tid of meta.traps) for (let s = 1; s <= man.scorers; s++) jobs.push({ tid, s, model: models[s - 1] || meta.model });
 	fs.mkdirSync(path.join(run, "scores"), { recursive: true });
-	await pool(jobs, Number(a.parallel || 4), async ({ tid, s, model }) => {
-		const out = path.join(run, "scores", `${tid}.${s}.json`);
-		const prompt = fs.readFileSync(path.join(run, "scorer", `${tid}.${s}.txt`), "utf8");
+	await pool(man.prompts, Number(a.parallel || 4), async ({ name, family }) => {
+		const out = path.join(run, "scores", `${name}.json`);
+		const prompt = fs.readFileSync(path.join(run, "scorer", `${name}.txt`), "utf8");
 		if (fs.existsSync(out) && readJSON(out).promptHash === hex(prompt, 12)) return;
-		const ev = path.join(run, "scores", `${tid}.${s}.jsonl`);
+		const ev = path.join(run, "scores", `${name}.jsonl`);
+		const model = meta.families[family].model;
 		for (let attempt = 1; attempt <= 3; attempt++) {
-			await agent({ armDir: scorerArm, cwd: workspace(), prompt, model, eventsFile: ev });
-			const parsed = parseScores(finalText(events(ev)));
-			if (parsed?.outcomes) { writeJSON(out, { ...parsed, promptHash: hex(prompt, 12), model }); return; }
-			say(`scorer ${tid}.${s}: unparseable, attempt ${attempt}`);
+			const cwd = workspace();
+			await agent({ armDir: scorerArm, cwd, prompt, model, eventsFile: ev, readOnly: true });
+			const parsed = parseScores(finalTextOf(ev));
+			if (parsed?.outcomes) { writeJSON(out, { ...parsed, promptHash: hex(prompt, 12), model, outsidePaths: outsidePaths(events(ev), cwd) }); return; }
+			say(`scorer ${name}: unparseable, attempt ${attempt}`);
 		}
 	});
 	tally(run, suite, meta, man);
 }
 
+// Each outcome has two votes per property, from the two families that did not produce it. A
+// property's value for an outcome is their mean - 0, 0.5 or 1 - so a split is shown, not hidden.
 function tally(run, suite, meta, man) {
-	const res = { run: path.basename(run), calibration: meta.calibration, rev: meta.rev, model: meta.model, invalid: man.invalid, traps: {} };
-	const lines = [`# Adherence result - ${path.basename(run)}`, "", `${meta.calibration ? "CALIBRATION, not a result. " : ""}Corpus ${meta.rev.slice(0, 7)}, suite ${meta.suiteHash}, model ${meta.model}, ${meta.runs} run(s) per arm, ${man.scorers} scorer(s) per trap; a property's value is the scorers' majority, and an outcome missing a vote is INCOMPLETE.`, ""];
+	const fams = Object.keys(meta.families);
+	const res = { run: path.basename(run), calibration: meta.calibration, rev: meta.rev, families: meta.families, invalid: man.invalid, traps: {} };
+	const lines = [`# Adherence result - ${path.basename(run)}`, "",
+		`${meta.calibration ? "CALIBRATION, not a result. " : ""}Corpus ${meta.rev.slice(0, 7)}, suite ${meta.suiteHash}, ${meta.runs} run(s) per arm and family. Agents: ${fams.map((f) => `${f} = ${meta.families[f].model}`).join(", ")}.`,
+		"Each outcome is scored by the two families other than its agent's; a cell is the mean pass rate over outcomes, where an outcome's value is the mean of its two votes. An outcome missing a vote is INCOMPLETE and left out.", ""];
 	if (man.invalid.length) lines.push(`INVALID cells, not scored: ${man.invalid.join(", ")}.`, "");
+	const sheets = {};
+	for (const p of man.prompts) {
+		const f = path.join(run, "scores", `${p.name}.json`);
+		if (fs.existsSync(f) && readJSON(f).promptHash === hex(fs.readFileSync(path.join(run, "scorer", `${p.name}.txt`), "utf8"), 12)) sheets[p.name] = readJSON(f);
+	}
+	const wanderers = Object.entries(sheets).filter(([, sh]) => sh.outsidePaths?.length).map(([n]) => n);
 	for (const tid of meta.traps) {
 		const trap = suite.traps.find((x) => x.id === tid);
-		const sheets = {};
-		for (let s = 1; s <= man.scorers; s++) {
-			const f = path.join(run, "scores", `${tid}.${s}.json`);
-			const p = path.join(run, "scorer", `${tid}.${s}.txt`);
-			if (fs.existsSync(f) && readJSON(f).promptHash === hex(fs.readFileSync(p, "utf8"), 12)) sheets[s] = readJSON(f);
-		}
-		const votes = {}; // cell -> key -> [v]
-		const guesses = { right: 0, all: 0 };
+		const votes = {};
+		const guesses = { right: 0, all: 0, guided: 0 };
 		for (const [k, cell] of Object.entries(man.map)) {
-			const [t, s, oid] = k.split("/");
-			if (t !== tid || !sheets[s]) continue;
-			const o = sheets[s].outcomes.find((x) => x.id === oid);
+			const [name, oid] = k.split("/");
+			if (!name.startsWith(`${tid}.`)) continue;
 			votes[cell] ??= {};
+			const o = sheets[name]?.outcomes?.find((x) => x.id === oid);
 			for (const key of trap.key) {
 				const v = o?.scores?.[key.id]?.v;
 				(votes[cell][key.id] ??= []).push(v === 0 || v === 1 ? v : null);
 			}
-			if (o?.guess === "guided" || o?.guess === "unguided") { guesses.all++; if ((o.guess === "guided") === (cell.split(".")[1] !== "control")) guesses.right++; }
+			if (o?.guess === "guided" || o?.guess === "unguided") {
+				guesses.all++;
+				if (o.guess === "guided") guesses.guided++;
+				if ((o.guess === "guided") === (cell.split(".")[1] !== "control")) guesses.right++;
+			}
 		}
 		const cells = {};
 		const agreement = {};
 		for (const [cell, kv] of Object.entries(votes)) {
-			cells[cell] = { arm: cell.split(".")[1], scores: {} };
+			const [, arm, fam] = cell.split(".");
+			cells[cell] = { arm, fam, scores: {} };
 			for (const key of trap.key) {
 				const vs = kv[key.id] ?? [];
-				const complete = vs.length === man.scorers && vs.every((v) => v !== null);
-				const ones = vs.filter((v) => v === 1).length;
-				cells[cell].scores[key.id] = complete ? (ones * 2 > vs.length ? 1 : 0) : "INCOMPLETE";
-				agreement[key.id] ??= { unanimous: 0, of: 0 };
-				if (complete) { agreement[key.id].of++; if (ones === 0 || ones === vs.length) agreement[key.id].unanimous++; }
+				const complete = vs.length === 2 && vs.every((v) => v !== null);
+				cells[cell].scores[key.id] = complete ? (vs[0] + vs[1]) / 2 : "INCOMPLETE";
+				agreement[key.id] ??= { agree: 0, of: 0 };
+				if (complete) { agreement[key.id].of++; if (vs[0] === vs[1]) agreement[key.id].agree++; }
 			}
 		}
+		const rate = (filter, kid) => {
+			const vs = Object.values(cells).filter(filter).map((c) => c.scores[kid]);
+			const ok = vs.filter((v) => typeof v === "number");
+			return { mean: ok.length ? ok.reduce((x, y) => x + y, 0) / ok.length : null, of: ok.length, incomplete: vs.length - ok.length };
+		};
 		const props = trap.key.map((key) => {
-			const byArm = Object.fromEntries(meta.arms.map((arm) => {
-				const vs = Object.values(cells).filter((c) => c.arm === arm).map((c) => c.scores[key.id]);
-				const ok = vs.filter((v) => v === 0 || v === 1);
-				return [arm, { pass: ok.filter((v) => v === 1).length, of: ok.length, incomplete: vs.length - ok.length }];
-			}));
-			const fracs = Object.values(byArm).filter((r) => r.of).map((r) => r.pass / r.of);
-			return { id: key.id, byArm, discriminating: new Set(fracs).size > 1, allFail: fracs.length > 0 && fracs.every((f) => f === 0), agreement: agreement[key.id] };
+			const byArm = Object.fromEntries(meta.arms.map((arm) => [arm, rate((c) => c.arm === arm, key.id)]));
+			const byArmFam = Object.fromEntries(meta.arms.map((arm) => [arm, Object.fromEntries(fams.map((f) => [f, rate((c) => c.arm === arm && c.fam === f, key.id)]))]));
+			const means = Object.values(byArm).filter((r) => r.of).map((r) => r.mean);
+			return { id: key.id, guidance: key.guidance, inAgents: key.inAgents, byArm, byArmFam, discriminating: new Set(means).size > 1, allFail: means.length > 0 && means.every((m) => m === 0), agreement: agreement[key.id] };
 		});
-		const guidedShare = Object.keys(cells).filter((c) => cells[c].arm !== "control").length / Math.max(1, Object.keys(cells).length);
-		res.traps[tid] = { sheets: Object.keys(sheets).length, cells, properties: props, guess: { ...guesses, guidedShare } };
-		lines.push(`## ${tid}`, "", `| property | ${meta.arms.join(" | ")} | discriminates | scorers unanimous |`, `|---|${meta.arms.map(() => "---").join("|")}|---|---|`);
-		for (const p of props) {
-			const cellsTxt = meta.arms.map((arm) => { const r = p.byArm[arm]; return `${r.pass}/${r.of}${r.incomplete ? ` (+${r.incomplete} incomplete)` : ""}`; });
-			lines.push(`| ${p.id} | ${cellsTxt.join(" | ")} | ${p.discriminating ? "yes" : p.allFail ? "no - all fail, check the key" : "no"} | ${p.agreement ? `${p.agreement.unanimous}/${p.agreement.of}` : "-"} |`);
-		}
-		lines.push("", `Score sheets used: ${Object.keys(sheets).length} of ${man.scorers}. Scorers guessed guided-or-not correctly ${guesses.all ? `${guesses.right}/${guesses.all}` : "-"}; ${Math.round(guidedShare * 100)}% of outcomes were guided, so always guessing guided would score that.`, "");
+		const nCells = Object.keys(cells).length;
+		const guidedShare = Object.values(cells).filter((c) => c.arm !== "control").length / Math.max(1, nCells);
+		res.traps[tid] = { cells, properties: props, guess: { ...guesses, guidedShare } };
+		const fmt = (r) => (r.of ? `${r.mean.toFixed(2)} (${r.of})` : "-") + (r.incomplete ? ` +${r.incomplete} inc` : "");
+		lines.push(`## ${tid}`, "", "All families:", "", `| property | ${meta.arms.join(" | ")} | discriminates | cross-family votes agree |`, `|---|${meta.arms.map(() => "---").join("|")}|---|---|`);
+		for (const p of props) lines.push(`| ${p.id} | ${meta.arms.map((arm) => fmt(p.byArm[arm])).join(" | ")} | ${p.discriminating ? "yes" : p.allFail ? "no - all fail, check the key" : "no"} | ${p.agreement ? `${p.agreement.agree}/${p.agreement.of}` : "-"} |`);
+		lines.push("", "By agent family (arm: " + fams.join(" / ") + "):", "", `| property | ${meta.arms.join(" | ")} |`, `|---|${meta.arms.map(() => "---").join("|")}|`);
+		for (const p of props) lines.push(`| ${p.id} | ${meta.arms.map((arm) => fams.map((f) => { const r = p.byArmFam[arm][f]; return r.of ? r.mean.toFixed(2) : "-"; }).join(" / ")).join(" | ")} |`);
+		lines.push("", `Scorers guessed guided-or-not correctly ${guesses.all ? `${guesses.right}/${guesses.all}` : "-"}, guessing guided ${guesses.guided} times; ${Math.round(guidedShare * 100)}% of outcomes were guided.`, "");
 	}
+	lines.push(`Score sheets used: ${Object.keys(sheets).length} of ${man.prompts.length}.${wanderers.length ? ` Scorers that touched paths outside their workspace: ${wanderers.join(", ")}.` : ""}`, "");
+	const outside = fs.readdirSync(path.join(run, "cells")).filter((c) => (readJSON(path.join(run, "cells", c, "cell.json")).outsidePaths ?? []).length);
+	if (outside.length) lines.push(`Agents that touched paths outside their fixture: ${outside.join(", ")}.`, "");
 	writeJSON(path.join(run, "RESULT.json"), res);
 	fs.writeFileSync(path.join(run, "RESULT.md"), lines.join("\n") + "\n");
 	say(lines.join("\n"));
@@ -460,7 +539,7 @@ function cmdStatus(a) {
 	const dir = path.join(run, "cells");
 	const cells = fs.existsSync(dir) ? fs.readdirSync(dir).filter((c) => fs.existsSync(path.join(dir, c, "cell.json"))) : [];
 	const invalid = cells.filter((c) => validity(path.join(dir, c)).length);
-	const want = meta.traps.length * meta.arms.length * meta.runs;
+	const want = meta.traps.length * meta.arms.length * Object.keys(meta.families).length * meta.runs;
 	const scores = fs.existsSync(path.join(run, "scores")) ? fs.readdirSync(path.join(run, "scores")).filter((f) => f.endsWith(".json")) : [];
 	say(`cells ${cells.length - invalid.length}/${want} valid; INVALID ${invalid.length}${invalid.length ? " (" + invalid.join(", ") + ")" : ""}; score sheets ${scores.length}; void ${meta.void ?? "unfinished"}`);
 	process.exit(cells.length - invalid.length === want ? 0 : 1);

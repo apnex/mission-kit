@@ -346,7 +346,7 @@ Each refusal was mutation-tested - removed from the tool to confirm the test goe
 Measures whether an agent doing a task acts on guidance, by running the same task with no guidance, with today's guidance, and with the guidance always in context.
 
 ```sh
-node tools/adherence.mjs run    --out docs/evals/runs/<id> [--traps X,A2] [--runs 3]
+node tools/adherence.mjs run    --out docs/evals/runs/<id> [--traps X,A2] [--families c,g,o] [--runs 3]
 node tools/adherence.mjs run    --resume docs/evals/runs/<id>
 node tools/adherence.mjs blind  --run docs/evals/runs/<id>
 node tools/adherence.mjs score  --run docs/evals/runs/<id>
@@ -359,6 +359,7 @@ Whether an agent acts on guidance in the middle of a task can only be seen by ru
 
 **It calls agents, unlike `eval.mjs`.**\
 It drives the opencode command-line runner with a config directory of its own per arm, in workspaces outside any directory holding a rules file, and checks before every run that each arm receives exactly the guidance it should.\
+Agents run on three model families - Claude and Gemini through opencode, GPT through Codex - and each outcome is scored by the two families that did not produce it.\
 It is harness-specific by necessity; the suite in [`docs/evals/adherence/`](../docs/evals/adherence/suite.json) is not.
 
 **Run it when** deciding whether guidance should be held always-on, or after changing guidance that agents are expected to act on mid-task.\
