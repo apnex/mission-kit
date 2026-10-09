@@ -78,6 +78,7 @@ Every open row, scored on the row and ordered on the common scale; generated, ne
 | Row | Impact | Principle | Planned in | Finding |
 |---|---|---|---|---|
 | `B21` | S2 | A4 mandate | held | No axiom states the property that protects an agent against its own error. |
+| `B77` | S3 | A3 mandate | held | The adherence runner has mission-kit built into it, so it is not yet the universal component `0087` places in `agent-evals`. |
 | `B18` | S4 | A4 mandate | held | Methodology has no procedure for handing over work in progress. |
 | `B27` | S3 | A8 signal | M4.4 | The full gate's network check fails under GitHub throttling while passing in isolation. |
 | `B30` | S3 | A8 signal | M4.5 | External addresses outside `AGENTS.md` are checked by nothing, and placeholder links look real. |
@@ -232,6 +233,7 @@ Open rows no live item cites, with their scores and the condition that would rev
 | Row | Impact | Principle | Finding | Revival trigger |
 |---|---|---|---|---|
 | `B21` | S2 | A4 mandate | No axiom states the property that protects an agent against its own error. | a lone agent ships a claim it corroborated itself and was wrong, or the axiom set is next audited. Whether this is a new axiom or a property an existing one should state - `A8`'s gating and `A4`'s zero-loss are the nearest - is a question for the set. |
+| `B77` | S3 | A3 mandate | The adherence runner has mission-kit built into it, so it is not yet the universal component `0087` places in `agent-evals`. | The `agent-evals` vision is ratified: extract the core there behind a project-supplied seam, then retire the copies |
 | `B18` | S4 | A4 mandate | Methodology has no procedure for handing over work in progress. | a handover loses information that a procedure would have preserved, or `M5` converts `M0` and the gap becomes a stated thinness. |
 | `B70` | S3 | A8 signal | `W22`, and three peers, declare `evidenceAuthority: verifier-attestation` while `W0` constraint 2 says verifier-held gates use plain `kind:review`. | either is documented, or a gate is refused on the distinction. |
 | `B76` | S3 | A12 signal | With today's guidance, a Gemini agent can spend a whole task fetching ledger entries. | The ledger's reading instructions are next changed, or a second run repeats the pattern |
