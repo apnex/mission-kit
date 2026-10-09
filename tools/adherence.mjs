@@ -94,11 +94,15 @@ const TOOLS = ["bash", "edit", "write", "read", "glob", "grep", "list", "patch",
 // loaded its AGENTS.md into the control arm. Each workspace is a fresh directory with an opaque
 // name, because the harness shows the agent its working directory, and a name carrying the arm or
 // the trap would tell the agent what is being tested.
-function workspace() {
-	// Not under /tmp: a reboot there lost another project's run records.
-	const base = process.env.ADHERENCE_FIXTURES || path.join(os.homedir(), "adherence-eval-work");
-	fs.mkdirSync(base, { recursive: true });
-	const dir = fs.mkdtempSync(path.join(base, "repo-"));
+// Not under /tmp: a reboot there lost another project's run records.
+const WORK = process.env.ADHERENCE_FIXTURES || path.join(os.homedir(), "adherence-eval-work");
+// Paths an agent must never touch: the workspace holding this repository, and the run records.
+// Harness guards do not cover absolute paths inside shell commands, so a cell that touches one is
+// detected afterwards and marked INVALID.
+const FORBIDDEN = [path.dirname(root)];
+function workspace(prefix = "repo-") {
+	fs.mkdirSync(WORK, { recursive: true });
+	const dir = fs.mkdtempSync(path.join(WORK, prefix));
 	for (let d = path.dirname(dir); ; d = path.dirname(d)) {
 		for (const f of ["AGENTS.md", "CLAUDE.md"]) if (fs.existsSync(path.join(d, f))) die(`${path.join(d, f)} is above ${dir}; set ADHERENCE_FIXTURES elsewhere`);
 		if (d === path.dirname(d)) break;
@@ -113,11 +117,16 @@ function providerConfig() {
 	if (!c.provider) die(`no provider block in ${p}`);
 	// read is allowed outright: opencode's default asks before reading .env files, a non-interactive
 	// run rejects the ask, and a Gemini agent given the A2 fixture stopped there with no reply.
-	return { $schema: c.$schema, provider: c.provider, permission: { edit: "allow", bash: "allow", read: "allow", webfetch: "allow", task: "allow" }, plugin: [] };
+	// external_directory is denied rather than left to ask: a refused ask ends a non-interactive
+	// session with no reply, while a denial returns an error the agent can work around.
+	return { $schema: c.$schema, provider: c.provider, permission: { edit: "allow", bash: "allow", read: "allow", webfetch: "allow", task: "allow", external_directory: "deny" }, plugin: [] };
 }
 
+// An arm's config lives outside this repository under an opaque name, because both harnesses show
+// the agent the paths of its instruction files: the first full run kept them under the run
+// directory, and guided agents read the arm's name, the evaluation, and the local corpus from it.
 function buildArm(run, arm, rev, { noTools = false } = {}) {
-	const dir = path.join(run, "arms", arm);
+	const dir = workspace("cfg-");
 	fs.mkdirSync(path.join(dir, "xdg", "opencode"), { recursive: true });
 	fs.mkdirSync(path.join(dir, "instr"), { recursive: true });
 	const cfg = providerConfig();
@@ -225,7 +234,7 @@ function outsidePaths(evs, fixture) {
 	for (const e of evs) {
 		const input = e.type === "tool_use" ? e.part?.state?.input : e.item?.type === "command_execution" ? e.item.command : e.item?.type === "file_change" ? e.item : null;
 		if (!input) continue;
-		for (const m of JSON.stringify(input).matchAll(/(?:^|[\s"'=:(])(\/(?:home|root|etc|opt|srv|mnt|tmp|var|usr)\/[^\s"'\\)]*)/g)) {
+		for (const m of JSON.stringify(input).replaceAll("~/", os.homedir() + "/").matchAll(/(?:^|[\s"'=:(])(\/(?:home|root|etc|opt|srv|mnt|tmp|var|usr)\/[^\s"'\\)]*)/g)) {
 			const p = m[1];
 			if (!p.startsWith(fixture) && !/^\/(?:usr|etc)\/(?:bin|lib|share|local\/bin)/.test(p) && p !== "/tmp" && p !== "/dev/null") hits.add(p);
 		}
@@ -271,15 +280,20 @@ function validity(cellDir) {
 	if (c.signal) why.push(`signal ${c.signal}`);
 	if (!fs.readFileSync(path.join(cellDir, "final.txt"), "utf8").trim()) why.push("no final message");
 	if (c.errorEvent) why.push("error event");
+	if (c.forbidden?.length) why.push(`touched ${c.forbidden[0]}`);
 	return why;
 }
 
 async function runCells(run, meta, suite, cells, parallel) {
-	const armDirs = Object.fromEntries(meta.arms.map((r) => [r, path.join(run, "arms", r)]));
+	const armDirs = meta.armDirs;
 	await pool(cells, parallel, async (c) => {
 		const trap = suite.traps.find((x) => x.id === c.trap);
 		const id = `${c.trap}.${c.arm}.${c.fam}.${c.i}`;
 		const dir = path.join(run, "cells", id);
+		// A re-run keeps why earlier attempts were INVALID: re-running only failures selects which
+		// attempts count, so the number per arm is reported in case it is uneven.
+		let prior = [];
+		if (fs.existsSync(path.join(dir, "cell.json"))) prior = [...(readJSON(path.join(dir, "cell.json")).priorInvalid ?? []), validity(dir).join(", ")];
 		fs.rmSync(dir, { recursive: true, force: true });
 		fs.mkdirSync(dir, { recursive: true });
 		const fx = makeFixture(trap.fixture, armDirs[c.arm]);
@@ -293,7 +307,7 @@ async function runCells(run, meta, suite, cells, parallel) {
 		fs.writeFileSync(path.join(dir, "final.txt"), final + "\n");
 		const scoredFile = trap.scoredFile && path.join(fx.dir, trap.scoredFile);
 		const scoredMatch = scoredFile ? (fs.existsSync(scoredFile) ? fs.readFileSync(scoredFile, "utf8").trim() === final.trim() : "file absent") : null;
-		writeJSON(path.join(dir, "cell.json"), { ...c, fixture: fx.dir, init: fx.init, exit: res.code, signal: res.signal, model: FAMILIES[c.fam].model, errorEvent: evs.some((e) => e.type === "error" || e.type === "turn.failed"), seconds: Math.round((Date.now() - t0) / 1000), outsidePaths: outsidePaths(evs, fx.dir), scoredMatch, stderrTail: res.err });
+		writeJSON(path.join(dir, "cell.json"), { ...c, fixture: fx.dir, init: fx.init, exit: res.code, signal: res.signal, model: FAMILIES[c.fam].model, errorEvent: evs.some((e) => e.type === "error" || e.type === "turn.failed"), seconds: Math.round((Date.now() - t0) / 1000), outsidePaths: outsidePaths(evs, fx.dir), forbidden: outsidePaths(evs, fx.dir).filter((p) => FORBIDDEN.some((f) => p.startsWith(f)) || (p.startsWith(WORK) && !p.startsWith(armDirs[c.arm]))), scoredMatch, priorInvalid: prior, stderrTail: res.err });
 		const why = validity(dir);
 		say(`cell ${id}: ${why.length ? "INVALID (" + why.join(", ") + ")" : "ok"}`);
 	});
@@ -332,6 +346,8 @@ async function cmdRun(a) {
 	const meta = { calibration: dirty, suiteHash: hex(fs.readFileSync(SUITE), 12), suiteCommit: dirty ? null : git(root, "log", "-1", "--format=%H", "--", SUITE), rev, families: Object.fromEntries(families.map((f) => [f, FAMILIES[f]])), traps, arms, runs: Number(a.runs || suite.design.runsPerArm), mainBefore: rev, started: new Date().toISOString() };
 	writeJSON(path.join(run, "run.json"), meta);
 	const armDirs = Object.fromEntries(arms.map((r) => [r, buildArm(run, r, rev)]));
+	meta.armDirs = armDirs;
+	writeJSON(path.join(run, "run.json"), meta);
 
 	const iso = [];
 	const pairs = arms.flatMap((r) => families.map((f) => [r, f]));
@@ -527,6 +543,12 @@ function tally(run, suite, meta, man) {
 		lines.push("", `Scorers guessed guided-or-not correctly ${guesses.all ? `${guesses.right}/${guesses.all}` : "-"}, guessing guided ${guesses.guided} times; ${Math.round(guidedShare * 100)}% of outcomes were guided.`, "");
 	}
 	lines.push(`Score sheets used: ${Object.keys(sheets).length} of ${man.prompts.length}.${wanderers.length ? ` Scorers that touched paths outside their workspace: ${wanderers.join(", ")}.` : ""}`, "");
+	const reruns = {};
+	for (const c of fs.readdirSync(path.join(run, "cells"))) {
+		const n = (readJSON(path.join(run, "cells", c, "cell.json")).priorInvalid ?? []).length;
+		if (n) { const k = c.split(".").slice(1, 3).join("."); reruns[k] = (reruns[k] ?? 0) + n; }
+	}
+	if (Object.keys(reruns).length) lines.push(`INVALID attempts re-run, by arm.family: ${Object.entries(reruns).map(([k, v]) => `${k} ${v}`).join(", ")}.`, "");
 	const outside = fs.readdirSync(path.join(run, "cells")).filter((c) => (readJSON(path.join(run, "cells", c, "cell.json")).outsidePaths ?? []).length);
 	if (outside.length) lines.push(`Agents that touched paths outside their fixture: ${outside.join(", ")}.`, "");
 	writeJSON(path.join(run, "RESULT.json"), res);
