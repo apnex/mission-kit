@@ -2,7 +2,7 @@
 
 The design of record for mission-kit's standing evaluation suite: one library of engineering scenarios and one runner, re-run against every corpus revision.\
 It concretizes the director's intent captured in `docs/surveys/standing-eval-suite-survey.md`, with rulings `0083`, `0084` and `0085`.\
-Status: draft v3, revised after an independent audit and a re-check; for director ratification.
+Status: v3, ratified by the director (`0086`) after an independent audit and a re-check.
 
 ---
 

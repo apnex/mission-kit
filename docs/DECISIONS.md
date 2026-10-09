@@ -127,6 +127,7 @@ Whether an entry actually states a ruling is checked by reading, not by script.
 | 0083 | 2026-10-07 | Every axiom is to carry an adherence trap - a task that observes whether an agent acts on it - with the explain guidance and A11, A2, A13 and A4 first, then A3 and A14, then the rest. | project | director | ratified | - | - | - |
 | 0084 | 2026-10-09 | The adherence suite runs agents on three model families - Claude, Gemini and GPT - across all three context arms, and each outcome is scored by the two families that did not produce it. | project | director | ratified | - | - | - |
 | 0085 | 2026-10-10 | The explain guidance is measured in the standing evaluation suite by agent judges across families in every run, and the director's human-judged evaluation periodically calibrates those judges. | project | director | ratified | - | - | - |
+| 0086 | 2026-10-10 | The standing evaluation suite design, draft v3, is ratified as written, including the author's choices it lists: the digest arm, the misreading register, a gate that blocks unless overruled, a full run at each milestone close, and calibration of explain judges every second full run. | project | director | ratified | - | - | - |
 
 ---
 
@@ -1225,3 +1226,16 @@ Explain judged by agents only - not chosen, because agent judges have rated mess
 
 **Source.**\
 `[V, director ruling 2026-10-10; docs/surveys/standing-eval-suite-survey.md flag 1]`
+
+### 0086
+
+**Ruling.**\
+The standing evaluation suite design is ratified as written.
+
+**Alternatives refuted.**\
+Ratifying with the author's choices amended, or walking through a part first - offered, not chosen.
+
+**Kind.** project - how mission-kit measures its own guidance.
+
+**Source.**\
+`[V, director ruling 2026-10-10; docs/evals/standing/DESIGN.md v3]`
