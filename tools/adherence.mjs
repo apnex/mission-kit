@@ -273,14 +273,23 @@ async function isolationCheck(run, arm, fam, armDir) {
 	return { arm, fam, ok, got, answer: t };
 }
 
+// Forbidden: the workspace holding this repository, or another fixture or config under the work
+// directory. Looking for a rules file in the work directory itself is allowed - Codex agents do it,
+// and nothing is there - and is still recorded in outsidePaths.
+function forbiddenOf(paths, armDir) {
+	const other = new RegExp(`^${WORK.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}/(?:repo|cfg)-`);
+	return (paths ?? []).filter((p) => FORBIDDEN.some((f) => p.startsWith(f)) || (other.test(p) && !p.startsWith(armDir)));
+}
 function validity(cellDir) {
 	const c = readJSON(path.join(cellDir, "cell.json"));
+	const meta = readJSON(path.join(cellDir, "..", "..", "run.json"));
+	const forbidden = forbiddenOf(c.outsidePaths, meta.armDirs?.[c.arm] ?? "\0");
 	const why = [];
 	if (c.exit !== 0) why.push(`exit ${c.exit}`);
 	if (c.signal) why.push(`signal ${c.signal}`);
 	if (!fs.readFileSync(path.join(cellDir, "final.txt"), "utf8").trim()) why.push("no final message");
 	if (c.errorEvent) why.push("error event");
-	if (c.forbidden?.length) why.push(`touched ${c.forbidden[0]}`);
+	if (forbidden.length) why.push(`touched ${forbidden[0]}`);
 	return why;
 }
 
@@ -307,7 +316,7 @@ async function runCells(run, meta, suite, cells, parallel) {
 		fs.writeFileSync(path.join(dir, "final.txt"), final + "\n");
 		const scoredFile = trap.scoredFile && path.join(fx.dir, trap.scoredFile);
 		const scoredMatch = scoredFile ? (fs.existsSync(scoredFile) ? fs.readFileSync(scoredFile, "utf8").trim() === final.trim() : "file absent") : null;
-		writeJSON(path.join(dir, "cell.json"), { ...c, fixture: fx.dir, init: fx.init, exit: res.code, signal: res.signal, model: FAMILIES[c.fam].model, errorEvent: evs.some((e) => e.type === "error" || e.type === "turn.failed"), seconds: Math.round((Date.now() - t0) / 1000), outsidePaths: outsidePaths(evs, fx.dir), forbidden: outsidePaths(evs, fx.dir).filter((p) => FORBIDDEN.some((f) => p.startsWith(f)) || (p.startsWith(WORK) && !p.startsWith(armDirs[c.arm]))), scoredMatch, priorInvalid: prior, stderrTail: res.err });
+		writeJSON(path.join(dir, "cell.json"), { ...c, fixture: fx.dir, init: fx.init, exit: res.code, signal: res.signal, model: FAMILIES[c.fam].model, errorEvent: evs.some((e) => e.type === "error" || e.type === "turn.failed"), seconds: Math.round((Date.now() - t0) / 1000), outsidePaths: outsidePaths(evs, fx.dir), scoredMatch, priorInvalid: prior, stderrTail: res.err });
 		const why = validity(dir);
 		say(`cell ${id}: ${why.length ? "INVALID (" + why.join(", ") + ")" : "ok"}`);
 	});
