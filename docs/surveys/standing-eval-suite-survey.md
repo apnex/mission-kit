@@ -165,8 +165,8 @@ Build a standing evaluation suite for mission-kit: one library of engineering sc
 
 ## S6 Flags / open questions for the design phase
 
-1. **Communication's place.** Not picked as a surface, and not picked to stay in the human-judged evaluation; whether explain is out of this suite entirely, or measured some other way, is unresolved.
-2. **"Lun/Sol"** is inferred as `gpt-6-luna` and `gpt-6-sol`; to confirm, and to name a cheaper tier for Claude and Gemini.
+1. **Communication's place.** Resolved after the survey by director ruling `0085`: explain is a surface of the suite, judged by agents across families in every run, with the director's human-judged evaluation periodically calibrating the agent judges.
+2. **"Lun/Sol"** is inferred as `gpt-6-luna` and `gpt-6-sol`; the director continued without correcting the reading when it was stated, which is not confirmation. A cheaper tier for Claude and Gemini is not named.
 3. **A cross-run, per-entry scorecard** was not picked; the design should say whether per-run results suffice for the rewrite-target purpose.
 4. **The comparison against no mission-kit** needs a control arm in every full run, which the four-arm design already has; the per-change subset may omit it.
 5. **Known defects carried in:** `B75` (`A4` trap date), `B76` (on-trigger fetch storms), `B74` (`S15` pick count).

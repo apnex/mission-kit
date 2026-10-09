@@ -126,6 +126,7 @@ Whether an entry actually states a ruling is checked by reading, not by script.
 | 0082 | 2026-10-05 | The delta loop is for projects that use the corpus, not for mission-kit's own development; its two deltas stay as the record of the changes they declared. | project | director | ratified | - | - | - |
 | 0083 | 2026-10-07 | Every axiom is to carry an adherence trap - a task that observes whether an agent acts on it - with the explain guidance and A11, A2, A13 and A4 first, then A3 and A14, then the rest. | project | director | ratified | - | - | - |
 | 0084 | 2026-10-09 | The adherence suite runs agents on three model families - Claude, Gemini and GPT - across all three context arms, and each outcome is scored by the two families that did not produce it. | project | director | ratified | - | - | - |
+| 0085 | 2026-10-10 | The explain guidance is measured in the standing evaluation suite by agent judges across families in every run, and the director's human-judged evaluation periodically calibrates those judges. | project | director | ratified | - | - | - |
 
 ---
 
@@ -1210,3 +1211,17 @@ Claude agents only with cross-family scorers - not chosen, because it says nothi
 
 **Source.**\
 `[V, director ruling 2026-10-09; docs/evals/adherence/suite.json design]`
+
+### 0085
+
+**Ruling.**\
+Explain is a surface of the standing suite, judged by agents, calibrated by the director.
+
+**Alternatives refuted.**\
+Explain measured only by the director's human-judged evaluation - not chosen, because its agent-judged results would stop being re-run.\
+Explain judged by agents only - not chosen, because agent judges have rated messages good that the director found hard to use.
+
+**Kind.** project - how mission-kit measures its own guidance.
+
+**Source.**\
+`[V, director ruling 2026-10-10; docs/surveys/standing-eval-suite-survey.md flag 1]`
