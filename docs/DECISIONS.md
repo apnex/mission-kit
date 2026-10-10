@@ -1331,7 +1331,8 @@ The smallest change that meets a requirement - refuted because size is a proxy t
 
 **Absorbed.**\
 No entry's text changes: `A0`'s direction rule already has each change build at the limit within its scope, never trading one limit against another, and `A14` already takes the path of greatest learning, not the shortest, naming shortest-path myopia a fault; a marginal change is still not made, as `M11` weighs cost against quality.\
-A cold reader given only `A0`, `A14` and `M11` chose the larger change with a general seam within scope over the smallest special case, found nothing that makes a change's size alone a reason to choose or refuse it, and named one sentence of `A0` - *as much as the touch allows* - that a reader could take as preferring the least alteration, which the sentence after it resolves.
+A cold reader given only `A0`, `A14` and `M11` chose the larger change with a general seam within scope over the smallest special case, found nothing that makes a change's size alone a reason to choose or refuse it, and named one sentence of `A0` - *as much as the touch allows* - that a reader could take as preferring the least alteration, which the sentence after it resolves.\
+The director ratified it as drafted, with no entry's text changed, 2026-10-10.
 
 **Source.**\
 `[V, director ruling 2026-10-10, recorded as zorg docs/DECISIONS.md D41; zorg upstream/agp-browser-collaboration.md section 1]`
