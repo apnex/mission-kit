@@ -3,7 +3,7 @@ id: P4
 category: pattern
 title: Neutral core + tenant composition - shared mechanism, injected semantics, promote down by evidence
 status: active
-hydrate-when: A second domain is about to grow a mechanism the first already has
+hydrate-when: A mechanism is about to be built, or built a second time, and you are deciding whether it belongs in a neutral core or in the domain that first needs it
 supersedes: []
 related: [A3, P3]
 ---
@@ -29,9 +29,13 @@ Three constraints make it hold:
   manifest + injected functions; thin consumers call the tenant.
   Value falls to the lowest layer common to everything above it.
 - **Promote down by evidence, not speculation.** A primitive moves
-  *into* the core only when at least two tenants genuinely share it
-  (sample-size-two). One tenant's "this might be reusable" stays in
-  that tenant until a second, real consumer proves the shape.
+  *into* the core when it holds none of any tenant's content and a
+  tenant's selected work needs it. The evidence is the answer to
+  "what would it take to make this free of every tenant's
+  content?" - when that work is done, a single tenant is enough;
+  until it is, the primitive stays in that tenant. A second, real
+  consumer is the strongest test of the shape, and the core is
+  adjusted to fit it, never forked.
 
 ---
 
@@ -48,9 +52,10 @@ The strictness is the point.
 
 Promotion-by-evidence is what stops the core from bloating.\
 The question is never "could this be generic?"\
-(everything could) but "do two real consumers already need it?"\
-Until the second consumer exists, the primitive lives in the first tenant, where it's cheap to change.\
-The second consumer is what reveals the *actual* shared shape - which is almost never the one you'd have guessed from one.
+(everything could) but "what would it take to make this free of every tenant's content, and is that done?"\
+A primitive that still carries its first tenant's nouns stays in that tenant, where it is cheap to change; one that carries none moves into the core as soon as selected work needs it, so the mechanism is not built twice while everyone waits for a second consumer.\
+Generality that no selected work needs is still speculation, and is not built.\
+The second consumer, when it comes, is what tests the *actual* shared shape - and a core kept thin and neutral is cheap to adjust when that shape differs from the first guess.
 
 ---
 
@@ -69,9 +74,11 @@ The second consumer is what reveals the *actual* shared shape - which is almost 
 > names no subsystem nouns (guarded by a source scan for banned
 > terms). Each subsystem injects its own transition table and
 > effect semantics. One stepper, two tenants; a guard fix is made
-> once. A maintained index used by only one tenant stays in that
-> tenant - it is promoted into the core only when a second tenant
-> needs the same index.
+> once. A maintained index whose code still names one tenant's
+> fields stays in that tenant until those names are lifted out into
+> what the tenant injects; once its code names none, it moves into
+> the core when that tenant's work needs it, before any second
+> tenant arrives.
 
 ---
 
@@ -79,11 +86,14 @@ The second consumer is what reveals the *actual* shared shape - which is almost 
 
 - A second domain is about to grow a mechanism the first already
   has (state machine, traversal, transactional store, cache/index).
+- One domain is about to build a mechanism that need hold none of
+  its own content - ask what would make it free of that content,
+  and build it in the core once the answer is done.
 - Designing a component intended for multiple consumers - start the
   core thin + neutral and let it grow by promotion, rather than
   speccing a broad framework up front.
 - Reviewing a "shared" library that has accumulated one consumer's
   vocabulary - that's the smell this pattern prevents.
 
-Don't apply with a single consumer and no concrete second one in sight: you'd be speculating.\
-Keep the mechanism in the one place that uses it until the second consumer is real.
+Don't promote a mechanism that still holds a tenant's content, or build generality that no selected work needs: you'd be speculating.\
+A single consumer is not itself the obstacle; content is, and so is building ahead of need.

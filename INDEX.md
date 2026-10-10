@@ -189,7 +189,7 @@ This file described them a second time and the copy had already drifted, naming 
 | [P0](patterns/README.md) | Patterns - recurring solution shapes, and what separates one from a single good design | You are reaching for a known solution shape, or you are deciding whether a design you just built recurs widely enough to be one |
 | [P2](patterns/P2-node-label-gate-cross-component-contracts.md) | Node-label gate for cross-component contracts | You have producer and consumer components co-scheduled onto the same nodes |
 | [P3](patterns/P3-twin-parity-by-generation.md) | Twin-parity by generation - one master, generate the other, gate the round-trip | You have a spec and data, or a view and source, that must not disagree |
-| [P4](patterns/P4-neutral-core-tenant-composition.md) | Neutral core + tenant composition - shared mechanism, injected semantics, promote down by evidence | A second domain is about to grow a mechanism the first already has |
+| [P4](patterns/P4-neutral-core-tenant-composition.md) | Neutral core + tenant composition - shared mechanism, injected semantics, promote down by evidence | A mechanism is about to be built, or built a second time, and you are deciding whether it belongs in a neutral core or in the domain that first needs it |
 | [P5](patterns/P5-verbs-as-data-surface.md) | Verbs-as-data surface - one manifest drives dispatch, docs, and validation | You are designing a tool surface where each operation needs its own contract |
 
 ---
