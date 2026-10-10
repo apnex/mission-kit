@@ -13,8 +13,10 @@ related: [P0, M0, A3]
 ## Vision
 
 **North star.**\
-A managed set of a few dozen orthogonal duties, every one internal and each found and used rather than rebuilt, covers most of what a system needs, with configuration and glue as the remainder, so no duty is implemented twice.\
-A duty is one box at architecture altitude, and internal means a sovereign unit under our own authority.
+A managed set of orthogonal duties, every one internal and each found and used rather than rebuilt, covers most of what a system needs, with configuration and glue as the remainder, so no duty is implemented twice.\
+A duty is one box at architecture altitude, and internal means a sovereign unit under our own authority.\
+Duties well defined at that altitude are expected to be orthogonal and to number in the tens, never the thousands; a count far beyond that is a sign that duties are being drawn below architecture altitude or drawn twice, and calls for an investigation of the set, not a decision about any one member.\
+That scale describes the registry we intend - a bound, not a target and not a cap - so the count alone never admits, splits, merges, removes or refuses a member.
 
 **What this set is, and is not.**\
 It is a registry of portable definitions and references, each stating one duty, the contract it exposes, and where the implementation lives.\
@@ -130,7 +132,7 @@ So the "and" test applies to the box, never to the implementation beneath it.\
 A component with eight internal parts has not grown eight duties; it has one duty and an anchored core.\
 What the test forbids is a *box* whose purpose needs a conjunction to state.
 
-This is what makes the registry's target reachable.\
+This is what keeps the registry at the scale it intends.\
 A managed set of orthogonal duties is a claim about architecture altitude; below that altitude feature counts are unbounded, and they are not what a consumer is choosing between when deciding what to assemble from.
 
 ---
