@@ -12,7 +12,8 @@ related: [A3, P3]
 
 ## Rule
 
-When two or more domains need the same *mechanism* - a state stepper, a graph traversal, a transactional commit, an index - factor that mechanism into a thin, **domain-neutral core** and let each domain be a **tenant** that programs the core declaratively.\
+When selected work needs a *mechanism* - a state stepper, a graph traversal, a transactional commit, an index - that need hold none of any domain's content, build it as a thin, **domain-neutral core**, even while one domain needs it, and let each domain be a **tenant** that programs the core declaratively; when two domains already hand-roll the same mechanism, factor it into such a core.\
+Further domains that need it become tenants of the same core.\
 The core owns the *mechanism*; the tenant owns the *semantics*.
 
 Three constraints make it hold:
@@ -29,21 +30,28 @@ Three constraints make it hold:
   manifest + injected functions; thin consumers call the tenant.
   Value falls to the lowest layer common to everything above it.
 - **Promote down by evidence, not speculation.** A primitive moves
-  *into* the core when it holds none of any tenant's content and a
-  tenant's selected work needs it. The evidence is the answer to
-  "what would it take to make this free of every tenant's
-  content?" - when that work is done, a single tenant is enough;
-  until it is, the primitive stays in that tenant. A second, real
-  consumer is the strongest test of the shape, and the core is
-  adjusted to fit it, never forked.
+  *into* the core when it holds none of any tenant's content - no
+  tenant's data, policies or assumptions, not merely no tenant's
+  names - and a tenant's selected work needs it. Ask what it would
+  take to make it free of every tenant's content, and promote it
+  only once that work is done: its contract can be reviewed as
+  neutral, the tenant's content is supplied from outside it, and it
+  implements only what selected work needs. Then a single tenant is
+  enough; until then, it stays in that tenant. When another
+  consumer needs the same mechanism, the core's contract is revised
+  as needed with its semantics still injected, and the mechanism is
+  never copied into a tenant; a different mechanism gets a boundary
+  of its own. A neutral mechanism no selected work needs yet is a
+  named candidate - its duty, the consumers that would need it and
+  what would trigger it recorded - and is not built.
 
 ---
 
 ## Rationale
 
 The naive alternative - copy the mechanism into each domain - drifts and rots: the state machine in domain A diverges from the one in domain B, and a fix in one is forgotten in the other.\
-The opposite failure is worse: a speculative "framework" built for reuse before any second consumer exists, which ossifies the wrong abstraction and costs months to unwind.\
-Both are avoided by a *thin* core that does exactly the mechanism and a hard promotion rule that waits for evidence.
+The opposite failure is worse: a speculative "framework" built for needs no selected work has, which ossifies the wrong abstraction and costs months to unwind.\
+Both are avoided by a *thin* core that does exactly the mechanism selected work needs and a hard promotion rule that waits for evidence of neutrality.
 
 Neutrality is the load-bearing property.\
 A core that quietly knows about one domain's nouns isn't reusable - it's that domain's code with extra indirection.\
@@ -53,9 +61,10 @@ The strictness is the point.
 Promotion-by-evidence is what stops the core from bloating.\
 The question is never "could this be generic?"\
 (everything could) but "what would it take to make this free of every tenant's content, and is that done?"\
-A primitive that still carries its first tenant's nouns stays in that tenant, where it is cheap to change; one that carries none moves into the core as soon as selected work needs it, so the mechanism is not built twice while everyone waits for a second consumer.\
+A primitive that still carries its first tenant's data, policies or assumptions stays in that tenant, where it is cheap to change; one that carries none moves into the core as soon as selected work needs it, so the mechanism is not built twice while everyone waits for a second consumer.\
+Lifting a tenant's names out is the visible step, and the source scan holds the vocabulary; neither proves the semantics neutral, which is what the review of its contract is for.\
 Generality that no selected work needs is still speculation, and is not built.\
-The second consumer, when it comes, is what tests the *actual* shared shape - and a core kept thin and neutral is cheap to adjust when that shape differs from the first guess.
+The second consumer, when it comes, is what tests the *actual* shared shape; a thin, neutral core reduces the coupling an adjustment touches, though revising its contract and moving its consumers still cost what they cost.
 
 ---
 
@@ -74,11 +83,11 @@ The second consumer, when it comes, is what tests the *actual* shared shape - an
 > names no subsystem nouns (guarded by a source scan for banned
 > terms). Each subsystem injects its own transition table and
 > effect semantics. One stepper, two tenants; a guard fix is made
-> once. A maintained index whose code still names one tenant's
-> fields stays in that tenant until those names are lifted out into
-> what the tenant injects; once its code names none, it moves into
-> the core when that tenant's work needs it, before any second
-> tenant arrives.
+> once. A maintained index whose code still holds one tenant's
+> fields and ordering rules stays in that tenant until they are
+> lifted out into what the tenant injects; once it holds none of
+> that tenant's content, it moves into the core when that tenant's
+> work needs it, before any second tenant arrives.
 
 ---
 
@@ -86,9 +95,9 @@ The second consumer, when it comes, is what tests the *actual* shared shape - an
 
 - A second domain is about to grow a mechanism the first already
   has (state machine, traversal, transactional store, cache/index).
-- One domain is about to build a mechanism that need hold none of
-  its own content - ask what would make it free of that content,
-  and build it in the core once the answer is done.
+- Selected work in one domain needs a mechanism that need hold none
+  of that domain's content - find and complete the work that
+  removes it, then build the needed mechanism in the core.
 - Designing a component intended for multiple consumers - start the
   core thin + neutral and let it grow by promotion, rather than
   speccing a broad framework up front.
