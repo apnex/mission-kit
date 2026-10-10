@@ -131,6 +131,7 @@ Whether an entry actually states a ruling is checked by reading, not by script.
 | 0087 | 2026-10-10 | The universal part of agent evaluation is a component in its own repository, apnex/agent-evals, used by mission-kit and zorg; mission-kit's standing suite keeps its scenarios, keys and results here and uses that component, and a component entry is admitted only once it is usable. | project | director | ratified | - | - | - |
 | 0088 | 2026-10-10 | The shared evaluation component is named context-lab, repository apnex/context-lab, and its north star is that any project can find out, by experiments anyone can repeat, how the context it gives its agents changes what they understand and do. | project | director | ratified | amends 0087 | - | - |
 | 0089 | 2026-10-10 | context-lab's vision is ratified; from here its rulings are recorded in its own register, and this register records only rulings about how mission-kit uses it. | project | director | ratified | - | - | - |
+| 0090 | 2026-10-10 | The component registry's size is a bound on the registry intended - tens of duties, never thousands - and neither a target nor a cap: the count alone never admits, splits, merges, removes or refuses a member, and a count far beyond that scale calls for an investigation of the set. | general | director | ratified | - | `components/README.md` | yes |
 
 ---
 
@@ -1283,3 +1284,34 @@ Recording context-lab's rulings in mission-kit's register - refuted because the 
 
 **Source.**\
 `[V, director ruling 2026-10-10; https://github.com/apnex/context-lab docs/DECISIONS.md 0001]`
+
+### 0090
+
+**Ruling.**\
+The registry is meant to be a well-defined set of orthogonal duties, and such a set numbers in the tens, never the thousands; what matters is that each member holds one duty no other holds, not how many there are.\
+`C0` said "a few dozen", a figure the director had guessed, and called it a target.
+
+**Alternatives refuted.**\
+Keeping "a few dozen" - refuted because it was a guess, and read as a target.\
+Stating another figure, such as 40 to 50 or 70 to 80 - refuted because a number taken as a target invites splitting mechanisms below a component's altitude, or stopping short of duties that are real.\
+A cap - refuted by `C0`'s growth policy, which is uncapped, and by adoption outranking orthogonality.
+
+**Kind.** general - how any project reads the size of the component registry.
+
+**Change to `C0`, under `M11`.**
+
+| Sentence | Change | Evidence |
+|---|---|---|
+| *Vision*: "A managed set of a few dozen orthogonal duties, ... so no duty is implemented twice." | reword: "a few dozen" removed | the figure was a guess and read as a target; the scale is now stated by the two sentences added below |
+| *Vision*: "A duty is one box at architecture altitude, ..." | none | - |
+| *Vision*, added: "Duties well defined at that altitude are expected to be orthogonal and to number in the tens, never the thousands; a count far beyond that ... calls for an investigation of the set, not a decision about any one member." | added | answers what size to expect and what a count far beyond it means, which the charter could not; stated as an expectation, because the key's audit found that orthogonality does not by itself prove a count |
+| *Vision*, added: "That scale describes the registry we intend - a bound, not a target and not a cap - so the count alone never admits, splits, merges, removes or refuses a member." | added | answers whether the scale is a target or a cap, which the charter could not; agrees with the growth policy, uncapped |
+| *Duty is singular at an altitude*: "This is what makes the registry's target reachable." | correct, to "This is what keeps the registry at the scale it intends." | "target" contradicts the ruling |
+
+**Test, under `M2`.**\
+Run `c0-size-bound`: the `c0` suite, its new probes `Q8` to `Q10` keyed and committed before any reader ran and their key audited by a fresh agent and corrected first; both versions blind to 3 readers each of two families, `gpt-6-astra` and `claude-opus-5-5`, scored blind by `gpt-6-astra`, which did not author the change.\
+Totals of 18: the old charter 17 and 17, the new 18 and 18; the six control probes score 2 in every arm, so nothing regressed, and the one difference is `Q10`, the scale, where old readers called "a few dozen" a target.\
+Most readers of both versions hedged on `Q10`, the new ones only that the charter names no count at which growth is "far beyond" the scale; that is deliberate, since a threshold would be a number taken as a target, and the hedge is recorded rather than answered.
+
+**Source.**\
+`[V, director ruling 2026-10-10, recorded as zorg docs/DECISIONS.md D36; the director's instruction of 2026-10-10 to update components/README.md]`
