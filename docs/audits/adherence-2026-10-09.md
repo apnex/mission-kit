@@ -59,6 +59,12 @@ The other properties are in the run's `RESULT.md`; each of X4, X5, X7 and A13-2 
 
 ---
 
+**Found later, 2026-10-10.**\
+GPT agents in this run could search and open web pages: Codex's web search was not disabled, and its hosted apps connector, found by context-lab's live checks, also reaches the web.\
+Searching the run's event streams for web-search and connector items finds them in five GPT cells of trap `A11`; the two in control cells searched for Codex's own documentation on scheduled tasks, not for mission-kit, so no control agent is shown to have reached the corpus that way.
+
+---
+
 ## Runs not used
 
 - `adherence-01` stopped at its isolation check, which misread a correct answer that dropped its line numbering.
