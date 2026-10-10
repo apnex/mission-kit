@@ -132,6 +132,7 @@ Whether an entry actually states a ruling is checked by reading, not by script.
 | 0088 | 2026-10-10 | The shared evaluation component is named context-lab, repository apnex/context-lab, and its north star is that any project can find out, by experiments anyone can repeat, how the context it gives its agents changes what they understand and do. | project | director | ratified | amends 0087 | - | - |
 | 0089 | 2026-10-10 | context-lab's vision is ratified; from here its rulings are recorded in its own register, and this register records only rulings about how mission-kit uses it. | project | director | ratified | - | - | - |
 | 0090 | 2026-10-10 | The component registry's size is a bound on the registry intended - tens of duties, never thousands - and neither a target nor a cap: the count alone never admits, splits, merges, removes or refuses a member, and a count far beyond that scale calls for an investigation of the set. | general | director | ratified | - | `components/README.md` | yes |
+| 0091 | 2026-10-10 | A change is judged by its quality - the correct design within its scope, built at the limit and invested forward for those who build on it - and never by its size: no change is chosen or refused for being small or large, though a marginal change is still not made. | general | director | ratified | - | `axioms/README.md`, `axioms/A14-compounding-learning.md` | yes |
 
 ---
 
@@ -1316,3 +1317,21 @@ The director ratified the change as tested, 2026-10-10.
 
 **Source.**\
 `[V, director ruling 2026-10-10, recorded as zorg docs/DECISIONS.md D36; the director's instruction of 2026-10-10 to update components/README.md]`
+
+### 0091
+
+**Ruling.**\
+The bar for a change is its quality within its scope, never its size.\
+Where a boundary should be narrow, narrow means it carries no more than its duty needs, which is a property of quality, not of size.
+
+**Alternatives refuted.**\
+The smallest change that meets a requirement - refuted because size is a proxy that rewards patches and penalises the boundary every later consumer needs; the director's direction for AGP already rules it out, as "the correct, useful design with clear duties and boundaries, not the smallest patch".
+
+**Kind.** general - how any project weighs a change.
+
+**Absorbed.**\
+No entry's text changes: `A0`'s direction rule already has each change build at the limit within its scope, never trading one limit against another, and `A14` already takes the path of greatest learning, not the shortest, naming shortest-path myopia a fault; a marginal change is still not made, as `M11` weighs cost against quality.\
+A cold reader given only `A0`, `A14` and `M11` chose the larger change with a general seam within scope over the smallest special case, found nothing that makes a change's size alone a reason to choose or refuse it, and named one sentence of `A0` - *as much as the touch allows* - that a reader could take as preferring the least alteration, which the sentence after it resolves.
+
+**Source.**\
+`[V, director ruling 2026-10-10, recorded as zorg docs/DECISIONS.md D41; zorg upstream/agp-browser-collaboration.md section 1]`
