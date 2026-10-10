@@ -133,6 +133,7 @@ Whether an entry actually states a ruling is checked by reading, not by script.
 | 0089 | 2026-10-10 | context-lab's vision is ratified; from here its rulings are recorded in its own register, and this register records only rulings about how mission-kit uses it. | project | director | ratified | - | - | - |
 | 0090 | 2026-10-10 | The component registry's size is a bound on the registry intended - tens of duties, never thousands - and neither a target nor a cap: the count alone never admits, splits, merges, removes or refuses a member, and a count far beyond that scale calls for an investigation of the set. | general | director | ratified | - | `components/README.md` | yes |
 | 0091 | 2026-10-10 | A change is judged by its quality - the correct design within its scope, built at the limit and invested forward for those who build on it - and never by its size: no change is chosen or refused for being small or large, though a marginal change is still not made. | general | director | ratified | - | `axioms/README.md`, `axioms/A14-compounding-learning.md` | yes |
+| 0092 | 2026-10-11 | A mechanism that holds none of any tenant's content moves into a neutral core when selected work needs it, even while one tenant needs it; the evidence for promotion is neutrality - the work of making it free of every tenant's data, policies and assumptions done and reviewed - not the count of consumers, and generality no selected work needs is still not built. | general | director | ratified | - | `patterns/P4-neutral-core-tenant-composition.md` | yes |
 
 ---
 
@@ -1336,3 +1337,35 @@ The director ratified it as drafted, with no entry's text changed, 2026-10-10.
 
 **Source.**\
 `[V, director ruling 2026-10-10, recorded as zorg docs/DECISIONS.md D41; zorg upstream/agp-browser-collaboration.md section 1]`
+
+### 0092
+
+**Ruling.**\
+`P4`'s promotion rule waited for a second consumer before a mechanism could move into a neutral core; the director's ruling in zorg (`D35`) makes a mechanism free of any application's content a shared component even with one consumer, judged by the question "what would it take to make this free of project-specific content?".\
+`P4` now holds that rule, so a reader of mission-kit and a reader of zorg act alike.
+
+**Alternatives refuted.**\
+Keeping sample-size-two - refuted because a mechanism that holds nothing of its first tenant's is then built inside that tenant and built again, while the speculation it guards against is better caught by the content test and by building nothing no selected work needs.\
+Leaving `P4` as it was and the difference to zorg - refuted because two readers following the two corpora would decide differently on the same mechanism.
+
+**Kind.** general - when any project moves a mechanism into a shared core.
+
+**Change to `P4`, under `M13`.**
+
+| Passage | Change | Evidence |
+|---|---|---|
+| Rule, first sentence | reword: build a mechanism that need hold no domain's content as a neutral core when selected work needs it, even for one domain; factor one two domains hand-roll | the rule of `D35`; the old condition, two domains, now one case of it |
+| Promote down by evidence | reword: neutrality, not the count of consumers - no tenant's data, policies or assumptions; the work reviewed as done; only what selected work needs; a later consumer revises the core's contract, never copies the mechanism; an unneeded neutral mechanism is a named candidate, not built | `D35`; the key's audit found "no names" too weak a test and "never forked" unbounded |
+| Rationale, speculative framework | correct: "built for needs no selected work has" in place of "before any second consumer exists" | the old wording contradicted the new rule |
+| Rationale, promotion paragraph | reword: the content question replaces "do two real consumers already need it?"; names lifted and a source scan do not prove semantics neutral; a thin core reduces the coupling an adjustment touches, at the cost a contract revision has | as above |
+| Good example, the index | reword: the index stays until its fields and ordering rules are lifted out, then moves before any second tenant | as above |
+| When to apply | added: one domain's selected work needing a mechanism that need hold none of its content; corrected: the closing caution is content and building ahead of need, not a single consumer | as above |
+| Trigger | reword, to a condition covering one domain as well as a second | `S14` |
+
+**Test, under `M2`.**\
+Run `p4-content-test`: a new `p4` suite of six probes, keyed and committed before any reader ran and its key audited by a fresh agent and corrected first; both versions blind to 3 readers each of `gpt-6-astra` and `claude-opus-5-5`, scored blind by `gpt-6-astra`.\
+Totals of 12: the old pattern 8 and 8, the new 12 and 12; the three controls - factoring a duplicated mechanism, a leaked domain name, a speculative framework - score 2 in every arm, so nothing regressed, and the differences are the changed rule and a second consumer's revision of the core.\
+The director chose this reconciliation on 2026-10-11, and the change carries `D35`'s authority.
+
+**Source.**\
+`[V, zorg docs/DECISIONS.md D35; zorg upstream/mission-kit-issues.md and this session's triage of zorg's definitions against mission-kit]`
