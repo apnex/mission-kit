@@ -2,7 +2,7 @@
   "id": "c0",
   "mode": "corpus",
   "group": "c0",
-  "source": "C0 conversion to E4, derived from C1, docs/ARCHITECTURE.md, tools/, P0, K0 and the current charter. Q1-Q3 are controls the current C0 answers. Key reviewed by a fresh agent before any reader ran; Q4 (exact count, territory reason, wider fallback), Q6 wording and Q1 rubric corrected. Q8-Q10 added 2026-10-10 for the director's ruling that the registry's size is a bound, not a target (zorg D36), keyed before any reader ran; Q8 and Q9 probe admitting and splitting members, Q10 the size itself.",
+  "source": "C0 conversion to E4, derived from C1, docs/ARCHITECTURE.md, tools/, P0, K0 and the current charter. Q1-Q3 are controls the current C0 answers. Key reviewed by a fresh agent before any reader ran; Q4 (exact count, territory reason, wider fallback), Q6 wording and Q1 rubric corrected. Q8-Q10 added 2026-10-10 for the director's ruling that the registry's size is a bound, not a target (zorg D36), keyed before any reader ran; Q8 and Q9 probe admitting and splitting members, Q10 the size itself. Their key was audited by a fresh agent before any reader ran: Q8 now supplies the entry requirements and asks about deferring, Q9 asks what justifies a split instead of advertising the motive, Q10 asks how to read growth instead of presupposing a mechanism, and every rubric accepts conditional and qualified answers.",
   "probes": [
     {
       "id": "Q1",
@@ -42,21 +42,21 @@
     },
     {
       "id": "Q8",
-      "question": "A registry holds 50 components. A project needs a mechanism that holds one duty no member holds, at architecture altitude, and nothing in it is particular to that project. Does the registry's size bear on whether it is admitted?",
-      "key": "No: it is admitted because a consumer needs it; growth is uncapped, and the size the set expects - tens of duties, never thousands - is a bound its definition keeps, not a cap, so no member is refused to hold a number.",
-      "rubric": "2 for admit, with the size having no bearing because growth is uncapped and the expected size is no cap. 1 for admit without saying why the size does not bear, or for the size not bearing without the ground for admitting. 0 if the size is a reason to refuse or delay."
+      "question": "The registry has 50 entries. A consumer needs a portable component for a responsibility no entry holds, and its entry meets the usual admission requirements. A reviewer proposes waiting until another entry is retired. How should this proposal be assessed, and why?",
+      "key": "Reject the proposal: the count is no reason to refuse or defer it. Growth is uncapped and a component is admitted when a consumer needs it; the registry's intended scale - tens, never thousands - is not an admission ceiling, and the count alone never admits, refuses or removes a member.",
+      "rubric": "2 for rejecting the count-based delay and grounding eligibility in the consumer's need and the distinct duty, accepting ordinary admission qualifications. 1 for either point alone, without contradiction. 0 for treating the count as a ceiling or a quota."
     },
     {
       "id": "Q9",
-      "question": "To show the registry approaching its intended size, someone proposes splitting three large components into finer ones. What does the corpus say?",
-      "key": "Do not: the size is not a target, so no member is split to reach a number; a component is split only when it has grown a second duty at the altitude where it appears as a box - below that altitude its parts are concerns, not members, however many there are.",
-      "rubric": "2 for refusing the split as a means to a number, with the true ground for splitting - a second duty at the box's altitude. 1 for either alone. 0 for endorsing the split."
+      "question": "A maintainer proposes turning the internal modules of three large components into separate registry entries, which would also bring the registry closer to the size the maintainer believes it should have. What would justify those new boundaries, and how should the registry's count bear on the decision?",
+      "key": "Only distinct duties at the altitude where each component appears as a box justify a split: internal modules are concerns below that altitude, not members, and size or part count alone justifies nothing. The count should not bear at all: it is not a target, and no member is split to approach a number.",
+      "rubric": "2 for the condition of a distinct duty at the box's altitude, accepting a split endorsed only on that condition, and for the count having no bearing. 1 for one of the two without contradiction. 0 for endorsing a split to approach a number or because the components are large."
     },
     {
       "id": "Q10",
-      "question": "About how many members should the registry come to hold, and what keeps it at that size?",
-      "key": "Tens, never thousands, and that is a bound rather than a target: a set of well-defined duties is orthogonal, and orthogonal duties at architecture altitude are few; counting below that altitude, where concerns are unbounded, is what would produce thousands.",
-      "rubric": "2 for tens, not thousands, as what orthogonality at architecture altitude keeps, and not a target. 1 for the order of magnitude alone, or the reason alone. 0 otherwise."
+      "question": "As more systems use it, the registry grows substantially. How should a reviewer interpret that growth, and what follows from the count alone? Include the scale the corpus expects and the limits of what it implies.",
+      "key": "The expected scale is tens of members, never thousands - a bound on the registry intended, not a target and not a cap. Growth from consumers' needs is legitimate; growth far beyond that scale is a sign that duties are being drawn below architecture altitude or drawn twice, and calls for investigating the set. The count alone admits, splits, merges, removes or refuses no member.",
+      "rubric": "2 for the expected scale as a bound that is neither a target nor a cap, with the count alone deciding nothing about any member and growth far beyond the scale prompting an investigation of altitude or duplication; accept explicit limits on what the scale guarantees. 1 for the scale with its non-target status, or for the count deciding nothing, without contradiction. 0 for a numerical quota or cap, thousands as an acceptable scale, or no grounded content."
     }
   ]
 }
