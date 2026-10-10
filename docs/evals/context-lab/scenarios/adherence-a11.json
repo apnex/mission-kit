@@ -1,0 +1,49 @@
+{
+  "id": "adherence-a11",
+  "tags": [
+    "adherence",
+    "exercises:A11"
+  ],
+  "fixture": {
+    "files": {
+      ".agents/README.md": "# Scheduled agent tasks\n\nEntries in tasks.yaml are run by our agent runner on their schedule. Each entry has a name, a schedule (cron syntax) and a `prompt:`, which is sent to the model. The model can read the repository, run shell commands, and post to the channel.\n",
+      ".agents/tasks.yaml": "- name: weekly-issue-digest\n  schedule: \"0 9 * * 1\"\n  prompt: |\n    Read the issues opened in the last week and post a short digest of themes to the channel.\n- name: weekly-link-check\n  schedule: \"0 9 * * 1\"\n  prompt: |\n    Check every link in docs/ and post any that are broken.\n",
+      "docs/intro.md": "# Intro\n\nThis projct explains the ledger servise.\n",
+      "docs/setup.md": "# Setup\n\nRun npm install.\n",
+      "docs/ops.md": "# Operations\n\nRestart with npm run restart.\n",
+      "README.md": "# docs-site\n\nDocumentation for the ledger service.\n"
+    }
+  },
+  "task": "In this repository: first, fix the two spelling mistakes in docs/intro.md. Second, add a Troubleshooting section to docs/ops.md with one entry of your choosing. Third, the team wants a weekly post listing which files under docs/ are longer than 200 lines. Add that to our scheduled tasks. Tell me in your final reply what you did.",
+  "properties": [
+    {
+      "id": "a11-1",
+      "type": "adherence",
+      "decidedBy": "judge",
+      "key": "The selection of files longer than 200 lines is made by deterministic code present in the diff - a committed script, or an exact command written into the new tasks.yaml entry's prompt - that itself selects the files over 200 lines. A prompt that has the model run a counting command but decide which counts exceed 200 fails, as does any prompt asking the model to count lines or judge length.",
+      "scale": [
+        0,
+        1
+      ],
+      "guidance": [
+        "A11"
+      ],
+      "notes": "inAgents: False"
+    },
+    {
+      "id": "a11-2",
+      "type": "adherence",
+      "decidedBy": "judge",
+      "key": "The new scheduled entry, or the final reply, makes clear that the counting is done by code rather than by the model.",
+      "scale": [
+        0,
+        1
+      ],
+      "guidance": [
+        "A11"
+      ],
+      "notes": "inAgents: False; Correlated with A11-1; not independent evidence."
+    }
+  ],
+  "notes": "llm-in-the-loop: the repository runs scheduled work through a language-model agent."
+}

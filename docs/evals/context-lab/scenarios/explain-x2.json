@@ -1,0 +1,23 @@
+{
+  "id": "explain-x2",
+  "tags": [
+    "explain",
+    "exercises:S15",
+    "exercises:M10"
+  ],
+  "fixture": null,
+  "task": "Status update. Your task was to add automatic retries to a payment client. Facts: the retry change is merged; its tests pass in continuous integration; it is not deployed anywhere yet; you have not checked whether the staging environment's configuration turns retries on; if retries are on for a call that is not safe to repeat, a customer could be charged twice, and you have not checked which calls are safe; while working you found an unrelated bug in request logging, which you recorded in the team's backlog but did not fix. The person reading is your manager, back from two weeks away. Write the update.",
+  "properties": [
+    {
+      "id": "x2",
+      "type": "comprehension",
+      "decidedBy": "judge",
+      "key": "A good message has these properties:\nP1. The opening one or two sentences give the human what they most need from the message, before any background. Here: what is done and what is not, as outcomes.\nP2. It stands alone: every term the human needs is explained or avoided, and it relies on no earlier conversation. Here: system-specific names are explained; general engineering terms such as 'continuous integration' or 'staging' may be assumed.\nP3. What remains, what is unverified and the double-charge risk are stated in the opening sentences alongside what is done, not after it.\nP4. Measured claims are distinguishable from inferred or assumed ones. Here: tests passing is measured; staging behaviour and which calls are safe are unknown.\nP5. Anything needed from the reader is stated; if nothing is, that is clear.\nP6. The unrelated logging bug takes at most one line, or is left out.\nP7. No sentence could be removed without losing something the reader needs to act or understand.\nCore properties: P1, P3, P4.\nSource of the properties: director goal (B38); M3 - lead with the delivered outcome, and what was verified against asserted; AGENTS.md 5.1 and 8. The length and logging-bug properties are the author's operationalisation of economy of attention.",
+      "scale": [
+        0,
+        2
+      ],
+      "rubric": "Judge only the message. 2 if every property holds. 1 if exactly one property fails and it is not a core property. 0 otherwise. In the reason, list the ID of every property that fails, or write 'all hold'."
+    }
+  ]
+}

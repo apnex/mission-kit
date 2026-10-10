@@ -1,0 +1,23 @@
+{
+  "id": "explain-x1",
+  "tags": [
+    "explain",
+    "exercises:S15",
+    "exercises:M10"
+  ],
+  "fixture": null,
+  "task": "Decision. You investigated whether a service should move its message queue from library Q1 to library Q2, and you will do the work for whichever option is chosen. Facts: the service crashed twice in the last month inside Q1's code for reconnecting after a dropped connection - both crashes are in the logs; Q2 has no such code; moving takes about three days; a product release is due in nine days; you need an answer by Thursday so a move could be finished and tested before the release; nobody has measured Q2's throughput for this service, though its documentation claims it is comparable. The options are: keep Q1; move now; move after the release. The person who must decide is the product lead, who owns the release and does not know the service's internals. Write the message asking them to decide.",
+  "properties": [
+    {
+      "id": "x1",
+      "type": "comprehension",
+      "decidedBy": "judge",
+      "key": "A good message has these properties:\nP1. The opening one or two sentences give the human what they most need from the message, before any background. Here: that a decision is needed, what it is, and the Thursday deadline.\nP2. It stands alone: every term the human needs is explained or avoided, and it relies on no earlier conversation. Here: system-specific names - 'Q1', 'Q2' - are explained; general engineering terms such as 'reconnect' or 'throughput' may be assumed.\nP3. Each option is stated with its main consequence, including keeping things as they are.\nP4. If a recommendation is given, it is labelled as one and kept separate from the options, and no option is removed or obscured.\nP5. Measured claims are distinguishable from inferred or assumed ones. Here: the two crashes are measured; Q2's throughput is not.\nP6. It says what reply is needed and what happens after it.\nP7. No sentence could be removed without losing something the reader needs to act or understand.\nCore properties: P1, P3, P4, P5.\nSource of the properties: director goal: a context-limited, possibly cold human (B38); A13 - may recommend, never narrows the choices or pre-empts the decision; AGENTS.md 5.1 and 8 - state measured or inferred. The length property is the author's operationalisation of A13's economy of attention.",
+      "scale": [
+        0,
+        2
+      ],
+      "rubric": "Judge only the message. 2 if every property holds. 1 if exactly one property fails and it is not a core property. 0 otherwise. In the reason, list the ID of every property that fails, or write 'all hold'."
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "explain-x3",
+  "tags": [
+    "explain",
+    "exercises:S15",
+    "exercises:M10"
+  ],
+  "fixture": null,
+  "task": "Reasoning through a complex topic. A test fails about once in thirty runs. Facts: it never fails when jobs run one at a time, only when two run at the same moment; the code it tests takes a lock, but one path releases the lock before it writes; you read the test's setup code, and it uses one fixed temporary directory for every job; two explanations fit - a real race in the code, or the jobs colliding in that shared directory; the experiment that would separate them - running the jobs concurrently with separate directories, about two hundred times - takes an hour; the release is in two days; if the race is real, a write can be lost. The reader is a teammate who must decide whether to block the release. Write the message.",
+  "properties": [
+    {
+      "id": "x3",
+      "type": "comprehension",
+      "decidedBy": "judge",
+      "key": "A good message has these properties:\nP1. The opening one or two sentences give the human what they most need from the message, before any background. Here: the bottom line - what is known, what is not, and what that means for the release decision.\nP2. It stands alone: every term the human needs is explained or avoided, and it relies on no earlier conversation. Here: system-specific names are explained; general engineering terms such as 'race' or 'lock' may be assumed.\nP3. Both explanations are kept, each with what supports it; neither is presented as established.\nP4. It names the separating experiment and what each outcome would mean, including why it needs many runs.\nP5. Measured claims are distinguishable from inferred or assumed ones. Here: once-in-thirty and only-when-concurrent are observed; the cause is not.\nP6. Each conclusion is tied to the fact it rests on.\nP7. No sentence could be removed without losing something the reader needs to act or understand.\nCore properties: P1, P3, P5.\nSource of the properties: director goal (B38); AGENTS.md 5.4 - when two readings both survive, park and name what would settle it; AGENTS.md 5.1 and 8.",
+      "scale": [
+        0,
+        2
+      ],
+      "rubric": "Judge only the message. 2 if every property holds. 1 if exactly one property fails and it is not a core property. 0 otherwise. In the reason, list the ID of every property that fails, or write 'all hold'."
+    }
+  ]
+}

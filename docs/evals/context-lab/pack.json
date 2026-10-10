@@ -1,0 +1,256 @@
+{
+  "schema": "context-lab.pack/1",
+  "id": "mission-kit",
+  "sources": [
+    {
+      "id": "mission-kit",
+      "path": "../../..",
+      "addresses": [
+        "https://github.com/apnex/mission-kit",
+        "https://raw.githubusercontent.com/apnex/mission-kit"
+      ],
+      "exclude": [
+        "docs/"
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "corpus",
+      "source": "mission-kit",
+      "canaries": [
+        "The lantern on pier nine burns green."
+      ]
+    }
+  ],
+  "arms": [
+    {
+      "id": "control",
+      "deliver": []
+    },
+    {
+      "id": "on-trigger",
+      "deliver": [
+        {
+          "variant": "corpus",
+          "file": "AGENTS.md",
+          "as": "folder-file"
+        },
+        {
+          "variant": "corpus",
+          "file": "INDEX.md",
+          "as": "instruction"
+        },
+        {
+          "variant": "corpus",
+          "file": ".",
+          "as": "on-request"
+        }
+      ]
+    },
+    {
+      "id": "always-on",
+      "deliver": [
+        {
+          "variant": "corpus",
+          "file": "AGENTS.md",
+          "as": "folder-file"
+        },
+        {
+          "variant": "corpus",
+          "file": "INDEX.md",
+          "as": "instruction"
+        },
+        {
+          "variant": "corpus",
+          "file": ".",
+          "as": "on-request"
+        },
+        {
+          "variant": "corpus",
+          "file": "style/S15-message-to-a-human.md",
+          "as": "instruction"
+        },
+        {
+          "variant": "corpus",
+          "file": "methods/M10-guided-dialogue.md",
+          "as": "instruction"
+        },
+        {
+          "variant": "corpus",
+          "file": "axioms/A1-sovereign-state-transparency.md",
+          "as": "instruction"
+        },
+        {
+          "variant": "corpus",
+          "file": "axioms/A10-autopoietic-evolution.md",
+          "as": "instruction"
+        },
+        {
+          "variant": "corpus",
+          "file": "axioms/A11-cognitive-minimalism.md",
+          "as": "instruction"
+        },
+        {
+          "variant": "corpus",
+          "file": "axioms/A12-precision-context-engineering.md",
+          "as": "instruction"
+        },
+        {
+          "variant": "corpus",
+          "file": "axioms/A13-director-intent-amplification.md",
+          "as": "instruction"
+        },
+        {
+          "variant": "corpus",
+          "file": "axioms/A14-compounding-learning.md",
+          "as": "instruction"
+        },
+        {
+          "variant": "corpus",
+          "file": "axioms/A2-isomorphic-specification.md",
+          "as": "instruction"
+        },
+        {
+          "variant": "corpus",
+          "file": "axioms/A3-sovereign-composition.md",
+          "as": "instruction"
+        },
+        {
+          "variant": "corpus",
+          "file": "axioms/A4-zero-loss-knowledge.md",
+          "as": "instruction"
+        },
+        {
+          "variant": "corpus",
+          "file": "axioms/A5-perceptual-parity.md",
+          "as": "instruction"
+        },
+        {
+          "variant": "corpus",
+          "file": "axioms/A6-frictionless-agentic-collaboration.md",
+          "as": "instruction"
+        },
+        {
+          "variant": "corpus",
+          "file": "axioms/A7-resilient-agentic-operations.md",
+          "as": "instruction"
+        },
+        {
+          "variant": "corpus",
+          "file": "axioms/A8-gated-recursive-integrity.md",
+          "as": "instruction"
+        },
+        {
+          "variant": "corpus",
+          "file": "axioms/A9-chaos-validated-deployment.md",
+          "as": "instruction"
+        }
+      ]
+    }
+  ],
+  "population": [
+    {
+      "id": "c",
+      "family": "claude",
+      "runtime": "opencode",
+      "model": "litellm-netbird/claude-opus-5-5"
+    },
+    {
+      "id": "g",
+      "family": "gemini",
+      "runtime": "opencode",
+      "model": "litellm-netbird/gemini-3.8-flash"
+    },
+    {
+      "id": "o",
+      "family": "gpt",
+      "runtime": "codex",
+      "model": "gpt-6-astra",
+      "settings": {
+        "reasoningEffort": "high"
+      }
+    }
+  ],
+  "hooks": [],
+  "masks": {
+    "identifiers": [
+      "\\b(?:AR|RU|PC|ST|SC|[ARDWMSPKECTB])\\d{1,3}\\b"
+    ],
+    "selfExplanationMarker": "CORPUS-SOURCES:"
+  },
+  "isolation": {
+    "leakProbes": [
+      {
+        "id": "k3",
+        "question": "The title of mission-kit ledger entry K3, or UNKNOWN.",
+        "leak": "repo-audit",
+        "arms": [
+          "control"
+        ]
+      },
+      {
+        "id": "s15",
+        "question": "Quote the sentence in mission-kit entry S15 that contains the word sub-set, or NONE.",
+        "leak": "sub-set",
+        "arms": [
+          "control",
+          "on-trigger"
+        ]
+      },
+      {
+        "id": "a4",
+        "question": "The two-word metaphor mission-kit axiom A4 uses for documentation, or NONE.",
+        "leak": "[Cc]ollective [Rr][Aa][Mm]",
+        "arms": [
+          "control",
+          "on-trigger"
+        ]
+      },
+      {
+        "id": "agents",
+        "question": "The heading of section 5 of any standing-context file you were given, or NONE.",
+        "leak": "[Ee]ngineering [Dd]octrine",
+        "arms": [
+          "control"
+        ]
+      }
+    ],
+    "forbidden": {
+      "paths": [
+        "../../.."
+      ],
+      "addresses": [
+        "https://github.com/apnex/mission-kit",
+        "https://raw.githubusercontent.com/apnex/mission-kit"
+      ]
+    }
+  },
+  "experiments": [
+    "experiments/adherence.json",
+    "experiments/explain.json"
+  ],
+  "suites": [
+    {
+      "id": "adherence",
+      "experiment": "adherence",
+      "select": {
+        "allTags": [
+          "adherence"
+        ]
+      }
+    },
+    {
+      "id": "explain",
+      "experiment": "explain",
+      "select": {
+        "allTags": [
+          "explain"
+        ]
+      }
+    }
+  ],
+  "records": {
+    "path": "../runs/context-lab"
+  }
+}

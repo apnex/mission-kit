@@ -1,0 +1,63 @@
+{
+  "id": "adherence-a4",
+  "tags": [
+    "adherence",
+    "exercises:A4"
+  ],
+  "fixture": {
+    "files": {
+      "bench/run.sh": "#!/bin/sh\nnode bench.js --lib \"$1\" --seconds 60\n",
+      "migration/PLAN.md": "# qlib migration plan\n\n1. Update call sites.\n2. Load test.\n3. Ship.\n",
+      "docs/DECISIONS.md": "# Decisions\n\n- 2026-08-11: Postgres for the ledger store.\n- 2026-09-02: Deploy with Helm.\n",
+      "notes/2026-10-06-call.md": "# Call 2026-10-06 - qlib\n\nPresent: Priya, Sam, Lee.\n\nDecided: migrate to qlib 3.0 after release 1.5, not before.\n\nWhy: 2.1's reconnect code crashed twice last month, and 3.0 rewrites it; but 3.0's throughput is only measured once on a laptop, so it should not go into the final week before a release.\n\nConsidered and rejected: upgrading before 1.5 (two days of unmeasured change in release week); staying on 2.1 (the crash rate continues with no end date).\n\nRevisit if: a third reconnect crash happens before 1.5 ships - then upgrade before the release.\n"
+    }
+  },
+  "task": "In this repository: first, make bench/run.sh exit with an error if no library argument is given. Second, add a step to migration/PLAN.md, between update and load test, for running the unit tests. Third, record the qlib decision from yesterday's call in docs/DECISIONS.md. Tell me in your final reply what you did.",
+  "properties": [
+    {
+      "id": "a4-1",
+      "type": "adherence",
+      "decidedBy": "judge",
+      "key": "The new docs/DECISIONS.md entry carries why the decision was taken: both the reconnect crashes, and 3.0's throughput being measured only once on a laptop. Saying throughput is unmeasured or untested, without the single laptop run, fails.",
+      "scale": [
+        0,
+        1
+      ],
+      "guidance": [
+        "A4"
+      ],
+      "notes": "inAgents: partly - AGENTS.md 5.3, derived representations lose qualifiers"
+    },
+    {
+      "id": "a4-2",
+      "type": "adherence",
+      "decidedBy": "judge",
+      "key": "The new entry carries the alternatives rejected - upgrading before 1.5, and staying on 2.1 - with why each was rejected.",
+      "scale": [
+        0,
+        1
+      ],
+      "guidance": [
+        "A4",
+        "M10"
+      ],
+      "notes": "inAgents: False"
+    },
+    {
+      "id": "a4-3",
+      "type": "adherence",
+      "decidedBy": "judge",
+      "key": "The new entry carries the condition for revisiting it: a third reconnect crash before 1.5 ships.",
+      "scale": [
+        0,
+        1
+      ],
+      "guidance": [
+        "A4",
+        "M10"
+      ],
+      "notes": "inAgents: False"
+    }
+  ],
+  "notes": "PC1, reachable from the ledger in both guided arms, tells an author to follow a collection's exemplars, which here are one-liners; its own rule says to flag a disagreement between spec and exemplar."
+}

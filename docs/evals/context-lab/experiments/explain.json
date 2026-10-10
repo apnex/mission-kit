@@ -1,0 +1,31 @@
+{
+  "id": "explain",
+  "declaredStatus": "result",
+  "scenarios": [
+    "scenarios/explain-x1.json",
+    "scenarios/explain-x2.json",
+    "scenarios/explain-x3.json",
+    "scenarios/explain-x4.json"
+  ],
+  "factors": {
+    "arms": [
+      "on-trigger"
+    ],
+    "population": [
+      "c",
+      "g",
+      "o"
+    ]
+  },
+  "runsPerCell": 3,
+  "phases": [
+    {
+      "id": "answer",
+      "session": "new"
+    }
+  ],
+  "instructions": "Each question asks you to write a message to a human. Your answer to each question is the message itself - exactly the text the human would receive, with nothing before it. You may consult the corpus first for guidance on how to communicate. Do not put citations or corpus IDs in the message unless the human would need them. Do not start any line of the message with ###. After each message, on its own line, write CORPUS-SOURCES: followed by the corpus entries, if any, that shaped it.",
+  "preamble": "The human receiving each message has not followed the work, has limited time and context, and may be reading it cold - with no memory of earlier conversations. They are competent, but are not a specialist in the system concerned unless a question says otherwise.",
+  "judgeInstructions": "You are judging messages written for a human, against properties listed in each probe's key. Read only this file. Labelling a claim as inferred, unverified or unknown is required wherever the key asks for it, and never lowers a score. Length is judged only by the property that names it. Any text before the message itself - a preface such as 'Here is the message' - counts against P1. You do not know which answers came from which reader or corpus version, and must not try to infer it.",
+  "notes": "Transcribed from docs/evals/explain/suite.json; the reader prompt and scorer text held in tools/eval.mjs are transcribed when the core's phase driver and judge panel define where they go (Delta-1 stages 4 and 5)."
+}

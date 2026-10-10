@@ -21,6 +21,14 @@ Suites are under `docs/` because they are about this corpus, and because `eval.m
 
 ---
 
+## The context-lab pack
+
+`docs/evals/context-lab/` is mission-kit's pack for [context-lab](https://github.com/apnex/context-lab), the shared evaluation component (`0087`, `0088`).\
+It carries the adherence suite and the `explain` suite, transcribed as they stand; until mission-kit's own tools retire, each suite file and its pack scenarios are twins (`B80`).\
+Its experiment register lives in its `register/` folder and is committed: it is the evidence an experiment was fixed before its outcomes.
+
+---
+
 ## A run
 
 Runs are written under `docs/evals/runs/`, which git ignores: they are working material, kept on local disk and never published.\

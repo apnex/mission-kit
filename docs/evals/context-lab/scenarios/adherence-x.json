@@ -1,0 +1,120 @@
+{
+  "id": "adherence-x",
+  "tags": [
+    "adherence",
+    "exercises:S15",
+    "exercises:M10"
+  ],
+  "fixture": {
+    "files": {
+      "package.json": "{\n  \"name\": \"ledger-svc\",\n  \"version\": \"1.4.0\",\n  \"scripts\": { \"test\": \"node test.js\" },\n  \"dependencies\": { \"qlib\": \"2.1.0\" }\n}\n",
+      "test.js": "const assert = require('assert');\nconst { total } = require('./ledger');\nassert.strictEqual(total([1, 2, 3]), 6);\nconsole.log('ok');\n",
+      "ledger.js": "function total(xs) {\n  let t = 0;\n  for (let i = 0; i <= xs.length; i++) t += xs[i] || 0;\n  return t;\n}\nmodule.exports = { total };\n",
+      "NOTES.md": "# ledger-svc notes\n\n- Crashed twice last month inside qlib 2.1.0 reconnect code (logs: incidents/0412, incidents/0427).\n- qlib 3.0 rewrites reconnect; upgrading changes the queue API in 14 call sites, about two days of work.\n- Release 1.5 ships in eight days.\n- Nobody has measured qlib 3.0 throughput for this service.\n- Decision owner: Priya, product lead. She does not know the service internals. She will read one message.\n"
+    }
+  },
+  "task": "In this repository: first, read ledger.js and simplify the loop in total() without changing its behaviour, and run the tests. Second, add a one-paragraph description of the service to the top of NOTES.md based on what you can see. Third, Priya has to decide what to do about qlib; the facts are in NOTES.md. Write the message you would send her, and save it as message-to-priya.txt. Your final reply to me should be only the text of that message.",
+  "properties": [
+    {
+      "id": "x1",
+      "type": "adherence",
+      "decidedBy": "judge",
+      "key": "The first non-blank line of the message states what she must choose, or the conclusion. If that line is a 'Subject:' line it is the line judged; 'To:' and 'From:' lines are skipped. A line naming only the topic, such as 'qlib update', fails, and so does a salutation such as 'Hi Priya,'.",
+      "scale": [
+        0,
+        1
+      ],
+      "guidance": [
+        "S15"
+      ],
+      "notes": "inAgents: False"
+    },
+    {
+      "id": "x2",
+      "type": "adherence",
+      "decidedBy": "judge",
+      "key": "Apart from the opening line stating the decision, the message asks for her answer once, in its closing part, followed only by the answer options. Any other question, such as a closing offer 'want more detail?', fails. A question that is itself one of the answer options does not count, and a sign-off does not.",
+      "scale": [
+        0,
+        1
+      ],
+      "guidance": [
+        "S15"
+      ],
+      "notes": "inAgents: False"
+    },
+    {
+      "id": "x3",
+      "type": "adherence",
+      "decidedBy": "judge",
+      "key": "The options include (a) staying on qlib 2.1 with no upgrade planned, and (b) at least two distinct ways or times to upgrade, such as before release 1.5 and after it. Each option, including (a), states a cost or risk. 'Upgrade after 1.5' does not count as (a).",
+      "scale": [
+        0,
+        1
+      ],
+      "guidance": [
+        "M10",
+        "S15"
+      ],
+      "notes": "inAgents: False"
+    },
+    {
+      "id": "x4",
+      "type": "adherence",
+      "decidedBy": "judge",
+      "key": "Contains a recommendation, marked with the word 'recommend' or 'recommendation', in its own sentence or section and not inside an option's description.",
+      "scale": [
+        0,
+        1
+      ],
+      "guidance": [
+        "S15"
+      ],
+      "notes": "inAgents: False; The literal word is required for scorability; S15 asks only that the recommendation be labelled, so a differently worded label fails this property while following S15."
+    },
+    {
+      "id": "x5",
+      "type": "adherence",
+      "decidedBy": "judge",
+      "key": "The body names none of incidents/0412, incidents/0427, ledger.js, total() or NOTES.md, except within one line, or one answer option, that groups references; it need not be labelled. Names such as qlib, version numbers, API, call sites, throughput and reconnect are allowed.",
+      "scale": [
+        0,
+        1
+      ],
+      "guidance": [
+        "S15"
+      ],
+      "notes": "inAgents: False"
+    },
+    {
+      "id": "x6",
+      "type": "adherence",
+      "decidedBy": "judge",
+      "key": "Closes with short answer options - one for each decision option offered, plus at most one pick for more information - each answerable by naming it; a sign-off and a single references line after them are allowed. An open request such as 'let me know your thoughts' fails.",
+      "scale": [
+        0,
+        1
+      ],
+      "guidance": [
+        "S15"
+      ],
+      "notes": "inAgents: False"
+    },
+    {
+      "id": "x7",
+      "type": "adherence",
+      "decidedBy": "judge",
+      "key": "States why the decision is needed now, naming the release 1.5 timing or the crashes as the reason.",
+      "scale": [
+        0,
+        1
+      ],
+      "guidance": [
+        "S15"
+      ],
+      "notes": "inAgents: False"
+    }
+  ],
+  "scoring": "message-to-priya.txt in the diff; if absent, the final reply. Whether the two match is recorded per cell and not scored.",
+  "scoredFile": "message-to-priya.txt"
+}
