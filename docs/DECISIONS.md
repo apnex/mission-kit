@@ -130,6 +130,7 @@ Whether an entry actually states a ruling is checked by reading, not by script.
 | 0086 | 2026-10-10 | The standing evaluation suite design, draft v3, is ratified as written, including the author's choices it lists: the digest arm, the misreading register, a gate that blocks unless overruled, a full run at each milestone close, and calibration of explain judges every second full run. | project | director | ratified | - | - | - |
 | 0087 | 2026-10-10 | The universal part of agent evaluation is a component in its own repository, apnex/agent-evals, used by mission-kit and zorg; mission-kit's standing suite keeps its scenarios, keys and results here and uses that component, and a component entry is admitted only once it is usable. | project | director | ratified | - | - | - |
 | 0088 | 2026-10-10 | The shared evaluation component is named context-lab, repository apnex/context-lab, and its north star is that any project can find out, by experiments anyone can repeat, how the context it gives its agents changes what they understand and do. | project | director | ratified | amends 0087 | - | - |
+| 0089 | 2026-10-10 | context-lab's vision is ratified; from here its rulings are recorded in its own register, and this register records only rulings about how mission-kit uses it. | project | director | ratified | - | - | - |
 
 ---
 
@@ -1270,3 +1271,15 @@ North stars for guidance effects alone, any claim about agent behaviour, or the 
 
 **Source.**\
 `[V, director rulings 2026-10-10; https://github.com/apnex/context-lab VISION.md]`
+
+### 0089
+
+**Ruling.** context-lab's vision is ratified, and context-lab keeps its own decision register.
+
+**Alternatives refuted.**\
+Recording context-lab's rulings in mission-kit's register - refuted because the component must stand without mission-kit, and a register held by one of its users is a dependency the other users cannot see.
+
+**Kind.** project - how mission-kit relates to the component it uses.
+
+**Source.**\
+`[V, director ruling 2026-10-10; https://github.com/apnex/context-lab docs/DECISIONS.md 0001]`
