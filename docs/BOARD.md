@@ -116,6 +116,7 @@ Every open row, scored on the row and ordered on the common scale; generated, ne
 | `B74` | S4 | A13 signal | held | `S15` gives two counts for a decision message's picks that cannot both hold. |
 | `B75` | S4 | A14 signal | held | The `A4` adherence trap depends on the real date. |
 | `B78` | S4 | A3 signal | held | No study tests how agents compose mission-kit's components, or which boxes recur in designs that the registry lacks. |
+| `B79` | S4 | A2 signal | held | The language and layout of a component are a convention held only in repositories. |
 | `B10` | S5 | A4 signal | M4.1 | `CSSA`/`TSSA` is one downstream programme's vocabulary presented as a corpus convention. |
 | `B39` | S5 | A3 signal | held | Style cannot be scoped by medium. |
 <!-- END GENERATED: ledger -->
@@ -270,6 +271,7 @@ Open rows no live item cites, with their scores and the condition that would rev
 | `B74` | S4 | A13 signal | `S15` gives two counts for a decision message's picks that cannot both hold. | `S15` is next changed, or a reader or scorer splits on the pick count again |
 | `B75` | S4 | A14 signal | The `A4` adherence trap depends on the real date. | The suite is next revised: drop the relative date, then re-run `A4` alone |
 | `B78` | S4 | A3 signal | No study tests how agents compose mission-kit's components, or which boxes recur in designs that the registry lacks. | mission-kit's pack runs on context-lab's core (context-lab M1.2) |
+| `B79` | S4 | A2 signal | The language and layout of a component are a convention held only in repositories. | a third component is founded, or a component departs from the convention again |
 | `B39` | S5 | A3 signal | Style cannot be scoped by medium. | FIRED and moved: `S15` is the first single-medium rule; one rule does not earn a sub-set. TRIGGER: a second single-medium style rule. Nested sets need generator support, shared with `B38`'s set spanning layers. |
 <!-- END GENERATED: held -->
 
