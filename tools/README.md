@@ -220,6 +220,7 @@ Holds the board and the backlog to the contract that binds them.
 ```sh
 node tools/check-board.mjs            # check
 node tools/check-board.mjs --write    # regenerate the board's ledger and held list
+node tools/check-board.mjs --root DIR # check another project's board and backlog against the same contract
 ```
 
 **Why it exists.**\

@@ -24,13 +24,16 @@
 // It reads both files as written rather than a separate declaration, because the files ARE the
 // declaration; a second copy of the board's structure would be the drift this exists to prevent.
 //
-// Usage:  node tools/check-board.mjs
+// Usage:  node tools/check-board.mjs [--write] [--root DIR]
 
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const root = join(dirname(fileURLToPath(import.meta.url)), "..");
+// --root lets a project adopting the artifact set check its own board with this script, rather than
+// copying it: a second copy of the contract would drift from this one.
+const rootArg = process.argv.indexOf("--root");
+const root = rootArg > -1 ? process.argv[rootArg + 1] : join(dirname(fileURLToPath(import.meta.url)), "..");
 const boardPath = join(root, "docs/BOARD.md");
 const backlogPath = join(root, "docs/BACKLOG.md");
 
