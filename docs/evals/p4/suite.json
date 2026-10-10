@@ -2,43 +2,43 @@
   "id": "p4",
   "mode": "corpus",
   "group": "p4",
-  "source": "P4 reconciled with zorg D35 (a mechanism free of any application's content is a shared component even with one consumer). Written 2026-10-11 before any reader ran. Q1, Q2 and Q6 probe the changed rule; Q3, Q4 and Q5 are controls the current P4 answers.",
+  "source": "P4 reconciled with zorg D35 (a mechanism free of any application's content is a shared component even with one consumer). Written 2026-10-11 before any reader ran. Q1, Q2 and Q6 probe the changed rule; Q3, Q4 and Q5 are controls the current P4 answers. Key audited by a fresh agent before any reader ran: Q1's rubric accepts conditional answers; Q2 is a new mechanism with embedded policy asking what must change first; Q3 and Q4 are recast as transfer cases; Q5 scores only the present decision; Q6 stipulates a neutral capability both consumers need.",
   "probes": [
     {
       "id": "Q1",
-      "question": "One application needs a retry-with-backoff mechanism. Its code would hold nothing of the application's domain - no entity names, no business rules - and the application's current work needs it now. No second application needs it yet. Where should it be built, and why?",
-      "key": "In a neutral core, now: it holds none of any tenant's content and a tenant's selected work needs it, so a single consumer is enough; a second consumer later tests its shape, and the core is adjusted to fit, never forked.",
-      "rubric": "2 for building it in the neutral core now, grounded both in its holding no application content and in present work needing it. 1 for the core with only one of those grounds, or hedged. 0 for keeping it in the application until a second consumer appears."
+      "question": "One application needs a retry-with-backoff mechanism. The operation to retry, the delay policy and the cancellation rule are all supplied by the caller, so its code would hold nothing of the application's domain, and the application's current work needs it now. No second application needs it yet. Where should it be built, and why?",
+      "key": "In a neutral core, now: it holds none of any tenant's content and a tenant's selected work needs it, so a single consumer is enough.",
+      "rubric": "2 for building it in the neutral core now, grounded both in its holding no application content and in present work needing it, including an answer that accepts the stated facts as a condition. 1 for that placement with an incomplete rationale. 0 for keeping it in the application because only one consumer exists, for deferring it as speculative, or for another incompatible decision."
     },
     {
       "id": "Q2",
-      "question": "One application has an index mechanism whose code still refers to that application's own field names. It is needed now, and another application might want one later. Should it move into a neutral core now?",
-      "key": "Not yet: it still holds that application's content, so it stays in that application until the field names are lifted out into what the application injects; once its code names none, it moves into the core when work needs it.",
-      "rubric": "2 for keeping it in the application until its content is lifted out, then moving it. 1 for keeping it there for another reason alone, such as waiting for a second consumer. 0 for moving it into the core as it is."
+      "question": "One application has a rate-limiting mechanism whose code hard-codes that application's customer tiers and their limits. Another application might want rate limiting later. Should the mechanism move into a neutral core now, and if not, what would have to change first?",
+      "key": "Not as it stands: the tiers and limits are that application's content; they must be supplied from outside the mechanism by the application, with no application data, policy or assumption left in it; once it holds none and selected work needs it, it moves into the core, without waiting for a second consumer.",
+      "rubric": "2 for not promoting it as it stands, removing all application content by having the application supply it, and promoting once neutral and needed. 1 for the correct content-based rejection with an incomplete account of what must change, or of when it moves. 0 for promoting it as it stands, or for a second consumer as the sole condition."
     },
     {
       "id": "Q3",
-      "question": "Two subsystems each hand-roll the same state machine stepper, and a fix to one has been forgotten in the other. What does the corpus recommend?",
-      "key": "Factor the stepper into a thin, domain-neutral core that names no subsystem's nouns, with each subsystem a tenant injecting its own transition table and effects, so a fix is made once.",
-      "rubric": "2 for a neutral core with tenants injecting their semantics. 1 for sharing the code without the neutrality or injection. 0 otherwise."
+      "question": "Two subsystems each implement the same graph traversal over their own data, and a bug fix has landed in one but not the other. The traversal is the same; what each does with the nodes it visits differs. What does the corpus recommend?",
+      "key": "Factor the traversal into a thin, domain-neutral core that names no subsystem's vocabulary, with each subsystem supplying its own data and what it does at each node from outside the core, so a fix is made once.",
+      "rubric": "2 for one shared neutral mechanism with each subsystem's semantics supplied from outside it, in any words. 1 for sharing it with either neutrality or the separation of semantics missing or unclear. 0 for keeping two traversals, or for a shared one that hard-codes the subsystems' semantics."
     },
     {
       "id": "Q4",
-      "question": "A library described as shared has accumulated one consumer's entity and field names in its source. What does the corpus say about it, and how is that kept from happening?",
-      "key": "It is the smell the pattern prevents: a core that knows one domain's nouns is that domain's code with extra indirection; move those nouns into what the tenant injects, and enforce neutrality with a gate that scans the core's source for domain terms, since an import check is not enough.",
-      "rubric": "2 for naming the neutrality breach and the source-scanning gate. 1 for one of them. 0 otherwise."
+      "question": "A library described as shared imports nothing from any consumer, and its dependency check passes, but one consumer's field names appear in its string constants. What does the corpus say about it, and what check would catch it?",
+      "key": "It breaks the core's neutrality: those names belong in what the consumer supplies; a gate scanning the core's source for domain terms catches it, which an import check cannot, since a name can leak in a string or comment while nothing is imported.",
+      "rubric": "2 for rejecting the coupling and naming a scan of the source for domain vocabulary. 1 for one of the two without contradiction. 0 for endorsing the coupling or treating the import check as sufficient."
     },
     {
       "id": "Q5",
-      "question": "A developer proposes building a general plugin framework for a mechanism that no current work needs, so that it is ready when someone does. What does the corpus say?",
-      "key": "Do not build it: generality that no selected work needs is speculation, which ossifies the wrong abstraction; build the mechanism when work needs it, thin and neutral.",
-      "rubric": "2 for refusing it as speculation with the reason. 1 for refusing it without the reason. 0 for endorsing it."
+      "question": "A developer proposes building a general plugin framework for a mechanism that no selected application work depends on, so that it is ready when someone needs it. What should happen now?",
+      "key": "Do not build it now: generality no selected work needs is speculation, which ossifies the wrong abstraction.",
+      "rubric": "2 for not building it now, with a grounded reason, an answer that records it as an unbuilt candidate included. 1 for not building it without a reason. 0 for building it now. What the answer says about later placement is not scored."
     },
     {
       "id": "Q6",
-      "question": "A second application starts using a mechanism already in the neutral core, and its needs do not fit the core's present shape. What should happen?",
-      "key": "Adjust the core to the shape the second consumer reveals, keeping it thin and neutral with each consumer's semantics injected; do not copy or fork the mechanism into the second application.",
-      "rubric": "2 for adjusting the shared core without forking, keeping semantics injected. 1 for adjusting without the neutrality, or for not forking without saying how the core changes. 0 for copying or forking."
+      "question": "A second application starts using a mechanism already in a neutral core. It needs a capability the core lacks - one that holds none of either application's content and that both applications could use. How should it be accommodated?",
+      "key": "Revise the one core's neutral contract to add the capability, keeping each application's semantics supplied from outside it and the first application's needs met; do not copy the mechanism into the second application.",
+      "rubric": "2 for revising the one thin neutral core, semantics still supplied from outside, existing needs preserved. 1 for a compatible but incomplete plan. 0 for duplicating the mechanism, or for putting an application's semantics into the core."
     }
   ]
 }
