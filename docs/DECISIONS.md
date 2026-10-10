@@ -1311,7 +1311,8 @@ A cap - refuted by `C0`'s growth policy, which is uncapped, and by adoption outr
 **Test, under `M2`.**\
 Run `c0-size-bound`: the `c0` suite, its new probes `Q8` to `Q10` keyed and committed before any reader ran and their key audited by a fresh agent and corrected first; both versions blind to 3 readers each of two families, `gpt-6-astra` and `claude-opus-5-5`, scored blind by `gpt-6-astra`, which did not author the change.\
 Totals of 18: the old charter 17 and 17, the new 18 and 18; the six control probes score 2 in every arm, so nothing regressed, and the one difference is `Q10`, the scale, where old readers called "a few dozen" a target.\
-Most readers of both versions hedged on `Q10`, the new ones only that the charter names no count at which growth is "far beyond" the scale; that is deliberate, since a threshold would be a number taken as a target, and the hedge is recorded rather than answered.
+Most readers of both versions hedged on `Q10`, the new ones only that the charter names no count at which growth is "far beyond" the scale; that is deliberate, since a threshold would be a number taken as a target, and the hedge is recorded rather than answered.\
+The director ratified the change as tested, 2026-10-10.
 
 **Source.**\
 `[V, director ruling 2026-10-10, recorded as zorg docs/DECISIONS.md D36; the director's instruction of 2026-10-10 to update components/README.md]`
