@@ -2,7 +2,7 @@
   "id": "c0",
   "mode": "corpus",
   "group": "c0",
-  "source": "C0 conversion to E4, derived from C1, docs/ARCHITECTURE.md, tools/, P0, K0 and the current charter. Q1-Q3 are controls the current C0 answers. Key reviewed by a fresh agent before any reader ran; Q4 (exact count, territory reason, wider fallback), Q6 wording and Q1 rubric corrected.",
+  "source": "C0 conversion to E4, derived from C1, docs/ARCHITECTURE.md, tools/, P0, K0 and the current charter. Q1-Q3 are controls the current C0 answers. Key reviewed by a fresh agent before any reader ran; Q4 (exact count, territory reason, wider fallback), Q6 wording and Q1 rubric corrected. Q8-Q10 added 2026-10-10 for the director's ruling that the registry's size is a bound, not a target (zorg D36), keyed before any reader ran; Q8 and Q9 probe admitting and splitting members, Q10 the size itself.",
   "probes": [
     {
       "id": "Q1",
@@ -39,6 +39,24 @@
       "question": "What would an unhealthy population of components look like?",
       "key": "Population faults, e.g.: one duty drawn twice under two contracts; a fork kept as a variant; project-specific code indexed as portable; a registry nobody searches; duplication found in architectures with no component; a coverage claim with no denominator. A single component that grew a second duty is a member defect.",
       "rubric": "2 for two population faults. 1 for one. 0 for none, or only a single component's defect."
+    },
+    {
+      "id": "Q8",
+      "question": "A registry holds 50 components. A project needs a mechanism that holds one duty no member holds, at architecture altitude, and nothing in it is particular to that project. Does the registry's size bear on whether it is admitted?",
+      "key": "No: it is admitted because a consumer needs it; growth is uncapped, and the size the set expects - tens of duties, never thousands - is a bound its definition keeps, not a cap, so no member is refused to hold a number.",
+      "rubric": "2 for admit, with the size having no bearing because growth is uncapped and the expected size is no cap. 1 for admit without saying why the size does not bear, or for the size not bearing without the ground for admitting. 0 if the size is a reason to refuse or delay."
+    },
+    {
+      "id": "Q9",
+      "question": "To show the registry approaching its intended size, someone proposes splitting three large components into finer ones. What does the corpus say?",
+      "key": "Do not: the size is not a target, so no member is split to reach a number; a component is split only when it has grown a second duty at the altitude where it appears as a box - below that altitude its parts are concerns, not members, however many there are.",
+      "rubric": "2 for refusing the split as a means to a number, with the true ground for splitting - a second duty at the box's altitude. 1 for either alone. 0 for endorsing the split."
+    },
+    {
+      "id": "Q10",
+      "question": "About how many members should the registry come to hold, and what keeps it at that size?",
+      "key": "Tens, never thousands, and that is a bound rather than a target: a set of well-defined duties is orthogonal, and orthogonal duties at architecture altitude are few; counting below that altitude, where concerns are unbounded, is what would produce thousands.",
+      "rubric": "2 for tens, not thousands, as what orthogonality at architecture altitude keeps, and not a target. 1 for the order of magnitude alone, or the reason alone. 0 otherwise."
     }
   ]
 }
