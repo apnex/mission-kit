@@ -129,6 +129,7 @@ Whether an entry actually states a ruling is checked by reading, not by script.
 | 0085 | 2026-10-10 | The explain guidance is measured in the standing evaluation suite by agent judges across families in every run, and the director's human-judged evaluation periodically calibrates those judges. | project | director | ratified | - | - | - |
 | 0086 | 2026-10-10 | The standing evaluation suite design, draft v3, is ratified as written, including the author's choices it lists: the digest arm, the misreading register, a gate that blocks unless overruled, a full run at each milestone close, and calibration of explain judges every second full run. | project | director | ratified | - | - | - |
 | 0087 | 2026-10-10 | The universal part of agent evaluation is a component in its own repository, apnex/agent-evals, used by mission-kit and zorg; mission-kit's standing suite keeps its scenarios, keys and results here and uses that component, and a component entry is admitted only once it is usable. | project | director | ratified | - | - | - |
+| 0088 | 2026-10-10 | The shared evaluation component is named context-lab, repository apnex/context-lab, and its north star is that any project can find out, by experiments anyone can repeat, how the context it gives its agents changes what they understand and do. | project | director | ratified | amends 0087 | - | - |
 
 ---
 
@@ -1254,3 +1255,18 @@ Keeping the runner as a mission-kit tool - refuted because it can then never be 
 
 **Source.**\
 `[V, director rulings 2026-10-10; components/README.md Vision and Territory; zorg evals/tools/run-agents.mjs header]`
+
+### 0088
+
+**Ruling.**\
+The component of `0087` is `context-lab`, with its north star chosen.
+
+**Alternatives refuted.**\
+`agent-evals` - refuted because it reads as evaluating agents, which the component's vision rules out as a benchmark of models.\
+`context-evals` - not chosen; the director preferred a name carrying the research purpose.\
+North stars for guidance effects alone, any claim about agent behaviour, or the effect of a change alone - not chosen, being too narrow, too broad, and too narrow.
+
+**Kind.** project - where and under what purpose mission-kit's evaluation machinery is built.
+
+**Source.**\
+`[V, director rulings 2026-10-10; https://github.com/apnex/context-lab VISION.md]`

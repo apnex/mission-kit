@@ -3,7 +3,7 @@
 The design of record for mission-kit's standing evaluation suite: one library of engineering scenarios and one runner, re-run against every corpus revision.\
 It concretizes the director's intent captured in `docs/surveys/standing-eval-suite-survey.md`, with rulings `0083`, `0084` and `0085`.\
 Status: v3, ratified by the director (`0086`) after an independent audit and a re-check.\
-Home amended by `0087`: the runner and every universal part are built in `apnex/agent-evals`; this repository keeps the scenarios, keys, results and this design's mission-kit-specific choices.
+Home amended by `0087` and `0088`: the runner and every universal part are built in `apnex/context-lab`; this repository keeps the scenarios, keys, results and this design's mission-kit-specific choices.
 
 ---
 
