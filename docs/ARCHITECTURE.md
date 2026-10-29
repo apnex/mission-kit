@@ -140,7 +140,7 @@ Generated from the root README's layer table and each layer's charter.
 <!-- BEGIN GENERATED: architecture-layers. Run tools/generate-architecture.mjs; do not edit by hand. -->
 | Layer | Prefix | Duty, from its charter | Members | Draws on, from its charter |
 |---|---|---|---|---|
-| `axioms/` | `A` | standing commitments, what brings one into force, and how they compose | 14 | `SC`, `W`, `R`, `D`, `E`, `T` |
+| `axioms/` | `A` | standing commitments, what brings one into force, and how they compose | 15 | `SC`, `W`, `R`, `D`, `E`, `T` |
 | `roles/` | `R` | the M axis (pure essence + type-determined authority) | 4 | `W`, `D`, `A`, `E`, `T` |
 | `domains/` | `D` | the N axis (subject-surfaces, bimodal freedom) | 7 | `W`, `R`, `A`, `T` |
 | `work-types/` | `W` | the composition rule, the canonical closeability preflight, and the entry schema | 26 | `R`, `D`, `T`, `E`, `A` |

@@ -41,6 +41,7 @@ Generated from each axiom's `applies-to`, the field that decides binding.
 | [A7](../axioms/A7-resilient-agentic-operations.md) | Resilient Agentic Operations | You are deciding how the system should behave when a unit of work fails or a thread stalls |
 | [A10](../axioms/A10-autopoietic-evolution.md) | Autopoietic Evolution | Friction has surfaced during work and you are deciding whether to route around it or fix its cause |
 | [A13](../axioms/A13-director-intent-amplification.md) | Director Intent Amplification | You are about to consume the director's attention, or to decide something in their absence |
+| [A15](../axioms/A15-recursive-elevation.md) | Recursive Elevation | You have completed a recurring report, review, or incident recovery and are deciding whether the mechanism itself should move one rung higher |
 <!-- END GENERATED -->
 
 An axiom binds a system that has *any one* of its traits, so each axiom above also binds systems that have none of this trait but one of its others.
