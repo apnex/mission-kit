@@ -129,7 +129,7 @@ A gap that can be closed at that seam is not pressure on this component at all.
 
 **Consumes** - nothing; AGP depends on no other registered component.
 
-**Consumed-by** - `operation-call` and `operation-proxy` (in `zorg`), which use AGP through its declared contract without containing it, so neither inherits internal details across the boundary ([`E5`](../entities/E5-system.md)).
+**Consumed-by** - [`C5`](C5-operation-call.md) (`operation-call`), [`C7`](C7-caller-identity.md) (`caller-identity`), [`C8`](C8-operation-proxy.md) (`operation-proxy`), [`C10`](C10-credential-issuer.md) (`credential-issuer`), and `zorg`, which use AGP through its declared contract without containing it, so none inherits internal details across the boundary ([`E5`](../entities/E5-system.md)).
 
 None of the eight contained units is registered here.\
 Each earns an entry when a consumer outside this component needs it, per [`A3`](../axioms/A3-sovereign-composition.md)'s Earned Exposure, and not before.\
