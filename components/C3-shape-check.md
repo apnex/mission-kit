@@ -35,8 +35,8 @@ What a consumer depends on, and what it may not reach past.
 |---|---|
 | dialect | one closed-record JSON Schema 2020-12 subset (`SHAPE_DIALECT_ID`, `prepareShapeDocument`), where every object keyword requires `additionalProperties: false` and `$ref` targets only local `#/$defs/<name>` definitions with no cycle |
 | judgement | `judgeShapeValue(shape, value)` reads the input as plain data first, checks every rule of the dialect, and returns `{ fit: true, value }` with a deeply frozen plain copy or `{ fit: false, misfits }` ordered by JSON Pointer, each misfit naming `path`, `rule`, `expected`, `actual` and `fix` |
-| plain-data reading | `readPlainJson(value)` copies an arbitrary value into a deeply frozen plain JSON value in a single descriptor pass (`Object.getOwnPropertyDescriptor` over `Object.getOwnPropertyNames`), rejecting getters, setters, symbols, non-plain prototypes, holes, cycles, `-0` (normalised to `0`) and throws from `Proxy` traps without invoking any user code, and calls `observePromises(value)` before returning `{ ok: false }` |
-| promise observation | `observePromises(value, maxNodes?)` walks up to `maxNodes` objects or arrays by own data descriptors without the call stack and attaches a no-op handler via `Promise.prototype.then` inside a `try`/`catch` guard to every native `Promise` (`instanceof Promise`) it reaches, so rejected promises hidden inside a refused return value never crash the host process as unhandled rejections |
+| plain-data reading | `readPlainJson(value)` copies an arbitrary value into a deeply frozen plain JSON value in a single descriptor pass (`Object.getOwnPropertyDescriptor` over `Object.getOwnPropertyNames`, accepting `null`, booleans, finite numbers with `-0` normalised to `0`, strings, plain arrays and plain objects), without invoking getters, setters, `toJSON` or `valueOf` conversions; it rejects accessors, symbols, non-plain prototypes, array holes and active-path cycles, catches any throw from a `Proxy` trap, and calls `observePromises(value)` before returning `{ ok: false }` |
+| promise observation | `observePromises(value, maxNodes = 1000)` walks up to `maxNodes` objects or arrays by identity through own data descriptors without the call stack (catching any `Proxy` trap throw) and, for every reached value that is a native `Promise` (`instanceof Promise`), calls `Promise.prototype.then.call(v, noop, noop)` inside a `try`/`catch` guard, consuming its rejection whenever attachment succeeds (when a promise carries an own `constructor` or `Symbol.species` getter that throws before reactions attach, the throw is caught and ECMAScript cannot suppress that rejection) |
 | canonical JSON and bounds | `toCanonicalJson(value)` serialises a plain JSON value with lexicographically sorted keys (`SD1`), `snapshotJson(value)` freezes a plain copy, and `utf8ByteLength`, `nestingDepth` and `firstUnsafeInteger` (`SAFE_INTEGER_LIMIT`) measure size, depth and safe-integer bounds |
 | conformance corpus | `@apnex/shape-check/corpus` exports the dialect's positive and negative conformance cases as data, authored independently of the implementation |
 
@@ -65,12 +65,12 @@ If none of it describes you, stop here.
 
 - More than one part of your system checks incoming records, arguments or plug-in return values, and you need them to agree on every verdict and every error message.
 - Callers (especially language-model agents) need a refusal that states the exact JSON Pointer path, what was expected and how to fix it in one attempt.
-- You accept values from untrusted or caller-supplied callbacks in JavaScript and must not let a getter, `Proxy` trap, `toJSON` method or hidden rejected `Promise` run code or crash the process.
+- You accept values from untrusted or caller-supplied callbacks in JavaScript and must not let property getters, setters, `toJSON`/`valueOf` methods, throwing `Proxy` traps or reachable rejected `Promise`s corrupt validation or surface as unhandled rejections.
 
 ### Does it meet my requirement
 
 - Shapes are closed-record JSON data structures (`additionalProperties: false` on every object) that both sides of a boundary can inspect as data.
-- Validation must never mutate, default or coerce the caller's value.
+- Validation never mutates the caller's object, fills defaults, or coerces types (its only normalisation is `-0` to `0`, matching JSON number semantics, in both `readPlainJson` and `judgeShapeValue`).
 - The library must run in any JavaScript runtime with zero runtime-specific dependencies.
 
 **It is the wrong tool when**

@@ -69,7 +69,7 @@ If none of it describes you, stop here.
 
 - Every operation on a host reads one consistent principal record for a request, stating `principal`, `proved`, and the evidence source.
 - Conflicting verifiers establish no principal (`null`) rather than letting an arbitrary verifier win.
-- Relayed requests (`originNodeId !== peerNodeId`) establish no principal unless end-to-end proof is supplied.
+- Relayed requests where origin and arrival peer differ (`originNodeId !== peerNodeId`) are always refused (`{ principal: null, proved: false }`), even when a `VerifiedCredential` is passed; end-to-end identity across relays is outside this component's scope.
 
 **It is the wrong tool when**
 

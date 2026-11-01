@@ -102,4 +102,4 @@ Internal and sovereign, so a fit gap has somewhere to go.
 
 **Consumes** - [`C1`](C1-agp.md) (`agp`) for named endpoint advertisement, routed sends, delivery disposition reports, correlation labels and peer-identity evidence, and [`C3`](C3-shape-check.md) (`shape-check`) for declared shape validation and plain-data reading ([`E5`](../entities/E5-system.md)).
 
-**Consumed-by** - [`C6`](C6-entity-api.md) (`entity-api`), [`C8`](C8-operation-proxy.md) (`operation-proxy`), and `zorg`, which use `operation-call` through its declared contract without containing it ([`E5`](../entities/E5-system.md)).
+**Consumed-by** - [`C6`](C6-entity-api.md) (`entity-api`), [`C8`](C8-operation-proxy.md) (`operation-proxy`), [`C9`](C9-operation-command.md) (`operation-command`), and `zorg`, which use `operation-call` through its declared contract without containing it ([`E5`](../entities/E5-system.md)).
