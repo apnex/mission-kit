@@ -49,11 +49,15 @@ https://raw.githubusercontent.com/apnex/mission-kit/main/<path>
 
 `INDEX.md` is the entry ledger.\
 It lists every entry, grouped by layer, and each row states the condition under which to open it.\
-It is normally loaded into context at session start, so it should already be in front of you.
+A harness may load it into context for you; this file cannot, and nothing here guarantees that one does.
 
-**Confirm that before relying on it, because the load fails silently.**\
+> **Correction.** This section previously said: *It is normally loaded into context at session start, so it should already be in front of you.*
+> It was arguably false when written - delivery had then been shown on one harness only - and was plainly false in a workspace with no loader, where a session ran for weeks through repeated compactions with only hand-fetched copies of the ledger and nothing to reload them.
+
+**Check at session start, and again whenever your context has been compacted or cleared, before relying on the ledger, because the load fails silently.**\
 Without looking anything up, name entry `K3`.\
-If you cannot, the ledger did not reach you, and nothing will have told you so.
+If you cannot, the ledger did not reach you, and nothing will have told you so.\
+A compaction may drop a ledger that arrived earlier, and nothing will tell you that either.
 
 Recover by fetching it yourself, before doing any other work:
 ```

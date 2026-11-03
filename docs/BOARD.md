@@ -105,6 +105,7 @@ Every open row, scored on the row and ordered on the common scale; generated, ne
 | `B107` | S3 | A8 signal | held | The `S6` checker passes a line holding a second sentence that starts with a lowercase word. |
 | `B109` | S3 | A3 signal | held | `C2`, `C6` and `C10` state their duty with two verbs joined by "and" and name no one concern, which `C0`'s "and" test may forbid. |
 | `B112` | S3 | A8 signal | held | Nothing checks that a component's Consumes and its peers' Consumed-by agree. |
+| `B113` | S3 | A8 signal | held | The `K3` check's rewording is untested, and so is the check. |
 | `B114` | S3 | A7 signal | held | The ledger reaches only main sessions of a harness with a loader. |
 | `B12` | S4 | A14 signal | held | The recovery methodology for a brownfield vision is unwritten and its reasoning is untested. |
 | `B19` | S4 | A14 signal | held | Methodology has nothing proportionate for a small design decision. |
@@ -305,6 +306,7 @@ Open rows no live item cites, with their scores and the condition that would rev
 | `B107` | S3 | A8 signal | The `S6` checker passes a line holding a second sentence that starts with a lowercase word. | the next change to `tools/s6-one-sentence-per-line.mjs`, or the next corpus file found holding two sentences on one line |
 | `B109` | S3 | A3 signal | `C2`, `C6` and `C10` state their duty with two verbs joined by "and" and name no one concern, which `C0`'s "and" test may forbid. | the next `M12` investigation of the components set, or the next admission of a component whose duty joins two verbs |
 | `B112` | S3 | A8 signal | Nothing checks that a component's Consumes and its peers' Consumed-by agree. | the next component admitted or its edges changed, or the next change to `tools/check-entry-body.sh` |
+| `B113` | S3 | A8 signal | The `K3` check's rewording is untested, and so is the check. | the director rules on `0119`, or a `context-lab` run compares the two sections with the ledger withheld |
 | `B114` | S3 | A7 signal | The ledger reaches only main sessions of a harness with a loader. | a subagent or a second harness is found working without the ledger, or the template is next changed |
 | `B12` | S4 | A14 signal | The recovery methodology for a brownfield vision is unwritten and its reasoning is untested. | the first external brownfield adopter reports back. Waiting is deliberate - their run is the only evidence available and costs nothing. |
 | `B19` | S4 | A14 signal | Methodology has nothing proportionate for a small design decision. | a small design decision fails in a way an anchoring check would have caught. |
