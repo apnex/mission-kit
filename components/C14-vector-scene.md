@@ -45,7 +45,7 @@ What a consumer depends on, and what it may not reach past.
 | platform slice and errors | the scene touches only the members of the root, its document, the elements it makes and the screen transform that it names, reads none of the root's attributes and names no global; a malformed argument throws a `TypeError` whose message begins with the function's name, and a call the scene's state does not allow an `Error` |
 | runtime | `@apnex/vector-scene` exports `openScene` and nothing else; it imports no package, reads no clock and no randomness and holds no timer, so it runs over a browser's elements, over plain objects of their shape, or with no root at all |
 
-Answering by the platform's own elements is the load-bearing part of this contract: `itemOf` and `itemAt` never run a second hit test that would disagree with the platform's at every stroke's edge, and the same description draws with no platform from the same code.
+Answering by the platform's own elements is the load-bearing part of this contract: `itemOf` and `itemAt` never run a second hit test that would disagree with the platform's at every stroke's edge, and with no root the same code holds and reads back the same descriptions.
 
 ---
 

@@ -91,7 +91,7 @@ If none of it describes you, stop here.
 
 | you need | reach elsewhere, because `input-binding` is |
 |---|---|
-| platform events turned into facts | not a listener - that is [`C13`](C13-input-capture.md) (`input-capture`), whose facts binding reads as they are |
+| platform events turned into facts, coordinates, a hit under the pointer | not a listener - facts are [`C13`](C13-input-capture.md)'s (`input-capture`), read as they are, and the hit test and the coordinates the application's |
 | a preview drawn, or what lies under a point | not a renderer - that is [`C14`](C14-vector-scene.md) (`vector-scene`), or the application |
 | an action performed, an undo kept, a gesture's body run | not an executor - rows carry the application's payload, and phases are reported for the application's code to run |
 | one row to win over another by priority | not a precedence engine - two hits mean nothing, and an overlap fails the application's gate |
