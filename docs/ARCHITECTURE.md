@@ -152,7 +152,7 @@ Generated from the root README's layer table and each layer's charter.
 | `patterns/` | `P` | recurring solution shapes, and what separates one from a single good design | 4 | `M`, `S`, `C`, `A` |
 | `skills/` | `K` | executable capability, the stub-and-body split, and composition by edge | 26 | `M`, `RU`, `PC`, `P`, `SC`, `A` |
 | `entities/` | `E` | precise definitions of load-bearing terms, and what earns one | 9 | `M`, `SC`, `A` |
-| `components/` | `C` | sovereign shareable units to be used rather than rebuilt | 2 | `P`, `M`, `A` |
+| `components/` | `C` | sovereign shareable units to be used rather than rebuilt | 6 | `P`, `M`, `A` |
 | `artifacts/` | `AR` | the engineering lifecycle loop, and what earns a document type | 6 | `A`, `W` |
 | `traits/` | `T` | characteristics of a system that decide which axioms bind it | 5 | `A`, `D`, `E` |
 | `schemas/` | `SC` | machine-verifiable entity contracts, validatable without a project runtime | 6 | `A`, `E` |
