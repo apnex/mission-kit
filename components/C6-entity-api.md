@@ -97,4 +97,4 @@ Internal and sovereign, so a fit gap has somewhere to go.
 
 **Consumes** - [`C4`](C4-entity-store.md) (`entity-store`), [`C5`](C5-operation-call.md) (`operation-call`), and [`C3`](C3-shape-check.md) (`shape-check`) through their declared contracts ([`E5`](../entities/E5-system.md)).
 
-**Consumed-by** - `zorg` (`@apnex/zorg-hub` and `@apnex/zorg-sdk`), which uses `entity-api` through its declared contract without containing it ([`E5`](../entities/E5-system.md)).
+**Consumed-by** - [`C15`](C15-entity-graph.md) (`entity-graph`, a draft not yet built) and `zorg` (`@apnex/zorg-hub` and `@apnex/zorg-sdk`), which use `entity-api` through its declared contract without containing it ([`E5`](../entities/E5-system.md)).
