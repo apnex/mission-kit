@@ -102,4 +102,4 @@ Internal and sovereign, so a fit gap has somewhere to go.
 
 **Consumes** - nothing; `shape-check` depends on no other component.
 
-**Consumed-by** - [`C4`](C4-entity-store.md) (`entity-store`), [`C5`](C5-operation-call.md) (`operation-call`), [`C6`](C6-entity-api.md) (`entity-api`), [`C7`](C7-caller-identity.md) (`caller-identity`), [`C8`](C8-operation-proxy.md) (`operation-proxy`), [`C9`](C9-operation-command.md) (`operation-command`), [`C10`](C10-credential-issuer.md) (`credential-issuer`), and `zorg`, which use `shape-check` through its declared contract without containing it ([`E5`](../entities/E5-system.md)).
+**Consumed-by** - [`C4`](C4-entity-store.md) (`entity-store`), [`C5`](C5-operation-call.md) (`operation-call`), [`C6`](C6-entity-api.md) (`entity-api`), [`C7`](C7-caller-identity.md) (`caller-identity`), [`C8`](C8-operation-proxy.md) (`operation-proxy`), [`C9`](C9-operation-command.md) (`operation-command`), [`C10`](C10-credential-issuer.md) (`credential-issuer`), [`C15`](C15-entity-graph.md) (`entity-graph`), and `zorg`, which use `shape-check` through its declared contract without containing it ([`E5`](../entities/E5-system.md)).
