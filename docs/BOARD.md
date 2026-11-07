@@ -93,6 +93,7 @@ Every open row, scored on the row and ordered on the common scale; generated, ne
 | `B103` | S1 | A4 signal | held | `SC1`'s `retired` status keeps the id "so citations resolve", against the rule that a retired entry is deleted. |
 | `B21` | S2 | A4 mandate | held | No axiom states the property that protects an agent against its own error. |
 | `B111` | S2 | A2 mandate | held | `C4` declares a multi-item `change`, applied all or nothing, that `entity-store`'s implementation does not serve. |
+| `B115` | S2 | A13 mandate | held | `A15`'s human-gate filter and `A13` may conflict over agents deciding for the director. |
 | `B18` | S4 | A4 mandate | held | Methodology has no procedure for handing over work in progress. |
 | `B95` | S2 | A4 signal | held | Claude deletes a source after flagging what the deletion loses, with `A4` and the rule against it both in its context. |
 | `B98` | S2 | A4 signal | held | `M2` rule 1 does not say whether a key's audit must come before readers answer. |
@@ -141,6 +142,7 @@ Every open row, scored on the row and ordered on the common scale; generated, ne
 | `B92` | S4 | A12 signal | held | What earns always-loaded context is measured for the axioms and not for the ledger and standing context. |
 | `B96` | S4 | A8 signal | held | `a4r-2`'s key splits its judges on two readings of a reply. |
 | `B101` | S4 | A14 signal | held | Verifying another party's conduct across a trust boundary has no procedure. |
+| `B116` | S4 | A3 signal | held | `A15` was admitted with two findings of its read against the set unsettled. |
 | `B39` | S5 | A3 signal | held | Style cannot be scoped by medium. |
 <!-- END GENERATED: ledger -->
 
@@ -292,6 +294,7 @@ Open rows no live item cites, with their scores and the condition that would rev
 | `B103` | S1 | A4 signal | `SC1`'s `retired` status keeps the id "so citations resolve", against the rule that a retired entry is deleted. | the next retirement of an entry, or the next change to `SC1` |
 | `B21` | S2 | A4 mandate | No axiom states the property that protects an agent against its own error. | a lone agent ships a claim it corroborated itself and was wrong, or the axiom set is next audited. Whether this is a new axiom or a property an existing one should state - `A8`'s gating and `A4`'s zero-loss are the nearest - is a question for the set. |
 | `B111` | S2 | A2 mandate | `C4` declares a multi-item `change`, applied all or nothing, that `entity-store`'s implementation does not serve. | the next change to `entity-store`'s write surface, or the first consumer that lands an edit of more than one entity |
+| `B115` | S2 | A13 mandate | `A15`'s human-gate filter and `A13` may conflict over agents deciding for the director. | an agent decides a question in the director's absence, or brings one pre-decided, and cites `A15`; or the axiom set is next investigated under `M12` |
 | `B18` | S4 | A4 mandate | Methodology has no procedure for handing over work in progress. | a handover loses information that a procedure would have preserved, or `M5` converts `M0` and the gap becomes a stated thinness. |
 | `B95` | S2 | A4 signal | Claude deletes a source after flagging what the deletion loses, with `A4` and the rule against it both in its context. | `A4`'s trap is settled under `0104`, or `A4` or `AGENTS.md` section 5.5 is next changed |
 | `B98` | S2 | A4 signal | `M2` rule 1 does not say whether a key's audit must come before readers answer. | `M2` is next changed, or the next key is audited |
@@ -340,6 +343,7 @@ Open rows no live item cites, with their scores and the condition that would rev
 | `B92` | S4 | A12 signal | What earns always-loaded context is measured for the axioms and not for the ledger and standing context. | the director selects it, or the next change to what `AGENTS.md` or `INDEX.md` carries, or `B50`'s trigger |
 | `B96` | S4 | A8 signal | `a4r-2`'s key splits its judges on two readings of a reply. | before `experiments/adherence.json` next runs, or before anything is decided on `a4r-2` |
 | `B101` | S4 | A14 signal | Verifying another party's conduct across a trust boundary has no procedure. | a verification across a trust or credential boundary is run in a project readable from here, on records the party could not have written, and its verdict differs from the party's own report |
+| `B116` | S4 | A3 signal | `A15` was admitted with two findings of its read against the set unsettled. | the axiom set is next investigated under `M12`, or a method for lifting a recurring step is proposed |
 | `B39` | S5 | A3 signal | Style cannot be scoped by medium. | FIRED and moved: `S15` is the first single-medium rule; one rule does not earn a sub-set. TRIGGER: a second single-medium style rule. Nested sets need generator support, shared with `B38`'s set spanning layers. |
 <!-- END GENERATED: held -->
 

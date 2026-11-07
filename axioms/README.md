@@ -206,4 +206,5 @@ Axioms carry this shape rather than the `S`/`M`/`P`/`K` skeleton because an axio
 | [A12](A12-precision-context-engineering.md) | Precision Context Engineering | llm-in-the-loop | You are assembling the context for an invocation and deciding what earns its place |
 | [A13](A13-director-intent-amplification.md) | Director Intent Amplification | multi-agent, autonomous | You are about to consume the director's attention, or to decide something in their absence |
 | [A14](A14-compounding-learning.md) | Compounding Learning | any-system | You are about to apply a workaround or special case that leaves a known root cause unfixed and unrecorded, or you have learned something during work and are deciding whether to capture it |
+| [A15](A15-recursive-elevation.md) | Recursive Elevation | any-system, autonomous, multi-agent | You have completed a recurring report, review, or incident recovery and are deciding whether the mechanism itself should move one rung higher |
 <!-- END GENERATED -->

@@ -47,6 +47,7 @@ This file described them a second time and the copy had already drifted, naming 
 | [A12](axioms/A12-precision-context-engineering.md) | Precision Context Engineering | You are assembling the context for an invocation and deciding what earns its place |
 | [A13](axioms/A13-director-intent-amplification.md) | Director Intent Amplification | You are about to consume the director's attention, or to decide something in their absence |
 | [A14](axioms/A14-compounding-learning.md) | Compounding Learning | You are about to apply a workaround or special case that leaves a known root cause unfixed and unrecorded, or you have learned something during work and are deciding whether to capture it |
+| [A15](axioms/A15-recursive-elevation.md) | Recursive Elevation | You have completed a recurring report, review, or incident recovery and are deciding whether the mechanism itself should move one rung higher |
 
 ---
 
