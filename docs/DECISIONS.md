@@ -159,6 +159,9 @@ Whether an entry actually states a ruling is checked by reading, not by script.
 | 0115 | 2026-10-26 | In `E8`'s *The party's own report*, an account the judge cannot check is, at a gate, no valid input: the gate has no verdict and the work waits, as `E7` defines it. | general | director | ratified | amends 0114 | `entities/E8-evidence.md` | yes |
 | 0116 | 2026-11-07 | A component entry may be registered with `status: draft` before its component is usable, so its definition can be found and cold-read before the component is built; a draft entry is not in force, no consumer depends on it, it says so and what a consumer does until its component is usable, and it becomes `active` only once usable as `0087` requires. | project | director | ratified | amends 0087 | - | - |
 | 0117 | 2026-11-07 | Until `entity-graph` (`C15`) is usable, a project that cannot wait may build a stopgap behind its own boundary, or keep the implementation it has, provided it records the requirement against `entity-graph`'s contract, does not grow the stopgap into a variant of it, and moves onto it once it is usable; such a stopgap is not a fork. | project | director | ratified | amends 0116 | - | - |
+| 0118 | 2026-11-03 | `AGENTS.md` section 2 no longer says the ledger is normally loaded at session start - a harness may load it and this file cannot - and keeps the old sentence under a correction banner. | general | director | proposed | - | `AGENTS.md` | pending |
+| 0119 | 2026-11-03 | `AGENTS.md` section 2's `K3` check runs at session start and again whenever the context has been compacted or cleared, rather than as a confirmation of an expected load. | general | director | proposed | - | `AGENTS.md` | pending |
+| 0120 | 2026-11-03 | mission-kit offers a Claude Code loader for the ledger as `plugins/ledger-loader/`: one `SessionStart` hook per part of the ledger, below the harness's per-hook inline cap, on start, resume, clear and compaction. | project | director | proposed | - | - | - |
 
 ---
 
@@ -2278,3 +2281,72 @@ Leaving the question open - the entry's readers decide it themselves, and differ
 
 **Source.**\
 `[V, director ruling 2026-11-07 ("Allow a recorded stopgap"); docs/audits/eval-C15/SCORES.md; components/README.md Territory and Operation]`
+
+### 0118
+
+**Ruling, proposed.**\
+`AGENTS.md` section 2 stops stating a delivery it cannot make.
+
+**Each changed sentence.**
+
+| Sentence | Reason |
+|---|---|
+| *It is normally loaded into context at session start, so it should already be in front of you.* -> *A harness may load it into context for you; this file cannot, and nothing here guarantees that one does.* | The file cannot load anything, and the old sentence held only where a harness had been configured to. |
+| The correction banner. | `AGENTS.md` section 1: a rule found false is corrected in place under a banner. It says the sentence was arguably false when written - `2f9aeb3` recorded delivery as shown on one harness only - and plainly false in a workspace with no loader. |
+
+**Evidence.**\
+`docs/audits/ledger-delivery-2026-11-03.md`, *The failure*: a workspace whose harness settings held no hook, and a session that ran from 2026-06-06 to 2026-11-03 through 242 compactions with only hand-fetched copies of the ledger.
+
+**Decision rule.**\
+The old sentence is false wherever no loader is configured, so the correction goes to the director whatever `0119`'s test shows.
+
+**Source.**\
+`[V, docs/audits/ledger-delivery-2026-11-03.md The failure; AGENTS.md section 1]`
+
+### 0119
+
+**Ruling, proposed.**\
+The `K3` check in `AGENTS.md` section 2 becomes unconditional, and repeats after the context is compacted or cleared (`B113`).
+
+**Each changed sentence.**
+
+| Sentence | Reason |
+|---|---|
+| *Confirm that before relying on it, because the load fails silently.* -> *Check at session start, and again whenever your context has been compacted or cleared, before relying on the ledger, because the load fails silently.* | "Confirm that" read as confirming an expected load and named no time. A hand-fetched ledger lives in the conversation, which compaction rewrites, and a cleared context has lost it. |
+| *A compaction may drop a ledger that arrived earlier, and nothing will tell you that either.* (added) | Why the check repeats. Stated as a possibility: whether a ledger survives a compaction was not probed. |
+
+**Evidence.**\
+The session in *The failure* ran the check once, on 2026-08-25, and fetched the ledger by hand 9 times, but nothing prompted a check after any of its 242 compactions.\
+Whether readers given the new wording run the check more often than readers given the old is not measured.
+
+**Named costs.**\
+The rewording is untested under `M2`; `B113` holds the test.\
+The check is self-graded, and its false-pass rate on `K3` is unmeasured.
+
+**Decision rule.**\
+Goes to the director with that test named as the evidence that would refute it: readers given the new section, with the ledger withheld and after a summarised history, running the check no more often than readers given the old.
+
+**Source.**\
+`[V, docs/audits/ledger-delivery-2026-11-03.md The failure, What this does not cover]`
+
+### 0120
+
+**Ruling, proposed.**\
+`plugins/ledger-loader/` is the loading half of section 2 for one harness, Claude Code, outside the corpus's own runtime, which preloads nothing.\
+It takes no ID and changes no entry.
+
+**Why this shape.**\
+Claude Code keeps a `SessionStart` hook's context inline only below about 10,000 characters and shows a 2 KB preview of anything larger, so the ledger, at 33,172 characters, is cut into parts of at most 8,000, one hook each.\
+Every part names the ledger's sha256 and the number of parts; the last ends with `END-OF-LEDGER` only when every row fits, and with `LEDGER-INCOMPLETE` otherwise.\
+Part 1 checks the session's standing-context files against `main`.
+
+**Evidence.**\
+`docs/audits/ledger-delivery-2026-11-03.md`, *What the harness does with a hook's context* and *Results*: whole, the ledger arrived as a preview in 3 runs of 3; split, a fresh session named `K3` and quoted the sentinel from context alone, and with hooks disabled 3 runs of 3 could not.\
+One run per split arm, scored by the change's author.
+
+**Named costs.**\
+About 33,000 characters on every start, resume, clear and compaction, which `B92` already counts unmeasured; a resume re-delivers even when the ledger is present.\
+It covers main sessions of one harness and no subagent (`B114`).
+
+**Source.**\
+`[V, docs/audits/ledger-delivery-2026-11-03.md; plugins/ledger-loader/README.md]`

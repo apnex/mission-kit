@@ -29,6 +29,7 @@ Filing one under `tools/` would give that directory a second concern.
 | --- | --- | --- |
 | [`statusline/`](statusline/README.md) | Claude Code | Runnable as shipped, bash and `jq`. |
 | [`statusline-pi/`](statusline-pi/README.md) | pi | Design of record; implementation pending. The canonical A5 instance. |
+| [`ledger-loader/`](ledger-loader/README.md) | Claude Code | Runnable as shipped, bash, `curl`, `awk` and `sha256sum`. Loads the ledger into main sessions at start and after every compaction (`0120`). |
 
 `statusline-pi/` currently carries a design rather than an implementation, and its authoritative specification lives outside this repository.\
 It is held here as the portable summary, which means it is a derived representation and will drift if the upstream spec moves without it.
