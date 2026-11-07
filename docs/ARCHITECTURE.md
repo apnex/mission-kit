@@ -108,8 +108,8 @@ The others bind only where their declared domain is present, and this corpus is 
 
 | Axiom | In force via | How this shape serves it | Where it falls short |
 |---|---|---|---|
-| **A3** Sovereign Composition | `any-system` | Sixteen knowledge layers, one concern each, cited by prefix and never merged. Composition is by edge and citation rather than by nesting. | The components layer holds one entry, so composition is asserted more than exercised. |
-| **A4** Zero-Loss Knowledge | `any-system` | Corrections are retained under banners; deferrals carry revival triggers; claims distinguish measured from inferred. | Rulings live in commit messages rather than a register (`B15`), so rationale is recoverable only by reading history. |
+| **A3** Sovereign Composition | `any-system` | Sixteen knowledge layers, one concern each, cited by prefix and never merged. Composition is by edge and citation rather than by nesting. | Fifteen components compose by declared edges, and nothing checks that a component's Consumes and its peers' Consumed-by agree: `C15` relied on `C6` with neither entry naming the other while every gate passed (`B112`). |
+| **A4** Zero-Loss Knowledge | `any-system` | Corrections are retained under banners; deferrals carry revival triggers; claims distinguish measured from inferred. | Evaluation runs are kept local and only an audit's quotation of them is published (`docs/evals/README.md`), so a run's full answers cannot be re-read from the repository. |
 | **A8** Gated Recursive Integrity | `any-system` | Every checker in `tools/check-all.sh` gates every change, and the corpus's own author is refused by them. | Enforcement covers structure and style; it cannot reach whether an entry's reasoning is correct. |
 | **A9** Chaos-Validated Deployment | `any-system` | Guards are proven by mutation rather than assumed - a mutant that should fail is run and observed to fail. | Applied per-change by discipline, not by a standing harness. No mechanism forces a new guard to be mutation-tested. |
 | **A14** Compounding Learning | `any-system` | Friction surfaced during work becomes an entry or a backlog row; the backlog is a first-class artifact. | The corpus cannot measure whether a lesson stopped recurring, because it cannot observe its own adopters. |
@@ -152,7 +152,7 @@ Generated from the root README's layer table and each layer's charter.
 | `patterns/` | `P` | recurring solution shapes, and what separates one from a single good design | 4 | `M`, `S`, `C`, `A` |
 | `skills/` | `K` | executable capability, the stub-and-body split, and composition by edge | 26 | `M`, `RU`, `PC`, `P`, `SC`, `A` |
 | `entities/` | `E` | precise definitions of load-bearing terms, and what earns one | 9 | `M`, `SC`, `A` |
-| `components/` | `C` | sovereign shareable units to be used rather than rebuilt | 2 | `P`, `M`, `A` |
+| `components/` | `C` | sovereign shareable units to be used rather than rebuilt | 15 | `P`, `M`, `A` |
 | `artifacts/` | `AR` | the engineering lifecycle loop, and what earns a document type | 6 | `A`, `W` |
 | `traits/` | `T` | characteristics of a system that decide which axioms bind it | 5 | `A`, `D`, `E` |
 | `schemas/` | `SC` | machine-verifiable entity contracts, validatable without a project runtime | 6 | `A`, `E` |

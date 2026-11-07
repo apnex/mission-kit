@@ -59,6 +59,33 @@ fetch_code() {
 }
 
 if [ "$addresses_only" -eq 1 ]; then
+	node -e '
+const crypto = require("node:crypto");
+const fs = require("node:fs");
+const banned = new Set([
+	"d979885447a413abb6d606a5d0f45c3b7809e6fde2c83f0df3426f1fc9bfed97",
+	"780ab09e0c077f85b1cb1970f490a88a7e434dd4e38b769f4c008592bb646a2b",
+	"eda594c7094ca8e7b3949e4eb4ecc2388c155ca536263998c7e863d1cbdcfa43",
+	"d4c67f5e78e9ba45ad6293d6cd593e793b880c57fce0de4c3963f94ef82f3ae4",
+]);
+const sha = (s) => crypto.createHash("sha256").update(s).digest("hex");
+let fails = 0;
+for (const f of process.argv.slice(1)) {
+	if (!fs.existsSync(f)) continue;
+	const lines = fs.readFileSync(f, "utf8").split("\n");
+	for (let i = 0; i < lines.length; i++) {
+		const lower = lines[i].toLowerCase();
+		const tokens = new Set([...(lower.match(/[a-z0-9]+/g) || []), ...(lower.match(/[a-z0-9]+(?:\.[a-z0-9]+)+/g) || [])]);
+		for (const t of tokens) {
+			if (banned.has(sha(t))) {
+				console.log(`FAIL  banned     ${f}:${i + 1}  banned personal name, handle, or email domain`);
+				fails++;
+			}
+		}
+	}
+}
+if (fails > 0) process.exit(1);
+' "${files[@]}" || fail_count=$((fail_count + 1))
 	if [ "$network" -eq 1 ]; then
 		while IFS= read -r url; do
 			[ -z "$url" ] && continue

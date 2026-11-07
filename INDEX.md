@@ -248,11 +248,24 @@ This file described them a second time and the copy had already drifted, naming 
 
 ## Components
 
-| ID | Title | Hydrate when |
-|---|---|---|
-| [C0](components/README.md) | Components - sovereign shareable units to be used rather than rebuilt | You are about to build a capability that may already exist as a unit you could depend on instead |
-| [C1](components/C1-agp.md) | AGP - name-addressed routing between application components | Parts of your application must reach each other and you are about to write the code that connects them |
-| [C2](components/C2-context-lab.md) | context-lab - experiments on the context given to language-model agents | You are about to judge whether instructions, documents or skills you give agents change what they do, or to build a harness that runs agents to find out |
+| ID | Title | Status | Hydrate when |
+|---|---|---|---|
+| [C0](components/README.md) | Components - sovereign shareable units to be used rather than rebuilt | active | You are about to build a capability that may already exist as a unit you could depend on instead |
+| [C1](components/C1-agp.md) | AGP - name-addressed routing between application components | active | Parts of your application must reach each other and you are about to write the code that connects them |
+| [C2](components/C2-context-lab.md) | context-lab - experiments on the context given to language-model agents | active | You are about to judge whether instructions, documents or skills you give agents change what they do, or to build a harness that runs agents to find out |
+| [C3](components/C3-shape-check.md) | shape-check - closed-record JSON shape validation and plain-data reading | active | You are about to validate a value against a schema or read an untrusted object across a boundary without triggering getters or hidden promises |
+| [C4](components/C4-entity-store.md) | entity-store - versioned typed entity storage on an append-only change log | active | You are about to store typed records that multiple writers update and readers query or follow by position since they last looked |
+| [C5](components/C5-operation-call.md) | operation-call - typed invocations and streaming replies with honest endings over named delivery | active | You are about to pair requests with replies, stream multi-part answers, or enforce call deadlines and cancellation over one-way message delivery |
+| [C6](components/C6-entity-api.md) | entity-api - host and client halves of the versioned entity protocol over operation-call | active | You have an entity-store in one process and need callers in other processes to query, mutate or follow it by name without losing its guarantees |
+| [C7](components/C7-caller-identity.md) | caller-identity - peer session and request principal verification with explicit certainty | active | You are about to record which principal a session or request belongs to or verify caller credentials before ruling on an operation |
+| [C8](components/C8-operation-proxy.md) | operation-proxy - shared per-identity local relay daemon for short-lived callers | active | You have short-lived CLI commands, hooks or browser tabs that must share one long-lived connection per identity without losing call endings |
+| [C9](components/C9-operation-command.md) | operation-command - declarative CLI dispatch, honest exit statuses, and shell-safe repeat commands | active | You are about to build a command-line interface for agents or humans and write flag parsing, env fallbacks, output formatting or exit codes by hand |
+| [C10](components/C10-credential-issuer.md) | credential-issuer - standing codes, single-use per-node admission keys, and key-reuse reporting | active | You are about to issue, present or redeem credentials for peer connection admission or manage revocable machine standing codes |
+| [C11](components/C11-snap-grid.md) | snap-grid - answer where a grid's positions lie and which lies nearest a point | active | Two or more parts of your system snap to, draw or validate against the same grid, and each is about to write its own grid arithmetic |
+| [C12](components/C12-input-binding.md) | input-binding - decide what each input means in its context | active | More than one surface of your application must agree on what an input means, or you are about to decide click or drag, or which release ends a gesture, in a second place |
+| [C13](components/C13-input-capture.md) | input-capture - turn each platform input event on one surface into one uniform fact, and carry the application's answer back | active | Your application turns a browser's pointer and key events into its own values in more than one place, or you need to test its input without a browser |
+| [C14](components/C14-vector-scene.md) | vector-scene - show an application's shapes, held as data in declared layers under its keys, exactly as described | active | Your application draws its own content as SVG and you need to keep that drawing in step with its data, draw it where there is no browser, or say which of its things a pointer landed on |
+| [C15](components/C15-entity-graph.md) | entity-graph - entities held to references and rules declared once, with dated answers and whole, undoable edits | draft | Your entities reference one another and you are about to maintain reverse indices, cascade deletes or check cross-entity invariants by hand |
 
 ---
 

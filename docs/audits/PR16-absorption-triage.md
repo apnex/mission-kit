@@ -10,7 +10,7 @@ This file is the triage and its evidence; it changes no entry, and every absorpt
 
 | Field | Value |
 |---|---|
-| Proposal | Pull request #16, `https://github.com/apnex/mission-kit/pull/16`, opened 2026-10-25 from the fork `aobersnel/mission-kit` |
+| Proposal | Pull request #16, `https://github.com/apnex/mission-kit/pull/16`, opened 2026-10-25 from a fork |
 | Head | `7bf986d10ea23062b678d0b7a3123e56be2c12a6`, three commits, one candidate each |
 | Base | `5b4ba53fa7f9d197d32d84024ac4d7cc3bbc79c6`, 147 commits behind `main` when triaged |
 | Commit identity | All three commits are authored and committed as `Verifier <test@example.com>` |

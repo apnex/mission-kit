@@ -39,7 +39,8 @@ What a consumer depends on, and what it may not reach past.
 | send | resolves only when one node admitted the message against a route it can justify; a message with no usable route is refused before it is sent, never accepted and dropped; an admission deadline (`timeoutMs`) or cancellation that wins before the admission commit boundary rejects the send (`TIMEOUT` or `ABORTED`) so it is never admitted later; each hop enforces per-hop flow control, pacing senders and refusing when its queue is full rather than buffering without bound |
 | delivery report | per message and per destination, reports one of three terminal outcomes: `delivered` (admitted to the destination's handler, not processed), `failed` (refused before any destination handler admitted it), or `unknown` (AGP can no longer determine whether a handler admitted it, such as on session loss); no report or expired tracking establishes nothing |
 | correlation | an optional application-owned correlation label travels unchanged through forwarding, handler delivery, the send receipt and the delivery report so the application can pair a reply send with a request; AGP never generates, pairs or deduplicates labels |
-| peer identity | the transport reports bounded peer-identity evidence (self-asserted or proved with per-node keys) and the application supplies the admission ruling |
+| peer identity and admission lifecycle | the transport reports bounded peer-identity evidence (self-asserted node identity or single-use admission keys redeemed against an `AdmissionUse` lifecycle handle with `recordAdmissionRedemption`, `sealAdmissionHandoff`, `finishAdmissionAcquisition`, `requestAdmissionTermination` and `readAdmissionUse`), and the application's `IdentityAdmissionPort` (`evaluate(request, { redeemedAdmission? })`) returns the admission decision and immutable `PeerAuthorizationAssociation` (`"unauthenticated"` or `"authenticated"`) |
+| credential presenter | on the dialling side, a `CredentialPresenterTarget` (`createCredentialAttempt(request, permit)` with `prepareCredential`, `connect` and 3-case `dispose()` carrier-permit custody, plus `notifyCredentialChange` and `adjacencies()` observation) acquires a fresh single-use key per dial attempt |
 | carrier | a neutral transport port, with a conformance kit a new carrier is tested against |
 | observation | read-only projections of node state; observing never mutates |
 
@@ -49,7 +50,7 @@ The neutral transport port is the load-bearing part of this contract for anyone 
 
 ## Reference
 
-The sovereign repository, and its architecture document.
+The sovereign repository `apnex/agp` (`@agp/core`, `@agp/protocol`, `@agp/transport`, `@agp/transport-node-ws`, `@agp/transport-loopback`, `@agp/binding-websocket`, `@agp/node`, `@agp/management-http`), with its architecture in `docs/ARCHITECTURE.md` and its verification ledger in `docs/VERIFICATION.md`.
 
 The architecture **declares its own instant**, so this reference stays true without a version recorded here - a reader learns currency from the document rather than from the registry's memory of it.\
 Where the architecture states `current` and no target companion exists, current and target have not diverged.
@@ -129,7 +130,7 @@ A gap that can be closed at that seam is not pressure on this component at all.
 
 **Consumes** - nothing; AGP depends on no other registered component.
 
-**Consumed-by** - `operation-call` and `operation-proxy` (in `zorg`), which use AGP through its declared contract without containing it, so neither inherits internal details across the boundary ([`E5`](../entities/E5-system.md)).
+**Consumed-by** - [`C5`](C5-operation-call.md) (`operation-call`), [`C7`](C7-caller-identity.md) (`caller-identity`), [`C8`](C8-operation-proxy.md) (`operation-proxy`), [`C10`](C10-credential-issuer.md) (`credential-issuer`), and `zorg`, which use AGP through its declared contract without containing it, so none inherits internal details across the boundary ([`E5`](../entities/E5-system.md)).
 
 None of the eight contained units is registered here.\
 Each earns an entry when a consumer outside this component needs it, per [`A3`](../axioms/A3-sovereign-composition.md)'s Earned Exposure, and not before.\
