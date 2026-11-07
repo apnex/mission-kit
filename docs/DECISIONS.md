@@ -158,6 +158,7 @@ Whether an entry actually states a ruling is checked by reading, not by script.
 | 0114 | 2026-10-26 | `E8` adds that a party's own account of what it did shows what it reported, and shows the thing was done only where the judge can observe the result, re-run the work or check it against a record the party could not have written; a judge who can do none records the claim as not shown. | general | director | ratified | supersedes 0111 | `entities/E8-evidence.md` | yes |
 | 0115 | 2026-10-26 | In `E8`'s *The party's own report*, an account the judge cannot check is, at a gate, no valid input: the gate has no verdict and the work waits, as `E7` defines it. | general | director | ratified | amends 0114 | `entities/E8-evidence.md` | yes |
 | 0116 | 2026-11-07 | A component entry may be registered with `status: draft` before its component is usable, so its definition can be found and cold-read before the component is built; a draft entry is not in force, no consumer depends on it, it says so and what a consumer does until its component is usable, and it becomes `active` only once usable as `0087` requires. | project | director | ratified | amends 0087 | - | - |
+| 0117 | 2026-11-07 | Until `entity-graph` (`C15`) is usable, a project that cannot wait may build a stopgap behind its own boundary, or keep the implementation it has, provided it records the requirement against `entity-graph`'s contract, does not grow the stopgap into a variant of it, and moves onto it once it is usable; such a stopgap is not a fork. | project | director | ratified | amends 0116 | - | - |
 
 ---
 
@@ -2252,3 +2253,28 @@ Leaving the conflict unrecorded - `0087` and the registry would then disagree wi
 
 **Source.**\
 `[V, director instruction 2026-11-07 to draft this row for ratification; docs/DECISIONS.md 0087, 0093 and 0094; commit b413439; docs/audits/eval-C15/SCORES.md]`
+
+### 0117
+
+**Ruling.**\
+Until `entity-graph` (`C15`) is usable, a project that cannot wait may build a stopgap behind its own boundary, or keep the implementation it already has.\
+It records the requirement against `entity-graph`'s contract, does not grow the stopgap into a variant of `entity-graph`, and moves onto `entity-graph` once it is usable.\
+Such a stopgap is not a fork.
+
+**Ratified.**\
+The director ruled this on 2026-11-07, choosing the recommended option of the question put to the director, and it lands by that authority.
+
+**Why.**\
+All three readers of `C15`'s final text in the third cold-read run found that the earlier guidance, which let a project with no implementation start none, left it with no way forward and no timeline (`docs/audits/eval-C15/SCORES.md`).\
+`C0` lets adoption outrank orthogonality and records the overlap as a finding rather than a refusal, and a registry no project can assemble from has failed by its first measure.
+
+**Named costs.**\
+The guidance is untested; no cold read has read it.\
+A stopgap is a second copy for as long as it lives, and nothing yet checks that it is retired.
+
+**Alternatives refuted.**\
+Keeping the strict reading of never fork - a project that cannot wait is blocked with no date to wait for.\
+Leaving the question open - the entry's readers decide it themselves, and differently.
+
+**Source.**\
+`[V, director ruling 2026-11-07 ("Allow a recorded stopgap"); docs/audits/eval-C15/SCORES.md; components/README.md Territory and Operation]`

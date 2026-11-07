@@ -16,7 +16,7 @@ Sovereignty is `internal`, so a fit gap here is pressure that routes upstream ra
 **Status is `draft`, registered before it is usable under mission-kit's decision `0116` (`docs/DECISIONS.md`).**\
 The repository `apnex/entity-graph` holds a draft vision and a draft contract and no code; its design is owed by a separate engineering effort, and it awaits cold reading, the director's ratification, design and implementation.\
 Nothing here is in force, and no consumer depends on it yet.\
-Meanwhile, a project that needs it starts no implementation of its own: one that already has one keeps it until `entity-graph` is usable, one that has none takes its need to `entity-graph`'s design effort, and each records any requirement the contract does not yet state (*Adjustment policy*, step 1).
+Meanwhile, a project that cannot wait may build a stopgap behind its own boundary, or keep the implementation it already has, on three terms (`0117`): it records the requirement against `entity-graph`'s contract (*Adjustment policy*, step 1), it does not grow the stopgap into a variant of `entity-graph`, and it moves onto `entity-graph` once it is usable.
 
 ---
 
@@ -100,7 +100,7 @@ Internal and sovereign, so a fit gap has somewhere to go.
 
 1. **Record the gap where both sides can see it.** A requirement the contract does not yet state is recorded in `entity-graph`'s `CONTRACT.md` under *Design owed* while its design is being settled, and as a ruling in its `docs/DECISIONS.md` once decided.
 2. **Close it at a seam where one exists.** A domain rule that spans entities and depends on what the reference rules do not model - such as straight-link capacity between two nodes, which counts the links between them and may read where the nodes sit, with any grid arithmetic left to [`C11`](C11-snap-grid.md) - plugs in as a condition or consequence declared on the kind ([`P4`](../patterns/P4-neutral-core-tenant-composition.md)); a rule on one record's own fields belongs to its kind's shape, judged by [`C3`](C3-shape-check.md), or to the application where a shape cannot state it.
-3. **Never fork.** No project starts a reverse index or change planner of its own, and one that already has one moves onto `entity-graph` once it is usable; copies in client and server code re-create the drift between copies that this component exists to remove.
+3. **Never fork.** A stopgap built while `entity-graph` is unusable is recorded and retired, never grown into a variant of it (`0117`), and every project moves onto `entity-graph` once it is usable; copies in client and server code re-create the drift between copies that this component exists to remove.
 
 ---
 
