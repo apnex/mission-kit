@@ -14,7 +14,7 @@ related: [C0, C1, C3, C4, C5, C6, C11, C12, C13, C14, P4, E5, A1, A2, A3]
 Sovereignty is `internal`, so a fit gap here is pressure that routes upstream rather than a constraint a consumer works around.
 
 **Status is `draft`, registered before it is usable under mission-kit's decision `0116` (`docs/DECISIONS.md`).**\
-The repository `apnex/entity-graph` holds a draft vision and a draft contract and no code; its design is owed by a separate engineering effort, and it awaits cold reading, the director's ratification, design and implementation.\
+The repository `apnex/entity-graph` holds a ratified vision, a draft contract and no code; its design is owed by a separate engineering effort, and it awaits design and implementation.\
 Nothing here is in force, and no consumer depends on it yet.\
 Meanwhile, a project that cannot wait may build a stopgap behind its own boundary, or keep the implementation it already has, on three terms (`0117`): it records the requirement against `entity-graph`'s contract (*Adjustment policy*, step 1), it does not grow the stopgap into a variant of `entity-graph`, and it moves onto `entity-graph` once it is usable.
 
@@ -52,7 +52,7 @@ The declaration is the extension seam: a domain rule over entities plugs in as a
 
 ## Reference
 
-The sovereign repository `apnex/entity-graph` (`@apnex/entity-graph`), with its draft vision in `VISION.md`, its draft contract of record in `CONTRACT.md`, and its rulings in `docs/DECISIONS.md`.
+The sovereign repository `apnex/entity-graph` (`@apnex/entity-graph`), with its vision in `VISION.md`, ratified under its ruling `D7`, its draft contract of record in `CONTRACT.md`, and its rulings in `docs/DECISIONS.md`.
 
 Nothing is released and the repository holds no code, so there is no `export-map.json` and nothing to pin.\
 Once built, its contract and export map state what is served, as for [`C4`](C4-entity-store.md), and this reference stays true without a version recorded here.

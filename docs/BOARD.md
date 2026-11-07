@@ -50,7 +50,7 @@ The new trap, `adherence-a4-record`, now measures `A4`: inconclusive at 12 cells
 Pull request #16 proposed three additions from another project; the director chose to absorb what fits in mission-kit's own words and ask nothing of the requester, and M7 triages it, tests the verdicts with `context-lab` and lands the absorptions (`docs/audits/PR16-absorption-triage.md`).\
 The test sent all three absorptions to the director, who ratified them with one clause added (`0112` to `0115`): `E4` no longer denies relations between sets other than boundaries, `M12` can investigate a set measured against another's members, and `E8` says what a party's own account shows; the pull request is closed with a note of what was taken and where.
 
-Since then, `C15` (`entity-graph`) was registered as a draft, cold-read twice against its vision and contract, and revised under the director's rulings of 2026-11-07; it is registered as a draft under `0116`, and a project that cannot wait may build a recorded stopgap until it is usable (`0117`).
+Since then, `C15` (`entity-graph`) was registered as a draft, cold-read twice against its vision and contract, and revised under the director's rulings of 2026-11-07; it is registered as a draft under `0116`, its vision is ratified, and a project that cannot wait may build a recorded stopgap until it is usable (`0117`).
 
 **To return to:** the communication-moves matrix (`B42`), when the director has a session; `B70`, which waits on bug 249's details.\
 The model list is settled: the pack keeps its four models (`0101`).
