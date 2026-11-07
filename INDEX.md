@@ -264,7 +264,7 @@ This file described them a second time and the copy had already drifted, naming 
 | [C12](components/C12-input-binding.md) | input-binding - decide what each input means in its context | active | More than one surface of your application must agree on what an input means, or you are about to decide click or drag, or which release ends a gesture, in a second place |
 | [C13](components/C13-input-capture.md) | input-capture - turn each platform input event on one surface into one uniform fact, and carry the application's answer back | active | Your application turns a browser's pointer and key events into its own values in more than one place, or you need to test its input without a browser |
 | [C14](components/C14-vector-scene.md) | vector-scene - show an application's shapes, held as data in declared layers under its keys, exactly as described | active | Your application draws its own content as SVG and you need to keep that drawing in step with its data, draw it where there is no browser, or say which of its things a pointer landed on |
-| [C15](components/C15-entity-graph.md) | entity-graph - synchronous in-memory reference indices and atomic cascade planning over entity-store | draft | Your entities reference one another and you are about to maintain reverse indices, cascade deletes or check cross-entity invariants by hand |
+| [C15](components/C15-entity-graph.md) | entity-graph - entities held to references and rules declared once, with dated answers and whole, undoable edits | draft | Your entities reference one another and you are about to maintain reverse indices, cascade deletes or check cross-entity invariants by hand |
 
 ---
 
