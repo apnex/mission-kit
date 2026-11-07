@@ -11,7 +11,7 @@ related: [C0, C3, C4, C6, P4, A1, A2, A3]
 
 # C15 - entity-graph
 
-Sovereignty is `internal`, so a fit gap here is pressure that routes upstream rather than a constraint a consumer works around.\
+Sovereignty is `internal`, so a fit gap here is pressure that routes upstream rather than a constraint a consumer works around.
 **Status is `draft`:** the repository `apnex/entity-graph` is scaffolded with its draft vision and contract, and awaits cold reading, director ratification and implementation before it is in force.
 
 ---
