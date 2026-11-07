@@ -159,6 +159,7 @@ Whether an entry actually states a ruling is checked by reading, not by script.
 | 0115 | 2026-10-26 | In `E8`'s *The party's own report*, an account the judge cannot check is, at a gate, no valid input: the gate has no verdict and the work waits, as `E7` defines it. | general | director | ratified | amends 0114 | `entities/E8-evidence.md` | yes |
 | 0116 | 2026-11-07 | A component entry may be registered with `status: draft` before its component is usable, so its definition can be found and cold-read before the component is built; a draft entry is not in force, no consumer depends on it, it says so and what a consumer does until its component is usable, and it becomes `active` only once usable as `0087` requires. | project | director | ratified | amends 0087 | - | - |
 | 0117 | 2026-11-07 | Until `entity-graph` (`C15`) is usable, a project that cannot wait may build a stopgap behind its own boundary, or keep the implementation it has, provided it records the requirement against `entity-graph`'s contract, does not grow the stopgap into a variant of it, and moves onto it once it is usable; such a stopgap is not a fork. | project | director | ratified | amends 0116 | - | - |
+| 0121 | 2026-11-07 | A15 Recursive Elevation is ratified as an axiom: a recurring report, review, audit or incident recovery is complete only once it records what would remove the need for it or move its mechanism one rung higher. | general | director | ratified | - | `axioms/A15-recursive-elevation.md` | yes |
 
 ---
 
@@ -2278,3 +2279,28 @@ Leaving the question open - the entry's readers decide it themselves, and differ
 
 **Source.**\
 `[V, director ruling 2026-11-07 ("Allow a recorded stopgap"); docs/audits/eval-C15/SCORES.md; components/README.md Territory and Operation]`
+
+### 0121
+
+**Ruling.**\
+A15 Recursive Elevation is ratified as an axiom, as drafted in pull request 17 (`1e98505`).\
+A recurring report, review, audit or incident recovery is complete only once it records what would remove the need for it or move its mechanism one rung higher.
+
+**Ratified.**\
+The director ratified A15 on 2026-11-07, as drafted, with the findings of its read against the set, below, put to the director before the ruling.\
+The one change to the drafted text puts four sentences that ran into the one before them with no space on lines of their own, as `S6` asks; no word changed.\
+The id is `0121` because pull request 18 holds `0118` to `0120` as proposed rulings.
+
+**Named costs.**\
+The axioms charter requires a candidate to be read against the whole set at admission, and that read found three things that stand:
+
+- A15's *human-gate filter* has agents decide a question settled from held evidence, source truth or charter invariants, record it and let the director overrule, and has every escalation arrive "pre-decided with a recommended option and default"; `A13` says the system "never reworks the option set, narrows the choices, nor pre-empts the decision"; whether the two conflict is not settled, and `B115` holds it.
+- A15's *Mechanics* carry a procedure, which the axioms charter routes to methods, patterns or skills, and whether A15 forbids anything `A10`, `A11` and `A14` permit, beyond a recurring step that works with no failure or friction, is not settled; `B116` holds both.
+- A15 carries no adherence trap, which `0083` asks of every axiom.
+
+**Alternatives refuted.**\
+None with a reason recorded.\
+Three were put to the director and not chosen: slimming A15 to its core limit and moving its procedure to a method, folding that limit into `A14` as a modification tested under `M2`, and parking it as a backlog row.
+
+**Source.**\
+`[V, director instruction 2026-11-07 ("I ratified #17"); pull request 17, commit 1e98505; axioms/README.md Growth policy and Operation; axioms/A13-director-intent-amplification.md Mandate]`
