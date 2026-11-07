@@ -89,15 +89,21 @@ Every open row, scored on the row and ordered on the common scale; generated, ne
 |---|---|---|---|---|
 | `B102` | S1 | A2 signal | held | `SC1` says the reverse view of a work-type's `methods` is generated, and nothing generates it. |
 | `B103` | S1 | A4 signal | held | `SC1`'s `retired` status keeps the id "so citations resolve", against the rule that a retired entry is deleted. |
+| `B108` | S1 | A2 signal | held | The axiom table in `docs/ARCHITECTURE.md` states two things that are no longer true. |
 | `B21` | S2 | A4 mandate | held | No axiom states the property that protects an agent against its own error. |
+| `B111` | S2 | A2 mandate | held | `C4` declares a multi-item `change`, applied all or nothing, that `entity-store`'s implementation does not serve. |
 | `B18` | S4 | A4 mandate | held | Methodology has no procedure for handing over work in progress. |
 | `B95` | S2 | A4 signal | held | Claude deletes a source after flagging what the deletion loses, with `A4` and the rule against it both in its context. |
 | `B98` | S2 | A4 signal | held | `M2` rule 1 does not say whether a key's audit must come before readers answer. |
 | `B105` | S2 | A4 signal | held | `E7`'s list of what makes a gate's run invalid does not name an account the judge cannot check. |
+| `B110` | S2 | A8 signal | held | The `S6` tool vendored into `apnex/entity-graph` predates `B83`'s fix. |
 | `B70` | S3 | A8 signal | held | `W22`, and three peers, declare `evidenceAuthority: verifier-attestation` while `W0` constraint 2 says verifier-held gates use plain `kind:review`. |
 | `B76` | S3 | A12 signal | held | With today's guidance, a Gemini agent can spend a whole task fetching ledger entries. |
 | `B97` | S3 | A11 signal | held | Whether a probe separates readers holding the document from readers holding none is computed by hand. |
 | `B104` | S3 | A2 signal | held | A set charter carries headings `E4` says every charter fixes, and nothing checks it. |
+| `B106` | S3 | A3 signal | held | `C15`'s dated view may overlap `C6`'s deferred `dated-local-view`. |
+| `B107` | S3 | A8 signal | held | The `S6` checker passes a line holding a second sentence that starts with a lowercase word. |
+| `B109` | S3 | A3 signal | held | `C2`, `C6` and `C10` state their duty with two verbs joined by "and" and name no one concern, which `C0`'s "and" test may forbid. |
 | `B12` | S4 | A14 signal | held | The recovery methodology for a brownfield vision is unwritten and its reasoning is untested. |
 | `B19` | S4 | A14 signal | held | Methodology has nothing proportionate for a small design decision. |
 | `B22` | S4 | A9 signal | held | `A9` binds every system unconditionally and is the least exercised axiom in the corpus. |
@@ -283,15 +289,21 @@ Open rows no live item cites, with their scores and the condition that would rev
 |---|---|---|---|---|
 | `B102` | S1 | A2 signal | `SC1` says the reverse view of a work-type's `methods` is generated, and nothing generates it. | the next change to `tools/generate-index.mjs`, or the next investigation of the methods or work-types set |
 | `B103` | S1 | A4 signal | `SC1`'s `retired` status keeps the id "so citations resolve", against the rule that a retired entry is deleted. | the next retirement of an entry, or the next change to `SC1` |
+| `B108` | S1 | A2 signal | The axiom table in `docs/ARCHITECTURE.md` states two things that are no longer true. | the next change to `docs/ARCHITECTURE.md`'s axiom table, or the next investigation of the components set |
 | `B21` | S2 | A4 mandate | No axiom states the property that protects an agent against its own error. | a lone agent ships a claim it corroborated itself and was wrong, or the axiom set is next audited. Whether this is a new axiom or a property an existing one should state - `A8`'s gating and `A4`'s zero-loss are the nearest - is a question for the set. |
+| `B111` | S2 | A2 mandate | `C4` declares a multi-item `change`, applied all or nothing, that `entity-store`'s implementation does not serve. | the next change to `entity-store`'s write surface, or the first consumer that lands an edit of more than one entity |
 | `B18` | S4 | A4 mandate | Methodology has no procedure for handing over work in progress. | a handover loses information that a procedure would have preserved, or `M5` converts `M0` and the gap becomes a stated thinness. |
 | `B95` | S2 | A4 signal | Claude deletes a source after flagging what the deletion loses, with `A4` and the rule against it both in its context. | `A4`'s trap is settled under `0104`, or `A4` or `AGENTS.md` section 5.5 is next changed |
 | `B98` | S2 | A4 signal | `M2` rule 1 does not say whether a key's audit must come before readers answer. | `M2` is next changed, or the next key is audited |
 | `B105` | S2 | A4 signal | `E7`'s list of what makes a gate's run invalid does not name an account the judge cannot check. | `E7` is next changed, or a gate's judge meets such an account |
+| `B110` | S2 | A8 signal | The `S6` tool vendored into `apnex/entity-graph` predates `B83`'s fix. | the style tools are next vendored into a component repository, or `apnex/entity-graph`'s tools are next changed |
 | `B70` | S3 | A8 signal | `W22`, and three peers, declare `evidenceAuthority: verifier-attestation` while `W0` constraint 2 says verifier-held gates use plain `kind:review`. | either is documented, or a gate is refused on the distinction. |
 | `B76` | S3 | A12 signal | With today's guidance, a Gemini agent can spend a whole task fetching ledger entries. | .f.5` and `adherence-a13.on-trigger-b.f.9` at the time limit after 22 and 19 tool calls, 9 and 6 of them corpus reads; `adherence-a13.on-trigger-b.a.2` with no message after 22 seconds); whether that repeats the pattern - same model family, trap and arm, but no fetching storm - is for triage |
 | `B97` | S3 | A11 signal | Whether a probe separates readers holding the document from readers holding none is computed by hand. | `0107` is ratified, or the next evaluation through `tools/eval.mjs` |
 | `B104` | S3 | A2 signal | A set charter carries headings `E4` says every charter fixes, and nothing checks it. | `ST1` or `SC6` is next changed |
+| `B106` | S3 | A3 signal | `C15`'s dated view may overlap `C6`'s deferred `dated-local-view`. | `entity-graph`'s design rules on whether its client view is, builds on, or differs from `dated-local-view`, or `C6`'s `dated-local-view` is revived |
+| `B107` | S3 | A8 signal | The `S6` checker passes a line holding a second sentence that starts with a lowercase word. | the next change to `tools/s6-one-sentence-per-line.mjs`, or the next corpus file found holding two sentences on one line |
+| `B109` | S3 | A3 signal | `C2`, `C6` and `C10` state their duty with two verbs joined by "and" and name no one concern, which `C0`'s "and" test may forbid. | the next `M12` investigation of the components set, or the next admission of a component whose duty joins two verbs |
 | `B12` | S4 | A14 signal | The recovery methodology for a brownfield vision is unwritten and its reasoning is untested. | the first external brownfield adopter reports back. Waiting is deliberate - their run is the only evidence available and costs nothing. |
 | `B19` | S4 | A14 signal | Methodology has nothing proportionate for a small design decision. | a small design decision fails in a way an anchoring check would have caught. |
 | `B22` | S4 | A9 signal | `A9` binds every system unconditionally and is the least exercised axiom in the corpus. | a deployment fails in a way chaos validation would have caught, or `A9` is cited as the reason a change was refused. |
