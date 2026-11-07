@@ -13,7 +13,7 @@ related: [C0, C1, C3, C4, C5, C6, C11, C12, C13, C14, P4, E5, A1, A2, A3]
 
 Sovereignty is `internal`, so a fit gap here is pressure that routes upstream rather than a constraint a consumer works around.
 
-**Status is `draft`, registered before it is usable under mission-kit's proposed decision `0116` (`docs/DECISIONS.md`).**\
+**Status is `draft`, registered before it is usable under mission-kit's decision `0116` (`docs/DECISIONS.md`).**\
 The repository `apnex/entity-graph` holds a draft vision and a draft contract and no code; its design is owed by a separate engineering effort, and it awaits cold reading, the director's ratification, design and implementation.\
 Nothing here is in force, and no consumer depends on it yet.\
 Meanwhile, a project that needs it starts no implementation of its own: one that already has one keeps it until `entity-graph` is usable, one that has none takes its need to `entity-graph`'s design effort, and each records any requirement the contract does not yet state (*Adjustment policy*, step 1).

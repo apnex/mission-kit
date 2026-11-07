@@ -157,7 +157,7 @@ Whether an entry actually states a ruling is checked by reading, not by script.
 | 0113 | 2026-10-26 | `M12` reads a charter's measure against another set's population as a cover: that population's members are the cells, a member may sit in several, an uncovered member is a gap or, where the charter requires its own members to be covered, a fault of its own set, a member covering nothing is a finding, and each gap names the set it is about. | general | director | ratified | supersedes 0110 | `methods/M12-investigate-a-set.md` | yes |
 | 0114 | 2026-10-26 | `E8` adds that a party's own account of what it did shows what it reported, and shows the thing was done only where the judge can observe the result, re-run the work or check it against a record the party could not have written; a judge who can do none records the claim as not shown. | general | director | ratified | supersedes 0111 | `entities/E8-evidence.md` | yes |
 | 0115 | 2026-10-26 | In `E8`'s *The party's own report*, an account the judge cannot check is, at a gate, no valid input: the gate has no verdict and the work waits, as `E7` defines it. | general | director | ratified | amends 0114 | `entities/E8-evidence.md` | yes |
-| 0116 | 2026-11-07 | A component entry may be registered with `status: draft` before its component is usable, so its definition can be found and cold-read before the component is built; a draft entry is not in force, no consumer depends on it, it says so and what a consumer does until its component is usable, and it becomes `active` only once usable as `0087` requires. | project | director | proposed | amends 0087 | - | - |
+| 0116 | 2026-11-07 | A component entry may be registered with `status: draft` before its component is usable, so its definition can be found and cold-read before the component is built; a draft entry is not in force, no consumer depends on it, it says so and what a consumer does until its component is usable, and it becomes `active` only once usable as `0087` requires. | project | director | ratified | amends 0087 | - | - |
 
 ---
 
@@ -2226,11 +2226,15 @@ Leaving it - the open point two readers found would land with the rule.
 
 ### 0116
 
-**Ruling, proposed.**\
+**Ruling.**\
 A component entry may be registered with `status: draft` before its component is usable, so that a search of the registry finds its definition, and readers can cold-read it, before the component is built.\
 A draft entry is not in force: no consumer depends on it, and its contract states what a consumer will depend on once the component is built.\
 A draft entry says that it is a draft, that nothing in it is in force, and what a consumer does until its component is usable.\
 It becomes `active` only once its component is usable, as `0087` requires; `0087`'s admission clause otherwise stands.
+
+**Ratified.**\
+The director ratified this ruling on 2026-11-07, choosing to ratify it as drafted, `project`, which was also the recommendation.\
+The text ratified is the row and body committed in `bf9ed11`.
 
 **Why.**\
 `C15` (`entity-graph`) was registered as a draft on 2026-11-07 (`b413439`), while `0087` says "a component entry is admitted only once it is usable" and `0093` applied that clause to `context-lab`, registered then as `C6` and renumbered `C2` by `0094`.\
