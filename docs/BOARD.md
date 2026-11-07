@@ -337,5 +337,13 @@ Open rows no live item cites, with their scores and the condition that would rev
 
 A decision is entered here when a move cannot proceed without a director ruling, naming what it blocks; once ruled it moves to [`DECISIONS.md`](DECISIONS.md) and leaves this list.
 
-None open.
+**Rule on `0116`: registering a component entry as a draft before it is usable.**\
+`C15` (`entity-graph`) is registered on `main` as a draft under it, so the registry and `0087` disagree until it is ruled.
+
+| Move | Cost |
+|---|---|
+| Ratify as drafted, `project` | Nothing now |
+| Ratify as `general`, so `C0` states it with `0087`'s usability clause | A change to `C0` under `M11`, with its test |
+| Refuse, and withdraw `C15` under `M13` | Its id is retired for good, and `entity-graph` returns under a new id once usable |
+| Do nothing | `C15` keeps citing a proposed ruling |
 
