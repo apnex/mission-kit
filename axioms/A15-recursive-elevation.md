@@ -12,7 +12,9 @@ related: [A6, A8, A10, A11, A13, A14]
 
 ## Mandate
 
-Every recurring operational loop, report, or recovery is a temporary scaffold whose standing duty is to **climb one rung higher on the mechanization ladder** until the failure class is structurally unrepresentable.The everyday verb for this move is **Lift**.Whereas [A10](A10-autopoietic-evolution.md) requires that encountered friction be mined and [A11](A11-cognitive-minimalism.md) requires that deterministic code replace model cognition at a given boundary, Recursive Elevation governs the **ratchet across rungs over time**: no scheduled report, review cadence, or incident post-mortem is complete until it records what would eliminate the need for that recurring step or move it one altitude higher.
+Every recurring operational loop, report, or recovery is a temporary scaffold whose standing duty is to **climb one rung higher on the mechanization ladder** until the failure class is structurally unrepresentable.\
+The everyday verb for this move is **Lift**.\
+Whereas [A10](A10-autopoietic-evolution.md) requires that encountered friction be mined and [A11](A11-cognitive-minimalism.md) requires that deterministic code replace model cognition at a given boundary, Recursive Elevation governs the **ratchet across rungs over time**: no scheduled report, review cadence, or incident post-mortem is complete until it records what would eliminate the need for that recurring step or move it one altitude higher.
 
 ---
 
@@ -39,7 +41,9 @@ Every recurring operational loop, report, or recovery is a temporary scaffold wh
 
 ## Rationale
 
-Without a standing upward ratchet, even a disciplined engineering system stagnates at Rung 2 or Rung 3: scripts accumulate into cron jobs, cron jobs emit growing streams of status reports, and agents spend increasing fractions of their capacity reading, acknowledging, and reconciling recurring outputs.Local completion rules ([A10](A10-autopoietic-evolution.md)) ensure that a broken step is fixed, and cognitive minimalism ([A11](A11-cognitive-minimalism.md)) ensures that a step uses code rather than prose, but neither forces the system to ask why the step still exists as a recurring loop at all.Binding the `Lift` step to the completion of every scheduled report, log, analysis, and incident post-mortem turns routine operational cadence into a self-eliminating engine: every report must justify its continued existence by naming the structural move that would make its manual or scheduled form obsolete.
+Without a standing upward ratchet, even a disciplined engineering system stagnates at Rung 2 or Rung 3: scripts accumulate into cron jobs, cron jobs emit growing streams of status reports, and agents spend increasing fractions of their capacity reading, acknowledging, and reconciling recurring outputs.\
+Local completion rules ([A10](A10-autopoietic-evolution.md)) ensure that a broken step is fixed, and cognitive minimalism ([A11](A11-cognitive-minimalism.md)) ensures that a step uses code rather than prose, but neither forces the system to ask why the step still exists as a recurring loop at all.\
+Binding the `Lift` step to the completion of every scheduled report, log, analysis, and incident post-mortem turns routine operational cadence into a self-eliminating engine: every report must justify its continued existence by naming the structural move that would make its manual or scheduled form obsolete.
 
 ---
 
