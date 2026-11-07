@@ -97,7 +97,6 @@ Every open row, scored on the row and ordered on the common scale; generated, ne
 | `B95` | S2 | A4 signal | held | Claude deletes a source after flagging what the deletion loses, with `A4` and the rule against it both in its context. |
 | `B98` | S2 | A4 signal | held | `M2` rule 1 does not say whether a key's audit must come before readers answer. |
 | `B105` | S2 | A4 signal | held | `E7`'s list of what makes a gate's run invalid does not name an account the judge cannot check. |
-| `B110` | S2 | A8 signal | held | The `S6` tool vendored into `apnex/entity-graph` predates `B83`'s fix. |
 | `B70` | S3 | A8 signal | held | `W22`, and three peers, declare `evidenceAuthority: verifier-attestation` while `W0` constraint 2 says verifier-held gates use plain `kind:review`. |
 | `B76` | S3 | A12 signal | held | With today's guidance, a Gemini agent can spend a whole task fetching ledger entries. |
 | `B97` | S3 | A11 signal | held | Whether a probe separates readers holding the document from readers holding none is computed by hand. |
@@ -297,7 +296,6 @@ Open rows no live item cites, with their scores and the condition that would rev
 | `B95` | S2 | A4 signal | Claude deletes a source after flagging what the deletion loses, with `A4` and the rule against it both in its context. | `A4`'s trap is settled under `0104`, or `A4` or `AGENTS.md` section 5.5 is next changed |
 | `B98` | S2 | A4 signal | `M2` rule 1 does not say whether a key's audit must come before readers answer. | `M2` is next changed, or the next key is audited |
 | `B105` | S2 | A4 signal | `E7`'s list of what makes a gate's run invalid does not name an account the judge cannot check. | `E7` is next changed, or a gate's judge meets such an account |
-| `B110` | S2 | A8 signal | The `S6` tool vendored into `apnex/entity-graph` predates `B83`'s fix. | the style tools are next vendored into a component repository, or `apnex/entity-graph`'s tools are next changed |
 | `B70` | S3 | A8 signal | `W22`, and three peers, declare `evidenceAuthority: verifier-attestation` while `W0` constraint 2 says verifier-held gates use plain `kind:review`. | either is documented, or a gate is refused on the distinction. |
 | `B76` | S3 | A12 signal | With today's guidance, a Gemini agent can spend a whole task fetching ledger entries. | .f.5` and `adherence-a13.on-trigger-b.f.9` at the time limit after 22 and 19 tool calls, 9 and 6 of them corpus reads; `adherence-a13.on-trigger-b.a.2` with no message after 22 seconds); whether that repeats the pattern - same model family, trap and arm, but no fetching storm - is for triage |
 | `B97` | S3 | A11 signal | Whether a probe separates readers holding the document from readers holding none is computed by hand. | `0107` is ratified, or the next evaluation through `tools/eval.mjs` |
