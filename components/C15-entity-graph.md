@@ -17,7 +17,7 @@ Sovereignty is `internal`, so a fit gap here is pressure that routes upstream ra
 The repository `apnex/entity-graph` holds a ratified vision, a draft contract and no code; its design is owed by a separate engineering effort, and it awaits design and implementation.\
 Nothing here is in force, and no consumer depends on it yet.\
 Meanwhile, a project that cannot wait may build a stopgap behind its own boundary, or keep the implementation it already has, on three terms (`0117`): it records the requirement against `entity-graph`'s contract (*Adjustment policy*, step 1), it does not grow the stopgap into a variant of `entity-graph`, and it moves onto `entity-graph` once it is usable.\
-`drawv2`, keeping its own planner on those terms, has recorded its requirements in `entity-graph`'s contract as a draft agreed with zorg and awaiting the director's ruling (`entity-graph`'s `D8` and `D9`); the rows below state them at this entry's level.
+`drawv2`, keeping its own planner on those terms, has recorded its requirements in `entity-graph`'s contract, ruled by the director and co-signed with zorg (`entity-graph`'s `D8` and `D9`); the rows below state them at this entry's level.
 
 ---
 
