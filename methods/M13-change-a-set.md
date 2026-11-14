@@ -12,8 +12,7 @@ related: [M11, M12, E3, E4, PC1, SC1, SC6, S14, RU2, RU3, W3, AR3, AR5]
 
 ## Rule
 
-Operating a set changes its population; operating its charter changes the text the population is measured against, by [`M11`](M11-change-a-charter.md).\
-This method is the first; [`M12`](M12-investigate-a-set.md) analyses the population, and this one changes it.
+Operating a set governs its population - [`M12`](M12-investigate-a-set.md) analyses it and this method changes its membership - while operating its charter changes the text the population is measured against, by [`M11`](M11-change-a-charter.md).
 
 **Admit a member.**
 
@@ -64,3 +63,14 @@ Retirement with no stub and a `supersedes` lineage was carried out on six method
 - A substantive change to a member's claim.
 - Retiring an entry, or moving one to another layer.
 - Acting on an investigation's finding that members overlap, crowd one place, or leave another empty.
+
+---
+
+## Work-types that cite this procedure
+
+Generated from each work-type's `methods`; a procedure no work-type cites shows an empty table.
+
+<!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
+| ID | Title | Hydrate when |
+|---|---|---|
+<!-- END GENERATED -->

@@ -52,3 +52,14 @@ Fixing the sentence removed both the ambiguity and the paragraph that had been d
 - A change to the growth policy itself, chosen on the board and ratified by the director.
 
 > **Correction.** This list once included *replacing a member in a capped set*. Replacing a member changes the set, not the charter, and is done by [`M13`](M13-change-a-set.md).
+
+---
+
+## Work-types that cite this procedure
+
+Generated from each work-type's `methods`; a procedure no work-type cites shows an empty table.
+
+<!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
+| ID | Title | Hydrate when |
+|---|---|---|
+<!-- END GENERATED -->

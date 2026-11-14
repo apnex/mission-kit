@@ -103,3 +103,14 @@ Ratifying each in turn is what forces each to survive contact with someone who d
 - Especially where a reader has the artifact entries open and feels ready to
   write - that feeling is what this exists to interrupt, because the entries
   describe a destination and say nothing about order or authority.
+
+---
+
+## Work-types that cite this procedure
+
+Generated from each work-type's `methods`; a procedure no work-type cites shows an empty table.
+
+<!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
+| ID | Title | Hydrate when |
+|---|---|---|
+<!-- END GENERATED -->

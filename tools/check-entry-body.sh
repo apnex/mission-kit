@@ -6,7 +6,7 @@
 #
 #   every entry of a governed category carries every section its category declares
 #   the sections appear in the declared order, where the declaration says order matters
-#   every layer charter carries the headings E4 fixes, declared in spec.charters
+#   every charter - each <prefix>0 layer charter and every category: set charter - carries the headings E4 fixes, declared in spec.charters
 #
 # The gap this closes was not hypothetical. axioms/README.md has always specified a five-section
 # body shape, all fifteen axioms have always conformed, and nothing would have noticed the
@@ -86,29 +86,38 @@ done < <(
 )
 
 # Charters: every knowledge layer's charter - the entry whose id is its prefix followed by zero,
-# held at <directory>/README.md - carries the headings E4 fixes, declared in spec.charters. The
-# charter set is derived, so a layer added tomorrow is held without editing this tool. This pass
-# replaced check-charter-shape.sh, so one tool holds one contract.
-charter_wanted=$(node -e '
+# held at <directory>/README.md - and every spanning-set charter declaring category: set carries
+# the headings E4 fixes, declared in spec.charters. Deduplicating the two sources counts sets/README.md
+# (ST0) once while holding every ST1..STn set charter alongside the layer charters.
+charter_spec=$(node -e '
 	const fs = require("fs");
 	const d = JSON.parse(fs.readFileSync(process.argv[1], "utf8"));
 	const c = d.spec.charters;
 	if (!c) process.exit(0);
-	process.stdout.write(c.sections.join("\n"));
+	process.stdout.write((c.exemptIds || []).join(",") + "\n" + c.sections.join("\n"));
 ' "$decl")
+charter_exempt=$(printf '%s' "$charter_spec" | head -1)
+charter_wanted=$(printf '%s' "$charter_spec" | tail -n +2)
 charters=0
 if [ -n "$charter_wanted" ]; then
-	for file in $( { git ls-files '*/README.md'; git ls-files --others --exclude-standard '*/README.md'; } | sort -u ); do
+	while IFS= read -r file; do
+		[ -z "$file" ] && continue
 		id=$(awk 'FNR==1{next} /^---$/{exit} /^id:/{sub(/^id:[[:space:]]*/, ""); gsub(/"/, ""); print; exit}' "$file")
-		case "$id" in [A-Z]*0) ;; *) continue ;; esac
-		[ -n "$(awk 'FNR==1{next} /^---$/{exit} /^category:/{print}' "$file")" ] || continue
+		cat=$(awk 'FNR==1 && !/^---$/{exit} FNR==1{next} /^---$/{exit}
+		           /^category:[[:space:]]*/{sub(/^category:[[:space:]]*/, ""); print; exit}' "$file")
+		[ -n "$cat" ] || continue
+		is_charter=0
+		case "$file:$id" in */README.md:[A-Z]*0) is_charter=1 ;; esac
+		[ "$cat" = "set" ] && is_charter=1
+		[ "$is_charter" -eq 1 ] || continue
+		case ",$charter_exempt," in *,"$id",*) continue ;; esac
 		charters=$((charters + 1))
 		present=$(grep -E '^## ' "$file" | sed 's/^## //')
 		while IFS= read -r want; do
 			[ -z "$want" ] && continue
 			grep -qxF "$want" <<< "$present" || report "missing section" "$file (charter $id) has no '## $want'"
 		done <<< "$charter_wanted"
-	done
+	done < <( { git ls-files '*.md'; git ls-files --others --exclude-standard '*.md'; } | sort -u )
 fi
 
 echo

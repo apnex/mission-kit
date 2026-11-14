@@ -57,8 +57,8 @@ rows.forEach((r, i) => {
 		if (!paths.length) bad(id, 'a general ruling names no entry in affects');
 		for (const p of paths) if (!existsSync(path.join(ROOT, p))) bad(id, `affects names ${p}, which does not exist`);
 		if (!['yes', 'pending', 'contested'].includes(absorbed)) bad(id, `absorbed '${absorbed}' is not yes, pending or contested`);
-		if (absorbed === 'pending') pending.push(id);
-		if (absorbed === 'contested') contested.push(id);
+		if (absorbed === 'pending' && !sup) pending.push(id);
+		if (absorbed === 'contested' && !sup) contested.push(id);
 	} else if (kind === 'project') {
 		if (affects !== '-') bad(id, 'a project decision names entries in affects');
 		if (absorbed !== '-') bad(id, 'a project decision has an absorbed value');

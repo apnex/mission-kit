@@ -34,8 +34,8 @@ Reactive to a substrate trigger (a completed build, an approved PR, a FAILed/tra
 
 The evidence contract is a single `kind: review` slot holding the verifier's verdict - a review doc citing the evidence examined, or a structurally-valid SEAL attestation; the verdict is not itself evidence ([`E8`](../entities/E8-evidence.md)).\
 Authority is `verifier-attestation`.\
-Closeability is governed by the canonical constraint set / closeability preflight in `work-types/README.md` (do not restate it here).\
-Load-bearing here: constraint 2 (independence is structural + roster-aware) - a verifier-*held* gate uses **plain `kind:review`, never verifier-attestation-on-its-own-work** (the bug-249 fix); if the live roster collapses attester and executor, the seed fails or downgrades to `kind:review`.
+Closeability is governed by the canonical constraint set / closeability preflight in [`W0`](README.md) (do not restate it here).\
+Load-bearing here: constraint 2 (independence is structural + roster-aware) - a verifier-*held* gate uses **plain `kind:review`, never verifier-attestation-on-its-own-work** (the bug-249 fix); what follows when the live roster collapses attester and executor is authored once in constraints 2 and 9 of [`W0`](README.md), with how a lone agent's roles compose under it in [`R0`](../roles/README.md#how-the-roles-compose) (*When there is no second agent*).
 
 ---
 

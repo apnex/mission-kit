@@ -39,8 +39,8 @@ A verifier red-teams a design **before** build or merge, producing a critique do
 ## Evidence & closeability
 
 The evidenceContract is a single `kind:review` - a critique doc that names concrete failure hypotheses against `target` before the build/merge decision.\
-`evidenceAuthority: verifier-attestation` requires an attesting verifier that **cannot be the executor** given the live roster (constraint 2); with a collapsed roster this falls back to plain `kind:review`.\
-The full closeability preflight (the nine canonical constraints + independence/authority rules) lives in `work-types/README.md` and is satisfied here, not restated.
+`evidenceAuthority: verifier-attestation` requires an attesting verifier that **cannot be the executor** given the live roster (constraint 2); what follows from a collapsed roster is authored once in constraints 2 and 9 of [`W0`](README.md), with how a lone agent's roles compose under it in [`R0`](../roles/README.md#how-the-roles-compose) (*When there is no second agent*).\
+The full closeability preflight (the nine canonical constraints + independence/authority rules) lives in [`W0`](README.md) and is satisfied here, not restated.
 
 ---
 

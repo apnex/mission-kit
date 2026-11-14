@@ -116,3 +116,16 @@ A successful audit leaves:
 - follow-up ids for reusable methodology or substrate gaps;
 - validation and closeout hooks;
 - no reliance on session memory for why the design is constitutionally acceptable.
+
+---
+
+## Work-types that cite this procedure
+
+Generated from each work-type's `methods`; a procedure no work-type cites shows an empty table.
+
+<!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
+| ID | Title | Hydrate when |
+|---|---|---|
+| [W14](../work-types/W14-design-a-contract-or-invariant.md) | design-a-contract-or-invariant - author a design-of-record | You are authoring a design of record, a contract or an invariant |
+| [W22](../work-types/W22-axiom-alignment-gate.md) | axiom-alignment-gate - per-item axiom-alignment check | You are checking a single item against the axioms it claims to satisfy |
+<!-- END GENERATED -->

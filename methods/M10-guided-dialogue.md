@@ -47,3 +47,15 @@ The evidence is for the guidance as a whole, from one human; no single step's sh
 Whenever a human must understand or decide, and especially when they have not followed the work.\
 A recorded decision belongs in a decision record ([`AR4`](../artifacts/AR4-decision-record.md)); [`W23`](../work-types/W23-capture-decision-and-ratify.md) is the unit of work that captures and ratifies one.\
 [`W24`](../work-types/W24-director-walkthrough.md), a live walkthrough the director leads, cites this procedure as the one that conducts it.
+
+---
+
+## Work-types that cite this procedure
+
+Generated from each work-type's `methods`; a procedure no work-type cites shows an empty table.
+
+<!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
+| ID | Title | Hydrate when |
+|---|---|---|
+| [W24](../work-types/W24-director-walkthrough.md) | director-walkthrough - live Director sensemaking walkthrough | You are walking the director through something live for sensemaking |
+<!-- END GENERATED -->
