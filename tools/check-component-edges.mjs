@@ -9,7 +9,6 @@
 
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 let compDir = path.join(ROOT, 'components');
@@ -41,16 +40,19 @@ function parseFrontmatter(text) {
 }
 
 function parseEdges(text) {
-	const sec = text.split(/\n## Edges\n/)[1];
+	const norm = text.replace(/\r\n/g, '\n');
+	const secMatch = norm.match(/(?:^|\n)## Edges[ \t]*\n([\s\S]*?)(?=\n## |\s*$)/);
 	const result = { Contains: [], 'Contained-by': [], Consumes: [], 'Consumed-by': [] };
-	if (!sec) return result;
-	const body = sec.split(/\n## /)[0];
-	for (const para of body.split(/\n\s*\n/)) {
-		const m = para.match(/^\*\*(Contains|Contained-by|Consumes|Consumed-by)\*\*\s*-\s*([\s\S]*)$/);
+	if (!secMatch) return result;
+	const body = secMatch[1];
+	const chunks = body.split(/(?=^\*\*(?:Contains|Contained-by|Consumes|Consumed-by)\*\*[ \t]*-)/m);
+	for (const chunk of chunks) {
+		const m = chunk.match(/^\*\*(Contains|Contained-by|Consumes|Consumed-by)\*\*[ \t]*-[ \t]*([\s\S]*)$/);
 		if (!m) continue;
 		const label = m[1];
-		const refs = [...new Set([...m[2].matchAll(/\[`(C\d+)`\]\(/g)].map((x) => x[1]))];
-		result[label] = refs;
+		for (const x of m[2].matchAll(/\[`(C\d+)`\]\(/g)) {
+			if (!result[label].includes(x[1])) result[label].push(x[1]);
+		}
 	}
 	return result;
 }

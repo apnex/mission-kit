@@ -44,7 +44,7 @@ while IFS='	' read -r file category; do
 
 	# The entry's own id, so a declared exemption can be honoured. A layer's composition entry
 	# defines its category rather than instantiating it, so the instance shape does not apply.
-	entry_id=$(awk 'FNR==1{next} /^---$/{exit} /^id:/{sub(/^id:[[:space:]]*/, ""); gsub(/"/, ""); print; exit}' "$file")
+	entry_id=$(awk 'FNR==1{next} /^---$/{exit} /^id:/{sub(/\r$/, ""); sub(/^id:[[:space:]]*/, ""); gsub(/["'\'']/, ""); gsub(/^[[:space:]]+|[[:space:]]+$/, ""); print; exit}' "$file")
 
 	spec=$(node -e '
 		const fs = require("fs");
@@ -85,7 +85,7 @@ done < <(
 	# brand new entry, which is exactly when its shape has never been reviewed by anyone.
 	for f in $( { git ls-files '*.md'; git ls-files --others --exclude-standard '*.md'; } | sort -u ); do
 		cat=$(awk 'FNR==1 && !/^---$/{exit} FNR==1{next} /^---$/{exit}
-		           /^category:[[:space:]]*/{sub(/^category:[[:space:]]*/, ""); print; exit}' "$f")
+		           /^category:[[:space:]]*/{sub(/\r$/, ""); sub(/^category:[[:space:]]*/, ""); gsub(/["'\'']/, ""); gsub(/^[[:space:]]+|[[:space:]]+$/, ""); print; exit}' "$f")
 		[ -n "$cat" ] && printf '%s\t%s\n' "$f" "$cat"
 	done
 )
@@ -105,13 +105,20 @@ charters=0
 if [ -n "$charter_wanted" ]; then
 	for file in $( { git ls-files '*/README.md' 'sets/*.md'; git ls-files --others --exclude-standard '*/README.md' 'sets/*.md'; } | sort -u ); do
 		[ -f "$file" ] || continue
-		id=$(awk 'FNR==1{next} /^---$/{exit} /^id:/{sub(/^id:[[:space:]]*/, ""); gsub(/"/, ""); print; exit}' "$file")
-		cat=$(awk 'FNR==1 && !/^---$/{exit} FNR==1{next} /^---$/{exit} /^category:[[:space:]]*/{sub(/^category:[[:space:]]*/, ""); print; exit}' "$file")
+		id=$(awk 'FNR==1{next} /^---$/{exit} /^id:/{sub(/\r$/, ""); sub(/^id:[[:space:]]*/, ""); gsub(/["'\'']/, ""); gsub(/^[[:space:]]+|[[:space:]]+$/, ""); print; exit}' "$file")
+		cat=$(awk 'FNR==1 && !/^---$/{exit} FNR==1{next} /^---$/{exit} /^category:[[:space:]]*/{sub(/\r$/, ""); sub(/^category:[[:space:]]*/, ""); gsub(/["'\'']/, ""); gsub(/^[[:space:]]+|[[:space:]]+$/, ""); print; exit}' "$file")
 		[ -n "$cat" ] || continue
 		case "$id" in
 			[A-Z]*0) ;;
 			*) [ "$cat" = "set" ] || continue ;;
 		esac
+		exempt=$(node -e '
+			const fs = require("fs");
+			const d = JSON.parse(fs.readFileSync(process.argv[1], "utf8"));
+			const ex = (d.spec.charters && d.spec.charters.exemptIds) || [];
+			if (ex.includes(process.argv[2])) process.stdout.write("1");
+		' "$decl" "$id")
+		[ "$exempt" = "1" ] && continue
 		charters=$((charters + 1))
 		present=$(grep -E '^## ' "$file" | sed 's/^## //')
 		while IFS= read -r want; do

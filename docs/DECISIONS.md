@@ -2312,8 +2312,8 @@ Three were put to the director and not chosen: slimming A15 to its core limit an
 
 **Ruling, proposed.**\
 `M12`, `M13`, and `SC1` record multi-altitude set closure and tombstone isolation (`B103`).\
-`[ARGUED]` Closing and stressing coverage, boundaries, and peer edges at one containment altitude before descending keeps higher-altitude definitions invariant under lower-altitude placement or implementation changes (`E3`, `E6`).\
-`[MEASURED]` On incomplete external anchors, measured rows are preserved intact while scope partitions surface omitted members and unresolved anchor seams; `SC1` `status: retired` now cites `M13` delete-without-stub (`0057`) rather than keeping files for citations, while externally anchored ledgers that retain retired records isolate them with zero active edges.
+Closing and stressing coverage, boundaries, and peer edges at one containment altitude before descending keeps higher-altitude definitions invariant under lower-altitude placement or implementation changes (`E3`, `E6`).\
+On incomplete external anchors, measured rows are preserved intact while scope partitions surface omitted members and unresolved anchor seams; `SC1` `status: retired` now cites `M13` delete-without-stub (`0057`) rather than keeping files for citations, while externally anchored ledgers that retain retired records isolate them with zero active edges.
 
 **Alternatives refuted.**\
 Minting a packaged standalone multi-altitude skill (`K29`) immediately from one estate programme - rejected under `K0`, `P0`, and `README.md` admission rules and parked as `B117` under `RU3` until a second unrelated domain needs executable scripts.\

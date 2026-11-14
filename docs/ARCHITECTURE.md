@@ -219,8 +219,7 @@ Its lifecycles are the entry's and the change's.
 **Entry lifecycle.**\
 `draft` -> `active` -> `superseded` or `retired`.\
 An ID is never reused.\
-A replaced entry keeps its ID and flips status; the replacement carries `supersedes`, so every citation continues to resolve.\
-Retirement removes force, never addressability.
+A retired entry is deleted with no stub while its retired ID remains blocked by git history (`0057`), and a replaced entry's successor lists the retired ID in `supersedes` (`M13`); externally anchored records retained as retired tombstones stay isolated with zero active edges (`0122`).
 
 **Change lifecycle.**\
 Every change passes the same gate, and the gate does not care who authored it.

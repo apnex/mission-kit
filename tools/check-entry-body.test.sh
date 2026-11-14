@@ -200,5 +200,29 @@ out=$(./tools/check-entry-body.sh --root "$fx" 2>&1); rc=$?
 	&& ok "untracked spanning-set charter missing Vision is refused" \
 	|| no "untracked spanning-set charter was not refused (rc=$rc): $out"
 
+# 8. Quoted frontmatter category ("set") is normalized and still checked.
+build_fx "$fx"
+sed -i 's/^category: set$/category: "set"/' "$fx/sets/ST9-fixture.md"
+sed -i '/^## Operation$/d' "$fx/sets/ST9-fixture.md"
+out=$(./tools/check-entry-body.sh --root "$fx" 2>&1); rc=$?
+[ "$rc" -ne 0 ] && grep -qF "(charter ST9) has no '## Operation'" <<< "$out" \
+	&& ok "quoted frontmatter category is normalized and refused on missing heading" \
+	|| no "quoted frontmatter category bypassed check (rc=$rc): $out"
+
+# 9. spec.charters.exemptIds exempts a declared charter id.
+build_fx "$fx"
+sed -i '/^## Operation$/d' "$fx/sets/ST9-fixture.md"
+node -e '
+	const fs = require("fs");
+	const p = process.argv[1];
+	const d = JSON.parse(fs.readFileSync(p, "utf8"));
+	d.spec.charters.exemptIds = ["ST9"];
+	fs.writeFileSync(p, JSON.stringify(d, null, 2) + "\n");
+' "$fx/schemas/entry-body/v1alpha1/entry-body.json"
+out=$(./tools/check-entry-body.sh --root "$fx" 2>&1); rc=$?
+[ "$rc" -eq 0 ] \
+	&& ok "spec.charters.exemptIds exempts a declared charter id" \
+	|| no "spec.charters.exemptIds failed to exempt ST9 (rc=$rc): $out"
+
 printf '%d passed, %d failed\n' "$pass" "$fail"
 [ "$fail" -eq 0 ]

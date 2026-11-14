@@ -76,5 +76,56 @@ out=$(node tools/check-component-edges.mjs --dir "$tmp/components" 2>&1); rc=$?
 	&& ok "retired component carrying active edges is refused (tombstone isolation)" \
 	|| no "retired component with active edges was not refused (rc=$rc): $out"
 
+# 8. Symmetric Contains <-> Contained-by pair (with blank line after ## Edges) passes.
+copy_comp
+sed -i 's/\*\*Contains\*\* - /\*\*Contains\*\* - [`C12`](C12-input-binding.md) and /' "$tmp/components/C11-snap-grid.md"
+sed -i 's/\*\*Contained-by\*\* - nothing/\*\*Contained-by\*\* - [`C11`](C11-snap-grid.md)/' "$tmp/components/C12-input-binding.md"
+out=$(node tools/check-component-edges.mjs --dir "$tmp/components" 2>&1); rc=$?
+[ "$rc" -eq 0 ] \
+	&& ok "symmetric Contains <-> Contained-by passes (paragraph 0 after ## Edges blank line)" \
+	|| no "symmetric Contains <-> Contained-by failed (rc=$rc): $out"
+
+# 9. Asymmetric Contains without Contained-by is refused.
+copy_comp
+sed -i 's/\*\*Contains\*\* - /\*\*Contains\*\* - [`C12`](C12-input-binding.md) and /' "$tmp/components/C11-snap-grid.md"
+out=$(node tools/check-component-edges.mjs --dir "$tmp/components" 2>&1); rc=$?
+[ "$rc" -ne 0 ] && grep -qF "omits C11 from Contained-by" <<< "$out" \
+	&& ok "asymmetric Contains without Contained-by is refused" \
+	|| no "asymmetric Contains was not refused (rc=$rc): $out"
+
+# 10. Asymmetric Contained-by without Contains is refused.
+copy_comp
+sed -i 's/\*\*Contained-by\*\* - nothing/\*\*Contained-by\*\* - [`C11`](C11-snap-grid.md)/' "$tmp/components/C12-input-binding.md"
+out=$(node tools/check-component-edges.mjs --dir "$tmp/components" 2>&1); rc=$?
+[ "$rc" -ne 0 ] && grep -qF "omits C12 from Contains" <<< "$out" \
+	&& ok "asymmetric Contained-by without Contains is refused" \
+	|| no "asymmetric Contained-by was not refused (rc=$rc): $out"
+
+# 11. Self-loop in Contains (paragraph 0) is refused.
+copy_comp
+sed -i 's/\*\*Contains\*\* - /\*\*Contains\*\* - [`C11`](C11-snap-grid.md) and /' "$tmp/components/C11-snap-grid.md"
+out=$(node tools/check-component-edges.mjs --dir "$tmp/components" 2>&1); rc=$?
+[ "$rc" -ne 0 ] && grep -qF "self-loop in Contains -> C11" <<< "$out" \
+	&& ok "self-loop in Contains is refused" \
+	|| no "self-loop in Contains was not refused (rc=$rc): $out"
+
+# 12. Active component declaring symmetric Contains -> draft C15 is refused.
+copy_comp
+sed -i 's/\*\*Contains\*\* - /\*\*Contains\*\* - [`C15`](C15-entity-graph.md) and /' "$tmp/components/C11-snap-grid.md"
+sed -i 's/\*\*Contained-by\*\* - nothing/\*\*Contained-by\*\* - [`C11`](C11-snap-grid.md)/' "$tmp/components/C15-entity-graph.md"
+out=$(node tools/check-component-edges.mjs --dir "$tmp/components" 2>&1); rc=$?
+[ "$rc" -ne 0 ] && grep -qF "active component declares Contains -> draft C15" <<< "$out" \
+	&& ok "active component containing draft component is refused" \
+	|| no "active containing draft was not refused (rc=$rc): $out"
+
+# 13. Retired tombstone holding a Contains edge (paragraph 0) is refused.
+copy_comp
+sed -i 's/^status: active$/status: retired/' "$tmp/components/C11-snap-grid.md"
+sed -i 's/\*\*Contains\*\* - /\*\*Contains\*\* - [`C12`](C12-input-binding.md) and /' "$tmp/components/C11-snap-grid.md"
+out=$(node tools/check-component-edges.mjs --dir "$tmp/components" 2>&1); rc=$?
+[ "$rc" -ne 0 ] && grep -qF "status 'retired' must isolate with zero edges, found Contains -> C12" <<< "$out" \
+	&& ok "retired component carrying Contains edge is refused" \
+	|| no "retired component with Contains edge was not refused (rc=$rc): $out"
+
 printf '%d passed, %d failed\n' "$pass" "$fail"
 [ "$fail" -eq 0 ]
