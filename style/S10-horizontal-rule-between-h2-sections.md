@@ -3,6 +3,7 @@ id: S10
 category: style
 title: Horizontal rule between top-level sections in long-form docs
 status: active
+medium: documents
 enforced-by: tools/s10-section-rules.sh
 hydrate-when: You are writing a document you expect to grow past five top-level sections
 supersedes: []

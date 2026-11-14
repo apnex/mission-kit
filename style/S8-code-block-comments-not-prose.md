@@ -3,6 +3,7 @@ id: S8
 category: style
 title: Code-block comments are for what-the-line-does, not prose substitutes
 status: active
+medium: documents
 enforced-by: tools/s8-code-block-comments.sh
 hydrate-when: You are about to put explanatory text inside a code block
 supersedes: []

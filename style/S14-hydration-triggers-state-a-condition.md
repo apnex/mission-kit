@@ -3,6 +3,7 @@ id: S14
 category: style
 title: Hydration triggers state a condition, not a topic
 status: active
+medium: documents
 enforced-by: tools/s14-hydration-triggers.sh
 hydrate-when: You are adding a catalogue entry, or reviewing one that has never routed anyone
 supersedes: []
@@ -52,7 +53,7 @@ State the condition in the second person, present tense, as a single sentence.
 
 ## Checking
 
-The form is mechanically decidable and is enforced by `tools/check-style.sh --rule S14`.
+The form is mechanically decidable and is enforced by `tools/s14-hydration-triggers.sh`.
 
 It requires the value to be present, to be a single sentence of at least thirty characters, to differ from the entry's title, and to carry at least one condition marker:
 ```

@@ -3,10 +3,11 @@ id: S6
 category: style
 title: One sentence per line (semantic line breaks)
 status: active
+medium: documents
 enforced-by: tools/s6-one-sentence-per-line.mjs
 hydrate-when: You are about to write or edit markdown prose that someone else will read
 supersedes: []
-related: [S2, S5, S7, S8, S9, S12]
+related: [S2, S4, S5, S7, S8, S9, S12]
 ---
 
 # S6 - One sentence per line (semantic line breaks)
@@ -44,7 +45,7 @@ The trailing `\` is a CommonMark hard break and renders on GitHub.\
 Prefer it to two trailing spaces, which are invisible in source and get silently stripped by editors and formatters.
 
 Getting this wrong is not a cosmetic miss.\
-A pitch followed by an inventory, collapsed into a single rendered block, is the wall of text [[S4]] and [[S9]] exist to prevent - reintroduced by a rule meant to improve readability.
+A pitch followed by an inventory, collapsed into a single rendered block, is the wall of text [`S4`](S4-four-journey-readme.md) and [`S9`](S9-action-first-readme-structure.md) exist to prevent - reintroduced by a rule meant to improve readability.
 
 This section is written the way it prescribes: the paired sentences above carry a trailing `\`, the shifts of subject are blank-line separated, and the four cases are a list rather than a run of prose.
 
@@ -52,6 +53,7 @@ This section is written the way it prescribes: the paired sentences above carry 
 
 ## Checking
 
+Enforced by `tools/s6-one-sentence-per-line.mjs`.\
 The rule has two halves and they fail independently, so check both.\
 A reader only ever sees the rendered result, and both failures look identical there: two sentences on one line.
 

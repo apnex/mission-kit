@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 # format-markdown - apply every style rule that can be fixed without judgement.
 #
+# Sovereign duty: dispatch --fix across the sovereign per-rule style tools, and no other.
 # An alias, not an implementation. It discovers the sovereign per-rule tools and runs each in
 # --fix mode, so a rule's fix has exactly one definition and it lives with that rule. The
 # previous version restated four rules inline, and one of them was not idempotent.
 #
-# Rules with no --fix are skipped: S8 and S14 need a decision, not a substitution.
+# Rules with no --fix are skipped: S8 and S14 need a decision, not a substitution (and S17 checks tools/ scripts, not markdown).
 #
 # Usage:  tools/format-markdown.sh FILE...
 

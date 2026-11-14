@@ -1,6 +1,8 @@
 #!/usr/bin/env node
-// skill-graph — lint the SKILL.md catalogue as a DAG and derive levels.
+// skill-graph - lint the SKILL.md catalogue as a DAG and derive levels.
 //
+// Sovereign duty: validate SKILL.md prerequisite and composes edges, composes-vs-model parity,
+// bundle skill references, and WorkGraph lifecycle conformance, and no other.
 // The catalogue is a hierarchy expressed as EDGES, not numbered names. Each canonical SKILL.md may declare,
 // in its `metadata`, `prerequisite:` (vertical: read-first) and `composes:` (a specialist system over the
 // primitives it is built from). This lint makes those edges load-bearing instead of narrative:
@@ -30,17 +32,17 @@ function parseSkill(file) {
 	const fm = m[1];
 	const name = (fm.match(/^name:\s*(.+)$/m) || [])[1]?.trim();
 	if (!name) return null;
-	// edge fields may be top-level or nested under metadata: — match anywhere in the frontmatter
+	// edge fields may be top-level or nested under metadata: - match anywhere in the frontmatter
 	const edges = (key) => {
 		const v = (fm.match(new RegExp(`^\\s*${key}:\\s*(.+)$`, 'm')) || [])[1];
 		if (!v) return [];
 		return v.replace(/[\[\]]/g, '').split(',')
 			.map((s) => s.trim())
-			// keep bare skill-name tokens only (drop prose like "sysml-modelling skills (model-a-…, …)")
+			// keep bare skill-name tokens only (drop prose like "sysml-modelling skills (model-a-..., ...)")
 			.filter((s) => /^[a-z0-9-]+$/.test(s));
 	};
 	// model-asset: names the .sysml file(s) that ARE the composition (so the composes-vs-model check reads the
-	// MODEL, not the dogfood scaffolding — well-formedness.sysml/procedure assets are always constraint/action defs).
+	// MODEL, not the dogfood scaffolding - well-formedness.sysml/procedure assets are always constraint/action defs).
 	const files = (key) => {
 		const v = (fm.match(new RegExp(`^\\s*${key}:\\s*(.+)$`, 'm')) || [])[1];
 		if (!v) return [];
@@ -87,7 +89,7 @@ function depth(name, trail = []) {
 for (const name of skills.keys()) depth(name);
 
 // --- 5. composes-vs-MODEL: each composed primitive's construct family must appear in the skill's assets ---
-// Turns a `composes:` claim into a tested invariant (twin-parity — a declared edge + the model it claims must
+// Turns a `composes:` claim into a tested invariant (twin-parity - a declared edge + the model it claims must
 // agree): a composed skill must
 // actually use the construct of each primitive it claims to compose, or the composition is a paper claim.
 const COMPOSES_CONSTRUCT = {
@@ -111,7 +113,7 @@ for (const s of skills.values()) {
 		else errors.push(`composes-vs-model: ${s.name} model-asset '${fn}' not found`);
 	}
 	// strip comments (block `/* */` incl. `doc`, and line `//`) so a construct merely NAMED in prose
-	// doesn't satisfy the check — only a real declaration in code counts.
+	// doesn't satisfy the check - only a real declaration in code counts.
 	blob = blob.replace(/\/\*[\s\S]*?\*\//g, ' ').replace(/\/\/[^\n]*/g, ' ');
 	for (const c of s.composes) {
 		const sig = COMPOSES_CONSTRUCT[c];

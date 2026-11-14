@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # check-structure - hold the repository's own shape to what its documents claim.
 #
-# Two invariants, both of which have already been broken:
+# Sovereign duty: top-level directory documentation and ledger-to-disk entry count equality, and no
+# other. Two invariants, both of which have already been broken:
 #
 #   every top-level directory is named in the root README
 #   every top-level directory carries its own README

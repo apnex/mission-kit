@@ -3,6 +3,7 @@ id: S15
 category: style
 title: A message to a human - point first, one step, explained names, clear picks
 status: active
+medium: messages
 hydrate-when: You are about to write a message a human will read without the context you have
 supersedes: []
 related: [M10, ST1, S0]
@@ -39,7 +40,7 @@ A move earns its own entry when a pair differing in that move alone shows it hel
 
 **Medium.**\
 This is the first style rule for one medium - messages to a human, not documents.\
-One rule does not earn a sub-set of `style/`; a second single-medium rule would.
+With [`S17`](S17-source-comments-state-duty-and-why.md) (`code`) admitted alongside `S15` (`messages`), [`S0`](README.md) partitions `style/` into Level 2 medium sub-sets via the `medium` frontmatter field ([`SC1`](../schemas/SC1-catalog-entry.md)).
 
 ---
 

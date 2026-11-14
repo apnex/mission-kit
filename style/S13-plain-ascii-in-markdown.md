@@ -3,10 +3,11 @@ id: S13
 category: style
 title: Plain ASCII in markdown - typeable characters only
 status: active
+medium: documents
 enforced-by: tools/s13-plain-ascii.sh
 hydrate-when: You are about to type a character you could not produce on a standard keyboard
 supersedes: []
-related: [S6, S8, S11]
+related: [S6, S8, S11, M9]
 ---
 
 # S13 - Plain ASCII in markdown
@@ -59,7 +60,7 @@ Add the next as `2.` with its justification, rather than widening the test.
 
 Three cases are outside the rule rather than exceptions to it:
 
-- **The character is the subject.** The conversion table below, a rule that inventories emoji to strip, a test fixture, a doc about Unicode handling. Quoting a character is not using it. [[M9]] must name the glyphs it removes.
+- **The character is the subject.** The conversion table below, a rule that inventories emoji to strip, a test fixture, a doc about Unicode handling. Quoting a character is not using it. [`M9`](../methods/M9-history-content-scrub.md) must name the glyphs it removes.
 - **It belongs to a proper noun.** A person's name, a place, a product spelled that way.
 - **The content is reproduced verbatim.** A third-party error message, an upstream file quoted as-is, a captured transcript. Altering it would misquote it.
 
@@ -108,6 +109,7 @@ All emoji are banned, whether or not they appear above.
 
 ## Checking
 
+Enforced by `tools/s13-plain-ascii.sh`.\
 This file is the one place in the corpus where the banned characters may appear, because here they are the subject.
 
 Scan a tree, box drawing excluded:
@@ -159,4 +161,4 @@ Keyboard-typeability is decidable on sight, by anyone, for any character, withou
 
 - Writing or editing any markdown.
 - Reviewing a doc change - run the grep above; it is a one-line check.
-- Converting a doc that predates this rule, opportunistically, while editing it for another reason. Do not sweep a whole corpus in one commit - per [[S6]] the diff becomes unreviewable.
+- Converting a doc that predates this rule, opportunistically, while editing it for another reason. Do not sweep a whole corpus in one commit - per [S6](S6-one-sentence-per-line.md) the diff becomes unreviewable.
