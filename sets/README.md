@@ -54,6 +54,7 @@ Members are balanced on non-overlap of concern - one concern, one set - and a se
 
 This set is analysed by [`M12`](../methods/M12-investigate-a-set.md) and its membership changed by [`M13`](../methods/M13-change-a-set.md); this charter is changed by [`M11`](../methods/M11-change-a-charter.md).\
 Its members are balanced on non-overlap of concern, one concern to one set, and a gap here is evidence that readers in a situation missed guidance that applies, not the observation that a concern could be gathered.\
+An analysis stresses this territory in two ways: by scanning cross-layer `related` clusters and recurring operational situations that touch entries in two or more layers (`style/`, `methods/`, `rules/`, `practices/`, `work-types/`, `artifacts/`), and by testing whether cold readers placed in those situations miss applicable entries without a spanning set or whether the concern's rules are distinct from any single layer's.\
 Membership is read from each set's `members` list, never from the members' own frontmatter, because a member need not know its set.\
 A candidate whose members all sit in one layer is routed to that layer's charter as its sub-concern.
 

@@ -5,7 +5,7 @@ title: charter - the document that voices a set, and the questions only it can a
 status: active
 hydrate-when: You are writing or revising a charter, or deciding whether a section belongs in one
 supersedes: []
-related: [E3, E2, A3, S0]
+related: [E3, E2, A3, S0, M11, M12, M13]
 ---
 
 # E4 - charter
@@ -70,7 +70,7 @@ If no member could, it is a set property, and the remaining question is only whe
 |---|---|---|---|
 | **Vision** | What end state does this set approach, and why does it exist? Written with the vision devices above, first, because the scope, the growth policy and every judgement about the population are measured against it. | A member knows why *it* exists, never what the collection is heading towards | heading `Vision` |
 | **Territory** | What does this set claim to cover, and by what growth policy does it grow? | Scope and growth are properties of the population; a member cannot see its siblings | heading `Territory` |
-| **Operation** | How is this set analysed and its membership changed, and how is this charter changed? It cites the methods and states what is specific to this set. | Analysing and changing a population is done across it, never from inside one member | heading `Operation` |
+| **Operation** | How is this set analysed, stressed against its scope, and its membership changed, and how is this charter changed? It cites the methods and states the territory-stress pass and routing rules specific to this set. | Analysing, stressing and changing a population is done across it, never from inside one member | heading `Operation` |
 | **Boundaries** | What belongs here, what does not, and where does the excluded thing go instead? | An exclusion decides a case no member holds | anywhere |
 | **Composition** | How do members relate to one another? | A relation has two ends, and a member holds one | anywhere |
 | **Faults** | What does an unhealthy population look like, as against a merely valid one? | Every member can be valid while the set is wrong | heading `Faults` |
@@ -122,6 +122,11 @@ Two things, and no partition.
 > **Correction.** This entry previously required a territory to carry a partition derived from the population and to show a gap or argue there was none:
 > *Its partition is derived from the population; its extent is set by purpose* - and - *It shows a gap or argues that there is none.*
 > The director ruled that a charter is an asymptote: it states end state, scope and growth policy, and partitions and gaps are found by investigation. The obligation to show a checked gap moved with them; it did not disappear.
+
+**What Operation states to make a territory stressable.**\
+A small or lopsided population cannot reveal its own missing dimensions if an investigation only groups the members already held.\
+Each charter's `Operation` therefore states **how its territory is actively stressed against its `Vision` and `Scope`** - the external denominator, sampling pass, or generative stress-test an [`M12`](../methods/M12-investigate-a-set.md) investigation runs to expose unpopulated regions of `Scope`, seam collisions between neighbours, and bundled moves inside a single member, alongside where excluded candidates are routed.\
+The stress protocol belongs in the charter because it defines how the set's ideal is tested; the dated partition and the gaps a run finds belong in a dated [`M12`](../methods/M12-investigate-a-set.md) investigation kept as working material (in this corpus, git-ignored under `docs/investigations/`) with surviving gaps carried to the backlog ([`AR5`](../artifacts/AR5-backlog.md)).
 
 **Growth must be paid for.**\
 Conforming a charter usually lengthens it, because the concerns most often missing - territory and composition - are the ones that need authoring rather than moving.\

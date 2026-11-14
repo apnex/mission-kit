@@ -39,6 +39,10 @@ role x work-type x domain
 `roles/README.md` owns the role axis, `domains/README.md` the domain axis, and `work-types/README.md` the composition rule and the closeability preflight.\
 The constraint set is authored once in the cross-axis reference and never forked into the entries that use it.
 
+**The corpus is a recursive hierarchy of sets.**\
+This charter and [`VISION.md`](VISION.md) voice the root [`set`](entities/E3-set.md), whose members are the layers ([`E2`](entities/E2-layer.md)) below.\
+Each knowledge layer is in turn a child set voiced by its `<prefix>0` charter ([`E4`](entities/E4-charter.md)) at `<directory>/README.md` via delegation without inheritance; [`sets/`](sets/README.md) (`ST0`) charters sets that span two or more layers; and a sub-population inside a layer whose rules differ from its parent's forms a nested sub-set.
+
 **Layers, each owning one concern.**
 
 | Prefix | Layer | Owns |
@@ -190,6 +194,13 @@ The charter records the decision so it is not rediscovered, not to add a step.
 A layer leaves the same way it arrived and in the same commit: contents relocated or converted to entries, the table row removed, and any pointer to it repaired.\
 An empty directory left behind is worse than the layer was, because it reads as a place things belong.\
 Identity rules are unchanged - entries relocated with their layer keep their IDs, and an entry that moves to another layer or is replaced takes a new ID, leaving no stub.
+
+**Stressing the set of layers.**\
+An [`M12`](methods/M12-investigate-a-set.md) investigation of the root set tests the layers against [`VISION.md`](VISION.md) in three passes, kept as local working material in `docs/investigations/` with surviving gaps carried to [`docs/BACKLOG.md`](docs/BACKLOG.md):
+
+1. **Zero-home pass.** Sample recurring engineering concerns and open backlog findings across an organisation's lifecycle and test whether any fits zero existing layers; before proposing a new layer, test whether the concern belongs in a cross-layer spanning set ([`sets/`](sets/README.md)), a nested sub-set inside an existing layer ([`E3`](entities/E3-set.md)), or as a first occupant in the nearest existing layer until a second independent occupant is real ([`A3`](axioms/A3-sovereign-composition.md)).
+2. **Two-home pass.** Test adjacent layer pairs against [`E2`](entities/E2-layer.md)'s altitude discriminator - whether two directories could plausibly hold the same entry - and verify that their charters' neighbour questions separate every member cleanly.
+3. **Consumer and occupancy pass.** Verify that every layer is reached and consumed by at least one other layer, gate check, or operator workflow ([`VISION.md`](VISION.md)), and flag any knowledge layer holding a single occupant so its next investigation either admits a second real member or folds the lone entry into a neighbour.
 
 **Faults.**
 
