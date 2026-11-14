@@ -10,6 +10,7 @@ evidenceContract:
 evidenceAuthority: executor-evidence
 domainEligibility: [coordination-substrate]
 domainFreedom: pinned
+related: [E10]
 parameters:
   - {name: arc, fills: the arc to close, bindingSource: provided-by-trigger}
 generationMode: arc-seeded
@@ -21,7 +22,7 @@ compositionHooks: completionDependsOn the arc's landed/shipped nodes; the stands
 
 ## Definition
 
-Author the proof-level closeout for a completed arc - a single doc that separates and pins the distinct proof planes (PR merged / CI green / deploy succeeded / live-verified) so the arc's "done" is evidenced, not asserted.
+Author the proof-level closeout for a completed [arc](../entities/E10-arc.md) - a single doc that separates and pins the distinct proof planes (PR merged / CI green / deploy succeeded / live-verified) so the arc's "done" is evidenced, not asserted.
 
 ---
 

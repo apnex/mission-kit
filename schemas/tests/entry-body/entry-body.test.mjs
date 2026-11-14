@@ -9,7 +9,7 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import Ajv2020 from 'ajv/dist/2020.js';
@@ -51,4 +51,38 @@ test('every governed category states why its shape is what it is', () => {
 		assert.ok(c.rationale && c.rationale.trim().length > 0,
 			`category '${c.category}' declares sections with no rationale`);
 	}
+});
+
+test('every SC* contract stub and every apiVersion/kind resource schema is registered in catalog.json', () => {
+	const schemaPaths = new Set(catalog.schemas.map((s) => s.path));
+	const stubs = readdirSync(SCHEMAS).filter((f) => /^SC[1-9]\d*-.+\.md$/.test(f)).sort();
+	assert.ok(stubs.length >= 6, `expected at least 6 SC* stubs, found ${stubs.length}`);
+	for (const stub of stubs) {
+		const text = readFileSync(path.join(SCHEMAS, stub), 'utf8');
+		const m = text.match(/Canonical contract:\s*\[`[^`]+`\]\(([^)]+\.schema\.json)\)/);
+		assert.ok(m, `${stub} does not declare a Canonical contract .schema.json link`);
+		assert.ok(schemaPaths.has(m[1]), `${stub} canonical contract '${m[1]}' is missing from catalog.json schemas`);
+	}
+
+	let resourceSchemasChecked = 0;
+	for (const entry of catalog.schemas) {
+		if (entry.role !== 'resource') continue;
+		const schemaObj = readJson(entry.path);
+		const apiVersion = schemaObj.properties?.apiVersion?.const;
+		const kind = schemaObj.properties?.kind?.const;
+		if (!apiVersion || !kind) continue;
+		resourceSchemasChecked++;
+		const matches = catalog.resources.filter(
+			(r) => r.apiVersion === apiVersion && r.kind === kind && r.schemaId === entry.id,
+		);
+		assert.equal(
+			matches.length,
+			1,
+			`resource schema ${entry.id} (${apiVersion}/${kind}) must appear exactly once in catalog.json resources`,
+		);
+	}
+	assert.ok(
+		resourceSchemasChecked >= 3,
+		`expected at least 3 resource schemas with apiVersion/kind, checked ${resourceSchemasChecked}`,
+	);
 });

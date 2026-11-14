@@ -24,7 +24,7 @@ compositionHooks: dependsOn the arc's live rungs; the driver lease is renewed ac
 
 ## Definition
 
-Operate an arc over its lifetime - hold the driver lease, project the stint, renew across the run, and take the close decisions - so the arc advances as a live control loop rather than a hand-shepherded backlog.
+Operate an [arc](../entities/E10-arc.md) over its lifetime - hold the driver lease, project the stint, renew across the run, and take the close decisions - so the arc advances as a live control loop rather than a hand-shepherded backlog.
 
 ---
 

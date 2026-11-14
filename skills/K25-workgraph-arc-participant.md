@@ -5,12 +5,12 @@ title: workgraph-arc-participant - act inside a Hub WorkGraph arc
 status: active
 hydrate-when: You are acting inside an arc someone else is driving
 supersedes: []
-related: []
+related: [E10]
 ---
 
 # K25 - workgraph-arc-participant
 
 Canonical body: [`workgraph-arc-participant/SKILL.md`](workgraph-arc-participant/SKILL.md).
 
-Act inside a Hub WorkGraph arc.\
+Act inside a Hub WorkGraph [arc](../entities/E10-arc.md).\
 This entry carries the catalogue placement only; the operational content lives in the body above.
