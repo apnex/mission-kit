@@ -2,7 +2,7 @@
   "id": "board",
   "mode": "corpus",
   "group": "board",
-  "source": "M3.2 instance check of AR3 against BOARD.md; director ruling A: scores on the record row, board views generated. Keyed after the change was drafted, not before - a departure from M2's order, disclosed; not reviewed independently.",
+  "source": "M3.2 instance check of AR3 against BOARD.md; director ruling A: scores on the record row, board views generated. Keyed after the change was drafted, not before - a departure from M2's order, disclosed; B1-B4 keys and B3 impact bound audited by a fresh agent (0136, B129) before Climb 5 readers ran.",
   "probes": [
     {
       "id": "B1",
@@ -12,15 +12,15 @@
     },
     {
       "id": "B2",
-      "question": "What makes a backlog row 'held'?",
+      "question": "What makes a backlog row 'held', and how is the board's Held list produced?",
       "key": "It is open and no live item on the board cites it; holding is read from the plan, so the held list is generated, with each row's scores and revival trigger. A row whose trigger fires returns to triage.",
       "rubric": "2 for open and uncited by a live item, with the list generated. 1 for open and not planned without the generation, or vice versa. 0 otherwise."
     },
     {
       "id": "B3",
-      "question": "A row is low impact but breaches an axiom's mandate; another is higher impact but only an enforcement signal. How does the board order them?",
-      "key": "On the higher of the two scores, never a blend: the board states a common scale - here a mandate breach ranks with the second-highest impact (S2), a signal with the fourth (S4) - ties go to the mandate, then to impact.",
-      "rubric": "2 for higher-of-two with a common scale mapping and no blend. 1 for higher-of-two without the mapping. 0 for a blended score."
+      "question": "A row is low impact (say the fifth tier) but breaches an axiom's mandate; another has higher impact (say the third tier) but is only an enforcement signal. How does the board order them?",
+      "key": "On the higher of the two scores, never a blend: the board states a common scale - a mandate breach ranks with the second-highest impact, a signal with the fourth - ties go to the mandate breach, then to the higher impact, so the mandate-breach row orders first.",
+      "rubric": "2 for higher-of-two with the common scale mapping (second-highest vs fourth) and no blend. 1 for higher-of-two without the mapping. 0 for a blended score."
     },
     {
       "id": "B4",

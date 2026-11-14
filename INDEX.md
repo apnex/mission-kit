@@ -48,6 +48,7 @@ This file described them a second time and the copy had already drifted, naming 
 | [A13](axioms/A13-director-intent-amplification.md) | Director Intent Amplification | You are about to consume the director's attention, or to decide something in their absence |
 | [A14](axioms/A14-compounding-learning.md) | Compounding Learning | You are about to apply a workaround or special case that leaves a known root cause unfixed and unrecorded, or you have learned something during work and are deciding whether to capture it |
 | [A15](axioms/A15-recursive-elevation.md) | Recursive Elevation | You have completed a recurring report, review, or incident recovery and are deciding whether the mechanism itself should move one rung higher |
+| [A16](axioms/A16-unbiased-self-check.md) | Unbiased Self-Check | You have produced a change, a measurement or a claim and are about to check your own work before offering it as evidence or acting on it |
 
 ---
 
@@ -147,6 +148,7 @@ This file described them a second time and the copy had already drifted, naming 
 |---|---|---|
 | [PC0](practices/README.md) | Practices - how work is done, where nothing afterwards could tell | You are adding or applying guidance on how work is done that leaves no trace a check could test |
 | [PC1](practices/PC1-author-from-exemplar.md) | Author from exemplar - read a peer instance before adding to a collection | You are about to add an entry to a curated collection |
+| [PC2](practices/PC2-check-the-splits-that-favour-you.md) | Check the splits that favour you - inspect passing and generous cells with the same scrutiny as failing ones | You have received a test run, evaluation table, or review where some cells favour your change and you are deciding which results to inspect before trusting the outcome |
 
 ---
 
@@ -180,6 +182,7 @@ This file described them a second time and the copy had already drifted, naming 
 | [S14](style/S14-hydration-triggers-state-a-condition.md) | Hydration triggers state a condition, not a topic | You are adding a catalogue entry, or reviewing one that has never routed anyone |
 | [S15](style/S15-message-to-a-human.md) | A message to a human - point first, one step, explained names, clear picks | You are about to write a message a human will read without the context you have |
 | [S16](style/S16-path-a-path-b-workflow-paths.md) | Path A / Path B - one complete path per execution environment in a workflow document | You are authoring a workflow document that supports more than one execution path |
+| [S17](style/S17-source-comments-state-duty-and-why.md) | Source comments state the file's duty and why non-obvious code is written that way | You are writing or editing an executable script or source file, or deciding what to put in its opening or inline comments |
 
 ---
 
@@ -243,6 +246,7 @@ This file described them a second time and the copy had already drifted, naming 
 | [E7](entities/E7-gate.md) | gate - a point past which work proceeds only if a stated condition is shown to hold, decided by a machine, an independent agent or the director | You are about to say work passed, failed or is waiting at a gate, or to decide who may judge one |
 | [E8](entities/E8-evidence.md) | evidence - something offered to show that a claim holds, which a gate's judge receives and never decides | You are about to record, cite or weigh evidence, or you have met a verdict stored where evidence goes |
 | [E9](entities/E9-substrate.md) | substrate - the coordination substrate, the system that hands out, runs and gates work, and nothing else | You are about to write or read the word substrate, or describe the system that coordinates work between agents |
+| [E10](entities/E10-arc.md) | arc - a bounded, multi-step initiative that advances toward a declared target across gated steps, and its two representations | You are about to write or read the word arc across layers, or to reconcile its value-chain and coordination-substrate meanings |
 
 ---
 

@@ -1,7 +1,7 @@
 # Evaluation suites
 
 The standing probes that measure whether cold agents read this corpus as intended.\
-Run with [`tools/eval.mjs`](../../tools/eval.mjs); method in [`M2`](../../methodology/M2-test-drive-docs-by-execution.md), *Reasoning documents*.
+Run with [`tools/eval.mjs`](../../tools/eval.mjs); method in [`M2`](../../methods/M2-test-drive-docs-by-execution.md), *Reasoning documents*.
 
 ---
 
@@ -17,7 +17,7 @@ Each suite names the frozen key it came from in `source`.\
 The frozen key in `docs/audits/` is the record of what was measured then and is never edited.\
 The suite holds what is correct now, and changes when the corpus legitimately changes - a suite edit is a ruling about the corpus and says so in its commit.
 
-Suites are under `docs/` because they are about this corpus, and because `eval.mjs export` strips `docs/`, so no reader can reach a key.
+Suites are under `docs/` because they are about this corpus, and because `eval.mjs export` strips `docs/`, so no export carries a key; a reader is kept to its export by its prompt alone (`B124`).
 
 ---
 
@@ -25,7 +25,7 @@ Suites are under `docs/` because they are about this corpus, and because `eval.m
 
 `docs/evals/context-lab/` is mission-kit's pack for [context-lab](https://github.com/apnex/context-lab), the shared evaluation component (`0087`, `0088`).\
 It is the single source of truth for the `adherence`, `explain`, `handoff`, `aa`, and `c0` suites (`B80`); the earlier `docs/evals/adherence/suite.json` and `docs/evals/explain/suite.json` copies are retired alongside `tools/adherence.mjs` and `tools/eval-human.mjs` (`B77`, `B80`).\
-Its experiment register lives in its `register/` folder and is committed: it is the evidence an experiment was fixed before its outcomes.
+By `0149`, historical experiment files under `docs/evals/context-lab/`, `docs/evals/human/`, and `docs/evals/standing/` are git-ignored working material alongside `docs/evals/runs/`, while the active `<suite>/suite.json` definitions remain tracked.
 
 ---
 
@@ -94,6 +94,12 @@ Every suite's keys are audited by a fresh reader before first use, and corrected
 | `boundary-bypass` | the preamble ruled out one of the ruling's two outcomes; B3 dropped "adjust the interface"; B4 cited `C0`'s adjustment rule, which governs registered components and is itself an open question; "recorded" stated where the ruling says nothing | all four |
 | `work-layers` | the questions copied their target entries' wording, so they would measure text search; the director's `B24` wording had leaked into two probes; L6 quoted a sentence `W0` does not contain | questions reworded in plain terms; leaked wording removed; L6 keyed to `W0`'s actual text |
 | `explain` | the harness told readers to cite files while the suite forbade it; the scorer's guess cap would have penalised required labelling of inferred claims; readers' self-explanations would have unblinded a before-and-after run; X1 lacked a deadline and contradicted the preamble; X2 lacked the risk it asked for; X3 gave away its separating experiment and left a fact ambiguous; X4 required an order the goal does not; rubrics were too broad to interpret | harness: instructions, scorer instructions and a stripped self-explanation per suite, each tested; fixtures completed; rubrics gated on core properties and required to name failing properties |
+| `gate` (G7) | the key was right for the corpus before and after `0129`; the question asked only for the verdict, while the rubric gave full marks only to an answer that also said the work waits | the question also asks what happens to the work, in the auditor's words |
+| `lone-gate` (L1, L2) | both keys were grounded across `96a8aef`, `fbc248d` and `0132`, and `L2` matched its rubric; `L1`'s rubric required naming executor/author evidence rather than assurance for full marks while the question asked only whether the result satisfies the gate | `L1` also asks what standing its result carries, committed before any reader ran |
+| `board` (B1-B4) | `B1`, `B3` (bounded `fifth tier` vs `third tier`) and `B4` were grounded across `AR0`, `AR3`, `AR4` and `AR5`; `B2`'s rubric required stating that the `Held` list is generated for full marks while the question asked only what makes a row held | `B2` also asks how the board's `Held` list is produced, committed before any reader ran (`0136`) |
+| `charter-stress` (CS1-CS3), `gate` (G1), `s0` (Q4, Q7) | `CS1` omitted a direct cue for nested sub-sets inside a layer; `CS2` left open whether to name each of `C0`, `ST1` and `S0`'s stress passes; `CS3` omitted a direct cue for `PC0`'s moments-of-work pass and the single-occupant retirement rule; `gate.G1`'s key omitted that the three kinds are classified by who judges; `s0.Q4` added `S16` under `By reading` and `s0.Q7` dropped `legacy debt converted in one sweep` after `0140` moved it to `Enforcement boundary` | all five aligned and committed before any reader ran (`0139`, `0141`) |
+| `charter-stress` (CS4, CS5), `sc0` (Q7) | `CS4` was narrowed to `W17`-`W19`/`W21` and `K18`/`K23`-`K26` and its rubric replaced `below R4 (E1)` with `below the director's altitude (E1)`; `CS5` replaced stripped `docs/` phrasing (`Under 0142`, `rule, or work-type`, and `catalog.json's schemas and resources arrays`) with `E0`, `T0`, `A0`, and `SC0`'s exact exported `Operation` text; `sc0.Q7` dropped `(EntryBody today)` after `0144` registered `EntryBody` in `schemas/catalog.json` `resources` | all four aligned and committed before any reader ran (`0142`, `0143`, `0144`) |
+| `charter-stress` (CS3, CS6), `s0` (Q4) | `CS3`'s rubric assumed `practices/` still held a single member after `0147` admitted `PC2`; `CS6`'s key and rubric restated `tools/s17-source-comments.sh`'s checks slightly differently from `s17-source-comments.sh` lines 74-130 (at `e0e357515252ddba866380e36ae07ac7d722111e`) and required `style/README.md`'s index grouping without the question asking for it; `s0.Q4` passed (`0` defects) | `CS3.rubric` and `CS6.key`/`CS6.rubric` aligned and committed before any reader ran (`0145`, `0146`, `0147`) |
 
 ---
 
@@ -122,6 +128,15 @@ Every suite's keys are audited by a fresh reader before first use, and corrected
 | `sc0` | Q4's discriminator, who validates, was false - the gate validates all six; Q7 listed two single-schema faults as population faults; Q6 missed catalog.json and bundles | Q4 separates by whose instances; Q7 lists measured population faults; Q6 widened |
 | `w0` | Q5 put who-checks on the role and the domain as what work alters; Q7's unconditional 'add a work-type' contradicted the incident precedent; Q8 listed a member fault | Q5 sources corrected from R0 and D0; Q7 conditional on a closeable node, routing note otherwise; Q8 population faults only |
 | `composition` (P1) | readers hedged A2, the fixture leaving the declarative trait open | fixture states the service is not declarative |
+| `self-check` (U3) | in `mkhc-eval-run-r1` all three `head` readers answered that `SC1` and `M13` agree on deleting retired files with no stub and scored 1 because the rubric also required ID non-reuse, which the question did not ask | `U3` asks both whether the file stays or is deleted with no stub and whether a retired ID may ever be reissued |
+| `composition` (P1, P2), `system-boundary` (S1-S3, S5) | the `any-system` floor keys named `A3, A4, A8, A9, A14`, predating `A15` (`0121`) and `A16` (`0123`) | floor keys updated to include `A15` and `A16`; earlier runs scored the fourteen-axiom corpus and are unchanged |
+| `gate` | `G7` added: a verifier handed only the builder's own message that the tests passed, with nothing to check it against | `0129` names in `E7` the case `0115` put in `E8` (`B105`), and no probe asked it as a question about a gate. Keyed from `0115` and committed before any reader ran; the key is the same for the corpus before and after `0129`. Earlier runs scored six probes and are unchanged |
+| `lone-gate` | new two-probe suite (`L1`, `L2`) in its own reader group | `B120` noted that `composition.P5` could not separate whether post-`0127` lone-agent readers no longer learn their own check is owed or merely name the gate's outcome as what they do instead; placing `L1` in its own group tests that question directly without cueing `composition.P5` or being cued by `self-check.U1` (`0132`) |
+| `board` | `B2` also asks how the `Held` list is produced; `B3` bounds the two impact tiers (`fifth tier` vs `third tier`) and drops instance-only `S2`/`S4` shorthand from the key | in `2026-11-12-climb4-r1-board-gate`, `2` of `3` `base` readers hedged on `B3` because `"higher impact"` left the top tier open (`B129`), and the `B29` audit found `B2`'s rubric required naming generation (`0136`) |
+| `gate` (G1), `s0` (Q4, Q7) | `gate.G1` also asks `"and what are its kinds?"` and its key notes classification by who judges; `s0.Q4` adds `S16` under `By reading`; `s0.Q7` drops `legacy debt converted in one sweep` | `10` of `12` readers across Climb 4 scored `1` of `2` on `gate.G1` by giving the three parts rather than the three kinds (`B133`); `S16` moved from `P1` in `0058` as a rule held by reading (`B133`); `0140` moved `The corpus-wide sweep` from `Faults` to `Enforcement boundary` (`B135`, `0141`) |
+| `charter-stress` | new three-probe suite (`CS1`, `CS2`, `CS3`) | tests the recursive set hierarchy and Level 0 root-set stress protocol (`CS1`, `0139`), `E4`/`M12` charter `Operation` territory-stress rules and `C0`/`ST1`/`S0` stress passes (`CS2`, `0139`, `0140`), and `PC0`/`M0` moments-of-work stress, placement filtering, and single-occupant retirement (`CS3`, `0140`) |
+| `charter-stress` (CS4, CS5), `sc0` (Q7) | `CS4` added for `E10` (`arc` representations), `T3` solo-agent complement via `A16`/`W0`/`R0`, and `A15` human-gate filter against `E1`/`A13`; `CS5` added for `0142`'s foundational charter `## Operation` stress passes (`E0`, `T0`, `A0`, `SC0`); `sc0.Q7` drops `(EntryBody today)` from the missing-resource population fault | `0142` upgrades `E0`, `T0`, `A0`, `R0`, `D0`, `W0`, `AR0`, `SC0`, and `K0` `## Operation`, `0143` admits `E10` and reconciles `T3` (`B68`) and `A15` (`B115`), and `0144` registers `EntryBody` in `schemas/catalog.json` `resources` (`B64`) |
+| `charter-stress` (CS3, CS6), `s0` (Q4) | `CS6` added for `S0`'s four Level 2 medium sub-sets via `SC1` `medium`, `S17` and `tools/s17-source-comments.sh`'s four source-comment checks, and `PC2` (*Check the splits that favour you*); `CS3` rubric notes single-occupant retirement applies while the layer holds a single member (whether or not `PC2` has since been admitted); `s0.Q4` adds `(and S17 once admitted)` under `Held by a tool` | `0145` admits `S17` (`B67` gap 3), `0146` partitions `style/` into medium sub-sets via `SC1` `medium` (`B39`), and `0147` admits `PC2` to `practices/` (`B136`), audited by a fresh `B29` agent before any reader ran |
 
 ---
 

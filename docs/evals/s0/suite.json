@@ -2,7 +2,7 @@
   "id": "s0",
   "mode": "corpus",
   "group": "s0",
-  "source": "S0 conversion to E4. Q1-Q3 are controls the current S0 answers. Key reviewed by a fresh agent before any reader ran; Q4 rubric, Q5 and Q7 corrected.",
+  "source": "S0 conversion to E4. Q1-Q3 are controls the current S0 answers. Key reviewed by a fresh agent before any reader ran; Q4 rubric, Q5 and Q7 corrected. Q4 key updated in 0141 (B133) to include S16 under By reading, Q7 key updated after 0140 moved The corpus-wide sweep to Enforcement boundary (B135), and Q4 key updated in 0147 to include S17 under Held by a tool after 0145 admitted S17, audited by a fresh B29 agent before any reader ran.",
   "probes": [
     {
       "id": "Q1",
@@ -25,7 +25,7 @@
     {
       "id": "Q4",
       "question": "Which style rules are held by a tool, and which are checked only by reading? Name at least three of each.",
-      "key": "Held by a tool: S6, S8, S10, S12, S13, S14. By reading: S1, S2, S3, S4, S5, S7, S9, S11, S15.",
+      "key": "Held by a tool: S6, S8, S10, S12, S13, S14 (and S17 once admitted). By reading: S1, S2, S3, S4, S5, S7, S9, S11, S15, S16.",
       "rubric": "2 for at least three correct in each group and none misplaced. Placing S15 under a tool is misplaced: check-guidance-placement.sh holds its tested wording, not messages. 1 for one group right. 0 otherwise."
     },
     {
@@ -37,7 +37,7 @@
     {
       "id": "Q7",
       "question": "What would an unhealthy population of style rules look like?",
-      "key": "Any two population faults: two tools holding one rule; a rule nobody enforces or reviews; rules for one medium scattered with no scope; a convention filed as style that governs the work rather than the text; legacy debt converted in one sweep. A single rule's own defect (for example a rule phrased as a quality with no predicate) is a member fault, not a population fault.",
+      "key": "Any two population faults: two tools holding one rule; a rule nobody enforces or reviews; rules for one medium scattered with no scope; a convention filed as style that governs the work rather than the text. A single rule's own defect (for example a rule phrased as a quality with no predicate) is a member fault, not a population fault.",
       "rubric": "2 for two population faults from the key or equivalent. 1 for one. 0 for none. A single rule's own defect, such as an unfalsifiable rule, earns nothing."
     }
   ]

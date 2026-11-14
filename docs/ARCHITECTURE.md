@@ -70,7 +70,7 @@ Portable engineering knowledge for readers who start cold and retain nothing bet
 The constraining fact of the domain is that the reader cannot be trained, cannot be assumed to have read anything, and must be told what matters at the moment it matters.
 
 **Axioms.**\
-Fourteen standing commitments in [`axioms/`](../axioms/), tagged by applicability.\
+Sixteen standing commitments in [`axioms/`](../axioms/), tagged by applicability.\
 Those tagged `any-system` bind this corpus unconditionally; the rest bind where their declared domain is present.\
 Section 4 states which are in force here and where the corpus falls short.
 
@@ -93,8 +93,7 @@ A violation is a defect regardless of which decision produced it.
 | **P7** | **Corrections are retained, never overwritten.** | A silently corrected record teaches the next reader that corrections do not happen. |
 
 **Decisions.**\
-Rulings are recorded as [`AR4`](../artifacts/AR4-decision-record.md) instances and absorbed here.\
-This corpus holds no decision register yet - its rulings live in commit messages, which is a real gap and is `B15`.
+Rulings are recorded as [`AR4`](../artifacts/AR4-decision-record.md) instances in [`docs/DECISIONS.md`](DECISIONS.md), held to register shape by `tools/check-decisions.mjs`, and absorbed into the entries they name.
 
 **Model.**\
 Sections 5 to 7.
@@ -103,16 +102,18 @@ Sections 5 to 7.
 
 ## 4. Axiom alignment
 
-**In force: 5 of 14 unconditionally**, by applicability tag.\
+**In force: 7 of 16 unconditionally**, by applicability tag.\
 The others bind only where their declared domain is present, and this corpus is not a runtime, holds no persistent entity state, and runs no autonomous agent network.
 
 | Axiom | In force via | How this shape serves it | Where it falls short |
 |---|---|---|---|
-| **A3** Sovereign Composition | `any-system` | Sixteen knowledge layers, one concern each, cited by prefix and never merged. Composition is by edge and citation rather than by nesting. | Fifteen components compose by declared edges, and nothing checks that a component's Consumes and its peers' Consumed-by agree: `C15` relied on `C6` with neither entry naming the other while every gate passed (`B112`). |
+| **A3** Sovereign Composition | `any-system` | Sixteen knowledge layers, one concern each, cited by prefix and never merged. Composition is by edge and citation rather than by nesting, and `tools/check-component-edges.mjs` holds registered components' declared peer edges to bidirectional agreement (`0131`). | `check-component-edges.mjs` checks agreement between declared `## Edges`; a dependency used in `Contract` prose and omitted from both entries' `Edges` at once (`82115e6`) still requires reading. |
 | **A4** Zero-Loss Knowledge | `any-system` | Corrections are retained under banners; deferrals carry revival triggers; claims distinguish measured from inferred. | Evaluation runs are kept local and only an audit's quotation of them is published (`docs/evals/README.md`), so a run's full answers cannot be re-read from the repository. |
 | **A8** Gated Recursive Integrity | `any-system` | Every checker in `tools/check-all.sh` gates every change, and the corpus's own author is refused by them. | Enforcement covers structure and style; it cannot reach whether an entry's reasoning is correct. |
 | **A9** Chaos-Validated Deployment | `any-system` | Guards are proven by mutation rather than assumed - a mutant that should fail is run and observed to fail. | Applied per-change by discipline, not by a standing harness. No mechanism forces a new guard to be mutation-tested. |
 | **A14** Compounding Learning | `any-system` | Friction surfaced during work becomes an entry or a backlog row; the backlog is a first-class artifact. | The corpus cannot measure whether a lesson stopped recurring, because it cannot observe its own adopters. |
+| **A15** Recursive Elevation | `any-system` | Checkable conventions ratchet from prose into `tools/` scripts gated by `check-all.sh` and `*.test.sh`. | Whether to extract `A15`'s procedural ladder into `methods/` remains open (`B116`, after `0143` closed `B115`), and probe separation in `tools/eval.mjs` is still tallied outside the tool (`B97`). |
+| **A16** Unbiased Self-Check | `any-system` | Changes are checked by runnable gates, fault-red `*.test.sh` proofs, empirical URL fetches, and blind `M2` cold readers rather than author re-reading. | `adherence-a16.json` is authored, while its four-model `context-lab` separation pass awaits the next `adherence` experiment run. |
 
 **Unresolved tensions, named rather than discharged.**
 
@@ -140,22 +141,22 @@ Generated from the root README's layer table and each layer's charter.
 <!-- BEGIN GENERATED: architecture-layers. Run tools/generate-architecture.mjs; do not edit by hand. -->
 | Layer | Prefix | Duty, from its charter | Members | Draws on, from its charter |
 |---|---|---|---|---|
-| `axioms/` | `A` | standing commitments, what brings one into force, and how they compose | 15 | `SC`, `W`, `R`, `D`, `E`, `T` |
+| `axioms/` | `A` | standing commitments, what brings one into force, and how they compose | 16 | `SC`, `W`, `R`, `D`, `E`, `T`, `AR` |
 | `roles/` | `R` | the M axis (pure essence + type-determined authority) | 4 | `W`, `D`, `A`, `E`, `T` |
 | `domains/` | `D` | the N axis (subject-surfaces, bimodal freedom) | 7 | `W`, `R`, `A`, `T` |
 | `work-types/` | `W` | the composition rule, the canonical closeability preflight, and the entry schema | 26 | `R`, `D`, `T`, `E`, `A` |
-| `methods/` | `M` | procedures that produce a result of their own | 9 | `S`, `P`, `K`, `W`, `E`, `RU`, `PC` |
-| `rules/` | `RU` | how work is done, where a check could tell whether it was | 4 | `M`, `PC`, `S`, `A`, `E` |
-| `practices/` | `PC` | how work is done, where nothing afterwards could tell | 1 | `M`, `RU`, `S`, `A`, `E` |
+| `methods/` | `M` | procedures that produce a result of their own | 9 | `S`, `P`, `K`, `W`, `E`, `RU`, `PC`, `AR` |
+| `rules/` | `RU` | how work is done, where a check could tell whether it was | 4 | `M`, `PC`, `S`, `A`, `E`, `AR`, `SC` |
+| `practices/` | `PC` | how work is done, where nothing afterwards could tell | 2 | `M`, `RU`, `S`, `A`, `E`, `AR`, `SC` |
 | `sets/` | `ST` | charters of populations that span layers | 1 | `E` |
-| `style/` | `S` | how artifacts are written, and which rules a script can hold | 16 | `M`, `P`, `K`, `A` |
+| `style/` | `S` | how artifacts are written, and which rules a script can hold | 17 | `M`, `P`, `K`, `A`, `E`, `SC` |
 | `patterns/` | `P` | recurring solution shapes, and what separates one from a single good design | 4 | `M`, `S`, `C`, `A` |
 | `skills/` | `K` | executable capability, the stub-and-body split, and composition by edge | 26 | `M`, `RU`, `PC`, `P`, `SC`, `A` |
-| `entities/` | `E` | precise definitions of load-bearing terms, and what earns one | 9 | `M`, `SC`, `A` |
+| `entities/` | `E` | precise definitions of load-bearing terms, and what earns one | 10 | `M`, `SC`, `A`, `AR` |
 | `components/` | `C` | sovereign shareable units to be used rather than rebuilt | 15 | `P`, `M`, `A` |
 | `artifacts/` | `AR` | the engineering lifecycle loop, and what earns a document type | 6 | `A`, `W` |
 | `traits/` | `T` | characteristics of a system that decide which axioms bind it | 5 | `A`, `D`, `E` |
-| `schemas/` | `SC` | machine-verifiable entity contracts, validatable without a project runtime | 6 | `A`, `E` |
+| `schemas/` | `SC` | machine-verifiable entity contracts, validatable without a project runtime | 6 | `A`, `E`, `AR` |
 <!-- END GENERATED: architecture-layers -->
 
 ### Mechanism layers and the instance layer - no prefix, no ledger entry
@@ -164,9 +165,9 @@ Generated from the root README's layer table and each layer's charter.
 | Layer | Duty |
 |---|---|
 | `bundles/` | Skills composed into operator-facing roles, by declared edge rather than by name. |
-| `tools/` | The scripts that hold the corpus to its own rules. 26 scripts. |
+| `tools/` | The scripts that hold the corpus to its own rules. 39 scripts. |
 | `plugins/` | Operator-facing artifacts that run inside a specific agent host. |
-| `docs/` | This corpus's own artifact instances, held where [`AR0`](artifacts/README.md) says an instance lives. |
+| `docs/` | This corpus's own artifact instances, held where [`AR0`](../artifacts/README.md) says an instance lives. |
 <!-- END GENERATED: architecture-other-layers -->
 
 **Why `docs/` is not a contradiction.**\
@@ -217,10 +218,9 @@ The corpus has no process.\
 Its lifecycles are the entry's and the change's.
 
 **Entry lifecycle.**\
-`draft` -> `active` -> `superseded` or `retired`.\
-An ID is never reused.\
-A replaced entry keeps its ID and flips status; the replacement carries `supersedes`, so every citation continues to resolve.\
-Retirement removes force, never addressability.
+`draft` -> `active` -> deleted with no stub on replacement or retirement (`0057`, [`M13`](../methods/M13-change-a-set.md)).\
+An ID is never reused, held from git history by `tools/check-id-reuse.mjs`.\
+A replacement takes a new ID and lists the retired ID in `supersedes`; live citations are repaired while frozen records keep the old ID as history ([`RU2`](../rules/RU2-frozen-history-rule.md)).
 
 **Change lifecycle.**\
 Every change passes the same gate, and the gate does not care who authored it.
@@ -251,6 +251,7 @@ A claim about this corpus is proved by running them, not by reading it.
 | rules and enforcers are paired | `check-enforcers.sh` |
 | tool index matches the directory | `check-tool-docs.sh` |
 | entry bodies match their category | `check-entry-body.sh` |
+| component edges agree | `check-component-edges.mjs` |
 | the board and the backlog agree | `check-board.mjs` |
 | the decision register is well formed | `check-decisions.mjs` |
 | applies-to names exactly the declared traits | `check-traits.mjs` |
@@ -263,6 +264,7 @@ A claim about this corpus is proved by running them, not by reading it.
 | standing-context template holds | `check-standing-context.sh` |
 | this repo's own standing context holds | `check-standing-context.sh` |
 | external addresses across the corpus resolve | `check-standing-context.sh` |
+| relative links across live markdown files resolve | `check-links.mjs` |
 | every changed markdown file keeps the style rules a script can hold | the `s*` tools, on changed files |
 <!-- END GENERATED: architecture-checks -->
 

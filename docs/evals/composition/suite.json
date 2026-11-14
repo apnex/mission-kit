@@ -7,13 +7,13 @@
     {
       "id": "P1",
       "question": "You will work on a long-running service that holds persistent state, is operated by several cooperating agents, and has a language model making decisions on its critical path. It is not driven by a declared specification it reconciles toward. Which axioms bind it, and how did you determine that?",
-      "key": "A1, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14 - every axiom except A2. Traits stateful, multi-agent, llm-in-the-loop (autonomous adds nothing new), union of the axioms each trait brings via applies-to, plus the any-system floor A3 A4 A8 A9 A14. A2 binds only declarative systems.",
+      "key": "A1, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16 - every axiom except A2. Traits stateful, multi-agent, llm-in-the-loop (autonomous adds nothing new), union of the axioms each trait brings via applies-to, plus the any-system floor A3 A4 A8 A9 A14 A15 A16. A2 binds only declarative systems.",
       "rubric": "2 for the exact set by the traits-plus-floor route (A2 stated as conditional on the unstated declarative trait is fine). 1 for at most two errors, or the right set without the trait route. 0 otherwise."
     },
     {
       "id": "P2",
       "question": "You will work on a stateless command-line text formatter, run by one person, with no model in the loop, written as an ordinary script. Which axioms bind it? Separately: the delivery-code domain entry cites A1 in its axiom alignment - does A1 constrain your work on this formatter's codebase?",
-      "key": "The floor only - A3, A4, A8, A9, A14. No: applies-to alone decides whether an axiom binds, A1 binds stateful systems only; a domain's citation says what an axiom demands on that surface where it binds.",
+      "key": "The floor only - A3, A4, A8, A9, A14, A15, A16. No: applies-to alone decides whether an axiom binds, A1 binds stateful systems only; a domain's citation says what an axiom demands on that surface where it binds.",
       "rubric": "2 for both parts. 1 for one. 0 for neither."
     },
     {

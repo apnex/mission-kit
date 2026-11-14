@@ -20,7 +20,7 @@ They exist so the plan can move fast without the record losing fidelity.
 4. **The board is reorderable and items may be dropped.** A dropped item is not deleted: its `B` row is rewritten with the reason as a revival trigger. Explicit deferral is permitted; silence is not.
 5. **A move ships with the mechanism that would catch its absence**, where one is possible. A rule with no enforcer is recorded as unenforced rather than presented as held.
 
-[`tools/check-board.mjs`](../tools/check-board.mjs) holds rules 1 and 3 and the generated views; rules 2, 4 and 5 are held by review.
+[`tools/check-board.mjs`](../tools/check-board.mjs) holds rules 1, 2 and 3 and the generated views; rules 4 and 5 are held by review.
 
 **Status vocabulary:** `TODO` - `WIP` - `BLOCKED` - `DONE` - `DROPPED`
 
@@ -89,23 +89,17 @@ Every open row, scored on the row and ordered on the common scale; generated, ne
 <!-- BEGIN GENERATED: ledger. Run tools/check-board.mjs --write; do not edit by hand. -->
 | Row | Impact | Principle | Planned in | Finding |
 |---|---|---|---|---|
-| `B102` | S1 | A2 signal | held | `SC1` says the reverse view of a work-type's `methods` is generated, and nothing generates it. |
-| `B103` | S1 | A4 signal | held | `SC1`'s `retired` status keeps the id "so citations resolve", against the rule that a retired entry is deleted. |
-| `B21` | S2 | A4 mandate | held | No axiom states the property that protects an agent against its own error. |
 | `B111` | S2 | A2 mandate | held | `C4` declares a multi-item `change`, applied all or nothing, that `entity-store`'s implementation does not serve. |
-| `B115` | S2 | A13 mandate | held | `A15`'s human-gate filter and `A13` may conflict over agents deciding for the director. |
 | `B18` | S4 | A4 mandate | held | Methodology has no procedure for handing over work in progress. |
 | `B95` | S2 | A4 signal | held | Claude deletes a source after flagging what the deletion loses, with `A4` and the rule against it both in its context. |
-| `B98` | S2 | A4 signal | held | `M2` rule 1 does not say whether a key's audit must come before readers answer. |
-| `B105` | S2 | A4 signal | held | `E7`'s list of what makes a gate's run invalid does not name an account the judge cannot check. |
 | `B70` | S3 | A8 signal | held | `W22`, and three peers, declare `evidenceAuthority: verifier-attestation` while `W0` constraint 2 says verifier-held gates use plain `kind:review`. |
 | `B76` | S3 | A12 signal | held | With today's guidance, a Gemini agent can spend a whole task fetching ledger entries. |
 | `B97` | S3 | A11 signal | held | Whether a probe separates readers holding the document from readers holding none is computed by hand. |
-| `B104` | S3 | A2 signal | held | A set charter carries headings `E4` says every charter fixes, and nothing checks it. |
 | `B106` | S3 | A3 signal | held | `C15`'s dated view may overlap `C6`'s deferred `dated-local-view`. |
 | `B107` | S3 | A8 signal | held | The `S6` checker passes a line holding a second sentence that starts with a lowercase word. |
 | `B109` | S3 | A3 signal | held | `C2`, `C6` and `C10` state their duty with two verbs joined by "and" and name no one concern, which `C0`'s "and" test may forbid. |
-| `B112` | S3 | A8 signal | held | Nothing checks that a component's Consumes and its peers' Consumed-by agree. |
+| `B124` | S3 | A8 signal | held | A reader is confined to the corpus it is handed by its prompt alone, and readers leave it. |
+| `B139` | S3 | A15 signal | held | Hand-typed `[MEASURED]` line-number and quotation citations in `docs/` (`DECISIONS.md`, `BACKLOG.md`, `investigations/`) drift across review rounds, and no tool in `tools/` checks them. |
 | `B12` | S4 | A14 signal | held | The recovery methodology for a brownfield vision is unwritten and its reasoning is untested. |
 | `B19` | S4 | A14 signal | held | Methodology has nothing proportionate for a small design decision. |
 | `B22` | S4 | A9 signal | held | `A9` binds every system unconditionally and is the least exercised axiom in the corpus. |
@@ -131,7 +125,6 @@ Every open row, scored on the row and ordered on the common scale; generated, ne
 | `B65` | S4 | A14 signal | held | Gaps the `ST0` investigation of 2026-10-04 found in `sets/`. |
 | `B66` | S4 | A14 signal | held | Gaps the `K0` investigation of 2026-10-04 found in `skills/`. |
 | `B67` | S4 | A14 signal | held | Gaps the `S0` investigation of 2026-10-04 found in `style/`. |
-| `B68` | S4 | A14 signal | held | Gaps the `T0` investigation of 2026-10-04 found in `traits/`. |
 | `B69` | S4 | A14 signal | held | Gaps the `W0` investigation of 2026-10-04 found in `work-types/`. |
 | `B71` | S4 | A3 signal | held | No work-type produces a board, a delta or a vision. |
 | `B78` | S4 | A3 signal | held | No study tests how agents compose mission-kit's components, or which boxes recur in designs that the registry lacks. |
@@ -143,7 +136,9 @@ Every open row, scored on the row and ordered on the common scale; generated, ne
 | `B96` | S4 | A8 signal | held | `a4r-2`'s key splits its judges on two readings of a reply. |
 | `B101` | S4 | A14 signal | held | Verifying another party's conduct across a trust boundary has no procedure. |
 | `B116` | S4 | A3 signal | held | `A15` was admitted with two findings of its read against the set unsettled. |
-| `B39` | S5 | A3 signal | held | Style cannot be scoped by medium. |
+| `B119` | S4 | A8 signal | held | The `adherence` experiment has changed since it was last recorded, and its newest trap has never run. |
+| `B138` | S4 | A2 signal | held | Residual prose, cross-reference, and role work-type list drift surfaced in `OBSERVATIONS` by `head` readers of `2026-11-13-wave1-r2-charter-stress-composition` and Round 2-3 reviews. |
+| `B122` | S5 | A8 signal | held | The `testdrive` key for the ordering probe quotes the wording of `M2` rule 1 that `0128` replaced. |
 <!-- END GENERATED: ledger -->
 
 ---
@@ -222,22 +217,22 @@ Every ID-bearing layer either has an observed consumer or a recorded reason it h
 
 | # | Item | Row | Status |
 |---|---|---|---|
-| M5.1 | Audit all thirteen charters against `E4`: answered, partial or absent, citing where | `B4` | `DONE` - [audit](audits/charter-audit-against-E4.md) |
+| M5.1 | Audit all thirteen charters against `E4`: answered, partial or absent, citing where | `B4` | `DONE` - `audits/charter-audit-against-E4.md` |
 | M5.2 | Reconcile `E4` with what the audit found | `B4` | `DONE` |
-| M5.3 | **Trial conversion of one charter** | `B4` | `DONE` - `M0`, verdict **improved** - [verdict](audits/M5.3-trial-verdict-M0.md), [candidate](audits/M5.3-trial-candidate-M0.md). Awaiting director review |
+| M5.3 | **Trial conversion of one charter** | `B4` | `DONE` - `M0`, verdict **improved** - `audits/M5.3-trial-verdict-M0.md`, `audits/M5.3-trial-candidate-M0.md`. Awaiting director review |
 | M5.4 | Revise `E4` on what the trial shows, or stop if the enhancement did not improve utility | `B4` | `DONE` - territory must be derived and show a gap; growth must be paid for |
-| M5.4b | **Second trial, on `A0`**, isolating whether growth comes from the standard or from `M0` missing two concerns | `B4` | `DONE` - verdict **improved**, growth paid for. Growth tracks missing concerns: 36 percent here against 78 for `M0` - [verdict](audits/M5.4b-trial-verdict-A0.md), [candidate](audits/M5.4b-trial-candidate-A0.md). Awaiting director review |
-| M5.5 | Convert all thirteen, one per change - draft, audit, evaluate, director review, apply | `B4` | `DONE` - `M0`, `A0`, `R0`, `D0` **applied** - [M0](audits/M5.5-01-M0.md), [A0](audits/M5.5-02-A0.md), [R0](audits/M5.5-03-R0.md), [D0](audits/M5.5-04-D0.md); `SC0` **applied**, approved - [SC0](audits/M5.5-05-SC0.md); `MREQ-0` retired with its layer; `W0` **applied**, approved - [W0](audits/M5.5-06-W0.md); `S0` **applied**, approved - [S0](audits/M5.5-07-S0.md); the ten applied charters rechecked against the vision ruling, approved - [recheck](audits/M5.5-07a-vision-recheck.md); ruling A, the organisation's machinery is its own domains, approved - [machinery](audits/M5.5-07b-machinery-domain.md); `P0` **applied**, approved, with `P1` moved to style as `S16` and the six earlier stubs removed - [P0](audits/M5.5-08-P0.md); `E0` **applied**, approved - [E0](audits/M5.5-09-E0.md); terms defined before `K0`, approved: `gate` as `E7` - [gate](audits/M5.5-09a-gate.md), `evidence` as `E8` - [evidence](audits/M5.5-09b-evidence.md), `substrate` as `E9` - [substrate](audits/M5.5-09c-substrate.md); `K0` **applied**, approved - [K0](audits/M5.5-10-K0.md); `AR0` **applied**, approved - [AR0](audits/M5.5-11-AR0.md); `C0` **applied**, approved - [C0](audits/M5.5-12-C0.md); charters as asymptotes applied to all sixteen, approved - [asymptote](audits/M5.5-13-charter-asymptote.md); eval runs purged from history - [purge](audits/history-purge-2026-10-04.md); then the charter frame - vision and operating halves, `M11`, `M12` and `M13`, the charter shape in `SC6` - approved - [frame](audits/M5.5-14-charter-frame.md) |
+| M5.4b | **Second trial, on `A0`**, isolating whether growth comes from the standard or from `M0` missing two concerns | `B4` | `DONE` - verdict **improved**, growth paid for. Growth tracks missing concerns: 36 percent here against 78 for `M0` - `audits/M5.4b-trial-verdict-A0.md`, `audits/M5.4b-trial-candidate-A0.md`. Awaiting director review |
+| M5.5 | Convert all thirteen, one per change - draft, audit, evaluate, director review, apply | `B4` | `DONE` - `M0`, `A0`, `R0`, `D0` **applied** - `audits/M5.5-01-M0.md`, `audits/M5.5-02-A0.md`, `audits/M5.5-03-R0.md`, `audits/M5.5-04-D0.md`; `SC0` **applied**, approved - `audits/M5.5-05-SC0.md`; `MREQ-0` retired with its layer; `W0` **applied**, approved - `audits/M5.5-06-W0.md`; `S0` **applied**, approved - `audits/M5.5-07-S0.md`; the ten applied charters rechecked against the vision ruling, approved - `audits/M5.5-07a-vision-recheck.md`; ruling A, the organisation's machinery is its own domains, approved - `audits/M5.5-07b-machinery-domain.md`; `P0` **applied**, approved, with `P1` moved to style as `S16` and the six earlier stubs removed - `audits/M5.5-08-P0.md`; `E0` **applied**, approved - `audits/M5.5-09-E0.md`; terms defined before `K0`, approved: `gate` as `E7` - `audits/M5.5-09a-gate.md`, `evidence` as `E8` - `audits/M5.5-09b-evidence.md`, `substrate` as `E9` - `audits/M5.5-09c-substrate.md`; `K0` **applied**, approved - `audits/M5.5-10-K0.md`; `AR0` **applied**, approved - `audits/M5.5-11-AR0.md`; `C0` **applied**, approved - `audits/M5.5-12-C0.md`; charters as asymptotes applied to all sixteen, approved - `audits/M5.5-13-charter-asymptote.md`; eval runs purged from history - `audits/history-purge-2026-10-04.md`; then the charter frame - vision and operating halves, `M11`, `M12` and `M13`, the charter shape in `SC6` - approved - `audits/M5.5-14-charter-frame.md` |
 | M5.5b | Revisit the compositional split behind the work axes when conversion reaches `R0`, `D0` and `W0` | `B24` | `DONE` - in the `W0` conversion |
 | M5.5c | Carry the duty to expand a set on a found gap into `W0` and `T0`, or state it once in `E3` | `B31` | `DONE` - in the `W0` conversion |
 | M5.5d | **Composition record**: measure a context-less agent's composition of the axis layers against the current corpus, author one declared record of how they compose and the order to read them, re-measure | `B32` | `DONE` - see `B32` |
 | M5.5e | Resolve the constraint 2 / constraint 9 contradiction in the `W0` conversion | `B33` | `DONE` - in the `W0` conversion |
-| M5.5f | **Axioms as asymptotes, and `system` defined** - amend `A0`, scope `M7`, add the entity; evaluate before and after | `B34` | `DONE` - **8.3 to 16.0 / 16**, approved - [audit](audits/M5.5f-asymptote-and-system.md) |
-| M5.5g | **Component defined, opportunistic improvement, axiom wording pass** - evaluate before and after | `B35` | `DONE` - **7 to 10 / 10**, approved; open questions to `B36` - [audit](audits/M5.5g-component-opportunistic-wording.md) |
-| M5.5h | Rule on the six open design questions, one at a time, and amend `E5`, `E6`, `A0`, `A3` or `T0` as each ruling requires | `B36` | `DONE` - six of six ruled and applied - [audit](audits/M5.5h-02-design-rulings.md) |
+| M5.5f | **Axioms as asymptotes, and `system` defined** - amend `A0`, scope `M7`, add the entity; evaluate before and after | `B34` | `DONE` - **8.3 to 16.0 / 16**, approved - `audits/M5.5f-asymptote-and-system.md` |
+| M5.5g | **Component defined, opportunistic improvement, axiom wording pass** - evaluate before and after | `B35` | `DONE` - **7 to 10 / 10**, approved; open questions to `B36` - `audits/M5.5g-component-opportunistic-wording.md` |
+| M5.5h | Rule on the six open design questions, one at a time, and amend `E5`, `E6`, `A0`, `A3` or `T0` as each ruling requires | `B36` | `DONE` - six of six ruled and applied - `audits/M5.5h-02-design-rulings.md` |
 | M5.5i | Measure and correct the incidental defects the baseline readers found | `B37` | `DONE` - see `B37` |
-| M5.5j | **Delta-1, the work layers** - procedures stay in `methodology/`, practices and rules to a new `practices/`, prose skill `K1` in; packaged skills, WorkGraph skills and the `W0` citation deferred | `B24` | `DONE` - all four stages; 21.66 to 28 / 28 - [delta](DELTAS/DELTA-1.md), [audits](audits/delta-1/) |
-| M5.5k | **The explain set** - communication with a human of limited context, measured with live agents first, then designed as a set spanning layers | `B38` | `DONE` - Delta-2: `M10`, `S15`, `ST1`; human check 6 of 6 - [audits](audits/delta-2/) |
+| M5.5j | **Delta-1, the work layers** - procedures stay in `methodology/`, practices and rules to a new `practices/`, prose skill `K1` in; packaged skills, WorkGraph skills and the `W0` citation deferred | `B24` | `DONE` - all four stages; 21.66 to 28 / 28 - `DELTAS/DELTA-1.md`, `audits/delta-1/` |
+| M5.5k | **The explain set** - communication with a human of limited context, measured with live agents first, then designed as a set spanning layers | `B38` | `DONE` - Delta-2: `M10`, `S15`, `ST1`; human check 6 of 6 - `audits/delta-2/` |
 | M5.5l | State the always-on-context confound in every evaluation result, and take after-runs before a change reaches `main` | `B40` | `DONE` - see `B40` |
 | M5.6 | Rebuild the charter checker - fixed headings by name, free concerns by a declared location - and re-enable it | `B17` | `DONE` - fixed headings held by `check-entry-body.sh` from `SC6`; free concerns held by review |
 | M5.7 | **Add a key review to `M2`** - a fresh reader audits the answer key against the population before any evaluator runs. Trigger fired at `D0`: three of seven answers wrong, caught before use | `B29` | `DONE` - in `M2` rule 1 |
@@ -290,23 +285,17 @@ Open rows no live item cites, with their scores and the condition that would rev
 <!-- BEGIN GENERATED: held. Run tools/check-board.mjs --write; do not edit by hand. -->
 | Row | Impact | Principle | Finding | Revival trigger |
 |---|---|---|---|---|
-| `B102` | S1 | A2 signal | `SC1` says the reverse view of a work-type's `methods` is generated, and nothing generates it. | the next change to `tools/generate-index.mjs`, or the next investigation of the methods or work-types set |
-| `B103` | S1 | A4 signal | `SC1`'s `retired` status keeps the id "so citations resolve", against the rule that a retired entry is deleted. | the next retirement of an entry, or the next change to `SC1` |
-| `B21` | S2 | A4 mandate | No axiom states the property that protects an agent against its own error. | a lone agent ships a claim it corroborated itself and was wrong, or the axiom set is next audited. Whether this is a new axiom or a property an existing one should state - `A8`'s gating and `A4`'s zero-loss are the nearest - is a question for the set. |
 | `B111` | S2 | A2 mandate | `C4` declares a multi-item `change`, applied all or nothing, that `entity-store`'s implementation does not serve. | the next change to `entity-store`'s write surface, or the first consumer that lands an edit of more than one entity |
-| `B115` | S2 | A13 mandate | `A15`'s human-gate filter and `A13` may conflict over agents deciding for the director. | an agent decides a question in the director's absence, or brings one pre-decided, and cites `A15`; or the axiom set is next investigated under `M12` |
 | `B18` | S4 | A4 mandate | Methodology has no procedure for handing over work in progress. | a handover loses information that a procedure would have preserved, or `M5` converts `M0` and the gap becomes a stated thinness. |
 | `B95` | S2 | A4 signal | Claude deletes a source after flagging what the deletion loses, with `A4` and the rule against it both in its context. | `A4`'s trap is settled under `0104`, or `A4` or `AGENTS.md` section 5.5 is next changed |
-| `B98` | S2 | A4 signal | `M2` rule 1 does not say whether a key's audit must come before readers answer. | `M2` is next changed, or the next key is audited |
-| `B105` | S2 | A4 signal | `E7`'s list of what makes a gate's run invalid does not name an account the judge cannot check. | `E7` is next changed, or a gate's judge meets such an account |
 | `B70` | S3 | A8 signal | `W22`, and three peers, declare `evidenceAuthority: verifier-attestation` while `W0` constraint 2 says verifier-held gates use plain `kind:review`. | either is documented, or a gate is refused on the distinction. |
-| `B76` | S3 | A12 signal | With today's guidance, a Gemini agent can spend a whole task fetching ledger entries. | .f.5` and `adherence-a13.on-trigger-b.f.9` at the time limit after 22 and 19 tool calls, 9 and 6 of them corpus reads; `adherence-a13.on-trigger-b.a.2` with no message after 22 seconds); whether that repeats the pattern - same model family, trap and arm, but no fetching storm - is for triage |
+| `B76` | S3 | A12 signal | With today's guidance, a Gemini agent can spend a whole task fetching ledger entries. | The ledger's reading instructions are next changed, or a second run repeats the pattern. Observed 2026-10-20, not yet triaged: in `2026-10-19-215747-aa` three Gemini cells on the `A13` trap ended without a reply (`adherence-a13.on-trigger.f.5` and `adherence-a13.on-trigger-b.f.9` at the time limit after 22 and 19 tool calls, 9 and 6 of them corpus reads; `adherence-a13.on-trigger-b.a.2` with no message after 22 seconds); whether that repeats the pattern - same model family, trap and arm, but no fetching storm - is for triage |
 | `B97` | S3 | A11 signal | Whether a probe separates readers holding the document from readers holding none is computed by hand. | `0107` is ratified, or the next evaluation through `tools/eval.mjs` |
-| `B104` | S3 | A2 signal | A set charter carries headings `E4` says every charter fixes, and nothing checks it. | `ST1` or `SC6` is next changed |
 | `B106` | S3 | A3 signal | `C15`'s dated view may overlap `C6`'s deferred `dated-local-view`. | `entity-graph`'s design rules on whether its client view is, builds on, or differs from `dated-local-view`, or `C6`'s `dated-local-view` is revived |
 | `B107` | S3 | A8 signal | The `S6` checker passes a line holding a second sentence that starts with a lowercase word. | the next change to `tools/s6-one-sentence-per-line.mjs`, or the next corpus file found holding two sentences on one line |
 | `B109` | S3 | A3 signal | `C2`, `C6` and `C10` state their duty with two verbs joined by "and" and name no one concern, which `C0`'s "and" test may forbid. | the next `M12` investigation of the components set, or the next admission of a component whose duty joins two verbs |
-| `B112` | S3 | A8 signal | Nothing checks that a component's Consumes and its peers' Consumed-by agree. | the next component admitted or its edges changed, or the next change to `tools/check-entry-body.sh` |
+| `B124` | S3 | A8 signal | A reader is confined to the corpus it is handed by its prompt alone, and readers leave it. | before the next paired run is prepared, or the harness can start a reader confined to its export |
+| `B139` | S3 | A15 signal | Hand-typed `[MEASURED]` line-number and quotation citations in `docs/` (`DECISIONS.md`, `BACKLOG.md`, `investigations/`) drift across review rounds, and no tool in `tools/` checks them. | Wave 3 (`mk9`) runs the `RU0`/`PC0`/`M0` operational-discipline and `A15` mechanization pass, or `tools/check-decisions.mjs`, `tools/check-links.mjs`, or `tools/check-board.mjs` is next extended |
 | `B12` | S4 | A14 signal | The recovery methodology for a brownfield vision is unwritten and its reasoning is untested. | the first external brownfield adopter reports back. Waiting is deliberate - their run is the only evidence available and costs nothing. |
 | `B19` | S4 | A14 signal | Methodology has nothing proportionate for a small design decision. | a small design decision fails in a way an anchoring check would have caught. |
 | `B22` | S4 | A9 signal | `A9` binds every system unconditionally and is the least exercised axiom in the corpus. | a deployment fails in a way chaos validation would have caught, or `A9` is cited as the reason a change was refused. |
@@ -332,7 +321,6 @@ Open rows no live item cites, with their scores and the condition that would rev
 | `B65` | S4 | A14 signal | Gaps the `ST0` investigation of 2026-10-04 found in `sets/`. | each gap's own trigger, as stated in the investigation; OR the next investigation of this set, which re-triages all of them. |
 | `B66` | S4 | A14 signal | Gaps the `K0` investigation of 2026-10-04 found in `skills/`. | each gap's own trigger, as stated in the investigation; OR the next investigation of this set, which re-triages all of them. |
 | `B67` | S4 | A14 signal | Gaps the `S0` investigation of 2026-10-04 found in `style/`. | each gap's own trigger, as stated in the investigation; OR the next investigation of this set, which re-triages all of them. |
-| `B68` | S4 | A14 signal | Gaps the `T0` investigation of 2026-10-04 found in `traits/`. | each gap's own trigger, as stated in the investigation; OR the next investigation of this set, which re-triages all of them. |
 | `B69` | S4 | A14 signal | Gaps the `W0` investigation of 2026-10-04 found in `work-types/`. | each gap's own trigger, as stated in the investigation; OR the next investigation of this set, which re-triages all of them. |
 | `B71` | S4 | A3 signal | No work-type produces a board, a delta or a vision. | one of these is done as claimed work on the coordination substrate, or a project asks which work-type authors one. |
 | `B78` | S4 | A3 signal | No study tests how agents compose mission-kit's components, or which boxes recur in designs that the registry lacks. | mission-kit's pack runs on context-lab's core (context-lab M1.2) |
@@ -343,8 +331,10 @@ Open rows no live item cites, with their scores and the condition that would rev
 | `B92` | S4 | A12 signal | What earns always-loaded context is measured for the axioms and not for the ledger and standing context. | the director selects it, or the next change to what `AGENTS.md` or `INDEX.md` carries, or `B50`'s trigger |
 | `B96` | S4 | A8 signal | `a4r-2`'s key splits its judges on two readings of a reply. | before `experiments/adherence.json` next runs, or before anything is decided on `a4r-2` |
 | `B101` | S4 | A14 signal | Verifying another party's conduct across a trust boundary has no procedure. | a verification across a trust or credential boundary is run in a project readable from here, on records the party could not have written, and its verdict differs from the party's own report |
-| `B116` | S4 | A3 signal | `A15` was admitted with two findings of its read against the set unsettled. | the axiom set is next investigated under `M12`, or a method for lifting a recurring step is proposed |
-| `B39` | S5 | A3 signal | Style cannot be scoped by medium. | FIRED and moved: `S15` is the first single-medium rule; one rule does not earn a sub-set. TRIGGER: a second single-medium style rule. Nested sets need generator support, shared with `B38`'s set spanning layers. |
+| `B116` | S4 | A3 signal | `A15` was admitted with two findings of its read against the set unsettled. | a method for lifting a recurring step is proposed in `methods/`, or `A15`'s *Mechanics* are next split between `axioms/` and `methods/` |
+| `B119` | S4 | A8 signal | The `adherence` experiment has changed since it was last recorded, and its newest trap has never run. | before `experiments/adherence.json` next runs, or before anything is decided on `A16`'s trap |
+| `B138` | S4 | A2 signal | Residual prose, cross-reference, and role work-type list drift surfaced in `OBSERVATIONS` by `head` readers of `2026-11-13-wave1-r2-charter-stress-composition` and Round 2-3 reviews. | Wave 4 (`mk10`) runs the `R0 x W0 x D0` axis stress pass across `roles/`, `domains/`, and `work-types/`, or `E0`, `SC0`, `E2`, `E3`, `E10`, `A15`, `tools/traits.test.sh`, or `composition/suite.json` is next touched |
+| `B122` | S5 | A8 signal | The `testdrive` key for the ordering probe quotes the wording of `M2` rule 1 that `0128` replaced. | the `testdrive` scenario's keys are next audited, or `M2` rule 1 is next changed |
 <!-- END GENERATED: held -->
 
 ---
