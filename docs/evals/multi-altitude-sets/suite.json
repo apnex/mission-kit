@@ -1,0 +1,32 @@
+{
+  "id": "multi-altitude-sets",
+  "mode": "corpus",
+  "group": "multi-altitude-sets",
+  "source": "Stage 2a-Upstream proposed rulings 0122, 0123, 0124 (B103, B104, B112, and multi-altitude set investigation under M12/M13/SC1/SC6). Written before any blind reader runs; audited by an independent fresh key reviewer (H1 and H2 de-biased before first reader run).",
+  "probes": [
+    {
+      "id": "H1",
+      "question": "When investigating a hierarchy of sets spanning containment altitudes (for instance, enterprise capabilities -> application systems -> runtime hosts or internal modules), how should you handle lower-altitude deployment, hosting, or internal part details discovered at a higher altitude? State what the corpus prescribes and why.",
+      "key": "Keep them separate and close one altitude before descending into the next (M12, E3, E6). At a given altitude, close coverage, boundaries and peer relations while excluding lower-altitude implementation internals, hosting geometry or runtime placement details that vary independently below it; route out-of-altitude material to the layer or child set that owns it so higher-altitude definitions remain invariant when lower-altitude details change.",
+      "rubric": "2 for closing one altitude before descending AND excluding lower-altitude internals/hosting/placement with the invariance reason (citing M12/E3/E6). 1 for keeping altitudes separate without both the breadth-before-descent order and why it preserves invariance. 0 for mixing hosting/internals into higher-altitude definitions or no grounded answer."
+    },
+    {
+      "id": "H2",
+      "question": "A set you are populating starts from an incomplete empirical anchor such as a partial discovery export of 80 source records. Some active records carry unresolved references pointing to systems outside that export. How should you handle the incomplete export rows and the unresolved peer references? State what the corpus prescribes.",
+      "key": "Neither drop/overwrite the measured anchors nor stop at the export (M12). Retain observed anchors intact as a distinct cohort (measured against synthesized), let the charter's full scope expose omitted members (step 3), and treat unresolved peer references on active anchors as primary evidence of missing members so empirical totals still reconcile alongside full scope coverage.",
+      "rubric": "2 for preserving observed anchors unchanged AND letting full scope + unresolved peer references expose synthesized missing members in a distinct cohort. 1 for either anchor preservation or scope/seam synthesis alone without contradiction. 0 for mutating/dropping empirical anchors or treating the incomplete export as the whole scope."
+    },
+    {
+      "id": "H3",
+      "question": "How is an entry retired inside this corpus (what happens to its file and ID)? Contrast that with an externally anchored ledger that retains retired records to preserve a measured count: how must those retained retired records relate to active dependency edges?",
+      "key": "In this corpus, a retired entry is deleted with no stub, live citations are repaired (frozen records keep historical citations), and check-id-reuse.mjs prevents the ID from ever being reissued (M13, SC1, 0057). Where an externally anchored ledger retains retired records as tombstones to conserve an observed source count rather than deleting them, isolate those retired records with zero active dependency edges (neither consuming nor serving live entries).",
+      "rubric": "2 for delete-without-stub + permanent non-reuse of ID in the corpus AND zero-active-edge isolation for retained retired tombstones in an anchored ledger. 1 for one half cleanly right or conflating both into keeping stubs in mission-kit. 0 otherwise."
+    },
+    {
+      "id": "H4",
+      "question": "Which fixed headings must a spanning-set charter (`category: set`) carry and what script checks them? Also, if Component X declares Component Y in its `Consumes` edges under `components/`, what checks that X and Y agree, and what happens if an active component declares `Consumes` on a `draft` or `retired` component?",
+      "key": "Every spanning-set charter (`category: set`) and layer charter must carry the five fixed headings Vision, Territory, Operation, Faults and Index, declared in SC6 (`spec.charters`) and checked by `tools/check-entry-body.sh` (exercised by `tools/check-entry-body.test.sh`). Component `Consumes`/`Consumed-by` and `Contains`/`Contained-by` edges are checked by `tools/check-component-edges.mjs`, which enforces bidirectional agreement and refuses active components depending on a `draft` component (`0116`) as well as any active edge on a `retired` or `superseded` component.",
+      "rubric": "2 for the five charter headings + `check-entry-body.sh` covering `category: set` AND `check-component-edges.mjs` enforcing bidirectional symmetry plus rejecting active->draft and retired-component edges. 1 for one half (charter checking OR component edge checking) accurate without contradiction. 0 otherwise."
+    }
+  ]
+}
