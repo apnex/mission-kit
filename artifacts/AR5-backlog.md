@@ -34,14 +34,14 @@ That is the shape a reviewer should look for, and it is why `AR3` scores `Held` 
 ## Lifecycle stage
 
 Continuous, and paired with the board.\
-Execution and audit emit rows; the board consumes open rows whose triggers have fired and scores the rest under `Held`.
+Execution and audit emit rows; the board plans active work from open rows and generates `Held` from the remaining open rows that no live item cites ([`AR3`](AR3-board.md)).
 
 ---
 
 ## Required sections
 
 - **The row contract.** When a row is required, and what evidence a row must cite. Stated in the document, because a backlog whose admission rule is unwritten fills with noise.
-- **Rows**, each carrying an id, the finding, cited evidence, a state, and a revival trigger where the state is not closed.
+- **Rows**, each carrying an id, scores (impact and principle breach), the finding, cited evidence, a state, and a revival trigger where the state is not closed.
 - **State groupings** - typically open, parked, retired - so that cut work stays visible rather than being deleted.
 
 A row's minimum shape:
@@ -107,11 +107,11 @@ An instance lives at `docs/BACKLOG.md`, relative to the component root - the fix
 ## Adding a row      <- the admission rule and the evidence requirement
 
 ## Open
-| id | finding | evidence | revival trigger |
+| id | impact | principle | finding | evidence | revival trigger |
 
 ## Parked
-| id | finding | evidence | revival trigger |
+| id | impact | principle | finding | evidence | revival trigger |
 
 ## Retired
-| id | finding | reason cut | revives on |
+| id | impact | principle | finding | reason cut | revives on |
 ```
