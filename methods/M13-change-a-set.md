@@ -37,6 +37,8 @@ This method is the first; [`M12`](M12-investigate-a-set.md) analyses the populat
 3. Repair live citations; frozen records keep the old id as history ([`RU2`](../rules/RU2-frozen-history-rule.md)).
 4. Regenerate the index and pass the gate; the id is retired for good.
 
+Where an externally anchored set retains a retired record to conserve an observed source count rather than deleting it, isolate the retired record with zero active dependency edges so no live member consumes or serves it.
+
 **Rebalance the set.**
 
 1. Splitting, merging or replacing members starts from a finding - usually an investigation's - recorded as a backlog row.

@@ -202,14 +202,58 @@ tools/check-entry-body.sh
 The catalogue entry contract governs frontmatter and stops at the closing marker, so nothing governed the body.\
 `axioms/README.md` had always specified a five-section shape and all fifteen axioms had always followed it, which is a convention held by the care of whoever wrote last rather than a rule.
 
-It also holds every layer charter - the entry whose id is its prefix followed by zero - to the headings `E4` fixes, declared under `spec.charters`: Vision, Territory, Operation, Faults and Index, in any order.\
-That pass replaced a separate charter checker, so one tool holds the one contract.
+It also holds every layer charter (`<prefix>0`) and spanning-set charter (`category: set`) to the headings `E4` fixes, declared under `spec.charters`: Vision, Territory, Operation, Faults and Index, in any order (`B104`).\
+That pass replaced a separate charter checker, so one tool holds the one contract.\
+[`check-entry-body.test.sh`](check-entry-body.test.sh) exercises category sections, section order, layer charters, spanning-set charters, and `exemptIds` against isolated fixtures.
 
-**Run it when** you add an entry in a governed category, or change a declared shape. or a charter
+**Run it when** you add an entry in a governed category, or change a declared shape or a charter.
 
 The shape is data in [`schemas/entry-body/v1alpha1/entry-body.json`](../schemas/entry-body/v1alpha1/entry-body.json), so adding a category is an edit to that file rather than to this tool.\
 A category absent from it is ungoverned by design.\
 Exit status is non-zero if any entry is missing a declared section or carries them out of order.
+
+---
+
+## check-entry-body.test.sh
+
+Holds `check-entry-body.sh` to every body-shape, section-order, and charter-heading refusal (`B104`).
+
+```sh
+tools/check-entry-body.test.sh
+```
+
+**Why it exists.**\
+Category shapes, ordered-section enforcement, and spanning-set charters were checked without a mutation-proven behaviour suite; this exercises missing sections, swapped ordering, missing layer-charter headings, and missing spanning-set `Vision`/`Operation` headings in `/tmp`.
+
+Exit status is non-zero if any check fails.
+
+---
+
+## check-component-edges.mjs
+
+Holds registered component entries to bidirectional edge symmetry, status isolation, and no dangling or self-loop references (`B112`).
+
+```sh
+node tools/check-component-edges.mjs [--dir DIR]
+```
+
+**Why it exists.**\
+Component entries declare `Consumes`/`Consumed-by` and `Contains`/`Contained-by` across separate files; `C15` and `C6` once disagreed without failing any gate.\
+This parses `## Edges` across `components/C[1-9]*.md` and fails on one-sided edges, self-loops, dangling `C<N>` references, `active` components consuming `draft` entries, or `retired`/`superseded` tombstones carrying active edges.
+
+[`check-component-edges.test.sh`](check-component-edges.test.sh) holds the script to each refusal in isolated `/tmp` fixtures.
+
+---
+
+## check-component-edges.test.sh
+
+Exercises `check-component-edges.mjs` against injected asymmetric, dangling, self-loop, active-to-draft, and retired-tombstone defects (`B112`).
+
+```sh
+tools/check-component-edges.test.sh
+```
+
+Exit status is non-zero if any mutation check fails.
 
 ---
 

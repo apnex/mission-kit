@@ -11,9 +11,31 @@ related: [ST0, W23, AR4, A13, A12, A5, A4, A8, A3]
 
 # ST1 - Explain
 
-## Purpose
+## Vision
 
+**North star.**\
 A human with limited context, who may be reading cold, can understand what an agent tells them and decide what it asks.
+
+**What this set is, and is not.**\
+It gathers the entries across layers that govern communication with a human who has limited context ([`M10`](../methods/M10-guided-dialogue.md), [`S15`](../style/S15-message-to-a-human.md)).\
+It is not a home for agent-to-agent messages, which sit outside its boundary, and no entry joins merely because its topic mentions communication.
+
+**Succeeding.**\
+Measured by [`ST0`](README.md)'s dimensions - reach, gathering, non-overlap and currency - together with human preference between candidate moves when the director judges them.
+
+**Authority.**\
+The director holds this vision and ratifies any change to it, under [`M11`](../methods/M11-change-a-charter.md).
+
+**What this vision does not authorise.**\
+Citing this vision admits no member and fixes no communication rule; admission obeys *What earns an entry* and members hold their own rules.
+
+---
+
+## Operation
+
+This set is analysed by [`M12`](../methods/M12-investigate-a-set.md) and its membership changed by [`M13`](../methods/M13-change-a-set.md), within [`ST0`](README.md)'s rules; this charter is changed by [`M11`](../methods/M11-change-a-charter.md).\
+Membership is declared in `members` above rather than on the member entries, and its index is generated from that list.\
+Candidates whose domain spans only agent-to-agent communication stay excluded, and individual move tests vary one move at a time on human readers (`M2`).
 
 ---
 

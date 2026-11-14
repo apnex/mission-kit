@@ -8,6 +8,7 @@
 #   check-enforcers            every rule names a real tool, and every tool a real rule
 #   check-tool-docs            the tool index matches the tools beside it
 #   check-entry-body           every entry carries the body sections its category declares
+#   check-component-edges      every component's Consumes/Consumed-by and Contains/Contained-by edges agree
 #   generate-index --check     the ledger and category tables match the entries
 #   generate-architecture      the architecture's structural sections match the corpus
 #   check-decisions            the decision register's ids, kinds, lineage and affects paths hold
@@ -61,6 +62,7 @@ run "repository structure is documented" ./tools/check-structure.sh
 run "rules and enforcers are paired" ./tools/check-enforcers.sh
 run "tool index matches the directory" ./tools/check-tool-docs.sh
 run "entry bodies match their category" ./tools/check-entry-body.sh
+run "component edges agree in both directions" node tools/check-component-edges.mjs
 run "the board and the backlog agree" node tools/check-board.mjs
 run "the decision register is well formed" node tools/check-decisions.mjs
 run "applies-to names exactly the declared traits" node tools/check-traits.mjs

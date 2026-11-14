@@ -6,7 +6,7 @@
 #
 #   every entry of a governed category carries every section its category declares
 #   the sections appear in the declared order, where the declaration says order matters
-#   every layer charter carries the headings E4 fixes, declared in spec.charters
+#   every layer and spanning-set charter carries the headings E4 fixes, declared in spec.charters
 #
 # The gap this closes was not hypothetical. axioms/README.md has always specified a five-section
 # body shape, all fifteen axioms have always conformed, and nothing would have noticed the
@@ -18,10 +18,15 @@
 #
 # Exit non-zero if any entry departs from its declared shape.
 #
-# Usage:  tools/check-entry-body.sh
+# Usage:  tools/check-entry-body.sh [--root DIR]
 
 set -uo pipefail
 root=$(cd "$(dirname "$0")/.." && pwd)
+if [ "${1:-}" = "--root" ]; then
+	[ -n "${2:-}" ] && [ -d "$2" ] || { echo "FAIL  usage          --root requires an existing directory"; exit 2; }
+	root=$(cd "$2" && pwd)
+	shift 2
+fi
 cd "$root"
 
 decl=schemas/entry-body/v1alpha1/entry-body.json
@@ -85,10 +90,10 @@ done < <(
 	done
 )
 
-# Charters: every knowledge layer's charter - the entry whose id is its prefix followed by zero,
-# held at <directory>/README.md - carries the headings E4 fixes, declared in spec.charters. The
-# charter set is derived, so a layer added tomorrow is held without editing this tool. This pass
-# replaced check-charter-shape.sh, so one tool holds one contract.
+# Charters: every knowledge layer's charter (<prefix>0 at <directory>/README.md) and every
+# spanning-set charter (category: set under sets/) carries the headings E4 fixes, declared in
+# spec.charters. The charter set is derived, so a layer or set added tomorrow is held without
+# editing this tool.
 charter_wanted=$(node -e '
 	const fs = require("fs");
 	const d = JSON.parse(fs.readFileSync(process.argv[1], "utf8"));
@@ -98,10 +103,15 @@ charter_wanted=$(node -e '
 ' "$decl")
 charters=0
 if [ -n "$charter_wanted" ]; then
-	for file in $( { git ls-files '*/README.md'; git ls-files --others --exclude-standard '*/README.md'; } | sort -u ); do
+	for file in $( { git ls-files '*/README.md' 'sets/*.md'; git ls-files --others --exclude-standard '*/README.md' 'sets/*.md'; } | sort -u ); do
+		[ -f "$file" ] || continue
 		id=$(awk 'FNR==1{next} /^---$/{exit} /^id:/{sub(/^id:[[:space:]]*/, ""); gsub(/"/, ""); print; exit}' "$file")
-		case "$id" in [A-Z]*0) ;; *) continue ;; esac
-		[ -n "$(awk 'FNR==1{next} /^---$/{exit} /^category:/{print}' "$file")" ] || continue
+		cat=$(awk 'FNR==1 && !/^---$/{exit} FNR==1{next} /^---$/{exit} /^category:[[:space:]]*/{sub(/^category:[[:space:]]*/, ""); print; exit}' "$file")
+		[ -n "$cat" ] || continue
+		case "$id" in
+			[A-Z]*0) ;;
+			*) [ "$cat" = "set" ] || continue ;;
+		esac
 		charters=$((charters + 1))
 		present=$(grep -E '^## ' "$file" | sed 's/^## //')
 		while IFS= read -r want; do
