@@ -160,6 +160,9 @@ Whether an entry actually states a ruling is checked by reading, not by script.
 | 0116 | 2026-11-07 | A component entry may be registered with `status: draft` before its component is usable, so its definition can be found and cold-read before the component is built; a draft entry is not in force, no consumer depends on it, it says so and what a consumer does until its component is usable, and it becomes `active` only once usable as `0087` requires. | project | director | ratified | amends 0087 | - | - |
 | 0117 | 2026-11-07 | Until `entity-graph` (`C15`) is usable, a project that cannot wait may build a stopgap behind its own boundary, or keep the implementation it has, provided it records the requirement against `entity-graph`'s contract, does not grow the stopgap into a variant of it, and moves onto it once it is usable; such a stopgap is not a fork. | project | director | ratified | amends 0116 | - | - |
 | 0121 | 2026-11-07 | A15 Recursive Elevation is ratified as an axiom: a recurring report, review, audit or incident recovery is complete only once it records what would remove the need for it or move its mechanism one rung higher. | general | director | ratified | - | `axioms/A15-recursive-elevation.md` | yes |
+| 0122 | 2026-11-14 | Multi-altitude set investigations close one altitude with lower-altitude placement/internals excluded before descending, reconcile incomplete external anchors without overwriting measured facts, and align SC1 `status: retired` with M13 deletion (`B103`) plus zero-edge isolation when an anchored ledger retains retired tombstones. | general | director | proposed | amends 0057 | `methods/M12-investigate-a-set.md`, `methods/M13-change-a-set.md`, `schemas/catalog-entry/v1alpha1/catalog-entry.schema.json` | yes |
+| 0123 | 2026-11-14 | Registered component dependency and containment edges (`Consumes`/`Consumed-by`, `Contains`/`Contained-by`) are checked mechanically by `tools/check-component-edges.mjs`, enforcing bidirectional symmetry, no self-loops or dangling IDs, `draft` consumer boundaries (`0116`), and `retired`/`superseded` zero-edge isolation (`B112`). | general | director | proposed | amends 0096 | `components/README.md` | yes |
+| 0124 | 2026-11-14 | `SC6` and `tools/check-entry-body.sh` enforce `spec.charters` fixed headings (`Vision`, `Territory`, `Operation`, `Faults`, `Index`) on both `<prefix>0` layer charters and `category: set` spanning-set charters, bringing `ST1` into conformance (`B104`). | general | director | proposed | amends 0071 | `schemas/SC6-entry-body.md`, `sets/ST1-explain.md`, `schemas/entry-body/v1alpha1/entry-body.schema.json` | yes |
 
 ---
 
@@ -2304,3 +2307,39 @@ Three were put to the director and not chosen: slimming A15 to its core limit an
 
 **Source.**\
 `[V, director instruction 2026-11-07 ("I ratified #17"); pull request 17, commit 1e98505; axioms/README.md Growth policy and Operation; axioms/A13-director-intent-amplification.md Mandate]`
+
+### 0122
+
+**Ruling, proposed.**\
+`M12`, `M13`, and `SC1` record multi-altitude set closure and tombstone isolation (`B103`).\
+Closing and stressing coverage, boundaries, and peer edges at one containment altitude before descending keeps higher-altitude definitions invariant under lower-altitude placement or implementation changes (`E3`, `E6`).\
+On incomplete external anchors, measured rows are preserved intact while scope partitions surface omitted members and unresolved anchor seams; `SC1` `status: retired` now cites `M13` delete-without-stub (`0057`) rather than keeping files for citations, while externally anchored ledgers that retain retired records isolate them with zero active edges.
+
+**Alternatives refuted.**\
+Minting a packaged standalone multi-altitude skill (`K29`) immediately from one estate programme - rejected under `K0`, `P0`, and `README.md` admission rules and parked as `B117` under `RU3` until a second unrelated domain needs executable scripts.\
+Embedding domain catalog or hosting schemas into `SC0` - rejected under `P4`.
+
+**Source.**\
+`[V, docs/BACKLOG.md B103, B117; schemas/catalog-entry/v1alpha1/catalog-entry.schema.json; methods/M12-investigate-a-set.md; methods/M13-change-a-set.md]`
+
+### 0123
+
+**Ruling, proposed.**\
+`tools/check-component-edges.mjs` and its mutation suite `tools/check-component-edges.test.sh` mechanically hold component `## Edges` declarations (`Consumes`/`Consumed-by`, `Contains`/`Contained-by`, self-loops, dangling `C<N>`, active->`draft` guard per `0116`, and `retired`/`superseded` zero-edge isolation), closing `B112` (`docs/ARCHITECTURE.md` line 111 updated).
+
+**Alternatives refuted.**\
+Continuing manual review of component edge symmetry - already failed once at `82115e6` (`C15` vs `C6`).
+
+**Source.**\
+`[V, docs/BACKLOG.md B112; tools/check-component-edges.mjs; tools/check-component-edges.test.sh; components/README.md]`
+
+### 0124
+
+**Ruling, proposed.**\
+`SC6` and `tools/check-entry-body.sh` extend `spec.charters` checking from `[A-Z]*0` layer charters to `category: set` spanning-set charters under `sets/`, `ST1-explain.md` adopts `## Vision` and `## Operation` (`E4`), and `tools/check-entry-body.test.sh` proves every refusal by fixture mutation (`B104`).
+
+**Alternatives refuted.**\
+Extending `SC6` with variable heading substring regexes or clause substring scans - rejected as project-specific over-generalisation (`A3` Speculative Surface).
+
+**Source.**\
+`[V, docs/BACKLOG.md B104; tools/check-entry-body.sh; tools/check-entry-body.test.sh; sets/ST1-explain.md; schemas/SC6-entry-body.md]`

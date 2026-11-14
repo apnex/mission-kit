@@ -108,7 +108,7 @@ The others bind only where their declared domain is present, and this corpus is 
 
 | Axiom | In force via | How this shape serves it | Where it falls short |
 |---|---|---|---|
-| **A3** Sovereign Composition | `any-system` | Sixteen knowledge layers, one concern each, cited by prefix and never merged. Composition is by edge and citation rather than by nesting. | Fifteen components compose by declared edges, and nothing checks that a component's Consumes and its peers' Consumed-by agree: `C15` relied on `C6` with neither entry naming the other while every gate passed (`B112`). |
+| **A3** Sovereign Composition | `any-system` | Sixteen knowledge layers, one concern each, cited by prefix and never merged. Composition is by edge and citation rather than by nesting. | Fifteen components compose by declared `Consumes`/`Consumed-by` and `Contains`/`Contained-by` edges held symmetric by `check-component-edges.mjs`, though `contains` internals remain prose lists rather than separate contract files and `C2`/`C6`/`C10` duty conjunctions remain open (`B109`). |
 | **A4** Zero-Loss Knowledge | `any-system` | Corrections are retained under banners; deferrals carry revival triggers; claims distinguish measured from inferred. | Evaluation runs are kept local and only an audit's quotation of them is published (`docs/evals/README.md`), so a run's full answers cannot be re-read from the repository. |
 | **A8** Gated Recursive Integrity | `any-system` | Every checker in `tools/check-all.sh` gates every change, and the corpus's own author is refused by them. | Enforcement covers structure and style; it cannot reach whether an entry's reasoning is correct. |
 | **A9** Chaos-Validated Deployment | `any-system` | Guards are proven by mutation rather than assumed - a mutant that should fail is run and observed to fail. | Applied per-change by discipline, not by a standing harness. No mechanism forces a new guard to be mutation-tested. |
@@ -164,7 +164,7 @@ Generated from the root README's layer table and each layer's charter.
 | Layer | Duty |
 |---|---|
 | `bundles/` | Skills composed into operator-facing roles, by declared edge rather than by name. |
-| `tools/` | The scripts that hold the corpus to its own rules. 26 scripts. |
+| `tools/` | The scripts that hold the corpus to its own rules. 29 scripts. |
 | `plugins/` | Operator-facing artifacts that run inside a specific agent host. |
 | `docs/` | This corpus's own artifact instances, held where [`AR0`](artifacts/README.md) says an instance lives. |
 <!-- END GENERATED: architecture-other-layers -->
@@ -219,8 +219,7 @@ Its lifecycles are the entry's and the change's.
 **Entry lifecycle.**\
 `draft` -> `active` -> `superseded` or `retired`.\
 An ID is never reused.\
-A replaced entry keeps its ID and flips status; the replacement carries `supersedes`, so every citation continues to resolve.\
-Retirement removes force, never addressability.
+A retired entry is deleted with no stub while its retired ID remains blocked by git history (`0057`), and a replaced entry's successor lists the retired ID in `supersedes` (`M13`); externally anchored records retained as retired tombstones stay isolated with zero active edges (`0122`).
 
 **Change lifecycle.**\
 Every change passes the same gate, and the gate does not care who authored it.
@@ -251,6 +250,7 @@ A claim about this corpus is proved by running them, not by reading it.
 | rules and enforcers are paired | `check-enforcers.sh` |
 | tool index matches the directory | `check-tool-docs.sh` |
 | entry bodies match their category | `check-entry-body.sh` |
+| component edges agree in both directions | `check-component-edges.mjs` |
 | the board and the backlog agree | `check-board.mjs` |
 | the decision register is well formed | `check-decisions.mjs` |
 | applies-to names exactly the declared traits | `check-traits.mjs` |

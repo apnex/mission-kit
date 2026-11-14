@@ -46,7 +46,7 @@
       "minLength": 1
     },
     "status": {
-      "description": "Whether this entry is in force, and if not, why not. This field answers that question and no other: a requirement's progress and a work-type's generatability are separate concerns with their own fields, because conflating them is how five disagreeing vocabularies arose. active: in force, apply it. draft: not yet in force, do not apply. superseded: replaced, follow the entry whose supersedes names this one. retired: no longer in force, the ID is kept so citations resolve.",
+      "description": "Whether this entry is in force, and if not, why not. This field answers that question and no other: a requirement's progress and a work-type's generatability are separate concerns with their own fields, because conflating them is how five disagreeing vocabularies arose. active: in force, apply it. draft: not yet in force, do not apply. superseded: replaced, follow the entry whose supersedes names this one. retired: no longer in force; a retired catalogue entry is deleted without a stub and its ID is never reissued (check-id-reuse.mjs), whereas an externally anchored set that retains a retired record to conserve an observed count isolates it with zero active edges.",
       "type": "string",
       "enum": [
         "active",

@@ -165,6 +165,7 @@ The shape is declared in [`SC6`](../schemas/SC6-entry-body.md) and enforced by `
 ## Composition
 
 Components state two kinds of edge, matching the two system relations [`E5`](../entities/E5-system.md) defines: `contains` and `contained-by` record the internal units inside a component's boundary (with `implements` where interchangeable internal adapters implement a neutral port), from which the component inherits traits; `consumes` and `consumed-by` record components or systems that work together through a declared contract without containing one another, across which traits are not inherited.\
+[`tools/check-component-edges.mjs`](../tools/check-component-edges.mjs) holds every registered component's `Consumes`/`Consumed-by` and `Contains`/`Contained-by` edges symmetric, acyclic of self-loops, free of dangling IDs, isolated from retired entries, and clean of active consumers depending on `draft` entries.\
 Coverage of the duty space, orthogonality between duties, and duplication of one duty across projects with no component are how members relate, and they are checked across the set because no member can hold them.
 
 ---
