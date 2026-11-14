@@ -5,7 +5,7 @@ title: gate - a point past which work proceeds only if a stated condition is sho
 status: active
 hydrate-when: You are about to say work passed, failed or is waiting at a gate, or to decide who may judge one
 supersedes: []
-related: [A8, A9, M7, R3, R4, W0, E1]
+related: [A8, A9, M7, R3, R4, W0, E1, E8]
 ---
 
 # E7 - gate
@@ -42,7 +42,7 @@ A richer result is a pass or a fail with something recorded beside it:
 
 **No verdict is not a third result.**\
 A gate that has not been validly run has no verdict, and the work waits.\
-It has not been validly run when its inputs are invalid: the evidence is for another revision, the judge lacks the authority, or the judge is the work's author.\
+It has not been validly run when its inputs are invalid: the evidence is for another revision, the judge lacks the authority, the judge is the work's author, or the input is a party's own account of what it did that the judge cannot check ([`E8`](E8-evidence.md)).\
 A valid run that finds the condition false is a fail; an invalid run is no run at all.\
 Waiting for a verifier is no verdict, never "blocked".
 
@@ -80,6 +80,7 @@ Work that cannot start until something happens - a director being available, a d
 | held to by | [`W0`](../work-types/README.md) | the composition constraints state which gates a unit of work must carry and who may satisfy them |
 | one instance | [`M7`](../methods/M7-axiom-alignment-audit.md) | the axiom-alignment audit is a gate on implementation |
 | ordered by | [`E1`](E1-sovereign-hierarchy.md) | which judge a gate needs follows from which layer holds the decision |
+| receives | [`E8`](E8-evidence.md) | a gate's judge receives evidence and decides the verdict; a party's own account the judge cannot check is no valid input |
 
 ---
 

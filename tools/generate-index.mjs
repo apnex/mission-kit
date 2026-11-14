@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 // generate-index - derive INDEX.md and the category tables from entry frontmatter.
 //
-// An index maintained by hand omits whatever nobody remembered to add, and nothing detects the
-// omission. Three entries went missing that way before this existed. Deriving the index from the
-// entries makes that class impossible rather than merely fixed: the entry is the only place a fact
-// is written, and every table is a projection of it.
+// Sovereign duty: derive every ledger and reverse-view index table from entry frontmatter and hold
+// cross-entry frontmatter invariants, and no other. An index maintained by hand omits whatever
+// nobody remembered to add, and nothing detects the omission. Three entries went missing that way
+// before this existed. Deriving the index from the entries makes that class impossible rather than
+// merely fixed: the entry is the only place a fact is written, and every table is a projection of it.
 //
 // Generated regions are delimited, so hand-written prose in the same file survives untouched:
 //
@@ -139,9 +140,9 @@ const headingOf = (dir) => dir[0].toUpperCase() + dir.slice(1);
 // enforcer. The member's enforced-by is the one declaration; this column is its reverse view, so
 // a charter can say which rules a script holds without keeping a second list that drifts. The
 // ledger omits it: it loads into every session and routes by condition, not by enforcement.
-function table(entries, linkFrom, { enforcement = false } = {}) {
+function table(entries, linkFrom, { enforcement = false, forceEnforcer = false } = {}) {
 	const withStatus = entries.some((e) => e.status !== 'active');
-	const withEnforcer = enforcement && entries.some((e) => e['enforced-by']);
+	const withEnforcer = enforcement && (forceEnforcer || entries.some((e) => e['enforced-by']));
 	// The same reverse view for an axiom's applies-to: which systems' traits bring it into force,
 	// declared once on the axiom and shown here so the charter need keep no applicability matrix.
 	const withApplies = enforcement && entries.some((e) => e['applies-to']);
@@ -154,7 +155,7 @@ function table(entries, linkFrom, { enforcement = false } = {}) {
 		const href = linkFrom ? path.relative(linkFrom, e.rel) : e.rel;
 		const cells = [`[${e.id}](${href})`, cell(e.title)];
 		if (withStatus) cells.push(cell(e.status));
-		if (withEnforcer) cells.push(e['enforced-by'] ? `\`${cell(e['enforced-by'])}\`` : (/0$/.test(e.id) ? '' : 'reading'));
+		if (withEnforcer) cells.push(e['enforced-by'] ? `\`${cell(e['enforced-by'])}\`` : (/^[A-Z]+0$/.test(e.id) ? '' : 'reading'));
 		if (withApplies) cells.push(e['applies-to'] ? cell(String(e['applies-to']).replace(/[[\]]/g, '')) : '');
 		if (withPath) cells.push(e['instance-path'] ? String(e['instance-path']).replace(/[[\]]/g, '').split(',').map((x) => `\`${x.trim()}\``).join(', ') : '');
 		cells.push(cell(e['hydrate-when']));
@@ -174,8 +175,21 @@ function ledgerSections(entries) {
 		.join('\n\n---\n\n');
 }
 
+const STYLE_MEDIA = ['documents', 'messages', 'commits', 'code'];
+
 function categoryTable(entries, dir) {
-	return table(ordered(entries.filter((e) => e.dir === dir)), dir, { enforcement: true });
+	const es = ordered(entries.filter((e) => e.dir === dir));
+	if (!es.some((e) => e.medium)) return table(es, dir, { enforcement: true });
+	const forceEnforcer = es.some((e) => e['enforced-by']);
+	const charter = es.filter((e) => /^[A-Z]+0$/.test(e.id));
+	const parts = [];
+	if (charter.length) parts.push(table(charter, dir, { enforcement: true, forceEnforcer }));
+	for (const m of STYLE_MEDIA) {
+		const sub = es.filter((e) => e.medium === m);
+		if (!sub.length) continue;
+		parts.push(`### Sub-set: ${m}\n\n${table(sub, dir, { enforcement: true, forceEnforcer })}`);
+	}
+	return parts.join('\n\n');
 }
 
 // Replace the delimited region, or report that the file does not opt in.
@@ -310,6 +324,24 @@ if (setProblems.length) {
 	process.exit(1);
 }
 
+// Style rules partition into Level 2 medium sub-sets via the medium frontmatter field (SC1, S0).
+// Every style member (S1..Sn) must declare a known medium, and no charter or non-style entry may.
+const mediumProblems = [];
+for (const e of entries) {
+	const isStyleMember = e.category === 'style' && !/^S0$/.test(e.id);
+	if (isStyleMember) {
+		if (!e.medium) mediumProblems.push(`${e.rel}: a style rule with no medium`);
+		else if (!STYLE_MEDIA.includes(e.medium)) mediumProblems.push(`${e.rel}: medium '${e.medium}' is not one of ${STYLE_MEDIA.join(', ')}`);
+	} else if (e.medium !== undefined) {
+		mediumProblems.push(`${e.rel}: medium is declared on ${e.id} (${e.category}), not a style member`);
+	}
+}
+if (mediumProblems.length) {
+	for (const p of mediumProblems) console.error(`FAIL  medium  ${p}`);
+	console.error(`\n${mediumProblems.length} medium problem(s); every style member must declare a valid medium, and nothing else may.`);
+	process.exit(1);
+}
+
 const targets = [['INDEX.md', ledgerSections(entries)]];
 // Each domain entry carries the work-types that act on it, generated from the work-types' own
 // domainEligibility - the list that governs. A hand-kept copy on the domain disagreed with the
@@ -332,6 +364,12 @@ for (const t of entries.filter((x) => x.category === 'trait' && /^T[1-9][0-9]*$/
 for (const t of entries.filter((x) => x.category === 'artifact' && /^AR[1-9][0-9]*$/.test(x.id))) {
 	const by = entries.filter((w) => w.category === 'work-type' && listOf(w.produces).includes(t.id));
 	targets.push([t.rel, table(ordered(by), path.dirname(t.rel))]);
+}
+// Each procedure carries the work-types that cite it, generated from their methods field -
+// the side whose meaning includes the relation (SC1, W0 Attachment).
+for (const m of entries.filter((x) => x.category === 'method' && /^M[1-9][0-9]*$/.test(x.id))) {
+	const citing = entries.filter((w) => w.category === 'work-type' && listOf(w.methods).includes(m.id));
+	targets.push([m.rel, table(ordered(citing), path.dirname(m.rel))]);
 }
 // Each spanning set's own file carries a generated table of its members, from its members list.
 for (const e of entries.filter((x) => x.category === 'set' && !/^ST0$/.test(x.id)))

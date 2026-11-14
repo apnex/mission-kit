@@ -63,7 +63,8 @@ A characteristic that would bring an obligation no trait captures is closed by a
 This set is analysed by [`M12`](../methods/M12-investigate-a-set.md) and its membership changed by [`M13`](../methods/M13-change-a-set.md); this charter is changed by [`M11`](../methods/M11-change-a-charter.md).\
 Its members are balanced on non-overlap of the question each settles, so an analysis asks of each pair whether they settle the same question, and of each trait defined by a presence whether the matching absence brings an obligation no trait captures.\
 A candidate no axiom binds on, or would, is routed to [`entities/`](../entities/README.md); a surface work lands on is routed to [`domains/`](../domains/README.md); a statement of what must hold is routed to [`axioms/`](../axioms/README.md), all as *What belongs here, and what does not* sets out.\
-Because the contract accepts only declared traits as `applies-to` values, adding or retiring a trait changes which axioms bind which systems, so the change is read against every axiom that names it.
+Because the contract accepts only declared traits as `applies-to` values, adding or retiring a trait changes which axioms bind which systems, so the change is read against every axiom that names it.\
+To stress the territory against the systems the corpus governs, an analysis partitions the traits by the architectural question each settles - state and how behaviour is specified, who acts and who is in the loop, and what reasons on the critical path - tests every axiom's `applies-to` tags for floor exclusivity (`any-system` never combined with a trait) and for traits named by only one axiom or none, and tests each trait's absence complement against the axioms, roles, and work-types to confirm whether any uncaptured absence brings an axiom obligation of its own.
 
 ---
 

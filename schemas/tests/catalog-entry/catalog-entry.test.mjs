@@ -119,6 +119,15 @@ test('a set must declare members, and only a set may', () => {
 	assert.equal(validate(set), false, 'a set with no members must be refused');
 	assert.equal(validate({ ...set, members: [] }), false, 'a set with an empty members list must be refused');
 	assert.equal(validate({ ...set, members: ['S15'] }), true, 'a set with members must be accepted');
-	assert.equal(validate({ id: 'S99', category: 'style', title: 't', status: 'active', 'hydrate-when': 'You are about to write a document someone will read', members: ['S1'] }), false, 'members on a non-set entry must be refused');
+	assert.equal(validate({ id: 'S99', category: 'style', medium: 'documents', title: 't', status: 'active', 'hydrate-when': 'You are about to write a document someone will read', members: ['S1'] }), false, 'members on a non-set entry must be refused');
+});
+
+test('a style member must declare medium, and only a style member may', () => {
+	const s = { id: 'S99', category: 'style', title: 't', status: 'active', 'hydrate-when': 'You are about to write a document someone will read' };
+	assert.equal(validate(s), false, 'a style member with no medium must be refused');
+	assert.equal(validate({ ...s, medium: 'slides' }), false, 'an unknown medium must be refused');
+	assert.equal(validate({ ...s, medium: 'documents' }), true, 'a style member with a valid medium must be accepted');
+	assert.equal(validate({ ...s, id: 'S0', medium: 'documents' }), false, 'medium on the style charter S0 must be refused');
+	assert.equal(validate({ id: 'PC1', category: 'practice', title: 't', status: 'active', 'hydrate-when': 'You are about to author a new entry in a collection', medium: 'documents' }), false, 'medium on a non-style entry must be refused');
 });
 

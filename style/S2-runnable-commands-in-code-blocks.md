@@ -3,6 +3,7 @@ id: S2
 category: style
 title: Runnable workflow steps belong in code blocks
 status: active
+medium: documents
 hydrate-when: You are writing a document that asks the reader to execute a step
 supersedes: []
 related: [S1, M2]

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
+// check-board - hold docs/BOARD.md and docs/BACKLOG.md to the R1-R8 reconciliation contract.
 //
-// The board and the backlog agree with each other.
-//
+// Sovereign duty: board-and-backlog reconciliation and derived-view generation, and no other.
 // docs/BOARD.md is the plan - mutable, reorderable, short. docs/BACKLOG.md is the record -
 // append-and-close, nothing deleted. The board states a five-rule contract binding the two, and
 // until this script existed every rule was prose that nothing checked.
@@ -15,11 +15,11 @@
 //
 //   R1  every board item cites a backlog row          an orphaned plan item
 //   R2  every cited row exists                        a citation to nothing
-//   R3  every row carries impact and principle scores  a row the generated views cannot order
-//   R7  the ledger and held list match the record      a hand copy drifting from the scores
-//   R4  no closed row is planned in an open milestone the record and the plan disagreeing
+//   R3  every row has scores, evidence and trigger    a row the views cannot order or revive
+//   R7  the ledger and held list match the record     a hand copy drifting from the scores
+//   R4  no closed row is planned in a live item       the record and the plan disagreeing
 //   R5  milestones appear in ascending order          an accidental priority nobody chose
-//   R6  a DONE milestone cites no open row            a milestone claiming more than it delivered
+//   R6  a DONE milestone or item leaves no orphan row finished work claiming more than it closed
 //   R8  "Where we are" agrees with the milestones     a narrative still pointing at finished work
 //
 // It reads both files as written rather than a separate declaration, because the files ARE the
@@ -34,6 +34,10 @@ import { fileURLToPath } from "node:url";
 // --root lets a project adopting the artifact set check its own board with this script, rather than
 // copying it: a second copy of the contract would drift from this one.
 const rootArg = process.argv.indexOf("--root");
+if (rootArg > -1 && (!process.argv[rootArg + 1] || process.argv[rootArg + 1].startsWith("--"))) {
+	console.error("FAIL  usage  --root requires a directory path");
+	process.exit(2);
+}
 const root = rootArg > -1 ? process.argv[rootArg + 1] : join(dirname(fileURLToPath(import.meta.url)), "..");
 const boardPath = join(root, "docs/BOARD.md");
 const backlogPath = join(root, "docs/BACKLOG.md");
@@ -55,20 +59,42 @@ const fail = (rule, msg) => failures.push(`FAIL  ${rule}  ${msg}`);
 
 // A backlog row is a table row whose first cell is a bolded B-id. CLOSED anywhere in it marks the
 // disposition; everything else is open. Parked and Retired sections hold rows of the same shape.
-// Columns: id | impact | principle | finding | evidence | state. The scores are declared once, on
-// the row; the board's ledger and held list are generated from them, so the two cannot disagree.
-const cellsOf = (line) => line.replace(/^\|\s*/, "").replace(/\s*\|\s*$/, "").split(/\s+(?<!\\)\|\s+/);
+// Columns: id | impact | principle | finding | evidence | state. Splitting masks inline code spans
+// so unescaped pipes inside backticks stay inside their cell and an empty trailing cell stays column 6.
+const maskCode = (s) => s.replace(/(`+)(?!`)[^\n]*?\1(?!`)/g, (m) => "_".repeat(m.length));
+const splitCells = (line) => {
+	const inner = line.trim().replace(/^\|/, "").replace(/\|$/, "");
+	const masked = maskCode(inner);
+	const out = [];
+	let start = 0;
+	for (let i = 0; i < masked.length; i++) {
+		if (masked[i] === "|" && masked[i - 1] !== "\\") {
+			out.push(inner.slice(start, i).trim());
+			start = i + 1;
+		}
+	}
+	out.push(inner.slice(start).trim());
+	return out;
+};
+const esc = (t) => t.replace(/\|/g, "\\|").trim();
+const trigger = (st) => {
+	const masked = maskCode(st);
+	const m = /(?:^|[\s*])(?:TRIGGER:|Revival trigger:)\**\s*/i.exec(masked) ?? /(?:^|[\s*])TRIGGER\b:?\**\s*/.exec(masked);
+	return esc((m ? st.slice(m.index + m[0].length) : st).replace(/\*\*/g, ""));
+};
 const rows = new Map();
 for (const line of backlog.split("\n")) {
 	const m = line.match(/^\|\s*\*\*(B\d+)\*\*\s*\|/);
 	if (!m) continue;
-	const c = cellsOf(line);
+	const c = splitCells(line);
 	const title = (c[3] || "").match(/\*\*(.+?)\*\*/);
 	rows.set(m[1], {
+		cols: c.length,
 		closed: /\bCLOSED\b/.test(line),
 		impact: c[1], principle: c[2],
 		title: title ? title[1] : (c[3] || "").slice(0, 120),
-		state: c[c.length - 1] || "",
+		evidence: c[4] ?? "",
+		state: c[5] ?? "",
 	});
 }
 
@@ -109,8 +135,9 @@ for (const line of board.split("\n")) {
 
 	const it = line.match(/^\|\s*(M\d+\.\d+[a-z]?)\s*\|/);
 	if (it && current) {
-		const cited = [...line.matchAll(/`(B\d+)`/g)].map((x) => x[1]);
-		items.push({ id: it[1], milestone: current, cited });
+		const c = splitCells(line);
+		const cited = [...(c[2] ?? line).matchAll(/`(B\d+)`/g)].map((x) => x[1]);
+		items.push({ id: it[1], milestone: current, cited, done: /`DONE`/.test(c[3] ?? "") });
 	}
 }
 
@@ -129,26 +156,31 @@ for (const item of items) {
 // --- R3: every open row is planned or held - held is derived, not listed by hand --------------
 //
 // A row is planned when a live item in an open milestone cites it, and held otherwise. Holding is
-// therefore a fact read from the plan, and the held list is generated; R3 now checks that every row
-// carries the scores the generated views order by.
+// therefore a fact read from the plan, and the held list is generated; R3 checks that every row
+// carries the six-column shape, scores and evidence, and that every open row carries a trigger.
 
-const itemLine = (id) => board.split("\n").find((l) => l.startsWith(`| ${id} `)) ?? "";
 const plannedIn = new Map();
 for (const item of items) {
-	if (item.milestone.status === "DONE" || /`DONE`/.test(itemLine(item.id))) continue;
+	if (item.milestone.status === "DONE" || item.done) continue;
 	for (const b of item.cited) if (!plannedIn.has(b)) plannedIn.set(b, item.id);
 }
 for (const [b, r] of rows) {
+	if (r.cols !== 6) fail("R3", `${b} has ${r.cols} columns, expected 6`);
 	if (!/^S[1-5]$/.test(r.impact ?? "")) fail("R3", `${b} has impact '${r.impact}', not S1-S5`);
 	if (!/^A\d+ (mandate|signal)( - A\d+)?$/.test(r.principle ?? "")) fail("R3", `${b} has principle '${r.principle}', not 'A<n> mandate|signal' with an optional secondary axiom`);
+	if (!r.evidence || r.evidence === "-") fail("R3", `${b} cites no evidence`);
+	const trig = trigger(r.state);
+	if (!r.closed && (!r.state || r.state === "-" || !trig || /^later\.?$/i.test(trig))) {
+		fail("R3", `${b} is open with no observable revival trigger`);
+	}
 }
 
 // --- R4: a closed row is not planned as live work ---------------------------------------------
 
 for (const item of items) {
-	if (item.milestone.status === "DONE") continue;
+	if (item.milestone.status === "DONE" || item.done) continue;
 	for (const b of item.cited) {
-		if (rows.get(b)?.closed && !/`DONE`/.test(board.split("\n").find((l) => l.startsWith(`| ${item.id} `)) ?? "")) {
+		if (rows.get(b)?.closed) {
 			fail("R4", `${item.id} in ${item.milestone.id} (${item.milestone.status}) plans ${b}, which is CLOSED`);
 		}
 	}
@@ -162,17 +194,16 @@ for (let i = 1; i < milestones.length; i++) {
 	}
 }
 
-// --- R6: a finished milestone delivered what it cites -----------------------------------------
+// --- R6: a finished milestone or item delivered what it cites ---------------------------------
 
 for (const item of items) {
-	if (item.milestone.status !== "DONE") continue;
+	if (item.milestone.status !== "DONE" && !item.done) continue;
 	for (const b of item.cited) {
 		const r = rows.get(b);
-		// A DONE milestone may legitimately leave a row open when the row's remaining work moved to
-		// another milestone; that is only lawful if the row is still planned somewhere live.
-		if (r && !r.closed) {
-			const elsewhere = items.some((o) => o.milestone.status !== "DONE" && o.cited.includes(b));
-			if (!elsewhere) fail("R6", `${item.id} sits in DONE ${item.milestone.id} but ${b} is still open and planned nowhere else`);
+		// A DONE milestone or item may legitimately leave a row open when the row's remaining work
+		// moved to another live item; that is only lawful if a live item still plans the row.
+		if (r && !r.closed && !plannedIn.has(b)) {
+			fail("R6", `${item.id} (${item.milestone.id}) is DONE but ${b} is still open and planned in no live item`);
 		}
 	}
 }
@@ -207,8 +238,6 @@ const rank = (r) => {
 };
 const cmp = (a, b) => { const x = rank(a[1]), y = rank(b[1]); for (let i = 0; i < 3; i++) if (x[i] !== y[i]) return x[i] - y[i]; return Number(a[0].slice(1)) - Number(b[0].slice(1)); };
 const open = [...rows].filter(([, r]) => !r.closed && /^S[1-5]$/.test(r.impact ?? "") && /^A\d+ /.test(r.principle ?? "")).sort(cmp);
-const esc = (t) => t.replace(/\|/g, "\\|").trim();
-const trigger = (st) => { const m = st.match(/TRIGGER:?\**\s*(.*)$/i); return esc((m ? m[1] : st).replace(/\*\*/g, "")); };
 const ledger = ["| Row | Impact | Principle | Planned in | Finding |", "|---|---|---|---|---|",
 	...open.map(([b, r]) => `| \`${b}\` | ${r.impact} | ${r.principle} | ${plannedIn.get(b) ?? "held"} | ${esc(r.title)} |`)].join("\n");
 const heldRows = open.filter(([b]) => !plannedIn.has(b));

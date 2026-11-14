@@ -46,7 +46,7 @@
       "minLength": 1
     },
     "status": {
-      "description": "Whether this entry is in force, and if not, why not. This field answers that question and no other: a requirement's progress and a work-type's generatability are separate concerns with their own fields, because conflating them is how five disagreeing vocabularies arose. active: in force, apply it. draft: not yet in force, do not apply. superseded: replaced, follow the entry whose supersedes names this one. retired: no longer in force, the ID is kept so citations resolve.",
+      "description": "Whether this entry is in force, and if not, why not. This field answers that question and no other: a requirement's progress and a work-type's generatability are separate concerns with their own fields, because conflating them is how five disagreeing vocabularies arose. active: in force, apply it. draft: not yet in force, do not apply. superseded: replaced by the entry whose supersedes names this ID; in this corpus a replaced file is deleted with no stub (M13), so the value appears only before deletion or in historical snapshots. retired: no longer in force; in this corpus a retired file is deleted with no stub, live citations are repaired, and its ID is never reissued (held from git history by check-id-reuse), so the value appears only before deletion or in historical snapshots.",
       "type": "string",
       "enum": [
         "active",
@@ -175,6 +175,16 @@
         "type": "string"
       },
       "minItems": 1
+    },
+    "medium": {
+      "description": "For a style rule: the medium whose form this rule holds (S0). Every style member declares its medium so S0 partitions rules into medium sub-sets from frontmatter rather than by hand.",
+      "type": "string",
+      "enum": [
+        "documents",
+        "messages",
+        "commits",
+        "code"
+      ]
     },
     "methods": {
       "description": "For a work-type: the procedures (M entries) that conduct this work. Declared on the work-type, the side whose meaning includes it; the reverse view is generated.",
@@ -360,6 +370,44 @@
         "required": [
           "instance-path"
         ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "category": {
+            "const": "style"
+          },
+          "id": {
+            "pattern": "^S[1-9][0-9]*$"
+          }
+        },
+        "required": [
+          "category",
+          "id"
+        ]
+      },
+      "then": {
+        "required": [
+          "medium"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "medium"
+        ]
+      },
+      "then": {
+        "properties": {
+          "category": {
+            "const": "style"
+          },
+          "id": {
+            "pattern": "^S[1-9][0-9]*$"
+          }
+        }
       }
     }
   ]

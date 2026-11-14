@@ -78,3 +78,16 @@ The floor matters because below three the failure mode is predictable: you write
   inputs (3) and (4) to break the tie objectively.
 - Any review where the cost of a missed bug is high enough to
   warrant deliberate work.
+
+---
+
+## Work-types that cite this procedure
+
+Generated from each work-type's `methods`; a procedure no work-type cites shows an empty table.
+
+<!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
+| ID | Title | Hydrate when |
+|---|---|---|
+| [W8](../work-types/W8-verify-gate-reactive.md) | verify-gate-reactive - independently gate a build/change | You are gating a build or change that you did not author |
+| [W10](../work-types/W10-adversarial-design-review-upstream.md) | adversarial-design-review-upstream - critique a design before build/merge | You are critiquing a design before it is built or merged |
+<!-- END GENERATED -->

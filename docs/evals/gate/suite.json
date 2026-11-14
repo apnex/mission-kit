@@ -2,13 +2,13 @@
   "id": "gate",
   "mode": "corpus",
   "group": "gate",
-  "source": "Director rulings on the term gate: one meaning in three kinds by who decides (A); verdict binary, extra results mapped, no-verdict an absence, exception an override (A). Keyed from the rulings before the entry is written. Third ruling (A): director ratification in place of an absent independent agent is the gate decided by the director, a recorded change of kind. Key reviewed by a fresh agent before any reader ran.",
+  "source": "Director rulings on the term gate: one meaning in three kinds by who decides (A); verdict binary, extra results mapped, no-verdict an absence, exception an override (A). Keyed from the rulings before the entry is written. Third ruling (A): director ratification in place of an absent independent agent is the gate decided by the director, a recorded change of kind. Key reviewed by a fresh agent before any reader ran. G7 added with ruling 0129 (E7 names an account its judge cannot check), keyed from ruling 0115 and committed before any reader ran; its key was then audited by a fresh agent and its question corrected, also before any reader ran. G1 question updated in 0141 (B133) to ask for a gate's kinds as well as its meaning, audited by a fresh B29 agent before any reader ran.",
   "probes": [
     {
       "id": "G1",
-      "question": "What is a gate, in this corpus?",
+      "question": "What is a gate in this corpus, and what are its kinds?",
       "key": "A point past which work proceeds only if a stated condition is shown to hold. It has three kinds, by who decides: a machine (a check or validator), an independent agent who did not author the work (a verifier or code owner), or the director (ratification). A gate's kind can change only one way: where an independent agent is required and none exists, the director may decide it instead, recorded as a change of kind; an architect holding a documented delegation counts as the director.",
-      "rubric": "2 for the core meaning plus the three kinds by who decides. 1 for either. 0 otherwise."
+      "rubric": "2 for the core meaning plus the three kinds by who decides; mentioning the three parts or the change-of-kind rule is neither required nor penalised. 1 for either. 0 otherwise."
     },
     {
       "id": "G2",
@@ -39,6 +39,12 @@
       "question": "A one-agent organisation reaches a gate that needs an independent verifier. The director reviews the work and ratifies it. Did the gate pass, and what kind of gate was it?",
       "key": "Yes, if the director ratified: the gate's kind changed from independent agent to director, recorded as such, and it passed on the director's decision. It is not an override - nothing had failed.",
       "rubric": "2 for passed, with the change of kind recorded and not an override. 1 for passed alone. 0 for an override or no verdict."
+    },
+    {
+      "id": "G7",
+      "question": "A verifier is asked to gate a change. All the verifier is given is the builder's own message saying the tests passed; it has no access to the build or to the test output, and nothing else to check that message against. What is the gate's verdict, and what happens to the work?",
+      "key": "There is none. The builder's own account, which the judge cannot check, is no valid input, so the gate has not been validly run: it has no verdict, and the work waits until the judge is given something it can check. It is not a fail, because the account does not show the condition false, and it is not a pass.",
+      "rubric": "2 for no verdict, with the work waiting; recording the claim as not shown is consistent with it. 1 for no verdict alone, or for refusing to pass it without saying whether that is a fail or no verdict. 0 for pass or fail, including calling it blocked as a fail."
     }
   ]
 }

@@ -5,7 +5,7 @@ title: Style - how artifacts are written, and which rules a script can hold
 status: active
 hydrate-when: You are about to write a document another agent will read or a message a human will read, or you need to know whether a convention can be mechanically enforced
 supersedes: []
-related: [M0, P0, K0, A4]
+related: [M0, P0, K0, A4, E3, E4, SC1]
 ---
 
 # Style - the how-you-say-it layer
@@ -56,10 +56,24 @@ Rules for media other than documents are grouped into sub-sets by medium once th
 
 ---
 
+## Sub-sets
+
+This set partitions its members into four medium sub-sets ([`E3`](../entities/E3-set.md), [`E4`](../entities/E4-charter.md)), declared once per member in the `medium` frontmatter field ([`SC1`](../schemas/SC1-catalog-entry.md)) and grouped by medium in the generated *Index* below:
+
+| Sub-set | `medium` value | What it is for |
+|---|---|---|
+| **Documents** | `documents` | The form of durable markdown documents, runbooks, READMEs, and catalogue entries |
+| **Messages** | `messages` | The form of agent-to-human messages where the reader has limited time and context |
+| **Commits** | `commits` | The form of version-control commit messages |
+| **Code** | `code` | The form of executable scripts and source files - their names and their comments |
+
+---
+
 ## Operation
 
 This set is analysed by [`M12`](../methods/M12-investigate-a-set.md) and its membership changed by [`M13`](../methods/M13-change-a-set.md); this charter is changed by [`M11`](../methods/M11-change-a-charter.md).\
 Its members are balanced on non-overlap, so an analysis looks for two rules holding one decision on one surface, and for a rule a predicate could express that names no tool.\
+To stress the territory against *Scope* rather than only against existing document rules, an analysis crosses the four claimed media (documents, messages to a human, commit messages, and code names and comments) against artifact grains (whole-artifact structure, section layout, sentence and block form, and inline identifiers or citations), samples real artifacts in each cell for recurring reader or diff failures, checks whether a second rule in any non-document medium triggers a medium sub-set under *Growth policy*, and tests every rule held by reading for a deterministic predicate over text that a script in `tools/` could hold.\
 A rule a script can hold names exactly one tool, and the pairing is verified as stated under *Enforcement boundary*.\
 A candidate that governs what the work does or records is routed to [rules](../rules/README.md), and one whose following the finished artifact could not show is routed to [practices](../practices/README.md).
 
@@ -114,7 +128,8 @@ The remaining rules need judgement and are reviewed by reading.\
 That is a stated property of the layer, not a backlog: some conventions are about whether a sentence earns its place, and no script settles that.
 
 Style is gated on changed files rather than on the whole corpus.\
-The corpus carries debt that predates the checkers, so gating the diff blocks new debt and converts the rest opportunistically as sections are edited.
+The corpus carries debt that predates the checkers, so gating the diff blocks new debt and converts the rest opportunistically as sections are edited.\
+Converting all legacy debt in one corpus-wide sweep is avoided for the same reason: it produces a diff no one can review and hides real changes inside it.
 
 ---
 
@@ -132,7 +147,6 @@ It falls short further wherever a medium it claims carries knowledge with no rul
 - **The orphaned rule.** A convention nobody enforces and nobody reviews, which teaches readers that the layer is decorative.
 - **The unscoped medium.** Rules for one medium scattered among the document rules with nothing grouping them. A second rule for a medium other than documents, in any such medium, is the point at which the medium rules earn sub-sets of their own.
 - **The work rule in style clothing.** A convention filed here that governs what the work does or records rather than how the artifact reads, where an author applying rules will not look for it.
-- **The corpus-wide sweep.** Converting all legacy debt in one commit, producing a diff no one can review and hiding a real change inside it.
 
 ---
 
@@ -142,6 +156,11 @@ It falls short further wherever a medium it claims carries knowledge with no rul
 | ID | Title | Held by | Hydrate when |
 |---|---|---|---|
 | [S0](README.md) | Style - how artifacts are written, and which rules a script can hold |  | You are about to write a document another agent will read or a message a human will read, or you need to know whether a convention can be mechanically enforced |
+
+### Sub-set: documents
+
+| ID | Title | Held by | Hydrate when |
+|---|---|---|---|
 | [S1](S1-prereqs-explicit-cluster-agnostic.md) | Prerequisites explicit + cluster-agnostic + assumes authenticated tooling | reading | You are authoring a workflow document that drives shared infrastructure |
 | [S2](S2-runnable-commands-in-code-blocks.md) | Runnable workflow steps belong in code blocks | reading | You are writing a document that asks the reader to execute a step |
 | [S3](S3-producer-consumer-doc-split.md) | Producer / consumer doc split | reading | You are documenting a component that another repository consumes |
@@ -156,6 +175,17 @@ It falls short further wherever a medium it claims carries knowledge with no rul
 | [S12](S12-code-block-introducer-own-paragraph.md) | Code-block introducer is its own paragraph | `tools/s12-code-block-introducer.sh` | You are about to introduce a code block with a sentence |
 | [S13](S13-plain-ascii-in-markdown.md) | Plain ASCII in markdown - typeable characters only | `tools/s13-plain-ascii.sh` | You are about to type a character you could not produce on a standard keyboard |
 | [S14](S14-hydration-triggers-state-a-condition.md) | Hydration triggers state a condition, not a topic | `tools/s14-hydration-triggers.sh` | You are adding a catalogue entry, or reviewing one that has never routed anyone |
-| [S15](S15-message-to-a-human.md) | A message to a human - point first, one step, explained names, clear picks | reading | You are about to write a message a human will read without the context you have |
 | [S16](S16-path-a-path-b-workflow-paths.md) | Path A / Path B - one complete path per execution environment in a workflow document | reading | You are authoring a workflow document that supports more than one execution path |
+
+### Sub-set: messages
+
+| ID | Title | Held by | Hydrate when |
+|---|---|---|---|
+| [S15](S15-message-to-a-human.md) | A message to a human - point first, one step, explained names, clear picks | reading | You are about to write a message a human will read without the context you have |
+
+### Sub-set: code
+
+| ID | Title | Held by | Hydrate when |
+|---|---|---|---|
+| [S17](S17-source-comments-state-duty-and-why.md) | Source comments state the file's duty and why non-obvious code is written that way | `tools/s17-source-comments.sh` | You are writing or editing an executable script or source file, or deciding what to put in its opening or inline comments |
 <!-- END GENERATED -->

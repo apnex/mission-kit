@@ -5,7 +5,7 @@ title: Entities - precise definitions of load-bearing terms, and what earns one
 status: active
 hydrate-when: You are about to define a term the corpus leans on, or two readers could act differently on the same sentence
 supersedes: []
-related: [E1, M0, SC6, A4]
+related: [E1, M0, SC6, A4, AR5]
 ---
 
 # Entities
@@ -81,7 +81,8 @@ Members are balanced on one home per term - no term defined here and in a charte
 This set is analysed by [`M12`](../methods/M12-investigate-a-set.md) and its membership changed by [`M13`](../methods/M13-change-a-set.md); this charter is changed by [`M11`](../methods/M11-change-a-charter.md).\
 Its members are balanced on one home per term and on being cited, so an analysis searches the corpus for a term defined both here and elsewhere, and for places a term carries weight without citing its definition.\
 A gap is a term that passes the two-readers test under *What earns an entry*, never one that is merely frequent.\
-A candidate that names one layer's members is routed to that layer's charter, one that answers how rather than what to [methods](../methods/README.md) or [skills](../skills/README.md), and the shape of an instance to [schemas](../schemas/README.md).
+A candidate that names one layer's members is routed to that layer's charter, one that answers how rather than what to [methods](../methods/README.md) or [skills](../skills/README.md), and the shape of an instance to [schemas](../schemas/README.md).\
+To stress the territory across layers, an analysis partitions the defined entities across the subjects the corpus leans on - authority, corpus structure, what is engineered, work and its proof, and coordination - scans across knowledge layers for recurring nouns leaned on across two or more layers without an entity entry or with divergent local definitions, and applies the two-readers test to each candidate while recording the dated partition and any gaps in the project's record (in this corpus, `docs/investigations/`) and backlog ([`AR5`](../artifacts/AR5-backlog.md)).
 
 ---
 
@@ -158,4 +159,5 @@ Entities compose through the typed edges in each member's `Relations`, and form 
 | [E7](E7-gate.md) | gate - a point past which work proceeds only if a stated condition is shown to hold, decided by a machine, an independent agent or the director | You are about to say work passed, failed or is waiting at a gate, or to decide who may judge one |
 | [E8](E8-evidence.md) | evidence - something offered to show that a claim holds, which a gate's judge receives and never decides | You are about to record, cite or weigh evidence, or you have met a verdict stored where evidence goes |
 | [E9](E9-substrate.md) | substrate - the coordination substrate, the system that hands out, runs and gates work, and nothing else | You are about to write or read the word substrate, or describe the system that coordinates work between agents |
+| [E10](E10-arc.md) | arc - a bounded, multi-step initiative that advances toward a declared target across gated steps, and its two representations | You are about to write or read the word arc across layers, or to reconcile its value-chain and coordination-substrate meanings |
 <!-- END GENERATED -->

@@ -66,9 +66,10 @@ Flat, until there is reason to subdivide.
 | [`BOARD.md`](BOARD.md) | [`AR3`](../artifacts/AR3-board.md) | the triaged legal next moves, for director selection |
 | [`BACKLOG.md`](BACKLOG.md) | [`AR5`](../artifacts/AR5-backlog.md) | findings about this corpus, each with evidence and a revival trigger |
 | [`DECISIONS.md`](DECISIONS.md) | [`AR4`](../artifacts/AR4-decision-record.md) | the director's rulings, each classified general or project, with the entries a general ruling must be stated in |
-| [`DELTAS/`](DELTAS/) | [`AR2`](../artifacts/AR2-delta.md) | each declared, gated transition, `DELTA-<N>.md` |
-| [`audits/`](audits/) | - | evidence produced by auditing this corpus against its own standards, cited from the board |
-| [`investigations/`](investigations/) | - | dated analyses of a set's population against its charter's end state, scope and growth policy: a proposed partition, where members sit, and the gaps found, each gap carried to the backlog |
+| [`evals/`](evals/) | - | standing [`M2`](../methods/M2-test-drive-docs-by-execution.md) evaluation suite definitions, `<suite>/suite.json` |
+| [`requests/`](requests/) | - | the full text of the seven open `MREQ` entries from the retired `backlog/` layer, cited from rows `B45` to `B47` and `B49` to `B52` of [`BACKLOG.md`](BACKLOG.md) |
+
+Evaluation runs and historical experiment archives (`evals/runs/`, `evals/human/`, `evals/context-lab/`, `evals/standing/`), dated set investigations (`investigations/`), closed milestone audits (`audits/`), closed transitions (`DELTAS/`), closed surveys (`surveys/`), and closed request files are local working or historical material, git-ignored and not tracked in the published repository; [`BACKLOG.md`](BACKLOG.md) and [`DECISIONS.md`](DECISIONS.md) record their surviving findings and rulings.
 
 The vision is not in this directory by design - [`AR0`](../artifacts/README.md) anchors it at the component root, which for this corpus is [`../VISION.md`](../VISION.md).
 
@@ -78,8 +79,5 @@ The vision is not in this directory by design - [`AR0`](../artifacts/README.md) 
 
 ## Not the `backlog/` layer
 
-[`backlog/`](../backlog/README.md) holds `MREQ` entries - addressable, routable catalogue entries requesting a future mission, citable from anywhere in the corpus.\
-[`BACKLOG.md`](BACKLOG.md) holds project-local findings about mission-kit that are addressable nowhere else.
-
-Two different objects wearing one word.\
-Whether they should remain separate is tracked as row `B14`.
+A separate `backlog/` layer once held `MREQ` entries - addressable catalogue entries requesting a future mission - beside [`BACKLOG.md`](BACKLOG.md), which holds project-local findings about mission-kit.\
+Row `B14` closed when the director retired `backlog/` into [`BACKLOG.md`](BACKLOG.md) (`B45` to `B54`), keeping the open entries' full text unchanged under [`requests/`](requests/).

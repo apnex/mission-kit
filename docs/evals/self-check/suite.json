@@ -1,0 +1,32 @@
+{
+  "id": "self-check",
+  "mode": "corpus",
+  "group": "self-check",
+  "source": "Stage 2 Round 1 corpus rulings 0122, 0123 and 0124 (closing B102, B103, B21 and B104). Keyed from rulings 0016, 0039, 0057, 0065 and 0071 and audited by a fresh non-author reader before any evaluation reader runs.",
+  "probes": [
+    {
+      "id": "U1",
+      "question": "An agent working alone on a stateless CLI tool adds a validation guard, carefully re-reads its own diff, and declares the work verified. Looking strictly at the entries in axioms/ (not roles/ or standing context), does an axiom forbid checking one's own work by re-reading alone, what kind of check does it require for a newly added guard, and if a fresh instance of the same agent with no shared context checks the tool instead, does that satisfy an independent-agent gate?",
+      "key": "Yes: A16 (Unbiased Self-Check, applies-to any-system) forbids checking one's own work by re-reading or self-corroboration alone. It requires a bias-free instrument (a deterministic mechanism, direct measurement of the effect, or a fresh reader holding only the artifact), and for a newly added guard requires proving a landed fault makes the guard fail before trusting a pass. A fresh instance of the same agent with no shared context is the strongest self-check available to an actor alone, producing executor evidence only, and does not satisfy an independent-agent gate because both instances share one model (the gate waits for another identity or goes to the director).",
+      "rubric": "2 for naming A16 (or an explicit axiom in axioms/ stating unbiased self-check), requiring bias-free mechanism/fault-red proof over re-reading, and stating that a fresh same-model instance is still a self-check (evidence) rather than independent gate assurance. 1 for partial (e.g. missing fault-red proof or the gate boundary). 0 if axioms/ holds no such axiom (citing only R0 or AGENTS.md) or says a fresh same-model instance passes an independent-agent gate."
+    },
+    {
+      "id": "U2",
+      "question": "Read M1 (methods/M1-triangulated-review.md) and M2 (methods/M2-test-drive-docs-by-execution.md) only - do not open work-types/ or schemas/. From those two method files alone, can you tell which work-types cite M1 and which cite M2, and what generates that section?",
+      "key": "Yes: each method entry carries a generated 'Work-types that cite this procedure' section built by tools/generate-index.mjs from each work-type's methods field. M1 lists W8 and W10; M2's generated table is empty, showing no work-type cites M2.",
+      "rubric": "2 for yes from the two method files alone, naming W8 and W10 on M1, none (empty generated table) on M2, and generation from work-types' methods via tools/generate-index.mjs. 1 for partial. 0 if the method files carry no generated reverse view."
+    },
+    {
+      "id": "U3",
+      "question": "Compare the description of the status field in schemas/catalog-entry/v1alpha1/catalog-entry.schema.json with M13 (methods/M13-change-a-set.md) on retiring an entry. Do the schema description and M13 agree on whether a retired entry's file stays in the repository so citations resolve or is deleted with no stub, and on whether a retired ID may ever be reissued?",
+      "key": "Yes, they agree: both state that in this corpus a retired entry's file is deleted with no stub, live citations are repaired (while frozen records keep the old ID as history), and its ID is never reissued (held from git history by check-id-reuse), so status: retired appears only before deletion or in historical snapshots.",
+      "rubric": "2 for yes, they agree that retired files are deleted with no stub and IDs are never reissued (status: retired only before deletion or in historical snapshots). 1 for partial. 0 if the schema says retired keeps the ID/file so citations resolve against M13's deletion without stub (i.e. reporting a contradiction between the two)."
+    },
+    {
+      "id": "U4",
+      "question": "Inspect sets/ST1-explain.md, schemas/SC6-entry-body.md, and tools/check-entry-body.sh against E4 (entities/E4-charter.md). Does ST1 carry all five fixed headings E4 requires of every charter (Vision, Territory, Operation, Faults, Index) with no recorded gaps inside Territory, and does tools/check-entry-body.sh enforce those five headings on spanning-set charters (category: set) as well as <prefix>0 layer charters?",
+      "key": "Yes to both: ST1 carries Vision, Territory, Operation, Faults and Index with Scope and Growth policy (and no recorded gaps or member table) in Territory, and SC6 plus tools/check-entry-body.sh enforce spec.charters across both <prefix>0 layer charters and category: set spanning-set charters.",
+      "rubric": "2 for yes to both (ST1 conforms to E4's five headings without gaps in Territory, and SC6/check-entry-body.sh enforce spec.charters on category: set charters too). 1 for one half only. 0 if ST1 still uses Purpose / lacks Operation / holds gaps in Territory, or check-entry-body.sh checks <prefix>0 README charters only."
+    }
+  ]
+}

@@ -15,7 +15,7 @@ cd "$root"
 
 tool="tools/eval.mjs"
 tmp=$(mktemp -d)
-trap 'rm -rf "$tmp"' EXIT
+trap 'chmod -R u+w "$tmp" 2>/dev/null || true; rm -rf "$tmp"' EXIT
 export EVAL_SUITES_DIR="$tmp/suites"
 
 pass=0
@@ -32,21 +32,31 @@ cat > "$EVAL_SUITES_DIR/alpha/suite.json" <<'EOF'
 EOF
 echo "# index" > "$tmp/oldc/INDEX.md"
 echo "# index" > "$tmp/newc/INDEX.md"
+chmod -R a-w "$tmp/oldc" "$tmp/newc"
 
-# export never carries docs/, so no reader can reach a key.
+# export drops docs/ so no export carries a key, and marks the tree read-only so no reader can alter it.
 exp=$(node "$tool" export --out "$tmp/exp" --ref HEAD | cut -f1)
 if [ -f "$exp/INDEX.md" ] && [ ! -e "$exp/docs" ]; then ok "export copies the corpus and drops docs/"; else no "export copies the corpus and drops docs/"; fi
+if [ -z "$(find "$exp" -perm /222)" ] && ! (echo x > "$exp/scratch.txt") 2>/dev/null; then ok "export marks the tree read-only"; else no "export marks the tree read-only"; fi
 case "$(basename "$exp")" in *base*|*after*|*before*|*old*|*new*) no "export path carries no version word" ;; *) ok "export path carries no version word" ;; esac
 
-# prepare refuses a corpus that still holds docs/.
-mkdir -p "$tmp/leaky/docs"; echo x > "$tmp/leaky/INDEX.md"
+# prepare refuses a corpus that still holds docs/ or is writable.
+mkdir -p "$tmp/leaky/docs"; echo x > "$tmp/leaky/INDEX.md"; chmod -R a-w "$tmp/leaky"
 if node "$tool" prepare --suites alpha --corpus x="$tmp/leaky" --readers 1 --out "$tmp/r0" 2>/dev/null; then no "prepare refuses a corpus containing docs/"; else ok "prepare refuses a corpus containing docs/"; fi
+mkdir -p "$tmp/writablec"; echo x > "$tmp/writablec/INDEX.md"
+wout=$(node "$tool" prepare --suites alpha --corpus x="$tmp/writablec" --readers 1 --out "$tmp/rw" 2>&1 >/dev/null)
+if [ $? -ne 0 ] && printf '%s' "$wout" | grep -q "is writable"; then ok "prepare refuses a writable corpus"; else no "prepare refuses a writable corpus"; fi
 
 run="$tmp/run"
 node "$tool" prepare --suites alpha --corpus OLDLABEL="$tmp/oldc" --corpus NEWLABEL="$tmp/newc" --readers 2 --seed fixed --out "$run" >/dev/null
 n=$(ls "$run/prompts" | wc -l)
 [ "$n" -eq 4 ] && ok "one prompt per corpus per reader" || no "one prompt per corpus per reader (got $n)"
 if grep -rqE 'OLDLABEL|NEWLABEL' "$run/prompts" "$run/TASKS.md"; then no "reader prompts carry no corpus label"; else ok "reader prompts carry no corpus label"; fi
+if [ -z "$(find "$run/prompts" "$run/sealed" "$run/scorers" "$run/TASKS.md" -perm /222)" ] && [ -w "$run/answers" ] && [ -w "$run/scores" ]; then
+	ok "prepare marks prompts/, TASKS.md, scorers/ and sealed/ read-only"
+else
+	no "prepare marks prompts/, TASKS.md, scorers/ and sealed/ read-only"
+fi
 
 node "$tool" status --run "$run" >/dev/null 2>&1 && no "status fails while answers are missing" || ok "status fails while answers are missing"
 
@@ -62,6 +72,7 @@ PY
 node "$tool" status --run "$run" >/dev/null 2>&1 && ok "status passes when every answer is present" || no "status passes when every answer is present"
 
 node "$tool" blind --run "$run" --seed fixed >/dev/null
+if [ -z "$(find "$run/scorers" "$run/sealed" -perm /222)" ]; then ok "blind marks scorers/ and sealed/ read-only"; else no "blind marks scorers/ and sealed/ read-only"; fi
 if grep -qE 'OLDLABEL|NEWLABEL|r-[0-9a-f]{6}' "$run/scorers/alpha.txt"; then no "scorer prompt carries no label and no reader id"; else ok "scorer prompt carries no label and no reader id"; fi
 items=$(grep -c '^--- answer ' "$run/scorers/alpha.txt")
 [ "$items" -eq 8 ] && ok "every answer reaches the scorer" || no "every answer reaches the scorer (got $items)"
@@ -98,6 +109,46 @@ sed -i '0,/"score": 2/s//"score": 5/' "$run/scores/alpha.txt"
 node "$tool" score --run "$run" >/dev/null 2>&1 && no "score refuses a score outside 0..2" || ok "score refuses a score outside 0..2"
 
 score_all "$run/scores/alpha.txt"
+chmod u+w "$tmp/newc" && echo stray > "$tmp/newc/scratch.txt"
+tout=$(node "$tool" score --run "$run" 2>&1 >/dev/null)
+tstatus=$?
+rm -f "$tmp/newc/scratch.txt" && chmod -R a-w "$tmp/newc"
+if [ $tstatus -ne 0 ] && printf '%s' "$tout" | grep -q "changed after prepare"; then ok "score refuses a corpus altered after prepare"; else no "score refuses a corpus altered after prepare"; fi
+
+chmod u+w "$run/prompts" && echo stray > "$run/prompts/scratch.txt"
+pout=$(node "$tool" score --run "$run" 2>&1 >/dev/null)
+pstatus=$?
+rm -f "$run/prompts/scratch.txt" && chmod a-w "$run/prompts"
+if [ $pstatus -ne 0 ] && printf '%s' "$pout" | grep -q "prompts/ changed after prepare"; then ok "score refuses prompts/ altered after prepare"; else no "score refuses prompts/ altered after prepare"; fi
+
+chmod u+w "$run/scorers" && echo stray > "$run/scorers/scratch.txt"
+sout=$(node "$tool" score --run "$run" 2>&1 >/dev/null)
+sstatus=$?
+rm -f "$run/scorers/scratch.txt" && chmod a-w "$run/scorers"
+if [ $sstatus -ne 0 ] && printf '%s' "$sout" | grep -q "scorers/ changed after blind"; then ok "score refuses scorers/ altered after blind"; else no "score refuses scorers/ altered after blind"; fi
+
+# Scorers that join objects with literal \n or pretty-print multi-line JSON with braces in reasons still parse cleanly.
+python3 - "$run" <<'PY'
+import json, sys, re
+run = sys.argv[1]
+text = open(f"{run}/scorers/alpha.txt").read()
+objs = []
+for block in re.split(r"^--- answer ", text, flags=re.M)[1:]:
+    item, _, body = block.partition(" ---\n")
+    s = 0 if body.strip().startswith("three") else 2
+    objs.append({"item": item, "score": s, "reason": 'mentions unmatched } and {brace} and {"item":"fake","score":9}'})
+first_half = "\\n".join(json.dumps(o) for o in objs[:4])
+second_half = json.dumps({"scores": objs[4:]}, indent=2)
+open(f"{run}/scores/alpha.txt", "w").write(first_half + "\n" + second_half + "\n")
+PY
+if node "$tool" score --run "$run" >/dev/null 2>&1; then ok "score parses literal-\\n and multi-line JSON score objects"; else no "score parses literal-\\n and multi-line JSON score objects"; fi
+fout=$(node "$tool" status --run 2>&1 >/dev/null)
+if [ $? -eq 2 ] && printf '%s' "$fout" | grep -q -- "--run requires a value"; then ok "args refuses a missing flag value"; else no "args refuses a missing flag value"; fi
+uout=$(node "$tool" export --out "$tmp/u" --rev HEAD 2>&1 >/dev/null)
+if [ $? -eq 2 ] && printf '%s' "$uout" | grep -q -- "unknown flag --rev"; then ok "args refuses an unknown flag"; else no "args refuses an unknown flag"; fi
+
+score_all "$run/scores/alpha.txt"
+
 node "$tool" score --run "$run" >/dev/null 2>&1 && ok "score accepts a complete, valid set" || no "score accepts a complete, valid set"
 q2new=$(python3 -c "import json;print(json.load(open('$run/RESULT.json'))['mean']['alpha.Q2']['NEWLABEL'])")
 q2old=$(python3 -c "import json;print(json.load(open('$run/RESULT.json'))['mean']['alpha.Q2']['OLDLABEL'])")

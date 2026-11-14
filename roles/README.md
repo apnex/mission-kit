@@ -4,7 +4,7 @@ category: role
 title: Roles - the M axis (pure essence + type-determined authority)
 status: active
 hydrate-when: You need to know which role may attest, approve or decide on a piece of work
-related: [W0, D0, A3, A6, A13, E1, T0]
+related: [W0, D0, A3, A6, A13, A16, E1, T0]
 ---
 
 # Roles - the M axis
@@ -58,7 +58,8 @@ Members are balanced on independence of mandates: no two roles hold the same aut
 This set is analysed by [`M12`](../methods/M12-investigate-a-set.md) and its membership changed by [`M13`](../methods/M13-change-a-set.md); this charter is changed by [`M11`](../methods/M11-change-a-charter.md).\
 Its members are balanced on independence of mandates, so an analysis asks of each pair of roles whether they hold one authority, and of the set whether any decision the work needs falls outside every role.\
 A candidate that is a mode of work, or a flag a unit of work carries, is routed to [`work-types/`](../work-types/README.md), as *Backstop is not a role* records; a candidate that is a surface work lands on is routed to [`domains/`](../domains/README.md).\
-The constraint that one identity may not execute and independently verify the same work is authored in [`W0`](../work-types/README.md) and cited here, so a change to it is made there and not in this charter.
+The constraint that one identity may not execute and independently verify the same work is authored in [`W0`](../work-types/README.md) and cited here, so a change to it is made there and not in this charter.\
+To stress the territory across both unit-level and above-unit work, an analysis crosses the four authorities (intent and ratification, system shape, execution, and independent assurance) against the work-types' `roleEligibility` and `evidenceAuthority` fields and across organisation sizes from a single agent to a multi-agent fleet, testing whether any decision or cross-unit stewardship falls outside every role or collapses executor and verifier identity.
 
 ---
 
@@ -92,12 +93,8 @@ Holding both roles is lawful; exercising both on the same work is not.
 
 **Checking one's own work is always required, at any size of organisation.**\
 An agent that cannot provide independent assurance is still accountable for checking what it did, and an organisation of one depends on that more than any other, because nobody else will.\
-The check must use means the author's own reasoning cannot bias: a mechanism that fails when the work is wrong, a fresh reader holding only the work, a measurement in place of a re-reading.\
-A cited address is the plainest case: it is fetched before it is cited, because a fabricated link reads exactly like a real one and only fetching it tells them apart.\
-Re-reading one's own work is the weakest check available, because the author knows what every line was meant to say.\
-A fresh reader may be a new instance of the same agent with no shared context.\
-That is the strongest check available to an agent alone, and it is still a self-check: the instance is independent of the author's context and motives, not of the model they share, so it cannot provide independent assurance.\
-These checks produce the author's own evidence, and they are mandatory; they do not seal a gate that requires independence.
+The obligation to check one's own work by means the author's reasoning cannot bias - including fetching any cited online address empirically rather than trusting recall - is authored once in [`A16`](../axioms/A16-unbiased-self-check.md) and cited here rather than restated.\
+On the role axis, even the strongest self-check available to an agent alone - a fresh instance of the same agent with no shared context - produces the author's own evidence ([`E8`](../entities/E8-evidence.md)) and never holds [`R3`](R3-verifier.md) verifier authority, because both instances share one model and so cannot seal a gate requiring independence.
 
 **When there is no second agent, the independence a gate requires never falls to the same agent.**\
 It waits for a second agent, or the director decides the gate instead of a verifier - a recorded change of kind under [`E7`](../entities/E7-gate.md); the director does not become a verifier.\

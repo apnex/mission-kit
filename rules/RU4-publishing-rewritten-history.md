@@ -22,7 +22,7 @@ Judge the branch you have, not the branch its name suggests.
 
 ### Justification
 
-1. **A named justification, supplied by the invoking rule or a recorded human decision.** A [[M9]] scrub, a cascade rebase whose consumer docs cite pre-rebase SHAs, a trailer strip required by policy. *"Cleaning up the commits"* is not a justification. If you cannot name what breaks or what policy fails by leaving history alone, stop.
+1. **A named justification, supplied by the invoking rule or a recorded human decision.** A [M9](../methods/M9-history-content-scrub.md) scrub, a cascade rebase whose consumer docs cite pre-rebase SHAs, a trailer strip required by policy. *"Cleaning up the commits"* is not a justification. If you cannot name what breaks or what policy fails by leaving history alone, stop.
 
 ### Harm test - all four
 
@@ -59,7 +59,7 @@ The conditions exist to make those harms bounded and reviewable rather than disc
 The split between justification and harm test is deliberate, and it is what keeps this rule general.\
 Whether a rewrite is *warranted* depends entirely on motive, and motives multiply - attribution, secrets, identifiers, rebases, licence headers.\
 Whether a rewrite is *safe to publish* does not depend on motive at all; it depends on who else is holding the old history.\
-Enumerating admissible motives here would mean editing this rule every time a new one appears, which is exactly how the earlier version came to forbid the [[M9]] scrub it was written to authorise.
+Enumerating admissible motives here would mean editing this rule every time a new one appears, which is exactly how the earlier version came to forbid the [M9](../methods/M9-history-content-scrub.md) scrub it was written to authorise.
 
 Condition 6 catches accidental tree changes, the worst-case failure of any rewrite.\
 Condition 7 makes rollback cheap enough that you will actually do it.\
@@ -79,7 +79,7 @@ Condition 8 turns *"this seemed fine at the time"* into an auditable record.
 
 **Good:**
 
-> Logged in the project's catalog: *"Force-pushed `master` 2026-MM-DD. Justification - [[M9]] identifier scrub, condition 1. Harm test - sole contributor, no fork holding a rewritten commit, 0 open PRs, no external SHA references, evidence in the linked run. Safeguards - range-diff shows only the target substitution, filesystem backup retained at `<path>`, pre-tip `<sha>`, post-tip `<sha>`."*
+> Logged in the project's catalog: *"Force-pushed `master` 2026-MM-DD. Justification - [M9](../methods/M9-history-content-scrub.md) identifier scrub, condition 1. Harm test - sole contributor, no fork holding a rewritten commit, 0 open PRs, no external SHA references, evidence in the linked run. Safeguards - range-diff shows only the target substitution, filesystem backup retained at `<path>`, pre-tip `<sha>`, post-tip `<sha>`."*
 >
 > Then publish with an explicit lease:
 > ```bash
@@ -90,7 +90,7 @@ Condition 8 turns *"this seemed fine at the time"* into an auditable record.
 
 ## When to apply
 
-- Publishing the result of a [[M9]] scrub.
+- Publishing the result of a [M9](../methods/M9-history-content-scrub.md) scrub.
 - A cascade rebase across a patch series where consumer documentation cites the pre-cascade SHAs.
 - Any rewrite of history that has already been pushed.
 

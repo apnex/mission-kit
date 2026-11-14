@@ -5,7 +5,7 @@ title: set - a bounded population whose charter states what its members owe each
 status: active
 hydrate-when: You are writing a charter, adding a member to a curated population, or asking whether a population is complete
 supersedes: []
-related: [E2, A3, A14, C0, AR0]
+related: [E2, E4, A3, A14, C0, AR0, ST0, S0]
 ---
 
 # E3 - set
@@ -37,6 +37,11 @@ Two properties separate them, and both are load-bearing rather than pedantic.
 - **A layer is a directory; a set need not be.** A population can span directories - several entries across two layers governing one concern between them are a set with no folder - and a directory can hold several sets.
 
 Where a set happens to be a layer, both terms apply and neither is redundant: `layer` fixes the directory, prefix and category correspondence, while `set` fixes the population's territory and admission.
+
+**The corpus forms a recursive hierarchy of four set structures across three levels.**\
+At the root, the corpus itself is a set chartered by the root [`README.md`](../README.md) and [`VISION.md`](../VISION.md), whose members are the top-level layers ([`E2`](E2-layer.md)).\
+At the next level, each knowledge layer is a child set voiced by its `<prefix>0` charter ([`E4`](E4-charter.md)) at `<directory>/README.md`, while [`sets/`](../sets/README.md) (`ST0`) charters spanning sets (`ST1`, and so on) whose members sit across two or more layers.\
+Within any layer, a sub-population whose territory, admission, naming or placement differs from its parent's forms a nested sub-set registered in the parent charter's `Sub-sets` (as [`S0`](../style/README.md) registers medium sub-sets).
 
 **Set against collection.**\
 A collection is items in one place.\

@@ -13,18 +13,18 @@
 // from the record, takes scoring away from the author, and turns old probes into a regression gate.
 //
 // Commands:
-//   export  --out DIR [--ref REF]               copy the corpus without docs/ into an opaque dir
+//   export  --out DIR [--ref REF]               copy the corpus without docs/ into a read-only opaque dir
 //   prepare --suites a,b --corpus L=PATH ... --readers N --out RUN
 //                                               write one prompt per (corpus, group, reader)
 //   status  --run RUN                           which answers and scores are still missing
 //   blind   --run RUN [--seed S]                shuffle answers under opaque ids, one scorer prompt
-//                                               per suite, mapping sealed away from the scorer
+//                                               per suite, mapping kept out of scorer prompts in sealed/
 //   score   --run RUN                           unblind, validate, write RESULT.json and RESULT.md
 //   compare --base RESULT.json[:LABEL] --head RESULT.json[:LABEL] [--tolerance T]
 //                                               exit 1 if any probe's head mean falls below base
 //
 // Suites live in docs/evals/<suite>/suite.json - instance content about this corpus, so under
-// docs/, which export strips: no reader can reach a key.
+// docs/, which export strips so no export carries a key; only a reader's prompt keeps it to its export.
 //
 // Usage:  node tools/eval.mjs <command> [options]
 
@@ -37,13 +37,16 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const die = (msg, code = 2) => { process.stderr.write(`eval: ${msg}\n`); process.exit(code); };
 
+const VALUE_FLAGS = new Set(["out", "ref", "suites", "corpus", "readers", "run", "seed", "base", "head", "tolerance"]);
 function args(argv) {
 	const out = { _: [] };
 	for (let i = 0; i < argv.length; i++) {
 		const a = argv[i];
 		if (!a.startsWith("--")) { out._.push(a); continue; }
 		const k = a.slice(2);
+		if (!VALUE_FLAGS.has(k)) die(`unknown flag --${k}`);
 		const v = argv[i + 1] && !argv[i + 1].startsWith("--") ? argv[++i] : true;
+		if (v === true && VALUE_FLAGS.has(k)) die(`--${k} requires a value`);
 		if (k in out) out[k] = [].concat(out[k], v); else out[k] = v;
 	}
 	return out;
@@ -85,6 +88,53 @@ function loadSuite(id) {
 // --- export ------------------------------------------------------------------------------------
 // The directory name is random, so the path a reader is handed says nothing about which version it
 // holds. Earlier hand runs named corpora mk-base and mk-after, and every reader saw the word.
+// Every exported file and directory is marked read-only so a reader sharing the export cannot write
+// notes into it (B123), and prepare records its tree digest so score refuses a tampered export.
+function lockTree(dir) {
+	for (const name of fs.readdirSync(dir)) {
+		const full = path.join(dir, name);
+		const st = fs.lstatSync(full);
+		if (st.isSymbolicLink()) continue;
+		if (st.isDirectory()) lockTree(full);
+		else fs.chmodSync(full, st.mode & ~0o222);
+	}
+	fs.chmodSync(dir, fs.lstatSync(dir).mode & ~0o222);
+}
+
+function unlockTree(dir) {
+	if (!fs.existsSync(dir)) return;
+	const st = fs.lstatSync(dir);
+	if (st.isSymbolicLink()) return;
+	fs.chmodSync(dir, st.mode | (st.isDirectory() ? 0o700 : 0o600));
+	if (!st.isDirectory()) return;
+	for (const name of fs.readdirSync(dir)) unlockTree(path.join(dir, name));
+}
+
+function hasWritable(dir) {
+	const st = fs.lstatSync(dir);
+	if (st.isSymbolicLink()) return false;
+	if ((st.mode & 0o222) !== 0) return true;
+	if (!st.isDirectory()) return false;
+	for (const name of fs.readdirSync(dir)) if (hasWritable(path.join(dir, name))) return true;
+	return false;
+}
+
+function treeDigest(dir) {
+	const h = createHash("sha256");
+	const visit = (cur, relPrefix) => {
+		for (const name of fs.readdirSync(cur).sort()) {
+			const full = path.join(cur, name);
+			const rel = relPrefix ? `${relPrefix}/${name}` : name;
+			const st = fs.lstatSync(full);
+			if (st.isDirectory()) { h.update(`D:${rel}\0`); visit(full, rel); }
+			else if (st.isSymbolicLink()) { const t = Buffer.from(fs.readlinkSync(full)); h.update(`L:${rel}:${t.length}\0`); h.update(t); }
+			else { const b = fs.readFileSync(full); h.update(`F:${rel}:${b.length}\0`); h.update(b); }
+		}
+	};
+	visit(dir, "");
+	return h.digest("hex");
+}
+
 function cmdExport(o) {
 	if (!o.out) die("export needs --out DIR");
 	const dir = path.join(path.resolve(String(o.out)), "c-" + randomBytes(4).toString("hex"));
@@ -103,6 +153,7 @@ function cmdExport(o) {
 		files = "working tree at " + execFileSync("git", ["-C", root, "rev-parse", "--short", "HEAD"]).toString().trim() + (execFileSync("git", ["-C", root, "status", "--porcelain"]).toString().trim() ? " plus uncommitted changes" : "");
 	}
 	if (fs.existsSync(path.join(dir, "docs"))) die("export left docs/ in place");
+	lockTree(dir);
 	process.stdout.write(`${dir}\t${files}\n`);
 }
 
@@ -139,10 +190,14 @@ function cmdPrepare(o) {
 	if (!suites.length || !corpora.length || !o.out || !(readers > 0)) die("prepare needs --suites, --corpus, --readers and --out");
 	for (const c of corpora) {
 		if (!fs.existsSync(path.join(c.path, "INDEX.md"))) die(`corpus ${c.label} has no INDEX.md`);
-		if (fs.existsSync(path.join(c.path, "docs"))) die(`corpus ${c.label} contains docs/ - keys would be reachable; use export`);
+		if (fs.existsSync(path.join(c.path, "docs"))) die(`corpus ${c.label} contains docs/ - export would carry keys; use export`);
+		if (hasWritable(c.path)) die(`corpus ${c.label} is writable - a reader could alter it; use export`);
+		c.digest = treeDigest(c.path);
 	}
 	const run = path.resolve(String(o.out));
+	for (const p of ["prompts", "scorers", "sealed", "TASKS.md"]) unlockTree(path.join(run, p));
 	for (const d of ["prompts", "answers", "scorers", "scores", "sealed"]) fs.mkdirSync(path.join(run, d), { recursive: true });
+	for (const d of ["prompts", "scorers"]) for (const f of fs.readdirSync(path.join(run, d))) fs.rmSync(path.join(run, d, f), { force: true });
 	const groups = new Map();
 	for (const s of suites) {
 		const g = s.mode === "file" ? `${s.id}` : (s.group ?? s.id);
@@ -159,17 +214,23 @@ function cmdPrepare(o) {
 		fs.writeFileSync(path.join(run, "prompts", `${pid}.txt`), readerPrompt(g, c.path, answer));
 		prompts.push({ pid, label: c.label, group: g.id, reader: r, probes: g.suites.flatMap((s) => s.probes.map((p) => `${s.id}.${p.id}`)) });
 	}
-	// The manifest names each prompt's corpus; it is sealed so neither readers nor scorers see it.
+	const promptsDigest = treeDigest(path.join(run, "prompts"));
+	// The manifest names each prompt's corpus; sealed/ keeps it out of prompts/ and scorers/, though
+	// only their prompts keep agents from opening it (B124). Prompts, TASKS.md, scorers/ and sealed/
+	// are marked read-only with digests verified at score (B127).
 	writeJSON(path.join(run, "sealed", "manifest.json"), {
 		created: new Date().toISOString(), suites: suites.map((s) => s.id), readers,
-		corpora, prompts,
+		corpora, prompts, promptsDigest,
 	});
 	const order = shuffle(prompts, rng(salt));
-	fs.writeFileSync(path.join(run, "TASKS.md"), [
+	const tasksPath = path.join(run, "TASKS.md");
+	fs.writeFileSync(tasksPath, [
 		"<!-- GENERATED FILE by tools/eval.mjs prepare; do not edit by hand. -->", "# Reader tasks", "",
 		"Give each fresh agent exactly one line below, as its whole instruction. Order is shuffled.", "",
 		...order.map((p) => `- Read ${path.join(run, "prompts", p.pid + ".txt")} and follow it exactly. Read nothing else in ${run}.`), "",
 	].join("\n"));
+	for (const d of ["prompts", "scorers", "sealed"]) lockTree(path.join(run, d));
+	fs.chmodSync(tasksPath, fs.lstatSync(tasksPath).mode & ~0o222);
 	process.stdout.write(`${run}\t${prompts.length} reader prompts\n`);
 }
 
@@ -230,6 +291,8 @@ function cmdBlind(o) {
 	}
 	const bySuite = new Map();
 	for (const it of items) { const s = it.probe.split(".")[0]; if (!bySuite.has(s)) bySuite.set(s, []); bySuite.get(s).push(it); }
+	for (const d of ["scorers", "sealed"]) unlockTree(path.join(run, d));
+	for (const f of fs.readdirSync(path.join(run, "scorers"))) fs.rmSync(path.join(run, "scorers", f), { force: true });
 	for (const [sid, its] of bySuite) {
 		const suite = loadSuite(sid);
 		const lines = [
@@ -248,17 +311,45 @@ function cmdBlind(o) {
 		}
 		fs.writeFileSync(path.join(run, "scorers", `${sid}.txt`), lines.join("\n") + "\n");
 	}
-	writeJSON(path.join(run, "sealed", "blind.json"), { seed, suites: [...bySuite.keys()], items: items.map(({ text, ...k }) => k), absent });
+	const scorersDigest = treeDigest(path.join(run, "scorers"));
+	writeJSON(path.join(run, "sealed", "blind.json"), { seed, suites: [...bySuite.keys()], items: items.map(({ text, ...k }) => k), absent, scorersDigest });
+	for (const d of ["scorers", "sealed"]) lockTree(path.join(run, d));
 	process.stdout.write(`${items.length} answers blinded across ${bySuite.size} scorer prompts; ${absent.length} absent (scored 0)\n`);
 	for (const s of bySuite.keys()) process.stdout.write(`  scorer: Read ${path.join(run, "scorers", s + ".txt")} and follow it exactly.\n`);
 }
 
+function collectScoreObjects(v, out) {
+	if (!v || typeof v !== "object") return;
+	if (Array.isArray(v)) { for (const x of v) collectScoreObjects(x, out); return; }
+	if (typeof v.item === "string") { out.push(v); return; }
+	for (const x of Object.values(v)) collectScoreObjects(x, out);
+}
+
 function parseScores(text) {
 	const out = [];
-	for (const line of text.split("\n")) {
-		const m = line.match(/\{.*\}/);
-		if (!m) continue;
-		try { const o = JSON.parse(m[0]); if (o && typeof o.item === "string") out.push(o); } catch { /* not a score line */ }
+	for (let i = 0; i < text.length; i++) {
+		if (text[i] !== "{") continue;
+		let depth = 0, inStr = false, esc = false, end = -1;
+		for (let j = i; j < text.length; j++) {
+			const ch = text[j];
+			if (inStr) {
+				if (esc) esc = false;
+				else if (ch === "\\") esc = true;
+				else if (ch === "\"") inStr = false;
+				continue;
+			}
+			if (ch === "\"") inStr = true;
+			else if (ch === "{") depth++;
+			else if (ch === "}") {
+				depth--;
+				if (depth === 0) { end = j; break; }
+			}
+		}
+		if (end < 0) continue;
+		try {
+			collectScoreObjects(JSON.parse(text.slice(i, end + 1)), out);
+			i = end;
+		} catch { /* stray brace in prose; continue scanning */ }
 	}
 	return out;
 }
@@ -270,6 +361,21 @@ function cmdScore(o) {
 	const byItem = new Map(b.items.map((i) => [i.item, i]));
 	const got = new Map();
 	const errors = [];
+	for (const c of m.corpora) {
+		if (!c.digest) continue;
+		if (!fs.existsSync(c.path)) { errors.push(`corpus ${c.label} missing at ${c.path}`); continue; }
+		if (treeDigest(c.path) !== c.digest) errors.push(`corpus ${c.label} changed after prepare`);
+	}
+	if (m.promptsDigest) {
+		const pdir = path.join(run, "prompts");
+		if (!fs.existsSync(pdir)) errors.push("prompts/ missing");
+		else if (treeDigest(pdir) !== m.promptsDigest) errors.push("prompts/ changed after prepare");
+	}
+	if (b.scorersDigest) {
+		const sdir = path.join(run, "scorers");
+		if (!fs.existsSync(sdir)) errors.push("scorers/ missing");
+		else if (treeDigest(sdir) !== b.scorersDigest) errors.push("scorers/ changed after blind");
+	}
 	for (const s of b.suites) {
 		const f = path.join(run, "scores", `${s}.txt`);
 		if (!fs.existsSync(f)) { errors.push(`scores/${s}.txt missing`); continue; }

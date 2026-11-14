@@ -3,6 +3,7 @@ id: S7
 category: style
 title: Alternative paths in separate code blocks under subsections
 status: active
+medium: documents
 hydrate-when: You are documenting two or more alternative paths the reader must choose between
 supersedes: []
 related: [S2, S5, S8, S16]
@@ -86,5 +87,5 @@ kubectl rollout status -n kube-system ds/foo
   deployment paths.
 - Any doc showing "do this OR that" patterns where each branch has multiple
   commands.
-- Pairing with [[S16]] which establishes the Path A / Path B labeling
+- Pairing with [`S16`](S16-path-a-path-b-workflow-paths.md) which establishes the Path A / Path B labeling
   convention - S7 is how S16's labels render in markdown.

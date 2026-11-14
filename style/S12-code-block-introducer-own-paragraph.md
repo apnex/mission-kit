@@ -3,6 +3,7 @@ id: S12
 category: style
 title: Code-block introducer is its own paragraph
 status: active
+medium: documents
 enforced-by: tools/s12-code-block-introducer.sh
 hydrate-when: You are about to introduce a code block with a sentence
 supersedes: []
@@ -28,7 +29,7 @@ command
 ```
 ````
 
-The trailing `\` on the description lines is a hard break, so each sentence renders on its own line instead of collapsing into one block - see [[S6]].\
+The trailing `\` on the description lines is a hard break, so each sentence renders on its own line instead of collapsing into one block - see [`S6`](S6-one-sentence-per-line.md).\
 Without it the description reflows into a single rendered paragraph and the blank line below it is the only separation left, which weakens the pairing this rule creates.
 
 Two visual cues:

@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 # check-standing-context - validate a standing-context document against its declared contract.
 #
-# A standing-context document is the single always-on file an agent loads at session start for a
-# workspace. This checks the properties of such a file that can be decided mechanically:
+# Sovereign duty: the mechanical checks of SC2 (standing-context) and corpus https address
+# resolution, and no other. A standing-context document is the single always-on file an agent loads
+# at session start for a workspace. This checks the properties of such a file that can be decided
+# mechanically:
 #
 #   frontmatter   present, and kind/schema/knowledge-base declared
 #   sections      every required level-two heading is present

@@ -5,7 +5,7 @@ title: Schemas - machine-verifiable entity contracts, validatable without a proj
 status: active
 hydrate-when: You are defining or validating a structured entity and need its contract to hold without importing a runtime
 supersedes: []
-related: [SC1, SC6, A2, A8, E4]
+related: [SC1, SC6, A2, A8, E4, AR0, AR5]
 ---
 
 # Schemas - the machine-checkable layer
@@ -59,7 +59,8 @@ This set is analysed by [`M12`](../methods/M12-investigate-a-set.md) and its mem
 Its members are balanced on non-overlap, so an analysis counts a contract per layer for one concern as a finding, because a concern that varies by category is one contract with conditions.\
 Coverage is measured against structured files wherever their instances are written, including those a project writes from a type this corpus defines, since an ungoverned file is in scope before any contract governs it.\
 For each contract an analysis confirms that a check validates against it, a consumer uses it, and `catalog.json` maps it.\
-A candidate that defines a term in prose is routed to entities, and one that runs a check rather than stating a contract is routed to tools.
+A candidate that defines a term in prose is routed to entities, and one that runs a check rather than stating a contract is routed to tools.\
+To stress the territory against all structured data the corpus relies on, an analysis inventories every frontmatter block, lifecycle document type in [`artifacts/`](../artifacts/README.md), JSON or YAML configuration or manifest file, and resource envelope across the project, cross-checks each against the contracts in [`catalog.json`](catalog.json), the validators in [`tools/`](../tools/README.md), and the paired contract tests in `schemas/tests/`, and records any ungoverned structured artifact, unmapped resource kind, or hand-rolled duplicate check in the project's record (in this corpus, `docs/investigations/`) and backlog ([`AR5`](../artifacts/AR5-backlog.md)).
 
 ---
 

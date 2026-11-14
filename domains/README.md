@@ -60,7 +60,8 @@ Members are balanced on distinct evidence contracts, never on modes of work: a s
 This set is analysed by [`M12`](../methods/M12-investigate-a-set.md) and its membership changed by [`M13`](../methods/M13-change-a-set.md); this charter is changed by [`M11`](../methods/M11-change-a-charter.md).\
 Its members are balanced on distinct evidence contracts, never on modes of work, so an analysis tests each pair of domains for a difference in what their evidence resolves against, and places each unit of work by the tie-break rule below rather than by the surface its benefit lands on.\
 A candidate that is a mode of work is routed to [`work-types/`](../work-types/README.md), a characteristic of the system being worked on to [`traits/`](../traits/README.md), and an incident to the surface it hit.\
-Which work-types act on which domains is analysed and changed on the work-types, because the domain side of every pairing is generated from them.
+Which work-types act on which domains is analysed and changed on the work-types, because the domain side of every pairing is generated from them.\
+To stress the territory against the surfaces an organisation's work alters, an analysis partitions the domains across the product and its state, the delivery and runtime plane, the control plane, and durable knowledge, samples real changes - including cross-surface fixes and tool-neutral external projects - to verify that two independent placers resolve each change to one domain under the tie-break rule, and audits each member's subject surface for tool-bound naming that would block portability.
 
 ---
 

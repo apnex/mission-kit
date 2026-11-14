@@ -5,7 +5,7 @@ title: Rules - how work is done, where a check could tell whether it was
 status: active
 hydrate-when: You are adding or applying guidance on how work is done that leaves a trace a check could test
 supersedes: []
-related: [M0, PC0, S0, A0, E4]
+related: [M0, PC0, S0, A0, E4, AR4, AR5, SC2]
 ---
 
 # Rules - the how-you-must layer
@@ -60,6 +60,7 @@ Members are balanced on their traces: each declares one that a tool or a reader 
 
 This set is analysed by [`M12`](../methods/M12-investigate-a-set.md) and its membership changed by [`M13`](../methods/M13-change-a-set.md); this charter is changed by [`M11`](../methods/M11-change-a-charter.md).\
 Its members are balanced on their traces, so an analysis checks each declared `trace` against whether anything actually reads it; `tools/check-enforcers.sh` holds only that a named enforcer exists, never that the trace is read.\
+To stress the territory beyond existing members, an analysis walks the moments of a unit of work where a durable record is written or altered (entering, committing to a design, verifying, deferring or cutting, amending history, and handing over), audits recurring process defects in the project's decision records ([`AR4`](../artifacts/AR4-decision-record.md)), backlog ([`AR5`](../artifacts/AR5-backlog.md)), and standing context ([`SC2`](../schemas/SC2-standing-context.md)) for obligations that leave a verifiable trace in the record, and checks whether each rule's declared `trace` can be held by an executable script paired through `tools/check-enforcers.sh`.\
 A candidate whose trace nothing could check is routed to [`practices/`](../practices/README.md), one governing an artifact's form to [`style/`](../style/README.md), and one producing a result of its own to [`methods/`](../methods/README.md).\
 Placement is stated in [`M0`](../methods/README.md) and is changed there, not here, and a practice that acquires a trace moves into this set.
 

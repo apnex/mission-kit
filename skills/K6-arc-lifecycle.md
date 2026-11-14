@@ -5,7 +5,7 @@ title: arc-lifecycle - operate staged work as a sovereign FSM-gated state engine
 status: active
 hydrate-when: You are operating staged work whose gates must hold rather than be trusted
 supersedes: []
-related: [RU3, M7, P3, P4, P5]
+related: [RU3, M7, P3, P4, P5, E10]
 ---
 
 # K6 - arc-lifecycle
@@ -17,7 +17,7 @@ This ledger entry summarizes the value/deferral engine; it must not be used to b
 ## Rule
 
 Manage a multi-step initiative as a **sovereign state engine an agent operates by verbs**, not as prose an agent re-reads and hand-edits.\
-The model is three nouns: a **summit** (a fixed global-maximum goal that does not move), an **arc** (a tree of **rungs** - the steps - climbing one summit), and the lifecycle **state** each carries.\
+The model is three nouns: a **summit** (a fixed global-maximum goal that does not move), an [**arc**](../entities/E10-arc.md) (a tree of **rungs** - the steps - climbing one summit), and the lifecycle **state** each carries.\
 Operate it through a small, FSM-gated API:
 
 - **Reads** answer questions without loading the whole store: `get` /

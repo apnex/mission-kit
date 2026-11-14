@@ -3,6 +3,7 @@ id: S9
 category: style
 title: Action-first README structure
 status: active
+medium: documents
 hydrate-when: You are deciding what a reader meets first at the top of a README
 supersedes: []
 related: [S4, S5, S6, S7, S8]
@@ -20,7 +21,7 @@ Top-of-file README structure for an operator-facing project, in order:
    archived, plus supported platforms or versions if non-obvious. See
    below for what does not belong in it.
 4. **Action paths** - install / use / test / remove (the
-   [[S4]] four-journey table or pointers to deep-dive docs).
+   [`S4`](S4-four-journey-readme.md) four-journey table or pointers to deep-dive docs).
 5. **Anything else** - deep-dive architecture, troubleshooting, "why this
    exists," backstory, philosophy. Order within "anything else" matters
    less; just keep it **below** the action paths.

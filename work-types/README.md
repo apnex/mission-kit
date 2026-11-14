@@ -63,7 +63,8 @@ This set is analysed by [`M12`](../methods/M12-investigate-a-set.md) and its mem
 Its members are balanced on non-overlap, one act to one work-type, so an analysis looks first for an act two work-types could both mint and for recurring work that none covers.\
 A candidate naming who performs work or the surface its evidence lands on is a role or a domain, routed to [`roles/`](../roles/README.md) or [`domains/`](../domains/README.md); a procedure or document it carries goes to [`methods/`](../methods/README.md) or [`artifacts/`](../artifacts/README.md) and is cited from `methods` or `produces`; and work that cannot compile to a node is recorded as a routing note, as incident recovery is below.\
 A pairing on which a work-type and a domain disagree is settled on the work-type, because only its `domainEligibility` governs and the domain's view is generated.\
-A change to the canonical constraint set changes every work-type's preflight at once, so it is made in this charter and never in a member.
+A change to the canonical constraint set changes every work-type's preflight at once, so it is made in this charter and never in a member.\
+To stress the territory across the full lifecycle of work, an analysis partitions the work-types by mode (build and retire, self-check and gate assurance, ship and fleet operation, design and knowledge capture, arc coordination, and director ratification), crosses them against the domains and roles to test for acts two work-types could both mint or recurring acts none can mint, and checks every procedure in [`methods/`](../methods/README.md) and deliverable in [`artifacts/`](../artifacts/README.md) for attachment through `methods` and `produces`.
 
 ---
 

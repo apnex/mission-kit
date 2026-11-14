@@ -5,7 +5,7 @@ title: multi-agent - two or more independent actors coordinate over shared work
 status: active
 hydrate-when: You are deciding whether more than one actor's work meets in your system
 supersedes: []
-related: [T0]
+related: [T0, A16, W0, R0]
 ---
 
 # T3 - multi-agent
@@ -28,7 +28,7 @@ One actor using several tools is not multi-agent; the tools are not independent 
 
 - **Multi-agent:** agents handing work along a pipeline; a human reviewing an agent's output; several agents claiming tasks from a shared queue.
 - **Not multi-agent:** a single agent working alone, however many tools or sessions it uses. An agent handing work to its own next session is one actor across time, not two actors.
-- **Its complement is not a trait yet.** Work that no second actor independently checks has obligations of its own, and no trait captures it. See the gap recorded in the charter.
+- **Its complement is not a trait.** In an organisation of one, the obligation to check one's own work by means the author's reasoning cannot bias binds on the floor ([`A16`](../axioms/A16-unbiased-self-check.md)), and when a gate requires an independent agent and none exists, the gate waits or the director decides it ([`W0`](../work-types/README.md), [`R0`](../roles/README.md)); neither obligation needs a solo-agent trait.
 
 ---
 
@@ -44,7 +44,6 @@ Generated from each axiom's `applies-to`, the field that decides binding.
 | [A7](../axioms/A7-resilient-agentic-operations.md) | Resilient Agentic Operations | You are deciding how the system should behave when a unit of work fails or a thread stalls |
 | [A10](../axioms/A10-autopoietic-evolution.md) | Autopoietic Evolution | Friction has surfaced during work and you are deciding whether to route around it or fix its cause |
 | [A13](../axioms/A13-director-intent-amplification.md) | Director Intent Amplification | You are about to consume the director's attention, or to decide something in their absence |
-| [A15](../axioms/A15-recursive-elevation.md) | Recursive Elevation | You have completed a recurring report, review, or incident recovery and are deciding whether the mechanism itself should move one rung higher |
 <!-- END GENERATED -->
 
 An axiom binds a system that has *any one* of its traits, so each axiom above also binds systems that have none of this trait but one of its others.

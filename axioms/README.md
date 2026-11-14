@@ -5,7 +5,7 @@ title: Axioms - standing commitments, what brings one into force, and how they c
 status: active
 hydrate-when: You are deciding whether a principle is a standing commitment or a situated move, or which axioms bind the system in front of you
 supersedes: []
-related: [SC6, W0, R0, D0, E1, E5, E6, T0]
+related: [SC6, W0, R0, D0, E1, E5, E6, T0, AR5]
 ---
 
 # Axioms - the standing-commitment layer
@@ -70,7 +70,8 @@ This set is analysed by [`M12`](../methods/M12-investigate-a-set.md) and its mem
 Its members are balanced on orthogonality, so an analysis asks of each member what it forbids that no other does, and of the set whether a way to drift from intent is left unforbidden.\
 Admission carries one step the methods do not: the read of the candidate against the whole set that the growth policy requires, which is what keeps a contradiction from being accepted unseen.\
 Citation counts are read as information about a member, never as a reason to admit or retire one, for the reason given under *How the set composes*.\
-A candidate that holds only when a task touches its subject is a situated move and is routed to style, methods, patterns or skills; one stating what an axiom demands on a particular surface is routed to [`domains/`](../domains/README.md); one stating a precondition of binding is routed to [`traits/`](../traits/README.md).
+A candidate that holds only when a task touches its subject is a situated move and is routed to style, methods, patterns or skills; one stating what an axiom demands on a particular surface is routed to [`domains/`](../domains/README.md); one stating a precondition of binding is routed to [`traits/`](../traits/README.md).\
+To stress the territory against the ways a system can drift from its intent, an analysis partitions the axioms across the failure classes they forbid - truth of state and claims, boundaries and promotion, operation and recovery, cognition and context, authority, and knowledge, learning, and elevation - tests adjacent pairs for restatement or boundary tension (such as autonomous elevation against director authority), verifies that every `applies-to` tag obeys the floor and trait rules in [`T0`](../traits/README.md), and samples real system failures and backlog ([`AR5`](../artifacts/AR5-backlog.md)) findings for drift modes no current axiom forbids.
 
 ---
 
@@ -206,5 +207,6 @@ Axioms carry this shape rather than the `S`/`M`/`P`/`K` skeleton because an axio
 | [A12](A12-precision-context-engineering.md) | Precision Context Engineering | llm-in-the-loop | You are assembling the context for an invocation and deciding what earns its place |
 | [A13](A13-director-intent-amplification.md) | Director Intent Amplification | multi-agent, autonomous | You are about to consume the director's attention, or to decide something in their absence |
 | [A14](A14-compounding-learning.md) | Compounding Learning | any-system | You are about to apply a workaround or special case that leaves a known root cause unfixed and unrecorded, or you have learned something during work and are deciding whether to capture it |
-| [A15](A15-recursive-elevation.md) | Recursive Elevation | any-system, autonomous, multi-agent | You have completed a recurring report, review, or incident recovery and are deciding whether the mechanism itself should move one rung higher |
+| [A15](A15-recursive-elevation.md) | Recursive Elevation | any-system | You have completed a recurring report, review, or incident recovery and are deciding whether the mechanism itself should move one rung higher |
+| [A16](A16-unbiased-self-check.md) | Unbiased Self-Check | any-system | You have produced a change, a measurement or a claim and are about to check your own work before offering it as evidence or acting on it |
 <!-- END GENERATED -->

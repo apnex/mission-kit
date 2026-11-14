@@ -60,6 +60,7 @@ Members are balanced on the forces they resolve, so that no force is crowded wit
 This set is analysed by [`M12`](../methods/M12-investigate-a-set.md) and its membership changed by [`M13`](../methods/M13-change-a-set.md); this charter is changed by [`M11`](../methods/M11-change-a-charter.md).\
 Its members are balanced on the forces they resolve, so an analysis weighs balance by force, and a force crowded with shapes beside one holding none is the finding.\
 The strongest evidence of a missing member is a shape being rebuilt slightly differently, as *What earns an entry* states.\
+To stress the territory across forces that hold no member yet, an analysis crosses the recurring system forces - boundary translation, partial failure and retry idempotency, concurrent state mutation, interface evolution under live consumers, execution-environment variation, and untrusted input - against the seams between registered [components](../components/README.md) and across [domains](../domains/README.md), testing whether a recurring multi-part arrangement has appeared across two or more contexts without a pattern or has converged into a single depend-on artifact that belongs in `components/`.\
 A candidate that is an artifact to depend on is routed to [components](../components/README.md), as is a member every consumer has come to reproduce by hand, and a shape to avoid is routed to the `Faults` of the entry owning the invariant it breaks.
 
 ---

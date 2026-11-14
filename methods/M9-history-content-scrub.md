@@ -14,7 +14,7 @@ related: [RU4, RU2, S3]
 
 ## Rule
 
-When content must not remain in git history - AI-authorship trailers, a leaked credential, an internal identifier - rewrite the affected refs to remove it, prove the rewrite was both complete and surgical, then take the publication decision to [[RU4]].
+When content must not remain in git history - AI-authorship trailers, a leaked credential, an internal identifier - rewrite the affected refs to remove it, prove the rewrite was both complete and surgical, then take the publication decision to [RU4](../rules/RU4-publishing-rewritten-history.md).
 
 The mechanics are identical whatever the target.\
 Only the rewrite scope and the post-scrub obligation vary by class.
@@ -57,9 +57,9 @@ Clean up.**\
 Delete `refs/original/*` if `filter-branch` was the fallback, expire reflogs, and garbage-collect so the old objects are unreachable locally.
 
 **7.\
-Publish under [[RU4]].**\
+Publish under [RU4](../rules/RU4-publishing-rewritten-history.md).**\
 The scrub does not authorise its own force-push.\
-M9 establishes that the rewrite is correct; [[RU4]] decides whether publishing it is safe.
+M9 establishes that the rewrite is correct; [RU4](../rules/RU4-publishing-rewritten-history.md) decides whether publishing it is safe.
 
 ---
 
@@ -73,7 +73,7 @@ Get the logic wrong and you need to start over, so the backup comes before the r
 Get it *apparently* right and ship it unverified, and nobody finds out until the target turns up in a clone - so verification is a step, not a habit.
 
 Separating the mechanics from the publication decision is what keeps this rule usable.\
-A scrub of a leaked key and a scrub of an AI trailer are the same procedure with different obligations; the question of whether force-pushing the result is safe is a different question entirely, with different inputs, and it belongs in [[RU4]].
+A scrub of a leaked key and a scrub of an AI trailer are the same procedure with different obligations; the question of whether force-pushing the result is safe is a different question entirely, with different inputs, and it belongs in [RU4](../rules/RU4-publishing-rewritten-history.md).
 
 ---
 
@@ -112,7 +112,7 @@ A scrub of a leaked key and a scrub of an AI trailer are the same procedure with
 > git rev-list --count HEAD                                        # expect unchanged
 > ```
 >
-> Then take the publication decision to [[RU4]].
+> Then take the publication decision to [RU4](../rules/RU4-publishing-rewritten-history.md).
 
 ---
 
@@ -125,3 +125,14 @@ A scrub of a leaked key and a scrub of an AI trailer are the same procedure with
 
 Do not apply to remove content you merely regret.\
 History is a record; the bar is that the content must not be there, not that you would rather it weren't.
+
+---
+
+## Work-types that cite this procedure
+
+Generated from each work-type's `methods`; a procedure no work-type cites shows an empty table.
+
+<!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
+| ID | Title | Hydrate when |
+|---|---|---|
+<!-- END GENERATED -->

@@ -3,6 +3,7 @@ id: S1
 category: style
 title: Prerequisites explicit + cluster-agnostic + assumes authenticated tooling
 status: active
+medium: documents
 hydrate-when: You are authoring a workflow document that drives shared infrastructure
 supersedes: []
 related: [S2, M2, S16]

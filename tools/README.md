@@ -14,6 +14,7 @@ The rule declares its enforcer in frontmatter and `check-enforcers.sh` verifies 
 | [`S12`](../style/S12-code-block-introducer-own-paragraph.md) | `s12-code-block-introducer.sh` | yes |
 | [`S13`](../style/S13-plain-ascii-in-markdown.md) | `s13-plain-ascii.sh` | yes |
 | [`S14`](../style/S14-hydration-triggers-state-a-condition.md) | `s14-hydration-triggers.sh` | no, needs judgement |
+| [`S17`](../style/S17-source-comments-state-duty-and-why.md) | `s17-source-comments.sh` | no, needs judgement |
 
 Every checker takes the same arguments, prints the same finding format, and honours the same exemption markers, which live once in [`lib/style-common.sh`](lib/style-common.sh).\
 Rules `S1`, `S2`, `S3`, `S4`, `S5`, `S7`, `S9`, `S11`, `S15` and `S16` need judgement and have no enforcer; review those by reading.
@@ -49,6 +50,8 @@ Runs every gate this repository holds itself to.
 tools/check-all.sh                 # style over files changed against origin/main
 tools/check-all.sh --all           # style over the whole corpus
 tools/check-all.sh --since REF     # style over files changed against REF
+tools/check-all.sh --root DIR      # run against repository root DIR
+tools/check-all.sh --style-only    # run only the style-rule dispatch stage
 ```
 
 **Why it exists.**\
@@ -57,10 +60,10 @@ This is the single entry point, so the gate a contributor runs and the gate CI r
 
 **Run it when** you are about to commit, and let CI run it on every push and pull request.
 
-Style is gated on changed files rather than the whole corpus.\
+Style is gated on changed files rather than the whole corpus, handing each per-rule checker the changed files of its declared `medium` (`*.md` for `documents` rules `S6`..`S14`, and `tools/*.sh` and `tools/*.mjs` for `code` rule `S17`).\
 The corpus carries debt that predates the checker, so blocking on all of it would either stall every change or force one unreviewable sweep.\
 Gating the diff blocks new debt and implements S6's instruction to convert opportunistically.\
-Changed means committed against the base plus staged plus unstaged, because comparing commits alone makes the gate vacuous locally.
+Changed means committed against the base plus staged, unstaged and untracked, because comparing commits alone makes the gate vacuous locally and omitting untracked paths lets a brand-new file escape until CI.
 
 Exit status is non-zero if any gate fails, and every gate runs even after an earlier one fails, so one run reports everything.
 
@@ -111,6 +114,9 @@ It refuses when the root README's layer table and the directories carrying a cha
 The generator declares no layer list of its own: the reading order is the charter's table, and the set is every directory whose README declares an id and a category.\
 A layer present in one and not the other would have its entries silently uncollected, or a heading with nothing under it, and the ledger would look correct either way.
 
+It refuses when a style member (`S1..Sn`) omits `medium` or declares an unknown value, or when a charter or non-style entry declares `medium`.\
+In `style/README.md`, the generated `## Index` partitions members into `### Sub-set: <medium>` tables from `medium` frontmatter (`documents`, `messages`, `commits`, `code`), keeping the `Held by` column on every sub-set table.
+
 ---
 
 ## check-structure.sh
@@ -134,20 +140,38 @@ Exit status is non-zero if either is broken.
 
 ## check-enforcers.sh
 
-Holds the pairing between a style rule and the tool that enforces it.
+Holds the pairing between a style or conduct rule and the tool that enforces it.
 
 ```sh
-tools/check-enforcers.sh
+tools/check-enforcers.sh [--root DIR]
 ```
 
 **Why it exists.**\
 The link between a rule and its mechanism lived only in prose, which is how six rules came to be enforced by one file holding six duties.\
-Declaring it in frontmatter makes it checkable in both directions: a rule naming a tool that does not exist is a broken promise, and a per-rule tool that no rule claims is orphaned.
+Declaring it in frontmatter makes it checkable in both directions: a rule naming a tool that does not exist (in `enforced-by:` or as a `tools/*.sh` or `tools/*.mjs` script in its body) is a broken promise, a rule body naming a non-test script that disagrees with `enforced-by:` is a forked enforcer, and a per-rule tool (`tools/s[0-9]*-*` or `tools/ru[0-9]*-*`) that no rule claims is orphaned.
 
-**Run it when** you add or rename a style rule or its enforcer.
+**Run it when** you add or rename a style or conduct rule or its enforcer.
 
 Exit status is non-zero if either direction is broken.\
 A `*.test.sh` beside a tool is skipped: it names the tool it exercises rather than a rule, so no rule may claim it.
+
+---
+
+## enforcers.test.sh
+
+Holds `check-enforcers.sh` to its frontmatter, body-script, and orphan-tool refusals.
+
+```sh
+tools/enforcers.test.sh
+```
+
+**Why it exists.**\
+`S14` declared `enforced-by: tools/s14-hydration-triggers.sh` in frontmatter while its `## Checking` section still named the retired `tools/check-style.sh --rule S14` (`B132`).\
+Checking both frontmatter `enforced-by:` and `tools/*.sh` or `tools/*.mjs` paths in rule bodies only holds if a fixture test fails when either check is removed.
+
+**Run it when** you change `tools/check-enforcers.sh`.
+
+Exit status is non-zero if any of its five fixture cases fails.
 
 ---
 
@@ -200,12 +224,12 @@ tools/check-entry-body.sh
 
 **Why it exists.**\
 The catalogue entry contract governs frontmatter and stops at the closing marker, so nothing governed the body.\
-`axioms/README.md` had always specified a five-section shape and all fifteen axioms had always followed it, which is a convention held by the care of whoever wrote last rather than a rule.
+`axioms/README.md` had always specified a five-section shape and all sixteen axioms had always followed it, which is a convention held by the care of whoever wrote last rather than a rule.
 
-It also holds every layer charter - the entry whose id is its prefix followed by zero - to the headings `E4` fixes, declared under `spec.charters`: Vision, Territory, Operation, Faults and Index, in any order.\
+It also holds every charter - each knowledge layer's `<prefix>0` entry at `<directory>/README.md` and every spanning-set charter declaring `category: set` - to the headings `E4` fixes, declared under `spec.charters`: Vision, Territory, Operation, Faults and Index, in any order.\
 That pass replaced a separate charter checker, so one tool holds the one contract.
 
-**Run it when** you add an entry in a governed category, or change a declared shape. or a charter
+**Run it when** you add an entry in a governed category, or change a declared shape or a charter.
 
 The shape is data in [`schemas/entry-body/v1alpha1/entry-body.json`](../schemas/entry-body/v1alpha1/entry-body.json), so adding a category is an edit to that file rather than to this tool.\
 A category absent from it is ungoverned by design.\
@@ -237,10 +261,12 @@ That is the argument for a script over a careful reader, made by the script.
 |---|---|---|
 | R1 | every board item cites a backlog row | an orphaned plan item |
 | R2 | every cited row exists | a citation to nothing |
-| R3 | every open row is on the board or under Held | a known problem silently falling off |
-| R4 | no closed row is planned in an open milestone | the record and the plan disagreeing |
+| R3 | every row carries six columns, scores and evidence, and every open row carries an observable revival trigger | a row the generated views cannot order or revive |
+| R4 | no closed row is planned in a live item | the record and the plan disagreeing |
 | R5 | milestones appear in ascending order | an accidental priority nobody chose |
-| R6 | a finished milestone cites no row left open and unplanned | a milestone claiming more than it delivered |
+| R6 | a finished milestone or item cites no row left open and unplanned | finished work claiming more than it closed |
+| R7 | the generated triage ledger and held list match the record | a hand copy or stale view drifting from the record |
+| R8 | `Where we are` agrees with the milestone headings | a narrative still pointing at finished work |
 
 **Run it when** you edit either file, which `check-all.sh` does on every change.
 
@@ -252,21 +278,23 @@ Exit status is non-zero on any disagreement.
 
 ## check-traits.mjs
 
-Holds the `applies-to` vocabulary and the `traits/` layer to naming the same things.
+Holds the `applies-to` vocabulary and the `traits/` layer to naming the same things, and refuses any axiom that combines the floor (`any-system`) with a trait.
 
 ```sh
 node tools/check-traits.mjs
+node tools/check-traits.mjs --root DIR
 ```
 
 **Why it exists.**\
 An axiom's `applies-to` field is constrained to an enum in the catalogue contract, so a misspelled or undefined tag is refused instead of silently binding nothing.\
 That enum is a second list of the traits declared in `traits/`, and two lists of one thing drift.\
-Add a trait and forget the enum, and every axiom tagged with it is refused; remove one and the enum keeps admitting a tag nothing defines.
+Add a trait and forget the enum, and every axiom tagged with it is refused; remove one and the enum keeps admitting a tag nothing defines.\
+It also enforces `T0`'s floor-exclusivity rule across `axioms/`: an axiom tagged `any-system` already binds every system that has a trait, so combining `any-system` with a trait in `applies-to` is refused (`B118`).
 
-**Run it when** you add, rename or retire a trait.
+**Run it when** you add, rename or retire a trait, or edit an axiom's `applies-to` list.
 
 The floor, `any-system`, is a valid value and deliberately not a trait, so it is the one name allowed in the enum without a trait behind it.\
-Exit status is non-zero if either list names something the other does not.
+Exit status is non-zero if either list names something the other does not, if the floor is absent from the enum, if `traits/` or `axioms/` holds no entries, or if an axiom has empty or unknown `applies-to` tags or combines `any-system` with a trait (`2` on invalid CLI arguments).
 
 ---
 
@@ -338,8 +366,11 @@ Suites and runs live in [`docs/evals/`](../docs/evals/README.md).
 
 **Run it when** a change touches how the corpus is meant to be read - an axiom, an entity, a trait, a charter - and compare against the last baseline.
 
-`eval.test.sh` holds its behaviour: no version label reaches a reader or scorer, an unscored or doubly-scored answer refuses the result, and a regression fails the comparison.\
+`eval.test.sh` holds its behaviour: exported trees, `prompts/`, `TASKS.md`, `scorers/` and `sealed/` are read-only, `prepare` refuses a writable corpus and records corpus and prompt digests, `blind` records scorer digests, `score` refuses a corpus, reader prompt or scorer prompt altered afterwards and parses single-line, literal-`\n` and multi-line JSON score objects, no version label reaches a reader or scorer, an unscored or doubly-scored answer refuses the result, and a regression fails the comparison.\
 Each refusal was mutation-tested - removed from the tool to confirm the test goes red.
+
+Every result also lists **consistent hedges** - probes where most readers of one corpus marked the answer not settled or guessed - so an ambiguity in the corpus is looked for before the key is blamed.\
+It is a prompt to check, not a verdict: readers sometimes hedge a side point and still answer correctly.
 
 ---
 
@@ -366,13 +397,13 @@ Mutation-tested on a duplicated id and a missing affected path.
 Generates the structural sections of `docs/ARCHITECTURE.md` from the corpus.
 
 ```sh
-node tools/generate-architecture.mjs           # regenerate
-node tools/generate-architecture.mjs --check   # fail if stale
+node tools/generate-architecture.mjs [--root DIR]           # regenerate
+node tools/generate-architecture.mjs [--root DIR] --check   # fail if stale
 ```
 
 **Why it exists.**\
 `AR1` forbids a hand-authored current projection, and this corpus's was hand-authored and stale.\
-For a corpus the running system is the repository, so the layers, each one's duty and population, what each draws on, and what the gate holds are read from the root README, the charters, the directories and `check-all.sh`.\
+For a corpus the running system is the repository, so the layers, each one's duty and population, what each draws on, and what the gate holds are read from the root README, the charters, the directories and `check-all.sh`, rebasing root-relative links into `docs/` (`B126`).\
 The reasoning sections stay authored.
 
 **Run it when** a layer, a charter's title or `related`, or the gate changes; the gate runs `--check` on every change.
@@ -414,7 +445,7 @@ Run it after every push; it exits non-zero on an uncommitted change, a commit th
 
 ## sets.test.sh
 
-Holds the spanning-set mechanism to its refusals: a set may gather only entries that exist and are active, must gather at least one, and its index is generated from its members, including a block-list form.
+Holds the spanning-set and style medium sub-set mechanisms to their refusals: a spanning set may gather only entries that exist and are active, must gather at least one, and its index is generated from its members, including a block-list form; and every style member (`S1..Sn`) must declare a valid `medium` while `style/README.md` partitions its index into `### Sub-set: <medium>` tables.
 
 ```sh
 tools/sets.test.sh
@@ -437,5 +468,160 @@ tools/check-guidance-placement.sh
 **Why it exists.**\
 The guidance was preferred as written; a later edit that quietly rewords it would carry the evidence's authority without the evidence.
 
-Every result also lists **consistent hedges** - probes where most readers of one corpus marked the answer not settled or guessed - so an ambiguity in the corpus is looked for before the key is blamed.\
-It is a prompt to check, not a verdict: readers sometimes hedge a side point and still answer correctly.
+---
+
+## entry-body.test.sh
+
+Holds `check-entry-body.sh` to its governed-category and charter refusals, across both `<prefix>0` layer charters and `category: set` spanning-set charters.
+
+```sh
+tools/entry-body.test.sh
+```
+
+**Why it exists.**\
+`check-entry-body.sh` checked only `*/README.md` layer charters, so `ST1` carried `Purpose` and no `Operation` while the gate reported every charter clean (`B104`).\
+Each refusal case verifies its fixture landed on disk before trusting a non-zero exit.
+
+---
+
+## methods-view.test.sh
+
+Holds `generate-index.mjs` to generating each procedure entry's reverse view of the work-types that cite it in `methods`.
+
+```sh
+tools/methods-view.test.sh
+```
+
+**Why it exists.**\
+`SC1` promised that the reverse view of a work-type's `methods` is generated, while `generate-index.mjs` generated reverse views only for `domainEligibility`, `applies-to` and `produces` (`B102`).\
+Exercises `--check` staleness refusal, generation on a citing work-type, and removal when the citation goes.
+
+---
+
+## decisions.test.sh
+
+Holds `check-decisions.mjs` to `AR4`'s register refusals and live pending-absorption reporting.
+
+```sh
+tools/decisions.test.sh
+```
+
+**Why it exists.**\
+Rulings superseded before absorption stayed marked `pending` in `absorbed` and were reported alongside live unabsorbed rulings.\
+Verifies duplicate-id refusal, missing-`affects` refusal, and that superseded rows are excluded from `pending absorption` while live pending rows remain visible.
+
+---
+
+## check-component-edges.mjs
+
+Holds registered components' `## Edges` declarations (`Contains`, `Contained-by`, `Consumes`, `Consumed-by`) to bidirectional peer agreement.
+
+```sh
+node tools/check-component-edges.mjs
+node tools/check-component-edges.mjs --root DIR
+```
+
+**Why it exists.**\
+`Consumed-by` lists unregistered consuming applications alongside registered peer components (`0096`), so it cannot be purely generated from peer frontmatter, and two hand-written sides of one relation drift (`B112`).\
+Checks that every registered component (`C1..Cn`) declares all four edge lines, links every peer `C<n>` target to an existing component other than itself without contradicting `"nothing"`, and agrees bidirectionally across `Consumes` / `Consumed-by` and `Contains` / `Contained-by`.
+
+**Run it when** you add a component or edit `## Edges`; the gate runs it on every change.
+
+---
+
+## component-edges.test.sh
+
+Holds `check-component-edges.mjs` to its bidirectional, missing-line, dangling-peer, self-edge and unlinked-ID refusals.
+
+```sh
+tools/component-edges.test.sh
+```
+
+**Why it exists.**\
+Exercises both directions of `Consumes` / `Consumed-by` asymmetry, `Contains` / `Contained-by` asymmetry, missing edge declarations, self-edges, unknown component IDs, and unlinked or contradictory declarations in an isolated fixture sandbox.
+
+---
+
+## board.test.sh
+
+Holds `check-board.mjs` to `R1` through `R8`, inline-code cell and revival-trigger extraction, and its generated ledger and held-list views.
+
+```sh
+tools/board.test.sh
+```
+
+**Why it exists.**\
+`check-board.mjs` matched lowercase `trigger` inside inline code (`B76`), matched `TRIGGER FIRED` ahead of an active `TRIGGER:` (`B39`), collapsed an empty trailing trigger column onto `evidence`, and checked `DONE` milestones under `R6` while skipping `DONE` items in open milestones (`B125`).\
+Exercises each refusal and generated-view case in an isolated fixture sandbox.
+
+---
+
+## architecture.test.sh
+
+Holds `generate-architecture.mjs` to structural table derivation, root-to-`docs/` relative link rebasing, and `--check` staleness refusal.
+
+```sh
+tools/architecture.test.sh
+```
+
+**Why it exists.**\
+`generate-architecture.mjs` copied root `README.md` blurbs verbatim into `docs/ARCHITECTURE.md`, turning `[AR0](artifacts/README.md)` into a broken link under `docs/` (`B126`), and carried no behaviour test.\
+Exercises active-member counting, charter `related` draws, root-relative link rebasing (preserving inline code and external links), missing-region failure, and `--check` staleness refusal.
+
+---
+
+## check-links.mjs
+
+Holds live markdown files across the repository to resolving every relative link and `#fragment` heading anchor on disk.
+
+```sh
+node tools/check-links.mjs
+node tools/check-links.mjs --root DIR [file ...]
+```
+
+**Why it exists.**\
+`check-standing-context.sh --addresses-only` checks external `https://` addresses across tracked markdown files (`B30`), and `0134` fixed link rebasing in `generate-architecture.mjs`, while nothing checked internal relative links or `#fragment` anchors - leaving `docs/README.md` pointing at `../backlog/README.md` after the `backlog/` layer was retired into `docs/BACKLOG.md` and `docs/requests/` (`B14`, `B130`, `B137`).\
+Checks every relative markdown link and `#fragment` heading anchor (cross-file and same-file) outside fenced code blocks, single- and multi-backtick inline code spans, external URLs, `<placeholder>` tokens, and frozen historical records (`docs/audits/`, `docs/investigations/`, `docs/requests/`, governed by `RU2`, unless passed explicitly as `[file ...]`), refusing any target that does not exist on disk, escapes the repository root, or names a missing `#fragment` heading slug.
+
+**Run it when** you move, rename or retire a file or heading, or edit markdown links; `check-all.sh` runs it on every change.
+
+---
+
+## links.test.sh
+
+Holds `check-links.mjs` to verifying relative markdown links, `#fragment` heading anchors, code and `RU2` exemptions, root-escape refusal, and `--root` argument validation.
+
+```sh
+tools/links.test.sh
+```
+
+**Why it exists.**\
+Exercises valid relative links and `#fragment` anchors, broken relative link refusal, broken `#fragment` anchor refusal (cross-file and same-file), root-escape refusal, fenced and single/double-backtick inline-code exemptions, `RU2` frozen-history exemptions, and missing `--root` argument handling in an isolated fixture sandbox.
+
+---
+
+## traits.test.sh
+
+Holds `check-traits.mjs` to vocabulary parity between `traits/` and the `applies-to` enum, `any-system` floor exclusivity and tag validation across `axioms/`, and `--root` argument validation.
+
+```sh
+tools/traits.test.sh
+```
+
+**Why it exists.**\
+`A15` declared `applies-to: [any-system, autonomous, multi-agent]` against `T0`'s floor rule while `check-traits.mjs` checked only tag vocabulary (`B118`).\
+Exercises valid vocabulary and floor-exclusive axioms (including block lists with inline comments and subsequent list keys), unenumerated traits, undefined enum values, missing `any-system` floor in the enum, inline, reversed, block-list, and multi-line flow-array `any-system` + trait combinations, empty or unknown `applies-to` tags, empty `axioms/` directories, and missing, flag-like, or nonexistent `--root` or unknown flag arguments in an isolated fixture sandbox.
+
+---
+
+## s17-source-comments.test.sh
+
+Holds `s17-source-comments.sh` and `check-all.sh --style-only` to line-2 `<name> - <summary>` header validation, non-empty `Sovereign duty:` and `Usage:` declarations, plain ASCII in full-line source comments, commented-out statement refusal, heredoc skipping, `style-check: allow S17` and `GENERATED FILE` exemptions, style-medium dispatch, and CLI argument validation.
+
+```sh
+tools/s17-source-comments.test.sh
+```
+
+**Why it exists.**\
+An `M12` sampling pass across `tools/*.sh` and `tools/*.mjs` under `S0`'s `code` medium (`B67` gap 3) found `3` of `37` scripts failing the line-2 header convention, `1` script carrying `6` non-ASCII comment lines that escaped `S13` (`*.md` only), and `8` of `25` non-test scripts omitting `Sovereign duty:` in their opening comment block.\
+Exercises valid `.sh`, `.mjs` and `*.test.sh` headers, markdown-argument fallback and explicit file arguments (including missing-file refusal), malformed line-2 headers (wrong stem, literal dot in stem, whitespace-only summary), missing, empty, or post-header `Sovereign duty:` and `Usage:`, non-ASCII comment refusal and comment-line `style-check: allow S17` / `GENERATED FILE` exemptions, heredoc skipping (`<<'EOF' > file`, `<<-EOF` with tab terminator, comment ending in `<<EOF`, and `<<<` here-strings), all `5` shell and `10` JavaScript commented-out code patterns alongside natural prose comments, `check-all.sh --style-only` medium dispatch (`documents` vs `code`, quoted `medium`, unknown-medium fail-closed, invalid `--since`), and invalid `--root` or unknown flags in an isolated fixture sandbox.

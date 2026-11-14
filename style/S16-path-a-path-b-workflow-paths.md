@@ -3,6 +3,7 @@ id: S16
 category: style
 title: Path A / Path B - one complete path per execution environment in a workflow document
 status: active
+medium: documents
 hydrate-when: You are authoring a workflow document that supports more than one execution path
 supersedes: []
 related: [S1, S4, S7]

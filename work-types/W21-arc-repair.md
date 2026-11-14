@@ -11,6 +11,7 @@ evidenceContract:
 evidenceAuthority: executor-evidence
 domainEligibility: [coordination-substrate]
 domainFreedom: pinned
+related: [E10]
 parameters:
   - name: arc
     fills: the trapped/failed arc
@@ -24,7 +25,7 @@ compositionHooks: seeded as an external successor-driver OUTSIDE the target comp
 
 ## Definition
 
-Repair the topology of a trapped or failed WorkGraph arc - rewiring dependencies, superseding trapped children, and re-projecting the stint - so a parent completion gate that can no longer close is made closeable again.
+Repair the topology of a trapped or failed WorkGraph [arc](../entities/E10-arc.md) - rewiring dependencies, superseding trapped children, and re-projecting the stint - so a parent completion gate that can no longer close is made closeable again.
 
 ---
 

@@ -36,10 +36,11 @@ The ground rules:
 A charter, an axiom, a definition or a vision has no commands to run.\
 Its job is to change what a reader can decide, so it is tested by giving fresh readers the document and asking questions only a good version lets them answer.
 
-1. **Write the probes and the answer key before anyone reads the document.**
+1. **Write the probes and the answer key before anyone who will answer them reads the document.**
    A key written after seeing answers grades toward the result its author wants.
    Commit it, so the order is provable.
-   **Then have a fresh reader audit the key** against the documents it is about - not answer it, judge whether each answer is right - and correct it before anyone is scored.
+   **Then have a fresh reader audit the key** against the documents it is about - not answer it, judge whether each answer is right - and correct it and commit the correction before any reader answers.
+   The auditor reads the documents to judge the key and answers nothing, so the audit does not break the order; a key corrected after readers have answered can no longer be shown to owe nothing to their answers.
    The key is the author's opinion, and a wrong one yields a confident wrong result: every key audited this way in this corpus has had errors corrected before use.
 2. **Derive the probes from what the document is for, not from what was changed.**
    For a charter, probe each concern it must answer - routing an excluded item,
@@ -144,6 +145,8 @@ A fresh reader is the cheapest available second actor, and the only one that rea
 
 > The author writes six probes from what the set's members do -
 > two the old charter already handles - and commits an answer key.
+> A fresh reader audits the key, and the author corrects one answer
+> and commits again before any reader runs.
 > Three fresh readers get the old charter, three the new and three nothing, blind,
 > each told to mark what the document says apart from what they
 > guess. The new version answers every probe from quoted text; the
@@ -172,3 +175,14 @@ A fresh reader is the cheapest available second actor, and the only one that rea
   Fresh readers are expensive, and running them on trivial edits is the ceremony
   this set's charter names as a fault. The test is whether a reader could act
   differently after the change; if not, a reading pass is enough.
+
+---
+
+## Work-types that cite this procedure
+
+Generated from each work-type's `methods`; a procedure no work-type cites shows an empty table.
+
+<!-- BEGIN GENERATED: entries. Run tools/generate-index.mjs; do not edit by hand. -->
+| ID | Title | Hydrate when |
+|---|---|---|
+<!-- END GENERATED -->

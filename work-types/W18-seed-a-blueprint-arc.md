@@ -24,7 +24,7 @@ compositionHooks: seeds the child graph (driver + rungs) whose dependsOn/complet
 
 ## Definition
 
-Instantiate a WorkGraph arc from a blueprint - mint the driver plus child graph with a deterministic runId, so strategic intent compiles into claimable, well-typed WorkItems the idle engine can feed.
+Instantiate a WorkGraph [arc](../entities/E10-arc.md) from a blueprint - mint the driver plus child graph with a deterministic runId, so strategic intent compiles into claimable, well-typed WorkItems the idle engine can feed.
 
 ---
 

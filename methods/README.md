@@ -5,7 +5,7 @@ title: Methods - procedures that produce a result of their own
 status: active
 hydrate-when: You are choosing how to run a review, an audit or another procedure, or deciding whether guidance is a procedure, a rule, a practice or style
 supersedes: []
-related: [S0, P0, K0, W0, E4, RU0, PC0]
+related: [S0, P0, K0, W0, E4, RU0, PC0, AR4, AR5]
 ---
 
 # Methods - the how-you-operate layer
@@ -63,6 +63,7 @@ This set is analysed by [`M12`](M12-investigate-a-set.md) and its membership cha
 Its members are balanced on distinct situations and on composition, so an analysis reads which members are primitives and which compounds from the citation graph, and takes a member with no edges as the prompt *The orphaned primitive* names.\
 A candidate is placed by the questions under *What belongs here, and what does not*: one producing nothing of its own goes to [`rules/`](../rules/README.md) if it leaves a trace and to [`practices/`](../practices/README.md) if it does not, a convention about the artifact to [`style/`](../style/README.md), and an invocable capability to [`skills/`](../skills/README.md).\
 The population is read against what actually went wrong in the work, not only against its members, because this set's characteristic gap is a failure no procedure covers.\
+To stress the territory systematically, an analysis tests two covers alongside the citation graph: the moments of a unit of work (entering, committing to a design, executing, verifying, deciding what to keep, treating the record, and handing over) against the failure modes recorded in the project's decision records ([`AR4`](../artifacts/AR4-decision-record.md)) and backlog ([`AR5`](../artifacts/AR5-backlog.md)), and the `methods` attachment cover across [`work-types/`](../work-types/README.md) so every work-type whose conduct changes whether its result can be trusted cites a procedure.\
 Placement is stated once in this charter and cited by `rules/` and `practices/`, so a change to it moves their boundaries too.
 
 ---

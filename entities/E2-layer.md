@@ -5,7 +5,7 @@ title: layer - a top-level directory owning one concern, and the three names a k
 status: active
 hydrate-when: You are deciding which layer owns an entry, or you have met the words layer, category and prefix and cannot tell whether they name one thing or three
 supersedes: []
-related: [E0, E1, A3, SC1]
+related: [E0, E1, E3, E4, A3, SC1, M12]
 ---
 
 # E2 - layer
@@ -59,9 +59,10 @@ A layer owns a concern, not a topic.\
 If two directories could each plausibly hold the same entry, they are one layer wearing two names.
 
 **Layer against set.**\
-Every knowledge layer **is** a [`set`](E3-set.md), and its charter is the `<prefix>0` entry.\
-The converse does not hold: a set may nest inside another, and may span directories or none, where a layer is top-level and is a directory by definition.\
-This entry fixes the directory, prefix and category correspondence; `E3` fixes what the population owes itself - its territory, its admission, and where its members live.
+Every layer is a member of the corpus's root [`set`](E3-set.md), which the root [`README.md`](../README.md) and [`VISION.md`](../VISION.md) charter, and every knowledge layer **is** in turn a child set whose charter is its `<prefix>0` entry ([`E4`](E4-charter.md)).\
+The converse does not hold: a set may nest inside a layer, and a spanning set in [`sets/`](../sets/README.md) (`ST0`) gathers members across two or more layers without a directory of its own, where a layer is top-level and is a directory by definition.\
+Stressing the root set of layers under [`M12`](../methods/M12-investigate-a-set.md) tests whether a recurring concern has no home across existing layers (and fits neither a spanning set in `sets/`, a nested sub-set, nor an existing layer ahead of a second real occupant under [`A3`](../axioms/A3-sovereign-composition.md)), whether two layers fail the altitude test above, and whether any layer has no consumer.\
+This entry fixes the directory, prefix and category correspondence; `E3` fixes what a population owes itself - its territory, its admission, and where its members live.
 
 ---
 
