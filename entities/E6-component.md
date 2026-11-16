@@ -5,7 +5,7 @@ title: component - a system seen as a part of a containing system, with one duty
 status: active
 hydrate-when: You are deciding what a change can reach, what a part of a system owes its neighbours, or which neighbouring parts count as adjacent
 supersedes: []
-related: [E5, AR1, C0, A3, A0]
+related: [E5, E10, AR1, AR6, C0, M14, A3, A0]
 ---
 
 # E6 - component
@@ -87,6 +87,9 @@ A3 is the limit a component is built toward: one concern, declared interfaces, n
 
 **To [`A0`](../axioms/README.md).**\
 A0 states which systems a change answers to and how far improvement reaches; it uses *component* and *adjacent* as defined here.
+
+**To [`E10`](E10-stream.md) and [`M14`](../methods/M14-derive-work-from-matrix.md).**\
+A component is a vertical structural unit; a stream (`E10`) is a horizontal vector of improvement that crosses components, and `M14` derives work from their 2D intersection while keeping each implementation inside the component's boundary.
 
 ---
 

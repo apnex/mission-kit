@@ -150,4 +150,5 @@ A failure mode of one procedure belongs in that procedure.
 | [M11](M11-change-a-charter.md) | Change a charter - account for every changed sentence, test before ratifying | You are about to change a charter's text, its vision, its scope or its growth policy |
 | [M12](M12-investigate-a-set.md) | Investigate a set - partition the population against its charter and find the gaps | You need to know whether a set is complete, balanced or lopsided against its charter, or where its gaps are |
 | [M13](M13-change-a-set.md) | Change a set's membership - admit, modify, retire or rebalance a member | You are about to add an entry to a set, substantively change one, retire one, or split, merge or replace members |
+| [M14](M14-derive-work-from-matrix.md) | Derive work from a component-stream matrix - compose component and stream visions into ratcheted work items | You are deriving, prioritising or auditing work across a system's components and cross-cutting streams |
 <!-- END GENERATED -->

@@ -126,6 +126,7 @@ This file described them a second time and the copy had already drifted, naming 
 | [M11](methods/M11-change-a-charter.md) | Change a charter - account for every changed sentence, test before ratifying | You are about to change a charter's text, its vision, its scope or its growth policy |
 | [M12](methods/M12-investigate-a-set.md) | Investigate a set - partition the population against its charter and find the gaps | You need to know whether a set is complete, balanced or lopsided against its charter, or where its gaps are |
 | [M13](methods/M13-change-a-set.md) | Change a set's membership - admit, modify, retire or rebalance a member | You are about to add an entry to a set, substantively change one, retire one, or split, merge or replace members |
+| [M14](methods/M14-derive-work-from-matrix.md) | Derive work from a component-stream matrix - compose component and stream visions into ratcheted work items | You are deriving, prioritising or auditing work across a system's components and cross-cutting streams |
 
 ---
 
@@ -243,6 +244,7 @@ This file described them a second time and the copy had already drifted, naming 
 | [E7](entities/E7-gate.md) | gate - a point past which work proceeds only if a stated condition is shown to hold, decided by a machine, an independent agent or the director | You are about to say work passed, failed or is waiting at a gate, or to decide who may judge one |
 | [E8](entities/E8-evidence.md) | evidence - something offered to show that a claim holds, which a gate's judge receives and never decides | You are about to record, cite or weigh evidence, or you have met a verdict stored where evidence goes |
 | [E9](entities/E9-substrate.md) | substrate - the coordination substrate, the system that hands out, runs and gates work, and nothing else | You are about to write or read the word substrate, or describe the system that coordinates work between agents |
+| [E10](entities/E10-stream.md) | stream - a standing cross-cutting vector of improvement across components, measured against asymptotes | You are deciding whether a concern is a component or a stream, or deriving work from the intersection of a component and a cross-cutting direction of travel |
 
 ---
 

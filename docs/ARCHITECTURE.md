@@ -142,16 +142,16 @@ Generated from the root README's layer table and each layer's charter.
 |---|---|---|---|---|
 | `axioms/` | `A` | standing commitments, what brings one into force, and how they compose | 15 | `SC`, `W`, `R`, `D`, `E`, `T` |
 | `roles/` | `R` | the M axis (pure essence + type-determined authority) | 4 | `W`, `D`, `A`, `E`, `T` |
-| `domains/` | `D` | the N axis (subject-surfaces, bimodal freedom) | 7 | `W`, `R`, `A`, `T` |
-| `work-types/` | `W` | the composition rule, the canonical closeability preflight, and the entry schema | 26 | `R`, `D`, `T`, `E`, `A` |
-| `methods/` | `M` | procedures that produce a result of their own | 9 | `S`, `P`, `K`, `W`, `E`, `RU`, `PC` |
+| `domains/` | `D` | the N axis (subject-surfaces, bimodal freedom) | 7 | `W`, `R`, `E`, `M`, `A`, `T` |
+| `work-types/` | `W` | the composition rule, the canonical closeability preflight, and the entry schema | 26 | `R`, `D`, `T`, `E`, `M`, `A` |
+| `methods/` | `M` | procedures that produce a result of their own | 10 | `S`, `P`, `K`, `W`, `E`, `RU`, `PC` |
 | `rules/` | `RU` | how work is done, where a check could tell whether it was | 4 | `M`, `PC`, `S`, `A`, `E` |
 | `practices/` | `PC` | how work is done, where nothing afterwards could tell | 1 | `M`, `RU`, `S`, `A`, `E` |
 | `sets/` | `ST` | charters of populations that span layers | 1 | `E` |
 | `style/` | `S` | how artifacts are written, and which rules a script can hold | 16 | `M`, `P`, `K`, `A` |
 | `patterns/` | `P` | recurring solution shapes, and what separates one from a single good design | 4 | `M`, `S`, `C`, `A` |
 | `skills/` | `K` | executable capability, the stub-and-body split, and composition by edge | 26 | `M`, `RU`, `PC`, `P`, `SC`, `A` |
-| `entities/` | `E` | precise definitions of load-bearing terms, and what earns one | 9 | `M`, `SC`, `A` |
+| `entities/` | `E` | precise definitions of load-bearing terms, and what earns one | 10 | `M`, `SC`, `A` |
 | `components/` | `C` | sovereign shareable units to be used rather than rebuilt | 15 | `P`, `M`, `A` |
 | `artifacts/` | `AR` | the engineering lifecycle loop, and what earns a document type | 6 | `A`, `W` |
 | `traits/` | `T` | characteristics of a system that decide which axioms bind it | 5 | `A`, `D`, `E` |

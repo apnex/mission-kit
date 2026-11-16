@@ -4,7 +4,7 @@ category: work-type
 title: Work-types - the composition rule, the canonical closeability preflight, and the entry schema
 status: active
 hydrate-when: You are classifying a unit of work and need the composition rule or the closeability preflight
-related: [R0, D0, T0, E5, A3, A6, A7, A11]
+related: [R0, D0, T0, E5, E6, E10, M14, A3, A6, A7, A11]
 ---
 
 # Work-types - composition, closeability, and schema
@@ -38,7 +38,8 @@ This is the **canonical** cross-axis reference for the work-taxonomy.\
 Every `work-types/W*.md` entry references this file for its composition rule and its closeability preflight - **the constraint set is authored here once and never forked per entry** (M7 guardrail #2).\
 Read `roles/README.md` (the M role axis) and `domains/README.md` (the N domain axis) alongside this.
 
-The taxonomy exists to let strategic intent compile into self-fed WorkGraph execution (A13): a `role x work-type x domain` triple **generates** a claimable WorkItem with a complete evidence contract, so idle agents can be fed well-typed work and the Director/architect need not hand-route it (A6, A11).
+The taxonomy exists to let strategic intent compile into self-fed WorkGraph execution (A13): a `role x work-type x domain` triple **generates** a claimable WorkItem with a complete evidence contract, so idle agents can be fed well-typed work and the Director/architect need not hand-route it (A6, A11).\
+Where a programme organises strategic intent as a 2D [component](../entities/E6-component.md) by [stream](../entities/E10-stream.md) matrix under [`M14`](../methods/M14-derive-work-from-matrix.md), each active cell `(C_i, S_j)` derives the [`AR2`](../artifacts/AR2-delta.md) delta and compiles its steps into `role x work-type x domain` nodes here.
 
 ---
 

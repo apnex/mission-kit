@@ -158,4 +158,5 @@ Entities compose through the typed edges in each member's `Relations`, and form 
 | [E7](E7-gate.md) | gate - a point past which work proceeds only if a stated condition is shown to hold, decided by a machine, an independent agent or the director | You are about to say work passed, failed or is waiting at a gate, or to decide who may judge one |
 | [E8](E8-evidence.md) | evidence - something offered to show that a claim holds, which a gate's judge receives and never decides | You are about to record, cite or weigh evidence, or you have met a verdict stored where evidence goes |
 | [E9](E9-substrate.md) | substrate - the coordination substrate, the system that hands out, runs and gates work, and nothing else | You are about to write or read the word substrate, or describe the system that coordinates work between agents |
+| [E10](E10-stream.md) | stream - a standing cross-cutting vector of improvement across components, measured against asymptotes | You are deciding whether a concern is a component or a stream, or deriving work from the intersection of a component and a cross-cutting direction of travel |
 <!-- END GENERATED -->

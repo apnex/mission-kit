@@ -5,7 +5,7 @@ title: Vision - the enduring purpose a programme is measured against
 status: active
 hydrate-when: You need to say why a programme exists and what it must never become, and no document holds it
 supersedes: []
-related: [AR0, AR1, AR3, A13, A14]
+related: [AR0, AR1, AR2, AR3, E6, E10, M14, A13, A14]
 instance-path: [VISION.md]
 ---
 
@@ -52,6 +52,20 @@ The test that separates them.\
 Replace the system's design entirely and its north star goes with it, because the goals were goals *for that shape*.\
 The vision is untouched, because it was never about a shape.\
 If a statement survives that replacement, it is a vision; if it does not, it belonged to the architecture.
+
+---
+
+## Component visions, stream visions, and composed intent
+
+In a multi-component programme, purpose is held at three altitudes that compose without collapsing into one another:
+
+- **Programme vision (`VISION.md` at the programme root).** States why the whole endeavour exists, what it will never become, and the dimensions on which the programme succeeds.
+- **Component vision (`AR6` scoped to a [component](../entities/E6-component.md) `C_i`).** States the enduring structural purpose of one component at its altitude - why that box exists in the containing system and what duties it must never absorb - without prescribing its current or target [`AR1`](AR1-system-architecture.md) internals.
+- **Stream vision (`AR6` scoped to a [stream](../entities/E10-stream.md) `S_j`).** States the enduring cross-cutting direction of travel for one quality vector across components, together with its measurable **asymptotes**: monotonic limits approached over time and held by ratcheted floors.
+
+**Composed intent at the intersection `(C_i, S_j)`.**\
+When a stream `S_j` applies to a component `C_i`, their two visions intersect to form **composed intent**: what `C_i` must achieve along vector `S_j` while honouring `C_i`'s single duty and declared interfaces.\
+Under [`M14`](../methods/M14-derive-work-from-matrix.md), that composed intent exposes the gap between `C_i`'s current and target state in [`AR1`](AR1-system-architecture.md), which compiles into a gated [`AR2`](AR2-delta.md) delta and claimable units of work.
 
 ---
 
