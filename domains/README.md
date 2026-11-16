@@ -4,7 +4,7 @@ category: domain
 title: Domains - the N axis (subject-surfaces, bimodal freedom)
 status: active
 hydrate-when: You are placing a piece of work on the domain axis and need the subject surfaces
-related: [W0, R0, A1, A3, A5, T0]
+related: [W0, R0, E6, E10, M14, A1, A3, A5, T0]
 ---
 
 # Domains - the N axis
@@ -107,6 +107,10 @@ The same domain can be worked on in a stateful system or a stateless one.\
 
 **Axioms bind domains one way only.**\
 A domain cites the axioms it must satisfy; no axiom names a domain, because that would couple a stable invariant to a mutable taxonomy.
+
+**Domains against components and streams.**\
+A domain is the tactical **evidence surface** a single claimable node's proof resolves against; it is neither a structural [component](../entities/E6-component.md) (`E6`) nor a cross-cutting [stream](../entities/E10-stream.md) (`E10`).\
+Where strategic work is derived from a 2D `Component x Stream` matrix under [`M14`](../methods/M14-derive-work-from-matrix.md), the cell `(C_i, S_j)` states *which component* is changing and *which stream asymptote* the change advances, while the domain names *which evidence contract* proves each resulting work item.
 
 ---
 
